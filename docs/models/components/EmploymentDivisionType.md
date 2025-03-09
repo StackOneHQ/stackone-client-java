@@ -1,0 +1,11 @@
+# EmploymentDivisionType
+
+The type of the group
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                  | [JsonNullable\<EmploymentDivisionValue>](../../models/components/EmploymentDivisionValue.md)             | :heavy_minus_sign:                                                                                       | N/A                                                                                                      | team                                                                                                     |
+| `sourceValue`                                                                                            | [JsonNullable\<EmploymentDivisionSourceValue>](../../models/components/EmploymentDivisionSourceValue.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |                                                                                                          |

@@ -1,0 +1,11 @@
+# UpdateEmployeeApiModelEthnicity
+
+The employee ethnicity
+
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                            | [JsonNullable\<UpdateEmployeeApiModelEthnicityValue>](../../models/components/UpdateEmployeeApiModelEthnicityValue.md)             | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `sourceValue`                                                                                                                      | [JsonNullable\<UpdateEmployeeApiModelEthnicitySourceValue>](../../models/components/UpdateEmployeeApiModelEthnicitySourceValue.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

@@ -1,0 +1,11 @@
+# EmployeeCountry
+
+The country code
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                      | [JsonNullable\<EmployeeWorkLocationValue>](../../models/components/EmployeeWorkLocationValue.md)             | :heavy_minus_sign:                                                                                           | The ISO3166-1 Alpha2 Code of the Country                                                                     | US                                                                                                           |
+| `sourceValue`                                                                                                | [JsonNullable\<EmployeeWorkLocationSourceValue>](../../models/components/EmployeeWorkLocationSourceValue.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |                                                                                                              |

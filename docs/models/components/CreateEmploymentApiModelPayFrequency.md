@@ -1,0 +1,11 @@
+# CreateEmploymentApiModelPayFrequency
+
+The pay frequency
+
+
+## Fields
+
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                                      | [JsonNullable\<CreateEmploymentApiModelPayFrequencyValue>](../../models/components/CreateEmploymentApiModelPayFrequencyValue.md)             | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `sourceValue`                                                                                                                                | [JsonNullable\<CreateEmploymentApiModelPayFrequencySourceValue>](../../models/components/CreateEmploymentApiModelPayFrequencySourceValue.md) | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |

@@ -1,0 +1,11 @@
+# HRISCostCenterType
+
+The type of the group
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `value`                                                                                          | [JsonNullable\<HRISCostCenterValue>](../../models/components/HRISCostCenterValue.md)             | :heavy_minus_sign:                                                                               | N/A                                                                                              | team                                                                                             |
+| `sourceValue`                                                                                    | [JsonNullable\<HRISCostCenterSourceValue>](../../models/components/HRISCostCenterSourceValue.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |                                                                                                  |

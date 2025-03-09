@@ -1,0 +1,9 @@
+# WorkEligibilityType
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `value`                                                                                            | [JsonNullable\<WorkEligibilityValue>](../../models/components/WorkEligibilityValue.md)             | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `sourceValue`                                                                                      | [JsonNullable\<WorkEligibilitySourceValue>](../../models/components/WorkEligibilitySourceValue.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

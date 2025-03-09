@@ -1,0 +1,14 @@
+# ~~UpdateEmployeeApiModelNationalIdentityNumber~~
+
+The national identity number
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                  | *JsonNullable\<String>*                                                                                  | :heavy_minus_sign:                                                                                       | N/A                                                                                                      | 123456789                                                                                                |
+| `type`                                                                                                   | [JsonNullable\<UpdateEmployeeApiModelType>](../../models/components/UpdateEmployeeApiModelType.md)       | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |                                                                                                          |
+| `country`                                                                                                | [JsonNullable\<UpdateEmployeeApiModelCountry>](../../models/components/UpdateEmployeeApiModelCountry.md) | :heavy_minus_sign:                                                                                       | The country code                                                                                         |                                                                                                          |

@@ -1,0 +1,11 @@
+# HrisUpdateEmployeeRequestDtoGender
+
+The employee gender
+
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                      | [JsonNullable\<HrisUpdateEmployeeRequestDtoValue>](../../models/components/HrisUpdateEmployeeRequestDtoValue.md)             | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `sourceValue`                                                                                                                | [JsonNullable\<HrisUpdateEmployeeRequestDtoSourceValue>](../../models/components/HrisUpdateEmployeeRequestDtoSourceValue.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |

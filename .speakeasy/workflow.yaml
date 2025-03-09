@@ -1,0 +1,29 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    StackOne-OAS:
+        inputs:
+            - location: https://api.eu1.stackone.com/oas/stackone.json
+            - location: https://api.eu1.stackone.com/oas/hris.json
+            - location: https://api.eu1.stackone.com/oas/ats.json
+            - location: https://api.eu1.stackone.com/oas/crm.json
+            - location: https://api.eu1.stackone.com/oas/iam.json
+            - location: https://api.eu1.stackone.com/oas/marketing.json
+            - location: https://api.eu1.stackone.com/oas/lms.json
+            - location: https://api.eu1.stackone.com/oas/ticketing.json
+        registry:
+            location: registry.speakeasyapi.dev/stackone/stackone/stack-one-oas
+targets:
+    stack-one:
+        target: java
+        source: StackOne-OAS
+        publish:
+            java:
+                ossrhUsername: $ossrh_username
+                ossrhPassword: $ossrh_password
+                gpgSecretKey: $java_gpg_secret_key
+                gpgPassPhrase: $java_gpg_passphrase
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/stackone/stackone/stack-one-oas-java-code-samples
+            blocking: false

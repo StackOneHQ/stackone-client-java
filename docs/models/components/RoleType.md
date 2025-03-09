@@ -1,0 +1,11 @@
+# RoleType
+
+The manager role type (e.g., admin, viewer)
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                | [JsonNullable\<EmploymentManagerApiModelValue>](../../models/components/EmploymentManagerApiModelValue.md)             | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| `sourceValue`                                                                                                          | [JsonNullable\<EmploymentManagerApiModelSourceValue>](../../models/components/EmploymentManagerApiModelSourceValue.md) | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |

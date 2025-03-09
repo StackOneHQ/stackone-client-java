@@ -1,0 +1,11 @@
+# EmployeeLocationType
+
+The location type
+
+
+## Fields
+
+| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                                              | [JsonNullable\<EmployeeWorkLocationLocationTypeValue>](../../models/components/EmployeeWorkLocationLocationTypeValue.md)             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
+| `sourceValue`                                                                                                                        | [JsonNullable\<EmployeeWorkLocationLocationTypeSourceValue>](../../models/components/EmployeeWorkLocationLocationTypeSourceValue.md) | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |

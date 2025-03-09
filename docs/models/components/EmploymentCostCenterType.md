@@ -1,0 +1,11 @@
+# EmploymentCostCenterType
+
+The type of the group
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                      | [JsonNullable\<EmploymentCostCenterValue>](../../models/components/EmploymentCostCenterValue.md)             | :heavy_minus_sign:                                                                                           | N/A                                                                                                          | team                                                                                                         |
+| `sourceValue`                                                                                                | [JsonNullable\<EmploymentCostCenterSourceValue>](../../models/components/EmploymentCostCenterSourceValue.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |                                                                                                              |

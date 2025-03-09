@@ -1,0 +1,11 @@
+# HRISDepartmentType
+
+The type of the department group
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `value`                                                                                          | [JsonNullable\<HRISDepartmentValue>](../../models/components/HRISDepartmentValue.md)             | :heavy_minus_sign:                                                                               | N/A                                                                                              | department                                                                                       |
+| `sourceValue`                                                                                    | [JsonNullable\<HRISDepartmentSourceValue>](../../models/components/HRISDepartmentSourceValue.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |                                                                                                  |

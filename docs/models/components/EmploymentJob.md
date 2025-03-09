@@ -1,0 +1,15 @@
+# EmploymentJob
+
+The job of employee
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `id`                                                                 | *JsonNullable\<String>*                                              | :heavy_minus_sign:                                                   | Unique identifier                                                    | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                 |
+| `remoteId`                                                           | *JsonNullable\<String>*                                              | :heavy_minus_sign:                                                   | Provider's unique identifier                                         | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                 |
+| `title`                                                              | *JsonNullable\<String>*                                              | :heavy_minus_sign:                                                   | Title of the job                                                     | Software Engineer                                                    |
+| `description`                                                        | [JsonNullable\<Description>](../../models/components/Description.md) | :heavy_minus_sign:                                                   | The employee job description                                         |                                                                      |
+| `ownerId`                                                            | *JsonNullable\<String>*                                              | :heavy_minus_sign:                                                   | The owner_id of the job                                              | 5356                                                                 |
+| `parentId`                                                           | *JsonNullable\<String>*                                              | :heavy_minus_sign:                                                   | The parent_id of the job                                             | 7577                                                                 |

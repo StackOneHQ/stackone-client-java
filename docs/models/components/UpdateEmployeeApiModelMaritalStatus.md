@@ -1,0 +1,11 @@
+# UpdateEmployeeApiModelMaritalStatus
+
+The employee marital status
+
+
+## Fields
+
+| Field                                                                                                                                      | Type                                                                                                                                       | Required                                                                                                                                   | Description                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                                                    | [JsonNullable\<UpdateEmployeeApiModelMaritalStatusValue>](../../models/components/UpdateEmployeeApiModelMaritalStatusValue.md)             | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
+| `sourceValue`                                                                                                                              | [JsonNullable\<UpdateEmployeeApiModelMaritalStatusSourceValue>](../../models/components/UpdateEmployeeApiModelMaritalStatusSourceValue.md) | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |

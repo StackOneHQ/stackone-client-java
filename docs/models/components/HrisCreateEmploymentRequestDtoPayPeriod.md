@@ -1,0 +1,11 @@
+# HrisCreateEmploymentRequestDtoPayPeriod
+
+The pay period
+
+
+## Fields
+
+| Field                                                                                                                            | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                          | [JsonNullable\<HrisCreateEmploymentRequestDtoValue>](../../models/components/HrisCreateEmploymentRequestDtoValue.md)             | :heavy_minus_sign:                                                                                                               | N/A                                                                                                                              |
+| `sourceValue`                                                                                                                    | [JsonNullable\<HrisCreateEmploymentRequestDtoSourceValue>](../../models/components/HrisCreateEmploymentRequestDtoSourceValue.md) | :heavy_minus_sign:                                                                                                               | N/A                                                                                                                              |
