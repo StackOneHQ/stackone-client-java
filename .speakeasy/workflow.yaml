@@ -12,9 +12,9 @@ sources:
             - location: https://api.eu1.stackone.com/oas/lms.json
             - location: https://api.eu1.stackone.com/oas/ticketing.json
         registry:
-            location: registry.speakeasyapi.dev/stackone/stackone/stack-one-oas
+            location: registry.speakeasyapi.dev/stackone/stackone/stackone-oas
 targets:
-    stack-one:
+    stackone:
         target: java
         source: StackOne-OAS
         publish:
@@ -25,5 +25,5 @@ targets:
                 gpgPassPhrase: $java_gpg_passphrase
         codeSamples:
             registry:
-                location: registry.speakeasyapi.dev/stackone/stackone/stack-one-oas-java-code-samples
+                location: registry.speakeasyapi.dev/stackone/stackone/stackone-oas-java-code-samples
             blocking: false
