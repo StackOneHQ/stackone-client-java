@@ -7,11 +7,13 @@ package com.stackone.stackone_client_java.models.operations;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.String;
 import java.util.Optional;
 
 public class HrisGetTimeOffTypeRequestBuilder {
 
     private HrisGetTimeOffTypeRequest request;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisGetTimeOffType sdk;
 
@@ -22,6 +24,18 @@ public class HrisGetTimeOffTypeRequestBuilder {
     public HrisGetTimeOffTypeRequestBuilder request(HrisGetTimeOffTypeRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
+        return this;
+    }
+                
+    public HrisGetTimeOffTypeRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisGetTimeOffTypeRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
         return this;
     }
                 
@@ -43,6 +57,7 @@ public class HrisGetTimeOffTypeRequestBuilder {
                                                     .build());
         return sdk.getTimeOffType(
             request,
+            serverURL,
             options);
     }
 }

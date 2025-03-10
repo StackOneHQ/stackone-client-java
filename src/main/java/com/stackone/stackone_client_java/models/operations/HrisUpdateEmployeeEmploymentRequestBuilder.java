@@ -17,6 +17,7 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
     private String id;
     private String subResourceId;
     private HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisUpdateEmployeeEmployment sdk;
 
@@ -48,6 +49,18 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
         return this;
     }
                 
+    public HrisUpdateEmployeeEmploymentRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisUpdateEmployeeEmploymentRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
+        return this;
+    }
+                
     public HrisUpdateEmployeeEmploymentRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -69,6 +82,7 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
             id,
             subResourceId,
             hrisCreateEmploymentRequestDto,
+            serverURL,
             options);
     }
 }

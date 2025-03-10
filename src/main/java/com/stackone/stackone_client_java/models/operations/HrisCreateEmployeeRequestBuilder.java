@@ -15,6 +15,7 @@ public class HrisCreateEmployeeRequestBuilder {
 
     private String xAccountId;
     private HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisCreateEmployee sdk;
 
@@ -31,6 +32,18 @@ public class HrisCreateEmployeeRequestBuilder {
     public HrisCreateEmployeeRequestBuilder hrisCreateEmployeeRequestDto(HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
         Utils.checkNotNull(hrisCreateEmployeeRequestDto, "hrisCreateEmployeeRequestDto");
         this.hrisCreateEmployeeRequestDto = hrisCreateEmployeeRequestDto;
+        return this;
+    }
+                
+    public HrisCreateEmployeeRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisCreateEmployeeRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
         return this;
     }
                 
@@ -53,6 +66,7 @@ public class HrisCreateEmployeeRequestBuilder {
         return sdk.createEmployee(
             xAccountId,
             hrisCreateEmployeeRequestDto,
+            serverURL,
             options);
     }
 }

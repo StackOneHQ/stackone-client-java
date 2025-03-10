@@ -16,16 +16,22 @@ class SDKConfiguration {
     public Optional<SecuritySource> securitySource() {
         return Optional.ofNullable(securitySource);
     }
+    
     public HTTPClient defaultClient;
+    
     public String serverUrl;
+    
+    public String resolvedServerUrl() {
+        return serverUrl;
+    }
     public int serverIdx = 0;
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "1.0.0";
-    public static final String SDK_VERSION = "0.0.1";
-    public static final String GEN_VERSION = "2.442.11";
+    public static final String SDK_VERSION = "0.1.0";
+    public static final String GEN_VERSION = "2.546.0";
     private static final String BASE_PACKAGE = "com.stackone.stackone_client_java";
     public static final String USER_AGENT = 
-            String.format("speakeasy-sdk/%s %s %s %s %s", 
+            String.format("speakeasy-sdk/%s %s %s %s %s",
                 LANGUAGE, SDK_VERSION, GEN_VERSION, OPENAPI_DOC_VERSION, BASE_PACKAGE);
 
     private Hooks _hooks = createHooks();

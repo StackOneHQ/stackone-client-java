@@ -1,0 +1,11 @@
+# SkillsLanguage
+
+The language associated with this skill
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `value`                                                                                          | [JsonNullable\<SkillsLanguageValue>](../../models/components/SkillsLanguageValue.md)             | :heavy_minus_sign:                                                                               | The Locale Code of the language                                                                  | en_GB                                                                                            |
+| `sourceValue`                                                                                    | [JsonNullable\<SkillsLanguageSourceValue>](../../models/components/SkillsLanguageSourceValue.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |                                                                                                  |

@@ -15,6 +15,7 @@ public class HrisCreateTimeOffRequestRequestBuilder {
 
     private String xAccountId;
     private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisCreateTimeOffRequest sdk;
 
@@ -31,6 +32,18 @@ public class HrisCreateTimeOffRequestRequestBuilder {
     public HrisCreateTimeOffRequestRequestBuilder hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
         Utils.checkNotNull(hrisCreateTimeOffRequestDto, "hrisCreateTimeOffRequestDto");
         this.hrisCreateTimeOffRequestDto = hrisCreateTimeOffRequestDto;
+        return this;
+    }
+                
+    public HrisCreateTimeOffRequestRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisCreateTimeOffRequestRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
         return this;
     }
                 
@@ -53,6 +66,7 @@ public class HrisCreateTimeOffRequestRequestBuilder {
         return sdk.createTimeOffRequest(
             xAccountId,
             hrisCreateTimeOffRequestDto,
+            serverURL,
             options);
     }
 }

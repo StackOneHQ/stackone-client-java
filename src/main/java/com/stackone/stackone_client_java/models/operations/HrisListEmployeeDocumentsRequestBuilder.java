@@ -8,12 +8,14 @@ import com.stackone.stackone_client_java.models.errors.SDKError;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.String;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 public class HrisListEmployeeDocumentsRequestBuilder {
 
     private HrisListEmployeeDocumentsRequest request;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisListEmployeeDocuments sdk;
 
@@ -24,6 +26,18 @@ public class HrisListEmployeeDocumentsRequestBuilder {
     public HrisListEmployeeDocumentsRequestBuilder request(HrisListEmployeeDocumentsRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
+        return this;
+    }
+                
+    public HrisListEmployeeDocumentsRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisListEmployeeDocumentsRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
         return this;
     }
                 
@@ -45,6 +59,7 @@ public class HrisListEmployeeDocumentsRequestBuilder {
                                                     .build());
         return sdk.listEmployeeDocuments(
             request,
+            serverURL,
             options);
     }
     

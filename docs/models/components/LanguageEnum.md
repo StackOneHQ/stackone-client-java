@@ -1,0 +1,9 @@
+# LanguageEnum
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `value`                                                                                      | [JsonNullable\<LanguageEnumValue>](../../models/components/LanguageEnumValue.md)             | :heavy_minus_sign:                                                                           | The Locale Code of the language                                                              | en_GB                                                                                        |
+| `sourceValue`                                                                                | [JsonNullable\<LanguageEnumSourceValue>](../../models/components/LanguageEnumSourceValue.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |                                                                                              |

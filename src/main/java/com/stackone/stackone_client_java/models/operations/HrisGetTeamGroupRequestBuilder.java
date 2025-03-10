@@ -7,11 +7,13 @@ package com.stackone.stackone_client_java.models.operations;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.String;
 import java.util.Optional;
 
 public class HrisGetTeamGroupRequestBuilder {
 
     private HrisGetTeamGroupRequest request;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisGetTeamGroup sdk;
 
@@ -22,6 +24,18 @@ public class HrisGetTeamGroupRequestBuilder {
     public HrisGetTeamGroupRequestBuilder request(HrisGetTeamGroupRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
+        return this;
+    }
+                
+    public HrisGetTeamGroupRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisGetTeamGroupRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
         return this;
     }
                 
@@ -43,6 +57,7 @@ public class HrisGetTeamGroupRequestBuilder {
                                                     .build());
         return sdk.getTeamGroup(
             request,
+            serverURL,
             options);
     }
 }

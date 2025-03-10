@@ -258,6 +258,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -322,6 +323,412 @@ public class Hris implements
             MethodCallHrisGetEmployeeSkill,
             MethodCallHrisListTimeOffPolicies,
             MethodCallHrisGetTimeOffPolicy {
+    
+    /**
+     * HRIS_LIST_COMPANIES_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_COMPANIES_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_COMPANY_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_COMPANY_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEE_CUSTOM_FIELD_DEFINITIONS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEE_CUSTOM_FIELD_DEFINITIONS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEE_CUSTOM_FIELD_DEFINITION_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEE_CUSTOM_FIELD_DEFINITION_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEES_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEES_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_CREATE_EMPLOYEE_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_CREATE_EMPLOYEE_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEE_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEE_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_UPDATE_EMPLOYEE_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_UPDATE_EMPLOYEE_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_INVITE_EMPLOYEE_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_INVITE_EMPLOYEE_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEE_TIME_OFF_REQUESTS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEE_TIME_OFF_REQUESTS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_CREATE_EMPLOYEE_TIME_OFF_REQUEST_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_CREATE_EMPLOYEE_TIME_OFF_REQUEST_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEES_TIME_OFF_REQUEST_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEES_TIME_OFF_REQUEST_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_BATCH_UPLOAD_EMPLOYEE_DOCUMENT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_BATCH_UPLOAD_EMPLOYEE_DOCUMENT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_UPLOAD_EMPLOYEE_DOCUMENT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_UPLOAD_EMPLOYEE_DOCUMENT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_DOWNLOAD_EMPLOYEE_DOCUMENT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_DOWNLOAD_EMPLOYEE_DOCUMENT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEE_DOCUMENTS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEE_DOCUMENTS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEE_DOCUMENT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEE_DOCUMENT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEE_CATEGORIES_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEE_CATEGORIES_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEE_DOCUMENT_CATEGORY_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEE_DOCUMENT_CATEGORY_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEE_WORK_ELIGIBILITY_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEE_WORK_ELIGIBILITY_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_CREATE_EMPLOYEE_WORK_ELIGIBILITY_REQUEST_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_CREATE_EMPLOYEE_WORK_ELIGIBILITY_REQUEST_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEES_WORK_ELIGIBILITY_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEES_WORK_ELIGIBILITY_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_UPDATE_EMPLOYEE_WORK_ELIGIBILITY_REQUEST_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_UPDATE_EMPLOYEE_WORK_ELIGIBILITY_REQUEST_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEE_TIME_OFF_BALANCES_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEE_TIME_OFF_BALANCES_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEE_TIME_OFF_BALANCE_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEE_TIME_OFF_BALANCE_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYMENTS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYMENTS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYMENT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYMENT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEE_EMPLOYMENTS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEE_EMPLOYMENTS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_CREATE_EMPLOYEE_EMPLOYMENT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_CREATE_EMPLOYEE_EMPLOYMENT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEE_EMPLOYMENT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEE_EMPLOYMENT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_UPDATE_EMPLOYEE_EMPLOYMENT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_UPDATE_EMPLOYEE_EMPLOYMENT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_LOCATIONS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_LOCATIONS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_LOCATION_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_LOCATION_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_TIME_OFF_REQUESTS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_TIME_OFF_REQUESTS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_CREATE_TIME_OFF_REQUEST_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_CREATE_TIME_OFF_REQUEST_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_TIME_OFF_REQUEST_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_TIME_OFF_REQUEST_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_UPDATE_TIME_OFF_REQUEST_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_UPDATE_TIME_OFF_REQUEST_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_TIME_OFF_TYPES_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_TIME_OFF_TYPES_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_TIME_OFF_TYPE_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_TIME_OFF_TYPE_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_TIME_ENTRIES_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_TIME_ENTRIES_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_TIME_ENTRIES_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_TIME_ENTRIES_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_BENEFITS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_BENEFITS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_BENEFIT_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_BENEFIT_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_GROUPS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_GROUPS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_DEPARTMENT_GROUPS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_DEPARTMENT_GROUPS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_COST_CENTER_GROUPS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_COST_CENTER_GROUPS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_TEAM_GROUPS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_TEAM_GROUPS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_GROUP_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_GROUP_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_DEPARTMENT_GROUP_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_DEPARTMENT_GROUP_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_COST_CENTER_GROUP_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_COST_CENTER_GROUP_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_TEAM_GROUP_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_TEAM_GROUP_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_JOBS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_JOBS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_JOB_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_JOB_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_EMPLOYEE_SKILLS_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_EMPLOYEE_SKILLS_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_CREATE_EMPLOYEE_SKILL_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_CREATE_EMPLOYEE_SKILL_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_EMPLOYEE_SKILL_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_EMPLOYEE_SKILL_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_LIST_TIME_OFF_POLICIES_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_LIST_TIME_OFF_POLICIES_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
+    
+    /**
+     * HRIS_GET_TIME_OFF_POLICY_SERVERS contains the list of server urls available to the SDK.
+     */
+    public static final String[] HRIS_GET_TIME_OFF_POLICY_SERVERS = {
+        "https://api.stackone-dev.com",
+    };
 
     private final SDKConfiguration sdkConfiguration;
 
@@ -346,24 +753,29 @@ public class Hris implements
      */
     public HrisListCompaniesResponse listCompanies(
             HrisListCompaniesRequest request) throws Exception {
-        return listCompanies(request, Optional.empty());
+        return listCompanies(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Companies
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListCompaniesResponse listCompanies(
             HrisListCompaniesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_COMPANIES_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/companies");
@@ -378,10 +790,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -412,7 +824,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_companies", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -425,7 +837,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_companies",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -438,7 +850,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_companies", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -490,6 +902,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -510,7 +923,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -518,8 +932,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -552,24 +973,29 @@ public class Hris implements
      */
     public HrisGetCompanyResponse getCompany(
             HrisGetCompanyRequest request) throws Exception {
-        return getCompany(request, Optional.empty());
+        return getCompany(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Company
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetCompanyResponse getCompany(
             HrisGetCompanyRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_COMPANY_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetCompanyRequest.class,
                 _baseUrl,
@@ -586,10 +1012,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -620,7 +1046,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_company", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -633,7 +1059,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_company",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -646,7 +1072,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_company", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -676,7 +1102,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -684,8 +1111,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -718,24 +1152,29 @@ public class Hris implements
      */
     public HrisListEmployeeCustomFieldDefinitionsResponse listEmployeeCustomFieldDefinitions(
             HrisListEmployeeCustomFieldDefinitionsRequest request) throws Exception {
-        return listEmployeeCustomFieldDefinitions(request, Optional.empty());
+        return listEmployeeCustomFieldDefinitions(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List employee Custom Field Definitions
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeeCustomFieldDefinitionsResponse listEmployeeCustomFieldDefinitions(
             HrisListEmployeeCustomFieldDefinitionsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEE_CUSTOM_FIELD_DEFINITIONS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/custom_field_definitions/employees");
@@ -750,10 +1189,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -784,7 +1223,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_custom_field_definitions", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -797,7 +1236,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_custom_field_definitions",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -810,7 +1249,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_custom_field_definitions", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -840,7 +1279,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -848,8 +1288,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -882,24 +1329,29 @@ public class Hris implements
      */
     public HrisGetEmployeeCustomFieldDefinitionResponse getEmployeeCustomFieldDefinition(
             HrisGetEmployeeCustomFieldDefinitionRequest request) throws Exception {
-        return getEmployeeCustomFieldDefinition(request, Optional.empty());
+        return getEmployeeCustomFieldDefinition(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get employee Custom Field Definition
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeeCustomFieldDefinitionResponse getEmployeeCustomFieldDefinition(
             HrisGetEmployeeCustomFieldDefinitionRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEE_CUSTOM_FIELD_DEFINITION_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeeCustomFieldDefinitionRequest.class,
                 _baseUrl,
@@ -916,10 +1368,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -950,7 +1402,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_custom_field_definition", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -963,7 +1415,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_custom_field_definition",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -976,7 +1428,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_custom_field_definition", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1006,7 +1458,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1014,8 +1467,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1048,24 +1508,29 @@ public class Hris implements
      */
     public HrisListEmployeesResponse listEmployees(
             HrisListEmployeesRequest request) throws Exception {
-        return listEmployees(request, Optional.empty());
+        return listEmployees(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employees
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeesResponse listEmployees(
             HrisListEmployeesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEES_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/employees");
@@ -1080,10 +1545,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1114,7 +1579,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employees", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1127,7 +1592,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employees",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1140,7 +1605,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employees", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1196,6 +1661,7 @@ public class Hris implements
                         request.expand(),
                         request.include()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -1216,7 +1682,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1224,8 +1691,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1260,13 +1734,14 @@ public class Hris implements
     public HrisCreateEmployeeResponse createEmployee(
             String xAccountId,
             HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) throws Exception {
-        return createEmployee(xAccountId, hrisCreateEmployeeRequestDto, Optional.empty());
+        return createEmployee(xAccountId, hrisCreateEmployeeRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
      * Creates an employee
      * @param xAccountId The account identifier
      * @param hrisCreateEmployeeRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -1274,6 +1749,7 @@ public class Hris implements
     public HrisCreateEmployeeResponse createEmployee(
             String xAccountId,
             HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -1286,7 +1762,10 @@ public class Hris implements
                 .hrisCreateEmployeeRequestDto(hrisCreateEmployeeRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_CREATE_EMPLOYEE_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/employees");
@@ -1309,10 +1788,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1343,7 +1822,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1356,7 +1835,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1369,7 +1848,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1399,7 +1878,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1407,8 +1887,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1441,24 +1928,29 @@ public class Hris implements
      */
     public HrisGetEmployeeResponse getEmployee(
             HrisGetEmployeeRequest request) throws Exception {
-        return getEmployee(request, Optional.empty());
+        return getEmployee(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employee
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeeResponse getEmployee(
             HrisGetEmployeeRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEE_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeeRequest.class,
                 _baseUrl,
@@ -1475,10 +1967,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1509,7 +2001,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1522,7 +2014,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1535,7 +2027,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1565,7 +2057,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1573,8 +2066,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1611,7 +2111,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto) throws Exception {
-        return updateEmployee(xAccountId, id, hrisUpdateEmployeeRequestDto, Optional.empty());
+        return updateEmployee(xAccountId, id, hrisUpdateEmployeeRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -1619,6 +2119,7 @@ public class Hris implements
      * @param xAccountId The account identifier
      * @param id
      * @param hrisUpdateEmployeeRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -1627,6 +2128,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -1640,7 +2142,10 @@ public class Hris implements
                 .hrisUpdateEmployeeRequestDto(hrisUpdateEmployeeRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_UPDATE_EMPLOYEE_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisUpdateEmployeeRequest.class,
                 _baseUrl,
@@ -1665,10 +2170,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1699,7 +2204,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_update_employee", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1712,7 +2217,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_update_employee",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1725,7 +2230,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_update_employee", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1755,7 +2260,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1763,8 +2269,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1801,7 +2314,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto) throws Exception {
-        return inviteEmployee(xAccountId, id, hrisInviteEmployeeRequestDto, Optional.empty());
+        return inviteEmployee(xAccountId, id, hrisInviteEmployeeRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -1809,6 +2322,7 @@ public class Hris implements
      * @param xAccountId The account identifier
      * @param id
      * @param hrisInviteEmployeeRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -1817,6 +2331,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -1830,7 +2345,10 @@ public class Hris implements
                 .hrisInviteEmployeeRequestDto(hrisInviteEmployeeRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_INVITE_EMPLOYEE_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisInviteEmployeeRequest.class,
                 _baseUrl,
@@ -1855,10 +2373,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1889,7 +2407,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_invite_employee", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1902,7 +2420,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_invite_employee",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1915,7 +2433,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_invite_employee", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1945,7 +2463,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1953,8 +2472,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1987,24 +2513,29 @@ public class Hris implements
      */
     public HrisListEmployeeTimeOffRequestsResponse listEmployeeTimeOffRequests(
             HrisListEmployeeTimeOffRequestsRequest request) throws Exception {
-        return listEmployeeTimeOffRequests(request, Optional.empty());
+        return listEmployeeTimeOffRequests(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employee Time Off Requests
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeeTimeOffRequestsResponse listEmployeeTimeOffRequests(
             HrisListEmployeeTimeOffRequestsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEE_TIME_OFF_REQUESTS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisListEmployeeTimeOffRequestsRequest.class,
                 _baseUrl,
@@ -2021,10 +2552,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2055,7 +2586,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_time_off_requests", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2068,7 +2599,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_time_off_requests",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2081,7 +2612,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_time_off_requests", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2135,6 +2666,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -2155,7 +2687,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2163,8 +2696,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2201,7 +2741,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) throws Exception {
-        return createEmployeeTimeOffRequest(xAccountId, id, hrisCreateTimeOffRequestDto, Optional.empty());
+        return createEmployeeTimeOffRequest(xAccountId, id, hrisCreateTimeOffRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -2209,6 +2749,7 @@ public class Hris implements
      * @param xAccountId The account identifier
      * @param id
      * @param hrisCreateTimeOffRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -2217,6 +2758,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -2230,7 +2772,10 @@ public class Hris implements
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_CREATE_EMPLOYEE_TIME_OFF_REQUEST_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisCreateEmployeeTimeOffRequestRequest.class,
                 _baseUrl,
@@ -2255,10 +2800,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2289,7 +2834,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2302,7 +2847,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2315,7 +2860,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2345,7 +2890,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2353,8 +2899,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2387,24 +2940,29 @@ public class Hris implements
      */
     public HrisGetEmployeesTimeOffRequestResponse getEmployeesTimeOffRequest(
             HrisGetEmployeesTimeOffRequestRequest request) throws Exception {
-        return getEmployeesTimeOffRequest(request, Optional.empty());
+        return getEmployeesTimeOffRequest(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employees Time Off Request
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeesTimeOffRequestResponse getEmployeesTimeOffRequest(
             HrisGetEmployeesTimeOffRequestRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEES_TIME_OFF_REQUEST_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeesTimeOffRequestRequest.class,
                 _baseUrl,
@@ -2421,10 +2979,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2455,7 +3013,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employees_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2468,7 +3026,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employees_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2481,7 +3039,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employees_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2511,7 +3069,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2519,8 +3078,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2557,7 +3123,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) throws Exception {
-        return batchUploadEmployeeDocument(xAccountId, id, hrisBatchDocumentUploadRequestDto, Optional.empty());
+        return batchUploadEmployeeDocument(xAccountId, id, hrisBatchDocumentUploadRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -2565,6 +3131,7 @@ public class Hris implements
      * @param xAccountId The account identifier
      * @param id
      * @param hrisBatchDocumentUploadRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -2573,6 +3140,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -2586,7 +3154,10 @@ public class Hris implements
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_BATCH_UPLOAD_EMPLOYEE_DOCUMENT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisBatchUploadEmployeeDocumentRequest.class,
                 _baseUrl,
@@ -2611,10 +3182,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2645,7 +3216,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_batch_upload_employee_document", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2658,7 +3229,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_batch_upload_employee_document",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2671,7 +3242,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_batch_upload_employee_document", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2701,7 +3272,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2709,8 +3281,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2747,7 +3326,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto) throws Exception {
-        return uploadEmployeeDocument(xAccountId, id, hrisDocumentsUploadRequestDto, Optional.empty());
+        return uploadEmployeeDocument(xAccountId, id, hrisDocumentsUploadRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -2755,6 +3334,7 @@ public class Hris implements
      * @param xAccountId The account identifier
      * @param id
      * @param hrisDocumentsUploadRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -2763,6 +3343,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -2776,7 +3357,10 @@ public class Hris implements
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_UPLOAD_EMPLOYEE_DOCUMENT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisUploadEmployeeDocumentRequest.class,
                 _baseUrl,
@@ -2801,10 +3385,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2835,7 +3419,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_upload_employee_document", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2848,7 +3432,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_upload_employee_document",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2861,7 +3445,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_upload_employee_document", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2891,7 +3475,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2899,8 +3484,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2937,7 +3529,7 @@ public class Hris implements
             String xAccountId,
             String id,
             String subResourceId) throws Exception {
-        return downloadEmployeeDocument(xAccountId, id, subResourceId, JsonNullable.undefined(), Optional.empty());
+        return downloadEmployeeDocument(xAccountId, id, subResourceId, JsonNullable.undefined(), Optional.empty(), Optional.empty());
     }
     
     /**
@@ -2946,6 +3538,7 @@ public class Hris implements
      * @param id
      * @param subResourceId
      * @param format The format to download the file in
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -2955,6 +3548,7 @@ public class Hris implements
             String id,
             String subResourceId,
             JsonNullable<String> format,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -2969,7 +3563,10 @@ public class Hris implements
                 .format(format)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_DOWNLOAD_EMPLOYEE_DOCUMENT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisDownloadEmployeeDocumentRequest.class,
                 _baseUrl,
@@ -2986,10 +3583,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3020,7 +3617,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_download_employee_document", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3033,7 +3630,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_download_employee_document",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3046,7 +3643,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_download_employee_document", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3075,7 +3672,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3083,8 +3681,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3117,24 +3722,29 @@ public class Hris implements
      */
     public HrisListEmployeeDocumentsResponse listEmployeeDocuments(
             HrisListEmployeeDocumentsRequest request) throws Exception {
-        return listEmployeeDocuments(request, Optional.empty());
+        return listEmployeeDocuments(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employee Documents
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeeDocumentsResponse listEmployeeDocuments(
             HrisListEmployeeDocumentsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEE_DOCUMENTS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisListEmployeeDocumentsRequest.class,
                 _baseUrl,
@@ -3151,10 +3761,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3185,7 +3795,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_documents", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3198,7 +3808,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_documents",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3211,7 +3821,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_documents", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3265,6 +3875,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -3285,7 +3896,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3293,8 +3905,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3327,24 +3946,29 @@ public class Hris implements
      */
     public HrisGetEmployeeDocumentResponse getEmployeeDocument(
             HrisGetEmployeeDocumentRequest request) throws Exception {
-        return getEmployeeDocument(request, Optional.empty());
+        return getEmployeeDocument(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employee Document
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeeDocumentResponse getEmployeeDocument(
             HrisGetEmployeeDocumentRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEE_DOCUMENT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeeDocumentRequest.class,
                 _baseUrl,
@@ -3361,10 +3985,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3395,7 +4019,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_document", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3408,7 +4032,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_document",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3421,7 +4045,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_document", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3451,7 +4075,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3459,8 +4084,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3493,24 +4125,29 @@ public class Hris implements
      */
     public HrisListEmployeeCategoriesResponse listEmployeeCategories(
             HrisListEmployeeCategoriesRequest request) throws Exception {
-        return listEmployeeCategories(request, Optional.empty());
+        return listEmployeeCategories(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employee Document Categories
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeeCategoriesResponse listEmployeeCategories(
             HrisListEmployeeCategoriesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEE_CATEGORIES_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/documents/employee_categories");
@@ -3525,10 +4162,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3559,7 +4196,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_categories", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3572,7 +4209,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_categories",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3585,7 +4222,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_categories", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3637,6 +4274,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -3657,7 +4295,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3665,8 +4304,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3699,24 +4345,29 @@ public class Hris implements
      */
     public HrisGetEmployeeDocumentCategoryResponse getEmployeeDocumentCategory(
             HrisGetEmployeeDocumentCategoryRequest request) throws Exception {
-        return getEmployeeDocumentCategory(request, Optional.empty());
+        return getEmployeeDocumentCategory(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employee Document Category
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeeDocumentCategoryResponse getEmployeeDocumentCategory(
             HrisGetEmployeeDocumentCategoryRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEE_DOCUMENT_CATEGORY_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeeDocumentCategoryRequest.class,
                 _baseUrl,
@@ -3733,10 +4384,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3767,7 +4418,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_document_category", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3780,7 +4431,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_document_category",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3793,7 +4444,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_document_category", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3823,7 +4474,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3831,8 +4483,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3865,24 +4524,29 @@ public class Hris implements
      */
     public HrisListEmployeeWorkEligibilityResponse listEmployeeWorkEligibility(
             HrisListEmployeeWorkEligibilityRequest request) throws Exception {
-        return listEmployeeWorkEligibility(request, Optional.empty());
+        return listEmployeeWorkEligibility(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employee Work Eligibility
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeeWorkEligibilityResponse listEmployeeWorkEligibility(
             HrisListEmployeeWorkEligibilityRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEE_WORK_ELIGIBILITY_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisListEmployeeWorkEligibilityRequest.class,
                 _baseUrl,
@@ -3899,10 +4563,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3933,7 +4597,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_work_eligibility", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3946,7 +4610,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_work_eligibility",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3959,7 +4623,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_work_eligibility", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4013,6 +4677,7 @@ public class Hris implements
                         request.updatedAfter(),
                         request.xAccountId()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -4033,7 +4698,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4041,8 +4707,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4079,7 +4752,7 @@ public class Hris implements
             String id,
             String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) throws Exception {
-        return createEmployeeWorkEligibilityRequest(id, xAccountId, hrisCreateWorkEligibilityRequestDto, Optional.empty());
+        return createEmployeeWorkEligibilityRequest(id, xAccountId, hrisCreateWorkEligibilityRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -4087,6 +4760,7 @@ public class Hris implements
      * @param id
      * @param xAccountId The account identifier
      * @param hrisCreateWorkEligibilityRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -4095,6 +4769,7 @@ public class Hris implements
             String id,
             String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -4108,7 +4783,10 @@ public class Hris implements
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_CREATE_EMPLOYEE_WORK_ELIGIBILITY_REQUEST_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisCreateEmployeeWorkEligibilityRequestRequest.class,
                 _baseUrl,
@@ -4133,10 +4811,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4167,7 +4845,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee_work_eligibility_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4180,7 +4858,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee_work_eligibility_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4193,7 +4871,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee_work_eligibility_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4223,7 +4901,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4231,8 +4910,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4265,24 +4951,29 @@ public class Hris implements
      */
     public HrisGetEmployeesWorkEligibilityResponse getEmployeesWorkEligibility(
             HrisGetEmployeesWorkEligibilityRequest request) throws Exception {
-        return getEmployeesWorkEligibility(request, Optional.empty());
+        return getEmployeesWorkEligibility(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employees Work Eligibility
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeesWorkEligibilityResponse getEmployeesWorkEligibility(
             HrisGetEmployeesWorkEligibilityRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEES_WORK_ELIGIBILITY_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeesWorkEligibilityRequest.class,
                 _baseUrl,
@@ -4299,10 +4990,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4333,7 +5024,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employees_work_eligibility", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4346,7 +5037,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employees_work_eligibility",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4359,7 +5050,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employees_work_eligibility", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4389,7 +5080,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4397,8 +5089,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4437,7 +5136,7 @@ public class Hris implements
             String subResourceId,
             String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) throws Exception {
-        return updateEmployeeWorkEligibilityRequest(id, subResourceId, xAccountId, hrisCreateWorkEligibilityRequestDto, Optional.empty());
+        return updateEmployeeWorkEligibilityRequest(id, subResourceId, xAccountId, hrisCreateWorkEligibilityRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -4446,6 +5145,7 @@ public class Hris implements
      * @param subResourceId
      * @param xAccountId The account identifier
      * @param hrisCreateWorkEligibilityRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -4455,6 +5155,7 @@ public class Hris implements
             String subResourceId,
             String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -4469,7 +5170,10 @@ public class Hris implements
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_UPDATE_EMPLOYEE_WORK_ELIGIBILITY_REQUEST_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisUpdateEmployeeWorkEligibilityRequestRequest.class,
                 _baseUrl,
@@ -4494,10 +5198,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4528,7 +5232,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_update_employee_work_eligibility_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4541,7 +5245,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_update_employee_work_eligibility_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4554,7 +5258,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_update_employee_work_eligibility_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4573,7 +5277,8 @@ public class Hris implements
             // no content 
             return _res;
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4581,8 +5286,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4615,24 +5327,29 @@ public class Hris implements
      */
     public HrisListEmployeeTimeOffBalancesResponse listEmployeeTimeOffBalances(
             HrisListEmployeeTimeOffBalancesRequest request) throws Exception {
-        return listEmployeeTimeOffBalances(request, Optional.empty());
+        return listEmployeeTimeOffBalances(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employee Time Off Balances
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeeTimeOffBalancesResponse listEmployeeTimeOffBalances(
             HrisListEmployeeTimeOffBalancesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEE_TIME_OFF_BALANCES_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisListEmployeeTimeOffBalancesRequest.class,
                 _baseUrl,
@@ -4649,10 +5366,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4683,7 +5400,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_time_off_balances", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4696,7 +5413,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_time_off_balances",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4709,7 +5426,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_time_off_balances", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4765,6 +5482,7 @@ public class Hris implements
                         request.updatedAfter(),
                         request.expand()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -4785,7 +5503,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4793,8 +5512,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4827,24 +5553,29 @@ public class Hris implements
      */
     public HrisGetEmployeeTimeOffBalanceResponse getEmployeeTimeOffBalance(
             HrisGetEmployeeTimeOffBalanceRequest request) throws Exception {
-        return getEmployeeTimeOffBalance(request, Optional.empty());
+        return getEmployeeTimeOffBalance(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employee Time Off Balance
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeeTimeOffBalanceResponse getEmployeeTimeOffBalance(
             HrisGetEmployeeTimeOffBalanceRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEE_TIME_OFF_BALANCE_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeeTimeOffBalanceRequest.class,
                 _baseUrl,
@@ -4861,10 +5592,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4895,7 +5626,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_time_off_balance", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4908,7 +5639,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_time_off_balance",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4921,7 +5652,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_time_off_balance", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4951,7 +5682,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4959,8 +5691,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4993,24 +5732,29 @@ public class Hris implements
      */
     public HrisListEmploymentsResponse listEmployments(
             HrisListEmploymentsRequest request) throws Exception {
-        return listEmployments(request, Optional.empty());
+        return listEmployments(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employments
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmploymentsResponse listEmployments(
             HrisListEmploymentsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYMENTS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/employments");
@@ -5025,10 +5769,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5059,7 +5803,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employments", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5072,7 +5816,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employments",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5085,7 +5829,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employments", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5139,6 +5883,7 @@ public class Hris implements
                         request.updatedAfter(),
                         request.expand()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -5159,7 +5904,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5167,8 +5913,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5201,24 +5954,29 @@ public class Hris implements
      */
     public HrisGetEmploymentResponse getEmployment(
             HrisGetEmploymentRequest request) throws Exception {
-        return getEmployment(request, Optional.empty());
+        return getEmployment(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employment
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmploymentResponse getEmployment(
             HrisGetEmploymentRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYMENT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmploymentRequest.class,
                 _baseUrl,
@@ -5235,10 +5993,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5269,7 +6027,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employment", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5282,7 +6040,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employment",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5295,7 +6053,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employment", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5325,7 +6083,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5333,8 +6092,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5367,24 +6133,29 @@ public class Hris implements
      */
     public HrisListEmployeeEmploymentsResponse listEmployeeEmployments(
             HrisListEmployeeEmploymentsRequest request) throws Exception {
-        return listEmployeeEmployments(request, Optional.empty());
+        return listEmployeeEmployments(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employee Employments
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeeEmploymentsResponse listEmployeeEmployments(
             HrisListEmployeeEmploymentsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEE_EMPLOYMENTS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisListEmployeeEmploymentsRequest.class,
                 _baseUrl,
@@ -5401,10 +6172,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5435,7 +6206,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_employments", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5448,7 +6219,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_employments",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5461,7 +6232,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_employments", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5517,6 +6288,7 @@ public class Hris implements
                         request.updatedAfter(),
                         request.expand()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -5537,7 +6309,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5545,8 +6318,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5583,7 +6363,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto) throws Exception {
-        return createEmployeeEmployment(xAccountId, id, hrisCreateEmploymentRequestDto, Optional.empty());
+        return createEmployeeEmployment(xAccountId, id, hrisCreateEmploymentRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -5591,6 +6371,7 @@ public class Hris implements
      * @param xAccountId The account identifier
      * @param id
      * @param hrisCreateEmploymentRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -5599,6 +6380,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -5612,7 +6394,10 @@ public class Hris implements
                 .hrisCreateEmploymentRequestDto(hrisCreateEmploymentRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_CREATE_EMPLOYEE_EMPLOYMENT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisCreateEmployeeEmploymentRequest.class,
                 _baseUrl,
@@ -5637,10 +6422,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5671,7 +6456,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee_employment", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5684,7 +6469,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee_employment",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5697,7 +6482,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee_employment", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5727,7 +6512,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5735,8 +6521,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5769,24 +6562,29 @@ public class Hris implements
      */
     public HrisGetEmployeeEmploymentResponse getEmployeeEmployment(
             HrisGetEmployeeEmploymentRequest request) throws Exception {
-        return getEmployeeEmployment(request, Optional.empty());
+        return getEmployeeEmployment(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employee Employment
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeeEmploymentResponse getEmployeeEmployment(
             HrisGetEmployeeEmploymentRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEE_EMPLOYMENT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeeEmploymentRequest.class,
                 _baseUrl,
@@ -5803,10 +6601,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5837,7 +6635,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_employment", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5850,7 +6648,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_employment",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5863,7 +6661,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_employment", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5893,7 +6691,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5901,8 +6700,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5941,7 +6747,7 @@ public class Hris implements
             String id,
             String subResourceId,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto) throws Exception {
-        return updateEmployeeEmployment(xAccountId, id, subResourceId, hrisCreateEmploymentRequestDto, Optional.empty());
+        return updateEmployeeEmployment(xAccountId, id, subResourceId, hrisCreateEmploymentRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -5950,6 +6756,7 @@ public class Hris implements
      * @param id
      * @param subResourceId
      * @param hrisCreateEmploymentRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -5959,6 +6766,7 @@ public class Hris implements
             String id,
             String subResourceId,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -5973,7 +6781,10 @@ public class Hris implements
                 .hrisCreateEmploymentRequestDto(hrisCreateEmploymentRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_UPDATE_EMPLOYEE_EMPLOYMENT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisUpdateEmployeeEmploymentRequest.class,
                 _baseUrl,
@@ -5998,10 +6809,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6032,7 +6843,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_update_employee_employment", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6045,7 +6856,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_update_employee_employment",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6058,7 +6869,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_update_employee_employment", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6088,7 +6899,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6096,8 +6908,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6130,24 +6949,29 @@ public class Hris implements
      */
     public HrisListLocationsResponse listLocations(
             HrisListLocationsRequest request) throws Exception {
-        return listLocations(request, Optional.empty());
+        return listLocations(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List locations
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListLocationsResponse listLocations(
             HrisListLocationsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_LOCATIONS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/locations");
@@ -6162,10 +6986,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6196,7 +7020,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_locations", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6209,7 +7033,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_locations",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6222,7 +7046,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_locations", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6274,6 +7098,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -6294,7 +7119,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6302,8 +7128,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6336,24 +7169,29 @@ public class Hris implements
      */
     public HrisGetLocationResponse getLocation(
             HrisGetLocationRequest request) throws Exception {
-        return getLocation(request, Optional.empty());
+        return getLocation(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Location
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetLocationResponse getLocation(
             HrisGetLocationRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_LOCATION_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetLocationRequest.class,
                 _baseUrl,
@@ -6370,10 +7208,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6404,7 +7242,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_location", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6417,7 +7255,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_location",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6430,7 +7268,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_location", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6460,7 +7298,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6468,8 +7307,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6502,24 +7348,29 @@ public class Hris implements
      */
     public HrisListTimeOffRequestsResponse listTimeOffRequests(
             HrisListTimeOffRequestsRequest request) throws Exception {
-        return listTimeOffRequests(request, Optional.empty());
+        return listTimeOffRequests(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List time off requests
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListTimeOffRequestsResponse listTimeOffRequests(
             HrisListTimeOffRequestsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_TIME_OFF_REQUESTS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/time_off");
@@ -6534,10 +7385,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6568,7 +7419,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_time_off_requests", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6581,7 +7432,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_time_off_requests",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6594,7 +7445,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_time_off_requests", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6646,6 +7497,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -6666,7 +7518,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6674,8 +7527,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6710,13 +7570,14 @@ public class Hris implements
     public HrisCreateTimeOffRequestResponse createTimeOffRequest(
             String xAccountId,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) throws Exception {
-        return createTimeOffRequest(xAccountId, hrisCreateTimeOffRequestDto, Optional.empty());
+        return createTimeOffRequest(xAccountId, hrisCreateTimeOffRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
      * Creates a time off request
      * @param xAccountId The account identifier
      * @param hrisCreateTimeOffRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -6724,6 +7585,7 @@ public class Hris implements
     public HrisCreateTimeOffRequestResponse createTimeOffRequest(
             String xAccountId,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -6736,7 +7598,10 @@ public class Hris implements
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_CREATE_TIME_OFF_REQUEST_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/time_off");
@@ -6759,10 +7624,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6793,7 +7658,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6806,7 +7671,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6819,7 +7684,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6849,7 +7714,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6857,8 +7723,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6891,24 +7764,29 @@ public class Hris implements
      */
     public HrisGetTimeOffRequestResponse getTimeOffRequest(
             HrisGetTimeOffRequestRequest request) throws Exception {
-        return getTimeOffRequest(request, Optional.empty());
+        return getTimeOffRequest(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get time off request
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetTimeOffRequestResponse getTimeOffRequest(
             HrisGetTimeOffRequestRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_TIME_OFF_REQUEST_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetTimeOffRequestRequest.class,
                 _baseUrl,
@@ -6925,10 +7803,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6959,7 +7837,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6972,7 +7850,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6985,7 +7863,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7015,7 +7893,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7023,8 +7902,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7061,7 +7947,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) throws Exception {
-        return updateTimeOffRequest(xAccountId, id, hrisCreateTimeOffRequestDto, Optional.empty());
+        return updateTimeOffRequest(xAccountId, id, hrisCreateTimeOffRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -7069,6 +7955,7 @@ public class Hris implements
      * @param xAccountId The account identifier
      * @param id
      * @param hrisCreateTimeOffRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -7077,6 +7964,7 @@ public class Hris implements
             String xAccountId,
             String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -7090,7 +7978,10 @@ public class Hris implements
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_UPDATE_TIME_OFF_REQUEST_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisUpdateTimeOffRequestRequest.class,
                 _baseUrl,
@@ -7115,10 +8006,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7149,7 +8040,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_update_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7162,7 +8053,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_update_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7175,7 +8066,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_update_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7205,7 +8096,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7213,8 +8105,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7247,24 +8146,29 @@ public class Hris implements
      */
     public HrisListTimeOffTypesResponse listTimeOffTypes(
             HrisListTimeOffTypesRequest request) throws Exception {
-        return listTimeOffTypes(request, Optional.empty());
+        return listTimeOffTypes(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List time off types
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListTimeOffTypesResponse listTimeOffTypes(
             HrisListTimeOffTypesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_TIME_OFF_TYPES_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/time_off_types");
@@ -7279,10 +8183,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7313,7 +8217,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_time_off_types", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7326,7 +8230,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_time_off_types",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7339,7 +8243,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_time_off_types", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7391,6 +8295,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -7411,7 +8316,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7419,8 +8325,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7453,24 +8366,29 @@ public class Hris implements
      */
     public HrisGetTimeOffTypeResponse getTimeOffType(
             HrisGetTimeOffTypeRequest request) throws Exception {
-        return getTimeOffType(request, Optional.empty());
+        return getTimeOffType(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get time off type
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetTimeOffTypeResponse getTimeOffType(
             HrisGetTimeOffTypeRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_TIME_OFF_TYPE_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetTimeOffTypeRequest.class,
                 _baseUrl,
@@ -7487,10 +8405,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7521,7 +8439,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_time_off_type", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7534,7 +8452,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_time_off_type",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7547,7 +8465,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_time_off_type", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7577,7 +8495,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7585,8 +8504,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7619,24 +8545,29 @@ public class Hris implements
      */
     public HrisListTimeEntriesResponse listTimeEntries(
             HrisListTimeEntriesRequest request) throws Exception {
-        return listTimeEntries(request, Optional.empty());
+        return listTimeEntries(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Time Entries
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListTimeEntriesResponse listTimeEntries(
             HrisListTimeEntriesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_TIME_ENTRIES_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/time_entries");
@@ -7651,10 +8582,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7685,7 +8616,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_time_entries", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7698,7 +8629,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_time_entries",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7711,7 +8642,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_time_entries", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7763,6 +8694,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -7783,7 +8715,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7791,8 +8724,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7825,24 +8765,29 @@ public class Hris implements
      */
     public HrisGetTimeEntriesResponse getTimeEntries(
             HrisGetTimeEntriesRequest request) throws Exception {
-        return getTimeEntries(request, Optional.empty());
+        return getTimeEntries(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Time Entry
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetTimeEntriesResponse getTimeEntries(
             HrisGetTimeEntriesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_TIME_ENTRIES_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetTimeEntriesRequest.class,
                 _baseUrl,
@@ -7859,10 +8804,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7893,7 +8838,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_time_entries", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7906,7 +8851,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_time_entries",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7919,7 +8864,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_time_entries", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7949,7 +8894,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7957,8 +8903,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7991,24 +8944,29 @@ public class Hris implements
      */
     public HrisListBenefitsResponse listBenefits(
             HrisListBenefitsRequest request) throws Exception {
-        return listBenefits(request, Optional.empty());
+        return listBenefits(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List benefits
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListBenefitsResponse listBenefits(
             HrisListBenefitsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_BENEFITS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/benefits");
@@ -8023,10 +8981,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8057,7 +9015,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_benefits", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8070,7 +9028,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_benefits",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8083,7 +9041,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_benefits", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8135,6 +9093,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -8155,7 +9114,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8163,8 +9123,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8197,24 +9164,29 @@ public class Hris implements
      */
     public HrisGetBenefitResponse getBenefit(
             HrisGetBenefitRequest request) throws Exception {
-        return getBenefit(request, Optional.empty());
+        return getBenefit(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Benefit
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetBenefitResponse getBenefit(
             HrisGetBenefitRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_BENEFIT_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetBenefitRequest.class,
                 _baseUrl,
@@ -8231,10 +9203,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8265,7 +9237,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_benefit", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8278,7 +9250,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_benefit",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8291,7 +9263,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_benefit", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8321,7 +9293,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8329,8 +9302,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8363,24 +9343,29 @@ public class Hris implements
      */
     public HrisListGroupsResponse listGroups(
             HrisListGroupsRequest request) throws Exception {
-        return listGroups(request, Optional.empty());
+        return listGroups(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Groups
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListGroupsResponse listGroups(
             HrisListGroupsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_GROUPS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/groups");
@@ -8395,10 +9380,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8429,7 +9414,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_groups", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8442,7 +9427,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_groups",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8455,7 +9440,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_groups", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8507,6 +9492,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -8527,7 +9513,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8535,8 +9522,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8569,24 +9563,29 @@ public class Hris implements
      */
     public HrisListDepartmentGroupsResponse listDepartmentGroups(
             HrisListDepartmentGroupsRequest request) throws Exception {
-        return listDepartmentGroups(request, Optional.empty());
+        return listDepartmentGroups(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Department Groups
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListDepartmentGroupsResponse listDepartmentGroups(
             HrisListDepartmentGroupsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_DEPARTMENT_GROUPS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/groups/departments");
@@ -8601,10 +9600,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8635,7 +9634,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_department_groups", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8648,7 +9647,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_department_groups",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8661,7 +9660,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_department_groups", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8713,6 +9712,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -8733,7 +9733,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8741,8 +9742,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8775,24 +9783,29 @@ public class Hris implements
      */
     public HrisListCostCenterGroupsResponse listCostCenterGroups(
             HrisListCostCenterGroupsRequest request) throws Exception {
-        return listCostCenterGroups(request, Optional.empty());
+        return listCostCenterGroups(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Cost Center Groups
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListCostCenterGroupsResponse listCostCenterGroups(
             HrisListCostCenterGroupsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_COST_CENTER_GROUPS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/groups/cost_centers");
@@ -8807,10 +9820,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8841,7 +9854,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_cost_center_groups", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8854,7 +9867,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_cost_center_groups",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8867,7 +9880,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_cost_center_groups", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8919,6 +9932,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -8939,7 +9953,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8947,8 +9962,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8981,24 +10003,29 @@ public class Hris implements
      */
     public HrisListTeamGroupsResponse listTeamGroups(
             HrisListTeamGroupsRequest request) throws Exception {
-        return listTeamGroups(request, Optional.empty());
+        return listTeamGroups(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Team Groups
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListTeamGroupsResponse listTeamGroups(
             HrisListTeamGroupsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_TEAM_GROUPS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/groups/teams");
@@ -9013,10 +10040,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9047,7 +10074,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_team_groups", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9060,7 +10087,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_team_groups",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9073,7 +10100,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_team_groups", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9125,6 +10152,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -9145,7 +10173,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9153,8 +10182,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9187,24 +10223,29 @@ public class Hris implements
      */
     public HrisGetGroupResponse getGroup(
             HrisGetGroupRequest request) throws Exception {
-        return getGroup(request, Optional.empty());
+        return getGroup(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Group
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetGroupResponse getGroup(
             HrisGetGroupRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_GROUP_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetGroupRequest.class,
                 _baseUrl,
@@ -9221,10 +10262,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9255,7 +10296,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_group", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9268,7 +10309,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_group",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9281,7 +10322,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_group", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9311,7 +10352,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9319,8 +10361,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9353,24 +10402,29 @@ public class Hris implements
      */
     public HrisGetDepartmentGroupResponse getDepartmentGroup(
             HrisGetDepartmentGroupRequest request) throws Exception {
-        return getDepartmentGroup(request, Optional.empty());
+        return getDepartmentGroup(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Department Group
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetDepartmentGroupResponse getDepartmentGroup(
             HrisGetDepartmentGroupRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_DEPARTMENT_GROUP_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetDepartmentGroupRequest.class,
                 _baseUrl,
@@ -9387,10 +10441,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9421,7 +10475,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_department_group", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9434,7 +10488,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_department_group",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9447,7 +10501,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_department_group", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9477,7 +10531,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9485,8 +10540,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9519,24 +10581,29 @@ public class Hris implements
      */
     public HrisGetCostCenterGroupResponse getCostCenterGroup(
             HrisGetCostCenterGroupRequest request) throws Exception {
-        return getCostCenterGroup(request, Optional.empty());
+        return getCostCenterGroup(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Cost Center Group
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetCostCenterGroupResponse getCostCenterGroup(
             HrisGetCostCenterGroupRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_COST_CENTER_GROUP_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetCostCenterGroupRequest.class,
                 _baseUrl,
@@ -9553,10 +10620,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9587,7 +10654,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_cost_center_group", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9600,7 +10667,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_cost_center_group",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9613,7 +10680,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_cost_center_group", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9643,7 +10710,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9651,8 +10719,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9685,24 +10760,29 @@ public class Hris implements
      */
     public HrisGetTeamGroupResponse getTeamGroup(
             HrisGetTeamGroupRequest request) throws Exception {
-        return getTeamGroup(request, Optional.empty());
+        return getTeamGroup(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Team Group
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetTeamGroupResponse getTeamGroup(
             HrisGetTeamGroupRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_TEAM_GROUP_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetTeamGroupRequest.class,
                 _baseUrl,
@@ -9719,10 +10799,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9753,7 +10833,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_team_group", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9766,7 +10846,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_team_group",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9779,7 +10859,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_team_group", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9809,7 +10889,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9817,8 +10898,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9851,24 +10939,29 @@ public class Hris implements
      */
     public HrisListJobsResponse listJobs(
             HrisListJobsRequest request) throws Exception {
-        return listJobs(request, Optional.empty());
+        return listJobs(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Jobs
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListJobsResponse listJobs(
             HrisListJobsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_JOBS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/jobs");
@@ -9883,10 +10976,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9917,7 +11010,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_jobs", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9930,7 +11023,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_jobs",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9943,7 +11036,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_jobs", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9995,6 +11088,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -10015,7 +11109,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10023,8 +11118,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10057,24 +11159,29 @@ public class Hris implements
      */
     public HrisGetJobResponse getJob(
             HrisGetJobRequest request) throws Exception {
-        return getJob(request, Optional.empty());
+        return getJob(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Job
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetJobResponse getJob(
             HrisGetJobRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_JOB_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetJobRequest.class,
                 _baseUrl,
@@ -10091,10 +11198,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10125,7 +11232,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_job", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10138,7 +11245,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_job",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10151,7 +11258,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_job", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10181,7 +11288,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10189,8 +11297,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10223,24 +11338,29 @@ public class Hris implements
      */
     public HrisListEmployeeSkillsResponse listEmployeeSkills(
             HrisListEmployeeSkillsRequest request) throws Exception {
-        return listEmployeeSkills(request, Optional.empty());
+        return listEmployeeSkills(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Employee Skills
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListEmployeeSkillsResponse listEmployeeSkills(
             HrisListEmployeeSkillsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_EMPLOYEE_SKILLS_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisListEmployeeSkillsRequest.class,
                 _baseUrl,
@@ -10257,10 +11377,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10291,7 +11411,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_skills", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10304,7 +11424,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_skills",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10317,7 +11437,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_skills", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10371,6 +11491,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -10391,7 +11512,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10399,8 +11521,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10437,7 +11566,7 @@ public class Hris implements
             String xAccountId,
             String id,
             EntitySkillsCreateRequestDto entitySkillsCreateRequestDto) throws Exception {
-        return createEmployeeSkill(xAccountId, id, entitySkillsCreateRequestDto, Optional.empty());
+        return createEmployeeSkill(xAccountId, id, entitySkillsCreateRequestDto, Optional.empty(), Optional.empty());
     }
     
     /**
@@ -10445,6 +11574,7 @@ public class Hris implements
      * @param xAccountId The account identifier
      * @param id
      * @param entitySkillsCreateRequestDto
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -10453,6 +11583,7 @@ public class Hris implements
             String xAccountId,
             String id,
             EntitySkillsCreateRequestDto entitySkillsCreateRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -10466,7 +11597,10 @@ public class Hris implements
                 .entitySkillsCreateRequestDto(entitySkillsCreateRequestDto)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_CREATE_EMPLOYEE_SKILL_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisCreateEmployeeSkillRequest.class,
                 _baseUrl,
@@ -10491,10 +11625,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10525,7 +11659,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee_skill", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10538,7 +11672,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee_skill",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10551,7 +11685,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee_skill", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10581,7 +11715,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10589,8 +11724,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10623,24 +11765,29 @@ public class Hris implements
      */
     public HrisGetEmployeeSkillResponse getEmployeeSkill(
             HrisGetEmployeeSkillRequest request) throws Exception {
-        return getEmployeeSkill(request, Optional.empty());
+        return getEmployeeSkill(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Employee Skill
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetEmployeeSkillResponse getEmployeeSkill(
             HrisGetEmployeeSkillRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_EMPLOYEE_SKILL_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetEmployeeSkillRequest.class,
                 _baseUrl,
@@ -10657,10 +11804,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10691,7 +11838,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_skill", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10704,7 +11851,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_skill",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10717,7 +11864,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_skill", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10747,7 +11894,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10755,8 +11903,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10789,24 +11944,29 @@ public class Hris implements
      */
     public HrisListTimeOffPoliciesResponse listTimeOffPolicies(
             HrisListTimeOffPoliciesRequest request) throws Exception {
-        return listTimeOffPolicies(request, Optional.empty());
+        return listTimeOffPolicies(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * List Time Off Policies
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisListTimeOffPoliciesResponse listTimeOffPolicies(
             HrisListTimeOffPoliciesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_LIST_TIME_OFF_POLICIES_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/unified/hris/time_off_policies");
@@ -10821,10 +11981,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10855,7 +12015,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_time_off_policies", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10868,7 +12028,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_time_off_policies",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10881,7 +12041,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_time_off_policies", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10933,6 +12093,7 @@ public class Hris implements
                         request.next(),
                         request.updatedAfter()
                     ));
+                    _ret.serverURL(serverURL);
                     return Optional.of(_ret.call());
                 });
 
@@ -10953,7 +12114,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10961,8 +12123,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10995,24 +12164,29 @@ public class Hris implements
      */
     public HrisGetTimeOffPolicyResponse getTimeOffPolicy(
             HrisGetTimeOffPolicyRequest request) throws Exception {
-        return getTimeOffPolicy(request, Optional.empty());
+        return getTimeOffPolicy(request, Optional.empty(), Optional.empty());
     }
     
     /**
      * Get Time Off Policy
      * @param request The request object containing all of the parameters for the API call.
+     * @param serverURL Overrides the server URL.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public HrisGetTimeOffPolicyResponse getTimeOffPolicy(
             HrisGetTimeOffPolicyRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = Utils.templateUrl(HRIS_GET_TIME_OFF_POLICY_SERVERS[0], new HashMap<String, String>());
+        if (serverURL.isPresent() && !serverURL.get().isBlank()) {
+            _baseUrl = serverURL.get();
+        }
         String _url = Utils.generateURL(
                 HrisGetTimeOffPolicyRequest.class,
                 _baseUrl,
@@ -11029,10 +12203,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -11063,7 +12237,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_time_off_policy", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -11076,7 +12250,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_time_off_policy",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -11089,7 +12263,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_time_off_policy", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -11119,7 +12293,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -11127,8 +12302,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 

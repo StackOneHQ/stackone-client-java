@@ -96,11 +96,12 @@ public class Application {
                 .filter(Filter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listCompanies()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -114,6 +115,7 @@ public class Application {
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `request`                                                                       | [HrisListCompaniesRequest](../../models/operations/HrisListCompaniesRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| `serverURL`                                                                     | *String*                                                                        | :heavy_minus_sign:                                                              | An optional server URL to use.                                                  |
 
 ### Response
 
@@ -173,6 +175,7 @@ public class Application {
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `request`                                                                 | [HrisGetCompanyRequest](../../models/operations/HrisGetCompanyRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `serverURL`                                                               | *String*                                                                  | :heavy_minus_sign:                                                        | An optional server URL to use.                                            |
 
 ### Response
 
@@ -217,6 +220,7 @@ public class Application {
                 .filter(QueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         HrisListEmployeeCustomFieldDefinitionsResponse res = sdk.hris().listEmployeeCustomFieldDefinitions()
@@ -235,6 +239,7 @@ public class Application {
 | Parameter                                                                                                                 | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                 | [HrisListEmployeeCustomFieldDefinitionsRequest](../../models/operations/HrisListEmployeeCustomFieldDefinitionsRequest.md) | :heavy_check_mark:                                                                                                        | The request object to use for the request.                                                                                |
+| `serverURL`                                                                                                               | *String*                                                                                                                  | :heavy_minus_sign:                                                                                                        | An optional server URL to use.                                                                                            |
 
 ### Response
 
@@ -280,6 +285,7 @@ public class Application {
                 .filter(HrisGetEmployeeCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         HrisGetEmployeeCustomFieldDefinitionResponse res = sdk.hris().getEmployeeCustomFieldDefinition()
@@ -298,6 +304,7 @@ public class Application {
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                             | [HrisGetEmployeeCustomFieldDefinitionRequest](../../models/operations/HrisGetEmployeeCustomFieldDefinitionRequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
+| `serverURL`                                                                                                           | *String*                                                                                                              | :heavy_minus_sign:                                                                                                    | An optional server URL to use.                                                                                        |
 
 ### Response
 
@@ -341,13 +348,14 @@ public class Application {
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
 
         sdk.hris().listEmployees()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -361,6 +369,7 @@ public class Application {
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `request`                                                                       | [HrisListEmployeesRequest](../../models/operations/HrisListEmployeesRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| `serverURL`                                                                     | *String*                                                                        | :heavy_minus_sign:                                                              | An optional server URL to use.                                                  |
 
 ### Response
 
@@ -388,8 +397,14 @@ import com.stackone.stackone_client_java.models.components.CreateCostCenterApiMo
 import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModel;
 import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelEmploymentContractType;
 import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelEmploymentType;
+import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelEmploymentTypeSourceValue;
+import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelEmploymentTypeValue;
 import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelPayFrequency;
+import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelPayFrequencySourceValue;
+import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelPayFrequencyValue;
 import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelPayPeriod;
+import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelSourceValue;
+import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelValue;
 import com.stackone.stackone_client_java.models.components.CreateHRISBenefit;
 import com.stackone.stackone_client_java.models.components.CustomFields;
 import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
@@ -398,6 +413,8 @@ import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeReq
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentContractType;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentStatus;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentType;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentTypeValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEthnicity;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoGender;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoHomeLocation;
@@ -449,6 +466,7 @@ public class Application {
                     .jobId("R-6789")
                     .jobTitle("Physicist")
                     .departmentId("3093")
+                    .teamId("2913")
                     .department("Physics")
                     .managerId("67890")
                     .gender(HrisCreateEmployeeRequestDtoGender.builder()
@@ -469,6 +487,8 @@ public class Application {
                     .tenure(2d)
                     .workAnniversary(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                     .employmentType(HrisCreateEmployeeRequestDtoEmploymentType.builder()
+                        .value(HrisCreateEmployeeRequestDtoEmploymentTypeValue.PERMANENT)
+                        .sourceValue(HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue.of("Permanent"))
                         .build())
                     .employmentContractType(HrisCreateEmployeeRequestDtoEmploymentContractType.builder()
                         .build())
@@ -477,6 +497,9 @@ public class Application {
                     .terminationDate(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                     .companyId("1234567890")
                     .citizenships(List.of(
+                        CountryCodeEnum.builder()
+                            .value(Value.US)
+                            .build(),
                         CountryCodeEnum.builder()
                             .value(Value.US)
                             .build()))
@@ -490,18 +513,40 @@ public class Application {
                             .jobTitle("Software Engineer")
                             .payRate("40.00")
                             .payPeriod(CreateEmploymentApiModelPayPeriod.builder()
+                                .value(CreateEmploymentApiModelValue.HOUR)
+                                .sourceValue(CreateEmploymentApiModelSourceValue.of("Hour"))
                                 .build())
                             .payFrequency(CreateEmploymentApiModelPayFrequency.builder()
+                                .value(CreateEmploymentApiModelPayFrequencyValue.HOURLY)
+                                .sourceValue(CreateEmploymentApiModelPayFrequencySourceValue.of("Hourly"))
                                 .build())
                             .payCurrency("USD")
                             .effectiveDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                             .employmentType(CreateEmploymentApiModelEmploymentType.builder()
+                                .value(CreateEmploymentApiModelEmploymentTypeValue.PERMANENT)
+                                .sourceValue(CreateEmploymentApiModelEmploymentTypeSourceValue.of("Permanent"))
                                 .build())
                             .employmentContractType(CreateEmploymentApiModelEmploymentContractType.builder()
                                 .build())
                             .timeWorked("P0Y0M0DT8H0M0S")
                             .build()))
                     .customFields(List.of(
+                        CustomFields.builder()
+                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .name("Training Completion Status")
+                            .value(CustomFieldsValue.of("Completed"))
+                            .valueId("value_456")
+                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
+                            .build(),
+                        CustomFields.builder()
+                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .name("Training Completion Status")
+                            .value(CustomFieldsValue.of("Completed"))
+                            .valueId("value_456")
+                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
+                            .build(),
                         CustomFields.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -518,9 +563,34 @@ public class Application {
                             .description("Health insurance for employees")
                             .createdAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                             .updatedAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
+                            .build(),
+                        CreateHRISBenefit.builder()
+                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .name("Health Insurance")
+                            .provider("Aetna")
+                            .description("Health insurance for employees")
+                            .createdAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
+                            .updatedAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
+                            .build(),
+                        CreateHRISBenefit.builder()
+                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .name("Health Insurance")
+                            .provider("Aetna")
+                            .description("Health insurance for employees")
+                            .createdAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
+                            .updatedAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                             .build()))
                     .employeeNumber("125")
                     .nationalIdentityNumbers(List.of(
+                        NationalIdentityNumberApiModel.builder()
+                            .value("123456789")
+                            .type(NationalIdentityNumberApiModelType.builder()
+                                .value(NationalIdentityNumberApiModelValue.SSN)
+                                .build())
+                            .country(Country.builder()
+                                .value(NationalIdentityNumberApiModelCountryValue.US)
+                                .build())
+                            .build(),
                         NationalIdentityNumberApiModel.builder()
                             .value("123456789")
                             .type(NationalIdentityNumberApiModelType.builder()
@@ -567,6 +637,16 @@ public class Application {
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
                             .distributionPercentage(100d)
+                            .build(),
+                        CreateCostCenterApiModel.builder()
+                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .name("R&D")
+                            .distributionPercentage(100d)
+                            .build(),
+                        CreateCostCenterApiModel.builder()
+                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .name("R&D")
+                            .distributionPercentage(100d)
                             .build()))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -586,6 +666,7 @@ public class Application {
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
 | `hrisCreateEmployeeRequestDto`                                                          | [HrisCreateEmployeeRequestDto](../../models/components/HrisCreateEmployeeRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `serverURL`                                                                             | *String*                                                                                | :heavy_minus_sign:                                                                      | An optional server URL to use.                                                          |
 
 ### Response
 
@@ -647,6 +728,7 @@ public class Application {
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `request`                                                                   | [HrisGetEmployeeRequest](../../models/operations/HrisGetEmployeeRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| `serverURL`                                                                 | *String*                                                                    | :heavy_minus_sign:                                                          | An optional server URL to use.                                              |
 
 ### Response
 
@@ -678,6 +760,8 @@ import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeReq
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentContractType;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentStatus;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentType;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentTypeSourceValue;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentTypeValue;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEthnicity;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoGender;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoHomeLocation;
@@ -730,6 +814,7 @@ public class Application {
                     .jobId("R-6789")
                     .jobTitle("Physicist")
                     .departmentId("3093")
+                    .teamId("2913")
                     .department("Physics")
                     .managerId("67890")
                     .gender(HrisUpdateEmployeeRequestDtoGender.builder()
@@ -750,6 +835,8 @@ public class Application {
                     .tenure(2d)
                     .workAnniversary(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                     .employmentType(HrisUpdateEmployeeRequestDtoEmploymentType.builder()
+                        .value(HrisUpdateEmployeeRequestDtoEmploymentTypeValue.PERMANENT)
+                        .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentTypeSourceValue.of("Permanent"))
                         .build())
                     .employmentContractType(HrisUpdateEmployeeRequestDtoEmploymentContractType.builder()
                         .build())
@@ -762,6 +849,14 @@ public class Application {
                             .value(Value.US)
                             .build()))
                     .customFields(List.of(
+                        CustomFields.builder()
+                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .name("Training Completion Status")
+                            .value(CustomFieldsValue.of("Completed"))
+                            .valueId("value_456")
+                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
+                            .build(),
                         CustomFields.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -841,6 +936,7 @@ public class Application {
 | `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
 | `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
 | `hrisUpdateEmployeeRequestDto`                                                          | [HrisUpdateEmployeeRequestDto](../../models/components/HrisUpdateEmployeeRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `serverURL`                                                                             | *String*                                                                                | :heavy_minus_sign:                                                                      | An optional server URL to use.                                                          |
 
 ### Response
 
@@ -902,6 +998,7 @@ public class Application {
 | `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
 | `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
 | `hrisInviteEmployeeRequestDto`                                                          | [HrisInviteEmployeeRequestDto](../../models/components/HrisInviteEmployeeRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `serverURL`                                                                             | *String*                                                                                | :heavy_minus_sign:                                                                      | An optional server URL to use.                                                          |
 
 ### Response
 
@@ -946,11 +1043,12 @@ public class Application {
                 .filter(HrisListEmployeeTimeOffRequestsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeTimeOffRequests()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -964,6 +1062,7 @@ public class Application {
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [HrisListEmployeeTimeOffRequestsRequest](../../models/operations/HrisListEmployeeTimeOffRequestsRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| `serverURL`                                                                                                 | *String*                                                                                                    | :heavy_minus_sign:                                                                                          | An optional server URL to use.                                                                              |
 
 ### Response
 
@@ -1040,6 +1139,7 @@ public class Application {
 | `xAccountId`                                                                          | *String*                                                                              | :heavy_check_mark:                                                                    | The account identifier                                                                |
 | `id`                                                                                  | *String*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
 | `hrisCreateTimeOffRequestDto`                                                         | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `serverURL`                                                                           | *String*                                                                              | :heavy_minus_sign:                                                                    | An optional server URL to use.                                                        |
 
 ### Response
 
@@ -1100,6 +1200,7 @@ public class Application {
 | Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                 | [HrisGetEmployeesTimeOffRequestRequest](../../models/operations/HrisGetEmployeesTimeOffRequestRequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
+| `serverURL`                                                                                               | *String*                                                                                                  | :heavy_minus_sign:                                                                                        | An optional server URL to use.                                                                            |
 
 ### Response
 
@@ -1121,16 +1222,7 @@ Batch Upload Employee Document
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Category;
-import com.stackone.stackone_client_java.models.components.Confidential;
-import com.stackone.stackone_client_java.models.components.FileFormat;
 import com.stackone.stackone_client_java.models.components.HrisBatchDocumentUploadRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoCategoryValue;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoConfidentialSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoConfidentialValue;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoValue;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentResponse;
 import java.lang.Exception;
@@ -1152,24 +1244,7 @@ public class Application {
                 .id("<id>")
                 .hrisBatchDocumentUploadRequestDto(HrisBatchDocumentUploadRequestDto.builder()
                     .items(List.of(
-                        HrisDocumentsUploadRequestDto.builder()
-                            .name("weather-forecast")
-                            .fileFormat(FileFormat.builder()
-                                .value(HrisDocumentsUploadRequestDtoValue.PDF)
-                                .sourceValue(HrisDocumentsUploadRequestDtoSourceValue.of("abc"))
-                                .build())
-                            .content("VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE")
-                            .categoryId("6530")
-                            .path("/path/to/file")
-                            .category(Category.builder()
-                                .value(HrisDocumentsUploadRequestDtoCategoryValue.ACADEMIC)
-                                .sourceValue("550e8400-e29b-41d4-a716-446655440000")
-                                .build())
-                            .confidential(Confidential.builder()
-                                .value(HrisDocumentsUploadRequestDtoConfidentialValue.TRUE)
-                                .sourceValue(HrisDocumentsUploadRequestDtoConfidentialSourceValue.of("public"))
-                                .build())
-                            .build()))
+                    ))
                     .build())
                 .call();
 
@@ -1187,6 +1262,7 @@ public class Application {
 | `xAccountId`                                                                                      | *String*                                                                                          | :heavy_check_mark:                                                                                | The account identifier                                                                            |
 | `id`                                                                                              | *String*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               |
 | `hrisBatchDocumentUploadRequestDto`                                                               | [HrisBatchDocumentUploadRequestDto](../../models/components/HrisBatchDocumentUploadRequestDto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `serverURL`                                                                                       | *String*                                                                                          | :heavy_minus_sign:                                                                                | An optional server URL to use.                                                                    |
 
 ### Response
 
@@ -1208,10 +1284,10 @@ Upload Employee Document
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Category;
 import com.stackone.stackone_client_java.models.components.Confidential;
 import com.stackone.stackone_client_java.models.components.FileFormat;
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDto;
+import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoCategory;
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoCategoryValue;
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoConfidentialSourceValue;
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoConfidentialValue;
@@ -1244,7 +1320,7 @@ public class Application {
                     .content("VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE")
                     .categoryId("6530")
                     .path("/path/to/file")
-                    .category(Category.builder()
+                    .category(HrisDocumentsUploadRequestDtoCategory.builder()
                         .value(HrisDocumentsUploadRequestDtoCategoryValue.UNMAPPED_VALUE)
                         .sourceValue("550e8400-e29b-41d4-a716-446655440000")
                         .build())
@@ -1269,6 +1345,7 @@ public class Application {
 | `xAccountId`                                                                              | *String*                                                                                  | :heavy_check_mark:                                                                        | The account identifier                                                                    |
 | `id`                                                                                      | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
 | `hrisDocumentsUploadRequestDto`                                                           | [HrisDocumentsUploadRequestDto](../../models/components/HrisDocumentsUploadRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `serverURL`                                                                               | *String*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 ### Response
 
@@ -1327,6 +1404,7 @@ public class Application {
 | `id`                               | *String*                           | :heavy_check_mark:                 | N/A                                |                                    |
 | `subResourceId`                    | *String*                           | :heavy_check_mark:                 | N/A                                |                                    |
 | `format`                           | *JsonNullable\<String>*            | :heavy_minus_sign:                 | The format to download the file in | base64                             |
+| `serverURL`                        | *String*                           | :heavy_minus_sign:                 | An optional server URL to use.     | http://localhost:8080              |
 
 ### Response
 
@@ -1371,11 +1449,12 @@ public class Application {
                 .filter(HrisListEmployeeDocumentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeDocuments()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -1389,6 +1468,7 @@ public class Application {
 | Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | `request`                                                                                       | [HrisListEmployeeDocumentsRequest](../../models/operations/HrisListEmployeeDocumentsRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| `serverURL`                                                                                     | *String*                                                                                        | :heavy_minus_sign:                                                                              | An optional server URL to use.                                                                  |
 
 ### Response
 
@@ -1449,6 +1529,7 @@ public class Application {
 | Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `request`                                                                                   | [HrisGetEmployeeDocumentRequest](../../models/operations/HrisGetEmployeeDocumentRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 ### Response
 
@@ -1492,11 +1573,12 @@ public class Application {
                 .filter(HrisListEmployeeCategoriesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeCategories()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -1510,6 +1592,7 @@ public class Application {
 | Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | `request`                                                                                         | [HrisListEmployeeCategoriesRequest](../../models/operations/HrisListEmployeeCategoriesRequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
+| `serverURL`                                                                                       | *String*                                                                                          | :heavy_minus_sign:                                                                                | An optional server URL to use.                                                                    |
 
 ### Response
 
@@ -1569,6 +1652,7 @@ public class Application {
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [HrisGetEmployeeDocumentCategoryRequest](../../models/operations/HrisGetEmployeeDocumentCategoryRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| `serverURL`                                                                                                 | *String*                                                                                                    | :heavy_minus_sign:                                                                                          | An optional server URL to use.                                                                              |
 
 ### Response
 
@@ -1613,11 +1697,12 @@ public class Application {
                 .filter(HrisListEmployeeWorkEligibilityQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeWorkEligibility()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -1631,6 +1716,7 @@ public class Application {
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [HrisListEmployeeWorkEligibilityRequest](../../models/operations/HrisListEmployeeWorkEligibilityRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| `serverURL`                                                                                                 | *String*                                                                                                    | :heavy_minus_sign:                                                                                          | An optional server URL to use.                                                                              |
 
 ### Response
 
@@ -1726,6 +1812,7 @@ public class Application {
 | `id`                                                                                                  | *String*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
 | `xAccountId`                                                                                          | *String*                                                                                              | :heavy_check_mark:                                                                                    | The account identifier                                                                                |
 | `hrisCreateWorkEligibilityRequestDto`                                                                 | [HrisCreateWorkEligibilityRequestDto](../../models/components/HrisCreateWorkEligibilityRequestDto.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `serverURL`                                                                                           | *String*                                                                                              | :heavy_minus_sign:                                                                                    | An optional server URL to use.                                                                        |
 
 ### Response
 
@@ -1786,6 +1873,7 @@ public class Application {
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [HrisGetEmployeesWorkEligibilityRequest](../../models/operations/HrisGetEmployeesWorkEligibilityRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| `serverURL`                                                                                                 | *String*                                                                                                    | :heavy_minus_sign:                                                                                          | An optional server URL to use.                                                                              |
 
 ### Response
 
@@ -1881,6 +1969,7 @@ public class Application {
 | `subResourceId`                                                                                       | *String*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
 | `xAccountId`                                                                                          | *String*                                                                                              | :heavy_check_mark:                                                                                    | The account identifier                                                                                |
 | `hrisCreateWorkEligibilityRequestDto`                                                                 | [HrisCreateWorkEligibilityRequestDto](../../models/components/HrisCreateWorkEligibilityRequestDto.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `serverURL`                                                                                           | *String*                                                                                              | :heavy_minus_sign:                                                                                    | An optional server URL to use.                                                                        |
 
 ### Response
 
@@ -1925,12 +2014,13 @@ public class Application {
                 .filter(HrisListEmployeeTimeOffBalancesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("policy")
                 .build();
 
         sdk.hris().listEmployeeTimeOffBalances()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -1944,6 +2034,7 @@ public class Application {
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [HrisListEmployeeTimeOffBalancesRequest](../../models/operations/HrisListEmployeeTimeOffBalancesRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| `serverURL`                                                                                                 | *String*                                                                                                    | :heavy_minus_sign:                                                                                          | An optional server URL to use.                                                                              |
 
 ### Response
 
@@ -2005,6 +2096,7 @@ public class Application {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                               | [HrisGetEmployeeTimeOffBalanceRequest](../../models/operations/HrisGetEmployeeTimeOffBalanceRequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
+| `serverURL`                                                                                             | *String*                                                                                                | :heavy_minus_sign:                                                                                      | An optional server URL to use.                                                                          |
 
 ### Response
 
@@ -2048,12 +2140,13 @@ public class Application {
                 .filter(HrisListEmploymentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("groups")
                 .build();
 
         sdk.hris().listEmployments()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -2067,6 +2160,7 @@ public class Application {
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `request`                                                                           | [HrisListEmploymentsRequest](../../models/operations/HrisListEmploymentsRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+| `serverURL`                                                                         | *String*                                                                            | :heavy_minus_sign:                                                                  | An optional server URL to use.                                                      |
 
 ### Response
 
@@ -2127,6 +2221,7 @@ public class Application {
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `request`                                                                       | [HrisGetEmploymentRequest](../../models/operations/HrisGetEmploymentRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| `serverURL`                                                                     | *String*                                                                        | :heavy_minus_sign:                                                              | An optional server URL to use.                                                  |
 
 ### Response
 
@@ -2171,12 +2266,13 @@ public class Application {
                 .filter(HrisListEmployeeEmploymentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("groups")
                 .build();
 
         sdk.hris().listEmployeeEmployments()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -2190,6 +2286,7 @@ public class Application {
 | Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `request`                                                                                           | [HrisListEmployeeEmploymentsRequest](../../models/operations/HrisListEmployeeEmploymentsRequest.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
+| `serverURL`                                                                                         | *String*                                                                                            | :heavy_minus_sign:                                                                                  | An optional server URL to use.                                                                      |
 
 ### Response
 
@@ -2214,8 +2311,14 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentContractType;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentType;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentTypeSourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentTypeValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequency;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequencySourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequencyValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayPeriod;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoSourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoValue;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeEmploymentResponse;
 import java.lang.Exception;
@@ -2245,12 +2348,18 @@ public class Application {
                     .jobTitle("Software Engineer")
                     .payRate("40.00")
                     .payPeriod(HrisCreateEmploymentRequestDtoPayPeriod.builder()
+                        .value(HrisCreateEmploymentRequestDtoValue.HOUR)
+                        .sourceValue(HrisCreateEmploymentRequestDtoSourceValue.of("Hour"))
                         .build())
                     .payFrequency(HrisCreateEmploymentRequestDtoPayFrequency.builder()
+                        .value(HrisCreateEmploymentRequestDtoPayFrequencyValue.HOURLY)
+                        .sourceValue(HrisCreateEmploymentRequestDtoPayFrequencySourceValue.of("Hourly"))
                         .build())
                     .payCurrency("USD")
                     .effectiveDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                     .employmentType(HrisCreateEmploymentRequestDtoEmploymentType.builder()
+                        .value(HrisCreateEmploymentRequestDtoEmploymentTypeValue.PERMANENT)
+                        .sourceValue(HrisCreateEmploymentRequestDtoEmploymentTypeSourceValue.of("Permanent"))
                         .build())
                     .employmentContractType(HrisCreateEmploymentRequestDtoEmploymentContractType.builder()
                         .build())
@@ -2274,6 +2383,7 @@ public class Application {
 | `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
 | `id`                                                                                        | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `hrisCreateEmploymentRequestDto`                                                            | [HrisCreateEmploymentRequestDto](../../models/components/HrisCreateEmploymentRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 ### Response
 
@@ -2335,6 +2445,7 @@ public class Application {
 | Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | `request`                                                                                       | [HrisGetEmployeeEmploymentRequest](../../models/operations/HrisGetEmployeeEmploymentRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| `serverURL`                                                                                     | *String*                                                                                        | :heavy_minus_sign:                                                                              | An optional server URL to use.                                                                  |
 
 ### Response
 
@@ -2359,8 +2470,14 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentContractType;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentType;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentTypeSourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentTypeValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequency;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequencySourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequencyValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayPeriod;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoSourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoValue;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeEmploymentResponse;
 import java.lang.Exception;
@@ -2391,12 +2508,18 @@ public class Application {
                     .jobTitle("Software Engineer")
                     .payRate("40.00")
                     .payPeriod(HrisCreateEmploymentRequestDtoPayPeriod.builder()
+                        .value(HrisCreateEmploymentRequestDtoValue.HOUR)
+                        .sourceValue(HrisCreateEmploymentRequestDtoSourceValue.of("Hour"))
                         .build())
                     .payFrequency(HrisCreateEmploymentRequestDtoPayFrequency.builder()
+                        .value(HrisCreateEmploymentRequestDtoPayFrequencyValue.HOURLY)
+                        .sourceValue(HrisCreateEmploymentRequestDtoPayFrequencySourceValue.of("Hourly"))
                         .build())
                     .payCurrency("USD")
                     .effectiveDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                     .employmentType(HrisCreateEmploymentRequestDtoEmploymentType.builder()
+                        .value(HrisCreateEmploymentRequestDtoEmploymentTypeValue.PERMANENT)
+                        .sourceValue(HrisCreateEmploymentRequestDtoEmploymentTypeSourceValue.of("Permanent"))
                         .build())
                     .employmentContractType(HrisCreateEmploymentRequestDtoEmploymentContractType.builder()
                         .build())
@@ -2421,6 +2544,7 @@ public class Application {
 | `id`                                                                                        | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `subResourceId`                                                                             | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `hrisCreateEmploymentRequestDto`                                                            | [HrisCreateEmploymentRequestDto](../../models/components/HrisCreateEmploymentRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 ### Response
 
@@ -2464,11 +2588,12 @@ public class Application {
                 .filter(HrisListLocationsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listLocations()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -2482,6 +2607,7 @@ public class Application {
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `request`                                                                       | [HrisListLocationsRequest](../../models/operations/HrisListLocationsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| `serverURL`                                                                     | *String*                                                                        | :heavy_minus_sign:                                                              | An optional server URL to use.                                                  |
 
 ### Response
 
@@ -2541,6 +2667,7 @@ public class Application {
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `request`                                                                   | [HrisGetLocationRequest](../../models/operations/HrisGetLocationRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| `serverURL`                                                                 | *String*                                                                    | :heavy_minus_sign:                                                          | An optional server URL to use.                                              |
 
 ### Response
 
@@ -2584,11 +2711,12 @@ public class Application {
                 .filter(HrisListTimeOffRequestsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeOffRequests()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -2602,6 +2730,7 @@ public class Application {
 | Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `request`                                                                                   | [HrisListTimeOffRequestsRequest](../../models/operations/HrisListTimeOffRequestsRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 ### Response
 
@@ -2676,6 +2805,7 @@ public class Application {
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `xAccountId`                                                                          | *String*                                                                              | :heavy_check_mark:                                                                    | The account identifier                                                                |
 | `hrisCreateTimeOffRequestDto`                                                         | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `serverURL`                                                                           | *String*                                                                              | :heavy_minus_sign:                                                                    | An optional server URL to use.                                                        |
 
 ### Response
 
@@ -2735,6 +2865,7 @@ public class Application {
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `request`                                                                               | [HrisGetTimeOffRequestRequest](../../models/operations/HrisGetTimeOffRequestRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
+| `serverURL`                                                                             | *String*                                                                                | :heavy_minus_sign:                                                                      | An optional server URL to use.                                                          |
 
 ### Response
 
@@ -2811,6 +2942,7 @@ public class Application {
 | `xAccountId`                                                                          | *String*                                                                              | :heavy_check_mark:                                                                    | The account identifier                                                                |
 | `id`                                                                                  | *String*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
 | `hrisCreateTimeOffRequestDto`                                                         | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `serverURL`                                                                           | *String*                                                                              | :heavy_minus_sign:                                                                    | An optional server URL to use.                                                        |
 
 ### Response
 
@@ -2854,11 +2986,12 @@ public class Application {
                 .filter(HrisListTimeOffTypesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeOffTypes()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -2872,6 +3005,7 @@ public class Application {
 | Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `request`                                                                             | [HrisListTimeOffTypesRequest](../../models/operations/HrisListTimeOffTypesRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+| `serverURL`                                                                           | *String*                                                                              | :heavy_minus_sign:                                                                    | An optional server URL to use.                                                        |
 
 ### Response
 
@@ -2931,6 +3065,7 @@ public class Application {
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `request`                                                                         | [HrisGetTimeOffTypeRequest](../../models/operations/HrisGetTimeOffTypeRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| `serverURL`                                                                       | *String*                                                                          | :heavy_minus_sign:                                                                | An optional server URL to use.                                                    |
 
 ### Response
 
@@ -2976,11 +3111,12 @@ public class Application {
                     .startTime("2020-01-01T00:00:00.000Z")
                     .endTime("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeEntries()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -2994,6 +3130,7 @@ public class Application {
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `request`                                                                           | [HrisListTimeEntriesRequest](../../models/operations/HrisListTimeEntriesRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+| `serverURL`                                                                         | *String*                                                                            | :heavy_minus_sign:                                                                  | An optional server URL to use.                                                      |
 
 ### Response
 
@@ -3053,6 +3190,7 @@ public class Application {
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `request`                                                                         | [HrisGetTimeEntriesRequest](../../models/operations/HrisGetTimeEntriesRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| `serverURL`                                                                       | *String*                                                                          | :heavy_minus_sign:                                                                | An optional server URL to use.                                                    |
 
 ### Response
 
@@ -3096,11 +3234,12 @@ public class Application {
                 .filter(HrisListBenefitsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listBenefits()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -3114,6 +3253,7 @@ public class Application {
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `request`                                                                     | [HrisListBenefitsRequest](../../models/operations/HrisListBenefitsRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+| `serverURL`                                                                   | *String*                                                                      | :heavy_minus_sign:                                                            | An optional server URL to use.                                                |
 
 ### Response
 
@@ -3173,6 +3313,7 @@ public class Application {
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `request`                                                                 | [HrisGetBenefitRequest](../../models/operations/HrisGetBenefitRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `serverURL`                                                               | *String*                                                                  | :heavy_minus_sign:                                                        | An optional server URL to use.                                            |
 
 ### Response
 
@@ -3216,11 +3357,12 @@ public class Application {
                 .filter(HrisListGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listGroups()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -3234,6 +3376,7 @@ public class Application {
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `request`                                                                 | [HrisListGroupsRequest](../../models/operations/HrisListGroupsRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `serverURL`                                                               | *String*                                                                  | :heavy_minus_sign:                                                        | An optional server URL to use.                                            |
 
 ### Response
 
@@ -3277,11 +3420,12 @@ public class Application {
                 .filter(HrisListDepartmentGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listDepartmentGroups()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -3295,6 +3439,7 @@ public class Application {
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `request`                                                                                     | [HrisListDepartmentGroupsRequest](../../models/operations/HrisListDepartmentGroupsRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+| `serverURL`                                                                                   | *String*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
 
 ### Response
 
@@ -3338,11 +3483,12 @@ public class Application {
                 .filter(HrisListCostCenterGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listCostCenterGroups()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -3356,6 +3502,7 @@ public class Application {
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `request`                                                                                     | [HrisListCostCenterGroupsRequest](../../models/operations/HrisListCostCenterGroupsRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+| `serverURL`                                                                                   | *String*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
 
 ### Response
 
@@ -3399,11 +3546,12 @@ public class Application {
                 .filter(HrisListTeamGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTeamGroups()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -3417,6 +3565,7 @@ public class Application {
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `request`                                                                         | [HrisListTeamGroupsRequest](../../models/operations/HrisListTeamGroupsRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| `serverURL`                                                                       | *String*                                                                          | :heavy_minus_sign:                                                                | An optional server URL to use.                                                    |
 
 ### Response
 
@@ -3476,6 +3625,7 @@ public class Application {
 | Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `request`                                                             | [HrisGetGroupRequest](../../models/operations/HrisGetGroupRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+| `serverURL`                                                           | *String*                                                              | :heavy_minus_sign:                                                    | An optional server URL to use.                                        |
 
 ### Response
 
@@ -3535,6 +3685,7 @@ public class Application {
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `request`                                                                                 | [HrisGetDepartmentGroupRequest](../../models/operations/HrisGetDepartmentGroupRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `serverURL`                                                                               | *String*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 ### Response
 
@@ -3594,6 +3745,7 @@ public class Application {
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `request`                                                                                 | [HrisGetCostCenterGroupRequest](../../models/operations/HrisGetCostCenterGroupRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `serverURL`                                                                               | *String*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 ### Response
 
@@ -3653,6 +3805,7 @@ public class Application {
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `request`                                                                     | [HrisGetTeamGroupRequest](../../models/operations/HrisGetTeamGroupRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+| `serverURL`                                                                   | *String*                                                                      | :heavy_minus_sign:                                                            | An optional server URL to use.                                                |
 
 ### Response
 
@@ -3696,11 +3849,12 @@ public class Application {
                 .filter(HrisListJobsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listJobs()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -3714,6 +3868,7 @@ public class Application {
 | Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `request`                                                             | [HrisListJobsRequest](../../models/operations/HrisListJobsRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+| `serverURL`                                                           | *String*                                                              | :heavy_minus_sign:                                                    | An optional server URL to use.                                        |
 
 ### Response
 
@@ -3773,6 +3928,7 @@ public class Application {
 | Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `request`                                                         | [HrisGetJobRequest](../../models/operations/HrisGetJobRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `serverURL`                                                       | *String*                                                          | :heavy_minus_sign:                                                | An optional server URL to use.                                    |
 
 ### Response
 
@@ -3817,11 +3973,12 @@ public class Application {
                 .filter(HrisListEmployeeSkillsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeSkills()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -3835,6 +3992,7 @@ public class Application {
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `request`                                                                                 | [HrisListEmployeeSkillsRequest](../../models/operations/HrisListEmployeeSkillsRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `serverURL`                                                                               | *String*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 ### Response
 
@@ -3907,6 +4065,7 @@ public class Application {
 | `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
 | `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
 | `entitySkillsCreateRequestDto`                                                          | [EntitySkillsCreateRequestDto](../../models/components/EntitySkillsCreateRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `serverURL`                                                                             | *String*                                                                                | :heavy_minus_sign:                                                                      | An optional server URL to use.                                                          |
 
 ### Response
 
@@ -3967,6 +4126,7 @@ public class Application {
 | Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `request`                                                                             | [HrisGetEmployeeSkillRequest](../../models/operations/HrisGetEmployeeSkillRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+| `serverURL`                                                                           | *String*                                                                              | :heavy_minus_sign:                                                                    | An optional server URL to use.                                                        |
 
 ### Response
 
@@ -4010,11 +4170,12 @@ public class Application {
                 .filter(HrisListTimeOffPoliciesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeOffPolicies()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -4028,6 +4189,7 @@ public class Application {
 | Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `request`                                                                                   | [HrisListTimeOffPoliciesRequest](../../models/operations/HrisListTimeOffPoliciesRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 ### Response
 
@@ -4087,6 +4249,7 @@ public class Application {
 | Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `request`                                                                             | [HrisGetTimeOffPolicyRequest](../../models/operations/HrisGetTimeOffPolicyRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+| `serverURL`                                                                           | *String*                                                                              | :heavy_minus_sign:                                                                    | An optional server URL to use.                                                        |
 
 ### Response
 

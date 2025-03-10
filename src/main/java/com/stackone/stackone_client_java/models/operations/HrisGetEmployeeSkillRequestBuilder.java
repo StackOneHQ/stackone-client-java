@@ -7,11 +7,13 @@ package com.stackone.stackone_client_java.models.operations;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.String;
 import java.util.Optional;
 
 public class HrisGetEmployeeSkillRequestBuilder {
 
     private HrisGetEmployeeSkillRequest request;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisGetEmployeeSkill sdk;
 
@@ -22,6 +24,18 @@ public class HrisGetEmployeeSkillRequestBuilder {
     public HrisGetEmployeeSkillRequestBuilder request(HrisGetEmployeeSkillRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
+        return this;
+    }
+                
+    public HrisGetEmployeeSkillRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisGetEmployeeSkillRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
         return this;
     }
                 
@@ -43,6 +57,7 @@ public class HrisGetEmployeeSkillRequestBuilder {
                                                     .build());
         return sdk.getEmployeeSkill(
             request,
+            serverURL,
             options);
     }
 }

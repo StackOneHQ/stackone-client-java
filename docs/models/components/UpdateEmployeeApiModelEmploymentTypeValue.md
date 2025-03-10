@@ -1,5 +1,7 @@
 # UpdateEmployeeApiModelEmploymentTypeValue
 
+The type of the employment.
+
 
 ## Values
 

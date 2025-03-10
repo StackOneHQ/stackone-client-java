@@ -17,6 +17,7 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder {
     private String subResourceId;
     private String xAccountId;
     private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisUpdateEmployeeWorkEligibilityRequest sdk;
 
@@ -48,6 +49,18 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder {
         return this;
     }
                 
+    public HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
+        return this;
+    }
+                
     public HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -69,6 +82,7 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder {
             subResourceId,
             xAccountId,
             hrisCreateWorkEligibilityRequestDto,
+            serverURL,
             options);
     }
 }

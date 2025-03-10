@@ -1,0 +1,9 @@
+# QuestionType
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `value`                                                                              | [JsonNullable\<QuestionValue>](../../models/components/QuestionValue.md)             | :heavy_minus_sign:                                                                   | The type of the questions.                                                           | short_text                                                                           |
+| `sourceValue`                                                                        | [JsonNullable\<QuestionSourceValue>](../../models/components/QuestionSourceValue.md) | :heavy_minus_sign:                                                                   | The source value of the questions type.                                              | ShortText                                                                            |

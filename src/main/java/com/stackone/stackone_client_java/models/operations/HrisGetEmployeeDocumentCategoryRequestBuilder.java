@@ -7,11 +7,13 @@ package com.stackone.stackone_client_java.models.operations;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.String;
 import java.util.Optional;
 
 public class HrisGetEmployeeDocumentCategoryRequestBuilder {
 
     private HrisGetEmployeeDocumentCategoryRequest request;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisGetEmployeeDocumentCategory sdk;
 
@@ -22,6 +24,18 @@ public class HrisGetEmployeeDocumentCategoryRequestBuilder {
     public HrisGetEmployeeDocumentCategoryRequestBuilder request(HrisGetEmployeeDocumentCategoryRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
+        return this;
+    }
+                
+    public HrisGetEmployeeDocumentCategoryRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisGetEmployeeDocumentCategoryRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
         return this;
     }
                 
@@ -43,6 +57,7 @@ public class HrisGetEmployeeDocumentCategoryRequestBuilder {
                                                     .build());
         return sdk.getEmployeeDocumentCategory(
             request,
+            serverURL,
             options);
     }
 }

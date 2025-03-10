@@ -1,0 +1,9 @@
+# IamResourceType
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `value`                                                                                    | [JsonNullable\<IamResourceValue>](../../models/components/IamResourceValue.md)             | :heavy_minus_sign:                                                                         | The type of the resource, e.g. user, group, permission, etc.                               | file                                                                                       |
+| `sourceValue`                                                                              | [JsonNullable\<IamResourceSourceValue>](../../models/components/IamResourceSourceValue.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |                                                                                            |

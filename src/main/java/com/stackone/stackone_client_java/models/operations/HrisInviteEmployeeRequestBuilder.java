@@ -16,6 +16,7 @@ public class HrisInviteEmployeeRequestBuilder {
     private String xAccountId;
     private String id;
     private HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisInviteEmployee sdk;
 
@@ -41,6 +42,18 @@ public class HrisInviteEmployeeRequestBuilder {
         return this;
     }
                 
+    public HrisInviteEmployeeRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisInviteEmployeeRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
+        return this;
+    }
+                
     public HrisInviteEmployeeRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -61,6 +74,7 @@ public class HrisInviteEmployeeRequestBuilder {
             xAccountId,
             id,
             hrisInviteEmployeeRequestDto,
+            serverURL,
             options);
     }
 }

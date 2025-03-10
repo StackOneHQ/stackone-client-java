@@ -17,6 +17,7 @@ public class HrisDownloadEmployeeDocumentRequestBuilder {
     private String id;
     private String subResourceId;
     private JsonNullable<String> format = JsonNullable.undefined();
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisDownloadEmployeeDocument sdk;
 
@@ -54,6 +55,18 @@ public class HrisDownloadEmployeeDocumentRequestBuilder {
         return this;
     }
                 
+    public HrisDownloadEmployeeDocumentRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisDownloadEmployeeDocumentRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
+        return this;
+    }
+                
     public HrisDownloadEmployeeDocumentRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -75,6 +88,7 @@ public class HrisDownloadEmployeeDocumentRequestBuilder {
             id,
             subResourceId,
             format,
+            serverURL,
             options);
     }
 }

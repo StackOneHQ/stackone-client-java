@@ -1,0 +1,47 @@
+speakeasyVersion: 1.514.0
+sources:
+    StackOne-OAS:
+        sourceNamespace: stackone-oas
+        sourceRevisionDigest: sha256:ed5ff81ae17f16f902c50a99e0ac0746c93f9d063c27d049c6bdafb3238b43e9
+        sourceBlobDigest: sha256:dbe0cacf63fa5233f635dd5c497f0130277ed73ac69b22a4c35cb27e3c542686
+        tags:
+            - latest
+            - speakeasy-sdk-regen-1741638338
+            - 1.0.0
+targets:
+    stackone:
+        source: StackOne-OAS
+        sourceNamespace: stackone-oas
+        sourceRevisionDigest: sha256:ed5ff81ae17f16f902c50a99e0ac0746c93f9d063c27d049c6bdafb3238b43e9
+        sourceBlobDigest: sha256:dbe0cacf63fa5233f635dd5c497f0130277ed73ac69b22a4c35cb27e3c542686
+        codeSamplesNamespace: stack-one-oas-java-code-samples
+        codeSamplesRevisionDigest: sha256:1faac9af278c96b44fac304efd3f1c6163e0074b95674cb01eed660b12f1d0fb
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        StackOne-OAS:
+            inputs:
+                - location: https://api.eu1.stackone.com/oas/stackone.json
+                - location: https://api.eu1.stackone-dev.com/oas/hris.json
+                - location: https://api.eu1.stackone.com/oas/ats.json
+                - location: https://api.eu1.stackone.com/oas/crm.json
+                - location: https://api.eu1.stackone.com/oas/iam.json
+                - location: https://api.eu1.stackone.com/oas/marketing.json
+                - location: https://api.eu1.stackone.com/oas/lms.json
+            registry:
+                location: registry.speakeasyapi.dev/stackone/stackone/stackone-oas
+    targets:
+        stackone:
+            target: java
+            source: StackOne-OAS
+            publish:
+                java:
+                    ossrhUsername: $ossrh_username
+                    ossrhPassword: $ossrh_password
+                    gpgSecretKey: $java_gpg_secret_key
+                    gpgPassPhrase: $java_gpg_passphrase
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/stackone/stackone/stack-one-oas-java-code-samples
+                blocking: false

@@ -1,0 +1,9 @@
+# AttachmentContentType
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `value`                                                                                  | [JsonNullable\<AttachmentValue>](../../models/components/AttachmentValue.md)             | :heavy_minus_sign:                                                                       | The content type of the attachment.                                                      | text                                                                                     |
+| `sourceValue`                                                                            | [JsonNullable\<AttachmentSourceValue>](../../models/components/AttachmentSourceValue.md) | :heavy_minus_sign:                                                                       | The source value of the content type.                                                    | Text                                                                                     |

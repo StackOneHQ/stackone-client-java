@@ -16,6 +16,7 @@ public class HrisBatchUploadEmployeeDocumentRequestBuilder {
     private String xAccountId;
     private String id;
     private HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisBatchUploadEmployeeDocument sdk;
 
@@ -41,6 +42,18 @@ public class HrisBatchUploadEmployeeDocumentRequestBuilder {
         return this;
     }
                 
+    public HrisBatchUploadEmployeeDocumentRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisBatchUploadEmployeeDocumentRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
+        return this;
+    }
+                
     public HrisBatchUploadEmployeeDocumentRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -61,6 +74,7 @@ public class HrisBatchUploadEmployeeDocumentRequestBuilder {
             xAccountId,
             id,
             hrisBatchDocumentUploadRequestDto,
+            serverURL,
             options);
     }
 }

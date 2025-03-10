@@ -4,6 +4,26 @@
 
 package com.stackone.stackone_client_java.models.operations;
 
+import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckPackagesRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsCreateCandidateRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsCreateJobRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsMoveApplicationRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsRejectApplicationRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckPackagesRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckResultRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsUpdateCandidateRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
+import com.stackone.stackone_client_java.models.components.ConnectSessionAuthenticate;
+import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
+import com.stackone.stackone_client_java.models.components.CrmCreateContactRequestDto;
 import com.stackone.stackone_client_java.models.components.EntitySkillsCreateRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisBatchDocumentUploadRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDto;
@@ -13,6 +33,22 @@ import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibi
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisInviteEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDto;
+import com.stackone.stackone_client_java.models.components.LmsBatchUpsertContentRequestDto;
+import com.stackone.stackone_client_java.models.components.LmsBatchUpsertCourseRequestDto;
+import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDto;
+import com.stackone.stackone_client_java.models.components.LmsCreateCollectionRequestDto;
+import com.stackone.stackone_client_java.models.components.LmsCreateCompletionRequestDto;
+import com.stackone.stackone_client_java.models.components.LmsUpsertContentRequestDto;
+import com.stackone.stackone_client_java.models.components.LmsUpsertCourseRequestDto;
+import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDto;
+import com.stackone.stackone_client_java.models.components.MarketingCreateEmailTemplateRequestDto;
+import com.stackone.stackone_client_java.models.components.MarketingCreateInAppTemplateRequestDto;
+import com.stackone.stackone_client_java.models.components.MarketingCreatePushTemplateRequestDto;
+import com.stackone.stackone_client_java.models.components.MarketingCreateSmsTemplateRequestDto;
+import com.stackone.stackone_client_java.models.components.MarketingCreateTemplateRequestDto;
+import com.stackone.stackone_client_java.models.components.PatchAccountExternalDto;
+import com.stackone.stackone_client_java.models.components.ProxyRequestBody;
+import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDto;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -22,9 +58,93 @@ import org.openapitools.jackson.nullable.JsonNullable;
 public class SDKMethodInterfaces {
 
 
+    public interface MethodCallStackoneCreateConnectSession {
+        StackoneCreateConnectSessionResponse createConnectSession(
+            ConnectSessionCreate request,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneAuthenticateConnectSession {
+        StackoneAuthenticateConnectSessionResponse authenticateConnectSession(
+            ConnectSessionAuthenticate request,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneListLinkedAccounts {
+        StackoneListLinkedAccountsResponse listLinkedAccounts(
+            StackoneListLinkedAccountsRequest request,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneGetAccount {
+        StackoneGetAccountResponse getAccount(
+            String id,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneDeleteAccount {
+        StackoneDeleteAccountResponse deleteAccount(
+            String id,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneUpdateAccount {
+        StackoneUpdateAccountResponse updateAccount(
+            String id,
+            PatchAccountExternalDto patchAccountExternalDto,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneGetAccountMetaInfo {
+        StackoneGetAccountMetaInfoResponse getAccountMetaInfo(
+            String id,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneListConnectorsMeta {
+        StackoneListConnectorsMetaResponse listConnectorsMeta(
+            JsonNullable<String> include,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneGetConnectorMeta {
+        StackoneGetConnectorMetaResponse getConnectorMeta(
+            String provider,
+            JsonNullable<String> include,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallStackoneProxyRequest {
+        StackoneProxyRequestResponse proxyRequest(
+            String xAccountId,
+            ProxyRequestBody proxyRequestBody,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
     public interface MethodCallHrisListCompanies {
         HrisListCompaniesResponse listCompanies(
             HrisListCompaniesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -32,6 +152,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetCompany {
         HrisGetCompanyResponse getCompany(
             HrisGetCompanyRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -39,6 +160,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployeeCustomFieldDefinitions {
         HrisListEmployeeCustomFieldDefinitionsResponse listEmployeeCustomFieldDefinitions(
             HrisListEmployeeCustomFieldDefinitionsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -46,6 +168,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployeeCustomFieldDefinition {
         HrisGetEmployeeCustomFieldDefinitionResponse getEmployeeCustomFieldDefinition(
             HrisGetEmployeeCustomFieldDefinitionRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -53,6 +176,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployees {
         HrisListEmployeesResponse listEmployees(
             HrisListEmployeesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -61,6 +185,7 @@ public class SDKMethodInterfaces {
         HrisCreateEmployeeResponse createEmployee(
             String xAccountId,
             HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -68,6 +193,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployee {
         HrisGetEmployeeResponse getEmployee(
             HrisGetEmployeeRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -77,6 +203,7 @@ public class SDKMethodInterfaces {
             String xAccountId,
             String id,
             HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -86,6 +213,7 @@ public class SDKMethodInterfaces {
             String xAccountId,
             String id,
             HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -93,6 +221,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployeeTimeOffRequests {
         HrisListEmployeeTimeOffRequestsResponse listEmployeeTimeOffRequests(
             HrisListEmployeeTimeOffRequestsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -102,6 +231,7 @@ public class SDKMethodInterfaces {
             String xAccountId,
             String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -109,6 +239,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployeesTimeOffRequest {
         HrisGetEmployeesTimeOffRequestResponse getEmployeesTimeOffRequest(
             HrisGetEmployeesTimeOffRequestRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -118,6 +249,7 @@ public class SDKMethodInterfaces {
             String xAccountId,
             String id,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -127,6 +259,7 @@ public class SDKMethodInterfaces {
             String xAccountId,
             String id,
             HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -137,6 +270,7 @@ public class SDKMethodInterfaces {
             String id,
             String subResourceId,
             JsonNullable<String> format,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -144,6 +278,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployeeDocuments {
         HrisListEmployeeDocumentsResponse listEmployeeDocuments(
             HrisListEmployeeDocumentsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -151,6 +286,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployeeDocument {
         HrisGetEmployeeDocumentResponse getEmployeeDocument(
             HrisGetEmployeeDocumentRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -158,6 +294,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployeeCategories {
         HrisListEmployeeCategoriesResponse listEmployeeCategories(
             HrisListEmployeeCategoriesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -165,6 +302,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployeeDocumentCategory {
         HrisGetEmployeeDocumentCategoryResponse getEmployeeDocumentCategory(
             HrisGetEmployeeDocumentCategoryRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -172,6 +310,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployeeWorkEligibility {
         HrisListEmployeeWorkEligibilityResponse listEmployeeWorkEligibility(
             HrisListEmployeeWorkEligibilityRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -181,6 +320,7 @@ public class SDKMethodInterfaces {
             String id,
             String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -188,6 +328,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployeesWorkEligibility {
         HrisGetEmployeesWorkEligibilityResponse getEmployeesWorkEligibility(
             HrisGetEmployeesWorkEligibilityRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -198,6 +339,7 @@ public class SDKMethodInterfaces {
             String subResourceId,
             String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -205,6 +347,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployeeTimeOffBalances {
         HrisListEmployeeTimeOffBalancesResponse listEmployeeTimeOffBalances(
             HrisListEmployeeTimeOffBalancesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -212,6 +355,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployeeTimeOffBalance {
         HrisGetEmployeeTimeOffBalanceResponse getEmployeeTimeOffBalance(
             HrisGetEmployeeTimeOffBalanceRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -219,6 +363,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployments {
         HrisListEmploymentsResponse listEmployments(
             HrisListEmploymentsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -226,6 +371,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployment {
         HrisGetEmploymentResponse getEmployment(
             HrisGetEmploymentRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -233,6 +379,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployeeEmployments {
         HrisListEmployeeEmploymentsResponse listEmployeeEmployments(
             HrisListEmployeeEmploymentsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -242,6 +389,7 @@ public class SDKMethodInterfaces {
             String xAccountId,
             String id,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -249,6 +397,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployeeEmployment {
         HrisGetEmployeeEmploymentResponse getEmployeeEmployment(
             HrisGetEmployeeEmploymentRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -259,6 +408,7 @@ public class SDKMethodInterfaces {
             String id,
             String subResourceId,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -266,6 +416,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListLocations {
         HrisListLocationsResponse listLocations(
             HrisListLocationsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -273,6 +424,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetLocation {
         HrisGetLocationResponse getLocation(
             HrisGetLocationRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -280,6 +432,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListTimeOffRequests {
         HrisListTimeOffRequestsResponse listTimeOffRequests(
             HrisListTimeOffRequestsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -288,6 +441,7 @@ public class SDKMethodInterfaces {
         HrisCreateTimeOffRequestResponse createTimeOffRequest(
             String xAccountId,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -295,6 +449,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetTimeOffRequest {
         HrisGetTimeOffRequestResponse getTimeOffRequest(
             HrisGetTimeOffRequestRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -304,6 +459,7 @@ public class SDKMethodInterfaces {
             String xAccountId,
             String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -311,6 +467,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListTimeOffTypes {
         HrisListTimeOffTypesResponse listTimeOffTypes(
             HrisListTimeOffTypesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -318,6 +475,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetTimeOffType {
         HrisGetTimeOffTypeResponse getTimeOffType(
             HrisGetTimeOffTypeRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -325,6 +483,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListTimeEntries {
         HrisListTimeEntriesResponse listTimeEntries(
             HrisListTimeEntriesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -332,6 +491,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetTimeEntries {
         HrisGetTimeEntriesResponse getTimeEntries(
             HrisGetTimeEntriesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -339,6 +499,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListBenefits {
         HrisListBenefitsResponse listBenefits(
             HrisListBenefitsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -346,6 +507,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetBenefit {
         HrisGetBenefitResponse getBenefit(
             HrisGetBenefitRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -353,6 +515,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListGroups {
         HrisListGroupsResponse listGroups(
             HrisListGroupsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -360,6 +523,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListDepartmentGroups {
         HrisListDepartmentGroupsResponse listDepartmentGroups(
             HrisListDepartmentGroupsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -367,6 +531,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListCostCenterGroups {
         HrisListCostCenterGroupsResponse listCostCenterGroups(
             HrisListCostCenterGroupsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -374,6 +539,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListTeamGroups {
         HrisListTeamGroupsResponse listTeamGroups(
             HrisListTeamGroupsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -381,6 +547,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetGroup {
         HrisGetGroupResponse getGroup(
             HrisGetGroupRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -388,6 +555,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetDepartmentGroup {
         HrisGetDepartmentGroupResponse getDepartmentGroup(
             HrisGetDepartmentGroupRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -395,6 +563,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetCostCenterGroup {
         HrisGetCostCenterGroupResponse getCostCenterGroup(
             HrisGetCostCenterGroupRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -402,6 +571,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetTeamGroup {
         HrisGetTeamGroupResponse getTeamGroup(
             HrisGetTeamGroupRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -409,6 +579,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListJobs {
         HrisListJobsResponse listJobs(
             HrisListJobsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -416,6 +587,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetJob {
         HrisGetJobResponse getJob(
             HrisGetJobRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -423,6 +595,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListEmployeeSkills {
         HrisListEmployeeSkillsResponse listEmployeeSkills(
             HrisListEmployeeSkillsRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -432,6 +605,7 @@ public class SDKMethodInterfaces {
             String xAccountId,
             String id,
             EntitySkillsCreateRequestDto entitySkillsCreateRequestDto,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -439,6 +613,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetEmployeeSkill {
         HrisGetEmployeeSkillResponse getEmployeeSkill(
             HrisGetEmployeeSkillRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -446,6 +621,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisListTimeOffPolicies {
         HrisListTimeOffPoliciesResponse listTimeOffPolicies(
             HrisListTimeOffPoliciesRequest request,
+            Optional<String> serverURL,
             Optional<Options> options) throws Exception;
     }
 
@@ -453,6 +629,1078 @@ public class SDKMethodInterfaces {
     public interface MethodCallHrisGetTimeOffPolicy {
         HrisGetTimeOffPolicyResponse getTimeOffPolicy(
             HrisGetTimeOffPolicyRequest request,
+            Optional<String> serverURL,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListApplications {
+        AtsListApplicationsResponse listApplications(
+            AtsListApplicationsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsCreateApplication {
+        AtsCreateApplicationResponse createApplication(
+            String xAccountId,
+            AtsCreateApplicationRequestDto atsCreateApplicationRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetApplication {
+        AtsGetApplicationResponse getApplication(
+            AtsGetApplicationRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsUpdateApplication {
+        AtsUpdateApplicationResponse updateApplication(
+            String xAccountId,
+            String id,
+            AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListApplicationsOffers {
+        AtsListApplicationsOffersResponse listApplicationsOffers(
+            AtsListApplicationsOffersRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsMoveApplication {
+        AtsMoveApplicationResponse moveApplication(
+            String xAccountId,
+            String id,
+            AtsMoveApplicationRequestDto atsMoveApplicationRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsRejectApplication {
+        AtsRejectApplicationResponse rejectApplication(
+            String xAccountId,
+            String id,
+            AtsRejectApplicationRequestDto atsRejectApplicationRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetApplicationOffer {
+        AtsGetApplicationOfferResponse getApplicationOffer(
+            AtsGetApplicationOfferRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListApplicationScorecards {
+        AtsListApplicationScorecardsResponse listApplicationScorecards(
+            AtsListApplicationScorecardsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetApplicationScorecard {
+        AtsGetApplicationScorecardResponse getApplicationScorecard(
+            AtsGetApplicationScorecardRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListApplicationNotes {
+        AtsListApplicationNotesResponse listApplicationNotes(
+            AtsListApplicationNotesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsCreateApplicationNote {
+        AtsCreateApplicationNoteResponse createApplicationNote(
+            String xAccountId,
+            String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetApplicationNote {
+        AtsGetApplicationNoteResponse getApplicationNote(
+            AtsGetApplicationNoteRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsUpdateApplicationNote {
+        AtsUpdateApplicationNoteResponse updateApplicationNote(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListApplicationsScheduledInterviews {
+        AtsListApplicationsScheduledInterviewsResponse listApplicationsScheduledInterviews(
+            AtsListApplicationsScheduledInterviewsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetApplicationScheduledInterview {
+        AtsGetApplicationScheduledInterviewResponse getApplicationScheduledInterview(
+            AtsGetApplicationScheduledInterviewRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsUploadApplicationDocument {
+        AtsUploadApplicationDocumentResponse uploadApplicationDocument(
+            String xAccountId,
+            String id,
+            UnifiedUploadRequestDto unifiedUploadRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsDownloadApplicationDocument {
+        AtsDownloadApplicationDocumentResponse downloadApplicationDocument(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            JsonNullable<String> format,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListApplicationDocuments {
+        AtsListApplicationDocumentsResponse listApplicationDocuments(
+            AtsListApplicationDocumentsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetApplicationDocument {
+        AtsGetApplicationDocumentResponse getApplicationDocument(
+            AtsGetApplicationDocumentRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListCandidates {
+        AtsListCandidatesResponse listCandidates(
+            AtsListCandidatesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsCreateCandidate {
+        AtsCreateCandidateResponse createCandidate(
+            String xAccountId,
+            AtsCreateCandidateRequestDto atsCreateCandidateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetCandidate {
+        AtsGetCandidateResponse getCandidate(
+            AtsGetCandidateRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsUpdateCandidate {
+        AtsUpdateCandidateResponse updateCandidate(
+            String xAccountId,
+            String id,
+            AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListCandidateNotes {
+        AtsListCandidateNotesResponse listCandidateNotes(
+            AtsListCandidateNotesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsCreateCandidateNote {
+        AtsCreateCandidateNoteResponse createCandidateNote(
+            String xAccountId,
+            String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetCandidateNote {
+        AtsGetCandidateNoteResponse getCandidateNote(
+            AtsGetCandidateNoteRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListApplicationCustomFieldDefinitions {
+        AtsListApplicationCustomFieldDefinitionsResponse listApplicationCustomFieldDefinitions(
+            AtsListApplicationCustomFieldDefinitionsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetApplicationCustomFieldDefinition {
+        AtsGetApplicationCustomFieldDefinitionResponse getApplicationCustomFieldDefinition(
+            AtsGetApplicationCustomFieldDefinitionRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListCandidateCustomFieldDefinitions {
+        AtsListCandidateCustomFieldDefinitionsResponse listCandidateCustomFieldDefinitions(
+            AtsListCandidateCustomFieldDefinitionsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetCandidateCustomFieldDefinition {
+        AtsGetCandidateCustomFieldDefinitionResponse getCandidateCustomFieldDefinition(
+            AtsGetCandidateCustomFieldDefinitionRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListJobCustomFieldDefinitions {
+        AtsListJobCustomFieldDefinitionsResponse listJobCustomFieldDefinitions(
+            AtsListJobCustomFieldDefinitionsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetJobCustomFieldDefinition {
+        AtsGetJobCustomFieldDefinitionResponse getJobCustomFieldDefinition(
+            AtsGetJobCustomFieldDefinitionRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListDepartments {
+        AtsListDepartmentsResponse listDepartments(
+            AtsListDepartmentsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetDepartment {
+        AtsGetDepartmentResponse getDepartment(
+            AtsGetDepartmentRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListInterviewStages {
+        AtsListInterviewStagesResponse listInterviewStages(
+            AtsListInterviewStagesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetInterviewStage {
+        AtsGetInterviewStageResponse getInterviewStage(
+            AtsGetInterviewStageRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListInterviews {
+        AtsListInterviewsResponse listInterviews(
+            AtsListInterviewsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetInterview {
+        AtsGetInterviewResponse getInterview(
+            AtsGetInterviewRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListJobs {
+        AtsListJobsResponse listJobs(
+            AtsListJobsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsCreateJob {
+        AtsCreateJobResponse createJob(
+            String xAccountId,
+            AtsCreateJobRequestDto atsCreateJobRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetJob {
+        AtsGetJobResponse getJob(
+            AtsGetJobRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsUpdateJob {
+        AtsUpdateJobResponse updateJob(
+            String xAccountId,
+            String id,
+            AtsUpdateJobRequestDto atsUpdateJobRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListLists {
+        AtsListListsResponse listLists(
+            AtsListListsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetList {
+        AtsGetListResponse getList(
+            AtsGetListRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListLocations {
+        AtsListLocationsResponse listLocations(
+            AtsListLocationsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetLocation {
+        AtsGetLocationResponse getLocation(
+            AtsGetLocationRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListRejectedReasons {
+        AtsListRejectedReasonsResponse listRejectedReasons(
+            AtsListRejectedReasonsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetRejectedReason {
+        AtsGetRejectedReasonResponse getRejectedReason(
+            AtsGetRejectedReasonRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListUsers {
+        AtsListUsersResponse listUsers(
+            AtsListUsersRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetUser {
+        AtsGetUserResponse getUser(
+            AtsGetUserRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListJobPostings {
+        AtsListJobPostingsResponse listJobPostings(
+            AtsListJobPostingsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetJobPosting {
+        AtsGetJobPostingResponse getJobPosting(
+            AtsGetJobPostingRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListOffers {
+        AtsListOffersResponse listOffers(
+            AtsListOffersRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsCreateOffer {
+        AtsCreateOfferResponse createOffer(
+            String xAccountId,
+            AtsCreateOfferRequestDto atsCreateOfferRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetOffer {
+        AtsGetOfferResponse getOffer(
+            AtsGetOfferRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListAssessmentsPackages {
+        AtsListAssessmentsPackagesResponse listAssessmentsPackages(
+            AtsListAssessmentsPackagesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetAssessmentsPackage {
+        AtsGetAssessmentsPackageResponse getAssessmentsPackage(
+            AtsGetAssessmentsPackageRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsOrderAssessmentsRequest {
+        AtsOrderAssessmentsRequestResponse orderAssessmentsRequest(
+            String xAccountId,
+            AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetAssessmentsRequest {
+        AtsGetAssessmentsRequestResponse getAssessmentsRequest(
+            AtsGetAssessmentsRequestRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsUpdateAssessmentsResult {
+        AtsUpdateAssessmentsResultResponse updateAssessmentsResult(
+            String xAccountId,
+            String id,
+            AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetAssessmentsResult {
+        AtsGetAssessmentsResultResponse getAssessmentsResult(
+            AtsGetAssessmentsResultRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListBackgroundCheckPackages {
+        AtsListBackgroundCheckPackagesResponse listBackgroundCheckPackages(
+            AtsListBackgroundCheckPackagesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsCreateBackgroundCheckPackage {
+        AtsCreateBackgroundCheckPackageResponse createBackgroundCheckPackage(
+            String xAccountId,
+            AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetBackgroundCheckPackage {
+        AtsGetBackgroundCheckPackageResponse getBackgroundCheckPackage(
+            AtsGetBackgroundCheckPackageRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsDeleteBackgroundCheckPackage {
+        AtsDeleteBackgroundCheckPackageResponse deleteBackgroundCheckPackage(
+            String xAccountId,
+            String id,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsUpdateBackgroundCheckPackage {
+        AtsUpdateBackgroundCheckPackageResponse updateBackgroundCheckPackage(
+            String xAccountId,
+            String id,
+            AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsListBackgroundCheckRequest {
+        AtsListBackgroundCheckRequestResponse listBackgroundCheckRequest(
+            AtsListBackgroundCheckRequestRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsOrderBackgroundCheckRequest {
+        AtsOrderBackgroundCheckRequestResponse orderBackgroundCheckRequest(
+            String xAccountId,
+            AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetBackgroundCheckRequest {
+        AtsGetBackgroundCheckRequestResponse getBackgroundCheckRequest(
+            AtsGetBackgroundCheckRequestRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsUpdateBackgroundCheckResult {
+        AtsUpdateBackgroundCheckResultResponse updateBackgroundCheckResult(
+            String xAccountId,
+            String id,
+            AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallAtsGetBackgroundCheckResult {
+        AtsGetBackgroundCheckResultResponse getBackgroundCheckResult(
+            AtsGetBackgroundCheckResultRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmListContacts {
+        CrmListContactsResponse listContacts(
+            CrmListContactsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmCreateContact {
+        CrmCreateContactResponse createContact(
+            String xAccountId,
+            CrmCreateContactRequestDto crmCreateContactRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmGetContact {
+        CrmGetContactResponse getContact(
+            CrmGetContactRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmUpdateContact {
+        CrmUpdateContactResponse updateContact(
+            String xAccountId,
+            String id,
+            CrmCreateContactRequestDto crmCreateContactRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmListAccounts {
+        CrmListAccountsResponse listAccounts(
+            CrmListAccountsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmGetAccount {
+        CrmGetAccountResponse getAccount(
+            CrmGetAccountRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmListLists {
+        CrmListListsResponse listLists(
+            CrmListListsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmGetList {
+        CrmGetListResponse getList(
+            CrmGetListRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmListContactCustomFieldDefinitions {
+        CrmListContactCustomFieldDefinitionsResponse listContactCustomFieldDefinitions(
+            CrmListContactCustomFieldDefinitionsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallCrmGetContactCustomFieldDefinition {
+        CrmGetContactCustomFieldDefinitionResponse getContactCustomFieldDefinition(
+            CrmGetContactCustomFieldDefinitionRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamListUsers {
+        IamListUsersResponse listUsers(
+            IamListUsersRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamGetUser {
+        IamGetUserResponse getUser(
+            IamGetUserRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamListRoles {
+        IamListRolesResponse listRoles(
+            IamListRolesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamGetRole {
+        IamGetRoleResponse getRole(
+            IamGetRoleRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamListGroups {
+        IamListGroupsResponse listGroups(
+            IamListGroupsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamGetGroup {
+        IamGetGroupResponse getGroup(
+            IamGetGroupRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamListPolicies {
+        IamListPoliciesResponse listPolicies(
+            IamListPoliciesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamGetPolicy {
+        IamGetPolicyResponse getPolicy(
+            IamGetPolicyRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingListEmailTemplates {
+        MarketingListEmailTemplatesResponse listEmailTemplates(
+            MarketingListEmailTemplatesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingCreateEmailTemplate {
+        MarketingCreateEmailTemplateResponse createEmailTemplate(
+            String xAccountId,
+            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingGetEmailTemplate {
+        MarketingGetEmailTemplateResponse getEmailTemplate(
+            MarketingGetEmailTemplateRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingUpdateEmailTemplate {
+        MarketingUpdateEmailTemplateResponse updateEmailTemplate(
+            String xAccountId,
+            String id,
+            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingListInAppTemplates {
+        MarketingListInAppTemplatesResponse listInAppTemplates(
+            MarketingListInAppTemplatesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingCreateInAppTemplate {
+        MarketingCreateInAppTemplateResponse createInAppTemplate(
+            String xAccountId,
+            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingGetInAppTemplate {
+        MarketingGetInAppTemplateResponse getInAppTemplate(
+            MarketingGetInAppTemplateRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingUpdateInAppTemplate {
+        MarketingUpdateInAppTemplateResponse updateInAppTemplate(
+            String xAccountId,
+            String id,
+            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingListSmsTemplates {
+        MarketingListSmsTemplatesResponse listSmsTemplates(
+            MarketingListSmsTemplatesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingCreateSmsTemplate {
+        MarketingCreateSmsTemplateResponse createSmsTemplate(
+            String xAccountId,
+            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingGetSmsTemplate {
+        MarketingGetSmsTemplateResponse getSmsTemplate(
+            MarketingGetSmsTemplateRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingUpdateSmsTemplate {
+        MarketingUpdateSmsTemplateResponse updateSmsTemplate(
+            String xAccountId,
+            String id,
+            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingListOmniChannelTemplates {
+        MarketingListOmniChannelTemplatesResponse listOmniChannelTemplates(
+            MarketingListOmniChannelTemplatesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingCreateOmniChannelTemplate {
+        MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(
+            String xAccountId,
+            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingGetOmniChannelTemplate {
+        MarketingGetOmniChannelTemplateResponse getOmniChannelTemplate(
+            MarketingGetOmniChannelTemplateRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingUpdateOmniChannelTemplate {
+        MarketingUpdateOmniChannelTemplateResponse updateOmniChannelTemplate(
+            String xAccountId,
+            String id,
+            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingListPushTemplates {
+        MarketingListPushTemplatesResponse listPushTemplates(
+            MarketingListPushTemplatesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingCreatePushTemplate {
+        MarketingCreatePushTemplateResponse createPushTemplate(
+            String xAccountId,
+            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingGetPushTemplate {
+        MarketingGetPushTemplateResponse getPushTemplate(
+            MarketingGetPushTemplateRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingUpdatePushTemplate {
+        MarketingUpdatePushTemplateResponse updatePushTemplate(
+            String xAccountId,
+            String id,
+            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingListCampaigns {
+        MarketingListCampaignsResponse listCampaigns(
+            MarketingListCampaignsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingGetCampaign {
+        MarketingGetCampaignResponse getCampaign(
+            MarketingGetCampaignRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingListContentBlocks {
+        MarketingListContentBlocksResponse listContentBlocks(
+            MarketingListContentBlocksRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingCreateContentBlock {
+        MarketingCreateContentBlockResponse createContentBlock(
+            String xAccountId,
+            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingGetContentBlock {
+        MarketingGetContentBlockResponse getContentBlock(
+            MarketingGetContentBlockRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallMarketingUpdateContentBlock {
+        MarketingUpdateContentBlockResponse updateContentBlock(
+            String xAccountId,
+            String id,
+            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsBatchUpsertCourse {
+        LmsBatchUpsertCourseResponse batchUpsertCourse(
+            String xAccountId,
+            LmsBatchUpsertCourseRequestDto lmsBatchUpsertCourseRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListCourses {
+        LmsListCoursesResponse listCourses(
+            LmsListCoursesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsUpsertCourse {
+        LmsUpsertCourseResponse upsertCourse(
+            String xAccountId,
+            LmsUpsertCourseRequestDto lmsUpsertCourseRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetCourse {
+        LmsGetCourseResponse getCourse(
+            LmsGetCourseRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListUserAssignments {
+        LmsListUserAssignmentsResponse listUserAssignments(
+            LmsListUserAssignmentsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsCreateUserAssignment {
+        LmsCreateUserAssignmentResponse createUserAssignment(
+            String xAccountId,
+            String id,
+            LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetUserAssignment {
+        LmsGetUserAssignmentResponse getUserAssignment(
+            LmsGetUserAssignmentRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsBatchUpsertContent {
+        LmsBatchUpsertContentResponse batchUpsertContent(
+            String xAccountId,
+            LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListContent {
+        LmsListContentResponse listContent(
+            LmsListContentRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsUpsertContent {
+        LmsUpsertContentResponse upsertContent(
+            String xAccountId,
+            LmsUpsertContentRequestDto lmsUpsertContentRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetContent {
+        LmsGetContentResponse getContent(
+            LmsGetContentRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListUserCompletions {
+        LmsListUserCompletionsResponse listUserCompletions(
+            LmsListUserCompletionsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsCreateUserCompletion {
+        LmsCreateUserCompletionResponse createUserCompletion(
+            String xAccountId,
+            String id,
+            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetUserCompletion {
+        LmsGetUserCompletionResponse getUserCompletion(
+            LmsGetUserCompletionRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsDeleteUserCompletion {
+        LmsDeleteUserCompletionResponse deleteUserCompletion(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListCompletions {
+        LmsListCompletionsResponse listCompletions(
+            LmsListCompletionsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetCompletion {
+        LmsGetCompletionResponse getCompletion(
+            LmsGetCompletionRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetCategory {
+        LmsGetCategoryResponse getCategory(
+            LmsGetCategoryRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListCategories {
+        LmsListCategoriesResponse listCategories(
+            LmsListCategoriesRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListUsers {
+        LmsListUsersResponse listUsers(
+            LmsListUsersRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetUser {
+        LmsGetUserResponse getUser(
+            LmsGetUserRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetSkill {
+        LmsGetSkillResponse getSkill(
+            LmsGetSkillRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListSkills {
+        LmsListSkillsResponse listSkills(
+            LmsListSkillsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsListAssignments {
+        LmsListAssignmentsResponse listAssignments(
+            LmsListAssignmentsRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsGetAssignment {
+        LmsGetAssignmentResponse getAssignment(
+            LmsGetAssignmentRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsCreateCollection {
+        LmsCreateCollectionResponse createCollection(
+            String xAccountId,
+            LmsCreateCollectionRequestDto lmsCreateCollectionRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallLmsUpdateCollection {
+        LmsUpdateCollectionResponse updateCollection(
+            String xAccountId,
+            String id,
+            LmsCreateCollectionRequestDto lmsCreateCollectionRequestDto,
             Optional<Options> options) throws Exception;
     }
 

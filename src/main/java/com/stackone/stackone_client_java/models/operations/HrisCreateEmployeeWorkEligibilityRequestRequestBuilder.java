@@ -16,6 +16,7 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
     private String id;
     private String xAccountId;
     private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisCreateEmployeeWorkEligibilityRequest sdk;
 
@@ -41,6 +42,18 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
         return this;
     }
                 
+    public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
+        return this;
+    }
+                
     public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -61,6 +74,7 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
             id,
             xAccountId,
             hrisCreateWorkEligibilityRequestDto,
+            serverURL,
             options);
     }
 }

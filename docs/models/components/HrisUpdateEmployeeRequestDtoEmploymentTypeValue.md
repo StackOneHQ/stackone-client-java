@@ -1,5 +1,7 @@
 # HrisUpdateEmployeeRequestDtoEmploymentTypeValue
 
+The type of the employment.
+
 
 ## Values
 

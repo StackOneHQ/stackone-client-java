@@ -16,6 +16,7 @@ public class HrisCreateEmployeeSkillRequestBuilder {
     private String xAccountId;
     private String id;
     private EntitySkillsCreateRequestDto entitySkillsCreateRequestDto;
+    private Optional<String> serverURL = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallHrisCreateEmployeeSkill sdk;
 
@@ -41,6 +42,18 @@ public class HrisCreateEmployeeSkillRequestBuilder {
         return this;
     }
                 
+    public HrisCreateEmployeeSkillRequestBuilder serverURL(String serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = Optional.of(serverURL);
+        return this;
+    }
+
+    public HrisCreateEmployeeSkillRequestBuilder serverURL(Optional<String> serverURL) {
+        Utils.checkNotNull(serverURL, "serverURL");
+        this.serverURL = serverURL;
+        return this;
+    }
+                
     public HrisCreateEmployeeSkillRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -61,6 +74,7 @@ public class HrisCreateEmployeeSkillRequestBuilder {
             xAccountId,
             id,
             entitySkillsCreateRequestDto,
+            serverURL,
             options);
     }
 }

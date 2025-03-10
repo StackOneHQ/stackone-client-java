@@ -14,6 +14,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'cl.franciscosolis.sonatype-central-upload' version '1.0.3'
 }
 
 compileJava.options.encoding = "UTF-8"
@@ -40,6 +41,7 @@ model {
 
 jar {
     dependsOn(":generatePomFileForMavenPublication")
+    archiveBaseName = "stackone-client-java"
 
     into("META-INF/maven/com.stackone/stackone-client-java") {
         from("$buildDir/pom.xml")
@@ -61,7 +63,7 @@ tasks.withType(Javadoc) {
 }
 
 group = "com.stackone"
-version = "0.0.1"
+version = "0.1.0"
 
 sourcesJar {
     archiveBaseName = "stackone-client-java"
@@ -69,6 +71,27 @@ sourcesJar {
 
 javadocJar {
     archiveBaseName = "stackone-client-java"
+}
+sonatypeCentralUpload {
+    // This is your Sonatype generated username
+    username = System.getenv("SONATYPE_USERNAME")
+    // This is your sonatype generated password
+    password = System.getenv("SONATYPE_PASSWORD")
+
+    // This is a list of files to upload. Ideally you would point to your jar file, source and javadoc jar (required by central)
+    archives = files(
+      "$buildDir/libs/stackone-client-java-${version}.jar",
+      "$buildDir/libs/stackone-client-java-${version}-sources.jar",
+      "$buildDir/libs/stackone-client-java-${version}-javadoc.jar"
+    )
+
+    // This is the pom file to upload. This is required by central
+    pom = file("$buildDir/pom.xml")
+
+    // This is your PGP private key. This is required to sign your files
+    signingKey = System.getenv("SONATYPE_SIGNING_KEY")
+    // This is your PGP private key passphrase to decrypt your private key
+    signingKeyPassphrase = System.getenv("SIGNING_KEY_PASSPHRASE")
 }
 
 
@@ -78,7 +101,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.stackone'
             artifactId = 'stackone-client-java'
-            version = '0.0.1'
+            version = '0.1.0'
 
             from components.java
 
@@ -121,17 +144,16 @@ if (!project.hasProperty('skip.signing')) {
     }
 }
 
+
+
 dependencies {
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.17.2'
-    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
-    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
-    implementation 'org.apache.httpcomponents:httpmime:4.5.14'
-    implementation 'commons-io:commons-io:2.15.1'
+    api 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.18.2'
+    api('org.openapitools:jackson-databind-nullable:0.2.6') {exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'}
+    implementation 'commons-io:commons-io:2.18.0'
     implementation 'com.jayway.jsonpath:json-path:2.9.0'
 }
-
-
 
 apply from: 'build-extras.gradle'
