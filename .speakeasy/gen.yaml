@@ -20,9 +20,9 @@ java:
   additionalPlugins: []
   artifactID: stackone-client-java
   clientServerStatusCodesAsErrors: true
-  companyEmail: info@mycompany.com
-  companyName: My Company
-  companyURL: www.mycompany.com
+  companyEmail: contact@stackone.com
+  companyName: StackOne
+  companyURL: www.stackone.com
   defaultErrorName: SDKError
   flattenGlobalSecurity: true
   githubURL: github.com/owner/repo
