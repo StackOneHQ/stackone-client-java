@@ -1,11 +1,10 @@
 # Status
 
-The status of the time off request
 
+## Values
 
-## Fields
-
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `value`                                                                            | [JsonNullable\<TimeOffValue>](../../models/components/TimeOffValue.md)             | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `sourceValue`                                                                      | [JsonNullable\<TimeOffSourceValue>](../../models/components/TimeOffSourceValue.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Name       | Value      |
+| ---------- | ---------- |
+| `ACTIVE`   | active     |
+| `INACTIVE` | inactive   |
+| `ERROR`    | error      |

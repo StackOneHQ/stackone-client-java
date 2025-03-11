@@ -1,0 +1,11 @@
+# CampaignStatus
+
+Status of the Campaign
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `value`                                                                                          | [JsonNullable\<CampaignStatusValue>](../../models/components/CampaignStatusValue.md)             | :heavy_minus_sign:                                                                               | The Status of the campaign.                                                                      | email                                                                                            |
+| `sourceValue`                                                                                    | [JsonNullable\<CampaignStatusSourceValue>](../../models/components/CampaignStatusSourceValue.md) | :heavy_minus_sign:                                                                               | The source value of the Status.                                                                  | Email                                                                                            |

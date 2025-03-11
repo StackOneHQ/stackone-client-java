@@ -1,0 +1,9 @@
+# Attachment
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `url`                                                                                    | *JsonNullable\<String>*                                                                  | :heavy_minus_sign:                                                                       | The URL of the attachment.                                                               | http://example.com/resume.pdf                                                            |
+| `contentType`                                                                            | [JsonNullable\<AttachmentContentType>](../../models/components/AttachmentContentType.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      |                                                                                          |

@@ -1,0 +1,10 @@
+# JobPostingContent
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `plain`                                                                                | *JsonNullable\<String>*                                                                | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `html`                                                                                 | *JsonNullable\<String>*                                                                | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `sections`                                                                             | List\<[JobPostingContentSection](../../models/components/JobPostingContentSection.md)> | :heavy_minus_sign:                                                                     | N/A                                                                                    |
