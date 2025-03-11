@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.514.1
   generationVersion: 2.546.3
-  releaseVersion: 0.1.1
-  configChecksum: c8f3a13d9a905698fd3d16c37e46abab
+  releaseVersion: 0.1.2
+  configChecksum: 7f7ee97f3760e4df55e5566ac5fd6ca1
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
