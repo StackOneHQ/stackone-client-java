@@ -1,0 +1,9 @@
+# AtsOrderBackgroundCheckRequestRequest
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                                                  | *String*                                                                                                      | :heavy_check_mark:                                                                                            | The account identifier                                                                                        |
+| `atsCreateBackgroundCheckOrderRequestDto`                                                                     | [AtsCreateBackgroundCheckOrderRequestDto](../../models/components/AtsCreateBackgroundCheckOrderRequestDto.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |

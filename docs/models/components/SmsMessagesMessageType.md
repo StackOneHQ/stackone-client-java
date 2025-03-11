@@ -1,0 +1,9 @@
+# SmsMessagesMessageType
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `value`                                                                                    | [JsonNullable\<SmsMessagesValue>](../../models/components/SmsMessagesValue.md)             | :heavy_minus_sign:                                                                         | The unified message type.                                                                  | email                                                                                      |
+| `sourceValue`                                                                              | [JsonNullable\<SmsMessagesSourceValue>](../../models/components/SmsMessagesSourceValue.md) | :heavy_minus_sign:                                                                         | The original value from the provider used to derive the unified message type.              | Email                                                                                      |

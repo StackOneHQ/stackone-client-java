@@ -1,0 +1,10 @@
+# AtsUpdateCandidateRequest
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
+| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `atsUpdateCandidateRequestDto`                                                          | [AtsUpdateCandidateRequestDto](../../models/components/AtsUpdateCandidateRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |

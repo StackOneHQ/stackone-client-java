@@ -1,5 +1,7 @@
 # EmploymentEmploymentTypeValue
 
+The type of the employment.
+
 
 ## Values
 

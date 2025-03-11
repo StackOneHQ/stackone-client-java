@@ -1,0 +1,10 @@
+# StatusReason
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `code`                                                                                    | *JsonNullable\<String>*                                                                   | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `description`                                                                             | *JsonNullable\<String>*                                                                   | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `timestamp`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

@@ -1,0 +1,9 @@
+# IamRoleType
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `value`                                                                            | [JsonNullable\<IamRoleValue>](../../models/components/IamRoleValue.md)             | :heavy_minus_sign:                                                                 | N/A                                                                                | admin                                                                              |
+| `sourceValue`                                                                      | [JsonNullable\<IamRoleSourceValue>](../../models/components/IamRoleSourceValue.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |                                                                                    |

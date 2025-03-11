@@ -1,5 +1,7 @@
 # HrisCreateEmploymentRequestDtoPayFrequencyValue
 
+The pay frequency of the job postings.
+
 
 ## Values
 
@@ -20,4 +22,3 @@
 | `UNMAPPED_VALUE`   | unmapped_value     |
 | `HALF_YEARLY`      | half_yearly        |
 | `DAILY`            | daily              |
-| `FIXED`            | fixed              |

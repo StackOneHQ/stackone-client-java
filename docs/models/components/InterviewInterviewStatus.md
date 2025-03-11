@@ -1,0 +1,9 @@
+# InterviewInterviewStatus
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `value`                                                                                | [JsonNullable\<InterviewValue>](../../models/components/InterviewValue.md)             | :heavy_minus_sign:                                                                     | The status of the interview.                                                           | unscheduled                                                                            |
+| `sourceValue`                                                                          | [JsonNullable\<InterviewSourceValue>](../../models/components/InterviewSourceValue.md) | :heavy_minus_sign:                                                                     | The source value of the interview status.                                              | Unscheduled                                                                            |

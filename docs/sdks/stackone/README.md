@@ -2,4 +2,6 @@
 
 ## Overview
 
-HRIS: The documentation for the StackOne Unified API - HRIS
+LMS: The documentation for the StackOne Unified API - LMS
+
+### Available Operations

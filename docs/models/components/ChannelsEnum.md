@@ -1,0 +1,9 @@
+# ChannelsEnum
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `value`                                                                                      | [JsonNullable\<ChannelsEnumValue>](../../models/components/ChannelsEnumValue.md)             | :heavy_minus_sign:                                                                           | The Channels of the campaign.                                                                | sms                                                                                          |
+| `sourceValue`                                                                                | [JsonNullable\<ChannelsEnumSourceValue>](../../models/components/ChannelsEnumSourceValue.md) | :heavy_minus_sign:                                                                           | The source value of the Channels.                                                            | SMS                                                                                          |

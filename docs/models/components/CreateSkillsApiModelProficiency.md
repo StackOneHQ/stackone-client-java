@@ -1,0 +1,11 @@
+# CreateSkillsApiModelProficiency
+
+The user proficiency level of the skill ranked out of 5
+
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                            | [JsonNullable\<CreateSkillsApiModelProficiencyValue>](../../models/components/CreateSkillsApiModelProficiencyValue.md)             | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `sourceValue`                                                                                                                      | [JsonNullable\<CreateSkillsApiModelProficiencySourceValue>](../../models/components/CreateSkillsApiModelProficiencySourceValue.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

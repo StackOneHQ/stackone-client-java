@@ -1,0 +1,9 @@
+# ApplicationStatus
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `value`                                                                                    | [JsonNullable\<ApplicationValue>](../../models/components/ApplicationValue.md)             | :heavy_minus_sign:                                                                         | The status of the application.                                                             | hired                                                                                      |
+| `sourceValue`                                                                              | [JsonNullable\<ApplicationSourceValue>](../../models/components/ApplicationSourceValue.md) | :heavy_minus_sign:                                                                         | The source value of the application status.                                                | Hired                                                                                      |

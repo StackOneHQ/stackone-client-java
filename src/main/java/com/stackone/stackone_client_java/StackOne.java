@@ -4,7 +4,6 @@
 
 package com.stackone.stackone_client_java;
 
-import com.stackone.stackone_client_java.models.operations.SDKMethodInterfaces.*;
 import com.stackone.stackone_client_java.utils.HTTPClient;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.SpeakeasyHTTPClient;
@@ -14,7 +13,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * HRIS: The documentation for the StackOne Unified API - HRIS
+ * LMS: The documentation for the StackOne Unified API - LMS
  */
 public class StackOne {
 
@@ -26,10 +25,64 @@ public class StackOne {
         "https://api.stackone.com",
     };
 
+    private final ConnectSessions connectSessions;
+
+    private final Accounts accounts;
+
+    private final Connectors connectors;
+
+    private final Proxy proxy;
+
     private final Hris hris;
+
+    private final Ats ats;
+
+    private final Crm crm;
+
+    private final Iam iam;
+
+    private final Marketing marketing;
+
+    private final Lms lms;
+
+    public ConnectSessions connectSessions() {
+        return connectSessions;
+    }
+
+    public Accounts accounts() {
+        return accounts;
+    }
+
+    public Connectors connectors() {
+        return connectors;
+    }
+
+    public Proxy proxy() {
+        return proxy;
+    }
 
     public Hris hris() {
         return hris;
+    }
+
+    public Ats ats() {
+        return ats;
+    }
+
+    public Crm crm() {
+        return crm;
+    }
+
+    public Iam iam() {
+        return iam;
+    }
+
+    public Marketing marketing() {
+        return marketing;
+    }
+
+    public Lms lms() {
+        return lms;
     }
 
     private final SDKConfiguration sdkConfiguration;
@@ -153,6 +206,15 @@ public class StackOne {
 
     private StackOne(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.connectSessions = new ConnectSessions(sdkConfiguration);
+        this.accounts = new Accounts(sdkConfiguration);
+        this.connectors = new Connectors(sdkConfiguration);
+        this.proxy = new Proxy(sdkConfiguration);
         this.hris = new Hris(sdkConfiguration);
+        this.ats = new Ats(sdkConfiguration);
+        this.crm = new Crm(sdkConfiguration);
+        this.iam = new Iam(sdkConfiguration);
+        this.marketing = new Marketing(sdkConfiguration);
+        this.lms = new Lms(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }}

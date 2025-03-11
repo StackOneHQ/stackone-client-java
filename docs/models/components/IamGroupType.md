@@ -1,0 +1,9 @@
+# IamGroupType
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `value`                                                                              | [JsonNullable\<IamGroupValue>](../../models/components/IamGroupValue.md)             | :heavy_minus_sign:                                                                   | N/A                                                                                  | team                                                                                 |
+| `sourceValue`                                                                        | [JsonNullable\<IamGroupSourceValue>](../../models/components/IamGroupSourceValue.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |                                                                                      |

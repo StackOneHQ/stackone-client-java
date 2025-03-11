@@ -378,10 +378,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -412,7 +412,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_companies", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -425,7 +425,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_companies",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -438,7 +438,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_companies", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -510,7 +510,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -518,8 +519,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -586,10 +594,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -620,7 +628,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_company", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -633,7 +641,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_company",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -646,7 +654,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_company", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -676,7 +684,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -684,8 +693,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -750,10 +766,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -784,7 +800,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_custom_field_definitions", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -797,7 +813,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_custom_field_definitions",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -810,7 +826,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_custom_field_definitions", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -840,7 +856,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -848,8 +865,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -916,10 +940,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -950,7 +974,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_custom_field_definition", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -963,7 +987,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_custom_field_definition",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -976,7 +1000,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_custom_field_definition", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1006,7 +1030,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1014,8 +1039,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1080,10 +1112,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1114,7 +1146,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employees", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1127,7 +1159,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employees",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1140,7 +1172,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employees", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1216,7 +1248,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1224,8 +1257,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1309,10 +1349,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1343,7 +1383,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1356,7 +1396,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1369,7 +1409,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1399,7 +1439,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1407,8 +1448,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1475,10 +1523,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1509,7 +1557,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1522,7 +1570,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1535,7 +1583,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1565,7 +1613,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1573,8 +1622,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1665,10 +1721,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1699,7 +1755,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_update_employee", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1712,7 +1768,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_update_employee",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1725,7 +1781,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_update_employee", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1755,7 +1811,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1763,8 +1820,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1855,10 +1919,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -1889,7 +1953,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_invite_employee", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -1902,7 +1966,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_invite_employee",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -1915,7 +1979,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_invite_employee", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -1945,7 +2009,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -1953,8 +2018,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2021,10 +2093,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2055,7 +2127,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_time_off_requests", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2068,7 +2140,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_time_off_requests",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2081,7 +2153,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_time_off_requests", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2155,7 +2227,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2163,8 +2236,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2255,10 +2335,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2289,7 +2369,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2302,7 +2382,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2315,7 +2395,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2345,7 +2425,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2353,8 +2434,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2421,10 +2509,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2455,7 +2543,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employees_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2468,7 +2556,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employees_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2481,7 +2569,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employees_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2511,7 +2599,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2519,8 +2608,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2611,10 +2707,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2645,7 +2741,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_batch_upload_employee_document", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2658,7 +2754,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_batch_upload_employee_document",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2671,7 +2767,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_batch_upload_employee_document", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2701,7 +2797,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2709,8 +2806,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2801,10 +2905,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -2835,7 +2939,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_upload_employee_document", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -2848,7 +2952,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_upload_employee_document",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -2861,7 +2965,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_upload_employee_document", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -2891,7 +2995,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2899,8 +3004,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -2986,10 +3098,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3020,7 +3132,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_download_employee_document", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3033,7 +3145,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_download_employee_document",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3046,7 +3158,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_download_employee_document", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3075,7 +3187,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3083,8 +3196,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3151,10 +3271,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3185,7 +3305,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_documents", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3198,7 +3318,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_documents",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3211,7 +3331,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_documents", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3285,7 +3405,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3293,8 +3414,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3361,10 +3489,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3395,7 +3523,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_document", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3408,7 +3536,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_document",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3421,7 +3549,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_document", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3451,7 +3579,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3459,8 +3588,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3525,10 +3661,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3559,7 +3695,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_categories", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3572,7 +3708,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_categories",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3585,7 +3721,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_categories", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3657,7 +3793,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3665,8 +3802,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3733,10 +3877,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3767,7 +3911,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_document_category", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3780,7 +3924,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_document_category",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3793,7 +3937,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_document_category", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -3823,7 +3967,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3831,8 +3976,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -3899,10 +4051,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -3933,7 +4085,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_work_eligibility", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -3946,7 +4098,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_work_eligibility",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -3959,7 +4111,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_work_eligibility", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4033,7 +4185,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4041,8 +4194,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4133,10 +4293,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4167,7 +4327,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee_work_eligibility_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4180,7 +4340,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee_work_eligibility_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4193,7 +4353,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee_work_eligibility_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4223,7 +4383,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4231,8 +4392,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4299,10 +4467,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4333,7 +4501,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employees_work_eligibility", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4346,7 +4514,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employees_work_eligibility",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4359,7 +4527,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employees_work_eligibility", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4389,7 +4557,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4397,8 +4566,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4494,10 +4670,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4528,7 +4704,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_update_employee_work_eligibility_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4541,7 +4717,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_update_employee_work_eligibility_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4554,7 +4730,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_update_employee_work_eligibility_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4573,7 +4749,8 @@ public class Hris implements
             // no content 
             return _res;
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4581,8 +4758,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4649,10 +4833,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4683,7 +4867,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_time_off_balances", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4696,7 +4880,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_time_off_balances",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4709,7 +4893,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_time_off_balances", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4785,7 +4969,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4793,8 +4978,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4861,10 +5053,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -4895,7 +5087,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_time_off_balance", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -4908,7 +5100,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_time_off_balance",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -4921,7 +5113,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_time_off_balance", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -4951,7 +5143,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -4959,8 +5152,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5025,10 +5225,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5059,7 +5259,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employments", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5072,7 +5272,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employments",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5085,7 +5285,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employments", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5159,7 +5359,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5167,8 +5368,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5235,10 +5443,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5269,7 +5477,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employment", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5282,7 +5490,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employment",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5295,7 +5503,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employment", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5325,7 +5533,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5333,8 +5542,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5401,10 +5617,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5435,7 +5651,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_employments", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5448,7 +5664,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_employments",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5461,7 +5677,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_employments", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5537,7 +5753,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5545,8 +5762,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5637,10 +5861,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5671,7 +5895,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee_employment", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5684,7 +5908,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee_employment",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5697,7 +5921,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee_employment", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5727,7 +5951,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5735,8 +5960,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5803,10 +6035,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -5837,7 +6069,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_employment", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -5850,7 +6082,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_employment",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -5863,7 +6095,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_employment", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -5893,7 +6125,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5901,8 +6134,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -5998,10 +6238,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6032,7 +6272,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_update_employee_employment", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6045,7 +6285,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_update_employee_employment",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6058,7 +6298,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_update_employee_employment", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6088,7 +6328,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6096,8 +6337,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6162,10 +6410,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6196,7 +6444,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_locations", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6209,7 +6457,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_locations",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6222,7 +6470,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_locations", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6294,7 +6542,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6302,8 +6551,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6370,10 +6626,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6404,7 +6660,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_location", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6417,7 +6673,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_location",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6430,7 +6686,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_location", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6460,7 +6716,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6468,8 +6725,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6534,10 +6798,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6568,7 +6832,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_time_off_requests", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6581,7 +6845,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_time_off_requests",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6594,7 +6858,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_time_off_requests", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6666,7 +6930,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6674,8 +6939,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6759,10 +7031,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6793,7 +7065,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6806,7 +7078,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6819,7 +7091,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -6849,7 +7121,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6857,8 +7130,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -6925,10 +7205,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -6959,7 +7239,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -6972,7 +7252,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -6985,7 +7265,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7015,7 +7295,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7023,8 +7304,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7115,10 +7403,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7149,7 +7437,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_update_time_off_request", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7162,7 +7450,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_update_time_off_request",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7175,7 +7463,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_update_time_off_request", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7205,7 +7493,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7213,8 +7502,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7279,10 +7575,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7313,7 +7609,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_time_off_types", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7326,7 +7622,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_time_off_types",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7339,7 +7635,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_time_off_types", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7411,7 +7707,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7419,8 +7716,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7487,10 +7791,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7521,7 +7825,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_time_off_type", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7534,7 +7838,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_time_off_type",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7547,7 +7851,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_time_off_type", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7577,7 +7881,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7585,8 +7890,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7651,10 +7963,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7685,7 +7997,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_time_entries", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7698,7 +8010,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_time_entries",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7711,7 +8023,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_time_entries", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7783,7 +8095,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7791,8 +8104,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7859,10 +8179,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -7893,7 +8213,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_time_entries", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -7906,7 +8226,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_time_entries",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -7919,7 +8239,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_time_entries", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -7949,7 +8269,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -7957,8 +8278,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8023,10 +8351,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8057,7 +8385,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_benefits", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8070,7 +8398,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_benefits",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8083,7 +8411,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_benefits", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8155,7 +8483,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8163,8 +8492,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8231,10 +8567,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8265,7 +8601,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_benefit", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8278,7 +8614,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_benefit",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8291,7 +8627,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_benefit", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8321,7 +8657,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8329,8 +8666,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8395,10 +8739,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8429,7 +8773,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_groups", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8442,7 +8786,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_groups",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8455,7 +8799,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_groups", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8527,7 +8871,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8535,8 +8880,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8601,10 +8953,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8635,7 +8987,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_department_groups", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8648,7 +9000,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_department_groups",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8661,7 +9013,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_department_groups", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8733,7 +9085,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8741,8 +9094,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8807,10 +9167,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -8841,7 +9201,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_cost_center_groups", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -8854,7 +9214,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_cost_center_groups",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -8867,7 +9227,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_cost_center_groups", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -8939,7 +9299,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -8947,8 +9308,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9013,10 +9381,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9047,7 +9415,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_team_groups", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9060,7 +9428,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_team_groups",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9073,7 +9441,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_team_groups", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9145,7 +9513,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9153,8 +9522,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9221,10 +9597,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9255,7 +9631,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_group", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9268,7 +9644,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_group",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9281,7 +9657,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_group", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9311,7 +9687,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9319,8 +9696,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9387,10 +9771,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9421,7 +9805,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_department_group", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9434,7 +9818,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_department_group",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9447,7 +9831,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_department_group", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9477,7 +9861,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9485,8 +9870,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9553,10 +9945,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9587,7 +9979,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_cost_center_group", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9600,7 +9992,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_cost_center_group",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9613,7 +10005,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_cost_center_group", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9643,7 +10035,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9651,8 +10044,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9719,10 +10119,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9753,7 +10153,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_team_group", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9766,7 +10166,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_team_group",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9779,7 +10179,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_team_group", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -9809,7 +10209,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9817,8 +10218,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -9883,10 +10291,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -9917,7 +10325,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_jobs", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -9930,7 +10338,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_jobs",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -9943,7 +10351,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_jobs", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10015,7 +10423,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10023,8 +10432,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10091,10 +10507,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10125,7 +10541,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_job", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10138,7 +10554,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_job",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10151,7 +10567,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_job", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10181,7 +10597,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10189,8 +10606,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10257,10 +10681,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10291,7 +10715,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_employee_skills", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10304,7 +10728,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_employee_skills",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10317,7 +10741,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_employee_skills", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10391,7 +10815,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10399,8 +10824,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10491,10 +10923,10 @@ public class Hris implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10525,7 +10957,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_create_employee_skill", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10538,7 +10970,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_create_employee_skill",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10551,7 +10983,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_create_employee_skill", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10581,7 +11013,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10589,8 +11022,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10657,10 +11097,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10691,7 +11131,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_employee_skill", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10704,7 +11144,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_employee_skill",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10717,7 +11157,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_employee_skill", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10747,7 +11187,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10755,8 +11196,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10821,10 +11269,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -10855,7 +11303,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_list_time_off_policies", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -10868,7 +11316,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_list_time_off_policies",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -10881,7 +11329,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_list_time_off_policies", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -10953,7 +11401,8 @@ public class Hris implements
                     _fullResponse);
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -10961,8 +11410,15 @@ public class Hris implements
                     "API error occurred", 
                     _fullResponse);
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    _fullResponse);
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -11029,10 +11485,10 @@ public class Hris implements
                 request, 
                 null));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -11063,7 +11519,7 @@ public class Hris implements
                             new BeforeRequestContextImpl(
                                 "hris_get_time_off_policy", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -11076,7 +11532,7 @@ public class Hris implements
                             new AfterErrorContextImpl(
                                 "hris_get_time_off_policy",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -11089,7 +11545,7 @@ public class Hris implements
                      new AfterSuccessContextImpl(
                          "hris_get_time_off_policy", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -11119,7 +11575,8 @@ public class Hris implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX", "500", "501", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -11127,8 +11584,15 @@ public class Hris implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
