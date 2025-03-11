@@ -17,7 +17,7 @@ LMS: The documentation for the StackOne Unified API - LMS
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [openapi](#openapi)
+* [stackone-client-java](#stackone-client-java)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
@@ -43,7 +43,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.1.2'
+implementation 'com.stackone:stackone-client-java:0.1.3'
 ```
 
 Maven:
@@ -51,7 +51,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.1.2</version>
+    <version>0.1.3</version>
 </dependency>
 ```
 
@@ -101,17 +101,18 @@ public class Application {
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
 
         sdk.hris().listEmployees()
                 .request(req)
-                .call()
-                .employeesPaginated().get().data()
-                .forEach(item -> {
-                    // handle item
-                });
+                .callAsStream()
+            .forEach(item -> {
+               // handle item
+            });
+
     }
 }
 ```
