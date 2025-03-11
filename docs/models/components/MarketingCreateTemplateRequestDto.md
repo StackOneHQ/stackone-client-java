@@ -1,0 +1,11 @@
+# MarketingCreateTemplateRequestDto
+
+
+## Fields
+
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `messages`                                                       | List\<[CreateMessage](../../models/components/CreateMessage.md)> | :heavy_minus_sign:                                               | N/A                                                              |                                                                  |
+| `name`                                                           | *JsonNullable\<String>*                                          | :heavy_minus_sign:                                               | N/A                                                              |                                                                  |
+| `tags`                                                           | List\<*String*>                                                  | :heavy_minus_sign:                                               | N/A                                                              |                                                                  |
+| `passthrough`                                                    | Map\<String, *Object*>                                           | :heavy_minus_sign:                                               | Value to pass through to the provider                            | {<br/>"other_known_names": "John Doe"<br/>}                      |

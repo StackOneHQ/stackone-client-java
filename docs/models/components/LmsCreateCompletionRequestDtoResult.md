@@ -1,0 +1,11 @@
+# LmsCreateCompletionRequestDtoResult
+
+The result of the completion
+
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                                        | [JsonNullable\<LmsCreateCompletionRequestDtoValue>](../../models/components/LmsCreateCompletionRequestDtoValue.md)             | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| `sourceValue`                                                                                                                  | [JsonNullable\<LmsCreateCompletionRequestDtoSourceValue>](../../models/components/LmsCreateCompletionRequestDtoSourceValue.md) | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |

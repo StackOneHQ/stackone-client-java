@@ -1,0 +1,9 @@
+# JobPostingStatus
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `value`                                                                                  | [JsonNullable\<JobPostingValue>](../../models/components/JobPostingValue.md)             | :heavy_minus_sign:                                                                       | The status of the job postings.                                                          | live                                                                                     |
+| `sourceValue`                                                                            | [JsonNullable\<JobPostingSourceValue>](../../models/components/JobPostingSourceValue.md) | :heavy_minus_sign:                                                                       | The source value of the job postings status.                                             | Live                                                                                     |

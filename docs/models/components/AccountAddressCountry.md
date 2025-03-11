@@ -1,0 +1,11 @@
+# AccountAddressCountry
+
+The country code
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `value`                                                                                          | [JsonNullable\<AccountAddressValue>](../../models/components/AccountAddressValue.md)             | :heavy_minus_sign:                                                                               | The ISO 3166-1 alpha-2 code of the country.                                                      | GB                                                                                               |
+| `sourceValue`                                                                                    | [JsonNullable\<AccountAddressSourceValue>](../../models/components/AccountAddressSourceValue.md) | :heavy_minus_sign:                                                                               | The source value of the ISO 3166-1 alpha-2 code of the country.                                  | GB                                                                                               |

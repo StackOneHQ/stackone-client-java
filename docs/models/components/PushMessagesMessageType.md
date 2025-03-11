@@ -1,0 +1,9 @@
+# PushMessagesMessageType
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `value`                                                                                      | [JsonNullable\<PushMessagesValue>](../../models/components/PushMessagesValue.md)             | :heavy_minus_sign:                                                                           | The unified message type.                                                                    | email                                                                                        |
+| `sourceValue`                                                                                | [JsonNullable\<PushMessagesSourceValue>](../../models/components/PushMessagesSourceValue.md) | :heavy_minus_sign:                                                                           | The original value from the provider used to derive the unified message type.                | Email                                                                                        |

@@ -1,5 +1,7 @@
 # HrisCreateEmploymentRequestDtoEmploymentTypeValue
 
+The type of the employment.
+
 
 ## Values
 

@@ -17,20 +17,25 @@ Developer-friendly & type-safe Java SDK specifically catered to leverage *openap
 <!-- Start Summary [summary] -->
 ## Summary
 
-HRIS: The documentation for the StackOne Unified API - HRIS
+LMS: The documentation for the StackOne Unified API - LMS
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [openapi](#openapi)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Pagination](#pagination)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Authentication](#authentication)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Pagination](#pagination)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Authentication](#authentication)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -44,7 +49,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.0.1'
+implementation 'com.stackone:stackone-client-java:0.1.0'
 ```
 
 Maven:
@@ -52,7 +57,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
 </dependency>
 ```
 
@@ -102,13 +107,14 @@ public class Application {
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
 
         sdk.hris().listEmployees()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -123,6 +129,112 @@ public class Application {
 
 <details open>
 <summary>Available methods</summary>
+
+### [accounts()](docs/sdks/accounts/README.md)
+
+* [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
+* [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
+* [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
+* [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
+* [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
+
+### [ats()](docs/sdks/ats/README.md)
+
+* [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
+* [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
+* [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
+* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
+* [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
+* [moveApplication](docs/sdks/ats/README.md#moveapplication) - Move Application
+* [rejectApplication](docs/sdks/ats/README.md#rejectapplication) - Reject Application
+* [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
+* [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
+* [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
+* [listApplicationNotes](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
+* [createApplicationNote](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
+* [getApplicationNote](docs/sdks/ats/README.md#getapplicationnote) - Get Application Note
+* [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
+* [listApplicationsScheduledInterviews](docs/sdks/ats/README.md#listapplicationsscheduledinterviews) - List Applications scheduled interviews
+* [getApplicationScheduledInterview](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
+* [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
+* [downloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
+* [listApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
+* [getApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
+* [listCandidates](docs/sdks/ats/README.md#listcandidates) - List Candidates
+* [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate
+* [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
+* [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
+* [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
+* [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
+* [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
+* [listApplicationCustomFieldDefinitions](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
+* [getApplicationCustomFieldDefinition](docs/sdks/ats/README.md#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
+* [listCandidateCustomFieldDefinitions](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions) - List Candidate Custom Field Definitions
+* [getCandidateCustomFieldDefinition](docs/sdks/ats/README.md#getcandidatecustomfielddefinition) - Get Candidate Custom Field Definition
+* [listJobCustomFieldDefinitions](docs/sdks/ats/README.md#listjobcustomfielddefinitions) - List Job Custom Field Definitions
+* [getJobCustomFieldDefinition](docs/sdks/ats/README.md#getjobcustomfielddefinition) - Get Job Custom Field Definition
+* [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
+* [getDepartment](docs/sdks/ats/README.md#getdepartment) - Get Department
+* [listInterviewStages](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages
+* [getInterviewStage](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
+* [listInterviews](docs/sdks/ats/README.md#listinterviews) - List Interviews
+* [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
+* [listJobs](docs/sdks/ats/README.md#listjobs) - List Jobs
+* [createJob](docs/sdks/ats/README.md#createjob) - Create Job
+* [getJob](docs/sdks/ats/README.md#getjob) - Get Job
+* [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
+* [listLists](docs/sdks/ats/README.md#listlists) - Get all Lists
+* [getList](docs/sdks/ats/README.md#getlist) - Get List
+* [listLocations](docs/sdks/ats/README.md#listlocations) - List locations
+* [getLocation](docs/sdks/ats/README.md#getlocation) - Get Location
+* [listRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
+* [getRejectedReason](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
+* [listUsers](docs/sdks/ats/README.md#listusers) - List Users
+* [getUser](docs/sdks/ats/README.md#getuser) - Get User
+* [listJobPostings](docs/sdks/ats/README.md#listjobpostings) - List Job Postings
+* [getJobPosting](docs/sdks/ats/README.md#getjobposting) - Get Job Posting
+* [listOffers](docs/sdks/ats/README.md#listoffers) - List Offers
+* [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
+* [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
+* [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
+* [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
+* [orderAssessmentsRequest](docs/sdks/ats/README.md#orderassessmentsrequest) - Order Assessments Request
+* [getAssessmentsRequest](docs/sdks/ats/README.md#getassessmentsrequest) - Get Assessments Requests
+* [updateAssessmentsResult](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
+* [getAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
+* [listBackgroundCheckPackages](docs/sdks/ats/README.md#listbackgroundcheckpackages) - List Background Check Packages
+* [createBackgroundCheckPackage](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
+* [getBackgroundCheckPackage](docs/sdks/ats/README.md#getbackgroundcheckpackage) - Get Background Check Package
+* [deleteBackgroundCheckPackage](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
+* [updateBackgroundCheckPackage](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
+* [listBackgroundCheckRequest](docs/sdks/ats/README.md#listbackgroundcheckrequest) - List Background Check Request
+* [orderBackgroundCheckRequest](docs/sdks/ats/README.md#orderbackgroundcheckrequest) - Order Background Check Request
+* [getBackgroundCheckRequest](docs/sdks/ats/README.md#getbackgroundcheckrequest) - Get Background Check Request
+* [updateBackgroundCheckResult](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
+* [getBackgroundCheckResult](docs/sdks/ats/README.md#getbackgroundcheckresult) - Get Background Check Results
+
+### [connectors()](docs/sdks/connectors/README.md)
+
+* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connectors Meta Information for all providers
+* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta information for the given provider key
+
+### [connectSessions()](docs/sdks/connectsessions/README.md)
+
+* [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
+* [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
+
+### [crm()](docs/sdks/crm/README.md)
+
+* [listContacts](docs/sdks/crm/README.md#listcontacts) - List Contacts
+* [createContact](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
+* [getContact](docs/sdks/crm/README.md#getcontact) - Get Contact
+* [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
+* [listAccounts](docs/sdks/crm/README.md#listaccounts) - List Accounts
+* [getAccount](docs/sdks/crm/README.md#getaccount) - Get Account
+* [listLists](docs/sdks/crm/README.md#listlists) - Get all Lists
+* [getList](docs/sdks/crm/README.md#getlist) - Get List
+* [listContactCustomFieldDefinitions](docs/sdks/crm/README.md#listcontactcustomfielddefinitions) - List Contact Custom Field Definitions
+* [getContactCustomFieldDefinition](docs/sdks/crm/README.md#getcontactcustomfielddefinition) - Get Contact Custom Field Definition
 
 ### [hris()](docs/sdks/hris/README.md)
 
@@ -185,6 +297,80 @@ public class Application {
 * [listTimeOffPolicies](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
 * [getTimeOffPolicy](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
 
+### [iam()](docs/sdks/iam/README.md)
+
+* [listUsers](docs/sdks/iam/README.md#listusers) - List Users
+* [getUser](docs/sdks/iam/README.md#getuser) - Get User
+* [listRoles](docs/sdks/iam/README.md#listroles) - List Roles
+* [getRole](docs/sdks/iam/README.md#getrole) - Get Role
+* [listGroups](docs/sdks/iam/README.md#listgroups) - List Groups
+* [getGroup](docs/sdks/iam/README.md#getgroup) - Get Group
+* [listPolicies](docs/sdks/iam/README.md#listpolicies) - List Policies
+* [getPolicy](docs/sdks/iam/README.md#getpolicy) - Get Policy
+
+### [lms()](docs/sdks/lms/README.md)
+
+* [batchUpsertCourse](docs/sdks/lms/README.md#batchupsertcourse) - Batch Upsert Course
+* [listCourses](docs/sdks/lms/README.md#listcourses) - List Courses
+* [upsertCourse](docs/sdks/lms/README.md#upsertcourse) - Upsert Course
+* [getCourse](docs/sdks/lms/README.md#getcourse) - Get Course
+* [listUserAssignments](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
+* [createUserAssignment](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
+* [getUserAssignment](docs/sdks/lms/README.md#getuserassignment) - Get User Assignment
+* [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
+* [listContent](docs/sdks/lms/README.md#listcontent) - List Content
+* [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
+* [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
+* [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
+* [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
+* [getUserCompletion](docs/sdks/lms/README.md#getusercompletion) - Get User Completion
+* [deleteUserCompletion](docs/sdks/lms/README.md#deleteusercompletion) - Delete User Completion
+* [listCompletions](docs/sdks/lms/README.md#listcompletions) - List Completions
+* [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
+* [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
+* [listCategories](docs/sdks/lms/README.md#listcategories) - List Categories
+* [listUsers](docs/sdks/lms/README.md#listusers) - List Users
+* [getUser](docs/sdks/lms/README.md#getuser) - Get User
+* [getSkill](docs/sdks/lms/README.md#getskill) - Get Skill
+* [listSkills](docs/sdks/lms/README.md#listskills) - List Skills
+* [listAssignments](docs/sdks/lms/README.md#listassignments) - List Assignments
+* [getAssignment](docs/sdks/lms/README.md#getassignment) - Get Assignment
+* [createCollection](docs/sdks/lms/README.md#createcollection) - Create Collection
+* [updateCollection](docs/sdks/lms/README.md#updatecollection) - Update Collection
+
+### [marketing()](docs/sdks/marketing/README.md)
+
+* [listEmailTemplates](docs/sdks/marketing/README.md#listemailtemplates) - List Email Templates
+* [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create Email Templates
+* [getEmailTemplate](docs/sdks/marketing/README.md#getemailtemplate) - Get Email Templates
+* [updateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate) - Update Email Templates
+* [listInAppTemplates](docs/sdks/marketing/README.md#listinapptemplates) - List In-App Templates
+* [createInAppTemplate](docs/sdks/marketing/README.md#createinapptemplate) - Create In-App Template
+* [getInAppTemplate](docs/sdks/marketing/README.md#getinapptemplate) - Get In-App Template
+* [updateInAppTemplate](docs/sdks/marketing/README.md#updateinapptemplate) - Update In-App Template
+* [listSmsTemplates](docs/sdks/marketing/README.md#listsmstemplates) - List SMS Templates
+* [createSmsTemplate](docs/sdks/marketing/README.md#createsmstemplate) - Create SMS Template
+* [getSmsTemplate](docs/sdks/marketing/README.md#getsmstemplate) - Get SMS Template
+* [updateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
+* [~~listOmniChannelTemplates~~](docs/sdks/marketing/README.md#listomnichanneltemplates) - List Omni-Channel Templates :warning: **Deprecated**
+* [~~createOmniChannelTemplate~~](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create Omni-Channel Template :warning: **Deprecated**
+* [~~getOmniChannelTemplate~~](docs/sdks/marketing/README.md#getomnichanneltemplate) - Get Omni-Channel Template :warning: **Deprecated**
+* [~~updateOmniChannelTemplate~~](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update Omni-Channel Template :warning: **Deprecated**
+* [listPushTemplates](docs/sdks/marketing/README.md#listpushtemplates) - List Push Templates
+* [createPushTemplate](docs/sdks/marketing/README.md#createpushtemplate) - Create Push Template
+* [getPushTemplate](docs/sdks/marketing/README.md#getpushtemplate) - Get Push Template
+* [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
+* [listCampaigns](docs/sdks/marketing/README.md#listcampaigns) - List campaigns
+* [getCampaign](docs/sdks/marketing/README.md#getcampaign) - Get campaign
+* [listContentBlocks](docs/sdks/marketing/README.md#listcontentblocks) - List Content Blocks
+* [createContentBlock](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
+* [getContentBlock](docs/sdks/marketing/README.md#getcontentblock) - Get Content Blocks
+* [updateContentBlock](docs/sdks/marketing/README.md#updatecontentblock) - Update Content Block
+
+### [proxy()](docs/sdks/proxy/README.md)
+
+* [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
+
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -223,11 +409,12 @@ public class Application {
                 .filter(Filter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listCompanies()
                 .request(req)
-                .callAsStreamUnwrapped()
+                .callAsStream()
             .forEach(item -> {
                // handle item
             });
@@ -247,12 +434,14 @@ To change the default retry strategy for a single API call, you can provide a `R
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Categories;
+import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.Filter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import com.stackone.stackone_client_java.utils.BackoffStrategy;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import java.lang.Exception;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
@@ -266,15 +455,24 @@ public class Application {
                     .build())
             .build();
 
-        HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(Filter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
+        ConnectSessionCreate req = ConnectSessionCreate.builder()
+                .originOwnerId("<id>")
+                .originOwnerName("<value>")
+                .categories(List.of(
+                    Categories.ATS,
+                    Categories.HRIS,
+                    Categories.IAM,
+                    Categories.CRM,
+                    Categories.IAM,
+                    Categories.MARKETING,
+                    Categories.LMS,
+                    Categories.ATS,
+                    Categories.DOCUMENTS,
+                    Categories.TICKETING,
+                    Categories.SCREENING))
                 .build();
 
-        sdk.hris().listCompanies()
+        StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
                 .request(req)
                 .retryConfig(RetryConfig.builder()
                     .backoff(BackoffStrategy.builder()
@@ -286,11 +484,11 @@ public class Application {
                         .retryConnectError(false)
                         .build())
                     .build())
-                .callAsStreamUnwrapped()
-            .forEach(item -> {
-               // handle item
-            });
+                .call();
 
+        if (res.connectSessionTokenAuthLink().isPresent()) {
+            // handle response
+        }
     }
 }
 ```
@@ -300,12 +498,14 @@ If you'd like to override the default retry strategy for all operations that sup
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Categories;
+import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.Filter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import com.stackone.stackone_client_java.utils.BackoffStrategy;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import java.lang.Exception;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
@@ -329,21 +529,30 @@ public class Application {
                     .build())
             .build();
 
-        HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(Filter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
+        ConnectSessionCreate req = ConnectSessionCreate.builder()
+                .originOwnerId("<id>")
+                .originOwnerName("<value>")
+                .categories(List.of(
+                    Categories.ATS,
+                    Categories.HRIS,
+                    Categories.IAM,
+                    Categories.CRM,
+                    Categories.IAM,
+                    Categories.MARKETING,
+                    Categories.LMS,
+                    Categories.ATS,
+                    Categories.DOCUMENTS,
+                    Categories.TICKETING,
+                    Categories.SCREENING))
                 .build();
 
-        sdk.hris().listCompanies()
+        StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
                 .request(req)
-                .callAsStreamUnwrapped()
-            .forEach(item -> {
-               // handle item
-            });
+                .call();
 
+        if (res.connectSessionTokenAuthLink().isPresent()) {
+            // handle response
+        }
     }
 }
 ```
@@ -354,11 +563,11 @@ public class Application {
 
 Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
 
-By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `listCompanies` method throws the following exceptions:
+By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `createConnectSession` method throws the following exceptions:
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type             | Status Code | Content Type |
+| ---------------------- | ----------- | ------------ |
+| models/errors/SDKError | 4XX, 5XX    | \*/\*        |
 
 ### Example
 
@@ -366,10 +575,12 @@ By default, an API error will throw a `models/errors/SDKError` exception. When c
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Categories;
+import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.Filter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import java.lang.Exception;
+import java.util.List;
 
 public class Application {
 
@@ -382,21 +593,30 @@ public class Application {
                     .build())
             .build();
 
-        HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(Filter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
+        ConnectSessionCreate req = ConnectSessionCreate.builder()
+                .originOwnerId("<id>")
+                .originOwnerName("<value>")
+                .categories(List.of(
+                    Categories.ATS,
+                    Categories.HRIS,
+                    Categories.IAM,
+                    Categories.CRM,
+                    Categories.IAM,
+                    Categories.MARKETING,
+                    Categories.LMS,
+                    Categories.ATS,
+                    Categories.DOCUMENTS,
+                    Categories.TICKETING,
+                    Categories.SCREENING))
                 .build();
 
-        sdk.hris().listCompanies()
+        StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
                 .request(req)
-                .callAsStreamUnwrapped()
-            .forEach(item -> {
-               // handle item
-            });
+                .call();
 
+        if (res.connectSessionTokenAuthLink().isPresent()) {
+            // handle response
+        }
     }
 }
 ```
@@ -405,68 +625,19 @@ public class Application {
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIndex` builder method when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.stackone.com` | None |
-
-#### Example
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.Filter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .serverIndex(0)
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(Filter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.hris().listCompanies()
-                .request(req)
-                .callAsStreamUnwrapped()
-            .forEach(item -> {
-               // handle item
-            });
-
-    }
-}
-```
-
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` builder method when initializing the SDK client instance. For example:
+The default server can be overridden globally using the `.serverURL(String serverUrl)` builder method when initializing the SDK client instance. For example:
 ```java
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Categories;
+import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.Filter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import java.lang.Exception;
+import java.util.List;
 
 public class Application {
 
@@ -480,21 +651,30 @@ public class Application {
                     .build())
             .build();
 
-        HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(Filter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
+        ConnectSessionCreate req = ConnectSessionCreate.builder()
+                .originOwnerId("<id>")
+                .originOwnerName("<value>")
+                .categories(List.of(
+                    Categories.ATS,
+                    Categories.HRIS,
+                    Categories.IAM,
+                    Categories.CRM,
+                    Categories.IAM,
+                    Categories.MARKETING,
+                    Categories.LMS,
+                    Categories.ATS,
+                    Categories.DOCUMENTS,
+                    Categories.TICKETING,
+                    Categories.SCREENING))
                 .build();
 
-        sdk.hris().listCompanies()
+        StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
                 .request(req)
-                .callAsStreamUnwrapped()
-            .forEach(item -> {
-               // handle item
-            });
+                .call();
 
+        if (res.connectSessionTokenAuthLink().isPresent()) {
+            // handle response
+        }
     }
 }
 ```
@@ -507,19 +687,21 @@ public class Application {
 
 This SDK supports the following security scheme globally:
 
-| Name                  | Type                  | Scheme                |
-| --------------------- | --------------------- | --------------------- |
-| `username` `password` | http                  | HTTP Basic            |
+| Name                      | Type | Scheme     |
+| ------------------------- | ---- | ---------- |
+| `username`<br/>`password` | http | HTTP Basic |
 
 You can set the security parameters through the `security` builder method when initializing the SDK client instance. For example:
 ```java
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Categories;
+import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.Filter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import java.lang.Exception;
+import java.util.List;
 
 public class Application {
 
@@ -532,21 +714,30 @@ public class Application {
                     .build())
             .build();
 
-        HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(Filter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
+        ConnectSessionCreate req = ConnectSessionCreate.builder()
+                .originOwnerId("<id>")
+                .originOwnerName("<value>")
+                .categories(List.of(
+                    Categories.ATS,
+                    Categories.HRIS,
+                    Categories.IAM,
+                    Categories.CRM,
+                    Categories.IAM,
+                    Categories.MARKETING,
+                    Categories.LMS,
+                    Categories.ATS,
+                    Categories.DOCUMENTS,
+                    Categories.TICKETING,
+                    Categories.SCREENING))
                 .build();
 
-        sdk.hris().listCompanies()
+        StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
                 .request(req)
-                .callAsStreamUnwrapped()
-            .forEach(item -> {
-               // handle item
-            });
+                .call();
 
+        if (res.connectSessionTokenAuthLink().isPresent()) {
+            // handle response
+        }
     }
 }
 ```
