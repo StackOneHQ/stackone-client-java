@@ -63,7 +63,7 @@ tasks.withType(Javadoc) {
 }
 
 group = "com.stackone"
-version = "0.1.0"
+version = "0.1.1"
 
 sourcesJar {
     archiveBaseName = "stackone-client-java"
@@ -101,13 +101,13 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.stackone'
             artifactId = 'stackone-client-java'
-            version = '0.1.0'
+            version = '0.1.1'
 
             from components.java
 
             pom {
-                name = 'My Company Java SDK'
-                description = 'SDK enabling Java developers to easily integrate with the My Company API.'
+                name = 'StackOne Java SDK'
+                description = 'SDK enabling Java developers to easily integrate with the StackOne API.'
                 url = 'https://github.com/owner/repo'
                 scm {
                     url = 'github.com/owner/repo'
@@ -121,14 +121,14 @@ publishing {
                 }
                 developers {
                     developer {
-                        name = 'My Company'
-                        organization = 'My Company'
-                        email = 'info@mycompany.com'
+                        name = 'StackOne'
+                        organization = 'StackOne'
+                        email = 'contact@stackone.com'
                     }
                 }
                 organization {
-                    name = 'My Company'
-                    url = 'www.mycompany.com'
+                    name = 'StackOne'
+                    url = 'www.stackone.com'
                 }
             }
         }
