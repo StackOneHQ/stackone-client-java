@@ -27,16 +27,16 @@ public class Application {
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
 
         sdk.hris().listEmployees()
-                .request(req)
-                .callAsStream()
+            .request(req)
+            .call()
+            .employeesPaginated().get().data()
             .forEach(item -> {
-               // handle item
+                // handle item
             });
 
     }
