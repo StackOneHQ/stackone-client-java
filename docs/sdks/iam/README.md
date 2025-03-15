@@ -42,10 +42,12 @@ public class Application {
 
         IamListUsersRequest req = IamListUsersRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled")
                 .filter(IamListUsersQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("roles,groups")
                 .build();
@@ -106,6 +108,7 @@ public class Application {
         IamGetUserRequest req = IamGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled")
                 .expand("roles,groups")
                 .build();
@@ -165,10 +168,12 @@ public class Application {
 
         IamListRolesRequest req = IamListRolesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,policies,description,created_at,updated_at")
                 .filter(IamListRolesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("policies")
                 .build();
@@ -229,6 +234,7 @@ public class Application {
         IamGetRoleRequest req = IamGetRoleRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,policies,description,created_at,updated_at")
                 .expand("policies")
                 .build();
@@ -288,10 +294,12 @@ public class Application {
 
         IamListGroupsRequest req = IamListGroupsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at")
                 .filter(IamListGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("roles")
                 .build();
@@ -352,6 +360,7 @@ public class Application {
         IamGetGroupRequest req = IamGetGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at")
                 .expand("roles")
                 .build();
@@ -411,10 +420,12 @@ public class Application {
 
         IamListPoliciesRequest req = IamListPoliciesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,permissions,description,created_at,updated_at")
                 .filter(IamListPoliciesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("permissions")
                 .build();
@@ -475,6 +486,7 @@ public class Application {
         IamGetPolicyRequest req = IamGetPolicyRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,permissions,description,created_at,updated_at")
                 .expand("permissions")
                 .build();

@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Deprecated;
-import java.lang.Double;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -193,20 +192,6 @@ public class HrisCreateEmployeeRequestDto {
     private JsonNullable<OffsetDateTime> startDate;
 
     /**
-     * The employee tenure
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("tenure")
-    private JsonNullable<Double> tenure;
-
-    /**
-     * The employee work anniversary
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("work_anniversary")
-    private JsonNullable<OffsetDateTime> workAnniversary;
-
-    /**
      * The employee employment type
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -259,10 +244,19 @@ public class HrisCreateEmployeeRequestDto {
 
     /**
      * The employee employments
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("employments")
+    @Deprecated
     private JsonNullable<? extends List<CreateEmploymentApiModel>> employments;
+
+    /**
+     * The employee employment
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("employment")
+    private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmployment> employment;
 
     /**
      * The employee custom fields
@@ -355,8 +349,6 @@ public class HrisCreateEmployeeRequestDto {
             @JsonProperty("avatar") JsonNullable<? extends HrisCreateEmployeeRequestDtoAvatar> avatar,
             @JsonProperty("hire_date") JsonNullable<OffsetDateTime> hireDate,
             @JsonProperty("start_date") JsonNullable<OffsetDateTime> startDate,
-            @JsonProperty("tenure") JsonNullable<Double> tenure,
-            @JsonProperty("work_anniversary") JsonNullable<OffsetDateTime> workAnniversary,
             @JsonProperty("employment_type") JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentType> employmentType,
             @JsonProperty("employment_contract_type") JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentContractType> employmentContractType,
             @JsonProperty("employment_status") JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentStatus> employmentStatus,
@@ -365,6 +357,7 @@ public class HrisCreateEmployeeRequestDto {
             @JsonProperty("company_id") JsonNullable<String> companyId,
             @JsonProperty("citizenships") JsonNullable<? extends List<CountryCodeEnum>> citizenships,
             @JsonProperty("employments") JsonNullable<? extends List<CreateEmploymentApiModel>> employments,
+            @JsonProperty("employment") JsonNullable<? extends HrisCreateEmployeeRequestDtoEmployment> employment,
             @JsonProperty("custom_fields") JsonNullable<? extends List<CustomFields>> customFields,
             @JsonProperty("benefits") JsonNullable<? extends List<CreateHRISBenefit>> benefits,
             @JsonProperty("employee_number") JsonNullable<String> employeeNumber,
@@ -398,8 +391,6 @@ public class HrisCreateEmployeeRequestDto {
         Utils.checkNotNull(avatar, "avatar");
         Utils.checkNotNull(hireDate, "hireDate");
         Utils.checkNotNull(startDate, "startDate");
-        Utils.checkNotNull(tenure, "tenure");
-        Utils.checkNotNull(workAnniversary, "workAnniversary");
         Utils.checkNotNull(employmentType, "employmentType");
         Utils.checkNotNull(employmentContractType, "employmentContractType");
         Utils.checkNotNull(employmentStatus, "employmentStatus");
@@ -408,6 +399,7 @@ public class HrisCreateEmployeeRequestDto {
         Utils.checkNotNull(companyId, "companyId");
         Utils.checkNotNull(citizenships, "citizenships");
         Utils.checkNotNull(employments, "employments");
+        Utils.checkNotNull(employment, "employment");
         Utils.checkNotNull(customFields, "customFields");
         Utils.checkNotNull(benefits, "benefits");
         Utils.checkNotNull(employeeNumber, "employeeNumber");
@@ -441,8 +433,6 @@ public class HrisCreateEmployeeRequestDto {
         this.avatar = avatar;
         this.hireDate = hireDate;
         this.startDate = startDate;
-        this.tenure = tenure;
-        this.workAnniversary = workAnniversary;
         this.employmentType = employmentType;
         this.employmentContractType = employmentContractType;
         this.employmentStatus = employmentStatus;
@@ -451,6 +441,7 @@ public class HrisCreateEmployeeRequestDto {
         this.companyId = companyId;
         this.citizenships = citizenships;
         this.employments = employments;
+        this.employment = employment;
         this.customFields = customFields;
         this.benefits = benefits;
         this.employeeNumber = employeeNumber;
@@ -463,7 +454,7 @@ public class HrisCreateEmployeeRequestDto {
     }
     
     public HrisCreateEmployeeRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -664,22 +655,6 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * The employee tenure
-     */
-    @JsonIgnore
-    public JsonNullable<Double> tenure() {
-        return tenure;
-    }
-
-    /**
-     * The employee work anniversary
-     */
-    @JsonIgnore
-    public JsonNullable<OffsetDateTime> workAnniversary() {
-        return workAnniversary;
-    }
-
-    /**
      * The employee employment type
      */
     @SuppressWarnings("unchecked")
@@ -743,11 +718,22 @@ public class HrisCreateEmployeeRequestDto {
 
     /**
      * The employee employments
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<List<CreateEmploymentApiModel>> employments() {
         return (JsonNullable<List<CreateEmploymentApiModel>>) employments;
+    }
+
+    /**
+     * The employee employment
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<HrisCreateEmployeeRequestDtoEmployment> employment() {
+        return (JsonNullable<HrisCreateEmployeeRequestDtoEmployment>) employment;
     }
 
     /**
@@ -1269,42 +1255,6 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * The employee tenure
-     */
-    public HrisCreateEmployeeRequestDto withTenure(double tenure) {
-        Utils.checkNotNull(tenure, "tenure");
-        this.tenure = JsonNullable.of(tenure);
-        return this;
-    }
-
-    /**
-     * The employee tenure
-     */
-    public HrisCreateEmployeeRequestDto withTenure(JsonNullable<Double> tenure) {
-        Utils.checkNotNull(tenure, "tenure");
-        this.tenure = tenure;
-        return this;
-    }
-
-    /**
-     * The employee work anniversary
-     */
-    public HrisCreateEmployeeRequestDto withWorkAnniversary(OffsetDateTime workAnniversary) {
-        Utils.checkNotNull(workAnniversary, "workAnniversary");
-        this.workAnniversary = JsonNullable.of(workAnniversary);
-        return this;
-    }
-
-    /**
-     * The employee work anniversary
-     */
-    public HrisCreateEmployeeRequestDto withWorkAnniversary(JsonNullable<OffsetDateTime> workAnniversary) {
-        Utils.checkNotNull(workAnniversary, "workAnniversary");
-        this.workAnniversary = workAnniversary;
-        return this;
-    }
-
-    /**
      * The employee employment type
      */
     public HrisCreateEmployeeRequestDto withEmploymentType(HrisCreateEmployeeRequestDtoEmploymentType employmentType) {
@@ -1436,7 +1386,9 @@ public class HrisCreateEmployeeRequestDto {
 
     /**
      * The employee employments
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateEmployeeRequestDto withEmployments(List<CreateEmploymentApiModel> employments) {
         Utils.checkNotNull(employments, "employments");
         this.employments = JsonNullable.of(employments);
@@ -1445,10 +1397,30 @@ public class HrisCreateEmployeeRequestDto {
 
     /**
      * The employee employments
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateEmployeeRequestDto withEmployments(JsonNullable<? extends List<CreateEmploymentApiModel>> employments) {
         Utils.checkNotNull(employments, "employments");
         this.employments = employments;
+        return this;
+    }
+
+    /**
+     * The employee employment
+     */
+    public HrisCreateEmployeeRequestDto withEmployment(HrisCreateEmployeeRequestDtoEmployment employment) {
+        Utils.checkNotNull(employment, "employment");
+        this.employment = JsonNullable.of(employment);
+        return this;
+    }
+
+    /**
+     * The employee employment
+     */
+    public HrisCreateEmployeeRequestDto withEmployment(JsonNullable<? extends HrisCreateEmployeeRequestDtoEmployment> employment) {
+        Utils.checkNotNull(employment, "employment");
+        this.employment = employment;
         return this;
     }
 
@@ -1652,8 +1624,6 @@ public class HrisCreateEmployeeRequestDto {
             Objects.deepEquals(this.avatar, other.avatar) &&
             Objects.deepEquals(this.hireDate, other.hireDate) &&
             Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.tenure, other.tenure) &&
-            Objects.deepEquals(this.workAnniversary, other.workAnniversary) &&
             Objects.deepEquals(this.employmentType, other.employmentType) &&
             Objects.deepEquals(this.employmentContractType, other.employmentContractType) &&
             Objects.deepEquals(this.employmentStatus, other.employmentStatus) &&
@@ -1662,6 +1632,7 @@ public class HrisCreateEmployeeRequestDto {
             Objects.deepEquals(this.companyId, other.companyId) &&
             Objects.deepEquals(this.citizenships, other.citizenships) &&
             Objects.deepEquals(this.employments, other.employments) &&
+            Objects.deepEquals(this.employment, other.employment) &&
             Objects.deepEquals(this.customFields, other.customFields) &&
             Objects.deepEquals(this.benefits, other.benefits) &&
             Objects.deepEquals(this.employeeNumber, other.employeeNumber) &&
@@ -1700,8 +1671,6 @@ public class HrisCreateEmployeeRequestDto {
             avatar,
             hireDate,
             startDate,
-            tenure,
-            workAnniversary,
             employmentType,
             employmentContractType,
             employmentStatus,
@@ -1710,6 +1679,7 @@ public class HrisCreateEmployeeRequestDto {
             companyId,
             citizenships,
             employments,
+            employment,
             customFields,
             benefits,
             employeeNumber,
@@ -1748,8 +1718,6 @@ public class HrisCreateEmployeeRequestDto {
                 "avatar", avatar,
                 "hireDate", hireDate,
                 "startDate", startDate,
-                "tenure", tenure,
-                "workAnniversary", workAnniversary,
                 "employmentType", employmentType,
                 "employmentContractType", employmentContractType,
                 "employmentStatus", employmentStatus,
@@ -1758,6 +1726,7 @@ public class HrisCreateEmployeeRequestDto {
                 "companyId", companyId,
                 "citizenships", citizenships,
                 "employments", employments,
+                "employment", employment,
                 "customFields", customFields,
                 "benefits", benefits,
                 "employeeNumber", employeeNumber,
@@ -1819,10 +1788,6 @@ public class HrisCreateEmployeeRequestDto {
  
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
  
-        private JsonNullable<Double> tenure = JsonNullable.undefined();
- 
-        private JsonNullable<OffsetDateTime> workAnniversary = JsonNullable.undefined();
- 
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentType> employmentType = JsonNullable.undefined();
  
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentContractType> employmentContractType = JsonNullable.undefined();
@@ -1838,7 +1803,10 @@ public class HrisCreateEmployeeRequestDto {
  
         private JsonNullable<? extends List<CountryCodeEnum>> citizenships = JsonNullable.undefined();
  
+        @Deprecated
         private JsonNullable<? extends List<CreateEmploymentApiModel>> employments = JsonNullable.undefined();
+ 
+        private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmployment> employment = JsonNullable.undefined();
  
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
  
@@ -2296,42 +2264,6 @@ public class HrisCreateEmployeeRequestDto {
         }
 
         /**
-         * The employee tenure
-         */
-        public Builder tenure(double tenure) {
-            Utils.checkNotNull(tenure, "tenure");
-            this.tenure = JsonNullable.of(tenure);
-            return this;
-        }
-
-        /**
-         * The employee tenure
-         */
-        public Builder tenure(JsonNullable<Double> tenure) {
-            Utils.checkNotNull(tenure, "tenure");
-            this.tenure = tenure;
-            return this;
-        }
-
-        /**
-         * The employee work anniversary
-         */
-        public Builder workAnniversary(OffsetDateTime workAnniversary) {
-            Utils.checkNotNull(workAnniversary, "workAnniversary");
-            this.workAnniversary = JsonNullable.of(workAnniversary);
-            return this;
-        }
-
-        /**
-         * The employee work anniversary
-         */
-        public Builder workAnniversary(JsonNullable<OffsetDateTime> workAnniversary) {
-            Utils.checkNotNull(workAnniversary, "workAnniversary");
-            this.workAnniversary = workAnniversary;
-            return this;
-        }
-
-        /**
          * The employee employment type
          */
         public Builder employmentType(HrisCreateEmployeeRequestDtoEmploymentType employmentType) {
@@ -2463,7 +2395,9 @@ public class HrisCreateEmployeeRequestDto {
 
         /**
          * The employee employments
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder employments(List<CreateEmploymentApiModel> employments) {
             Utils.checkNotNull(employments, "employments");
             this.employments = JsonNullable.of(employments);
@@ -2472,10 +2406,30 @@ public class HrisCreateEmployeeRequestDto {
 
         /**
          * The employee employments
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder employments(JsonNullable<? extends List<CreateEmploymentApiModel>> employments) {
             Utils.checkNotNull(employments, "employments");
             this.employments = employments;
+            return this;
+        }
+
+        /**
+         * The employee employment
+         */
+        public Builder employment(HrisCreateEmployeeRequestDtoEmployment employment) {
+            Utils.checkNotNull(employment, "employment");
+            this.employment = JsonNullable.of(employment);
+            return this;
+        }
+
+        /**
+         * The employee employment
+         */
+        public Builder employment(JsonNullable<? extends HrisCreateEmployeeRequestDtoEmployment> employment) {
+            Utils.checkNotNull(employment, "employment");
+            this.employment = employment;
             return this;
         }
 
@@ -2671,8 +2625,6 @@ public class HrisCreateEmployeeRequestDto {
                 avatar,
                 hireDate,
                 startDate,
-                tenure,
-                workAnniversary,
                 employmentType,
                 employmentContractType,
                 employmentStatus,
@@ -2681,6 +2633,7 @@ public class HrisCreateEmployeeRequestDto {
                 companyId,
                 citizenships,
                 employments,
+                employment,
                 customFields,
                 benefits,
                 employeeNumber,
