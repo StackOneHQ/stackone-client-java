@@ -6363,7 +6363,7 @@ public class Hris implements
 
 
     /**
-     * List locations
+     * List Work Locations
      * @return The call builder
      */
     public HrisListLocationsRequestBuilder listLocations() {
@@ -6371,7 +6371,7 @@ public class Hris implements
     }
 
     /**
-     * List locations
+     * List Work Locations
      * @param request The request object containing all of the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -6382,7 +6382,7 @@ public class Hris implements
     }
     
     /**
-     * List locations
+     * List Work Locations
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
@@ -6577,7 +6577,7 @@ public class Hris implements
 
 
     /**
-     * Get Location
+     * Get Work Location
      * @return The call builder
      */
     public HrisGetLocationRequestBuilder getLocation() {
@@ -6585,7 +6585,7 @@ public class Hris implements
     }
 
     /**
-     * Get Location
+     * Get Work Location
      * @param request The request object containing all of the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -6596,7 +6596,7 @@ public class Hris implements
     }
     
     /**
-     * Get Location
+     * Get Work Location
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
      * @return The response from the API call

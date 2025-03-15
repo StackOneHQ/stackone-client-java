@@ -324,10 +324,12 @@ public class Application {
 
         LmsListCoursesRequest req = LmsListCoursesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations")
                 .filter(LmsListCoursesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -517,6 +519,7 @@ public class Application {
         LmsGetCourseRequest req = LmsGetCourseRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations")
                 .build();
 
@@ -576,10 +579,12 @@ public class Application {
         LmsListUserAssignmentsRequest req = LmsListUserAssignmentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListUserAssignmentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .userId("c28xyrc55866bvuv")
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
@@ -653,7 +658,7 @@ public class Application {
                     .createdAt("2021-07-21T14:00:00.000Z")
                     .dueDate("2021-07-21T14:00:00.000Z")
                     .status(LmsCreateAssignmentRequestDtoStatus.builder()
-                        .value(LmsCreateAssignmentRequestDtoValue.PENDING)
+                        .value(LmsCreateAssignmentRequestDtoValue.IN_PROGRESS)
                         .build())
                     .build())
                 .call();
@@ -713,6 +718,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .raw(false)
                 .build();
 
         LmsGetUserAssignmentResponse res = sdk.lms().getUserAssignment()
@@ -1007,10 +1013,12 @@ public class Application {
 
         LmsListContentRequest req = LmsListContentRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags")
                 .filter(LmsListContentQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -1216,6 +1224,7 @@ public class Application {
         LmsGetContentRequest req = LmsGetContentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags")
                 .build();
 
@@ -1275,10 +1284,12 @@ public class Application {
         LmsListUserCompletionsRequest req = LmsListUserCompletionsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListUserCompletionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -1403,6 +1414,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .raw(false)
                 .build();
 
         LmsGetUserCompletionResponse res = sdk.lms().getUserCompletion()
@@ -1516,10 +1528,12 @@ public class Application {
 
         LmsListCompletionsRequest req = LmsListCompletionsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListCompletionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -1579,6 +1593,7 @@ public class Application {
         LmsGetCompletionRequest req = LmsGetCompletionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .build();
 
         LmsGetCompletionResponse res = sdk.lms().getCompletion()
@@ -1637,6 +1652,7 @@ public class Application {
         LmsGetCategoryRequest req = LmsGetCategoryRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active,hierarchy,level,language")
                 .build();
 
@@ -1695,10 +1711,12 @@ public class Application {
 
         LmsListCategoriesRequest req = LmsListCategoriesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active,hierarchy,level,language")
                 .filter(LmsListCategoriesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -1757,10 +1775,12 @@ public class Application {
 
         LmsListUsersRequest req = LmsListUsersRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name")
                 .filter(LmsListUsersQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -1820,6 +1840,7 @@ public class Application {
         LmsGetUserRequest req = LmsGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name")
                 .build();
 
@@ -1879,6 +1900,7 @@ public class Application {
         LmsGetSkillRequest req = LmsGetSkillRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active,hierarchy,language")
                 .build();
 
@@ -1937,10 +1959,12 @@ public class Application {
 
         LmsListSkillsRequest req = LmsListSkillsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active,hierarchy,language")
                 .filter(LmsListSkillsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -1999,10 +2023,12 @@ public class Application {
 
         LmsListAssignmentsRequest req = LmsListAssignmentsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListAssignmentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .userId("c28xyrc55866bvuv")
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
@@ -2064,6 +2090,7 @@ public class Application {
         LmsGetAssignmentRequest req = LmsGetAssignmentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .build();
 
         LmsGetAssignmentResponse res = sdk.lms().getAssignment()

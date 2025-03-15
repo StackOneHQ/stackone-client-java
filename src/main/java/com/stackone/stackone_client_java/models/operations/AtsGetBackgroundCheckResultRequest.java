@@ -6,8 +6,6 @@
 package com.stackone.stackone_client_java.models.operations;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.stackone.stackone_client_java.utils.LazySingletonValue;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Boolean;
@@ -31,7 +29,7 @@ public class AtsGetBackgroundCheckResultRequest {
     private String id;
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")
     private JsonNullable<Boolean> raw;
@@ -87,7 +85,7 @@ public class AtsGetBackgroundCheckResultRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     @JsonIgnore
     public JsonNullable<Boolean> raw() {
@@ -131,7 +129,7 @@ public class AtsGetBackgroundCheckResultRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     public AtsGetBackgroundCheckResultRequest withRaw(boolean raw) {
         Utils.checkNotNull(raw, "raw");
@@ -140,7 +138,7 @@ public class AtsGetBackgroundCheckResultRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     public AtsGetBackgroundCheckResultRequest withRaw(JsonNullable<Boolean> raw) {
         Utils.checkNotNull(raw, "raw");
@@ -227,7 +225,7 @@ public class AtsGetBackgroundCheckResultRequest {
  
         private String id;
  
-        private JsonNullable<Boolean> raw;
+        private JsonNullable<Boolean> raw = JsonNullable.undefined();
  
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
  
@@ -253,7 +251,7 @@ public class AtsGetBackgroundCheckResultRequest {
         }
 
         /**
-         * Indicates that the raw request result is returned
+         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
          */
         public Builder raw(boolean raw) {
             Utils.checkNotNull(raw, "raw");
@@ -262,7 +260,7 @@ public class AtsGetBackgroundCheckResultRequest {
         }
 
         /**
-         * Indicates that the raw request result is returned
+         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
          */
         public Builder raw(JsonNullable<Boolean> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -307,21 +305,13 @@ public class AtsGetBackgroundCheckResultRequest {
         }
         
         public AtsGetBackgroundCheckResultRequest build() {
-            if (raw == null) {
-                raw = _SINGLETON_VALUE_Raw.value();
-            }            return new AtsGetBackgroundCheckResultRequest(
+            return new AtsGetBackgroundCheckResultRequest(
                 xAccountId,
                 id,
                 raw,
                 proxy,
                 fields);
         }
-
-        private static final LazySingletonValue<JsonNullable<Boolean>> _SINGLETON_VALUE_Raw =
-                new LazySingletonValue<>(
-                        "raw",
-                        "false",
-                        new TypeReference<JsonNullable<Boolean>>() {});
     }
 }
 
