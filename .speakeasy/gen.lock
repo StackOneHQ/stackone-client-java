@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: eb73fece924f27539cc805c510372de2
+  docChecksum: 6a01ef75ab483184abef621f3adc8913
   docVersion: 1.0.0
   speakeasyVersion: 1.520.2
   generationVersion: 2.556.1
-  releaseVersion: 0.3.0
-  configChecksum: 7b0d73efaabac6be1072fa1531756da5
+  releaseVersion: 0.3.1
+  configChecksum: ab27fc9f962c64f4dcd45d86dda32814
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -1644,6 +1644,8 @@ generatedFiles:
   - docs/models/operations/HrisUpdateEmployeeEmploymentResponse.md
   - docs/models/operations/HrisUpdateEmployeeRequest.md
   - docs/models/operations/HrisUpdateEmployeeResponse.md
+  - docs/models/operations/HrisUpdateEmployeeTimeOffRequestRequest.md
+  - docs/models/operations/HrisUpdateEmployeeTimeOffRequestResponse.md
   - docs/models/operations/HrisUpdateEmployeeWorkEligibilityRequestRequest.md
   - docs/models/operations/HrisUpdateEmployeeWorkEligibilityRequestResponse.md
   - docs/models/operations/HrisUpdateTimeOffRequestRequest.md
@@ -3599,6 +3601,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTimeOffRequestRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTimeOffRequestRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTimeOffRequestResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeWorkEligibilityRequestRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeWorkEligibilityRequestResponse.java
@@ -6671,5 +6676,18 @@ examples:
       responses:
         "200":
           application/json: {"primary_email_address": "han@stackone.com", "first_name": "Han", "last_name": "Solo", "name": "Han Solo", "username": "hansolo1977", "is_bot_user": true, "status": {"value": "enabled"}, "passthrough": {"other_known_names": "John Doe"}}
+  hris_update_employee_time_off_request:
+    speakeasy-default-hris-update-employee-time-off-request:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"employee_id": "1687-3", "approver_id": "1687-4", "start_date": "2021-01-01T01:01:01.000Z", "end_date": "2021-01-01T01:01:01.000Z", "start_half_day": true, "end_half_day": true, "time_off_policy_id": "cx280928933", "reason": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "passthrough": {"other_known_names": "John Doe"}}
+      responses:
+        "200":
+          application/json: {"statusCode": 201, "message": "Record created successfully.", "timestamp": "2021-01-01T01:01:01.000Z", "data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
 examplesVersion: 1.0.0
 generatedTests: {}

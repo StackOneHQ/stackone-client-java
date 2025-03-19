@@ -227,6 +227,9 @@ import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeEmp
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeRequest;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeResponse;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestRequest;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestResponse;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeWorkEligibilityRequestRequest;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeWorkEligibilityRequestResponse;
@@ -251,6 +254,7 @@ import com.stackone.stackone_client_java.utils.SerializedBody;
 import com.stackone.stackone_client_java.utils.Utils.JsonShape;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
+import java.lang.Deprecated;
 import java.lang.Exception;
 import java.lang.Object;
 import java.lang.String;
@@ -278,6 +282,7 @@ public class Hris implements
             MethodCallHrisListEmployeeTimeOffRequests,
             MethodCallHrisCreateEmployeeTimeOffRequest,
             MethodCallHrisGetEmployeesTimeOffRequest,
+            MethodCallHrisUpdateEmployeeTimeOffRequest,
             MethodCallHrisBatchUploadEmployeeDocument,
             MethodCallHrisUploadEmployeeDocument,
             MethodCallHrisDownloadEmployeeDocument,
@@ -2580,6 +2585,209 @@ public class Hris implements
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<TimeOffResult>() {});
                 _res.withTimeOffResult(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
+     * Update Employee Time Off Request
+     * @return The call builder
+     */
+    public HrisUpdateEmployeeTimeOffRequestRequestBuilder updateEmployeeTimeOffRequest() {
+        return new HrisUpdateEmployeeTimeOffRequestRequestBuilder(this);
+    }
+
+    /**
+     * Update Employee Time Off Request
+     * @param xAccountId The account identifier
+     * @param id
+     * @param subResourceId
+     * @param hrisCreateTimeOffRequestDto
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) throws Exception {
+        return updateEmployeeTimeOffRequest(xAccountId, id, subResourceId, hrisCreateTimeOffRequestDto, Optional.empty());
+    }
+    
+    /**
+     * Update Employee Time Off Request
+     * @param xAccountId The account identifier
+     * @param id
+     * @param subResourceId
+     * @param hrisCreateTimeOffRequestDto
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<Options> options) throws Exception {
+
+        if (options.isPresent()) {
+          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
+        }
+        HrisUpdateEmployeeTimeOffRequestRequest request =
+            HrisUpdateEmployeeTimeOffRequestRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .subResourceId(subResourceId)
+                .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
+                .build();
+        
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                HrisUpdateEmployeeTimeOffRequestRequest.class,
+                _baseUrl,
+                "/unified/hris/employees/{id}/time_off/{subResourceId}",
+                request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
+        Object _convertedRequest = Utils.convertToShape(
+                request, 
+                JsonShape.DEFAULT,
+                new TypeReference<Object>() {});
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
+                _convertedRequest, 
+                "hrisCreateTimeOffRequestDto",
+                "json",
+                false);
+        if (_serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HTTPRequest _finalReq = _req;
+        RetryConfig _retryConfig;
+        if (options.isPresent() && options.get().retryConfig().isPresent()) {
+            _retryConfig = options.get().retryConfig().get();
+        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else {
+            _retryConfig = RetryConfig.builder()
+                .backoff(BackoffStrategy.builder()
+                            .initialInterval(500, TimeUnit.MILLISECONDS)
+                            .maxInterval(60000, TimeUnit.MILLISECONDS)
+                            .baseFactor((double)(1.5))
+                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
+                            .retryConnectError(true)
+                            .build())
+                .build();
+        }
+        List<String> _statusCodes = new ArrayList<>();
+        _statusCodes.add("429");
+        _statusCodes.add("408");
+        Retries _retries = Retries.builder()
+            .action(() -> {
+                HttpRequest _r = null;
+                try {
+                    _r = sdkConfiguration.hooks()
+                        .beforeRequest(
+                            new BeforeRequestContextImpl(
+                                "hris_update_employee_time_off_request", 
+                                Optional.of(List.of()), 
+                                _hookSecuritySource),
+                            _finalReq.build());
+                } catch (Exception _e) {
+                    throw new NonRetryableException(_e);
+                }
+                try {
+                    return _client.send(_r);
+                } catch (Exception _e) {
+                    return sdkConfiguration.hooks()
+                        .afterError(
+                            new AfterErrorContextImpl(
+                                "hris_update_employee_time_off_request",
+                                 Optional.of(List.of()),
+                                 _hookSecuritySource), 
+                            Optional.empty(),
+                            Optional.of(_e));
+                }
+            })
+            .retryConfig(_retryConfig)
+            .statusCodes(_statusCodes)
+            .build();
+        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
+                 .afterSuccess(
+                     new AfterSuccessContextImpl(
+                         "hris_update_employee_time_off_request", 
+                         Optional.of(List.of()), 
+                         _hookSecuritySource),
+                     _retries.run());
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        HrisUpdateEmployeeTimeOffRequestResponse.Builder _resBuilder = 
+            HrisUpdateEmployeeTimeOffRequestResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        HrisUpdateEmployeeTimeOffRequestResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                CreateResult _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<CreateResult>() {});
+                _res.withCreateResult(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new SDKError(
@@ -7488,7 +7696,9 @@ public class Hris implements
     /**
      * List time off types
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisListTimeOffTypesRequestBuilder listTimeOffTypes() {
         return new HrisListTimeOffTypesRequestBuilder(this);
     }
@@ -7498,7 +7708,9 @@ public class Hris implements
      * @param request The request object containing all of the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisListTimeOffTypesResponse listTimeOffTypes(
             HrisListTimeOffTypesRequest request) throws Exception {
         return listTimeOffTypes(request, Optional.empty());
@@ -7510,7 +7722,9 @@ public class Hris implements
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisListTimeOffTypesResponse listTimeOffTypes(
             HrisListTimeOffTypesRequest request,
             Optional<Options> options) throws Exception {
@@ -7698,7 +7912,9 @@ public class Hris implements
     /**
      * Get time off type
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisGetTimeOffTypeRequestBuilder getTimeOffType() {
         return new HrisGetTimeOffTypeRequestBuilder(this);
     }
@@ -7708,7 +7924,9 @@ public class Hris implements
      * @param request The request object containing all of the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisGetTimeOffTypeResponse getTimeOffType(
             HrisGetTimeOffTypeRequest request) throws Exception {
         return getTimeOffType(request, Optional.empty());
@@ -7720,7 +7938,9 @@ public class Hris implements
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisGetTimeOffTypeResponse getTimeOffType(
             HrisGetTimeOffTypeRequest request,
             Optional<Options> options) throws Exception {

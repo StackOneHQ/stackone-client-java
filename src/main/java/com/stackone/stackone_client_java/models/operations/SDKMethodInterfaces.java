@@ -223,6 +223,16 @@ public class SDKMethodInterfaces {
     }
 
 
+    public interface MethodCallHrisUpdateEmployeeTimeOffRequest {
+        HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<Options> options) throws Exception;
+    }
+
+
     public interface MethodCallHrisBatchUploadEmployeeDocument {
         HrisBatchUploadEmployeeDocumentResponse batchUploadEmployeeDocument(
             String xAccountId,

@@ -17,6 +17,7 @@
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
+* [updateEmployeeTimeOffRequest](#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [batchUploadEmployeeDocument](#batchuploademployeedocument) - Batch Upload Employee Document
 * [uploadEmployeeDocument](#uploademployeedocument) - Upload Employee Document
 * [downloadEmployeeDocument](#downloademployeedocument) - Download Employee Document
@@ -42,8 +43,8 @@
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
 * [updateTimeOffRequest](#updatetimeoffrequest) - Update time off request
-* [listTimeOffTypes](#listtimeofftypes) - List time off types
-* [getTimeOffType](#gettimeofftype) - Get time off type
+* [~~listTimeOffTypes~~](#listtimeofftypes) - List time off types :warning: **Deprecated**
+* [~~getTimeOffType~~](#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [listTimeEntries](#listtimeentries) - List Time Entries
 * [getTimeEntries](#gettimeentries) - Get Time Entry
 * [listBenefits](#listbenefits) - List benefits
@@ -1271,6 +1272,84 @@ public class Application {
 ### Response
 
 **[HrisGetEmployeesTimeOffRequestResponse](../../models/operations/HrisGetEmployeesTimeOffRequestResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## updateEmployeeTimeOffRequest
+
+Update Employee Time Off Request
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
+import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoEndHalfDay;
+import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoReason;
+import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoStartHalfDay;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestResponse;
+import java.lang.Exception;
+import java.time.OffsetDateTime;
+import java.util.Map;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        HrisUpdateEmployeeTimeOffRequestResponse res = sdk.hris().updateEmployeeTimeOffRequest()
+                .xAccountId("<id>")
+                .id("<id>")
+                .subResourceId("<id>")
+                .hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto.builder()
+                    .employeeId("1687-3")
+                    .approverId("1687-4")
+                    .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
+                    .endDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
+                    .startHalfDay(HrisCreateTimeOffRequestDtoStartHalfDay.of(true))
+                    .endHalfDay(HrisCreateTimeOffRequestDtoEndHalfDay.of(true))
+                    .timeOffPolicyId("cx280928933")
+                    .reason(HrisCreateTimeOffRequestDtoReason.builder()
+                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .build())
+                    .passthrough(Map.ofEntries(
+                        Map.entry("other_known_names", "John Doe")))
+                    .build())
+                .call();
+
+        if (res.createResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                          | *String*                                                                              | :heavy_check_mark:                                                                    | The account identifier                                                                |
+| `id`                                                                                  | *String*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `subResourceId`                                                                       | *String*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `hrisCreateTimeOffRequestDto`                                                         | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+
+### Response
+
+**[HrisUpdateEmployeeTimeOffRequestResponse](../../models/operations/HrisUpdateEmployeeTimeOffRequestResponse.md)**
 
 ### Errors
 
@@ -3017,9 +3096,11 @@ public class Application {
 | ---------------------- | ---------------------- | ---------------------- |
 | models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
-## listTimeOffTypes
+## ~~listTimeOffTypes~~
 
 List time off types
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -3081,9 +3162,11 @@ public class Application {
 | ---------------------- | ---------------------- | ---------------------- |
 | models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
-## getTimeOffType
+## ~~getTimeOffType~~
 
 Get time off type
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
