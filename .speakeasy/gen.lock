@@ -3,17 +3,17 @@ id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
   docChecksum: eb73fece924f27539cc805c510372de2
   docVersion: 1.0.0
-  speakeasyVersion: 1.517.0
-  generationVersion: 2.548.1
-  releaseVersion: 0.2.1
-  configChecksum: b1a527930eae5d4fd0ff535924883c48
+  speakeasyVersion: 1.520.2
+  generationVersion: 2.556.1
+  releaseVersion: 0.3.0
+  configChecksum: 7b0d73efaabac6be1072fa1531756da5
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.34.0
+    core: 3.35.1
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.5
@@ -25,7 +25,7 @@ features:
     nameOverrides: 2.81.3
     nullables: 0.1.0
     openEnums: 0.2.0
-    pagination: 0.2.2
+    pagination: 0.3.0
     retries: 0.1.1
     sdkHooks: 0.1.0
     unions: 0.0.6
@@ -1830,6 +1830,7 @@ generatedFiles:
   - docs/sdks/marketing/README.md
   - docs/sdks/proxy/README.md
   - docs/sdks/stackone/README.md
+  - gradle.properties
   - gradle/wrapper/gradle-wrapper.jar
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew

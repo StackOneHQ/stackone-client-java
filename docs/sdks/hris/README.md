@@ -104,9 +104,9 @@ public class Application {
         sdk.hris().listCompanies()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -361,9 +361,9 @@ public class Application {
         sdk.hris().listEmployees()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -672,17 +672,17 @@ public class Application {
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
-                            .distributionPercentage(100d)
+                            .distributionPercentage(100)
                             .build(),
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
-                            .distributionPercentage(100d)
+                            .distributionPercentage(100)
                             .build(),
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
-                            .distributionPercentage(100d)
+                            .distributionPercentage(100)
                             .build()))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -1117,9 +1117,9 @@ public class Application {
         sdk.hris().listEmployeeTimeOffRequests()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1520,9 +1520,9 @@ public class Application {
         sdk.hris().listEmployeeDocuments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1645,9 +1645,9 @@ public class Application {
         sdk.hris().listEmployeeCategories()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1770,9 +1770,9 @@ public class Application {
         sdk.hris().listEmployeeWorkEligibility()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2087,9 +2087,9 @@ public class Application {
         sdk.hris().listEmployeeTimeOffBalances()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2214,9 +2214,9 @@ public class Application {
         sdk.hris().listEmployments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2341,9 +2341,9 @@ public class Application {
         sdk.hris().listEmployeeEmployments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2659,9 +2659,9 @@ public class Application {
         sdk.hris().listLocations()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2783,9 +2783,9 @@ public class Application {
         sdk.hris().listTimeOffRequests()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3057,9 +3057,9 @@ public class Application {
         sdk.hris().listTimeOffTypes()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3183,9 +3183,9 @@ public class Application {
         sdk.hris().listTimeEntries()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3307,9 +3307,9 @@ public class Application {
         sdk.hris().listBenefits()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3431,9 +3431,9 @@ public class Application {
         sdk.hris().listGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3495,9 +3495,9 @@ public class Application {
         sdk.hris().listDepartmentGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3559,9 +3559,9 @@ public class Application {
         sdk.hris().listCostCenterGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3623,9 +3623,9 @@ public class Application {
         sdk.hris().listTeamGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3927,9 +3927,9 @@ public class Application {
         sdk.hris().listJobs()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -4052,9 +4052,9 @@ public class Application {
         sdk.hris().listEmployeeSkills()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -4249,9 +4249,9 @@ public class Application {
         sdk.hris().listTimeOffPolicies()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }

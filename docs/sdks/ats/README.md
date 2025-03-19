@@ -122,9 +122,9 @@ public class Application {
         sdk.ats().listApplications()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -499,9 +499,9 @@ public class Application {
         sdk.ats().listApplicationsOffers()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -749,9 +749,9 @@ public class Application {
         sdk.ats().listApplicationScorecards()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -875,9 +875,9 @@ public class Application {
         sdk.ats().listApplicationNotes()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1165,9 +1165,9 @@ public class Application {
         sdk.ats().listApplicationsScheduledInterviews()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1430,9 +1430,9 @@ public class Application {
         sdk.ats().listApplicationDocuments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1557,9 +1557,9 @@ public class Application {
         sdk.ats().listCandidates()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1909,9 +1909,9 @@ public class Application {
         sdk.ats().listCandidateNotes()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2109,9 +2109,9 @@ public class Application {
         sdk.ats().listApplicationCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2239,9 +2239,9 @@ public class Application {
         sdk.ats().listCandidateCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2369,9 +2369,9 @@ public class Application {
         sdk.ats().listJobCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2499,9 +2499,9 @@ public class Application {
         sdk.ats().listDepartments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2623,9 +2623,9 @@ public class Application {
         sdk.ats().listInterviewStages()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2748,9 +2748,9 @@ public class Application {
         sdk.ats().listInterviews()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2875,9 +2875,9 @@ public class Application {
         sdk.ats().listJobs()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3273,9 +3273,9 @@ public class Application {
         sdk.ats().listLists()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3397,9 +3397,9 @@ public class Application {
         sdk.ats().listLocations()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3521,9 +3521,9 @@ public class Application {
         sdk.ats().listRejectedReasons()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3645,9 +3645,9 @@ public class Application {
         sdk.ats().listUsers()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3771,9 +3771,9 @@ public class Application {
         sdk.ats().listJobPostings()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3896,9 +3896,9 @@ public class Application {
         sdk.ats().listOffers()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -4100,9 +4100,9 @@ public class Application {
         sdk.ats().listAssessmentsPackages()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -4582,9 +4582,9 @@ public class Application {
         sdk.ats().listBackgroundCheckPackages()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -4913,9 +4913,9 @@ public class Application {
         sdk.ats().listBackgroundCheckRequest()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }

@@ -5,7 +5,9 @@
 package com.stackone.stackone_client_java;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.ReadContext;
 import com.stackone.stackone_client_java.models.components.CampaignResult;
 import com.stackone.stackone_client_java.models.components.CampaignsPaginated;
@@ -295,12 +297,13 @@ public class Marketing implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -308,15 +311,10 @@ public class Marketing implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     MarketingListEmailTemplatesRequestBuilder _ret = listEmailTemplates();
@@ -1072,12 +1070,13 @@ public class Marketing implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1085,15 +1084,10 @@ public class Marketing implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     MarketingListInAppTemplatesRequestBuilder _ret = listInAppTemplates();
@@ -1849,12 +1843,13 @@ public class Marketing implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1862,15 +1857,10 @@ public class Marketing implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     MarketingListSmsTemplatesRequestBuilder _ret = listSmsTemplates();
@@ -2632,12 +2622,13 @@ public class Marketing implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -2645,15 +2636,10 @@ public class Marketing implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     MarketingListOmniChannelTemplatesRequestBuilder _ret = listOmniChannelTemplates();
@@ -3427,12 +3413,13 @@ public class Marketing implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -3440,15 +3427,10 @@ public class Marketing implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     MarketingListPushTemplatesRequestBuilder _ret = listPushTemplates();
@@ -4204,12 +4186,13 @@ public class Marketing implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -4217,15 +4200,10 @@ public class Marketing implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     MarketingListCampaignsRequestBuilder _ret = listCampaigns();
@@ -4592,12 +4570,13 @@ public class Marketing implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -4605,15 +4584,10 @@ public class Marketing implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     MarketingListContentBlocksRequestBuilder _ret = listContentBlocks();
