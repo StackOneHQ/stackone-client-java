@@ -28,7 +28,7 @@ public class RawResponse {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("body")
-    private JsonNullable<String> body;
+    private JsonNullable<? extends Object> body;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("response")
@@ -38,7 +38,7 @@ public class RawResponse {
     public RawResponse(
             @JsonProperty("method") String method,
             @JsonProperty("url") String url,
-            @JsonProperty("body") JsonNullable<String> body,
+            @JsonProperty("body") JsonNullable<? extends Object> body,
             @JsonProperty("response") JsonNullable<? extends Map<String, Object>> response) {
         Utils.checkNotNull(method, "method");
         Utils.checkNotNull(url, "url");
@@ -66,9 +66,10 @@ public class RawResponse {
         return url;
     }
 
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<String> body() {
-        return body;
+    public JsonNullable<Object> body() {
+        return (JsonNullable<Object>) body;
     }
 
     @SuppressWarnings("unchecked")
@@ -93,13 +94,13 @@ public class RawResponse {
         return this;
     }
 
-    public RawResponse withBody(String body) {
+    public RawResponse withBody(Object body) {
         Utils.checkNotNull(body, "body");
         this.body = JsonNullable.of(body);
         return this;
     }
 
-    public RawResponse withBody(JsonNullable<String> body) {
+    public RawResponse withBody(JsonNullable<? extends Object> body) {
         Utils.checkNotNull(body, "body");
         this.body = body;
         return this;
@@ -157,7 +158,7 @@ public class RawResponse {
  
         private String url;
  
-        private JsonNullable<String> body = JsonNullable.undefined();
+        private JsonNullable<? extends Object> body = JsonNullable.undefined();
  
         private JsonNullable<? extends Map<String, Object>> response = JsonNullable.undefined();  
         
@@ -177,13 +178,13 @@ public class RawResponse {
             return this;
         }
 
-        public Builder body(String body) {
+        public Builder body(Object body) {
             Utils.checkNotNull(body, "body");
             this.body = JsonNullable.of(body);
             return this;
         }
 
-        public Builder body(JsonNullable<String> body) {
+        public Builder body(JsonNullable<? extends Object> body) {
             Utils.checkNotNull(body, "body");
             this.body = body;
             return this;

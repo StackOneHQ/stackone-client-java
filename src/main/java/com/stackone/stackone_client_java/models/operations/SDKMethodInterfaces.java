@@ -33,6 +33,7 @@ import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibi
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisInviteEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDto;
+import com.stackone.stackone_client_java.models.components.IamUpdateUserRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsBatchUpsertContentRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsBatchUpsertCourseRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDto;
@@ -1189,6 +1190,23 @@ public class SDKMethodInterfaces {
     public interface MethodCallIamGetUser {
         IamGetUserResponse getUser(
             IamGetUserRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamDeleteUser {
+        IamDeleteUserResponse deleteUser(
+            String xAccountId,
+            String id,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallIamUpdateUser {
+        IamUpdateUserResponse updateUser(
+            String xAccountId,
+            String id,
+            IamUpdateUserRequestDto iamUpdateUserRequestDto,
             Optional<Options> options) throws Exception;
     }
 

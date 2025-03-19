@@ -43,7 +43,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.1.3'
+implementation 'com.stackone:stackone-client-java:0.2.1'
 ```
 
 Maven:
@@ -51,7 +51,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.1.3</version>
+    <version>0.2.1</version>
 </dependency>
 ```
 
@@ -97,10 +97,12 @@ public class Application {
 
         HrisListEmployeesRequest req = HrisListEmployeesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills")
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
@@ -263,8 +265,8 @@ public class Application {
 * [createEmployeeEmployment](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
 * [getEmployeeEmployment](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
 * [updateEmployeeEmployment](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
-* [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
-* [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
+* [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
+* [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 * [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
@@ -295,6 +297,8 @@ public class Application {
 
 * [listUsers](docs/sdks/iam/README.md#listusers) - List Users
 * [getUser](docs/sdks/iam/README.md#getuser) - Get User
+* [deleteUser](docs/sdks/iam/README.md#deleteuser) - Delete User
+* [updateUser](docs/sdks/iam/README.md#updateuser) - Update User
 * [listRoles](docs/sdks/iam/README.md#listroles) - List Roles
 * [getRole](docs/sdks/iam/README.md#getrole) - Get Role
 * [listGroups](docs/sdks/iam/README.md#listgroups) - List Groups
@@ -399,10 +403,12 @@ public class Application {
 
         HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
                 .filter(Filter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 

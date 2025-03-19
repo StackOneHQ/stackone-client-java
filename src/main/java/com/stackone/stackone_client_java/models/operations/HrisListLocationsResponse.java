@@ -41,7 +41,7 @@ public class HrisListLocationsResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The list of Locations was retrieved.
+     * The list of work locations was retrieved.
      */
     private Optional<? extends HRISLocationsPaginated> hrisLocationsPaginated;
 
@@ -101,7 +101,7 @@ public class HrisListLocationsResponse implements Response {
     }
 
     /**
-     * The list of Locations was retrieved.
+     * The list of work locations was retrieved.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -156,7 +156,7 @@ public class HrisListLocationsResponse implements Response {
     }
 
     /**
-     * The list of Locations was retrieved.
+     * The list of work locations was retrieved.
      */
     public HrisListLocationsResponse withHRISLocationsPaginated(HRISLocationsPaginated hrisLocationsPaginated) {
         Utils.checkNotNull(hrisLocationsPaginated, "hrisLocationsPaginated");
@@ -165,7 +165,7 @@ public class HrisListLocationsResponse implements Response {
     }
 
     /**
-     * The list of Locations was retrieved.
+     * The list of work locations was retrieved.
      */
     public HrisListLocationsResponse withHRISLocationsPaginated(Optional<? extends HRISLocationsPaginated> hrisLocationsPaginated) {
         Utils.checkNotNull(hrisLocationsPaginated, "hrisLocationsPaginated");
@@ -261,7 +261,7 @@ public class HrisListLocationsResponse implements Response {
         }
 
         /**
-         * The list of Locations was retrieved.
+         * The list of work locations was retrieved.
          */
         public Builder hrisLocationsPaginated(HRISLocationsPaginated hrisLocationsPaginated) {
             Utils.checkNotNull(hrisLocationsPaginated, "hrisLocationsPaginated");
@@ -270,7 +270,7 @@ public class HrisListLocationsResponse implements Response {
         }
 
         /**
-         * The list of Locations was retrieved.
+         * The list of work locations was retrieved.
          */
         public Builder hrisLocationsPaginated(Optional<? extends HRISLocationsPaginated> hrisLocationsPaginated) {
             Utils.checkNotNull(hrisLocationsPaginated, "hrisLocationsPaginated");

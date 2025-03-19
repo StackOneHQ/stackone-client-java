@@ -6,8 +6,6 @@
 package com.stackone.stackone_client_java.models.operations;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.stackone.stackone_client_java.utils.LazySingletonValue;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Boolean;
@@ -28,7 +26,7 @@ public class HrisGetEmployeesWorkEligibilityRequest {
     private String subResourceId;
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")
     private JsonNullable<Boolean> raw;
@@ -91,7 +89,7 @@ public class HrisGetEmployeesWorkEligibilityRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     @JsonIgnore
     public JsonNullable<Boolean> raw() {
@@ -140,7 +138,7 @@ public class HrisGetEmployeesWorkEligibilityRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     public HrisGetEmployeesWorkEligibilityRequest withRaw(boolean raw) {
         Utils.checkNotNull(raw, "raw");
@@ -149,7 +147,7 @@ public class HrisGetEmployeesWorkEligibilityRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     public HrisGetEmployeesWorkEligibilityRequest withRaw(JsonNullable<Boolean> raw) {
         Utils.checkNotNull(raw, "raw");
@@ -248,7 +246,7 @@ public class HrisGetEmployeesWorkEligibilityRequest {
  
         private String subResourceId;
  
-        private JsonNullable<Boolean> raw;
+        private JsonNullable<Boolean> raw = JsonNullable.undefined();
  
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
  
@@ -273,7 +271,7 @@ public class HrisGetEmployeesWorkEligibilityRequest {
         }
 
         /**
-         * Indicates that the raw request result is returned
+         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
          */
         public Builder raw(boolean raw) {
             Utils.checkNotNull(raw, "raw");
@@ -282,7 +280,7 @@ public class HrisGetEmployeesWorkEligibilityRequest {
         }
 
         /**
-         * Indicates that the raw request result is returned
+         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
          */
         public Builder raw(JsonNullable<Boolean> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -336,9 +334,7 @@ public class HrisGetEmployeesWorkEligibilityRequest {
         }
         
         public HrisGetEmployeesWorkEligibilityRequest build() {
-            if (raw == null) {
-                raw = _SINGLETON_VALUE_Raw.value();
-            }            return new HrisGetEmployeesWorkEligibilityRequest(
+            return new HrisGetEmployeesWorkEligibilityRequest(
                 id,
                 subResourceId,
                 raw,
@@ -346,12 +342,6 @@ public class HrisGetEmployeesWorkEligibilityRequest {
                 fields,
                 xAccountId);
         }
-
-        private static final LazySingletonValue<JsonNullable<Boolean>> _SINGLETON_VALUE_Raw =
-                new LazySingletonValue<>(
-                        "raw",
-                        "false",
-                        new TypeReference<JsonNullable<Boolean>>() {});
     }
 }
 
