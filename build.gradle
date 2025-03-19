@@ -41,7 +41,7 @@ model {
 
 jar {
     dependsOn(":generatePomFileForMavenPublication")
-    archiveBaseName = "stackone-client-java"
+    archiveBaseName = "${artifactId}"
 
     into("META-INF/maven/com.stackone/stackone-client-java") {
         from("$buildDir/pom.xml")
@@ -62,15 +62,12 @@ tasks.withType(Javadoc) {
   options.addStringOption('Xdoclint:none', '-quiet')
 }
 
-group = "com.stackone"
-version = "0.2.1"
-
 sourcesJar {
-    archiveBaseName = "stackone-client-java"
+    archiveBaseName = "${artifactId}"
 }
 
 javadocJar {
-    archiveBaseName = "stackone-client-java"
+    archiveBaseName = "${artifactId}"
 }
 sonatypeCentralUpload {
     // This is your Sonatype generated username
@@ -80,9 +77,9 @@ sonatypeCentralUpload {
 
     // This is a list of files to upload. Ideally you would point to your jar file, source and javadoc jar (required by central)
     archives = files(
-      "$buildDir/libs/stackone-client-java-${version}.jar",
-      "$buildDir/libs/stackone-client-java-${version}-sources.jar",
-      "$buildDir/libs/stackone-client-java-${version}-javadoc.jar"
+      "$buildDir/libs/${artifactId}-${version}.jar",
+      "$buildDir/libs/${artifactId}-${version}-sources.jar",
+      "$buildDir/libs/${artifactId}-${version}-javadoc.jar"
     )
 
     // This is the pom file to upload. This is required by central
@@ -99,9 +96,11 @@ publishing {
 
     publications {
         maven(MavenPublication) {
-            groupId = 'com.stackone'
-            artifactId = 'stackone-client-java'
-            version = '0.2.1'
+            // note that properties can't yet be used below!
+            // https://github.com/gradle/gradle/issues/18619
+            groupId = "com.stackone"
+            artifactId = "stackone-client-java"
+            version = "0.3.0"
 
             from components.java
 

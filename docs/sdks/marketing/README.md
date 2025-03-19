@@ -72,9 +72,9 @@ public class Application {
         sdk.marketing().listEmailTemplates()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -352,9 +352,9 @@ public class Application {
         sdk.marketing().listInAppTemplates()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -632,9 +632,9 @@ public class Application {
         sdk.marketing().listSmsTemplates()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -922,9 +922,9 @@ public class Application {
         sdk.marketing().listOmniChannelTemplates()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1212,9 +1212,9 @@ public class Application {
         sdk.marketing().listPushTemplates()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1516,9 +1516,9 @@ public class Application {
         sdk.marketing().listCampaigns()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1640,9 +1640,9 @@ public class Application {
         sdk.marketing().listContentBlocks()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }

@@ -5,7 +5,9 @@
 package com.stackone.stackone_client_java;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.ReadContext;
 import com.stackone.stackone_client_java.models.components.AssignmentResult;
 import com.stackone.stackone_client_java.models.components.AssignmentsPaginated;
@@ -494,12 +496,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -507,15 +510,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     LmsListCoursesRequestBuilder _ret = listCourses();
@@ -1075,12 +1073,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1089,15 +1088,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                     
@@ -1858,12 +1852,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1871,15 +1866,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     LmsListContentRequestBuilder _ret = listContent();
@@ -2439,12 +2429,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -2453,15 +2444,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     LmsListUserCompletionsRequestBuilder _ret = listUserCompletions();
@@ -3216,12 +3202,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -3229,15 +3216,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     LmsListCompletionsRequestBuilder _ret = listCompletions();
@@ -3778,12 +3760,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -3791,15 +3774,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     LmsListCategoriesRequestBuilder _ret = listCategories();
@@ -3992,12 +3970,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -4005,15 +3984,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     LmsListUsersRequestBuilder _ret = listUsers();
@@ -4554,12 +4528,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -4567,15 +4542,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     LmsListSkillsRequestBuilder _ret = listSkills();
@@ -4768,12 +4738,13 @@ public class Lms implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -4781,15 +4752,10 @@ public class Lms implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                     

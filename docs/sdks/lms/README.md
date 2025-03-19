@@ -143,7 +143,7 @@ public class Application {
                                     .description("This video acts as learning content for software engineers.")
                                     .contentUrl("https://www.youtube.com/watch?v=16873")
                                     .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                                    .order(1d)
+                                    .order(1)
                                     .build()))
                             .localizations(List.of(
                                 LocalizationModel.builder()
@@ -235,7 +235,7 @@ public class Application {
                                     .description("This video acts as learning content for software engineers.")
                                     .contentUrl("https://www.youtube.com/watch?v=16873")
                                     .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                                    .order(1d)
+                                    .order(1)
                                     .build(),
                                 CreateContentApiModel.builder()
                                     .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
@@ -243,7 +243,7 @@ public class Application {
                                     .description("This video acts as learning content for software engineers.")
                                     .contentUrl("https://www.youtube.com/watch?v=16873")
                                     .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                                    .order(1d)
+                                    .order(1)
                                     .build(),
                                 CreateContentApiModel.builder()
                                     .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
@@ -251,7 +251,7 @@ public class Application {
                                     .description("This video acts as learning content for software engineers.")
                                     .contentUrl("https://www.youtube.com/watch?v=16873")
                                     .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                                    .order(1d)
+                                    .order(1)
                                     .build()))
                             .localizations(List.of(
                                 LocalizationModel.builder()
@@ -336,9 +336,9 @@ public class Application {
         sdk.lms().listCourses()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -446,7 +446,7 @@ public class Application {
                             .description("This video acts as learning content for software engineers.")
                             .contentUrl("https://www.youtube.com/watch?v=16873")
                             .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                            .order(1d)
+                            .order(1)
                             .build()))
                     .localizations(List.of(
                         LocalizationModel.builder()
@@ -593,9 +593,9 @@ public class Application {
         sdk.lms().listUserAssignments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -654,7 +654,7 @@ public class Application {
                         Map.entry("other_known_names", "John Doe")))
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .learningObjectExternalReference("learning-content-123")
-                    .progress(40d)
+                    .progress(40)
                     .createdAt("2021-07-21T14:00:00.000Z")
                     .dueDate("2021-07-21T14:00:00.000Z")
                     .status(LmsCreateAssignmentRequestDtoStatus.builder()
@@ -825,7 +825,7 @@ public class Application {
                                         .value(CreateSkillsApiModelLanguageValue.EN_GB)
                                         .build())
                                     .build()))
-                            .order(1d)
+                            .order(1)
                             .localizations(List.of(
                                 LocalizationModel.builder()
                                     .title("Software Engineer Lv 1")
@@ -899,7 +899,7 @@ public class Application {
                                         .value(CreateSkillsApiModelLanguageValue.EN_GB)
                                         .build())
                                     .build()))
-                            .order(1d)
+                            .order(1)
                             .localizations(List.of(
                                 LocalizationModel.builder()
                                     .title("Software Engineer Lv 1")
@@ -1025,9 +1025,9 @@ public class Application {
         sdk.lms().listContent()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1120,7 +1120,7 @@ public class Application {
                                 .value(CreateSkillsApiModelLanguageValue.EN_GB)
                                 .build())
                             .build()))
-                    .order(1d)
+                    .order(1)
                     .localizations(List.of(
                         LocalizationModel.builder()
                             .title("Software Engineer Lv 1")
@@ -1296,9 +1296,9 @@ public class Application {
         sdk.lms().listUserCompletions()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1540,9 +1540,9 @@ public class Application {
         sdk.lms().listCompletions()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1723,9 +1723,9 @@ public class Application {
         sdk.lms().listCategories()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1787,9 +1787,9 @@ public class Application {
         sdk.lms().listUsers()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1971,9 +1971,9 @@ public class Application {
         sdk.lms().listSkills()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2037,9 +2037,9 @@ public class Application {
         sdk.lms().listAssignments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }

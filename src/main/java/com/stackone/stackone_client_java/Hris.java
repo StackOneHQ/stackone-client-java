@@ -5,7 +5,9 @@
 package com.stackone.stackone_client_java;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.ReadContext;
 import com.stackone.stackone_client_java.models.components.BatchResultApiModel;
 import com.stackone.stackone_client_java.models.components.CompaniesPaginated;
@@ -454,12 +456,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -467,15 +470,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListCompaniesRequestBuilder _ret = listCompanies();
@@ -1188,12 +1186,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1201,15 +1200,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                     
@@ -2169,12 +2163,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -2183,15 +2178,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListEmployeeTimeOffRequestsRequestBuilder _ret = listEmployeeTimeOffRequests();
@@ -3347,12 +3337,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -3361,15 +3352,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListEmployeeDocumentsRequestBuilder _ret = listEmployeeDocuments();
@@ -3737,12 +3723,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -3750,15 +3737,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListEmployeeCategoriesRequestBuilder _ret = listEmployeeCategories();
@@ -4127,12 +4109,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -4141,15 +4124,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListEmployeeWorkEligibilityRequestBuilder _ret = listEmployeeWorkEligibility();
@@ -4909,12 +4887,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -4923,15 +4902,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                      
@@ -5301,12 +5275,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -5314,15 +5289,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                      
@@ -5693,12 +5663,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -5707,15 +5678,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                      
@@ -6486,12 +6452,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -6499,15 +6466,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListLocationsRequestBuilder _ret = listLocations();
@@ -6874,12 +6836,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -6887,15 +6850,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListTimeOffRequestsRequestBuilder _ret = listTimeOffRequests();
@@ -7651,12 +7609,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -7664,15 +7623,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListTimeOffTypesRequestBuilder _ret = listTimeOffTypes();
@@ -8039,12 +7993,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -8052,15 +8007,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListTimeEntriesRequestBuilder _ret = listTimeEntries();
@@ -8427,12 +8377,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -8440,15 +8391,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListBenefitsRequestBuilder _ret = listBenefits();
@@ -8815,12 +8761,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -8828,15 +8775,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListGroupsRequestBuilder _ret = listGroups();
@@ -9029,12 +8971,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -9042,15 +8985,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListDepartmentGroupsRequestBuilder _ret = listDepartmentGroups();
@@ -9243,12 +9181,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -9256,15 +9195,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListCostCenterGroupsRequestBuilder _ret = listCostCenterGroups();
@@ -9457,12 +9391,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -9470,15 +9405,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListTeamGroupsRequestBuilder _ret = listTeamGroups();
@@ -10367,12 +10297,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -10380,15 +10311,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListJobsRequestBuilder _ret = listJobs();
@@ -10757,12 +10683,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -10771,15 +10698,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListEmployeeSkillsRequestBuilder _ret = listEmployeeSkills();
@@ -11345,12 +11267,13 @@ public class Hris implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -11358,15 +11281,10 @@ public class Hris implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     HrisListTimeOffPoliciesRequestBuilder _ret = listTimeOffPolicies();
