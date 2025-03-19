@@ -6,13 +6,14 @@
 package com.stackone.stackone_client_java.models.components;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.stackone.stackone_client_java.utils.HasSecurity;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
 
-public class Security {
+public class Security implements HasSecurity {
 
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic,name=username")
     private String username;
