@@ -8,6 +8,7 @@ import com.stackone.stackone_client_java.models.errors.SDKError;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Exception;
 import java.util.Optional;
 import java.util.stream.Stream;
 

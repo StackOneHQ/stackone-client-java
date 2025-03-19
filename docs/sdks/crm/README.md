@@ -44,10 +44,12 @@ public class Application {
 
         CrmListContactsRequest req = CrmListContactsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at")
                 .filter(CrmListContactsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .include("custom_fields")
                 .build();
@@ -55,9 +57,9 @@ public class Application {
         sdk.crm().listContacts()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -208,6 +210,7 @@ public class Application {
         CrmGetContactRequest req = CrmGetContactRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at")
                 .include("custom_fields")
                 .build();
@@ -353,19 +356,21 @@ public class Application {
 
         CrmListAccountsRequest req = CrmListAccountsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at")
                 .filter(CrmListAccountsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.crm().listAccounts()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -416,6 +421,7 @@ public class Application {
         CrmGetAccountRequest req = CrmGetAccountRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at")
                 .build();
 
@@ -474,19 +480,21 @@ public class Application {
 
         CrmListListsRequest req = CrmListListsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,created_at,updated_at,items,type")
                 .filter(CrmListListsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.crm().listLists()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -537,6 +545,7 @@ public class Application {
         CrmGetListRequest req = CrmGetListRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,created_at,updated_at,items,type")
                 .build();
 
@@ -595,19 +604,21 @@ public class Application {
 
         CrmListContactCustomFieldDefinitionsRequest req = CrmListContactCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(CrmListContactCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.crm().listContactCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -659,10 +670,12 @@ public class Application {
         CrmGetContactCustomFieldDefinitionRequest req = CrmGetContactCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(CrmGetContactCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 

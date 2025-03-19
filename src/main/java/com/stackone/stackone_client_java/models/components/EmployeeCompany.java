@@ -53,6 +53,13 @@ public class EmployeeCompany {
     private JsonNullable<String> name;
 
     /**
+     * The full name of the company
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("full_name")
+    private JsonNullable<String> fullName;
+
+    /**
      * The display name of the company
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -79,6 +86,7 @@ public class EmployeeCompany {
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
             @JsonProperty("name") JsonNullable<String> name,
+            @JsonProperty("full_name") JsonNullable<String> fullName,
             @JsonProperty("display_name") JsonNullable<String> displayName,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt) {
@@ -86,6 +94,7 @@ public class EmployeeCompany {
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         Utils.checkNotNull(name, "name");
+        Utils.checkNotNull(fullName, "fullName");
         Utils.checkNotNull(displayName, "displayName");
         Utils.checkNotNull(createdAt, "createdAt");
         Utils.checkNotNull(updatedAt, "updatedAt");
@@ -93,13 +102,14 @@ public class EmployeeCompany {
         this.remoteId = remoteId;
         this.unifiedCustomFields = unifiedCustomFields;
         this.name = name;
+        this.fullName = fullName;
         this.displayName = displayName;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
     
     public EmployeeCompany() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -133,6 +143,14 @@ public class EmployeeCompany {
     @JsonIgnore
     public JsonNullable<String> name() {
         return name;
+    }
+
+    /**
+     * The full name of the company
+     */
+    @JsonIgnore
+    public JsonNullable<String> fullName() {
+        return fullName;
     }
 
     /**
@@ -236,6 +254,24 @@ public class EmployeeCompany {
     }
 
     /**
+     * The full name of the company
+     */
+    public EmployeeCompany withFullName(String fullName) {
+        Utils.checkNotNull(fullName, "fullName");
+        this.fullName = JsonNullable.of(fullName);
+        return this;
+    }
+
+    /**
+     * The full name of the company
+     */
+    public EmployeeCompany withFullName(JsonNullable<String> fullName) {
+        Utils.checkNotNull(fullName, "fullName");
+        this.fullName = fullName;
+        return this;
+    }
+
+    /**
      * The display name of the company
      */
     public EmployeeCompany withDisplayName(String displayName) {
@@ -303,6 +339,7 @@ public class EmployeeCompany {
             Objects.deepEquals(this.remoteId, other.remoteId) &&
             Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
             Objects.deepEquals(this.name, other.name) &&
+            Objects.deepEquals(this.fullName, other.fullName) &&
             Objects.deepEquals(this.displayName, other.displayName) &&
             Objects.deepEquals(this.createdAt, other.createdAt) &&
             Objects.deepEquals(this.updatedAt, other.updatedAt);
@@ -315,6 +352,7 @@ public class EmployeeCompany {
             remoteId,
             unifiedCustomFields,
             name,
+            fullName,
             displayName,
             createdAt,
             updatedAt);
@@ -327,6 +365,7 @@ public class EmployeeCompany {
                 "remoteId", remoteId,
                 "unifiedCustomFields", unifiedCustomFields,
                 "name", name,
+                "fullName", fullName,
                 "displayName", displayName,
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
@@ -341,6 +380,8 @@ public class EmployeeCompany {
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
  
         private JsonNullable<String> name = JsonNullable.undefined();
+ 
+        private JsonNullable<String> fullName = JsonNullable.undefined();
  
         private JsonNullable<String> displayName = JsonNullable.undefined();
  
@@ -425,6 +466,24 @@ public class EmployeeCompany {
         }
 
         /**
+         * The full name of the company
+         */
+        public Builder fullName(String fullName) {
+            Utils.checkNotNull(fullName, "fullName");
+            this.fullName = JsonNullable.of(fullName);
+            return this;
+        }
+
+        /**
+         * The full name of the company
+         */
+        public Builder fullName(JsonNullable<String> fullName) {
+            Utils.checkNotNull(fullName, "fullName");
+            this.fullName = fullName;
+            return this;
+        }
+
+        /**
          * The display name of the company
          */
         public Builder displayName(String displayName) {
@@ -484,6 +543,7 @@ public class EmployeeCompany {
                 remoteId,
                 unifiedCustomFields,
                 name,
+                fullName,
                 displayName,
                 createdAt,
                 updatedAt);

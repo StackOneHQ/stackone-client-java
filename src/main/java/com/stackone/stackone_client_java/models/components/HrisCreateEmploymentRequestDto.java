@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -34,13 +35,6 @@ public class HrisCreateEmploymentRequestDto {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
-
-    /**
-     * The employee ID associated with this employment
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("employee_id")
-    private JsonNullable<String> employeeId;
 
     /**
      * The job title of the employee
@@ -79,9 +73,11 @@ public class HrisCreateEmploymentRequestDto {
 
     /**
      * The effective date of the employment contract
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("effective_date")
+    @Deprecated
     private JsonNullable<OffsetDateTime> effectiveDate;
 
     /**
@@ -116,7 +112,6 @@ public class HrisCreateEmploymentRequestDto {
     public HrisCreateEmploymentRequestDto(
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
-            @JsonProperty("employee_id") JsonNullable<String> employeeId,
             @JsonProperty("job_title") JsonNullable<String> jobTitle,
             @JsonProperty("pay_rate") JsonNullable<String> payRate,
             @JsonProperty("pay_period") JsonNullable<? extends HrisCreateEmploymentRequestDtoPayPeriod> payPeriod,
@@ -129,7 +124,6 @@ public class HrisCreateEmploymentRequestDto {
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
-        Utils.checkNotNull(employeeId, "employeeId");
         Utils.checkNotNull(jobTitle, "jobTitle");
         Utils.checkNotNull(payRate, "payRate");
         Utils.checkNotNull(payPeriod, "payPeriod");
@@ -142,7 +136,6 @@ public class HrisCreateEmploymentRequestDto {
         Utils.checkNotNull(passthrough, "passthrough");
         this.id = id;
         this.unifiedCustomFields = unifiedCustomFields;
-        this.employeeId = employeeId;
         this.jobTitle = jobTitle;
         this.payRate = payRate;
         this.payPeriod = payPeriod;
@@ -156,7 +149,7 @@ public class HrisCreateEmploymentRequestDto {
     }
     
     public HrisCreateEmploymentRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -174,14 +167,6 @@ public class HrisCreateEmploymentRequestDto {
     @JsonIgnore
     public JsonNullable<Map<String, Object>> unifiedCustomFields() {
         return (JsonNullable<Map<String, Object>>) unifiedCustomFields;
-    }
-
-    /**
-     * The employee ID associated with this employment
-     */
-    @JsonIgnore
-    public JsonNullable<String> employeeId() {
-        return employeeId;
     }
 
     /**
@@ -228,7 +213,9 @@ public class HrisCreateEmploymentRequestDto {
 
     /**
      * The effective date of the employment contract
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     @JsonIgnore
     public JsonNullable<OffsetDateTime> effectiveDate() {
         return effectiveDate;
@@ -306,24 +293,6 @@ public class HrisCreateEmploymentRequestDto {
     public HrisCreateEmploymentRequestDto withUnifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         this.unifiedCustomFields = unifiedCustomFields;
-        return this;
-    }
-
-    /**
-     * The employee ID associated with this employment
-     */
-    public HrisCreateEmploymentRequestDto withEmployeeId(String employeeId) {
-        Utils.checkNotNull(employeeId, "employeeId");
-        this.employeeId = JsonNullable.of(employeeId);
-        return this;
-    }
-
-    /**
-     * The employee ID associated with this employment
-     */
-    public HrisCreateEmploymentRequestDto withEmployeeId(JsonNullable<String> employeeId) {
-        Utils.checkNotNull(employeeId, "employeeId");
-        this.employeeId = employeeId;
         return this;
     }
 
@@ -419,7 +388,9 @@ public class HrisCreateEmploymentRequestDto {
 
     /**
      * The effective date of the employment contract
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateEmploymentRequestDto withEffectiveDate(OffsetDateTime effectiveDate) {
         Utils.checkNotNull(effectiveDate, "effectiveDate");
         this.effectiveDate = JsonNullable.of(effectiveDate);
@@ -428,7 +399,9 @@ public class HrisCreateEmploymentRequestDto {
 
     /**
      * The effective date of the employment contract
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateEmploymentRequestDto withEffectiveDate(JsonNullable<OffsetDateTime> effectiveDate) {
         Utils.checkNotNull(effectiveDate, "effectiveDate");
         this.effectiveDate = effectiveDate;
@@ -519,7 +492,6 @@ public class HrisCreateEmploymentRequestDto {
         return 
             Objects.deepEquals(this.id, other.id) &&
             Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.employeeId, other.employeeId) &&
             Objects.deepEquals(this.jobTitle, other.jobTitle) &&
             Objects.deepEquals(this.payRate, other.payRate) &&
             Objects.deepEquals(this.payPeriod, other.payPeriod) &&
@@ -537,7 +509,6 @@ public class HrisCreateEmploymentRequestDto {
         return Objects.hash(
             id,
             unifiedCustomFields,
-            employeeId,
             jobTitle,
             payRate,
             payPeriod,
@@ -555,7 +526,6 @@ public class HrisCreateEmploymentRequestDto {
         return Utils.toString(HrisCreateEmploymentRequestDto.class,
                 "id", id,
                 "unifiedCustomFields", unifiedCustomFields,
-                "employeeId", employeeId,
                 "jobTitle", jobTitle,
                 "payRate", payRate,
                 "payPeriod", payPeriod,
@@ -574,8 +544,6 @@ public class HrisCreateEmploymentRequestDto {
  
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
  
-        private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
         private JsonNullable<String> jobTitle = JsonNullable.undefined();
  
         private JsonNullable<String> payRate = JsonNullable.undefined();
@@ -586,6 +554,7 @@ public class HrisCreateEmploymentRequestDto {
  
         private JsonNullable<String> payCurrency = JsonNullable.undefined();
  
+        @Deprecated
         private JsonNullable<OffsetDateTime> effectiveDate = JsonNullable.undefined();
  
         private JsonNullable<? extends HrisCreateEmploymentRequestDtoEmploymentType> employmentType = JsonNullable.undefined();
@@ -633,24 +602,6 @@ public class HrisCreateEmploymentRequestDto {
         public Builder unifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
             Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
             this.unifiedCustomFields = unifiedCustomFields;
-            return this;
-        }
-
-        /**
-         * The employee ID associated with this employment
-         */
-        public Builder employeeId(String employeeId) {
-            Utils.checkNotNull(employeeId, "employeeId");
-            this.employeeId = JsonNullable.of(employeeId);
-            return this;
-        }
-
-        /**
-         * The employee ID associated with this employment
-         */
-        public Builder employeeId(JsonNullable<String> employeeId) {
-            Utils.checkNotNull(employeeId, "employeeId");
-            this.employeeId = employeeId;
             return this;
         }
 
@@ -746,7 +697,9 @@ public class HrisCreateEmploymentRequestDto {
 
         /**
          * The effective date of the employment contract
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder effectiveDate(OffsetDateTime effectiveDate) {
             Utils.checkNotNull(effectiveDate, "effectiveDate");
             this.effectiveDate = JsonNullable.of(effectiveDate);
@@ -755,7 +708,9 @@ public class HrisCreateEmploymentRequestDto {
 
         /**
          * The effective date of the employment contract
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder effectiveDate(JsonNullable<OffsetDateTime> effectiveDate) {
             Utils.checkNotNull(effectiveDate, "effectiveDate");
             this.effectiveDate = effectiveDate;
@@ -838,7 +793,6 @@ public class HrisCreateEmploymentRequestDto {
             return new HrisCreateEmploymentRequestDto(
                 id,
                 unifiedCustomFields,
-                employeeId,
                 jobTitle,
                 payRate,
                 payPeriod,

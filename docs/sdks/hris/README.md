@@ -36,8 +36,8 @@
 * [createEmployeeEmployment](#createemployeeemployment) - Create Employee Employment
 * [getEmployeeEmployment](#getemployeeemployment) - Get Employee Employment
 * [updateEmployeeEmployment](#updateemployeeemployment) - Update Employee Employment
-* [listLocations](#listlocations) - List locations
-* [getLocation](#getlocation) - Get Location
+* [listLocations](#listlocations) - List Work Locations
+* [getLocation](#getlocation) - Get Work Location
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
@@ -92,19 +92,21 @@ public class Application {
 
         HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
                 .filter(Filter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listCompanies()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -155,6 +157,7 @@ public class Application {
         HrisGetCompanyRequest req = HrisGetCompanyRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
                 .build();
 
@@ -214,10 +217,12 @@ public class Application {
 
         HrisListEmployeeCustomFieldDefinitionsRequest req = HrisListEmployeeCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(QueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -278,10 +283,12 @@ public class Application {
         HrisGetEmployeeCustomFieldDefinitionRequest req = HrisGetEmployeeCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(HrisGetEmployeeCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
@@ -340,10 +347,12 @@ public class Application {
 
         HrisListEmployeesRequest req = HrisListEmployeesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills")
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
@@ -352,9 +361,9 @@ public class Application {
         sdk.hris().listEmployees()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -405,17 +414,28 @@ import com.stackone.stackone_client_java.models.components.CustomFields;
 import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoAvatar;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmployment;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentContractType;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentEmploymentType;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentPayFrequencySourceValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentPayFrequencyValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentSourceValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentStatus;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentType;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentTypeValue;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEthnicity;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoGender;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoHomeLocation;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoHomeLocationCountry;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoHomeLocationValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoMaritalStatus;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoPayFrequency;
+import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoPayPeriod;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoPreferredLanguage;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoPreferredLanguageValue;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoState;
@@ -449,10 +469,10 @@ public class Application {
         HrisCreateEmployeeResponse res = sdk.hris().createEmployee()
                 .xAccountId("<id>")
                 .hrisCreateEmployeeRequestDto(HrisCreateEmployeeRequestDto.builder()
-                    .firstName("Issac")
+                    .firstName("Isaac")
                     .lastName("Newton")
-                    .name("Issac Newton")
-                    .displayName("Sir Issac Newton")
+                    .name("Isaac Newton")
+                    .displayName("Sir Isaac Newton")
                     .avatarUrl("https://example.com/avatar.png")
                     .personalEmail("isaac.newton@example.com")
                     .personalPhoneNumber("+1234567890")
@@ -479,8 +499,6 @@ public class Application {
                         .build())
                     .hireDate(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
                     .startDate(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
-                    .tenure(2d)
-                    .workAnniversary(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                     .employmentType(HrisCreateEmployeeRequestDtoEmploymentType.builder()
                         .value(HrisCreateEmployeeRequestDtoEmploymentTypeValue.PERMANENT)
                         .sourceValue(HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue.of("Permanent"))
@@ -504,7 +522,6 @@ public class Application {
                             .unifiedCustomFields(Map.ofEntries(
                                 Map.entry("my_project_custom_field_1", "REF-1236"),
                                 Map.entry("my_project_custom_field_2", "some other value")))
-                            .employeeId("1687-3")
                             .jobTitle("Software Engineer")
                             .payRate("40.00")
                             .payPeriod(CreateEmploymentApiModelPayPeriod.builder()
@@ -525,6 +542,30 @@ public class Application {
                                 .build())
                             .timeWorked("P0Y0M0DT8H0M0S")
                             .build()))
+                    .employment(HrisCreateEmployeeRequestDtoEmployment.builder()
+                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .unifiedCustomFields(Map.ofEntries(
+                            Map.entry("my_project_custom_field_1", "REF-1236"),
+                            Map.entry("my_project_custom_field_2", "some other value")))
+                        .jobTitle("Software Engineer")
+                        .payRate("40.00")
+                        .payPeriod(HrisCreateEmployeeRequestDtoPayPeriod.builder()
+                            .value(HrisCreateEmployeeRequestDtoEmploymentValue.HOUR)
+                            .sourceValue(HrisCreateEmployeeRequestDtoEmploymentSourceValue.of("Hour"))
+                            .build())
+                        .payFrequency(HrisCreateEmployeeRequestDtoPayFrequency.builder()
+                            .value(HrisCreateEmployeeRequestDtoEmploymentPayFrequencyValue.HOURLY)
+                            .sourceValue(HrisCreateEmployeeRequestDtoEmploymentPayFrequencySourceValue.of("Hourly"))
+                            .build())
+                        .payCurrency("USD")
+                        .employmentType(HrisCreateEmployeeRequestDtoEmploymentEmploymentType.builder()
+                            .value(HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeValue.PERMANENT)
+                            .sourceValue(HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue.of("Permanent"))
+                            .build())
+                        .employmentContractType(HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType.builder()
+                            .build())
+                        .timeWorked("P0Y0M0DT8H0M0S")
+                        .build())
                     .customFields(List.of(
                         CustomFields.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -631,17 +672,17 @@ public class Application {
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
-                            .distributionPercentage(100d)
+                            .distributionPercentage(100)
                             .build(),
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
-                            .distributionPercentage(100d)
+                            .distributionPercentage(100)
                             .build(),
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
-                            .distributionPercentage(100d)
+                            .distributionPercentage(100)
                             .build()))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -701,6 +742,7 @@ public class Application {
         HrisGetEmployeeRequest req = HrisGetEmployeeRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
@@ -750,17 +792,28 @@ import com.stackone.stackone_client_java.models.components.CustomFields;
 import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoAvatar;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmployment;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentContractType;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentEmploymentType;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentEmploymentTypeValue;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentPayFrequencySourceValue;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentSourceValue;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentStatus;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentType;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentTypeSourceValue;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentTypeValue;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentValue;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEthnicity;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoGender;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoHomeLocation;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoHomeLocationCountry;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoHomeLocationValue;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoMaritalStatus;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPayFrequency;
+import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPayPeriod;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPreferredLanguage;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPreferredLanguageValue;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoState;
@@ -795,10 +848,10 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .hrisUpdateEmployeeRequestDto(HrisUpdateEmployeeRequestDto.builder()
-                    .firstName("Issac")
+                    .firstName("Isaac")
                     .lastName("Newton")
-                    .name("Issac Newton")
-                    .displayName("Sir Issac Newton")
+                    .name("Isaac Newton")
+                    .displayName("Sir Isaac Newton")
                     .avatarUrl("https://example.com/avatar.png")
                     .personalEmail("isaac.newton@example.com")
                     .personalPhoneNumber("+1234567890")
@@ -825,8 +878,6 @@ public class Application {
                         .build())
                     .hireDate(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
                     .startDate(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
-                    .tenure(2d)
-                    .workAnniversary(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                     .employmentType(HrisUpdateEmployeeRequestDtoEmploymentType.builder()
                         .value(HrisUpdateEmployeeRequestDtoEmploymentTypeValue.PERMANENT)
                         .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentTypeSourceValue.of("Permanent"))
@@ -841,6 +892,30 @@ public class Application {
                         CountryCodeEnum.builder()
                             .value(Value.US)
                             .build()))
+                    .employment(HrisUpdateEmployeeRequestDtoEmployment.builder()
+                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .unifiedCustomFields(Map.ofEntries(
+                            Map.entry("my_project_custom_field_1", "REF-1236"),
+                            Map.entry("my_project_custom_field_2", "some other value")))
+                        .jobTitle("Software Engineer")
+                        .payRate("40.00")
+                        .payPeriod(HrisUpdateEmployeeRequestDtoPayPeriod.builder()
+                            .value(HrisUpdateEmployeeRequestDtoEmploymentValue.HOUR)
+                            .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentSourceValue.of("Hour"))
+                            .build())
+                        .payFrequency(HrisUpdateEmployeeRequestDtoPayFrequency.builder()
+                            .value(HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue.HOURLY)
+                            .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentPayFrequencySourceValue.of("Hourly"))
+                            .build())
+                        .payCurrency("USD")
+                        .employmentType(HrisUpdateEmployeeRequestDtoEmploymentEmploymentType.builder()
+                            .value(HrisUpdateEmployeeRequestDtoEmploymentEmploymentTypeValue.PERMANENT)
+                            .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue.of("Permanent"))
+                            .build())
+                        .employmentContractType(HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType.builder()
+                            .build())
+                        .timeWorked("P0Y0M0DT8H0M0S")
+                        .build())
                     .customFields(List.of(
                         CustomFields.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -1030,19 +1105,21 @@ public class Application {
         HrisListEmployeeTimeOffRequestsRequest req = HrisListEmployeeTimeOffRequestsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at")
                 .filter(HrisListEmployeeTimeOffRequestsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeTimeOffRequests()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1170,6 +1247,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at")
                 .build();
 
@@ -1430,19 +1508,21 @@ public class Application {
         HrisListEmployeeDocumentsRequest req = HrisListEmployeeDocumentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .filter(HrisListEmployeeDocumentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeDocuments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1494,6 +1574,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .build();
 
@@ -1552,19 +1633,21 @@ public class Application {
 
         HrisListEmployeeCategoriesRequest req = HrisListEmployeeCategoriesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active")
                 .filter(HrisListEmployeeCategoriesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeCategories()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1615,6 +1698,7 @@ public class Application {
         HrisGetEmployeeDocumentCategoryRequest req = HrisGetEmployeeDocumentCategoryRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active")
                 .build();
 
@@ -1674,19 +1758,21 @@ public class Application {
         HrisListEmployeeWorkEligibilityRequest req = HrisListEmployeeWorkEligibilityRequest.builder()
                 .id("<id>")
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number")
                 .filter(HrisListEmployeeWorkEligibilityQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeWorkEligibility()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -1833,6 +1919,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number")
                 .build();
 
@@ -1987,10 +2074,12 @@ public class Application {
         HrisListEmployeeTimeOffBalancesRequest req = HrisListEmployeeTimeOffBalancesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at")
                 .filter(HrisListEmployeeTimeOffBalancesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("policy")
                 .build();
@@ -1998,9 +2087,9 @@ public class Application {
         sdk.hris().listEmployeeTimeOffBalances()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2052,6 +2141,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at")
                 .expand("policy")
                 .build();
@@ -2111,10 +2201,12 @@ public class Application {
 
         HrisListEmploymentsRequest req = HrisListEmploymentsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .filter(HrisListEmploymentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("groups")
                 .build();
@@ -2122,9 +2214,9 @@ public class Application {
         sdk.hris().listEmployments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2175,6 +2267,7 @@ public class Application {
         HrisGetEmploymentRequest req = HrisGetEmploymentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .expand("groups")
                 .build();
@@ -2235,10 +2328,12 @@ public class Application {
         HrisListEmployeeEmploymentsRequest req = HrisListEmployeeEmploymentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .filter(HrisListEmployeeEmploymentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("groups")
                 .build();
@@ -2246,9 +2341,9 @@ public class Application {
         sdk.hris().listEmployeeEmployments()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2316,7 +2411,6 @@ public class Application {
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
                         Map.entry("my_project_custom_field_2", "some other value")))
-                    .employeeId("1687-3")
                     .jobTitle("Software Engineer")
                     .payRate("40.00")
                     .payPeriod(HrisCreateEmploymentRequestDtoPayPeriod.builder()
@@ -2396,6 +2490,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .expand("groups")
                 .build();
@@ -2474,7 +2569,6 @@ public class Application {
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
                         Map.entry("my_project_custom_field_2", "some other value")))
-                    .employeeId("1687-3")
                     .jobTitle("Software Engineer")
                     .payRate("40.00")
                     .payPeriod(HrisCreateEmploymentRequestDtoPayPeriod.builder()
@@ -2527,7 +2621,7 @@ public class Application {
 
 ## listLocations
 
-List locations
+List Work Locations
 
 ### Example Usage
 
@@ -2553,19 +2647,21 @@ public class Application {
 
         HrisListLocationsRequest req = HrisListLocationsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
                 .filter(HrisListLocationsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listLocations()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2589,7 +2685,7 @@ public class Application {
 
 ## getLocation
 
-Get Location
+Get Work Location
 
 ### Example Usage
 
@@ -2616,6 +2712,7 @@ public class Application {
         HrisGetLocationRequest req = HrisGetLocationRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
                 .build();
 
@@ -2674,19 +2771,21 @@ public class Application {
 
         HrisListTimeOffRequestsRequest req = HrisListTimeOffRequestsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at")
                 .filter(HrisListTimeOffRequestsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeOffRequests()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -2811,6 +2910,7 @@ public class Application {
         HrisGetTimeOffRequestRequest req = HrisGetTimeOffRequestRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at")
                 .build();
 
@@ -2945,19 +3045,21 @@ public class Application {
 
         HrisListTimeOffTypesRequest req = HrisListTimeOffTypesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active")
                 .filter(HrisListTimeOffTypesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeOffTypes()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3008,6 +3110,7 @@ public class Application {
         HrisGetTimeOffTypeRequest req = HrisGetTimeOffTypeRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active")
                 .build();
 
@@ -3066,21 +3169,23 @@ public class Application {
 
         HrisListTimeEntriesRequest req = HrisListTimeEntriesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
                 .filter(HrisListTimeEntriesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .startTime("2020-01-01T00:00:00.000Z")
                     .endTime("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeEntries()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3131,6 +3236,7 @@ public class Application {
         HrisGetTimeEntriesRequest req = HrisGetTimeEntriesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
                 .build();
 
@@ -3189,19 +3295,21 @@ public class Application {
 
         HrisListBenefitsRequest req = HrisListBenefitsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
                 .filter(HrisListBenefitsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listBenefits()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3252,6 +3360,7 @@ public class Application {
         HrisGetBenefitRequest req = HrisGetBenefitRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
                 .build();
 
@@ -3310,19 +3419,21 @@ public class Application {
 
         HrisListGroupsRequest req = HrisListGroupsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .filter(HrisListGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3372,19 +3483,21 @@ public class Application {
 
         HrisListDepartmentGroupsRequest req = HrisListDepartmentGroupsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name")
                 .filter(HrisListDepartmentGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listDepartmentGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3434,19 +3547,21 @@ public class Application {
 
         HrisListCostCenterGroupsRequest req = HrisListCostCenterGroupsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .filter(HrisListCostCenterGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listCostCenterGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3496,19 +3611,21 @@ public class Application {
 
         HrisListTeamGroupsRequest req = HrisListTeamGroupsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .filter(HrisListTeamGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTeamGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3559,6 +3676,7 @@ public class Application {
         HrisGetGroupRequest req = HrisGetGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .build();
 
@@ -3618,6 +3736,7 @@ public class Application {
         HrisGetDepartmentGroupRequest req = HrisGetDepartmentGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name")
                 .build();
 
@@ -3677,6 +3796,7 @@ public class Application {
         HrisGetCostCenterGroupRequest req = HrisGetCostCenterGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .build();
 
@@ -3736,6 +3856,7 @@ public class Application {
         HrisGetTeamGroupRequest req = HrisGetTeamGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .build();
 
@@ -3794,19 +3915,21 @@ public class Application {
 
         HrisListJobsRequest req = HrisListJobsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .filter(HrisListJobsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listJobs()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -3857,6 +3980,7 @@ public class Application {
         HrisGetJobRequest req = HrisGetJobRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .build();
 
@@ -3916,19 +4040,21 @@ public class Application {
         HrisListEmployeeSkillsRequest req = HrisListEmployeeSkillsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency")
                 .filter(HrisListEmployeeSkillsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeSkills()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -4052,6 +4178,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency")
                 .build();
 
@@ -4110,19 +4237,21 @@ public class Application {
 
         HrisListTimeOffPoliciesRequest req = HrisListTimeOffPoliciesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
                 .filter(HrisListTimeOffPoliciesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeOffPolicies()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -4173,6 +4302,7 @@ public class Application {
         HrisGetTimeOffPolicyRequest req = HrisGetTimeOffPolicyRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
                 .build();
 

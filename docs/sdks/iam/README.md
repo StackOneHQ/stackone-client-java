@@ -7,6 +7,8 @@
 
 * [listUsers](#listusers) - List Users
 * [getUser](#getuser) - Get User
+* [deleteUser](#deleteuser) - Delete User
+* [updateUser](#updateuser) - Update User
 * [listRoles](#listroles) - List Roles
 * [getRole](#getrole) - Get Role
 * [listGroups](#listgroups) - List Groups
@@ -42,10 +44,12 @@ public class Application {
 
         IamListUsersRequest req = IamListUsersRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled")
                 .filter(IamListUsersQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("roles,groups")
                 .build();
@@ -53,9 +57,9 @@ public class Application {
         sdk.iam().listUsers()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -106,6 +110,7 @@ public class Application {
         IamGetUserRequest req = IamGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled")
                 .expand("roles,groups")
                 .build();
@@ -130,6 +135,133 @@ public class Application {
 ### Response
 
 **[IamGetUserResponse](../../models/operations/IamGetUserResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## deleteUser
+
+Delete User
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.operations.IamDeleteUserResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        IamDeleteUserResponse res = sdk.iam().deleteUser()
+                .xAccountId("<id>")
+                .id("<id>")
+                .call();
+
+        if (res.deleteResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter              | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `xAccountId`           | *String*               | :heavy_check_mark:     | The account identifier |
+| `id`                   | *String*               | :heavy_check_mark:     | N/A                    |
+
+### Response
+
+**[IamDeleteUserResponse](../../models/operations/IamDeleteUserResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## updateUser
+
+Update User
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.IamUpdateUserRequestDto;
+import com.stackone.stackone_client_java.models.components.IamUpdateUserRequestDtoIsBotUser;
+import com.stackone.stackone_client_java.models.components.IamUpdateUserRequestDtoStatus;
+import com.stackone.stackone_client_java.models.components.IamUpdateUserRequestDtoValue;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.operations.IamUpdateUserResponse;
+import java.lang.Exception;
+import java.util.Map;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        IamUpdateUserResponse res = sdk.iam().updateUser()
+                .xAccountId("<id>")
+                .id("<id>")
+                .iamUpdateUserRequestDto(IamUpdateUserRequestDto.builder()
+                    .primaryEmailAddress("han@stackone.com")
+                    .firstName("Han")
+                    .lastName("Solo")
+                    .name("Han Solo")
+                    .username("hansolo1977")
+                    .isBotUser(IamUpdateUserRequestDtoIsBotUser.of(true))
+                    .status(IamUpdateUserRequestDtoStatus.builder()
+                        .value(IamUpdateUserRequestDtoValue.ENABLED)
+                        .build())
+                    .passthrough(Map.ofEntries(
+                        Map.entry("other_known_names", "John Doe")))
+                    .build())
+                .call();
+
+        if (res.updateUserApiModel().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `xAccountId`                                                                  | *String*                                                                      | :heavy_check_mark:                                                            | The account identifier                                                        |
+| `id`                                                                          | *String*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
+| `iamUpdateUserRequestDto`                                                     | [IamUpdateUserRequestDto](../../models/components/IamUpdateUserRequestDto.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+
+### Response
+
+**[IamUpdateUserResponse](../../models/operations/IamUpdateUserResponse.md)**
 
 ### Errors
 
@@ -165,10 +297,12 @@ public class Application {
 
         IamListRolesRequest req = IamListRolesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,policies,description,created_at,updated_at")
                 .filter(IamListRolesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("policies")
                 .build();
@@ -176,9 +310,9 @@ public class Application {
         sdk.iam().listRoles()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -229,6 +363,7 @@ public class Application {
         IamGetRoleRequest req = IamGetRoleRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,type,policies,description,created_at,updated_at")
                 .expand("policies")
                 .build();
@@ -288,10 +423,12 @@ public class Application {
 
         IamListGroupsRequest req = IamListGroupsRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at")
                 .filter(IamListGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("roles")
                 .build();
@@ -299,9 +436,9 @@ public class Application {
         sdk.iam().listGroups()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -352,6 +489,7 @@ public class Application {
         IamGetGroupRequest req = IamGetGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at")
                 .expand("roles")
                 .build();
@@ -411,10 +549,12 @@ public class Application {
 
         IamListPoliciesRequest req = IamListPoliciesRequest.builder()
                 .xAccountId("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,permissions,description,created_at,updated_at")
                 .filter(IamListPoliciesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
+                .pageSize("25")
                 .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("permissions")
                 .build();
@@ -422,9 +562,9 @@ public class Application {
         sdk.iam().listPolicies()
                 .request(req)
                 .callAsStream()
-            .forEach(item -> {
-               // handle item
-            });
+                .forEach(item -> {
+                   // handle item again
+                });
 
     }
 }
@@ -475,6 +615,7 @@ public class Application {
         IamGetPolicyRequest req = IamGetPolicyRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .raw(false)
                 .fields("id,remote_id,name,permissions,description,created_at,updated_at")
                 .expand("permissions")
                 .build();

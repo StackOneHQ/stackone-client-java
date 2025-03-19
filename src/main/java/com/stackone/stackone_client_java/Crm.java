@@ -5,7 +5,9 @@
 package com.stackone.stackone_client_java;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.ReadContext;
 import com.stackone.stackone_client_java.models.components.AccountResult;
 import com.stackone.stackone_client_java.models.components.AccountsPaginated;
@@ -218,12 +220,13 @@ public class Crm implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -231,15 +234,10 @@ public class Crm implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                      
@@ -997,12 +995,13 @@ public class Crm implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1010,15 +1009,10 @@ public class Crm implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     CrmListAccountsRequestBuilder _ret = listAccounts();
@@ -1385,12 +1379,13 @@ public class Crm implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1398,15 +1393,10 @@ public class Crm implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     CrmListListsRequestBuilder _ret = listLists();
@@ -1773,12 +1763,13 @@ public class Crm implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1786,15 +1777,10 @@ public class Crm implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                      
                     CrmListContactCustomFieldDefinitionsRequestBuilder _ret = listContactCustomFieldDefinitions();

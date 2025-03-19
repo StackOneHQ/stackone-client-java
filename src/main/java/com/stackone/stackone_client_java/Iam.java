@@ -5,17 +5,25 @@
 package com.stackone.stackone_client_java;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.ReadContext;
+import com.stackone.stackone_client_java.models.components.DeleteResult;
 import com.stackone.stackone_client_java.models.components.IamGroupResult;
 import com.stackone.stackone_client_java.models.components.IamGroupsPaginated;
 import com.stackone.stackone_client_java.models.components.IamPoliciesPaginated;
 import com.stackone.stackone_client_java.models.components.IamPolicyResult;
 import com.stackone.stackone_client_java.models.components.IamRoleResult;
 import com.stackone.stackone_client_java.models.components.IamRolesPaginated;
+import com.stackone.stackone_client_java.models.components.IamUpdateUserRequestDto;
 import com.stackone.stackone_client_java.models.components.IamUserResult;
 import com.stackone.stackone_client_java.models.components.IamUsersPaginated;
+import com.stackone.stackone_client_java.models.components.UpdateUserApiModel;
 import com.stackone.stackone_client_java.models.errors.SDKError;
+import com.stackone.stackone_client_java.models.operations.IamDeleteUserRequest;
+import com.stackone.stackone_client_java.models.operations.IamDeleteUserRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.IamDeleteUserResponse;
 import com.stackone.stackone_client_java.models.operations.IamGetGroupRequest;
 import com.stackone.stackone_client_java.models.operations.IamGetGroupRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.IamGetGroupResponse;
@@ -40,6 +48,9 @@ import com.stackone.stackone_client_java.models.operations.IamListRolesResponse;
 import com.stackone.stackone_client_java.models.operations.IamListUsersRequest;
 import com.stackone.stackone_client_java.models.operations.IamListUsersRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.IamListUsersResponse;
+import com.stackone.stackone_client_java.models.operations.IamUpdateUserRequest;
+import com.stackone.stackone_client_java.models.operations.IamUpdateUserRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.IamUpdateUserResponse;
 import com.stackone.stackone_client_java.models.operations.SDKMethodInterfaces.*;
 import com.stackone.stackone_client_java.utils.BackoffStrategy;
 import com.stackone.stackone_client_java.utils.HTTPClient;
@@ -51,9 +62,12 @@ import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.Retries.NonRetryableException;
 import com.stackone.stackone_client_java.utils.Retries;
 import com.stackone.stackone_client_java.utils.RetryConfig;
+import com.stackone.stackone_client_java.utils.SerializedBody;
+import com.stackone.stackone_client_java.utils.Utils.JsonShape;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
 import java.lang.Exception;
+import java.lang.Object;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpRequest;
@@ -68,6 +82,8 @@ import java.util.concurrent.TimeUnit;
 public class Iam implements
             MethodCallIamListUsers,
             MethodCallIamGetUser,
+            MethodCallIamDeleteUser,
+            MethodCallIamUpdateUser,
             MethodCallIamListRoles,
             MethodCallIamGetRole,
             MethodCallIamListGroups,
@@ -206,12 +222,13 @@ public class Iam implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -219,15 +236,10 @@ public class Iam implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                      
@@ -473,6 +485,388 @@ public class Iam implements
 
 
     /**
+     * Delete User
+     * @return The call builder
+     */
+    public IamDeleteUserRequestBuilder deleteUser() {
+        return new IamDeleteUserRequestBuilder(this);
+    }
+
+    /**
+     * Delete User
+     * @param xAccountId The account identifier
+     * @param id
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public IamDeleteUserResponse deleteUser(
+            String xAccountId,
+            String id) throws Exception {
+        return deleteUser(xAccountId, id, Optional.empty());
+    }
+    
+    /**
+     * Delete User
+     * @param xAccountId The account identifier
+     * @param id
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public IamDeleteUserResponse deleteUser(
+            String xAccountId,
+            String id,
+            Optional<Options> options) throws Exception {
+
+        if (options.isPresent()) {
+          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
+        }
+        IamDeleteUserRequest request =
+            IamDeleteUserRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .build();
+        
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                IamDeleteUserRequest.class,
+                _baseUrl,
+                "/unified/iam/users/{id}",
+                request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "DELETE");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HTTPRequest _finalReq = _req;
+        RetryConfig _retryConfig;
+        if (options.isPresent() && options.get().retryConfig().isPresent()) {
+            _retryConfig = options.get().retryConfig().get();
+        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else {
+            _retryConfig = RetryConfig.builder()
+                .backoff(BackoffStrategy.builder()
+                            .initialInterval(500, TimeUnit.MILLISECONDS)
+                            .maxInterval(60000, TimeUnit.MILLISECONDS)
+                            .baseFactor((double)(1.5))
+                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
+                            .retryConnectError(true)
+                            .build())
+                .build();
+        }
+        List<String> _statusCodes = new ArrayList<>();
+        _statusCodes.add("429");
+        _statusCodes.add("408");
+        Retries _retries = Retries.builder()
+            .action(() -> {
+                HttpRequest _r = null;
+                try {
+                    _r = sdkConfiguration.hooks()
+                        .beforeRequest(
+                            new BeforeRequestContextImpl(
+                                "iam_delete_user", 
+                                Optional.of(List.of()), 
+                                _hookSecuritySource),
+                            _finalReq.build());
+                } catch (Exception _e) {
+                    throw new NonRetryableException(_e);
+                }
+                try {
+                    return _client.send(_r);
+                } catch (Exception _e) {
+                    return sdkConfiguration.hooks()
+                        .afterError(
+                            new AfterErrorContextImpl(
+                                "iam_delete_user",
+                                 Optional.of(List.of()),
+                                 _hookSecuritySource), 
+                            Optional.empty(),
+                            Optional.of(_e));
+                }
+            })
+            .retryConfig(_retryConfig)
+            .statusCodes(_statusCodes)
+            .build();
+        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
+                 .afterSuccess(
+                     new AfterSuccessContextImpl(
+                         "iam_delete_user", 
+                         Optional.of(List.of()), 
+                         _hookSecuritySource),
+                     _retries.run());
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        IamDeleteUserResponse.Builder _resBuilder = 
+            IamDeleteUserResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        IamDeleteUserResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                DeleteResult _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<DeleteResult>() {});
+                _res.withDeleteResult(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "204")) {
+            // no content 
+            return _res;
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
+     * Update User
+     * @return The call builder
+     */
+    public IamUpdateUserRequestBuilder updateUser() {
+        return new IamUpdateUserRequestBuilder(this);
+    }
+
+    /**
+     * Update User
+     * @param xAccountId The account identifier
+     * @param id
+     * @param iamUpdateUserRequestDto
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public IamUpdateUserResponse updateUser(
+            String xAccountId,
+            String id,
+            IamUpdateUserRequestDto iamUpdateUserRequestDto) throws Exception {
+        return updateUser(xAccountId, id, iamUpdateUserRequestDto, Optional.empty());
+    }
+    
+    /**
+     * Update User
+     * @param xAccountId The account identifier
+     * @param id
+     * @param iamUpdateUserRequestDto
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public IamUpdateUserResponse updateUser(
+            String xAccountId,
+            String id,
+            IamUpdateUserRequestDto iamUpdateUserRequestDto,
+            Optional<Options> options) throws Exception {
+
+        if (options.isPresent()) {
+          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
+        }
+        IamUpdateUserRequest request =
+            IamUpdateUserRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .iamUpdateUserRequestDto(iamUpdateUserRequestDto)
+                .build();
+        
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                IamUpdateUserRequest.class,
+                _baseUrl,
+                "/unified/iam/users/{id}",
+                request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
+        Object _convertedRequest = Utils.convertToShape(
+                request, 
+                JsonShape.DEFAULT,
+                new TypeReference<Object>() {});
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
+                _convertedRequest, 
+                "iamUpdateUserRequestDto",
+                "json",
+                false);
+        if (_serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HTTPRequest _finalReq = _req;
+        RetryConfig _retryConfig;
+        if (options.isPresent() && options.get().retryConfig().isPresent()) {
+            _retryConfig = options.get().retryConfig().get();
+        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else {
+            _retryConfig = RetryConfig.builder()
+                .backoff(BackoffStrategy.builder()
+                            .initialInterval(500, TimeUnit.MILLISECONDS)
+                            .maxInterval(60000, TimeUnit.MILLISECONDS)
+                            .baseFactor((double)(1.5))
+                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
+                            .retryConnectError(true)
+                            .build())
+                .build();
+        }
+        List<String> _statusCodes = new ArrayList<>();
+        _statusCodes.add("429");
+        _statusCodes.add("408");
+        Retries _retries = Retries.builder()
+            .action(() -> {
+                HttpRequest _r = null;
+                try {
+                    _r = sdkConfiguration.hooks()
+                        .beforeRequest(
+                            new BeforeRequestContextImpl(
+                                "iam_update_user", 
+                                Optional.of(List.of()), 
+                                _hookSecuritySource),
+                            _finalReq.build());
+                } catch (Exception _e) {
+                    throw new NonRetryableException(_e);
+                }
+                try {
+                    return _client.send(_r);
+                } catch (Exception _e) {
+                    return sdkConfiguration.hooks()
+                        .afterError(
+                            new AfterErrorContextImpl(
+                                "iam_update_user",
+                                 Optional.of(List.of()),
+                                 _hookSecuritySource), 
+                            Optional.empty(),
+                            Optional.of(_e));
+                }
+            })
+            .retryConfig(_retryConfig)
+            .statusCodes(_statusCodes)
+            .build();
+        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
+                 .afterSuccess(
+                     new AfterSuccessContextImpl(
+                         "iam_update_user", 
+                         Optional.of(List.of()), 
+                         _hookSecuritySource),
+                     _retries.run());
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        IamUpdateUserResponse.Builder _resBuilder = 
+            IamUpdateUserResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        IamUpdateUserResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                UpdateUserApiModel _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<UpdateUserApiModel>() {});
+                _res.withUpdateUserApiModel(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
+            _res.withHeaders(_httpRes.headers().map());
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "412", "429", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "501", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
      * List Roles
      * @return The call builder
      */
@@ -596,12 +990,13 @@ public class Iam implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -609,15 +1004,10 @@ public class Iam implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                      
@@ -986,12 +1376,13 @@ public class Iam implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -999,15 +1390,10 @@ public class Iam implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                      
@@ -1376,12 +1762,13 @@ public class Iam implements
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes)
                 .next(() -> {
-                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
-                    ReadContext _body = JsonPath.parse(_stringBody);
-
                     if (request == null) {
                         return Optional.empty();
                     }
+                    String _stringBody = new String(_fullResponse, StandardCharsets.UTF_8);
+                    Configuration _config = Configuration.defaultConfiguration()
+                            .addOptions(Option.SUPPRESS_EXCEPTIONS);
+                    ReadContext _body = JsonPath.using(_config).parse(_stringBody);
                     
                     
                     
@@ -1389,15 +1776,10 @@ public class Iam implements
                     
                     
                     
-                    @SuppressWarnings("unchecked")
-                    List<String> _nextCursorToken = _body.read("$.next", List.class);
-                    if (_nextCursorToken == null || _nextCursorToken.isEmpty()) {
+                    String _nextCursor = _body.read("$.next", String.class);
+                    if (_nextCursor == null) {
                         return Optional.empty();
                     };
-
-                    String _nextCursor = _nextCursorToken.get(0);
-
-                    
                     
                     
                      

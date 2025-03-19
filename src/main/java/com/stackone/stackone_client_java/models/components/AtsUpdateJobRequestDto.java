@@ -44,6 +44,13 @@ public class AtsUpdateJobRequestDto {
     private JsonNullable<String> title;
 
     /**
+     * Description of the job
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("description")
+    private JsonNullable<String> description;
+
+    /**
      * Status of the job
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
@@ -113,6 +120,7 @@ public class AtsUpdateJobRequestDto {
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
             @JsonProperty("code") JsonNullable<String> code,
             @JsonProperty("title") JsonNullable<String> title,
+            @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("status") JsonNullable<String> status,
             @JsonProperty("job_status") JsonNullable<? extends AtsUpdateJobRequestDtoJobStatus> jobStatus,
             @JsonProperty("department_ids") JsonNullable<? extends List<String>> departmentIds,
@@ -125,6 +133,7 @@ public class AtsUpdateJobRequestDto {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         Utils.checkNotNull(code, "code");
         Utils.checkNotNull(title, "title");
+        Utils.checkNotNull(description, "description");
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(jobStatus, "jobStatus");
         Utils.checkNotNull(departmentIds, "departmentIds");
@@ -137,6 +146,7 @@ public class AtsUpdateJobRequestDto {
         this.unifiedCustomFields = unifiedCustomFields;
         this.code = code;
         this.title = title;
+        this.description = description;
         this.status = status;
         this.jobStatus = jobStatus;
         this.departmentIds = departmentIds;
@@ -149,7 +159,7 @@ public class AtsUpdateJobRequestDto {
     }
     
     public AtsUpdateJobRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -175,6 +185,14 @@ public class AtsUpdateJobRequestDto {
     @JsonIgnore
     public JsonNullable<String> title() {
         return title;
+    }
+
+    /**
+     * Description of the job
+     */
+    @JsonIgnore
+    public JsonNullable<String> description() {
+        return description;
     }
 
     /**
@@ -314,6 +332,24 @@ public class AtsUpdateJobRequestDto {
     public AtsUpdateJobRequestDto withTitle(JsonNullable<String> title) {
         Utils.checkNotNull(title, "title");
         this.title = title;
+        return this;
+    }
+
+    /**
+     * Description of the job
+     */
+    public AtsUpdateJobRequestDto withDescription(String description) {
+        Utils.checkNotNull(description, "description");
+        this.description = JsonNullable.of(description);
+        return this;
+    }
+
+    /**
+     * Description of the job
+     */
+    public AtsUpdateJobRequestDto withDescription(JsonNullable<String> description) {
+        Utils.checkNotNull(description, "description");
+        this.description = description;
         return this;
     }
 
@@ -496,6 +532,7 @@ public class AtsUpdateJobRequestDto {
             Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
             Objects.deepEquals(this.code, other.code) &&
             Objects.deepEquals(this.title, other.title) &&
+            Objects.deepEquals(this.description, other.description) &&
             Objects.deepEquals(this.status, other.status) &&
             Objects.deepEquals(this.jobStatus, other.jobStatus) &&
             Objects.deepEquals(this.departmentIds, other.departmentIds) &&
@@ -513,6 +550,7 @@ public class AtsUpdateJobRequestDto {
             unifiedCustomFields,
             code,
             title,
+            description,
             status,
             jobStatus,
             departmentIds,
@@ -530,6 +568,7 @@ public class AtsUpdateJobRequestDto {
                 "unifiedCustomFields", unifiedCustomFields,
                 "code", code,
                 "title", title,
+                "description", description,
                 "status", status,
                 "jobStatus", jobStatus,
                 "departmentIds", departmentIds,
@@ -548,6 +587,8 @@ public class AtsUpdateJobRequestDto {
         private JsonNullable<String> code = JsonNullable.undefined();
  
         private JsonNullable<String> title = JsonNullable.undefined();
+ 
+        private JsonNullable<String> description = JsonNullable.undefined();
  
         @Deprecated
         private JsonNullable<String> status = JsonNullable.undefined();
@@ -623,6 +664,24 @@ public class AtsUpdateJobRequestDto {
         public Builder title(JsonNullable<String> title) {
             Utils.checkNotNull(title, "title");
             this.title = title;
+            return this;
+        }
+
+        /**
+         * Description of the job
+         */
+        public Builder description(String description) {
+            Utils.checkNotNull(description, "description");
+            this.description = JsonNullable.of(description);
+            return this;
+        }
+
+        /**
+         * Description of the job
+         */
+        public Builder description(JsonNullable<String> description) {
+            Utils.checkNotNull(description, "description");
+            this.description = description;
             return this;
         }
 
@@ -797,6 +856,7 @@ public class AtsUpdateJobRequestDto {
                 unifiedCustomFields,
                 code,
                 title,
+                description,
                 status,
                 jobStatus,
                 departmentIds,
