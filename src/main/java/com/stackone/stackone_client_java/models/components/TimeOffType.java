@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Deprecated;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -17,8 +18,9 @@ import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * TimeOffType - The type of the time off request
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-
+@Deprecated
 public class TimeOffType {
 
     @JsonInclude(Include.NON_ABSENT)

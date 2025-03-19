@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -44,9 +45,11 @@ public class HrisCreateTimeOffRequestDto {
 
     /**
      * The type of the time off request
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
+    @Deprecated
     private JsonNullable<? extends HrisCreateTimeOffRequestDtoType> type;
 
     /**
@@ -163,7 +166,9 @@ public class HrisCreateTimeOffRequestDto {
 
     /**
      * The type of the time off request
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<HrisCreateTimeOffRequestDtoType> type() {
@@ -287,7 +292,9 @@ public class HrisCreateTimeOffRequestDto {
 
     /**
      * The type of the time off request
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateTimeOffRequestDto withType(HrisCreateTimeOffRequestDtoType type) {
         Utils.checkNotNull(type, "type");
         this.type = JsonNullable.of(type);
@@ -296,7 +303,9 @@ public class HrisCreateTimeOffRequestDto {
 
     /**
      * The type of the time off request
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateTimeOffRequestDto withType(JsonNullable<? extends HrisCreateTimeOffRequestDtoType> type) {
         Utils.checkNotNull(type, "type");
         this.type = type;
@@ -486,6 +495,7 @@ public class HrisCreateTimeOffRequestDto {
  
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoStatus> status = JsonNullable.undefined();
  
+        @Deprecated
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoType> type = JsonNullable.undefined();
  
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
@@ -562,7 +572,9 @@ public class HrisCreateTimeOffRequestDto {
 
         /**
          * The type of the time off request
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder type(HrisCreateTimeOffRequestDtoType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -571,7 +583,9 @@ public class HrisCreateTimeOffRequestDto {
 
         /**
          * The type of the time off request
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder type(JsonNullable<? extends HrisCreateTimeOffRequestDtoType> type) {
             Utils.checkNotNull(type, "type");
             this.type = type;
