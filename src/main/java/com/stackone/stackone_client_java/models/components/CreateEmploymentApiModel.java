@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -34,13 +35,6 @@ public class CreateEmploymentApiModel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
-
-    /**
-     * The employee ID associated with this employment
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("employee_id")
-    private JsonNullable<String> employeeId;
 
     /**
      * The job title of the employee
@@ -79,9 +73,11 @@ public class CreateEmploymentApiModel {
 
     /**
      * The effective date of the employment contract
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("effective_date")
+    @Deprecated
     private JsonNullable<OffsetDateTime> effectiveDate;
 
     /**
@@ -109,7 +105,6 @@ public class CreateEmploymentApiModel {
     public CreateEmploymentApiModel(
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
-            @JsonProperty("employee_id") JsonNullable<String> employeeId,
             @JsonProperty("job_title") JsonNullable<String> jobTitle,
             @JsonProperty("pay_rate") JsonNullable<String> payRate,
             @JsonProperty("pay_period") JsonNullable<? extends CreateEmploymentApiModelPayPeriod> payPeriod,
@@ -121,7 +116,6 @@ public class CreateEmploymentApiModel {
             @JsonProperty("time_worked") JsonNullable<String> timeWorked) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
-        Utils.checkNotNull(employeeId, "employeeId");
         Utils.checkNotNull(jobTitle, "jobTitle");
         Utils.checkNotNull(payRate, "payRate");
         Utils.checkNotNull(payPeriod, "payPeriod");
@@ -133,7 +127,6 @@ public class CreateEmploymentApiModel {
         Utils.checkNotNull(timeWorked, "timeWorked");
         this.id = id;
         this.unifiedCustomFields = unifiedCustomFields;
-        this.employeeId = employeeId;
         this.jobTitle = jobTitle;
         this.payRate = payRate;
         this.payPeriod = payPeriod;
@@ -146,7 +139,7 @@ public class CreateEmploymentApiModel {
     }
     
     public CreateEmploymentApiModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -164,14 +157,6 @@ public class CreateEmploymentApiModel {
     @JsonIgnore
     public JsonNullable<Map<String, Object>> unifiedCustomFields() {
         return (JsonNullable<Map<String, Object>>) unifiedCustomFields;
-    }
-
-    /**
-     * The employee ID associated with this employment
-     */
-    @JsonIgnore
-    public JsonNullable<String> employeeId() {
-        return employeeId;
     }
 
     /**
@@ -218,7 +203,9 @@ public class CreateEmploymentApiModel {
 
     /**
      * The effective date of the employment contract
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     @JsonIgnore
     public JsonNullable<OffsetDateTime> effectiveDate() {
         return effectiveDate;
@@ -287,24 +274,6 @@ public class CreateEmploymentApiModel {
     public CreateEmploymentApiModel withUnifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         this.unifiedCustomFields = unifiedCustomFields;
-        return this;
-    }
-
-    /**
-     * The employee ID associated with this employment
-     */
-    public CreateEmploymentApiModel withEmployeeId(String employeeId) {
-        Utils.checkNotNull(employeeId, "employeeId");
-        this.employeeId = JsonNullable.of(employeeId);
-        return this;
-    }
-
-    /**
-     * The employee ID associated with this employment
-     */
-    public CreateEmploymentApiModel withEmployeeId(JsonNullable<String> employeeId) {
-        Utils.checkNotNull(employeeId, "employeeId");
-        this.employeeId = employeeId;
         return this;
     }
 
@@ -400,7 +369,9 @@ public class CreateEmploymentApiModel {
 
     /**
      * The effective date of the employment contract
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public CreateEmploymentApiModel withEffectiveDate(OffsetDateTime effectiveDate) {
         Utils.checkNotNull(effectiveDate, "effectiveDate");
         this.effectiveDate = JsonNullable.of(effectiveDate);
@@ -409,7 +380,9 @@ public class CreateEmploymentApiModel {
 
     /**
      * The effective date of the employment contract
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public CreateEmploymentApiModel withEffectiveDate(JsonNullable<OffsetDateTime> effectiveDate) {
         Utils.checkNotNull(effectiveDate, "effectiveDate");
         this.effectiveDate = effectiveDate;
@@ -482,7 +455,6 @@ public class CreateEmploymentApiModel {
         return 
             Objects.deepEquals(this.id, other.id) &&
             Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.employeeId, other.employeeId) &&
             Objects.deepEquals(this.jobTitle, other.jobTitle) &&
             Objects.deepEquals(this.payRate, other.payRate) &&
             Objects.deepEquals(this.payPeriod, other.payPeriod) &&
@@ -499,7 +471,6 @@ public class CreateEmploymentApiModel {
         return Objects.hash(
             id,
             unifiedCustomFields,
-            employeeId,
             jobTitle,
             payRate,
             payPeriod,
@@ -516,7 +487,6 @@ public class CreateEmploymentApiModel {
         return Utils.toString(CreateEmploymentApiModel.class,
                 "id", id,
                 "unifiedCustomFields", unifiedCustomFields,
-                "employeeId", employeeId,
                 "jobTitle", jobTitle,
                 "payRate", payRate,
                 "payPeriod", payPeriod,
@@ -534,8 +504,6 @@ public class CreateEmploymentApiModel {
  
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
  
-        private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
         private JsonNullable<String> jobTitle = JsonNullable.undefined();
  
         private JsonNullable<String> payRate = JsonNullable.undefined();
@@ -546,6 +514,7 @@ public class CreateEmploymentApiModel {
  
         private JsonNullable<String> payCurrency = JsonNullable.undefined();
  
+        @Deprecated
         private JsonNullable<OffsetDateTime> effectiveDate = JsonNullable.undefined();
  
         private JsonNullable<? extends CreateEmploymentApiModelEmploymentType> employmentType = JsonNullable.undefined();
@@ -591,24 +560,6 @@ public class CreateEmploymentApiModel {
         public Builder unifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
             Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
             this.unifiedCustomFields = unifiedCustomFields;
-            return this;
-        }
-
-        /**
-         * The employee ID associated with this employment
-         */
-        public Builder employeeId(String employeeId) {
-            Utils.checkNotNull(employeeId, "employeeId");
-            this.employeeId = JsonNullable.of(employeeId);
-            return this;
-        }
-
-        /**
-         * The employee ID associated with this employment
-         */
-        public Builder employeeId(JsonNullable<String> employeeId) {
-            Utils.checkNotNull(employeeId, "employeeId");
-            this.employeeId = employeeId;
             return this;
         }
 
@@ -704,7 +655,9 @@ public class CreateEmploymentApiModel {
 
         /**
          * The effective date of the employment contract
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder effectiveDate(OffsetDateTime effectiveDate) {
             Utils.checkNotNull(effectiveDate, "effectiveDate");
             this.effectiveDate = JsonNullable.of(effectiveDate);
@@ -713,7 +666,9 @@ public class CreateEmploymentApiModel {
 
         /**
          * The effective date of the employment contract
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder effectiveDate(JsonNullable<OffsetDateTime> effectiveDate) {
             Utils.checkNotNull(effectiveDate, "effectiveDate");
             this.effectiveDate = effectiveDate;
@@ -778,7 +733,6 @@ public class CreateEmploymentApiModel {
             return new CreateEmploymentApiModel(
                 id,
                 unifiedCustomFields,
-                employeeId,
                 jobTitle,
                 payRate,
                 payPeriod,

@@ -59,6 +59,13 @@ public class Job {
     private JsonNullable<String> title;
 
     /**
+     * Description of the job
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("description")
+    private JsonNullable<String> description;
+
+    /**
      * Status of the job
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
@@ -151,6 +158,7 @@ public class Job {
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
             @JsonProperty("code") JsonNullable<String> code,
             @JsonProperty("title") JsonNullable<String> title,
+            @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("status") JsonNullable<String> status,
             @JsonProperty("job_status") JsonNullable<? extends JobStatus> jobStatus,
             @JsonProperty("department_ids") JsonNullable<? extends List<String>> departmentIds,
@@ -168,6 +176,7 @@ public class Job {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         Utils.checkNotNull(code, "code");
         Utils.checkNotNull(title, "title");
+        Utils.checkNotNull(description, "description");
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(jobStatus, "jobStatus");
         Utils.checkNotNull(departmentIds, "departmentIds");
@@ -185,6 +194,7 @@ public class Job {
         this.unifiedCustomFields = unifiedCustomFields;
         this.code = code;
         this.title = title;
+        this.description = description;
         this.status = status;
         this.jobStatus = jobStatus;
         this.departmentIds = departmentIds;
@@ -200,7 +210,7 @@ public class Job {
     }
     
     public Job() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -242,6 +252,14 @@ public class Job {
     @JsonIgnore
     public JsonNullable<String> title() {
         return title;
+    }
+
+    /**
+     * Description of the job
+     */
+    @JsonIgnore
+    public JsonNullable<String> description() {
+        return description;
     }
 
     /**
@@ -442,6 +460,24 @@ public class Job {
     public Job withTitle(JsonNullable<String> title) {
         Utils.checkNotNull(title, "title");
         this.title = title;
+        return this;
+    }
+
+    /**
+     * Description of the job
+     */
+    public Job withDescription(String description) {
+        Utils.checkNotNull(description, "description");
+        this.description = JsonNullable.of(description);
+        return this;
+    }
+
+    /**
+     * Description of the job
+     */
+    public Job withDescription(JsonNullable<String> description) {
+        Utils.checkNotNull(description, "description");
+        this.description = description;
         return this;
     }
 
@@ -680,6 +716,7 @@ public class Job {
             Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
             Objects.deepEquals(this.code, other.code) &&
             Objects.deepEquals(this.title, other.title) &&
+            Objects.deepEquals(this.description, other.description) &&
             Objects.deepEquals(this.status, other.status) &&
             Objects.deepEquals(this.jobStatus, other.jobStatus) &&
             Objects.deepEquals(this.departmentIds, other.departmentIds) &&
@@ -702,6 +739,7 @@ public class Job {
             unifiedCustomFields,
             code,
             title,
+            description,
             status,
             jobStatus,
             departmentIds,
@@ -724,6 +762,7 @@ public class Job {
                 "unifiedCustomFields", unifiedCustomFields,
                 "code", code,
                 "title", title,
+                "description", description,
                 "status", status,
                 "jobStatus", jobStatus,
                 "departmentIds", departmentIds,
@@ -749,6 +788,8 @@ public class Job {
         private JsonNullable<String> code = JsonNullable.undefined();
  
         private JsonNullable<String> title = JsonNullable.undefined();
+ 
+        private JsonNullable<String> description = JsonNullable.undefined();
  
         @Deprecated
         private JsonNullable<String> status = JsonNullable.undefined();
@@ -866,6 +907,24 @@ public class Job {
         public Builder title(JsonNullable<String> title) {
             Utils.checkNotNull(title, "title");
             this.title = title;
+            return this;
+        }
+
+        /**
+         * Description of the job
+         */
+        public Builder description(String description) {
+            Utils.checkNotNull(description, "description");
+            this.description = JsonNullable.of(description);
+            return this;
+        }
+
+        /**
+         * Description of the job
+         */
+        public Builder description(JsonNullable<String> description) {
+            Utils.checkNotNull(description, "description");
+            this.description = description;
             return this;
         }
 
@@ -1096,6 +1155,7 @@ public class Job {
                 unifiedCustomFields,
                 code,
                 title,
+                description,
                 status,
                 jobStatus,
                 departmentIds,

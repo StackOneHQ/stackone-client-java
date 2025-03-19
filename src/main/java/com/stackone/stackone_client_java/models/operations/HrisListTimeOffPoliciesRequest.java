@@ -6,8 +6,6 @@
 package com.stackone.stackone_client_java.models.operations;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.stackone.stackone_client_java.utils.LazySingletonValue;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Boolean;
@@ -29,7 +27,7 @@ public class HrisListTimeOffPoliciesRequest {
     private String xAccountId;
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")
     private JsonNullable<Boolean> raw;
@@ -61,7 +59,7 @@ public class HrisListTimeOffPoliciesRequest {
     private JsonNullable<String> page;
 
     /**
-     * The number of results per page
+     * The number of results per page (default value is 25)
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=page_size")
     private JsonNullable<String> pageSize;
@@ -125,7 +123,7 @@ public class HrisListTimeOffPoliciesRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     @JsonIgnore
     public JsonNullable<Boolean> raw() {
@@ -169,7 +167,7 @@ public class HrisListTimeOffPoliciesRequest {
     }
 
     /**
-     * The number of results per page
+     * The number of results per page (default value is 25)
      */
     @JsonIgnore
     public JsonNullable<String> pageSize() {
@@ -208,7 +206,7 @@ public class HrisListTimeOffPoliciesRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     public HrisListTimeOffPoliciesRequest withRaw(boolean raw) {
         Utils.checkNotNull(raw, "raw");
@@ -217,7 +215,7 @@ public class HrisListTimeOffPoliciesRequest {
     }
 
     /**
-     * Indicates that the raw request result is returned
+     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
      */
     public HrisListTimeOffPoliciesRequest withRaw(JsonNullable<Boolean> raw) {
         Utils.checkNotNull(raw, "raw");
@@ -302,7 +300,7 @@ public class HrisListTimeOffPoliciesRequest {
     }
 
     /**
-     * The number of results per page
+     * The number of results per page (default value is 25)
      */
     public HrisListTimeOffPoliciesRequest withPageSize(String pageSize) {
         Utils.checkNotNull(pageSize, "pageSize");
@@ -311,7 +309,7 @@ public class HrisListTimeOffPoliciesRequest {
     }
 
     /**
-     * The number of results per page
+     * The number of results per page (default value is 25)
      */
     public HrisListTimeOffPoliciesRequest withPageSize(JsonNullable<String> pageSize) {
         Utils.checkNotNull(pageSize, "pageSize");
@@ -412,7 +410,7 @@ public class HrisListTimeOffPoliciesRequest {
  
         private String xAccountId;
  
-        private JsonNullable<Boolean> raw;
+        private JsonNullable<Boolean> raw = JsonNullable.undefined();
  
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
  
@@ -423,7 +421,7 @@ public class HrisListTimeOffPoliciesRequest {
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
  
-        private JsonNullable<String> pageSize;
+        private JsonNullable<String> pageSize = JsonNullable.undefined();
  
         private JsonNullable<String> next = JsonNullable.undefined();
  
@@ -444,7 +442,7 @@ public class HrisListTimeOffPoliciesRequest {
         }
 
         /**
-         * Indicates that the raw request result is returned
+         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
          */
         public Builder raw(boolean raw) {
             Utils.checkNotNull(raw, "raw");
@@ -453,7 +451,7 @@ public class HrisListTimeOffPoliciesRequest {
         }
 
         /**
-         * Indicates that the raw request result is returned
+         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
          */
         public Builder raw(JsonNullable<Boolean> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -538,7 +536,7 @@ public class HrisListTimeOffPoliciesRequest {
         }
 
         /**
-         * The number of results per page
+         * The number of results per page (default value is 25)
          */
         public Builder pageSize(String pageSize) {
             Utils.checkNotNull(pageSize, "pageSize");
@@ -547,7 +545,7 @@ public class HrisListTimeOffPoliciesRequest {
         }
 
         /**
-         * The number of results per page
+         * The number of results per page (default value is 25)
          */
         public Builder pageSize(JsonNullable<String> pageSize) {
             Utils.checkNotNull(pageSize, "pageSize");
@@ -596,12 +594,7 @@ public class HrisListTimeOffPoliciesRequest {
         }
         
         public HrisListTimeOffPoliciesRequest build() {
-            if (raw == null) {
-                raw = _SINGLETON_VALUE_Raw.value();
-            }
-            if (pageSize == null) {
-                pageSize = _SINGLETON_VALUE_PageSize.value();
-            }            return new HrisListTimeOffPoliciesRequest(
+            return new HrisListTimeOffPoliciesRequest(
                 xAccountId,
                 raw,
                 proxy,
@@ -612,18 +605,6 @@ public class HrisListTimeOffPoliciesRequest {
                 next,
                 updatedAfter);
         }
-
-        private static final LazySingletonValue<JsonNullable<Boolean>> _SINGLETON_VALUE_Raw =
-                new LazySingletonValue<>(
-                        "raw",
-                        "false",
-                        new TypeReference<JsonNullable<Boolean>>() {});
-
-        private static final LazySingletonValue<JsonNullable<String>> _SINGLETON_VALUE_PageSize =
-                new LazySingletonValue<>(
-                        "page_size",
-                        "\"25\"",
-                        new TypeReference<JsonNullable<String>>() {});
     }
 }
 

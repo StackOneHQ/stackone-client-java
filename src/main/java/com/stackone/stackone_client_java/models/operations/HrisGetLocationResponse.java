@@ -38,7 +38,7 @@ public class HrisGetLocationResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The Location with the given identifier was retrieved.
+     * The work location with the given identifier was retrieved.
      */
     private Optional<? extends HRISLocationResult> hrisLocationResult;
 
@@ -96,7 +96,7 @@ public class HrisGetLocationResponse implements Response {
     }
 
     /**
-     * The Location with the given identifier was retrieved.
+     * The work location with the given identifier was retrieved.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -141,7 +141,7 @@ public class HrisGetLocationResponse implements Response {
     }
 
     /**
-     * The Location with the given identifier was retrieved.
+     * The work location with the given identifier was retrieved.
      */
     public HrisGetLocationResponse withHRISLocationResult(HRISLocationResult hrisLocationResult) {
         Utils.checkNotNull(hrisLocationResult, "hrisLocationResult");
@@ -150,7 +150,7 @@ public class HrisGetLocationResponse implements Response {
     }
 
     /**
-     * The Location with the given identifier was retrieved.
+     * The work location with the given identifier was retrieved.
      */
     public HrisGetLocationResponse withHRISLocationResult(Optional<? extends HRISLocationResult> hrisLocationResult) {
         Utils.checkNotNull(hrisLocationResult, "hrisLocationResult");
@@ -245,7 +245,7 @@ public class HrisGetLocationResponse implements Response {
         }
 
         /**
-         * The Location with the given identifier was retrieved.
+         * The work location with the given identifier was retrieved.
          */
         public Builder hrisLocationResult(HRISLocationResult hrisLocationResult) {
             Utils.checkNotNull(hrisLocationResult, "hrisLocationResult");
@@ -254,7 +254,7 @@ public class HrisGetLocationResponse implements Response {
         }
 
         /**
-         * The Location with the given identifier was retrieved.
+         * The work location with the given identifier was retrieved.
          */
         public Builder hrisLocationResult(Optional<? extends HRISLocationResult> hrisLocationResult) {
             Utils.checkNotNull(hrisLocationResult, "hrisLocationResult");

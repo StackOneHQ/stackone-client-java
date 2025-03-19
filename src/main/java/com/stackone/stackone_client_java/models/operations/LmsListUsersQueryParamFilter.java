@@ -30,18 +30,27 @@ public class LmsListUsersQueryParamFilter {
     @SpeakeasyMetadata("queryParam:name=email")
     private JsonNullable<String> email;
 
+    /**
+     * Filter to select users by external_reference
+     */
+    @SpeakeasyMetadata("queryParam:name=external_reference")
+    private JsonNullable<String> externalReference;
+
     @JsonCreator
     public LmsListUsersQueryParamFilter(
             JsonNullable<String> updatedAfter,
-            JsonNullable<String> email) {
+            JsonNullable<String> email,
+            JsonNullable<String> externalReference) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(email, "email");
+        Utils.checkNotNull(externalReference, "externalReference");
         this.updatedAfter = updatedAfter;
         this.email = email;
+        this.externalReference = externalReference;
     }
     
     public LmsListUsersQueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -58,6 +67,14 @@ public class LmsListUsersQueryParamFilter {
     @JsonIgnore
     public JsonNullable<String> email() {
         return email;
+    }
+
+    /**
+     * Filter to select users by external_reference
+     */
+    @JsonIgnore
+    public JsonNullable<String> externalReference() {
+        return externalReference;
     }
 
     public final static Builder builder() {
@@ -99,6 +116,24 @@ public class LmsListUsersQueryParamFilter {
         this.email = email;
         return this;
     }
+
+    /**
+     * Filter to select users by external_reference
+     */
+    public LmsListUsersQueryParamFilter withExternalReference(String externalReference) {
+        Utils.checkNotNull(externalReference, "externalReference");
+        this.externalReference = JsonNullable.of(externalReference);
+        return this;
+    }
+
+    /**
+     * Filter to select users by external_reference
+     */
+    public LmsListUsersQueryParamFilter withExternalReference(JsonNullable<String> externalReference) {
+        Utils.checkNotNull(externalReference, "externalReference");
+        this.externalReference = externalReference;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -111,28 +146,33 @@ public class LmsListUsersQueryParamFilter {
         LmsListUsersQueryParamFilter other = (LmsListUsersQueryParamFilter) o;
         return 
             Objects.deepEquals(this.updatedAfter, other.updatedAfter) &&
-            Objects.deepEquals(this.email, other.email);
+            Objects.deepEquals(this.email, other.email) &&
+            Objects.deepEquals(this.externalReference, other.externalReference);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
             updatedAfter,
-            email);
+            email,
+            externalReference);
     }
     
     @Override
     public String toString() {
         return Utils.toString(LmsListUsersQueryParamFilter.class,
                 "updatedAfter", updatedAfter,
-                "email", email);
+                "email", email,
+                "externalReference", externalReference);
     }
     
     public final static class Builder {
  
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
  
-        private JsonNullable<String> email = JsonNullable.undefined();  
+        private JsonNullable<String> email = JsonNullable.undefined();
+ 
+        private JsonNullable<String> externalReference = JsonNullable.undefined();  
         
         private Builder() {
           // force use of static builder() method
@@ -173,11 +213,30 @@ public class LmsListUsersQueryParamFilter {
             this.email = email;
             return this;
         }
+
+        /**
+         * Filter to select users by external_reference
+         */
+        public Builder externalReference(String externalReference) {
+            Utils.checkNotNull(externalReference, "externalReference");
+            this.externalReference = JsonNullable.of(externalReference);
+            return this;
+        }
+
+        /**
+         * Filter to select users by external_reference
+         */
+        public Builder externalReference(JsonNullable<String> externalReference) {
+            Utils.checkNotNull(externalReference, "externalReference");
+            this.externalReference = externalReference;
+            return this;
+        }
         
         public LmsListUsersQueryParamFilter build() {
             return new LmsListUsersQueryParamFilter(
                 updatedAfter,
-                email);
+                email,
+                externalReference);
         }
     }
 }
