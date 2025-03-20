@@ -143,7 +143,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit; 
+import java.util.concurrent.TimeUnit;
+import org.openapitools.jackson.nullable.JsonNullable; 
 
 public class Lms implements
             MethodCallLmsBatchUpsertCourse,
@@ -513,7 +514,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     LmsListCoursesRequestBuilder _ret = listCourses();
@@ -525,7 +526,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -1091,7 +1092,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                     
@@ -1106,7 +1107,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.userId(),
                         request.remoteUserId()
@@ -1869,7 +1870,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     LmsListContentRequestBuilder _ret = listContent();
@@ -1881,7 +1882,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -2447,7 +2448,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     LmsListUserCompletionsRequestBuilder _ret = listUserCompletions();
@@ -2460,7 +2461,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -3219,7 +3220,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     LmsListCompletionsRequestBuilder _ret = listCompletions();
@@ -3231,7 +3232,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -3777,7 +3778,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     LmsListCategoriesRequestBuilder _ret = listCategories();
@@ -3789,7 +3790,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -3987,7 +3988,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     LmsListUsersRequestBuilder _ret = listUsers();
@@ -3999,7 +4000,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -4545,7 +4546,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     LmsListSkillsRequestBuilder _ret = listSkills();
@@ -4557,7 +4558,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -4755,7 +4756,7 @@ public class Lms implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                     
@@ -4769,7 +4770,7 @@ public class Lms implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.userId(),
                         request.remoteUserId()

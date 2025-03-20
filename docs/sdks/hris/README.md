@@ -40,9 +40,9 @@
 * [listLocations](#listlocations) - List Work Locations
 * [getLocation](#getlocation) - Get Work Location
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
-* [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
+* [~~createTimeOffRequest~~](#createtimeoffrequest) - Creates a time off request :warning: **Deprecated**
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
-* [updateTimeOffRequest](#updatetimeoffrequest) - Update time off request
+* [~~updateTimeOffRequest~~](#updatetimeoffrequest) - Update time off request :warning: **Deprecated**
 * [~~listTimeOffTypes~~](#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [~~getTimeOffType~~](#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [listTimeEntries](#listtimeentries) - List Time Entries
@@ -2886,9 +2886,11 @@ public class Application {
 | ---------------------- | ---------------------- | ---------------------- |
 | models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
-## createTimeOffRequest
+## ~~createTimeOffRequest~~
 
 Creates a time off request
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -3020,9 +3022,11 @@ public class Application {
 | ---------------------- | ---------------------- | ---------------------- |
 | models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
-## updateTimeOffRequest
+## ~~updateTimeOffRequest~~
 
 Update time off request
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

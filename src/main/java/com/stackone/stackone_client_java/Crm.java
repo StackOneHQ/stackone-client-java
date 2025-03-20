@@ -75,7 +75,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit; 
+import java.util.concurrent.TimeUnit;
+import org.openapitools.jackson.nullable.JsonNullable; 
 
 public class Crm implements
             MethodCallCrmListContacts,
@@ -237,7 +238,7 @@ public class Crm implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -250,7 +251,7 @@ public class Crm implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.include()
                     ));
@@ -1012,7 +1013,7 @@ public class Crm implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     CrmListAccountsRequestBuilder _ret = listAccounts();
@@ -1024,7 +1025,7 @@ public class Crm implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -1396,7 +1397,7 @@ public class Crm implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     CrmListListsRequestBuilder _ret = listLists();
@@ -1408,7 +1409,7 @@ public class Crm implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -1780,7 +1781,7 @@ public class Crm implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     CrmListContactCustomFieldDefinitionsRequestBuilder _ret = listContactCustomFieldDefinitions();
@@ -1792,7 +1793,7 @@ public class Crm implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());

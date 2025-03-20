@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 6a01ef75ab483184abef621f3adc8913
+  docChecksum: d40f3587d1e516ed260e46e8f57eb09b
   docVersion: 1.0.0
-  speakeasyVersion: 1.521.0
-  generationVersion: 2.558.2
-  releaseVersion: 0.4.1
-  configChecksum: 99eb24a8da9786960bbd2f4ad582de29
+  speakeasyVersion: 1.521.1
+  generationVersion: 2.558.5
+  releaseVersion: 0.4.2
+  configChecksum: 95b6703a4d3a53bc03185c46cad46b75
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.35.1
+    core: 3.35.2
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.5
@@ -25,7 +25,7 @@ features:
     nameOverrides: 2.81.3
     nullables: 0.1.0
     openEnums: 0.2.0
-    pagination: 0.3.0
+    pagination: 0.3.1
     retries: 0.1.1
     sdkHooks: 1.0.0
     unions: 0.0.6

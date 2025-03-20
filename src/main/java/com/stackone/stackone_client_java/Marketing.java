@@ -136,7 +136,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit; 
+import java.util.concurrent.TimeUnit;
+import org.openapitools.jackson.nullable.JsonNullable; 
 
 public class Marketing implements
             MethodCallMarketingListEmailTemplates,
@@ -314,7 +315,7 @@ public class Marketing implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     MarketingListEmailTemplatesRequestBuilder _ret = listEmailTemplates();
@@ -326,7 +327,7 @@ public class Marketing implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -1087,7 +1088,7 @@ public class Marketing implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     MarketingListInAppTemplatesRequestBuilder _ret = listInAppTemplates();
@@ -1099,7 +1100,7 @@ public class Marketing implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -1860,7 +1861,7 @@ public class Marketing implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     MarketingListSmsTemplatesRequestBuilder _ret = listSmsTemplates();
@@ -1872,7 +1873,7 @@ public class Marketing implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -2639,7 +2640,7 @@ public class Marketing implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     MarketingListOmniChannelTemplatesRequestBuilder _ret = listOmniChannelTemplates();
@@ -2651,7 +2652,7 @@ public class Marketing implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -3430,7 +3431,7 @@ public class Marketing implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     MarketingListPushTemplatesRequestBuilder _ret = listPushTemplates();
@@ -3442,7 +3443,7 @@ public class Marketing implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -4203,7 +4204,7 @@ public class Marketing implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     MarketingListCampaignsRequestBuilder _ret = listCampaigns();
@@ -4215,7 +4216,7 @@ public class Marketing implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -4587,7 +4588,7 @@ public class Marketing implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     MarketingListContentBlocksRequestBuilder _ret = listContentBlocks();
@@ -4599,7 +4600,7 @@ public class Marketing implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
