@@ -478,7 +478,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListCompaniesRequestBuilder _ret = listCompanies();
@@ -490,7 +490,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -1208,7 +1208,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                     
@@ -1222,7 +1222,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.expand(),
                         request.include()
@@ -2186,7 +2186,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListEmployeeTimeOffRequestsRequestBuilder _ret = listEmployeeTimeOffRequests();
@@ -2199,7 +2199,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -3563,7 +3563,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListEmployeeDocumentsRequestBuilder _ret = listEmployeeDocuments();
@@ -3576,7 +3576,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -3948,7 +3948,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListEmployeeCategoriesRequestBuilder _ret = listEmployeeCategories();
@@ -3960,7 +3960,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -4335,7 +4335,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListEmployeeWorkEligibilityRequestBuilder _ret = listEmployeeWorkEligibility();
@@ -4347,7 +4347,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.xAccountId()
                     ));
@@ -5113,7 +5113,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -5127,7 +5127,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.expand()
                     ));
@@ -5500,7 +5500,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -5513,7 +5513,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.expand()
                     ));
@@ -5889,7 +5889,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -5903,7 +5903,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.expand()
                     ));
@@ -6677,7 +6677,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListLocationsRequestBuilder _ret = listLocations();
@@ -6689,7 +6689,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -7061,7 +7061,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListTimeOffRequestsRequestBuilder _ret = listTimeOffRequests();
@@ -7073,7 +7073,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -7133,7 +7133,9 @@ public class Hris implements
     /**
      * Creates a time off request
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateTimeOffRequestRequestBuilder createTimeOffRequest() {
         return new HrisCreateTimeOffRequestRequestBuilder(this);
     }
@@ -7144,7 +7146,9 @@ public class Hris implements
      * @param hrisCreateTimeOffRequestDto
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateTimeOffRequestResponse createTimeOffRequest(
             String xAccountId,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) throws Exception {
@@ -7158,7 +7162,9 @@ public class Hris implements
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisCreateTimeOffRequestResponse createTimeOffRequest(
             String xAccountId,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
@@ -7498,7 +7504,9 @@ public class Hris implements
     /**
      * Update time off request
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisUpdateTimeOffRequestRequestBuilder updateTimeOffRequest() {
         return new HrisUpdateTimeOffRequestRequestBuilder(this);
     }
@@ -7510,7 +7518,9 @@ public class Hris implements
      * @param hrisCreateTimeOffRequestDto
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisUpdateTimeOffRequestResponse updateTimeOffRequest(
             String xAccountId,
             String id,
@@ -7526,7 +7536,9 @@ public class Hris implements
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public HrisUpdateTimeOffRequestResponse updateTimeOffRequest(
             String xAccountId,
             String id,
@@ -7840,7 +7852,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListTimeOffTypesRequestBuilder _ret = listTimeOffTypes();
@@ -7852,7 +7864,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -8230,7 +8242,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListTimeEntriesRequestBuilder _ret = listTimeEntries();
@@ -8242,7 +8254,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -8614,7 +8626,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListBenefitsRequestBuilder _ret = listBenefits();
@@ -8626,7 +8638,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -8998,7 +9010,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListGroupsRequestBuilder _ret = listGroups();
@@ -9010,7 +9022,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -9208,7 +9220,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListDepartmentGroupsRequestBuilder _ret = listDepartmentGroups();
@@ -9220,7 +9232,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -9418,7 +9430,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListCostCenterGroupsRequestBuilder _ret = listCostCenterGroups();
@@ -9430,7 +9442,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -9628,7 +9640,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListTeamGroupsRequestBuilder _ret = listTeamGroups();
@@ -9640,7 +9652,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -10534,7 +10546,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListJobsRequestBuilder _ret = listJobs();
@@ -10546,7 +10558,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -10921,7 +10933,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListEmployeeSkillsRequestBuilder _ret = listEmployeeSkills();
@@ -10934,7 +10946,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -11504,7 +11516,7 @@ public class Hris implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     HrisListTimeOffPoliciesRequestBuilder _ret = listTimeOffPolicies();
@@ -11516,7 +11528,7 @@ public class Hris implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());

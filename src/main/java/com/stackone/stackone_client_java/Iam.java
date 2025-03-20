@@ -77,7 +77,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit; 
+import java.util.concurrent.TimeUnit;
+import org.openapitools.jackson.nullable.JsonNullable; 
 
 public class Iam implements
             MethodCallIamListUsers,
@@ -239,7 +240,7 @@ public class Iam implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -252,7 +253,7 @@ public class Iam implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.expand()
                     ));
@@ -1007,7 +1008,7 @@ public class Iam implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -1020,7 +1021,7 @@ public class Iam implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.expand()
                     ));
@@ -1393,7 +1394,7 @@ public class Iam implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -1406,7 +1407,7 @@ public class Iam implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.expand()
                     ));
@@ -1779,7 +1780,7 @@ public class Iam implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -1792,7 +1793,7 @@ public class Iam implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.expand()
                     ));

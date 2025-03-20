@@ -43,7 +43,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.4.1'
+implementation 'com.stackone:stackone-client-java:0.4.2'
 ```
 
 Maven:
@@ -51,7 +51,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.4.1</version>
+    <version>0.4.2</version>
 </dependency>
 ```
 
@@ -269,9 +269,9 @@ public class Application {
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
-* [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
+* [~~createTimeOffRequest~~](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request :warning: **Deprecated**
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
-* [updateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
+* [~~updateTimeOffRequest~~](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request :warning: **Deprecated**
 * [~~listTimeOffTypes~~](docs/sdks/hris/README.md#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [~~getTimeOffType~~](docs/sdks/hris/README.md#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries

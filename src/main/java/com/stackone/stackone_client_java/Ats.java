@@ -546,7 +546,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                     
@@ -562,7 +562,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken(),
                         request.expand(),
@@ -1330,7 +1330,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -1344,7 +1344,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -2116,7 +2116,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -2130,7 +2130,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -2506,7 +2506,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -2520,7 +2520,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -3297,7 +3297,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -3311,7 +3311,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -4077,7 +4077,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -4091,7 +4091,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -4464,7 +4464,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                     
@@ -4478,7 +4478,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken(),
                         request.include()
@@ -5244,7 +5244,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -5258,7 +5258,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -5829,7 +5829,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     AtsListApplicationCustomFieldDefinitionsRequestBuilder _ret = listApplicationCustomFieldDefinitions();
@@ -5841,7 +5841,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -6213,7 +6213,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     AtsListCandidateCustomFieldDefinitionsRequestBuilder _ret = listCandidateCustomFieldDefinitions();
@@ -6225,7 +6225,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -6597,7 +6597,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     AtsListJobCustomFieldDefinitionsRequestBuilder _ret = listJobCustomFieldDefinitions();
@@ -6609,7 +6609,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -6981,7 +6981,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -6994,7 +6994,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -7367,7 +7367,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -7380,7 +7380,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -7753,7 +7753,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -7766,7 +7766,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -8139,7 +8139,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                     
@@ -8154,7 +8154,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken(),
                         request.expand(),
@@ -8918,7 +8918,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     AtsListListsRequestBuilder _ret = listLists();
@@ -8930,7 +8930,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -9302,7 +9302,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -9315,7 +9315,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -9688,7 +9688,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -9701,7 +9701,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -10074,7 +10074,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -10087,7 +10087,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -10460,7 +10460,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                     
@@ -10474,7 +10474,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken(),
                         request.include()
@@ -10848,7 +10848,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                     
                      
@@ -10861,7 +10861,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter(),
                         request.syncToken()
                     ));
@@ -11425,7 +11425,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     AtsListAssessmentsPackagesRequestBuilder _ret = listAssessmentsPackages();
@@ -11437,7 +11437,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -12546,7 +12546,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     AtsListBackgroundCheckPackagesRequestBuilder _ret = listBackgroundCheckPackages();
@@ -12558,7 +12558,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
@@ -13499,7 +13499,7 @@ public class Ats implements
                     String _nextCursor = _body.read("$.next", String.class);
                     if (_nextCursor == null) {
                         return Optional.empty();
-                    };
+                    }
                     
                      
                     AtsListBackgroundCheckRequestRequestBuilder _ret = listBackgroundCheckRequest();
@@ -13511,7 +13511,7 @@ public class Ats implements
                         request.filter(),
                         request.page(),
                         request.pageSize(),
-                        request.next(),
+                        JsonNullable.of(_nextCursor),
                         request.updatedAfter()
                     ));
                     return Optional.of(_ret.call());
