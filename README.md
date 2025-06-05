@@ -43,7 +43,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.4.2'
+implementation 'com.stackone:stackone-client-java:0.5.0'
 ```
 
 Maven:
@@ -51,7 +51,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.4.2</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
@@ -68,6 +68,29 @@ On Windows:
 ```bash
 gradlew.bat publishToMavenLocal -Pskip.signing
 ```
+
+### Logging
+A logging framework/facade has not yet been adopted but is under consideration.
+
+For request and response logging (especially json bodies) use:
+```java
+SpeakeasyHTTPClient.setDebugLogging(true); // experimental API only (may change without warning)
+```
+Example output:
+```
+Sending request: http://localhost:35123/bearer#global GET
+Request headers: {Accept=[application/json], Authorization=[******], Client-Level-Header=[added by client], Idempotency-Key=[some-key], x-speakeasy-user-agent=[speakeasy-sdk/java 0.0.1 internal 0.1.0 org.openapis.openapi]}
+Received response: (GET http://localhost:35123/bearer#global) 200
+Response headers: {access-control-allow-credentials=[true], access-control-allow-origin=[*], connection=[keep-alive], content-length=[50], content-type=[application/json], date=[Wed, 09 Apr 2025 01:43:29 GMT], server=[gunicorn/19.9.0]}
+Response body:
+{
+  "authenticated": true, 
+  "token": "global"
+}
+```
+WARNING: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+
+Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End SDK Installation [installation] -->
 
 <!-- Start SDK Example Usage [usage] -->
@@ -80,6 +103,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeesRequest;
 import java.lang.Exception;
@@ -97,13 +121,10 @@ public class Application {
 
         HrisListEmployeesRequest req = HrisListEmployeesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
-                .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills")
+                .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills")
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
@@ -112,7 +133,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -246,6 +267,7 @@ public class Application {
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [getEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
+* [cancelEmployeeTimeOffRequest](docs/sdks/hris/README.md#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
 * [updateEmployeeTimeOffRequest](docs/sdks/hris/README.md#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [batchUploadEmployeeDocument](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 * [uploadEmployeeDocument](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
@@ -269,9 +291,7 @@ public class Application {
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
-* [~~createTimeOffRequest~~](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request :warning: **Deprecated**
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
-* [~~updateTimeOffRequest~~](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request :warning: **Deprecated**
 * [~~listTimeOffTypes~~](docs/sdks/hris/README.md#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [~~getTimeOffType~~](docs/sdks/hris/README.md#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
@@ -293,6 +313,9 @@ public class Application {
 * [getEmployeeSkill](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
 * [listTimeOffPolicies](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
 * [getTimeOffPolicy](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
+* [listEmployeeTimeOffPolicies](docs/sdks/hris/README.md#listemployeetimeoffpolicies) - List Assigned Time Off Policies
+* [listEmployeeTasks](docs/sdks/hris/README.md#listemployeetasks) - List Employee Tasks
+* [getEmployeeTask](docs/sdks/hris/README.md#getemployeetask) - Get Employee Task
 
 ### [iam()](docs/sdks/iam/README.md)
 
@@ -370,6 +393,12 @@ public class Application {
 
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 
+### [requestLogs()](docs/sdks/requestlogs/README.md)
+
+* [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
+* [getLog](docs/sdks/requestlogs/README.md#getlog) - Get a Log
+* [listLogs](docs/sdks/requestlogs/README.md#listlogs) - List Logs
+
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -387,7 +416,8 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.Filter;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisListCompaniesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
 import java.lang.Exception;
 
@@ -404,20 +434,17 @@ public class Application {
 
         HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(Filter.builder()
+                .filter(HrisListCompaniesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listCompanies()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -435,9 +462,8 @@ To change the default retry strategy for a single API call, you can provide a `R
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Categories;
-import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import com.stackone.stackone_client_java.utils.BackoffStrategy;
 import com.stackone.stackone_client_java.utils.RetryConfig;
@@ -462,15 +488,16 @@ public class Application {
                 .categories(List.of(
                     Categories.ATS,
                     Categories.HRIS,
-                    Categories.IAM,
+                    Categories.DOCUMENTS,
                     Categories.CRM,
                     Categories.IAM,
                     Categories.MARKETING,
                     Categories.LMS,
-                    Categories.ATS,
+                    Categories.IAM,
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
-                    Categories.SCREENING))
+                    Categories.SCREENING,
+                    Categories.MESSAGING))
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -499,9 +526,8 @@ If you'd like to override the default retry strategy for all operations that sup
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Categories;
-import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import com.stackone.stackone_client_java.utils.BackoffStrategy;
 import com.stackone.stackone_client_java.utils.RetryConfig;
@@ -536,15 +562,16 @@ public class Application {
                 .categories(List.of(
                     Categories.ATS,
                     Categories.HRIS,
-                    Categories.IAM,
+                    Categories.DOCUMENTS,
                     Categories.CRM,
                     Categories.IAM,
                     Categories.MARKETING,
                     Categories.LMS,
-                    Categories.ATS,
+                    Categories.IAM,
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
-                    Categories.SCREENING))
+                    Categories.SCREENING,
+                    Categories.MESSAGING))
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -566,9 +593,20 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `createConnectSession` method throws the following exceptions:
 
-| Error Type             | Status Code | Content Type |
-| ---------------------- | ----------- | ------------ |
-| models/errors/SDKError | 4XX, 5XX    | \*/\*        |
+| Error Type                                | Status Code | Content Type     |
+| ----------------------------------------- | ----------- | ---------------- |
+| models/errors/BadRequestResponse          | 400         | application/json |
+| models/errors/UnauthorizedResponse        | 401         | application/json |
+| models/errors/ForbiddenResponse           | 403         | application/json |
+| models/errors/NotFoundResponse            | 404         | application/json |
+| models/errors/RequestTimedOutResponse     | 408         | application/json |
+| models/errors/ConflictResponse            | 409         | application/json |
+| models/errors/UnprocessableEntityResponse | 422         | application/json |
+| models/errors/TooManyRequestsResponse     | 429         | application/json |
+| models/errors/InternalServerErrorResponse | 500         | application/json |
+| models/errors/NotImplementedResponse      | 501         | application/json |
+| models/errors/BadGatewayResponse          | 502         | application/json |
+| models/errors/SDKError                    | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -576,9 +614,8 @@ By default, an API error will throw a `models/errors/SDKError` exception. When c
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Categories;
-import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -600,15 +637,16 @@ public class Application {
                 .categories(List.of(
                     Categories.ATS,
                     Categories.HRIS,
-                    Categories.IAM,
+                    Categories.DOCUMENTS,
                     Categories.CRM,
                     Categories.IAM,
                     Categories.MARKETING,
                     Categories.LMS,
-                    Categories.ATS,
+                    Categories.IAM,
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
-                    Categories.SCREENING))
+                    Categories.SCREENING,
+                    Categories.MESSAGING))
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -633,9 +671,8 @@ The default server can be overridden globally using the `.serverURL(String serve
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Categories;
-import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -658,15 +695,16 @@ public class Application {
                 .categories(List.of(
                     Categories.ATS,
                     Categories.HRIS,
-                    Categories.IAM,
+                    Categories.DOCUMENTS,
                     Categories.CRM,
                     Categories.IAM,
                     Categories.MARKETING,
                     Categories.LMS,
-                    Categories.ATS,
+                    Categories.IAM,
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
-                    Categories.SCREENING))
+                    Categories.SCREENING,
+                    Categories.MESSAGING))
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -697,9 +735,8 @@ You can set the security parameters through the `security` builder method when i
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Categories;
-import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -721,15 +758,16 @@ public class Application {
                 .categories(List.of(
                     Categories.ATS,
                     Categories.HRIS,
-                    Categories.IAM,
+                    Categories.DOCUMENTS,
                     Categories.CRM,
                     Categories.IAM,
                     Categories.MARKETING,
                     Categories.LMS,
-                    Categories.ATS,
+                    Categories.IAM,
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
-                    Categories.SCREENING))
+                    Categories.SCREENING,
+                    Categories.MESSAGING))
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()

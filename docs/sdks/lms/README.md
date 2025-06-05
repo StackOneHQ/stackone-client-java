@@ -43,25 +43,12 @@ Batch Upsert Course
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModel;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.CreateContentApiModel;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModel;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.LanguageEnum;
-import com.stackone.stackone_client_java.models.components.LanguageEnumValue;
 import com.stackone.stackone_client_java.models.components.LmsBatchUpsertCourseRequestDto;
-import com.stackone.stackone_client_java.models.components.LmsUpsertCourseRequestDto;
-import com.stackone.stackone_client_java.models.components.LocalizationModel;
-import com.stackone.stackone_client_java.models.components.LocalizationModelLanguage;
-import com.stackone.stackone_client_java.models.components.LocalizationModelValue;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsBatchUpsertCourseResponse;
 import java.lang.Exception;
 import java.util.List;
-import java.util.Map;
 
 public class Application {
 
@@ -77,198 +64,7 @@ public class Application {
         LmsBatchUpsertCourseResponse res = sdk.lms().batchUpsertCourse()
                 .xAccountId("<id>")
                 .lmsBatchUpsertCourseRequestDto(LmsBatchUpsertCourseRequestDto.builder()
-                    .items(List.of(
-                        LmsUpsertCourseRequestDto.builder()
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                            .title("Software Engineer Lv 1")
-                            .description("This course acts as learning content for software engineers.")
-                            .languages(List.of(
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
-                                    .build()))
-                            .coverUrl("https://www.googledrive.com/?v=16873")
-                            .url("https://www.linkedinlearning.com/?v=16873")
-                            .active(true)
-                            .duration("P3Y6M4DT12H30M5S")
-                            .categories(List.of(
-                                CreateCategoriesApiModel.builder()
-                                    .id("16873-IT345")
-                                    .unifiedCustomFields(Map.ofEntries(
-                                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                                        Map.entry("my_project_custom_field_2", "some other value")))
-                                    .name("Information-Technology")
-                                    .language(CreateCategoriesApiModelLanguage.builder()
-                                        .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                CreateCategoriesApiModel.builder()
-                                    .id("16873-IT345")
-                                    .unifiedCustomFields(Map.ofEntries(
-                                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                                        Map.entry("my_project_custom_field_2", "some other value")))
-                                    .name("Information-Technology")
-                                    .language(CreateCategoriesApiModelLanguage.builder()
-                                        .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .skills(List.of(
-                                CreateSkillsApiModel.builder()
-                                    .id("16873-IT345")
-                                    .name("Information-Technology")
-                                    .language(CreateSkillsApiModelLanguage.builder()
-                                        .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                CreateSkillsApiModel.builder()
-                                    .id("16873-IT345")
-                                    .name("Information-Technology")
-                                    .language(CreateSkillsApiModelLanguage.builder()
-                                        .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                CreateSkillsApiModel.builder()
-                                    .id("16873-IT345")
-                                    .name("Information-Technology")
-                                    .language(CreateSkillsApiModelLanguage.builder()
-                                        .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .content(List.of(
-                                CreateContentApiModel.builder()
-                                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .contentUrl("https://www.youtube.com/watch?v=16873")
-                                    .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                                    .order(1)
-                                    .build()))
-                            .localizations(List.of(
-                                LocalizationModel.builder()
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .language(LocalizationModelLanguage.builder()
-                                        .value(LocalizationModelValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                LocalizationModel.builder()
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .language(LocalizationModelLanguage.builder()
-                                        .value(LocalizationModelValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .build(),
-                        LmsUpsertCourseRequestDto.builder()
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                            .title("Software Engineer Lv 1")
-                            .description("This course acts as learning content for software engineers.")
-                            .languages(List.of(
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
-                                    .build(),
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
-                                    .build(),
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
-                                    .build()))
-                            .coverUrl("https://www.googledrive.com/?v=16873")
-                            .url("https://www.linkedinlearning.com/?v=16873")
-                            .active(true)
-                            .duration("P3Y6M4DT12H30M5S")
-                            .categories(List.of(
-                                CreateCategoriesApiModel.builder()
-                                    .id("16873-IT345")
-                                    .unifiedCustomFields(Map.ofEntries(
-                                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                                        Map.entry("my_project_custom_field_2", "some other value")))
-                                    .name("Information-Technology")
-                                    .language(CreateCategoriesApiModelLanguage.builder()
-                                        .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                CreateCategoriesApiModel.builder()
-                                    .id("16873-IT345")
-                                    .unifiedCustomFields(Map.ofEntries(
-                                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                                        Map.entry("my_project_custom_field_2", "some other value")))
-                                    .name("Information-Technology")
-                                    .language(CreateCategoriesApiModelLanguage.builder()
-                                        .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                CreateCategoriesApiModel.builder()
-                                    .id("16873-IT345")
-                                    .unifiedCustomFields(Map.ofEntries(
-                                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                                        Map.entry("my_project_custom_field_2", "some other value")))
-                                    .name("Information-Technology")
-                                    .language(CreateCategoriesApiModelLanguage.builder()
-                                        .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .skills(List.of(
-                                CreateSkillsApiModel.builder()
-                                    .id("16873-IT345")
-                                    .name("Information-Technology")
-                                    .language(CreateSkillsApiModelLanguage.builder()
-                                        .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                CreateSkillsApiModel.builder()
-                                    .id("16873-IT345")
-                                    .name("Information-Technology")
-                                    .language(CreateSkillsApiModelLanguage.builder()
-                                        .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .content(List.of(
-                                CreateContentApiModel.builder()
-                                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .contentUrl("https://www.youtube.com/watch?v=16873")
-                                    .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                                    .order(1)
-                                    .build(),
-                                CreateContentApiModel.builder()
-                                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .contentUrl("https://www.youtube.com/watch?v=16873")
-                                    .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                                    .order(1)
-                                    .build(),
-                                CreateContentApiModel.builder()
-                                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .contentUrl("https://www.youtube.com/watch?v=16873")
-                                    .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                                    .order(1)
-                                    .build()))
-                            .localizations(List.of(
-                                LocalizationModel.builder()
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .language(LocalizationModelLanguage.builder()
-                                        .value(LocalizationModelValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                LocalizationModel.builder()
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .language(LocalizationModelLanguage.builder()
-                                        .value(LocalizationModelValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .build()))
+                    .items(List.of())
                     .build())
                 .call();
 
@@ -292,9 +88,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCourses
 
@@ -307,6 +115,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListCoursesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.LmsListCoursesRequest;
 import java.lang.Exception;
@@ -324,20 +133,17 @@ public class Application {
 
         LmsListCoursesRequest req = LmsListCoursesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations")
                 .filter(LmsListCoursesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.lms().listCourses()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -356,9 +162,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## upsertCourse
 
@@ -370,24 +188,13 @@ Upsert Course
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModel;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.CreateContentApiModel;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModel;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.LanguageEnum;
-import com.stackone.stackone_client_java.models.components.LanguageEnumValue;
-import com.stackone.stackone_client_java.models.components.LmsUpsertCourseRequestDto;
-import com.stackone.stackone_client_java.models.components.LocalizationModel;
-import com.stackone.stackone_client_java.models.components.LocalizationModelLanguage;
-import com.stackone.stackone_client_java.models.components.LocalizationModelValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsUpsertCourseResponse;
 import java.lang.Exception;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -412,25 +219,12 @@ public class Application {
                     .languages(List.of(
                         LanguageEnum.builder()
                             .value(LanguageEnumValue.EN_GB)
-                            .build(),
-                        LanguageEnum.builder()
-                            .value(LanguageEnumValue.EN_GB)
                             .build()))
                     .coverUrl("https://www.googledrive.com/?v=16873")
                     .url("https://www.linkedinlearning.com/?v=16873")
                     .active(true)
                     .duration("P3Y6M4DT12H30M5S")
-                    .categories(List.of(
-                        CreateCategoriesApiModel.builder()
-                            .id("16873-IT345")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .name("Information-Technology")
-                            .language(CreateCategoriesApiModelLanguage.builder()
-                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build()))
+                    .categories(JsonNullable.of(null))
                     .skills(List.of(
                         CreateSkillsApiModel.builder()
                             .id("16873-IT345")
@@ -451,17 +245,11 @@ public class Application {
                     .localizations(List.of(
                         LocalizationModel.builder()
                             .title("Software Engineer Lv 1")
-                            .description("This video acts as learning content for software engineers.")
-                            .language(LocalizationModelLanguage.builder()
-                                .value(LocalizationModelValue.EN_GB)
-                                .build())
+                            .description("This course acts as learning resource for software engineers.")
                             .build(),
                         LocalizationModel.builder()
-                            .title("Software Engineer Lv 1")
-                            .description("This video acts as learning content for software engineers.")
-                            .language(LocalizationModelLanguage.builder()
-                                .value(LocalizationModelValue.EN_GB)
-                                .build())
+                            .title("Software Engineer: A comprehensive guide")
+                            .description("This course acts as learning resource for software engineers.")
                             .build()))
                     .build())
                 .call();
@@ -486,9 +274,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCourse
 
@@ -501,6 +301,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetCourseRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetCourseResponse;
 import java.lang.Exception;
@@ -519,7 +320,6 @@ public class Application {
         LmsGetCourseRequest req = LmsGetCourseRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations")
                 .build();
 
@@ -546,9 +346,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listUserAssignments
 
@@ -561,6 +373,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListUserAssignmentsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.LmsListUserAssignmentsRequest;
 import java.lang.Exception;
@@ -579,13 +392,10 @@ public class Application {
         LmsListUserAssignmentsRequest req = LmsListUserAssignmentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListUserAssignmentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .userId("c28xyrc55866bvuv")
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                 .build();
@@ -594,7 +404,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -613,9 +423,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createUserAssignment
 
@@ -627,10 +449,8 @@ Create User Assignment
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDto;
-import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDtoStatus;
-import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsCreateUserAssignmentResponse;
 import java.lang.Exception;
 import java.util.Map;
@@ -684,9 +504,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getUserAssignment
 
@@ -699,6 +531,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetUserAssignmentRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetUserAssignmentResponse;
 import java.lang.Exception;
@@ -718,7 +551,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .build();
 
         LmsGetUserAssignmentResponse res = sdk.lms().getUserAssignment()
@@ -744,9 +576,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## batchUpsertContent
 
@@ -758,22 +602,8 @@ Batch Upsert Content
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AdditionalData;
-import com.stackone.stackone_client_java.models.components.AdditionalDataValue;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModel;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModel;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.LanguageEnum;
-import com.stackone.stackone_client_java.models.components.LanguageEnumValue;
-import com.stackone.stackone_client_java.models.components.LmsBatchUpsertContentRequestDto;
-import com.stackone.stackone_client_java.models.components.LmsUpsertContentRequestDto;
-import com.stackone.stackone_client_java.models.components.LocalizationModel;
-import com.stackone.stackone_client_java.models.components.LocalizationModelLanguage;
-import com.stackone.stackone_client_java.models.components.LocalizationModelValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsBatchUpsertContentResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -805,12 +635,6 @@ public class Application {
                             .languages(List.of(
                                 LanguageEnum.builder()
                                     .value(LanguageEnumValue.EN_GB)
-                                    .build(),
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
-                                    .build(),
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
                                     .build()))
                             .contentUrl("https://www.youtube.com/watch?v=16873")
                             .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
@@ -819,27 +643,18 @@ public class Application {
                             .duration("P3Y6M4DT12H30M5S")
                             .skills(List.of(
                                 CreateSkillsApiModel.builder()
-                                    .id("16873-IT345")
-                                    .name("Information-Technology")
-                                    .language(CreateSkillsApiModelLanguage.builder()
-                                        .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                        .build())
+                                    .id("12345")
+                                    .name("Sales Techniques")
                                     .build()))
                             .order(1)
                             .localizations(List.of(
                                 LocalizationModel.builder()
                                     .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .language(LocalizationModelLanguage.builder()
-                                        .value(LocalizationModelValue.EN_GB)
-                                        .build())
+                                    .description("This course acts as learning resource for software engineers.")
                                     .build(),
                                 LocalizationModel.builder()
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .language(LocalizationModelLanguage.builder()
-                                        .value(LocalizationModelValue.EN_GB)
-                                        .build())
+                                    .title("Software Engineer: A comprehensive guide")
+                                    .description("This course acts as learning resource for software engineers.")
                                     .build()))
                             .tags(List.of(
                                 "Sales Techniques",
@@ -847,100 +662,6 @@ public class Application {
                             .updatedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                             .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                             .categories(List.of(
-                                CreateCategoriesApiModel.builder()
-                                    .id("16873-IT345")
-                                    .unifiedCustomFields(Map.ofEntries(
-                                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                                        Map.entry("my_project_custom_field_2", "some other value")))
-                                    .name("Information-Technology")
-                                    .language(CreateCategoriesApiModelLanguage.builder()
-                                        .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .additionalData(List.of(
-                                AdditionalData.builder()
-                                    .id("learning_outcomes")
-                                    .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                    .value(AdditionalDataValue.of("This is additional data"))
-                                    .build(),
-                                AdditionalData.builder()
-                                    .id("learning_outcomes")
-                                    .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                    .value(AdditionalDataValue.of("This is additional data"))
-                                    .build()))
-                            .build(),
-                        LmsUpsertContentRequestDto.builder()
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                            .title("Software Engineer Lv 1")
-                            .description("This video acts as learning content for software engineers.")
-                            .languages(List.of(
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
-                                    .build(),
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
-                                    .build(),
-                                LanguageEnum.builder()
-                                    .value(LanguageEnumValue.EN_GB)
-                                    .build()))
-                            .contentUrl("https://www.youtube.com/watch?v=16873")
-                            .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                            .coverUrl("https://www.googledrive.com/?v=16873")
-                            .active(true)
-                            .duration("P3Y6M4DT12H30M5S")
-                            .skills(List.of(
-                                CreateSkillsApiModel.builder()
-                                    .id("16873-IT345")
-                                    .name("Information-Technology")
-                                    .language(CreateSkillsApiModelLanguage.builder()
-                                        .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .order(1)
-                            .localizations(List.of(
-                                LocalizationModel.builder()
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .language(LocalizationModelLanguage.builder()
-                                        .value(LocalizationModelValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                LocalizationModel.builder()
-                                    .title("Software Engineer Lv 1")
-                                    .description("This video acts as learning content for software engineers.")
-                                    .language(LocalizationModelLanguage.builder()
-                                        .value(LocalizationModelValue.EN_GB)
-                                        .build())
-                                    .build()))
-                            .tags(List.of(
-                                "Sales Techniques",
-                                "Customer Service"))
-                            .updatedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
-                            .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
-                            .categories(List.of(
-                                CreateCategoriesApiModel.builder()
-                                    .id("16873-IT345")
-                                    .unifiedCustomFields(Map.ofEntries(
-                                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                                        Map.entry("my_project_custom_field_2", "some other value")))
-                                    .name("Information-Technology")
-                                    .language(CreateCategoriesApiModelLanguage.builder()
-                                        .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build(),
-                                CreateCategoriesApiModel.builder()
-                                    .id("16873-IT345")
-                                    .unifiedCustomFields(Map.ofEntries(
-                                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                                        Map.entry("my_project_custom_field_2", "some other value")))
-                                    .name("Information-Technology")
-                                    .language(CreateCategoriesApiModelLanguage.builder()
-                                        .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                        .build())
-                                    .build(),
                                 CreateCategoriesApiModel.builder()
                                     .id("16873-IT345")
                                     .unifiedCustomFields(Map.ofEntries(
@@ -981,9 +702,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listContent
 
@@ -996,6 +729,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListContentQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.LmsListContentRequest;
 import java.lang.Exception;
@@ -1013,20 +747,17 @@ public class Application {
 
         LmsListContentRequest req = LmsListContentRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags")
                 .filter(LmsListContentQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.lms().listContent()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1045,9 +776,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## upsertContent
 
@@ -1059,21 +802,8 @@ Upsert Content
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AdditionalData;
-import com.stackone.stackone_client_java.models.components.AdditionalDataValue;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModel;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModel;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.LanguageEnum;
-import com.stackone.stackone_client_java.models.components.LanguageEnumValue;
-import com.stackone.stackone_client_java.models.components.LmsUpsertContentRequestDto;
-import com.stackone.stackone_client_java.models.components.LocalizationModel;
-import com.stackone.stackone_client_java.models.components.LocalizationModelLanguage;
-import com.stackone.stackone_client_java.models.components.LocalizationModelValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsUpsertContentResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -1103,9 +833,6 @@ public class Application {
                     .languages(List.of(
                         LanguageEnum.builder()
                             .value(LanguageEnumValue.EN_GB)
-                            .build(),
-                        LanguageEnum.builder()
-                            .value(LanguageEnumValue.EN_GB)
                             .build()))
                     .contentUrl("https://www.youtube.com/watch?v=16873")
                     .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
@@ -1114,27 +841,18 @@ public class Application {
                     .duration("P3Y6M4DT12H30M5S")
                     .skills(List.of(
                         CreateSkillsApiModel.builder()
-                            .id("16873-IT345")
-                            .name("Information-Technology")
-                            .language(CreateSkillsApiModelLanguage.builder()
-                                .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                .build())
+                            .id("12345")
+                            .name("Sales Techniques")
                             .build()))
                     .order(1)
                     .localizations(List.of(
                         LocalizationModel.builder()
                             .title("Software Engineer Lv 1")
-                            .description("This video acts as learning content for software engineers.")
-                            .language(LocalizationModelLanguage.builder()
-                                .value(LocalizationModelValue.EN_GB)
-                                .build())
+                            .description("This course acts as learning resource for software engineers.")
                             .build(),
                         LocalizationModel.builder()
-                            .title("Software Engineer Lv 1")
-                            .description("This video acts as learning content for software engineers.")
-                            .language(LocalizationModelLanguage.builder()
-                                .value(LocalizationModelValue.EN_GB)
-                                .build())
+                            .title("Software Engineer: A comprehensive guide")
+                            .description("This course acts as learning resource for software engineers.")
                             .build()))
                     .tags(List.of(
                         "Sales Techniques",
@@ -1153,16 +871,6 @@ public class Application {
                                 .build())
                             .build()))
                     .additionalData(List.of(
-                        AdditionalData.builder()
-                            .id("learning_outcomes")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .value(AdditionalDataValue.of("This is additional data"))
-                            .build(),
-                        AdditionalData.builder()
-                            .id("learning_outcomes")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .value(AdditionalDataValue.of("This is additional data"))
-                            .build(),
                         AdditionalData.builder()
                             .id("learning_outcomes")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -1191,9 +899,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getContent
 
@@ -1206,6 +926,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetContentRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetContentResponse;
 import java.lang.Exception;
@@ -1224,7 +945,6 @@ public class Application {
         LmsGetContentRequest req = LmsGetContentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags")
                 .build();
 
@@ -1251,9 +971,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listUserCompletions
 
@@ -1266,6 +998,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListUserCompletionsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.LmsListUserCompletionsRequest;
 import java.lang.Exception;
@@ -1284,20 +1017,17 @@ public class Application {
         LmsListUserCompletionsRequest req = LmsListUserCompletionsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListUserCompletionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.lms().listUserCompletions()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1316,9 +1046,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createUserCompletion
 
@@ -1332,6 +1074,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.LmsCreateCompletionRequestDto;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsCreateUserCompletionResponse;
 import java.lang.Exception;
 import java.util.Map;
@@ -1380,9 +1123,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getUserCompletion
 
@@ -1395,6 +1150,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetUserCompletionRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetUserCompletionResponse;
 import java.lang.Exception;
@@ -1414,7 +1170,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .build();
 
         LmsGetUserCompletionResponse res = sdk.lms().getUserCompletion()
@@ -1440,9 +1195,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## deleteUserCompletion
 
@@ -1455,6 +1222,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsDeleteUserCompletionResponse;
 import java.lang.Exception;
 
@@ -1496,9 +1264,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCompletions
 
@@ -1511,6 +1291,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListCompletionsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.LmsListCompletionsRequest;
 import java.lang.Exception;
@@ -1528,20 +1309,17 @@ public class Application {
 
         LmsListCompletionsRequest req = LmsListCompletionsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListCompletionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.lms().listCompletions()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1560,9 +1338,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCompletion
 
@@ -1575,6 +1365,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetCompletionRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetCompletionResponse;
 import java.lang.Exception;
@@ -1593,7 +1384,6 @@ public class Application {
         LmsGetCompletionRequest req = LmsGetCompletionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .build();
 
         LmsGetCompletionResponse res = sdk.lms().getCompletion()
@@ -1619,9 +1409,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCategory
 
@@ -1634,6 +1436,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetCategoryRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetCategoryResponse;
 import java.lang.Exception;
@@ -1652,7 +1455,6 @@ public class Application {
         LmsGetCategoryRequest req = LmsGetCategoryRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active,hierarchy,level,language")
                 .build();
 
@@ -1679,9 +1481,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCategories
 
@@ -1694,6 +1508,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListCategoriesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.LmsListCategoriesRequest;
 import java.lang.Exception;
@@ -1711,20 +1526,17 @@ public class Application {
 
         LmsListCategoriesRequest req = LmsListCategoriesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active,hierarchy,level,language")
                 .filter(LmsListCategoriesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.lms().listCategories()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1743,9 +1555,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listUsers
 
@@ -1758,9 +1582,10 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.LmsListUsersQueryParamFilter;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListUsersRequest;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -1775,20 +1600,15 @@ public class Application {
 
         LmsListUsersRequest req = LmsListUsersRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name")
-                .filter(LmsListUsersQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
+                .filter(JsonNullable.of(null))
                 .build();
 
         sdk.lms().listUsers()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1807,9 +1627,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getUser
 
@@ -1822,6 +1654,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetUserRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetUserResponse;
 import java.lang.Exception;
@@ -1840,7 +1673,6 @@ public class Application {
         LmsGetUserRequest req = LmsGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name")
                 .build();
 
@@ -1867,9 +1699,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getSkill
 
@@ -1882,6 +1726,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetSkillRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetSkillResponse;
 import java.lang.Exception;
@@ -1900,7 +1745,6 @@ public class Application {
         LmsGetSkillRequest req = LmsGetSkillRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active,hierarchy,language")
                 .build();
 
@@ -1927,9 +1771,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listSkills
 
@@ -1942,6 +1798,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListSkillsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.LmsListSkillsRequest;
 import java.lang.Exception;
@@ -1959,20 +1816,17 @@ public class Application {
 
         LmsListSkillsRequest req = LmsListSkillsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active,hierarchy,language")
                 .filter(LmsListSkillsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.lms().listSkills()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1991,9 +1845,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listAssignments
 
@@ -2006,6 +1872,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListAssignmentsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.LmsListAssignmentsRequest;
 import java.lang.Exception;
@@ -2023,13 +1890,10 @@ public class Application {
 
         LmsListAssignmentsRequest req = LmsListAssignmentsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListAssignmentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .userId("c28xyrc55866bvuv")
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                 .build();
@@ -2038,7 +1902,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2057,9 +1921,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getAssignment
 
@@ -2072,6 +1948,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsGetAssignmentRequest;
 import com.stackone.stackone_client_java.models.operations.LmsGetAssignmentResponse;
 import java.lang.Exception;
@@ -2090,7 +1967,6 @@ public class Application {
         LmsGetAssignmentRequest req = LmsGetAssignmentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .build();
 
         LmsGetAssignmentResponse res = sdk.lms().getAssignment()
@@ -2116,9 +1992,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createCollection
 
@@ -2130,14 +2018,8 @@ Create Collection
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModel;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModel;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.LmsCreateCollectionRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsCreateCollectionResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -2180,42 +2062,8 @@ public class Application {
                             .language(CreateCategoriesApiModelLanguage.builder()
                                 .value(CreateCategoriesApiModelLanguageValue.EN_GB)
                                 .build())
-                            .build(),
-                        CreateCategoriesApiModel.builder()
-                            .id("16873-IT345")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .name("Information-Technology")
-                            .language(CreateCategoriesApiModelLanguage.builder()
-                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build(),
-                        CreateCategoriesApiModel.builder()
-                            .id("16873-IT345")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .name("Information-Technology")
-                            .language(CreateCategoriesApiModelLanguage.builder()
-                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                .build())
                             .build()))
                     .skills(List.of(
-                        CreateSkillsApiModel.builder()
-                            .id("16873-IT345")
-                            .name("Information-Technology")
-                            .language(CreateSkillsApiModelLanguage.builder()
-                                .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build(),
-                        CreateSkillsApiModel.builder()
-                            .id("16873-IT345")
-                            .name("Information-Technology")
-                            .language(CreateSkillsApiModelLanguage.builder()
-                                .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build(),
                         CreateSkillsApiModel.builder()
                             .id("16873-IT345")
                             .name("Information-Technology")
@@ -2246,9 +2094,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateCollection
 
@@ -2260,18 +2120,13 @@ Update Collection
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModel;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateCategoriesApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModel;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguage;
-import com.stackone.stackone_client_java.models.components.CreateSkillsApiModelLanguageValue;
-import com.stackone.stackone_client_java.models.components.LmsCreateCollectionRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsUpdateCollectionResponse;
 import java.lang.Exception;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -2301,45 +2156,8 @@ public class Application {
                     .title("Software Engineer Lv 1 Collection")
                     .description("This collection acts as learning pathway for software engineers.")
                     .coverUrl("https://www.googledrive.com/?v=16873")
-                    .categories(List.of(
-                        CreateCategoriesApiModel.builder()
-                            .id("16873-IT345")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .name("Information-Technology")
-                            .language(CreateCategoriesApiModelLanguage.builder()
-                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build(),
-                        CreateCategoriesApiModel.builder()
-                            .id("16873-IT345")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .name("Information-Technology")
-                            .language(CreateCategoriesApiModelLanguage.builder()
-                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build(),
-                        CreateCategoriesApiModel.builder()
-                            .id("16873-IT345")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .name("Information-Technology")
-                            .language(CreateCategoriesApiModelLanguage.builder()
-                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build()))
+                    .categories(JsonNullable.of(null))
                     .skills(List.of(
-                        CreateSkillsApiModel.builder()
-                            .id("16873-IT345")
-                            .name("Information-Technology")
-                            .language(CreateSkillsApiModelLanguage.builder()
-                                .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build(),
                         CreateSkillsApiModel.builder()
                             .id("16873-IT345")
                             .name("Information-Technology")
@@ -2371,6 +2189,18 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |

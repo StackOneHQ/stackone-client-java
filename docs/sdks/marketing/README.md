@@ -43,6 +43,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingListEmailTemplatesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.MarketingListEmailTemplatesRequest;
 import java.lang.Exception;
@@ -60,20 +61,17 @@ public class Application {
 
         MarketingListEmailTemplatesRequest req = MarketingListEmailTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .filter(MarketingListEmailTemplatesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.marketing().listEmailTemplates()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -92,9 +90,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createEmailTemplate
 
@@ -106,16 +116,13 @@ Create Email Templates
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.EmailMessages;
-import com.stackone.stackone_client_java.models.components.EmailMessagesSourceValue;
-import com.stackone.stackone_client_java.models.components.EmailMessagesValue;
-import com.stackone.stackone_client_java.models.components.MarketingCreateEmailTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.MessageType;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingCreateEmailTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -135,18 +142,7 @@ public class Application {
                         EmailMessages.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(MessageType.builder()
-                                .value(EmailMessagesValue.EMAIL)
-                                .sourceValue(EmailMessagesSourceValue.of("Email"))
-                                .build())
-                            .build(),
-                        EmailMessages.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(MessageType.builder()
-                                .value(EmailMessagesValue.EMAIL)
-                                .sourceValue(EmailMessagesSourceValue.of("Email"))
-                                .build())
+                            .messageType(JsonNullable.of(null))
                             .build()))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -173,9 +169,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmailTemplate
 
@@ -188,6 +196,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingGetEmailTemplateRequest;
 import com.stackone.stackone_client_java.models.operations.MarketingGetEmailTemplateResponse;
 import java.lang.Exception;
@@ -206,7 +215,6 @@ public class Application {
         MarketingGetEmailTemplateRequest req = MarketingGetEmailTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .build();
 
@@ -233,9 +241,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateEmailTemplate
 
@@ -247,12 +267,8 @@ Update Email Templates
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.EmailMessages;
-import com.stackone.stackone_client_java.models.components.EmailMessagesSourceValue;
-import com.stackone.stackone_client_java.models.components.EmailMessagesValue;
-import com.stackone.stackone_client_java.models.components.MarketingCreateEmailTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.MessageType;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingUpdateEmailTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -308,9 +324,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listInAppTemplates
 
@@ -323,9 +351,10 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.MarketingListInAppTemplatesQueryParamFilter;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingListInAppTemplatesRequest;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -340,20 +369,15 @@ public class Application {
 
         MarketingListInAppTemplatesRequest req = MarketingListInAppTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
-                .filter(MarketingListInAppTemplatesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
+                .filter(JsonNullable.of(null))
                 .build();
 
         sdk.marketing().listInAppTemplates()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -372,9 +396,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createInAppTemplate
 
@@ -386,12 +422,8 @@ Create In-App Template
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.InAppMessages;
-import com.stackone.stackone_client_java.models.components.InAppMessagesMessageType;
-import com.stackone.stackone_client_java.models.components.InAppMessagesSourceValue;
-import com.stackone.stackone_client_java.models.components.InAppMessagesValue;
-import com.stackone.stackone_client_java.models.components.MarketingCreateInAppTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingCreateInAppTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -445,9 +477,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getInAppTemplate
 
@@ -460,6 +504,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingGetInAppTemplateRequest;
 import com.stackone.stackone_client_java.models.operations.MarketingGetInAppTemplateResponse;
 import java.lang.Exception;
@@ -478,7 +523,6 @@ public class Application {
         MarketingGetInAppTemplateRequest req = MarketingGetInAppTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .build();
 
@@ -505,9 +549,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateInAppTemplate
 
@@ -519,12 +575,8 @@ Update In-App Template
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.InAppMessages;
-import com.stackone.stackone_client_java.models.components.InAppMessagesMessageType;
-import com.stackone.stackone_client_java.models.components.InAppMessagesSourceValue;
-import com.stackone.stackone_client_java.models.components.InAppMessagesValue;
-import com.stackone.stackone_client_java.models.components.MarketingCreateInAppTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingUpdateInAppTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -546,14 +598,6 @@ public class Application {
                 .id("<id>")
                 .marketingCreateInAppTemplateRequestDto(MarketingCreateInAppTemplateRequestDto.builder()
                     .messages(List.of(
-                        InAppMessages.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(InAppMessagesMessageType.builder()
-                                .value(InAppMessagesValue.EMAIL)
-                                .sourceValue(InAppMessagesSourceValue.of("Email"))
-                                .build())
-                            .build(),
                         InAppMessages.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -588,9 +632,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listSmsTemplates
 
@@ -603,6 +659,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingListSmsTemplatesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.MarketingListSmsTemplatesRequest;
 import java.lang.Exception;
@@ -620,20 +677,17 @@ public class Application {
 
         MarketingListSmsTemplatesRequest req = MarketingListSmsTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .filter(MarketingListSmsTemplatesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.marketing().listSmsTemplates()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -652,9 +706,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createSmsTemplate
 
@@ -666,12 +732,8 @@ Create SMS Template
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.MarketingCreateSmsTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.SmsMessages;
-import com.stackone.stackone_client_java.models.components.SmsMessagesMessageType;
-import com.stackone.stackone_client_java.models.components.SmsMessagesSourceValue;
-import com.stackone.stackone_client_java.models.components.SmsMessagesValue;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingCreateSmsTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -692,22 +754,6 @@ public class Application {
                 .xAccountId("<id>")
                 .marketingCreateSmsTemplateRequestDto(MarketingCreateSmsTemplateRequestDto.builder()
                     .messages(List.of(
-                        SmsMessages.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(SmsMessagesMessageType.builder()
-                                .value(SmsMessagesValue.EMAIL)
-                                .sourceValue(SmsMessagesSourceValue.of("Email"))
-                                .build())
-                            .build(),
-                        SmsMessages.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(SmsMessagesMessageType.builder()
-                                .value(SmsMessagesValue.EMAIL)
-                                .sourceValue(SmsMessagesSourceValue.of("Email"))
-                                .build())
-                            .build(),
                         SmsMessages.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -741,9 +787,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getSmsTemplate
 
@@ -756,6 +814,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingGetSmsTemplateRequest;
 import com.stackone.stackone_client_java.models.operations.MarketingGetSmsTemplateResponse;
 import java.lang.Exception;
@@ -774,7 +833,6 @@ public class Application {
         MarketingGetSmsTemplateRequest req = MarketingGetSmsTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .build();
 
@@ -801,9 +859,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateSmsTemplate
 
@@ -815,12 +885,8 @@ Update SMS Template
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.MarketingCreateSmsTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.SmsMessages;
-import com.stackone.stackone_client_java.models.components.SmsMessagesMessageType;
-import com.stackone.stackone_client_java.models.components.SmsMessagesSourceValue;
-import com.stackone.stackone_client_java.models.components.SmsMessagesValue;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingUpdateSmsTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -876,9 +942,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## ~~listOmniChannelTemplates~~
 
@@ -893,6 +971,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingListOmniChannelTemplatesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.MarketingListOmniChannelTemplatesRequest;
 import java.lang.Exception;
@@ -910,20 +989,17 @@ public class Application {
 
         MarketingListOmniChannelTemplatesRequest req = MarketingListOmniChannelTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .filter(MarketingListOmniChannelTemplatesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.marketing().listOmniChannelTemplates()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -942,9 +1018,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## ~~createOmniChannelTemplate~~
 
@@ -958,12 +1046,8 @@ Create Omni-Channel Template
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.CreateMessage;
-import com.stackone.stackone_client_java.models.components.CreateMessageMessageType;
-import com.stackone.stackone_client_java.models.components.CreateMessageSourceValue;
-import com.stackone.stackone_client_java.models.components.CreateMessageValue;
-import com.stackone.stackone_client_java.models.components.MarketingCreateTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingCreateOmniChannelTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -984,20 +1068,6 @@ public class Application {
                 .xAccountId("<id>")
                 .marketingCreateTemplateRequestDto(MarketingCreateTemplateRequestDto.builder()
                     .messages(List.of(
-                        CreateMessage.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(CreateMessageMessageType.builder()
-                                .value(CreateMessageValue.EMAIL)
-                                .sourceValue(CreateMessageSourceValue.of("Email"))
-                                .build())
-                            .build(),
-                        CreateMessage.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(CreateMessageMessageType.builder()
-                                .value(CreateMessageValue.EMAIL)
-                                .sourceValue(CreateMessageSourceValue.of("Email"))
-                                .build())
-                            .build(),
                         CreateMessage.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .messageType(CreateMessageMessageType.builder()
@@ -1030,9 +1100,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## ~~getOmniChannelTemplate~~
 
@@ -1047,6 +1129,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingGetOmniChannelTemplateRequest;
 import com.stackone.stackone_client_java.models.operations.MarketingGetOmniChannelTemplateResponse;
 import java.lang.Exception;
@@ -1065,7 +1148,6 @@ public class Application {
         MarketingGetOmniChannelTemplateRequest req = MarketingGetOmniChannelTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .build();
 
@@ -1092,9 +1174,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## ~~updateOmniChannelTemplate~~
 
@@ -1108,12 +1202,8 @@ Update Omni-Channel Template
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.CreateMessage;
-import com.stackone.stackone_client_java.models.components.CreateMessageMessageType;
-import com.stackone.stackone_client_java.models.components.CreateMessageSourceValue;
-import com.stackone.stackone_client_java.models.components.CreateMessageValue;
-import com.stackone.stackone_client_java.models.components.MarketingCreateTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingUpdateOmniChannelTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -1168,9 +1258,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listPushTemplates
 
@@ -1183,6 +1285,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingListPushTemplatesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.MarketingListPushTemplatesRequest;
 import java.lang.Exception;
@@ -1200,20 +1303,17 @@ public class Application {
 
         MarketingListPushTemplatesRequest req = MarketingListPushTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .filter(MarketingListPushTemplatesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.marketing().listPushTemplates()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1232,9 +1332,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createPushTemplate
 
@@ -1246,12 +1358,8 @@ Create Push Template
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.MarketingCreatePushTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.PushMessages;
-import com.stackone.stackone_client_java.models.components.PushMessagesMessageType;
-import com.stackone.stackone_client_java.models.components.PushMessagesSourceValue;
-import com.stackone.stackone_client_java.models.components.PushMessagesValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingCreatePushTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -1272,22 +1380,6 @@ public class Application {
                 .xAccountId("<id>")
                 .marketingCreatePushTemplateRequestDto(MarketingCreatePushTemplateRequestDto.builder()
                     .messages(List.of(
-                        PushMessages.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(PushMessagesMessageType.builder()
-                                .value(PushMessagesValue.EMAIL)
-                                .sourceValue(PushMessagesSourceValue.of("Email"))
-                                .build())
-                            .build(),
-                        PushMessages.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(PushMessagesMessageType.builder()
-                                .value(PushMessagesValue.EMAIL)
-                                .sourceValue(PushMessagesSourceValue.of("Email"))
-                                .build())
-                            .build(),
                         PushMessages.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -1321,9 +1413,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getPushTemplate
 
@@ -1336,6 +1440,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingGetPushTemplateRequest;
 import com.stackone.stackone_client_java.models.operations.MarketingGetPushTemplateResponse;
 import java.lang.Exception;
@@ -1354,7 +1459,6 @@ public class Application {
         MarketingGetPushTemplateRequest req = MarketingGetPushTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .build();
 
@@ -1381,9 +1485,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updatePushTemplate
 
@@ -1395,12 +1511,8 @@ Update Push Template
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.MarketingCreatePushTemplateRequestDto;
-import com.stackone.stackone_client_java.models.components.PushMessages;
-import com.stackone.stackone_client_java.models.components.PushMessagesMessageType;
-import com.stackone.stackone_client_java.models.components.PushMessagesSourceValue;
-import com.stackone.stackone_client_java.models.components.PushMessagesValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingUpdatePushTemplateResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -1422,22 +1534,6 @@ public class Application {
                 .id("<id>")
                 .marketingCreatePushTemplateRequestDto(MarketingCreatePushTemplateRequestDto.builder()
                     .messages(List.of(
-                        PushMessages.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(PushMessagesMessageType.builder()
-                                .value(PushMessagesValue.EMAIL)
-                                .sourceValue(PushMessagesSourceValue.of("Email"))
-                                .build())
-                            .build(),
-                        PushMessages.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .messageType(PushMessagesMessageType.builder()
-                                .value(PushMessagesValue.EMAIL)
-                                .sourceValue(PushMessagesSourceValue.of("Email"))
-                                .build())
-                            .build(),
                         PushMessages.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -1472,9 +1568,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCampaigns
 
@@ -1487,6 +1595,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingListCampaignsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.MarketingListCampaignsRequest;
 import java.lang.Exception;
@@ -1504,20 +1613,17 @@ public class Application {
 
         MarketingListCampaignsRequest req = MarketingListCampaignsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages")
                 .filter(MarketingListCampaignsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.marketing().listCampaigns()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1536,9 +1642,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCampaign
 
@@ -1551,6 +1669,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingGetCampaignRequest;
 import com.stackone.stackone_client_java.models.operations.MarketingGetCampaignResponse;
 import java.lang.Exception;
@@ -1569,7 +1688,6 @@ public class Application {
         MarketingGetCampaignRequest req = MarketingGetCampaignRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages")
                 .build();
 
@@ -1596,9 +1714,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listContentBlocks
 
@@ -1611,6 +1741,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingListContentBlocksQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.MarketingListContentBlocksRequest;
 import java.lang.Exception;
@@ -1628,20 +1759,17 @@ public class Application {
 
         MarketingListContentBlocksRequest req = MarketingListContentBlocksRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,type,content,status,tags,created_at,updated_at")
                 .filter(MarketingListContentBlocksQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.marketing().listContentBlocks()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1660,9 +1788,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createContentBlock
 
@@ -1674,11 +1814,8 @@ Create Content Block
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDto;
-import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDtoType;
-import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingCreateContentBlockResponse;
 import java.lang.Exception;
 import java.util.Map;
@@ -1726,9 +1863,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getContentBlock
 
@@ -1741,6 +1890,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingGetContentBlockRequest;
 import com.stackone.stackone_client_java.models.operations.MarketingGetContentBlockResponse;
 import java.lang.Exception;
@@ -1759,7 +1909,6 @@ public class Application {
         MarketingGetContentBlockRequest req = MarketingGetContentBlockRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,type,content,status,tags,created_at,updated_at")
                 .build();
 
@@ -1786,9 +1935,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateContentBlock
 
@@ -1800,11 +1961,8 @@ Update Content Block
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDto;
-import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDtoType;
-import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingUpdateContentBlockResponse;
 import java.lang.Exception;
 import java.util.Map;
@@ -1854,6 +2012,18 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
