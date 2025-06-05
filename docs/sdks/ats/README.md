@@ -89,6 +89,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsRequest;
 import java.lang.Exception;
@@ -106,24 +107,20 @@ public class Application {
 
         AtsListApplicationsRequest req = AtsListApplicationsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate")
                 .filter(AtsListApplicationsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .createdAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("documents")
                 .include("attachments,custom_fields")
-                .jobId("cxQiyiuasdFKfdsYfer")
                 .build();
 
         sdk.ats().listApplications()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -142,9 +139,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createApplication
 
@@ -156,27 +165,14 @@ Create Application
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDtoApplicationStatus;
-import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDtoCandidate;
-import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDtoSource;
-import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.CreateAnswer;
-import com.stackone.stackone_client_java.models.components.CreateAnswerSourceValue;
-import com.stackone.stackone_client_java.models.components.CreateAnswerType;
-import com.stackone.stackone_client_java.models.components.CreateAnswerValue;
-import com.stackone.stackone_client_java.models.components.CreateQuestionnaire;
-import com.stackone.stackone_client_java.models.components.CustomFields;
-import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
-import com.stackone.stackone_client_java.models.components.PhoneNumber;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.SocialLink;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -197,26 +193,19 @@ public class Application {
                     .jobId("4071538b-3cac-4fbf-ac76-f78ed250ffdd")
                     .jobPostingId("1c702a20-8de8-4d03-ac18-cbf4ac42eb51")
                     .locationId("dd8d41d1-5eb8-4408-9c87-9ba44604eae4")
-                    .applicationStatus(AtsCreateApplicationRequestDtoApplicationStatus.builder()
-                        .value(AtsCreateApplicationRequestDtoValue.HIRED)
-                        .sourceValue(AtsCreateApplicationRequestDtoSourceValue.of("Hired"))
-                        .build())
+                    .applicationStatus(JsonNullable.of(null))
                     .questionnaires(List.of(
                         CreateQuestionnaire.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .id("right_to_work")
                             .answers(List.of(
                                 CreateAnswer.builder()
-                                    .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                                    .id("answer1")
                                     .type(CreateAnswerType.builder()
                                         .value(CreateAnswerValue.SHORT_TEXT)
                                         .sourceValue(CreateAnswerSourceValue.of("Short Text"))
                                         .build())
                                     .values(List.of(
-                                        "Yes",
-                                        "No Travel",
-                                        "It sounds pretty cool.",
-                                        "Excel",
-                                        "Power Point"))
+                                        "Yes"))
                                     .build()))
                             .build()))
                     .source(AtsCreateApplicationRequestDtoSource.builder()
@@ -233,9 +222,6 @@ public class Application {
                         .phoneNumbers(List.of(
                             PhoneNumber.builder()
                                 .phone("+447700112233")
-                                .build(),
-                            PhoneNumber.builder()
-                                .phone("+447700112233")
                                 .build()))
                         .name("Romain Sestier")
                         .firstName("Romain")
@@ -245,36 +231,12 @@ public class Application {
                             SocialLink.builder()
                                 .type("linkedin")
                                 .url("https://www.linkedin.com/in/romainsestier/")
-                                .build(),
-                            SocialLink.builder()
-                                .type("linkedin")
-                                .url("https://www.linkedin.com/in/romainsestier/")
-                                .build(),
-                            SocialLink.builder()
-                                .type("linkedin")
-                                .url("https://www.linkedin.com/in/romainsestier/")
                                 .build()))
                         .company("Company Inc.")
                         .title("Software Engineer")
                         .hiredAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                         .country("United States")
                         .customFields(List.of(
-                            CustomFields.builder()
-                                .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                .name("Training Completion Status")
-                                .value(CustomFieldsValue.of("Completed"))
-                                .valueId("value_456")
-                                .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                                .build(),
-                            CustomFields.builder()
-                                .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                .name("Training Completion Status")
-                                .value(CustomFieldsValue.of("Completed"))
-                                .valueId("value_456")
-                                .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                                .build(),
                             CustomFields.builder()
                                 .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                                 .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -307,9 +269,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getApplication
 
@@ -322,6 +296,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationResponse;
 import java.lang.Exception;
@@ -340,7 +315,6 @@ public class Application {
         AtsGetApplicationRequest req = AtsGetApplicationRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate")
                 .expand("documents")
                 .include("attachments,custom_fields")
@@ -369,9 +343,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateApplication
 
@@ -383,14 +369,8 @@ Update an Application
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDtoApplicationStatus;
-import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDtoSource;
-import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.CustomFields;
-import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateApplicationResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -454,9 +434,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listApplicationsOffers
 
@@ -469,6 +461,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsOffersQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsOffersRequest;
 import java.lang.Exception;
@@ -487,20 +480,17 @@ public class Application {
         AtsListApplicationsOffersRequest req = AtsListApplicationsOffersRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
                 .filter(AtsListApplicationsOffersQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listApplicationsOffers()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -519,9 +509,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## moveApplication
 
@@ -535,6 +537,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.AtsMoveApplicationRequestDto;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsMoveApplicationResponse;
 import java.lang.Exception;
 import java.util.Map;
@@ -581,9 +584,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## rejectApplication
 
@@ -597,6 +612,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.AtsRejectApplicationRequestDto;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsRejectApplicationResponse;
 import java.lang.Exception;
 import java.util.Map;
@@ -643,9 +659,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getApplicationOffer
 
@@ -658,6 +686,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationOfferRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationOfferResponse;
 import java.lang.Exception;
@@ -677,7 +706,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
                 .build();
 
@@ -704,9 +732,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listApplicationScorecards
 
@@ -719,6 +759,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationScorecardsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationScorecardsRequest;
 import java.lang.Exception;
@@ -737,20 +778,17 @@ public class Application {
         AtsListApplicationScorecardsRequest req = AtsListApplicationScorecardsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at")
                 .filter(AtsListApplicationScorecardsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listApplicationScorecards()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -769,9 +807,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getApplicationScorecard
 
@@ -784,6 +834,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationScorecardRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationScorecardResponse;
 import java.lang.Exception;
@@ -803,7 +854,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at")
                 .build();
 
@@ -830,9 +880,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listApplicationNotes
 
@@ -845,6 +907,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationNotesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationNotesRequest;
 import java.lang.Exception;
@@ -863,20 +926,17 @@ public class Application {
         AtsListApplicationNotesRequest req = AtsListApplicationNotesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
                 .filter(AtsListApplicationNotesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listApplicationNotes()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -895,9 +955,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createApplicationNote
 
@@ -909,12 +981,8 @@ Create Application Note
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDtoVisibility;
-import com.stackone.stackone_client_java.models.components.NoteContentApiModel;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationNoteResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -936,12 +1004,6 @@ public class Application {
                 .id("<id>")
                 .atsCreateNotesRequestDto(AtsCreateNotesRequestDto.builder()
                     .content(List.of(
-                        NoteContentApiModel.builder()
-                            .body("This candidate seems like a good fit for the role")
-                            .build(),
-                        NoteContentApiModel.builder()
-                            .body("This candidate seems like a good fit for the role")
-                            .build(),
                         NoteContentApiModel.builder()
                             .body("This candidate seems like a good fit for the role")
                             .build()))
@@ -976,9 +1038,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getApplicationNote
 
@@ -991,6 +1065,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationNoteResponse;
 import java.lang.Exception;
@@ -1010,7 +1085,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
                 .build();
 
@@ -1037,9 +1111,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateApplicationNote
 
@@ -1051,12 +1137,8 @@ Update an Application Note
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDtoVisibility;
-import com.stackone.stackone_client_java.models.components.NoteContentApiModel;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateApplicationNoteResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -1079,12 +1161,6 @@ public class Application {
                 .subResourceId("<id>")
                 .atsUpdateNotesRequestDto(AtsUpdateNotesRequestDto.builder()
                     .content(List.of(
-                        NoteContentApiModel.builder()
-                            .body("This candidate seems like a good fit for the role")
-                            .build(),
-                        NoteContentApiModel.builder()
-                            .body("This candidate seems like a good fit for the role")
-                            .build(),
                         NoteContentApiModel.builder()
                             .body("This candidate seems like a good fit for the role")
                             .build()))
@@ -1120,9 +1196,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listApplicationsScheduledInterviews
 
@@ -1135,6 +1223,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsScheduledInterviewsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsScheduledInterviewsRequest;
 import java.lang.Exception;
@@ -1153,20 +1242,17 @@ public class Application {
         AtsListApplicationsScheduledInterviewsRequest req = AtsListApplicationsScheduledInterviewsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at")
                 .filter(AtsListApplicationsScheduledInterviewsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listApplicationsScheduledInterviews()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1185,9 +1271,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getApplicationScheduledInterview
 
@@ -1200,6 +1298,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationScheduledInterviewRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationScheduledInterviewResponse;
 import java.lang.Exception;
@@ -1219,7 +1318,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate")
                 .build();
 
@@ -1246,9 +1344,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## uploadApplicationDocument
 
@@ -1260,17 +1370,11 @@ Upload Application Document
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDto;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDtoCategory;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDtoConfidential;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDtoConfidentialSourceValue;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDtoConfidentialValue;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDtoFileFormat;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDtoValue;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsUploadApplicationDocumentResponse;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -1288,10 +1392,7 @@ public class Application {
                 .id("<id>")
                 .unifiedUploadRequestDto(UnifiedUploadRequestDto.builder()
                     .name("weather-forecast")
-                    .fileFormat(UnifiedUploadRequestDtoFileFormat.builder()
-                        .value(UnifiedUploadRequestDtoValue.PDF)
-                        .sourceValue(UnifiedUploadRequestDtoSourceValue.of("abc"))
-                        .build())
+                    .fileFormat(JsonNullable.of(null))
                     .content("VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE")
                     .categoryId("6530")
                     .path("/path/to/file")
@@ -1327,9 +1428,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## downloadApplicationDocument
 
@@ -1342,6 +1455,8 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsDownloadApplicationDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.AtsDownloadApplicationDocumentResponse;
 import java.lang.Exception;
 
@@ -1356,11 +1471,16 @@ public class Application {
                     .build())
             .build();
 
-        AtsDownloadApplicationDocumentResponse res = sdk.ats().downloadApplicationDocument()
+        AtsDownloadApplicationDocumentRequest req = AtsDownloadApplicationDocumentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
                 .format("base64")
+                .exportFormat("text/plain")
+                .build();
+
+        AtsDownloadApplicationDocumentResponse res = sdk.ats().downloadApplicationDocument()
+                .request(req)
                 .call();
 
         if (res.responseStream().isPresent()) {
@@ -1372,12 +1492,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                          | Type                               | Required                           | Description                        | Example                            |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `xAccountId`                       | *String*                           | :heavy_check_mark:                 | The account identifier             |                                    |
-| `id`                               | *String*                           | :heavy_check_mark:                 | N/A                                |                                    |
-| `subResourceId`                    | *String*                           | :heavy_check_mark:                 | N/A                                |                                    |
-| `format`                           | *JsonNullable\<String>*            | :heavy_minus_sign:                 | The format to download the file in | base64                             |
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [AtsDownloadApplicationDocumentRequest](../../models/operations/AtsDownloadApplicationDocumentRequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
 
 ### Response
 
@@ -1385,9 +1502,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listApplicationDocuments
 
@@ -1400,6 +1529,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentsRequest;
 import java.lang.Exception;
@@ -1418,20 +1548,17 @@ public class Application {
         AtsListApplicationDocumentsRequest req = AtsListApplicationDocumentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .filter(AtsListApplicationDocumentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listApplicationDocuments()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1450,9 +1577,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getApplicationDocument
 
@@ -1465,6 +1604,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentResponse;
 import java.lang.Exception;
@@ -1484,7 +1624,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .build();
 
@@ -1511,9 +1650,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCandidates
 
@@ -1526,6 +1677,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListCandidatesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListCandidatesRequest;
 import java.lang.Exception;
@@ -1543,14 +1695,11 @@ public class Application {
 
         AtsListCandidatesRequest req = AtsListCandidatesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at")
                 .filter(AtsListCandidatesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .createdAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .include("custom_fields")
                 .build();
 
@@ -1558,7 +1707,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1577,9 +1726,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createCandidate
 
@@ -1591,12 +1752,8 @@ Create Candidate
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidateRequestDto;
-import com.stackone.stackone_client_java.models.components.CustomFields;
-import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
-import com.stackone.stackone_client_java.models.components.PhoneNumber;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.SocialLink;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -1625,9 +1782,6 @@ public class Application {
                     .phoneNumbers(List.of(
                         PhoneNumber.builder()
                             .phone("+447700112233")
-                            .build(),
-                        PhoneNumber.builder()
-                            .phone("+447700112233")
                             .build()))
                     .name("Romain Sestier")
                     .firstName("Romain")
@@ -1643,22 +1797,6 @@ public class Application {
                     .hiredAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                     .country("United States")
                     .customFields(List.of(
-                        CustomFields.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Training Completion Status")
-                            .value(CustomFieldsValue.of("Completed"))
-                            .valueId("value_456")
-                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .build(),
-                        CustomFields.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Training Completion Status")
-                            .value(CustomFieldsValue.of("Completed"))
-                            .valueId("value_456")
-                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .build(),
                         CustomFields.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -1690,9 +1828,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCandidate
 
@@ -1705,6 +1855,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetCandidateRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetCandidateResponse;
 import java.lang.Exception;
@@ -1723,7 +1874,6 @@ public class Application {
         AtsGetCandidateRequest req = AtsGetCandidateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at")
                 .include("custom_fields")
                 .build();
@@ -1751,9 +1901,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateCandidate
 
@@ -1765,18 +1927,14 @@ Update Candidate
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsUpdateCandidateRequestDto;
-import com.stackone.stackone_client_java.models.components.CandidateEmail;
-import com.stackone.stackone_client_java.models.components.CustomFields;
-import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
-import com.stackone.stackone_client_java.models.components.PhoneNumber;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.SocialLink;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateCandidateResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -1806,14 +1964,6 @@ public class Application {
                         CandidateEmail.builder()
                             .type("personal")
                             .value("sestier.romain123@gmail.com")
-                            .build(),
-                        CandidateEmail.builder()
-                            .type("personal")
-                            .value("sestier.romain123@gmail.com")
-                            .build(),
-                        CandidateEmail.builder()
-                            .type("personal")
-                            .value("sestier.romain123@gmail.com")
                             .build()))
                     .socialLinks(List.of(
                         SocialLink.builder()
@@ -1831,15 +1981,7 @@ public class Application {
                         "523e1234-e89b-fdd2-a456-762545121101"))
                     .hiredAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                     .country("United States")
-                    .customFields(List.of(
-                        CustomFields.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Training Completion Status")
-                            .value(CustomFieldsValue.of("Completed"))
-                            .valueId("value_456")
-                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .build()))
+                    .customFields(JsonNullable.of(null))
                     .build())
                 .call();
 
@@ -1864,9 +2006,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCandidateNotes
 
@@ -1879,6 +2033,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListCandidateNotesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListCandidateNotesRequest;
 import java.lang.Exception;
@@ -1897,20 +2052,17 @@ public class Application {
         AtsListCandidateNotesRequest req = AtsListCandidateNotesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
                 .filter(AtsListCandidateNotesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listCandidateNotes()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1929,9 +2081,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createCandidateNote
 
@@ -1943,12 +2107,8 @@ Create Candidate Note
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDtoVisibility;
-import com.stackone.stackone_client_java.models.components.NoteContentApiModel;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateNoteResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -2004,9 +2164,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCandidateNote
 
@@ -2019,6 +2191,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetCandidateNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetCandidateNoteResponse;
 import java.lang.Exception;
@@ -2038,7 +2211,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
                 .build();
 
@@ -2065,9 +2237,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listApplicationCustomFieldDefinitions
 
@@ -2080,9 +2264,10 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationCustomFieldDefinitionsQueryParamFilter;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationCustomFieldDefinitionsRequest;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -2097,20 +2282,15 @@ public class Application {
 
         AtsListApplicationCustomFieldDefinitionsRequest req = AtsListApplicationCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
-                .filter(AtsListApplicationCustomFieldDefinitionsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
+                .filter(JsonNullable.of(null))
                 .build();
 
         sdk.ats().listApplicationCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2129,9 +2309,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getApplicationCustomFieldDefinition
 
@@ -2144,10 +2336,11 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.AtsGetApplicationCustomFieldDefinitionQueryParamFilter;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationCustomFieldDefinitionRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationCustomFieldDefinitionResponse;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -2163,13 +2356,8 @@ public class Application {
         AtsGetApplicationCustomFieldDefinitionRequest req = AtsGetApplicationCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
-                .filter(AtsGetApplicationCustomFieldDefinitionQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
+                .filter(JsonNullable.of(null))
                 .build();
 
         AtsGetApplicationCustomFieldDefinitionResponse res = sdk.ats().getApplicationCustomFieldDefinition()
@@ -2195,9 +2383,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCandidateCustomFieldDefinitions
 
@@ -2210,6 +2410,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListCandidateCustomFieldDefinitionsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListCandidateCustomFieldDefinitionsRequest;
 import java.lang.Exception;
@@ -2227,20 +2428,17 @@ public class Application {
 
         AtsListCandidateCustomFieldDefinitionsRequest req = AtsListCandidateCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(AtsListCandidateCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listCandidateCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2259,9 +2457,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCandidateCustomFieldDefinition
 
@@ -2274,9 +2484,8 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.AtsGetCandidateCustomFieldDefinitionQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsGetCandidateCustomFieldDefinitionRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetCandidateCustomFieldDefinitionResponse;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2293,13 +2502,10 @@ public class Application {
         AtsGetCandidateCustomFieldDefinitionRequest req = AtsGetCandidateCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(AtsGetCandidateCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         AtsGetCandidateCustomFieldDefinitionResponse res = sdk.ats().getCandidateCustomFieldDefinition()
@@ -2325,9 +2531,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listJobCustomFieldDefinitions
 
@@ -2340,6 +2558,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListJobCustomFieldDefinitionsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListJobCustomFieldDefinitionsRequest;
 import java.lang.Exception;
@@ -2357,20 +2576,17 @@ public class Application {
 
         AtsListJobCustomFieldDefinitionsRequest req = AtsListJobCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(AtsListJobCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listJobCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2389,9 +2605,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getJobCustomFieldDefinition
 
@@ -2404,9 +2632,8 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.AtsGetJobCustomFieldDefinitionQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsGetJobCustomFieldDefinitionRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetJobCustomFieldDefinitionResponse;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2423,13 +2650,10 @@ public class Application {
         AtsGetJobCustomFieldDefinitionRequest req = AtsGetJobCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(AtsGetJobCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         AtsGetJobCustomFieldDefinitionResponse res = sdk.ats().getJobCustomFieldDefinition()
@@ -2455,9 +2679,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listDepartments
 
@@ -2470,6 +2706,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListDepartmentsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListDepartmentsRequest;
 import java.lang.Exception;
@@ -2487,20 +2724,17 @@ public class Application {
 
         AtsListDepartmentsRequest req = AtsListDepartmentsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name")
                 .filter(AtsListDepartmentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listDepartments()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2519,9 +2753,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getDepartment
 
@@ -2534,6 +2780,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetDepartmentRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetDepartmentResponse;
 import java.lang.Exception;
@@ -2552,7 +2799,6 @@ public class Application {
         AtsGetDepartmentRequest req = AtsGetDepartmentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name")
                 .build();
 
@@ -2579,9 +2825,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listInterviewStages
 
@@ -2594,6 +2852,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListInterviewStagesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListInterviewStagesRequest;
 import java.lang.Exception;
@@ -2611,20 +2870,17 @@ public class Application {
 
         AtsListInterviewStagesRequest req = AtsListInterviewStagesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,order,created_at,updated_at")
                 .filter(AtsListInterviewStagesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listInterviewStages()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2643,9 +2899,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getInterviewStage
 
@@ -2658,6 +2926,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetInterviewStageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetInterviewStageResponse;
 import java.lang.Exception;
@@ -2676,7 +2945,6 @@ public class Application {
         AtsGetInterviewStageRequest req = AtsGetInterviewStageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,order,created_at,updated_at")
                 .build();
 
@@ -2703,9 +2971,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listInterviews
 
@@ -2718,6 +2998,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListInterviewsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListInterviewsRequest;
 import java.lang.Exception;
@@ -2735,21 +3016,18 @@ public class Application {
 
         AtsListInterviewsRequest req = AtsListInterviewsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at")
                 .filter(AtsListInterviewsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .createdAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listInterviews()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2768,9 +3046,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getInterview
 
@@ -2783,6 +3073,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetInterviewRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetInterviewResponse;
 import java.lang.Exception;
@@ -2801,7 +3092,6 @@ public class Application {
         AtsGetInterviewRequest req = AtsGetInterviewRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at")
                 .build();
 
@@ -2828,9 +3118,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listJobs
 
@@ -2843,6 +3145,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListJobsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListJobsRequest;
 import java.lang.Exception;
@@ -2860,14 +3163,11 @@ public class Application {
 
         AtsListJobsRequest req = AtsListJobsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at")
                 .filter(AtsListJobsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .createdAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("job_postings,interview_stages")
                 .include("custom_fields")
                 .build();
@@ -2876,7 +3176,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2895,9 +3195,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createJob
 
@@ -2909,15 +3221,8 @@ Create Job
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateJobRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsCreateJobRequestDtoJobStatus;
-import com.stackone.stackone_client_java.models.components.AtsCreateJobRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateJobRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.CustomFields;
-import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
-import com.stackone.stackone_client_java.models.components.InterviewStage;
-import com.stackone.stackone_client_java.models.components.JobHiringTeam;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsCreateJobResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -2964,33 +3269,8 @@ public class Application {
                             .lastName("Doe")
                             .email("john.doe@gmail.com")
                             .role("Software Engineer")
-                            .build(),
-                        JobHiringTeam.builder()
-                            .userId("123456")
-                            .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .firstName("John")
-                            .lastName("Doe")
-                            .email("john.doe@gmail.com")
-                            .role("Software Engineer")
-                            .build(),
-                        JobHiringTeam.builder()
-                            .userId("123456")
-                            .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .firstName("John")
-                            .lastName("Doe")
-                            .email("john.doe@gmail.com")
-                            .role("Software Engineer")
                             .build()))
                     .interviewStages(List.of(
-                        InterviewStage.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .createdAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .updatedAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .build(),
                         InterviewStage.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -3034,9 +3314,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getJob
 
@@ -3049,6 +3341,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetJobRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetJobResponse;
 import java.lang.Exception;
@@ -3067,7 +3360,6 @@ public class Application {
         AtsGetJobRequest req = AtsGetJobRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at")
                 .expand("job_postings,interview_stages")
                 .include("custom_fields")
@@ -3096,9 +3388,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateJob
 
@@ -3110,20 +3414,13 @@ Update Job
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDtoJobStatus;
-import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.CustomFields;
-import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
-import com.stackone.stackone_client_java.models.components.InterviewStage;
-import com.stackone.stackone_client_java.models.components.JobHiringTeam;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateJobResponse;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -3166,43 +3463,9 @@ public class Application {
                             .lastName("Doe")
                             .email("john.doe@gmail.com")
                             .role("Software Engineer")
-                            .build(),
-                        JobHiringTeam.builder()
-                            .userId("123456")
-                            .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .firstName("John")
-                            .lastName("Doe")
-                            .email("john.doe@gmail.com")
-                            .role("Software Engineer")
                             .build()))
-                    .interviewStages(List.of(
-                        InterviewStage.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .createdAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .updatedAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .build(),
-                        InterviewStage.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .createdAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .updatedAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .build()))
-                    .customFields(List.of(
-                        CustomFields.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Training Completion Status")
-                            .value(CustomFieldsValue.of("Completed"))
-                            .valueId("value_456")
-                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .build()))
+                    .interviewStages(JsonNullable.of(null))
+                    .customFields(JsonNullable.of(null))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
@@ -3229,9 +3492,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listLists
 
@@ -3244,9 +3519,10 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.AtsListListsQueryParamFilter;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListListsRequest;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -3261,20 +3537,15 @@ public class Application {
 
         AtsListListsRequest req = AtsListListsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,created_at,updated_at,items,type")
-                .filter(AtsListListsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
+                .filter(JsonNullable.of(null))
                 .build();
 
         sdk.ats().listLists()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3293,9 +3564,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getList
 
@@ -3308,6 +3591,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetListRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetListResponse;
 import java.lang.Exception;
@@ -3326,7 +3610,6 @@ public class Application {
         AtsGetListRequest req = AtsGetListRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,created_at,updated_at,items,type")
                 .build();
 
@@ -3353,9 +3636,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listLocations
 
@@ -3368,6 +3663,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListLocationsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListLocationsRequest;
 import java.lang.Exception;
@@ -3385,20 +3681,17 @@ public class Application {
 
         AtsListLocationsRequest req = AtsListLocationsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name")
                 .filter(AtsListLocationsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listLocations()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3417,9 +3710,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getLocation
 
@@ -3432,6 +3737,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetLocationRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetLocationResponse;
 import java.lang.Exception;
@@ -3450,7 +3756,6 @@ public class Application {
         AtsGetLocationRequest req = AtsGetLocationRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name")
                 .build();
 
@@ -3477,9 +3782,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listRejectedReasons
 
@@ -3492,6 +3809,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListRejectedReasonsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListRejectedReasonsRequest;
 import java.lang.Exception;
@@ -3509,20 +3827,17 @@ public class Application {
 
         AtsListRejectedReasonsRequest req = AtsListRejectedReasonsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,label,type,rejected_reason_type")
                 .filter(AtsListRejectedReasonsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listRejectedReasons()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3541,9 +3856,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getRejectedReason
 
@@ -3556,6 +3883,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetRejectedReasonRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetRejectedReasonResponse;
 import java.lang.Exception;
@@ -3574,7 +3902,6 @@ public class Application {
         AtsGetRejectedReasonRequest req = AtsGetRejectedReasonRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,label,type,rejected_reason_type")
                 .build();
 
@@ -3601,9 +3928,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listUsers
 
@@ -3616,9 +3955,10 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.AtsListUsersQueryParamFilter;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListUsersRequest;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -3633,20 +3973,15 @@ public class Application {
 
         AtsListUsersRequest req = AtsListUsersRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,email,phone")
-                .filter(AtsListUsersQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
+                .filter(JsonNullable.of(null))
                 .build();
 
         sdk.ats().listUsers()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3665,9 +4000,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getUser
 
@@ -3680,6 +4027,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetUserRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetUserResponse;
 import java.lang.Exception;
@@ -3698,7 +4046,6 @@ public class Application {
         AtsGetUserRequest req = AtsGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,first_name,last_name,name,email,phone")
                 .build();
 
@@ -3725,9 +4072,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listJobPostings
 
@@ -3740,6 +4099,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListJobPostingsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListJobPostingsRequest;
 import java.lang.Exception;
@@ -3757,14 +4117,11 @@ public class Application {
 
         AtsListJobPostingsRequest req = AtsListJobPostingsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
-                .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at")
+                .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at")
                 .filter(AtsListJobPostingsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .createdAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .include("questionnaires")
                 .build();
 
@@ -3772,7 +4129,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3791,9 +4148,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getJobPosting
 
@@ -3806,6 +4175,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetJobPostingRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetJobPostingResponse;
 import java.lang.Exception;
@@ -3824,8 +4194,7 @@ public class Application {
         AtsGetJobPostingRequest req = AtsGetJobPostingRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at")
+                .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at")
                 .include("questionnaires")
                 .build();
 
@@ -3852,9 +4221,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listOffers
 
@@ -3867,6 +4248,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListOffersQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListOffersRequest;
 import java.lang.Exception;
@@ -3884,20 +4266,17 @@ public class Application {
 
         AtsListOffersRequest req = AtsListOffersRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
                 .filter(AtsListOffersQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listOffers()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3916,9 +4295,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createOffer
 
@@ -3930,12 +4321,8 @@ Creates an offer
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDtoOfferStatus;
-import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.OfferHistory;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsCreateOfferResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -3966,11 +4353,6 @@ public class Application {
                             .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                             .createdAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                             .updatedAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .build(),
-                        OfferHistory.builder()
-                            .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .createdAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .updatedAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                             .build()))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -3997,9 +4379,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getOffer
 
@@ -4012,6 +4406,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetOfferRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetOfferResponse;
 import java.lang.Exception;
@@ -4030,7 +4425,6 @@ public class Application {
         AtsGetOfferRequest req = AtsGetOfferRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
                 .build();
 
@@ -4057,9 +4451,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listAssessmentsPackages
 
@@ -4072,6 +4478,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListAssessmentsPackagesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListAssessmentsPackagesRequest;
 import java.lang.Exception;
@@ -4089,19 +4496,16 @@ public class Application {
 
         AtsListAssessmentsPackagesRequest req = AtsListAssessmentsPackagesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .filter(AtsListAssessmentsPackagesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listAssessmentsPackages()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -4120,9 +4524,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getAssessmentsPackage
 
@@ -4135,6 +4551,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsPackageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsPackageResponse;
 import java.lang.Exception;
@@ -4153,7 +4570,6 @@ public class Application {
         AtsGetAssessmentsPackageRequest req = AtsGetAssessmentsPackageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .build();
 
         AtsGetAssessmentsPackageResponse res = sdk.ats().getAssessmentsPackage()
@@ -4179,9 +4595,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## orderAssessmentsRequest
 
@@ -4193,18 +4621,8 @@ Order Assessments Request
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDtoApplication;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDtoApplicationStatus;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDtoCandidate;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDtoJob;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDtoPackage;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAssessmentsRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.CandidateEmail;
-import com.stackone.stackone_client_java.models.components.JobHiringTeam;
-import com.stackone.stackone_client_java.models.components.Requester;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsOrderAssessmentsRequestResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -4305,9 +4723,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getAssessmentsRequest
 
@@ -4320,6 +4750,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsRequestRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsRequestResponse;
 import java.lang.Exception;
@@ -4338,7 +4769,6 @@ public class Application {
         AtsGetAssessmentsRequestRequest req = AtsGetAssessmentsRequestRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
                 .build();
 
@@ -4365,9 +4795,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateAssessmentsResult
 
@@ -4379,22 +4821,14 @@ Update Assessments Result
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate;
-import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Attachment;
-import com.stackone.stackone_client_java.models.components.AttachmentContentType;
-import com.stackone.stackone_client_java.models.components.AttachmentSourceValue;
-import com.stackone.stackone_client_java.models.components.AttachmentValue;
-import com.stackone.stackone_client_java.models.components.Result;
-import com.stackone.stackone_client_java.models.components.Score;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateAssessmentsResultResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -4412,12 +4846,7 @@ public class Application {
                 .id("<id>")
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(AtsUpdateCandidatesAssessmentsResultsRequestDto.builder()
                     .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                    .score(Score.builder()
-                        .label("Percentage")
-                        .value("80")
-                        .min("0")
-                        .max("100")
-                        .build())
+                    .score(JsonNullable.of(null))
                     .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                     .submissionDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                     .summary("Test is passed")
@@ -4427,20 +4856,6 @@ public class Application {
                         .build())
                     .resultUrl("https://exmaple.com/result?id=xyz")
                     .attachments(List.of(
-                        Attachment.builder()
-                            .url("http://example.com/resume.pdf")
-                            .contentType(AttachmentContentType.builder()
-                                .value(AttachmentValue.TEXT)
-                                .sourceValue(AttachmentSourceValue.of("Text"))
-                                .build())
-                            .build(),
-                        Attachment.builder()
-                            .url("http://example.com/resume.pdf")
-                            .contentType(AttachmentContentType.builder()
-                                .value(AttachmentValue.TEXT)
-                                .sourceValue(AttachmentSourceValue.of("Text"))
-                                .build())
-                            .build(),
                         Attachment.builder()
                             .url("http://example.com/resume.pdf")
                             .contentType(AttachmentContentType.builder()
@@ -4478,9 +4893,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getAssessmentsResult
 
@@ -4493,6 +4920,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsResultRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsResultResponse;
 import java.lang.Exception;
@@ -4511,7 +4939,6 @@ public class Application {
         AtsGetAssessmentsResultRequest req = AtsGetAssessmentsResultRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments")
                 .build();
 
@@ -4538,9 +4965,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listBackgroundCheckPackages
 
@@ -4553,6 +4992,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckPackagesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckPackagesRequest;
 import java.lang.Exception;
@@ -4570,20 +5010,17 @@ public class Application {
 
         AtsListBackgroundCheckPackagesRequest req = AtsListBackgroundCheckPackagesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,tests")
                 .filter(AtsListBackgroundCheckPackagesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listBackgroundCheckPackages()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -4602,9 +5039,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createBackgroundCheckPackage
 
@@ -4616,9 +5065,8 @@ Create Background Check Package
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckPackagesRequestDto;
-import com.stackone.stackone_client_java.models.components.CreatePackage;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsCreateBackgroundCheckPackageResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -4641,10 +5089,6 @@ public class Application {
                     .name("Test 1")
                     .description("Skills test to gauge a candidate's proficiency in job-specific skills")
                     .tests(List.of(
-                        CreatePackage.builder()
-                            .name("Test 1")
-                            .description("Skills test to gauge a candidate's proficiency in job-specific skills")
-                            .build(),
                         CreatePackage.builder()
                             .name("Test 1")
                             .description("Skills test to gauge a candidate's proficiency in job-specific skills")
@@ -4674,9 +5118,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getBackgroundCheckPackage
 
@@ -4689,6 +5145,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckPackageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckPackageResponse;
 import java.lang.Exception;
@@ -4707,7 +5164,6 @@ public class Application {
         AtsGetBackgroundCheckPackageRequest req = AtsGetBackgroundCheckPackageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,tests")
                 .build();
 
@@ -4734,9 +5190,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## deleteBackgroundCheckPackage
 
@@ -4749,6 +5217,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsDeleteBackgroundCheckPackageResponse;
 import java.lang.Exception;
 
@@ -4788,9 +5257,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateBackgroundCheckPackage
 
@@ -4802,9 +5283,8 @@ Update Background Check Package
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckPackagesRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.UpdatePackage;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateBackgroundCheckPackageResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -4828,16 +5308,6 @@ public class Application {
                     .name("Test 1")
                     .description("Skills test to gauge a candidate's proficiency in job-specific skills")
                     .tests(List.of(
-                        UpdatePackage.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Test 1")
-                            .description("Skills test to gauge a candidate's proficiency in job-specific skills")
-                            .build(),
-                        UpdatePackage.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Test 1")
-                            .description("Skills test to gauge a candidate's proficiency in job-specific skills")
-                            .build(),
                         UpdatePackage.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("Test 1")
@@ -4869,9 +5339,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listBackgroundCheckRequest
 
@@ -4884,6 +5366,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckRequestQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckRequestRequest;
 import java.lang.Exception;
@@ -4901,20 +5384,17 @@ public class Application {
 
         AtsListBackgroundCheckRequestRequest req = AtsListBackgroundCheckRequestRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
                 .filter(AtsListBackgroundCheckRequestQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.ats().listBackgroundCheckRequest()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -4933,9 +5413,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## orderBackgroundCheckRequest
 
@@ -4947,23 +5439,14 @@ Order Background Check Request
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDtoApplication;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDtoCandidate;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDtoJob;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDtoPackage;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDtoRequester;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.CandidateEmail;
-import com.stackone.stackone_client_java.models.components.JobHiringTeam;
+import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.components.Package;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsOrderBackgroundCheckRequestResponse;
 import java.lang.Exception;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -4991,38 +5474,7 @@ public class Application {
                         .passthrough(Map.ofEntries(
                             Map.entry("other_known_names", "John Doe")))
                         .build())
-                    .job(AtsCreateBackgroundCheckOrderRequestDtoJob.builder()
-                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .title("Software Engineer")
-                        .hiringTeam(List.of(
-                            JobHiringTeam.builder()
-                                .userId("123456")
-                                .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                                .firstName("John")
-                                .lastName("Doe")
-                                .email("john.doe@gmail.com")
-                                .role("Software Engineer")
-                                .build(),
-                            JobHiringTeam.builder()
-                                .userId("123456")
-                                .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                                .firstName("John")
-                                .lastName("Doe")
-                                .email("john.doe@gmail.com")
-                                .role("Software Engineer")
-                                .build(),
-                            JobHiringTeam.builder()
-                                .userId("123456")
-                                .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                                .firstName("John")
-                                .lastName("Doe")
-                                .email("john.doe@gmail.com")
-                                .role("Software Engineer")
-                                .build()))
-                        .passthrough(Map.ofEntries(
-                            Map.entry("other_known_names", "John Doe")))
-                        .build())
+                    .job(JsonNullable.of(null))
                     .candidate(AtsCreateBackgroundCheckOrderRequestDtoCandidate.builder()
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -5057,18 +5509,6 @@ public class Application {
                                 .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                                 .name("Test 1")
                                 .description("Skills test to gauge a candidate's proficiency in job-specific skills")
-                                .build(),
-                            Package.builder()
-                                .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                .name("Test 1")
-                                .description("Skills test to gauge a candidate's proficiency in job-specific skills")
-                                .build(),
-                            Package.builder()
-                                .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                                .name("Test 1")
-                                .description("Skills test to gauge a candidate's proficiency in job-specific skills")
                                 .build()))
                         .build())
                     .passthrough(Map.ofEntries(
@@ -5096,9 +5536,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getBackgroundCheckRequest
 
@@ -5111,6 +5563,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckRequestRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckRequestResponse;
 import java.lang.Exception;
@@ -5129,7 +5582,6 @@ public class Application {
         AtsGetBackgroundCheckRequestRequest req = AtsGetBackgroundCheckRequestRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
                 .build();
 
@@ -5156,9 +5608,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateBackgroundCheckResult
 
@@ -5170,17 +5634,8 @@ Update Background Check Result
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckResultRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckResultRequestDtoCandidate;
-import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckResultRequestDtoResult;
-import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckResultRequestDtoScore;
-import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckResultRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckResultRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Attachment;
-import com.stackone.stackone_client_java.models.components.AttachmentContentType;
-import com.stackone.stackone_client_java.models.components.AttachmentSourceValue;
-import com.stackone.stackone_client_java.models.components.AttachmentValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateBackgroundCheckResultResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -5224,13 +5679,6 @@ public class Application {
                                 .value(AttachmentValue.TEXT)
                                 .sourceValue(AttachmentSourceValue.of("Text"))
                                 .build())
-                            .build(),
-                        Attachment.builder()
-                            .url("http://example.com/resume.pdf")
-                            .contentType(AttachmentContentType.builder()
-                                .value(AttachmentValue.TEXT)
-                                .sourceValue(AttachmentSourceValue.of("Text"))
-                                .build())
                             .build()))
                     .candidate(AtsUpdateBackgroundCheckResultRequestDtoCandidate.builder()
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -5262,9 +5710,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getBackgroundCheckResult
 
@@ -5277,6 +5737,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckResultRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckResultResponse;
 import java.lang.Exception;
@@ -5295,7 +5756,6 @@ public class Application {
         AtsGetBackgroundCheckResultRequest req = AtsGetBackgroundCheckResultRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments")
                 .build();
 
@@ -5322,6 +5782,18 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |

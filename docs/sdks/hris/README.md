@@ -17,6 +17,7 @@
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
+* [cancelEmployeeTimeOffRequest](#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
 * [updateEmployeeTimeOffRequest](#updateemployeetimeoffrequest) - Update Employee Time Off Request
 * [batchUploadEmployeeDocument](#batchuploademployeedocument) - Batch Upload Employee Document
 * [uploadEmployeeDocument](#uploademployeedocument) - Upload Employee Document
@@ -40,9 +41,7 @@
 * [listLocations](#listlocations) - List Work Locations
 * [getLocation](#getlocation) - Get Work Location
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
-* [~~createTimeOffRequest~~](#createtimeoffrequest) - Creates a time off request :warning: **Deprecated**
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
-* [~~updateTimeOffRequest~~](#updatetimeoffrequest) - Update time off request :warning: **Deprecated**
 * [~~listTimeOffTypes~~](#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [~~getTimeOffType~~](#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [listTimeEntries](#listtimeentries) - List Time Entries
@@ -64,6 +63,9 @@
 * [getEmployeeSkill](#getemployeeskill) - Get Employee Skill
 * [listTimeOffPolicies](#listtimeoffpolicies) - List Time Off Policies
 * [getTimeOffPolicy](#gettimeoffpolicy) - Get Time Off Policy
+* [listEmployeeTimeOffPolicies](#listemployeetimeoffpolicies) - List Assigned Time Off Policies
+* [listEmployeeTasks](#listemployeetasks) - List Employee Tasks
+* [getEmployeeTask](#getemployeetask) - Get Employee Task
 
 ## listCompanies
 
@@ -76,7 +78,8 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.Filter;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisListCompaniesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
 import java.lang.Exception;
 
@@ -93,20 +96,17 @@ public class Application {
 
         HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(Filter.builder()
+                .filter(HrisListCompaniesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listCompanies()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -125,9 +125,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCompany
 
@@ -140,6 +152,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetCompanyRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetCompanyResponse;
 import java.lang.Exception;
@@ -158,7 +171,6 @@ public class Application {
         HrisGetCompanyRequest req = HrisGetCompanyRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
                 .build();
 
@@ -185,9 +197,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployeeCustomFieldDefinitions
 
@@ -200,9 +224,9 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCustomFieldDefinitionsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCustomFieldDefinitionsRequest;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCustomFieldDefinitionsResponse;
-import com.stackone.stackone_client_java.models.operations.QueryParamFilter;
 import java.lang.Exception;
 
 public class Application {
@@ -218,22 +242,19 @@ public class Application {
 
         HrisListEmployeeCustomFieldDefinitionsRequest req = HrisListEmployeeCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
-                .filter(QueryParamFilter.builder()
+                .filter(HrisListEmployeeCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
-        HrisListEmployeeCustomFieldDefinitionsResponse res = sdk.hris().listEmployeeCustomFieldDefinitions()
+        sdk.hris().listEmployeeCustomFieldDefinitions()
                 .request(req)
-                .call();
+                .callAsStream()
+                .forEach(item -> {
+                   // handle item
+                });
 
-        if (res.customFieldDefinitionsPaginated().isPresent()) {
-            // handle response
-        }
     }
 }
 ```
@@ -250,9 +271,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployeeCustomFieldDefinition
 
@@ -265,9 +298,8 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeCustomFieldDefinitionQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeCustomFieldDefinitionRequest;
-import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeCustomFieldDefinitionResponse;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -284,13 +316,10 @@ public class Application {
         HrisGetEmployeeCustomFieldDefinitionRequest req = HrisGetEmployeeCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,options")
                 .filter(HrisGetEmployeeCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         HrisGetEmployeeCustomFieldDefinitionResponse res = sdk.hris().getEmployeeCustomFieldDefinition()
@@ -316,9 +345,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployees
 
@@ -331,6 +372,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeesRequest;
 import java.lang.Exception;
@@ -348,13 +390,10 @@ public class Application {
 
         HrisListEmployeesRequest req = HrisListEmployeesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
-                .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills")
+                .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills")
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
@@ -363,7 +402,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -382,9 +421,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createEmployee
 
@@ -396,65 +447,14 @@ Creates an employee
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Country;
-import com.stackone.stackone_client_java.models.components.CountryCodeEnum;
-import com.stackone.stackone_client_java.models.components.CreateCostCenterApiModel;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModel;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelEmploymentContractType;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelEmploymentType;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelEmploymentTypeSourceValue;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelEmploymentTypeValue;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelPayFrequency;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelPayFrequencySourceValue;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelPayFrequencyValue;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelPayPeriod;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelSourceValue;
-import com.stackone.stackone_client_java.models.components.CreateEmploymentApiModelValue;
-import com.stackone.stackone_client_java.models.components.CreateHRISBenefit;
-import com.stackone.stackone_client_java.models.components.CustomFields;
-import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoAvatar;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmployment;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentContractType;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentEmploymentType;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentPayFrequencySourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentPayFrequencyValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentStatus;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentType;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentTypeValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEmploymentValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoEthnicity;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoGender;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoHomeLocation;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoHomeLocationCountry;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoHomeLocationValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoMaritalStatus;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoPayFrequency;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoPayPeriod;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoPreferredLanguage;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoPreferredLanguageValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoState;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoWorkLocation;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoWorkLocationCountry;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmployeeRequestDtoWorkLocationValue;
-import com.stackone.stackone_client_java.models.components.NationalIdentityNumberApiModel;
-import com.stackone.stackone_client_java.models.components.NationalIdentityNumberApiModelCountryValue;
-import com.stackone.stackone_client_java.models.components.NationalIdentityNumberApiModelType;
-import com.stackone.stackone_client_java.models.components.NationalIdentityNumberApiModelValue;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.State;
-import com.stackone.stackone_client_java.models.components.Value;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -479,7 +479,6 @@ public class Application {
                     .personalPhoneNumber("+1234567890")
                     .workEmail("newton@example.com")
                     .workPhoneNumber("+1234567890")
-                    .jobId("R-6789")
                     .jobTitle("Physicist")
                     .departmentId("3093")
                     .teamId("2913")
@@ -492,20 +491,14 @@ public class Application {
                         .build())
                     .ethnicity(HrisCreateEmployeeRequestDtoEthnicity.builder()
                         .build())
-                    .dateOfBirth(OffsetDateTime.parse("1990-01-01T00:00.000Z"))
+                    .dateOfBirth(OffsetDateTime.parse("1990-01-01T00:00:00.000Z"))
                     .birthday(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                     .maritalStatus(HrisCreateEmployeeRequestDtoMaritalStatus.builder()
                         .build())
                     .avatar(HrisCreateEmployeeRequestDtoAvatar.builder()
                         .build())
-                    .hireDate(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
-                    .startDate(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
-                    .employmentType(HrisCreateEmployeeRequestDtoEmploymentType.builder()
-                        .value(HrisCreateEmployeeRequestDtoEmploymentTypeValue.PERMANENT)
-                        .sourceValue(HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue.of("Permanent"))
-                        .build())
-                    .employmentContractType(HrisCreateEmployeeRequestDtoEmploymentContractType.builder()
-                        .build())
+                    .hireDate(OffsetDateTime.parse("2021-01-01T00:00:00.000Z"))
+                    .startDate(OffsetDateTime.parse("2021-01-01T00:00:00.000Z"))
                     .employmentStatus(HrisCreateEmployeeRequestDtoEmploymentStatus.builder()
                         .build())
                     .terminationDate(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
@@ -513,77 +506,9 @@ public class Application {
                     .citizenships(List.of(
                         CountryCodeEnum.builder()
                             .value(Value.US)
-                            .build(),
-                        CountryCodeEnum.builder()
-                            .value(Value.US)
                             .build()))
-                    .employments(List.of(
-                        CreateEmploymentApiModel.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .jobTitle("Software Engineer")
-                            .payRate("40.00")
-                            .payPeriod(CreateEmploymentApiModelPayPeriod.builder()
-                                .value(CreateEmploymentApiModelValue.HOUR)
-                                .sourceValue(CreateEmploymentApiModelSourceValue.of("Hour"))
-                                .build())
-                            .payFrequency(CreateEmploymentApiModelPayFrequency.builder()
-                                .value(CreateEmploymentApiModelPayFrequencyValue.HOURLY)
-                                .sourceValue(CreateEmploymentApiModelPayFrequencySourceValue.of("Hourly"))
-                                .build())
-                            .payCurrency("USD")
-                            .effectiveDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                            .employmentType(CreateEmploymentApiModelEmploymentType.builder()
-                                .value(CreateEmploymentApiModelEmploymentTypeValue.PERMANENT)
-                                .sourceValue(CreateEmploymentApiModelEmploymentTypeSourceValue.of("Permanent"))
-                                .build())
-                            .employmentContractType(CreateEmploymentApiModelEmploymentContractType.builder()
-                                .build())
-                            .timeWorked("P0Y0M0DT8H0M0S")
-                            .build()))
-                    .employment(HrisCreateEmployeeRequestDtoEmployment.builder()
-                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .unifiedCustomFields(Map.ofEntries(
-                            Map.entry("my_project_custom_field_1", "REF-1236"),
-                            Map.entry("my_project_custom_field_2", "some other value")))
-                        .jobTitle("Software Engineer")
-                        .payRate("40.00")
-                        .payPeriod(HrisCreateEmployeeRequestDtoPayPeriod.builder()
-                            .value(HrisCreateEmployeeRequestDtoEmploymentValue.HOUR)
-                            .sourceValue(HrisCreateEmployeeRequestDtoEmploymentSourceValue.of("Hour"))
-                            .build())
-                        .payFrequency(HrisCreateEmployeeRequestDtoPayFrequency.builder()
-                            .value(HrisCreateEmployeeRequestDtoEmploymentPayFrequencyValue.HOURLY)
-                            .sourceValue(HrisCreateEmployeeRequestDtoEmploymentPayFrequencySourceValue.of("Hourly"))
-                            .build())
-                        .payCurrency("USD")
-                        .employmentType(HrisCreateEmployeeRequestDtoEmploymentEmploymentType.builder()
-                            .value(HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeValue.PERMANENT)
-                            .sourceValue(HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue.of("Permanent"))
-                            .build())
-                        .employmentContractType(HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType.builder()
-                            .build())
-                        .timeWorked("P0Y0M0DT8H0M0S")
-                        .build())
+                    .employment(JsonNullable.of(null))
                     .customFields(List.of(
-                        CustomFields.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Training Completion Status")
-                            .value(CustomFieldsValue.of("Completed"))
-                            .valueId("value_456")
-                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .build(),
-                        CustomFields.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Training Completion Status")
-                            .value(CustomFieldsValue.of("Completed"))
-                            .valueId("value_456")
-                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .build(),
                         CustomFields.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -600,34 +525,9 @@ public class Application {
                             .description("Health insurance for employees")
                             .createdAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                             .updatedAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
-                            .build(),
-                        CreateHRISBenefit.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Health Insurance")
-                            .provider("Aetna")
-                            .description("Health insurance for employees")
-                            .createdAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
-                            .updatedAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
-                            .build(),
-                        CreateHRISBenefit.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Health Insurance")
-                            .provider("Aetna")
-                            .description("Health insurance for employees")
-                            .createdAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
-                            .updatedAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                             .build()))
                     .employeeNumber("125")
                     .nationalIdentityNumbers(List.of(
-                        NationalIdentityNumberApiModel.builder()
-                            .value("123456789")
-                            .type(NationalIdentityNumberApiModelType.builder()
-                                .value(NationalIdentityNumberApiModelValue.SSN)
-                                .build())
-                            .country(Country.builder()
-                                .value(NationalIdentityNumberApiModelCountryValue.US)
-                                .build())
-                            .build(),
                         NationalIdentityNumberApiModel.builder()
                             .value("123456789")
                             .type(NationalIdentityNumberApiModelType.builder()
@@ -653,33 +553,8 @@ public class Application {
                         .state(State.builder()
                             .build())
                         .build())
-                    .workLocation(HrisCreateEmployeeRequestDtoWorkLocation.builder()
-                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .name("Woolsthorpe Manor")
-                        .phoneNumber("+44 1476 860 364")
-                        .street1("Water Lane")
-                        .street2("Woolsthorpe by Colsterworth")
-                        .city("Grantham")
-                        .zipCode("NG33 5NR")
-                        .country(HrisCreateEmployeeRequestDtoWorkLocationCountry.builder()
-                            .value(HrisCreateEmployeeRequestDtoWorkLocationValue.US)
-                            .build())
-                        .passthrough(Map.ofEntries(
-                            Map.entry("other_known_names", "John Doe")))
-                        .state(HrisCreateEmployeeRequestDtoState.builder()
-                            .build())
-                        .build())
+                    .workLocation(JsonNullable.of(null))
                     .costCenters(List.of(
-                        CreateCostCenterApiModel.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("R&D")
-                            .distributionPercentage(100)
-                            .build(),
-                        CreateCostCenterApiModel.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("R&D")
-                            .distributionPercentage(100)
-                            .build(),
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
@@ -710,9 +585,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployee
 
@@ -725,6 +612,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeResponse;
 import java.lang.Exception;
@@ -743,8 +631,7 @@ public class Application {
         HrisGetEmployeeRequest req = HrisGetEmployeeRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number,national_identity_numbers,skills")
+                .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
@@ -772,9 +659,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateEmployee
 
@@ -786,53 +685,14 @@ Updates an employee
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Country;
-import com.stackone.stackone_client_java.models.components.CountryCodeEnum;
-import com.stackone.stackone_client_java.models.components.CreateHRISBenefit;
-import com.stackone.stackone_client_java.models.components.CustomFields;
-import com.stackone.stackone_client_java.models.components.CustomFieldsValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoAvatar;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmployment;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentContractType;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentEmploymentType;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentEmploymentTypeValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentPayFrequencySourceValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentStatus;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentType;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentTypeSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentTypeValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEmploymentValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoEthnicity;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoGender;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoHomeLocation;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoHomeLocationCountry;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoHomeLocationValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoMaritalStatus;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPayFrequency;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPayPeriod;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPreferredLanguage;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoPreferredLanguageValue;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoState;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoWorkLocation;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoWorkLocationCountry;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoWorkLocationState;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDtoWorkLocationValue;
-import com.stackone.stackone_client_java.models.components.NationalIdentityNumberApiModel;
-import com.stackone.stackone_client_java.models.components.NationalIdentityNumberApiModelCountryValue;
-import com.stackone.stackone_client_java.models.components.NationalIdentityNumberApiModelType;
-import com.stackone.stackone_client_java.models.components.NationalIdentityNumberApiModelValue;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.components.Value;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -858,7 +718,6 @@ public class Application {
                     .personalPhoneNumber("+1234567890")
                     .workEmail("newton@example.com")
                     .workPhoneNumber("+1234567890")
-                    .jobId("R-6789")
                     .jobTitle("Physicist")
                     .departmentId("3093")
                     .teamId("2913")
@@ -871,20 +730,14 @@ public class Application {
                         .build())
                     .ethnicity(HrisUpdateEmployeeRequestDtoEthnicity.builder()
                         .build())
-                    .dateOfBirth(OffsetDateTime.parse("1990-01-01T00:00.000Z"))
+                    .dateOfBirth(OffsetDateTime.parse("1990-01-01T00:00:00.000Z"))
                     .birthday(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
                     .maritalStatus(HrisUpdateEmployeeRequestDtoMaritalStatus.builder()
                         .build())
                     .avatar(HrisUpdateEmployeeRequestDtoAvatar.builder()
                         .build())
-                    .hireDate(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
-                    .startDate(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
-                    .employmentType(HrisUpdateEmployeeRequestDtoEmploymentType.builder()
-                        .value(HrisUpdateEmployeeRequestDtoEmploymentTypeValue.PERMANENT)
-                        .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentTypeSourceValue.of("Permanent"))
-                        .build())
-                    .employmentContractType(HrisUpdateEmployeeRequestDtoEmploymentContractType.builder()
-                        .build())
+                    .hireDate(OffsetDateTime.parse("2021-01-01T00:00:00.000Z"))
+                    .startDate(OffsetDateTime.parse("2021-01-01T00:00:00.000Z"))
                     .employmentStatus(HrisUpdateEmployeeRequestDtoEmploymentStatus.builder()
                         .build())
                     .terminationDate(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
@@ -893,30 +746,7 @@ public class Application {
                         CountryCodeEnum.builder()
                             .value(Value.US)
                             .build()))
-                    .employment(HrisUpdateEmployeeRequestDtoEmployment.builder()
-                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .unifiedCustomFields(Map.ofEntries(
-                            Map.entry("my_project_custom_field_1", "REF-1236"),
-                            Map.entry("my_project_custom_field_2", "some other value")))
-                        .jobTitle("Software Engineer")
-                        .payRate("40.00")
-                        .payPeriod(HrisUpdateEmployeeRequestDtoPayPeriod.builder()
-                            .value(HrisUpdateEmployeeRequestDtoEmploymentValue.HOUR)
-                            .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentSourceValue.of("Hour"))
-                            .build())
-                        .payFrequency(HrisUpdateEmployeeRequestDtoPayFrequency.builder()
-                            .value(HrisUpdateEmployeeRequestDtoEmploymentPayFrequencyValue.HOURLY)
-                            .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentPayFrequencySourceValue.of("Hourly"))
-                            .build())
-                        .payCurrency("USD")
-                        .employmentType(HrisUpdateEmployeeRequestDtoEmploymentEmploymentType.builder()
-                            .value(HrisUpdateEmployeeRequestDtoEmploymentEmploymentTypeValue.PERMANENT)
-                            .sourceValue(HrisUpdateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue.of("Permanent"))
-                            .build())
-                        .employmentContractType(HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType.builder()
-                            .build())
-                        .timeWorked("P0Y0M0DT8H0M0S")
-                        .build())
+                    .employment(JsonNullable.of(null))
                     .customFields(List.of(
                         CustomFields.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -925,24 +755,8 @@ public class Application {
                             .value(CustomFieldsValue.of("Completed"))
                             .valueId("value_456")
                             .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
-                            .build(),
-                        CustomFields.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Training Completion Status")
-                            .value(CustomFieldsValue.of("Completed"))
-                            .valueId("value_456")
-                            .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                             .build()))
-                    .benefits(List.of(
-                        CreateHRISBenefit.builder()
-                            .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .name("Health Insurance")
-                            .provider("Aetna")
-                            .description("Health insurance for employees")
-                            .createdAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
-                            .updatedAt(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
-                            .build()))
+                    .benefits(JsonNullable.of(null))
                     .employeeNumber("125")
                     .nationalIdentityNumbers(List.of(
                         NationalIdentityNumberApiModel.builder()
@@ -991,7 +805,7 @@ public class Application {
                     .build())
                 .call();
 
-        if (res.updateEmployeeApiModel().isPresent()) {
+        if (res.updateResult().isPresent()) {
             // handle response
         }
     }
@@ -1012,9 +826,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## inviteEmployee
 
@@ -1028,6 +854,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.HrisInviteEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisInviteEmployeeResponse;
 import java.lang.Exception;
 import java.util.Map;
@@ -1073,9 +900,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployeeTimeOffRequests
 
@@ -1088,6 +927,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffRequestsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffRequestsRequest;
 import java.lang.Exception;
@@ -1106,20 +946,18 @@ public class Application {
         HrisListEmployeeTimeOffRequestsRequest req = HrisListEmployeeTimeOffRequestsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
                 .filter(HrisListEmployeeTimeOffRequestsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
+                .expand("policy")
                 .build();
 
         sdk.hris().listEmployeeTimeOffRequests()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1138,9 +976,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createEmployeeTimeOffRequest
 
@@ -1152,14 +1002,10 @@ Create Employee Time Off Request
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoEndHalfDay;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoReason;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoStartHalfDay;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeTimeOffRequestResponse;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
 import java.util.Map;
 
 public class Application {
@@ -1177,10 +1023,9 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto.builder()
-                    .employeeId("1687-3")
                     .approverId("1687-4")
-                    .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                    .endDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
+                    .startDate("2021-01-01T01:01:01.000")
+                    .endDate("2021-01-01T01:01:01.000")
                     .startHalfDay(HrisCreateTimeOffRequestDtoStartHalfDay.of(true))
                     .endHalfDay(HrisCreateTimeOffRequestDtoEndHalfDay.of(true))
                     .timeOffPolicyId("cx280928933")
@@ -1214,9 +1059,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployeesTimeOffRequest
 
@@ -1229,6 +1086,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeesTimeOffRequestRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeesTimeOffRequestResponse;
 import java.lang.Exception;
@@ -1248,8 +1106,8 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .expand("policy")
                 .build();
 
         HrisGetEmployeesTimeOffRequestResponse res = sdk.hris().getEmployeesTimeOffRequest()
@@ -1275,9 +1133,90 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## cancelEmployeeTimeOffRequest
+
+Cancel Employee Time Off Request
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisCancelEmployeeTimeOffRequestResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        HrisCancelEmployeeTimeOffRequestResponse res = sdk.hris().cancelEmployeeTimeOffRequest()
+                .xAccountId("<id>")
+                .id("<id>")
+                .subResourceId("<id>")
+                .call();
+
+        if (res.deleteResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter              | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `xAccountId`           | *String*               | :heavy_check_mark:     | The account identifier |
+| `id`                   | *String*               | :heavy_check_mark:     | N/A                    |
+| `subResourceId`        | *String*               | :heavy_check_mark:     | N/A                    |
+
+### Response
+
+**[HrisCancelEmployeeTimeOffRequestResponse](../../models/operations/HrisCancelEmployeeTimeOffRequestResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateEmployeeTimeOffRequest
 
@@ -1289,14 +1228,10 @@ Update Employee Time Off Request
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoEndHalfDay;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoReason;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoStartHalfDay;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestResponse;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
 import java.util.Map;
 
 public class Application {
@@ -1315,10 +1250,9 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto.builder()
-                    .employeeId("1687-3")
                     .approverId("1687-4")
-                    .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                    .endDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
+                    .startDate("2021-01-01T01:01:01.000")
+                    .endDate("2021-01-01T01:01:01.000")
                     .startHalfDay(HrisCreateTimeOffRequestDtoStartHalfDay.of(true))
                     .endHalfDay(HrisCreateTimeOffRequestDtoEndHalfDay.of(true))
                     .timeOffPolicyId("cx280928933")
@@ -1353,9 +1287,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## batchUploadEmployeeDocument
 
@@ -1367,8 +1313,8 @@ Batch Upload Employee Document
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisBatchDocumentUploadRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -1389,7 +1335,22 @@ public class Application {
                 .id("<id>")
                 .hrisBatchDocumentUploadRequestDto(HrisBatchDocumentUploadRequestDto.builder()
                     .items(List.of(
-                    ))
+                        HrisDocumentsUploadRequestDto.builder()
+                            .name("weather-forecast")
+                            .fileFormat(FileFormat.builder()
+                                .value(HrisDocumentsUploadRequestDtoValue.PDF)
+                                .sourceValue(HrisDocumentsUploadRequestDtoSourceValue.of("application/pdf"))
+                                .build())
+                            .content("VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE")
+                            .categoryId("6530")
+                            .path("/path/to/file")
+                            .confidential(Confidential.builder()
+                                .value(HrisDocumentsUploadRequestDtoConfidentialValue.TRUE)
+                                .sourceValue(HrisDocumentsUploadRequestDtoConfidentialSourceValue.of("public"))
+                                .build())
+                            .category(HrisDocumentsUploadRequestDtoCategory.builder()
+                                .build())
+                            .build()))
                     .build())
                 .call();
 
@@ -1414,9 +1375,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## uploadEmployeeDocument
 
@@ -1428,16 +1401,8 @@ Upload Employee Document
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Confidential;
-import com.stackone.stackone_client_java.models.components.FileFormat;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoCategory;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoCategoryValue;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoConfidentialSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoConfidentialValue;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisUploadEmployeeDocumentResponse;
 import java.lang.Exception;
 
@@ -1459,18 +1424,16 @@ public class Application {
                     .name("weather-forecast")
                     .fileFormat(FileFormat.builder()
                         .value(HrisDocumentsUploadRequestDtoValue.PDF)
-                        .sourceValue(HrisDocumentsUploadRequestDtoSourceValue.of("abc"))
+                        .sourceValue(HrisDocumentsUploadRequestDtoSourceValue.of("application/pdf"))
                         .build())
                     .content("VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE")
                     .categoryId("6530")
                     .path("/path/to/file")
-                    .category(HrisDocumentsUploadRequestDtoCategory.builder()
-                        .value(HrisDocumentsUploadRequestDtoCategoryValue.UNMAPPED_VALUE)
-                        .sourceValue("550e8400-e29b-41d4-a716-446655440000")
-                        .build())
                     .confidential(Confidential.builder()
                         .value(HrisDocumentsUploadRequestDtoConfidentialValue.TRUE)
                         .sourceValue(HrisDocumentsUploadRequestDtoConfidentialSourceValue.of("public"))
+                        .build())
+                    .category(HrisDocumentsUploadRequestDtoCategory.builder()
                         .build())
                     .build())
                 .call();
@@ -1496,9 +1459,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## downloadEmployeeDocument
 
@@ -1511,6 +1486,8 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisDownloadEmployeeDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisDownloadEmployeeDocumentResponse;
 import java.lang.Exception;
 
@@ -1525,11 +1502,16 @@ public class Application {
                     .build())
             .build();
 
-        HrisDownloadEmployeeDocumentResponse res = sdk.hris().downloadEmployeeDocument()
+        HrisDownloadEmployeeDocumentRequest req = HrisDownloadEmployeeDocumentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
                 .format("base64")
+                .exportFormat("text/plain")
+                .build();
+
+        HrisDownloadEmployeeDocumentResponse res = sdk.hris().downloadEmployeeDocument()
+                .request(req)
                 .call();
 
         if (res.responseStream().isPresent()) {
@@ -1541,12 +1523,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                          | Type                               | Required                           | Description                        | Example                            |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `xAccountId`                       | *String*                           | :heavy_check_mark:                 | The account identifier             |                                    |
-| `id`                               | *String*                           | :heavy_check_mark:                 | N/A                                |                                    |
-| `subResourceId`                    | *String*                           | :heavy_check_mark:                 | N/A                                |                                    |
-| `format`                           | *JsonNullable\<String>*            | :heavy_minus_sign:                 | The format to download the file in | base64                             |
+| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `request`                                                                                             | [HrisDownloadEmployeeDocumentRequest](../../models/operations/HrisDownloadEmployeeDocumentRequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
 
 ### Response
 
@@ -1554,9 +1533,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployeeDocuments
 
@@ -1569,6 +1560,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeDocumentsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeDocumentsRequest;
 import java.lang.Exception;
@@ -1587,20 +1579,17 @@ public class Application {
         HrisListEmployeeDocumentsRequest req = HrisListEmployeeDocumentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .filter(HrisListEmployeeDocumentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeDocuments()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1619,9 +1608,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployeeDocument
 
@@ -1634,6 +1635,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeDocumentResponse;
 import java.lang.Exception;
@@ -1653,7 +1655,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .build();
 
@@ -1680,9 +1681,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployeeCategories
 
@@ -1695,6 +1708,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesRequest;
 import java.lang.Exception;
@@ -1712,20 +1726,17 @@ public class Application {
 
         HrisListEmployeeCategoriesRequest req = HrisListEmployeeCategoriesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active")
                 .filter(HrisListEmployeeCategoriesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeCategories()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1744,9 +1755,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployeeDocumentCategory
 
@@ -1759,6 +1782,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeDocumentCategoryRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeDocumentCategoryResponse;
 import java.lang.Exception;
@@ -1777,7 +1801,6 @@ public class Application {
         HrisGetEmployeeDocumentCategoryRequest req = HrisGetEmployeeDocumentCategoryRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active")
                 .build();
 
@@ -1804,9 +1827,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployeeWorkEligibility
 
@@ -1819,6 +1854,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeWorkEligibilityQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeWorkEligibilityRequest;
 import java.lang.Exception;
@@ -1837,20 +1873,17 @@ public class Application {
         HrisListEmployeeWorkEligibilityRequest req = HrisListEmployeeWorkEligibilityRequest.builder()
                 .id("<id>")
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number")
                 .filter(HrisListEmployeeWorkEligibilityQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeWorkEligibility()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -1869,9 +1902,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createEmployeeWorkEligibilityRequest
 
@@ -1883,20 +1928,13 @@ Create Employee Work Eligibility Request
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoCategory;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoDocument;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoDocumentSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoDocumentValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoFileFormat;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoIssuedBy;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoType;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeWorkEligibilityRequestResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -1924,10 +1962,7 @@ public class Application {
                         .createdAt(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                         .updatedAt(OffsetDateTime.parse("2021-01-02T01:01:01.000Z"))
                         .remoteUrl("https://example.com/file.pdf")
-                        .fileFormat(HrisCreateWorkEligibilityRequestDtoFileFormat.builder()
-                            .value(HrisCreateWorkEligibilityRequestDtoDocumentValue.PDF)
-                            .sourceValue(HrisCreateWorkEligibilityRequestDtoDocumentSourceValue.of("abc"))
-                            .build())
+                        .fileFormat(JsonNullable.of(null))
                         .build())
                     .issuedBy(HrisCreateWorkEligibilityRequestDtoIssuedBy.builder()
                         .value(HrisCreateWorkEligibilityRequestDtoValue.US)
@@ -1936,8 +1971,8 @@ public class Application {
                     .subType("H1B")
                     .type(HrisCreateWorkEligibilityRequestDtoType.builder()
                         .build())
-                    .validFrom(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
-                    .validTo(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
+                    .validFrom(OffsetDateTime.parse("2021-01-01T00:00:00.000Z"))
+                    .validTo(OffsetDateTime.parse("2021-01-01T00:00:00.000Z"))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
@@ -1964,9 +1999,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployeesWorkEligibility
 
@@ -1979,6 +2026,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeesWorkEligibilityRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeesWorkEligibilityResponse;
 import java.lang.Exception;
@@ -1998,7 +2046,6 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number")
                 .build();
 
@@ -2025,9 +2072,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateEmployeeWorkEligibilityRequest
 
@@ -2039,16 +2098,8 @@ Update Employee Work Eligibility Request
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoCategory;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoDocument;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoDocumentSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoDocumentValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoFileFormat;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoIssuedBy;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoType;
-import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeWorkEligibilityRequestResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -2083,7 +2134,7 @@ public class Application {
                         .remoteUrl("https://example.com/file.pdf")
                         .fileFormat(HrisCreateWorkEligibilityRequestDtoFileFormat.builder()
                             .value(HrisCreateWorkEligibilityRequestDtoDocumentValue.PDF)
-                            .sourceValue(HrisCreateWorkEligibilityRequestDtoDocumentSourceValue.of("abc"))
+                            .sourceValue(HrisCreateWorkEligibilityRequestDtoDocumentSourceValue.of("application/pdf"))
                             .build())
                         .build())
                     .issuedBy(HrisCreateWorkEligibilityRequestDtoIssuedBy.builder()
@@ -2093,8 +2144,8 @@ public class Application {
                     .subType("H1B")
                     .type(HrisCreateWorkEligibilityRequestDtoType.builder()
                         .build())
-                    .validFrom(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
-                    .validTo(OffsetDateTime.parse("2021-01-01T00:00.000Z"))
+                    .validFrom(OffsetDateTime.parse("2021-01-01T00:00:00.000Z"))
+                    .validTo(OffsetDateTime.parse("2021-01-01T00:00:00.000Z"))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
@@ -2120,9 +2171,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployeeTimeOffBalances
 
@@ -2135,6 +2198,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffBalancesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffBalancesRequest;
 import java.lang.Exception;
@@ -2153,13 +2217,10 @@ public class Application {
         HrisListEmployeeTimeOffBalancesRequest req = HrisListEmployeeTimeOffBalancesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at")
                 .filter(HrisListEmployeeTimeOffBalancesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("policy")
                 .build();
 
@@ -2167,7 +2228,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2186,9 +2247,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployeeTimeOffBalance
 
@@ -2201,6 +2274,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeTimeOffBalanceRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeTimeOffBalanceResponse;
 import java.lang.Exception;
@@ -2220,7 +2294,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at")
                 .expand("policy")
                 .build();
@@ -2248,9 +2321,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployments
 
@@ -2263,6 +2348,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmploymentsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmploymentsRequest;
 import java.lang.Exception;
@@ -2280,13 +2366,10 @@ public class Application {
 
         HrisListEmploymentsRequest req = HrisListEmploymentsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
-                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
+                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .filter(HrisListEmploymentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("groups")
                 .build();
 
@@ -2294,7 +2377,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2313,9 +2396,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployment
 
@@ -2328,6 +2423,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmploymentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmploymentResponse;
 import java.lang.Exception;
@@ -2346,8 +2442,7 @@ public class Application {
         HrisGetEmploymentRequest req = HrisGetEmploymentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
+                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .expand("groups")
                 .build();
 
@@ -2374,9 +2469,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployeeEmployments
 
@@ -2389,6 +2496,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeEmploymentsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeEmploymentsRequest;
 import java.lang.Exception;
@@ -2407,13 +2515,10 @@ public class Application {
         HrisListEmployeeEmploymentsRequest req = HrisListEmployeeEmploymentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
+                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .filter(HrisListEmployeeEmploymentsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .expand("groups")
                 .build();
 
@@ -2421,7 +2526,7 @@ public class Application {
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2440,9 +2545,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createEmployeeEmployment
 
@@ -2454,18 +2571,8 @@ Create Employee Employment
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentContractType;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentType;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentTypeSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentTypeValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequency;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequencySourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequencyValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayPeriod;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeEmploymentResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -2486,7 +2593,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .hrisCreateEmploymentRequestDto(HrisCreateEmploymentRequestDto.builder()
-                    .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
                         Map.entry("my_project_custom_field_2", "some other value")))
@@ -2502,19 +2608,27 @@ public class Application {
                         .build())
                     .payCurrency("USD")
                     .effectiveDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                    .employmentType(HrisCreateEmploymentRequestDtoEmploymentType.builder()
-                        .value(HrisCreateEmploymentRequestDtoEmploymentTypeValue.PERMANENT)
-                        .sourceValue(HrisCreateEmploymentRequestDtoEmploymentTypeSourceValue.of("Permanent"))
+                    .endDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
+                    .grade(HrisCreateEmploymentRequestDtoGrade.builder()
+                        .id("1687-3")
+                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .name("1687-4")
+                        .description("Mid-level employee demonstrating proficiency and autonomy.")
                         .build())
-                    .employmentContractType(HrisCreateEmploymentRequestDtoEmploymentContractType.builder()
+                    .workTime(HrisCreateEmploymentRequestDtoWorkTime.builder()
+                        .duration("P0Y0M0DT8H0M0S")
+                        .durationUnit(HrisCreateEmploymentRequestDtoDurationUnit.builder()
+                            .value(HrisCreateEmploymentRequestDtoWorkTimeValue.MONTH)
+                            .build())
                         .build())
-                    .timeWorked("P0Y0M0DT8H0M0S")
+                    .payrollCode("PC1")
+                    .jobId("5290")
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
                 .call();
 
-        if (res.employmentResult().isPresent()) {
+        if (res.createResult().isPresent()) {
             // handle response
         }
     }
@@ -2535,9 +2649,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployeeEmployment
 
@@ -2550,6 +2676,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeEmploymentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeEmploymentResponse;
 import java.lang.Exception;
@@ -2569,8 +2696,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
-                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at,start_date,end_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
+                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .expand("groups")
                 .build();
 
@@ -2597,9 +2723,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## updateEmployeeEmployment
 
@@ -2611,18 +2749,8 @@ Update Employee Employment
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentContractType;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentType;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentTypeSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoEmploymentTypeValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequency;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequencySourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayFrequencyValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoPayPeriod;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoSourceValue;
-import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDtoValue;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeEmploymentResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -2643,36 +2771,42 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .hrisCreateEmploymentRequestDto(HrisCreateEmploymentRequestDto.builder()
-                    .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                .hrisUpdateEmploymentRequestDto(HrisUpdateEmploymentRequestDto.builder()
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
                         Map.entry("my_project_custom_field_2", "some other value")))
                     .jobTitle("Software Engineer")
                     .payRate("40.00")
-                    .payPeriod(HrisCreateEmploymentRequestDtoPayPeriod.builder()
-                        .value(HrisCreateEmploymentRequestDtoValue.HOUR)
-                        .sourceValue(HrisCreateEmploymentRequestDtoSourceValue.of("Hour"))
+                    .payPeriod(HrisUpdateEmploymentRequestDtoPayPeriod.builder()
+                        .value(HrisUpdateEmploymentRequestDtoValue.HOUR)
+                        .sourceValue(HrisUpdateEmploymentRequestDtoSourceValue.of("Hour"))
                         .build())
-                    .payFrequency(HrisCreateEmploymentRequestDtoPayFrequency.builder()
-                        .value(HrisCreateEmploymentRequestDtoPayFrequencyValue.HOURLY)
-                        .sourceValue(HrisCreateEmploymentRequestDtoPayFrequencySourceValue.of("Hourly"))
+                    .payFrequency(HrisUpdateEmploymentRequestDtoPayFrequency.builder()
+                        .value(HrisUpdateEmploymentRequestDtoPayFrequencyValue.HOURLY)
+                        .sourceValue(HrisUpdateEmploymentRequestDtoPayFrequencySourceValue.of("Hourly"))
                         .build())
                     .payCurrency("USD")
                     .effectiveDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                    .employmentType(HrisCreateEmploymentRequestDtoEmploymentType.builder()
-                        .value(HrisCreateEmploymentRequestDtoEmploymentTypeValue.PERMANENT)
-                        .sourceValue(HrisCreateEmploymentRequestDtoEmploymentTypeSourceValue.of("Permanent"))
+                    .endDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
+                    .grade(HrisUpdateEmploymentRequestDtoGrade.builder()
+                        .id("1687-3")
+                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .name("1687-4")
+                        .description("Mid-level employee demonstrating proficiency and autonomy.")
                         .build())
-                    .employmentContractType(HrisCreateEmploymentRequestDtoEmploymentContractType.builder()
+                    .workTime(HrisUpdateEmploymentRequestDtoWorkTime.builder()
+                        .duration("P0Y0M0DT8H0M0S")
+                        .durationUnit(HrisUpdateEmploymentRequestDtoDurationUnit.builder()
+                            .value(HrisUpdateEmploymentRequestDtoWorkTimeValue.MONTH)
+                            .build())
                         .build())
-                    .timeWorked("P0Y0M0DT8H0M0S")
+                    .payrollCode("PC1")
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
                 .call();
 
-        if (res.employmentResult().isPresent()) {
+        if (res.updateResult().isPresent()) {
             // handle response
         }
     }
@@ -2686,7 +2820,7 @@ public class Application {
 | `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
 | `id`                                                                                        | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
 | `subResourceId`                                                                             | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `hrisCreateEmploymentRequestDto`                                                            | [HrisCreateEmploymentRequestDto](../../models/components/HrisCreateEmploymentRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `hrisUpdateEmploymentRequestDto`                                                            | [HrisUpdateEmploymentRequestDto](../../models/components/HrisUpdateEmploymentRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
 
 ### Response
 
@@ -2694,9 +2828,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listLocations
 
@@ -2709,6 +2855,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListLocationsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListLocationsRequest;
 import java.lang.Exception;
@@ -2726,20 +2873,17 @@ public class Application {
 
         HrisListLocationsRequest req = HrisListLocationsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
                 .filter(HrisListLocationsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listLocations()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2758,9 +2902,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getLocation
 
@@ -2773,6 +2929,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetLocationRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetLocationResponse;
 import java.lang.Exception;
@@ -2791,7 +2948,6 @@ public class Application {
         HrisGetLocationRequest req = HrisGetLocationRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
                 .build();
 
@@ -2818,9 +2974,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listTimeOffRequests
 
@@ -2833,9 +3001,10 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffRequestsQueryParamFilter;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListTimeOffRequestsRequest;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -2850,20 +3019,16 @@ public class Application {
 
         HrisListTimeOffRequestsRequest req = HrisListTimeOffRequestsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at")
-                .filter(HrisListTimeOffRequestsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .filter(JsonNullable.of(null))
+                .expand("policy")
                 .build();
 
         sdk.hris().listTimeOffRequests()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -2882,85 +3047,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
-
-## ~~createTimeOffRequest~~
-
-Creates a time off request
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoEndHalfDay;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoReason;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoStartHalfDay;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.HrisCreateTimeOffRequestResponse;
-import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.Map;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisCreateTimeOffRequestResponse res = sdk.hris().createTimeOffRequest()
-                .xAccountId("<id>")
-                .hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto.builder()
-                    .employeeId("1687-3")
-                    .approverId("1687-4")
-                    .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                    .endDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                    .startHalfDay(HrisCreateTimeOffRequestDtoStartHalfDay.of(true))
-                    .endHalfDay(HrisCreateTimeOffRequestDtoEndHalfDay.of(true))
-                    .timeOffPolicyId("cx280928933")
-                    .reason(HrisCreateTimeOffRequestDtoReason.builder()
-                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .build())
-                    .passthrough(Map.ofEntries(
-                        Map.entry("other_known_names", "John Doe")))
-                    .build())
-                .call();
-
-        if (res.createResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                          | *String*                                                                              | :heavy_check_mark:                                                                    | The account identifier                                                                |
-| `hrisCreateTimeOffRequestDto`                                                         | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
-
-### Response
-
-**[HrisCreateTimeOffRequestResponse](../../models/operations/HrisCreateTimeOffRequestResponse.md)**
-
-### Errors
-
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getTimeOffRequest
 
@@ -2973,6 +3074,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffRequestRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffRequestResponse;
 import java.lang.Exception;
@@ -2991,8 +3093,8 @@ public class Application {
         HrisGetTimeOffRequestRequest req = HrisGetTimeOffRequestRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,time_off_policy_id,remote_time_off_policy_id,reason,created_at,updated_at")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .expand("policy")
                 .build();
 
         HrisGetTimeOffRequestResponse res = sdk.hris().getTimeOffRequest()
@@ -3018,87 +3120,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
-
-## ~~updateTimeOffRequest~~
-
-Update time off request
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoEndHalfDay;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoReason;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoStartHalfDay;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.operations.HrisUpdateTimeOffRequestResponse;
-import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.Map;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisUpdateTimeOffRequestResponse res = sdk.hris().updateTimeOffRequest()
-                .xAccountId("<id>")
-                .id("<id>")
-                .hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto.builder()
-                    .employeeId("1687-3")
-                    .approverId("1687-4")
-                    .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                    .endDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
-                    .startHalfDay(HrisCreateTimeOffRequestDtoStartHalfDay.of(true))
-                    .endHalfDay(HrisCreateTimeOffRequestDtoEndHalfDay.of(true))
-                    .timeOffPolicyId("cx280928933")
-                    .reason(HrisCreateTimeOffRequestDtoReason.builder()
-                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .build())
-                    .passthrough(Map.ofEntries(
-                        Map.entry("other_known_names", "John Doe")))
-                    .build())
-                .call();
-
-        if (res.createResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                          | *String*                                                                              | :heavy_check_mark:                                                                    | The account identifier                                                                |
-| `id`                                                                                  | *String*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `hrisCreateTimeOffRequestDto`                                                         | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
-
-### Response
-
-**[HrisUpdateTimeOffRequestResponse](../../models/operations/HrisUpdateTimeOffRequestResponse.md)**
-
-### Errors
-
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## ~~listTimeOffTypes~~
 
@@ -3113,6 +3149,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListTimeOffTypesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListTimeOffTypesRequest;
 import java.lang.Exception;
@@ -3130,20 +3167,17 @@ public class Application {
 
         HrisListTimeOffTypesRequest req = HrisListTimeOffTypesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active")
                 .filter(HrisListTimeOffTypesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeOffTypes()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3162,9 +3196,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## ~~getTimeOffType~~
 
@@ -3179,6 +3225,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffTypeRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffTypeResponse;
 import java.lang.Exception;
@@ -3197,7 +3244,6 @@ public class Application {
         HrisGetTimeOffTypeRequest req = HrisGetTimeOffTypeRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active")
                 .build();
 
@@ -3224,9 +3270,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listTimeEntries
 
@@ -3239,6 +3297,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListTimeEntriesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListTimeEntriesRequest;
 import java.lang.Exception;
@@ -3256,22 +3315,19 @@ public class Application {
 
         HrisListTimeEntriesRequest req = HrisListTimeEntriesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
                 .filter(HrisListTimeEntriesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .startTime("2020-01-01T00:00:00.000Z")
                     .endTime("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeEntries()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3290,9 +3346,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getTimeEntries
 
@@ -3305,6 +3373,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetTimeEntriesRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetTimeEntriesResponse;
 import java.lang.Exception;
@@ -3323,7 +3392,6 @@ public class Application {
         HrisGetTimeEntriesRequest req = HrisGetTimeEntriesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
                 .build();
 
@@ -3350,9 +3418,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listBenefits
 
@@ -3365,6 +3445,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListBenefitsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListBenefitsRequest;
 import java.lang.Exception;
@@ -3382,20 +3463,17 @@ public class Application {
 
         HrisListBenefitsRequest req = HrisListBenefitsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
                 .filter(HrisListBenefitsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listBenefits()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3414,9 +3492,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getBenefit
 
@@ -3429,6 +3519,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetBenefitRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetBenefitResponse;
 import java.lang.Exception;
@@ -3447,7 +3538,6 @@ public class Application {
         HrisGetBenefitRequest req = HrisGetBenefitRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
                 .build();
 
@@ -3474,9 +3564,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listGroups
 
@@ -3489,6 +3591,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListGroupsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListGroupsRequest;
 import java.lang.Exception;
@@ -3506,20 +3609,17 @@ public class Application {
 
         HrisListGroupsRequest req = HrisListGroupsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
-                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
+                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listGroups()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3538,9 +3638,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listDepartmentGroups
 
@@ -3553,6 +3665,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsRequest;
 import java.lang.Exception;
@@ -3570,20 +3683,17 @@ public class Application {
 
         HrisListDepartmentGroupsRequest req = HrisListDepartmentGroupsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name")
                 .filter(HrisListDepartmentGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listDepartmentGroups()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3602,9 +3712,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCostCenterGroups
 
@@ -3617,6 +3739,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListCostCenterGroupsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListCostCenterGroupsRequest;
 import java.lang.Exception;
@@ -3634,20 +3757,17 @@ public class Application {
 
         HrisListCostCenterGroupsRequest req = HrisListCostCenterGroupsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
-                .fields("id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
+                .fields("id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListCostCenterGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listCostCenterGroups()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3666,9 +3786,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listTeamGroups
 
@@ -3681,6 +3813,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsRequest;
 import java.lang.Exception;
@@ -3698,20 +3831,17 @@ public class Application {
 
         HrisListTeamGroupsRequest req = HrisListTeamGroupsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .filter(HrisListTeamGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTeamGroups()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -3730,9 +3860,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getGroup
 
@@ -3745,6 +3887,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetGroupRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetGroupResponse;
 import java.lang.Exception;
@@ -3763,8 +3906,7 @@ public class Application {
         HrisGetGroupRequest req = HrisGetGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
+                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .build();
 
         HrisGetGroupResponse res = sdk.hris().getGroup()
@@ -3790,9 +3932,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getDepartmentGroup
 
@@ -3805,6 +3959,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetDepartmentGroupRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetDepartmentGroupResponse;
 import java.lang.Exception;
@@ -3823,7 +3978,6 @@ public class Application {
         HrisGetDepartmentGroupRequest req = HrisGetDepartmentGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name")
                 .build();
 
@@ -3850,9 +4004,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getCostCenterGroup
 
@@ -3865,6 +4031,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetCostCenterGroupRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetCostCenterGroupResponse;
 import java.lang.Exception;
@@ -3883,8 +4050,7 @@ public class Application {
         HrisGetCostCenterGroupRequest req = HrisGetCostCenterGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
+                .fields("id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .build();
 
         HrisGetCostCenterGroupResponse res = sdk.hris().getCostCenterGroup()
@@ -3910,9 +4076,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getTeamGroup
 
@@ -3925,6 +4103,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetTeamGroupRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetTeamGroupResponse;
 import java.lang.Exception;
@@ -3943,7 +4122,6 @@ public class Application {
         HrisGetTeamGroupRequest req = HrisGetTeamGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .build();
 
@@ -3970,9 +4148,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listJobs
 
@@ -3985,6 +4175,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListJobsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListJobsRequest;
 import java.lang.Exception;
@@ -4002,20 +4193,17 @@ public class Application {
 
         HrisListJobsRequest req = HrisListJobsRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
-                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
+                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListJobsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listJobs()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -4034,9 +4222,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getJob
 
@@ -4049,6 +4249,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetJobRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetJobResponse;
 import java.lang.Exception;
@@ -4067,8 +4268,7 @@ public class Application {
         HrisGetJobRequest req = HrisGetJobRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
-                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
+                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .build();
 
         HrisGetJobResponse res = sdk.hris().getJob()
@@ -4094,9 +4294,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listEmployeeSkills
 
@@ -4109,6 +4321,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeSkillsQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeSkillsRequest;
 import java.lang.Exception;
@@ -4127,20 +4340,17 @@ public class Application {
         HrisListEmployeeSkillsRequest req = HrisListEmployeeSkillsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency")
                 .filter(HrisListEmployeeSkillsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listEmployeeSkills()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -4159,9 +4369,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## createEmployeeSkill
 
@@ -4173,12 +4395,11 @@ Create Employee Skill
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.EntitySkillsCreateRequestDto;
-import com.stackone.stackone_client_java.models.components.EntitySkillsCreateRequestDtoMaximumProficiency;
-import com.stackone.stackone_client_java.models.components.EntitySkillsCreateRequestDtoMinimumProficiency;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeSkillResponse;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -4202,11 +4423,7 @@ public class Application {
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .name("Expert")
                         .build())
-                    .minimumProficiency(EntitySkillsCreateRequestDtoMinimumProficiency.builder()
-                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .name("Expert")
-                        .build())
+                    .minimumProficiency(JsonNullable.of(null))
                     .build())
                 .call();
 
@@ -4231,9 +4448,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEmployeeSkill
 
@@ -4246,6 +4475,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeSkillRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeSkillResponse;
 import java.lang.Exception;
@@ -4265,7 +4495,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency")
                 .build();
 
@@ -4292,9 +4521,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listTimeOffPolicies
 
@@ -4307,6 +4548,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListTimeOffPoliciesQueryParamFilter;
 import com.stackone.stackone_client_java.models.operations.HrisListTimeOffPoliciesRequest;
 import java.lang.Exception;
@@ -4324,20 +4566,17 @@ public class Application {
 
         HrisListTimeOffPoliciesRequest req = HrisListTimeOffPoliciesRequest.builder()
                 .xAccountId("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
                 .filter(HrisListTimeOffPoliciesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
-                .pageSize("25")
-                .updatedAfter("2020-01-01T00:00:00.000Z")
                 .build();
 
         sdk.hris().listTimeOffPolicies()
                 .request(req)
                 .callAsStream()
                 .forEach(item -> {
-                   // handle item again
+                   // handle item
                 });
 
     }
@@ -4356,9 +4595,21 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getTimeOffPolicy
 
@@ -4371,6 +4622,7 @@ package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffPolicyRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffPolicyResponse;
 import java.lang.Exception;
@@ -4389,7 +4641,6 @@ public class Application {
         HrisGetTimeOffPolicyRequest req = HrisGetTimeOffPolicyRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .raw(false)
                 .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
                 .build();
 
@@ -4416,6 +4667,243 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listEmployeeTimeOffPolicies
+
+List Assigned Time Off Policies
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffPoliciesQueryParamFilter;
+import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffPoliciesRequest;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        HrisListEmployeeTimeOffPoliciesRequest req = HrisListEmployeeTimeOffPoliciesRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
+                .filter(HrisListEmployeeTimeOffPoliciesQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listEmployeeTimeOffPolicies()
+                .request(req)
+                .callAsStream()
+                .forEach(item -> {
+                   // handle item
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [HrisListEmployeeTimeOffPoliciesRequest](../../models/operations/HrisListEmployeeTimeOffPoliciesRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+
+### Response
+
+**[HrisListEmployeeTimeOffPoliciesResponse](../../models/operations/HrisListEmployeeTimeOffPoliciesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listEmployeeTasks
+
+List Employee Tasks
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTasksQueryParamFilter;
+import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTasksRequest;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        HrisListEmployeeTasksRequest req = HrisListEmployeeTasksRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at")
+                .filter(HrisListEmployeeTasksQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .expand("attachments")
+                .build();
+
+        sdk.hris().listEmployeeTasks()
+                .request(req)
+                .callAsStream()
+                .forEach(item -> {
+                   // handle item
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [HrisListEmployeeTasksRequest](../../models/operations/HrisListEmployeeTasksRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
+
+### Response
+
+**[HrisListEmployeeTasksResponse](../../models/operations/HrisListEmployeeTasksResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getEmployeeTask
+
+Get Employee Task
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeTaskRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeTaskResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        HrisGetEmployeeTaskRequest req = HrisGetEmployeeTaskRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .subResourceId("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at")
+                .expand("attachments")
+                .build();
+
+        HrisGetEmployeeTaskResponse res = sdk.hris().getEmployeeTask()
+                .request(req)
+                .call();
+
+        if (res.taskResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [HrisGetEmployeeTaskRequest](../../models/operations/HrisGetEmployeeTaskRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+
+### Response
+
+**[HrisGetEmployeeTaskResponse](../../models/operations/HrisGetEmployeeTaskResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |

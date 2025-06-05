@@ -1,0 +1,11 @@
+# EmploymentDurationUnit
+
+The duration unit of the work time
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                  | [JsonNullable\<EmploymentWorkTimeValue>](../../models/components/EmploymentWorkTimeValue.md)             | :heavy_minus_sign:                                                                                       | The unified value for the period.                                                                        | month                                                                                                    |
+| `sourceValue`                                                                                            | [JsonNullable\<EmploymentWorkTimeSourceValue>](../../models/components/EmploymentWorkTimeSourceValue.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |                                                                                                          |
