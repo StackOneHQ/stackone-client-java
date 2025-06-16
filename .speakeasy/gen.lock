@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: c6816415c7e52b7c4b53c9c5abb7dc6c
+  docChecksum: 9ba38c704149fb2cad7b12bce52d1fdd
   docVersion: 1.0.0
-  speakeasyVersion: 1.556.0
-  generationVersion: 2.621.3
-  releaseVersion: 0.5.0
-  configChecksum: cb30271b1f52ddac648bb52ae31b43ac
+  speakeasyVersion: 1.563.1
+  generationVersion: 2.629.1
+  releaseVersion: 0.6.0
+  configChecksum: ad642155fa2b34b3d3539fc986ebfb6a
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.37.4
+    core: 3.39.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.5
@@ -1027,6 +1027,11 @@ generatedFiles:
   - docs/models/components/LmsCreateCompletionRequestDtoSourceValue.md
   - docs/models/components/LmsCreateCompletionRequestDtoSourceValue4.md
   - docs/models/components/LmsCreateCompletionRequestDtoValue.md
+  - docs/models/components/LmsCreateContentRequestDto.md
+  - docs/models/components/LmsCreateContentRequestDtoContentType.md
+  - docs/models/components/LmsCreateContentRequestDtoSourceValue.md
+  - docs/models/components/LmsCreateContentRequestDtoSourceValue4.md
+  - docs/models/components/LmsCreateContentRequestDtoValue.md
   - docs/models/components/LmsUpsertContentRequestDto.md
   - docs/models/components/LmsUpsertContentRequestDtoContentType.md
   - docs/models/components/LmsUpsertContentRequestDtoSourceValue.md
@@ -1135,6 +1140,7 @@ generatedFiles:
   - docs/models/components/Questionnaire.md
   - docs/models/components/Raw.md
   - docs/models/components/RawResponse.md
+  - docs/models/components/RawResponseResponse.md
   - docs/models/components/Reason.md
   - docs/models/components/Reference.md
   - docs/models/components/ReferencePaginated.md
@@ -1773,6 +1779,8 @@ generatedFiles:
   - docs/models/operations/LmsListUsersResponse.md
   - docs/models/operations/LmsUpdateCollectionRequest.md
   - docs/models/operations/LmsUpdateCollectionResponse.md
+  - docs/models/operations/LmsUpdateContentRequest.md
+  - docs/models/operations/LmsUpdateContentResponse.md
   - docs/models/operations/LmsUpsertContentRequest.md
   - docs/models/operations/LmsUpsertContentResponse.md
   - docs/models/operations/LmsUpsertCourseRequest.md
@@ -2898,6 +2906,11 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateCompletionRequestDtoSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateCompletionRequestDtoSourceValue4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateCompletionRequestDtoValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDto.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoContentType.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsUpsertContentRequestDto.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsUpsertContentRequestDtoContentType.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsUpsertContentRequestDtoSourceValue.java
@@ -3006,6 +3019,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/Questionnaire.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Raw.java
   - src/main/java/com/stackone/stackone_client_java/models/components/RawResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/RawResponseResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Reason.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Reference.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ReferencePaginated.java
@@ -3824,6 +3838,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateCollectionRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateCollectionRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateCollectionResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateContentRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateContentRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateContentResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpsertContentRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpsertContentRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpsertContentResponse.java
@@ -6668,7 +6685,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"passthrough": {"other_known_names": "John Doe"}, "job_id": "4071538b-3cac-4fbf-ac76-f78ed250ffdd", "job_posting_id": "1c702a20-8de8-4d03-ac18-cbf4ac42eb51", "location_id": "dd8d41d1-5eb8-4408-9c87-9ba44604eae4", "application_status": null, "questionnaires": [{"id": "right_to_work", "answers": [{"id": "answer1", "type": {"value": "short_text", "source_value": "Short Text"}, "values": ["Yes"]}]}], "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn"}, "candidate_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "candidate": {"passthrough": {"other_known_names": "John Doe"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "phone_numbers": [{"phone": "+447700112233"}], "name": "Romain Sestier", "first_name": "Romain", "last_name": "Sestier", "email": "sestier.romain123@gmail.com", "social_links": [{"type": "linkedin", "url": "https://www.linkedin.com/in/romainsestier/"}], "company": "Company Inc.", "title": "Software Engineer", "hired_at": "2021-01-01T01:01:01.000Z", "country": "United States", "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "value": "Completed", "value_id": "value_456", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48"}]}}
+        application/json: {"passthrough": {"other_known_names": "John Doe"}, "job_id": "4071538b-3cac-4fbf-ac76-f78ed250ffdd", "job_posting_id": "1c702a20-8de8-4d03-ac18-cbf4ac42eb51", "location_id": "dd8d41d1-5eb8-4408-9c87-9ba44604eae4", "application_status": null, "questionnaires": [{"id": "right_to_work", "answers": [{"id": "answer1", "type": {"value": "short_text", "source_value": "Short Text"}, "values": ["Yes"]}]}], "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn"}, "candidate_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "candidate": {"passthrough": {"other_known_names": "John Doe"}, "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "phone_numbers": [{"phone": "+447700112233"}], "name": "Romain Sestier", "first_name": "Romain", "last_name": "Sestier", "email": "sestier.romain123@gmail.com", "social_links": [{"type": "linkedin", "url": "https://www.linkedin.com/in/romainsestier/"}], "company": "Company Inc.", "title": "Software Engineer", "hired_at": "2021-01-01T01:01:01.000Z", "country": "United States", "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "value": "Completed", "value_id": "value_456", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48"}]}, "documents": null}
       responses:
         "201":
           application/json: {"statusCode": 201, "message": "Record created successfully.", "timestamp": "2021-01-01T01:01:01.000Z", "data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
@@ -11773,6 +11790,42 @@ examples:
           x-account-id: "<id>"
       requestBody:
         application/json: {"unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "external_reference": "SOFTWARE-ENG-LV1-TRAINING-collection-1", "learning_object_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "remote_learning_object_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "title": "Software Engineer Lv 1 Collection", "description": "This collection acts as learning pathway for software engineers.", "cover_url": "https://www.googledrive.com/?v=16873", "categories": null, "skills": [{"id": "16873-IT345", "name": "Information-Technology", "language": {"value": "en_GB"}}]}
+      responses:
+        "201":
+          application/json: {"statusCode": 200, "message": "Record updated successfully.", "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  lms_update_content:
+    speakeasy-default-lms-update-content:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "title": "Software Engineer Lv 1", "description": "This video acts as learning content for software engineers.", "languages": [{"value": "en_GB"}], "content_url": "https://www.youtube.com/watch?v=16873", "mobile_launch_content_url": "https://www.mobile.youtube.com/watch?v=16873", "cover_url": "https://www.googledrive.com/?v=16873", "active": true, "duration": "P3Y6M4DT12H30M5S", "skills": [{"id": "12345", "name": "Sales Techniques"}], "order": 1, "localizations": [{"title": "Software Engineer Lv 1", "description": "This course acts as learning resource for software engineers."}, {"title": "Software Engineer Lv 1", "description": "This video acts as learning content for software engineers."}], "tags": ["Sales Techniques", "Customer Service"], "updated_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "categories": [{"name": "Technology"}], "additional_data": [{"id": "learning_outcomes", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "value": "This is additional data"}]}
       responses:
         "201":
           application/json: {"statusCode": 200, "message": "Record updated successfully.", "timestamp": "2021-01-01T01:01:01.000Z"}

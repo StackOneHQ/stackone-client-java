@@ -77,6 +77,13 @@ public class AtsCreateApplicationRequestDto {
     @JsonProperty("candidate")
     private JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate;
 
+    /**
+     * Document Properties. Providing this attempts to upload files with the application.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("documents")
+    private JsonNullable<? extends List<UnifiedUploadRequestDto>> documents;
+
     @JsonCreator
     public AtsCreateApplicationRequestDto(
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough,
@@ -87,7 +94,8 @@ public class AtsCreateApplicationRequestDto {
             @JsonProperty("questionnaires") JsonNullable<? extends List<CreateQuestionnaire>> questionnaires,
             @JsonProperty("source") JsonNullable<? extends AtsCreateApplicationRequestDtoSource> source,
             @JsonProperty("candidate_id") JsonNullable<String> candidateId,
-            @JsonProperty("candidate") JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate) {
+            @JsonProperty("candidate") JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate,
+            @JsonProperty("documents") JsonNullable<? extends List<UnifiedUploadRequestDto>> documents) {
         Utils.checkNotNull(passthrough, "passthrough");
         Utils.checkNotNull(jobId, "jobId");
         Utils.checkNotNull(jobPostingId, "jobPostingId");
@@ -97,6 +105,7 @@ public class AtsCreateApplicationRequestDto {
         Utils.checkNotNull(source, "source");
         Utils.checkNotNull(candidateId, "candidateId");
         Utils.checkNotNull(candidate, "candidate");
+        Utils.checkNotNull(documents, "documents");
         this.passthrough = passthrough;
         this.jobId = jobId;
         this.jobPostingId = jobPostingId;
@@ -106,10 +115,11 @@ public class AtsCreateApplicationRequestDto {
         this.source = source;
         this.candidateId = candidateId;
         this.candidate = candidate;
+        this.documents = documents;
     }
     
     public AtsCreateApplicationRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -181,6 +191,15 @@ public class AtsCreateApplicationRequestDto {
     @JsonIgnore
     public JsonNullable<AtsCreateApplicationRequestDtoCandidate> candidate() {
         return (JsonNullable<AtsCreateApplicationRequestDtoCandidate>) candidate;
+    }
+
+    /**
+     * Document Properties. Providing this attempts to upload files with the application.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<UnifiedUploadRequestDto>> documents() {
+        return (JsonNullable<List<UnifiedUploadRequestDto>>) documents;
     }
 
     public final static Builder builder() {
@@ -337,6 +356,24 @@ public class AtsCreateApplicationRequestDto {
         return this;
     }
 
+    /**
+     * Document Properties. Providing this attempts to upload files with the application.
+     */
+    public AtsCreateApplicationRequestDto withDocuments(List<UnifiedUploadRequestDto> documents) {
+        Utils.checkNotNull(documents, "documents");
+        this.documents = JsonNullable.of(documents);
+        return this;
+    }
+
+    /**
+     * Document Properties. Providing this attempts to upload files with the application.
+     */
+    public AtsCreateApplicationRequestDto withDocuments(JsonNullable<? extends List<UnifiedUploadRequestDto>> documents) {
+        Utils.checkNotNull(documents, "documents");
+        this.documents = documents;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -356,7 +393,8 @@ public class AtsCreateApplicationRequestDto {
             Objects.deepEquals(this.questionnaires, other.questionnaires) &&
             Objects.deepEquals(this.source, other.source) &&
             Objects.deepEquals(this.candidateId, other.candidateId) &&
-            Objects.deepEquals(this.candidate, other.candidate);
+            Objects.deepEquals(this.candidate, other.candidate) &&
+            Objects.deepEquals(this.documents, other.documents);
     }
     
     @Override
@@ -370,7 +408,8 @@ public class AtsCreateApplicationRequestDto {
             questionnaires,
             source,
             candidateId,
-            candidate);
+            candidate,
+            documents);
     }
     
     @Override
@@ -384,7 +423,8 @@ public class AtsCreateApplicationRequestDto {
                 "questionnaires", questionnaires,
                 "source", source,
                 "candidateId", candidateId,
-                "candidate", candidate);
+                "candidate", candidate,
+                "documents", documents);
     }
     
     public final static class Builder {
@@ -406,6 +446,8 @@ public class AtsCreateApplicationRequestDto {
         private JsonNullable<String> candidateId = JsonNullable.undefined();
  
         private JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate = JsonNullable.undefined();
+ 
+        private JsonNullable<? extends List<UnifiedUploadRequestDto>> documents = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -560,6 +602,24 @@ public class AtsCreateApplicationRequestDto {
             this.candidate = candidate;
             return this;
         }
+
+        /**
+         * Document Properties. Providing this attempts to upload files with the application.
+         */
+        public Builder documents(List<UnifiedUploadRequestDto> documents) {
+            Utils.checkNotNull(documents, "documents");
+            this.documents = JsonNullable.of(documents);
+            return this;
+        }
+
+        /**
+         * Document Properties. Providing this attempts to upload files with the application.
+         */
+        public Builder documents(JsonNullable<? extends List<UnifiedUploadRequestDto>> documents) {
+            Utils.checkNotNull(documents, "documents");
+            this.documents = documents;
+            return this;
+        }
         
         public AtsCreateApplicationRequestDto build() {
             return new AtsCreateApplicationRequestDto(
@@ -571,7 +631,8 @@ public class AtsCreateApplicationRequestDto {
                 questionnaires,
                 source,
                 candidateId,
-                candidate);
+                candidate,
+                documents);
         }
     }
 }

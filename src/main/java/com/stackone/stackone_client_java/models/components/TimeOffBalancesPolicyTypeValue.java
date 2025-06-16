@@ -50,16 +50,28 @@ import java.util.Optional;
 @JsonSerialize(using = TimeOffBalancesPolicyTypeValue._Serializer.class)
 public class TimeOffBalancesPolicyTypeValue {
 
+    public static final TimeOffBalancesPolicyTypeValue SICK = new TimeOffBalancesPolicyTypeValue("sick");
+    public static final TimeOffBalancesPolicyTypeValue UNMAPPED_VALUE = new TimeOffBalancesPolicyTypeValue("unmapped_value");
+    public static final TimeOffBalancesPolicyTypeValue VACATION = new TimeOffBalancesPolicyTypeValue("vacation");
+    public static final TimeOffBalancesPolicyTypeValue LONG_TERM_DISABILITY = new TimeOffBalancesPolicyTypeValue("long_term_disability");
+    public static final TimeOffBalancesPolicyTypeValue SHORT_TERM_DISABILITY = new TimeOffBalancesPolicyTypeValue("short_term_disability");
+    public static final TimeOffBalancesPolicyTypeValue ABSENT = new TimeOffBalancesPolicyTypeValue("absent");
+    public static final TimeOffBalancesPolicyTypeValue COMP_TIME = new TimeOffBalancesPolicyTypeValue("comp_time");
+    public static final TimeOffBalancesPolicyTypeValue TRAINING = new TimeOffBalancesPolicyTypeValue("training");
+    public static final TimeOffBalancesPolicyTypeValue ANNUAL_LEAVE = new TimeOffBalancesPolicyTypeValue("annual_leave");
+    public static final TimeOffBalancesPolicyTypeValue LEAVE_OF_ABSENCE = new TimeOffBalancesPolicyTypeValue("leave_of_absence");
+    public static final TimeOffBalancesPolicyTypeValue BREAK = new TimeOffBalancesPolicyTypeValue("break");
+    public static final TimeOffBalancesPolicyTypeValue CHILD_CARE_LEAVE = new TimeOffBalancesPolicyTypeValue("child_care_leave");
+    public static final TimeOffBalancesPolicyTypeValue MATERNITY_LEAVE = new TimeOffBalancesPolicyTypeValue("maternity_leave");
+    public static final TimeOffBalancesPolicyTypeValue JURY_DUTY = new TimeOffBalancesPolicyTypeValue("jury_duty");
+    public static final TimeOffBalancesPolicyTypeValue SABBATICAL = new TimeOffBalancesPolicyTypeValue("sabbatical");
+    public static final TimeOffBalancesPolicyTypeValue ACCIDENT = new TimeOffBalancesPolicyTypeValue("accident");
     public static final TimeOffBalancesPolicyTypeValue PAID = new TimeOffBalancesPolicyTypeValue("paid");
     public static final TimeOffBalancesPolicyTypeValue UNPAID = new TimeOffBalancesPolicyTypeValue("unpaid");
     public static final TimeOffBalancesPolicyTypeValue HOLIDAY = new TimeOffBalancesPolicyTypeValue("holiday");
-    public static final TimeOffBalancesPolicyTypeValue VACATION = new TimeOffBalancesPolicyTypeValue("vacation");
-    public static final TimeOffBalancesPolicyTypeValue SICK = new TimeOffBalancesPolicyTypeValue("sick");
     public static final TimeOffBalancesPolicyTypeValue PERSONAL = new TimeOffBalancesPolicyTypeValue("personal");
     public static final TimeOffBalancesPolicyTypeValue IN_LIEU = new TimeOffBalancesPolicyTypeValue("in_lieu");
     public static final TimeOffBalancesPolicyTypeValue BEREAVEMENT = new TimeOffBalancesPolicyTypeValue("bereavement");
-    public static final TimeOffBalancesPolicyTypeValue JURY_DUTY = new TimeOffBalancesPolicyTypeValue("jury_duty");
-    public static final TimeOffBalancesPolicyTypeValue UNMAPPED_VALUE = new TimeOffBalancesPolicyTypeValue("unmapped_value");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
@@ -131,31 +143,55 @@ public class TimeOffBalancesPolicyTypeValue {
 
     private static final Map<String, TimeOffBalancesPolicyTypeValue> createValuesMap() {
         Map<String, TimeOffBalancesPolicyTypeValue> map = new LinkedHashMap<>();
+        map.put("sick", SICK);
+        map.put("unmapped_value", UNMAPPED_VALUE);
+        map.put("vacation", VACATION);
+        map.put("long_term_disability", LONG_TERM_DISABILITY);
+        map.put("short_term_disability", SHORT_TERM_DISABILITY);
+        map.put("absent", ABSENT);
+        map.put("comp_time", COMP_TIME);
+        map.put("training", TRAINING);
+        map.put("annual_leave", ANNUAL_LEAVE);
+        map.put("leave_of_absence", LEAVE_OF_ABSENCE);
+        map.put("break", BREAK);
+        map.put("child_care_leave", CHILD_CARE_LEAVE);
+        map.put("maternity_leave", MATERNITY_LEAVE);
+        map.put("jury_duty", JURY_DUTY);
+        map.put("sabbatical", SABBATICAL);
+        map.put("accident", ACCIDENT);
         map.put("paid", PAID);
         map.put("unpaid", UNPAID);
         map.put("holiday", HOLIDAY);
-        map.put("vacation", VACATION);
-        map.put("sick", SICK);
         map.put("personal", PERSONAL);
         map.put("in_lieu", IN_LIEU);
         map.put("bereavement", BEREAVEMENT);
-        map.put("jury_duty", JURY_DUTY);
-        map.put("unmapped_value", UNMAPPED_VALUE);
         return map;
     }
 
     private static final Map<String, TimeOffBalancesPolicyTypeValueEnum> createEnumsMap() {
         Map<String, TimeOffBalancesPolicyTypeValueEnum> map = new HashMap<>();
+        map.put("sick", TimeOffBalancesPolicyTypeValueEnum.SICK);
+        map.put("unmapped_value", TimeOffBalancesPolicyTypeValueEnum.UNMAPPED_VALUE);
+        map.put("vacation", TimeOffBalancesPolicyTypeValueEnum.VACATION);
+        map.put("long_term_disability", TimeOffBalancesPolicyTypeValueEnum.LONG_TERM_DISABILITY);
+        map.put("short_term_disability", TimeOffBalancesPolicyTypeValueEnum.SHORT_TERM_DISABILITY);
+        map.put("absent", TimeOffBalancesPolicyTypeValueEnum.ABSENT);
+        map.put("comp_time", TimeOffBalancesPolicyTypeValueEnum.COMP_TIME);
+        map.put("training", TimeOffBalancesPolicyTypeValueEnum.TRAINING);
+        map.put("annual_leave", TimeOffBalancesPolicyTypeValueEnum.ANNUAL_LEAVE);
+        map.put("leave_of_absence", TimeOffBalancesPolicyTypeValueEnum.LEAVE_OF_ABSENCE);
+        map.put("break", TimeOffBalancesPolicyTypeValueEnum.BREAK);
+        map.put("child_care_leave", TimeOffBalancesPolicyTypeValueEnum.CHILD_CARE_LEAVE);
+        map.put("maternity_leave", TimeOffBalancesPolicyTypeValueEnum.MATERNITY_LEAVE);
+        map.put("jury_duty", TimeOffBalancesPolicyTypeValueEnum.JURY_DUTY);
+        map.put("sabbatical", TimeOffBalancesPolicyTypeValueEnum.SABBATICAL);
+        map.put("accident", TimeOffBalancesPolicyTypeValueEnum.ACCIDENT);
         map.put("paid", TimeOffBalancesPolicyTypeValueEnum.PAID);
         map.put("unpaid", TimeOffBalancesPolicyTypeValueEnum.UNPAID);
         map.put("holiday", TimeOffBalancesPolicyTypeValueEnum.HOLIDAY);
-        map.put("vacation", TimeOffBalancesPolicyTypeValueEnum.VACATION);
-        map.put("sick", TimeOffBalancesPolicyTypeValueEnum.SICK);
         map.put("personal", TimeOffBalancesPolicyTypeValueEnum.PERSONAL);
         map.put("in_lieu", TimeOffBalancesPolicyTypeValueEnum.IN_LIEU);
         map.put("bereavement", TimeOffBalancesPolicyTypeValueEnum.BEREAVEMENT);
-        map.put("jury_duty", TimeOffBalancesPolicyTypeValueEnum.JURY_DUTY);
-        map.put("unmapped_value", TimeOffBalancesPolicyTypeValueEnum.UNMAPPED_VALUE);
         return map;
     }
     
@@ -191,16 +227,28 @@ public class TimeOffBalancesPolicyTypeValue {
     
     public enum TimeOffBalancesPolicyTypeValueEnum {
 
+        SICK("sick"),
+        UNMAPPED_VALUE("unmapped_value"),
+        VACATION("vacation"),
+        LONG_TERM_DISABILITY("long_term_disability"),
+        SHORT_TERM_DISABILITY("short_term_disability"),
+        ABSENT("absent"),
+        COMP_TIME("comp_time"),
+        TRAINING("training"),
+        ANNUAL_LEAVE("annual_leave"),
+        LEAVE_OF_ABSENCE("leave_of_absence"),
+        BREAK("break"),
+        CHILD_CARE_LEAVE("child_care_leave"),
+        MATERNITY_LEAVE("maternity_leave"),
+        JURY_DUTY("jury_duty"),
+        SABBATICAL("sabbatical"),
+        ACCIDENT("accident"),
         PAID("paid"),
         UNPAID("unpaid"),
         HOLIDAY("holiday"),
-        VACATION("vacation"),
-        SICK("sick"),
         PERSONAL("personal"),
         IN_LIEU("in_lieu"),
-        BEREAVEMENT("bereavement"),
-        JURY_DUTY("jury_duty"),
-        UNMAPPED_VALUE("unmapped_value"),;
+        BEREAVEMENT("bereavement"),;
 
         private final String value;
 

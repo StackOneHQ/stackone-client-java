@@ -109,7 +109,6 @@ public class Iam implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List Users
      * 
@@ -480,7 +479,6 @@ public class Iam implements
     }
 
 
-
     /**
      * Get User
      * 
@@ -821,7 +819,6 @@ public class Iam implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1174,7 +1171,6 @@ public class Iam implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1541,7 +1537,6 @@ public class Iam implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1914,7 +1909,6 @@ public class Iam implements
     }
 
 
-
     /**
      * Get Role
      * 
@@ -2255,7 +2249,6 @@ public class Iam implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -2628,7 +2621,6 @@ public class Iam implements
     }
 
 
-
     /**
      * Get Group
      * 
@@ -2969,7 +2961,6 @@ public class Iam implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -3340,7 +3331,6 @@ public class Iam implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             _fullResponse);
     }
-
 
 
     /**

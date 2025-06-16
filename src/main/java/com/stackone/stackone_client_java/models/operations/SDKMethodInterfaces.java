@@ -39,6 +39,7 @@ import com.stackone.stackone_client_java.models.components.LmsBatchUpsertCourseR
 import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsCreateCollectionRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsCreateCompletionRequestDto;
+import com.stackone.stackone_client_java.models.components.LmsCreateContentRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsUpsertContentRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsUpsertCourseRequestDto;
 import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDto;
@@ -1368,6 +1369,14 @@ public class SDKMethodInterfaces {
     public interface MethodCallLmsGetContent {
         LmsGetContentResponse getContent(
             LmsGetContentRequest request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallLmsUpdateContent {
+        LmsUpdateContentResponse updateContent(
+            String xAccountId,
+            String id,
+            LmsCreateContentRequestDto lmsCreateContentRequestDto,
             Optional<Options> options) throws Exception;
     }
 

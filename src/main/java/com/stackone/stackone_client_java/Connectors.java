@@ -57,7 +57,6 @@ public class Connectors implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List Connectors Meta Information for all providers
      * 
@@ -385,7 +384,6 @@ public class Connectors implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**

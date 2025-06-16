@@ -107,7 +107,6 @@ public class Crm implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List Contacts
      * 
@@ -478,7 +477,6 @@ public class Crm implements
     }
 
 
-
     /**
      * Creates a new Contact
      * 
@@ -838,7 +836,6 @@ public class Crm implements
     }
 
 
-
     /**
      * Get Contact
      * 
@@ -1179,7 +1176,6 @@ public class Crm implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1546,7 +1542,6 @@ public class Crm implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1918,7 +1913,6 @@ public class Crm implements
     }
 
 
-
     /**
      * Get Account
      * 
@@ -2259,7 +2253,6 @@ public class Crm implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -2631,7 +2624,6 @@ public class Crm implements
     }
 
 
-
     /**
      * Get List
      * 
@@ -2972,7 +2964,6 @@ public class Crm implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -3342,7 +3333,6 @@ public class Crm implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             _fullResponse);
     }
-
 
 
     /**

@@ -17,15 +17,17 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 java:
-  version: 0.5.0
+  version: 0.6.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: stackone-client-java
+  baseErrorName: StackOneError
   clientServerStatusCodesAsErrors: true
   companyEmail: contact@stackone.com
   companyName: StackOne
   companyURL: www.stackone.com
   defaultErrorName: SDKError
+  enableCustomCodeRegions: false
   flattenGlobalSecurity: true
   githubURL: github.com/owner/repo
   groupID: com.stackone

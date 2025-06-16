@@ -73,7 +73,6 @@ public class Accounts implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List Accounts
      * 
@@ -397,7 +396,6 @@ public class Accounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -728,7 +726,6 @@ public class Accounts implements
     }
 
 
-
     /**
      * Delete Account
      * 
@@ -1055,7 +1052,6 @@ public class Accounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1402,7 +1398,6 @@ public class Accounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**

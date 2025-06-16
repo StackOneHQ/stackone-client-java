@@ -246,6 +246,7 @@ public class Application {
                                 .remoteValueId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                                 .build()))
                         .build())
+                    .documents(JsonNullable.of(null))
                     .build())
                 .call();
 

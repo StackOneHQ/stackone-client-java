@@ -59,9 +59,14 @@ public class TimeOffTypeValue {
     public static final TimeOffTypeValue CHILD_CARE_LEAVE = new TimeOffTypeValue("child_care_leave");
     public static final TimeOffTypeValue MATERNITY_LEAVE = new TimeOffTypeValue("maternity_leave");
     public static final TimeOffTypeValue JURY_DUTY = new TimeOffTypeValue("jury_duty");
-    public static final TimeOffTypeValue BEREAVEMENT_LEAVE = new TimeOffTypeValue("bereavement_leave");
     public static final TimeOffTypeValue SABBATICAL = new TimeOffTypeValue("sabbatical");
     public static final TimeOffTypeValue ACCIDENT = new TimeOffTypeValue("accident");
+    public static final TimeOffTypeValue PAID = new TimeOffTypeValue("paid");
+    public static final TimeOffTypeValue UNPAID = new TimeOffTypeValue("unpaid");
+    public static final TimeOffTypeValue HOLIDAY = new TimeOffTypeValue("holiday");
+    public static final TimeOffTypeValue PERSONAL = new TimeOffTypeValue("personal");
+    public static final TimeOffTypeValue IN_LIEU = new TimeOffTypeValue("in_lieu");
+    public static final TimeOffTypeValue BEREAVEMENT = new TimeOffTypeValue("bereavement");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
@@ -147,9 +152,14 @@ public class TimeOffTypeValue {
         map.put("child_care_leave", CHILD_CARE_LEAVE);
         map.put("maternity_leave", MATERNITY_LEAVE);
         map.put("jury_duty", JURY_DUTY);
-        map.put("bereavement_leave", BEREAVEMENT_LEAVE);
         map.put("sabbatical", SABBATICAL);
         map.put("accident", ACCIDENT);
+        map.put("paid", PAID);
+        map.put("unpaid", UNPAID);
+        map.put("holiday", HOLIDAY);
+        map.put("personal", PERSONAL);
+        map.put("in_lieu", IN_LIEU);
+        map.put("bereavement", BEREAVEMENT);
         return map;
     }
 
@@ -169,9 +179,14 @@ public class TimeOffTypeValue {
         map.put("child_care_leave", TimeOffTypeValueEnum.CHILD_CARE_LEAVE);
         map.put("maternity_leave", TimeOffTypeValueEnum.MATERNITY_LEAVE);
         map.put("jury_duty", TimeOffTypeValueEnum.JURY_DUTY);
-        map.put("bereavement_leave", TimeOffTypeValueEnum.BEREAVEMENT_LEAVE);
         map.put("sabbatical", TimeOffTypeValueEnum.SABBATICAL);
         map.put("accident", TimeOffTypeValueEnum.ACCIDENT);
+        map.put("paid", TimeOffTypeValueEnum.PAID);
+        map.put("unpaid", TimeOffTypeValueEnum.UNPAID);
+        map.put("holiday", TimeOffTypeValueEnum.HOLIDAY);
+        map.put("personal", TimeOffTypeValueEnum.PERSONAL);
+        map.put("in_lieu", TimeOffTypeValueEnum.IN_LIEU);
+        map.put("bereavement", TimeOffTypeValueEnum.BEREAVEMENT);
         return map;
     }
     
@@ -221,9 +236,14 @@ public class TimeOffTypeValue {
         CHILD_CARE_LEAVE("child_care_leave"),
         MATERNITY_LEAVE("maternity_leave"),
         JURY_DUTY("jury_duty"),
-        BEREAVEMENT_LEAVE("bereavement_leave"),
         SABBATICAL("sabbatical"),
-        ACCIDENT("accident"),;
+        ACCIDENT("accident"),
+        PAID("paid"),
+        UNPAID("unpaid"),
+        HOLIDAY("holiday"),
+        PERSONAL("personal"),
+        IN_LIEU("in_lieu"),
+        BEREAVEMENT("bereavement"),;
 
         private final String value;
 

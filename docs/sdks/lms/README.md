@@ -16,6 +16,7 @@
 * [listContent](#listcontent) - List Content
 * [upsertContent](#upsertcontent) - Upsert Content
 * [getContent](#getcontent) - Get Content
+* [updateContent](#updatecontent) - Update Content
 * [listUserCompletions](#listusercompletions) - List User Completions
 * [createUserCompletion](#createusercompletion) - Create User Completion
 * [getUserCompletion](#getusercompletion) - Get User Completion
@@ -968,6 +969,124 @@ public class Application {
 ### Response
 
 **[LmsGetContentResponse](../../models/operations/LmsGetContentResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## updateContent
+
+Update Content
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.LmsUpdateContentResponse;
+import java.lang.Exception;
+import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        LmsUpdateContentResponse res = sdk.lms().updateContent()
+                .xAccountId("<id>")
+                .id("<id>")
+                .lmsCreateContentRequestDto(LmsCreateContentRequestDto.builder()
+                    .unifiedCustomFields(Map.ofEntries(
+                        Map.entry("my_project_custom_field_1", "REF-1236"),
+                        Map.entry("my_project_custom_field_2", "some other value")))
+                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
+                    .title("Software Engineer Lv 1")
+                    .description("This video acts as learning content for software engineers.")
+                    .languages(List.of(
+                        LanguageEnum.builder()
+                            .value(LanguageEnumValue.EN_GB)
+                            .build()))
+                    .contentUrl("https://www.youtube.com/watch?v=16873")
+                    .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
+                    .coverUrl("https://www.googledrive.com/?v=16873")
+                    .active(true)
+                    .duration("P3Y6M4DT12H30M5S")
+                    .skills(List.of(
+                        CreateSkillsApiModel.builder()
+                            .id("12345")
+                            .name("Sales Techniques")
+                            .build()))
+                    .order(1)
+                    .localizations(List.of(
+                        LocalizationModel.builder()
+                            .title("Software Engineer Lv 1")
+                            .description("This course acts as learning resource for software engineers.")
+                            .build(),
+                        LocalizationModel.builder()
+                            .title("Software Engineer Lv 1")
+                            .description("This video acts as learning content for software engineers.")
+                            .build()))
+                    .tags(List.of(
+                        "Sales Techniques",
+                        "Customer Service"))
+                    .updatedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
+                    .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
+                    .categories(List.of(
+                        CreateCategoriesApiModel.builder()
+                            .name("Technology")
+                            .build()))
+                    .additionalData(List.of(
+                        AdditionalData.builder()
+                            .id("learning_outcomes")
+                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .value(AdditionalDataValue.of("This is additional data"))
+                            .build()))
+                    .build())
+                .call();
+
+        if (res.updateResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `xAccountId`                                                                        | *String*                                                                            | :heavy_check_mark:                                                                  | The account identifier                                                              |
+| `id`                                                                                | *String*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `lmsCreateContentRequestDto`                                                        | [LmsCreateContentRequestDto](../../models/components/LmsCreateContentRequestDto.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+
+### Response
+
+**[LmsUpdateContentResponse](../../models/operations/LmsUpdateContentResponse.md)**
 
 ### Errors
 

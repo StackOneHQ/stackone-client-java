@@ -359,7 +359,6 @@ public class Hris implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List Companies
      * 
@@ -729,7 +728,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Company
      * 
@@ -1070,7 +1068,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1442,7 +1439,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get employee Custom Field Definition
      * 
@@ -1783,7 +1779,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -2157,7 +2152,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Creates an employee
      * 
@@ -2517,7 +2511,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employee
      * 
@@ -2858,7 +2851,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -3227,7 +3219,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Invite Employee
      * 
@@ -3592,7 +3583,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -3968,7 +3958,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Create Employee Time Off Request
      * 
@@ -4335,7 +4324,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employees Time Off Request
      * 
@@ -4676,7 +4664,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -5034,7 +5021,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -5408,7 +5394,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Batch Upload Employee Document
      * 
@@ -5773,7 +5758,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -6142,7 +6126,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Download Employee Document
      * 
@@ -6482,7 +6465,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -6857,7 +6839,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employee Document
      * 
@@ -7198,7 +7179,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -7570,7 +7550,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employee Document Category
      * 
@@ -7911,7 +7890,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -8286,7 +8264,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Create Employee Work Eligibility Request
      * 
@@ -8653,7 +8630,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employees Work Eligibility
      * 
@@ -8994,7 +8970,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -9355,7 +9330,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -9731,7 +9705,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employee Time Off Balance
      * 
@@ -10072,7 +10045,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -10445,7 +10417,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employment
      * 
@@ -10786,7 +10757,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -11162,7 +11132,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Create Employee Employment
      * 
@@ -11529,7 +11498,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employee Employment
      * 
@@ -11870,7 +11838,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -12244,7 +12211,6 @@ public class Hris implements
     }
 
 
-
     /**
      * List Work Locations
      * 
@@ -12614,7 +12580,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Work Location
      * 
@@ -12955,7 +12920,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -13328,7 +13292,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get time off request
      * 
@@ -13669,7 +13632,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -14047,7 +14009,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get time off type
      * 
@@ -14394,7 +14355,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -14766,7 +14726,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Time Entry
      * 
@@ -15107,7 +15066,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -15479,7 +15437,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Benefit
      * 
@@ -15820,7 +15777,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -16192,7 +16148,6 @@ public class Hris implements
     }
 
 
-
     /**
      * List Department Groups
      * 
@@ -16560,7 +16515,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             _fullResponse);
     }
-
 
 
     /**
@@ -16932,7 +16886,6 @@ public class Hris implements
     }
 
 
-
     /**
      * List Team Groups
      * 
@@ -17302,7 +17255,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Group
      * 
@@ -17643,7 +17595,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -17988,7 +17939,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Cost Center Group
      * 
@@ -18331,7 +18281,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Team Group
      * 
@@ -18672,7 +18621,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -19044,7 +18992,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Job
      * 
@@ -19385,7 +19332,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -19760,7 +19706,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Create Employee Skill
      * 
@@ -20127,7 +20072,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Employee Skill
      * 
@@ -20468,7 +20412,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -20840,7 +20783,6 @@ public class Hris implements
     }
 
 
-
     /**
      * Get Time Off Policy
      * 
@@ -21181,7 +21123,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -21556,7 +21497,6 @@ public class Hris implements
     }
 
 
-
     /**
      * List Employee Tasks
      * 
@@ -21928,7 +21868,6 @@ public class Hris implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             _fullResponse);
     }
-
 
 
     /**
