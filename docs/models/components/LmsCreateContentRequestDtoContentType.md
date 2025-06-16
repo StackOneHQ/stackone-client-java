@@ -1,0 +1,11 @@
+# LmsCreateContentRequestDtoContentType
+
+The type of content
+
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                                  | [JsonNullable\<LmsCreateContentRequestDtoValue>](../../models/components/LmsCreateContentRequestDtoValue.md)             | :heavy_minus_sign:                                                                                                       | N/A                                                                                                                      |
+| `sourceValue`                                                                                                            | [JsonNullable\<LmsCreateContentRequestDtoSourceValue>](../../models/components/LmsCreateContentRequestDtoSourceValue.md) | :heavy_minus_sign:                                                                                                       | N/A                                                                                                                      |

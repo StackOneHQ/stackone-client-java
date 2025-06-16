@@ -9,11 +9,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Map;
 import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -31,14 +29,14 @@ public class RawResponse {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("response")
-    private JsonNullable<? extends Map<String, Object>> response;
+    private JsonNullable<? extends RawResponseResponse> response;
 
     @JsonCreator
     public RawResponse(
             @JsonProperty("method") String method,
             @JsonProperty("url") String url,
             @JsonProperty("body") JsonNullable<? extends Body> body,
-            @JsonProperty("response") JsonNullable<? extends Map<String, Object>> response) {
+            @JsonProperty("response") JsonNullable<? extends RawResponseResponse> response) {
         Utils.checkNotNull(method, "method");
         Utils.checkNotNull(url, "url");
         Utils.checkNotNull(body, "body");
@@ -73,8 +71,8 @@ public class RawResponse {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Map<String, Object>> response() {
-        return (JsonNullable<Map<String, Object>>) response;
+    public JsonNullable<RawResponseResponse> response() {
+        return (JsonNullable<RawResponseResponse>) response;
     }
 
     public final static Builder builder() {
@@ -105,13 +103,13 @@ public class RawResponse {
         return this;
     }
 
-    public RawResponse withResponse(Map<String, Object> response) {
+    public RawResponse withResponse(RawResponseResponse response) {
         Utils.checkNotNull(response, "response");
         this.response = JsonNullable.of(response);
         return this;
     }
 
-    public RawResponse withResponse(JsonNullable<? extends Map<String, Object>> response) {
+    public RawResponse withResponse(JsonNullable<? extends RawResponseResponse> response) {
         Utils.checkNotNull(response, "response");
         this.response = response;
         return this;
@@ -160,7 +158,7 @@ public class RawResponse {
  
         private JsonNullable<? extends Body> body = JsonNullable.undefined();
  
-        private JsonNullable<? extends Map<String, Object>> response = JsonNullable.undefined();
+        private JsonNullable<? extends RawResponseResponse> response = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -190,13 +188,13 @@ public class RawResponse {
             return this;
         }
 
-        public Builder response(Map<String, Object> response) {
+        public Builder response(RawResponseResponse response) {
             Utils.checkNotNull(response, "response");
             this.response = JsonNullable.of(response);
             return this;
         }
 
-        public Builder response(JsonNullable<? extends Map<String, Object>> response) {
+        public Builder response(JsonNullable<? extends RawResponseResponse> response) {
             Utils.checkNotNull(response, "response");
             this.response = response;
             return this;

@@ -56,7 +56,6 @@ public class Proxy implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Proxy Request
      * 

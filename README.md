@@ -43,7 +43,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.5.0'
+implementation 'com.stackone:stackone-client-java:0.6.0'
 ```
 
 Maven:
@@ -51,7 +51,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.5.0</version>
+    <version>0.6.0</version>
 </dependency>
 ```
 
@@ -343,6 +343,7 @@ public class Application {
 * [listContent](docs/sdks/lms/README.md#listcontent) - List Content
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
+* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
 * [getUserCompletion](docs/sdks/lms/README.md#getusercompletion) - Get User Completion

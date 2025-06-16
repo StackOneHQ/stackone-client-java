@@ -60,7 +60,6 @@ public class ConnectSessions implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Create Connect Session
      * 
@@ -392,7 +391,6 @@ public class ConnectSessions implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**

@@ -184,7 +184,6 @@ public class Marketing implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List Email Templates
      * 
@@ -554,7 +553,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Create Email Templates
      * 
@@ -914,7 +912,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Get Email Templates
      * 
@@ -1255,7 +1252,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1622,7 +1618,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1994,7 +1989,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Create In-App Template
      * 
@@ -2354,7 +2348,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Get In-App Template
      * 
@@ -2695,7 +2688,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -3062,7 +3054,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -3434,7 +3425,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Create SMS Template
      * 
@@ -3794,7 +3784,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Get SMS Template
      * 
@@ -4135,7 +4124,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -4502,7 +4490,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -4880,7 +4867,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Create Omni-Channel Template
      * 
@@ -5246,7 +5232,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Get Omni-Channel Template
      * 
@@ -5593,7 +5578,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -5968,7 +5952,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * List Push Templates
      * 
@@ -6338,7 +6321,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Create Push Template
      * 
@@ -6698,7 +6680,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Get Push Template
      * 
@@ -7039,7 +7020,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -7406,7 +7386,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -7778,7 +7757,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Get campaign
      * 
@@ -8119,7 +8097,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -8491,7 +8468,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Create Content Block
      * 
@@ -8851,7 +8827,6 @@ public class Marketing implements
     }
 
 
-
     /**
      * Get Content Blocks
      * 
@@ -9192,7 +9167,6 @@ public class Marketing implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**

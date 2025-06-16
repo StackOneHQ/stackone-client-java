@@ -415,7 +415,6 @@ public class Ats implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List Applications
      * 
@@ -789,7 +788,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Create Application
      * 
@@ -1149,7 +1147,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Application
      * 
@@ -1490,7 +1487,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1857,7 +1853,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -2233,7 +2228,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Move Application
      * 
@@ -2598,7 +2592,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -2967,7 +2960,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Application Offer
      * 
@@ -3308,7 +3300,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -3684,7 +3675,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Application Scorecard
      * 
@@ -4025,7 +4015,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -4401,7 +4390,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Create Application Note
      * 
@@ -4768,7 +4756,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Application Note
      * 
@@ -5109,7 +5096,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -5481,7 +5467,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -5857,7 +5842,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Applications scheduled interview
      * 
@@ -6198,7 +6182,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -6567,7 +6550,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Download Application Document
      * 
@@ -6907,7 +6889,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -7283,7 +7264,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Application Document
      * 
@@ -7624,7 +7604,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -7998,7 +7977,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Create Candidate
      * 
@@ -8358,7 +8336,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Candidate
      * 
@@ -8699,7 +8676,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -9066,7 +9042,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -9442,7 +9417,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Create Candidate Note
      * 
@@ -9809,7 +9783,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Candidate Note
      * 
@@ -10150,7 +10123,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -10522,7 +10494,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Application Custom Field Definition
      * 
@@ -10863,7 +10834,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -11235,7 +11205,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Candidate Custom Field Definition
      * 
@@ -11576,7 +11545,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -11948,7 +11916,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Job Custom Field Definition
      * 
@@ -12289,7 +12256,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -12662,7 +12628,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Department
      * 
@@ -13003,7 +12968,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -13376,7 +13340,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Interview Stage
      * 
@@ -13717,7 +13680,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -14090,7 +14052,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Interview
      * 
@@ -14431,7 +14392,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -14806,7 +14766,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Create Job
      * 
@@ -15166,7 +15125,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Job
      * 
@@ -15507,7 +15465,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -15874,7 +15831,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -16246,7 +16202,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get List
      * 
@@ -16587,7 +16542,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -16960,7 +16914,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Location
      * 
@@ -17301,7 +17254,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -17674,7 +17626,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Rejected Reason
      * 
@@ -18015,7 +17966,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -18388,7 +18338,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get User
      * 
@@ -18729,7 +18678,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -19103,7 +19051,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Job Posting
      * 
@@ -19444,7 +19391,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -19817,7 +19763,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Creates an offer
      * 
@@ -20177,7 +20122,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Offer
      * 
@@ -20518,7 +20462,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -20890,7 +20833,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Assessments Package
      * 
@@ -21231,7 +21173,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -21593,7 +21534,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Assessments Requests
      * 
@@ -21934,7 +21874,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -22303,7 +22242,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Assessments Results
      * 
@@ -22644,7 +22582,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -23016,7 +22953,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Create Background Check Package
      * 
@@ -23376,7 +23312,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Background Check Package
      * 
@@ -23717,7 +23652,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -24066,7 +24000,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -24433,7 +24366,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -24805,7 +24737,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Order Background Check Request
      * 
@@ -25165,7 +25096,6 @@ public class Ats implements
     }
 
 
-
     /**
      * Get Background Check Request
      * 
@@ -25506,7 +25436,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -25873,7 +25802,6 @@ public class Ats implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**

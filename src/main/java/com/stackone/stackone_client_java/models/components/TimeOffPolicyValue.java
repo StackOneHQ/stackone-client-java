@@ -50,16 +50,28 @@ import java.util.Optional;
 @JsonSerialize(using = TimeOffPolicyValue._Serializer.class)
 public class TimeOffPolicyValue {
 
+    public static final TimeOffPolicyValue SICK = new TimeOffPolicyValue("sick");
+    public static final TimeOffPolicyValue UNMAPPED_VALUE = new TimeOffPolicyValue("unmapped_value");
+    public static final TimeOffPolicyValue VACATION = new TimeOffPolicyValue("vacation");
+    public static final TimeOffPolicyValue LONG_TERM_DISABILITY = new TimeOffPolicyValue("long_term_disability");
+    public static final TimeOffPolicyValue SHORT_TERM_DISABILITY = new TimeOffPolicyValue("short_term_disability");
+    public static final TimeOffPolicyValue ABSENT = new TimeOffPolicyValue("absent");
+    public static final TimeOffPolicyValue COMP_TIME = new TimeOffPolicyValue("comp_time");
+    public static final TimeOffPolicyValue TRAINING = new TimeOffPolicyValue("training");
+    public static final TimeOffPolicyValue ANNUAL_LEAVE = new TimeOffPolicyValue("annual_leave");
+    public static final TimeOffPolicyValue LEAVE_OF_ABSENCE = new TimeOffPolicyValue("leave_of_absence");
+    public static final TimeOffPolicyValue BREAK = new TimeOffPolicyValue("break");
+    public static final TimeOffPolicyValue CHILD_CARE_LEAVE = new TimeOffPolicyValue("child_care_leave");
+    public static final TimeOffPolicyValue MATERNITY_LEAVE = new TimeOffPolicyValue("maternity_leave");
+    public static final TimeOffPolicyValue JURY_DUTY = new TimeOffPolicyValue("jury_duty");
+    public static final TimeOffPolicyValue SABBATICAL = new TimeOffPolicyValue("sabbatical");
+    public static final TimeOffPolicyValue ACCIDENT = new TimeOffPolicyValue("accident");
     public static final TimeOffPolicyValue PAID = new TimeOffPolicyValue("paid");
     public static final TimeOffPolicyValue UNPAID = new TimeOffPolicyValue("unpaid");
     public static final TimeOffPolicyValue HOLIDAY = new TimeOffPolicyValue("holiday");
-    public static final TimeOffPolicyValue VACATION = new TimeOffPolicyValue("vacation");
-    public static final TimeOffPolicyValue SICK = new TimeOffPolicyValue("sick");
     public static final TimeOffPolicyValue PERSONAL = new TimeOffPolicyValue("personal");
     public static final TimeOffPolicyValue IN_LIEU = new TimeOffPolicyValue("in_lieu");
     public static final TimeOffPolicyValue BEREAVEMENT = new TimeOffPolicyValue("bereavement");
-    public static final TimeOffPolicyValue JURY_DUTY = new TimeOffPolicyValue("jury_duty");
-    public static final TimeOffPolicyValue UNMAPPED_VALUE = new TimeOffPolicyValue("unmapped_value");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
@@ -131,31 +143,55 @@ public class TimeOffPolicyValue {
 
     private static final Map<String, TimeOffPolicyValue> createValuesMap() {
         Map<String, TimeOffPolicyValue> map = new LinkedHashMap<>();
+        map.put("sick", SICK);
+        map.put("unmapped_value", UNMAPPED_VALUE);
+        map.put("vacation", VACATION);
+        map.put("long_term_disability", LONG_TERM_DISABILITY);
+        map.put("short_term_disability", SHORT_TERM_DISABILITY);
+        map.put("absent", ABSENT);
+        map.put("comp_time", COMP_TIME);
+        map.put("training", TRAINING);
+        map.put("annual_leave", ANNUAL_LEAVE);
+        map.put("leave_of_absence", LEAVE_OF_ABSENCE);
+        map.put("break", BREAK);
+        map.put("child_care_leave", CHILD_CARE_LEAVE);
+        map.put("maternity_leave", MATERNITY_LEAVE);
+        map.put("jury_duty", JURY_DUTY);
+        map.put("sabbatical", SABBATICAL);
+        map.put("accident", ACCIDENT);
         map.put("paid", PAID);
         map.put("unpaid", UNPAID);
         map.put("holiday", HOLIDAY);
-        map.put("vacation", VACATION);
-        map.put("sick", SICK);
         map.put("personal", PERSONAL);
         map.put("in_lieu", IN_LIEU);
         map.put("bereavement", BEREAVEMENT);
-        map.put("jury_duty", JURY_DUTY);
-        map.put("unmapped_value", UNMAPPED_VALUE);
         return map;
     }
 
     private static final Map<String, TimeOffPolicyValueEnum> createEnumsMap() {
         Map<String, TimeOffPolicyValueEnum> map = new HashMap<>();
+        map.put("sick", TimeOffPolicyValueEnum.SICK);
+        map.put("unmapped_value", TimeOffPolicyValueEnum.UNMAPPED_VALUE);
+        map.put("vacation", TimeOffPolicyValueEnum.VACATION);
+        map.put("long_term_disability", TimeOffPolicyValueEnum.LONG_TERM_DISABILITY);
+        map.put("short_term_disability", TimeOffPolicyValueEnum.SHORT_TERM_DISABILITY);
+        map.put("absent", TimeOffPolicyValueEnum.ABSENT);
+        map.put("comp_time", TimeOffPolicyValueEnum.COMP_TIME);
+        map.put("training", TimeOffPolicyValueEnum.TRAINING);
+        map.put("annual_leave", TimeOffPolicyValueEnum.ANNUAL_LEAVE);
+        map.put("leave_of_absence", TimeOffPolicyValueEnum.LEAVE_OF_ABSENCE);
+        map.put("break", TimeOffPolicyValueEnum.BREAK);
+        map.put("child_care_leave", TimeOffPolicyValueEnum.CHILD_CARE_LEAVE);
+        map.put("maternity_leave", TimeOffPolicyValueEnum.MATERNITY_LEAVE);
+        map.put("jury_duty", TimeOffPolicyValueEnum.JURY_DUTY);
+        map.put("sabbatical", TimeOffPolicyValueEnum.SABBATICAL);
+        map.put("accident", TimeOffPolicyValueEnum.ACCIDENT);
         map.put("paid", TimeOffPolicyValueEnum.PAID);
         map.put("unpaid", TimeOffPolicyValueEnum.UNPAID);
         map.put("holiday", TimeOffPolicyValueEnum.HOLIDAY);
-        map.put("vacation", TimeOffPolicyValueEnum.VACATION);
-        map.put("sick", TimeOffPolicyValueEnum.SICK);
         map.put("personal", TimeOffPolicyValueEnum.PERSONAL);
         map.put("in_lieu", TimeOffPolicyValueEnum.IN_LIEU);
         map.put("bereavement", TimeOffPolicyValueEnum.BEREAVEMENT);
-        map.put("jury_duty", TimeOffPolicyValueEnum.JURY_DUTY);
-        map.put("unmapped_value", TimeOffPolicyValueEnum.UNMAPPED_VALUE);
         return map;
     }
     
@@ -191,16 +227,28 @@ public class TimeOffPolicyValue {
     
     public enum TimeOffPolicyValueEnum {
 
+        SICK("sick"),
+        UNMAPPED_VALUE("unmapped_value"),
+        VACATION("vacation"),
+        LONG_TERM_DISABILITY("long_term_disability"),
+        SHORT_TERM_DISABILITY("short_term_disability"),
+        ABSENT("absent"),
+        COMP_TIME("comp_time"),
+        TRAINING("training"),
+        ANNUAL_LEAVE("annual_leave"),
+        LEAVE_OF_ABSENCE("leave_of_absence"),
+        BREAK("break"),
+        CHILD_CARE_LEAVE("child_care_leave"),
+        MATERNITY_LEAVE("maternity_leave"),
+        JURY_DUTY("jury_duty"),
+        SABBATICAL("sabbatical"),
+        ACCIDENT("accident"),
         PAID("paid"),
         UNPAID("unpaid"),
         HOLIDAY("holiday"),
-        VACATION("vacation"),
-        SICK("sick"),
         PERSONAL("personal"),
         IN_LIEU("in_lieu"),
-        BEREAVEMENT("bereavement"),
-        JURY_DUTY("jury_duty"),
-        UNMAPPED_VALUE("unmapped_value"),;
+        BEREAVEMENT("bereavement"),;
 
         private final String value;
 

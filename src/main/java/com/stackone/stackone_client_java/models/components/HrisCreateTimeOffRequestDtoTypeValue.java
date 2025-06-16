@@ -59,9 +59,14 @@ public class HrisCreateTimeOffRequestDtoTypeValue {
     public static final HrisCreateTimeOffRequestDtoTypeValue CHILD_CARE_LEAVE = new HrisCreateTimeOffRequestDtoTypeValue("child_care_leave");
     public static final HrisCreateTimeOffRequestDtoTypeValue MATERNITY_LEAVE = new HrisCreateTimeOffRequestDtoTypeValue("maternity_leave");
     public static final HrisCreateTimeOffRequestDtoTypeValue JURY_DUTY = new HrisCreateTimeOffRequestDtoTypeValue("jury_duty");
-    public static final HrisCreateTimeOffRequestDtoTypeValue BEREAVEMENT_LEAVE = new HrisCreateTimeOffRequestDtoTypeValue("bereavement_leave");
     public static final HrisCreateTimeOffRequestDtoTypeValue SABBATICAL = new HrisCreateTimeOffRequestDtoTypeValue("sabbatical");
     public static final HrisCreateTimeOffRequestDtoTypeValue ACCIDENT = new HrisCreateTimeOffRequestDtoTypeValue("accident");
+    public static final HrisCreateTimeOffRequestDtoTypeValue PAID = new HrisCreateTimeOffRequestDtoTypeValue("paid");
+    public static final HrisCreateTimeOffRequestDtoTypeValue UNPAID = new HrisCreateTimeOffRequestDtoTypeValue("unpaid");
+    public static final HrisCreateTimeOffRequestDtoTypeValue HOLIDAY = new HrisCreateTimeOffRequestDtoTypeValue("holiday");
+    public static final HrisCreateTimeOffRequestDtoTypeValue PERSONAL = new HrisCreateTimeOffRequestDtoTypeValue("personal");
+    public static final HrisCreateTimeOffRequestDtoTypeValue IN_LIEU = new HrisCreateTimeOffRequestDtoTypeValue("in_lieu");
+    public static final HrisCreateTimeOffRequestDtoTypeValue BEREAVEMENT = new HrisCreateTimeOffRequestDtoTypeValue("bereavement");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
@@ -147,9 +152,14 @@ public class HrisCreateTimeOffRequestDtoTypeValue {
         map.put("child_care_leave", CHILD_CARE_LEAVE);
         map.put("maternity_leave", MATERNITY_LEAVE);
         map.put("jury_duty", JURY_DUTY);
-        map.put("bereavement_leave", BEREAVEMENT_LEAVE);
         map.put("sabbatical", SABBATICAL);
         map.put("accident", ACCIDENT);
+        map.put("paid", PAID);
+        map.put("unpaid", UNPAID);
+        map.put("holiday", HOLIDAY);
+        map.put("personal", PERSONAL);
+        map.put("in_lieu", IN_LIEU);
+        map.put("bereavement", BEREAVEMENT);
         return map;
     }
 
@@ -169,9 +179,14 @@ public class HrisCreateTimeOffRequestDtoTypeValue {
         map.put("child_care_leave", HrisCreateTimeOffRequestDtoTypeValueEnum.CHILD_CARE_LEAVE);
         map.put("maternity_leave", HrisCreateTimeOffRequestDtoTypeValueEnum.MATERNITY_LEAVE);
         map.put("jury_duty", HrisCreateTimeOffRequestDtoTypeValueEnum.JURY_DUTY);
-        map.put("bereavement_leave", HrisCreateTimeOffRequestDtoTypeValueEnum.BEREAVEMENT_LEAVE);
         map.put("sabbatical", HrisCreateTimeOffRequestDtoTypeValueEnum.SABBATICAL);
         map.put("accident", HrisCreateTimeOffRequestDtoTypeValueEnum.ACCIDENT);
+        map.put("paid", HrisCreateTimeOffRequestDtoTypeValueEnum.PAID);
+        map.put("unpaid", HrisCreateTimeOffRequestDtoTypeValueEnum.UNPAID);
+        map.put("holiday", HrisCreateTimeOffRequestDtoTypeValueEnum.HOLIDAY);
+        map.put("personal", HrisCreateTimeOffRequestDtoTypeValueEnum.PERSONAL);
+        map.put("in_lieu", HrisCreateTimeOffRequestDtoTypeValueEnum.IN_LIEU);
+        map.put("bereavement", HrisCreateTimeOffRequestDtoTypeValueEnum.BEREAVEMENT);
         return map;
     }
     
@@ -221,9 +236,14 @@ public class HrisCreateTimeOffRequestDtoTypeValue {
         CHILD_CARE_LEAVE("child_care_leave"),
         MATERNITY_LEAVE("maternity_leave"),
         JURY_DUTY("jury_duty"),
-        BEREAVEMENT_LEAVE("bereavement_leave"),
         SABBATICAL("sabbatical"),
-        ACCIDENT("accident"),;
+        ACCIDENT("accident"),
+        PAID("paid"),
+        UNPAID("unpaid"),
+        HOLIDAY("holiday"),
+        PERSONAL("personal"),
+        IN_LIEU("in_lieu"),
+        BEREAVEMENT("bereavement"),;
 
         private final String value;
 

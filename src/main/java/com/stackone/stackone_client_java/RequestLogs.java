@@ -64,7 +64,6 @@ public class RequestLogs implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List Step Logs
      * 
@@ -388,7 +387,6 @@ public class RequestLogs implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -725,7 +723,6 @@ public class RequestLogs implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**

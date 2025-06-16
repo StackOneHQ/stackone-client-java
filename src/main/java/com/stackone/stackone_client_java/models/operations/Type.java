@@ -28,9 +28,14 @@ public enum Type {
     CHILD_CARE_LEAVE("child_care_leave"),
     MATERNITY_LEAVE("maternity_leave"),
     JURY_DUTY("jury_duty"),
-    BEREAVEMENT_LEAVE("bereavement_leave"),
     SABBATICAL("sabbatical"),
-    ACCIDENT("accident");
+    ACCIDENT("accident"),
+    PAID("paid"),
+    UNPAID("unpaid"),
+    HOLIDAY("holiday"),
+    PERSONAL("personal"),
+    IN_LIEU("in_lieu"),
+    BEREAVEMENT("bereavement");
 
     @JsonValue
     private final String value;
