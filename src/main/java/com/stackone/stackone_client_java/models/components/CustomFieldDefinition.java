@@ -45,7 +45,7 @@ public class CustomFieldDefinition {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
-    private JsonNullable<? extends Type> type;
+    private JsonNullable<? extends CustomFieldDefinitionType> type;
 
     /**
      * An array of possible options for the custom field.
@@ -60,7 +60,7 @@ public class CustomFieldDefinition {
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("description") JsonNullable<String> description,
-            @JsonProperty("type") JsonNullable<? extends Type> type,
+            @JsonProperty("type") JsonNullable<? extends CustomFieldDefinitionType> type,
             @JsonProperty("options") JsonNullable<? extends List<Options>> options) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
@@ -111,8 +111,8 @@ public class CustomFieldDefinition {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Type> type() {
-        return (JsonNullable<Type>) type;
+    public JsonNullable<CustomFieldDefinitionType> type() {
+        return (JsonNullable<CustomFieldDefinitionType>) type;
     }
 
     /**
@@ -191,7 +191,7 @@ public class CustomFieldDefinition {
     /**
      * The type of the custom field.
      */
-    public CustomFieldDefinition withType(Type type) {
+    public CustomFieldDefinition withType(CustomFieldDefinitionType type) {
         Utils.checkNotNull(type, "type");
         this.type = JsonNullable.of(type);
         return this;
@@ -200,7 +200,7 @@ public class CustomFieldDefinition {
     /**
      * The type of the custom field.
      */
-    public CustomFieldDefinition withType(JsonNullable<? extends Type> type) {
+    public CustomFieldDefinition withType(JsonNullable<? extends CustomFieldDefinitionType> type) {
         Utils.checkNotNull(type, "type");
         this.type = type;
         return this;
@@ -275,7 +275,7 @@ public class CustomFieldDefinition {
  
         private JsonNullable<String> description = JsonNullable.undefined();
  
-        private JsonNullable<? extends Type> type = JsonNullable.undefined();
+        private JsonNullable<? extends CustomFieldDefinitionType> type = JsonNullable.undefined();
  
         private JsonNullable<? extends List<Options>> options = JsonNullable.undefined();
         
@@ -346,7 +346,7 @@ public class CustomFieldDefinition {
         /**
          * The type of the custom field.
          */
-        public Builder type(Type type) {
+        public Builder type(CustomFieldDefinitionType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
             return this;
@@ -355,7 +355,7 @@ public class CustomFieldDefinition {
         /**
          * The type of the custom field.
          */
-        public Builder type(JsonNullable<? extends Type> type) {
+        public Builder type(JsonNullable<? extends CustomFieldDefinitionType> type) {
             Utils.checkNotNull(type, "type");
             this.type = type;
             return this;

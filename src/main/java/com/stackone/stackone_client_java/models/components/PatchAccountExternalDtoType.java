@@ -42,41 +42,41 @@ import java.util.Optional;
  *
  */
 /**
- * Type
+ * PatchAccountExternalDtoType
  * 
- * <p>The connect session account type
+ * <p>The account type
  */
-@JsonDeserialize(using = Type._Deserializer.class)
-@JsonSerialize(using = Type._Serializer.class)
-public class Type {
+@JsonDeserialize(using = PatchAccountExternalDtoType._Deserializer.class)
+@JsonSerialize(using = PatchAccountExternalDtoType._Serializer.class)
+public class PatchAccountExternalDtoType {
 
-    public static final Type PRODUCTION = new Type("production");
-    public static final Type TEST = new Type("test");
+    public static final PatchAccountExternalDtoType PRODUCTION = new PatchAccountExternalDtoType("production");
+    public static final PatchAccountExternalDtoType TEST = new PatchAccountExternalDtoType("test");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
     // careful). Keep this field lower case to avoid clashing with
     // generated member names which will always be upper cased (Java
     // convention)
-    private static final Map<String, Type> values = createValuesMap();
-    private static final Map<String, TypeEnum> enums = createEnumsMap();
+    private static final Map<String, PatchAccountExternalDtoType> values = createValuesMap();
+    private static final Map<String, PatchAccountExternalDtoTypeEnum> enums = createEnumsMap();
 
     private final String value;
 
-    private Type(String value) {
+    private PatchAccountExternalDtoType(String value) {
         this.value = value;
     }
 
     /**
-     * Returns a Type with the given value. For a specific value the 
+     * Returns a PatchAccountExternalDtoType with the given value. For a specific value the 
      * returned object will always be a singleton so reference equality 
      * is satisfied when the values are the same.
      * 
-     * @param value value to be wrapped as Type
+     * @param value value to be wrapped as PatchAccountExternalDtoType
      */ 
-    public static Type of(String value) {
-        synchronized (Type.class) {
-            return values.computeIfAbsent(value, v -> new Type(v));
+    public static PatchAccountExternalDtoType of(String value) {
+        synchronized (PatchAccountExternalDtoType.class) {
+            return values.computeIfAbsent(value, v -> new PatchAccountExternalDtoType(v));
         }
     }
 
@@ -84,7 +84,7 @@ public class Type {
         return value;
     }
 
-    public Optional<TypeEnum> asEnum() {
+    public Optional<PatchAccountExternalDtoTypeEnum> asEnum() {
         return Optional.ofNullable(enums.getOrDefault(value, null));
     }
 
@@ -105,74 +105,74 @@ public class Type {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Type other = (Type) obj;
+        PatchAccountExternalDtoType other = (PatchAccountExternalDtoType) obj;
         return Objects.equals(value, other.value);
     }
 
     @Override
     public String toString() {
-        return "Type [value=" + value + "]";
+        return "PatchAccountExternalDtoType [value=" + value + "]";
     }
 
     // return an array just like an enum
-    public static Type[] values() {
-        synchronized (Type.class) {
-            return values.values().toArray(new Type[] {});
+    public static PatchAccountExternalDtoType[] values() {
+        synchronized (PatchAccountExternalDtoType.class) {
+            return values.values().toArray(new PatchAccountExternalDtoType[] {});
         }
     }
 
-    private static final Map<String, Type> createValuesMap() {
-        Map<String, Type> map = new LinkedHashMap<>();
+    private static final Map<String, PatchAccountExternalDtoType> createValuesMap() {
+        Map<String, PatchAccountExternalDtoType> map = new LinkedHashMap<>();
         map.put("production", PRODUCTION);
         map.put("test", TEST);
         return map;
     }
 
-    private static final Map<String, TypeEnum> createEnumsMap() {
-        Map<String, TypeEnum> map = new HashMap<>();
-        map.put("production", TypeEnum.PRODUCTION);
-        map.put("test", TypeEnum.TEST);
+    private static final Map<String, PatchAccountExternalDtoTypeEnum> createEnumsMap() {
+        Map<String, PatchAccountExternalDtoTypeEnum> map = new HashMap<>();
+        map.put("production", PatchAccountExternalDtoTypeEnum.PRODUCTION);
+        map.put("test", PatchAccountExternalDtoTypeEnum.TEST);
         return map;
     }
     
     @SuppressWarnings("serial")
-    public static final class _Serializer extends StdSerializer<Type> {
+    public static final class _Serializer extends StdSerializer<PatchAccountExternalDtoType> {
 
         protected _Serializer() {
-            super(Type.class);
+            super(PatchAccountExternalDtoType.class);
         }
 
         @Override
-        public void serialize(Type value, JsonGenerator g, SerializerProvider provider)
+        public void serialize(PatchAccountExternalDtoType value, JsonGenerator g, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
             g.writeObject(value.value);
         }
     }
 
     @SuppressWarnings("serial")
-    public static final class _Deserializer extends StdDeserializer<Type> {
+    public static final class _Deserializer extends StdDeserializer<PatchAccountExternalDtoType> {
 
         protected _Deserializer() {
-            super(Type.class);
+            super(PatchAccountExternalDtoType.class);
         }
 
         @Override
-        public Type deserialize(JsonParser p, DeserializationContext ctxt)
+        public PatchAccountExternalDtoType deserialize(JsonParser p, DeserializationContext ctxt)
                 throws IOException, JacksonException {
             String v = p.readValueAs(new TypeReference<String>() {});
             // use the factory method to ensure we get singletons
-            return Type.of(v);
+            return PatchAccountExternalDtoType.of(v);
         }
     }
     
-    public enum TypeEnum {
+    public enum PatchAccountExternalDtoTypeEnum {
 
         PRODUCTION("production"),
         TEST("test"),;
 
         private final String value;
 
-        private TypeEnum(String value) {
+        private PatchAccountExternalDtoTypeEnum(String value) {
             this.value = value;
         }
 

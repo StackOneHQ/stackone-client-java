@@ -1,6 +1,6 @@
-# Type
+# PatchAccountExternalDtoType
 
-The connect session account type
+The account type
 
 
 ## Values

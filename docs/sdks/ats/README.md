@@ -64,7 +64,6 @@
 * [listAssessmentsPackages](#listassessmentspackages) - List Assessments Packages
 * [getAssessmentsPackage](#getassessmentspackage) - Get Assessments Package
 * [orderAssessmentsRequest](#orderassessmentsrequest) - Order Assessments Request
-* [getAssessmentsRequest](#getassessmentsrequest) - Get Assessments Requests
 * [updateAssessmentsResult](#updateassessmentsresult) - Update Assessments Result
 * [getAssessmentsResult](#getassessmentsresult) - Get Assessments Results
 * [listBackgroundCheckPackages](#listbackgroundcheckpackages) - List Background Check Packages
@@ -72,9 +71,7 @@
 * [getBackgroundCheckPackage](#getbackgroundcheckpackage) - Get Background Check Package
 * [deleteBackgroundCheckPackage](#deletebackgroundcheckpackage) - Delete Background Check Package
 * [updateBackgroundCheckPackage](#updatebackgroundcheckpackage) - Update Background Check Package
-* [listBackgroundCheckRequest](#listbackgroundcheckrequest) - List Background Check Request
 * [orderBackgroundCheckRequest](#orderbackgroundcheckrequest) - Order Background Check Request
-* [getBackgroundCheckRequest](#getbackgroundcheckrequest) - Get Background Check Request
 * [updateBackgroundCheckResult](#updatebackgroundcheckresult) - Update Background Check Result
 * [getBackgroundCheckResult](#getbackgroundcheckresult) - Get Background Check Results
 
@@ -4740,78 +4737,6 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## getAssessmentsRequest
-
-Get Assessments Requests
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsRequestRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsRequestResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsGetAssessmentsRequestRequest req = AtsGetAssessmentsRequestRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
-                .build();
-
-        AtsGetAssessmentsRequestResponse res = sdk.ats().getAssessmentsRequest()
-                .request(req)
-                .call();
-
-        if (res.assessmentOrderResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `request`                                                                                     | [AtsGetAssessmentsRequestRequest](../../models/operations/AtsGetAssessmentsRequestRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
-
-### Response
-
-**[AtsGetAssessmentsRequestResponse](../../models/operations/AtsGetAssessmentsRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
 ## updateAssessmentsResult
 
 Update Assessments Result
@@ -5356,80 +5281,6 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## listBackgroundCheckRequest
-
-List Background Check Request
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckRequestQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckRequestRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsListBackgroundCheckRequestRequest req = AtsListBackgroundCheckRequestRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
-                .filter(AtsListBackgroundCheckRequestQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.ats().listBackgroundCheckRequest()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                               | [AtsListBackgroundCheckRequestRequest](../../models/operations/AtsListBackgroundCheckRequestRequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
-
-### Response
-
-**[AtsListBackgroundCheckRequestResponse](../../models/operations/AtsListBackgroundCheckRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
 ## orderBackgroundCheckRequest
 
 Order Background Check Request
@@ -5534,78 +5385,6 @@ public class Application {
 ### Response
 
 **[AtsOrderBackgroundCheckRequestResponse](../../models/operations/AtsOrderBackgroundCheckRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## getBackgroundCheckRequest
-
-Get Background Check Request
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckRequestRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckRequestResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsGetBackgroundCheckRequestRequest req = AtsGetBackgroundCheckRequestRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
-                .build();
-
-        AtsGetBackgroundCheckRequestResponse res = sdk.ats().getBackgroundCheckRequest()
-                .request(req)
-                .call();
-
-        if (res.backgroundCheckOrderResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `request`                                                                                             | [AtsGetBackgroundCheckRequestRequest](../../models/operations/AtsGetBackgroundCheckRequestRequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
-
-### Response
-
-**[AtsGetBackgroundCheckRequestResponse](../../models/operations/AtsGetBackgroundCheckRequestResponse.md)**
 
 ### Errors
 

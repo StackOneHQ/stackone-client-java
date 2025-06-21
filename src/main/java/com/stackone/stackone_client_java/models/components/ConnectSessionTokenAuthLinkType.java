@@ -42,41 +42,42 @@ import java.util.Optional;
  *
  */
 /**
- * Type
+ * ConnectSessionTokenAuthLinkType
  * 
  * <p>The connect session account type
  */
-@JsonDeserialize(using = Type._Deserializer.class)
-@JsonSerialize(using = Type._Serializer.class)
-public class Type {
+@JsonDeserialize(using = ConnectSessionTokenAuthLinkType._Deserializer.class)
+@JsonSerialize(using = ConnectSessionTokenAuthLinkType._Serializer.class)
+public class ConnectSessionTokenAuthLinkType {
 
-    public static final Type PRODUCTION = new Type("production");
-    public static final Type TEST = new Type("test");
+    public static final ConnectSessionTokenAuthLinkType PRODUCTION = new ConnectSessionTokenAuthLinkType("production");
+    public static final ConnectSessionTokenAuthLinkType TEST = new ConnectSessionTokenAuthLinkType("test");
+    public static final ConnectSessionTokenAuthLinkType UNMAPPED_VALUE = new ConnectSessionTokenAuthLinkType("unmapped_value");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
     // careful). Keep this field lower case to avoid clashing with
     // generated member names which will always be upper cased (Java
     // convention)
-    private static final Map<String, Type> values = createValuesMap();
-    private static final Map<String, TypeEnum> enums = createEnumsMap();
+    private static final Map<String, ConnectSessionTokenAuthLinkType> values = createValuesMap();
+    private static final Map<String, ConnectSessionTokenAuthLinkTypeEnum> enums = createEnumsMap();
 
     private final String value;
 
-    private Type(String value) {
+    private ConnectSessionTokenAuthLinkType(String value) {
         this.value = value;
     }
 
     /**
-     * Returns a Type with the given value. For a specific value the 
+     * Returns a ConnectSessionTokenAuthLinkType with the given value. For a specific value the 
      * returned object will always be a singleton so reference equality 
      * is satisfied when the values are the same.
      * 
-     * @param value value to be wrapped as Type
+     * @param value value to be wrapped as ConnectSessionTokenAuthLinkType
      */ 
-    public static Type of(String value) {
-        synchronized (Type.class) {
-            return values.computeIfAbsent(value, v -> new Type(v));
+    public static ConnectSessionTokenAuthLinkType of(String value) {
+        synchronized (ConnectSessionTokenAuthLinkType.class) {
+            return values.computeIfAbsent(value, v -> new ConnectSessionTokenAuthLinkType(v));
         }
     }
 
@@ -84,7 +85,7 @@ public class Type {
         return value;
     }
 
-    public Optional<TypeEnum> asEnum() {
+    public Optional<ConnectSessionTokenAuthLinkTypeEnum> asEnum() {
         return Optional.ofNullable(enums.getOrDefault(value, null));
     }
 
@@ -105,74 +106,77 @@ public class Type {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Type other = (Type) obj;
+        ConnectSessionTokenAuthLinkType other = (ConnectSessionTokenAuthLinkType) obj;
         return Objects.equals(value, other.value);
     }
 
     @Override
     public String toString() {
-        return "Type [value=" + value + "]";
+        return "ConnectSessionTokenAuthLinkType [value=" + value + "]";
     }
 
     // return an array just like an enum
-    public static Type[] values() {
-        synchronized (Type.class) {
-            return values.values().toArray(new Type[] {});
+    public static ConnectSessionTokenAuthLinkType[] values() {
+        synchronized (ConnectSessionTokenAuthLinkType.class) {
+            return values.values().toArray(new ConnectSessionTokenAuthLinkType[] {});
         }
     }
 
-    private static final Map<String, Type> createValuesMap() {
-        Map<String, Type> map = new LinkedHashMap<>();
+    private static final Map<String, ConnectSessionTokenAuthLinkType> createValuesMap() {
+        Map<String, ConnectSessionTokenAuthLinkType> map = new LinkedHashMap<>();
         map.put("production", PRODUCTION);
         map.put("test", TEST);
+        map.put("unmapped_value", UNMAPPED_VALUE);
         return map;
     }
 
-    private static final Map<String, TypeEnum> createEnumsMap() {
-        Map<String, TypeEnum> map = new HashMap<>();
-        map.put("production", TypeEnum.PRODUCTION);
-        map.put("test", TypeEnum.TEST);
+    private static final Map<String, ConnectSessionTokenAuthLinkTypeEnum> createEnumsMap() {
+        Map<String, ConnectSessionTokenAuthLinkTypeEnum> map = new HashMap<>();
+        map.put("production", ConnectSessionTokenAuthLinkTypeEnum.PRODUCTION);
+        map.put("test", ConnectSessionTokenAuthLinkTypeEnum.TEST);
+        map.put("unmapped_value", ConnectSessionTokenAuthLinkTypeEnum.UNMAPPED_VALUE);
         return map;
     }
     
     @SuppressWarnings("serial")
-    public static final class _Serializer extends StdSerializer<Type> {
+    public static final class _Serializer extends StdSerializer<ConnectSessionTokenAuthLinkType> {
 
         protected _Serializer() {
-            super(Type.class);
+            super(ConnectSessionTokenAuthLinkType.class);
         }
 
         @Override
-        public void serialize(Type value, JsonGenerator g, SerializerProvider provider)
+        public void serialize(ConnectSessionTokenAuthLinkType value, JsonGenerator g, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
             g.writeObject(value.value);
         }
     }
 
     @SuppressWarnings("serial")
-    public static final class _Deserializer extends StdDeserializer<Type> {
+    public static final class _Deserializer extends StdDeserializer<ConnectSessionTokenAuthLinkType> {
 
         protected _Deserializer() {
-            super(Type.class);
+            super(ConnectSessionTokenAuthLinkType.class);
         }
 
         @Override
-        public Type deserialize(JsonParser p, DeserializationContext ctxt)
+        public ConnectSessionTokenAuthLinkType deserialize(JsonParser p, DeserializationContext ctxt)
                 throws IOException, JacksonException {
             String v = p.readValueAs(new TypeReference<String>() {});
             // use the factory method to ensure we get singletons
-            return Type.of(v);
+            return ConnectSessionTokenAuthLinkType.of(v);
         }
     }
     
-    public enum TypeEnum {
+    public enum ConnectSessionTokenAuthLinkTypeEnum {
 
         PRODUCTION("production"),
-        TEST("test"),;
+        TEST("test"),
+        UNMAPPED_VALUE("unmapped_value"),;
 
         private final String value;
 
-        private TypeEnum(String value) {
+        private ConnectSessionTokenAuthLinkTypeEnum(String value) {
             this.value = value;
         }
 

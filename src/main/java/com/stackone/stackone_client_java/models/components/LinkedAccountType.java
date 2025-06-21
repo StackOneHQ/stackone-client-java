@@ -42,41 +42,42 @@ import java.util.Optional;
  *
  */
 /**
- * Type
+ * LinkedAccountType
  * 
- * <p>The connect session account type
+ * <p>The account type
  */
-@JsonDeserialize(using = Type._Deserializer.class)
-@JsonSerialize(using = Type._Serializer.class)
-public class Type {
+@JsonDeserialize(using = LinkedAccountType._Deserializer.class)
+@JsonSerialize(using = LinkedAccountType._Serializer.class)
+public class LinkedAccountType {
 
-    public static final Type PRODUCTION = new Type("production");
-    public static final Type TEST = new Type("test");
+    public static final LinkedAccountType PRODUCTION = new LinkedAccountType("production");
+    public static final LinkedAccountType TEST = new LinkedAccountType("test");
+    public static final LinkedAccountType UNMAPPED_VALUE = new LinkedAccountType("unmapped_value");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
     // careful). Keep this field lower case to avoid clashing with
     // generated member names which will always be upper cased (Java
     // convention)
-    private static final Map<String, Type> values = createValuesMap();
-    private static final Map<String, TypeEnum> enums = createEnumsMap();
+    private static final Map<String, LinkedAccountType> values = createValuesMap();
+    private static final Map<String, LinkedAccountTypeEnum> enums = createEnumsMap();
 
     private final String value;
 
-    private Type(String value) {
+    private LinkedAccountType(String value) {
         this.value = value;
     }
 
     /**
-     * Returns a Type with the given value. For a specific value the 
+     * Returns a LinkedAccountType with the given value. For a specific value the 
      * returned object will always be a singleton so reference equality 
      * is satisfied when the values are the same.
      * 
-     * @param value value to be wrapped as Type
+     * @param value value to be wrapped as LinkedAccountType
      */ 
-    public static Type of(String value) {
-        synchronized (Type.class) {
-            return values.computeIfAbsent(value, v -> new Type(v));
+    public static LinkedAccountType of(String value) {
+        synchronized (LinkedAccountType.class) {
+            return values.computeIfAbsent(value, v -> new LinkedAccountType(v));
         }
     }
 
@@ -84,7 +85,7 @@ public class Type {
         return value;
     }
 
-    public Optional<TypeEnum> asEnum() {
+    public Optional<LinkedAccountTypeEnum> asEnum() {
         return Optional.ofNullable(enums.getOrDefault(value, null));
     }
 
@@ -105,74 +106,77 @@ public class Type {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Type other = (Type) obj;
+        LinkedAccountType other = (LinkedAccountType) obj;
         return Objects.equals(value, other.value);
     }
 
     @Override
     public String toString() {
-        return "Type [value=" + value + "]";
+        return "LinkedAccountType [value=" + value + "]";
     }
 
     // return an array just like an enum
-    public static Type[] values() {
-        synchronized (Type.class) {
-            return values.values().toArray(new Type[] {});
+    public static LinkedAccountType[] values() {
+        synchronized (LinkedAccountType.class) {
+            return values.values().toArray(new LinkedAccountType[] {});
         }
     }
 
-    private static final Map<String, Type> createValuesMap() {
-        Map<String, Type> map = new LinkedHashMap<>();
+    private static final Map<String, LinkedAccountType> createValuesMap() {
+        Map<String, LinkedAccountType> map = new LinkedHashMap<>();
         map.put("production", PRODUCTION);
         map.put("test", TEST);
+        map.put("unmapped_value", UNMAPPED_VALUE);
         return map;
     }
 
-    private static final Map<String, TypeEnum> createEnumsMap() {
-        Map<String, TypeEnum> map = new HashMap<>();
-        map.put("production", TypeEnum.PRODUCTION);
-        map.put("test", TypeEnum.TEST);
+    private static final Map<String, LinkedAccountTypeEnum> createEnumsMap() {
+        Map<String, LinkedAccountTypeEnum> map = new HashMap<>();
+        map.put("production", LinkedAccountTypeEnum.PRODUCTION);
+        map.put("test", LinkedAccountTypeEnum.TEST);
+        map.put("unmapped_value", LinkedAccountTypeEnum.UNMAPPED_VALUE);
         return map;
     }
     
     @SuppressWarnings("serial")
-    public static final class _Serializer extends StdSerializer<Type> {
+    public static final class _Serializer extends StdSerializer<LinkedAccountType> {
 
         protected _Serializer() {
-            super(Type.class);
+            super(LinkedAccountType.class);
         }
 
         @Override
-        public void serialize(Type value, JsonGenerator g, SerializerProvider provider)
+        public void serialize(LinkedAccountType value, JsonGenerator g, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
             g.writeObject(value.value);
         }
     }
 
     @SuppressWarnings("serial")
-    public static final class _Deserializer extends StdDeserializer<Type> {
+    public static final class _Deserializer extends StdDeserializer<LinkedAccountType> {
 
         protected _Deserializer() {
-            super(Type.class);
+            super(LinkedAccountType.class);
         }
 
         @Override
-        public Type deserialize(JsonParser p, DeserializationContext ctxt)
+        public LinkedAccountType deserialize(JsonParser p, DeserializationContext ctxt)
                 throws IOException, JacksonException {
             String v = p.readValueAs(new TypeReference<String>() {});
             // use the factory method to ensure we get singletons
-            return Type.of(v);
+            return LinkedAccountType.of(v);
         }
     }
     
-    public enum TypeEnum {
+    public enum LinkedAccountTypeEnum {
 
         PRODUCTION("production"),
-        TEST("test"),;
+        TEST("test"),
+        UNMAPPED_VALUE("unmapped_value"),;
 
         private final String value;
 
-        private TypeEnum(String value) {
+        private LinkedAccountTypeEnum(String value) {
             this.value = value;
         }
 
