@@ -51,6 +51,7 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()

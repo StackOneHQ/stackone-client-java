@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.stackone.stackone_client_java.utils.LazySingletonValue;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
@@ -61,6 +63,13 @@ public class PatchAccountExternalDto {
     @JsonProperty("metadata")
     private JsonNullable<? extends PatchAccountExternalDtoMetadata> metadata;
 
+    /**
+     * The account type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends PatchAccountExternalDtoType> type;
+
     @JsonCreator
     public PatchAccountExternalDto(
             @JsonProperty("provider") JsonNullable<String> provider,
@@ -73,7 +82,8 @@ public class PatchAccountExternalDto {
             @JsonProperty("authentication_config_key") JsonNullable<String> authenticationConfigKey,
             @JsonProperty("environment") JsonNullable<String> environment,
             @JsonProperty("label") JsonNullable<? extends Label> label,
-            @JsonProperty("metadata") JsonNullable<? extends PatchAccountExternalDtoMetadata> metadata) {
+            @JsonProperty("metadata") JsonNullable<? extends PatchAccountExternalDtoMetadata> metadata,
+            @JsonProperty("type") JsonNullable<? extends PatchAccountExternalDtoType> type) {
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(originOwnerId, "originOwnerId");
         Utils.checkNotNull(originOwnerName, "originOwnerName");
@@ -85,6 +95,7 @@ public class PatchAccountExternalDto {
         Utils.checkNotNull(environment, "environment");
         Utils.checkNotNull(label, "label");
         Utils.checkNotNull(metadata, "metadata");
+        Utils.checkNotNull(type, "type");
         this.provider = provider;
         this.originOwnerId = originOwnerId;
         this.originOwnerName = originOwnerName;
@@ -96,10 +107,11 @@ public class PatchAccountExternalDto {
         this.environment = environment;
         this.label = label;
         this.metadata = metadata;
+        this.type = type;
     }
     
     public PatchAccountExternalDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -160,6 +172,15 @@ public class PatchAccountExternalDto {
     @JsonIgnore
     public JsonNullable<PatchAccountExternalDtoMetadata> metadata() {
         return (JsonNullable<PatchAccountExternalDtoMetadata>) metadata;
+    }
+
+    /**
+     * The account type
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<PatchAccountExternalDtoType> type() {
+        return (JsonNullable<PatchAccountExternalDtoType>) type;
     }
 
     public final static Builder builder() {
@@ -298,6 +319,24 @@ public class PatchAccountExternalDto {
         return this;
     }
 
+    /**
+     * The account type
+     */
+    public PatchAccountExternalDto withType(PatchAccountExternalDtoType type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The account type
+     */
+    public PatchAccountExternalDto withType(JsonNullable<? extends PatchAccountExternalDtoType> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -319,7 +358,8 @@ public class PatchAccountExternalDto {
             Objects.deepEquals(this.authenticationConfigKey, other.authenticationConfigKey) &&
             Objects.deepEquals(this.environment, other.environment) &&
             Objects.deepEquals(this.label, other.label) &&
-            Objects.deepEquals(this.metadata, other.metadata);
+            Objects.deepEquals(this.metadata, other.metadata) &&
+            Objects.deepEquals(this.type, other.type);
     }
     
     @Override
@@ -335,7 +375,8 @@ public class PatchAccountExternalDto {
             authenticationConfigKey,
             environment,
             label,
-            metadata);
+            metadata,
+            type);
     }
     
     @Override
@@ -351,7 +392,8 @@ public class PatchAccountExternalDto {
                 "authenticationConfigKey", authenticationConfigKey,
                 "environment", environment,
                 "label", label,
-                "metadata", metadata);
+                "metadata", metadata,
+                "type", type);
     }
     
     public final static class Builder {
@@ -377,6 +419,8 @@ public class PatchAccountExternalDto {
         private JsonNullable<? extends Label> label = JsonNullable.undefined();
  
         private JsonNullable<? extends PatchAccountExternalDtoMetadata> metadata = JsonNullable.undefined();
+ 
+        private JsonNullable<? extends PatchAccountExternalDtoType> type;
         
         private Builder() {
           // force use of static builder() method
@@ -513,8 +557,29 @@ public class PatchAccountExternalDto {
             this.metadata = metadata;
             return this;
         }
+
+        /**
+         * The account type
+         */
+        public Builder type(PatchAccountExternalDtoType type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The account type
+         */
+        public Builder type(JsonNullable<? extends PatchAccountExternalDtoType> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
         
         public PatchAccountExternalDto build() {
+            if (type == null) {
+                type = _SINGLETON_VALUE_Type.value();
+            }
             return new PatchAccountExternalDto(
                 provider,
                 originOwnerId,
@@ -526,7 +591,14 @@ public class PatchAccountExternalDto {
                 authenticationConfigKey,
                 environment,
                 label,
-                metadata);
+                metadata,
+                type);
         }
+
+        private static final LazySingletonValue<JsonNullable<? extends PatchAccountExternalDtoType>> _SINGLETON_VALUE_Type =
+                new LazySingletonValue<>(
+                        "type",
+                        "\"production\"",
+                        new TypeReference<JsonNullable<? extends PatchAccountExternalDtoType>>() {});
     }
 }

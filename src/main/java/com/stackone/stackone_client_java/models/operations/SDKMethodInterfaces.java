@@ -913,12 +913,6 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallAtsGetAssessmentsRequest {
-        AtsGetAssessmentsRequestResponse getAssessmentsRequest(
-            AtsGetAssessmentsRequestRequest request,
-            Optional<Options> options) throws Exception;
-    }
-
     public interface MethodCallAtsUpdateAssessmentsResult {
         AtsUpdateAssessmentsResultResponse updateAssessmentsResult(
             String xAccountId,
@@ -967,22 +961,10 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallAtsListBackgroundCheckRequest {
-        AtsListBackgroundCheckRequestResponse listBackgroundCheckRequest(
-            AtsListBackgroundCheckRequestRequest request,
-            Optional<Options> options) throws Exception;
-    }
-
     public interface MethodCallAtsOrderBackgroundCheckRequest {
         AtsOrderBackgroundCheckRequestResponse orderBackgroundCheckRequest(
             String xAccountId,
             AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto,
-            Optional<Options> options) throws Exception;
-    }
-
-    public interface MethodCallAtsGetBackgroundCheckRequest {
-        AtsGetBackgroundCheckRequestResponse getBackgroundCheckRequest(
-            AtsGetBackgroundCheckRequestRequest request,
             Optional<Options> options) throws Exception;
     }
 

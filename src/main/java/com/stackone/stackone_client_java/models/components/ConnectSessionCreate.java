@@ -97,6 +97,13 @@ public class ConnectSessionCreate {
     @JsonProperty("label")
     private JsonNullable<String> label;
 
+    /**
+     * The connect session account type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends Type> type;
+
     @JsonCreator
     public ConnectSessionCreate(
             @JsonProperty("categories") JsonNullable<? extends List<Categories>> categories,
@@ -109,7 +116,8 @@ public class ConnectSessionCreate {
             @JsonProperty("expires_in") JsonNullable<Double> expiresIn,
             @JsonProperty("metadata") JsonNullable<? extends Metadata> metadata,
             @JsonProperty("multiple") JsonNullable<Boolean> multiple,
-            @JsonProperty("label") JsonNullable<String> label) {
+            @JsonProperty("label") JsonNullable<String> label,
+            @JsonProperty("type") JsonNullable<? extends Type> type) {
         Utils.checkNotNull(categories, "categories");
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(providerVersion, "providerVersion");
@@ -121,6 +129,7 @@ public class ConnectSessionCreate {
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(multiple, "multiple");
         Utils.checkNotNull(label, "label");
+        Utils.checkNotNull(type, "type");
         this.categories = categories;
         this.provider = provider;
         this.providerVersion = providerVersion;
@@ -132,12 +141,13 @@ public class ConnectSessionCreate {
         this.metadata = metadata;
         this.multiple = multiple;
         this.label = label;
+        this.type = type;
     }
     
     public ConnectSessionCreate(
             String originOwnerId,
             String originOwnerName) {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -228,6 +238,15 @@ public class ConnectSessionCreate {
     @JsonIgnore
     public JsonNullable<String> label() {
         return label;
+    }
+
+    /**
+     * The connect session account type
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Type> type() {
+        return (JsonNullable<Type>) type;
     }
 
     public final static Builder builder() {
@@ -414,6 +433,24 @@ public class ConnectSessionCreate {
         return this;
     }
 
+    /**
+     * The connect session account type
+     */
+    public ConnectSessionCreate withType(Type type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The connect session account type
+     */
+    public ConnectSessionCreate withType(JsonNullable<? extends Type> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -435,7 +472,8 @@ public class ConnectSessionCreate {
             Objects.deepEquals(this.expiresIn, other.expiresIn) &&
             Objects.deepEquals(this.metadata, other.metadata) &&
             Objects.deepEquals(this.multiple, other.multiple) &&
-            Objects.deepEquals(this.label, other.label);
+            Objects.deepEquals(this.label, other.label) &&
+            Objects.deepEquals(this.type, other.type);
     }
     
     @Override
@@ -451,7 +489,8 @@ public class ConnectSessionCreate {
             expiresIn,
             metadata,
             multiple,
-            label);
+            label,
+            type);
     }
     
     @Override
@@ -467,7 +506,8 @@ public class ConnectSessionCreate {
                 "expiresIn", expiresIn,
                 "metadata", metadata,
                 "multiple", multiple,
-                "label", label);
+                "label", label,
+                "type", type);
     }
     
     public final static class Builder {
@@ -493,6 +533,8 @@ public class ConnectSessionCreate {
         private JsonNullable<Boolean> multiple;
  
         private JsonNullable<String> label = JsonNullable.undefined();
+ 
+        private JsonNullable<? extends Type> type;
         
         private Builder() {
           // force use of static builder() method
@@ -677,6 +719,24 @@ public class ConnectSessionCreate {
             this.label = label;
             return this;
         }
+
+        /**
+         * The connect session account type
+         */
+        public Builder type(Type type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The connect session account type
+         */
+        public Builder type(JsonNullable<? extends Type> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
         
         public ConnectSessionCreate build() {
             if (expiresIn == null) {
@@ -684,6 +744,9 @@ public class ConnectSessionCreate {
             }
             if (multiple == null) {
                 multiple = _SINGLETON_VALUE_Multiple.value();
+            }
+            if (type == null) {
+                type = _SINGLETON_VALUE_Type.value();
             }
             return new ConnectSessionCreate(
                 categories,
@@ -696,7 +759,8 @@ public class ConnectSessionCreate {
                 expiresIn,
                 metadata,
                 multiple,
-                label);
+                label,
+                type);
         }
 
         private static final LazySingletonValue<JsonNullable<Double>> _SINGLETON_VALUE_ExpiresIn =
@@ -710,5 +774,11 @@ public class ConnectSessionCreate {
                         "multiple",
                         "false",
                         new TypeReference<JsonNullable<Boolean>>() {});
+
+        private static final LazySingletonValue<JsonNullable<? extends Type>> _SINGLETON_VALUE_Type =
+                new LazySingletonValue<>(
+                        "type",
+                        "\"production\"",
+                        new TypeReference<JsonNullable<? extends Type>>() {});
     }
 }

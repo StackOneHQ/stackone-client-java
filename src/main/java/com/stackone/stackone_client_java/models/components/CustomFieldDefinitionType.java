@@ -15,89 +15,70 @@ import java.lang.SuppressWarnings;
 import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class BackgroundCheckOrderApplicationStatus {
+/**
+ * CustomFieldDefinitionType
+ * 
+ * <p>The type of the custom field.
+ */
+public class CustomFieldDefinitionType {
 
-    /**
-     * The status of the application.
-     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
-    private JsonNullable<? extends BackgroundCheckOrderValue> value;
+    private JsonNullable<? extends CustomFieldDefinitionValue> value;
 
-    /**
-     * The source value of the application status.
-     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
-    private JsonNullable<? extends BackgroundCheckOrderSourceValue> sourceValue;
+    private JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue;
 
     @JsonCreator
-    public BackgroundCheckOrderApplicationStatus(
-            @JsonProperty("value") JsonNullable<? extends BackgroundCheckOrderValue> value,
-            @JsonProperty("source_value") JsonNullable<? extends BackgroundCheckOrderSourceValue> sourceValue) {
+    public CustomFieldDefinitionType(
+            @JsonProperty("value") JsonNullable<? extends CustomFieldDefinitionValue> value,
+            @JsonProperty("source_value") JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue) {
         Utils.checkNotNull(value, "value");
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.value = value;
         this.sourceValue = sourceValue;
     }
     
-    public BackgroundCheckOrderApplicationStatus() {
+    public CustomFieldDefinitionType() {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
-    /**
-     * The status of the application.
-     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<BackgroundCheckOrderValue> value() {
-        return (JsonNullable<BackgroundCheckOrderValue>) value;
+    public JsonNullable<CustomFieldDefinitionValue> value() {
+        return (JsonNullable<CustomFieldDefinitionValue>) value;
     }
 
-    /**
-     * The source value of the application status.
-     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<BackgroundCheckOrderSourceValue> sourceValue() {
-        return (JsonNullable<BackgroundCheckOrderSourceValue>) sourceValue;
+    public JsonNullable<CustomFieldDefinitionSourceValue> sourceValue() {
+        return (JsonNullable<CustomFieldDefinitionSourceValue>) sourceValue;
     }
 
     public final static Builder builder() {
         return new Builder();
     }    
 
-    /**
-     * The status of the application.
-     */
-    public BackgroundCheckOrderApplicationStatus withValue(BackgroundCheckOrderValue value) {
+    public CustomFieldDefinitionType withValue(CustomFieldDefinitionValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
-    /**
-     * The status of the application.
-     */
-    public BackgroundCheckOrderApplicationStatus withValue(JsonNullable<? extends BackgroundCheckOrderValue> value) {
+    public CustomFieldDefinitionType withValue(JsonNullable<? extends CustomFieldDefinitionValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
-    /**
-     * The source value of the application status.
-     */
-    public BackgroundCheckOrderApplicationStatus withSourceValue(BackgroundCheckOrderSourceValue sourceValue) {
+    public CustomFieldDefinitionType withSourceValue(CustomFieldDefinitionSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
-    /**
-     * The source value of the application status.
-     */
-    public BackgroundCheckOrderApplicationStatus withSourceValue(JsonNullable<? extends BackgroundCheckOrderSourceValue> sourceValue) {
+    public CustomFieldDefinitionType withSourceValue(JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
         return this;
@@ -112,7 +93,7 @@ public class BackgroundCheckOrderApplicationStatus {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        BackgroundCheckOrderApplicationStatus other = (BackgroundCheckOrderApplicationStatus) o;
+        CustomFieldDefinitionType other = (CustomFieldDefinitionType) o;
         return 
             Objects.deepEquals(this.value, other.value) &&
             Objects.deepEquals(this.sourceValue, other.sourceValue);
@@ -127,59 +108,47 @@ public class BackgroundCheckOrderApplicationStatus {
     
     @Override
     public String toString() {
-        return Utils.toString(BackgroundCheckOrderApplicationStatus.class,
+        return Utils.toString(CustomFieldDefinitionType.class,
                 "value", value,
                 "sourceValue", sourceValue);
     }
     
     public final static class Builder {
  
-        private JsonNullable<? extends BackgroundCheckOrderValue> value = JsonNullable.undefined();
+        private JsonNullable<? extends CustomFieldDefinitionValue> value = JsonNullable.undefined();
  
-        private JsonNullable<? extends BackgroundCheckOrderSourceValue> sourceValue = JsonNullable.undefined();
+        private JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
         }
 
-        /**
-         * The status of the application.
-         */
-        public Builder value(BackgroundCheckOrderValue value) {
+        public Builder value(CustomFieldDefinitionValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
-        /**
-         * The status of the application.
-         */
-        public Builder value(JsonNullable<? extends BackgroundCheckOrderValue> value) {
+        public Builder value(JsonNullable<? extends CustomFieldDefinitionValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
 
-        /**
-         * The source value of the application status.
-         */
-        public Builder sourceValue(BackgroundCheckOrderSourceValue sourceValue) {
+        public Builder sourceValue(CustomFieldDefinitionSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
-        /**
-         * The source value of the application status.
-         */
-        public Builder sourceValue(JsonNullable<? extends BackgroundCheckOrderSourceValue> sourceValue) {
+        public Builder sourceValue(JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;
             return this;
         }
         
-        public BackgroundCheckOrderApplicationStatus build() {
-            return new BackgroundCheckOrderApplicationStatus(
+        public CustomFieldDefinitionType build() {
+            return new CustomFieldDefinitionType(
                 value,
                 sourceValue);
         }
