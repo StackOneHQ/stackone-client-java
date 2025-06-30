@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsUpsertCourseRequestDto;
+import com.stackone.stackone_client_java.operations.LmsUpsertCourseOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class LmsUpsertCourseRequestBuilder {
     private String xAccountId;
     private LmsUpsertCourseRequestDto lmsUpsertCourseRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsUpsertCourse sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsUpsertCourseRequestBuilder(SDKMethodInterfaces.MethodCallLmsUpsertCourse sdk) {
-        this.sdk = sdk;
+    public LmsUpsertCourseRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsUpsertCourseRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class LmsUpsertCourseRequestBuilder {
         return this;
     }
 
+
+    private LmsUpsertCourseRequest buildRequest() {
+
+        LmsUpsertCourseRequest request = new LmsUpsertCourseRequest(xAccountId,
+            lmsUpsertCourseRequestDto);
+
+        return request;
+    }
+
     public LmsUpsertCourseResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.upsertCourse(
-            xAccountId,
-            lmsUpsertCourseRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsUpsertCourseRequest, LmsUpsertCourseResponse> operation
+              = new LmsUpsertCourseOperation(
+                 sdkConfiguration,
+                 options);
+        LmsUpsertCourseRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

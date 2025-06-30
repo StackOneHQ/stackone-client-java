@@ -117,8 +117,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListCoursesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListCoursesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -143,8 +142,8 @@ public class Application {
         sdk.lms().listCourses()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListCoursesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -241,7 +240,7 @@ public class Application {
                             .description("This video acts as learning content for software engineers.")
                             .contentUrl("https://www.youtube.com/watch?v=16873")
                             .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                            .order(1)
+                            .order(1d)
                             .build()))
                     .localizations(List.of(
                         LocalizationModel.builder()
@@ -375,8 +374,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListUserAssignmentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListUserAssignmentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -404,8 +402,8 @@ public class Application {
         sdk.lms().listUserAssignments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListUserAssignmentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -475,7 +473,7 @@ public class Application {
                         Map.entry("other_known_names", "John Doe")))
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .learningObjectExternalReference("learning-content-123")
-                    .progress(40)
+                    .progress(40d)
                     .createdAt("2021-07-21T14:00:00.000Z")
                     .dueDate("2021-07-21T14:00:00.000Z")
                     .status(LmsCreateAssignmentRequestDtoStatus.builder()
@@ -647,7 +645,7 @@ public class Application {
                                     .id("12345")
                                     .name("Sales Techniques")
                                     .build()))
-                            .order(1)
+                            .order(1d)
                             .localizations(List.of(
                                 LocalizationModel.builder()
                                     .title("Software Engineer Lv 1")
@@ -731,8 +729,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListContentQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListContentRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -757,8 +754,8 @@ public class Application {
         sdk.lms().listContent()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListContentResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -845,7 +842,7 @@ public class Application {
                             .id("12345")
                             .name("Sales Techniques")
                             .build()))
-                    .order(1)
+                    .order(1d)
                     .localizations(List.of(
                         LocalizationModel.builder()
                             .title("Software Engineer Lv 1")
@@ -1041,7 +1038,7 @@ public class Application {
                             .id("12345")
                             .name("Sales Techniques")
                             .build()))
-                    .order(1)
+                    .order(1d)
                     .localizations(List.of(
                         LocalizationModel.builder()
                             .title("Software Engineer Lv 1")
@@ -1118,8 +1115,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListUserCompletionsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListUserCompletionsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1136,7 +1132,7 @@ public class Application {
         LmsListUserCompletionsRequest req = LmsListUserCompletionsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
+                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent")
                 .filter(LmsListUserCompletionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -1145,8 +1141,8 @@ public class Application {
         sdk.lms().listUserCompletions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListUserCompletionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1218,6 +1214,7 @@ public class Application {
                     .completedAt("2021-07-21T14:00:00.000Z")
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .learningObjectExternalReference("learning-content-123")
+                    .timeSpent("PT1H30M45S")
                     .build())
                 .call();
 
@@ -1411,8 +1408,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListCompletionsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListCompletionsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1428,7 +1424,7 @@ public class Application {
 
         LmsListCompletionsRequest req = LmsListCompletionsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
+                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent")
                 .filter(LmsListCompletionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -1437,8 +1433,8 @@ public class Application {
         sdk.lms().listCompletions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListCompletionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1628,8 +1624,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListCategoriesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListCategoriesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1654,8 +1649,8 @@ public class Application {
         sdk.lms().listCategories()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListCategoriesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1703,6 +1698,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListUsersRequest;
+import com.stackone.stackone_client_java.models.operations.LmsListUsersResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -1726,8 +1722,8 @@ public class Application {
         sdk.lms().listUsers()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListUsersResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1918,8 +1914,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListSkillsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListSkillsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1944,8 +1939,8 @@ public class Application {
         sdk.lms().listSkills()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListSkillsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1992,8 +1987,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListAssignmentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListAssignmentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2020,8 +2014,8 @@ public class Application {
         sdk.lms().listAssignments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListAssignmentsResponse item) -> {
+                   // handle page
                 });
 
     }

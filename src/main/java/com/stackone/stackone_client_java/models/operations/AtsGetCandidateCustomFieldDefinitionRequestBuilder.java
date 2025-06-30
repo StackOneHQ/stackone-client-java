@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetCandidateCustomFieldDefinitionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetCandidateCustomFieldDefinitionRequestBuilder {
 
     private AtsGetCandidateCustomFieldDefinitionRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetCandidateCustomFieldDefinition sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetCandidateCustomFieldDefinitionRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetCandidateCustomFieldDefinition sdk) {
-        this.sdk = sdk;
+    public AtsGetCandidateCustomFieldDefinitionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetCandidateCustomFieldDefinitionRequestBuilder request(AtsGetCandidateCustomFieldDefinitionRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetCandidateCustomFieldDefinitionRequestBuilder {
 
     public AtsGetCandidateCustomFieldDefinitionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getCandidateCustomFieldDefinition(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetCandidateCustomFieldDefinitionRequest, AtsGetCandidateCustomFieldDefinitionResponse> operation
+              = new AtsGetCandidateCustomFieldDefinitionOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

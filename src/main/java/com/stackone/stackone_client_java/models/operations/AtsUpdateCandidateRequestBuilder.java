@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateCandidateRequestDto;
+import com.stackone.stackone_client_java.operations.AtsUpdateCandidateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsUpdateCandidateRequestBuilder {
     private String id;
     private AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsUpdateCandidate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsUpdateCandidateRequestBuilder(SDKMethodInterfaces.MethodCallAtsUpdateCandidate sdk) {
-        this.sdk = sdk;
+    public AtsUpdateCandidateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsUpdateCandidateRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsUpdateCandidateRequestBuilder {
         return this;
     }
 
+
+    private AtsUpdateCandidateRequest buildRequest() {
+
+        AtsUpdateCandidateRequest request = new AtsUpdateCandidateRequest(xAccountId,
+            id,
+            atsUpdateCandidateRequestDto);
+
+        return request;
+    }
+
     public AtsUpdateCandidateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateCandidate(
-            xAccountId,
-            id,
-            atsUpdateCandidateRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsUpdateCandidateRequest, AtsUpdateCandidateResponse> operation
+              = new AtsUpdateCandidateOperation(
+                 sdkConfiguration,
+                 options);
+        AtsUpdateCandidateRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

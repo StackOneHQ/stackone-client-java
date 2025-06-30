@@ -3,6 +3,8 @@
 
 ## Overview
 
+Retrieve metadata for connectors.
+
 ### Available Operations
 
 * [listConnectorsMeta](#listconnectorsmeta) - List Connectors Meta Information for all providers

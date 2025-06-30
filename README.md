@@ -43,7 +43,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.6.0'
+implementation 'com.stackone:stackone-client-java:0.7.0'
 ```
 
 Maven:
@@ -51,7 +51,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.6.0</version>
+    <version>0.7.0</version>
 </dependency>
 ```
 
@@ -72,9 +72,11 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ### Logging
 A logging framework/facade has not yet been adopted but is under consideration.
 
-For request and response logging (especially json bodies) use:
+For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
 ```java
-SpeakeasyHTTPClient.setDebugLogging(true); // experimental API only (may change without warning)
+SDK.builder()
+    .enableHTTPDebugLogging(true)
+    .build();
 ```
 Example output:
 ```
@@ -88,7 +90,9 @@ Response body:
   "token": "global"
 }
 ```
-WARNING: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+__WARNING__: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+
+__NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
 
 Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End SDK Installation [installation] -->
@@ -104,8 +108,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -132,8 +135,8 @@ public class Application {
         sdk.hris().listEmployees()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -216,7 +219,6 @@ public class Application {
 * [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
 * [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
 * [orderAssessmentsRequest](docs/sdks/ats/README.md#orderassessmentsrequest) - Order Assessments Request
-* [getAssessmentsRequest](docs/sdks/ats/README.md#getassessmentsrequest) - Get Assessments Requests
 * [updateAssessmentsResult](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
 * [getAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
 * [listBackgroundCheckPackages](docs/sdks/ats/README.md#listbackgroundcheckpackages) - List Background Check Packages
@@ -224,9 +226,7 @@ public class Application {
 * [getBackgroundCheckPackage](docs/sdks/ats/README.md#getbackgroundcheckpackage) - Get Background Check Package
 * [deleteBackgroundCheckPackage](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
 * [updateBackgroundCheckPackage](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
-* [listBackgroundCheckRequest](docs/sdks/ats/README.md#listbackgroundcheckrequest) - List Background Check Request
 * [orderBackgroundCheckRequest](docs/sdks/ats/README.md#orderbackgroundcheckrequest) - Order Background Check Request
-* [getBackgroundCheckRequest](docs/sdks/ats/README.md#getbackgroundcheckrequest) - Get Background Check Request
 * [updateBackgroundCheckResult](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 * [getBackgroundCheckResult](docs/sdks/ats/README.md#getbackgroundcheckresult) - Get Background Check Results
 
@@ -407,20 +407,21 @@ public class Application {
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `next` method that can be called to pull down the next group of results. The `next`
-function returns an `Optional` value, which `isPresent` until there are no more pages to be fetched.
+Some of the endpoints in this SDK support pagination. To use pagination, you can make your SDK calls using the `callAsIterable` or `callAsStream` methods.
+For certain operations, you can also use the `callAsStreamUnwrapped` method that streams individual page items directly.
 
-Here's an example of one such pagination call:
+Here's an example depicting the different ways to use pagination:
+
+
 ```java
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.lang.Iterable;
 
 public class Application {
 
@@ -441,12 +442,24 @@ public class Application {
                     .build())
                 .build();
 
-        sdk.hris().listCompanies()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
+        var b = sdk.hris().listCompanies()
+                .request(req);
+
+        // Iterate through all pages using a traditional for-each loop
+        // Each iteration returns a complete page response
+        Iterable<HrisListCompaniesResponse> iterable = b.callAsIterable();
+        for (HrisListCompaniesResponse page : iterable) {
+            // handle page
+        }
+
+        // Stream through all pages and process individual items
+        // callAsStreamUnwrapped() flattens pages into individual items
+
+        // Stream through pages without unwrapping (each item is a complete page)
+        b.callAsStream()
+            .forEach((HrisListCompaniesResponse page) -> {
+                // handle page
+            });
 
     }
 }
@@ -499,6 +512,7 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -573,6 +587,7 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -648,6 +663,7 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -706,6 +722,7 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -769,6 +786,7 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()

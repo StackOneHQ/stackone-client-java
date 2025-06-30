@@ -20,7 +20,7 @@ public enum Include {
     @JsonValue
     private final String value;
 
-    private Include(String value) {
+    Include(String value) {
         this.value = value;
     }
     

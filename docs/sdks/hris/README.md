@@ -79,8 +79,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -105,8 +104,8 @@ public class Application {
         sdk.hris().listCompanies()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListCompaniesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -225,8 +224,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCustomFieldDefinitionsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCustomFieldDefinitionsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -251,8 +249,8 @@ public class Application {
         sdk.hris().listEmployeeCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeCustomFieldDefinitionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -373,8 +371,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -401,8 +398,8 @@ public class Application {
         sdk.hris().listEmployees()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -558,7 +555,7 @@ public class Application {
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
-                            .distributionPercentage(100)
+                            .distributionPercentage(100d)
                             .build()))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -928,8 +925,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffRequestsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffRequestsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -946,7 +942,7 @@ public class Application {
         HrisListEmployeeTimeOffRequestsRequest req = HrisListEmployeeTimeOffRequestsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
                 .filter(HrisListEmployeeTimeOffRequestsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -956,8 +952,8 @@ public class Application {
         sdk.hris().listEmployeeTimeOffRequests()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeTimeOffRequestsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1033,6 +1029,7 @@ public class Application {
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .build())
+                    .comment("Taking a day off for personal reasons")
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
@@ -1106,7 +1103,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
                 .expand("policy")
                 .build();
 
@@ -1260,6 +1257,7 @@ public class Application {
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .build())
+                    .comment("Taking a day off for personal reasons")
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
@@ -1561,8 +1559,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeDocumentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeDocumentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1588,8 +1585,8 @@ public class Application {
         sdk.hris().listEmployeeDocuments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeDocumentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1709,8 +1706,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1735,8 +1731,8 @@ public class Application {
         sdk.hris().listEmployeeCategories()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeCategoriesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1855,8 +1851,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeWorkEligibilityQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeWorkEligibilityRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1882,8 +1877,8 @@ public class Application {
         sdk.hris().listEmployeeWorkEligibility()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeWorkEligibilityResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2199,8 +2194,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffBalancesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffBalancesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2227,8 +2221,8 @@ public class Application {
         sdk.hris().listEmployeeTimeOffBalances()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeTimeOffBalancesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2349,8 +2343,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmploymentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmploymentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2376,8 +2369,8 @@ public class Application {
         sdk.hris().listEmployments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmploymentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2497,8 +2490,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeEmploymentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeEmploymentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2525,8 +2517,8 @@ public class Application {
         sdk.hris().listEmployeeEmployments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeEmploymentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2856,8 +2848,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListLocationsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListLocationsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2882,8 +2873,8 @@ public class Application {
         sdk.hris().listLocations()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListLocationsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3003,6 +2994,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.HrisListTimeOffRequestsRequest;
+import com.stackone.stackone_client_java.models.operations.HrisListTimeOffRequestsResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -3019,7 +3011,7 @@ public class Application {
 
         HrisListTimeOffRequestsRequest req = HrisListTimeOffRequestsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
                 .filter(JsonNullable.of(null))
                 .expand("policy")
                 .build();
@@ -3027,8 +3019,8 @@ public class Application {
         sdk.hris().listTimeOffRequests()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListTimeOffRequestsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3093,7 +3085,7 @@ public class Application {
         HrisGetTimeOffRequestRequest req = HrisGetTimeOffRequestRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
                 .expand("policy")
                 .build();
 
@@ -3150,8 +3142,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffTypesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffTypesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3176,8 +3167,8 @@ public class Application {
         sdk.hris().listTimeOffTypes()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListTimeOffTypesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3298,8 +3289,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeEntriesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeEntriesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3326,8 +3316,8 @@ public class Application {
         sdk.hris().listTimeEntries()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListTimeEntriesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3446,8 +3436,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListBenefitsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListBenefitsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3472,8 +3461,8 @@ public class Application {
         sdk.hris().listBenefits()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListBenefitsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3592,8 +3581,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListGroupsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3618,8 +3606,8 @@ public class Application {
         sdk.hris().listGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3666,8 +3654,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3692,8 +3679,8 @@ public class Application {
         sdk.hris().listDepartmentGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListDepartmentGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3740,8 +3727,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListCostCenterGroupsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListCostCenterGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3766,8 +3752,8 @@ public class Application {
         sdk.hris().listCostCenterGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListCostCenterGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3814,8 +3800,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3840,8 +3825,8 @@ public class Application {
         sdk.hris().listTeamGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListTeamGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4176,8 +4161,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListJobsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListJobsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4202,8 +4186,8 @@ public class Application {
         sdk.hris().listJobs()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListJobsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4322,8 +4306,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeSkillsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeSkillsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4349,8 +4332,8 @@ public class Application {
         sdk.hris().listEmployeeSkills()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeSkillsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4549,8 +4532,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffPoliciesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffPoliciesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4575,8 +4557,8 @@ public class Application {
         sdk.hris().listTimeOffPolicies()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListTimeOffPoliciesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4695,8 +4677,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffPoliciesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffPoliciesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4722,8 +4703,8 @@ public class Application {
         sdk.hris().listEmployeeTimeOffPolicies()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeTimeOffPoliciesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4770,8 +4751,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTasksQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTasksRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4798,8 +4778,8 @@ public class Application {
         sdk.hris().listEmployeeTasks()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeTasksResponse item) -> {
+                   // handle page
                 });
 
     }

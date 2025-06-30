@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetApplicationCustomFieldDefinitionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetApplicationCustomFieldDefinitionRequestBuilder {
 
     private AtsGetApplicationCustomFieldDefinitionRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetApplicationCustomFieldDefinition sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetApplicationCustomFieldDefinitionRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetApplicationCustomFieldDefinition sdk) {
-        this.sdk = sdk;
+    public AtsGetApplicationCustomFieldDefinitionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetApplicationCustomFieldDefinitionRequestBuilder request(AtsGetApplicationCustomFieldDefinitionRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetApplicationCustomFieldDefinitionRequestBuilder {
 
     public AtsGetApplicationCustomFieldDefinitionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getApplicationCustomFieldDefinition(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetApplicationCustomFieldDefinitionRequest, AtsGetApplicationCustomFieldDefinitionResponse> operation
+              = new AtsGetApplicationCustomFieldDefinitionOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

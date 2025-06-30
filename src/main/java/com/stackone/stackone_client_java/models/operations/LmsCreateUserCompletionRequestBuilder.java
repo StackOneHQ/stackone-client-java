@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsCreateCompletionRequestDto;
+import com.stackone.stackone_client_java.operations.LmsCreateUserCompletionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class LmsCreateUserCompletionRequestBuilder {
     private String id;
     private LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsCreateUserCompletion sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsCreateUserCompletionRequestBuilder(SDKMethodInterfaces.MethodCallLmsCreateUserCompletion sdk) {
-        this.sdk = sdk;
+    public LmsCreateUserCompletionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsCreateUserCompletionRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class LmsCreateUserCompletionRequestBuilder {
         return this;
     }
 
+
+    private LmsCreateUserCompletionRequest buildRequest() {
+
+        LmsCreateUserCompletionRequest request = new LmsCreateUserCompletionRequest(xAccountId,
+            id,
+            lmsCreateCompletionRequestDto);
+
+        return request;
+    }
+
     public LmsCreateUserCompletionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createUserCompletion(
-            xAccountId,
-            id,
-            lmsCreateCompletionRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsCreateUserCompletionRequest, LmsCreateUserCompletionResponse> operation
+              = new LmsCreateUserCompletionOperation(
+                 sdkConfiguration,
+                 options);
+        LmsCreateUserCompletionRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

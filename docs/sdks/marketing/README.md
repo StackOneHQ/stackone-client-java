@@ -44,8 +44,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.MarketingListEmailTemplatesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.MarketingListEmailTemplatesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -70,8 +69,8 @@ public class Application {
         sdk.marketing().listEmailTemplates()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((MarketingListEmailTemplatesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -353,6 +352,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.MarketingListInAppTemplatesRequest;
+import com.stackone.stackone_client_java.models.operations.MarketingListInAppTemplatesResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -376,8 +376,8 @@ public class Application {
         sdk.marketing().listInAppTemplates()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((MarketingListInAppTemplatesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -660,8 +660,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.MarketingListSmsTemplatesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.MarketingListSmsTemplatesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -686,8 +685,8 @@ public class Application {
         sdk.marketing().listSmsTemplates()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((MarketingListSmsTemplatesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -972,8 +971,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.MarketingListOmniChannelTemplatesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.MarketingListOmniChannelTemplatesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -998,8 +996,8 @@ public class Application {
         sdk.marketing().listOmniChannelTemplates()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((MarketingListOmniChannelTemplatesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1286,8 +1284,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.MarketingListPushTemplatesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.MarketingListPushTemplatesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1312,8 +1309,8 @@ public class Application {
         sdk.marketing().listPushTemplates()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((MarketingListPushTemplatesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1596,8 +1593,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.MarketingListCampaignsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.MarketingListCampaignsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1622,8 +1618,8 @@ public class Application {
         sdk.marketing().listCampaigns()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((MarketingListCampaignsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1742,8 +1738,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.MarketingListContentBlocksQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.MarketingListContentBlocksRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1768,8 +1763,8 @@ public class Application {
         sdk.marketing().listContentBlocks()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((MarketingListContentBlocksResponse item) -> {
+                   // handle page
                 });
 
     }

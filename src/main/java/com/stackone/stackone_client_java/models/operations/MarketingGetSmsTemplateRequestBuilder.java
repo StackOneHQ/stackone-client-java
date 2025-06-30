@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.MarketingGetSmsTemplateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class MarketingGetSmsTemplateRequestBuilder {
 
     private MarketingGetSmsTemplateRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingGetSmsTemplate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingGetSmsTemplateRequestBuilder(SDKMethodInterfaces.MethodCallMarketingGetSmsTemplate sdk) {
-        this.sdk = sdk;
+    public MarketingGetSmsTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingGetSmsTemplateRequestBuilder request(MarketingGetSmsTemplateRequest request) {
@@ -39,10 +43,14 @@ public class MarketingGetSmsTemplateRequestBuilder {
 
     public MarketingGetSmsTemplateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getSmsTemplate(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingGetSmsTemplateRequest, MarketingGetSmsTemplateResponse> operation
+              = new MarketingGetSmsTemplateOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

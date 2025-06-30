@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.ConnectSessionCreate;
+import com.stackone.stackone_client_java.operations.StackoneCreateConnectSessionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -14,10 +18,10 @@ public class StackoneCreateConnectSessionRequestBuilder {
 
     private ConnectSessionCreate request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneCreateConnectSession sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneCreateConnectSessionRequestBuilder(SDKMethodInterfaces.MethodCallStackoneCreateConnectSession sdk) {
-        this.sdk = sdk;
+    public StackoneCreateConnectSessionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneCreateConnectSessionRequestBuilder request(ConnectSessionCreate request) {
@@ -40,10 +44,14 @@ public class StackoneCreateConnectSessionRequestBuilder {
 
     public StackoneCreateConnectSessionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createConnectSession(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<ConnectSessionCreate, StackoneCreateConnectSessionResponse> operation
+              = new StackoneCreateConnectSessionOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

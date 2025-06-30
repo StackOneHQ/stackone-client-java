@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsCreateCollectionRequestDto;
+import com.stackone.stackone_client_java.operations.LmsUpdateCollectionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class LmsUpdateCollectionRequestBuilder {
     private String id;
     private LmsCreateCollectionRequestDto lmsCreateCollectionRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsUpdateCollection sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsUpdateCollectionRequestBuilder(SDKMethodInterfaces.MethodCallLmsUpdateCollection sdk) {
-        this.sdk = sdk;
+    public LmsUpdateCollectionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsUpdateCollectionRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class LmsUpdateCollectionRequestBuilder {
         return this;
     }
 
+
+    private LmsUpdateCollectionRequest buildRequest() {
+
+        LmsUpdateCollectionRequest request = new LmsUpdateCollectionRequest(xAccountId,
+            id,
+            lmsCreateCollectionRequestDto);
+
+        return request;
+    }
+
     public LmsUpdateCollectionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateCollection(
-            xAccountId,
-            id,
-            lmsCreateCollectionRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsUpdateCollectionRequest, LmsUpdateCollectionResponse> operation
+              = new LmsUpdateCollectionOperation(
+                 sdkConfiguration,
+                 options);
+        LmsUpdateCollectionRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

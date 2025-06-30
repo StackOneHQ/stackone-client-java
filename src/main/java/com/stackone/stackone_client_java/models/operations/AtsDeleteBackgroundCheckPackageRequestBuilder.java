@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsDeleteBackgroundCheckPackageOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -15,10 +19,10 @@ public class AtsDeleteBackgroundCheckPackageRequestBuilder {
     private String xAccountId;
     private String id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsDeleteBackgroundCheckPackage sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsDeleteBackgroundCheckPackageRequestBuilder(SDKMethodInterfaces.MethodCallAtsDeleteBackgroundCheckPackage sdk) {
-        this.sdk = sdk;
+    public AtsDeleteBackgroundCheckPackageRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsDeleteBackgroundCheckPackageRequestBuilder xAccountId(String xAccountId) {
@@ -45,13 +49,26 @@ public class AtsDeleteBackgroundCheckPackageRequestBuilder {
         return this;
     }
 
+
+    private AtsDeleteBackgroundCheckPackageRequest buildRequest() {
+
+        AtsDeleteBackgroundCheckPackageRequest request = new AtsDeleteBackgroundCheckPackageRequest(xAccountId,
+            id);
+
+        return request;
+    }
+
     public AtsDeleteBackgroundCheckPackageResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.deleteBackgroundCheckPackage(
-            xAccountId,
-            id,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
+              = new AtsDeleteBackgroundCheckPackageOperation(
+                 sdkConfiguration,
+                 options);
+        AtsDeleteBackgroundCheckPackageRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

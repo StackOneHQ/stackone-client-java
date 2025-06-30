@@ -9,8 +9,6 @@ import com.stackone.stackone_client_java.models.components.AccountsPaginated;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
-import java.lang.Deprecated;
-import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
@@ -20,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.Callable;
 
 public class CrmListAccountsResponse implements Response {
 
@@ -45,8 +42,6 @@ public class CrmListAccountsResponse implements Response {
     private Optional<? extends AccountsPaginated> accountsPaginated;
 
     private Map<String, List<String>> headers;
-
-    private Callable<Optional<CrmListAccountsResponse>> next = () -> Optional.empty();
 
     @JsonCreator
     public CrmListAccountsResponse(
@@ -111,16 +106,6 @@ public class CrmListAccountsResponse implements Response {
     @JsonIgnore
     public Map<String, List<String>> headers() {
         return headers;
-    }
-
-    public Optional<CrmListAccountsResponse> next() throws Exception {
-        return this.next.call();
-    }
-    
-    // internal use only
-    private CrmListAccountsResponse withNext(Callable<Optional<CrmListAccountsResponse>> next) {
-        this.next = next;
-        return this;
     }
 
     public final static Builder builder() {
@@ -217,7 +202,6 @@ public class CrmListAccountsResponse implements Response {
     }
     
     public final static class Builder {
-        private Callable<Optional<CrmListAccountsResponse>> next;
  
         private String contentType;
  
@@ -283,18 +267,6 @@ public class CrmListAccountsResponse implements Response {
             this.headers = headers;
             return this;
         }
-
-        /**
-         * Internal API. Not for public use. Sets the provider of the next page.
-         *
-         * @deprecated not part of the public API, may be removed without notice
-         */
-        @Deprecated
-        public Builder next(Callable<Optional<CrmListAccountsResponse>> next) {
-            Utils.checkNotNull(next, "next");
-            this.next = next;
-            return this;
-        }
         
         public CrmListAccountsResponse build() {
             return new CrmListAccountsResponse(
@@ -302,8 +274,7 @@ public class CrmListAccountsResponse implements Response {
                 statusCode,
                 rawResponse,
                 accountsPaginated,
-                headers)
-                .withNext(next);
+                headers);
         }
     }
 }

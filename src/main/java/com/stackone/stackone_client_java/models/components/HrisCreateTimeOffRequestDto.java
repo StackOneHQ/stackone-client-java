@@ -84,6 +84,13 @@ public class HrisCreateTimeOffRequestDto {
     private JsonNullable<? extends HrisCreateTimeOffRequestDtoReason> reason;
 
     /**
+     * Allows users to provide additional context or notes for their time off request
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("comment")
+    private JsonNullable<String> comment;
+
+    /**
      * Value to pass through to the provider
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -101,6 +108,7 @@ public class HrisCreateTimeOffRequestDto {
             @JsonProperty("end_half_day") JsonNullable<? extends HrisCreateTimeOffRequestDtoEndHalfDay> endHalfDay,
             @JsonProperty("time_off_policy_id") JsonNullable<String> timeOffPolicyId,
             @JsonProperty("reason") JsonNullable<? extends HrisCreateTimeOffRequestDtoReason> reason,
+            @JsonProperty("comment") JsonNullable<String> comment,
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough) {
         Utils.checkNotNull(approverId, "approverId");
         Utils.checkNotNull(status, "status");
@@ -111,6 +119,7 @@ public class HrisCreateTimeOffRequestDto {
         Utils.checkNotNull(endHalfDay, "endHalfDay");
         Utils.checkNotNull(timeOffPolicyId, "timeOffPolicyId");
         Utils.checkNotNull(reason, "reason");
+        Utils.checkNotNull(comment, "comment");
         Utils.checkNotNull(passthrough, "passthrough");
         this.approverId = approverId;
         this.status = status;
@@ -121,11 +130,12 @@ public class HrisCreateTimeOffRequestDto {
         this.endHalfDay = endHalfDay;
         this.timeOffPolicyId = timeOffPolicyId;
         this.reason = reason;
+        this.comment = comment;
         this.passthrough = passthrough;
     }
     
     public HrisCreateTimeOffRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -203,6 +213,14 @@ public class HrisCreateTimeOffRequestDto {
     @JsonIgnore
     public JsonNullable<HrisCreateTimeOffRequestDtoReason> reason() {
         return (JsonNullable<HrisCreateTimeOffRequestDtoReason>) reason;
+    }
+
+    /**
+     * Allows users to provide additional context or notes for their time off request
+     */
+    @JsonIgnore
+    public JsonNullable<String> comment() {
+        return comment;
     }
 
     /**
@@ -381,6 +399,24 @@ public class HrisCreateTimeOffRequestDto {
     }
 
     /**
+     * Allows users to provide additional context or notes for their time off request
+     */
+    public HrisCreateTimeOffRequestDto withComment(String comment) {
+        Utils.checkNotNull(comment, "comment");
+        this.comment = JsonNullable.of(comment);
+        return this;
+    }
+
+    /**
+     * Allows users to provide additional context or notes for their time off request
+     */
+    public HrisCreateTimeOffRequestDto withComment(JsonNullable<String> comment) {
+        Utils.checkNotNull(comment, "comment");
+        this.comment = comment;
+        return this;
+    }
+
+    /**
      * Value to pass through to the provider
      */
     public HrisCreateTimeOffRequestDto withPassthrough(Map<String, Object> passthrough) {
@@ -418,6 +454,7 @@ public class HrisCreateTimeOffRequestDto {
             Objects.deepEquals(this.endHalfDay, other.endHalfDay) &&
             Objects.deepEquals(this.timeOffPolicyId, other.timeOffPolicyId) &&
             Objects.deepEquals(this.reason, other.reason) &&
+            Objects.deepEquals(this.comment, other.comment) &&
             Objects.deepEquals(this.passthrough, other.passthrough);
     }
     
@@ -433,6 +470,7 @@ public class HrisCreateTimeOffRequestDto {
             endHalfDay,
             timeOffPolicyId,
             reason,
+            comment,
             passthrough);
     }
     
@@ -448,6 +486,7 @@ public class HrisCreateTimeOffRequestDto {
                 "endHalfDay", endHalfDay,
                 "timeOffPolicyId", timeOffPolicyId,
                 "reason", reason,
+                "comment", comment,
                 "passthrough", passthrough);
     }
     
@@ -471,6 +510,8 @@ public class HrisCreateTimeOffRequestDto {
         private JsonNullable<String> timeOffPolicyId = JsonNullable.undefined();
  
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoReason> reason = JsonNullable.undefined();
+ 
+        private JsonNullable<String> comment = JsonNullable.undefined();
  
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
         
@@ -641,6 +682,24 @@ public class HrisCreateTimeOffRequestDto {
         }
 
         /**
+         * Allows users to provide additional context or notes for their time off request
+         */
+        public Builder comment(String comment) {
+            Utils.checkNotNull(comment, "comment");
+            this.comment = JsonNullable.of(comment);
+            return this;
+        }
+
+        /**
+         * Allows users to provide additional context or notes for their time off request
+         */
+        public Builder comment(JsonNullable<String> comment) {
+            Utils.checkNotNull(comment, "comment");
+            this.comment = comment;
+            return this;
+        }
+
+        /**
          * Value to pass through to the provider
          */
         public Builder passthrough(Map<String, Object> passthrough) {
@@ -669,6 +728,7 @@ public class HrisCreateTimeOffRequestDto {
                 endHalfDay,
                 timeOffPolicyId,
                 reason,
+                comment,
                 passthrough);
         }
     }

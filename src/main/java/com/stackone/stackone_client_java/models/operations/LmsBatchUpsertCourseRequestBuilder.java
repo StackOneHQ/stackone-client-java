@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsBatchUpsertCourseRequestDto;
+import com.stackone.stackone_client_java.operations.LmsBatchUpsertCourseOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class LmsBatchUpsertCourseRequestBuilder {
     private String xAccountId;
     private LmsBatchUpsertCourseRequestDto lmsBatchUpsertCourseRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsBatchUpsertCourse sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsBatchUpsertCourseRequestBuilder(SDKMethodInterfaces.MethodCallLmsBatchUpsertCourse sdk) {
-        this.sdk = sdk;
+    public LmsBatchUpsertCourseRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsBatchUpsertCourseRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class LmsBatchUpsertCourseRequestBuilder {
         return this;
     }
 
+
+    private LmsBatchUpsertCourseRequest buildRequest() {
+
+        LmsBatchUpsertCourseRequest request = new LmsBatchUpsertCourseRequest(xAccountId,
+            lmsBatchUpsertCourseRequestDto);
+
+        return request;
+    }
+
     public LmsBatchUpsertCourseResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.batchUpsertCourse(
-            xAccountId,
-            lmsBatchUpsertCourseRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsBatchUpsertCourseRequest, LmsBatchUpsertCourseResponse> operation
+              = new LmsBatchUpsertCourseOperation(
+                 sdkConfiguration,
+                 options);
+        LmsBatchUpsertCourseRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }
