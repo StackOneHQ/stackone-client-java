@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.ConnectSessionAuthenticate;
+import com.stackone.stackone_client_java.operations.StackoneAuthenticateConnectSessionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -14,10 +18,10 @@ public class StackoneAuthenticateConnectSessionRequestBuilder {
 
     private ConnectSessionAuthenticate request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneAuthenticateConnectSession sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneAuthenticateConnectSessionRequestBuilder(SDKMethodInterfaces.MethodCallStackoneAuthenticateConnectSession sdk) {
-        this.sdk = sdk;
+    public StackoneAuthenticateConnectSessionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneAuthenticateConnectSessionRequestBuilder request(ConnectSessionAuthenticate request) {
@@ -40,10 +44,14 @@ public class StackoneAuthenticateConnectSessionRequestBuilder {
 
     public StackoneAuthenticateConnectSessionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.authenticateConnectSession(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<ConnectSessionAuthenticate, StackoneAuthenticateConnectSessionResponse> operation
+              = new StackoneAuthenticateConnectSessionOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

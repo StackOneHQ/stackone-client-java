@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetAssessmentsResultOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetAssessmentsResultRequestBuilder {
 
     private AtsGetAssessmentsResultRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetAssessmentsResult sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetAssessmentsResultRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetAssessmentsResult sdk) {
-        this.sdk = sdk;
+    public AtsGetAssessmentsResultRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetAssessmentsResultRequestBuilder request(AtsGetAssessmentsResultRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetAssessmentsResultRequestBuilder {
 
     public AtsGetAssessmentsResultResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getAssessmentsResult(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetAssessmentsResultRequest, AtsGetAssessmentsResultResponse> operation
+              = new AtsGetAssessmentsResultOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

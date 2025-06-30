@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.CrmCreateContactRequestDto;
+import com.stackone.stackone_client_java.operations.CrmUpdateContactOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class CrmUpdateContactRequestBuilder {
     private String id;
     private CrmCreateContactRequestDto crmCreateContactRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallCrmUpdateContact sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public CrmUpdateContactRequestBuilder(SDKMethodInterfaces.MethodCallCrmUpdateContact sdk) {
-        this.sdk = sdk;
+    public CrmUpdateContactRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CrmUpdateContactRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class CrmUpdateContactRequestBuilder {
         return this;
     }
 
+
+    private CrmUpdateContactRequest buildRequest() {
+
+        CrmUpdateContactRequest request = new CrmUpdateContactRequest(xAccountId,
+            id,
+            crmCreateContactRequestDto);
+
+        return request;
+    }
+
     public CrmUpdateContactResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateContact(
-            xAccountId,
-            id,
-            crmCreateContactRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation
+              = new CrmUpdateContactOperation(
+                 sdkConfiguration,
+                 options);
+        CrmUpdateContactRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

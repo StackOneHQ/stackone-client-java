@@ -9,8 +9,6 @@ import com.stackone.stackone_client_java.models.components.ReferencePaginated;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
-import java.lang.Deprecated;
-import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
@@ -20,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.Callable;
 
 public class HrisListEmployeeCategoriesResponse implements Response {
 
@@ -45,8 +42,6 @@ public class HrisListEmployeeCategoriesResponse implements Response {
     private Optional<? extends ReferencePaginated> referencePaginated;
 
     private Map<String, List<String>> headers;
-
-    private Callable<Optional<HrisListEmployeeCategoriesResponse>> next = () -> Optional.empty();
 
     @JsonCreator
     public HrisListEmployeeCategoriesResponse(
@@ -111,16 +106,6 @@ public class HrisListEmployeeCategoriesResponse implements Response {
     @JsonIgnore
     public Map<String, List<String>> headers() {
         return headers;
-    }
-
-    public Optional<HrisListEmployeeCategoriesResponse> next() throws Exception {
-        return this.next.call();
-    }
-    
-    // internal use only
-    private HrisListEmployeeCategoriesResponse withNext(Callable<Optional<HrisListEmployeeCategoriesResponse>> next) {
-        this.next = next;
-        return this;
     }
 
     public final static Builder builder() {
@@ -217,7 +202,6 @@ public class HrisListEmployeeCategoriesResponse implements Response {
     }
     
     public final static class Builder {
-        private Callable<Optional<HrisListEmployeeCategoriesResponse>> next;
  
         private String contentType;
  
@@ -283,18 +267,6 @@ public class HrisListEmployeeCategoriesResponse implements Response {
             this.headers = headers;
             return this;
         }
-
-        /**
-         * Internal API. Not for public use. Sets the provider of the next page.
-         *
-         * @deprecated not part of the public API, may be removed without notice
-         */
-        @Deprecated
-        public Builder next(Callable<Optional<HrisListEmployeeCategoriesResponse>> next) {
-            Utils.checkNotNull(next, "next");
-            this.next = next;
-            return this;
-        }
         
         public HrisListEmployeeCategoriesResponse build() {
             return new HrisListEmployeeCategoriesResponse(
@@ -302,8 +274,7 @@ public class HrisListEmployeeCategoriesResponse implements Response {
                 statusCode,
                 rawResponse,
                 referencePaginated,
-                headers)
-                .withNext(next);
+                headers);
         }
     }
 }

@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsCreateContentRequestDto;
+import com.stackone.stackone_client_java.operations.LmsUpdateContentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class LmsUpdateContentRequestBuilder {
     private String id;
     private LmsCreateContentRequestDto lmsCreateContentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsUpdateContent sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsUpdateContentRequestBuilder(SDKMethodInterfaces.MethodCallLmsUpdateContent sdk) {
-        this.sdk = sdk;
+    public LmsUpdateContentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsUpdateContentRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class LmsUpdateContentRequestBuilder {
         return this;
     }
 
+
+    private LmsUpdateContentRequest buildRequest() {
+
+        LmsUpdateContentRequest request = new LmsUpdateContentRequest(xAccountId,
+            id,
+            lmsCreateContentRequestDto);
+
+        return request;
+    }
+
     public LmsUpdateContentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateContent(
-            xAccountId,
-            id,
-            lmsCreateContentRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
+              = new LmsUpdateContentOperation(
+                 sdkConfiguration,
+                 options);
+        LmsUpdateContentRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

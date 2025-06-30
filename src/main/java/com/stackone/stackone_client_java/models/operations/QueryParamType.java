@@ -40,7 +40,7 @@ public enum QueryParamType {
     @JsonValue
     private final String value;
 
-    private QueryParamType(String value) {
+    QueryParamType(String value) {
         this.value = value;
     }
     

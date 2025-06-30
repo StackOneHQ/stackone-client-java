@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDto;
+import com.stackone.stackone_client_java.operations.AtsCreateApplicationNoteOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsCreateApplicationNoteRequestBuilder {
     private String id;
     private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsCreateApplicationNote sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsCreateApplicationNoteRequestBuilder(SDKMethodInterfaces.MethodCallAtsCreateApplicationNote sdk) {
-        this.sdk = sdk;
+    public AtsCreateApplicationNoteRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsCreateApplicationNoteRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsCreateApplicationNoteRequestBuilder {
         return this;
     }
 
+
+    private AtsCreateApplicationNoteRequest buildRequest() {
+
+        AtsCreateApplicationNoteRequest request = new AtsCreateApplicationNoteRequest(xAccountId,
+            id,
+            atsCreateNotesRequestDto);
+
+        return request;
+    }
+
     public AtsCreateApplicationNoteResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createApplicationNote(
-            xAccountId,
-            id,
-            atsCreateNotesRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsCreateApplicationNoteRequest, AtsCreateApplicationNoteResponse> operation
+              = new AtsCreateApplicationNoteOperation(
+                 sdkConfiguration,
+                 options);
+        AtsCreateApplicationNoteRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

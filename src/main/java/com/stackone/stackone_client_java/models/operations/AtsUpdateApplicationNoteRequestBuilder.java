@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
+import com.stackone.stackone_client_java.operations.AtsUpdateApplicationNoteOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -18,10 +22,10 @@ public class AtsUpdateApplicationNoteRequestBuilder {
     private String subResourceId;
     private AtsUpdateNotesRequestDto atsUpdateNotesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsUpdateApplicationNote sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsUpdateApplicationNoteRequestBuilder(SDKMethodInterfaces.MethodCallAtsUpdateApplicationNote sdk) {
-        this.sdk = sdk;
+    public AtsUpdateApplicationNoteRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsUpdateApplicationNoteRequestBuilder xAccountId(String xAccountId) {
@@ -60,15 +64,28 @@ public class AtsUpdateApplicationNoteRequestBuilder {
         return this;
     }
 
-    public AtsUpdateApplicationNoteResponse call() throws Exception {
-        Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateApplicationNote(
-            xAccountId,
+
+    private AtsUpdateApplicationNoteRequest buildRequest() {
+
+        AtsUpdateApplicationNoteRequest request = new AtsUpdateApplicationNoteRequest(xAccountId,
             id,
             subResourceId,
-            atsUpdateNotesRequestDto,
-            options);
+            atsUpdateNotesRequestDto);
+
+        return request;
+    }
+
+    public AtsUpdateApplicationNoteResponse call() throws Exception {
+        Optional<Options> options = Optional.of(Options.builder()
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
+              = new AtsUpdateApplicationNoteOperation(
+                 sdkConfiguration,
+                 options);
+        AtsUpdateApplicationNoteRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

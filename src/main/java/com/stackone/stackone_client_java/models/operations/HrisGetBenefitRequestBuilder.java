@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetBenefitOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetBenefitRequestBuilder {
 
     private HrisGetBenefitRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetBenefit sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetBenefitRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetBenefit sdk) {
-        this.sdk = sdk;
+    public HrisGetBenefitRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetBenefitRequestBuilder request(HrisGetBenefitRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetBenefitRequestBuilder {
 
     public HrisGetBenefitResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getBenefit(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetBenefitRequest, HrisGetBenefitResponse> operation
+              = new HrisGetBenefitOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

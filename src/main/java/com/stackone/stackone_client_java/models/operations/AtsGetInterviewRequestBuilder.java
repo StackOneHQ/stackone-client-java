@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetInterviewOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetInterviewRequestBuilder {
 
     private AtsGetInterviewRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetInterview sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetInterviewRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetInterview sdk) {
-        this.sdk = sdk;
+    public AtsGetInterviewRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetInterviewRequestBuilder request(AtsGetInterviewRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetInterviewRequestBuilder {
 
     public AtsGetInterviewResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getInterview(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetInterviewRequest, AtsGetInterviewResponse> operation
+              = new AtsGetInterviewOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

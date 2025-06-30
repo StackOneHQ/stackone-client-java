@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetBackgroundCheckPackageOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetBackgroundCheckPackageRequestBuilder {
 
     private AtsGetBackgroundCheckPackageRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetBackgroundCheckPackage sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetBackgroundCheckPackageRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetBackgroundCheckPackage sdk) {
-        this.sdk = sdk;
+    public AtsGetBackgroundCheckPackageRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetBackgroundCheckPackageRequestBuilder request(AtsGetBackgroundCheckPackageRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetBackgroundCheckPackageRequestBuilder {
 
     public AtsGetBackgroundCheckPackageResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getBackgroundCheckPackage(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetBackgroundCheckPackageRequest, AtsGetBackgroundCheckPackageResponse> operation
+              = new AtsGetBackgroundCheckPackageOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

@@ -25,7 +25,7 @@ public enum ConnectSessionCategories {
     @JsonValue
     private final String value;
 
-    private ConnectSessionCategories(String value) {
+    ConnectSessionCategories(String value) {
         this.value = value;
     }
     

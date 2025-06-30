@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetLocationOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetLocationRequestBuilder {
 
     private AtsGetLocationRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetLocation sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetLocationRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetLocation sdk) {
-        this.sdk = sdk;
+    public AtsGetLocationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetLocationRequestBuilder request(AtsGetLocationRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetLocationRequestBuilder {
 
     public AtsGetLocationResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getLocation(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetLocationRequest, AtsGetLocationResponse> operation
+              = new AtsGetLocationOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

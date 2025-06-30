@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.StackoneGetAccountOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -14,10 +18,10 @@ public class StackoneGetAccountRequestBuilder {
 
     private String id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneGetAccount sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneGetAccountRequestBuilder(SDKMethodInterfaces.MethodCallStackoneGetAccount sdk) {
-        this.sdk = sdk;
+    public StackoneGetAccountRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneGetAccountRequestBuilder id(String id) {
@@ -38,12 +42,25 @@ public class StackoneGetAccountRequestBuilder {
         return this;
     }
 
+
+    private StackoneGetAccountRequest buildRequest() {
+
+        StackoneGetAccountRequest request = new StackoneGetAccountRequest(id);
+
+        return request;
+    }
+
     public StackoneGetAccountResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getAccount(
-            id,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneGetAccountRequest, StackoneGetAccountResponse> operation
+              = new StackoneGetAccountOperation(
+                 sdkConfiguration,
+                 options);
+        StackoneGetAccountRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

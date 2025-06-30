@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.CrmGetContactCustomFieldDefinitionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class CrmGetContactCustomFieldDefinitionRequestBuilder {
 
     private CrmGetContactCustomFieldDefinitionRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallCrmGetContactCustomFieldDefinition sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public CrmGetContactCustomFieldDefinitionRequestBuilder(SDKMethodInterfaces.MethodCallCrmGetContactCustomFieldDefinition sdk) {
-        this.sdk = sdk;
+    public CrmGetContactCustomFieldDefinitionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CrmGetContactCustomFieldDefinitionRequestBuilder request(CrmGetContactCustomFieldDefinitionRequest request) {
@@ -39,10 +43,14 @@ public class CrmGetContactCustomFieldDefinitionRequestBuilder {
 
     public CrmGetContactCustomFieldDefinitionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getContactCustomFieldDefinition(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<CrmGetContactCustomFieldDefinitionRequest, CrmGetContactCustomFieldDefinitionResponse> operation
+              = new CrmGetContactCustomFieldDefinitionOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

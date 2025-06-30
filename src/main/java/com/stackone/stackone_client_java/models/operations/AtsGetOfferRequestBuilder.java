@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetOfferOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetOfferRequestBuilder {
 
     private AtsGetOfferRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetOffer sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetOfferRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetOffer sdk) {
-        this.sdk = sdk;
+    public AtsGetOfferRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetOfferRequestBuilder request(AtsGetOfferRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetOfferRequestBuilder {
 
     public AtsGetOfferResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getOffer(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetOfferRequest, AtsGetOfferResponse> operation
+              = new AtsGetOfferOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

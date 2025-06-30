@@ -9,8 +9,6 @@ import com.stackone.stackone_client_java.models.components.CustomFieldDefinition
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
-import java.lang.Deprecated;
-import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
@@ -20,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.Callable;
 
 public class HrisListEmployeeCustomFieldDefinitionsResponse implements Response {
 
@@ -45,8 +42,6 @@ public class HrisListEmployeeCustomFieldDefinitionsResponse implements Response 
     private Optional<? extends CustomFieldDefinitionsPaginated> customFieldDefinitionsPaginated;
 
     private Map<String, List<String>> headers;
-
-    private Callable<Optional<HrisListEmployeeCustomFieldDefinitionsResponse>> next = () -> Optional.empty();
 
     @JsonCreator
     public HrisListEmployeeCustomFieldDefinitionsResponse(
@@ -111,16 +106,6 @@ public class HrisListEmployeeCustomFieldDefinitionsResponse implements Response 
     @JsonIgnore
     public Map<String, List<String>> headers() {
         return headers;
-    }
-
-    public Optional<HrisListEmployeeCustomFieldDefinitionsResponse> next() throws Exception {
-        return this.next.call();
-    }
-    
-    // internal use only
-    private HrisListEmployeeCustomFieldDefinitionsResponse withNext(Callable<Optional<HrisListEmployeeCustomFieldDefinitionsResponse>> next) {
-        this.next = next;
-        return this;
     }
 
     public final static Builder builder() {
@@ -217,7 +202,6 @@ public class HrisListEmployeeCustomFieldDefinitionsResponse implements Response 
     }
     
     public final static class Builder {
-        private Callable<Optional<HrisListEmployeeCustomFieldDefinitionsResponse>> next;
  
         private String contentType;
  
@@ -283,18 +267,6 @@ public class HrisListEmployeeCustomFieldDefinitionsResponse implements Response 
             this.headers = headers;
             return this;
         }
-
-        /**
-         * Internal API. Not for public use. Sets the provider of the next page.
-         *
-         * @deprecated not part of the public API, may be removed without notice
-         */
-        @Deprecated
-        public Builder next(Callable<Optional<HrisListEmployeeCustomFieldDefinitionsResponse>> next) {
-            Utils.checkNotNull(next, "next");
-            this.next = next;
-            return this;
-        }
         
         public HrisListEmployeeCustomFieldDefinitionsResponse build() {
             return new HrisListEmployeeCustomFieldDefinitionsResponse(
@@ -302,8 +274,7 @@ public class HrisListEmployeeCustomFieldDefinitionsResponse implements Response 
                 statusCode,
                 rawResponse,
                 customFieldDefinitionsPaginated,
-                headers)
-                .withNext(next);
+                headers);
         }
     }
 }

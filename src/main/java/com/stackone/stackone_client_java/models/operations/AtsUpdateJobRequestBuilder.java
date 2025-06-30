@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDto;
+import com.stackone.stackone_client_java.operations.AtsUpdateJobOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsUpdateJobRequestBuilder {
     private String id;
     private AtsUpdateJobRequestDto atsUpdateJobRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsUpdateJob sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsUpdateJobRequestBuilder(SDKMethodInterfaces.MethodCallAtsUpdateJob sdk) {
-        this.sdk = sdk;
+    public AtsUpdateJobRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsUpdateJobRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsUpdateJobRequestBuilder {
         return this;
     }
 
+
+    private AtsUpdateJobRequest buildRequest() {
+
+        AtsUpdateJobRequest request = new AtsUpdateJobRequest(xAccountId,
+            id,
+            atsUpdateJobRequestDto);
+
+        return request;
+    }
+
     public AtsUpdateJobResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateJob(
-            xAccountId,
-            id,
-            atsUpdateJobRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
+              = new AtsUpdateJobOperation(
+                 sdkConfiguration,
+                 options);
+        AtsUpdateJobRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

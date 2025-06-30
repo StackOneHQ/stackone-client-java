@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDto;
+import com.stackone.stackone_client_java.operations.MarketingUpdateContentBlockOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class MarketingUpdateContentBlockRequestBuilder {
     private String id;
     private MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingUpdateContentBlock sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingUpdateContentBlockRequestBuilder(SDKMethodInterfaces.MethodCallMarketingUpdateContentBlock sdk) {
-        this.sdk = sdk;
+    public MarketingUpdateContentBlockRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingUpdateContentBlockRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class MarketingUpdateContentBlockRequestBuilder {
         return this;
     }
 
+
+    private MarketingUpdateContentBlockRequest buildRequest() {
+
+        MarketingUpdateContentBlockRequest request = new MarketingUpdateContentBlockRequest(xAccountId,
+            id,
+            marketingCreateContentBlocksRequestDto);
+
+        return request;
+    }
+
     public MarketingUpdateContentBlockResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateContentBlock(
-            xAccountId,
-            id,
-            marketingCreateContentBlocksRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingUpdateContentBlockRequest, MarketingUpdateContentBlockResponse> operation
+              = new MarketingUpdateContentBlockOperation(
+                 sdkConfiguration,
+                 options);
+        MarketingUpdateContentBlockRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

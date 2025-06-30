@@ -9,8 +9,6 @@ import com.stackone.stackone_client_java.models.components.TimeEntriesPaginated;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
-import java.lang.Deprecated;
-import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
@@ -20,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.Callable;
 
 public class HrisListTimeEntriesResponse implements Response {
 
@@ -45,8 +42,6 @@ public class HrisListTimeEntriesResponse implements Response {
     private Optional<? extends TimeEntriesPaginated> timeEntriesPaginated;
 
     private Map<String, List<String>> headers;
-
-    private Callable<Optional<HrisListTimeEntriesResponse>> next = () -> Optional.empty();
 
     @JsonCreator
     public HrisListTimeEntriesResponse(
@@ -111,16 +106,6 @@ public class HrisListTimeEntriesResponse implements Response {
     @JsonIgnore
     public Map<String, List<String>> headers() {
         return headers;
-    }
-
-    public Optional<HrisListTimeEntriesResponse> next() throws Exception {
-        return this.next.call();
-    }
-    
-    // internal use only
-    private HrisListTimeEntriesResponse withNext(Callable<Optional<HrisListTimeEntriesResponse>> next) {
-        this.next = next;
-        return this;
     }
 
     public final static Builder builder() {
@@ -217,7 +202,6 @@ public class HrisListTimeEntriesResponse implements Response {
     }
     
     public final static class Builder {
-        private Callable<Optional<HrisListTimeEntriesResponse>> next;
  
         private String contentType;
  
@@ -283,18 +267,6 @@ public class HrisListTimeEntriesResponse implements Response {
             this.headers = headers;
             return this;
         }
-
-        /**
-         * Internal API. Not for public use. Sets the provider of the next page.
-         *
-         * @deprecated not part of the public API, may be removed without notice
-         */
-        @Deprecated
-        public Builder next(Callable<Optional<HrisListTimeEntriesResponse>> next) {
-            Utils.checkNotNull(next, "next");
-            this.next = next;
-            return this;
-        }
         
         public HrisListTimeEntriesResponse build() {
             return new HrisListTimeEntriesResponse(
@@ -302,8 +274,7 @@ public class HrisListTimeEntriesResponse implements Response {
                 statusCode,
                 rawResponse,
                 timeEntriesPaginated,
-                headers)
-                .withNext(next);
+                headers);
         }
     }
 }

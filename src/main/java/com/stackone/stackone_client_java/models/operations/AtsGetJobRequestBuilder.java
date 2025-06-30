@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetJobOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetJobRequestBuilder {
 
     private AtsGetJobRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetJob sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetJobRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetJob sdk) {
-        this.sdk = sdk;
+    public AtsGetJobRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetJobRequestBuilder request(AtsGetJobRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetJobRequestBuilder {
 
     public AtsGetJobResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getJob(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetJobRequest, AtsGetJobResponse> operation
+              = new AtsGetJobOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }
