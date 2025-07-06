@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Question {
@@ -261,19 +260,19 @@ public class Question {
         }
         Question other = (Question) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.text, other.text) &&
-            Objects.deepEquals(this.required, other.required) &&
-            Objects.deepEquals(this.multipleChoiceAnswers, other.multipleChoiceAnswers) &&
-            Objects.deepEquals(this.parentQuestion, other.parentQuestion);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.text, other.text) &&
+            Utils.enhancedDeepEquals(this.required, other.required) &&
+            Utils.enhancedDeepEquals(this.multipleChoiceAnswers, other.multipleChoiceAnswers) &&
+            Utils.enhancedDeepEquals(this.parentQuestion, other.parentQuestion);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             name,

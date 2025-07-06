@@ -17,7 +17,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsCreateOfferRequestDto {
@@ -240,18 +239,18 @@ public class AtsCreateOfferRequestDto {
         }
         AtsCreateOfferRequestDto other = (AtsCreateOfferRequestDto) o;
         return 
-            Objects.deepEquals(this.applicationId, other.applicationId) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.offerStatus, other.offerStatus) &&
-            Objects.deepEquals(this.salary, other.salary) &&
-            Objects.deepEquals(this.currency, other.currency) &&
-            Objects.deepEquals(this.offerHistory, other.offerHistory) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.applicationId, other.applicationId) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.offerStatus, other.offerStatus) &&
+            Utils.enhancedDeepEquals(this.salary, other.salary) &&
+            Utils.enhancedDeepEquals(this.currency, other.currency) &&
+            Utils.enhancedDeepEquals(this.offerHistory, other.offerHistory) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             applicationId,
             startDate,
             offerStatus,

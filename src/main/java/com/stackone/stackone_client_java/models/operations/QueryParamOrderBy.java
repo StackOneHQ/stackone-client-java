@@ -23,7 +23,7 @@ public enum QueryParamOrderBy {
     @JsonValue
     private final String value;
 
-    private QueryParamOrderBy(String value) {
+    QueryParamOrderBy(String value) {
         this.value = value;
     }
     

@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisCancelEmployeeTimeOffRequestOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class HrisCancelEmployeeTimeOffRequestRequestBuilder {
     private String id;
     private String subResourceId;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisCancelEmployeeTimeOffRequest sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisCancelEmployeeTimeOffRequestRequestBuilder(SDKMethodInterfaces.MethodCallHrisCancelEmployeeTimeOffRequest sdk) {
-        this.sdk = sdk;
+    public HrisCancelEmployeeTimeOffRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisCancelEmployeeTimeOffRequestRequestBuilder xAccountId(String xAccountId) {
@@ -52,14 +56,27 @@ public class HrisCancelEmployeeTimeOffRequestRequestBuilder {
         return this;
     }
 
+
+    private HrisCancelEmployeeTimeOffRequestRequest buildRequest() {
+
+        HrisCancelEmployeeTimeOffRequestRequest request = new HrisCancelEmployeeTimeOffRequestRequest(xAccountId,
+            id,
+            subResourceId);
+
+        return request;
+    }
+
     public HrisCancelEmployeeTimeOffRequestResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.cancelEmployeeTimeOffRequest(
-            xAccountId,
-            id,
-            subResourceId,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisCancelEmployeeTimeOffRequestRequest, HrisCancelEmployeeTimeOffRequestResponse> operation
+              = new HrisCancelEmployeeTimeOffRequestOperation(
+                 sdkConfiguration,
+                 options);
+        HrisCancelEmployeeTimeOffRequestRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

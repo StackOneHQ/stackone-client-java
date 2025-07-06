@@ -18,7 +18,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 
 @JsonDeserialize(using = HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue._Deserializer.class)
 public class HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue {
@@ -89,12 +88,12 @@ public class HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue {
             return false;
         }
         HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue other = (HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")

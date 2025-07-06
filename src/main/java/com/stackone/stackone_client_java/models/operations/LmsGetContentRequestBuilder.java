@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.LmsGetContentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class LmsGetContentRequestBuilder {
 
     private LmsGetContentRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsGetContent sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsGetContentRequestBuilder(SDKMethodInterfaces.MethodCallLmsGetContent sdk) {
-        this.sdk = sdk;
+    public LmsGetContentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsGetContentRequestBuilder request(LmsGetContentRequest request) {
@@ -39,10 +43,14 @@ public class LmsGetContentRequestBuilder {
 
     public LmsGetContentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getContent(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsGetContentRequest, LmsGetContentResponse> operation
+              = new LmsGetContentOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

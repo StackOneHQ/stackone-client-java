@@ -13,7 +13,6 @@ import java.lang.Deprecated;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class CreateSkillsApiModel {
@@ -236,16 +235,16 @@ public class CreateSkillsApiModel {
         }
         CreateSkillsApiModel other = (CreateSkillsApiModel) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.hierarchy, other.hierarchy) &&
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.level, other.level);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.hierarchy, other.hierarchy) &&
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.level, other.level);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             name,
             hierarchy,

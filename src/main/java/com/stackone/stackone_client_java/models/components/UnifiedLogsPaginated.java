@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class UnifiedLogsPaginated {
@@ -82,13 +81,13 @@ public class UnifiedLogsPaginated {
         }
         UnifiedLogsPaginated other = (UnifiedLogsPaginated) o;
         return 
-            Objects.deepEquals(this.next, other.next) &&
-            Objects.deepEquals(this.data, other.data);
+            Utils.enhancedDeepEquals(this.next, other.next) &&
+            Utils.enhancedDeepEquals(this.data, other.data);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             next,
             data);
     }

@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class IamUpdateUserRequestDto {
@@ -285,19 +284,19 @@ public class IamUpdateUserRequestDto {
         }
         IamUpdateUserRequestDto other = (IamUpdateUserRequestDto) o;
         return 
-            Objects.deepEquals(this.primaryEmailAddress, other.primaryEmailAddress) &&
-            Objects.deepEquals(this.firstName, other.firstName) &&
-            Objects.deepEquals(this.lastName, other.lastName) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.username, other.username) &&
-            Objects.deepEquals(this.isBotUser, other.isBotUser) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.primaryEmailAddress, other.primaryEmailAddress) &&
+            Utils.enhancedDeepEquals(this.firstName, other.firstName) &&
+            Utils.enhancedDeepEquals(this.lastName, other.lastName) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.username, other.username) &&
+            Utils.enhancedDeepEquals(this.isBotUser, other.isBotUser) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             primaryEmailAddress,
             firstName,
             lastName,

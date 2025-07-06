@@ -10,7 +10,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -498,24 +497,24 @@ public class Filter {
         }
         Filter other = (Filter) o;
         return 
-            Objects.deepEquals(this.accountIds, other.accountIds) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.requestIds, other.requestIds) &&
-            Objects.deepEquals(this.httpMethods, other.httpMethods) &&
-            Objects.deepEquals(this.providers, other.providers) &&
-            Objects.deepEquals(this.services, other.services) &&
-            Objects.deepEquals(this.resources, other.resources) &&
-            Objects.deepEquals(this.childResources, other.childResources) &&
-            Objects.deepEquals(this.subResources, other.subResources) &&
-            Objects.deepEquals(this.actions, other.actions) &&
-            Objects.deepEquals(this.statusCodes, other.statusCodes) &&
-            Objects.deepEquals(this.success, other.success);
+            Utils.enhancedDeepEquals(this.accountIds, other.accountIds) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.requestIds, other.requestIds) &&
+            Utils.enhancedDeepEquals(this.httpMethods, other.httpMethods) &&
+            Utils.enhancedDeepEquals(this.providers, other.providers) &&
+            Utils.enhancedDeepEquals(this.services, other.services) &&
+            Utils.enhancedDeepEquals(this.resources, other.resources) &&
+            Utils.enhancedDeepEquals(this.childResources, other.childResources) &&
+            Utils.enhancedDeepEquals(this.subResources, other.subResources) &&
+            Utils.enhancedDeepEquals(this.actions, other.actions) &&
+            Utils.enhancedDeepEquals(this.statusCodes, other.statusCodes) &&
+            Utils.enhancedDeepEquals(this.success, other.success);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             accountIds,
             startDate,
             endDate,

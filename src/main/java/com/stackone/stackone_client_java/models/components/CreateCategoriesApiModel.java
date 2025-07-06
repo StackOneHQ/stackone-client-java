@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class CreateCategoriesApiModel {
@@ -275,17 +274,17 @@ public class CreateCategoriesApiModel {
         }
         CreateCategoriesApiModel other = (CreateCategoriesApiModel) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.hierarchy, other.hierarchy) &&
-            Objects.deepEquals(this.level, other.level) &&
-            Objects.deepEquals(this.language, other.language);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.hierarchy, other.hierarchy) &&
+            Utils.enhancedDeepEquals(this.level, other.level) &&
+            Utils.enhancedDeepEquals(this.language, other.language);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             unifiedCustomFields,
             name,

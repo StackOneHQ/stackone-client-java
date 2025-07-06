@@ -10,7 +10,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 public class AtsUpdateCandidateRequest {
 
@@ -93,14 +92,14 @@ public class AtsUpdateCandidateRequest {
         }
         AtsUpdateCandidateRequest other = (AtsUpdateCandidateRequest) o;
         return 
-            Objects.deepEquals(this.xAccountId, other.xAccountId) &&
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.atsUpdateCandidateRequestDto, other.atsUpdateCandidateRequestDto);
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.atsUpdateCandidateRequestDto, other.atsUpdateCandidateRequestDto);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             xAccountId,
             id,
             atsUpdateCandidateRequestDto);

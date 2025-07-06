@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.CrmGetListOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class CrmGetListRequestBuilder {
 
     private CrmGetListRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallCrmGetList sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public CrmGetListRequestBuilder(SDKMethodInterfaces.MethodCallCrmGetList sdk) {
-        this.sdk = sdk;
+    public CrmGetListRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CrmGetListRequestBuilder request(CrmGetListRequest request) {
@@ -39,10 +43,14 @@ public class CrmGetListRequestBuilder {
 
     public CrmGetListResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getList(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<CrmGetListRequest, CrmGetListResponse> operation
+              = new CrmGetListOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

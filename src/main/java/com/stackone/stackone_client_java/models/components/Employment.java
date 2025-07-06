@@ -19,7 +19,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Employment {
@@ -1178,41 +1177,41 @@ public class Employment {
         }
         Employment other = (Employment) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.jobTitle, other.jobTitle) &&
-            Objects.deepEquals(this.payRate, other.payRate) &&
-            Objects.deepEquals(this.payPeriod, other.payPeriod) &&
-            Objects.deepEquals(this.payFrequency, other.payFrequency) &&
-            Objects.deepEquals(this.payCurrency, other.payCurrency) &&
-            Objects.deepEquals(this.effectiveDate, other.effectiveDate) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.grade, other.grade) &&
-            Objects.deepEquals(this.employmentType, other.employmentType) &&
-            Objects.deepEquals(this.employmentContractType, other.employmentContractType) &&
-            Objects.deepEquals(this.workTime, other.workTime) &&
-            Objects.deepEquals(this.payrollCode, other.payrollCode) &&
-            Objects.deepEquals(this.employeeId, other.employeeId) &&
-            Objects.deepEquals(this.remoteEmployeeId, other.remoteEmployeeId) &&
-            Objects.deepEquals(this.fte, other.fte) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.active, other.active) &&
-            Objects.deepEquals(this.department, other.department) &&
-            Objects.deepEquals(this.costCenter, other.costCenter) &&
-            Objects.deepEquals(this.costCenters, other.costCenters) &&
-            Objects.deepEquals(this.division, other.division) &&
-            Objects.deepEquals(this.job, other.job) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.contractType, other.contractType) &&
-            Objects.deepEquals(this.manager, other.manager);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.jobTitle, other.jobTitle) &&
+            Utils.enhancedDeepEquals(this.payRate, other.payRate) &&
+            Utils.enhancedDeepEquals(this.payPeriod, other.payPeriod) &&
+            Utils.enhancedDeepEquals(this.payFrequency, other.payFrequency) &&
+            Utils.enhancedDeepEquals(this.payCurrency, other.payCurrency) &&
+            Utils.enhancedDeepEquals(this.effectiveDate, other.effectiveDate) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.grade, other.grade) &&
+            Utils.enhancedDeepEquals(this.employmentType, other.employmentType) &&
+            Utils.enhancedDeepEquals(this.employmentContractType, other.employmentContractType) &&
+            Utils.enhancedDeepEquals(this.workTime, other.workTime) &&
+            Utils.enhancedDeepEquals(this.payrollCode, other.payrollCode) &&
+            Utils.enhancedDeepEquals(this.employeeId, other.employeeId) &&
+            Utils.enhancedDeepEquals(this.remoteEmployeeId, other.remoteEmployeeId) &&
+            Utils.enhancedDeepEquals(this.fte, other.fte) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.active, other.active) &&
+            Utils.enhancedDeepEquals(this.department, other.department) &&
+            Utils.enhancedDeepEquals(this.costCenter, other.costCenter) &&
+            Utils.enhancedDeepEquals(this.costCenters, other.costCenters) &&
+            Utils.enhancedDeepEquals(this.division, other.division) &&
+            Utils.enhancedDeepEquals(this.job, other.job) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.contractType, other.contractType) &&
+            Utils.enhancedDeepEquals(this.manager, other.manager);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,

@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -92,13 +91,13 @@ public class HrisUpdateEmployeeRequestDtoAvatar {
         }
         HrisUpdateEmployeeRequestDtoAvatar other = (HrisUpdateEmployeeRequestDtoAvatar) o;
         return 
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.base64, other.base64);
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.base64, other.base64);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             url,
             base64);
     }

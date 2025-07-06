@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequestOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -18,10 +22,10 @@ public class HrisUpdateEmployeeTimeOffRequestRequestBuilder {
     private String subResourceId;
     private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisUpdateEmployeeTimeOffRequest sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisUpdateEmployeeTimeOffRequestRequestBuilder(SDKMethodInterfaces.MethodCallHrisUpdateEmployeeTimeOffRequest sdk) {
-        this.sdk = sdk;
+    public HrisUpdateEmployeeTimeOffRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisUpdateEmployeeTimeOffRequestRequestBuilder xAccountId(String xAccountId) {
@@ -60,15 +64,28 @@ public class HrisUpdateEmployeeTimeOffRequestRequestBuilder {
         return this;
     }
 
-    public HrisUpdateEmployeeTimeOffRequestResponse call() throws Exception {
-        Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateEmployeeTimeOffRequest(
-            xAccountId,
+
+    private HrisUpdateEmployeeTimeOffRequestRequest buildRequest() {
+
+        HrisUpdateEmployeeTimeOffRequestRequest request = new HrisUpdateEmployeeTimeOffRequestRequest(xAccountId,
             id,
             subResourceId,
-            hrisCreateTimeOffRequestDto,
-            options);
+            hrisCreateTimeOffRequestDto);
+
+        return request;
+    }
+
+    public HrisUpdateEmployeeTimeOffRequestResponse call() throws Exception {
+        Optional<Options> options = Optional.of(Options.builder()
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
+              = new HrisUpdateEmployeeTimeOffRequestOperation(
+                 sdkConfiguration,
+                 options);
+        HrisUpdateEmployeeTimeOffRequestRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

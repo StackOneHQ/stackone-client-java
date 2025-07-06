@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class MessageContentPushMessageContents {
@@ -111,14 +110,14 @@ public class MessageContentPushMessageContents {
         }
         MessageContentPushMessageContents other = (MessageContentPushMessageContents) o;
         return 
-            Objects.deepEquals(this.title, other.title) &&
-            Objects.deepEquals(this.subtitle, other.subtitle) &&
-            Objects.deepEquals(this.body, other.body);
+            Utils.enhancedDeepEquals(this.title, other.title) &&
+            Utils.enhancedDeepEquals(this.subtitle, other.subtitle) &&
+            Utils.enhancedDeepEquals(this.body, other.body);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             title,
             subtitle,
             body);

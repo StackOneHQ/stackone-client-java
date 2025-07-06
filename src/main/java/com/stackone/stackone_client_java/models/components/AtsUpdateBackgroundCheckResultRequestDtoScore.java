@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsUpdateBackgroundCheckResultRequestDtoScore {
@@ -183,15 +182,15 @@ public class AtsUpdateBackgroundCheckResultRequestDtoScore {
         }
         AtsUpdateBackgroundCheckResultRequestDtoScore other = (AtsUpdateBackgroundCheckResultRequestDtoScore) o;
         return 
-            Objects.deepEquals(this.label, other.label) &&
-            Objects.deepEquals(this.value, other.value) &&
-            Objects.deepEquals(this.min, other.min) &&
-            Objects.deepEquals(this.max, other.max);
+            Utils.enhancedDeepEquals(this.label, other.label) &&
+            Utils.enhancedDeepEquals(this.value, other.value) &&
+            Utils.enhancedDeepEquals(this.min, other.min) &&
+            Utils.enhancedDeepEquals(this.max, other.max);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             label,
             value,
             min,

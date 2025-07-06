@@ -11,7 +11,6 @@ import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 
 public class UpdateResult {
 
@@ -85,14 +84,14 @@ public class UpdateResult {
         }
         UpdateResult other = (UpdateResult) o;
         return 
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.message, other.message) &&
-            Objects.deepEquals(this.timestamp, other.timestamp);
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.message, other.message) &&
+            Utils.enhancedDeepEquals(this.timestamp, other.timestamp);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             statusCode,
             message,
             timestamp);

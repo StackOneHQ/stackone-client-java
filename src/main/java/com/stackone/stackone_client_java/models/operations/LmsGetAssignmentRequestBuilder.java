@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.LmsGetAssignmentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class LmsGetAssignmentRequestBuilder {
 
     private LmsGetAssignmentRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsGetAssignment sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsGetAssignmentRequestBuilder(SDKMethodInterfaces.MethodCallLmsGetAssignment sdk) {
-        this.sdk = sdk;
+    public LmsGetAssignmentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsGetAssignmentRequestBuilder request(LmsGetAssignmentRequest request) {
@@ -39,10 +43,14 @@ public class LmsGetAssignmentRequestBuilder {
 
     public LmsGetAssignmentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getAssignment(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsGetAssignmentRequest, LmsGetAssignmentResponse> operation
+              = new LmsGetAssignmentOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

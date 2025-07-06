@@ -16,7 +16,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Assignment {
@@ -695,28 +694,28 @@ public class Assignment {
         }
         Assignment other = (Assignment) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.externalReference, other.externalReference) &&
-            Objects.deepEquals(this.learningObjectId, other.learningObjectId) &&
-            Objects.deepEquals(this.remoteLearningObjectId, other.remoteLearningObjectId) &&
-            Objects.deepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
-            Objects.deepEquals(this.progress, other.progress) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.dueDate, other.dueDate) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.learningObjectType, other.learningObjectType) &&
-            Objects.deepEquals(this.userId, other.userId) &&
-            Objects.deepEquals(this.remoteUserId, other.remoteUserId) &&
-            Objects.deepEquals(this.courseId, other.courseId) &&
-            Objects.deepEquals(this.remoteCourseId, other.remoteCourseId);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
+            Utils.enhancedDeepEquals(this.learningObjectId, other.learningObjectId) &&
+            Utils.enhancedDeepEquals(this.remoteLearningObjectId, other.remoteLearningObjectId) &&
+            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
+            Utils.enhancedDeepEquals(this.progress, other.progress) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.dueDate, other.dueDate) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.learningObjectType, other.learningObjectType) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId) &&
+            Utils.enhancedDeepEquals(this.remoteUserId, other.remoteUserId) &&
+            Utils.enhancedDeepEquals(this.courseId, other.courseId) &&
+            Utils.enhancedDeepEquals(this.remoteCourseId, other.remoteCourseId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,

@@ -21,7 +21,7 @@ public enum LmsListAssignmentsQueryParamStatus {
     @JsonValue
     private final String value;
 
-    private LmsListAssignmentsQueryParamStatus(String value) {
+    LmsListAssignmentsQueryParamStatus(String value) {
         this.value = value;
     }
     

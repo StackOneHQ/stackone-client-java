@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class HrisCreateWorkEligibilityRequestDto {
@@ -263,19 +262,19 @@ public class HrisCreateWorkEligibilityRequestDto {
         }
         HrisCreateWorkEligibilityRequestDto other = (HrisCreateWorkEligibilityRequestDto) o;
         return 
-            Objects.deepEquals(this.document, other.document) &&
-            Objects.deepEquals(this.issuedBy, other.issuedBy) &&
-            Objects.deepEquals(this.number, other.number) &&
-            Objects.deepEquals(this.subType, other.subType) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.validFrom, other.validFrom) &&
-            Objects.deepEquals(this.validTo, other.validTo) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.document, other.document) &&
+            Utils.enhancedDeepEquals(this.issuedBy, other.issuedBy) &&
+            Utils.enhancedDeepEquals(this.number, other.number) &&
+            Utils.enhancedDeepEquals(this.subType, other.subType) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.validFrom, other.validFrom) &&
+            Utils.enhancedDeepEquals(this.validTo, other.validTo) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             document,
             issuedBy,
             number,

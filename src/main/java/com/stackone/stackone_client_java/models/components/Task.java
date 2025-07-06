@@ -14,7 +14,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Task {
@@ -731,30 +730,30 @@ public class Task {
         }
         Task other = (Task) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.employeeId, other.employeeId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.dueDate, other.dueDate) &&
-            Objects.deepEquals(this.completionDate, other.completionDate) &&
-            Objects.deepEquals(this.assignedByEmployeeId, other.assignedByEmployeeId) &&
-            Objects.deepEquals(this.assignedByEmployeeName, other.assignedByEmployeeName) &&
-            Objects.deepEquals(this.linkToTask, other.linkToTask) &&
-            Objects.deepEquals(this.extractedLinks, other.extractedLinks) &&
-            Objects.deepEquals(this.nextTaskId, other.nextTaskId) &&
-            Objects.deepEquals(this.parentProcessName, other.parentProcessName) &&
-            Objects.deepEquals(this.comments, other.comments) &&
-            Objects.deepEquals(this.attachments, other.attachments) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.employeeId, other.employeeId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.dueDate, other.dueDate) &&
+            Utils.enhancedDeepEquals(this.completionDate, other.completionDate) &&
+            Utils.enhancedDeepEquals(this.assignedByEmployeeId, other.assignedByEmployeeId) &&
+            Utils.enhancedDeepEquals(this.assignedByEmployeeName, other.assignedByEmployeeName) &&
+            Utils.enhancedDeepEquals(this.linkToTask, other.linkToTask) &&
+            Utils.enhancedDeepEquals(this.extractedLinks, other.extractedLinks) &&
+            Utils.enhancedDeepEquals(this.nextTaskId, other.nextTaskId) &&
+            Utils.enhancedDeepEquals(this.parentProcessName, other.parentProcessName) &&
+            Utils.enhancedDeepEquals(this.comments, other.comments) &&
+            Utils.enhancedDeepEquals(this.attachments, other.attachments) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             employeeId,

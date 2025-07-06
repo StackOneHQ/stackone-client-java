@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsUpsertContentRequestDto;
+import com.stackone.stackone_client_java.operations.LmsUpsertContentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class LmsUpsertContentRequestBuilder {
     private String xAccountId;
     private LmsUpsertContentRequestDto lmsUpsertContentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsUpsertContent sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsUpsertContentRequestBuilder(SDKMethodInterfaces.MethodCallLmsUpsertContent sdk) {
-        this.sdk = sdk;
+    public LmsUpsertContentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsUpsertContentRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class LmsUpsertContentRequestBuilder {
         return this;
     }
 
+
+    private LmsUpsertContentRequest buildRequest() {
+
+        LmsUpsertContentRequest request = new LmsUpsertContentRequest(xAccountId,
+            lmsUpsertContentRequestDto);
+
+        return request;
+    }
+
     public LmsUpsertContentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.upsertContent(
-            xAccountId,
-            lmsUpsertContentRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
+              = new LmsUpsertContentOperation(
+                 sdkConfiguration,
+                 options);
+        LmsUpsertContentRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

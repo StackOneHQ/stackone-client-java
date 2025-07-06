@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetLocationOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetLocationRequestBuilder {
 
     private HrisGetLocationRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetLocation sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetLocationRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetLocation sdk) {
-        this.sdk = sdk;
+    public HrisGetLocationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetLocationRequestBuilder request(HrisGetLocationRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetLocationRequestBuilder {
 
     public HrisGetLocationResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getLocation(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetLocationRequest, HrisGetLocationResponse> operation
+              = new HrisGetLocationOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

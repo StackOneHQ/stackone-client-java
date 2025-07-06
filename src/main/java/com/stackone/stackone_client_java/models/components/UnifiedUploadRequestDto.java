@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class UnifiedUploadRequestDto {
@@ -295,18 +294,18 @@ public class UnifiedUploadRequestDto {
         }
         UnifiedUploadRequestDto other = (UnifiedUploadRequestDto) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.fileFormat, other.fileFormat) &&
-            Objects.deepEquals(this.content, other.content) &&
-            Objects.deepEquals(this.categoryId, other.categoryId) &&
-            Objects.deepEquals(this.path, other.path) &&
-            Objects.deepEquals(this.category, other.category) &&
-            Objects.deepEquals(this.confidential, other.confidential);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.fileFormat, other.fileFormat) &&
+            Utils.enhancedDeepEquals(this.content, other.content) &&
+            Utils.enhancedDeepEquals(this.categoryId, other.categoryId) &&
+            Utils.enhancedDeepEquals(this.path, other.path) &&
+            Utils.enhancedDeepEquals(this.category, other.category) &&
+            Utils.enhancedDeepEquals(this.confidential, other.confidential);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             name,
             fileFormat,
             content,

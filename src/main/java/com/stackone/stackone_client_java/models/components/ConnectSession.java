@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ConnectSession {
@@ -72,6 +71,13 @@ public class ConnectSession {
     @JsonProperty("external_trigger_token")
     private JsonNullable<String> externalTriggerToken;
 
+    /**
+     * The connect session account type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends ConnectSessionType> type;
+
     @JsonCreator
     public ConnectSession(
             @JsonProperty("id") double id,
@@ -86,7 +92,8 @@ public class ConnectSession {
             @JsonProperty("label") JsonNullable<String> label,
             @JsonProperty("created_at") OffsetDateTime createdAt,
             @JsonProperty("metadata") JsonNullable<? extends ConnectSessionMetadata> metadata,
-            @JsonProperty("external_trigger_token") JsonNullable<String> externalTriggerToken) {
+            @JsonProperty("external_trigger_token") JsonNullable<String> externalTriggerToken,
+            @JsonProperty("type") JsonNullable<? extends ConnectSessionType> type) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(organizationId, "organizationId");
         Utils.checkNotNull(projectId, "projectId");
@@ -100,6 +107,7 @@ public class ConnectSession {
         Utils.checkNotNull(createdAt, "createdAt");
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(externalTriggerToken, "externalTriggerToken");
+        Utils.checkNotNull(type, "type");
         this.id = id;
         this.organizationId = organizationId;
         this.projectId = projectId;
@@ -113,6 +121,7 @@ public class ConnectSession {
         this.createdAt = createdAt;
         this.metadata = metadata;
         this.externalTriggerToken = externalTriggerToken;
+        this.type = type;
     }
     
     public ConnectSession(
@@ -122,7 +131,7 @@ public class ConnectSession {
             String originOwnerId,
             String originOwnerName,
             OffsetDateTime createdAt) {
-        this(id, organizationId, projectId, JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, JsonNullable.undefined(), JsonNullable.undefined());
+        this(id, organizationId, projectId, JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -196,6 +205,15 @@ public class ConnectSession {
     @JsonIgnore
     public JsonNullable<String> externalTriggerToken() {
         return externalTriggerToken;
+    }
+
+    /**
+     * The connect session account type
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<ConnectSessionType> type() {
+        return (JsonNullable<ConnectSessionType>) type;
     }
 
     public final static Builder builder() {
@@ -334,6 +352,24 @@ public class ConnectSession {
         return this;
     }
 
+    /**
+     * The connect session account type
+     */
+    public ConnectSession withType(ConnectSessionType type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The connect session account type
+     */
+    public ConnectSession withType(JsonNullable<? extends ConnectSessionType> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -345,24 +381,25 @@ public class ConnectSession {
         }
         ConnectSession other = (ConnectSession) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.categories, other.categories) &&
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.originOwnerId, other.originOwnerId) &&
-            Objects.deepEquals(this.originOwnerName, other.originOwnerName) &&
-            Objects.deepEquals(this.originUsername, other.originUsername) &&
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.label, other.label) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.metadata, other.metadata) &&
-            Objects.deepEquals(this.externalTriggerToken, other.externalTriggerToken);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.categories, other.categories) &&
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.originOwnerId, other.originOwnerId) &&
+            Utils.enhancedDeepEquals(this.originOwnerName, other.originOwnerName) &&
+            Utils.enhancedDeepEquals(this.originUsername, other.originUsername) &&
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.label, other.label) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.metadata, other.metadata) &&
+            Utils.enhancedDeepEquals(this.externalTriggerToken, other.externalTriggerToken) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             organizationId,
             projectId,
@@ -375,7 +412,8 @@ public class ConnectSession {
             label,
             createdAt,
             metadata,
-            externalTriggerToken);
+            externalTriggerToken,
+            type);
     }
     
     @Override
@@ -393,7 +431,8 @@ public class ConnectSession {
                 "label", label,
                 "createdAt", createdAt,
                 "metadata", metadata,
-                "externalTriggerToken", externalTriggerToken);
+                "externalTriggerToken", externalTriggerToken,
+                "type", type);
     }
     
     public final static class Builder {
@@ -423,6 +462,8 @@ public class ConnectSession {
         private JsonNullable<? extends ConnectSessionMetadata> metadata = JsonNullable.undefined();
  
         private JsonNullable<String> externalTriggerToken = JsonNullable.undefined();
+ 
+        private JsonNullable<? extends ConnectSessionType> type = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -559,6 +600,24 @@ public class ConnectSession {
             this.externalTriggerToken = externalTriggerToken;
             return this;
         }
+
+        /**
+         * The connect session account type
+         */
+        public Builder type(ConnectSessionType type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The connect session account type
+         */
+        public Builder type(JsonNullable<? extends ConnectSessionType> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
         
         public ConnectSession build() {
             return new ConnectSession(
@@ -574,7 +633,8 @@ public class ConnectSession {
                 label,
                 createdAt,
                 metadata,
-                externalTriggerToken);
+                externalTriggerToken,
+                type);
         }
     }
 }

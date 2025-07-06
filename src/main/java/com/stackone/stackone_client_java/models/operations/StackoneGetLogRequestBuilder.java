@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.StackoneGetLogOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class StackoneGetLogRequestBuilder {
     private String id;
     private JsonNullable<? extends Include> include = JsonNullable.undefined();
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneGetLog sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneGetLogRequestBuilder(SDKMethodInterfaces.MethodCallStackoneGetLog sdk) {
-        this.sdk = sdk;
+    public StackoneGetLogRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneGetLogRequestBuilder id(String id) {
@@ -52,13 +56,26 @@ public class StackoneGetLogRequestBuilder {
         return this;
     }
 
+
+    private StackoneGetLogRequest buildRequest() {
+
+        StackoneGetLogRequest request = new StackoneGetLogRequest(id,
+            include);
+
+        return request;
+    }
+
     public StackoneGetLogResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getLog(
-            id,
-            include,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneGetLogRequest, StackoneGetLogResponse> operation
+              = new StackoneGetLogOperation(
+                 sdkConfiguration,
+                 options);
+        StackoneGetLogRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

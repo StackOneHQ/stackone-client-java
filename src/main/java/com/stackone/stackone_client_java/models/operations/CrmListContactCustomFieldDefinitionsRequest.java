@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class CrmListContactCustomFieldDefinitionsRequest {
@@ -375,20 +374,20 @@ public class CrmListContactCustomFieldDefinitionsRequest {
         }
         CrmListContactCustomFieldDefinitionsRequest other = (CrmListContactCustomFieldDefinitionsRequest) o;
         return 
-            Objects.deepEquals(this.xAccountId, other.xAccountId) &&
-            Objects.deepEquals(this.raw, other.raw) &&
-            Objects.deepEquals(this.proxy, other.proxy) &&
-            Objects.deepEquals(this.fields, other.fields) &&
-            Objects.deepEquals(this.filter, other.filter) &&
-            Objects.deepEquals(this.page, other.page) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.next, other.next) &&
-            Objects.deepEquals(this.updatedAfter, other.updatedAfter);
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.raw, other.raw) &&
+            Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
+            Utils.enhancedDeepEquals(this.fields, other.fields) &&
+            Utils.enhancedDeepEquals(this.filter, other.filter) &&
+            Utils.enhancedDeepEquals(this.page, other.page) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
+            Utils.enhancedDeepEquals(this.next, other.next) &&
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             xAccountId,
             raw,
             proxy,

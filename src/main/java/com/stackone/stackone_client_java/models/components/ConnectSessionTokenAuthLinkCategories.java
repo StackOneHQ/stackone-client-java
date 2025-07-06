@@ -20,12 +20,13 @@ public enum ConnectSessionTokenAuthLinkCategories {
     DOCUMENTS("documents"),
     TICKETING("ticketing"),
     SCREENING("screening"),
-    MESSAGING("messaging");
+    MESSAGING("messaging"),
+    ACCOUNTING("accounting");
 
     @JsonValue
     private final String value;
 
-    private ConnectSessionTokenAuthLinkCategories(String value) {
+    ConnectSessionTokenAuthLinkCategories(String value) {
         this.value = value;
     }
     

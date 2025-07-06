@@ -10,7 +10,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 public class MarketingCreateEmailTemplateRequest {
 
@@ -76,13 +75,13 @@ public class MarketingCreateEmailTemplateRequest {
         }
         MarketingCreateEmailTemplateRequest other = (MarketingCreateEmailTemplateRequest) o;
         return 
-            Objects.deepEquals(this.xAccountId, other.xAccountId) &&
-            Objects.deepEquals(this.marketingCreateEmailTemplateRequestDto, other.marketingCreateEmailTemplateRequestDto);
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.marketingCreateEmailTemplateRequestDto, other.marketingCreateEmailTemplateRequestDto);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             xAccountId,
             marketingCreateEmailTemplateRequestDto);
     }

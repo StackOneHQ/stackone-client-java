@@ -9,14 +9,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Category {
@@ -54,7 +52,7 @@ public class Category {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<Boolean> active;
+    private JsonNullable<? extends CategoryActive> active;
 
     /**
      * The hierarchal level of the category
@@ -86,7 +84,7 @@ public class Category {
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
             @JsonProperty("name") JsonNullable<String> name,
-            @JsonProperty("active") JsonNullable<Boolean> active,
+            @JsonProperty("active") JsonNullable<? extends CategoryActive> active,
             @JsonProperty("hierarchy") JsonNullable<? extends Hierarchy> hierarchy,
             @JsonProperty("level") JsonNullable<? extends Level> level,
             @JsonProperty("language") JsonNullable<? extends CategoryLanguage> language) {
@@ -148,9 +146,10 @@ public class Category {
     /**
      * Whether the category is active and therefore available for use
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> active() {
-        return active;
+    public JsonNullable<CategoryActive> active() {
+        return (JsonNullable<CategoryActive>) active;
     }
 
     /**
@@ -262,7 +261,7 @@ public class Category {
     /**
      * Whether the category is active and therefore available for use
      */
-    public Category withActive(boolean active) {
+    public Category withActive(CategoryActive active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -271,7 +270,7 @@ public class Category {
     /**
      * Whether the category is active and therefore available for use
      */
-    public Category withActive(JsonNullable<Boolean> active) {
+    public Category withActive(JsonNullable<? extends CategoryActive> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -348,19 +347,19 @@ public class Category {
         }
         Category other = (Category) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.active, other.active) &&
-            Objects.deepEquals(this.hierarchy, other.hierarchy) &&
-            Objects.deepEquals(this.level, other.level) &&
-            Objects.deepEquals(this.language, other.language);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.active, other.active) &&
+            Utils.enhancedDeepEquals(this.hierarchy, other.hierarchy) &&
+            Utils.enhancedDeepEquals(this.level, other.level) &&
+            Utils.enhancedDeepEquals(this.language, other.language);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,
@@ -394,7 +393,7 @@ public class Category {
  
         private JsonNullable<String> name = JsonNullable.undefined();
  
-        private JsonNullable<Boolean> active = JsonNullable.undefined();
+        private JsonNullable<? extends CategoryActive> active = JsonNullable.undefined();
  
         private JsonNullable<? extends Hierarchy> hierarchy = JsonNullable.undefined();
  
@@ -482,7 +481,7 @@ public class Category {
         /**
          * Whether the category is active and therefore available for use
          */
-        public Builder active(boolean active) {
+        public Builder active(CategoryActive active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -491,7 +490,7 @@ public class Category {
         /**
          * Whether the category is active and therefore available for use
          */
-        public Builder active(JsonNullable<Boolean> active) {
+        public Builder active(JsonNullable<? extends CategoryActive> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;

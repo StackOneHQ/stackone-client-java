@@ -9,7 +9,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class StackoneListConnectorsMetaRequest {
@@ -72,12 +71,12 @@ public class StackoneListConnectorsMetaRequest {
         }
         StackoneListConnectorsMetaRequest other = (StackoneListConnectorsMetaRequest) o;
         return 
-            Objects.deepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.include, other.include);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             include);
     }
     

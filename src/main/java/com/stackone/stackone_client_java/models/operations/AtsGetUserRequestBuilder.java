@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetUserOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetUserRequestBuilder {
 
     private AtsGetUserRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetUser sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetUserRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetUser sdk) {
-        this.sdk = sdk;
+    public AtsGetUserRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetUserRequestBuilder request(AtsGetUserRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetUserRequestBuilder {
 
     public AtsGetUserResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getUser(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetUserRequest, AtsGetUserResponse> operation
+              = new AtsGetUserOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

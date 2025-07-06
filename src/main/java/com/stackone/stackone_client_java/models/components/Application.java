@@ -17,7 +17,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -1020,39 +1019,39 @@ public class Application {
         }
         Application other = (Application) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.candidateId, other.candidateId) &&
-            Objects.deepEquals(this.remoteCandidateId, other.remoteCandidateId) &&
-            Objects.deepEquals(this.jobId, other.jobId) &&
-            Objects.deepEquals(this.remoteJobId, other.remoteJobId) &&
-            Objects.deepEquals(this.interviewStage, other.interviewStage) &&
-            Objects.deepEquals(this.interviewStageId, other.interviewStageId) &&
-            Objects.deepEquals(this.remoteInterviewStageId, other.remoteInterviewStageId) &&
-            Objects.deepEquals(this.rejectedReasons, other.rejectedReasons) &&
-            Objects.deepEquals(this.rejectedReasonIds, other.rejectedReasonIds) &&
-            Objects.deepEquals(this.remoteRejectedReasonIds, other.remoteRejectedReasonIds) &&
-            Objects.deepEquals(this.rejectedAt, other.rejectedAt) &&
-            Objects.deepEquals(this.locationId, other.locationId) &&
-            Objects.deepEquals(this.remoteLocationId, other.remoteLocationId) &&
-            Objects.deepEquals(this.locationIds, other.locationIds) &&
-            Objects.deepEquals(this.remoteLocationIds, other.remoteLocationIds) &&
-            Objects.deepEquals(this.applicationStatus, other.applicationStatus) &&
-            Objects.deepEquals(this.questionnaires, other.questionnaires) &&
-            Objects.deepEquals(this.candidate, other.candidate) &&
-            Objects.deepEquals(this.attachments, other.attachments) &&
-            Objects.deepEquals(this.documents, other.documents) &&
-            Objects.deepEquals(this.resultLinks, other.resultLinks) &&
-            Objects.deepEquals(this.source, other.source) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt) &&
-            Objects.deepEquals(this.customFields, other.customFields);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.candidateId, other.candidateId) &&
+            Utils.enhancedDeepEquals(this.remoteCandidateId, other.remoteCandidateId) &&
+            Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
+            Utils.enhancedDeepEquals(this.remoteJobId, other.remoteJobId) &&
+            Utils.enhancedDeepEquals(this.interviewStage, other.interviewStage) &&
+            Utils.enhancedDeepEquals(this.interviewStageId, other.interviewStageId) &&
+            Utils.enhancedDeepEquals(this.remoteInterviewStageId, other.remoteInterviewStageId) &&
+            Utils.enhancedDeepEquals(this.rejectedReasons, other.rejectedReasons) &&
+            Utils.enhancedDeepEquals(this.rejectedReasonIds, other.rejectedReasonIds) &&
+            Utils.enhancedDeepEquals(this.remoteRejectedReasonIds, other.remoteRejectedReasonIds) &&
+            Utils.enhancedDeepEquals(this.rejectedAt, other.rejectedAt) &&
+            Utils.enhancedDeepEquals(this.locationId, other.locationId) &&
+            Utils.enhancedDeepEquals(this.remoteLocationId, other.remoteLocationId) &&
+            Utils.enhancedDeepEquals(this.locationIds, other.locationIds) &&
+            Utils.enhancedDeepEquals(this.remoteLocationIds, other.remoteLocationIds) &&
+            Utils.enhancedDeepEquals(this.applicationStatus, other.applicationStatus) &&
+            Utils.enhancedDeepEquals(this.questionnaires, other.questionnaires) &&
+            Utils.enhancedDeepEquals(this.candidate, other.candidate) &&
+            Utils.enhancedDeepEquals(this.attachments, other.attachments) &&
+            Utils.enhancedDeepEquals(this.documents, other.documents) &&
+            Utils.enhancedDeepEquals(this.resultLinks, other.resultLinks) &&
+            Utils.enhancedDeepEquals(this.source, other.source) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
+            Utils.enhancedDeepEquals(this.customFields, other.customFields);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,

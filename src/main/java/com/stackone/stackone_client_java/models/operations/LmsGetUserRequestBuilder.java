@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.LmsGetUserOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class LmsGetUserRequestBuilder {
 
     private LmsGetUserRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsGetUser sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsGetUserRequestBuilder(SDKMethodInterfaces.MethodCallLmsGetUser sdk) {
-        this.sdk = sdk;
+    public LmsGetUserRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsGetUserRequestBuilder request(LmsGetUserRequest request) {
@@ -39,10 +43,14 @@ public class LmsGetUserRequestBuilder {
 
     public LmsGetUserResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getUser(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsGetUserRequest, LmsGetUserResponse> operation
+              = new LmsGetUserOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

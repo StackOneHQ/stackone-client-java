@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -410,21 +409,21 @@ public class HrisCreateEmployeeRequestDtoHomeLocation {
         }
         HrisCreateEmployeeRequestDtoHomeLocation other = (HrisCreateEmployeeRequestDtoHomeLocation) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.phoneNumber, other.phoneNumber) &&
-            Objects.deepEquals(this.street1, other.street1) &&
-            Objects.deepEquals(this.street2, other.street2) &&
-            Objects.deepEquals(this.city, other.city) &&
-            Objects.deepEquals(this.zipCode, other.zipCode) &&
-            Objects.deepEquals(this.country, other.country) &&
-            Objects.deepEquals(this.passthrough, other.passthrough) &&
-            Objects.deepEquals(this.state, other.state);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.phoneNumber, other.phoneNumber) &&
+            Utils.enhancedDeepEquals(this.street1, other.street1) &&
+            Utils.enhancedDeepEquals(this.street2, other.street2) &&
+            Utils.enhancedDeepEquals(this.city, other.city) &&
+            Utils.enhancedDeepEquals(this.zipCode, other.zipCode) &&
+            Utils.enhancedDeepEquals(this.country, other.country) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
+            Utils.enhancedDeepEquals(this.state, other.state);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             name,
             phoneNumber,

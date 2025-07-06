@@ -16,7 +16,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class CreateEmploymentApiModel {
@@ -567,25 +566,25 @@ public class CreateEmploymentApiModel {
         }
         CreateEmploymentApiModel other = (CreateEmploymentApiModel) o;
         return 
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.jobTitle, other.jobTitle) &&
-            Objects.deepEquals(this.payRate, other.payRate) &&
-            Objects.deepEquals(this.payPeriod, other.payPeriod) &&
-            Objects.deepEquals(this.payFrequency, other.payFrequency) &&
-            Objects.deepEquals(this.payCurrency, other.payCurrency) &&
-            Objects.deepEquals(this.effectiveDate, other.effectiveDate) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.grade, other.grade) &&
-            Objects.deepEquals(this.employmentType, other.employmentType) &&
-            Objects.deepEquals(this.employmentContractType, other.employmentContractType) &&
-            Objects.deepEquals(this.workTime, other.workTime) &&
-            Objects.deepEquals(this.payrollCode, other.payrollCode) &&
-            Objects.deepEquals(this.jobId, other.jobId);
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.jobTitle, other.jobTitle) &&
+            Utils.enhancedDeepEquals(this.payRate, other.payRate) &&
+            Utils.enhancedDeepEquals(this.payPeriod, other.payPeriod) &&
+            Utils.enhancedDeepEquals(this.payFrequency, other.payFrequency) &&
+            Utils.enhancedDeepEquals(this.payCurrency, other.payCurrency) &&
+            Utils.enhancedDeepEquals(this.effectiveDate, other.effectiveDate) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.grade, other.grade) &&
+            Utils.enhancedDeepEquals(this.employmentType, other.employmentType) &&
+            Utils.enhancedDeepEquals(this.employmentContractType, other.employmentContractType) &&
+            Utils.enhancedDeepEquals(this.workTime, other.workTime) &&
+            Utils.enhancedDeepEquals(this.payrollCode, other.payrollCode) &&
+            Utils.enhancedDeepEquals(this.jobId, other.jobId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             unifiedCustomFields,
             jobTitle,
             payRate,

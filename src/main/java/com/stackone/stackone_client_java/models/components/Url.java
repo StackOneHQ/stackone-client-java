@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -192,15 +191,15 @@ public class Url {
         }
         Url other = (Url) o;
         return 
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.hostname, other.hostname) &&
-            Objects.deepEquals(this.path, other.path) &&
-            Objects.deepEquals(this.queryParams, other.queryParams);
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.hostname, other.hostname) &&
+            Utils.enhancedDeepEquals(this.path, other.path) &&
+            Utils.enhancedDeepEquals(this.queryParams, other.queryParams);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             url,
             hostname,
             path,

@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.MarketingGetOmniChannelTemplateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class MarketingGetOmniChannelTemplateRequestBuilder {
 
     private MarketingGetOmniChannelTemplateRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingGetOmniChannelTemplate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingGetOmniChannelTemplateRequestBuilder(SDKMethodInterfaces.MethodCallMarketingGetOmniChannelTemplate sdk) {
-        this.sdk = sdk;
+    public MarketingGetOmniChannelTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingGetOmniChannelTemplateRequestBuilder request(MarketingGetOmniChannelTemplateRequest request) {
@@ -39,10 +43,14 @@ public class MarketingGetOmniChannelTemplateRequestBuilder {
 
     public MarketingGetOmniChannelTemplateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getOmniChannelTemplate(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingGetOmniChannelTemplateRequest, MarketingGetOmniChannelTemplateResponse> operation
+              = new MarketingGetOmniChannelTemplateOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

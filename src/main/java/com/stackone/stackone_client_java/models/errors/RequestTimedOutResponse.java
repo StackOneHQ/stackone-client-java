@@ -13,7 +13,6 @@ import java.lang.RuntimeException;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 
 @SuppressWarnings("serial")
 public class RequestTimedOutResponse extends RuntimeException {
@@ -41,7 +40,7 @@ public class RequestTimedOutResponse extends RuntimeException {
             @JsonProperty("statusCode") double statusCode,
             @JsonProperty("message") String message,
             @JsonProperty("timestamp") OffsetDateTime timestamp) {
-        super(message);
+        super("API error occurred");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(message, "message");
         Utils.checkNotNull(timestamp, "timestamp");
@@ -122,14 +121,14 @@ public class RequestTimedOutResponse extends RuntimeException {
         }
         RequestTimedOutResponse other = (RequestTimedOutResponse) o;
         return 
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.message, other.message) &&
-            Objects.deepEquals(this.timestamp, other.timestamp);
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.message, other.message) &&
+            Utils.enhancedDeepEquals(this.timestamp, other.timestamp);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             statusCode,
             message,
             timestamp);

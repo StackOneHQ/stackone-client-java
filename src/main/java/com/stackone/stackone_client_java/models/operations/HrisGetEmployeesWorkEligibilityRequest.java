@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class HrisGetEmployeesWorkEligibilityRequest {
@@ -210,17 +209,17 @@ public class HrisGetEmployeesWorkEligibilityRequest {
         }
         HrisGetEmployeesWorkEligibilityRequest other = (HrisGetEmployeesWorkEligibilityRequest) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.subResourceId, other.subResourceId) &&
-            Objects.deepEquals(this.raw, other.raw) &&
-            Objects.deepEquals(this.proxy, other.proxy) &&
-            Objects.deepEquals(this.fields, other.fields) &&
-            Objects.deepEquals(this.xAccountId, other.xAccountId);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId) &&
+            Utils.enhancedDeepEquals(this.raw, other.raw) &&
+            Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
+            Utils.enhancedDeepEquals(this.fields, other.fields) &&
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             subResourceId,
             raw,

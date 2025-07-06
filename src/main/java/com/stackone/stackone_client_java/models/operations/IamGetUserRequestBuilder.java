@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.IamGetUserOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class IamGetUserRequestBuilder {
 
     private IamGetUserRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallIamGetUser sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public IamGetUserRequestBuilder(SDKMethodInterfaces.MethodCallIamGetUser sdk) {
-        this.sdk = sdk;
+    public IamGetUserRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public IamGetUserRequestBuilder request(IamGetUserRequest request) {
@@ -39,10 +43,14 @@ public class IamGetUserRequestBuilder {
 
     public IamGetUserResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getUser(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<IamGetUserRequest, IamGetUserResponse> operation
+              = new IamGetUserOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

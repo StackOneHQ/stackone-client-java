@@ -14,7 +14,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AssessmentResult {
@@ -358,21 +357,21 @@ public class AssessmentResult {
         }
         AssessmentResult other = (AssessmentResult) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.candidate, other.candidate) &&
-            Objects.deepEquals(this.score, other.score) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.submissionDate, other.submissionDate) &&
-            Objects.deepEquals(this.summary, other.summary) &&
-            Objects.deepEquals(this.result, other.result) &&
-            Objects.deepEquals(this.resultUrl, other.resultUrl) &&
-            Objects.deepEquals(this.attachments, other.attachments);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.candidate, other.candidate) &&
+            Utils.enhancedDeepEquals(this.score, other.score) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.submissionDate, other.submissionDate) &&
+            Utils.enhancedDeepEquals(this.summary, other.summary) &&
+            Utils.enhancedDeepEquals(this.result, other.result) &&
+            Utils.enhancedDeepEquals(this.resultUrl, other.resultUrl) &&
+            Utils.enhancedDeepEquals(this.attachments, other.attachments);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             candidate,

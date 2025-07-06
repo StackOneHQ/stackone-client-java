@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateInAppTemplateRequestDto;
+import com.stackone.stackone_client_java.operations.MarketingUpdateInAppTemplateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class MarketingUpdateInAppTemplateRequestBuilder {
     private String id;
     private MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingUpdateInAppTemplate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingUpdateInAppTemplateRequestBuilder(SDKMethodInterfaces.MethodCallMarketingUpdateInAppTemplate sdk) {
-        this.sdk = sdk;
+    public MarketingUpdateInAppTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingUpdateInAppTemplateRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class MarketingUpdateInAppTemplateRequestBuilder {
         return this;
     }
 
+
+    private MarketingUpdateInAppTemplateRequest buildRequest() {
+
+        MarketingUpdateInAppTemplateRequest request = new MarketingUpdateInAppTemplateRequest(xAccountId,
+            id,
+            marketingCreateInAppTemplateRequestDto);
+
+        return request;
+    }
+
     public MarketingUpdateInAppTemplateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateInAppTemplate(
-            xAccountId,
-            id,
-            marketingCreateInAppTemplateRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingUpdateInAppTemplateRequest, MarketingUpdateInAppTemplateResponse> operation
+              = new MarketingUpdateInAppTemplateOperation(
+                 sdkConfiguration,
+                 options);
+        MarketingUpdateInAppTemplateRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

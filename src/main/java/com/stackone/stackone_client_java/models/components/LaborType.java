@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -68,12 +67,12 @@ public class LaborType {
         }
         LaborType other = (LaborType) o;
         return 
-            Objects.deepEquals(this.code, other.code);
+            Utils.enhancedDeepEquals(this.code, other.code);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             code);
     }
     

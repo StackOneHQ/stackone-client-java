@@ -16,7 +16,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class UnifiedLogsPartial {
@@ -873,34 +872,34 @@ public class UnifiedLogsPartial {
         }
         UnifiedLogsPartial other = (UnifiedLogsPartial) o;
         return 
-            Objects.deepEquals(this.requestId, other.requestId) &&
-            Objects.deepEquals(this.eventDatetime, other.eventDatetime) &&
-            Objects.deepEquals(this.startTime, other.startTime) &&
-            Objects.deepEquals(this.endTime, other.endTime) &&
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.httpMethod, other.httpMethod) &&
-            Objects.deepEquals(this.path, other.path) &&
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.duration, other.duration) &&
-            Objects.deepEquals(this.success, other.success) &&
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.service, other.service) &&
-            Objects.deepEquals(this.resource, other.resource) &&
-            Objects.deepEquals(this.childResource, other.childResource) &&
-            Objects.deepEquals(this.subResource, other.subResource) &&
-            Objects.deepEquals(this.action, other.action) &&
-            Objects.deepEquals(this.isWorker, other.isWorker) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.sourceValue, other.sourceValue) &&
-            Objects.deepEquals(this.sourceId, other.sourceId) &&
-            Objects.deepEquals(this.stepRequests, other.stepRequests);
+            Utils.enhancedDeepEquals(this.requestId, other.requestId) &&
+            Utils.enhancedDeepEquals(this.eventDatetime, other.eventDatetime) &&
+            Utils.enhancedDeepEquals(this.startTime, other.startTime) &&
+            Utils.enhancedDeepEquals(this.endTime, other.endTime) &&
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.httpMethod, other.httpMethod) &&
+            Utils.enhancedDeepEquals(this.path, other.path) &&
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.duration, other.duration) &&
+            Utils.enhancedDeepEquals(this.success, other.success) &&
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.service, other.service) &&
+            Utils.enhancedDeepEquals(this.resource, other.resource) &&
+            Utils.enhancedDeepEquals(this.childResource, other.childResource) &&
+            Utils.enhancedDeepEquals(this.subResource, other.subResource) &&
+            Utils.enhancedDeepEquals(this.action, other.action) &&
+            Utils.enhancedDeepEquals(this.isWorker, other.isWorker) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.sourceValue, other.sourceValue) &&
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId) &&
+            Utils.enhancedDeepEquals(this.stepRequests, other.stepRequests);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             requestId,
             eventDatetime,
             startTime,
