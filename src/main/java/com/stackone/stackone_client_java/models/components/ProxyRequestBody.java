@@ -16,7 +16,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ProxyRequestBody {
@@ -227,16 +226,16 @@ public class ProxyRequestBody {
         }
         ProxyRequestBody other = (ProxyRequestBody) o;
         return 
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.method, other.method) &&
-            Objects.deepEquals(this.path, other.path) &&
-            Objects.deepEquals(this.headers, other.headers) &&
-            Objects.deepEquals(this.body, other.body);
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.method, other.method) &&
+            Utils.enhancedDeepEquals(this.path, other.path) &&
+            Utils.enhancedDeepEquals(this.headers, other.headers) &&
+            Utils.enhancedDeepEquals(this.body, other.body);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             url,
             method,
             path,

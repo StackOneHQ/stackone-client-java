@@ -15,12 +15,11 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * Active
  * 
- * <p>The reference status
+ * <p>Whether the content is active and available for users.
  */
 @JsonDeserialize(using = Active._Deserializer.class)
 public class Active {
@@ -73,12 +72,12 @@ public class Active {
             return false;
         }
         Active other = (Active) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")

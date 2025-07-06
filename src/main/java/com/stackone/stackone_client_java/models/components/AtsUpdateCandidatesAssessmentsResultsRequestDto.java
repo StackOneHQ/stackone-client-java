@@ -16,7 +16,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
@@ -361,21 +360,21 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
         }
         AtsUpdateCandidatesAssessmentsResultsRequestDto other = (AtsUpdateCandidatesAssessmentsResultsRequestDto) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.score, other.score) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.submissionDate, other.submissionDate) &&
-            Objects.deepEquals(this.summary, other.summary) &&
-            Objects.deepEquals(this.result, other.result) &&
-            Objects.deepEquals(this.resultUrl, other.resultUrl) &&
-            Objects.deepEquals(this.attachments, other.attachments) &&
-            Objects.deepEquals(this.candidate, other.candidate) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.score, other.score) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.submissionDate, other.submissionDate) &&
+            Utils.enhancedDeepEquals(this.summary, other.summary) &&
+            Utils.enhancedDeepEquals(this.result, other.result) &&
+            Utils.enhancedDeepEquals(this.resultUrl, other.resultUrl) &&
+            Utils.enhancedDeepEquals(this.attachments, other.attachments) &&
+            Utils.enhancedDeepEquals(this.candidate, other.candidate) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             score,
             startDate,

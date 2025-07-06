@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsMoveApplicationRequestDto {
@@ -115,13 +114,13 @@ public class AtsMoveApplicationRequestDto {
         }
         AtsMoveApplicationRequestDto other = (AtsMoveApplicationRequestDto) o;
         return 
-            Objects.deepEquals(this.passthrough, other.passthrough) &&
-            Objects.deepEquals(this.interviewStageId, other.interviewStageId);
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
+            Utils.enhancedDeepEquals(this.interviewStageId, other.interviewStageId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             passthrough,
             interviewStageId);
     }

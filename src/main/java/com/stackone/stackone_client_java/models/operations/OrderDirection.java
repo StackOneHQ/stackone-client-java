@@ -20,7 +20,7 @@ public enum OrderDirection {
     @JsonValue
     private final String value;
 
-    private OrderDirection(String value) {
+    OrderDirection(String value) {
         this.value = value;
     }
     

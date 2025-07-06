@@ -10,7 +10,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -30,12 +29,12 @@ public class LmsListUserAssignmentsQueryParamFilter {
      * Filter to select assignment by status
      */
     @SpeakeasyMetadata("queryParam:name=status")
-    private JsonNullable<? extends QueryParamStatus> status;
+    private JsonNullable<? extends LmsListUserAssignmentsQueryParamStatus> status;
 
     @JsonCreator
     public LmsListUserAssignmentsQueryParamFilter(
             JsonNullable<String> updatedAfter,
-            JsonNullable<? extends QueryParamStatus> status) {
+            JsonNullable<? extends LmsListUserAssignmentsQueryParamStatus> status) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(status, "status");
         this.updatedAfter = updatedAfter;
@@ -59,8 +58,8 @@ public class LmsListUserAssignmentsQueryParamFilter {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<QueryParamStatus> status() {
-        return (JsonNullable<QueryParamStatus>) status;
+    public JsonNullable<LmsListUserAssignmentsQueryParamStatus> status() {
+        return (JsonNullable<LmsListUserAssignmentsQueryParamStatus>) status;
     }
 
     public final static Builder builder() {
@@ -88,7 +87,7 @@ public class LmsListUserAssignmentsQueryParamFilter {
     /**
      * Filter to select assignment by status
      */
-    public LmsListUserAssignmentsQueryParamFilter withStatus(QueryParamStatus status) {
+    public LmsListUserAssignmentsQueryParamFilter withStatus(LmsListUserAssignmentsQueryParamStatus status) {
         Utils.checkNotNull(status, "status");
         this.status = JsonNullable.of(status);
         return this;
@@ -97,7 +96,7 @@ public class LmsListUserAssignmentsQueryParamFilter {
     /**
      * Filter to select assignment by status
      */
-    public LmsListUserAssignmentsQueryParamFilter withStatus(JsonNullable<? extends QueryParamStatus> status) {
+    public LmsListUserAssignmentsQueryParamFilter withStatus(JsonNullable<? extends LmsListUserAssignmentsQueryParamStatus> status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
         return this;
@@ -114,13 +113,13 @@ public class LmsListUserAssignmentsQueryParamFilter {
         }
         LmsListUserAssignmentsQueryParamFilter other = (LmsListUserAssignmentsQueryParamFilter) o;
         return 
-            Objects.deepEquals(this.updatedAfter, other.updatedAfter) &&
-            Objects.deepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.status, other.status);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             updatedAfter,
             status);
     }
@@ -136,7 +135,7 @@ public class LmsListUserAssignmentsQueryParamFilter {
  
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
  
-        private JsonNullable<? extends QueryParamStatus> status = JsonNullable.undefined();
+        private JsonNullable<? extends LmsListUserAssignmentsQueryParamStatus> status = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -163,7 +162,7 @@ public class LmsListUserAssignmentsQueryParamFilter {
         /**
          * Filter to select assignment by status
          */
-        public Builder status(QueryParamStatus status) {
+        public Builder status(LmsListUserAssignmentsQueryParamStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = JsonNullable.of(status);
             return this;
@@ -172,7 +171,7 @@ public class LmsListUserAssignmentsQueryParamFilter {
         /**
          * Filter to select assignment by status
          */
-        public Builder status(JsonNullable<? extends QueryParamStatus> status) {
+        public Builder status(JsonNullable<? extends LmsListUserAssignmentsQueryParamStatus> status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;

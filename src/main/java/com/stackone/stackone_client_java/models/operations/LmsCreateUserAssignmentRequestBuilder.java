@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDto;
+import com.stackone.stackone_client_java.operations.LmsCreateUserAssignmentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class LmsCreateUserAssignmentRequestBuilder {
     private String id;
     private LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsCreateUserAssignment sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsCreateUserAssignmentRequestBuilder(SDKMethodInterfaces.MethodCallLmsCreateUserAssignment sdk) {
-        this.sdk = sdk;
+    public LmsCreateUserAssignmentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsCreateUserAssignmentRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class LmsCreateUserAssignmentRequestBuilder {
         return this;
     }
 
+
+    private LmsCreateUserAssignmentRequest buildRequest() {
+
+        LmsCreateUserAssignmentRequest request = new LmsCreateUserAssignmentRequest(xAccountId,
+            id,
+            lmsCreateAssignmentRequestDto);
+
+        return request;
+    }
+
     public LmsCreateUserAssignmentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createUserAssignment(
-            xAccountId,
-            id,
-            lmsCreateAssignmentRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsCreateUserAssignmentRequest, LmsCreateUserAssignmentResponse> operation
+              = new LmsCreateUserAssignmentOperation(
+                 sdkConfiguration,
+                 options);
+        LmsCreateUserAssignmentRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

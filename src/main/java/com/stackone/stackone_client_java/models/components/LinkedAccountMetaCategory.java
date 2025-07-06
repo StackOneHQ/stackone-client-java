@@ -57,6 +57,7 @@ public class LinkedAccountMetaCategory {
     public static final LinkedAccountMetaCategory TICKETING = new LinkedAccountMetaCategory("ticketing");
     public static final LinkedAccountMetaCategory SCREENING = new LinkedAccountMetaCategory("screening");
     public static final LinkedAccountMetaCategory MESSAGING = new LinkedAccountMetaCategory("messaging");
+    public static final LinkedAccountMetaCategory ACCOUNTING = new LinkedAccountMetaCategory("accounting");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
@@ -140,6 +141,7 @@ public class LinkedAccountMetaCategory {
         map.put("ticketing", TICKETING);
         map.put("screening", SCREENING);
         map.put("messaging", MESSAGING);
+        map.put("accounting", ACCOUNTING);
         return map;
     }
 
@@ -157,6 +159,7 @@ public class LinkedAccountMetaCategory {
         map.put("ticketing", LinkedAccountMetaCategoryEnum.TICKETING);
         map.put("screening", LinkedAccountMetaCategoryEnum.SCREENING);
         map.put("messaging", LinkedAccountMetaCategoryEnum.MESSAGING);
+        map.put("accounting", LinkedAccountMetaCategoryEnum.ACCOUNTING);
         return map;
     }
     
@@ -203,7 +206,8 @@ public class LinkedAccountMetaCategory {
         DOCUMENTS("documents"),
         TICKETING("ticketing"),
         SCREENING("screening"),
-        MESSAGING("messaging"),;
+        MESSAGING("messaging"),
+        ACCOUNTING("accounting"),;
 
         private final String value;
 

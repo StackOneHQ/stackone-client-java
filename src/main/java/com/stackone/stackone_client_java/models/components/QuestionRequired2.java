@@ -15,7 +15,7 @@ public enum QuestionRequired2 {
     @JsonValue
     private final String value;
 
-    private QuestionRequired2(String value) {
+    QuestionRequired2(String value) {
         this.value = value;
     }
     

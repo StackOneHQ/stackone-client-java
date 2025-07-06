@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckPackagesRequestDto;
+import com.stackone.stackone_client_java.operations.AtsCreateBackgroundCheckPackageOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class AtsCreateBackgroundCheckPackageRequestBuilder {
     private String xAccountId;
     private AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsCreateBackgroundCheckPackage sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsCreateBackgroundCheckPackageRequestBuilder(SDKMethodInterfaces.MethodCallAtsCreateBackgroundCheckPackage sdk) {
-        this.sdk = sdk;
+    public AtsCreateBackgroundCheckPackageRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsCreateBackgroundCheckPackageRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class AtsCreateBackgroundCheckPackageRequestBuilder {
         return this;
     }
 
+
+    private AtsCreateBackgroundCheckPackageRequest buildRequest() {
+
+        AtsCreateBackgroundCheckPackageRequest request = new AtsCreateBackgroundCheckPackageRequest(xAccountId,
+            atsCreateBackgroundCheckPackagesRequestDto);
+
+        return request;
+    }
+
     public AtsCreateBackgroundCheckPackageResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createBackgroundCheckPackage(
-            xAccountId,
-            atsCreateBackgroundCheckPackagesRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
+              = new AtsCreateBackgroundCheckPackageOperation(
+                 sdkConfiguration,
+                 options);
+        AtsCreateBackgroundCheckPackageRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

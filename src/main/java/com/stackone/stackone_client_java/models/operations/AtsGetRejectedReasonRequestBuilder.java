@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetRejectedReasonOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetRejectedReasonRequestBuilder {
 
     private AtsGetRejectedReasonRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetRejectedReason sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetRejectedReasonRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetRejectedReason sdk) {
-        this.sdk = sdk;
+    public AtsGetRejectedReasonRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetRejectedReasonRequestBuilder request(AtsGetRejectedReasonRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetRejectedReasonRequestBuilder {
 
     public AtsGetRejectedReasonResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getRejectedReason(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetRejectedReasonRequest, AtsGetRejectedReasonResponse> operation
+              = new AtsGetRejectedReasonOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

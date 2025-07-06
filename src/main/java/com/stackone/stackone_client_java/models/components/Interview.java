@@ -16,7 +16,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Interview {
@@ -603,29 +602,29 @@ public class Interview {
         }
         Interview other = (Interview) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.applicationId, other.applicationId) &&
-            Objects.deepEquals(this.remoteApplicationId, other.remoteApplicationId) &&
-            Objects.deepEquals(this.interviewStageId, other.interviewStageId) &&
-            Objects.deepEquals(this.remoteInterviewStageId, other.remoteInterviewStageId) &&
-            Objects.deepEquals(this.interviewStage, other.interviewStage) &&
-            Objects.deepEquals(this.interviewStatus, other.interviewStatus) &&
-            Objects.deepEquals(this.interviewerIds, other.interviewerIds) &&
-            Objects.deepEquals(this.remoteInterviewerIds, other.remoteInterviewerIds) &&
-            Objects.deepEquals(this.interviewParts, other.interviewParts) &&
-            Objects.deepEquals(this.interviewers, other.interviewers) &&
-            Objects.deepEquals(this.startAt, other.startAt) &&
-            Objects.deepEquals(this.endAt, other.endAt) &&
-            Objects.deepEquals(this.meetingUrl, other.meetingUrl) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.applicationId, other.applicationId) &&
+            Utils.enhancedDeepEquals(this.remoteApplicationId, other.remoteApplicationId) &&
+            Utils.enhancedDeepEquals(this.interviewStageId, other.interviewStageId) &&
+            Utils.enhancedDeepEquals(this.remoteInterviewStageId, other.remoteInterviewStageId) &&
+            Utils.enhancedDeepEquals(this.interviewStage, other.interviewStage) &&
+            Utils.enhancedDeepEquals(this.interviewStatus, other.interviewStatus) &&
+            Utils.enhancedDeepEquals(this.interviewerIds, other.interviewerIds) &&
+            Utils.enhancedDeepEquals(this.remoteInterviewerIds, other.remoteInterviewerIds) &&
+            Utils.enhancedDeepEquals(this.interviewParts, other.interviewParts) &&
+            Utils.enhancedDeepEquals(this.interviewers, other.interviewers) &&
+            Utils.enhancedDeepEquals(this.startAt, other.startAt) &&
+            Utils.enhancedDeepEquals(this.endAt, other.endAt) &&
+            Utils.enhancedDeepEquals(this.meetingUrl, other.meetingUrl) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,

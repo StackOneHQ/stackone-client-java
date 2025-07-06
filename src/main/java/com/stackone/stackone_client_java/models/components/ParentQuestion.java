@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ParentQuestion {
@@ -212,16 +211,16 @@ public class ParentQuestion {
         }
         ParentQuestion other = (ParentQuestion) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.optionIds, other.optionIds) &&
-            Objects.deepEquals(this.remoteOptionIds, other.remoteOptionIds) &&
-            Objects.deepEquals(this.conditionType, other.conditionType);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.optionIds, other.optionIds) &&
+            Utils.enhancedDeepEquals(this.remoteOptionIds, other.remoteOptionIds) &&
+            Utils.enhancedDeepEquals(this.conditionType, other.conditionType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             optionIds,

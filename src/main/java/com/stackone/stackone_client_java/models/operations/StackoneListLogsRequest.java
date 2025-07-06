@@ -11,7 +11,6 @@ import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class StackoneListLogsRequest {
@@ -253,17 +252,17 @@ public class StackoneListLogsRequest {
         }
         StackoneListLogsRequest other = (StackoneListLogsRequest) o;
         return 
-            Objects.deepEquals(this.orderBy, other.orderBy) &&
-            Objects.deepEquals(this.orderDirection, other.orderDirection) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.next, other.next) &&
-            Objects.deepEquals(this.include, other.include) &&
-            Objects.deepEquals(this.filter, other.filter);
+            Utils.enhancedDeepEquals(this.orderBy, other.orderBy) &&
+            Utils.enhancedDeepEquals(this.orderDirection, other.orderDirection) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
+            Utils.enhancedDeepEquals(this.next, other.next) &&
+            Utils.enhancedDeepEquals(this.include, other.include) &&
+            Utils.enhancedDeepEquals(this.filter, other.filter);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             orderBy,
             orderDirection,
             pageSize,

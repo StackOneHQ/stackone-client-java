@@ -20,7 +20,7 @@ public enum StackoneListLogsQueryParamOrderDirection {
     @JsonValue
     private final String value;
 
-    private StackoneListLogsQueryParamOrderDirection(String value) {
+    StackoneListLogsQueryParamOrderDirection(String value) {
         this.value = value;
     }
     

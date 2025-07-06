@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.MarketingGetCampaignOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class MarketingGetCampaignRequestBuilder {
 
     private MarketingGetCampaignRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingGetCampaign sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingGetCampaignRequestBuilder(SDKMethodInterfaces.MethodCallMarketingGetCampaign sdk) {
-        this.sdk = sdk;
+    public MarketingGetCampaignRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingGetCampaignRequestBuilder request(MarketingGetCampaignRequest request) {
@@ -39,10 +43,14 @@ public class MarketingGetCampaignRequestBuilder {
 
     public MarketingGetCampaignResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getCampaign(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingGetCampaignRequest, MarketingGetCampaignResponse> operation
+              = new MarketingGetCampaignOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

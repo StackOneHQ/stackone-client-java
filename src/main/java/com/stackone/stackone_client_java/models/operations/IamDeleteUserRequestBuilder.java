@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.IamDeleteUserOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -15,10 +19,10 @@ public class IamDeleteUserRequestBuilder {
     private String xAccountId;
     private String id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallIamDeleteUser sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public IamDeleteUserRequestBuilder(SDKMethodInterfaces.MethodCallIamDeleteUser sdk) {
-        this.sdk = sdk;
+    public IamDeleteUserRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public IamDeleteUserRequestBuilder xAccountId(String xAccountId) {
@@ -45,13 +49,26 @@ public class IamDeleteUserRequestBuilder {
         return this;
     }
 
+
+    private IamDeleteUserRequest buildRequest() {
+
+        IamDeleteUserRequest request = new IamDeleteUserRequest(xAccountId,
+            id);
+
+        return request;
+    }
+
     public IamDeleteUserResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.deleteUser(
-            xAccountId,
-            id,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
+              = new IamDeleteUserOperation(
+                 sdkConfiguration,
+                 options);
+        IamDeleteUserRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

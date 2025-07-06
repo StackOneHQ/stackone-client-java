@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class JobPostingCompensation {
@@ -235,19 +234,19 @@ public class JobPostingCompensation {
         }
         JobPostingCompensation other = (JobPostingCompensation) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.payPeriod, other.payPeriod) &&
-            Objects.deepEquals(this.payFrequency, other.payFrequency) &&
-            Objects.deepEquals(this.currency, other.currency) &&
-            Objects.deepEquals(this.value, other.value) &&
-            Objects.deepEquals(this.minValue, other.minValue) &&
-            Objects.deepEquals(this.maxValue, other.maxValue);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.payPeriod, other.payPeriod) &&
+            Utils.enhancedDeepEquals(this.payFrequency, other.payFrequency) &&
+            Utils.enhancedDeepEquals(this.currency, other.currency) &&
+            Utils.enhancedDeepEquals(this.value, other.value) &&
+            Utils.enhancedDeepEquals(this.minValue, other.minValue) &&
+            Utils.enhancedDeepEquals(this.maxValue, other.maxValue);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             name,
             type,
             payPeriod,

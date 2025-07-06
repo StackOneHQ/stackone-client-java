@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsDownloadApplicationDocumentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsDownloadApplicationDocumentRequestBuilder {
 
     private AtsDownloadApplicationDocumentRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsDownloadApplicationDocument sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsDownloadApplicationDocumentRequestBuilder(SDKMethodInterfaces.MethodCallAtsDownloadApplicationDocument sdk) {
-        this.sdk = sdk;
+    public AtsDownloadApplicationDocumentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsDownloadApplicationDocumentRequestBuilder request(AtsDownloadApplicationDocumentRequest request) {
@@ -39,10 +43,14 @@ public class AtsDownloadApplicationDocumentRequestBuilder {
 
     public AtsDownloadApplicationDocumentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.downloadApplicationDocument(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsDownloadApplicationDocumentRequest, AtsDownloadApplicationDocumentResponse> operation
+              = new AtsDownloadApplicationDocumentOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

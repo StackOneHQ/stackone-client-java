@@ -11,7 +11,6 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Map;
-import java.util.Objects;
 
 public class LinkedAccountMeta {
 
@@ -85,14 +84,14 @@ public class LinkedAccountMeta {
         }
         LinkedAccountMeta other = (LinkedAccountMeta) o;
         return 
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.category, other.category) &&
-            Objects.deepEquals(this.models, other.models);
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.category, other.category) &&
+            Utils.enhancedDeepEquals(this.models, other.models);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             provider,
             category,
             models);

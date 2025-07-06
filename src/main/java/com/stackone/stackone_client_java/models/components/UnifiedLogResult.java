@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 public class UnifiedLogResult {
 
@@ -49,12 +48,12 @@ public class UnifiedLogResult {
         }
         UnifiedLogResult other = (UnifiedLogResult) o;
         return 
-            Objects.deepEquals(this.data, other.data);
+            Utils.enhancedDeepEquals(this.data, other.data);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             data);
     }
     

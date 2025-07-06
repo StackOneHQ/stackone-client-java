@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class HrisInviteEmployeeRequestDto {
@@ -79,12 +78,12 @@ public class HrisInviteEmployeeRequestDto {
         }
         HrisInviteEmployeeRequestDto other = (HrisInviteEmployeeRequestDto) o;
         return 
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             passthrough);
     }
     

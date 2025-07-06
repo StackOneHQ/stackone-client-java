@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsCreateApplicationRequestDto {
@@ -385,21 +384,21 @@ public class AtsCreateApplicationRequestDto {
         }
         AtsCreateApplicationRequestDto other = (AtsCreateApplicationRequestDto) o;
         return 
-            Objects.deepEquals(this.passthrough, other.passthrough) &&
-            Objects.deepEquals(this.jobId, other.jobId) &&
-            Objects.deepEquals(this.jobPostingId, other.jobPostingId) &&
-            Objects.deepEquals(this.locationId, other.locationId) &&
-            Objects.deepEquals(this.applicationStatus, other.applicationStatus) &&
-            Objects.deepEquals(this.questionnaires, other.questionnaires) &&
-            Objects.deepEquals(this.source, other.source) &&
-            Objects.deepEquals(this.candidateId, other.candidateId) &&
-            Objects.deepEquals(this.candidate, other.candidate) &&
-            Objects.deepEquals(this.documents, other.documents);
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
+            Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
+            Utils.enhancedDeepEquals(this.jobPostingId, other.jobPostingId) &&
+            Utils.enhancedDeepEquals(this.locationId, other.locationId) &&
+            Utils.enhancedDeepEquals(this.applicationStatus, other.applicationStatus) &&
+            Utils.enhancedDeepEquals(this.questionnaires, other.questionnaires) &&
+            Utils.enhancedDeepEquals(this.source, other.source) &&
+            Utils.enhancedDeepEquals(this.candidateId, other.candidateId) &&
+            Utils.enhancedDeepEquals(this.candidate, other.candidate) &&
+            Utils.enhancedDeepEquals(this.documents, other.documents);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             passthrough,
             jobId,
             jobPostingId,

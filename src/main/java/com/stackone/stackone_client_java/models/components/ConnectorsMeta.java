@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ConnectorsMeta {
@@ -215,17 +214,17 @@ public class ConnectorsMeta {
         }
         ConnectorsMeta other = (ConnectorsMeta) o;
         return 
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.providerName, other.providerName) &&
-            Objects.deepEquals(this.category, other.category) &&
-            Objects.deepEquals(this.active, other.active) &&
-            Objects.deepEquals(this.models, other.models) &&
-            Objects.deepEquals(this.resources, other.resources);
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.providerName, other.providerName) &&
+            Utils.enhancedDeepEquals(this.category, other.category) &&
+            Utils.enhancedDeepEquals(this.active, other.active) &&
+            Utils.enhancedDeepEquals(this.models, other.models) &&
+            Utils.enhancedDeepEquals(this.resources, other.resources);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             provider,
             providerName,
             category,

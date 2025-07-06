@@ -3,6 +3,8 @@
 
 ## Overview
 
+Customer or business accounts.
+
 ### Available Operations
 
 * [listLinkedAccounts](#listlinkedaccounts) - List Accounts
@@ -217,8 +219,7 @@ Update Account
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.PatchAccountExternalDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneUpdateAccountResponse;
 import java.lang.Exception;
@@ -237,6 +238,7 @@ public class Application {
         StackoneUpdateAccountResponse res = sdk.accounts().updateAccount()
                 .id("<id>")
                 .patchAccountExternalDto(PatchAccountExternalDto.builder()
+                    .type(PatchAccountExternalDtoType.TEST)
                     .build())
                 .call();
 

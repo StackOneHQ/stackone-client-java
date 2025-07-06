@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ConnectSessionTokenAuthLink {
@@ -72,6 +71,13 @@ public class ConnectSessionTokenAuthLink {
     @JsonProperty("external_trigger_token")
     private JsonNullable<String> externalTriggerToken;
 
+    /**
+     * The connect session account type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends ConnectSessionTokenAuthLinkType> type;
+
     @JsonProperty("token")
     private String token;
 
@@ -93,6 +99,7 @@ public class ConnectSessionTokenAuthLink {
             @JsonProperty("created_at") OffsetDateTime createdAt,
             @JsonProperty("metadata") JsonNullable<? extends ConnectSessionTokenAuthLinkMetadata> metadata,
             @JsonProperty("external_trigger_token") JsonNullable<String> externalTriggerToken,
+            @JsonProperty("type") JsonNullable<? extends ConnectSessionTokenAuthLinkType> type,
             @JsonProperty("token") String token,
             @JsonProperty("auth_link_url") String authLinkUrl) {
         Utils.checkNotNull(id, "id");
@@ -108,6 +115,7 @@ public class ConnectSessionTokenAuthLink {
         Utils.checkNotNull(createdAt, "createdAt");
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(externalTriggerToken, "externalTriggerToken");
+        Utils.checkNotNull(type, "type");
         Utils.checkNotNull(token, "token");
         Utils.checkNotNull(authLinkUrl, "authLinkUrl");
         this.id = id;
@@ -123,6 +131,7 @@ public class ConnectSessionTokenAuthLink {
         this.createdAt = createdAt;
         this.metadata = metadata;
         this.externalTriggerToken = externalTriggerToken;
+        this.type = type;
         this.token = token;
         this.authLinkUrl = authLinkUrl;
     }
@@ -136,7 +145,7 @@ public class ConnectSessionTokenAuthLink {
             OffsetDateTime createdAt,
             String token,
             String authLinkUrl) {
-        this(id, organizationId, projectId, JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, JsonNullable.undefined(), JsonNullable.undefined(), token, authLinkUrl);
+        this(id, organizationId, projectId, JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), token, authLinkUrl);
     }
 
     @JsonIgnore
@@ -210,6 +219,15 @@ public class ConnectSessionTokenAuthLink {
     @JsonIgnore
     public JsonNullable<String> externalTriggerToken() {
         return externalTriggerToken;
+    }
+
+    /**
+     * The connect session account type
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<ConnectSessionTokenAuthLinkType> type() {
+        return (JsonNullable<ConnectSessionTokenAuthLinkType>) type;
     }
 
     @JsonIgnore
@@ -358,6 +376,24 @@ public class ConnectSessionTokenAuthLink {
         return this;
     }
 
+    /**
+     * The connect session account type
+     */
+    public ConnectSessionTokenAuthLink withType(ConnectSessionTokenAuthLinkType type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The connect session account type
+     */
+    public ConnectSessionTokenAuthLink withType(JsonNullable<? extends ConnectSessionTokenAuthLinkType> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
     public ConnectSessionTokenAuthLink withToken(String token) {
         Utils.checkNotNull(token, "token");
         this.token = token;
@@ -381,26 +417,27 @@ public class ConnectSessionTokenAuthLink {
         }
         ConnectSessionTokenAuthLink other = (ConnectSessionTokenAuthLink) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.categories, other.categories) &&
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.originOwnerId, other.originOwnerId) &&
-            Objects.deepEquals(this.originOwnerName, other.originOwnerName) &&
-            Objects.deepEquals(this.originUsername, other.originUsername) &&
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.label, other.label) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.metadata, other.metadata) &&
-            Objects.deepEquals(this.externalTriggerToken, other.externalTriggerToken) &&
-            Objects.deepEquals(this.token, other.token) &&
-            Objects.deepEquals(this.authLinkUrl, other.authLinkUrl);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.categories, other.categories) &&
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.originOwnerId, other.originOwnerId) &&
+            Utils.enhancedDeepEquals(this.originOwnerName, other.originOwnerName) &&
+            Utils.enhancedDeepEquals(this.originUsername, other.originUsername) &&
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.label, other.label) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.metadata, other.metadata) &&
+            Utils.enhancedDeepEquals(this.externalTriggerToken, other.externalTriggerToken) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.token, other.token) &&
+            Utils.enhancedDeepEquals(this.authLinkUrl, other.authLinkUrl);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             organizationId,
             projectId,
@@ -414,6 +451,7 @@ public class ConnectSessionTokenAuthLink {
             createdAt,
             metadata,
             externalTriggerToken,
+            type,
             token,
             authLinkUrl);
     }
@@ -434,6 +472,7 @@ public class ConnectSessionTokenAuthLink {
                 "createdAt", createdAt,
                 "metadata", metadata,
                 "externalTriggerToken", externalTriggerToken,
+                "type", type,
                 "token", token,
                 "authLinkUrl", authLinkUrl);
     }
@@ -465,6 +504,8 @@ public class ConnectSessionTokenAuthLink {
         private JsonNullable<? extends ConnectSessionTokenAuthLinkMetadata> metadata = JsonNullable.undefined();
  
         private JsonNullable<String> externalTriggerToken = JsonNullable.undefined();
+ 
+        private JsonNullable<? extends ConnectSessionTokenAuthLinkType> type = JsonNullable.undefined();
  
         private String token;
  
@@ -606,6 +647,24 @@ public class ConnectSessionTokenAuthLink {
             return this;
         }
 
+        /**
+         * The connect session account type
+         */
+        public Builder type(ConnectSessionTokenAuthLinkType type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The connect session account type
+         */
+        public Builder type(JsonNullable<? extends ConnectSessionTokenAuthLinkType> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
+
         public Builder token(String token) {
             Utils.checkNotNull(token, "token");
             this.token = token;
@@ -633,6 +692,7 @@ public class ConnectSessionTokenAuthLink {
                 createdAt,
                 metadata,
                 externalTriggerToken,
+                type,
                 token,
                 authLinkUrl);
         }

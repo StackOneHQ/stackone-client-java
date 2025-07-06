@@ -3,6 +3,8 @@
 
 ## Overview
 
+Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
+
 ### Available Operations
 
 * [createConnectSession](#createconnectsession) - Create Connect Session
@@ -50,7 +52,9 @@ public class Application {
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
                     Categories.SCREENING,
-                    Categories.MESSAGING))
+                    Categories.MESSAGING,
+                    Categories.ACCOUNTING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()

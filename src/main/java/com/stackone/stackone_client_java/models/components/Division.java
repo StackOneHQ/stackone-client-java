@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -450,22 +449,22 @@ public class Division {
         }
         Division other = (Division) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.parentIds, other.parentIds) &&
-            Objects.deepEquals(this.remoteParentIds, other.remoteParentIds) &&
-            Objects.deepEquals(this.ownerIds, other.ownerIds) &&
-            Objects.deepEquals(this.remoteOwnerIds, other.remoteOwnerIds) &&
-            Objects.deepEquals(this.companyId, other.companyId) &&
-            Objects.deepEquals(this.remoteCompanyId, other.remoteCompanyId) &&
-            Objects.deepEquals(this.type, other.type);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.parentIds, other.parentIds) &&
+            Utils.enhancedDeepEquals(this.remoteParentIds, other.remoteParentIds) &&
+            Utils.enhancedDeepEquals(this.ownerIds, other.ownerIds) &&
+            Utils.enhancedDeepEquals(this.remoteOwnerIds, other.remoteOwnerIds) &&
+            Utils.enhancedDeepEquals(this.companyId, other.companyId) &&
+            Utils.enhancedDeepEquals(this.remoteCompanyId, other.remoteCompanyId) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,

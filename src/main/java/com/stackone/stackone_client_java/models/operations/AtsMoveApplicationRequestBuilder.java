@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsMoveApplicationRequestDto;
+import com.stackone.stackone_client_java.operations.AtsMoveApplicationOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsMoveApplicationRequestBuilder {
     private String id;
     private AtsMoveApplicationRequestDto atsMoveApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsMoveApplication sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsMoveApplicationRequestBuilder(SDKMethodInterfaces.MethodCallAtsMoveApplication sdk) {
-        this.sdk = sdk;
+    public AtsMoveApplicationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsMoveApplicationRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsMoveApplicationRequestBuilder {
         return this;
     }
 
+
+    private AtsMoveApplicationRequest buildRequest() {
+
+        AtsMoveApplicationRequest request = new AtsMoveApplicationRequest(xAccountId,
+            id,
+            atsMoveApplicationRequestDto);
+
+        return request;
+    }
+
     public AtsMoveApplicationResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.moveApplication(
-            xAccountId,
-            id,
-            atsMoveApplicationRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
+              = new AtsMoveApplicationOperation(
+                 sdkConfiguration,
+                 options);
+        AtsMoveApplicationRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

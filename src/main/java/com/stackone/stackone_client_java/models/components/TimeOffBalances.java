@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class TimeOffBalances {
@@ -512,24 +511,24 @@ public class TimeOffBalances {
         }
         TimeOffBalances other = (TimeOffBalances) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.employeeId, other.employeeId) &&
-            Objects.deepEquals(this.remoteEmployeeId, other.remoteEmployeeId) &&
-            Objects.deepEquals(this.policyId, other.policyId) &&
-            Objects.deepEquals(this.remotePolicyId, other.remotePolicyId) &&
-            Objects.deepEquals(this.policy, other.policy) &&
-            Objects.deepEquals(this.currentBalance, other.currentBalance) &&
-            Objects.deepEquals(this.initialBalance, other.initialBalance) &&
-            Objects.deepEquals(this.balanceUnit, other.balanceUnit) &&
-            Objects.deepEquals(this.balanceStartDate, other.balanceStartDate) &&
-            Objects.deepEquals(this.balanceExpiryDate, other.balanceExpiryDate) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.employeeId, other.employeeId) &&
+            Utils.enhancedDeepEquals(this.remoteEmployeeId, other.remoteEmployeeId) &&
+            Utils.enhancedDeepEquals(this.policyId, other.policyId) &&
+            Utils.enhancedDeepEquals(this.remotePolicyId, other.remotePolicyId) &&
+            Utils.enhancedDeepEquals(this.policy, other.policy) &&
+            Utils.enhancedDeepEquals(this.currentBalance, other.currentBalance) &&
+            Utils.enhancedDeepEquals(this.initialBalance, other.initialBalance) &&
+            Utils.enhancedDeepEquals(this.balanceUnit, other.balanceUnit) &&
+            Utils.enhancedDeepEquals(this.balanceStartDate, other.balanceStartDate) &&
+            Utils.enhancedDeepEquals(this.balanceExpiryDate, other.balanceExpiryDate) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             employeeId,

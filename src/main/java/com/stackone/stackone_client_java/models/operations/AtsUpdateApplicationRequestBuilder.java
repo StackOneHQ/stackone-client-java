@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDto;
+import com.stackone.stackone_client_java.operations.AtsUpdateApplicationOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsUpdateApplicationRequestBuilder {
     private String id;
     private AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsUpdateApplication sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsUpdateApplicationRequestBuilder(SDKMethodInterfaces.MethodCallAtsUpdateApplication sdk) {
-        this.sdk = sdk;
+    public AtsUpdateApplicationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsUpdateApplicationRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsUpdateApplicationRequestBuilder {
         return this;
     }
 
+
+    private AtsUpdateApplicationRequest buildRequest() {
+
+        AtsUpdateApplicationRequest request = new AtsUpdateApplicationRequest(xAccountId,
+            id,
+            atsUpdateApplicationRequestDto);
+
+        return request;
+    }
+
     public AtsUpdateApplicationResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateApplication(
-            xAccountId,
-            id,
-            atsUpdateApplicationRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
+              = new AtsUpdateApplicationOperation(
+                 sdkConfiguration,
+                 options);
+        AtsUpdateApplicationRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

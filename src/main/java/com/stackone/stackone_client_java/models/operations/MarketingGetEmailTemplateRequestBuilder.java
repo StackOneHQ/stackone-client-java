@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.MarketingGetEmailTemplateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class MarketingGetEmailTemplateRequestBuilder {
 
     private MarketingGetEmailTemplateRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingGetEmailTemplate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingGetEmailTemplateRequestBuilder(SDKMethodInterfaces.MethodCallMarketingGetEmailTemplate sdk) {
-        this.sdk = sdk;
+    public MarketingGetEmailTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingGetEmailTemplateRequestBuilder request(MarketingGetEmailTemplateRequest request) {
@@ -39,10 +43,14 @@ public class MarketingGetEmailTemplateRequestBuilder {
 
     public MarketingGetEmailTemplateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getEmailTemplate(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingGetEmailTemplateRequest, MarketingGetEmailTemplateResponse> operation
+              = new MarketingGetEmailTemplateOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

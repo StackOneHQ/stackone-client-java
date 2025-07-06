@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -304,18 +303,18 @@ public class StackoneListLinkedAccountsRequest {
         }
         StackoneListLinkedAccountsRequest other = (StackoneListLinkedAccountsRequest) o;
         return 
-            Objects.deepEquals(this.page, other.page) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.originOwnerId, other.originOwnerId) &&
-            Objects.deepEquals(this.providers, other.providers) &&
-            Objects.deepEquals(this.accountIds, other.accountIds) &&
-            Objects.deepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.page, other.page) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.originOwnerId, other.originOwnerId) &&
+            Utils.enhancedDeepEquals(this.providers, other.providers) &&
+            Utils.enhancedDeepEquals(this.accountIds, other.accountIds) &&
+            Utils.enhancedDeepEquals(this.status, other.status);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             page,
             pageSize,
             provider,

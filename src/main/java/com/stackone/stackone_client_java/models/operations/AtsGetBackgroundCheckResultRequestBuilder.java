@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetBackgroundCheckResultOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetBackgroundCheckResultRequestBuilder {
 
     private AtsGetBackgroundCheckResultRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetBackgroundCheckResult sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetBackgroundCheckResultRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetBackgroundCheckResult sdk) {
-        this.sdk = sdk;
+    public AtsGetBackgroundCheckResultRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetBackgroundCheckResultRequestBuilder request(AtsGetBackgroundCheckResultRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetBackgroundCheckResultRequestBuilder {
 
     public AtsGetBackgroundCheckResultResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getBackgroundCheckResult(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetBackgroundCheckResultRequest, AtsGetBackgroundCheckResultResponse> operation
+              = new AtsGetBackgroundCheckResultOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

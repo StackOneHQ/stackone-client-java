@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsCreateNotesRequestDto {
@@ -178,15 +177,15 @@ public class AtsCreateNotesRequestDto {
         }
         AtsCreateNotesRequestDto other = (AtsCreateNotesRequestDto) o;
         return 
-            Objects.deepEquals(this.content, other.content) &&
-            Objects.deepEquals(this.authorId, other.authorId) &&
-            Objects.deepEquals(this.visibility, other.visibility) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.content, other.content) &&
+            Utils.enhancedDeepEquals(this.authorId, other.authorId) &&
+            Utils.enhancedDeepEquals(this.visibility, other.visibility) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             content,
             authorId,
             visibility,

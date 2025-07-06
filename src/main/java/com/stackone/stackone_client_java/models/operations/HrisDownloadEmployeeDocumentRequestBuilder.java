@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisDownloadEmployeeDocumentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisDownloadEmployeeDocumentRequestBuilder {
 
     private HrisDownloadEmployeeDocumentRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisDownloadEmployeeDocument sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisDownloadEmployeeDocumentRequestBuilder(SDKMethodInterfaces.MethodCallHrisDownloadEmployeeDocument sdk) {
-        this.sdk = sdk;
+    public HrisDownloadEmployeeDocumentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisDownloadEmployeeDocumentRequestBuilder request(HrisDownloadEmployeeDocumentRequest request) {
@@ -39,10 +43,14 @@ public class HrisDownloadEmployeeDocumentRequestBuilder {
 
     public HrisDownloadEmployeeDocumentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.downloadEmployeeDocument(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisDownloadEmployeeDocumentRequest, HrisDownloadEmployeeDocumentResponse> operation
+              = new HrisDownloadEmployeeDocumentOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

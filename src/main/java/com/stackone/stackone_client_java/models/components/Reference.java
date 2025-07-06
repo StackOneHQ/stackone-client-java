@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Reference {
@@ -43,14 +42,14 @@ public class Reference {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<? extends Active> active;
+    private JsonNullable<? extends ReferenceActive> active;
 
     @JsonCreator
     public Reference(
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("name") JsonNullable<String> name,
-            @JsonProperty("active") JsonNullable<? extends Active> active) {
+            @JsonProperty("active") JsonNullable<? extends ReferenceActive> active) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(name, "name");
@@ -94,8 +93,8 @@ public class Reference {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Active> active() {
-        return (JsonNullable<Active>) active;
+    public JsonNullable<ReferenceActive> active() {
+        return (JsonNullable<ReferenceActive>) active;
     }
 
     public final static Builder builder() {
@@ -159,7 +158,7 @@ public class Reference {
     /**
      * The reference status
      */
-    public Reference withActive(Active active) {
+    public Reference withActive(ReferenceActive active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -168,7 +167,7 @@ public class Reference {
     /**
      * The reference status
      */
-    public Reference withActive(JsonNullable<? extends Active> active) {
+    public Reference withActive(JsonNullable<? extends ReferenceActive> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -185,15 +184,15 @@ public class Reference {
         }
         Reference other = (Reference) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.active, other.active);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.active, other.active);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             name,
@@ -217,7 +216,7 @@ public class Reference {
  
         private JsonNullable<String> name = JsonNullable.undefined();
  
-        private JsonNullable<? extends Active> active = JsonNullable.undefined();
+        private JsonNullable<? extends ReferenceActive> active = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -280,7 +279,7 @@ public class Reference {
         /**
          * The reference status
          */
-        public Builder active(Active active) {
+        public Builder active(ReferenceActive active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -289,7 +288,7 @@ public class Reference {
         /**
          * The reference status
          */
-        public Builder active(JsonNullable<? extends Active> active) {
+        public Builder active(JsonNullable<? extends ReferenceActive> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;
