@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class TaskCommentApiModel {
@@ -148,14 +147,14 @@ public class TaskCommentApiModel {
         }
         TaskCommentApiModel other = (TaskCommentApiModel) o;
         return 
-            Objects.deepEquals(this.authorEmployeeId, other.authorEmployeeId) &&
-            Objects.deepEquals(this.comment, other.comment) &&
-            Objects.deepEquals(this.createdAt, other.createdAt);
+            Utils.enhancedDeepEquals(this.authorEmployeeId, other.authorEmployeeId) &&
+            Utils.enhancedDeepEquals(this.comment, other.comment) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             authorEmployeeId,
             comment,
             createdAt);

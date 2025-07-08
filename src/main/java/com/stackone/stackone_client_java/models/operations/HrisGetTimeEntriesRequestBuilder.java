@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetTimeEntriesOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetTimeEntriesRequestBuilder {
 
     private HrisGetTimeEntriesRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetTimeEntries sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetTimeEntriesRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetTimeEntries sdk) {
-        this.sdk = sdk;
+    public HrisGetTimeEntriesRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetTimeEntriesRequestBuilder request(HrisGetTimeEntriesRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetTimeEntriesRequestBuilder {
 
     public HrisGetTimeEntriesResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getTimeEntries(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetTimeEntriesRequest, HrisGetTimeEntriesResponse> operation
+              = new HrisGetTimeEntriesOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

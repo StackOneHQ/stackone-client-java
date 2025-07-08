@@ -11,7 +11,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -115,13 +114,13 @@ public class HrisListEmployeeTimeOffBalancesQueryParamFilter {
         }
         HrisListEmployeeTimeOffBalancesQueryParamFilter other = (HrisListEmployeeTimeOffBalancesQueryParamFilter) o;
         return 
-            Objects.deepEquals(this.updatedAfter, other.updatedAfter) &&
-            Objects.deepEquals(this.policyIds, other.policyIds);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.policyIds, other.policyIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             updatedAfter,
             policyIds);
     }

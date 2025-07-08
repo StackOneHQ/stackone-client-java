@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.StackoneGetAccountMetaInfoOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -14,10 +18,10 @@ public class StackoneGetAccountMetaInfoRequestBuilder {
 
     private String id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneGetAccountMetaInfo sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneGetAccountMetaInfoRequestBuilder(SDKMethodInterfaces.MethodCallStackoneGetAccountMetaInfo sdk) {
-        this.sdk = sdk;
+    public StackoneGetAccountMetaInfoRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneGetAccountMetaInfoRequestBuilder id(String id) {
@@ -38,12 +42,25 @@ public class StackoneGetAccountMetaInfoRequestBuilder {
         return this;
     }
 
+
+    private StackoneGetAccountMetaInfoRequest buildRequest() {
+
+        StackoneGetAccountMetaInfoRequest request = new StackoneGetAccountMetaInfoRequest(id);
+
+        return request;
+    }
+
     public StackoneGetAccountMetaInfoResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getAccountMetaInfo(
-            id,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneGetAccountMetaInfoRequest, StackoneGetAccountMetaInfoResponse> operation
+              = new StackoneGetAccountMetaInfoOperation(
+                 sdkConfiguration,
+                 options);
+        StackoneGetAccountMetaInfoRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

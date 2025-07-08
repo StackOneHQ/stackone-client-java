@@ -14,7 +14,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class InterviewPart {
@@ -465,23 +464,23 @@ public class InterviewPart {
         }
         InterviewPart other = (InterviewPart) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.title, other.title) &&
-            Objects.deepEquals(this.interviewerIds, other.interviewerIds) &&
-            Objects.deepEquals(this.remoteInterviewerIds, other.remoteInterviewerIds) &&
-            Objects.deepEquals(this.meetingUrl, other.meetingUrl) &&
-            Objects.deepEquals(this.meetingProvider, other.meetingProvider) &&
-            Objects.deepEquals(this.startAt, other.startAt) &&
-            Objects.deepEquals(this.endAt, other.endAt) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
+            Utils.enhancedDeepEquals(this.interviewerIds, other.interviewerIds) &&
+            Utils.enhancedDeepEquals(this.remoteInterviewerIds, other.remoteInterviewerIds) &&
+            Utils.enhancedDeepEquals(this.meetingUrl, other.meetingUrl) &&
+            Utils.enhancedDeepEquals(this.meetingProvider, other.meetingProvider) &&
+            Utils.enhancedDeepEquals(this.startAt, other.startAt) &&
+            Utils.enhancedDeepEquals(this.endAt, other.endAt) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             type,

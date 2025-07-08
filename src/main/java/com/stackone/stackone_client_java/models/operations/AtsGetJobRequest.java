@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsGetJobRequest {
@@ -262,18 +261,18 @@ public class AtsGetJobRequest {
         }
         AtsGetJobRequest other = (AtsGetJobRequest) o;
         return 
-            Objects.deepEquals(this.xAccountId, other.xAccountId) &&
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.raw, other.raw) &&
-            Objects.deepEquals(this.proxy, other.proxy) &&
-            Objects.deepEquals(this.fields, other.fields) &&
-            Objects.deepEquals(this.expand, other.expand) &&
-            Objects.deepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.raw, other.raw) &&
+            Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
+            Utils.enhancedDeepEquals(this.fields, other.fields) &&
+            Utils.enhancedDeepEquals(this.expand, other.expand) &&
+            Utils.enhancedDeepEquals(this.include, other.include);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             xAccountId,
             id,
             raw,

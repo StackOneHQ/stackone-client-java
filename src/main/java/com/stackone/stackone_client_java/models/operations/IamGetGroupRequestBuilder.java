@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.IamGetGroupOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class IamGetGroupRequestBuilder {
 
     private IamGetGroupRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallIamGetGroup sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public IamGetGroupRequestBuilder(SDKMethodInterfaces.MethodCallIamGetGroup sdk) {
-        this.sdk = sdk;
+    public IamGetGroupRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public IamGetGroupRequestBuilder request(IamGetGroupRequest request) {
@@ -39,10 +43,14 @@ public class IamGetGroupRequestBuilder {
 
     public IamGetGroupResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getGroup(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<IamGetGroupRequest, IamGetGroupResponse> operation
+              = new IamGetGroupOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

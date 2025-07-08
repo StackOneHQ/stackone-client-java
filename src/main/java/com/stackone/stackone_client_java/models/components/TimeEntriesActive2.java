@@ -15,7 +15,7 @@ public enum TimeEntriesActive2 {
     @JsonValue
     private final String value;
 
-    private TimeEntriesActive2(String value) {
+    TimeEntriesActive2(String value) {
         this.value = value;
     }
     

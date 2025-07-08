@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.CrmGetAccountOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class CrmGetAccountRequestBuilder {
 
     private CrmGetAccountRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallCrmGetAccount sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public CrmGetAccountRequestBuilder(SDKMethodInterfaces.MethodCallCrmGetAccount sdk) {
-        this.sdk = sdk;
+    public CrmGetAccountRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CrmGetAccountRequestBuilder request(CrmGetAccountRequest request) {
@@ -39,10 +43,14 @@ public class CrmGetAccountRequestBuilder {
 
     public CrmGetAccountResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getAccount(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<CrmGetAccountRequest, CrmGetAccountResponse> operation
+              = new CrmGetAccountOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

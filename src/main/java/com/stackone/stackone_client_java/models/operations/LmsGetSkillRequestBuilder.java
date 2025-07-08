@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.LmsGetSkillOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class LmsGetSkillRequestBuilder {
 
     private LmsGetSkillRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsGetSkill sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsGetSkillRequestBuilder(SDKMethodInterfaces.MethodCallLmsGetSkill sdk) {
-        this.sdk = sdk;
+    public LmsGetSkillRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsGetSkillRequestBuilder request(LmsGetSkillRequest request) {
@@ -39,10 +43,14 @@ public class LmsGetSkillRequestBuilder {
 
     public LmsGetSkillResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getSkill(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsGetSkillRequest, LmsGetSkillResponse> operation
+              = new LmsGetSkillOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

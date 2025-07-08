@@ -14,7 +14,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class LinkedAccount {
@@ -64,6 +63,13 @@ public class LinkedAccount {
     @JsonProperty("updated_at")
     private OffsetDateTime updatedAt;
 
+    /**
+     * The account type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends LinkedAccountType> type;
+
     @JsonCreator
     public LinkedAccount(
             @JsonProperty("id") String id,
@@ -78,7 +84,8 @@ public class LinkedAccount {
             @JsonProperty("setup_information") JsonNullable<? extends SetupInformation> setupInformation,
             @JsonProperty("label") JsonNullable<String> label,
             @JsonProperty("created_at") OffsetDateTime createdAt,
-            @JsonProperty("updated_at") OffsetDateTime updatedAt) {
+            @JsonProperty("updated_at") OffsetDateTime updatedAt,
+            @JsonProperty("type") JsonNullable<? extends LinkedAccountType> type) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(providerName, "providerName");
@@ -92,6 +99,7 @@ public class LinkedAccount {
         Utils.checkNotNull(label, "label");
         Utils.checkNotNull(createdAt, "createdAt");
         Utils.checkNotNull(updatedAt, "updatedAt");
+        Utils.checkNotNull(type, "type");
         this.id = id;
         this.provider = provider;
         this.providerName = providerName;
@@ -105,6 +113,7 @@ public class LinkedAccount {
         this.label = label;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.type = type;
     }
     
     public LinkedAccount(
@@ -115,7 +124,7 @@ public class LinkedAccount {
             String originOwnerName,
             OffsetDateTime createdAt,
             OffsetDateTime updatedAt) {
-        this(id, provider, JsonNullable.undefined(), status, JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, updatedAt);
+        this(id, provider, JsonNullable.undefined(), status, JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, updatedAt, JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -184,6 +193,15 @@ public class LinkedAccount {
     @JsonIgnore
     public OffsetDateTime updatedAt() {
         return updatedAt;
+    }
+
+    /**
+     * The account type
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<LinkedAccountType> type() {
+        return (JsonNullable<LinkedAccountType>) type;
     }
 
     public final static Builder builder() {
@@ -304,6 +322,24 @@ public class LinkedAccount {
         return this;
     }
 
+    /**
+     * The account type
+     */
+    public LinkedAccount withType(LinkedAccountType type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The account type
+     */
+    public LinkedAccount withType(JsonNullable<? extends LinkedAccountType> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -315,24 +351,25 @@ public class LinkedAccount {
         }
         LinkedAccount other = (LinkedAccount) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.providerName, other.providerName) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.statusReasons, other.statusReasons) &&
-            Objects.deepEquals(this.originOwnerId, other.originOwnerId) &&
-            Objects.deepEquals(this.originOwnerName, other.originOwnerName) &&
-            Objects.deepEquals(this.originUsername, other.originUsername) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.setupInformation, other.setupInformation) &&
-            Objects.deepEquals(this.label, other.label) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.providerName, other.providerName) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.statusReasons, other.statusReasons) &&
+            Utils.enhancedDeepEquals(this.originOwnerId, other.originOwnerId) &&
+            Utils.enhancedDeepEquals(this.originOwnerName, other.originOwnerName) &&
+            Utils.enhancedDeepEquals(this.originUsername, other.originUsername) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.setupInformation, other.setupInformation) &&
+            Utils.enhancedDeepEquals(this.label, other.label) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             provider,
             providerName,
@@ -345,7 +382,8 @@ public class LinkedAccount {
             setupInformation,
             label,
             createdAt,
-            updatedAt);
+            updatedAt,
+            type);
     }
     
     @Override
@@ -363,7 +401,8 @@ public class LinkedAccount {
                 "setupInformation", setupInformation,
                 "label", label,
                 "createdAt", createdAt,
-                "updatedAt", updatedAt);
+                "updatedAt", updatedAt,
+                "type", type);
     }
     
     public final static class Builder {
@@ -393,6 +432,8 @@ public class LinkedAccount {
         private OffsetDateTime createdAt;
  
         private OffsetDateTime updatedAt;
+ 
+        private JsonNullable<? extends LinkedAccountType> type = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -511,6 +552,24 @@ public class LinkedAccount {
             this.updatedAt = updatedAt;
             return this;
         }
+
+        /**
+         * The account type
+         */
+        public Builder type(LinkedAccountType type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The account type
+         */
+        public Builder type(JsonNullable<? extends LinkedAccountType> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
         
         public LinkedAccount build() {
             return new LinkedAccount(
@@ -526,7 +585,8 @@ public class LinkedAccount {
                 setupInformation,
                 label,
                 createdAt,
-                updatedAt);
+                updatedAt,
+                type);
         }
     }
 }

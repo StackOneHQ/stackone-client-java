@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ResultLink {
@@ -111,13 +110,13 @@ public class ResultLink {
         }
         ResultLink other = (ResultLink) o;
         return 
-            Objects.deepEquals(this.label, other.label) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.label, other.label) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             label,
             url);
     }

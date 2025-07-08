@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -82,12 +81,12 @@ public class Resources {
         }
         Resources other = (Resources) o;
         return 
-            Objects.deepEquals(this.images, other.images);
+            Utils.enhancedDeepEquals(this.images, other.images);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             images);
     }
     

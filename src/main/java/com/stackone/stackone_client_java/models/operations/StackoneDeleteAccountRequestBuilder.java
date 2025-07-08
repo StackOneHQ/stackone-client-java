@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.StackoneDeleteAccountOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -14,10 +18,10 @@ public class StackoneDeleteAccountRequestBuilder {
 
     private String id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneDeleteAccount sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneDeleteAccountRequestBuilder(SDKMethodInterfaces.MethodCallStackoneDeleteAccount sdk) {
-        this.sdk = sdk;
+    public StackoneDeleteAccountRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneDeleteAccountRequestBuilder id(String id) {
@@ -38,12 +42,25 @@ public class StackoneDeleteAccountRequestBuilder {
         return this;
     }
 
+
+    private StackoneDeleteAccountRequest buildRequest() {
+
+        StackoneDeleteAccountRequest request = new StackoneDeleteAccountRequest(id);
+
+        return request;
+    }
+
     public StackoneDeleteAccountResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.deleteAccount(
-            id,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneDeleteAccountRequest, StackoneDeleteAccountResponse> operation
+              = new StackoneDeleteAccountOperation(
+                 sdkConfiguration,
+                 options);
+        StackoneDeleteAccountRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

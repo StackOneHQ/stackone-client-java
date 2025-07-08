@@ -14,7 +14,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Campaign {
@@ -517,26 +516,26 @@ public class Campaign {
         }
         Campaign other = (Campaign) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.scheduleType, other.scheduleType) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.archived, other.archived) &&
-            Objects.deepEquals(this.draft, other.draft) &&
-            Objects.deepEquals(this.channels, other.channels) &&
-            Objects.deepEquals(this.firstSentAt, other.firstSentAt) &&
-            Objects.deepEquals(this.lastSentAt, other.lastSentAt) &&
-            Objects.deepEquals(this.tags, other.tags) &&
-            Objects.deepEquals(this.messages, other.messages);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.scheduleType, other.scheduleType) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.archived, other.archived) &&
+            Utils.enhancedDeepEquals(this.draft, other.draft) &&
+            Utils.enhancedDeepEquals(this.channels, other.channels) &&
+            Utils.enhancedDeepEquals(this.firstSentAt, other.firstSentAt) &&
+            Utils.enhancedDeepEquals(this.lastSentAt, other.lastSentAt) &&
+            Utils.enhancedDeepEquals(this.tags, other.tags) &&
+            Utils.enhancedDeepEquals(this.messages, other.messages);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             name,

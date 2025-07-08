@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class StepLog {
@@ -801,32 +800,32 @@ public class StepLog {
         }
         StepLog other = (StepLog) o;
         return 
-            Objects.deepEquals(this.requestId, other.requestId) &&
-            Objects.deepEquals(this.startTime, other.startTime) &&
-            Objects.deepEquals(this.endTime, other.endTime) &&
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.httpMethod, other.httpMethod) &&
-            Objects.deepEquals(this.path, other.path) &&
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.duration, other.duration) &&
-            Objects.deepEquals(this.success, other.success) &&
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.service, other.service) &&
-            Objects.deepEquals(this.resource, other.resource) &&
-            Objects.deepEquals(this.childResource, other.childResource) &&
-            Objects.deepEquals(this.subResource, other.subResource) &&
-            Objects.deepEquals(this.action, other.action) &&
-            Objects.deepEquals(this.isWorker, other.isWorker) &&
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.request, other.request) &&
-            Objects.deepEquals(this.response, other.response);
+            Utils.enhancedDeepEquals(this.requestId, other.requestId) &&
+            Utils.enhancedDeepEquals(this.startTime, other.startTime) &&
+            Utils.enhancedDeepEquals(this.endTime, other.endTime) &&
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.httpMethod, other.httpMethod) &&
+            Utils.enhancedDeepEquals(this.path, other.path) &&
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.duration, other.duration) &&
+            Utils.enhancedDeepEquals(this.success, other.success) &&
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.service, other.service) &&
+            Utils.enhancedDeepEquals(this.resource, other.resource) &&
+            Utils.enhancedDeepEquals(this.childResource, other.childResource) &&
+            Utils.enhancedDeepEquals(this.subResource, other.subResource) &&
+            Utils.enhancedDeepEquals(this.action, other.action) &&
+            Utils.enhancedDeepEquals(this.isWorker, other.isWorker) &&
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.request, other.request) &&
+            Utils.enhancedDeepEquals(this.response, other.response);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             requestId,
             startTime,
             endTime,

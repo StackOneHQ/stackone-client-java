@@ -15,7 +15,7 @@ public enum IamUpdateUserRequestDtoIsBotUser2 {
     @JsonValue
     private final String value;
 
-    private IamUpdateUserRequestDtoIsBotUser2(String value) {
+    IamUpdateUserRequestDtoIsBotUser2(String value) {
         this.value = value;
     }
     

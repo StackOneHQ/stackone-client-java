@@ -15,7 +15,7 @@ public enum Internal2 {
     @JsonValue
     private final String value;
 
-    private Internal2(String value) {
+    Internal2(String value) {
         this.value = value;
     }
     

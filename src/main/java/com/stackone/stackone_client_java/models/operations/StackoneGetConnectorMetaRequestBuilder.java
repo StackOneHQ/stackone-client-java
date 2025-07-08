@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.StackoneGetConnectorMetaOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class StackoneGetConnectorMetaRequestBuilder {
     private String provider;
     private JsonNullable<String> include = JsonNullable.undefined();
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneGetConnectorMeta sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneGetConnectorMetaRequestBuilder(SDKMethodInterfaces.MethodCallStackoneGetConnectorMeta sdk) {
-        this.sdk = sdk;
+    public StackoneGetConnectorMetaRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneGetConnectorMetaRequestBuilder provider(String provider) {
@@ -52,13 +56,26 @@ public class StackoneGetConnectorMetaRequestBuilder {
         return this;
     }
 
+
+    private StackoneGetConnectorMetaRequest buildRequest() {
+
+        StackoneGetConnectorMetaRequest request = new StackoneGetConnectorMetaRequest(provider,
+            include);
+
+        return request;
+    }
+
     public StackoneGetConnectorMetaResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getConnectorMeta(
-            provider,
-            include,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneGetConnectorMetaRequest, StackoneGetConnectorMetaResponse> operation
+              = new StackoneGetConnectorMetaOperation(
+                 sdkConfiguration,
+                 options);
+        StackoneGetConnectorMetaRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

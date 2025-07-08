@@ -9,14 +9,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class LmsUser {
@@ -75,7 +73,7 @@ public class LmsUser {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<Boolean> active;
+    private JsonNullable<? extends LmsUserActive> active;
 
     /**
      * The created_at date
@@ -100,7 +98,7 @@ public class LmsUser {
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("email") JsonNullable<String> email,
             @JsonProperty("phone_number") JsonNullable<String> phoneNumber,
-            @JsonProperty("active") JsonNullable<Boolean> active,
+            @JsonProperty("active") JsonNullable<? extends LmsUserActive> active,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt) {
         Utils.checkNotNull(id, "id");
@@ -189,9 +187,10 @@ public class LmsUser {
     /**
      * The user active status
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> active() {
-        return active;
+    public JsonNullable<LmsUserActive> active() {
+        return (JsonNullable<LmsUserActive>) active;
     }
 
     /**
@@ -343,7 +342,7 @@ public class LmsUser {
     /**
      * The user active status
      */
-    public LmsUser withActive(boolean active) {
+    public LmsUser withActive(LmsUserActive active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -352,7 +351,7 @@ public class LmsUser {
     /**
      * The user active status
      */
-    public LmsUser withActive(JsonNullable<Boolean> active) {
+    public LmsUser withActive(JsonNullable<? extends LmsUserActive> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -405,21 +404,21 @@ public class LmsUser {
         }
         LmsUser other = (LmsUser) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.externalReference, other.externalReference) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.phoneNumber, other.phoneNumber) &&
-            Objects.deepEquals(this.active, other.active) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.phoneNumber, other.phoneNumber) &&
+            Utils.enhancedDeepEquals(this.active, other.active) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,
@@ -463,7 +462,7 @@ public class LmsUser {
  
         private JsonNullable<String> phoneNumber = JsonNullable.undefined();
  
-        private JsonNullable<Boolean> active = JsonNullable.undefined();
+        private JsonNullable<? extends LmsUserActive> active = JsonNullable.undefined();
  
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
  
@@ -602,7 +601,7 @@ public class LmsUser {
         /**
          * The user active status
          */
-        public Builder active(boolean active) {
+        public Builder active(LmsUserActive active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -611,7 +610,7 @@ public class LmsUser {
         /**
          * The user active status
          */
-        public Builder active(JsonNullable<Boolean> active) {
+        public Builder active(JsonNullable<? extends LmsUserActive> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;

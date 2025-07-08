@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeesTimeOffRequestOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetEmployeesTimeOffRequestRequestBuilder {
 
     private HrisGetEmployeesTimeOffRequestRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetEmployeesTimeOffRequest sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetEmployeesTimeOffRequestRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetEmployeesTimeOffRequest sdk) {
-        this.sdk = sdk;
+    public HrisGetEmployeesTimeOffRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetEmployeesTimeOffRequestRequestBuilder request(HrisGetEmployeesTimeOffRequestRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetEmployeesTimeOffRequestRequestBuilder {
 
     public HrisGetEmployeesTimeOffRequestResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getEmployeesTimeOffRequest(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetEmployeesTimeOffRequestRequest, HrisGetEmployeesTimeOffRequestResponse> operation
+              = new HrisGetEmployeesTimeOffRequestOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

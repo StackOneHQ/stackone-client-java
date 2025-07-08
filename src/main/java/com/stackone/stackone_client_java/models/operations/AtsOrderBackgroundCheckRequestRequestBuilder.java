@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDto;
+import com.stackone.stackone_client_java.operations.AtsOrderBackgroundCheckRequestOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class AtsOrderBackgroundCheckRequestRequestBuilder {
     private String xAccountId;
     private AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsOrderBackgroundCheckRequest sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsOrderBackgroundCheckRequestRequestBuilder(SDKMethodInterfaces.MethodCallAtsOrderBackgroundCheckRequest sdk) {
-        this.sdk = sdk;
+    public AtsOrderBackgroundCheckRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsOrderBackgroundCheckRequestRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class AtsOrderBackgroundCheckRequestRequestBuilder {
         return this;
     }
 
+
+    private AtsOrderBackgroundCheckRequestRequest buildRequest() {
+
+        AtsOrderBackgroundCheckRequestRequest request = new AtsOrderBackgroundCheckRequestRequest(xAccountId,
+            atsCreateBackgroundCheckOrderRequestDto);
+
+        return request;
+    }
+
     public AtsOrderBackgroundCheckRequestResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.orderBackgroundCheckRequest(
-            xAccountId,
-            atsCreateBackgroundCheckOrderRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
+              = new AtsOrderBackgroundCheckRequestOperation(
+                 sdkConfiguration,
+                 options);
+        AtsOrderBackgroundCheckRequestRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

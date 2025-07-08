@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDto;
+import com.stackone.stackone_client_java.operations.AtsUpdateAssessmentsResultOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsUpdateAssessmentsResultRequestBuilder {
     private String id;
     private AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsUpdateAssessmentsResult sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsUpdateAssessmentsResultRequestBuilder(SDKMethodInterfaces.MethodCallAtsUpdateAssessmentsResult sdk) {
-        this.sdk = sdk;
+    public AtsUpdateAssessmentsResultRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsUpdateAssessmentsResultRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsUpdateAssessmentsResultRequestBuilder {
         return this;
     }
 
+
+    private AtsUpdateAssessmentsResultRequest buildRequest() {
+
+        AtsUpdateAssessmentsResultRequest request = new AtsUpdateAssessmentsResultRequest(xAccountId,
+            id,
+            atsUpdateCandidatesAssessmentsResultsRequestDto);
+
+        return request;
+    }
+
     public AtsUpdateAssessmentsResultResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateAssessmentsResult(
-            xAccountId,
-            id,
-            atsUpdateCandidatesAssessmentsResultsRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsUpdateAssessmentsResultRequest, AtsUpdateAssessmentsResultResponse> operation
+              = new AtsUpdateAssessmentsResultOperation(
+                 sdkConfiguration,
+                 options);
+        AtsUpdateAssessmentsResultRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

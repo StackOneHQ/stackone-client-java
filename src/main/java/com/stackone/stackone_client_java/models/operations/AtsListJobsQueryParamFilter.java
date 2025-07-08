@@ -11,7 +11,6 @@ import java.lang.Deprecated;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -40,7 +39,7 @@ public class AtsListJobsQueryParamFilter {
      */
     @SpeakeasyMetadata("queryParam:name=status")
     @Deprecated
-    private JsonNullable<? extends Status> status;
+    private JsonNullable<? extends QueryParamStatus> status;
 
     /**
      * The job_status of the job
@@ -52,7 +51,7 @@ public class AtsListJobsQueryParamFilter {
     public AtsListJobsQueryParamFilter(
             JsonNullable<String> updatedAfter,
             JsonNullable<String> createdAfter,
-            JsonNullable<? extends Status> status,
+            JsonNullable<? extends QueryParamStatus> status,
             JsonNullable<? extends JobStatus> jobStatus) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(createdAfter, "createdAfter");
@@ -92,8 +91,8 @@ public class AtsListJobsQueryParamFilter {
     @Deprecated
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Status> status() {
-        return (JsonNullable<Status>) status;
+    public JsonNullable<QueryParamStatus> status() {
+        return (JsonNullable<QueryParamStatus>) status;
     }
 
     /**
@@ -151,7 +150,7 @@ public class AtsListJobsQueryParamFilter {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public AtsListJobsQueryParamFilter withStatus(Status status) {
+    public AtsListJobsQueryParamFilter withStatus(QueryParamStatus status) {
         Utils.checkNotNull(status, "status");
         this.status = JsonNullable.of(status);
         return this;
@@ -163,7 +162,7 @@ public class AtsListJobsQueryParamFilter {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public AtsListJobsQueryParamFilter withStatus(JsonNullable<? extends Status> status) {
+    public AtsListJobsQueryParamFilter withStatus(JsonNullable<? extends QueryParamStatus> status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
         return this;
@@ -198,15 +197,15 @@ public class AtsListJobsQueryParamFilter {
         }
         AtsListJobsQueryParamFilter other = (AtsListJobsQueryParamFilter) o;
         return 
-            Objects.deepEquals(this.updatedAfter, other.updatedAfter) &&
-            Objects.deepEquals(this.createdAfter, other.createdAfter) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.jobStatus, other.jobStatus);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.createdAfter, other.createdAfter) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.jobStatus, other.jobStatus);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             updatedAfter,
             createdAfter,
             status,
@@ -229,7 +228,7 @@ public class AtsListJobsQueryParamFilter {
         private JsonNullable<String> createdAfter = JsonNullable.undefined();
  
         @Deprecated
-        private JsonNullable<? extends Status> status = JsonNullable.undefined();
+        private JsonNullable<? extends QueryParamStatus> status = JsonNullable.undefined();
  
         private JsonNullable<? extends JobStatus> jobStatus = JsonNullable.undefined();
         
@@ -279,7 +278,7 @@ public class AtsListJobsQueryParamFilter {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder status(Status status) {
+        public Builder status(QueryParamStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = JsonNullable.of(status);
             return this;
@@ -291,7 +290,7 @@ public class AtsListJobsQueryParamFilter {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder status(JsonNullable<? extends Status> status) {
+        public Builder status(JsonNullable<? extends QueryParamStatus> status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;

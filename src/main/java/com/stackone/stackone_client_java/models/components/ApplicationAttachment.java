@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ApplicationAttachment {
@@ -173,15 +172,15 @@ public class ApplicationAttachment {
         }
         ApplicationAttachment other = (ApplicationAttachment) o;
         return 
-            Objects.deepEquals(this.fileName, other.fileName) &&
-            Objects.deepEquals(this.content, other.content) &&
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.contentType, other.contentType);
+            Utils.enhancedDeepEquals(this.fileName, other.fileName) &&
+            Utils.enhancedDeepEquals(this.content, other.content) &&
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.contentType, other.contentType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             fileName,
             content,
             url,

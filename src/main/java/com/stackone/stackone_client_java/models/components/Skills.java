@@ -9,12 +9,10 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Deprecated;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Skills {
@@ -45,7 +43,7 @@ public class Skills {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<Boolean> active;
+    private JsonNullable<? extends SkillsActive> active;
 
     /**
      * The hierarchal level of the skill
@@ -76,7 +74,7 @@ public class Skills {
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("name") JsonNullable<String> name,
-            @JsonProperty("active") JsonNullable<Boolean> active,
+            @JsonProperty("active") JsonNullable<? extends SkillsActive> active,
             @JsonProperty("hierarchy") JsonNullable<? extends SkillsHierarchy> hierarchy,
             @JsonProperty("language") JsonNullable<? extends SkillsLanguage> language,
             @JsonProperty("level") JsonNullable<? extends SkillsLevel> level) {
@@ -127,9 +125,10 @@ public class Skills {
     /**
      * Whether the skill is active and therefore available for use
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> active() {
-        return active;
+    public JsonNullable<SkillsActive> active() {
+        return (JsonNullable<SkillsActive>) active;
     }
 
     /**
@@ -223,7 +222,7 @@ public class Skills {
     /**
      * Whether the skill is active and therefore available for use
      */
-    public Skills withActive(boolean active) {
+    public Skills withActive(SkillsActive active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -232,7 +231,7 @@ public class Skills {
     /**
      * Whether the skill is active and therefore available for use
      */
-    public Skills withActive(JsonNullable<Boolean> active) {
+    public Skills withActive(JsonNullable<? extends SkillsActive> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -309,18 +308,18 @@ public class Skills {
         }
         Skills other = (Skills) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.active, other.active) &&
-            Objects.deepEquals(this.hierarchy, other.hierarchy) &&
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.level, other.level);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.active, other.active) &&
+            Utils.enhancedDeepEquals(this.hierarchy, other.hierarchy) &&
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.level, other.level);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             name,
@@ -350,7 +349,7 @@ public class Skills {
  
         private JsonNullable<String> name = JsonNullable.undefined();
  
-        private JsonNullable<Boolean> active = JsonNullable.undefined();
+        private JsonNullable<? extends SkillsActive> active = JsonNullable.undefined();
  
         private JsonNullable<? extends SkillsHierarchy> hierarchy = JsonNullable.undefined();
  
@@ -420,7 +419,7 @@ public class Skills {
         /**
          * Whether the skill is active and therefore available for use
          */
-        public Builder active(boolean active) {
+        public Builder active(SkillsActive active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -429,7 +428,7 @@ public class Skills {
         /**
          * Whether the skill is active and therefore available for use
          */
-        public Builder active(JsonNullable<Boolean> active) {
+        public Builder active(JsonNullable<? extends SkillsActive> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;

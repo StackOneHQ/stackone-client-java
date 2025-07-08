@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateJobRequestDto;
+import com.stackone.stackone_client_java.operations.AtsCreateJobOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class AtsCreateJobRequestBuilder {
     private String xAccountId;
     private AtsCreateJobRequestDto atsCreateJobRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsCreateJob sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsCreateJobRequestBuilder(SDKMethodInterfaces.MethodCallAtsCreateJob sdk) {
-        this.sdk = sdk;
+    public AtsCreateJobRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsCreateJobRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class AtsCreateJobRequestBuilder {
         return this;
     }
 
+
+    private AtsCreateJobRequest buildRequest() {
+
+        AtsCreateJobRequest request = new AtsCreateJobRequest(xAccountId,
+            atsCreateJobRequestDto);
+
+        return request;
+    }
+
     public AtsCreateJobResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createJob(
-            xAccountId,
-            atsCreateJobRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsCreateJobRequest, AtsCreateJobResponse> operation
+              = new AtsCreateJobOperation(
+                 sdkConfiguration,
+                 options);
+        AtsCreateJobRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

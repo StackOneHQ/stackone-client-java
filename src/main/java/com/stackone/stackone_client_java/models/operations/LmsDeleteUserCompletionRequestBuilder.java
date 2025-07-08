@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.LmsDeleteUserCompletionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class LmsDeleteUserCompletionRequestBuilder {
     private String id;
     private String subResourceId;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallLmsDeleteUserCompletion sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public LmsDeleteUserCompletionRequestBuilder(SDKMethodInterfaces.MethodCallLmsDeleteUserCompletion sdk) {
-        this.sdk = sdk;
+    public LmsDeleteUserCompletionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public LmsDeleteUserCompletionRequestBuilder xAccountId(String xAccountId) {
@@ -52,14 +56,27 @@ public class LmsDeleteUserCompletionRequestBuilder {
         return this;
     }
 
+
+    private LmsDeleteUserCompletionRequest buildRequest() {
+
+        LmsDeleteUserCompletionRequest request = new LmsDeleteUserCompletionRequest(xAccountId,
+            id,
+            subResourceId);
+
+        return request;
+    }
+
     public LmsDeleteUserCompletionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.deleteUserCompletion(
-            xAccountId,
-            id,
-            subResourceId,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
+              = new LmsDeleteUserCompletionOperation(
+                 sdkConfiguration,
+                 options);
+        LmsDeleteUserCompletionRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

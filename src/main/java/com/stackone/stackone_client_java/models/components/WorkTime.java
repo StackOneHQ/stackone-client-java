@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class WorkTime {
@@ -113,13 +112,13 @@ public class WorkTime {
         }
         WorkTime other = (WorkTime) o;
         return 
-            Objects.deepEquals(this.duration, other.duration) &&
-            Objects.deepEquals(this.durationUnit, other.durationUnit);
+            Utils.enhancedDeepEquals(this.duration, other.duration) &&
+            Utils.enhancedDeepEquals(this.durationUnit, other.durationUnit);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             duration,
             durationUnit);
     }

@@ -1,11 +1,11 @@
 # Type
 
-The type of the custom field.
+The connect session account type
 
 
-## Fields
+## Values
 
-| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `value`                                                                                                        | [JsonNullable\<CustomFieldDefinitionValue>](../../models/components/CustomFieldDefinitionValue.md)             | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
-| `sourceValue`                                                                                                  | [JsonNullable\<CustomFieldDefinitionSourceValue>](../../models/components/CustomFieldDefinitionSourceValue.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| Name         | Value        |
+| ------------ | ------------ |
+| `PRODUCTION` | production   |
+| `TEST`       | test         |

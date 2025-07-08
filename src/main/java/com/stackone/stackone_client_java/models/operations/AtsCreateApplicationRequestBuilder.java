@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDto;
+import com.stackone.stackone_client_java.operations.AtsCreateApplicationOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class AtsCreateApplicationRequestBuilder {
     private String xAccountId;
     private AtsCreateApplicationRequestDto atsCreateApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsCreateApplication sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsCreateApplicationRequestBuilder(SDKMethodInterfaces.MethodCallAtsCreateApplication sdk) {
-        this.sdk = sdk;
+    public AtsCreateApplicationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsCreateApplicationRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class AtsCreateApplicationRequestBuilder {
         return this;
     }
 
+
+    private AtsCreateApplicationRequest buildRequest() {
+
+        AtsCreateApplicationRequest request = new AtsCreateApplicationRequest(xAccountId,
+            atsCreateApplicationRequestDto);
+
+        return request;
+    }
+
     public AtsCreateApplicationResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createApplication(
-            xAccountId,
-            atsCreateApplicationRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
+              = new AtsCreateApplicationOperation(
+                 sdkConfiguration,
+                 options);
+        AtsCreateApplicationRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

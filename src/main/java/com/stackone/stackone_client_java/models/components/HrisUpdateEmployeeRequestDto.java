@@ -17,7 +17,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class HrisUpdateEmployeeRequestDto {
@@ -1562,51 +1561,51 @@ public class HrisUpdateEmployeeRequestDto {
         }
         HrisUpdateEmployeeRequestDto other = (HrisUpdateEmployeeRequestDto) o;
         return 
-            Objects.deepEquals(this.firstName, other.firstName) &&
-            Objects.deepEquals(this.lastName, other.lastName) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.displayName, other.displayName) &&
-            Objects.deepEquals(this.avatarUrl, other.avatarUrl) &&
-            Objects.deepEquals(this.personalEmail, other.personalEmail) &&
-            Objects.deepEquals(this.personalPhoneNumber, other.personalPhoneNumber) &&
-            Objects.deepEquals(this.workEmail, other.workEmail) &&
-            Objects.deepEquals(this.workPhoneNumber, other.workPhoneNumber) &&
-            Objects.deepEquals(this.jobId, other.jobId) &&
-            Objects.deepEquals(this.jobTitle, other.jobTitle) &&
-            Objects.deepEquals(this.departmentId, other.departmentId) &&
-            Objects.deepEquals(this.teamId, other.teamId) &&
-            Objects.deepEquals(this.department, other.department) &&
-            Objects.deepEquals(this.managerId, other.managerId) &&
-            Objects.deepEquals(this.gender, other.gender) &&
-            Objects.deepEquals(this.preferredLanguage, other.preferredLanguage) &&
-            Objects.deepEquals(this.ethnicity, other.ethnicity) &&
-            Objects.deepEquals(this.dateOfBirth, other.dateOfBirth) &&
-            Objects.deepEquals(this.birthday, other.birthday) &&
-            Objects.deepEquals(this.maritalStatus, other.maritalStatus) &&
-            Objects.deepEquals(this.avatar, other.avatar) &&
-            Objects.deepEquals(this.hireDate, other.hireDate) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.employmentType, other.employmentType) &&
-            Objects.deepEquals(this.employmentContractType, other.employmentContractType) &&
-            Objects.deepEquals(this.employmentStatus, other.employmentStatus) &&
-            Objects.deepEquals(this.terminationDate, other.terminationDate) &&
-            Objects.deepEquals(this.companyName, other.companyName) &&
-            Objects.deepEquals(this.companyId, other.companyId) &&
-            Objects.deepEquals(this.citizenships, other.citizenships) &&
-            Objects.deepEquals(this.employment, other.employment) &&
-            Objects.deepEquals(this.customFields, other.customFields) &&
-            Objects.deepEquals(this.benefits, other.benefits) &&
-            Objects.deepEquals(this.employeeNumber, other.employeeNumber) &&
-            Objects.deepEquals(this.nationalIdentityNumber, other.nationalIdentityNumber) &&
-            Objects.deepEquals(this.nationalIdentityNumbers, other.nationalIdentityNumbers) &&
-            Objects.deepEquals(this.homeLocation, other.homeLocation) &&
-            Objects.deepEquals(this.workLocation, other.workLocation) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.firstName, other.firstName) &&
+            Utils.enhancedDeepEquals(this.lastName, other.lastName) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.displayName, other.displayName) &&
+            Utils.enhancedDeepEquals(this.avatarUrl, other.avatarUrl) &&
+            Utils.enhancedDeepEquals(this.personalEmail, other.personalEmail) &&
+            Utils.enhancedDeepEquals(this.personalPhoneNumber, other.personalPhoneNumber) &&
+            Utils.enhancedDeepEquals(this.workEmail, other.workEmail) &&
+            Utils.enhancedDeepEquals(this.workPhoneNumber, other.workPhoneNumber) &&
+            Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
+            Utils.enhancedDeepEquals(this.jobTitle, other.jobTitle) &&
+            Utils.enhancedDeepEquals(this.departmentId, other.departmentId) &&
+            Utils.enhancedDeepEquals(this.teamId, other.teamId) &&
+            Utils.enhancedDeepEquals(this.department, other.department) &&
+            Utils.enhancedDeepEquals(this.managerId, other.managerId) &&
+            Utils.enhancedDeepEquals(this.gender, other.gender) &&
+            Utils.enhancedDeepEquals(this.preferredLanguage, other.preferredLanguage) &&
+            Utils.enhancedDeepEquals(this.ethnicity, other.ethnicity) &&
+            Utils.enhancedDeepEquals(this.dateOfBirth, other.dateOfBirth) &&
+            Utils.enhancedDeepEquals(this.birthday, other.birthday) &&
+            Utils.enhancedDeepEquals(this.maritalStatus, other.maritalStatus) &&
+            Utils.enhancedDeepEquals(this.avatar, other.avatar) &&
+            Utils.enhancedDeepEquals(this.hireDate, other.hireDate) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.employmentType, other.employmentType) &&
+            Utils.enhancedDeepEquals(this.employmentContractType, other.employmentContractType) &&
+            Utils.enhancedDeepEquals(this.employmentStatus, other.employmentStatus) &&
+            Utils.enhancedDeepEquals(this.terminationDate, other.terminationDate) &&
+            Utils.enhancedDeepEquals(this.companyName, other.companyName) &&
+            Utils.enhancedDeepEquals(this.companyId, other.companyId) &&
+            Utils.enhancedDeepEquals(this.citizenships, other.citizenships) &&
+            Utils.enhancedDeepEquals(this.employment, other.employment) &&
+            Utils.enhancedDeepEquals(this.customFields, other.customFields) &&
+            Utils.enhancedDeepEquals(this.benefits, other.benefits) &&
+            Utils.enhancedDeepEquals(this.employeeNumber, other.employeeNumber) &&
+            Utils.enhancedDeepEquals(this.nationalIdentityNumber, other.nationalIdentityNumber) &&
+            Utils.enhancedDeepEquals(this.nationalIdentityNumbers, other.nationalIdentityNumbers) &&
+            Utils.enhancedDeepEquals(this.homeLocation, other.homeLocation) &&
+            Utils.enhancedDeepEquals(this.workLocation, other.workLocation) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             firstName,
             lastName,
             name,

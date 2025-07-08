@@ -3,11 +3,24 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
-import com.stackone.stackone_client_java.models.errors.SDKError;
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+import static com.stackone.stackone_client_java.utils.Exceptions.unchecked;
+import static com.stackone.stackone_client_java.utils.Utils.transform;
+import static com.stackone.stackone_client_java.utils.Utils.toStream;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisListCompaniesOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
+import com.stackone.stackone_client_java.utils.pagination.CursorTracker;
+import com.stackone.stackone_client_java.utils.pagination.Paginator;
+import java.io.InputStream;
 import java.lang.Exception;
+import java.lang.Iterable;
+import java.lang.String;
+import java.net.http.HttpResponse;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -15,10 +28,10 @@ public class HrisListCompaniesRequestBuilder {
 
     private HrisListCompaniesRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisListCompanies sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisListCompaniesRequestBuilder(SDKMethodInterfaces.MethodCallHrisListCompanies sdk) {
-        this.sdk = sdk;
+    public HrisListCompaniesRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisListCompaniesRequestBuilder request(HrisListCompaniesRequest request) {
@@ -41,31 +54,54 @@ public class HrisListCompaniesRequestBuilder {
 
     public HrisListCompaniesResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.listCompanies(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisListCompaniesRequest, HrisListCompaniesResponse> operation
+              = new HrisListCompaniesOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
-    
+
+    /**
+    * Returns an iterable that performs next page calls till no more pages
+    * are returned.
+    *
+    * <p>The returned iterable can be used in a for-each loop:
+    * <pre><code>
+    * for (HrisListCompaniesResponse page : builder.callAsIterable()) {
+    *     // Process each page
+    * }
+    * </code></pre>
+    * 
+    * @return An iterable that can be used to iterate through all pages
+    */
+    public Iterable<HrisListCompaniesResponse> callAsIterable() {
+        Optional<Options> options = Optional.of(Options.builder()
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisListCompaniesRequest, HrisListCompaniesResponse> operation
+              = new HrisListCompaniesOperation(
+                 sdkConfiguration,
+                 options);
+        Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
+            request,
+            new CursorTracker<>("$.next", String.class),
+                HrisListCompaniesRequest::withNext,
+            nextRequest -> unchecked(() -> operation.doRequest(request)).get());
+        
+        return () -> transform(iterator, operation::handleResponse);
+    }
+
     /**
      * Returns a stream that performs next page calls till no more pages
-     * are returned. Unlike the {@link #call()} method this method will
-     * throw an {@link SDKError} if any page retrieval has an HTTP status 
-     * code >= 300 (Note that 3XX is not an error range but will need 
-     * special handling by the user if for example the HTTP client is 
-     * not configured to follow redirects).
-     * 
-     * @throws {@link SDKError} if HTTP status code >= 300 is encountered
+     * are returned.
      **/  
     public Stream<HrisListCompaniesResponse> callAsStream() {
-        return Utils.stream(() -> Optional.of(call()), x -> {
-            if (x.statusCode() >= 300) {
-                byte[] body = Utils.toByteArrayAndClose(x.rawResponse().body());
-                throw new SDKError(x.rawResponse(), x.statusCode(), x.contentType(), body);
-            } else {
-                return x.next();
-            }
-        });
+        return toStream(callAsIterable());
     }
+
 }

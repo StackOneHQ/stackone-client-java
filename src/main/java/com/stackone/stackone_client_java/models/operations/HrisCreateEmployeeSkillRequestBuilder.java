@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.EntitySkillsCreateRequestDto;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployeeSkillOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class HrisCreateEmployeeSkillRequestBuilder {
     private String id;
     private EntitySkillsCreateRequestDto entitySkillsCreateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisCreateEmployeeSkill sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisCreateEmployeeSkillRequestBuilder(SDKMethodInterfaces.MethodCallHrisCreateEmployeeSkill sdk) {
-        this.sdk = sdk;
+    public HrisCreateEmployeeSkillRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisCreateEmployeeSkillRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class HrisCreateEmployeeSkillRequestBuilder {
         return this;
     }
 
+
+    private HrisCreateEmployeeSkillRequest buildRequest() {
+
+        HrisCreateEmployeeSkillRequest request = new HrisCreateEmployeeSkillRequest(xAccountId,
+            id,
+            entitySkillsCreateRequestDto);
+
+        return request;
+    }
+
     public HrisCreateEmployeeSkillResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createEmployeeSkill(
-            xAccountId,
-            id,
-            entitySkillsCreateRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
+              = new HrisCreateEmployeeSkillOperation(
+                 sdkConfiguration,
+                 options);
+        HrisCreateEmployeeSkillRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

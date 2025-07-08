@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.StackoneListConnectorsMetaOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -15,10 +19,10 @@ public class StackoneListConnectorsMetaRequestBuilder {
 
     private JsonNullable<String> include = JsonNullable.undefined();
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneListConnectorsMeta sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneListConnectorsMetaRequestBuilder(SDKMethodInterfaces.MethodCallStackoneListConnectorsMeta sdk) {
-        this.sdk = sdk;
+    public StackoneListConnectorsMetaRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneListConnectorsMetaRequestBuilder include(String include) {
@@ -45,12 +49,25 @@ public class StackoneListConnectorsMetaRequestBuilder {
         return this;
     }
 
+
+    private StackoneListConnectorsMetaRequest buildRequest() {
+
+        StackoneListConnectorsMetaRequest request = new StackoneListConnectorsMetaRequest(include);
+
+        return request;
+    }
+
     public StackoneListConnectorsMetaResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.listConnectorsMeta(
-            include,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneListConnectorsMetaRequest, StackoneListConnectorsMetaResponse> operation
+              = new StackoneListConnectorsMetaOperation(
+                 sdkConfiguration,
+                 options);
+        StackoneListConnectorsMetaRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

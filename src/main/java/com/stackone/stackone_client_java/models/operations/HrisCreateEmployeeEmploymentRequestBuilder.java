@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDto;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployeeEmploymentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class HrisCreateEmployeeEmploymentRequestBuilder {
     private String id;
     private HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisCreateEmployeeEmployment sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisCreateEmployeeEmploymentRequestBuilder(SDKMethodInterfaces.MethodCallHrisCreateEmployeeEmployment sdk) {
-        this.sdk = sdk;
+    public HrisCreateEmployeeEmploymentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisCreateEmployeeEmploymentRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class HrisCreateEmployeeEmploymentRequestBuilder {
         return this;
     }
 
+
+    private HrisCreateEmployeeEmploymentRequest buildRequest() {
+
+        HrisCreateEmployeeEmploymentRequest request = new HrisCreateEmployeeEmploymentRequest(xAccountId,
+            id,
+            hrisCreateEmploymentRequestDto);
+
+        return request;
+    }
+
     public HrisCreateEmployeeEmploymentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createEmployeeEmployment(
-            xAccountId,
-            id,
-            hrisCreateEmploymentRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisCreateEmployeeEmploymentRequest, HrisCreateEmployeeEmploymentResponse> operation
+              = new HrisCreateEmployeeEmploymentOperation(
+                 sdkConfiguration,
+                 options);
+        HrisCreateEmployeeEmploymentRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

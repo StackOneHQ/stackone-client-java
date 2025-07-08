@@ -1,0 +1,11 @@
+# ChangeType
+
+The type of change that occurred to the application
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                  | [JsonNullable\<ApplicationChangesValue>](../../models/components/ApplicationChangesValue.md)             | :heavy_minus_sign:                                                                                       | The type of change that occurred to the application                                                      | application_status                                                                                       |
+| `sourceValue`                                                                                            | [JsonNullable\<ApplicationChangesSourceValue>](../../models/components/ApplicationChangesSourceValue.md) | :heavy_minus_sign:                                                                                       | The source value of the change type                                                                      | StatusChange                                                                                             |

@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.PatchAccountExternalDto;
+import com.stackone.stackone_client_java.operations.StackoneUpdateAccountOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class StackoneUpdateAccountRequestBuilder {
     private String id;
     private PatchAccountExternalDto patchAccountExternalDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneUpdateAccount sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneUpdateAccountRequestBuilder(SDKMethodInterfaces.MethodCallStackoneUpdateAccount sdk) {
-        this.sdk = sdk;
+    public StackoneUpdateAccountRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneUpdateAccountRequestBuilder id(String id) {
@@ -46,13 +50,26 @@ public class StackoneUpdateAccountRequestBuilder {
         return this;
     }
 
+
+    private StackoneUpdateAccountRequest buildRequest() {
+
+        StackoneUpdateAccountRequest request = new StackoneUpdateAccountRequest(id,
+            patchAccountExternalDto);
+
+        return request;
+    }
+
     public StackoneUpdateAccountResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateAccount(
-            id,
-            patchAccountExternalDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
+              = new StackoneUpdateAccountOperation(
+                 sdkConfiguration,
+                 options);
+        StackoneUpdateAccountRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

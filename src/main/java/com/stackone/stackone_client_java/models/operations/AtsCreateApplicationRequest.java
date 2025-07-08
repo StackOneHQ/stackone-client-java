@@ -10,7 +10,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 public class AtsCreateApplicationRequest {
 
@@ -76,13 +75,13 @@ public class AtsCreateApplicationRequest {
         }
         AtsCreateApplicationRequest other = (AtsCreateApplicationRequest) o;
         return 
-            Objects.deepEquals(this.xAccountId, other.xAccountId) &&
-            Objects.deepEquals(this.atsCreateApplicationRequestDto, other.atsCreateApplicationRequestDto);
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.atsCreateApplicationRequestDto, other.atsCreateApplicationRequestDto);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             xAccountId,
             atsCreateApplicationRequestDto);
     }

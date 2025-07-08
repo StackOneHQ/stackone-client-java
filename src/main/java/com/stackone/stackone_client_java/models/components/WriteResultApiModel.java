@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class WriteResultApiModel {
@@ -165,16 +164,16 @@ public class WriteResultApiModel {
         }
         WriteResultApiModel other = (WriteResultApiModel) o;
         return 
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.message, other.message) &&
-            Objects.deepEquals(this.timestamp, other.timestamp) &&
-            Objects.deepEquals(this.providerErrors, other.providerErrors) &&
-            Objects.deepEquals(this.unifiedWarnings, other.unifiedWarnings);
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.message, other.message) &&
+            Utils.enhancedDeepEquals(this.timestamp, other.timestamp) &&
+            Utils.enhancedDeepEquals(this.providerErrors, other.providerErrors) &&
+            Utils.enhancedDeepEquals(this.unifiedWarnings, other.unifiedWarnings);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             statusCode,
             message,
             timestamp,

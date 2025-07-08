@@ -3,6 +3,8 @@
 
 ## Overview
 
+Retrieve metadata for connectors.
+
 ### Available Operations
 
 * [listConnectorsMeta](#listconnectorsmeta) - List Connectors Meta Information for all providers
@@ -29,8 +31,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -93,8 +95,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 

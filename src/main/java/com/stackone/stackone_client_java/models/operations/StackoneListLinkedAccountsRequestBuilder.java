@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.StackoneListLinkedAccountsOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class StackoneListLinkedAccountsRequestBuilder {
 
     private StackoneListLinkedAccountsRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneListLinkedAccounts sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneListLinkedAccountsRequestBuilder(SDKMethodInterfaces.MethodCallStackoneListLinkedAccounts sdk) {
-        this.sdk = sdk;
+    public StackoneListLinkedAccountsRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneListLinkedAccountsRequestBuilder request(StackoneListLinkedAccountsRequest request) {
@@ -39,10 +43,14 @@ public class StackoneListLinkedAccountsRequestBuilder {
 
     public StackoneListLinkedAccountsResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.listLinkedAccounts(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneListLinkedAccountsRequest, StackoneListLinkedAccountsResponse> operation
+              = new StackoneListLinkedAccountsOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

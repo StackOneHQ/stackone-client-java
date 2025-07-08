@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateSmsTemplateRequestDto;
+import com.stackone.stackone_client_java.operations.MarketingCreateSmsTemplateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class MarketingCreateSmsTemplateRequestBuilder {
     private String xAccountId;
     private MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingCreateSmsTemplate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingCreateSmsTemplateRequestBuilder(SDKMethodInterfaces.MethodCallMarketingCreateSmsTemplate sdk) {
-        this.sdk = sdk;
+    public MarketingCreateSmsTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingCreateSmsTemplateRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class MarketingCreateSmsTemplateRequestBuilder {
         return this;
     }
 
+
+    private MarketingCreateSmsTemplateRequest buildRequest() {
+
+        MarketingCreateSmsTemplateRequest request = new MarketingCreateSmsTemplateRequest(xAccountId,
+            marketingCreateSmsTemplateRequestDto);
+
+        return request;
+    }
+
     public MarketingCreateSmsTemplateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createSmsTemplate(
-            xAccountId,
-            marketingCreateSmsTemplateRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingCreateSmsTemplateRequest, MarketingCreateSmsTemplateResponse> operation
+              = new MarketingCreateSmsTemplateOperation(
+                 sdkConfiguration,
+                 options);
+        MarketingCreateSmsTemplateRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

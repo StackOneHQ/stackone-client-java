@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDto;
+import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocumentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsUploadApplicationDocumentRequestBuilder {
     private String id;
     private UnifiedUploadRequestDto unifiedUploadRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsUploadApplicationDocument sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsUploadApplicationDocumentRequestBuilder(SDKMethodInterfaces.MethodCallAtsUploadApplicationDocument sdk) {
-        this.sdk = sdk;
+    public AtsUploadApplicationDocumentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsUploadApplicationDocumentRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsUploadApplicationDocumentRequestBuilder {
         return this;
     }
 
+
+    private AtsUploadApplicationDocumentRequest buildRequest() {
+
+        AtsUploadApplicationDocumentRequest request = new AtsUploadApplicationDocumentRequest(xAccountId,
+            id,
+            unifiedUploadRequestDto);
+
+        return request;
+    }
+
     public AtsUploadApplicationDocumentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.uploadApplicationDocument(
-            xAccountId,
-            id,
-            unifiedUploadRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
+              = new AtsUploadApplicationDocumentOperation(
+                 sdkConfiguration,
+                 options);
+        AtsUploadApplicationDocumentRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

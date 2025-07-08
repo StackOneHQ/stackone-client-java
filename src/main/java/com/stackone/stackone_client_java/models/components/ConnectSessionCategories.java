@@ -20,12 +20,13 @@ public enum ConnectSessionCategories {
     DOCUMENTS("documents"),
     TICKETING("ticketing"),
     SCREENING("screening"),
-    MESSAGING("messaging");
+    MESSAGING("messaging"),
+    ACCOUNTING("accounting");
 
     @JsonValue
     private final String value;
 
-    private ConnectSessionCategories(String value) {
+    ConnectSessionCategories(String value) {
         this.value = value;
     }
     

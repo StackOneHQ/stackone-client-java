@@ -14,7 +14,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Scorecard {
@@ -584,26 +583,26 @@ public class Scorecard {
         }
         Scorecard other = (Scorecard) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.sections, other.sections) &&
-            Objects.deepEquals(this.label, other.label) &&
-            Objects.deepEquals(this.candidateId, other.candidateId) &&
-            Objects.deepEquals(this.remoteCandidateId, other.remoteCandidateId) &&
-            Objects.deepEquals(this.applicationId, other.applicationId) &&
-            Objects.deepEquals(this.remoteApplicationId, other.remoteApplicationId) &&
-            Objects.deepEquals(this.interviewId, other.interviewId) &&
-            Objects.deepEquals(this.remoteInterviewId, other.remoteInterviewId) &&
-            Objects.deepEquals(this.authorId, other.authorId) &&
-            Objects.deepEquals(this.remoteAuthorId, other.remoteAuthorId) &&
-            Objects.deepEquals(this.overallRecommendation, other.overallRecommendation) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.sections, other.sections) &&
+            Utils.enhancedDeepEquals(this.label, other.label) &&
+            Utils.enhancedDeepEquals(this.candidateId, other.candidateId) &&
+            Utils.enhancedDeepEquals(this.remoteCandidateId, other.remoteCandidateId) &&
+            Utils.enhancedDeepEquals(this.applicationId, other.applicationId) &&
+            Utils.enhancedDeepEquals(this.remoteApplicationId, other.remoteApplicationId) &&
+            Utils.enhancedDeepEquals(this.interviewId, other.interviewId) &&
+            Utils.enhancedDeepEquals(this.remoteInterviewId, other.remoteInterviewId) &&
+            Utils.enhancedDeepEquals(this.authorId, other.authorId) &&
+            Utils.enhancedDeepEquals(this.remoteAuthorId, other.remoteAuthorId) &&
+            Utils.enhancedDeepEquals(this.overallRecommendation, other.overallRecommendation) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             sections,

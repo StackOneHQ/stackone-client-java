@@ -9,14 +9,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Course {
@@ -103,7 +101,7 @@ public class Course {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<Boolean> active;
+    private JsonNullable<? extends CourseActive> active;
 
     /**
      * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
@@ -160,7 +158,7 @@ public class Course {
             @JsonProperty("languages") JsonNullable<? extends List<LanguageEnum>> languages,
             @JsonProperty("cover_url") JsonNullable<String> coverUrl,
             @JsonProperty("url") JsonNullable<String> url,
-            @JsonProperty("active") JsonNullable<Boolean> active,
+            @JsonProperty("active") JsonNullable<? extends CourseActive> active,
             @JsonProperty("duration") JsonNullable<String> duration,
             @JsonProperty("categories") JsonNullable<? extends List<Category>> categories,
             @JsonProperty("skills") JsonNullable<? extends List<Skills>> skills,
@@ -304,9 +302,10 @@ public class Course {
     /**
      * Whether the course is active and available for users.
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> active() {
-        return active;
+    public JsonNullable<CourseActive> active() {
+        return (JsonNullable<CourseActive>) active;
     }
 
     /**
@@ -564,7 +563,7 @@ public class Course {
     /**
      * Whether the course is active and available for users.
      */
-    public Course withActive(boolean active) {
+    public Course withActive(CourseActive active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -573,7 +572,7 @@ public class Course {
     /**
      * Whether the course is active and available for users.
      */
-    public Course withActive(JsonNullable<Boolean> active) {
+    public Course withActive(JsonNullable<? extends CourseActive> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -698,29 +697,29 @@ public class Course {
         }
         Course other = (Course) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.externalReference, other.externalReference) &&
-            Objects.deepEquals(this.contentIds, other.contentIds) &&
-            Objects.deepEquals(this.remoteContentIds, other.remoteContentIds) &&
-            Objects.deepEquals(this.title, other.title) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.languages, other.languages) &&
-            Objects.deepEquals(this.coverUrl, other.coverUrl) &&
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.active, other.active) &&
-            Objects.deepEquals(this.duration, other.duration) &&
-            Objects.deepEquals(this.categories, other.categories) &&
-            Objects.deepEquals(this.skills, other.skills) &&
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt) &&
-            Objects.deepEquals(this.createdAt, other.createdAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
+            Utils.enhancedDeepEquals(this.contentIds, other.contentIds) &&
+            Utils.enhancedDeepEquals(this.remoteContentIds, other.remoteContentIds) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.languages, other.languages) &&
+            Utils.enhancedDeepEquals(this.coverUrl, other.coverUrl) &&
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.active, other.active) &&
+            Utils.enhancedDeepEquals(this.duration, other.duration) &&
+            Utils.enhancedDeepEquals(this.categories, other.categories) &&
+            Utils.enhancedDeepEquals(this.skills, other.skills) &&
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,
@@ -788,7 +787,7 @@ public class Course {
  
         private JsonNullable<String> url = JsonNullable.undefined();
  
-        private JsonNullable<Boolean> active = JsonNullable.undefined();
+        private JsonNullable<? extends CourseActive> active = JsonNullable.undefined();
  
         private JsonNullable<String> duration = JsonNullable.undefined();
  
@@ -1007,7 +1006,7 @@ public class Course {
         /**
          * Whether the course is active and available for users.
          */
-        public Builder active(boolean active) {
+        public Builder active(CourseActive active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -1016,7 +1015,7 @@ public class Course {
         /**
          * Whether the course is active and available for users.
          */
-        public Builder active(JsonNullable<Boolean> active) {
+        public Builder active(JsonNullable<? extends CourseActive> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;

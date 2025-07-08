@@ -9,7 +9,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsDownloadApplicationDocumentRequest {
@@ -170,16 +169,16 @@ public class AtsDownloadApplicationDocumentRequest {
         }
         AtsDownloadApplicationDocumentRequest other = (AtsDownloadApplicationDocumentRequest) o;
         return 
-            Objects.deepEquals(this.xAccountId, other.xAccountId) &&
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.subResourceId, other.subResourceId) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.exportFormat, other.exportFormat);
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.exportFormat, other.exportFormat);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             xAccountId,
             id,
             subResourceId,

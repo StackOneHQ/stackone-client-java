@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class MarketingCreateContentBlocksRequestDto {
@@ -190,16 +189,16 @@ public class MarketingCreateContentBlocksRequestDto {
         }
         MarketingCreateContentBlocksRequestDto other = (MarketingCreateContentBlocksRequestDto) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.tags, other.tags) &&
-            Objects.deepEquals(this.content, other.content) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.tags, other.tags) &&
+            Utils.enhancedDeepEquals(this.content, other.content) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             name,
             tags,
             content,

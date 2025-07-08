@@ -15,7 +15,7 @@ public enum HrisCreateTimeOffRequestDtoEndHalfDay2 {
     @JsonValue
     private final String value;
 
-    private HrisCreateTimeOffRequestDtoEndHalfDay2(String value) {
+    HrisCreateTimeOffRequestDtoEndHalfDay2(String value) {
         this.value = value;
     }
     

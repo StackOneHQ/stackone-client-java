@@ -9,7 +9,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -77,12 +76,12 @@ public class HrisListEmployeeTasksQueryParamFilter {
         }
         HrisListEmployeeTasksQueryParamFilter other = (HrisListEmployeeTasksQueryParamFilter) o;
         return 
-            Objects.deepEquals(this.updatedAfter, other.updatedAfter);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             updatedAfter);
     }
     

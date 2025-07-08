@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsUpdateApplicationRequestDto {
@@ -167,15 +166,15 @@ public class AtsUpdateApplicationRequestDto {
         }
         AtsUpdateApplicationRequestDto other = (AtsUpdateApplicationRequestDto) o;
         return 
-            Objects.deepEquals(this.passthrough, other.passthrough) &&
-            Objects.deepEquals(this.customFields, other.customFields) &&
-            Objects.deepEquals(this.applicationStatus, other.applicationStatus) &&
-            Objects.deepEquals(this.source, other.source);
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
+            Utils.enhancedDeepEquals(this.customFields, other.customFields) &&
+            Utils.enhancedDeepEquals(this.applicationStatus, other.applicationStatus) &&
+            Utils.enhancedDeepEquals(this.source, other.source);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             passthrough,
             customFields,
             applicationStatus,

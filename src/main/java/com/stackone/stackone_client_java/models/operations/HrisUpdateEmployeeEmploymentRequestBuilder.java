@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmploymentRequestDto;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeEmploymentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -18,10 +22,10 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
     private String subResourceId;
     private HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisUpdateEmployeeEmployment sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisUpdateEmployeeEmploymentRequestBuilder(SDKMethodInterfaces.MethodCallHrisUpdateEmployeeEmployment sdk) {
-        this.sdk = sdk;
+    public HrisUpdateEmployeeEmploymentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisUpdateEmployeeEmploymentRequestBuilder xAccountId(String xAccountId) {
@@ -60,15 +64,28 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
         return this;
     }
 
-    public HrisUpdateEmployeeEmploymentResponse call() throws Exception {
-        Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateEmployeeEmployment(
-            xAccountId,
+
+    private HrisUpdateEmployeeEmploymentRequest buildRequest() {
+
+        HrisUpdateEmployeeEmploymentRequest request = new HrisUpdateEmployeeEmploymentRequest(xAccountId,
             id,
             subResourceId,
-            hrisUpdateEmploymentRequestDto,
-            options);
+            hrisUpdateEmploymentRequestDto);
+
+        return request;
+    }
+
+    public HrisUpdateEmployeeEmploymentResponse call() throws Exception {
+        Optional<Options> options = Optional.of(Options.builder()
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisUpdateEmployeeEmploymentRequest, HrisUpdateEmployeeEmploymentResponse> operation
+              = new HrisUpdateEmployeeEmploymentOperation(
+                 sdkConfiguration,
+                 options);
+        HrisUpdateEmployeeEmploymentRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

@@ -3,6 +3,8 @@
 
 ## Overview
 
+Routing API requests through StackOne directly to the underlying provider.
+
 ### Available Operations
 
 * [proxyRequest](#proxyrequest) - Proxy Request
@@ -30,8 +32,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 

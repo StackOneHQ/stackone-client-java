@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsRejectApplicationRequestDto {
@@ -115,13 +114,13 @@ public class AtsRejectApplicationRequestDto {
         }
         AtsRejectApplicationRequestDto other = (AtsRejectApplicationRequestDto) o;
         return 
-            Objects.deepEquals(this.passthrough, other.passthrough) &&
-            Objects.deepEquals(this.rejectedReasonId, other.rejectedReasonId);
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
+            Utils.enhancedDeepEquals(this.rejectedReasonId, other.rejectedReasonId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             passthrough,
             rejectedReasonId);
     }

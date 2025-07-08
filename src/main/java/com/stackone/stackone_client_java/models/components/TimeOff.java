@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class TimeOff {
@@ -152,6 +151,13 @@ public class TimeOff {
     @JsonProperty("policy")
     private JsonNullable<? extends Policy> policy;
 
+    /**
+     * Allows users to provide additional context or notes for their time off request
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("comment")
+    private JsonNullable<String> comment;
+
     @JsonCreator
     public TimeOff(
             @JsonProperty("id") JsonNullable<String> id,
@@ -172,7 +178,8 @@ public class TimeOff {
             @JsonProperty("reason") JsonNullable<? extends TimeOffReason> reason,
             @JsonProperty("created_date") JsonNullable<OffsetDateTime> createdDate,
             @JsonProperty("updated_date") JsonNullable<OffsetDateTime> updatedDate,
-            @JsonProperty("policy") JsonNullable<? extends Policy> policy) {
+            @JsonProperty("policy") JsonNullable<? extends Policy> policy,
+            @JsonProperty("comment") JsonNullable<String> comment) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(employeeId, "employeeId");
@@ -192,6 +199,7 @@ public class TimeOff {
         Utils.checkNotNull(createdDate, "createdDate");
         Utils.checkNotNull(updatedDate, "updatedDate");
         Utils.checkNotNull(policy, "policy");
+        Utils.checkNotNull(comment, "comment");
         this.id = id;
         this.remoteId = remoteId;
         this.employeeId = employeeId;
@@ -211,10 +219,11 @@ public class TimeOff {
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.policy = policy;
+        this.comment = comment;
     }
     
     public TimeOff() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -373,6 +382,14 @@ public class TimeOff {
     @JsonIgnore
     public JsonNullable<Policy> policy() {
         return (JsonNullable<Policy>) policy;
+    }
+
+    /**
+     * Allows users to provide additional context or notes for their time off request
+     */
+    @JsonIgnore
+    public JsonNullable<String> comment() {
+        return comment;
     }
 
     public final static Builder builder() {
@@ -721,6 +738,24 @@ public class TimeOff {
         return this;
     }
 
+    /**
+     * Allows users to provide additional context or notes for their time off request
+     */
+    public TimeOff withComment(String comment) {
+        Utils.checkNotNull(comment, "comment");
+        this.comment = JsonNullable.of(comment);
+        return this;
+    }
+
+    /**
+     * Allows users to provide additional context or notes for their time off request
+     */
+    public TimeOff withComment(JsonNullable<String> comment) {
+        Utils.checkNotNull(comment, "comment");
+        this.comment = comment;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -732,30 +767,31 @@ public class TimeOff {
         }
         TimeOff other = (TimeOff) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.employeeId, other.employeeId) &&
-            Objects.deepEquals(this.remoteEmployeeId, other.remoteEmployeeId) &&
-            Objects.deepEquals(this.approverId, other.approverId) &&
-            Objects.deepEquals(this.remoteApproverId, other.remoteApproverId) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.startHalfDay, other.startHalfDay) &&
-            Objects.deepEquals(this.endHalfDay, other.endHalfDay) &&
-            Objects.deepEquals(this.duration, other.duration) &&
-            Objects.deepEquals(this.timeOffPolicyId, other.timeOffPolicyId) &&
-            Objects.deepEquals(this.remoteTimeOffPolicyId, other.remoteTimeOffPolicyId) &&
-            Objects.deepEquals(this.reason, other.reason) &&
-            Objects.deepEquals(this.createdDate, other.createdDate) &&
-            Objects.deepEquals(this.updatedDate, other.updatedDate) &&
-            Objects.deepEquals(this.policy, other.policy);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.employeeId, other.employeeId) &&
+            Utils.enhancedDeepEquals(this.remoteEmployeeId, other.remoteEmployeeId) &&
+            Utils.enhancedDeepEquals(this.approverId, other.approverId) &&
+            Utils.enhancedDeepEquals(this.remoteApproverId, other.remoteApproverId) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.startHalfDay, other.startHalfDay) &&
+            Utils.enhancedDeepEquals(this.endHalfDay, other.endHalfDay) &&
+            Utils.enhancedDeepEquals(this.duration, other.duration) &&
+            Utils.enhancedDeepEquals(this.timeOffPolicyId, other.timeOffPolicyId) &&
+            Utils.enhancedDeepEquals(this.remoteTimeOffPolicyId, other.remoteTimeOffPolicyId) &&
+            Utils.enhancedDeepEquals(this.reason, other.reason) &&
+            Utils.enhancedDeepEquals(this.createdDate, other.createdDate) &&
+            Utils.enhancedDeepEquals(this.updatedDate, other.updatedDate) &&
+            Utils.enhancedDeepEquals(this.policy, other.policy) &&
+            Utils.enhancedDeepEquals(this.comment, other.comment);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             employeeId,
@@ -774,7 +810,8 @@ public class TimeOff {
             reason,
             createdDate,
             updatedDate,
-            policy);
+            policy,
+            comment);
     }
     
     @Override
@@ -798,7 +835,8 @@ public class TimeOff {
                 "reason", reason,
                 "createdDate", createdDate,
                 "updatedDate", updatedDate,
-                "policy", policy);
+                "policy", policy,
+                "comment", comment);
     }
     
     public final static class Builder {
@@ -841,6 +879,8 @@ public class TimeOff {
         private JsonNullable<OffsetDateTime> updatedDate = JsonNullable.undefined();
  
         private JsonNullable<? extends Policy> policy = JsonNullable.undefined();
+ 
+        private JsonNullable<String> comment = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -1187,6 +1227,24 @@ public class TimeOff {
             this.policy = policy;
             return this;
         }
+
+        /**
+         * Allows users to provide additional context or notes for their time off request
+         */
+        public Builder comment(String comment) {
+            Utils.checkNotNull(comment, "comment");
+            this.comment = JsonNullable.of(comment);
+            return this;
+        }
+
+        /**
+         * Allows users to provide additional context or notes for their time off request
+         */
+        public Builder comment(JsonNullable<String> comment) {
+            Utils.checkNotNull(comment, "comment");
+            this.comment = comment;
+            return this;
+        }
         
         public TimeOff build() {
             return new TimeOff(
@@ -1208,7 +1266,8 @@ public class TimeOff {
                 reason,
                 createdDate,
                 updatedDate,
-                policy);
+                policy,
+                comment);
         }
     }
 }

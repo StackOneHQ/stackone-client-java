@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.IamGetPolicyOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class IamGetPolicyRequestBuilder {
 
     private IamGetPolicyRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallIamGetPolicy sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public IamGetPolicyRequestBuilder(SDKMethodInterfaces.MethodCallIamGetPolicy sdk) {
-        this.sdk = sdk;
+    public IamGetPolicyRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public IamGetPolicyRequestBuilder request(IamGetPolicyRequest request) {
@@ -39,10 +43,14 @@ public class IamGetPolicyRequestBuilder {
 
     public IamGetPolicyResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getPolicy(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<IamGetPolicyRequest, IamGetPolicyResponse> operation
+              = new IamGetPolicyOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

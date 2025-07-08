@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class LmsCreateCompletionRequestDto {
@@ -56,6 +55,13 @@ public class LmsCreateCompletionRequestDto {
     private JsonNullable<String> learningObjectExternalReference;
 
     /**
+     * ISO 8601 duration format representing the time spent on completing the learning object
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("time_spent")
+    private JsonNullable<String> timeSpent;
+
+    /**
      * The external reference associated with this content
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -82,6 +88,7 @@ public class LmsCreateCompletionRequestDto {
             @JsonProperty("completed_at") JsonNullable<String> completedAt,
             @JsonProperty("learning_object_id") JsonNullable<String> learningObjectId,
             @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
+            @JsonProperty("time_spent") JsonNullable<String> timeSpent,
             @JsonProperty("content_external_reference") JsonNullable<String> contentExternalReference,
             @JsonProperty("content_id") JsonNullable<String> contentId) {
         Utils.checkNotNull(passthrough, "passthrough");
@@ -89,6 +96,7 @@ public class LmsCreateCompletionRequestDto {
         Utils.checkNotNull(completedAt, "completedAt");
         Utils.checkNotNull(learningObjectId, "learningObjectId");
         Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+        Utils.checkNotNull(timeSpent, "timeSpent");
         Utils.checkNotNull(contentExternalReference, "contentExternalReference");
         Utils.checkNotNull(contentId, "contentId");
         this.passthrough = passthrough;
@@ -96,12 +104,13 @@ public class LmsCreateCompletionRequestDto {
         this.completedAt = completedAt;
         this.learningObjectId = learningObjectId;
         this.learningObjectExternalReference = learningObjectExternalReference;
+        this.timeSpent = timeSpent;
         this.contentExternalReference = contentExternalReference;
         this.contentId = contentId;
     }
     
     public LmsCreateCompletionRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -144,6 +153,14 @@ public class LmsCreateCompletionRequestDto {
     @JsonIgnore
     public JsonNullable<String> learningObjectExternalReference() {
         return learningObjectExternalReference;
+    }
+
+    /**
+     * ISO 8601 duration format representing the time spent on completing the learning object
+     */
+    @JsonIgnore
+    public JsonNullable<String> timeSpent() {
+        return timeSpent;
     }
 
     /**
@@ -263,6 +280,24 @@ public class LmsCreateCompletionRequestDto {
     }
 
     /**
+     * ISO 8601 duration format representing the time spent on completing the learning object
+     */
+    public LmsCreateCompletionRequestDto withTimeSpent(String timeSpent) {
+        Utils.checkNotNull(timeSpent, "timeSpent");
+        this.timeSpent = JsonNullable.of(timeSpent);
+        return this;
+    }
+
+    /**
+     * ISO 8601 duration format representing the time spent on completing the learning object
+     */
+    public LmsCreateCompletionRequestDto withTimeSpent(JsonNullable<String> timeSpent) {
+        Utils.checkNotNull(timeSpent, "timeSpent");
+        this.timeSpent = timeSpent;
+        return this;
+    }
+
+    /**
      * The external reference associated with this content
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -321,23 +356,25 @@ public class LmsCreateCompletionRequestDto {
         }
         LmsCreateCompletionRequestDto other = (LmsCreateCompletionRequestDto) o;
         return 
-            Objects.deepEquals(this.passthrough, other.passthrough) &&
-            Objects.deepEquals(this.result, other.result) &&
-            Objects.deepEquals(this.completedAt, other.completedAt) &&
-            Objects.deepEquals(this.learningObjectId, other.learningObjectId) &&
-            Objects.deepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
-            Objects.deepEquals(this.contentExternalReference, other.contentExternalReference) &&
-            Objects.deepEquals(this.contentId, other.contentId);
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
+            Utils.enhancedDeepEquals(this.result, other.result) &&
+            Utils.enhancedDeepEquals(this.completedAt, other.completedAt) &&
+            Utils.enhancedDeepEquals(this.learningObjectId, other.learningObjectId) &&
+            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
+            Utils.enhancedDeepEquals(this.timeSpent, other.timeSpent) &&
+            Utils.enhancedDeepEquals(this.contentExternalReference, other.contentExternalReference) &&
+            Utils.enhancedDeepEquals(this.contentId, other.contentId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             passthrough,
             result,
             completedAt,
             learningObjectId,
             learningObjectExternalReference,
+            timeSpent,
             contentExternalReference,
             contentId);
     }
@@ -350,6 +387,7 @@ public class LmsCreateCompletionRequestDto {
                 "completedAt", completedAt,
                 "learningObjectId", learningObjectId,
                 "learningObjectExternalReference", learningObjectExternalReference,
+                "timeSpent", timeSpent,
                 "contentExternalReference", contentExternalReference,
                 "contentId", contentId);
     }
@@ -365,6 +403,8 @@ public class LmsCreateCompletionRequestDto {
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
  
         private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
+ 
+        private JsonNullable<String> timeSpent = JsonNullable.undefined();
  
         @Deprecated
         private JsonNullable<String> contentExternalReference = JsonNullable.undefined();
@@ -467,6 +507,24 @@ public class LmsCreateCompletionRequestDto {
         }
 
         /**
+         * ISO 8601 duration format representing the time spent on completing the learning object
+         */
+        public Builder timeSpent(String timeSpent) {
+            Utils.checkNotNull(timeSpent, "timeSpent");
+            this.timeSpent = JsonNullable.of(timeSpent);
+            return this;
+        }
+
+        /**
+         * ISO 8601 duration format representing the time spent on completing the learning object
+         */
+        public Builder timeSpent(JsonNullable<String> timeSpent) {
+            Utils.checkNotNull(timeSpent, "timeSpent");
+            this.timeSpent = timeSpent;
+            return this;
+        }
+
+        /**
          * The external reference associated with this content
          * 
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -521,6 +579,7 @@ public class LmsCreateCompletionRequestDto {
                 completedAt,
                 learningObjectId,
                 learningObjectExternalReference,
+                timeSpent,
                 contentExternalReference,
                 contentId);
         }
