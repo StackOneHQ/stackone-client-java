@@ -15,7 +15,7 @@ public enum Archived2 {
     @JsonValue
     private final String value;
 
-    private Archived2(String value) {
+    Archived2(String value) {
         this.value = value;
     }
     

@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Deprecated;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -72,12 +71,12 @@ public class JobDescription {
         }
         JobDescription other = (JobDescription) o;
         return 
-            Objects.deepEquals(this.text, other.text);
+            Utils.enhancedDeepEquals(this.text, other.text);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             text);
     }
     

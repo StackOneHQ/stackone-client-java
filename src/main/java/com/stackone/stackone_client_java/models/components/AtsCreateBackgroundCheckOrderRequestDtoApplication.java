@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
@@ -176,15 +175,15 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
         }
         AtsCreateBackgroundCheckOrderRequestDtoApplication other = (AtsCreateBackgroundCheckOrderRequestDtoApplication) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.applicationStatus, other.applicationStatus) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.applicationStatus, other.applicationStatus) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             applicationStatus,

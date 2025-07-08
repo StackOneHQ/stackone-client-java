@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetTimeOffPolicyOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetTimeOffPolicyRequestBuilder {
 
     private HrisGetTimeOffPolicyRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetTimeOffPolicy sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetTimeOffPolicyRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetTimeOffPolicy sdk) {
-        this.sdk = sdk;
+    public HrisGetTimeOffPolicyRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetTimeOffPolicyRequestBuilder request(HrisGetTimeOffPolicyRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetTimeOffPolicyRequestBuilder {
 
     public HrisGetTimeOffPolicyResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getTimeOffPolicy(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetTimeOffPolicyRequest, HrisGetTimeOffPolicyResponse> operation
+              = new HrisGetTimeOffPolicyOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

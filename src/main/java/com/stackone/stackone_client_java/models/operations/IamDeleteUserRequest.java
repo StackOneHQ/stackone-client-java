@@ -9,7 +9,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 public class IamDeleteUserRequest {
 
@@ -75,13 +74,13 @@ public class IamDeleteUserRequest {
         }
         IamDeleteUserRequest other = (IamDeleteUserRequest) o;
         return 
-            Objects.deepEquals(this.xAccountId, other.xAccountId) &&
-            Objects.deepEquals(this.id, other.id);
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.id, other.id);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             xAccountId,
             id);
     }

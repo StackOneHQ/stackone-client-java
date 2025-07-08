@@ -15,7 +15,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class BatchResultApiModel {
@@ -140,15 +139,15 @@ public class BatchResultApiModel {
         }
         BatchResultApiModel other = (BatchResultApiModel) o;
         return 
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.message, other.message) &&
-            Objects.deepEquals(this.timestamp, other.timestamp) &&
-            Objects.deepEquals(this.errors, other.errors);
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.message, other.message) &&
+            Utils.enhancedDeepEquals(this.timestamp, other.timestamp) &&
+            Utils.enhancedDeepEquals(this.errors, other.errors);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             statusCode,
             message,
             timestamp,

@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreatePushTemplateRequestDto;
+import com.stackone.stackone_client_java.operations.MarketingCreatePushTemplateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class MarketingCreatePushTemplateRequestBuilder {
     private String xAccountId;
     private MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingCreatePushTemplate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingCreatePushTemplateRequestBuilder(SDKMethodInterfaces.MethodCallMarketingCreatePushTemplate sdk) {
-        this.sdk = sdk;
+    public MarketingCreatePushTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingCreatePushTemplateRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class MarketingCreatePushTemplateRequestBuilder {
         return this;
     }
 
+
+    private MarketingCreatePushTemplateRequest buildRequest() {
+
+        MarketingCreatePushTemplateRequest request = new MarketingCreatePushTemplateRequest(xAccountId,
+            marketingCreatePushTemplateRequestDto);
+
+        return request;
+    }
+
     public MarketingCreatePushTemplateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createPushTemplate(
-            xAccountId,
-            marketingCreatePushTemplateRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingCreatePushTemplateRequest, MarketingCreatePushTemplateResponse> operation
+              = new MarketingCreatePushTemplateOperation(
+                 sdkConfiguration,
+                 options);
+        MarketingCreatePushTemplateRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

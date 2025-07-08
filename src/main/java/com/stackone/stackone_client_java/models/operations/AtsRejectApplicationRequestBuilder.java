@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsRejectApplicationRequestDto;
+import com.stackone.stackone_client_java.operations.AtsRejectApplicationOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsRejectApplicationRequestBuilder {
     private String id;
     private AtsRejectApplicationRequestDto atsRejectApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsRejectApplication sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsRejectApplicationRequestBuilder(SDKMethodInterfaces.MethodCallAtsRejectApplication sdk) {
-        this.sdk = sdk;
+    public AtsRejectApplicationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsRejectApplicationRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsRejectApplicationRequestBuilder {
         return this;
     }
 
+
+    private AtsRejectApplicationRequest buildRequest() {
+
+        AtsRejectApplicationRequest request = new AtsRejectApplicationRequest(xAccountId,
+            id,
+            atsRejectApplicationRequestDto);
+
+        return request;
+    }
+
     public AtsRejectApplicationResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.rejectApplication(
-            xAccountId,
-            id,
-            atsRejectApplicationRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
+              = new AtsRejectApplicationOperation(
+                 sdkConfiguration,
+                 options);
+        AtsRejectApplicationRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

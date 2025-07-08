@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class QuestionMultipleChoiceAnswers {
@@ -135,14 +134,14 @@ public class QuestionMultipleChoiceAnswers {
         }
         QuestionMultipleChoiceAnswers other = (QuestionMultipleChoiceAnswers) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.text, other.text);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.text, other.text);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             text);

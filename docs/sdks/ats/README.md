@@ -15,6 +15,7 @@
 * [getApplicationOffer](#getapplicationoffer) - Get Application Offer
 * [listApplicationScorecards](#listapplicationscorecards) - List Application Scorecards
 * [getApplicationScorecard](#getapplicationscorecard) - Get Application Scorecard
+* [listApplicationChanges](#listapplicationchanges) - List Application Changes
 * [listApplicationNotes](#listapplicationnotes) - List Application Notes
 * [createApplicationNote](#createapplicationnote) - Create Application Note
 * [getApplicationNote](#getapplicationnote) - Get Application Note
@@ -64,7 +65,6 @@
 * [listAssessmentsPackages](#listassessmentspackages) - List Assessments Packages
 * [getAssessmentsPackage](#getassessmentspackage) - Get Assessments Package
 * [orderAssessmentsRequest](#orderassessmentsrequest) - Order Assessments Request
-* [getAssessmentsRequest](#getassessmentsrequest) - Get Assessments Requests
 * [updateAssessmentsResult](#updateassessmentsresult) - Update Assessments Result
 * [getAssessmentsResult](#getassessmentsresult) - Get Assessments Results
 * [listBackgroundCheckPackages](#listbackgroundcheckpackages) - List Background Check Packages
@@ -72,9 +72,7 @@
 * [getBackgroundCheckPackage](#getbackgroundcheckpackage) - Get Background Check Package
 * [deleteBackgroundCheckPackage](#deletebackgroundcheckpackage) - Delete Background Check Package
 * [updateBackgroundCheckPackage](#updatebackgroundcheckpackage) - Update Background Check Package
-* [listBackgroundCheckRequest](#listbackgroundcheckrequest) - List Background Check Request
 * [orderBackgroundCheckRequest](#orderbackgroundcheckrequest) - Order Background Check Request
-* [getBackgroundCheckRequest](#getbackgroundcheckrequest) - Get Background Check Request
 * [updateBackgroundCheckResult](#updatebackgroundcheckresult) - Update Background Check Result
 * [getBackgroundCheckResult](#getbackgroundcheckresult) - Get Background Check Results
 
@@ -90,8 +88,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -100,8 +97,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -119,8 +116,8 @@ public class Application {
         sdk.ats().listApplications()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListApplicationsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -180,8 +177,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -308,8 +305,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -383,8 +380,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -463,8 +460,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationsOffersQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationsOffersRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -473,8 +469,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -490,8 +486,8 @@ public class Application {
         sdk.ats().listApplicationsOffers()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListApplicationsOffersResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -549,8 +545,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -624,8 +620,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -698,8 +694,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -761,8 +757,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationScorecardsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationScorecardsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -771,8 +766,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -788,8 +783,8 @@ public class Application {
         sdk.ats().listApplicationScorecards()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListApplicationScorecardsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -846,8 +841,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -897,6 +892,80 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
+## listApplicationChanges
+
+List Application Changes
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        AtsListApplicationChangesRequest req = AtsListApplicationChangesRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values")
+                .filter(AtsListApplicationChangesQueryParamFilter.builder()
+                    .createdAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.ats().listApplicationChanges()
+                .request(req)
+                .callAsStream()
+                .forEach((AtsListApplicationChangesResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [AtsListApplicationChangesRequest](../../models/operations/AtsListApplicationChangesRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+
+### Response
+
+**[AtsListApplicationChangesResponse](../../models/operations/AtsListApplicationChangesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
 ## listApplicationNotes
 
 List Application Notes
@@ -909,8 +978,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationNotesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationNotesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -919,8 +987,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -936,8 +1004,8 @@ public class Application {
         sdk.ats().listApplicationNotes()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListApplicationNotesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -995,8 +1063,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1077,8 +1145,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1151,8 +1219,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1225,8 +1293,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationsScheduledInterviewsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationsScheduledInterviewsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1235,8 +1302,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1252,8 +1319,8 @@ public class Application {
         sdk.ats().listApplicationsScheduledInterviews()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListApplicationsScheduledInterviewsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1310,8 +1377,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1383,8 +1450,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1467,8 +1534,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1531,8 +1598,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1541,8 +1607,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1558,8 +1624,8 @@ public class Application {
         sdk.ats().listApplicationDocuments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListApplicationDocumentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1616,8 +1682,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1679,8 +1745,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListCandidatesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListCandidatesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1689,8 +1754,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1707,8 +1772,8 @@ public class Application {
         sdk.ats().listCandidates()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListCandidatesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1767,8 +1832,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1867,8 +1932,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1943,8 +2008,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2035,8 +2100,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListCandidateNotesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListCandidateNotesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2045,8 +2109,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2062,8 +2126,8 @@ public class Application {
         sdk.ats().listCandidateNotes()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListCandidateNotesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2121,8 +2185,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2203,8 +2267,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2267,6 +2331,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationCustomFieldDefinitionsRequest;
+import com.stackone.stackone_client_java.models.operations.AtsListApplicationCustomFieldDefinitionsResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -2276,8 +2341,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2290,8 +2355,8 @@ public class Application {
         sdk.ats().listApplicationCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListApplicationCustomFieldDefinitionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2349,8 +2414,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2412,8 +2477,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListCandidateCustomFieldDefinitionsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListCandidateCustomFieldDefinitionsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2422,8 +2486,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2438,8 +2502,8 @@ public class Application {
         sdk.ats().listCandidateCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListCandidateCustomFieldDefinitionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2495,8 +2559,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2560,8 +2624,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListJobCustomFieldDefinitionsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListJobCustomFieldDefinitionsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2570,8 +2633,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2586,8 +2649,8 @@ public class Application {
         sdk.ats().listJobCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListJobCustomFieldDefinitionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2643,8 +2706,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2708,8 +2771,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListDepartmentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListDepartmentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2718,8 +2780,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2734,8 +2796,8 @@ public class Application {
         sdk.ats().listDepartments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListDepartmentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2792,8 +2854,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2854,8 +2916,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListInterviewStagesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListInterviewStagesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2864,8 +2925,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2880,8 +2941,8 @@ public class Application {
         sdk.ats().listInterviewStages()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListInterviewStagesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2938,8 +2999,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3000,8 +3061,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListInterviewsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListInterviewsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3010,8 +3070,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3027,8 +3087,8 @@ public class Application {
         sdk.ats().listInterviews()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListInterviewsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3085,8 +3145,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3147,8 +3207,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListJobsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListJobsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3157,8 +3216,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3176,8 +3235,8 @@ public class Application {
         sdk.ats().listJobs()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListJobsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3236,8 +3295,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3353,8 +3412,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3429,8 +3488,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3522,6 +3581,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListListsRequest;
+import com.stackone.stackone_client_java.models.operations.AtsListListsResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -3531,8 +3591,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3545,8 +3605,8 @@ public class Application {
         sdk.ats().listLists()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListListsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3603,8 +3663,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3665,8 +3725,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListLocationsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListLocationsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3675,8 +3734,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3691,8 +3750,8 @@ public class Application {
         sdk.ats().listLocations()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListLocationsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3749,8 +3808,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3811,8 +3870,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListRejectedReasonsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListRejectedReasonsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3821,8 +3879,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3837,8 +3895,8 @@ public class Application {
         sdk.ats().listRejectedReasons()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListRejectedReasonsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3895,8 +3953,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3958,6 +4016,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.AtsListUsersRequest;
+import com.stackone.stackone_client_java.models.operations.AtsListUsersResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -3967,8 +4026,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3981,8 +4040,8 @@ public class Application {
         sdk.ats().listUsers()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListUsersResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4039,8 +4098,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4101,8 +4160,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListJobPostingsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListJobPostingsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4111,8 +4169,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4129,8 +4187,8 @@ public class Application {
         sdk.ats().listJobPostings()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListJobPostingsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4187,8 +4245,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4250,8 +4308,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListOffersQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListOffersRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4260,8 +4317,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4276,8 +4333,8 @@ public class Application {
         sdk.ats().listOffers()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListOffersResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4336,8 +4393,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4418,8 +4475,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4480,8 +4537,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListAssessmentsPackagesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListAssessmentsPackagesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4490,8 +4546,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4505,8 +4561,8 @@ public class Application {
         sdk.ats().listAssessmentsPackages()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListAssessmentsPackagesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4563,8 +4619,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4635,8 +4691,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4740,78 +4796,6 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## getAssessmentsRequest
-
-Get Assessments Requests
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsRequestRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsRequestResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsGetAssessmentsRequestRequest req = AtsGetAssessmentsRequestRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
-                .build();
-
-        AtsGetAssessmentsRequestResponse res = sdk.ats().getAssessmentsRequest()
-                .request(req)
-                .call();
-
-        if (res.assessmentOrderResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `request`                                                                                     | [AtsGetAssessmentsRequestRequest](../../models/operations/AtsGetAssessmentsRequestRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
-
-### Response
-
-**[AtsGetAssessmentsRequestResponse](../../models/operations/AtsGetAssessmentsRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
 ## updateAssessmentsResult
 
 Update Assessments Result
@@ -4837,8 +4821,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4932,8 +4916,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4994,8 +4978,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckPackagesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckPackagesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -5004,8 +4987,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -5020,8 +5003,8 @@ public class Application {
         sdk.ats().listBackgroundCheckPackages()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((AtsListBackgroundCheckPackagesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -5079,8 +5062,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -5157,8 +5140,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -5228,8 +5211,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -5297,8 +5280,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -5356,80 +5339,6 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## listBackgroundCheckRequest
-
-List Background Check Request
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckRequestQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.AtsListBackgroundCheckRequestRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsListBackgroundCheckRequestRequest req = AtsListBackgroundCheckRequestRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
-                .filter(AtsListBackgroundCheckRequestQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.ats().listBackgroundCheckRequest()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                               | [AtsListBackgroundCheckRequestRequest](../../models/operations/AtsListBackgroundCheckRequestRequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
-
-### Response
-
-**[AtsListBackgroundCheckRequestResponse](../../models/operations/AtsListBackgroundCheckRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
 ## orderBackgroundCheckRequest
 
 Order Background Check Request
@@ -5455,8 +5364,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -5553,78 +5462,6 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## getBackgroundCheckRequest
-
-Get Background Check Request
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckRequestRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckRequestResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsGetBackgroundCheckRequestRequest req = AtsGetBackgroundCheckRequestRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,package,application,job,candidate,requester,results_update_url")
-                .build();
-
-        AtsGetBackgroundCheckRequestResponse res = sdk.ats().getBackgroundCheckRequest()
-                .request(req)
-                .call();
-
-        if (res.backgroundCheckOrderResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `request`                                                                                             | [AtsGetBackgroundCheckRequestRequest](../../models/operations/AtsGetBackgroundCheckRequestRequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
-
-### Response
-
-**[AtsGetBackgroundCheckRequestResponse](../../models/operations/AtsGetBackgroundCheckRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
 ## updateBackgroundCheckResult
 
 Update Background Check Result
@@ -5649,8 +5486,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -5749,8 +5586,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 

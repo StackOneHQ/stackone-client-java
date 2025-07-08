@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCheckResultRequestDto;
+import com.stackone.stackone_client_java.operations.AtsUpdateBackgroundCheckResultOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsUpdateBackgroundCheckResultRequestBuilder {
     private String id;
     private AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsUpdateBackgroundCheckResult sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsUpdateBackgroundCheckResultRequestBuilder(SDKMethodInterfaces.MethodCallAtsUpdateBackgroundCheckResult sdk) {
-        this.sdk = sdk;
+    public AtsUpdateBackgroundCheckResultRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsUpdateBackgroundCheckResultRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsUpdateBackgroundCheckResultRequestBuilder {
         return this;
     }
 
+
+    private AtsUpdateBackgroundCheckResultRequest buildRequest() {
+
+        AtsUpdateBackgroundCheckResultRequest request = new AtsUpdateBackgroundCheckResultRequest(xAccountId,
+            id,
+            atsUpdateBackgroundCheckResultRequestDto);
+
+        return request;
+    }
+
     public AtsUpdateBackgroundCheckResultResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateBackgroundCheckResult(
-            xAccountId,
-            id,
-            atsUpdateBackgroundCheckResultRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation
+              = new AtsUpdateBackgroundCheckResultOperation(
+                 sdkConfiguration,
+                 options);
+        AtsUpdateBackgroundCheckResultRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

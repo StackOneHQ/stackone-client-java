@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDto;
+import com.stackone.stackone_client_java.operations.AtsCreateCandidateNoteOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class AtsCreateCandidateNoteRequestBuilder {
     private String id;
     private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsCreateCandidateNote sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsCreateCandidateNoteRequestBuilder(SDKMethodInterfaces.MethodCallAtsCreateCandidateNote sdk) {
-        this.sdk = sdk;
+    public AtsCreateCandidateNoteRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsCreateCandidateNoteRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class AtsCreateCandidateNoteRequestBuilder {
         return this;
     }
 
+
+    private AtsCreateCandidateNoteRequest buildRequest() {
+
+        AtsCreateCandidateNoteRequest request = new AtsCreateCandidateNoteRequest(xAccountId,
+            id,
+            atsCreateNotesRequestDto);
+
+        return request;
+    }
+
     public AtsCreateCandidateNoteResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createCandidateNote(
-            xAccountId,
-            id,
-            atsCreateNotesRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsCreateCandidateNoteRequest, AtsCreateCandidateNoteResponse> operation
+              = new AtsCreateCandidateNoteOperation(
+                 sdkConfiguration,
+                 options);
+        AtsCreateCandidateNoteRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

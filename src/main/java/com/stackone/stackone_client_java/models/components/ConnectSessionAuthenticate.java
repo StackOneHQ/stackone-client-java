@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 public class ConnectSessionAuthenticate {
 
@@ -58,12 +57,12 @@ public class ConnectSessionAuthenticate {
         }
         ConnectSessionAuthenticate other = (ConnectSessionAuthenticate) o;
         return 
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             token);
     }
     

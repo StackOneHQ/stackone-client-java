@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeTimeOffBalanceOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetEmployeeTimeOffBalanceRequestBuilder {
 
     private HrisGetEmployeeTimeOffBalanceRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetEmployeeTimeOffBalance sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetEmployeeTimeOffBalanceRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetEmployeeTimeOffBalance sdk) {
-        this.sdk = sdk;
+    public HrisGetEmployeeTimeOffBalanceRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetEmployeeTimeOffBalanceRequestBuilder request(HrisGetEmployeeTimeOffBalanceRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetEmployeeTimeOffBalanceRequestBuilder {
 
     public HrisGetEmployeeTimeOffBalanceResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getEmployeeTimeOffBalance(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetEmployeeTimeOffBalanceRequest, HrisGetEmployeeTimeOffBalanceResponse> operation
+              = new HrisGetEmployeeTimeOffBalanceOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

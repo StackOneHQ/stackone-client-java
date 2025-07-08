@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.CrmGetContactOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class CrmGetContactRequestBuilder {
 
     private CrmGetContactRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallCrmGetContact sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public CrmGetContactRequestBuilder(SDKMethodInterfaces.MethodCallCrmGetContact sdk) {
-        this.sdk = sdk;
+    public CrmGetContactRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CrmGetContactRequestBuilder request(CrmGetContactRequest request) {
@@ -39,10 +43,14 @@ public class CrmGetContactRequestBuilder {
 
     public CrmGetContactResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getContact(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<CrmGetContactRequest, CrmGetContactResponse> operation
+              = new CrmGetContactOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

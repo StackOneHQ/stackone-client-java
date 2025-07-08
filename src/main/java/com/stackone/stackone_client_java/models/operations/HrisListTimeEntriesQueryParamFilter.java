@@ -9,7 +9,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -182,15 +181,15 @@ public class HrisListTimeEntriesQueryParamFilter {
         }
         HrisListTimeEntriesQueryParamFilter other = (HrisListTimeEntriesQueryParamFilter) o;
         return 
-            Objects.deepEquals(this.updatedAfter, other.updatedAfter) &&
-            Objects.deepEquals(this.employeeId, other.employeeId) &&
-            Objects.deepEquals(this.startTime, other.startTime) &&
-            Objects.deepEquals(this.endTime, other.endTime);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.employeeId, other.employeeId) &&
+            Utils.enhancedDeepEquals(this.startTime, other.startTime) &&
+            Utils.enhancedDeepEquals(this.endTime, other.endTime);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             updatedAfter,
             employeeId,
             startTime,

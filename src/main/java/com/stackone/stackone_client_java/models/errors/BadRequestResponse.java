@@ -17,7 +17,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 @SuppressWarnings("serial")
@@ -62,7 +61,7 @@ public class BadRequestResponse extends RuntimeException {
             @JsonProperty("timestamp") OffsetDateTime timestamp,
             @JsonProperty("data") JsonNullable<? extends Data> data,
             @JsonProperty("provider_errors") JsonNullable<? extends List<ProviderError>> providerErrors) {
-        super(message);
+        super("API error occurred");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(message, "message");
         Utils.checkNotNull(timestamp, "timestamp");
@@ -208,16 +207,16 @@ public class BadRequestResponse extends RuntimeException {
         }
         BadRequestResponse other = (BadRequestResponse) o;
         return 
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.message, other.message) &&
-            Objects.deepEquals(this.timestamp, other.timestamp) &&
-            Objects.deepEquals(this.data, other.data) &&
-            Objects.deepEquals(this.providerErrors, other.providerErrors);
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.message, other.message) &&
+            Utils.enhancedDeepEquals(this.timestamp, other.timestamp) &&
+            Utils.enhancedDeepEquals(this.data, other.data) &&
+            Utils.enhancedDeepEquals(this.providerErrors, other.providerErrors);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             statusCode,
             message,
             timestamp,

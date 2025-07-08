@@ -17,7 +17,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsCreateCandidateRequestDto {
@@ -566,25 +565,25 @@ public class AtsCreateCandidateRequestDto {
         }
         AtsCreateCandidateRequestDto other = (AtsCreateCandidateRequestDto) o;
         return 
-            Objects.deepEquals(this.passthrough, other.passthrough) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.phoneNumber, other.phoneNumber) &&
-            Objects.deepEquals(this.phoneNumbers, other.phoneNumbers) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.firstName, other.firstName) &&
-            Objects.deepEquals(this.lastName, other.lastName) &&
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.socialLinks, other.socialLinks) &&
-            Objects.deepEquals(this.company, other.company) &&
-            Objects.deepEquals(this.title, other.title) &&
-            Objects.deepEquals(this.hiredAt, other.hiredAt) &&
-            Objects.deepEquals(this.country, other.country) &&
-            Objects.deepEquals(this.customFields, other.customFields);
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.phoneNumber, other.phoneNumber) &&
+            Utils.enhancedDeepEquals(this.phoneNumbers, other.phoneNumbers) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.firstName, other.firstName) &&
+            Utils.enhancedDeepEquals(this.lastName, other.lastName) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.socialLinks, other.socialLinks) &&
+            Utils.enhancedDeepEquals(this.company, other.company) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
+            Utils.enhancedDeepEquals(this.hiredAt, other.hiredAt) &&
+            Utils.enhancedDeepEquals(this.country, other.country) &&
+            Utils.enhancedDeepEquals(this.customFields, other.customFields);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             passthrough,
             unifiedCustomFields,
             phoneNumber,

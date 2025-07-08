@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisBatchDocumentUploadRequestDto;
+import com.stackone.stackone_client_java.operations.HrisBatchUploadEmployeeDocumentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class HrisBatchUploadEmployeeDocumentRequestBuilder {
     private String id;
     private HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisBatchUploadEmployeeDocument sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisBatchUploadEmployeeDocumentRequestBuilder(SDKMethodInterfaces.MethodCallHrisBatchUploadEmployeeDocument sdk) {
-        this.sdk = sdk;
+    public HrisBatchUploadEmployeeDocumentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisBatchUploadEmployeeDocumentRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class HrisBatchUploadEmployeeDocumentRequestBuilder {
         return this;
     }
 
+
+    private HrisBatchUploadEmployeeDocumentRequest buildRequest() {
+
+        HrisBatchUploadEmployeeDocumentRequest request = new HrisBatchUploadEmployeeDocumentRequest(xAccountId,
+            id,
+            hrisBatchDocumentUploadRequestDto);
+
+        return request;
+    }
+
     public HrisBatchUploadEmployeeDocumentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.batchUploadEmployeeDocument(
-            xAccountId,
-            id,
-            hrisBatchDocumentUploadRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
+              = new HrisBatchUploadEmployeeDocumentOperation(
+                 sdkConfiguration,
+                 options);
+        HrisBatchUploadEmployeeDocumentRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

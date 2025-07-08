@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.IamUpdateUserRequestDto;
+import com.stackone.stackone_client_java.operations.IamUpdateUserOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class IamUpdateUserRequestBuilder {
     private String id;
     private IamUpdateUserRequestDto iamUpdateUserRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallIamUpdateUser sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public IamUpdateUserRequestBuilder(SDKMethodInterfaces.MethodCallIamUpdateUser sdk) {
-        this.sdk = sdk;
+    public IamUpdateUserRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public IamUpdateUserRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class IamUpdateUserRequestBuilder {
         return this;
     }
 
+
+    private IamUpdateUserRequest buildRequest() {
+
+        IamUpdateUserRequest request = new IamUpdateUserRequest(xAccountId,
+            id,
+            iamUpdateUserRequestDto);
+
+        return request;
+    }
+
     public IamUpdateUserResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateUser(
-            xAccountId,
-            id,
-            iamUpdateUserRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<IamUpdateUserRequest, IamUpdateUserResponse> operation
+              = new IamUpdateUserOperation(
+                 sdkConfiguration,
+                 options);
+        IamUpdateUserRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

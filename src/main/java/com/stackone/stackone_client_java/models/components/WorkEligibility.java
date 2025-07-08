@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class WorkEligibility {
@@ -296,20 +295,20 @@ public class WorkEligibility {
         }
         WorkEligibility other = (WorkEligibility) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.subType, other.subType) &&
-            Objects.deepEquals(this.document, other.document) &&
-            Objects.deepEquals(this.validFrom, other.validFrom) &&
-            Objects.deepEquals(this.validTo, other.validTo) &&
-            Objects.deepEquals(this.issuedBy, other.issuedBy) &&
-            Objects.deepEquals(this.number, other.number);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.subType, other.subType) &&
+            Utils.enhancedDeepEquals(this.document, other.document) &&
+            Utils.enhancedDeepEquals(this.validFrom, other.validFrom) &&
+            Utils.enhancedDeepEquals(this.validTo, other.validTo) &&
+            Utils.enhancedDeepEquals(this.issuedBy, other.issuedBy) &&
+            Utils.enhancedDeepEquals(this.number, other.number);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             type,

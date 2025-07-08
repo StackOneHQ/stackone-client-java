@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.StackoneListLogsOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class StackoneListLogsRequestBuilder {
 
     private StackoneListLogsRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneListLogs sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneListLogsRequestBuilder(SDKMethodInterfaces.MethodCallStackoneListLogs sdk) {
-        this.sdk = sdk;
+    public StackoneListLogsRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneListLogsRequestBuilder request(StackoneListLogsRequest request) {
@@ -39,10 +43,14 @@ public class StackoneListLogsRequestBuilder {
 
     public StackoneListLogsResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.listLogs(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
+              = new StackoneListLogsOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

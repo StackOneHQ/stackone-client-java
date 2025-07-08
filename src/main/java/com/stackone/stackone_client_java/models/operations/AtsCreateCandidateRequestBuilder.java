@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateCandidateRequestDto;
+import com.stackone.stackone_client_java.operations.AtsCreateCandidateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class AtsCreateCandidateRequestBuilder {
     private String xAccountId;
     private AtsCreateCandidateRequestDto atsCreateCandidateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsCreateCandidate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsCreateCandidateRequestBuilder(SDKMethodInterfaces.MethodCallAtsCreateCandidate sdk) {
-        this.sdk = sdk;
+    public AtsCreateCandidateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsCreateCandidateRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class AtsCreateCandidateRequestBuilder {
         return this;
     }
 
+
+    private AtsCreateCandidateRequest buildRequest() {
+
+        AtsCreateCandidateRequest request = new AtsCreateCandidateRequest(xAccountId,
+            atsCreateCandidateRequestDto);
+
+        return request;
+    }
+
     public AtsCreateCandidateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createCandidate(
-            xAccountId,
-            atsCreateCandidateRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
+              = new AtsCreateCandidateOperation(
+                 sdkConfiguration,
+                 options);
+        AtsCreateCandidateRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

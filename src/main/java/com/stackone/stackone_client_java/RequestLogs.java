@@ -3,24 +3,9 @@
  */
 package com.stackone.stackone_client_java;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.stackone.stackone_client_java.models.components.StepLogsPaginated;
-import com.stackone.stackone_client_java.models.components.UnifiedLogResult;
-import com.stackone.stackone_client_java.models.components.UnifiedLogsPaginated;
-import com.stackone.stackone_client_java.models.errors.BadGatewayResponse;
-import com.stackone.stackone_client_java.models.errors.BadRequestResponse;
-import com.stackone.stackone_client_java.models.errors.ConflictResponse;
-import com.stackone.stackone_client_java.models.errors.ForbiddenResponse;
-import com.stackone.stackone_client_java.models.errors.InternalServerErrorResponse;
-import com.stackone.stackone_client_java.models.errors.NotFoundResponse;
-import com.stackone.stackone_client_java.models.errors.NotImplementedResponse;
-import com.stackone.stackone_client_java.models.errors.RequestTimedOutResponse;
-import com.stackone.stackone_client_java.models.errors.SDKError;
-import com.stackone.stackone_client_java.models.errors.TooManyRequestsResponse;
-import com.stackone.stackone_client_java.models.errors.UnauthorizedResponse;
-import com.stackone.stackone_client_java.models.errors.UnprocessableEntityResponse;
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
 import com.stackone.stackone_client_java.models.operations.Include;
-import com.stackone.stackone_client_java.models.operations.SDKMethodInterfaces.*;
 import com.stackone.stackone_client_java.models.operations.StackoneGetLogRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneGetLogRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneGetLogResponse;
@@ -30,34 +15,20 @@ import com.stackone.stackone_client_java.models.operations.StackoneListLogsRespo
 import com.stackone.stackone_client_java.models.operations.StackoneListStepLogsRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneListStepLogsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneListStepLogsResponse;
-import com.stackone.stackone_client_java.utils.BackoffStrategy;
-import com.stackone.stackone_client_java.utils.HTTPClient;
-import com.stackone.stackone_client_java.utils.HTTPRequest;
-import com.stackone.stackone_client_java.utils.Hook.AfterErrorContextImpl;
-import com.stackone.stackone_client_java.utils.Hook.AfterSuccessContextImpl;
-import com.stackone.stackone_client_java.utils.Hook.BeforeRequestContextImpl;
+import com.stackone.stackone_client_java.operations.StackoneGetLogOperation;
+import com.stackone.stackone_client_java.operations.StackoneListLogsOperation;
+import com.stackone.stackone_client_java.operations.StackoneListStepLogsOperation;
 import com.stackone.stackone_client_java.utils.Options;
-import com.stackone.stackone_client_java.utils.Retries.NonRetryableException;
-import com.stackone.stackone_client_java.utils.Retries;
-import com.stackone.stackone_client_java.utils.RetryConfig;
-import com.stackone.stackone_client_java.utils.Utils;
-import java.io.InputStream;
 import java.lang.Exception;
 import java.lang.String;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class RequestLogs implements
-            MethodCallStackoneListStepLogs,
-            MethodCallStackoneGetLog,
-            MethodCallStackoneListLogs {
-
+/**
+ * API requests and response logs.
+ */
+public class RequestLogs {
     private final SDKConfiguration sdkConfiguration;
 
     RequestLogs(SDKConfiguration sdkConfiguration) {
@@ -70,25 +41,24 @@ public class RequestLogs implements
      * @return The call builder
      */
     public StackoneListStepLogsRequestBuilder listStepLogs() {
-        return new StackoneListStepLogsRequestBuilder(this);
+        return new StackoneListStepLogsRequestBuilder(sdkConfiguration);
     }
 
     /**
      * List Step Logs
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneListStepLogsResponse listStepLogs(
-            StackoneListStepLogsRequest request) throws Exception {
+    public StackoneListStepLogsResponse listStepLogs(StackoneListStepLogsRequest request) throws Exception {
         return listStepLogs(request, Optional.empty());
     }
-    
+
     /**
      * List Step Logs
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -96,296 +66,11 @@ public class RequestLogs implements
     public StackoneListStepLogsResponse listStepLogs(
             StackoneListStepLogsRequest request,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/requests/logs/steps");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-
-        _req.addQueryParams(Utils.getQueryParams(
-                StackoneListStepLogsRequest.class,
-                request, 
-                null));
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("429");
-        _statusCodes.add("408");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "stackone_list_step_logs", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "stackone_list_step_logs",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "stackone_list_step_logs", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        StackoneListStepLogsResponse.Builder _resBuilder = 
-            StackoneListStepLogsResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        StackoneListStepLogsResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                StepLogsPaginated _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<StepLogsPaginated>() {});
-                _res.withStepLogsPaginated(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BadRequestResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BadRequestResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "401")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                UnauthorizedResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<UnauthorizedResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ForbiddenResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ForbiddenResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "404")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                NotFoundResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<NotFoundResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                RequestTimedOutResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<RequestTimedOutResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "409")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ConflictResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ConflictResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "422")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                UnprocessableEntityResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<UnprocessableEntityResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "429")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                TooManyRequestsResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<TooManyRequestsResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                InternalServerErrorResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<InternalServerErrorResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "501")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                NotImplementedResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<NotImplementedResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "502")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BadGatewayResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BadGatewayResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<StackoneListStepLogsRequest, StackoneListStepLogsResponse> operation
+              = new StackoneListStepLogsOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 
@@ -395,7 +80,7 @@ public class RequestLogs implements
      * @return The call builder
      */
     public StackoneGetLogRequestBuilder getLog() {
-        return new StackoneGetLogRequestBuilder(this);
+        return new StackoneGetLogRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -405,11 +90,10 @@ public class RequestLogs implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneGetLogResponse getLog(
-            String id) throws Exception {
+    public StackoneGetLogResponse getLog(String id) throws Exception {
         return getLog(id, JsonNullable.undefined(), Optional.empty());
     }
-    
+
     /**
      * Get a Log
      * 
@@ -423,305 +107,17 @@ public class RequestLogs implements
             String id,
             JsonNullable<? extends Include> include,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
         StackoneGetLogRequest request =
             StackoneGetLogRequest
                 .builder()
                 .id(id)
                 .include(include)
                 .build();
-        
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                StackoneGetLogRequest.class,
-                _baseUrl,
-                "/requests/logs/{id}",
-                request, null);
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-
-        _req.addQueryParams(Utils.getQueryParams(
-                StackoneGetLogRequest.class,
-                request, 
-                null));
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("429");
-        _statusCodes.add("408");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "stackone_get_log", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "stackone_get_log",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "stackone_get_log", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        StackoneGetLogResponse.Builder _resBuilder = 
-            StackoneGetLogResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        StackoneGetLogResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                UnifiedLogResult _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<UnifiedLogResult>() {});
-                _res.withUnifiedLogResult(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BadRequestResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BadRequestResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "401")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                UnauthorizedResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<UnauthorizedResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ForbiddenResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ForbiddenResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "404")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                NotFoundResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<NotFoundResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                RequestTimedOutResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<RequestTimedOutResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "409")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ConflictResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ConflictResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "422")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                UnprocessableEntityResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<UnprocessableEntityResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "429")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                TooManyRequestsResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<TooManyRequestsResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                InternalServerErrorResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<InternalServerErrorResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "501")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                NotImplementedResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<NotImplementedResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "502")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BadGatewayResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BadGatewayResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<StackoneGetLogRequest, StackoneGetLogResponse> operation
+              = new StackoneGetLogOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 
@@ -731,25 +127,24 @@ public class RequestLogs implements
      * @return The call builder
      */
     public StackoneListLogsRequestBuilder listLogs() {
-        return new StackoneListLogsRequestBuilder(this);
+        return new StackoneListLogsRequestBuilder(sdkConfiguration);
     }
 
     /**
      * List Logs
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneListLogsResponse listLogs(
-            StackoneListLogsRequest request) throws Exception {
+    public StackoneListLogsResponse listLogs(StackoneListLogsRequest request) throws Exception {
         return listLogs(request, Optional.empty());
     }
-    
+
     /**
      * List Logs
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -757,296 +152,11 @@ public class RequestLogs implements
     public StackoneListLogsResponse listLogs(
             StackoneListLogsRequest request,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/requests/logs");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-
-        _req.addQueryParams(Utils.getQueryParams(
-                StackoneListLogsRequest.class,
-                request, 
-                null));
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("429");
-        _statusCodes.add("408");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "stackone_list_logs", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "stackone_list_logs",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "stackone_list_logs", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        StackoneListLogsResponse.Builder _resBuilder = 
-            StackoneListLogsResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        StackoneListLogsResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                UnifiedLogsPaginated _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<UnifiedLogsPaginated>() {});
-                _res.withUnifiedLogsPaginated(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BadRequestResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BadRequestResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "401")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                UnauthorizedResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<UnauthorizedResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ForbiddenResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ForbiddenResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "404")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                NotFoundResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<NotFoundResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "408")) {
-            _res.withHeaders(_httpRes.headers().map());
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                RequestTimedOutResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<RequestTimedOutResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "409")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ConflictResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ConflictResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "422")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                UnprocessableEntityResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<UnprocessableEntityResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "429")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                TooManyRequestsResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<TooManyRequestsResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                InternalServerErrorResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<InternalServerErrorResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "501")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                NotImplementedResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<NotImplementedResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "502")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BadGatewayResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BadGatewayResponse>() {});
-                throw _out;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
+              = new StackoneListLogsOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 }

@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Completion {
@@ -122,6 +121,13 @@ public class Completion {
     private JsonNullable<String> remoteUserId;
 
     /**
+     * ISO 8601 duration format representing the time spent on completing the learning object
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("time_spent")
+    private JsonNullable<String> timeSpent;
+
+    /**
      * The external ID associated with this completion
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -207,6 +213,7 @@ public class Completion {
             @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
             @JsonProperty("user_id") JsonNullable<String> userId,
             @JsonProperty("remote_user_id") JsonNullable<String> remoteUserId,
+            @JsonProperty("time_spent") JsonNullable<String> timeSpent,
             @JsonProperty("external_id") JsonNullable<String> externalId,
             @JsonProperty("content_external_reference") JsonNullable<String> contentExternalReference,
             @JsonProperty("remote_external_id") JsonNullable<String> remoteExternalId,
@@ -228,6 +235,7 @@ public class Completion {
         Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
         Utils.checkNotNull(userId, "userId");
         Utils.checkNotNull(remoteUserId, "remoteUserId");
+        Utils.checkNotNull(timeSpent, "timeSpent");
         Utils.checkNotNull(externalId, "externalId");
         Utils.checkNotNull(contentExternalReference, "contentExternalReference");
         Utils.checkNotNull(remoteExternalId, "remoteExternalId");
@@ -249,6 +257,7 @@ public class Completion {
         this.learningObjectExternalReference = learningObjectExternalReference;
         this.userId = userId;
         this.remoteUserId = remoteUserId;
+        this.timeSpent = timeSpent;
         this.externalId = externalId;
         this.contentExternalReference = contentExternalReference;
         this.remoteExternalId = remoteExternalId;
@@ -259,7 +268,7 @@ public class Completion {
     }
     
     public Completion() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -378,6 +387,14 @@ public class Completion {
     @JsonIgnore
     public JsonNullable<String> remoteUserId() {
         return remoteUserId;
+    }
+
+    /**
+     * ISO 8601 duration format representing the time spent on completing the learning object
+     */
+    @JsonIgnore
+    public JsonNullable<String> timeSpent() {
+        return timeSpent;
     }
 
     /**
@@ -720,6 +737,24 @@ public class Completion {
     }
 
     /**
+     * ISO 8601 duration format representing the time spent on completing the learning object
+     */
+    public Completion withTimeSpent(String timeSpent) {
+        Utils.checkNotNull(timeSpent, "timeSpent");
+        this.timeSpent = JsonNullable.of(timeSpent);
+        return this;
+    }
+
+    /**
+     * ISO 8601 duration format representing the time spent on completing the learning object
+     */
+    public Completion withTimeSpent(JsonNullable<String> timeSpent) {
+        Utils.checkNotNull(timeSpent, "timeSpent");
+        this.timeSpent = timeSpent;
+        return this;
+    }
+
+    /**
      * The external ID associated with this completion
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -898,32 +933,33 @@ public class Completion {
         }
         Completion other = (Completion) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.externalReference, other.externalReference) &&
-            Objects.deepEquals(this.result, other.result) &&
-            Objects.deepEquals(this.completedAt, other.completedAt) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt) &&
-            Objects.deepEquals(this.learningObjectType, other.learningObjectType) &&
-            Objects.deepEquals(this.learningObjectId, other.learningObjectId) &&
-            Objects.deepEquals(this.remoteLearningObjectId, other.remoteLearningObjectId) &&
-            Objects.deepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
-            Objects.deepEquals(this.userId, other.userId) &&
-            Objects.deepEquals(this.remoteUserId, other.remoteUserId) &&
-            Objects.deepEquals(this.externalId, other.externalId) &&
-            Objects.deepEquals(this.contentExternalReference, other.contentExternalReference) &&
-            Objects.deepEquals(this.remoteExternalId, other.remoteExternalId) &&
-            Objects.deepEquals(this.contentId, other.contentId) &&
-            Objects.deepEquals(this.remoteContentId, other.remoteContentId) &&
-            Objects.deepEquals(this.courseId, other.courseId) &&
-            Objects.deepEquals(this.remoteCourseId, other.remoteCourseId);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
+            Utils.enhancedDeepEquals(this.result, other.result) &&
+            Utils.enhancedDeepEquals(this.completedAt, other.completedAt) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
+            Utils.enhancedDeepEquals(this.learningObjectType, other.learningObjectType) &&
+            Utils.enhancedDeepEquals(this.learningObjectId, other.learningObjectId) &&
+            Utils.enhancedDeepEquals(this.remoteLearningObjectId, other.remoteLearningObjectId) &&
+            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId) &&
+            Utils.enhancedDeepEquals(this.remoteUserId, other.remoteUserId) &&
+            Utils.enhancedDeepEquals(this.timeSpent, other.timeSpent) &&
+            Utils.enhancedDeepEquals(this.externalId, other.externalId) &&
+            Utils.enhancedDeepEquals(this.contentExternalReference, other.contentExternalReference) &&
+            Utils.enhancedDeepEquals(this.remoteExternalId, other.remoteExternalId) &&
+            Utils.enhancedDeepEquals(this.contentId, other.contentId) &&
+            Utils.enhancedDeepEquals(this.remoteContentId, other.remoteContentId) &&
+            Utils.enhancedDeepEquals(this.courseId, other.courseId) &&
+            Utils.enhancedDeepEquals(this.remoteCourseId, other.remoteCourseId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,
@@ -938,6 +974,7 @@ public class Completion {
             learningObjectExternalReference,
             userId,
             remoteUserId,
+            timeSpent,
             externalId,
             contentExternalReference,
             remoteExternalId,
@@ -964,6 +1001,7 @@ public class Completion {
                 "learningObjectExternalReference", learningObjectExternalReference,
                 "userId", userId,
                 "remoteUserId", remoteUserId,
+                "timeSpent", timeSpent,
                 "externalId", externalId,
                 "contentExternalReference", contentExternalReference,
                 "remoteExternalId", remoteExternalId,
@@ -1003,6 +1041,8 @@ public class Completion {
         private JsonNullable<String> userId = JsonNullable.undefined();
  
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
+ 
+        private JsonNullable<String> timeSpent = JsonNullable.undefined();
  
         @Deprecated
         private JsonNullable<String> externalId = JsonNullable.undefined();
@@ -1288,6 +1328,24 @@ public class Completion {
         }
 
         /**
+         * ISO 8601 duration format representing the time spent on completing the learning object
+         */
+        public Builder timeSpent(String timeSpent) {
+            Utils.checkNotNull(timeSpent, "timeSpent");
+            this.timeSpent = JsonNullable.of(timeSpent);
+            return this;
+        }
+
+        /**
+         * ISO 8601 duration format representing the time spent on completing the learning object
+         */
+        public Builder timeSpent(JsonNullable<String> timeSpent) {
+            Utils.checkNotNull(timeSpent, "timeSpent");
+            this.timeSpent = timeSpent;
+            return this;
+        }
+
+        /**
          * The external ID associated with this completion
          * 
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -1471,6 +1529,7 @@ public class Completion {
                 learningObjectExternalReference,
                 userId,
                 remoteUserId,
+                timeSpent,
                 externalId,
                 contentExternalReference,
                 remoteExternalId,

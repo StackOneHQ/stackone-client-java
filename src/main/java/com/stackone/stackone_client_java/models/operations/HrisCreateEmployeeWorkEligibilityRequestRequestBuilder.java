@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDto;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployeeWorkEligibilityRequestOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
     private String xAccountId;
     private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisCreateEmployeeWorkEligibilityRequest sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder(SDKMethodInterfaces.MethodCallHrisCreateEmployeeWorkEligibilityRequest sdk) {
-        this.sdk = sdk;
+    public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder id(String id) {
@@ -53,14 +57,27 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
         return this;
     }
 
+
+    private HrisCreateEmployeeWorkEligibilityRequestRequest buildRequest() {
+
+        HrisCreateEmployeeWorkEligibilityRequestRequest request = new HrisCreateEmployeeWorkEligibilityRequestRequest(id,
+            xAccountId,
+            hrisCreateWorkEligibilityRequestDto);
+
+        return request;
+    }
+
     public HrisCreateEmployeeWorkEligibilityRequestResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createEmployeeWorkEligibilityRequest(
-            id,
-            xAccountId,
-            hrisCreateWorkEligibilityRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisCreateEmployeeWorkEligibilityRequestRequest, HrisCreateEmployeeWorkEligibilityRequestResponse> operation
+              = new HrisCreateEmployeeWorkEligibilityRequestOperation(
+                 sdkConfiguration,
+                 options);
+        HrisCreateEmployeeWorkEligibilityRequestRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

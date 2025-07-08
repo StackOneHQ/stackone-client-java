@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetJobCustomFieldDefinitionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetJobCustomFieldDefinitionRequestBuilder {
 
     private AtsGetJobCustomFieldDefinitionRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetJobCustomFieldDefinition sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetJobCustomFieldDefinitionRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetJobCustomFieldDefinition sdk) {
-        this.sdk = sdk;
+    public AtsGetJobCustomFieldDefinitionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetJobCustomFieldDefinitionRequestBuilder request(AtsGetJobCustomFieldDefinitionRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetJobCustomFieldDefinitionRequestBuilder {
 
     public AtsGetJobCustomFieldDefinitionResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getJobCustomFieldDefinition(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetJobCustomFieldDefinitionRequest, AtsGetJobCustomFieldDefinitionResponse> operation
+              = new AtsGetJobCustomFieldDefinitionOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

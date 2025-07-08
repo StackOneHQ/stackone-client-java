@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateEmailTemplateRequestDto;
+import com.stackone.stackone_client_java.operations.MarketingCreateEmailTemplateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class MarketingCreateEmailTemplateRequestBuilder {
     private String xAccountId;
     private MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingCreateEmailTemplate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingCreateEmailTemplateRequestBuilder(SDKMethodInterfaces.MethodCallMarketingCreateEmailTemplate sdk) {
-        this.sdk = sdk;
+    public MarketingCreateEmailTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingCreateEmailTemplateRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class MarketingCreateEmailTemplateRequestBuilder {
         return this;
     }
 
+
+    private MarketingCreateEmailTemplateRequest buildRequest() {
+
+        MarketingCreateEmailTemplateRequest request = new MarketingCreateEmailTemplateRequest(xAccountId,
+            marketingCreateEmailTemplateRequestDto);
+
+        return request;
+    }
+
     public MarketingCreateEmailTemplateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createEmailTemplate(
-            xAccountId,
-            marketingCreateEmailTemplateRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingCreateEmailTemplateRequest, MarketingCreateEmailTemplateResponse> operation
+              = new MarketingCreateEmailTemplateOperation(
+                 sdkConfiguration,
+                 options);
+        MarketingCreateEmailTemplateRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

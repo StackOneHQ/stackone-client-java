@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ContentPaginated {
@@ -153,15 +152,15 @@ public class ContentPaginated {
         }
         ContentPaginated other = (ContentPaginated) o;
         return 
-            Objects.deepEquals(this.nextPage, other.nextPage) &&
-            Objects.deepEquals(this.next, other.next) &&
-            Objects.deepEquals(this.data, other.data) &&
-            Objects.deepEquals(this.raw, other.raw);
+            Utils.enhancedDeepEquals(this.nextPage, other.nextPage) &&
+            Utils.enhancedDeepEquals(this.next, other.next) &&
+            Utils.enhancedDeepEquals(this.data, other.data) &&
+            Utils.enhancedDeepEquals(this.raw, other.raw);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             nextPage,
             next,
             data,

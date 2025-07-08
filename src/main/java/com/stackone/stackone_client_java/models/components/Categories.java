@@ -20,12 +20,13 @@ public enum Categories {
     DOCUMENTS("documents"),
     TICKETING("ticketing"),
     SCREENING("screening"),
-    MESSAGING("messaging");
+    MESSAGING("messaging"),
+    ACCOUNTING("accounting");
 
     @JsonValue
     private final String value;
 
-    private Categories(String value) {
+    Categories(String value) {
         this.value = value;
     }
     

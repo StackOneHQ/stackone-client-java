@@ -16,7 +16,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class LmsCreateAssignmentRequestDto {
@@ -346,19 +345,19 @@ public class LmsCreateAssignmentRequestDto {
         }
         LmsCreateAssignmentRequestDto other = (LmsCreateAssignmentRequestDto) o;
         return 
-            Objects.deepEquals(this.passthrough, other.passthrough) &&
-            Objects.deepEquals(this.externalReference, other.externalReference) &&
-            Objects.deepEquals(this.learningObjectId, other.learningObjectId) &&
-            Objects.deepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
-            Objects.deepEquals(this.progress, other.progress) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.dueDate, other.dueDate) &&
-            Objects.deepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
+            Utils.enhancedDeepEquals(this.learningObjectId, other.learningObjectId) &&
+            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
+            Utils.enhancedDeepEquals(this.progress, other.progress) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.dueDate, other.dueDate) &&
+            Utils.enhancedDeepEquals(this.status, other.status);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             passthrough,
             externalReference,
             learningObjectId,

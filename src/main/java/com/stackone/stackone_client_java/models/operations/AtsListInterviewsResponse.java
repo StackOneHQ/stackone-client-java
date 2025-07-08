@@ -9,8 +9,6 @@ import com.stackone.stackone_client_java.models.components.InterviewsPaginated;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
-import java.lang.Deprecated;
-import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
@@ -18,9 +16,7 @@ import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.Callable;
 
 public class AtsListInterviewsResponse implements Response {
 
@@ -45,8 +41,6 @@ public class AtsListInterviewsResponse implements Response {
     private Optional<? extends InterviewsPaginated> interviewsPaginated;
 
     private Map<String, List<String>> headers;
-
-    private Callable<Optional<AtsListInterviewsResponse>> next = () -> Optional.empty();
 
     @JsonCreator
     public AtsListInterviewsResponse(
@@ -111,16 +105,6 @@ public class AtsListInterviewsResponse implements Response {
     @JsonIgnore
     public Map<String, List<String>> headers() {
         return headers;
-    }
-
-    public Optional<AtsListInterviewsResponse> next() throws Exception {
-        return this.next.call();
-    }
-    
-    // internal use only
-    private AtsListInterviewsResponse withNext(Callable<Optional<AtsListInterviewsResponse>> next) {
-        this.next = next;
-        return this;
     }
 
     public final static Builder builder() {
@@ -189,16 +173,16 @@ public class AtsListInterviewsResponse implements Response {
         }
         AtsListInterviewsResponse other = (AtsListInterviewsResponse) o;
         return 
-            Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.interviewsPaginated, other.interviewsPaginated) &&
-            Objects.deepEquals(this.headers, other.headers);
+            Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
+            Utils.enhancedDeepEquals(this.interviewsPaginated, other.interviewsPaginated) &&
+            Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             contentType,
             statusCode,
             rawResponse,
@@ -217,7 +201,6 @@ public class AtsListInterviewsResponse implements Response {
     }
     
     public final static class Builder {
-        private Callable<Optional<AtsListInterviewsResponse>> next;
  
         private String contentType;
  
@@ -283,18 +266,6 @@ public class AtsListInterviewsResponse implements Response {
             this.headers = headers;
             return this;
         }
-
-        /**
-         * Internal API. Not for public use. Sets the provider of the next page.
-         *
-         * @deprecated not part of the public API, may be removed without notice
-         */
-        @Deprecated
-        public Builder next(Callable<Optional<AtsListInterviewsResponse>> next) {
-            Utils.checkNotNull(next, "next");
-            this.next = next;
-            return this;
-        }
         
         public AtsListInterviewsResponse build() {
             return new AtsListInterviewsResponse(
@@ -302,8 +273,7 @@ public class AtsListInterviewsResponse implements Response {
                 statusCode,
                 rawResponse,
                 interviewsPaginated,
-                headers)
-                .withNext(next);
+                headers);
         }
     }
 }

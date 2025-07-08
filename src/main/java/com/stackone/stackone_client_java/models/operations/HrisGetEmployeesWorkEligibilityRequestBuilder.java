@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeesWorkEligibilityOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetEmployeesWorkEligibilityRequestBuilder {
 
     private HrisGetEmployeesWorkEligibilityRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetEmployeesWorkEligibility sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetEmployeesWorkEligibilityRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetEmployeesWorkEligibility sdk) {
-        this.sdk = sdk;
+    public HrisGetEmployeesWorkEligibilityRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetEmployeesWorkEligibilityRequestBuilder request(HrisGetEmployeesWorkEligibilityRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetEmployeesWorkEligibilityRequestBuilder {
 
     public HrisGetEmployeesWorkEligibilityResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getEmployeesWorkEligibility(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetEmployeesWorkEligibilityRequest, HrisGetEmployeesWorkEligibilityResponse> operation
+              = new HrisGetEmployeesWorkEligibilityOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

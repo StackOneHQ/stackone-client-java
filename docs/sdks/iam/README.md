@@ -28,8 +28,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.IamListUsersQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.IamListUsersRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -38,8 +37,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -55,8 +54,8 @@ public class Application {
         sdk.iam().listUsers()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((IamListUsersResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -113,8 +112,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -185,8 +184,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -253,8 +252,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -325,8 +324,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.IamListRolesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.IamListRolesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -335,8 +333,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -352,8 +350,8 @@ public class Application {
         sdk.iam().listRoles()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((IamListRolesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -410,8 +408,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -474,6 +472,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.IamListGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.IamListGroupsResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -483,8 +482,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -498,8 +497,8 @@ public class Application {
         sdk.iam().listGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((IamListGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -556,8 +555,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -620,6 +619,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.IamListPoliciesRequest;
+import com.stackone.stackone_client_java.models.operations.IamListPoliciesResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -629,8 +629,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -644,8 +644,8 @@ public class Application {
         sdk.iam().listPolicies()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((IamListPoliciesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -702,8 +702,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 

@@ -14,7 +14,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class IamGroup {
@@ -332,21 +331,21 @@ public class IamGroup {
         }
         IamGroup other = (IamGroup) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.roles, other.roles) &&
-            Objects.deepEquals(this.parentId, other.parentId) &&
-            Objects.deepEquals(this.remoteParentId, other.remoteParentId) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.roles, other.roles) &&
+            Utils.enhancedDeepEquals(this.parentId, other.parentId) &&
+            Utils.enhancedDeepEquals(this.remoteParentId, other.remoteParentId) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             name,

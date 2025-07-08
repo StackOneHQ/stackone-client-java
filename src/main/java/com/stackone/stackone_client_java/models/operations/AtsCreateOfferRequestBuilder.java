@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDto;
+import com.stackone.stackone_client_java.operations.AtsCreateOfferOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class AtsCreateOfferRequestBuilder {
     private String xAccountId;
     private AtsCreateOfferRequestDto atsCreateOfferRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsCreateOffer sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsCreateOfferRequestBuilder(SDKMethodInterfaces.MethodCallAtsCreateOffer sdk) {
-        this.sdk = sdk;
+    public AtsCreateOfferRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsCreateOfferRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class AtsCreateOfferRequestBuilder {
         return this;
     }
 
+
+    private AtsCreateOfferRequest buildRequest() {
+
+        AtsCreateOfferRequest request = new AtsCreateOfferRequest(xAccountId,
+            atsCreateOfferRequestDto);
+
+        return request;
+    }
+
     public AtsCreateOfferResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createOffer(
-            xAccountId,
-            atsCreateOfferRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsCreateOfferRequest, AtsCreateOfferResponse> operation
+              = new AtsCreateOfferOperation(
+                 sdkConfiguration,
+                 options);
+        AtsCreateOfferRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

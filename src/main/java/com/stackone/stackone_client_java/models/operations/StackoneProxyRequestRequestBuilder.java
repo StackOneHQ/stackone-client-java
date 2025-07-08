@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.ProxyRequestBody;
+import com.stackone.stackone_client_java.operations.StackoneProxyRequestOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class StackoneProxyRequestRequestBuilder {
     private String xAccountId;
     private ProxyRequestBody proxyRequestBody;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallStackoneProxyRequest sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public StackoneProxyRequestRequestBuilder(SDKMethodInterfaces.MethodCallStackoneProxyRequest sdk) {
-        this.sdk = sdk;
+    public StackoneProxyRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public StackoneProxyRequestRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class StackoneProxyRequestRequestBuilder {
         return this;
     }
 
+
+    private StackoneProxyRequestRequest buildRequest() {
+
+        StackoneProxyRequestRequest request = new StackoneProxyRequestRequest(xAccountId,
+            proxyRequestBody);
+
+        return request;
+    }
+
     public StackoneProxyRequestResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.proxyRequest(
-            xAccountId,
-            proxyRequestBody,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<StackoneProxyRequestRequest, StackoneProxyRequestResponse> operation
+              = new StackoneProxyRequestOperation(
+                 sdkConfiguration,
+                 options);
+        StackoneProxyRequestRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Deprecated;
 import java.lang.Double;
 import java.lang.Object;
@@ -19,7 +18,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class LmsUpsertContentRequestDto {
@@ -92,7 +90,7 @@ public class LmsUpsertContentRequestDto {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<Boolean> active;
+    private JsonNullable<? extends LmsUpsertContentRequestDtoActive> active;
 
     /**
      * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
@@ -178,7 +176,7 @@ public class LmsUpsertContentRequestDto {
             @JsonProperty("mobile_launch_content_url") JsonNullable<String> mobileLaunchContentUrl,
             @JsonProperty("content_type") JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType,
             @JsonProperty("cover_url") JsonNullable<String> coverUrl,
-            @JsonProperty("active") JsonNullable<Boolean> active,
+            @JsonProperty("active") JsonNullable<? extends LmsUpsertContentRequestDtoActive> active,
             @JsonProperty("duration") JsonNullable<String> duration,
             @JsonProperty("skills") JsonNullable<? extends List<CreateSkillsApiModel>> skills,
             @JsonProperty("order") JsonNullable<Double> order,
@@ -313,9 +311,10 @@ public class LmsUpsertContentRequestDto {
     /**
      * Whether the content is active and available for users.
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> active() {
-        return active;
+    public JsonNullable<LmsUpsertContentRequestDtoActive> active() {
+        return (JsonNullable<LmsUpsertContentRequestDtoActive>) active;
     }
 
     /**
@@ -575,7 +574,7 @@ public class LmsUpsertContentRequestDto {
     /**
      * Whether the content is active and available for users.
      */
-    public LmsUpsertContentRequestDto withActive(boolean active) {
+    public LmsUpsertContentRequestDto withActive(LmsUpsertContentRequestDtoActive active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -584,7 +583,7 @@ public class LmsUpsertContentRequestDto {
     /**
      * Whether the content is active and available for users.
      */
-    public LmsUpsertContentRequestDto withActive(JsonNullable<Boolean> active) {
+    public LmsUpsertContentRequestDto withActive(JsonNullable<? extends LmsUpsertContentRequestDtoActive> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -787,31 +786,31 @@ public class LmsUpsertContentRequestDto {
         }
         LmsUpsertContentRequestDto other = (LmsUpsertContentRequestDto) o;
         return 
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.externalReference, other.externalReference) &&
-            Objects.deepEquals(this.title, other.title) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.languages, other.languages) &&
-            Objects.deepEquals(this.contentUrl, other.contentUrl) &&
-            Objects.deepEquals(this.mobileLaunchContentUrl, other.mobileLaunchContentUrl) &&
-            Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.coverUrl, other.coverUrl) &&
-            Objects.deepEquals(this.active, other.active) &&
-            Objects.deepEquals(this.duration, other.duration) &&
-            Objects.deepEquals(this.skills, other.skills) &&
-            Objects.deepEquals(this.order, other.order) &&
-            Objects.deepEquals(this.shortDescription, other.shortDescription) &&
-            Objects.deepEquals(this.localizations, other.localizations) &&
-            Objects.deepEquals(this.tags, other.tags) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.categories, other.categories) &&
-            Objects.deepEquals(this.additionalData, other.additionalData);
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.languages, other.languages) &&
+            Utils.enhancedDeepEquals(this.contentUrl, other.contentUrl) &&
+            Utils.enhancedDeepEquals(this.mobileLaunchContentUrl, other.mobileLaunchContentUrl) &&
+            Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
+            Utils.enhancedDeepEquals(this.coverUrl, other.coverUrl) &&
+            Utils.enhancedDeepEquals(this.active, other.active) &&
+            Utils.enhancedDeepEquals(this.duration, other.duration) &&
+            Utils.enhancedDeepEquals(this.skills, other.skills) &&
+            Utils.enhancedDeepEquals(this.order, other.order) &&
+            Utils.enhancedDeepEquals(this.shortDescription, other.shortDescription) &&
+            Utils.enhancedDeepEquals(this.localizations, other.localizations) &&
+            Utils.enhancedDeepEquals(this.tags, other.tags) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.categories, other.categories) &&
+            Utils.enhancedDeepEquals(this.additionalData, other.additionalData);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             unifiedCustomFields,
             externalReference,
             title,
@@ -879,7 +878,7 @@ public class LmsUpsertContentRequestDto {
  
         private JsonNullable<String> coverUrl = JsonNullable.undefined();
  
-        private JsonNullable<Boolean> active = JsonNullable.undefined();
+        private JsonNullable<? extends LmsUpsertContentRequestDtoActive> active = JsonNullable.undefined();
  
         private JsonNullable<String> duration = JsonNullable.undefined();
  
@@ -1071,7 +1070,7 @@ public class LmsUpsertContentRequestDto {
         /**
          * Whether the content is active and available for users.
          */
-        public Builder active(boolean active) {
+        public Builder active(LmsUpsertContentRequestDtoActive active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -1080,7 +1079,7 @@ public class LmsUpsertContentRequestDto {
         /**
          * Whether the content is active and available for users.
          */
-        public Builder active(JsonNullable<Boolean> active) {
+        public Builder active(JsonNullable<? extends LmsUpsertContentRequestDtoActive> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;

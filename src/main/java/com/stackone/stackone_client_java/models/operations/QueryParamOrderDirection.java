@@ -20,7 +20,7 @@ public enum QueryParamOrderDirection {
     @JsonValue
     private final String value;
 
-    private QueryParamOrderDirection(String value) {
+    QueryParamOrderDirection(String value) {
         this.value = value;
     }
     

@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetDepartmentGroupOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetDepartmentGroupRequestBuilder {
 
     private HrisGetDepartmentGroupRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetDepartmentGroup sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetDepartmentGroupRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetDepartmentGroup sdk) {
-        this.sdk = sdk;
+    public HrisGetDepartmentGroupRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetDepartmentGroupRequestBuilder request(HrisGetDepartmentGroupRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetDepartmentGroupRequestBuilder {
 
     public HrisGetDepartmentGroupResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getDepartmentGroup(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetDepartmentGroupRequest, HrisGetDepartmentGroupResponse> operation
+              = new HrisGetDepartmentGroupOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

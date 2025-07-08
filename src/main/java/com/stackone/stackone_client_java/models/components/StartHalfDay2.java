@@ -15,7 +15,7 @@ public enum StartHalfDay2 {
     @JsonValue
     private final String value;
 
-    private StartHalfDay2(String value) {
+    StartHalfDay2(String value) {
         this.value = value;
     }
     

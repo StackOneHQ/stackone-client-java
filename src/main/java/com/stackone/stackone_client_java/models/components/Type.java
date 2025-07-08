@@ -3,154 +3,182 @@
  */
 package com.stackone.stackone_client_java.models.components;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.stackone.stackone_client_java.utils.Utils;
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import java.io.IOException;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
-import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.Optional;
 
+/**
+ * <p>Wrapper class for an "open" enum. "Open" enums are those that are expected
+ * to evolve (particularly with the addition of enum members over time). If an
+ * open enum is used then the appearance of unexpected enum values (say in a 
+ * response from an updated an API) will not bring about a runtime error thus 
+ * ensuring that non-updated client versions can continue to work without error.
+ *
+ * <p>Note that instances are immutable and are singletons (an internal thread-safe
+ * cache is maintained to ensure that). As a consequence instances created with the 
+ * same value will satisfy reference equality (via {@code ==}).
+ * 
+ * <p>This class is intended to emulate an enum (in terms of common usage and with 
+ * reference equality) but with the ability to carry unknown values. Unfortunately
+ * Java does not permit the use of an instance in a switch expression but you can 
+ * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
+ *
+ */
 /**
  * Type
  * 
- * <p>The type of the custom field.
+ * <p>The connect session account type
  */
+@JsonDeserialize(using = Type._Deserializer.class)
+@JsonSerialize(using = Type._Serializer.class)
 public class Type {
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("value")
-    private JsonNullable<? extends CustomFieldDefinitionValue> value;
+    public static final Type PRODUCTION = new Type("production");
+    public static final Type TEST = new Type("test");
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("source_value")
-    private JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue;
+    // This map will grow whenever a Color gets created with a new
+    // unrecognized value (a potential memory leak if the user is not
+    // careful). Keep this field lower case to avoid clashing with
+    // generated member names which will always be upper cased (Java
+    // convention)
+    private static final Map<String, Type> values = createValuesMap();
+    private static final Map<String, TypeEnum> enums = createEnumsMap();
 
-    @JsonCreator
-    public Type(
-            @JsonProperty("value") JsonNullable<? extends CustomFieldDefinitionValue> value,
-            @JsonProperty("source_value") JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue) {
-        Utils.checkNotNull(value, "value");
-        Utils.checkNotNull(sourceValue, "sourceValue");
+    private final String value;
+
+    private Type(String value) {
         this.value = value;
-        this.sourceValue = sourceValue;
-    }
-    
-    public Type() {
-        this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<CustomFieldDefinitionValue> value() {
-        return (JsonNullable<CustomFieldDefinitionValue>) value;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<CustomFieldDefinitionSourceValue> sourceValue() {
-        return (JsonNullable<CustomFieldDefinitionSourceValue>) sourceValue;
-    }
-
-    public final static Builder builder() {
-        return new Builder();
-    }    
-
-    public Type withValue(CustomFieldDefinitionValue value) {
-        Utils.checkNotNull(value, "value");
-        this.value = JsonNullable.of(value);
-        return this;
-    }
-
-    public Type withValue(JsonNullable<? extends CustomFieldDefinitionValue> value) {
-        Utils.checkNotNull(value, "value");
-        this.value = value;
-        return this;
-    }
-
-    public Type withSourceValue(CustomFieldDefinitionSourceValue sourceValue) {
-        Utils.checkNotNull(sourceValue, "sourceValue");
-        this.sourceValue = JsonNullable.of(sourceValue);
-        return this;
-    }
-
-    public Type withSourceValue(JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue) {
-        Utils.checkNotNull(sourceValue, "sourceValue");
-        this.sourceValue = sourceValue;
-        return this;
-    }
-
-    
-    @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
+    /**
+     * Returns a Type with the given value. For a specific value the 
+     * returned object will always be a singleton so reference equality 
+     * is satisfied when the values are the same.
+     * 
+     * @param value value to be wrapped as Type
+     */ 
+    public static Type of(String value) {
+        synchronized (Type.class) {
+            return values.computeIfAbsent(value, v -> new Type(v));
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Type other = (Type) o;
-        return 
-            Objects.deepEquals(this.value, other.value) &&
-            Objects.deepEquals(this.sourceValue, other.sourceValue);
     }
-    
+
+    public String value() {
+        return value;
+    }
+
+    public Optional<TypeEnum> asEnum() {
+        return Optional.ofNullable(enums.getOrDefault(value, null));
+    }
+
+    public boolean isKnown() {
+        return asEnum().isPresent();
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(
-            value,
-            sourceValue);
+        return Objects.hash(value);
     }
-    
+
+    @Override
+    public boolean equals(java.lang.Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Type other = (Type) obj;
+        return Objects.equals(value, other.value);
+    }
+
     @Override
     public String toString() {
-        return Utils.toString(Type.class,
-                "value", value,
-                "sourceValue", sourceValue);
+        return "Type [value=" + value + "]";
+    }
+
+    // return an array just like an enum
+    public static Type[] values() {
+        synchronized (Type.class) {
+            return values.values().toArray(new Type[] {});
+        }
+    }
+
+    private static final Map<String, Type> createValuesMap() {
+        Map<String, Type> map = new LinkedHashMap<>();
+        map.put("production", PRODUCTION);
+        map.put("test", TEST);
+        return map;
+    }
+
+    private static final Map<String, TypeEnum> createEnumsMap() {
+        Map<String, TypeEnum> map = new HashMap<>();
+        map.put("production", TypeEnum.PRODUCTION);
+        map.put("test", TypeEnum.TEST);
+        return map;
     }
     
-    public final static class Builder {
- 
-        private JsonNullable<? extends CustomFieldDefinitionValue> value = JsonNullable.undefined();
- 
-        private JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue = JsonNullable.undefined();
-        
-        private Builder() {
-          // force use of static builder() method
+    @SuppressWarnings("serial")
+    public static final class _Serializer extends StdSerializer<Type> {
+
+        protected _Serializer() {
+            super(Type.class);
         }
 
-        public Builder value(CustomFieldDefinitionValue value) {
-            Utils.checkNotNull(value, "value");
-            this.value = JsonNullable.of(value);
-            return this;
+        @Override
+        public void serialize(Type value, JsonGenerator g, SerializerProvider provider)
+                throws IOException, JsonProcessingException {
+            g.writeObject(value.value);
+        }
+    }
+
+    @SuppressWarnings("serial")
+    public static final class _Deserializer extends StdDeserializer<Type> {
+
+        protected _Deserializer() {
+            super(Type.class);
         }
 
-        public Builder value(JsonNullable<? extends CustomFieldDefinitionValue> value) {
-            Utils.checkNotNull(value, "value");
+        @Override
+        public Type deserialize(JsonParser p, DeserializationContext ctxt)
+                throws IOException, JacksonException {
+            String v = p.readValueAs(new TypeReference<String>() {});
+            // use the factory method to ensure we get singletons
+            return Type.of(v);
+        }
+    }
+    
+    public enum TypeEnum {
+
+        PRODUCTION("production"),
+        TEST("test"),;
+
+        private final String value;
+
+        private TypeEnum(String value) {
             this.value = value;
-            return this;
         }
 
-        public Builder sourceValue(CustomFieldDefinitionSourceValue sourceValue) {
-            Utils.checkNotNull(sourceValue, "sourceValue");
-            this.sourceValue = JsonNullable.of(sourceValue);
-            return this;
-        }
-
-        public Builder sourceValue(JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue) {
-            Utils.checkNotNull(sourceValue, "sourceValue");
-            this.sourceValue = sourceValue;
-            return this;
-        }
-        
-        public Type build() {
-            return new Type(
-                value,
-                sourceValue);
+        public String value() {
+            return value;
         }
     }
 }
+

@@ -43,7 +43,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.6.0'
+implementation 'com.stackone:stackone-client-java:0.7.0'
 ```
 
 Maven:
@@ -51,7 +51,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.6.0</version>
+    <version>0.7.0</version>
 </dependency>
 ```
 
@@ -72,9 +72,11 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ### Logging
 A logging framework/facade has not yet been adopted but is under consideration.
 
-For request and response logging (especially json bodies) use:
+For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
 ```java
-SpeakeasyHTTPClient.setDebugLogging(true); // experimental API only (may change without warning)
+SDK.builder()
+    .enableHTTPDebugLogging(true)
+    .build();
 ```
 Example output:
 ```
@@ -88,7 +90,9 @@ Response body:
   "token": "global"
 }
 ```
-WARNING: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+__WARNING__: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+
+__NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
 
 Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End SDK Installation [installation] -->
@@ -104,8 +108,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -114,8 +117,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -132,8 +135,8 @@ public class Application {
         sdk.hris().listEmployees()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -167,6 +170,7 @@ public class Application {
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 * [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
+* [listApplicationChanges](docs/sdks/ats/README.md#listapplicationchanges) - List Application Changes
 * [listApplicationNotes](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
 * [createApplicationNote](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
 * [getApplicationNote](docs/sdks/ats/README.md#getapplicationnote) - Get Application Note
@@ -216,7 +220,6 @@ public class Application {
 * [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
 * [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
 * [orderAssessmentsRequest](docs/sdks/ats/README.md#orderassessmentsrequest) - Order Assessments Request
-* [getAssessmentsRequest](docs/sdks/ats/README.md#getassessmentsrequest) - Get Assessments Requests
 * [updateAssessmentsResult](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
 * [getAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
 * [listBackgroundCheckPackages](docs/sdks/ats/README.md#listbackgroundcheckpackages) - List Background Check Packages
@@ -224,9 +227,7 @@ public class Application {
 * [getBackgroundCheckPackage](docs/sdks/ats/README.md#getbackgroundcheckpackage) - Get Background Check Package
 * [deleteBackgroundCheckPackage](docs/sdks/ats/README.md#deletebackgroundcheckpackage) - Delete Background Check Package
 * [updateBackgroundCheckPackage](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
-* [listBackgroundCheckRequest](docs/sdks/ats/README.md#listbackgroundcheckrequest) - List Background Check Request
 * [orderBackgroundCheckRequest](docs/sdks/ats/README.md#orderbackgroundcheckrequest) - Order Background Check Request
-* [getBackgroundCheckRequest](docs/sdks/ats/README.md#getbackgroundcheckrequest) - Get Background Check Request
 * [updateBackgroundCheckResult](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
 * [getBackgroundCheckResult](docs/sdks/ats/README.md#getbackgroundcheckresult) - Get Background Check Results
 
@@ -288,16 +289,6 @@ public class Application {
 * [createEmployeeEmployment](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
 * [getEmployeeEmployment](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
 * [updateEmployeeEmployment](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
-* [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
-* [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
-* [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
-* [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
-* [~~listTimeOffTypes~~](docs/sdks/hris/README.md#listtimeofftypes) - List time off types :warning: **Deprecated**
-* [~~getTimeOffType~~](docs/sdks/hris/README.md#gettimeofftype) - Get time off type :warning: **Deprecated**
-* [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
-* [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
-* [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
-* [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [listGroups](docs/sdks/hris/README.md#listgroups) - List Groups
 * [listDepartmentGroups](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
 * [listCostCenterGroups](docs/sdks/hris/README.md#listcostcentergroups) - List Cost Center Groups
@@ -308,12 +299,24 @@ public class Application {
 * [getTeamGroup](docs/sdks/hris/README.md#getteamgroup) - Get Team Group
 * [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
 * [getJob](docs/sdks/hris/README.md#getjob) - Get Job
-* [listEmployeeSkills](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
-* [createEmployeeSkill](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
-* [getEmployeeSkill](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
+* [listLocations](docs/sdks/hris/README.md#listlocations) - List Work Locations
+* [getLocation](docs/sdks/hris/README.md#getlocation) - Get Work Location
+* [listPositions](docs/sdks/hris/README.md#listpositions) - List Positions
+* [getPosition](docs/sdks/hris/README.md#getposition) - Get Position
+* [listTimeEntries](docs/sdks/hris/README.md#listtimeentries) - List Time Entries
+* [getTimeEntries](docs/sdks/hris/README.md#gettimeentries) - Get Time Entry
+* [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
+* [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
+* [~~listTimeOffTypes~~](docs/sdks/hris/README.md#listtimeofftypes) - List time off types :warning: **Deprecated**
+* [~~getTimeOffType~~](docs/sdks/hris/README.md#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [listTimeOffPolicies](docs/sdks/hris/README.md#listtimeoffpolicies) - List Time Off Policies
 * [getTimeOffPolicy](docs/sdks/hris/README.md#gettimeoffpolicy) - Get Time Off Policy
 * [listEmployeeTimeOffPolicies](docs/sdks/hris/README.md#listemployeetimeoffpolicies) - List Assigned Time Off Policies
+* [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
+* [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
+* [listEmployeeSkills](docs/sdks/hris/README.md#listemployeeskills) - List Employee Skills
+* [createEmployeeSkill](docs/sdks/hris/README.md#createemployeeskill) - Create Employee Skill
+* [getEmployeeSkill](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
 * [listEmployeeTasks](docs/sdks/hris/README.md#listemployeetasks) - List Employee Tasks
 * [getEmployeeTask](docs/sdks/hris/README.md#getemployeetask) - Get Employee Task
 
@@ -332,9 +335,7 @@ public class Application {
 
 ### [lms()](docs/sdks/lms/README.md)
 
-* [batchUpsertCourse](docs/sdks/lms/README.md#batchupsertcourse) - Batch Upsert Course
 * [listCourses](docs/sdks/lms/README.md#listcourses) - List Courses
-* [upsertCourse](docs/sdks/lms/README.md#upsertcourse) - Upsert Course
 * [getCourse](docs/sdks/lms/README.md#getcourse) - Get Course
 * [listUserAssignments](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 * [createUserAssignment](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
@@ -358,8 +359,6 @@ public class Application {
 * [listSkills](docs/sdks/lms/README.md#listskills) - List Skills
 * [listAssignments](docs/sdks/lms/README.md#listassignments) - List Assignments
 * [getAssignment](docs/sdks/lms/README.md#getassignment) - Get Assignment
-* [createCollection](docs/sdks/lms/README.md#createcollection) - Create Collection
-* [updateCollection](docs/sdks/lms/README.md#updatecollection) - Update Collection
 
 ### [marketing()](docs/sdks/marketing/README.md)
 
@@ -407,20 +406,21 @@ public class Application {
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `next` method that can be called to pull down the next group of results. The `next`
-function returns an `Optional` value, which `isPresent` until there are no more pages to be fetched.
+Some of the endpoints in this SDK support pagination. To use pagination, you can make your SDK calls using the `callAsIterable` or `callAsStream` methods.
+For certain operations, you can also use the `callAsStreamUnwrapped` method that streams individual page items directly.
 
-Here's an example of one such pagination call:
+Here's an example depicting the different ways to use pagination:
+
+
 ```java
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.lang.Iterable;
 
 public class Application {
 
@@ -428,8 +428,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -441,12 +441,24 @@ public class Application {
                     .build())
                 .build();
 
-        sdk.hris().listCompanies()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
+        var b = sdk.hris().listCompanies()
+                .request(req);
+
+        // Iterate through all pages using a traditional for-each loop
+        // Each iteration returns a complete page response
+        Iterable<HrisListCompaniesResponse> iterable = b.callAsIterable();
+        for (HrisListCompaniesResponse page : iterable) {
+            // handle page
+        }
+
+        // Stream through all pages and process individual items
+        // callAsStreamUnwrapped() flattens pages into individual items
+
+        // Stream through pages without unwrapping (each item is a complete page)
+        b.callAsStream()
+            .forEach((HrisListCompaniesResponse page) -> {
+                // handle page
+            });
 
     }
 }
@@ -478,8 +490,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -498,7 +510,9 @@ public class Application {
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
                     Categories.SCREENING,
-                    Categories.MESSAGING))
+                    Categories.MESSAGING,
+                    Categories.ACCOUNTING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -552,8 +566,8 @@ public class Application {
                         .build())
                     .build())
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -572,7 +586,9 @@ public class Application {
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
                     Categories.SCREENING,
-                    Categories.MESSAGING))
+                    Categories.MESSAGING,
+                    Categories.ACCOUNTING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -627,8 +643,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -647,7 +663,9 @@ public class Application {
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
                     Categories.SCREENING,
-                    Categories.MESSAGING))
+                    Categories.MESSAGING,
+                    Categories.ACCOUNTING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -685,8 +703,8 @@ public class Application {
         StackOne sdk = StackOne.builder()
                 .serverURL("https://api.stackone.com")
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -705,7 +723,9 @@ public class Application {
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
                     Categories.SCREENING,
-                    Categories.MESSAGING))
+                    Categories.MESSAGING,
+                    Categories.ACCOUNTING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
@@ -748,8 +768,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -768,7 +788,9 @@ public class Application {
                     Categories.DOCUMENTS,
                     Categories.TICKETING,
                     Categories.SCREENING,
-                    Categories.MESSAGING))
+                    Categories.MESSAGING,
+                    Categories.ACCOUNTING))
+                .type(Type.TEST)
                 .build();
 
         StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()

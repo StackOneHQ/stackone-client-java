@@ -16,7 +16,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -209,16 +208,16 @@ public class Response {
         }
         Response other = (Response) o;
         return 
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.headers, other.headers) &&
-            Objects.deepEquals(this.body, other.body) &&
-            Objects.deepEquals(this.customMappingErrors, other.customMappingErrors) &&
-            Objects.deepEquals(this.providerErrors, other.providerErrors);
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.headers, other.headers) &&
+            Utils.enhancedDeepEquals(this.body, other.body) &&
+            Utils.enhancedDeepEquals(this.customMappingErrors, other.customMappingErrors) &&
+            Utils.enhancedDeepEquals(this.providerErrors, other.providerErrors);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             statusCode,
             headers,
             body,

@@ -10,7 +10,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 public class StackoneProxyRequestRequest {
 
@@ -85,13 +84,13 @@ public class StackoneProxyRequestRequest {
         }
         StackoneProxyRequestRequest other = (StackoneProxyRequestRequest) o;
         return 
-            Objects.deepEquals(this.xAccountId, other.xAccountId) &&
-            Objects.deepEquals(this.proxyRequestBody, other.proxyRequestBody);
+            Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.proxyRequestBody, other.proxyRequestBody);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             xAccountId,
             proxyRequestBody);
     }

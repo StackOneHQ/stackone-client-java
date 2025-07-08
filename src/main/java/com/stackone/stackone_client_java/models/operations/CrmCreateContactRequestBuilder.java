@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.CrmCreateContactRequestDto;
+import com.stackone.stackone_client_java.operations.CrmCreateContactOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -16,10 +20,10 @@ public class CrmCreateContactRequestBuilder {
     private String xAccountId;
     private CrmCreateContactRequestDto crmCreateContactRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallCrmCreateContact sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public CrmCreateContactRequestBuilder(SDKMethodInterfaces.MethodCallCrmCreateContact sdk) {
-        this.sdk = sdk;
+    public CrmCreateContactRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CrmCreateContactRequestBuilder xAccountId(String xAccountId) {
@@ -46,13 +50,26 @@ public class CrmCreateContactRequestBuilder {
         return this;
     }
 
+
+    private CrmCreateContactRequest buildRequest() {
+
+        CrmCreateContactRequest request = new CrmCreateContactRequest(xAccountId,
+            crmCreateContactRequestDto);
+
+        return request;
+    }
+
     public CrmCreateContactResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.createContact(
-            xAccountId,
-            crmCreateContactRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<CrmCreateContactRequest, CrmCreateContactResponse> operation
+              = new CrmCreateContactOperation(
+                 sdkConfiguration,
+                 options);
+        CrmCreateContactRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

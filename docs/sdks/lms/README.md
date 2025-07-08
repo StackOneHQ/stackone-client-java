@@ -5,9 +5,7 @@
 
 ### Available Operations
 
-* [batchUpsertCourse](#batchupsertcourse) - Batch Upsert Course
 * [listCourses](#listcourses) - List Courses
-* [upsertCourse](#upsertcourse) - Upsert Course
 * [getCourse](#getcourse) - Get Course
 * [listUserAssignments](#listuserassignments) - List User Assignments
 * [createUserAssignment](#createuserassignment) - Create User Assignment
@@ -31,79 +29,6 @@
 * [listSkills](#listskills) - List Skills
 * [listAssignments](#listassignments) - List Assignments
 * [getAssignment](#getassignment) - Get Assignment
-* [createCollection](#createcollection) - Create Collection
-* [updateCollection](#updatecollection) - Update Collection
-
-## batchUpsertCourse
-
-Batch Upsert Course
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.LmsBatchUpsertCourseRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsBatchUpsertCourseResponse;
-import java.lang.Exception;
-import java.util.List;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        LmsBatchUpsertCourseResponse res = sdk.lms().batchUpsertCourse()
-                .xAccountId("<id>")
-                .lmsBatchUpsertCourseRequestDto(LmsBatchUpsertCourseRequestDto.builder()
-                    .items(List.of())
-                    .build())
-                .call();
-
-        if (res.batchResultApiModel().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
-| `lmsBatchUpsertCourseRequestDto`                                                            | [LmsBatchUpsertCourseRequestDto](../../models/components/LmsBatchUpsertCourseRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
-
-### Response
-
-**[LmsBatchUpsertCourseResponse](../../models/operations/LmsBatchUpsertCourseResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
 ## listCourses
 
@@ -117,8 +42,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListCoursesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListCoursesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -127,8 +51,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -143,8 +67,8 @@ public class Application {
         sdk.lms().listCourses()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListCoursesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -160,118 +84,6 @@ public class Application {
 ### Response
 
 **[LmsListCoursesResponse](../../models/operations/LmsListCoursesResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## upsertCourse
-
-Upsert Course
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.*;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsUpsertCourseResponse;
-import java.lang.Exception;
-import java.util.List;
-import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        LmsUpsertCourseResponse res = sdk.lms().upsertCourse()
-                .xAccountId("<id>")
-                .lmsUpsertCourseRequestDto(LmsUpsertCourseRequestDto.builder()
-                    .unifiedCustomFields(Map.ofEntries(
-                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                        Map.entry("my_project_custom_field_2", "some other value")))
-                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                    .title("Software Engineer Lv 1")
-                    .description("This course acts as learning content for software engineers.")
-                    .languages(List.of(
-                        LanguageEnum.builder()
-                            .value(LanguageEnumValue.EN_GB)
-                            .build()))
-                    .coverUrl("https://www.googledrive.com/?v=16873")
-                    .url("https://www.linkedinlearning.com/?v=16873")
-                    .active(true)
-                    .duration("P3Y6M4DT12H30M5S")
-                    .categories(JsonNullable.of(null))
-                    .skills(List.of(
-                        CreateSkillsApiModel.builder()
-                            .id("16873-IT345")
-                            .name("Information-Technology")
-                            .language(CreateSkillsApiModelLanguage.builder()
-                                .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build()))
-                    .content(List.of(
-                        CreateContentApiModel.builder()
-                            .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                            .title("Software Engineer Lv 1")
-                            .description("This video acts as learning content for software engineers.")
-                            .contentUrl("https://www.youtube.com/watch?v=16873")
-                            .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                            .order(1)
-                            .build()))
-                    .localizations(List.of(
-                        LocalizationModel.builder()
-                            .title("Software Engineer Lv 1")
-                            .description("This course acts as learning resource for software engineers.")
-                            .build(),
-                        LocalizationModel.builder()
-                            .title("Software Engineer: A comprehensive guide")
-                            .description("This course acts as learning resource for software engineers.")
-                            .build()))
-                    .build())
-                .call();
-
-        if (res.upsertResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `xAccountId`                                                                      | *String*                                                                          | :heavy_check_mark:                                                                | The account identifier                                                            |
-| `lmsUpsertCourseRequestDto`                                                       | [LmsUpsertCourseRequestDto](../../models/components/LmsUpsertCourseRequestDto.md) | :heavy_check_mark:                                                                | N/A                                                                               |
-
-### Response
-
-**[LmsUpsertCourseResponse](../../models/operations/LmsUpsertCourseResponse.md)**
 
 ### Errors
 
@@ -313,8 +125,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -375,8 +187,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListUserAssignmentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListUserAssignmentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -385,8 +196,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -404,8 +215,8 @@ public class Application {
         sdk.lms().listUserAssignments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListUserAssignmentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -462,8 +273,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -475,7 +286,7 @@ public class Application {
                         Map.entry("other_known_names", "John Doe")))
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .learningObjectExternalReference("learning-content-123")
-                    .progress(40)
+                    .progress(40d)
                     .createdAt("2021-07-21T14:00:00.000Z")
                     .dueDate("2021-07-21T14:00:00.000Z")
                     .status(LmsCreateAssignmentRequestDtoStatus.builder()
@@ -543,8 +354,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -617,8 +428,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -640,14 +451,14 @@ public class Application {
                             .contentUrl("https://www.youtube.com/watch?v=16873")
                             .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
                             .coverUrl("https://www.googledrive.com/?v=16873")
-                            .active(true)
+                            .active(LmsUpsertContentRequestDtoActive.of(true))
                             .duration("P3Y6M4DT12H30M5S")
                             .skills(List.of(
                                 CreateSkillsApiModel.builder()
                                     .id("12345")
                                     .name("Sales Techniques")
                                     .build()))
-                            .order(1)
+                            .order(1d)
                             .localizations(List.of(
                                 LocalizationModel.builder()
                                     .title("Software Engineer Lv 1")
@@ -731,8 +542,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListContentQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListContentRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -741,8 +551,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -757,8 +567,8 @@ public class Application {
         sdk.lms().listContent()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListContentResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -817,8 +627,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -838,14 +648,14 @@ public class Application {
                     .contentUrl("https://www.youtube.com/watch?v=16873")
                     .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
                     .coverUrl("https://www.googledrive.com/?v=16873")
-                    .active(true)
+                    .active(LmsUpsertContentRequestDtoActive.of(true))
                     .duration("P3Y6M4DT12H30M5S")
                     .skills(List.of(
                         CreateSkillsApiModel.builder()
                             .id("12345")
                             .name("Sales Techniques")
                             .build()))
-                    .order(1)
+                    .order(1d)
                     .localizations(List.of(
                         LocalizationModel.builder()
                             .title("Software Engineer Lv 1")
@@ -938,8 +748,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1012,8 +822,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1034,14 +844,14 @@ public class Application {
                     .contentUrl("https://www.youtube.com/watch?v=16873")
                     .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
                     .coverUrl("https://www.googledrive.com/?v=16873")
-                    .active(true)
+                    .active(LmsCreateContentRequestDtoActive.of(true))
                     .duration("P3Y6M4DT12H30M5S")
                     .skills(List.of(
                         CreateSkillsApiModel.builder()
                             .id("12345")
                             .name("Sales Techniques")
                             .build()))
-                    .order(1)
+                    .order(1d)
                     .localizations(List.of(
                         LocalizationModel.builder()
                             .title("Software Engineer Lv 1")
@@ -1118,8 +928,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListUserCompletionsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListUserCompletionsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1128,15 +937,15 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
         LmsListUserCompletionsRequest req = LmsListUserCompletionsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
+                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent")
                 .filter(LmsListUserCompletionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -1145,8 +954,8 @@ public class Application {
         sdk.lms().listUserCompletions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListUserCompletionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1204,8 +1013,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1218,6 +1027,7 @@ public class Application {
                     .completedAt("2021-07-21T14:00:00.000Z")
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .learningObjectExternalReference("learning-content-123")
+                    .timeSpent("PT1H30M45S")
                     .build())
                 .call();
 
@@ -1280,8 +1090,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1351,8 +1161,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1411,8 +1221,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListCompletionsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListCompletionsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1421,14 +1230,14 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
         LmsListCompletionsRequest req = LmsListCompletionsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
+                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent")
                 .filter(LmsListCompletionsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -1437,8 +1246,8 @@ public class Application {
         sdk.lms().listCompletions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListCompletionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1495,8 +1304,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1566,8 +1375,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1628,8 +1437,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListCategoriesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListCategoriesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1638,8 +1446,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1654,8 +1462,8 @@ public class Application {
         sdk.lms().listCategories()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListCategoriesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1703,6 +1511,7 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsListUsersRequest;
+import com.stackone.stackone_client_java.models.operations.LmsListUsersResponse;
 import java.lang.Exception;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -1712,8 +1521,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1726,8 +1535,8 @@ public class Application {
         sdk.lms().listUsers()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListUsersResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1784,8 +1593,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1856,8 +1665,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1918,8 +1727,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListSkillsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListSkillsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1928,8 +1736,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1944,8 +1752,8 @@ public class Application {
         sdk.lms().listSkills()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListSkillsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1992,8 +1800,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsListAssignmentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.LmsListAssignmentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2002,8 +1809,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2020,8 +1827,8 @@ public class Application {
         sdk.lms().listAssignments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((LmsListAssignmentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2078,8 +1885,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2108,203 +1915,6 @@ public class Application {
 ### Response
 
 **[LmsGetAssignmentResponse](../../models/operations/LmsGetAssignmentResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## createCollection
-
-Create Collection
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.*;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsCreateCollectionResponse;
-import java.lang.Exception;
-import java.util.List;
-import java.util.Map;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        LmsCreateCollectionResponse res = sdk.lms().createCollection()
-                .xAccountId("<id>")
-                .lmsCreateCollectionRequestDto(LmsCreateCollectionRequestDto.builder()
-                    .unifiedCustomFields(Map.ofEntries(
-                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                        Map.entry("my_project_custom_field_2", "some other value")))
-                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-collection-1")
-                    .learningObjectIds(List.of(
-                        "16873-SOFTWARE-ENG-COURSE",
-                        "16874-SOFTWARE-ENG-COURSE"))
-                    .remoteLearningObjectIds(List.of(
-                        "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                        "e3cb75bf-aa84-466e-a6c1-b8322b257a49"))
-                    .title("Software Engineer Lv 1 Collection")
-                    .description("This collection acts as learning pathway for software engineers.")
-                    .coverUrl("https://www.googledrive.com/?v=16873")
-                    .categories(List.of(
-                        CreateCategoriesApiModel.builder()
-                            .id("16873-IT345")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .name("Information-Technology")
-                            .language(CreateCategoriesApiModelLanguage.builder()
-                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build()))
-                    .skills(List.of(
-                        CreateSkillsApiModel.builder()
-                            .id("16873-IT345")
-                            .name("Information-Technology")
-                            .language(CreateSkillsApiModelLanguage.builder()
-                                .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build()))
-                    .build())
-                .call();
-
-        if (res.createResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                              | *String*                                                                                  | :heavy_check_mark:                                                                        | The account identifier                                                                    |
-| `lmsCreateCollectionRequestDto`                                                           | [LmsCreateCollectionRequestDto](../../models/components/LmsCreateCollectionRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
-
-### Response
-
-**[LmsCreateCollectionResponse](../../models/operations/LmsCreateCollectionResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## updateCollection
-
-Update Collection
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.*;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsUpdateCollectionResponse;
-import java.lang.Exception;
-import java.util.List;
-import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        LmsUpdateCollectionResponse res = sdk.lms().updateCollection()
-                .xAccountId("<id>")
-                .id("<id>")
-                .lmsCreateCollectionRequestDto(LmsCreateCollectionRequestDto.builder()
-                    .unifiedCustomFields(Map.ofEntries(
-                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                        Map.entry("my_project_custom_field_2", "some other value")))
-                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-collection-1")
-                    .learningObjectIds(List.of(
-                        "16873-SOFTWARE-ENG-COURSE",
-                        "16874-SOFTWARE-ENG-COURSE"))
-                    .remoteLearningObjectIds(List.of(
-                        "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                        "e3cb75bf-aa84-466e-a6c1-b8322b257a49"))
-                    .title("Software Engineer Lv 1 Collection")
-                    .description("This collection acts as learning pathway for software engineers.")
-                    .coverUrl("https://www.googledrive.com/?v=16873")
-                    .categories(JsonNullable.of(null))
-                    .skills(List.of(
-                        CreateSkillsApiModel.builder()
-                            .id("16873-IT345")
-                            .name("Information-Technology")
-                            .language(CreateSkillsApiModelLanguage.builder()
-                                .value(CreateSkillsApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build()))
-                    .build())
-                .call();
-
-        if (res.updateResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                              | *String*                                                                                  | :heavy_check_mark:                                                                        | The account identifier                                                                    |
-| `id`                                                                                      | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `lmsCreateCollectionRequestDto`                                                           | [LmsCreateCollectionRequestDto](../../models/components/LmsCreateCollectionRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
-
-### Response
-
-**[LmsUpdateCollectionResponse](../../models/operations/LmsUpdateCollectionResponse.md)**
 
 ### Errors
 

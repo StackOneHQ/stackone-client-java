@@ -10,7 +10,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -114,13 +113,13 @@ public class LmsListAssignmentsQueryParamFilter {
         }
         LmsListAssignmentsQueryParamFilter other = (LmsListAssignmentsQueryParamFilter) o;
         return 
-            Objects.deepEquals(this.updatedAfter, other.updatedAfter) &&
-            Objects.deepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.status, other.status);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             updatedAfter,
             status);
     }

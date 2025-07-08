@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class PhoneNumber {
@@ -113,13 +112,13 @@ public class PhoneNumber {
         }
         PhoneNumber other = (PhoneNumber) o;
         return 
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.phone, other.phone);
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.phone, other.phone);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             type,
             phone);
     }

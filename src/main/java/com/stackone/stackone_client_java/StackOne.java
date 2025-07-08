@@ -5,6 +5,7 @@ package com.stackone.stackone_client_java;
 
 import com.stackone.stackone_client_java.utils.HTTPClient;
 import com.stackone.stackone_client_java.utils.RetryConfig;
+import com.stackone.stackone_client_java.utils.SpeakeasyHTTPClient;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.String;
 import java.util.Map;
@@ -23,14 +24,31 @@ public class StackOne {
         "https://api.stackone.com",
     };
 
+    
+
+    /**
+     * Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
+     */
     private final ConnectSessions connectSessions;
 
+    /**
+     * Customer or business accounts.
+     */
     private final Accounts accounts;
 
+    /**
+     * API requests and response logs.
+     */
     private final RequestLogs requestLogs;
 
+    /**
+     * Retrieve metadata for connectors.
+     */
     private final Connectors connectors;
 
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
     private final Proxy proxy;
 
     private final Hris hris;
@@ -45,22 +63,37 @@ public class StackOne {
 
     private final Lms lms;
 
+    /**
+     * Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
+     */
     public ConnectSessions connectSessions() {
         return connectSessions;
     }
 
+    /**
+     * Customer or business accounts.
+     */
     public Accounts accounts() {
         return accounts;
     }
 
+    /**
+     * API requests and response logs.
+     */
     public RequestLogs requestLogs() {
         return requestLogs;
     }
 
+    /**
+     * Retrieve metadata for connectors.
+     */
     public Connectors connectors() {
         return connectors;
     }
 
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
     public Proxy proxy() {
         return proxy;
     }
@@ -88,7 +121,6 @@ public class StackOne {
     public Lms lms() {
         return lms;
     }
-
     private SDKConfiguration sdkConfiguration;
 
     /**
@@ -183,6 +215,21 @@ public class StackOne {
             this.sdkConfiguration.setRetryConfig(Optional.of(retryConfig));
             return this;
         }
+
+        /**
+         * Enables debug logging for HTTP requests and responses, including JSON body content.
+         *
+         * Convenience method that calls {@link HTTPClient#enableDebugLogging(boolean)}.
+         * {@link SpeakeasyHTTPClient} honors this setting. If you are using a custom HTTP client,
+         * it is up to the custom client to honor this setting.
+         *
+         * @return The builder instance.
+         */
+        public Builder enableHTTPDebugLogging(boolean enabled) {
+            this.sdkConfiguration.client().enableDebugLogging(enabled);
+            return this;
+        }
+
         /**
          * Builds a new instance of the SDK.
          *

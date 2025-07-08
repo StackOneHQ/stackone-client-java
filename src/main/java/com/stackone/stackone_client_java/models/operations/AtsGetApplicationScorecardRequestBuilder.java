@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetApplicationScorecardOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetApplicationScorecardRequestBuilder {
 
     private AtsGetApplicationScorecardRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetApplicationScorecard sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetApplicationScorecardRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetApplicationScorecard sdk) {
-        this.sdk = sdk;
+    public AtsGetApplicationScorecardRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetApplicationScorecardRequestBuilder request(AtsGetApplicationScorecardRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetApplicationScorecardRequestBuilder {
 
     public AtsGetApplicationScorecardResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getApplicationScorecard(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetApplicationScorecardRequest, AtsGetApplicationScorecardResponse> operation
+              = new AtsGetApplicationScorecardOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

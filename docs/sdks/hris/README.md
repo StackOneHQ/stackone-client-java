@@ -38,16 +38,6 @@
 * [createEmployeeEmployment](#createemployeeemployment) - Create Employee Employment
 * [getEmployeeEmployment](#getemployeeemployment) - Get Employee Employment
 * [updateEmployeeEmployment](#updateemployeeemployment) - Update Employee Employment
-* [listLocations](#listlocations) - List Work Locations
-* [getLocation](#getlocation) - Get Work Location
-* [listTimeOffRequests](#listtimeoffrequests) - List time off requests
-* [getTimeOffRequest](#gettimeoffrequest) - Get time off request
-* [~~listTimeOffTypes~~](#listtimeofftypes) - List time off types :warning: **Deprecated**
-* [~~getTimeOffType~~](#gettimeofftype) - Get time off type :warning: **Deprecated**
-* [listTimeEntries](#listtimeentries) - List Time Entries
-* [getTimeEntries](#gettimeentries) - Get Time Entry
-* [listBenefits](#listbenefits) - List benefits
-* [getBenefit](#getbenefit) - Get Benefit
 * [listGroups](#listgroups) - List Groups
 * [listDepartmentGroups](#listdepartmentgroups) - List Department Groups
 * [listCostCenterGroups](#listcostcentergroups) - List Cost Center Groups
@@ -58,12 +48,24 @@
 * [getTeamGroup](#getteamgroup) - Get Team Group
 * [listJobs](#listjobs) - List Jobs
 * [getJob](#getjob) - Get Job
-* [listEmployeeSkills](#listemployeeskills) - List Employee Skills
-* [createEmployeeSkill](#createemployeeskill) - Create Employee Skill
-* [getEmployeeSkill](#getemployeeskill) - Get Employee Skill
+* [listLocations](#listlocations) - List Work Locations
+* [getLocation](#getlocation) - Get Work Location
+* [listPositions](#listpositions) - List Positions
+* [getPosition](#getposition) - Get Position
+* [listTimeEntries](#listtimeentries) - List Time Entries
+* [getTimeEntries](#gettimeentries) - Get Time Entry
+* [listTimeOffRequests](#listtimeoffrequests) - List time off requests
+* [getTimeOffRequest](#gettimeoffrequest) - Get time off request
+* [~~listTimeOffTypes~~](#listtimeofftypes) - List time off types :warning: **Deprecated**
+* [~~getTimeOffType~~](#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [listTimeOffPolicies](#listtimeoffpolicies) - List Time Off Policies
 * [getTimeOffPolicy](#gettimeoffpolicy) - Get Time Off Policy
 * [listEmployeeTimeOffPolicies](#listemployeetimeoffpolicies) - List Assigned Time Off Policies
+* [listBenefits](#listbenefits) - List benefits
+* [getBenefit](#getbenefit) - Get Benefit
+* [listEmployeeSkills](#listemployeeskills) - List Employee Skills
+* [createEmployeeSkill](#createemployeeskill) - Create Employee Skill
+* [getEmployeeSkill](#getemployeeskill) - Get Employee Skill
 * [listEmployeeTasks](#listemployeetasks) - List Employee Tasks
 * [getEmployeeTask](#getemployeetask) - Get Employee Task
 
@@ -79,8 +81,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -89,8 +90,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -105,8 +106,8 @@ public class Application {
         sdk.hris().listCompanies()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListCompaniesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -163,8 +164,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -225,8 +226,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCustomFieldDefinitionsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCustomFieldDefinitionsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -235,8 +235,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -251,8 +251,8 @@ public class Application {
         sdk.hris().listEmployeeCustomFieldDefinitions()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeCustomFieldDefinitionsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -308,8 +308,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -373,8 +373,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -383,8 +382,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -401,8 +400,8 @@ public class Application {
         sdk.hris().listEmployees()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -462,8 +461,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -558,7 +557,7 @@ public class Application {
                         CreateCostCenterApiModel.builder()
                             .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                             .name("R&D")
-                            .distributionPercentage(100)
+                            .distributionPercentage(100d)
                             .build()))
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -623,8 +622,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -700,8 +699,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -865,8 +864,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -928,8 +927,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffRequestsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffRequestsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -938,15 +936,15 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
         HrisListEmployeeTimeOffRequestsRequest req = HrisListEmployeeTimeOffRequestsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
                 .filter(HrisListEmployeeTimeOffRequestsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -956,8 +954,8 @@ public class Application {
         sdk.hris().listEmployeeTimeOffRequests()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeTimeOffRequestsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1014,8 +1012,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1033,6 +1031,7 @@ public class Application {
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .build())
+                    .comment("Taking a day off for personal reasons")
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
@@ -1097,8 +1096,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1106,7 +1105,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
                 .expand("policy")
                 .build();
 
@@ -1170,8 +1169,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1240,8 +1239,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1260,6 +1259,7 @@ public class Application {
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .build())
+                    .comment("Taking a day off for personal reasons")
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
@@ -1325,8 +1325,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1412,8 +1412,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1497,8 +1497,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1561,8 +1561,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeDocumentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeDocumentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1571,8 +1570,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1588,8 +1587,8 @@ public class Application {
         sdk.hris().listEmployeeDocuments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeDocumentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1646,8 +1645,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1709,8 +1708,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1719,8 +1717,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1735,8 +1733,8 @@ public class Application {
         sdk.hris().listEmployeeCategories()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeCategoriesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1793,8 +1791,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1855,8 +1853,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeWorkEligibilityQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeWorkEligibilityRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -1865,8 +1862,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -1882,8 +1879,8 @@ public class Application {
         sdk.hris().listEmployeeWorkEligibility()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeWorkEligibilityResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -1942,8 +1939,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2037,8 +2034,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2111,8 +2108,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2199,8 +2196,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffBalancesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffBalancesRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2209,8 +2205,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2227,8 +2223,8 @@ public class Application {
         sdk.hris().listEmployeeTimeOffBalances()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeTimeOffBalancesResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2285,8 +2281,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2349,8 +2345,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmploymentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmploymentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2359,8 +2354,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2376,8 +2371,8 @@ public class Application {
         sdk.hris().listEmployments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmploymentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2434,8 +2429,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2497,8 +2492,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeEmploymentsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeEmploymentsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -2507,8 +2501,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2525,8 +2519,8 @@ public class Application {
         sdk.hris().listEmployeeEmployments()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeEmploymentsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -2584,8 +2578,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2687,8 +2681,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2762,8 +2756,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -2844,742 +2838,6 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## listLocations
-
-List Work Locations
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListLocationsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListLocationsRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisListLocationsRequest req = HrisListLocationsRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
-                .filter(HrisListLocationsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.hris().listLocations()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [HrisListLocationsRequest](../../models/operations/HrisListLocationsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
-
-### Response
-
-**[HrisListLocationsResponse](../../models/operations/HrisListLocationsResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## getLocation
-
-Get Work Location
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisGetLocationRequest;
-import com.stackone.stackone_client_java.models.operations.HrisGetLocationResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisGetLocationRequest req = HrisGetLocationRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
-                .build();
-
-        HrisGetLocationResponse res = sdk.hris().getLocation()
-                .request(req)
-                .call();
-
-        if (res.hrisLocationResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [HrisGetLocationRequest](../../models/operations/HrisGetLocationRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
-
-### Response
-
-**[HrisGetLocationResponse](../../models/operations/HrisGetLocationResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## listTimeOffRequests
-
-List time off requests
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffRequestsRequest;
-import java.lang.Exception;
-import org.openapitools.jackson.nullable.JsonNullable;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisListTimeOffRequestsRequest req = HrisListTimeOffRequestsRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
-                .filter(JsonNullable.of(null))
-                .expand("policy")
-                .build();
-
-        sdk.hris().listTimeOffRequests()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | [HrisListTimeOffRequestsRequest](../../models/operations/HrisListTimeOffRequestsRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
-
-### Response
-
-**[HrisListTimeOffRequestsResponse](../../models/operations/HrisListTimeOffRequestsResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## getTimeOffRequest
-
-Get time off request
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffRequestRequest;
-import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffRequestResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisGetTimeOffRequestRequest req = HrisGetTimeOffRequestRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,duration,created_at,updated_at,policy")
-                .expand("policy")
-                .build();
-
-        HrisGetTimeOffRequestResponse res = sdk.hris().getTimeOffRequest()
-                .request(req)
-                .call();
-
-        if (res.timeOffResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `request`                                                                               | [HrisGetTimeOffRequestRequest](../../models/operations/HrisGetTimeOffRequestRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
-
-### Response
-
-**[HrisGetTimeOffRequestResponse](../../models/operations/HrisGetTimeOffRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## ~~listTimeOffTypes~~
-
-List time off types
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffTypesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffTypesRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisListTimeOffTypesRequest req = HrisListTimeOffTypesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,active")
-                .filter(HrisListTimeOffTypesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.hris().listTimeOffTypes()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `request`                                                                             | [HrisListTimeOffTypesRequest](../../models/operations/HrisListTimeOffTypesRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
-
-### Response
-
-**[HrisListTimeOffTypesResponse](../../models/operations/HrisListTimeOffTypesResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## ~~getTimeOffType~~
-
-Get time off type
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffTypeRequest;
-import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffTypeResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisGetTimeOffTypeRequest req = HrisGetTimeOffTypeRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,name,active")
-                .build();
-
-        HrisGetTimeOffTypeResponse res = sdk.hris().getTimeOffType()
-                .request(req)
-                .call();
-
-        if (res.referenceResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [HrisGetTimeOffTypeRequest](../../models/operations/HrisGetTimeOffTypeRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
-
-### Response
-
-**[HrisGetTimeOffTypeResponse](../../models/operations/HrisGetTimeOffTypeResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## listTimeEntries
-
-List Time Entries
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeEntriesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeEntriesRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisListTimeEntriesRequest req = HrisListTimeEntriesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
-                .filter(HrisListTimeEntriesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .startTime("2020-01-01T00:00:00.000Z")
-                    .endTime("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.hris().listTimeEntries()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `request`                                                                           | [HrisListTimeEntriesRequest](../../models/operations/HrisListTimeEntriesRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
-
-### Response
-
-**[HrisListTimeEntriesResponse](../../models/operations/HrisListTimeEntriesResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## getTimeEntries
-
-Get Time Entry
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisGetTimeEntriesRequest;
-import com.stackone.stackone_client_java.models.operations.HrisGetTimeEntriesResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisGetTimeEntriesRequest req = HrisGetTimeEntriesRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
-                .build();
-
-        HrisGetTimeEntriesResponse res = sdk.hris().getTimeEntries()
-                .request(req)
-                .call();
-
-        if (res.timeEntriesResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [HrisGetTimeEntriesRequest](../../models/operations/HrisGetTimeEntriesRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
-
-### Response
-
-**[HrisGetTimeEntriesResponse](../../models/operations/HrisGetTimeEntriesResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## listBenefits
-
-List benefits
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListBenefitsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListBenefitsRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisListBenefitsRequest req = HrisListBenefitsRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
-                .filter(HrisListBenefitsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.hris().listBenefits()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `request`                                                                     | [HrisListBenefitsRequest](../../models/operations/HrisListBenefitsRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
-
-### Response
-
-**[HrisListBenefitsResponse](../../models/operations/HrisListBenefitsResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## getBenefit
-
-Get Benefit
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisGetBenefitRequest;
-import com.stackone.stackone_client_java.models.operations.HrisGetBenefitResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisGetBenefitRequest req = HrisGetBenefitRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
-                .build();
-
-        HrisGetBenefitResponse res = sdk.hris().getBenefit()
-                .request(req)
-                .call();
-
-        if (res.hrisBenefitResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [HrisGetBenefitRequest](../../models/operations/HrisGetBenefitRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
-
-### Response
-
-**[HrisGetBenefitResponse](../../models/operations/HrisGetBenefitResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
 ## listGroups
 
 List Groups
@@ -3592,8 +2850,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListGroupsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3602,8 +2859,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3618,8 +2875,8 @@ public class Application {
         sdk.hris().listGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3666,8 +2923,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3676,8 +2932,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3692,8 +2948,8 @@ public class Application {
         sdk.hris().listDepartmentGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListDepartmentGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3740,8 +2996,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListCostCenterGroupsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListCostCenterGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3750,8 +3005,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3766,8 +3021,8 @@ public class Application {
         sdk.hris().listCostCenterGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListCostCenterGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3814,8 +3069,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -3824,8 +3078,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3840,8 +3094,8 @@ public class Application {
         sdk.hris().listTeamGroups()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListTeamGroupsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -3898,8 +3152,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -3970,8 +3224,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4042,8 +3296,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4114,8 +3368,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4176,8 +3430,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListJobsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListJobsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4186,8 +3439,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4202,8 +3455,8 @@ public class Application {
         sdk.hris().listJobs()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListJobsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4260,8 +3513,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4310,6 +3563,1102 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
+## listLocations
+
+List Work Locations
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListLocationsRequest req = HrisListLocationsRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
+                .filter(HrisListLocationsQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listLocations()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListLocationsResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [HrisListLocationsRequest](../../models/operations/HrisListLocationsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+
+### Response
+
+**[HrisListLocationsResponse](../../models/operations/HrisListLocationsResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getLocation
+
+Get Work Location
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetLocationRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetLocationResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetLocationRequest req = HrisGetLocationRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
+                .build();
+
+        HrisGetLocationResponse res = sdk.hris().getLocation()
+                .request(req)
+                .call();
+
+        if (res.hrisLocationResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [HrisGetLocationRequest](../../models/operations/HrisGetLocationRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+
+### Response
+
+**[HrisGetLocationResponse](../../models/operations/HrisGetLocationResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listPositions
+
+List Positions
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListPositionsRequest req = HrisListPositionsRequest.builder()
+                .xAccountId("<id>")
+                .filter(HrisListPositionsQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .status(Status.OPEN)
+                .build();
+
+        sdk.hris().listPositions()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListPositionsResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [HrisListPositionsRequest](../../models/operations/HrisListPositionsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+
+### Response
+
+**[HrisListPositionsResponse](../../models/operations/HrisListPositionsResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getPosition
+
+Get Position
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetPositionRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetPositionResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetPositionRequest req = HrisGetPositionRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .build();
+
+        HrisGetPositionResponse res = sdk.hris().getPosition()
+                .request(req)
+                .call();
+
+        if (res.positionResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [HrisGetPositionRequest](../../models/operations/HrisGetPositionRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+
+### Response
+
+**[HrisGetPositionResponse](../../models/operations/HrisGetPositionResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listTimeEntries
+
+List Time Entries
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListTimeEntriesRequest req = HrisListTimeEntriesRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
+                .filter(HrisListTimeEntriesQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .startTime("2020-01-01T00:00:00.000Z")
+                    .endTime("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listTimeEntries()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListTimeEntriesResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [HrisListTimeEntriesRequest](../../models/operations/HrisListTimeEntriesRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+
+### Response
+
+**[HrisListTimeEntriesResponse](../../models/operations/HrisListTimeEntriesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getTimeEntries
+
+Get Time Entry
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetTimeEntriesRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetTimeEntriesResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetTimeEntriesRequest req = HrisGetTimeEntriesRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
+                .build();
+
+        HrisGetTimeEntriesResponse res = sdk.hris().getTimeEntries()
+                .request(req)
+                .call();
+
+        if (res.timeEntriesResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [HrisGetTimeEntriesRequest](../../models/operations/HrisGetTimeEntriesRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+
+### Response
+
+**[HrisGetTimeEntriesResponse](../../models/operations/HrisGetTimeEntriesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listTimeOffRequests
+
+List time off requests
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisListTimeOffRequestsRequest;
+import com.stackone.stackone_client_java.models.operations.HrisListTimeOffRequestsResponse;
+import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListTimeOffRequestsRequest req = HrisListTimeOffRequestsRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
+                .filter(JsonNullable.of(null))
+                .expand("policy")
+                .build();
+
+        sdk.hris().listTimeOffRequests()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListTimeOffRequestsResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `request`                                                                                   | [HrisListTimeOffRequestsRequest](../../models/operations/HrisListTimeOffRequestsRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+
+### Response
+
+**[HrisListTimeOffRequestsResponse](../../models/operations/HrisListTimeOffRequestsResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getTimeOffRequest
+
+Get time off request
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffRequestRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffRequestResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetTimeOffRequestRequest req = HrisGetTimeOffRequestRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
+                .expand("policy")
+                .build();
+
+        HrisGetTimeOffRequestResponse res = sdk.hris().getTimeOffRequest()
+                .request(req)
+                .call();
+
+        if (res.timeOffResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [HrisGetTimeOffRequestRequest](../../models/operations/HrisGetTimeOffRequestRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
+
+### Response
+
+**[HrisGetTimeOffRequestResponse](../../models/operations/HrisGetTimeOffRequestResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## ~~listTimeOffTypes~~
+
+List time off types
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListTimeOffTypesRequest req = HrisListTimeOffTypesRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,name,active")
+                .filter(HrisListTimeOffTypesQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listTimeOffTypes()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListTimeOffTypesResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [HrisListTimeOffTypesRequest](../../models/operations/HrisListTimeOffTypesRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+
+### Response
+
+**[HrisListTimeOffTypesResponse](../../models/operations/HrisListTimeOffTypesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## ~~getTimeOffType~~
+
+Get time off type
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffTypeRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffTypeResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetTimeOffTypeRequest req = HrisGetTimeOffTypeRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,active")
+                .build();
+
+        HrisGetTimeOffTypeResponse res = sdk.hris().getTimeOffType()
+                .request(req)
+                .call();
+
+        if (res.referenceResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [HrisGetTimeOffTypeRequest](../../models/operations/HrisGetTimeOffTypeRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+
+### Response
+
+**[HrisGetTimeOffTypeResponse](../../models/operations/HrisGetTimeOffTypeResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listTimeOffPolicies
+
+List Time Off Policies
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListTimeOffPoliciesRequest req = HrisListTimeOffPoliciesRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
+                .filter(HrisListTimeOffPoliciesQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listTimeOffPolicies()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListTimeOffPoliciesResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `request`                                                                                   | [HrisListTimeOffPoliciesRequest](../../models/operations/HrisListTimeOffPoliciesRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+
+### Response
+
+**[HrisListTimeOffPoliciesResponse](../../models/operations/HrisListTimeOffPoliciesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getTimeOffPolicy
+
+Get Time Off Policy
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffPolicyRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffPolicyResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetTimeOffPolicyRequest req = HrisGetTimeOffPolicyRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
+                .build();
+
+        HrisGetTimeOffPolicyResponse res = sdk.hris().getTimeOffPolicy()
+                .request(req)
+                .call();
+
+        if (res.timeOffPolicyResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [HrisGetTimeOffPolicyRequest](../../models/operations/HrisGetTimeOffPolicyRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+
+### Response
+
+**[HrisGetTimeOffPolicyResponse](../../models/operations/HrisGetTimeOffPolicyResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listEmployeeTimeOffPolicies
+
+List Assigned Time Off Policies
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListEmployeeTimeOffPoliciesRequest req = HrisListEmployeeTimeOffPoliciesRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
+                .filter(HrisListEmployeeTimeOffPoliciesQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listEmployeeTimeOffPolicies()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListEmployeeTimeOffPoliciesResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [HrisListEmployeeTimeOffPoliciesRequest](../../models/operations/HrisListEmployeeTimeOffPoliciesRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+
+### Response
+
+**[HrisListEmployeeTimeOffPoliciesResponse](../../models/operations/HrisListEmployeeTimeOffPoliciesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listBenefits
+
+List benefits
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListBenefitsRequest req = HrisListBenefitsRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
+                .filter(HrisListBenefitsQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listBenefits()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListBenefitsResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [HrisListBenefitsRequest](../../models/operations/HrisListBenefitsRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+
+### Response
+
+**[HrisListBenefitsResponse](../../models/operations/HrisListBenefitsResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getBenefit
+
+Get Benefit
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetBenefitRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetBenefitResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetBenefitRequest req = HrisGetBenefitRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
+                .build();
+
+        HrisGetBenefitResponse res = sdk.hris().getBenefit()
+                .request(req)
+                .call();
+
+        if (res.hrisBenefitResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [HrisGetBenefitRequest](../../models/operations/HrisGetBenefitRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+
+### Response
+
+**[HrisGetBenefitResponse](../../models/operations/HrisGetBenefitResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
 ## listEmployeeSkills
 
 List Employee Skills
@@ -4322,8 +4671,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeSkillsQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeSkillsRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4332,8 +4680,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4349,8 +4697,8 @@ public class Application {
         sdk.hris().listEmployeeSkills()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeSkillsResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4407,8 +4755,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4486,8 +4834,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4537,227 +4885,6 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## listTimeOffPolicies
-
-List Time Off Policies
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffPoliciesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListTimeOffPoliciesRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisListTimeOffPoliciesRequest req = HrisListTimeOffPoliciesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
-                .filter(HrisListTimeOffPoliciesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.hris().listTimeOffPolicies()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | [HrisListTimeOffPoliciesRequest](../../models/operations/HrisListTimeOffPoliciesRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
-
-### Response
-
-**[HrisListTimeOffPoliciesResponse](../../models/operations/HrisListTimeOffPoliciesResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## getTimeOffPolicy
-
-Get Time Off Policy
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffPolicyRequest;
-import com.stackone.stackone_client_java.models.operations.HrisGetTimeOffPolicyResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisGetTimeOffPolicyRequest req = HrisGetTimeOffPolicyRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
-                .build();
-
-        HrisGetTimeOffPolicyResponse res = sdk.hris().getTimeOffPolicy()
-                .request(req)
-                .call();
-
-        if (res.timeOffPolicyResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `request`                                                                             | [HrisGetTimeOffPolicyRequest](../../models/operations/HrisGetTimeOffPolicyRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
-
-### Response
-
-**[HrisGetTimeOffPolicyResponse](../../models/operations/HrisGetTimeOffPolicyResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## listEmployeeTimeOffPolicies
-
-List Assigned Time Off Policies
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffPoliciesQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffPoliciesRequest;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisListEmployeeTimeOffPoliciesRequest req = HrisListEmployeeTimeOffPoliciesRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
-                .filter(HrisListEmployeeTimeOffPoliciesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .build())
-                .build();
-
-        sdk.hris().listEmployeeTimeOffPolicies()
-                .request(req)
-                .callAsStream()
-                .forEach(item -> {
-                   // handle item
-                });
-
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [HrisListEmployeeTimeOffPoliciesRequest](../../models/operations/HrisListEmployeeTimeOffPoliciesRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
-
-### Response
-
-**[HrisListEmployeeTimeOffPoliciesResponse](../../models/operations/HrisListEmployeeTimeOffPoliciesResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
 ## listEmployeeTasks
 
 List Employee Tasks
@@ -4770,8 +4897,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTasksQueryParamFilter;
-import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTasksRequest;
+import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 
 public class Application {
@@ -4780,8 +4906,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -4798,8 +4924,8 @@ public class Application {
         sdk.hris().listEmployeeTasks()
                 .request(req)
                 .callAsStream()
-                .forEach(item -> {
-                   // handle item
+                .forEach((HrisListEmployeeTasksResponse item) -> {
+                   // handle page
                 });
 
     }
@@ -4856,8 +4982,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 

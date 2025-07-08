@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class EntitySkillsCreateRequestDto {
@@ -186,15 +185,15 @@ public class EntitySkillsCreateRequestDto {
         }
         EntitySkillsCreateRequestDto other = (EntitySkillsCreateRequestDto) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.maximumProficiency, other.maximumProficiency) &&
-            Objects.deepEquals(this.minimumProficiency, other.minimumProficiency);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.maximumProficiency, other.maximumProficiency) &&
+            Utils.enhancedDeepEquals(this.minimumProficiency, other.minimumProficiency);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             name,
             maximumProficiency,

@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.MarketingGetContentBlockOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class MarketingGetContentBlockRequestBuilder {
 
     private MarketingGetContentBlockRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingGetContentBlock sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingGetContentBlockRequestBuilder(SDKMethodInterfaces.MethodCallMarketingGetContentBlock sdk) {
-        this.sdk = sdk;
+    public MarketingGetContentBlockRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingGetContentBlockRequestBuilder request(MarketingGetContentBlockRequest request) {
@@ -39,10 +43,14 @@ public class MarketingGetContentBlockRequestBuilder {
 
     public MarketingGetContentBlockResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getContentBlock(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingGetContentBlockRequest, MarketingGetContentBlockResponse> operation
+              = new MarketingGetContentBlockOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

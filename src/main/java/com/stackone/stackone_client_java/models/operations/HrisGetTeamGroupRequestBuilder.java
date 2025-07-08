@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetTeamGroupOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetTeamGroupRequestBuilder {
 
     private HrisGetTeamGroupRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetTeamGroup sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetTeamGroupRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetTeamGroup sdk) {
-        this.sdk = sdk;
+    public HrisGetTeamGroupRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetTeamGroupRequestBuilder request(HrisGetTeamGroupRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetTeamGroupRequestBuilder {
 
     public HrisGetTeamGroupResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getTeamGroup(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetTeamGroupRequest, HrisGetTeamGroupResponse> operation
+              = new HrisGetTeamGroupOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

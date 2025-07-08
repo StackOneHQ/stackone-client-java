@@ -9,8 +9,6 @@ import com.stackone.stackone_client_java.models.components.HRISCostCenterPaginat
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
-import java.lang.Deprecated;
-import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
@@ -18,9 +16,7 @@ import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.Callable;
 
 public class HrisListCostCenterGroupsResponse implements Response {
 
@@ -45,8 +41,6 @@ public class HrisListCostCenterGroupsResponse implements Response {
     private Optional<? extends HRISCostCenterPaginated> hrisCostCenterPaginated;
 
     private Map<String, List<String>> headers;
-
-    private Callable<Optional<HrisListCostCenterGroupsResponse>> next = () -> Optional.empty();
 
     @JsonCreator
     public HrisListCostCenterGroupsResponse(
@@ -111,16 +105,6 @@ public class HrisListCostCenterGroupsResponse implements Response {
     @JsonIgnore
     public Map<String, List<String>> headers() {
         return headers;
-    }
-
-    public Optional<HrisListCostCenterGroupsResponse> next() throws Exception {
-        return this.next.call();
-    }
-    
-    // internal use only
-    private HrisListCostCenterGroupsResponse withNext(Callable<Optional<HrisListCostCenterGroupsResponse>> next) {
-        this.next = next;
-        return this;
     }
 
     public final static Builder builder() {
@@ -189,16 +173,16 @@ public class HrisListCostCenterGroupsResponse implements Response {
         }
         HrisListCostCenterGroupsResponse other = (HrisListCostCenterGroupsResponse) o;
         return 
-            Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.hrisCostCenterPaginated, other.hrisCostCenterPaginated) &&
-            Objects.deepEquals(this.headers, other.headers);
+            Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
+            Utils.enhancedDeepEquals(this.hrisCostCenterPaginated, other.hrisCostCenterPaginated) &&
+            Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             contentType,
             statusCode,
             rawResponse,
@@ -217,7 +201,6 @@ public class HrisListCostCenterGroupsResponse implements Response {
     }
     
     public final static class Builder {
-        private Callable<Optional<HrisListCostCenterGroupsResponse>> next;
  
         private String contentType;
  
@@ -283,18 +266,6 @@ public class HrisListCostCenterGroupsResponse implements Response {
             this.headers = headers;
             return this;
         }
-
-        /**
-         * Internal API. Not for public use. Sets the provider of the next page.
-         *
-         * @deprecated not part of the public API, may be removed without notice
-         */
-        @Deprecated
-        public Builder next(Callable<Optional<HrisListCostCenterGroupsResponse>> next) {
-            Utils.checkNotNull(next, "next");
-            this.next = next;
-            return this;
-        }
         
         public HrisListCostCenterGroupsResponse build() {
             return new HrisListCostCenterGroupsResponse(
@@ -302,8 +273,7 @@ public class HrisListCostCenterGroupsResponse implements Response {
                 statusCode,
                 rawResponse,
                 hrisCostCenterPaginated,
-                headers)
-                .withNext(next);
+                headers);
         }
     }
 }

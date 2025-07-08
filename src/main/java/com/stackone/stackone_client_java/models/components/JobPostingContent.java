@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class JobPostingContent {
@@ -114,14 +113,14 @@ public class JobPostingContent {
         }
         JobPostingContent other = (JobPostingContent) o;
         return 
-            Objects.deepEquals(this.plain, other.plain) &&
-            Objects.deepEquals(this.html, other.html) &&
-            Objects.deepEquals(this.sections, other.sections);
+            Utils.enhancedDeepEquals(this.plain, other.plain) &&
+            Utils.enhancedDeepEquals(this.html, other.html) &&
+            Utils.enhancedDeepEquals(this.sections, other.sections);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             plain,
             html,
             sections);

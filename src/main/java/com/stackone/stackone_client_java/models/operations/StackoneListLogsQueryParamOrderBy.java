@@ -23,7 +23,7 @@ public enum StackoneListLogsQueryParamOrderBy {
     @JsonValue
     private final String value;
 
-    private StackoneListLogsQueryParamOrderBy(String value) {
+    StackoneListLogsQueryParamOrderBy(String value) {
         this.value = value;
     }
     

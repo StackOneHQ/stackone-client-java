@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.AtsGetDepartmentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class AtsGetDepartmentRequestBuilder {
 
     private AtsGetDepartmentRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallAtsGetDepartment sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public AtsGetDepartmentRequestBuilder(SDKMethodInterfaces.MethodCallAtsGetDepartment sdk) {
-        this.sdk = sdk;
+    public AtsGetDepartmentRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public AtsGetDepartmentRequestBuilder request(AtsGetDepartmentRequest request) {
@@ -39,10 +43,14 @@ public class AtsGetDepartmentRequestBuilder {
 
     public AtsGetDepartmentResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getDepartment(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<AtsGetDepartmentRequest, AtsGetDepartmentResponse> operation
+              = new AtsGetDepartmentOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

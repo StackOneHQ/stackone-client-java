@@ -3,6 +3,8 @@
 
 ## Overview
 
+Customer or business accounts.
+
 ### Available Operations
 
 * [listLinkedAccounts](#listlinkedaccounts) - List Accounts
@@ -33,8 +35,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -100,8 +102,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -164,8 +166,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
@@ -217,8 +219,7 @@ Update Account
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.PatchAccountExternalDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneUpdateAccountResponse;
 import java.lang.Exception;
@@ -229,14 +230,15 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 
         StackoneUpdateAccountResponse res = sdk.accounts().updateAccount()
                 .id("<id>")
                 .patchAccountExternalDto(PatchAccountExternalDto.builder()
+                    .type(PatchAccountExternalDtoType.TEST)
                     .build())
                 .call();
 
@@ -296,8 +298,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username("")
-                    .password("")
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
                     .build())
             .build();
 

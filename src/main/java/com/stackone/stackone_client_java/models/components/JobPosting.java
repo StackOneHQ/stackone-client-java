@@ -16,7 +16,6 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class JobPosting {
@@ -593,30 +592,30 @@ public class JobPosting {
         }
         JobPosting other = (JobPosting) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.title, other.title) &&
-            Objects.deepEquals(this.locations, other.locations) &&
-            Objects.deepEquals(this.internal, other.internal) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.jobId, other.jobId) &&
-            Objects.deepEquals(this.remoteJobPostingId, other.remoteJobPostingId) &&
-            Objects.deepEquals(this.content, other.content) &&
-            Objects.deepEquals(this.compensation, other.compensation) &&
-            Objects.deepEquals(this.employmentType, other.employmentType) &&
-            Objects.deepEquals(this.employmentContractType, other.employmentContractType) &&
-            Objects.deepEquals(this.externalUrl, other.externalUrl) &&
-            Objects.deepEquals(this.externalApplyUrl, other.externalApplyUrl) &&
-            Objects.deepEquals(this.questionnaires, other.questionnaires) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.updatedAt, other.updatedAt);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
+            Utils.enhancedDeepEquals(this.locations, other.locations) &&
+            Utils.enhancedDeepEquals(this.internal, other.internal) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
+            Utils.enhancedDeepEquals(this.remoteJobPostingId, other.remoteJobPostingId) &&
+            Utils.enhancedDeepEquals(this.content, other.content) &&
+            Utils.enhancedDeepEquals(this.compensation, other.compensation) &&
+            Utils.enhancedDeepEquals(this.employmentType, other.employmentType) &&
+            Utils.enhancedDeepEquals(this.employmentContractType, other.employmentContractType) &&
+            Utils.enhancedDeepEquals(this.externalUrl, other.externalUrl) &&
+            Utils.enhancedDeepEquals(this.externalApplyUrl, other.externalApplyUrl) &&
+            Utils.enhancedDeepEquals(this.questionnaires, other.questionnaires) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             unifiedCustomFields,

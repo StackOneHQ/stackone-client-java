@@ -4,6 +4,7 @@
 package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.lang.Deprecated;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,17 +12,19 @@ import java.util.Optional;
 /**
  * QueryParamStatus
  * 
- * <p>Filter to select assignment by status
+ * <p>The status of the job
+ * 
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
+@Deprecated
 public enum QueryParamStatus {
-    PENDING("pending"),
-    IN_PROGRESS("in_progress"),
-    COMPLETED("completed");
+    OPEN("open"),
+    DRAFT("draft");
 
     @JsonValue
     private final String value;
 
-    private QueryParamStatus(String value) {
+    QueryParamStatus(String value) {
         this.value = value;
     }
     

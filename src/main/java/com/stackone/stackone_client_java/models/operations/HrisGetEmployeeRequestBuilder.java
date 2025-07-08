@@ -3,6 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -13,10 +17,10 @@ public class HrisGetEmployeeRequestBuilder {
 
     private HrisGetEmployeeRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallHrisGetEmployee sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public HrisGetEmployeeRequestBuilder(SDKMethodInterfaces.MethodCallHrisGetEmployee sdk) {
-        this.sdk = sdk;
+    public HrisGetEmployeeRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public HrisGetEmployeeRequestBuilder request(HrisGetEmployeeRequest request) {
@@ -39,10 +43,14 @@ public class HrisGetEmployeeRequestBuilder {
 
     public HrisGetEmployeeResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.getEmployee(
-            request,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<HrisGetEmployeeRequest, HrisGetEmployeeResponse> operation
+              = new HrisGetEmployeeOperation(
+                 sdkConfiguration,
+                 options);
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

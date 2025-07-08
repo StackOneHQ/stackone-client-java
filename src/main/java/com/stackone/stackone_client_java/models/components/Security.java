@@ -10,7 +10,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 public class Security implements HasSecurity {
 
@@ -67,13 +66,13 @@ public class Security implements HasSecurity {
         }
         Security other = (Security) o;
         return 
-            Objects.deepEquals(this.username, other.username) &&
-            Objects.deepEquals(this.password, other.password);
+            Utils.enhancedDeepEquals(this.username, other.username) &&
+            Utils.enhancedDeepEquals(this.password, other.password);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             username,
             password);
     }

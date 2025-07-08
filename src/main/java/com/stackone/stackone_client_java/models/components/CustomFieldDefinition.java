@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class CustomFieldDefinition {
@@ -45,14 +44,14 @@ public class CustomFieldDefinition {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
-    private JsonNullable<? extends Type> type;
+    private JsonNullable<? extends CustomFieldDefinitionType> type;
 
     /**
      * An array of possible options for the custom field.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("options")
-    private JsonNullable<? extends List<Options>> options;
+    private JsonNullable<? extends List<CustomFieldOption>> options;
 
     @JsonCreator
     public CustomFieldDefinition(
@@ -60,8 +59,8 @@ public class CustomFieldDefinition {
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("description") JsonNullable<String> description,
-            @JsonProperty("type") JsonNullable<? extends Type> type,
-            @JsonProperty("options") JsonNullable<? extends List<Options>> options) {
+            @JsonProperty("type") JsonNullable<? extends CustomFieldDefinitionType> type,
+            @JsonProperty("options") JsonNullable<? extends List<CustomFieldOption>> options) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(name, "name");
@@ -111,8 +110,8 @@ public class CustomFieldDefinition {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Type> type() {
-        return (JsonNullable<Type>) type;
+    public JsonNullable<CustomFieldDefinitionType> type() {
+        return (JsonNullable<CustomFieldDefinitionType>) type;
     }
 
     /**
@@ -120,8 +119,8 @@ public class CustomFieldDefinition {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<Options>> options() {
-        return (JsonNullable<List<Options>>) options;
+    public JsonNullable<List<CustomFieldOption>> options() {
+        return (JsonNullable<List<CustomFieldOption>>) options;
     }
 
     public final static Builder builder() {
@@ -191,7 +190,7 @@ public class CustomFieldDefinition {
     /**
      * The type of the custom field.
      */
-    public CustomFieldDefinition withType(Type type) {
+    public CustomFieldDefinition withType(CustomFieldDefinitionType type) {
         Utils.checkNotNull(type, "type");
         this.type = JsonNullable.of(type);
         return this;
@@ -200,7 +199,7 @@ public class CustomFieldDefinition {
     /**
      * The type of the custom field.
      */
-    public CustomFieldDefinition withType(JsonNullable<? extends Type> type) {
+    public CustomFieldDefinition withType(JsonNullable<? extends CustomFieldDefinitionType> type) {
         Utils.checkNotNull(type, "type");
         this.type = type;
         return this;
@@ -209,7 +208,7 @@ public class CustomFieldDefinition {
     /**
      * An array of possible options for the custom field.
      */
-    public CustomFieldDefinition withOptions(List<Options> options) {
+    public CustomFieldDefinition withOptions(List<CustomFieldOption> options) {
         Utils.checkNotNull(options, "options");
         this.options = JsonNullable.of(options);
         return this;
@@ -218,7 +217,7 @@ public class CustomFieldDefinition {
     /**
      * An array of possible options for the custom field.
      */
-    public CustomFieldDefinition withOptions(JsonNullable<? extends List<Options>> options) {
+    public CustomFieldDefinition withOptions(JsonNullable<? extends List<CustomFieldOption>> options) {
         Utils.checkNotNull(options, "options");
         this.options = options;
         return this;
@@ -235,17 +234,17 @@ public class CustomFieldDefinition {
         }
         CustomFieldDefinition other = (CustomFieldDefinition) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.options, other.options);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.options, other.options);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             name,
@@ -275,9 +274,9 @@ public class CustomFieldDefinition {
  
         private JsonNullable<String> description = JsonNullable.undefined();
  
-        private JsonNullable<? extends Type> type = JsonNullable.undefined();
+        private JsonNullable<? extends CustomFieldDefinitionType> type = JsonNullable.undefined();
  
-        private JsonNullable<? extends List<Options>> options = JsonNullable.undefined();
+        private JsonNullable<? extends List<CustomFieldOption>> options = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -346,7 +345,7 @@ public class CustomFieldDefinition {
         /**
          * The type of the custom field.
          */
-        public Builder type(Type type) {
+        public Builder type(CustomFieldDefinitionType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
             return this;
@@ -355,7 +354,7 @@ public class CustomFieldDefinition {
         /**
          * The type of the custom field.
          */
-        public Builder type(JsonNullable<? extends Type> type) {
+        public Builder type(JsonNullable<? extends CustomFieldDefinitionType> type) {
             Utils.checkNotNull(type, "type");
             this.type = type;
             return this;
@@ -364,7 +363,7 @@ public class CustomFieldDefinition {
         /**
          * An array of possible options for the custom field.
          */
-        public Builder options(List<Options> options) {
+        public Builder options(List<CustomFieldOption> options) {
             Utils.checkNotNull(options, "options");
             this.options = JsonNullable.of(options);
             return this;
@@ -373,7 +372,7 @@ public class CustomFieldDefinition {
         /**
          * An array of possible options for the custom field.
          */
-        public Builder options(JsonNullable<? extends List<Options>> options) {
+        public Builder options(JsonNullable<? extends List<CustomFieldOption>> options) {
             Utils.checkNotNull(options, "options");
             this.options = options;
             return this;

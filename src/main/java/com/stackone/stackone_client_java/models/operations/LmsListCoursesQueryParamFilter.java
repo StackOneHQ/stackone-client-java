@@ -9,7 +9,6 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -112,13 +111,13 @@ public class LmsListCoursesQueryParamFilter {
         }
         LmsListCoursesQueryParamFilter other = (LmsListCoursesQueryParamFilter) o;
         return 
-            Objects.deepEquals(this.updatedAfter, other.updatedAfter) &&
-            Objects.deepEquals(this.externalReference, other.externalReference);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             updatedAfter,
             externalReference);
     }

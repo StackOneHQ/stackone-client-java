@@ -4,7 +4,6 @@
 package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.lang.Deprecated;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,19 +11,18 @@ import java.util.Optional;
 /**
  * Status
  * 
- * <p>The status of the job
- * 
- * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
+ * <p>Filter positions by status
  */
-@Deprecated
 public enum Status {
     OPEN("open"),
-    DRAFT("draft");
+    CLOSED("closed"),
+    PAUSED("paused"),
+    UNMAPPED_VALUE("unmapped_value");
 
     @JsonValue
     private final String value;
 
-    private Status(String value) {
+    Status(String value) {
         this.value = value;
     }
     

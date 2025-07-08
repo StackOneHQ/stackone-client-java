@@ -16,7 +16,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AtsCreateJobRequestDto {
@@ -533,24 +532,24 @@ public class AtsCreateJobRequestDto {
         }
         AtsCreateJobRequestDto other = (AtsCreateJobRequestDto) o;
         return 
-            Objects.deepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Objects.deepEquals(this.code, other.code) &&
-            Objects.deepEquals(this.title, other.title) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.jobStatus, other.jobStatus) &&
-            Objects.deepEquals(this.departmentIds, other.departmentIds) &&
-            Objects.deepEquals(this.locationIds, other.locationIds) &&
-            Objects.deepEquals(this.hiringTeam, other.hiringTeam) &&
-            Objects.deepEquals(this.interviewStages, other.interviewStages) &&
-            Objects.deepEquals(this.confidential, other.confidential) &&
-            Objects.deepEquals(this.customFields, other.customFields) &&
-            Objects.deepEquals(this.passthrough, other.passthrough);
+            Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.code, other.code) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.jobStatus, other.jobStatus) &&
+            Utils.enhancedDeepEquals(this.departmentIds, other.departmentIds) &&
+            Utils.enhancedDeepEquals(this.locationIds, other.locationIds) &&
+            Utils.enhancedDeepEquals(this.hiringTeam, other.hiringTeam) &&
+            Utils.enhancedDeepEquals(this.interviewStages, other.interviewStages) &&
+            Utils.enhancedDeepEquals(this.confidential, other.confidential) &&
+            Utils.enhancedDeepEquals(this.customFields, other.customFields) &&
+            Utils.enhancedDeepEquals(this.passthrough, other.passthrough);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             unifiedCustomFields,
             code,
             title,

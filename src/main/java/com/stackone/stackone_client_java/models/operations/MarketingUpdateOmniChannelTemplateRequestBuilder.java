@@ -3,7 +3,11 @@
  */
 package com.stackone.stackone_client_java.models.operations;
 
+import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
+
+import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateTemplateRequestDto;
+import com.stackone.stackone_client_java.operations.MarketingUpdateOmniChannelTemplateOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -17,10 +21,10 @@ public class MarketingUpdateOmniChannelTemplateRequestBuilder {
     private String id;
     private MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallMarketingUpdateOmniChannelTemplate sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public MarketingUpdateOmniChannelTemplateRequestBuilder(SDKMethodInterfaces.MethodCallMarketingUpdateOmniChannelTemplate sdk) {
-        this.sdk = sdk;
+    public MarketingUpdateOmniChannelTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public MarketingUpdateOmniChannelTemplateRequestBuilder xAccountId(String xAccountId) {
@@ -53,14 +57,27 @@ public class MarketingUpdateOmniChannelTemplateRequestBuilder {
         return this;
     }
 
+
+    private MarketingUpdateOmniChannelTemplateRequest buildRequest() {
+
+        MarketingUpdateOmniChannelTemplateRequest request = new MarketingUpdateOmniChannelTemplateRequest(xAccountId,
+            id,
+            marketingCreateTemplateRequestDto);
+
+        return request;
+    }
+
     public MarketingUpdateOmniChannelTemplateResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
-                                                    .retryConfig(retryConfig)
-                                                    .build());
-        return sdk.updateOmniChannelTemplate(
-            xAccountId,
-            id,
-            marketingCreateTemplateRequestDto,
-            options);
+            .retryConfig(retryConfig)
+            .build());
+
+        RequestOperation<MarketingUpdateOmniChannelTemplateRequest, MarketingUpdateOmniChannelTemplateResponse> operation
+              = new MarketingUpdateOmniChannelTemplateOperation(
+                 sdkConfiguration,
+                 options);
+        MarketingUpdateOmniChannelTemplateRequest request = buildRequest();
+
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

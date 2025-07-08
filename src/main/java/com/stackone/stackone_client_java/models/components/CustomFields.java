@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class CustomFields {
@@ -257,17 +256,17 @@ public class CustomFields {
         }
         CustomFields other = (CustomFields) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.remoteId, other.remoteId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.value, other.value) &&
-            Objects.deepEquals(this.valueId, other.valueId) &&
-            Objects.deepEquals(this.remoteValueId, other.remoteValueId);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.value, other.value) &&
+            Utils.enhancedDeepEquals(this.valueId, other.valueId) &&
+            Utils.enhancedDeepEquals(this.remoteValueId, other.remoteValueId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id,
             remoteId,
             name,
