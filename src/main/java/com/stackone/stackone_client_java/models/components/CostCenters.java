@@ -14,8 +14,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CostCenters {
 
+public class CostCenters {
     /**
      * Unique identifier
      */
@@ -30,9 +30,11 @@ public class CostCenters {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("distribution_percentage")
@@ -55,7 +57,8 @@ public class CostCenters {
     }
     
     public CostCenters() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -84,9 +87,10 @@ public class CostCenters {
         return distributionPercentage;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -148,7 +152,6 @@ public class CostCenters {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,9 +171,7 @@ public class CostCenters {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
+            id, remoteId, name,
             distributionPercentage);
     }
     
@@ -182,20 +183,22 @@ public class CostCenters {
                 "name", name,
                 "distributionPercentage", distributionPercentage);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> distributionPercentage = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -215,6 +218,7 @@ public class CostCenters {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -233,6 +237,7 @@ public class CostCenters {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -245,6 +250,7 @@ public class CostCenters {
             return this;
         }
 
+
         public Builder distributionPercentage(double distributionPercentage) {
             Utils.checkNotNull(distributionPercentage, "distributionPercentage");
             this.distributionPercentage = JsonNullable.of(distributionPercentage);
@@ -256,13 +262,13 @@ public class CostCenters {
             this.distributionPercentage = distributionPercentage;
             return this;
         }
-        
+
         public CostCenters build() {
+
             return new CostCenters(
-                id,
-                remoteId,
-                name,
+                id, remoteId, name,
                 distributionPercentage);
         }
+
     }
 }

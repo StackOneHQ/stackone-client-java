@@ -58,9 +58,7 @@ public class HrisListTimeOffTypesRequestBuilder {
             .build());
 
         RequestOperation<HrisListTimeOffTypesRequest, HrisListTimeOffTypesResponse> operation
-              = new HrisListTimeOffTypesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTimeOffTypesOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class HrisListTimeOffTypesRequestBuilder {
             .build());
 
         RequestOperation<HrisListTimeOffTypesRequest, HrisListTimeOffTypesResponse> operation
-              = new HrisListTimeOffTypesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTimeOffTypesOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

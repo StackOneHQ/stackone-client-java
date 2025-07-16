@@ -58,9 +58,7 @@ public class IamListRolesRequestBuilder {
             .build());
 
         RequestOperation<IamListRolesRequest, IamListRolesResponse> operation
-              = new IamListRolesOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamListRolesOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class IamListRolesRequestBuilder {
             .build());
 
         RequestOperation<IamListRolesRequest, IamListRolesResponse> operation
-              = new IamListRolesOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamListRolesOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

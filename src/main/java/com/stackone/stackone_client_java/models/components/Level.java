@@ -29,6 +29,7 @@ public class Level {
     @JsonProperty("value")
     private JsonNullable<? extends CategoryLevelValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CategoryLevelSourceValue> sourceValue;
@@ -59,9 +60,10 @@ public class Level {
         return (JsonNullable<CategoryLevelSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Level withValue(CategoryLevelValue value) {
         Utils.checkNotNull(value, "value");
@@ -87,7 +89,6 @@ public class Level {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,8 +106,7 @@ public class Level {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -115,16 +115,18 @@ public class Level {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CategoryLevelValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CategoryLevelSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(CategoryLevelValue value) {
             Utils.checkNotNull(value, "value");
@@ -138,6 +140,7 @@ public class Level {
             return this;
         }
 
+
         public Builder sourceValue(CategoryLevelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -149,11 +152,12 @@ public class Level {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public Level build() {
+
             return new Level(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

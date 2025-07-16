@@ -71,9 +71,7 @@ public class StackoneGetLogRequestBuilder {
             .build());
 
         RequestOperation<StackoneGetLogRequest, StackoneGetLogResponse> operation
-              = new StackoneGetLogOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneGetLogOperation(sdkConfiguration, options);
         StackoneGetLogRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -15,10 +15,12 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class InterviewStageResult {
 
     @JsonProperty("data")
     private InterviewStage data;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw")
@@ -50,9 +52,10 @@ public class InterviewStageResult {
         return (JsonNullable<List<RawResponse>>) raw;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public InterviewStageResult withData(InterviewStage data) {
         Utils.checkNotNull(data, "data");
@@ -72,7 +75,6 @@ public class InterviewStageResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -90,8 +92,7 @@ public class InterviewStageResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            data,
-            raw);
+            data, raw);
     }
     
     @Override
@@ -100,22 +101,25 @@ public class InterviewStageResult {
                 "data", data,
                 "raw", raw);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private InterviewStage data;
- 
+
         private JsonNullable<? extends List<RawResponse>> raw = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder data(InterviewStage data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
+
 
         public Builder raw(List<RawResponse> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -128,11 +132,12 @@ public class InterviewStageResult {
             this.raw = raw;
             return this;
         }
-        
+
         public InterviewStageResult build() {
+
             return new InterviewStageResult(
-                data,
-                raw);
+                data, raw);
         }
+
     }
 }

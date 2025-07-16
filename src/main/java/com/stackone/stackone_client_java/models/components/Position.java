@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Position {
 
+public class Position {
     /**
      * Unique identifier
      */
@@ -122,7 +122,10 @@ public class Position {
     }
     
     public Position() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -206,9 +209,10 @@ public class Position {
         return postedDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -390,7 +394,6 @@ public class Position {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -416,15 +419,9 @@ public class Position {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            jobId,
-            title,
-            description,
-            departmentId,
-            locationId,
-            employmentType,
-            status,
+            id, remoteId, jobId,
+            title, description, departmentId,
+            locationId, employmentType, status,
             postedDate);
     }
     
@@ -442,32 +439,34 @@ public class Position {
                 "status", status,
                 "postedDate", postedDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<String> departmentId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> locationId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employmentType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PositionStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> postedDate = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -487,6 +486,7 @@ public class Position {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -504,6 +504,7 @@ public class Position {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Job ID from the HRIS provider
@@ -523,6 +524,7 @@ public class Position {
             return this;
         }
 
+
         /**
          * Title of the position
          */
@@ -540,6 +542,7 @@ public class Position {
             this.title = title;
             return this;
         }
+
 
         /**
          * Description of the position
@@ -559,6 +562,7 @@ public class Position {
             return this;
         }
 
+
         /**
          * Department ID associated with the position
          */
@@ -576,6 +580,7 @@ public class Position {
             this.departmentId = departmentId;
             return this;
         }
+
 
         /**
          * Location ID associated with the position
@@ -595,6 +600,7 @@ public class Position {
             return this;
         }
 
+
         /**
          * Employment type for the position
          */
@@ -612,6 +618,7 @@ public class Position {
             this.employmentType = employmentType;
             return this;
         }
+
 
         /**
          * Status of the position
@@ -631,6 +638,7 @@ public class Position {
             return this;
         }
 
+
         /**
          * Date when the position was posted
          */
@@ -648,19 +656,15 @@ public class Position {
             this.postedDate = postedDate;
             return this;
         }
-        
+
         public Position build() {
+
             return new Position(
-                id,
-                remoteId,
-                jobId,
-                title,
-                description,
-                departmentId,
-                locationId,
-                employmentType,
-                status,
+                id, remoteId, jobId,
+                title, description, departmentId,
+                locationId, employmentType, status,
                 postedDate);
         }
+
     }
 }

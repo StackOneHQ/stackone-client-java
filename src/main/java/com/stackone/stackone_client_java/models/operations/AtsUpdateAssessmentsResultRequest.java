@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsUpdateAssessmentsResultRequest {
 
+public class AtsUpdateAssessmentsResultRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto;
@@ -56,9 +58,10 @@ public class AtsUpdateAssessmentsResultRequest {
         return atsUpdateCandidatesAssessmentsResultsRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class AtsUpdateAssessmentsResultRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class AtsUpdateAssessmentsResultRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            atsUpdateCandidatesAssessmentsResultsRequestDto);
+            xAccountId, id, atsUpdateCandidatesAssessmentsResultsRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class AtsUpdateAssessmentsResultRequest {
                 "id", id,
                 "atsUpdateCandidatesAssessmentsResultsRequestDto", atsUpdateCandidatesAssessmentsResultsRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class AtsUpdateAssessmentsResultRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder atsUpdateCandidatesAssessmentsResultsRequestDto(AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto) {
             Utils.checkNotNull(atsUpdateCandidatesAssessmentsResultsRequestDto, "atsUpdateCandidatesAssessmentsResultsRequestDto");
             this.atsUpdateCandidatesAssessmentsResultsRequestDto = atsUpdateCandidatesAssessmentsResultsRequestDto;
             return this;
         }
-        
+
         public AtsUpdateAssessmentsResultRequest build() {
+
             return new AtsUpdateAssessmentsResultRequest(
-                xAccountId,
-                id,
-                atsUpdateCandidatesAssessmentsResultsRequestDto);
+                xAccountId, id, atsUpdateCandidatesAssessmentsResultsRequestDto);
         }
+
     }
 }

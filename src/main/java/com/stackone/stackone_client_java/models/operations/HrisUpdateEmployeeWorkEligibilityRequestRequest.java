@@ -11,10 +11,12 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
+
 public class HrisUpdateEmployeeWorkEligibilityRequestRequest {
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
@@ -24,6 +26,7 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequest {
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
@@ -67,9 +70,10 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequest {
         return hrisCreateWorkEligibilityRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisUpdateEmployeeWorkEligibilityRequestRequest withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -98,7 +102,6 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,9 +121,7 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            subResourceId,
-            xAccountId,
+            id, subResourceId, xAccountId,
             hrisCreateWorkEligibilityRequestDto);
     }
     
@@ -132,20 +133,22 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequest {
                 "xAccountId", xAccountId,
                 "hrisCreateWorkEligibilityRequestDto", hrisCreateWorkEligibilityRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
- 
+
         private String subResourceId;
- 
+
         private String xAccountId;
- 
+
         private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -153,11 +156,13 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequest {
             return this;
         }
 
+
         public Builder subResourceId(String subResourceId) {
             Utils.checkNotNull(subResourceId, "subResourceId");
             this.subResourceId = subResourceId;
             return this;
         }
+
 
         /**
          * The account identifier
@@ -168,18 +173,19 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequest {
             return this;
         }
 
+
         public Builder hrisCreateWorkEligibilityRequestDto(HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
             Utils.checkNotNull(hrisCreateWorkEligibilityRequestDto, "hrisCreateWorkEligibilityRequestDto");
             this.hrisCreateWorkEligibilityRequestDto = hrisCreateWorkEligibilityRequestDto;
             return this;
         }
-        
+
         public HrisUpdateEmployeeWorkEligibilityRequestRequest build() {
+
             return new HrisUpdateEmployeeWorkEligibilityRequestRequest(
-                id,
-                subResourceId,
-                xAccountId,
+                id, subResourceId, xAccountId,
                 hrisCreateWorkEligibilityRequestDto);
         }
+
     }
 }

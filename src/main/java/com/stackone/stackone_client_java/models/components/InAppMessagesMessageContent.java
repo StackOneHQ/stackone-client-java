@@ -13,6 +13,7 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class InAppMessagesMessageContent {
 
     @JsonInclude(Include.NON_ABSENT)
@@ -35,9 +36,10 @@ public class InAppMessagesMessageContent {
         return body;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public InAppMessagesMessageContent withBody(String body) {
         Utils.checkNotNull(body, "body");
@@ -51,7 +53,6 @@ public class InAppMessagesMessageContent {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -76,14 +77,16 @@ public class InAppMessagesMessageContent {
         return Utils.toString(InAppMessagesMessageContent.class,
                 "body", body);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> body = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder body(String body) {
             Utils.checkNotNull(body, "body");
@@ -96,10 +99,12 @@ public class InAppMessagesMessageContent {
             this.body = body;
             return this;
         }
-        
+
         public InAppMessagesMessageContent build() {
+
             return new InAppMessagesMessageContent(
                 body);
         }
+
     }
 }

@@ -17,6 +17,7 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class HrisCreateWorkEligibilityRequestDto {
 
     @JsonInclude(Include.NON_ABSENT)
@@ -30,21 +31,26 @@ public class HrisCreateWorkEligibilityRequestDto {
     @JsonProperty("issued_by")
     private JsonNullable<? extends HrisCreateWorkEligibilityRequestDtoIssuedBy> issuedBy;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("number")
     private JsonNullable<String> number;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sub_type")
     private JsonNullable<String> subType;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends HrisCreateWorkEligibilityRequestDtoType> type;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("valid_from")
     private JsonNullable<OffsetDateTime> validFrom;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("valid_to")
@@ -86,7 +92,9 @@ public class HrisCreateWorkEligibilityRequestDto {
     }
     
     public HrisCreateWorkEligibilityRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @SuppressWarnings("unchecked")
@@ -139,9 +147,10 @@ public class HrisCreateWorkEligibilityRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisCreateWorkEligibilityRequestDto withDocument(HrisCreateWorkEligibilityRequestDtoDocument document) {
         Utils.checkNotNull(document, "document");
@@ -251,7 +260,6 @@ public class HrisCreateWorkEligibilityRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -275,14 +283,9 @@ public class HrisCreateWorkEligibilityRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            document,
-            issuedBy,
-            number,
-            subType,
-            type,
-            validFrom,
-            validTo,
-            passthrough);
+            document, issuedBy, number,
+            subType, type, validFrom,
+            validTo, passthrough);
     }
     
     @Override
@@ -297,28 +300,30 @@ public class HrisCreateWorkEligibilityRequestDto {
                 "validTo", validTo,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateWorkEligibilityRequestDtoDocument> document = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateWorkEligibilityRequestDtoIssuedBy> issuedBy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> number = JsonNullable.undefined();
- 
+
         private JsonNullable<String> subType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateWorkEligibilityRequestDtoType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> validFrom = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> validTo = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder document(HrisCreateWorkEligibilityRequestDtoDocument document) {
             Utils.checkNotNull(document, "document");
@@ -331,6 +336,7 @@ public class HrisCreateWorkEligibilityRequestDto {
             this.document = document;
             return this;
         }
+
 
         /**
          * The country code of the issued by authority
@@ -350,6 +356,7 @@ public class HrisCreateWorkEligibilityRequestDto {
             return this;
         }
 
+
         public Builder number(String number) {
             Utils.checkNotNull(number, "number");
             this.number = JsonNullable.of(number);
@@ -361,6 +368,7 @@ public class HrisCreateWorkEligibilityRequestDto {
             this.number = number;
             return this;
         }
+
 
         public Builder subType(String subType) {
             Utils.checkNotNull(subType, "subType");
@@ -374,6 +382,7 @@ public class HrisCreateWorkEligibilityRequestDto {
             return this;
         }
 
+
         public Builder type(HrisCreateWorkEligibilityRequestDtoType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -385,6 +394,7 @@ public class HrisCreateWorkEligibilityRequestDto {
             this.type = type;
             return this;
         }
+
 
         public Builder validFrom(OffsetDateTime validFrom) {
             Utils.checkNotNull(validFrom, "validFrom");
@@ -398,6 +408,7 @@ public class HrisCreateWorkEligibilityRequestDto {
             return this;
         }
 
+
         public Builder validTo(OffsetDateTime validTo) {
             Utils.checkNotNull(validTo, "validTo");
             this.validTo = JsonNullable.of(validTo);
@@ -409,6 +420,7 @@ public class HrisCreateWorkEligibilityRequestDto {
             this.validTo = validTo;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -427,17 +439,14 @@ public class HrisCreateWorkEligibilityRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public HrisCreateWorkEligibilityRequestDto build() {
+
             return new HrisCreateWorkEligibilityRequestDto(
-                document,
-                issuedBy,
-                number,
-                subType,
-                type,
-                validFrom,
-                validTo,
-                passthrough);
+                document, issuedBy, number,
+                subType, type, validFrom,
+                validTo, passthrough);
         }
+
     }
 }

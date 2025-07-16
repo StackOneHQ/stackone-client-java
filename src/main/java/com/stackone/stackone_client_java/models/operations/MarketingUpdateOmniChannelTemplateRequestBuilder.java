@@ -73,9 +73,7 @@ public class MarketingUpdateOmniChannelTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingUpdateOmniChannelTemplateRequest, MarketingUpdateOmniChannelTemplateResponse> operation
-              = new MarketingUpdateOmniChannelTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateOmniChannelTemplateOperation(sdkConfiguration, options);
         MarketingUpdateOmniChannelTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ConditionType {
 
+public class ConditionType {
     /**
      * The type of the question's condition
      */
@@ -62,9 +62,10 @@ public class ConditionType {
         return (JsonNullable<QuestionParentQuestionSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the question's condition
@@ -102,7 +103,6 @@ public class ConditionType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class ConditionType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class ConditionType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends QuestionParentQuestionValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends QuestionParentQuestionSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the question's condition
@@ -159,6 +160,7 @@ public class ConditionType {
             return this;
         }
 
+
         /**
          * The source value of the question's condition type
          */
@@ -176,11 +178,12 @@ public class ConditionType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public ConditionType build() {
+
             return new ConditionType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

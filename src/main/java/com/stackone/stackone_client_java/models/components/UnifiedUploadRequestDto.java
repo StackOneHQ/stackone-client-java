@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class UnifiedUploadRequestDto {
 
+public class UnifiedUploadRequestDto {
     /**
      * The filename of the file to upload
      */
@@ -91,7 +91,9 @@ public class UnifiedUploadRequestDto {
     }
     
     public UnifiedUploadRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -153,9 +155,10 @@ public class UnifiedUploadRequestDto {
         return (JsonNullable<UnifiedUploadRequestDtoConfidential>) confidential;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The filename of the file to upload
@@ -283,7 +286,6 @@ public class UnifiedUploadRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -306,12 +308,8 @@ public class UnifiedUploadRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            fileFormat,
-            content,
-            categoryId,
-            path,
-            category,
+            name, fileFormat, content,
+            categoryId, path, category,
             confidential);
     }
     
@@ -326,26 +324,28 @@ public class UnifiedUploadRequestDto {
                 "category", category,
                 "confidential", confidential);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends UnifiedUploadRequestDtoFileFormat> fileFormat = JsonNullable.undefined();
- 
+
         private JsonNullable<String> content = JsonNullable.undefined();
- 
+
         private JsonNullable<String> categoryId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> path = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends UnifiedUploadRequestDtoCategory> category = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends UnifiedUploadRequestDtoConfidential> confidential = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The filename of the file to upload
@@ -365,6 +365,7 @@ public class UnifiedUploadRequestDto {
             return this;
         }
 
+
         /**
          * The file format of the file
          */
@@ -382,6 +383,7 @@ public class UnifiedUploadRequestDto {
             this.fileFormat = fileFormat;
             return this;
         }
+
 
         /**
          * The base64 encoded content of the file to upload
@@ -401,6 +403,7 @@ public class UnifiedUploadRequestDto {
             return this;
         }
 
+
         /**
          * The categoryId of the documents
          */
@@ -418,6 +421,7 @@ public class UnifiedUploadRequestDto {
             this.categoryId = categoryId;
             return this;
         }
+
 
         /**
          * The path for the file to be uploaded to
@@ -437,6 +441,7 @@ public class UnifiedUploadRequestDto {
             return this;
         }
 
+
         /**
          * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
          */
@@ -455,6 +460,7 @@ public class UnifiedUploadRequestDto {
             return this;
         }
 
+
         /**
          * The confidentiality level of the file to be uploaded
          */
@@ -472,16 +478,14 @@ public class UnifiedUploadRequestDto {
             this.confidential = confidential;
             return this;
         }
-        
+
         public UnifiedUploadRequestDto build() {
+
             return new UnifiedUploadRequestDto(
-                name,
-                fileFormat,
-                content,
-                categoryId,
-                path,
-                category,
+                name, fileFormat, content,
+                categoryId, path, category,
                 confidential);
         }
+
     }
 }

@@ -47,9 +47,7 @@ public class IamGetPolicyRequestBuilder {
             .build());
 
         RequestOperation<IamGetPolicyRequest, IamGetPolicyResponse> operation
-              = new IamGetPolicyOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamGetPolicyOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

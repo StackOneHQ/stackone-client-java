@@ -17,8 +17,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateCategoriesApiModel {
 
+public class CreateCategoriesApiModel {
     /**
      * The ID associated with this category
      */
@@ -87,7 +87,8 @@ public class CreateCategoriesApiModel {
     }
     
     public CreateCategoriesApiModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -145,9 +146,10 @@ public class CreateCategoriesApiModel {
         return (JsonNullable<CreateCategoriesApiModelLanguage>) language;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with this category
@@ -263,7 +265,6 @@ public class CreateCategoriesApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -285,12 +286,8 @@ public class CreateCategoriesApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            unifiedCustomFields,
-            name,
-            hierarchy,
-            level,
-            language);
+            id, unifiedCustomFields, name,
+            hierarchy, level, language);
     }
     
     @Override
@@ -303,25 +300,27 @@ public class CreateCategoriesApiModel {
                 "level", level,
                 "language", language);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateCategoriesApiModelHierarchy> hierarchy = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends CreateCategoriesApiModelLevel> level = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateCategoriesApiModelLanguage> language = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with this category
@@ -341,6 +340,7 @@ public class CreateCategoriesApiModel {
             return this;
         }
 
+
         /**
          * Custom Unified Fields configured in your StackOne project
          */
@@ -358,6 +358,7 @@ public class CreateCategoriesApiModel {
             this.unifiedCustomFields = unifiedCustomFields;
             return this;
         }
+
 
         /**
          * The name associated with this category
@@ -377,6 +378,7 @@ public class CreateCategoriesApiModel {
             return this;
         }
 
+
         /**
          * The hierarchal level of the category
          */
@@ -394,6 +396,7 @@ public class CreateCategoriesApiModel {
             this.hierarchy = hierarchy;
             return this;
         }
+
 
         /**
          * The hierarchal level of the category
@@ -419,6 +422,7 @@ public class CreateCategoriesApiModel {
             return this;
         }
 
+
         /**
          * The language associated with this category
          */
@@ -436,15 +440,13 @@ public class CreateCategoriesApiModel {
             this.language = language;
             return this;
         }
-        
+
         public CreateCategoriesApiModel build() {
+
             return new CreateCategoriesApiModel(
-                id,
-                unifiedCustomFields,
-                name,
-                hierarchy,
-                level,
-                language);
+                id, unifiedCustomFields, name,
+                hierarchy, level, language);
         }
+
     }
 }

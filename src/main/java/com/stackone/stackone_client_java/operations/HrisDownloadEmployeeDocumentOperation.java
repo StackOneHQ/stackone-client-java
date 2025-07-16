@@ -39,51 +39,29 @@ import java.lang.Exception;
 import java.lang.String;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 
 public class HrisDownloadEmployeeDocumentOperation implements RequestOperation<HrisDownloadEmployeeDocumentRequest, HrisDownloadEmployeeDocumentResponse> {
-    
+
     private final SDKConfiguration sdkConfiguration;
-    private final Optional<Options> options;
+    private final String baseUrl;
+    private final SecuritySource securitySource;
+    private final RetryConfig retryConfig;
+    private final List<String> retryStatusCodes;
+    private final HTTPClient client;
 
     public HrisDownloadEmployeeDocumentOperation(
-            SDKConfiguration sdkConfiguration,
-            Optional<Options> options) {
+        SDKConfiguration sdkConfiguration,
+        Optional<Options> options) {
         this.sdkConfiguration = sdkConfiguration;
-        this.options = options;
-    }
-    
-    @Override
-    public HttpResponse<InputStream> doRequest(HrisDownloadEmployeeDocumentRequest request) throws Exception {
-        options.ifPresent(o -> o.validate(List.of(Options.Option.RETRY_CONFIG)));
-        String baseUrl = this.sdkConfiguration.serverUrl();
-        String url = Utils.generateURL(
-                HrisDownloadEmployeeDocumentRequest.class,
-                baseUrl,
-                "/unified/hris/employees/{id}/documents/{subResourceId}/download",
-                request, null);
-        
-        HTTPRequest req = new HTTPRequest(url, "GET");
-        req.addHeader("Accept", "application/octet-stream")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-
-        req.addQueryParams(Utils.getQueryParams(
-                HrisDownloadEmployeeDocumentRequest.class,
-                request, 
-                null));
-        req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-        
-        Optional<SecuritySource> hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient client = this.sdkConfiguration.client();
-        HTTPRequest finalReq = req;
-        RetryConfig retryConfig = options
+        this.baseUrl = this.sdkConfiguration.serverUrl();
+        this.securitySource = this.sdkConfiguration.securitySource();
+        options
+                .ifPresent(o -> o.validate(List.of(Options.Option.RETRY_CONFIG)));
+        this.retryConfig = options
                 .flatMap(Options::retryConfig)
                 .or(this.sdkConfiguration::retryConfig)
                 .orElse(RetryConfig.builder()
@@ -95,55 +73,89 @@ public class HrisDownloadEmployeeDocumentOperation implements RequestOperation<H
                             .retryConnectError(true)
                             .build())
                         .build());
-        List<String> statusCodes = new ArrayList<>();
-        statusCodes.add("429");
-        statusCodes.add("408");
+        this.retryStatusCodes = List.of("429", "408");
+        this.client = this.sdkConfiguration.client();
+    }
+
+    private Optional<SecuritySource> securitySource() {
+        return Optional.ofNullable(this.securitySource);
+    }
+
+    public HttpRequest buildRequest(HrisDownloadEmployeeDocumentRequest request) throws Exception {
+        String url = Utils.generateURL(
+                HrisDownloadEmployeeDocumentRequest.class,
+                this.baseUrl,
+                "/unified/hris/employees/{id}/documents/{subResourceId}/download",
+                request, null);
+        HTTPRequest req = new HTTPRequest(url, "GET");
+        req.addHeader("Accept", "application/octet-stream")
+                .addHeader("user-agent", SDKConfiguration.USER_AGENT);
+
+        req.addQueryParams(Utils.getQueryParams(
+                HrisDownloadEmployeeDocumentRequest.class,
+                request, 
+                null));
+        req.addHeaders(Utils.getHeadersFromMetadata(request, null));
+        Utils.configureSecurity(req, this.sdkConfiguration.securitySource().getSecurity());
+
+        return sdkConfiguration.hooks().beforeRequest(
+              new BeforeRequestContextImpl(
+                  this.sdkConfiguration,
+                  this.baseUrl,
+                  "hris_download_employee_document",
+                  java.util.Optional.of(java.util.List.of()),
+                  securitySource()),
+              req.build());
+    }
+
+    private HttpResponse<InputStream> onError(HttpResponse<InputStream> response,
+                                              Exception error) throws Exception {
+        return sdkConfiguration.hooks()
+            .afterError(
+                new AfterErrorContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "hris_download_employee_document",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource()),
+                Optional.ofNullable(response),
+                Optional.ofNullable(error));
+    }
+
+    private HttpResponse<InputStream> onSuccess(HttpResponse<InputStream> response) throws Exception {
+        return sdkConfiguration.hooks()
+            .afterSuccess(
+                new AfterSuccessContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "hris_download_employee_document",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource()),
+                response);
+    }
+
+    @Override
+    public HttpResponse<InputStream> doRequest(HrisDownloadEmployeeDocumentRequest request) throws Exception {
         Retries retries = Retries.builder()
             .action(() -> {
-                HttpRequest r = null;
+                HttpRequest r;
                 try {
-                    r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                baseUrl,
-                                "hris_download_employee_document", 
-                                java.util.Optional.of(java.util.List.of()), 
-                                hookSecuritySource),
-                            finalReq.build());
+                    r = buildRequest(request);
                 } catch (Exception e) {
                     throw new NonRetryableException(e);
                 }
                 try {
                     return client.send(r);
                 } catch (Exception e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                baseUrl,
-                                "hris_download_employee_document",
-                                 java.util.Optional.of(java.util.List.of()),
-                                 hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(e));
+                    return onError(null, e);
                 }
             })
             .retryConfig(retryConfig)
-            .statusCodes(statusCodes)
+            .statusCodes(retryStatusCodes)
             .build();
-        HttpResponse<InputStream> httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                          baseUrl,
-                         "hris_download_employee_document", 
-                         java.util.Optional.of(java.util.List.of()), 
-                         hookSecuritySource),
-                     retries.run());
-    
-        return httpRes;
+        return onSuccess(retries.run());
     }
+
 
     @Override
     public HrisDownloadEmployeeDocumentResponse handleResponse(HttpResponse<InputStream> response) throws Exception {

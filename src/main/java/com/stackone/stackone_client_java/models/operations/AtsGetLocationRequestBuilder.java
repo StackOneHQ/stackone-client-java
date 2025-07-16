@@ -47,9 +47,7 @@ public class AtsGetLocationRequestBuilder {
             .build());
 
         RequestOperation<AtsGetLocationRequest, AtsGetLocationResponse> operation
-              = new AtsGetLocationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetLocationOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

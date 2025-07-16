@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The pay frequency
  */
 public class PayFrequency {
-
     /**
      * The pay frequency of the job postings.
      */
@@ -67,9 +66,10 @@ public class PayFrequency {
         return (JsonNullable<EmploymentPayFrequencySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The pay frequency of the job postings.
@@ -107,7 +107,6 @@ public class PayFrequency {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class PayFrequency {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class PayFrequency {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmploymentPayFrequencyValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentPayFrequencySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The pay frequency of the job postings.
@@ -164,6 +164,7 @@ public class PayFrequency {
             return this;
         }
 
+
         /**
          * The source value of the pay frequency.
          */
@@ -181,11 +182,12 @@ public class PayFrequency {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public PayFrequency build() {
+
             return new PayFrequency(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

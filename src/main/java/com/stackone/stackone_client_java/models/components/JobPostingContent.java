@@ -15,15 +15,18 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class JobPostingContent {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("plain")
     private JsonNullable<String> plain;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("html")
     private JsonNullable<String> html;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sections")
@@ -62,9 +65,10 @@ public class JobPostingContent {
         return (JsonNullable<List<JobPostingContentSection>>) sections;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public JobPostingContent withPlain(String plain) {
         Utils.checkNotNull(plain, "plain");
@@ -102,7 +106,6 @@ public class JobPostingContent {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,9 +124,7 @@ public class JobPostingContent {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            plain,
-            html,
-            sections);
+            plain, html, sections);
     }
     
     @Override
@@ -133,18 +134,20 @@ public class JobPostingContent {
                 "html", html,
                 "sections", sections);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> plain = JsonNullable.undefined();
- 
+
         private JsonNullable<String> html = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<JobPostingContentSection>> sections = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder plain(String plain) {
             Utils.checkNotNull(plain, "plain");
@@ -158,6 +161,7 @@ public class JobPostingContent {
             return this;
         }
 
+
         public Builder html(String html) {
             Utils.checkNotNull(html, "html");
             this.html = JsonNullable.of(html);
@@ -170,6 +174,7 @@ public class JobPostingContent {
             return this;
         }
 
+
         public Builder sections(List<JobPostingContentSection> sections) {
             Utils.checkNotNull(sections, "sections");
             this.sections = JsonNullable.of(sections);
@@ -181,12 +186,12 @@ public class JobPostingContent {
             this.sections = sections;
             return this;
         }
-        
+
         public JobPostingContent build() {
+
             return new JobPostingContent(
-                plain,
-                html,
-                sections);
+                plain, html, sections);
         }
+
     }
 }

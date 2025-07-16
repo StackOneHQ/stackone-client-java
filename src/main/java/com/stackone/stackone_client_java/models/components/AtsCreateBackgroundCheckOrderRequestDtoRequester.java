@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
 
+public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
     /**
      * User ID of the hiring team member.
      */
@@ -80,7 +80,8 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
     }
     
     public AtsCreateBackgroundCheckOrderRequestDtoRequester() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -131,9 +132,10 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
         return role;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * User ID of the hiring team member.
@@ -243,7 +245,6 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -265,12 +266,8 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            userId,
-            remoteUserId,
-            firstName,
-            lastName,
-            email,
-            role);
+            userId, remoteUserId, firstName,
+            lastName, email, role);
     }
     
     @Override
@@ -283,24 +280,26 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
                 "email", email,
                 "role", role);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> userId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
- 
+
         private JsonNullable<String> role = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * User ID of the hiring team member.
@@ -320,6 +319,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the user
          */
@@ -337,6 +337,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
             this.remoteUserId = remoteUserId;
             return this;
         }
+
 
         /**
          * First name of the hiring team member.
@@ -356,6 +357,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
             return this;
         }
 
+
         /**
          * Last name of the hiring team member.
          */
@@ -373,6 +375,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
             this.lastName = lastName;
             return this;
         }
+
 
         /**
          * Email of the hiring team member.
@@ -392,6 +395,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
             return this;
         }
 
+
         /**
          * Role of the hiring team member.
          */
@@ -409,15 +413,13 @@ public class AtsCreateBackgroundCheckOrderRequestDtoRequester {
             this.role = role;
             return this;
         }
-        
+
         public AtsCreateBackgroundCheckOrderRequestDtoRequester build() {
+
             return new AtsCreateBackgroundCheckOrderRequestDtoRequester(
-                userId,
-                remoteUserId,
-                firstName,
-                lastName,
-                email,
-                role);
+                userId, remoteUserId, firstName,
+                lastName, email, role);
         }
+
     }
 }

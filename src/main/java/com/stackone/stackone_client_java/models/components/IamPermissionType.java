@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamPermissionType {
 
+public class IamPermissionType {
     /**
      * The type of the permission, e.g. read, read_write, delete, etc.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends IamPermissionValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -56,9 +57,10 @@ public class IamPermissionType {
         return (JsonNullable<IamPermissionSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the permission, e.g. read, read_write, delete, etc.
@@ -90,7 +92,6 @@ public class IamPermissionType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,8 +109,7 @@ public class IamPermissionType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -118,16 +118,18 @@ public class IamPermissionType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends IamPermissionValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamPermissionSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the permission, e.g. read, read_write, delete, etc.
@@ -147,6 +149,7 @@ public class IamPermissionType {
             return this;
         }
 
+
         public Builder sourceValue(IamPermissionSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -158,11 +161,12 @@ public class IamPermissionType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public IamPermissionType build() {
+
             return new IamPermissionType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

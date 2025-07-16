@@ -17,8 +17,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Category {
 
+public class Category {
     /**
      * The ID associated with this category
      */
@@ -107,7 +107,9 @@ public class Category {
     }
     
     public Category() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -182,9 +184,10 @@ public class Category {
         return (JsonNullable<CategoryLanguage>) language;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with this category
@@ -336,7 +339,6 @@ public class Category {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -360,14 +362,9 @@ public class Category {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            name,
-            active,
-            hierarchy,
-            level,
-            language);
+            id, remoteId, unifiedCustomFields,
+            name, active, hierarchy,
+            level, language);
     }
     
     @Override
@@ -382,29 +379,31 @@ public class Category {
                 "level", level,
                 "language", language);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CategoryActive> active = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Hierarchy> hierarchy = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends Level> level = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CategoryLanguage> language = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with this category
@@ -424,6 +423,7 @@ public class Category {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -441,6 +441,7 @@ public class Category {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -460,6 +461,7 @@ public class Category {
             return this;
         }
 
+
         /**
          * The name associated with this category
          */
@@ -477,6 +479,7 @@ public class Category {
             this.name = name;
             return this;
         }
+
 
         /**
          * Whether the category is active and therefore available for use
@@ -496,6 +499,7 @@ public class Category {
             return this;
         }
 
+
         /**
          * The hierarchal level of the category
          */
@@ -513,6 +517,7 @@ public class Category {
             this.hierarchy = hierarchy;
             return this;
         }
+
 
         /**
          * The hierarchal level of the category
@@ -538,6 +543,7 @@ public class Category {
             return this;
         }
 
+
         /**
          * The language associated with this category
          */
@@ -555,17 +561,14 @@ public class Category {
             this.language = language;
             return this;
         }
-        
+
         public Category build() {
+
             return new Category(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                name,
-                active,
-                hierarchy,
-                level,
-                language);
+                id, remoteId, unifiedCustomFields,
+                name, active, hierarchy,
+                level, language);
         }
+
     }
 }

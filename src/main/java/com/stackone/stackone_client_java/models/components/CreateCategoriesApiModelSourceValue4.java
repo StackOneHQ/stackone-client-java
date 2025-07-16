@@ -8,19 +8,17 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class CreateCategoriesApiModelSourceValue4 {
 
+public class CreateCategoriesApiModelSourceValue4 {
     @JsonCreator
     public CreateCategoriesApiModelSourceValue4() {
-        
-        
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -42,16 +40,19 @@ public class CreateCategoriesApiModelSourceValue4 {
     public String toString() {
         return Utils.toString(CreateCategoriesApiModelSourceValue4.class);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public CreateCategoriesApiModelSourceValue4 build() {
+
             return new CreateCategoriesApiModelSourceValue4(
                 );
         }
+
     }
 }

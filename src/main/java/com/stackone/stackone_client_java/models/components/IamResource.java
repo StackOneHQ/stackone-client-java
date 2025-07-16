@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamResource {
 
+public class IamResource {
     /**
      * Unique identifier
      */
@@ -45,17 +45,21 @@ public class IamResource {
     @JsonProperty("location")
     private JsonNullable<String> location;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends IamResourceType> type;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
     private JsonNullable<OffsetDateTime> createdAt;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
@@ -90,7 +94,9 @@ public class IamResource {
     }
     
     public IamResource() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -146,9 +152,10 @@ public class IamResource {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -270,7 +277,6 @@ public class IamResource {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -294,14 +300,9 @@ public class IamResource {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            location,
-            type,
-            description,
-            createdAt,
-            updatedAt);
+            id, remoteId, name,
+            location, type, description,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -316,28 +317,30 @@ public class IamResource {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> location = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamResourceType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -357,6 +360,7 @@ public class IamResource {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -374,6 +378,7 @@ public class IamResource {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name of the resource.
@@ -393,6 +398,7 @@ public class IamResource {
             return this;
         }
 
+
         /**
          * The location of the resource.
          */
@@ -411,6 +417,7 @@ public class IamResource {
             return this;
         }
 
+
         public Builder type(IamResourceType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -422,6 +429,7 @@ public class IamResource {
             this.type = type;
             return this;
         }
+
 
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
@@ -435,6 +443,7 @@ public class IamResource {
             return this;
         }
 
+
         public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = JsonNullable.of(createdAt);
@@ -447,6 +456,7 @@ public class IamResource {
             return this;
         }
 
+
         public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = JsonNullable.of(updatedAt);
@@ -458,17 +468,14 @@ public class IamResource {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public IamResource build() {
+
             return new IamResource(
-                id,
-                remoteId,
-                name,
-                location,
-                type,
-                description,
-                createdAt,
-                updatedAt);
+                id, remoteId, name,
+                location, type, description,
+                createdAt, updatedAt);
         }
+
     }
 }

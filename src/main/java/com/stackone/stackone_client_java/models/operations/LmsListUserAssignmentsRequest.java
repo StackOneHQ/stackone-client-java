@@ -16,13 +16,14 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsListUserAssignmentsRequest {
 
+public class LmsListUserAssignmentsRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
@@ -136,7 +137,10 @@ public class LmsListUserAssignmentsRequest {
     public LmsListUserAssignmentsRequest(
             String xAccountId,
             String id) {
-        this(xAccountId, id, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, id, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -240,9 +244,10 @@ public class LmsListUserAssignmentsRequest {
         return remoteUserId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -451,7 +456,6 @@ public class LmsListUserAssignmentsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -479,18 +483,10 @@ public class LmsListUserAssignmentsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            raw,
-            proxy,
-            fields,
-            filter,
-            page,
-            pageSize,
-            next,
-            updatedAfter,
-            userId,
-            remoteUserId);
+            xAccountId, id, raw,
+            proxy, fields, filter,
+            page, pageSize, next,
+            updatedAfter, userId, remoteUserId);
     }
     
     @Override
@@ -509,38 +505,40 @@ public class LmsListUserAssignmentsRequest {
                 "userId", userId,
                 "remoteUserId", remoteUserId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsListUserAssignmentsQueryParamFilter> filter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
- 
+
         private JsonNullable<String> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> userId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -551,11 +549,13 @@ public class LmsListUserAssignmentsRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -575,6 +575,7 @@ public class LmsListUserAssignmentsRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -592,6 +593,7 @@ public class LmsListUserAssignmentsRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -611,6 +613,7 @@ public class LmsListUserAssignmentsRequest {
             return this;
         }
 
+
         /**
          * LMS Assignment Filter
          */
@@ -628,6 +631,7 @@ public class LmsListUserAssignmentsRequest {
             this.filter = filter;
             return this;
         }
+
 
         /**
          * The page number of the results to fetch
@@ -653,6 +657,7 @@ public class LmsListUserAssignmentsRequest {
             return this;
         }
 
+
         /**
          * The number of results per page (default value is 25)
          */
@@ -671,6 +676,7 @@ public class LmsListUserAssignmentsRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -688,6 +694,7 @@ public class LmsListUserAssignmentsRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -713,6 +720,7 @@ public class LmsListUserAssignmentsRequest {
             return this;
         }
 
+
         /**
          * The user ID associated with this assignment
          */
@@ -731,6 +739,7 @@ public class LmsListUserAssignmentsRequest {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the user related to the assignment
          */
@@ -748,21 +757,15 @@ public class LmsListUserAssignmentsRequest {
             this.remoteUserId = remoteUserId;
             return this;
         }
-        
+
         public LmsListUserAssignmentsRequest build() {
+
             return new LmsListUserAssignmentsRequest(
-                xAccountId,
-                id,
-                raw,
-                proxy,
-                fields,
-                filter,
-                page,
-                pageSize,
-                next,
-                updatedAfter,
-                userId,
-                remoteUserId);
+                xAccountId, id, raw,
+                proxy, fields, filter,
+                page, pageSize, next,
+                updatedAfter, userId, remoteUserId);
         }
+
     }
 }

@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LanguageEnum {
 
+public class LanguageEnum {
     /**
      * The Locale Code of the language
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LanguageEnumValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -56,9 +57,10 @@ public class LanguageEnum {
         return (JsonNullable<LanguageEnumSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Locale Code of the language
@@ -90,7 +92,6 @@ public class LanguageEnum {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,8 +109,7 @@ public class LanguageEnum {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -118,16 +118,18 @@ public class LanguageEnum {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends LanguageEnumValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LanguageEnumSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Locale Code of the language
@@ -147,6 +149,7 @@ public class LanguageEnum {
             return this;
         }
 
+
         public Builder sourceValue(LanguageEnumSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -158,11 +161,12 @@ public class LanguageEnum {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public LanguageEnum build() {
+
             return new LanguageEnum(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

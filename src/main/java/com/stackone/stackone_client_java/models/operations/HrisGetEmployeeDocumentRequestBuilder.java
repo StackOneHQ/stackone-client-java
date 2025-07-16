@@ -47,9 +47,7 @@ public class HrisGetEmployeeDocumentRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmployeeDocumentRequest, HrisGetEmployeeDocumentResponse> operation
-              = new HrisGetEmployeeDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeDocumentOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

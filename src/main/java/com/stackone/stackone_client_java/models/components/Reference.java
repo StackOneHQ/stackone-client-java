@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Reference {
 
+public class Reference {
     /**
      * The reference id
      */
@@ -61,7 +61,8 @@ public class Reference {
     }
     
     public Reference() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -97,9 +98,10 @@ public class Reference {
         return (JsonNullable<ReferenceActive>) active;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The reference id
@@ -173,7 +175,6 @@ public class Reference {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -193,9 +194,7 @@ public class Reference {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
+            id, remoteId, name,
             active);
     }
     
@@ -207,20 +206,22 @@ public class Reference {
                 "name", name,
                 "active", active);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ReferenceActive> active = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The reference id
@@ -240,6 +241,7 @@ public class Reference {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -257,6 +259,7 @@ public class Reference {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The reference name
@@ -276,6 +279,7 @@ public class Reference {
             return this;
         }
 
+
         /**
          * The reference status
          */
@@ -293,13 +297,13 @@ public class Reference {
             this.active = active;
             return this;
         }
-        
+
         public Reference build() {
+
             return new Reference(
-                id,
-                remoteId,
-                name,
+                id, remoteId, name,
                 active);
         }
+
     }
 }

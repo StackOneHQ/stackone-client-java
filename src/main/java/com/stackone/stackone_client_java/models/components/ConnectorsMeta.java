@@ -17,8 +17,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ConnectorsMeta {
 
+public class ConnectorsMeta {
     /**
      * The provider key
      */
@@ -44,6 +44,7 @@ public class ConnectorsMeta {
     @JsonProperty("active")
     private JsonNullable<Boolean> active;
 
+
     @JsonProperty("models")
     private Map<String, Object> models;
 
@@ -67,6 +68,7 @@ public class ConnectorsMeta {
         Utils.checkNotNull(category, "category");
         Utils.checkNotNull(active, "active");
         models = Utils.emptyMapIfNull(models);
+        Utils.checkNotNull(models, "models");
         Utils.checkNotNull(resources, "resources");
         this.provider = provider;
         this.providerName = providerName;
@@ -81,7 +83,8 @@ public class ConnectorsMeta {
             String providerName,
             ConnectorsMetaCategory category,
             Map<String, Object> models) {
-        this(provider, providerName, category, JsonNullable.undefined(), models, JsonNullable.undefined());
+        this(provider, providerName, category,
+            JsonNullable.undefined(), models, JsonNullable.undefined());
     }
 
     /**
@@ -130,9 +133,10 @@ public class ConnectorsMeta {
         return (JsonNullable<Resources>) resources;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The provider key
@@ -203,7 +207,6 @@ public class ConnectorsMeta {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -225,12 +228,8 @@ public class ConnectorsMeta {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            provider,
-            providerName,
-            category,
-            active,
-            models,
-            resources);
+            provider, providerName, category,
+            active, models, resources);
     }
     
     @Override
@@ -243,24 +242,26 @@ public class ConnectorsMeta {
                 "models", models,
                 "resources", resources);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String provider;
- 
+
         private String providerName;
- 
+
         private ConnectorsMetaCategory category;
- 
+
         private JsonNullable<Boolean> active = JsonNullable.undefined();
- 
+
         private Map<String, Object> models;
- 
+
         private JsonNullable<? extends Resources> resources = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The provider key
@@ -271,6 +272,7 @@ public class ConnectorsMeta {
             return this;
         }
 
+
         /**
          * The provider human-readable label
          */
@@ -280,6 +282,7 @@ public class ConnectorsMeta {
             return this;
         }
 
+
         /**
          * The provider service category
          */
@@ -288,6 +291,7 @@ public class ConnectorsMeta {
             this.category = category;
             return this;
         }
+
 
         /**
          * Whether this provider has been enabled on the integrations page for the current project
@@ -307,11 +311,13 @@ public class ConnectorsMeta {
             return this;
         }
 
+
         public Builder models(Map<String, Object> models) {
             Utils.checkNotNull(models, "models");
             this.models = models;
             return this;
         }
+
 
         /**
          * Resources for this provider, such as image assets
@@ -330,15 +336,13 @@ public class ConnectorsMeta {
             this.resources = resources;
             return this;
         }
-        
+
         public ConnectorsMeta build() {
+
             return new ConnectorsMeta(
-                provider,
-                providerName,
-                category,
-                active,
-                models,
-                resources);
+                provider, providerName, category,
+                active, models, resources);
         }
+
     }
 }

@@ -24,7 +24,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @Deprecated
 public class HrisUpdateEmploymentRequestDtoEmploymentType {
-
     /**
      * The type of the employment.
      */
@@ -71,9 +70,10 @@ public class HrisUpdateEmploymentRequestDtoEmploymentType {
         return (JsonNullable<HrisUpdateEmploymentRequestDtoEmploymentTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the employment.
@@ -111,7 +111,6 @@ public class HrisUpdateEmploymentRequestDtoEmploymentType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,8 +128,7 @@ public class HrisUpdateEmploymentRequestDtoEmploymentType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -139,16 +137,18 @@ public class HrisUpdateEmploymentRequestDtoEmploymentType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoEmploymentTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoEmploymentTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the employment.
@@ -168,6 +168,7 @@ public class HrisUpdateEmploymentRequestDtoEmploymentType {
             return this;
         }
 
+
         /**
          * The source value of the employment type.
          */
@@ -185,11 +186,12 @@ public class HrisUpdateEmploymentRequestDtoEmploymentType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisUpdateEmploymentRequestDtoEmploymentType build() {
+
             return new HrisUpdateEmploymentRequestDtoEmploymentType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

@@ -73,9 +73,7 @@ public class MarketingUpdateContentBlockRequestBuilder {
             .build());
 
         RequestOperation<MarketingUpdateContentBlockRequest, MarketingUpdateContentBlockResponse> operation
-              = new MarketingUpdateContentBlockOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateContentBlockOperation(sdkConfiguration, options);
         MarketingUpdateContentBlockRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -29,6 +29,7 @@ public class CreateEmploymentApiModelEmploymentContractType {
     @JsonProperty("value")
     private JsonNullable<? extends CreateEmploymentApiModelEmploymentContractTypeValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CreateEmploymentApiModelEmploymentContractTypeSourceValue> sourceValue;
@@ -59,9 +60,10 @@ public class CreateEmploymentApiModelEmploymentContractType {
         return (JsonNullable<CreateEmploymentApiModelEmploymentContractTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CreateEmploymentApiModelEmploymentContractType withValue(CreateEmploymentApiModelEmploymentContractTypeValue value) {
         Utils.checkNotNull(value, "value");
@@ -87,7 +89,6 @@ public class CreateEmploymentApiModelEmploymentContractType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,8 +106,7 @@ public class CreateEmploymentApiModelEmploymentContractType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -115,16 +115,18 @@ public class CreateEmploymentApiModelEmploymentContractType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CreateEmploymentApiModelEmploymentContractTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateEmploymentApiModelEmploymentContractTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(CreateEmploymentApiModelEmploymentContractTypeValue value) {
             Utils.checkNotNull(value, "value");
@@ -138,6 +140,7 @@ public class CreateEmploymentApiModelEmploymentContractType {
             return this;
         }
 
+
         public Builder sourceValue(CreateEmploymentApiModelEmploymentContractTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -149,11 +152,12 @@ public class CreateEmploymentApiModelEmploymentContractType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CreateEmploymentApiModelEmploymentContractType build() {
+
             return new CreateEmploymentApiModelEmploymentContractType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

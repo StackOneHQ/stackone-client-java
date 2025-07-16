@@ -65,9 +65,7 @@ public class AtsCreateApplicationRequestBuilder {
             .build());
 
         RequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
-              = new AtsCreateApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateApplicationOperation(sdkConfiguration, options);
         AtsCreateApplicationRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

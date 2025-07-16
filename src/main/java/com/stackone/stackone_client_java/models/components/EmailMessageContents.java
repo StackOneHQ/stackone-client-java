@@ -13,23 +13,28 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class EmailMessageContents {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("subject")
     private JsonNullable<String> subject;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("body")
     private JsonNullable<String> body;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("from")
     private JsonNullable<String> from;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("reply-to")
     private JsonNullable<String> replyTo;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("preheader")
@@ -55,7 +60,8 @@ public class EmailMessageContents {
     }
     
     public EmailMessageContents() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -83,9 +89,10 @@ public class EmailMessageContents {
         return preheader;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public EmailMessageContents withSubject(String subject) {
         Utils.checkNotNull(subject, "subject");
@@ -147,7 +154,6 @@ public class EmailMessageContents {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,11 +174,8 @@ public class EmailMessageContents {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            subject,
-            body,
-            from,
-            replyTo,
-            preheader);
+            subject, body, from,
+            replyTo, preheader);
     }
     
     @Override
@@ -184,22 +187,24 @@ public class EmailMessageContents {
                 "replyTo", replyTo,
                 "preheader", preheader);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> subject = JsonNullable.undefined();
- 
+
         private JsonNullable<String> body = JsonNullable.undefined();
- 
+
         private JsonNullable<String> from = JsonNullable.undefined();
- 
+
         private JsonNullable<String> replyTo = JsonNullable.undefined();
- 
+
         private JsonNullable<String> preheader = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder subject(String subject) {
             Utils.checkNotNull(subject, "subject");
@@ -213,6 +218,7 @@ public class EmailMessageContents {
             return this;
         }
 
+
         public Builder body(String body) {
             Utils.checkNotNull(body, "body");
             this.body = JsonNullable.of(body);
@@ -224,6 +230,7 @@ public class EmailMessageContents {
             this.body = body;
             return this;
         }
+
 
         public Builder from(String from) {
             Utils.checkNotNull(from, "from");
@@ -237,6 +244,7 @@ public class EmailMessageContents {
             return this;
         }
 
+
         public Builder replyTo(String replyTo) {
             Utils.checkNotNull(replyTo, "replyTo");
             this.replyTo = JsonNullable.of(replyTo);
@@ -249,6 +257,7 @@ public class EmailMessageContents {
             return this;
         }
 
+
         public Builder preheader(String preheader) {
             Utils.checkNotNull(preheader, "preheader");
             this.preheader = JsonNullable.of(preheader);
@@ -260,14 +269,13 @@ public class EmailMessageContents {
             this.preheader = preheader;
             return this;
         }
-        
+
         public EmailMessageContents build() {
+
             return new EmailMessageContents(
-                subject,
-                body,
-                from,
-                replyTo,
-                preheader);
+                subject, body, from,
+                replyTo, preheader);
         }
+
     }
 }

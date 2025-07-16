@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisCreateEmployeeRequestDtoWorkTime {
 
+public class HrisCreateEmployeeRequestDtoWorkTime {
     /**
      * The work time duration in ISO 8601 duration format
      */
@@ -61,9 +61,10 @@ public class HrisCreateEmployeeRequestDtoWorkTime {
         return (JsonNullable<HrisCreateEmployeeRequestDtoDurationUnit>) durationUnit;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The work time duration in ISO 8601 duration format
@@ -101,7 +102,6 @@ public class HrisCreateEmployeeRequestDtoWorkTime {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -119,8 +119,7 @@ public class HrisCreateEmployeeRequestDtoWorkTime {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            duration,
-            durationUnit);
+            duration, durationUnit);
     }
     
     @Override
@@ -129,16 +128,18 @@ public class HrisCreateEmployeeRequestDtoWorkTime {
                 "duration", duration,
                 "durationUnit", durationUnit);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> duration = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoDurationUnit> durationUnit = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The work time duration in ISO 8601 duration format
@@ -158,6 +159,7 @@ public class HrisCreateEmployeeRequestDtoWorkTime {
             return this;
         }
 
+
         /**
          * The duration unit of the work time
          */
@@ -175,11 +177,12 @@ public class HrisCreateEmployeeRequestDtoWorkTime {
             this.durationUnit = durationUnit;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDtoWorkTime build() {
+
             return new HrisCreateEmployeeRequestDtoWorkTime(
-                duration,
-                durationUnit);
+                duration, durationUnit);
         }
+
     }
 }

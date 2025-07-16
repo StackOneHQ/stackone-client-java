@@ -16,49 +16,62 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class LinkedAccount {
 
     @JsonProperty("id")
     private String id;
 
+
     @JsonProperty("provider")
     private String provider;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("provider_name")
     private JsonNullable<String> providerName;
 
+
     @JsonProperty("status")
     private Status status;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status_reasons")
     private JsonNullable<? extends List<StatusReason>> statusReasons;
 
+
     @JsonProperty("origin_owner_id")
     private String originOwnerId;
 
+
     @JsonProperty("origin_owner_name")
     private String originOwnerName;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin_username")
     private JsonNullable<String> originUsername;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private JsonNullable<? extends Credentials> credentials;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("setup_information")
     private JsonNullable<? extends SetupInformation> setupInformation;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label")
     private JsonNullable<String> label;
 
+
     @JsonProperty("created_at")
     private OffsetDateTime createdAt;
+
 
     @JsonProperty("updated_at")
     private OffsetDateTime updatedAt;
@@ -124,7 +137,11 @@ public class LinkedAccount {
             String originOwnerName,
             OffsetDateTime createdAt,
             OffsetDateTime updatedAt) {
-        this(id, provider, JsonNullable.undefined(), status, JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, updatedAt, JsonNullable.undefined());
+        this(id, provider, JsonNullable.undefined(),
+            status, JsonNullable.undefined(), originOwnerId,
+            originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), createdAt,
+            updatedAt, JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -204,9 +221,10 @@ public class LinkedAccount {
         return (JsonNullable<LinkedAccountType>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public LinkedAccount withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -340,7 +358,6 @@ public class LinkedAccount {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -370,20 +387,11 @@ public class LinkedAccount {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            provider,
-            providerName,
-            status,
-            statusReasons,
-            originOwnerId,
-            originOwnerName,
-            originUsername,
-            credentials,
-            setupInformation,
-            label,
-            createdAt,
-            updatedAt,
-            type);
+            id, provider, providerName,
+            status, statusReasons, originOwnerId,
+            originOwnerName, originUsername, credentials,
+            setupInformation, label, createdAt,
+            updatedAt, type);
     }
     
     @Override
@@ -404,40 +412,42 @@ public class LinkedAccount {
                 "updatedAt", updatedAt,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
- 
+
         private String provider;
- 
+
         private JsonNullable<String> providerName = JsonNullable.undefined();
- 
+
         private Status status;
- 
+
         private JsonNullable<? extends List<StatusReason>> statusReasons = JsonNullable.undefined();
- 
+
         private String originOwnerId;
- 
+
         private String originOwnerName;
- 
+
         private JsonNullable<String> originUsername = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Credentials> credentials = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends SetupInformation> setupInformation = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private OffsetDateTime createdAt;
- 
+
         private OffsetDateTime updatedAt;
- 
+
         private JsonNullable<? extends LinkedAccountType> type = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -445,11 +455,13 @@ public class LinkedAccount {
             return this;
         }
 
+
         public Builder provider(String provider) {
             Utils.checkNotNull(provider, "provider");
             this.provider = provider;
             return this;
         }
+
 
         public Builder providerName(String providerName) {
             Utils.checkNotNull(providerName, "providerName");
@@ -463,11 +475,13 @@ public class LinkedAccount {
             return this;
         }
 
+
         public Builder status(Status status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
         }
+
 
         public Builder statusReasons(List<StatusReason> statusReasons) {
             Utils.checkNotNull(statusReasons, "statusReasons");
@@ -481,17 +495,20 @@ public class LinkedAccount {
             return this;
         }
 
+
         public Builder originOwnerId(String originOwnerId) {
             Utils.checkNotNull(originOwnerId, "originOwnerId");
             this.originOwnerId = originOwnerId;
             return this;
         }
 
+
         public Builder originOwnerName(String originOwnerName) {
             Utils.checkNotNull(originOwnerName, "originOwnerName");
             this.originOwnerName = originOwnerName;
             return this;
         }
+
 
         public Builder originUsername(String originUsername) {
             Utils.checkNotNull(originUsername, "originUsername");
@@ -505,6 +522,7 @@ public class LinkedAccount {
             return this;
         }
 
+
         public Builder credentials(Credentials credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = JsonNullable.of(credentials);
@@ -516,6 +534,7 @@ public class LinkedAccount {
             this.credentials = credentials;
             return this;
         }
+
 
         public Builder setupInformation(SetupInformation setupInformation) {
             Utils.checkNotNull(setupInformation, "setupInformation");
@@ -529,6 +548,7 @@ public class LinkedAccount {
             return this;
         }
 
+
         public Builder label(String label) {
             Utils.checkNotNull(label, "label");
             this.label = JsonNullable.of(label);
@@ -541,17 +561,20 @@ public class LinkedAccount {
             return this;
         }
 
+
         public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;
         }
 
+
         public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = updatedAt;
             return this;
         }
+
 
         /**
          * The account type
@@ -570,23 +593,16 @@ public class LinkedAccount {
             this.type = type;
             return this;
         }
-        
+
         public LinkedAccount build() {
+
             return new LinkedAccount(
-                id,
-                provider,
-                providerName,
-                status,
-                statusReasons,
-                originOwnerId,
-                originOwnerName,
-                originUsername,
-                credentials,
-                setupInformation,
-                label,
-                createdAt,
-                updatedAt,
-                type);
+                id, provider, providerName,
+                status, statusReasons, originOwnerId,
+                originOwnerName, originUsername, credentials,
+                setupInformation, label, createdAt,
+                updatedAt, type);
         }
+
     }
 }

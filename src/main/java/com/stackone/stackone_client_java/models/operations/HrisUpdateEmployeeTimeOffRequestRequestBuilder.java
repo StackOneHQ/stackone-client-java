@@ -81,9 +81,7 @@ public class HrisUpdateEmployeeTimeOffRequestRequestBuilder {
             .build());
 
         RequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
-              = new HrisUpdateEmployeeTimeOffRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisUpdateEmployeeTimeOffRequestOperation(sdkConfiguration, options);
         HrisUpdateEmployeeTimeOffRequestRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

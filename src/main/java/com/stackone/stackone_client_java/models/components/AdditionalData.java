@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AdditionalData {
 
+public class AdditionalData {
     /**
      * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
      */
@@ -79,9 +79,10 @@ public class AdditionalData {
         return (JsonNullable<AdditionalDataValue>) value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
@@ -137,7 +138,6 @@ public class AdditionalData {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -156,9 +156,7 @@ public class AdditionalData {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            value);
+            id, remoteId, value);
     }
     
     @Override
@@ -168,18 +166,20 @@ public class AdditionalData {
                 "remoteId", remoteId,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AdditionalDataValue> value = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
@@ -199,6 +199,7 @@ public class AdditionalData {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -217,6 +218,7 @@ public class AdditionalData {
             return this;
         }
 
+
         /**
          * The value of the additional data
          */
@@ -234,12 +236,12 @@ public class AdditionalData {
             this.value = value;
             return this;
         }
-        
+
         public AdditionalData build() {
+
             return new AdditionalData(
-                id,
-                remoteId,
-                value);
+                id, remoteId, value);
         }
+
     }
 }

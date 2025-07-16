@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamUserStatus {
 
+public class IamUserStatus {
     /**
      * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends IamUserValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -56,9 +57,10 @@ public class IamUserStatus {
         return (JsonNullable<IamUserSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
@@ -90,7 +92,6 @@ public class IamUserStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,8 +109,7 @@ public class IamUserStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -118,16 +118,18 @@ public class IamUserStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends IamUserValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamUserSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
@@ -147,6 +149,7 @@ public class IamUserStatus {
             return this;
         }
 
+
         public Builder sourceValue(IamUserSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -158,11 +161,12 @@ public class IamUserStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public IamUserStatus build() {
+
             return new IamUserStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

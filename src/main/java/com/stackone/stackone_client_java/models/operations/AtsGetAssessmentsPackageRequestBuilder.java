@@ -47,9 +47,7 @@ public class AtsGetAssessmentsPackageRequestBuilder {
             .build());
 
         RequestOperation<AtsGetAssessmentsPackageRequest, AtsGetAssessmentsPackageResponse> operation
-              = new AtsGetAssessmentsPackageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetAssessmentsPackageOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -25,6 +25,7 @@ public class RoleType {
     @JsonProperty("value")
     private JsonNullable<? extends EmploymentManagerApiModelValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends EmploymentManagerApiModelSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class RoleType {
         return (JsonNullable<EmploymentManagerApiModelSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public RoleType withValue(EmploymentManagerApiModelValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class RoleType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class RoleType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class RoleType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmploymentManagerApiModelValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentManagerApiModelSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(EmploymentManagerApiModelValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class RoleType {
             return this;
         }
 
+
         public Builder sourceValue(EmploymentManagerApiModelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class RoleType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public RoleType build() {
+
             return new RoleType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

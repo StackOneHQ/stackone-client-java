@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class HrisInviteEmployeeRequest {
 
+public class HrisInviteEmployeeRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto;
@@ -56,9 +58,10 @@ public class HrisInviteEmployeeRequest {
         return hrisInviteEmployeeRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class HrisInviteEmployeeRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class HrisInviteEmployeeRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            hrisInviteEmployeeRequestDto);
+            xAccountId, id, hrisInviteEmployeeRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class HrisInviteEmployeeRequest {
                 "id", id,
                 "hrisInviteEmployeeRequestDto", hrisInviteEmployeeRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class HrisInviteEmployeeRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder hrisInviteEmployeeRequestDto(HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto) {
             Utils.checkNotNull(hrisInviteEmployeeRequestDto, "hrisInviteEmployeeRequestDto");
             this.hrisInviteEmployeeRequestDto = hrisInviteEmployeeRequestDto;
             return this;
         }
-        
+
         public HrisInviteEmployeeRequest build() {
+
             return new HrisInviteEmployeeRequest(
-                xAccountId,
-                id,
-                hrisInviteEmployeeRequestDto);
+                xAccountId, id, hrisInviteEmployeeRequestDto);
         }
+
     }
 }

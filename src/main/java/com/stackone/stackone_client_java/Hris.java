@@ -42,6 +42,9 @@ import com.stackone.stackone_client_java.models.operations.HrisDownloadEmployeeD
 import com.stackone.stackone_client_java.models.operations.HrisGetBenefitRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetBenefitRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisGetBenefitResponse;
+import com.stackone.stackone_client_java.models.operations.HrisGetCompanyGroupRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetCompanyGroupRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisGetCompanyGroupResponse;
 import com.stackone.stackone_client_java.models.operations.HrisGetCompanyRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetCompanyRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisGetCompanyResponse;
@@ -51,6 +54,9 @@ import com.stackone.stackone_client_java.models.operations.HrisGetCostCenterGrou
 import com.stackone.stackone_client_java.models.operations.HrisGetDepartmentGroupRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetDepartmentGroupRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisGetDepartmentGroupResponse;
+import com.stackone.stackone_client_java.models.operations.HrisGetDivisionGroupRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetDivisionGroupRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisGetDivisionGroupResponse;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeCustomFieldDefinitionRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeCustomFieldDefinitionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeCustomFieldDefinitionResponse;
@@ -96,6 +102,12 @@ import com.stackone.stackone_client_java.models.operations.HrisGetLocationRespon
 import com.stackone.stackone_client_java.models.operations.HrisGetPositionRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetPositionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisGetPositionResponse;
+import com.stackone.stackone_client_java.models.operations.HrisGetShiftRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetShiftRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisGetShiftResponse;
+import com.stackone.stackone_client_java.models.operations.HrisGetTaskRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetTaskRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisGetTaskResponse;
 import com.stackone.stackone_client_java.models.operations.HrisGetTeamGroupRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetTeamGroupRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisGetTeamGroupResponse;
@@ -117,6 +129,9 @@ import com.stackone.stackone_client_java.models.operations.HrisInviteEmployeeRes
 import com.stackone.stackone_client_java.models.operations.HrisListBenefitsRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListBenefitsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisListBenefitsResponse;
+import com.stackone.stackone_client_java.models.operations.HrisListCompaniesGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.HrisListCompaniesGroupsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisListCompaniesGroupsResponse;
 import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListCompaniesRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisListCompaniesResponse;
@@ -126,6 +141,9 @@ import com.stackone.stackone_client_java.models.operations.HrisListCostCenterGro
 import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisListDepartmentGroupsResponse;
+import com.stackone.stackone_client_java.models.operations.HrisListDivisionGroupsRequest;
+import com.stackone.stackone_client_java.models.operations.HrisListDivisionGroupsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisListDivisionGroupsResponse;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCategoriesResponse;
@@ -174,6 +192,12 @@ import com.stackone.stackone_client_java.models.operations.HrisListLocationsResp
 import com.stackone.stackone_client_java.models.operations.HrisListPositionsRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListPositionsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisListPositionsResponse;
+import com.stackone.stackone_client_java.models.operations.HrisListShiftsRequest;
+import com.stackone.stackone_client_java.models.operations.HrisListShiftsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisListShiftsResponse;
+import com.stackone.stackone_client_java.models.operations.HrisListTasksRequest;
+import com.stackone.stackone_client_java.models.operations.HrisListTasksRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisListTasksResponse;
 import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisListTeamGroupsResponse;
@@ -213,9 +237,11 @@ import com.stackone.stackone_client_java.operations.HrisCreateEmployeeTimeOffReq
 import com.stackone.stackone_client_java.operations.HrisCreateEmployeeWorkEligibilityRequestOperation;
 import com.stackone.stackone_client_java.operations.HrisDownloadEmployeeDocumentOperation;
 import com.stackone.stackone_client_java.operations.HrisGetBenefitOperation;
+import com.stackone.stackone_client_java.operations.HrisGetCompanyGroupOperation;
 import com.stackone.stackone_client_java.operations.HrisGetCompanyOperation;
 import com.stackone.stackone_client_java.operations.HrisGetCostCenterGroupOperation;
 import com.stackone.stackone_client_java.operations.HrisGetDepartmentGroupOperation;
+import com.stackone.stackone_client_java.operations.HrisGetDivisionGroupOperation;
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeCustomFieldDefinitionOperation;
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocumentCategoryOperation;
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocumentOperation;
@@ -231,6 +257,8 @@ import com.stackone.stackone_client_java.operations.HrisGetGroupOperation;
 import com.stackone.stackone_client_java.operations.HrisGetJobOperation;
 import com.stackone.stackone_client_java.operations.HrisGetLocationOperation;
 import com.stackone.stackone_client_java.operations.HrisGetPositionOperation;
+import com.stackone.stackone_client_java.operations.HrisGetShiftOperation;
+import com.stackone.stackone_client_java.operations.HrisGetTaskOperation;
 import com.stackone.stackone_client_java.operations.HrisGetTeamGroupOperation;
 import com.stackone.stackone_client_java.operations.HrisGetTimeEntriesOperation;
 import com.stackone.stackone_client_java.operations.HrisGetTimeOffPolicyOperation;
@@ -238,9 +266,11 @@ import com.stackone.stackone_client_java.operations.HrisGetTimeOffRequestOperati
 import com.stackone.stackone_client_java.operations.HrisGetTimeOffTypeOperation;
 import com.stackone.stackone_client_java.operations.HrisInviteEmployeeOperation;
 import com.stackone.stackone_client_java.operations.HrisListBenefitsOperation;
+import com.stackone.stackone_client_java.operations.HrisListCompaniesGroupsOperation;
 import com.stackone.stackone_client_java.operations.HrisListCompaniesOperation;
 import com.stackone.stackone_client_java.operations.HrisListCostCenterGroupsOperation;
 import com.stackone.stackone_client_java.operations.HrisListDepartmentGroupsOperation;
+import com.stackone.stackone_client_java.operations.HrisListDivisionGroupsOperation;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeCategoriesOperation;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeCustomFieldDefinitionsOperation;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeDocumentsOperation;
@@ -257,6 +287,8 @@ import com.stackone.stackone_client_java.operations.HrisListGroupsOperation;
 import com.stackone.stackone_client_java.operations.HrisListJobsOperation;
 import com.stackone.stackone_client_java.operations.HrisListLocationsOperation;
 import com.stackone.stackone_client_java.operations.HrisListPositionsOperation;
+import com.stackone.stackone_client_java.operations.HrisListShiftsOperation;
+import com.stackone.stackone_client_java.operations.HrisListTasksOperation;
 import com.stackone.stackone_client_java.operations.HrisListTeamGroupsOperation;
 import com.stackone.stackone_client_java.operations.HrisListTimeEntriesOperation;
 import com.stackone.stackone_client_java.operations.HrisListTimeOffPoliciesOperation;
@@ -271,7 +303,6 @@ import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -310,16 +341,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListCompaniesResponse listCompanies(
-            HrisListCompaniesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListCompaniesResponse listCompanies(HrisListCompaniesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListCompaniesRequest, HrisListCompaniesResponse> operation
-              = new HrisListCompaniesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListCompaniesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Company
@@ -349,16 +375,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetCompanyResponse getCompany(
-            HrisGetCompanyRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetCompanyResponse getCompany(HrisGetCompanyRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetCompanyRequest, HrisGetCompanyResponse> operation
-              = new HrisGetCompanyOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetCompanyOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List employee Custom Field Definitions
@@ -388,16 +409,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeCustomFieldDefinitionsResponse listEmployeeCustomFieldDefinitions(
-            HrisListEmployeeCustomFieldDefinitionsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeCustomFieldDefinitionsResponse listEmployeeCustomFieldDefinitions(HrisListEmployeeCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeCustomFieldDefinitionsRequest, HrisListEmployeeCustomFieldDefinitionsResponse> operation
-              = new HrisListEmployeeCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeCustomFieldDefinitionsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get employee Custom Field Definition
@@ -427,16 +443,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeeCustomFieldDefinitionResponse getEmployeeCustomFieldDefinition(
-            HrisGetEmployeeCustomFieldDefinitionRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeeCustomFieldDefinitionResponse getEmployeeCustomFieldDefinition(HrisGetEmployeeCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeCustomFieldDefinitionRequest, HrisGetEmployeeCustomFieldDefinitionResponse> operation
-              = new HrisGetEmployeeCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeCustomFieldDefinitionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employees
@@ -466,16 +477,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeesResponse listEmployees(
-            HrisListEmployeesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeesResponse listEmployees(HrisListEmployeesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeesRequest, HrisListEmployeesResponse> operation
-              = new HrisListEmployeesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Creates an employee
@@ -494,9 +500,7 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisCreateEmployeeResponse createEmployee(
-            String xAccountId,
-            HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) throws Exception {
+    public HrisCreateEmployeeResponse createEmployee(String xAccountId, HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) throws Exception {
         return createEmployee(xAccountId, hrisCreateEmployeeRequestDto, Optional.empty());
     }
 
@@ -510,8 +514,7 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeResponse createEmployee(
-            String xAccountId,
-            HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto,
+            String xAccountId, HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto,
             Optional<Options> options) throws Exception {
         HrisCreateEmployeeRequest request =
             HrisCreateEmployeeRequest
@@ -520,12 +523,9 @@ public class Hris {
                 .hrisCreateEmployeeRequestDto(hrisCreateEmployeeRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeRequest, HrisCreateEmployeeResponse> operation
-              = new HrisCreateEmployeeOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisCreateEmployeeOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employee
@@ -555,16 +555,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeeResponse getEmployee(
-            HrisGetEmployeeRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeeResponse getEmployee(HrisGetEmployeeRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeRequest, HrisGetEmployeeResponse> operation
-              = new HrisGetEmployeeOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Updates an employee
@@ -585,10 +580,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUpdateEmployeeResponse updateEmployee(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto) throws Exception {
-        return updateEmployee(xAccountId, id, hrisUpdateEmployeeRequestDto, Optional.empty());
+        return updateEmployee(xAccountId, id, hrisUpdateEmployeeRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -602,10 +597,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUpdateEmployeeResponse updateEmployee(
-            String xAccountId,
-            String id,
-            HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto, Optional<Options> options) throws Exception {
         HrisUpdateEmployeeRequest request =
             HrisUpdateEmployeeRequest
                 .builder()
@@ -614,12 +607,9 @@ public class Hris {
                 .hrisUpdateEmployeeRequestDto(hrisUpdateEmployeeRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeRequest, HrisUpdateEmployeeResponse> operation
-              = new HrisUpdateEmployeeOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisUpdateEmployeeOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Invite Employee
@@ -640,10 +630,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisInviteEmployeeResponse inviteEmployee(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto) throws Exception {
-        return inviteEmployee(xAccountId, id, hrisInviteEmployeeRequestDto, Optional.empty());
+        return inviteEmployee(xAccountId, id, hrisInviteEmployeeRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -657,10 +647,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisInviteEmployeeResponse inviteEmployee(
-            String xAccountId,
-            String id,
-            HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto, Optional<Options> options) throws Exception {
         HrisInviteEmployeeRequest request =
             HrisInviteEmployeeRequest
                 .builder()
@@ -669,12 +657,9 @@ public class Hris {
                 .hrisInviteEmployeeRequestDto(hrisInviteEmployeeRequestDto)
                 .build();
         RequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
-              = new HrisInviteEmployeeOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisInviteEmployeeOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employee Time Off Requests
@@ -704,16 +689,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeTimeOffRequestsResponse listEmployeeTimeOffRequests(
-            HrisListEmployeeTimeOffRequestsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeTimeOffRequestsResponse listEmployeeTimeOffRequests(HrisListEmployeeTimeOffRequestsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeTimeOffRequestsRequest, HrisListEmployeeTimeOffRequestsResponse> operation
-              = new HrisListEmployeeTimeOffRequestsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeTimeOffRequestsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Employee Time Off Request
@@ -734,10 +714,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeTimeOffRequestResponse createEmployeeTimeOffRequest(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) throws Exception {
-        return createEmployeeTimeOffRequest(xAccountId, id, hrisCreateTimeOffRequestDto, Optional.empty());
+        return createEmployeeTimeOffRequest(xAccountId, id, hrisCreateTimeOffRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -751,10 +731,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeTimeOffRequestResponse createEmployeeTimeOffRequest(
-            String xAccountId,
-            String id,
-            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto, Optional<Options> options) throws Exception {
         HrisCreateEmployeeTimeOffRequestRequest request =
             HrisCreateEmployeeTimeOffRequestRequest
                 .builder()
@@ -763,12 +741,9 @@ public class Hris {
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeTimeOffRequestRequest, HrisCreateEmployeeTimeOffRequestResponse> operation
-              = new HrisCreateEmployeeTimeOffRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisCreateEmployeeTimeOffRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employees Time Off Request
@@ -798,16 +773,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeesTimeOffRequestResponse getEmployeesTimeOffRequest(
-            HrisGetEmployeesTimeOffRequestRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeesTimeOffRequestResponse getEmployeesTimeOffRequest(HrisGetEmployeesTimeOffRequestRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeesTimeOffRequestRequest, HrisGetEmployeesTimeOffRequestResponse> operation
-              = new HrisGetEmployeesTimeOffRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeesTimeOffRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Cancel Employee Time Off Request
@@ -828,10 +798,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCancelEmployeeTimeOffRequestResponse cancelEmployeeTimeOffRequest(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             String subResourceId) throws Exception {
-        return cancelEmployeeTimeOffRequest(xAccountId, id, subResourceId, Optional.empty());
+        return cancelEmployeeTimeOffRequest(xAccountId, id, subResourceId,
+            Optional.empty());
     }
 
     /**
@@ -845,10 +815,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCancelEmployeeTimeOffRequestResponse cancelEmployeeTimeOffRequest(
-            String xAccountId,
-            String id,
-            String subResourceId,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            String subResourceId, Optional<Options> options) throws Exception {
         HrisCancelEmployeeTimeOffRequestRequest request =
             HrisCancelEmployeeTimeOffRequestRequest
                 .builder()
@@ -857,12 +825,9 @@ public class Hris {
                 .subResourceId(subResourceId)
                 .build();
         RequestOperation<HrisCancelEmployeeTimeOffRequestRequest, HrisCancelEmployeeTimeOffRequestResponse> operation
-              = new HrisCancelEmployeeTimeOffRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisCancelEmployeeTimeOffRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Employee Time Off Request
@@ -884,11 +849,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(
-            String xAccountId,
-            String id,
-            String subResourceId,
-            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) throws Exception {
-        return updateEmployeeTimeOffRequest(xAccountId, id, subResourceId, hrisCreateTimeOffRequestDto, Optional.empty());
+            String xAccountId, String id,
+            String subResourceId, HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) throws Exception {
+        return updateEmployeeTimeOffRequest(xAccountId, id, subResourceId,
+            hrisCreateTimeOffRequestDto, Optional.empty());
     }
 
     /**
@@ -903,10 +867,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUpdateEmployeeTimeOffRequestResponse updateEmployeeTimeOffRequest(
-            String xAccountId,
-            String id,
-            String subResourceId,
-            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            String xAccountId, String id,
+            String subResourceId, HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
             Optional<Options> options) throws Exception {
         HrisUpdateEmployeeTimeOffRequestRequest request =
             HrisUpdateEmployeeTimeOffRequestRequest
@@ -917,12 +879,9 @@ public class Hris {
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
-              = new HrisUpdateEmployeeTimeOffRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisUpdateEmployeeTimeOffRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Batch Upload Employee Document
@@ -943,10 +902,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisBatchUploadEmployeeDocumentResponse batchUploadEmployeeDocument(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) throws Exception {
-        return batchUploadEmployeeDocument(xAccountId, id, hrisBatchDocumentUploadRequestDto, Optional.empty());
+        return batchUploadEmployeeDocument(xAccountId, id, hrisBatchDocumentUploadRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -960,10 +919,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisBatchUploadEmployeeDocumentResponse batchUploadEmployeeDocument(
-            String xAccountId,
-            String id,
-            HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto, Optional<Options> options) throws Exception {
         HrisBatchUploadEmployeeDocumentRequest request =
             HrisBatchUploadEmployeeDocumentRequest
                 .builder()
@@ -972,12 +929,9 @@ public class Hris {
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         RequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
-              = new HrisBatchUploadEmployeeDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisBatchUploadEmployeeDocumentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Upload Employee Document
@@ -998,10 +952,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUploadEmployeeDocumentResponse uploadEmployeeDocument(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto) throws Exception {
-        return uploadEmployeeDocument(xAccountId, id, hrisDocumentsUploadRequestDto, Optional.empty());
+        return uploadEmployeeDocument(xAccountId, id, hrisDocumentsUploadRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1015,10 +969,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUploadEmployeeDocumentResponse uploadEmployeeDocument(
-            String xAccountId,
-            String id,
-            HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto, Optional<Options> options) throws Exception {
         HrisUploadEmployeeDocumentRequest request =
             HrisUploadEmployeeDocumentRequest
                 .builder()
@@ -1027,12 +979,9 @@ public class Hris {
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         RequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
-              = new HrisUploadEmployeeDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisUploadEmployeeDocumentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Download Employee Document
@@ -1062,16 +1011,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisDownloadEmployeeDocumentResponse downloadEmployeeDocument(
-            HrisDownloadEmployeeDocumentRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisDownloadEmployeeDocumentResponse downloadEmployeeDocument(HrisDownloadEmployeeDocumentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisDownloadEmployeeDocumentRequest, HrisDownloadEmployeeDocumentResponse> operation
-              = new HrisDownloadEmployeeDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisDownloadEmployeeDocumentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employee Documents
@@ -1101,16 +1045,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeDocumentsResponse listEmployeeDocuments(
-            HrisListEmployeeDocumentsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeDocumentsResponse listEmployeeDocuments(HrisListEmployeeDocumentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeDocumentsRequest, HrisListEmployeeDocumentsResponse> operation
-              = new HrisListEmployeeDocumentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeDocumentsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employee Document
@@ -1140,16 +1079,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeeDocumentResponse getEmployeeDocument(
-            HrisGetEmployeeDocumentRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeeDocumentResponse getEmployeeDocument(HrisGetEmployeeDocumentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeDocumentRequest, HrisGetEmployeeDocumentResponse> operation
-              = new HrisGetEmployeeDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeDocumentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employee Document Categories
@@ -1179,16 +1113,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeCategoriesResponse listEmployeeCategories(
-            HrisListEmployeeCategoriesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeCategoriesResponse listEmployeeCategories(HrisListEmployeeCategoriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeCategoriesRequest, HrisListEmployeeCategoriesResponse> operation
-              = new HrisListEmployeeCategoriesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeCategoriesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employee Document Category
@@ -1218,16 +1147,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeeDocumentCategoryResponse getEmployeeDocumentCategory(
-            HrisGetEmployeeDocumentCategoryRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeeDocumentCategoryResponse getEmployeeDocumentCategory(HrisGetEmployeeDocumentCategoryRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeDocumentCategoryRequest, HrisGetEmployeeDocumentCategoryResponse> operation
-              = new HrisGetEmployeeDocumentCategoryOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeDocumentCategoryOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employee Work Eligibility
@@ -1257,16 +1181,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeWorkEligibilityResponse listEmployeeWorkEligibility(
-            HrisListEmployeeWorkEligibilityRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeWorkEligibilityResponse listEmployeeWorkEligibility(HrisListEmployeeWorkEligibilityRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeWorkEligibilityRequest, HrisListEmployeeWorkEligibilityResponse> operation
-              = new HrisListEmployeeWorkEligibilityOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeWorkEligibilityOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Employee Work Eligibility Request
@@ -1287,10 +1206,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeWorkEligibilityRequestResponse createEmployeeWorkEligibilityRequest(
-            String id,
-            String xAccountId,
+            String id, String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) throws Exception {
-        return createEmployeeWorkEligibilityRequest(id, xAccountId, hrisCreateWorkEligibilityRequestDto, Optional.empty());
+        return createEmployeeWorkEligibilityRequest(id, xAccountId, hrisCreateWorkEligibilityRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1304,10 +1223,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeWorkEligibilityRequestResponse createEmployeeWorkEligibilityRequest(
-            String id,
-            String xAccountId,
-            HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
-            Optional<Options> options) throws Exception {
+            String id, String xAccountId,
+            HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto, Optional<Options> options) throws Exception {
         HrisCreateEmployeeWorkEligibilityRequestRequest request =
             HrisCreateEmployeeWorkEligibilityRequestRequest
                 .builder()
@@ -1316,12 +1233,9 @@ public class Hris {
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeWorkEligibilityRequestRequest, HrisCreateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisCreateEmployeeWorkEligibilityRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisCreateEmployeeWorkEligibilityRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employees Work Eligibility
@@ -1351,16 +1265,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeesWorkEligibilityResponse getEmployeesWorkEligibility(
-            HrisGetEmployeesWorkEligibilityRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeesWorkEligibilityResponse getEmployeesWorkEligibility(HrisGetEmployeesWorkEligibilityRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeesWorkEligibilityRequest, HrisGetEmployeesWorkEligibilityResponse> operation
-              = new HrisGetEmployeesWorkEligibilityOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeesWorkEligibilityOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Employee Work Eligibility Request
@@ -1382,11 +1291,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUpdateEmployeeWorkEligibilityRequestResponse updateEmployeeWorkEligibilityRequest(
-            String id,
-            String subResourceId,
-            String xAccountId,
-            HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) throws Exception {
-        return updateEmployeeWorkEligibilityRequest(id, subResourceId, xAccountId, hrisCreateWorkEligibilityRequestDto, Optional.empty());
+            String id, String subResourceId,
+            String xAccountId, HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) throws Exception {
+        return updateEmployeeWorkEligibilityRequest(id, subResourceId, xAccountId,
+            hrisCreateWorkEligibilityRequestDto, Optional.empty());
     }
 
     /**
@@ -1401,10 +1309,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUpdateEmployeeWorkEligibilityRequestResponse updateEmployeeWorkEligibilityRequest(
-            String id,
-            String subResourceId,
-            String xAccountId,
-            HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
+            String id, String subResourceId,
+            String xAccountId, HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
             Optional<Options> options) throws Exception {
         HrisUpdateEmployeeWorkEligibilityRequestRequest request =
             HrisUpdateEmployeeWorkEligibilityRequestRequest
@@ -1415,12 +1321,9 @@ public class Hris {
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeWorkEligibilityRequestRequest, HrisUpdateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisUpdateEmployeeWorkEligibilityRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisUpdateEmployeeWorkEligibilityRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employee Time Off Balances
@@ -1450,16 +1353,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeTimeOffBalancesResponse listEmployeeTimeOffBalances(
-            HrisListEmployeeTimeOffBalancesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeTimeOffBalancesResponse listEmployeeTimeOffBalances(HrisListEmployeeTimeOffBalancesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeTimeOffBalancesRequest, HrisListEmployeeTimeOffBalancesResponse> operation
-              = new HrisListEmployeeTimeOffBalancesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeTimeOffBalancesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employee Time Off Balance
@@ -1489,16 +1387,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeeTimeOffBalanceResponse getEmployeeTimeOffBalance(
-            HrisGetEmployeeTimeOffBalanceRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeeTimeOffBalanceResponse getEmployeeTimeOffBalance(HrisGetEmployeeTimeOffBalanceRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeTimeOffBalanceRequest, HrisGetEmployeeTimeOffBalanceResponse> operation
-              = new HrisGetEmployeeTimeOffBalanceOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeTimeOffBalanceOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employments
@@ -1528,16 +1421,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmploymentsResponse listEmployments(
-            HrisListEmploymentsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmploymentsResponse listEmployments(HrisListEmploymentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmploymentsRequest, HrisListEmploymentsResponse> operation
-              = new HrisListEmploymentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmploymentsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employment
@@ -1567,16 +1455,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmploymentResponse getEmployment(
-            HrisGetEmploymentRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmploymentResponse getEmployment(HrisGetEmploymentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmploymentRequest, HrisGetEmploymentResponse> operation
-              = new HrisGetEmploymentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmploymentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employee Employments
@@ -1606,16 +1489,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeEmploymentsResponse listEmployeeEmployments(
-            HrisListEmployeeEmploymentsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeEmploymentsResponse listEmployeeEmployments(HrisListEmployeeEmploymentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeEmploymentsRequest, HrisListEmployeeEmploymentsResponse> operation
-              = new HrisListEmployeeEmploymentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeEmploymentsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Employee Employment
@@ -1636,10 +1514,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeEmploymentResponse createEmployeeEmployment(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto) throws Exception {
-        return createEmployeeEmployment(xAccountId, id, hrisCreateEmploymentRequestDto, Optional.empty());
+        return createEmployeeEmployment(xAccountId, id, hrisCreateEmploymentRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1653,10 +1531,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeEmploymentResponse createEmployeeEmployment(
-            String xAccountId,
-            String id,
-            HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto, Optional<Options> options) throws Exception {
         HrisCreateEmployeeEmploymentRequest request =
             HrisCreateEmployeeEmploymentRequest
                 .builder()
@@ -1665,12 +1541,9 @@ public class Hris {
                 .hrisCreateEmploymentRequestDto(hrisCreateEmploymentRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeEmploymentRequest, HrisCreateEmployeeEmploymentResponse> operation
-              = new HrisCreateEmployeeEmploymentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisCreateEmployeeEmploymentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employee Employment
@@ -1700,16 +1573,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeeEmploymentResponse getEmployeeEmployment(
-            HrisGetEmployeeEmploymentRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeeEmploymentResponse getEmployeeEmployment(HrisGetEmployeeEmploymentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeEmploymentRequest, HrisGetEmployeeEmploymentResponse> operation
-              = new HrisGetEmployeeEmploymentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeEmploymentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Employee Employment
@@ -1731,11 +1599,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUpdateEmployeeEmploymentResponse updateEmployeeEmployment(
-            String xAccountId,
-            String id,
-            String subResourceId,
-            HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) throws Exception {
-        return updateEmployeeEmployment(xAccountId, id, subResourceId, hrisUpdateEmploymentRequestDto, Optional.empty());
+            String xAccountId, String id,
+            String subResourceId, HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) throws Exception {
+        return updateEmployeeEmployment(xAccountId, id, subResourceId,
+            hrisUpdateEmploymentRequestDto, Optional.empty());
     }
 
     /**
@@ -1750,10 +1617,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisUpdateEmployeeEmploymentResponse updateEmployeeEmployment(
-            String xAccountId,
-            String id,
-            String subResourceId,
-            HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto,
+            String xAccountId, String id,
+            String subResourceId, HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto,
             Optional<Options> options) throws Exception {
         HrisUpdateEmployeeEmploymentRequest request =
             HrisUpdateEmployeeEmploymentRequest
@@ -1764,12 +1629,9 @@ public class Hris {
                 .hrisUpdateEmploymentRequestDto(hrisUpdateEmploymentRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeEmploymentRequest, HrisUpdateEmployeeEmploymentResponse> operation
-              = new HrisUpdateEmployeeEmploymentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisUpdateEmployeeEmploymentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Groups
@@ -1799,16 +1661,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListGroupsResponse listGroups(
-            HrisListGroupsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListGroupsResponse listGroups(HrisListGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListGroupsRequest, HrisListGroupsResponse> operation
-              = new HrisListGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListGroupsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Department Groups
@@ -1838,16 +1695,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListDepartmentGroupsResponse listDepartmentGroups(
-            HrisListDepartmentGroupsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListDepartmentGroupsResponse listDepartmentGroups(HrisListDepartmentGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListDepartmentGroupsRequest, HrisListDepartmentGroupsResponse> operation
-              = new HrisListDepartmentGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListDepartmentGroupsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Cost Center Groups
@@ -1877,16 +1729,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListCostCenterGroupsResponse listCostCenterGroups(
-            HrisListCostCenterGroupsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListCostCenterGroupsResponse listCostCenterGroups(HrisListCostCenterGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListCostCenterGroupsRequest, HrisListCostCenterGroupsResponse> operation
-              = new HrisListCostCenterGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListCostCenterGroupsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Team Groups
@@ -1916,16 +1763,79 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListTeamGroupsResponse listTeamGroups(
-            HrisListTeamGroupsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListTeamGroupsResponse listTeamGroups(HrisListTeamGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTeamGroupsRequest, HrisListTeamGroupsResponse> operation
-              = new HrisListTeamGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTeamGroupsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
+    /**
+     * List Division Groups
+     * 
+     * @return The call builder
+     */
+    public HrisListDivisionGroupsRequestBuilder listDivisionGroups() {
+        return new HrisListDivisionGroupsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Division Groups
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisListDivisionGroupsResponse listDivisionGroups(HrisListDivisionGroupsRequest request) throws Exception {
+        return listDivisionGroups(request, Optional.empty());
+    }
+
+    /**
+     * List Division Groups
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisListDivisionGroupsResponse listDivisionGroups(HrisListDivisionGroupsRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<HrisListDivisionGroupsRequest, HrisListDivisionGroupsResponse> operation
+              = new HrisListDivisionGroupsOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * List Companies Groups
+     * 
+     * @return The call builder
+     */
+    public HrisListCompaniesGroupsRequestBuilder listCompaniesGroups() {
+        return new HrisListCompaniesGroupsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Companies Groups
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisListCompaniesGroupsResponse listCompaniesGroups(HrisListCompaniesGroupsRequest request) throws Exception {
+        return listCompaniesGroups(request, Optional.empty());
+    }
+
+    /**
+     * List Companies Groups
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisListCompaniesGroupsResponse listCompaniesGroups(HrisListCompaniesGroupsRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<HrisListCompaniesGroupsRequest, HrisListCompaniesGroupsResponse> operation
+              = new HrisListCompaniesGroupsOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
 
     /**
      * Get Group
@@ -1955,16 +1865,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetGroupResponse getGroup(
-            HrisGetGroupRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetGroupResponse getGroup(HrisGetGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetGroupRequest, HrisGetGroupResponse> operation
-              = new HrisGetGroupOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetGroupOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Department Group
@@ -1994,16 +1899,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetDepartmentGroupResponse getDepartmentGroup(
-            HrisGetDepartmentGroupRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetDepartmentGroupResponse getDepartmentGroup(HrisGetDepartmentGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetDepartmentGroupRequest, HrisGetDepartmentGroupResponse> operation
-              = new HrisGetDepartmentGroupOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetDepartmentGroupOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Cost Center Group
@@ -2033,16 +1933,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetCostCenterGroupResponse getCostCenterGroup(
-            HrisGetCostCenterGroupRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetCostCenterGroupResponse getCostCenterGroup(HrisGetCostCenterGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetCostCenterGroupRequest, HrisGetCostCenterGroupResponse> operation
-              = new HrisGetCostCenterGroupOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetCostCenterGroupOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Team Group
@@ -2072,16 +1967,79 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetTeamGroupResponse getTeamGroup(
-            HrisGetTeamGroupRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetTeamGroupResponse getTeamGroup(HrisGetTeamGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTeamGroupRequest, HrisGetTeamGroupResponse> operation
-              = new HrisGetTeamGroupOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetTeamGroupOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
+    /**
+     * Get Division Group
+     * 
+     * @return The call builder
+     */
+    public HrisGetDivisionGroupRequestBuilder getDivisionGroup() {
+        return new HrisGetDivisionGroupRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Get Division Group
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisGetDivisionGroupResponse getDivisionGroup(HrisGetDivisionGroupRequest request) throws Exception {
+        return getDivisionGroup(request, Optional.empty());
+    }
+
+    /**
+     * Get Division Group
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisGetDivisionGroupResponse getDivisionGroup(HrisGetDivisionGroupRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<HrisGetDivisionGroupRequest, HrisGetDivisionGroupResponse> operation
+              = new HrisGetDivisionGroupOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Get Company Group
+     * 
+     * @return The call builder
+     */
+    public HrisGetCompanyGroupRequestBuilder getCompanyGroup() {
+        return new HrisGetCompanyGroupRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Get Company Group
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisGetCompanyGroupResponse getCompanyGroup(HrisGetCompanyGroupRequest request) throws Exception {
+        return getCompanyGroup(request, Optional.empty());
+    }
+
+    /**
+     * Get Company Group
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisGetCompanyGroupResponse getCompanyGroup(HrisGetCompanyGroupRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<HrisGetCompanyGroupRequest, HrisGetCompanyGroupResponse> operation
+              = new HrisGetCompanyGroupOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
 
     /**
      * List Jobs
@@ -2111,16 +2069,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListJobsResponse listJobs(
-            HrisListJobsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListJobsResponse listJobs(HrisListJobsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListJobsRequest, HrisListJobsResponse> operation
-              = new HrisListJobsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListJobsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Job
@@ -2150,16 +2103,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetJobResponse getJob(
-            HrisGetJobRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetJobResponse getJob(HrisGetJobRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetJobRequest, HrisGetJobResponse> operation
-              = new HrisGetJobOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Work Locations
@@ -2189,16 +2137,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListLocationsResponse listLocations(
-            HrisListLocationsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListLocationsResponse listLocations(HrisListLocationsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListLocationsRequest, HrisListLocationsResponse> operation
-              = new HrisListLocationsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListLocationsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Work Location
@@ -2228,16 +2171,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetLocationResponse getLocation(
-            HrisGetLocationRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetLocationResponse getLocation(HrisGetLocationRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetLocationRequest, HrisGetLocationResponse> operation
-              = new HrisGetLocationOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetLocationOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Positions
@@ -2267,16 +2205,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListPositionsResponse listPositions(
-            HrisListPositionsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListPositionsResponse listPositions(HrisListPositionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListPositionsRequest, HrisListPositionsResponse> operation
-              = new HrisListPositionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListPositionsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Position
@@ -2306,16 +2239,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetPositionResponse getPosition(
-            HrisGetPositionRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetPositionResponse getPosition(HrisGetPositionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetPositionRequest, HrisGetPositionResponse> operation
-              = new HrisGetPositionOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetPositionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Time Entries
@@ -2345,16 +2273,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListTimeEntriesResponse listTimeEntries(
-            HrisListTimeEntriesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListTimeEntriesResponse listTimeEntries(HrisListTimeEntriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTimeEntriesRequest, HrisListTimeEntriesResponse> operation
-              = new HrisListTimeEntriesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTimeEntriesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Time Entry
@@ -2384,16 +2307,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetTimeEntriesResponse getTimeEntries(
-            HrisGetTimeEntriesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetTimeEntriesResponse getTimeEntries(HrisGetTimeEntriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTimeEntriesRequest, HrisGetTimeEntriesResponse> operation
-              = new HrisGetTimeEntriesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetTimeEntriesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List time off requests
@@ -2423,16 +2341,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListTimeOffRequestsResponse listTimeOffRequests(
-            HrisListTimeOffRequestsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListTimeOffRequestsResponse listTimeOffRequests(HrisListTimeOffRequestsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTimeOffRequestsRequest, HrisListTimeOffRequestsResponse> operation
-              = new HrisListTimeOffRequestsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTimeOffRequestsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get time off request
@@ -2462,16 +2375,79 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetTimeOffRequestResponse getTimeOffRequest(
-            HrisGetTimeOffRequestRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetTimeOffRequestResponse getTimeOffRequest(HrisGetTimeOffRequestRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTimeOffRequestRequest, HrisGetTimeOffRequestResponse> operation
-              = new HrisGetTimeOffRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetTimeOffRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
+    /**
+     * List Shifts
+     * 
+     * @return The call builder
+     */
+    public HrisListShiftsRequestBuilder listShifts() {
+        return new HrisListShiftsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Shifts
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisListShiftsResponse listShifts(HrisListShiftsRequest request) throws Exception {
+        return listShifts(request, Optional.empty());
+    }
+
+    /**
+     * List Shifts
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisListShiftsResponse listShifts(HrisListShiftsRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<HrisListShiftsRequest, HrisListShiftsResponse> operation
+              = new HrisListShiftsOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Get Shift
+     * 
+     * @return The call builder
+     */
+    public HrisGetShiftRequestBuilder getShift() {
+        return new HrisGetShiftRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Get Shift
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisGetShiftResponse getShift(HrisGetShiftRequest request) throws Exception {
+        return getShift(request, Optional.empty());
+    }
+
+    /**
+     * Get Shift
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisGetShiftResponse getShift(HrisGetShiftRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<HrisGetShiftRequest, HrisGetShiftResponse> operation
+              = new HrisGetShiftOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
 
     /**
      * List time off types
@@ -2507,16 +2483,11 @@ public class Hris {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public HrisListTimeOffTypesResponse listTimeOffTypes(
-            HrisListTimeOffTypesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListTimeOffTypesResponse listTimeOffTypes(HrisListTimeOffTypesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTimeOffTypesRequest, HrisListTimeOffTypesResponse> operation
-              = new HrisListTimeOffTypesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTimeOffTypesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get time off type
@@ -2552,16 +2523,11 @@ public class Hris {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public HrisGetTimeOffTypeResponse getTimeOffType(
-            HrisGetTimeOffTypeRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetTimeOffTypeResponse getTimeOffType(HrisGetTimeOffTypeRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTimeOffTypeRequest, HrisGetTimeOffTypeResponse> operation
-              = new HrisGetTimeOffTypeOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetTimeOffTypeOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Time Off Policies
@@ -2591,16 +2557,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListTimeOffPoliciesResponse listTimeOffPolicies(
-            HrisListTimeOffPoliciesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListTimeOffPoliciesResponse listTimeOffPolicies(HrisListTimeOffPoliciesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTimeOffPoliciesRequest, HrisListTimeOffPoliciesResponse> operation
-              = new HrisListTimeOffPoliciesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTimeOffPoliciesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Time Off Policy
@@ -2630,16 +2591,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetTimeOffPolicyResponse getTimeOffPolicy(
-            HrisGetTimeOffPolicyRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetTimeOffPolicyResponse getTimeOffPolicy(HrisGetTimeOffPolicyRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTimeOffPolicyRequest, HrisGetTimeOffPolicyResponse> operation
-              = new HrisGetTimeOffPolicyOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetTimeOffPolicyOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Assigned Time Off Policies
@@ -2669,16 +2625,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeTimeOffPoliciesResponse listEmployeeTimeOffPolicies(
-            HrisListEmployeeTimeOffPoliciesRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeTimeOffPoliciesResponse listEmployeeTimeOffPolicies(HrisListEmployeeTimeOffPoliciesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeTimeOffPoliciesRequest, HrisListEmployeeTimeOffPoliciesResponse> operation
-              = new HrisListEmployeeTimeOffPoliciesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeTimeOffPoliciesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List benefits
@@ -2708,16 +2659,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListBenefitsResponse listBenefits(
-            HrisListBenefitsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListBenefitsResponse listBenefits(HrisListBenefitsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListBenefitsRequest, HrisListBenefitsResponse> operation
-              = new HrisListBenefitsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListBenefitsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Benefit
@@ -2747,16 +2693,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetBenefitResponse getBenefit(
-            HrisGetBenefitRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetBenefitResponse getBenefit(HrisGetBenefitRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetBenefitRequest, HrisGetBenefitResponse> operation
-              = new HrisGetBenefitOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetBenefitOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employee Skills
@@ -2786,16 +2727,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeSkillsResponse listEmployeeSkills(
-            HrisListEmployeeSkillsRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeSkillsResponse listEmployeeSkills(HrisListEmployeeSkillsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeSkillsRequest, HrisListEmployeeSkillsResponse> operation
-              = new HrisListEmployeeSkillsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeSkillsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Employee Skill
@@ -2816,10 +2752,10 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeSkillResponse createEmployeeSkill(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             EntitySkillsCreateRequestDto entitySkillsCreateRequestDto) throws Exception {
-        return createEmployeeSkill(xAccountId, id, entitySkillsCreateRequestDto, Optional.empty());
+        return createEmployeeSkill(xAccountId, id, entitySkillsCreateRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -2833,10 +2769,8 @@ public class Hris {
      * @throws Exception if the API call fails
      */
     public HrisCreateEmployeeSkillResponse createEmployeeSkill(
-            String xAccountId,
-            String id,
-            EntitySkillsCreateRequestDto entitySkillsCreateRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            EntitySkillsCreateRequestDto entitySkillsCreateRequestDto, Optional<Options> options) throws Exception {
         HrisCreateEmployeeSkillRequest request =
             HrisCreateEmployeeSkillRequest
                 .builder()
@@ -2845,12 +2779,9 @@ public class Hris {
                 .entitySkillsCreateRequestDto(entitySkillsCreateRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
-              = new HrisCreateEmployeeSkillOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisCreateEmployeeSkillOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employee Skill
@@ -2880,16 +2811,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeeSkillResponse getEmployeeSkill(
-            HrisGetEmployeeSkillRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeeSkillResponse getEmployeeSkill(HrisGetEmployeeSkillRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeSkillRequest, HrisGetEmployeeSkillResponse> operation
-              = new HrisGetEmployeeSkillOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeSkillOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Employee Tasks
@@ -2919,16 +2845,11 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisListEmployeeTasksResponse listEmployeeTasks(
-            HrisListEmployeeTasksRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisListEmployeeTasksResponse listEmployeeTasks(HrisListEmployeeTasksRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeTasksRequest, HrisListEmployeeTasksResponse> operation
-              = new HrisListEmployeeTasksOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeTasksOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Employee Task
@@ -2958,13 +2879,77 @@ public class Hris {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public HrisGetEmployeeTaskResponse getEmployeeTask(
-            HrisGetEmployeeTaskRequest request,
-            Optional<Options> options) throws Exception {
+    public HrisGetEmployeeTaskResponse getEmployeeTask(HrisGetEmployeeTaskRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeTaskRequest, HrisGetEmployeeTaskResponse> operation
-              = new HrisGetEmployeeTaskOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeTaskOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * List Tasks
+     * 
+     * @return The call builder
+     */
+    public HrisListTasksRequestBuilder listTasks() {
+        return new HrisListTasksRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Tasks
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisListTasksResponse listTasks(HrisListTasksRequest request) throws Exception {
+        return listTasks(request, Optional.empty());
+    }
+
+    /**
+     * List Tasks
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisListTasksResponse listTasks(HrisListTasksRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<HrisListTasksRequest, HrisListTasksResponse> operation
+              = new HrisListTasksOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Get Task
+     * 
+     * @return The call builder
+     */
+    public HrisGetTaskRequestBuilder getTask() {
+        return new HrisGetTaskRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Get Task
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisGetTaskResponse getTask(HrisGetTaskRequest request) throws Exception {
+        return getTask(request, Optional.empty());
+    }
+
+    /**
+     * Get Task
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisGetTaskResponse getTask(HrisGetTaskRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<HrisGetTaskRequest, HrisGetTaskResponse> operation
+              = new HrisGetTaskOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

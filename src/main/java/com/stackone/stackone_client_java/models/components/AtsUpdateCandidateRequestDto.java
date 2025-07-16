@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsUpdateCandidateRequestDto {
 
+public class AtsUpdateCandidateRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -189,7 +189,12 @@ public class AtsUpdateCandidateRequestDto {
     }
     
     public AtsUpdateCandidateRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -330,9 +335,10 @@ public class AtsUpdateCandidateRequestDto {
         return (JsonNullable<List<CustomFields>>) customFields;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -628,7 +634,6 @@ public class AtsUpdateCandidateRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -660,21 +665,11 @@ public class AtsUpdateCandidateRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            passthrough,
-            unifiedCustomFields,
-            name,
-            firstName,
-            lastName,
-            email,
-            emails,
-            socialLinks,
-            phone,
-            phoneNumbers,
-            company,
-            title,
-            applicationIds,
-            hiredAt,
-            country,
+            passthrough, unifiedCustomFields, name,
+            firstName, lastName, email,
+            emails, socialLinks, phone,
+            phoneNumbers, company, title,
+            applicationIds, hiredAt, country,
             customFields);
     }
     
@@ -698,45 +693,47 @@ public class AtsUpdateCandidateRequestDto {
                 "country", country,
                 "customFields", customFields);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CandidateEmail>> emails = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<SocialLink>> socialLinks = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> phone = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<PhoneNumber>> phoneNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<String> company = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> applicationIds = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> hiredAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> country = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -756,6 +753,7 @@ public class AtsUpdateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Custom Unified Fields configured in your StackOne project
          */
@@ -773,6 +771,7 @@ public class AtsUpdateCandidateRequestDto {
             this.unifiedCustomFields = unifiedCustomFields;
             return this;
         }
+
 
         /**
          * Candidate name
@@ -792,6 +791,7 @@ public class AtsUpdateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Candidate first name
          */
@@ -809,6 +809,7 @@ public class AtsUpdateCandidateRequestDto {
             this.firstName = firstName;
             return this;
         }
+
 
         /**
          * Candidate last name
@@ -828,6 +829,7 @@ public class AtsUpdateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Candidate email
          */
@@ -845,6 +847,7 @@ public class AtsUpdateCandidateRequestDto {
             this.email = email;
             return this;
         }
+
 
         /**
          * List of candidate emails
@@ -864,6 +867,7 @@ public class AtsUpdateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * List of candidate social links
          */
@@ -881,6 +885,7 @@ public class AtsUpdateCandidateRequestDto {
             this.socialLinks = socialLinks;
             return this;
         }
+
 
         /**
          * Candidate phone number
@@ -906,6 +911,7 @@ public class AtsUpdateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * List of candidate phone numbers including the type of the number when available
          */
@@ -923,6 +929,7 @@ public class AtsUpdateCandidateRequestDto {
             this.phoneNumbers = phoneNumbers;
             return this;
         }
+
 
         /**
          * Candidate company
@@ -942,6 +949,7 @@ public class AtsUpdateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Candidate title
          */
@@ -959,6 +967,7 @@ public class AtsUpdateCandidateRequestDto {
             this.title = title;
             return this;
         }
+
 
         /**
          * List of candidate application IDs
@@ -978,6 +987,7 @@ public class AtsUpdateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Candidate hired date
          */
@@ -995,6 +1005,7 @@ public class AtsUpdateCandidateRequestDto {
             this.hiredAt = hiredAt;
             return this;
         }
+
 
         /**
          * Candidate country
@@ -1014,6 +1025,7 @@ public class AtsUpdateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * The candidate custom fields
          */
@@ -1031,25 +1043,17 @@ public class AtsUpdateCandidateRequestDto {
             this.customFields = customFields;
             return this;
         }
-        
+
         public AtsUpdateCandidateRequestDto build() {
+
             return new AtsUpdateCandidateRequestDto(
-                passthrough,
-                unifiedCustomFields,
-                name,
-                firstName,
-                lastName,
-                email,
-                emails,
-                socialLinks,
-                phone,
-                phoneNumbers,
-                company,
-                title,
-                applicationIds,
-                hiredAt,
-                country,
+                passthrough, unifiedCustomFields, name,
+                firstName, lastName, email,
+                emails, socialLinks, phone,
+                phoneNumbers, company, title,
+                applicationIds, hiredAt, country,
                 customFields);
         }
+
     }
 }

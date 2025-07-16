@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The pay period
  */
 public class HrisCreateEmployeeRequestDtoPayPeriod {
-
     /**
      * The pay period of the job postings.
      */
@@ -67,9 +66,10 @@ public class HrisCreateEmployeeRequestDtoPayPeriod {
         return (JsonNullable<HrisCreateEmployeeRequestDtoEmploymentSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The pay period of the job postings.
@@ -107,7 +107,6 @@ public class HrisCreateEmployeeRequestDtoPayPeriod {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class HrisCreateEmployeeRequestDtoPayPeriod {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class HrisCreateEmployeeRequestDtoPayPeriod {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The pay period of the job postings.
@@ -164,6 +164,7 @@ public class HrisCreateEmployeeRequestDtoPayPeriod {
             return this;
         }
 
+
         /**
          * The source value of the pay period.
          */
@@ -181,11 +182,12 @@ public class HrisCreateEmployeeRequestDtoPayPeriod {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDtoPayPeriod build() {
+
             return new HrisCreateEmployeeRequestDtoPayPeriod(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

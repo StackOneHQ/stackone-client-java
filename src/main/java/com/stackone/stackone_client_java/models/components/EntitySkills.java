@@ -15,8 +15,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class EntitySkills {
 
+public class EntitySkills {
     /**
      * The ID associated with this skill
      */
@@ -92,7 +92,9 @@ public class EntitySkills {
     }
     
     public EntitySkills() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -154,9 +156,10 @@ public class EntitySkills {
         return (JsonNullable<MinimumProficiency>) minimumProficiency;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with this skill
@@ -284,7 +287,6 @@ public class EntitySkills {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -307,12 +309,8 @@ public class EntitySkills {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            active,
-            language,
-            maximumProficiency,
+            id, remoteId, name,
+            active, language, maximumProficiency,
             minimumProficiency);
     }
     
@@ -327,26 +325,28 @@ public class EntitySkills {
                 "maximumProficiency", maximumProficiency,
                 "minimumProficiency", minimumProficiency);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> active = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Language> language = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MaximumProficiency> maximumProficiency = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MinimumProficiency> minimumProficiency = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with this skill
@@ -366,6 +366,7 @@ public class EntitySkills {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -383,6 +384,7 @@ public class EntitySkills {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name associated with this skill
@@ -402,6 +404,7 @@ public class EntitySkills {
             return this;
         }
 
+
         /**
          * Whether the skill is active and therefore available for use
          */
@@ -419,6 +422,7 @@ public class EntitySkills {
             this.active = active;
             return this;
         }
+
 
         /**
          * The language associated with this skill
@@ -438,6 +442,7 @@ public class EntitySkills {
             return this;
         }
 
+
         /**
          * The proficiency level of the skill
          */
@@ -456,6 +461,7 @@ public class EntitySkills {
             return this;
         }
 
+
         /**
          * The proficiency level of the skill
          */
@@ -473,16 +479,14 @@ public class EntitySkills {
             this.minimumProficiency = minimumProficiency;
             return this;
         }
-        
+
         public EntitySkills build() {
+
             return new EntitySkills(
-                id,
-                remoteId,
-                name,
-                active,
-                language,
-                maximumProficiency,
+                id, remoteId, name,
+                active, language, maximumProficiency,
                 minimumProficiency);
         }
+
     }
 }

@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingContentSectionType {
 
+public class JobPostingContentSectionType {
     /**
      * The type of the description.
      */
@@ -62,9 +62,10 @@ public class JobPostingContentSectionType {
         return (JsonNullable<JobPostingContentSectionSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the description.
@@ -102,7 +103,6 @@ public class JobPostingContentSectionType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class JobPostingContentSectionType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class JobPostingContentSectionType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends JobPostingContentSectionValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingContentSectionSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the description.
@@ -159,6 +160,7 @@ public class JobPostingContentSectionType {
             return this;
         }
 
+
         /**
          * The source value of the description type.
          */
@@ -176,11 +178,12 @@ public class JobPostingContentSectionType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public JobPostingContentSectionType build() {
+
             return new JobPostingContentSectionType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

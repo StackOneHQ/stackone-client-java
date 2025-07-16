@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CrmCreateContactRequestDto {
 
+public class CrmCreateContactRequestDto {
     /**
      * The contact first name
      */
@@ -114,7 +114,9 @@ public class CrmCreateContactRequestDto {
     }
     
     public CrmCreateContactRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -195,9 +197,10 @@ public class CrmCreateContactRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The contact first name
@@ -361,7 +364,6 @@ public class CrmCreateContactRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -386,15 +388,9 @@ public class CrmCreateContactRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            firstName,
-            lastName,
-            companyName,
-            emails,
-            phoneNumbers,
-            dealIds,
-            accountIds,
-            customFields,
-            passthrough);
+            firstName, lastName, companyName,
+            emails, phoneNumbers, dealIds,
+            accountIds, customFields, passthrough);
     }
     
     @Override
@@ -410,30 +406,32 @@ public class CrmCreateContactRequestDto {
                 "customFields", customFields,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> companyName = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> emails = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> phoneNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> dealIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> accountIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The contact first name
@@ -453,6 +451,7 @@ public class CrmCreateContactRequestDto {
             return this;
         }
 
+
         /**
          * The contact last name
          */
@@ -470,6 +469,7 @@ public class CrmCreateContactRequestDto {
             this.lastName = lastName;
             return this;
         }
+
 
         /**
          * The contact company name
@@ -489,6 +489,7 @@ public class CrmCreateContactRequestDto {
             return this;
         }
 
+
         /**
          * List of contact email addresses
          */
@@ -506,6 +507,7 @@ public class CrmCreateContactRequestDto {
             this.emails = emails;
             return this;
         }
+
 
         /**
          * List of contact phone numbers
@@ -525,6 +527,7 @@ public class CrmCreateContactRequestDto {
             return this;
         }
 
+
         /**
          * List of associated deal IDs
          */
@@ -542,6 +545,7 @@ public class CrmCreateContactRequestDto {
             this.dealIds = dealIds;
             return this;
         }
+
 
         /**
          * List of associated account IDs
@@ -561,6 +565,7 @@ public class CrmCreateContactRequestDto {
             return this;
         }
 
+
         /**
          * Contact custom fields
          */
@@ -579,6 +584,7 @@ public class CrmCreateContactRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -596,18 +602,14 @@ public class CrmCreateContactRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public CrmCreateContactRequestDto build() {
+
             return new CrmCreateContactRequestDto(
-                firstName,
-                lastName,
-                companyName,
-                emails,
-                phoneNumbers,
-                dealIds,
-                accountIds,
-                customFields,
-                passthrough);
+                firstName, lastName, companyName,
+                emails, phoneNumbers, dealIds,
+                accountIds, customFields, passthrough);
         }
+
     }
 }

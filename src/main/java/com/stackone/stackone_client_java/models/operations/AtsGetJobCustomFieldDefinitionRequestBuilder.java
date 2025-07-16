@@ -47,9 +47,7 @@ public class AtsGetJobCustomFieldDefinitionRequestBuilder {
             .build());
 
         RequestOperation<AtsGetJobCustomFieldDefinitionRequest, AtsGetJobCustomFieldDefinitionResponse> operation
-              = new AtsGetJobCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetJobCustomFieldDefinitionOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

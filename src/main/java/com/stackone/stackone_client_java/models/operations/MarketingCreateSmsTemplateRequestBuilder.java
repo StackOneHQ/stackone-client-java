@@ -65,9 +65,7 @@ public class MarketingCreateSmsTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreateSmsTemplateRequest, MarketingCreateSmsTemplateResponse> operation
-              = new MarketingCreateSmsTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateSmsTemplateOperation(sdkConfiguration, options);
         MarketingCreateSmsTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

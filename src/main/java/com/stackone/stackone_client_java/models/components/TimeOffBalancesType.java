@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The type of this policy
  */
 public class TimeOffBalancesType {
-
     /**
      * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends TimeOffBalancesPolicyTypeValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class TimeOffBalancesType {
         return (JsonNullable<TimeOffBalancesPolicyTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
@@ -95,7 +96,6 @@ public class TimeOffBalancesType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class TimeOffBalancesType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class TimeOffBalancesType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends TimeOffBalancesPolicyTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffBalancesPolicyTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
@@ -152,6 +153,7 @@ public class TimeOffBalancesType {
             return this;
         }
 
+
         public Builder sourceValue(TimeOffBalancesPolicyTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class TimeOffBalancesType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public TimeOffBalancesType build() {
+
             return new TimeOffBalancesType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

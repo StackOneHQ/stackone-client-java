@@ -47,9 +47,7 @@ public class CrmGetContactCustomFieldDefinitionRequestBuilder {
             .build());
 
         RequestOperation<CrmGetContactCustomFieldDefinitionRequest, CrmGetContactCustomFieldDefinitionResponse> operation
-              = new CrmGetContactCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmGetContactCustomFieldDefinitionOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

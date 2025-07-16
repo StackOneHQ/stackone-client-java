@@ -1,0 +1,11 @@
+# HrisShiftResultStatus
+
+The status of the shift
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `value`                                                                                            | [JsonNullable\<HrisShiftResultValue>](../../models/components/HrisShiftResultValue.md)             | :heavy_minus_sign:                                                                                 | The status of the shift                                                                            | confirmed                                                                                          |
+| `sourceValue`                                                                                      | [JsonNullable\<HrisShiftResultSourceValue>](../../models/components/HrisShiftResultSourceValue.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                | Confirmed                                                                                          |

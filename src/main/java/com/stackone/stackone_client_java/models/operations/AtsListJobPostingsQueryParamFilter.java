@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>ATS Job Postings Filter
  */
 public class AtsListJobPostingsQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -60,9 +59,10 @@ public class AtsListJobPostingsQueryParamFilter {
         return createdAfter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -100,7 +100,6 @@ public class AtsListJobPostingsQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,8 +117,7 @@ public class AtsListJobPostingsQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            createdAfter);
+            updatedAfter, createdAfter);
     }
     
     @Override
@@ -128,16 +126,18 @@ public class AtsListJobPostingsQueryParamFilter {
                 "updatedAfter", updatedAfter,
                 "createdAfter", createdAfter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> createdAfter = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -157,6 +157,7 @@ public class AtsListJobPostingsQueryParamFilter {
             return this;
         }
 
+
         /**
          * Use a string with a date to only select results created after that given date
          */
@@ -174,11 +175,12 @@ public class AtsListJobPostingsQueryParamFilter {
             this.createdAfter = createdAfter;
             return this;
         }
-        
+
         public AtsListJobPostingsQueryParamFilter build() {
+
             return new AtsListJobPostingsQueryParamFilter(
-                updatedAfter,
-                createdAfter);
+                updatedAfter, createdAfter);
         }
+
     }
 }

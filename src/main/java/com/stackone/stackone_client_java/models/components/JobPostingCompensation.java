@@ -14,35 +14,43 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class JobPostingCompensation {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends JobPostingCompensationType> type;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_period")
     private JsonNullable<? extends JobPostingCompensationPayPeriod> payPeriod;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_frequency")
     private JsonNullable<? extends JobPostingCompensationPayFrequency> payFrequency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("currency")
     private JsonNullable<String> currency;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<String> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("min_value")
     private JsonNullable<String> minValue;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_value")
@@ -77,7 +85,9 @@ public class JobPostingCompensation {
     }
     
     public JobPostingCompensation() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -123,9 +133,10 @@ public class JobPostingCompensation {
         return maxValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public JobPostingCompensation withName(String name) {
         Utils.checkNotNull(name, "name");
@@ -223,7 +234,6 @@ public class JobPostingCompensation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -247,14 +257,9 @@ public class JobPostingCompensation {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            type,
-            payPeriod,
-            payFrequency,
-            currency,
-            value,
-            minValue,
-            maxValue);
+            name, type, payPeriod,
+            payFrequency, currency, value,
+            minValue, maxValue);
     }
     
     @Override
@@ -269,28 +274,30 @@ public class JobPostingCompensation {
                 "minValue", minValue,
                 "maxValue", maxValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingCompensationType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingCompensationPayPeriod> payPeriod = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingCompensationPayFrequency> payFrequency = JsonNullable.undefined();
- 
+
         private JsonNullable<String> currency = JsonNullable.undefined();
- 
+
         private JsonNullable<String> value = JsonNullable.undefined();
- 
+
         private JsonNullable<String> minValue = JsonNullable.undefined();
- 
+
         private JsonNullable<String> maxValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
@@ -304,6 +311,7 @@ public class JobPostingCompensation {
             return this;
         }
 
+
         public Builder type(JobPostingCompensationType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -315,6 +323,7 @@ public class JobPostingCompensation {
             this.type = type;
             return this;
         }
+
 
         public Builder payPeriod(JobPostingCompensationPayPeriod payPeriod) {
             Utils.checkNotNull(payPeriod, "payPeriod");
@@ -328,6 +337,7 @@ public class JobPostingCompensation {
             return this;
         }
 
+
         public Builder payFrequency(JobPostingCompensationPayFrequency payFrequency) {
             Utils.checkNotNull(payFrequency, "payFrequency");
             this.payFrequency = JsonNullable.of(payFrequency);
@@ -339,6 +349,7 @@ public class JobPostingCompensation {
             this.payFrequency = payFrequency;
             return this;
         }
+
 
         public Builder currency(String currency) {
             Utils.checkNotNull(currency, "currency");
@@ -352,6 +363,7 @@ public class JobPostingCompensation {
             return this;
         }
 
+
         public Builder value(String value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
@@ -363,6 +375,7 @@ public class JobPostingCompensation {
             this.value = value;
             return this;
         }
+
 
         public Builder minValue(String minValue) {
             Utils.checkNotNull(minValue, "minValue");
@@ -376,6 +389,7 @@ public class JobPostingCompensation {
             return this;
         }
 
+
         public Builder maxValue(String maxValue) {
             Utils.checkNotNull(maxValue, "maxValue");
             this.maxValue = JsonNullable.of(maxValue);
@@ -387,17 +401,14 @@ public class JobPostingCompensation {
             this.maxValue = maxValue;
             return this;
         }
-        
+
         public JobPostingCompensation build() {
+
             return new JobPostingCompensation(
-                name,
-                type,
-                payPeriod,
-                payFrequency,
-                currency,
-                value,
-                minValue,
-                maxValue);
+                name, type, payPeriod,
+                payFrequency, currency, value,
+                minValue, maxValue);
         }
+
     }
 }

@@ -17,15 +17,18 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class MarketingCreatePushTemplateRequestDto {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
     private JsonNullable<? extends List<String>> tags;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("messages")
@@ -55,7 +58,8 @@ public class MarketingCreatePushTemplateRequestDto {
     }
     
     public MarketingCreatePushTemplateRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -84,9 +88,10 @@ public class MarketingCreatePushTemplateRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public MarketingCreatePushTemplateRequestDto withName(String name) {
         Utils.checkNotNull(name, "name");
@@ -142,7 +147,6 @@ public class MarketingCreatePushTemplateRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -162,9 +166,7 @@ public class MarketingCreatePushTemplateRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            tags,
-            messages,
+            name, tags, messages,
             passthrough);
     }
     
@@ -176,20 +178,22 @@ public class MarketingCreatePushTemplateRequestDto {
                 "messages", messages,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<PushMessages>> messages = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
@@ -203,6 +207,7 @@ public class MarketingCreatePushTemplateRequestDto {
             return this;
         }
 
+
         public Builder tags(List<String> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = JsonNullable.of(tags);
@@ -215,6 +220,7 @@ public class MarketingCreatePushTemplateRequestDto {
             return this;
         }
 
+
         public Builder messages(List<PushMessages> messages) {
             Utils.checkNotNull(messages, "messages");
             this.messages = JsonNullable.of(messages);
@@ -226,6 +232,7 @@ public class MarketingCreatePushTemplateRequestDto {
             this.messages = messages;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -244,13 +251,13 @@ public class MarketingCreatePushTemplateRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public MarketingCreatePushTemplateRequestDto build() {
+
             return new MarketingCreatePushTemplateRequestDto(
-                name,
-                tags,
-                messages,
+                name, tags, messages,
                 passthrough);
         }
+
     }
 }

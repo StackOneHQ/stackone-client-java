@@ -25,6 +25,7 @@ public class HrisCreateTimeOffRequestDtoStatus {
     @JsonProperty("value")
     private JsonNullable<? extends HrisCreateTimeOffRequestDtoValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HrisCreateTimeOffRequestDtoSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class HrisCreateTimeOffRequestDtoStatus {
         return (JsonNullable<HrisCreateTimeOffRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisCreateTimeOffRequestDtoStatus withValue(HrisCreateTimeOffRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class HrisCreateTimeOffRequestDtoStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class HrisCreateTimeOffRequestDtoStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class HrisCreateTimeOffRequestDtoStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HrisCreateTimeOffRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class HrisCreateTimeOffRequestDtoStatus {
             return this;
         }
 
+
         public Builder sourceValue(HrisCreateTimeOffRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class HrisCreateTimeOffRequestDtoStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisCreateTimeOffRequestDtoStatus build() {
+
             return new HrisCreateTimeOffRequestDtoStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

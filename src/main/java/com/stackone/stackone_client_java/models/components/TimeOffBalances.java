@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class TimeOffBalances {
 
+public class TimeOffBalances {
     /**
      * Unique identifier
      */
@@ -153,7 +153,11 @@ public class TimeOffBalances {
     }
     
     public TimeOffBalances() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -262,9 +266,10 @@ public class TimeOffBalances {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -500,7 +505,6 @@ public class TimeOffBalances {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -529,18 +533,10 @@ public class TimeOffBalances {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            employeeId,
-            remoteEmployeeId,
-            policyId,
-            remotePolicyId,
-            policy,
-            currentBalance,
-            initialBalance,
-            balanceUnit,
-            balanceStartDate,
-            balanceExpiryDate,
+            id, remoteId, employeeId,
+            remoteEmployeeId, policyId, remotePolicyId,
+            policy, currentBalance, initialBalance,
+            balanceUnit, balanceStartDate, balanceExpiryDate,
             updatedAt);
     }
     
@@ -561,38 +557,40 @@ public class TimeOffBalances {
                 "balanceExpiryDate", balanceExpiryDate,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteEmployeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> policyId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remotePolicyId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffBalancesPolicy> policy = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> currentBalance = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> initialBalance = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends BalanceUnit> balanceUnit = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> balanceStartDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> balanceExpiryDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -612,6 +610,7 @@ public class TimeOffBalances {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -629,6 +628,7 @@ public class TimeOffBalances {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The employee id associated with this balance
@@ -648,6 +648,7 @@ public class TimeOffBalances {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the employee associated with this balance
          */
@@ -665,6 +666,7 @@ public class TimeOffBalances {
             this.remoteEmployeeId = remoteEmployeeId;
             return this;
         }
+
 
         /**
          * The time off policy id associated with this balance
@@ -684,6 +686,7 @@ public class TimeOffBalances {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the time off policy id associated with this balance
          */
@@ -701,6 +704,7 @@ public class TimeOffBalances {
             this.remotePolicyId = remotePolicyId;
             return this;
         }
+
 
         /**
          * The time off policy associated with this balance
@@ -720,6 +724,7 @@ public class TimeOffBalances {
             return this;
         }
 
+
         /**
          * The current numeric balance for the associated employee and time off policy
          */
@@ -737,6 +742,7 @@ public class TimeOffBalances {
             this.currentBalance = currentBalance;
             return this;
         }
+
 
         /**
          * The initial numeric balance for the associated employee and time off policy as of the balance start date
@@ -756,6 +762,7 @@ public class TimeOffBalances {
             return this;
         }
 
+
         /**
          * The duration unit of the current balance
          */
@@ -773,6 +780,7 @@ public class TimeOffBalances {
             this.balanceUnit = balanceUnit;
             return this;
         }
+
 
         /**
          * The date of when the initial balance quantity was set
@@ -792,6 +800,7 @@ public class TimeOffBalances {
             return this;
         }
 
+
         /**
          * The date of when the current balance expires
          */
@@ -810,6 +819,7 @@ public class TimeOffBalances {
             return this;
         }
 
+
         /**
          * The updated_at date of this time off balance
          */
@@ -827,22 +837,16 @@ public class TimeOffBalances {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public TimeOffBalances build() {
+
             return new TimeOffBalances(
-                id,
-                remoteId,
-                employeeId,
-                remoteEmployeeId,
-                policyId,
-                remotePolicyId,
-                policy,
-                currentBalance,
-                initialBalance,
-                balanceUnit,
-                balanceStartDate,
-                balanceExpiryDate,
+                id, remoteId, employeeId,
+                remoteEmployeeId, policyId, remotePolicyId,
+                policy, currentBalance, initialBalance,
+                balanceUnit, balanceStartDate, balanceExpiryDate,
                 updatedAt);
         }
+
     }
 }

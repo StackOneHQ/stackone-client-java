@@ -4,7 +4,6 @@
 package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.lang.Deprecated;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,14 +11,14 @@ import java.util.Optional;
 /**
  * QueryParamStatus
  * 
- * <p>The status of the job
- * 
- * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
+ * <p>Filter to select shifts by status
  */
-@Deprecated
 public enum QueryParamStatus {
-    OPEN("open"),
-    DRAFT("draft");
+    DRAFT("draft"),
+    PUBLISHED("published"),
+    CONFIRMED("confirmed"),
+    CANCELLED("cancelled"),
+    UNMAPPED_VALUE("unmapped_value");
 
     @JsonValue
     private final String value;

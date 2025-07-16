@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateCandidateRequestDto {
 
+public class AtsCreateCandidateRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -169,7 +169,11 @@ public class AtsCreateCandidateRequestDto {
     }
     
     public AtsCreateCandidateRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -292,9 +296,10 @@ public class AtsCreateCandidateRequestDto {
         return (JsonNullable<List<CustomFields>>) customFields;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -554,7 +559,6 @@ public class AtsCreateCandidateRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -584,20 +588,11 @@ public class AtsCreateCandidateRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            passthrough,
-            unifiedCustomFields,
-            phoneNumber,
-            phoneNumbers,
-            name,
-            firstName,
-            lastName,
-            email,
-            socialLinks,
-            company,
-            title,
-            hiredAt,
-            country,
-            customFields);
+            passthrough, unifiedCustomFields, phoneNumber,
+            phoneNumbers, name, firstName,
+            lastName, email, socialLinks,
+            company, title, hiredAt,
+            country, customFields);
     }
     
     @Override
@@ -618,41 +613,43 @@ public class AtsCreateCandidateRequestDto {
                 "country", country,
                 "customFields", customFields);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> phoneNumber = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<PhoneNumber>> phoneNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<SocialLink>> socialLinks = JsonNullable.undefined();
- 
+
         private JsonNullable<String> company = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> hiredAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> country = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -672,6 +669,7 @@ public class AtsCreateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Custom Unified Fields configured in your StackOne project
          */
@@ -689,6 +687,7 @@ public class AtsCreateCandidateRequestDto {
             this.unifiedCustomFields = unifiedCustomFields;
             return this;
         }
+
 
         /**
          * The candidate personal phone number
@@ -714,6 +713,7 @@ public class AtsCreateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * List of candidate phone numbers including the type of the number when available
          */
@@ -731,6 +731,7 @@ public class AtsCreateCandidateRequestDto {
             this.phoneNumbers = phoneNumbers;
             return this;
         }
+
 
         /**
          * Candidate name
@@ -750,6 +751,7 @@ public class AtsCreateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Candidate first name
          */
@@ -767,6 +769,7 @@ public class AtsCreateCandidateRequestDto {
             this.firstName = firstName;
             return this;
         }
+
 
         /**
          * Candidate last name
@@ -786,6 +789,7 @@ public class AtsCreateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Candidate email
          */
@@ -803,6 +807,7 @@ public class AtsCreateCandidateRequestDto {
             this.email = email;
             return this;
         }
+
 
         /**
          * List of candidate social links
@@ -822,6 +827,7 @@ public class AtsCreateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Candidate company
          */
@@ -839,6 +845,7 @@ public class AtsCreateCandidateRequestDto {
             this.company = company;
             return this;
         }
+
 
         /**
          * Candidate title
@@ -858,6 +865,7 @@ public class AtsCreateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * Candidate hired date
          */
@@ -875,6 +883,7 @@ public class AtsCreateCandidateRequestDto {
             this.hiredAt = hiredAt;
             return this;
         }
+
 
         /**
          * Candidate country
@@ -894,6 +903,7 @@ public class AtsCreateCandidateRequestDto {
             return this;
         }
 
+
         /**
          * The candidate custom fields
          */
@@ -911,23 +921,16 @@ public class AtsCreateCandidateRequestDto {
             this.customFields = customFields;
             return this;
         }
-        
+
         public AtsCreateCandidateRequestDto build() {
+
             return new AtsCreateCandidateRequestDto(
-                passthrough,
-                unifiedCustomFields,
-                phoneNumber,
-                phoneNumbers,
-                name,
-                firstName,
-                lastName,
-                email,
-                socialLinks,
-                company,
-                title,
-                hiredAt,
-                country,
-                customFields);
+                passthrough, unifiedCustomFields, phoneNumber,
+                phoneNumbers, name, firstName,
+                lastName, email, socialLinks,
+                company, title, hiredAt,
+                country, customFields);
         }
+
     }
 }

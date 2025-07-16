@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class WorkEligibility {
 
+public class WorkEligibility {
     /**
      * Unique identifier
      */
@@ -31,21 +31,26 @@ public class WorkEligibility {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends WorkEligibilityType> type;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sub_type")
     private JsonNullable<String> subType;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("document")
     private JsonNullable<? extends Document> document;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("valid_from")
     private JsonNullable<OffsetDateTime> validFrom;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("valid_to")
@@ -57,6 +62,7 @@ public class WorkEligibility {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("issued_by")
     private JsonNullable<? extends IssuedBy> issuedBy;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("number")
@@ -94,7 +100,9 @@ public class WorkEligibility {
     }
     
     public WorkEligibility() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -154,9 +162,10 @@ public class WorkEligibility {
         return number;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -284,7 +293,6 @@ public class WorkEligibility {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -309,15 +317,9 @@ public class WorkEligibility {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            type,
-            subType,
-            document,
-            validFrom,
-            validTo,
-            issuedBy,
-            number);
+            id, remoteId, type,
+            subType, document, validFrom,
+            validTo, issuedBy, number);
     }
     
     @Override
@@ -333,30 +335,32 @@ public class WorkEligibility {
                 "issuedBy", issuedBy,
                 "number", number);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends WorkEligibilityType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> subType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Document> document = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> validFrom = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> validTo = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IssuedBy> issuedBy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> number = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -376,6 +380,7 @@ public class WorkEligibility {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -394,6 +399,7 @@ public class WorkEligibility {
             return this;
         }
 
+
         public Builder type(WorkEligibilityType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -405,6 +411,7 @@ public class WorkEligibility {
             this.type = type;
             return this;
         }
+
 
         public Builder subType(String subType) {
             Utils.checkNotNull(subType, "subType");
@@ -418,6 +425,7 @@ public class WorkEligibility {
             return this;
         }
 
+
         public Builder document(Document document) {
             Utils.checkNotNull(document, "document");
             this.document = JsonNullable.of(document);
@@ -429,6 +437,7 @@ public class WorkEligibility {
             this.document = document;
             return this;
         }
+
 
         public Builder validFrom(OffsetDateTime validFrom) {
             Utils.checkNotNull(validFrom, "validFrom");
@@ -442,6 +451,7 @@ public class WorkEligibility {
             return this;
         }
 
+
         public Builder validTo(OffsetDateTime validTo) {
             Utils.checkNotNull(validTo, "validTo");
             this.validTo = JsonNullable.of(validTo);
@@ -453,6 +463,7 @@ public class WorkEligibility {
             this.validTo = validTo;
             return this;
         }
+
 
         /**
          * The country code of the issued by authority
@@ -472,6 +483,7 @@ public class WorkEligibility {
             return this;
         }
 
+
         public Builder number(String number) {
             Utils.checkNotNull(number, "number");
             this.number = JsonNullable.of(number);
@@ -483,18 +495,14 @@ public class WorkEligibility {
             this.number = number;
             return this;
         }
-        
+
         public WorkEligibility build() {
+
             return new WorkEligibility(
-                id,
-                remoteId,
-                type,
-                subType,
-                document,
-                validFrom,
-                validTo,
-                issuedBy,
-                number);
+                id, remoteId, type,
+                subType, document, validFrom,
+                validTo, issuedBy, number);
         }
+
     }
 }

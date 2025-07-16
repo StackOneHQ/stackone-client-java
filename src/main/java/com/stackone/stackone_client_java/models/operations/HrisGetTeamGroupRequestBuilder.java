@@ -47,9 +47,7 @@ public class HrisGetTeamGroupRequestBuilder {
             .build());
 
         RequestOperation<HrisGetTeamGroupRequest, HrisGetTeamGroupResponse> operation
-              = new HrisGetTeamGroupOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetTeamGroupOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

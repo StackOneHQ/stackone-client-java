@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamUpdateUserRequestDtoStatus {
 
+public class IamUpdateUserRequestDtoStatus {
     /**
      * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends IamUpdateUserRequestDtoValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -56,9 +57,10 @@ public class IamUpdateUserRequestDtoStatus {
         return (JsonNullable<IamUpdateUserRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
@@ -90,7 +92,6 @@ public class IamUpdateUserRequestDtoStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,8 +109,7 @@ public class IamUpdateUserRequestDtoStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -118,16 +118,18 @@ public class IamUpdateUserRequestDtoStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends IamUpdateUserRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamUpdateUserRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
@@ -147,6 +149,7 @@ public class IamUpdateUserRequestDtoStatus {
             return this;
         }
 
+
         public Builder sourceValue(IamUpdateUserRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -158,11 +161,12 @@ public class IamUpdateUserRequestDtoStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public IamUpdateUserRequestDtoStatus build() {
+
             return new IamUpdateUserRequestDtoStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

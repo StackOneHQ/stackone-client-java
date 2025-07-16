@@ -25,6 +25,7 @@ public class CreateCategoriesApiModelHierarchy {
     @JsonProperty("value")
     private JsonNullable<? extends CreateCategoriesApiModelValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CreateCategoriesApiModelSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class CreateCategoriesApiModelHierarchy {
         return (JsonNullable<CreateCategoriesApiModelSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CreateCategoriesApiModelHierarchy withValue(CreateCategoriesApiModelValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class CreateCategoriesApiModelHierarchy {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class CreateCategoriesApiModelHierarchy {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class CreateCategoriesApiModelHierarchy {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CreateCategoriesApiModelValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateCategoriesApiModelSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(CreateCategoriesApiModelValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class CreateCategoriesApiModelHierarchy {
             return this;
         }
 
+
         public Builder sourceValue(CreateCategoriesApiModelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class CreateCategoriesApiModelHierarchy {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CreateCategoriesApiModelHierarchy build() {
+
             return new CreateCategoriesApiModelHierarchy(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

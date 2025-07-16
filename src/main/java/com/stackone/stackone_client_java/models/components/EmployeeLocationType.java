@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The location type
  */
 public class EmployeeLocationType {
-
     /**
      * The type of the location.
      */
@@ -67,9 +66,10 @@ public class EmployeeLocationType {
         return (JsonNullable<EmployeeWorkLocationLocationTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the location.
@@ -107,7 +107,6 @@ public class EmployeeLocationType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class EmployeeLocationType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class EmployeeLocationType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmployeeWorkLocationLocationTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeWorkLocationLocationTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the location.
@@ -164,6 +164,7 @@ public class EmployeeLocationType {
             return this;
         }
 
+
         /**
          * The source value of the location type.
          */
@@ -181,11 +182,12 @@ public class EmployeeLocationType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EmployeeLocationType build() {
+
             return new EmployeeLocationType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

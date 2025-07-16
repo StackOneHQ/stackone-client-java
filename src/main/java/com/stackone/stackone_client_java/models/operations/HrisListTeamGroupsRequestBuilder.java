@@ -58,9 +58,7 @@ public class HrisListTeamGroupsRequestBuilder {
             .build());
 
         RequestOperation<HrisListTeamGroupsRequest, HrisListTeamGroupsResponse> operation
-              = new HrisListTeamGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTeamGroupsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class HrisListTeamGroupsRequestBuilder {
             .build());
 
         RequestOperation<HrisListTeamGroupsRequest, HrisListTeamGroupsResponse> operation
-              = new HrisListTeamGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListTeamGroupsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

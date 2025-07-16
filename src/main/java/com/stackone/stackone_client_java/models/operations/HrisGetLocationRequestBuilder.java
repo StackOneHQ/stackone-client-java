@@ -47,9 +47,7 @@ public class HrisGetLocationRequestBuilder {
             .build());
 
         RequestOperation<HrisGetLocationRequest, HrisGetLocationResponse> operation
-              = new HrisGetLocationOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetLocationOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

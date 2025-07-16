@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamMfaTypeEnum {
 
+public class IamMfaTypeEnum {
     /**
      * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends IamMfaTypeEnumValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -56,9 +57,10 @@ public class IamMfaTypeEnum {
         return (JsonNullable<IamMfaTypeEnumSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
@@ -90,7 +92,6 @@ public class IamMfaTypeEnum {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,8 +109,7 @@ public class IamMfaTypeEnum {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -118,16 +118,18 @@ public class IamMfaTypeEnum {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends IamMfaTypeEnumValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamMfaTypeEnumSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
@@ -147,6 +149,7 @@ public class IamMfaTypeEnum {
             return this;
         }
 
+
         public Builder sourceValue(IamMfaTypeEnumSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -158,11 +161,12 @@ public class IamMfaTypeEnum {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public IamMfaTypeEnum build() {
+
             return new IamMfaTypeEnum(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

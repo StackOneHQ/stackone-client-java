@@ -58,9 +58,7 @@ public class AtsListJobsRequestBuilder {
             .build());
 
         RequestOperation<AtsListJobsRequest, AtsListJobsResponse> operation
-              = new AtsListJobsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListJobsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class AtsListJobsRequestBuilder {
             .build());
 
         RequestOperation<AtsListJobsRequest, AtsListJobsResponse> operation
-              = new AtsListJobsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListJobsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

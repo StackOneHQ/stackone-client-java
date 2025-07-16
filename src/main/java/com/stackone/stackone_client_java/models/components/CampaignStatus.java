@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Status of the Campaign
  */
 public class CampaignStatus {
-
     /**
      * The Status of the campaign.
      */
@@ -67,9 +66,10 @@ public class CampaignStatus {
         return (JsonNullable<CampaignStatusSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Status of the campaign.
@@ -107,7 +107,6 @@ public class CampaignStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class CampaignStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class CampaignStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CampaignStatusValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CampaignStatusSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Status of the campaign.
@@ -164,6 +164,7 @@ public class CampaignStatus {
             return this;
         }
 
+
         /**
          * The source value of the Status.
          */
@@ -181,11 +182,12 @@ public class CampaignStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CampaignStatus build() {
+
             return new CampaignStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

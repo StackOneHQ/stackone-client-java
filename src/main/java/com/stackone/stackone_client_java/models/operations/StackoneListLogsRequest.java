@@ -13,8 +13,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class StackoneListLogsRequest {
 
+public class StackoneListLogsRequest {
     /**
      * The field to order the results by.
      */
@@ -74,7 +74,8 @@ public class StackoneListLogsRequest {
     }
     
     public StackoneListLogsRequest() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -129,9 +130,10 @@ public class StackoneListLogsRequest {
         return (JsonNullable<QueryParamFilter>) filter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The field to order the results by.
@@ -241,7 +243,6 @@ public class StackoneListLogsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -263,12 +264,8 @@ public class StackoneListLogsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            orderBy,
-            orderDirection,
-            pageSize,
-            next,
-            include,
-            filter);
+            orderBy, orderDirection, pageSize,
+            next, include, filter);
     }
     
     @Override
@@ -281,24 +278,26 @@ public class StackoneListLogsRequest {
                 "include", include,
                 "filter", filter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends QueryParamOrderBy> orderBy = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends QueryParamOrderDirection> orderDirection = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends QueryParamInclude> include = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends QueryParamFilter> filter = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The field to order the results by.
@@ -318,6 +317,7 @@ public class StackoneListLogsRequest {
             return this;
         }
 
+
         /**
          * The direction to order the results by.
          */
@@ -335,6 +335,7 @@ public class StackoneListLogsRequest {
             this.orderDirection = orderDirection;
             return this;
         }
+
 
         /**
          * The number of results per page (default value is 25)
@@ -354,6 +355,7 @@ public class StackoneListLogsRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -371,6 +373,7 @@ public class StackoneListLogsRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * The include parameter allows you to include additional data in the response.
@@ -390,6 +393,7 @@ public class StackoneListLogsRequest {
             return this;
         }
 
+
         /**
          * Filter parameters that allow greater customisation of the list response
          */
@@ -407,15 +411,13 @@ public class StackoneListLogsRequest {
             this.filter = filter;
             return this;
         }
-        
+
         public StackoneListLogsRequest build() {
+
             return new StackoneListLogsRequest(
-                orderBy,
-                orderDirection,
-                pageSize,
-                next,
-                include,
-                filter);
+                orderBy, orderDirection, pageSize,
+                next, include, filter);
         }
+
     }
 }

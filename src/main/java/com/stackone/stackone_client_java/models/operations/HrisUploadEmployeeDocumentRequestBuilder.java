@@ -73,9 +73,7 @@ public class HrisUploadEmployeeDocumentRequestBuilder {
             .build());
 
         RequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
-              = new HrisUploadEmployeeDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisUploadEmployeeDocumentOperation(sdkConfiguration, options);
         HrisUploadEmployeeDocumentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

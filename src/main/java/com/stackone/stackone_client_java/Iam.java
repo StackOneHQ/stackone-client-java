@@ -49,7 +49,6 @@ import com.stackone.stackone_client_java.operations.IamUpdateUserOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -88,16 +87,11 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamListUsersResponse listUsers(
-            IamListUsersRequest request,
-            Optional<Options> options) throws Exception {
+    public IamListUsersResponse listUsers(IamListUsersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamListUsersRequest, IamListUsersResponse> operation
-              = new IamListUsersOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamListUsersOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get User
@@ -127,16 +121,11 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamGetUserResponse getUser(
-            IamGetUserRequest request,
-            Optional<Options> options) throws Exception {
+    public IamGetUserResponse getUser(IamGetUserRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamGetUserRequest, IamGetUserResponse> operation
-              = new IamGetUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamGetUserOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Delete User
@@ -155,9 +144,7 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamDeleteUserResponse deleteUser(
-            String xAccountId,
-            String id) throws Exception {
+    public IamDeleteUserResponse deleteUser(String xAccountId, String id) throws Exception {
         return deleteUser(xAccountId, id, Optional.empty());
     }
 
@@ -171,8 +158,7 @@ public class Iam {
      * @throws Exception if the API call fails
      */
     public IamDeleteUserResponse deleteUser(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             Optional<Options> options) throws Exception {
         IamDeleteUserRequest request =
             IamDeleteUserRequest
@@ -181,12 +167,9 @@ public class Iam {
                 .id(id)
                 .build();
         RequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
-              = new IamDeleteUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamDeleteUserOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update User
@@ -207,10 +190,10 @@ public class Iam {
      * @throws Exception if the API call fails
      */
     public IamUpdateUserResponse updateUser(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             IamUpdateUserRequestDto iamUpdateUserRequestDto) throws Exception {
-        return updateUser(xAccountId, id, iamUpdateUserRequestDto, Optional.empty());
+        return updateUser(xAccountId, id, iamUpdateUserRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -224,10 +207,8 @@ public class Iam {
      * @throws Exception if the API call fails
      */
     public IamUpdateUserResponse updateUser(
-            String xAccountId,
-            String id,
-            IamUpdateUserRequestDto iamUpdateUserRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            IamUpdateUserRequestDto iamUpdateUserRequestDto, Optional<Options> options) throws Exception {
         IamUpdateUserRequest request =
             IamUpdateUserRequest
                 .builder()
@@ -236,12 +217,9 @@ public class Iam {
                 .iamUpdateUserRequestDto(iamUpdateUserRequestDto)
                 .build();
         RequestOperation<IamUpdateUserRequest, IamUpdateUserResponse> operation
-              = new IamUpdateUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamUpdateUserOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Roles
@@ -271,16 +249,11 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamListRolesResponse listRoles(
-            IamListRolesRequest request,
-            Optional<Options> options) throws Exception {
+    public IamListRolesResponse listRoles(IamListRolesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamListRolesRequest, IamListRolesResponse> operation
-              = new IamListRolesOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamListRolesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Role
@@ -310,16 +283,11 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamGetRoleResponse getRole(
-            IamGetRoleRequest request,
-            Optional<Options> options) throws Exception {
+    public IamGetRoleResponse getRole(IamGetRoleRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamGetRoleRequest, IamGetRoleResponse> operation
-              = new IamGetRoleOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamGetRoleOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Groups
@@ -349,16 +317,11 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamListGroupsResponse listGroups(
-            IamListGroupsRequest request,
-            Optional<Options> options) throws Exception {
+    public IamListGroupsResponse listGroups(IamListGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamListGroupsRequest, IamListGroupsResponse> operation
-              = new IamListGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamListGroupsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Group
@@ -388,16 +351,11 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamGetGroupResponse getGroup(
-            IamGetGroupRequest request,
-            Optional<Options> options) throws Exception {
+    public IamGetGroupResponse getGroup(IamGetGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamGetGroupRequest, IamGetGroupResponse> operation
-              = new IamGetGroupOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamGetGroupOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Policies
@@ -427,16 +385,11 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamListPoliciesResponse listPolicies(
-            IamListPoliciesRequest request,
-            Optional<Options> options) throws Exception {
+    public IamListPoliciesResponse listPolicies(IamListPoliciesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamListPoliciesRequest, IamListPoliciesResponse> operation
-              = new IamListPoliciesOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamListPoliciesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Policy
@@ -466,13 +419,9 @@ public class Iam {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public IamGetPolicyResponse getPolicy(
-            IamGetPolicyRequest request,
-            Optional<Options> options) throws Exception {
+    public IamGetPolicyResponse getPolicy(IamGetPolicyRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamGetPolicyRequest, IamGetPolicyResponse> operation
-              = new IamGetPolicyOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamGetPolicyOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

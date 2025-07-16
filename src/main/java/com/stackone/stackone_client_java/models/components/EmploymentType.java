@@ -24,7 +24,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @Deprecated
 public class EmploymentType {
-
     /**
      * The type of the employment.
      */
@@ -71,9 +70,10 @@ public class EmploymentType {
         return (JsonNullable<EmployeeEmploymentTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the employment.
@@ -111,7 +111,6 @@ public class EmploymentType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,8 +128,7 @@ public class EmploymentType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -139,16 +137,18 @@ public class EmploymentType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmployeeEmploymentTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeEmploymentTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the employment.
@@ -168,6 +168,7 @@ public class EmploymentType {
             return this;
         }
 
+
         /**
          * The source value of the employment type.
          */
@@ -185,11 +186,12 @@ public class EmploymentType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EmploymentType build() {
+
             return new EmploymentType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

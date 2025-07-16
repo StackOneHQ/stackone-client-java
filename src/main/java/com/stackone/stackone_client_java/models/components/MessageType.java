@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class MessageType {
 
+public class MessageType {
     /**
      * The unified message type.
      */
@@ -62,9 +62,10 @@ public class MessageType {
         return (JsonNullable<EmailMessagesSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified message type.
@@ -102,7 +103,6 @@ public class MessageType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class MessageType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class MessageType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmailMessagesValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmailMessagesSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified message type.
@@ -159,6 +160,7 @@ public class MessageType {
             return this;
         }
 
+
         /**
          * The original value from the provider used to derive the unified message type.
          */
@@ -176,11 +178,12 @@ public class MessageType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public MessageType build() {
+
             return new MessageType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

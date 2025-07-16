@@ -29,6 +29,7 @@ public class EmploymentContractType {
     @JsonProperty("value")
     private JsonNullable<? extends EmployeeEmploymentContractTypeValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends EmployeeEmploymentContractTypeSourceValue> sourceValue;
@@ -59,9 +60,10 @@ public class EmploymentContractType {
         return (JsonNullable<EmployeeEmploymentContractTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public EmploymentContractType withValue(EmployeeEmploymentContractTypeValue value) {
         Utils.checkNotNull(value, "value");
@@ -87,7 +89,6 @@ public class EmploymentContractType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,8 +106,7 @@ public class EmploymentContractType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -115,16 +115,18 @@ public class EmploymentContractType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmployeeEmploymentContractTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeEmploymentContractTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(EmployeeEmploymentContractTypeValue value) {
             Utils.checkNotNull(value, "value");
@@ -138,6 +140,7 @@ public class EmploymentContractType {
             return this;
         }
 
+
         public Builder sourceValue(EmployeeEmploymentContractTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -149,11 +152,12 @@ public class EmploymentContractType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EmploymentContractType build() {
+
             return new EmploymentContractType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

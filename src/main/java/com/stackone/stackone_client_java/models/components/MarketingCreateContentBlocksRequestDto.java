@@ -17,15 +17,18 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class MarketingCreateContentBlocksRequestDto {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
     private JsonNullable<? extends List<String>> tags;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content")
@@ -65,7 +68,8 @@ public class MarketingCreateContentBlocksRequestDto {
     }
     
     public MarketingCreateContentBlocksRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -102,9 +106,10 @@ public class MarketingCreateContentBlocksRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public MarketingCreateContentBlocksRequestDto withName(String name) {
         Utils.checkNotNull(name, "name");
@@ -178,7 +183,6 @@ public class MarketingCreateContentBlocksRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -199,11 +203,8 @@ public class MarketingCreateContentBlocksRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            tags,
-            content,
-            type,
-            passthrough);
+            name, tags, content,
+            type, passthrough);
     }
     
     @Override
@@ -215,22 +216,24 @@ public class MarketingCreateContentBlocksRequestDto {
                 "type", type,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<String> content = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MarketingCreateContentBlocksRequestDtoType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
@@ -244,6 +247,7 @@ public class MarketingCreateContentBlocksRequestDto {
             return this;
         }
 
+
         public Builder tags(List<String> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = JsonNullable.of(tags);
@@ -256,6 +260,7 @@ public class MarketingCreateContentBlocksRequestDto {
             return this;
         }
 
+
         public Builder content(String content) {
             Utils.checkNotNull(content, "content");
             this.content = JsonNullable.of(content);
@@ -267,6 +272,7 @@ public class MarketingCreateContentBlocksRequestDto {
             this.content = content;
             return this;
         }
+
 
         /**
          * Stackone enum identifying the type of content block.
@@ -286,6 +292,7 @@ public class MarketingCreateContentBlocksRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -303,14 +310,13 @@ public class MarketingCreateContentBlocksRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public MarketingCreateContentBlocksRequestDto build() {
+
             return new MarketingCreateContentBlocksRequestDto(
-                name,
-                tags,
-                content,
-                type,
-                passthrough);
+                name, tags, content,
+                type, passthrough);
         }
+
     }
 }

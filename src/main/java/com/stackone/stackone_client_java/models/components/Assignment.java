@@ -18,8 +18,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Assignment {
 
+public class Assignment {
     /**
      * The ID associated with this assignment
      */
@@ -204,7 +204,12 @@ public class Assignment {
     }
     
     public Assignment() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -355,9 +360,10 @@ public class Assignment {
         return remoteCourseId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with this assignment
@@ -683,7 +689,6 @@ public class Assignment {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -716,23 +721,12 @@ public class Assignment {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            externalReference,
-            learningObjectId,
-            remoteLearningObjectId,
-            learningObjectExternalReference,
-            progress,
-            updatedAt,
-            createdAt,
-            dueDate,
-            status,
-            learningObjectType,
-            userId,
-            remoteUserId,
-            courseId,
-            remoteCourseId);
+            id, remoteId, unifiedCustomFields,
+            externalReference, learningObjectId, remoteLearningObjectId,
+            learningObjectExternalReference, progress, updatedAt,
+            createdAt, dueDate, status,
+            learningObjectType, userId, remoteUserId,
+            courseId, remoteCourseId);
     }
     
     @Override
@@ -756,49 +750,51 @@ public class Assignment {
                 "courseId", courseId,
                 "remoteCourseId", remoteCourseId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> externalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteLearningObjectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> progress = JsonNullable.undefined();
- 
+
         private JsonNullable<String> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> dueDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AssignmentStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LearningObjectType> learningObjectType = JsonNullable.undefined();
- 
+
         private JsonNullable<String> userId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> courseId = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> remoteCourseId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with this assignment
@@ -818,6 +814,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -836,6 +833,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * Custom Unified Fields configured in your StackOne project
          */
@@ -853,6 +851,7 @@ public class Assignment {
             this.unifiedCustomFields = unifiedCustomFields;
             return this;
         }
+
 
         /**
          * The external reference associated with this assignment
@@ -878,6 +877,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
          */
@@ -895,6 +895,7 @@ public class Assignment {
             this.learningObjectId = learningObjectId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the learning object related to the assignment
@@ -914,6 +915,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
          */
@@ -931,6 +933,7 @@ public class Assignment {
             this.learningObjectExternalReference = learningObjectExternalReference;
             return this;
         }
+
 
         /**
          * The progress associated with this assigment
@@ -950,6 +953,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * The date the assignment was last updated
          */
@@ -967,6 +971,7 @@ public class Assignment {
             this.updatedAt = updatedAt;
             return this;
         }
+
 
         /**
          * The date the assignment was created
@@ -986,6 +991,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * The date the assignment is due to be completed
          */
@@ -1003,6 +1009,7 @@ public class Assignment {
             this.dueDate = dueDate;
             return this;
         }
+
 
         /**
          * The status of the assignment
@@ -1022,6 +1029,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * The learning object type of the assignment
          */
@@ -1039,6 +1047,7 @@ public class Assignment {
             this.learningObjectType = learningObjectType;
             return this;
         }
+
 
         /**
          * The user ID associated with this assignment
@@ -1058,6 +1067,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the user related to the assignment
          */
@@ -1075,6 +1085,7 @@ public class Assignment {
             this.remoteUserId = remoteUserId;
             return this;
         }
+
 
         /**
          * The course ID associated with this assignment
@@ -1100,6 +1111,7 @@ public class Assignment {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the course related to the assignment
          * 
@@ -1123,26 +1135,17 @@ public class Assignment {
             this.remoteCourseId = remoteCourseId;
             return this;
         }
-        
+
         public Assignment build() {
+
             return new Assignment(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                externalReference,
-                learningObjectId,
-                remoteLearningObjectId,
-                learningObjectExternalReference,
-                progress,
-                updatedAt,
-                createdAt,
-                dueDate,
-                status,
-                learningObjectType,
-                userId,
-                remoteUserId,
-                courseId,
-                remoteCourseId);
+                id, remoteId, unifiedCustomFields,
+                externalReference, learningObjectId, remoteLearningObjectId,
+                learningObjectExternalReference, progress, updatedAt,
+                createdAt, dueDate, status,
+                learningObjectType, userId, remoteUserId,
+                courseId, remoteCourseId);
         }
+
     }
 }

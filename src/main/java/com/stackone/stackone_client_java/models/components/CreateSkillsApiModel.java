@@ -15,8 +15,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateSkillsApiModel {
 
+public class CreateSkillsApiModel {
     /**
      * The ID associated with this skill
      */
@@ -75,7 +75,8 @@ public class CreateSkillsApiModel {
     }
     
     public CreateSkillsApiModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -124,9 +125,10 @@ public class CreateSkillsApiModel {
         return (JsonNullable<CreateSkillsApiModelLevel>) level;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with this skill
@@ -224,7 +226,6 @@ public class CreateSkillsApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -245,11 +246,8 @@ public class CreateSkillsApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            name,
-            hierarchy,
-            language,
-            level);
+            id, name, hierarchy,
+            language, level);
     }
     
     @Override
@@ -261,23 +259,25 @@ public class CreateSkillsApiModel {
                 "language", language,
                 "level", level);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateSkillsApiModelHierarchy> hierarchy = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateSkillsApiModelLanguage> language = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends CreateSkillsApiModelLevel> level = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with this skill
@@ -297,6 +297,7 @@ public class CreateSkillsApiModel {
             return this;
         }
 
+
         /**
          * The name associated with this skill
          */
@@ -314,6 +315,7 @@ public class CreateSkillsApiModel {
             this.name = name;
             return this;
         }
+
 
         /**
          * The hierarchal level of the skill
@@ -333,6 +335,7 @@ public class CreateSkillsApiModel {
             return this;
         }
 
+
         /**
          * The language associated with this skill
          */
@@ -350,6 +353,7 @@ public class CreateSkillsApiModel {
             this.language = language;
             return this;
         }
+
 
         /**
          * The hierarchal level of the skill
@@ -374,14 +378,13 @@ public class CreateSkillsApiModel {
             this.level = level;
             return this;
         }
-        
+
         public CreateSkillsApiModel build() {
+
             return new CreateSkillsApiModel(
-                id,
-                name,
-                hierarchy,
-                language,
-                level);
+                id, name, hierarchy,
+                language, level);
         }
+
     }
 }

@@ -40,9 +40,10 @@ public class Description {
         return text;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Description withText(String text) {
         Utils.checkNotNull(text, "text");
@@ -56,7 +57,6 @@ public class Description {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,14 +81,16 @@ public class Description {
         return Utils.toString(Description.class,
                 "text", text);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> text = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder text(String text) {
             Utils.checkNotNull(text, "text");
@@ -101,10 +103,12 @@ public class Description {
             this.text = text;
             return this;
         }
-        
+
         public Description build() {
+
             return new Description(
                 text);
         }
+
     }
 }

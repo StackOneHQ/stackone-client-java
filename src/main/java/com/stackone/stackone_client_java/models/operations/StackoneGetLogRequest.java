@@ -12,6 +12,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class StackoneGetLogRequest {
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
@@ -52,9 +53,10 @@ public class StackoneGetLogRequest {
         return (JsonNullable<Include>) include;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public StackoneGetLogRequest withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -80,7 +82,6 @@ public class StackoneGetLogRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -98,8 +99,7 @@ public class StackoneGetLogRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            include);
+            id, include);
     }
     
     @Override
@@ -108,22 +108,25 @@ public class StackoneGetLogRequest {
                 "id", id,
                 "include", include);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
- 
+
         private JsonNullable<? extends Include> include = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
+
 
         /**
          * The include parameter allows you to include additional data in the response.
@@ -142,11 +145,12 @@ public class StackoneGetLogRequest {
             this.include = include;
             return this;
         }
-        
+
         public StackoneGetLogRequest build() {
+
             return new StackoneGetLogRequest(
-                id,
-                include);
+                id, include);
         }
+
     }
 }

@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisUpdateEmployeeRequestDtoType {
 
+public class HrisUpdateEmployeeRequestDtoType {
     /**
      * The type of the national identity number
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -56,9 +57,10 @@ public class HrisUpdateEmployeeRequestDtoType {
         return (JsonNullable<HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the national identity number
@@ -90,7 +92,6 @@ public class HrisUpdateEmployeeRequestDtoType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,8 +109,7 @@ public class HrisUpdateEmployeeRequestDtoType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -118,16 +118,18 @@ public class HrisUpdateEmployeeRequestDtoType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the national identity number
@@ -147,6 +149,7 @@ public class HrisUpdateEmployeeRequestDtoType {
             return this;
         }
 
+
         public Builder sourceValue(HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -158,11 +161,12 @@ public class HrisUpdateEmployeeRequestDtoType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisUpdateEmployeeRequestDtoType build() {
+
             return new HrisUpdateEmployeeRequestDtoType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

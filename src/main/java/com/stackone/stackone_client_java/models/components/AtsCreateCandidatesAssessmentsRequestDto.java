@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateCandidatesAssessmentsRequestDto {
 
+public class AtsCreateCandidatesAssessmentsRequestDto {
     /**
      * Unique identifier
      */
@@ -25,21 +25,26 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
     @JsonProperty("id")
     private JsonNullable<String> id;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("package")
     private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoPackage> package_;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application")
     private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoApplication> application;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("job")
     private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoJob> job;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("candidate")
     private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoCandidate> candidate;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("requester")
@@ -88,7 +93,9 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
     }
     
     public AtsCreateCandidatesAssessmentsRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -146,9 +153,10 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -264,7 +272,6 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -288,14 +295,9 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            package_,
-            application,
-            job,
-            candidate,
-            requester,
-            resultsUpdateUrl,
-            passthrough);
+            id, package_, application,
+            job, candidate, requester,
+            resultsUpdateUrl, passthrough);
     }
     
     @Override
@@ -310,28 +312,30 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
                 "resultsUpdateUrl", resultsUpdateUrl,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoPackage> package_ = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoApplication> application = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoJob> job = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoCandidate> candidate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Requester> requester = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resultsUpdateUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -351,6 +355,7 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
             return this;
         }
 
+
         public Builder package_(AtsCreateCandidatesAssessmentsRequestDtoPackage package_) {
             Utils.checkNotNull(package_, "package_");
             this.package_ = JsonNullable.of(package_);
@@ -362,6 +367,7 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
             this.package_ = package_;
             return this;
         }
+
 
         public Builder application(AtsCreateCandidatesAssessmentsRequestDtoApplication application) {
             Utils.checkNotNull(application, "application");
@@ -375,6 +381,7 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
             return this;
         }
 
+
         public Builder job(AtsCreateCandidatesAssessmentsRequestDtoJob job) {
             Utils.checkNotNull(job, "job");
             this.job = JsonNullable.of(job);
@@ -386,6 +393,7 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
             this.job = job;
             return this;
         }
+
 
         public Builder candidate(AtsCreateCandidatesAssessmentsRequestDtoCandidate candidate) {
             Utils.checkNotNull(candidate, "candidate");
@@ -399,6 +407,7 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
             return this;
         }
 
+
         public Builder requester(Requester requester) {
             Utils.checkNotNull(requester, "requester");
             this.requester = JsonNullable.of(requester);
@@ -410,6 +419,7 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
             this.requester = requester;
             return this;
         }
+
 
         /**
          * Results update url
@@ -429,6 +439,7 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -446,17 +457,14 @@ public class AtsCreateCandidatesAssessmentsRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsCreateCandidatesAssessmentsRequestDto build() {
+
             return new AtsCreateCandidatesAssessmentsRequestDto(
-                id,
-                package_,
-                application,
-                job,
-                candidate,
-                requester,
-                resultsUpdateUrl,
-                passthrough);
+                id, package_, application,
+                job, candidate, requester,
+                resultsUpdateUrl, passthrough);
         }
+
     }
 }

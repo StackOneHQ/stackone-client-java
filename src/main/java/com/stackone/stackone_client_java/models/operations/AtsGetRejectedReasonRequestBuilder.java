@@ -47,9 +47,7 @@ public class AtsGetRejectedReasonRequestBuilder {
             .build());
 
         RequestOperation<AtsGetRejectedReasonRequest, AtsGetRejectedReasonResponse> operation
-              = new AtsGetRejectedReasonOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetRejectedReasonOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Stackone enum identifying the type of content block.
  */
 public class ContentBlockType {
-
     /**
      * The type of the content blocks.
      */
@@ -67,9 +66,10 @@ public class ContentBlockType {
         return (JsonNullable<ContentBlockSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the content blocks.
@@ -107,7 +107,6 @@ public class ContentBlockType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class ContentBlockType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class ContentBlockType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends ContentBlockValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ContentBlockSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the content blocks.
@@ -164,6 +164,7 @@ public class ContentBlockType {
             return this;
         }
 
+
         /**
          * The source value of the type.
          */
@@ -181,11 +182,12 @@ public class ContentBlockType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public ContentBlockType build() {
+
             return new ContentBlockType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

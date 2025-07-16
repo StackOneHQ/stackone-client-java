@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ApplicationChanges {
 
+public class ApplicationChanges {
     /**
      * Unique identifier
      */
@@ -92,7 +92,9 @@ public class ApplicationChanges {
     public ApplicationChanges(
             OffsetDateTime createdAt,
             ApplicationChangesDataModel newValues) {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), createdAt, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), newValues);
+        this(JsonNullable.undefined(), JsonNullable.undefined(), createdAt,
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            newValues);
     }
 
     /**
@@ -153,9 +155,10 @@ public class ApplicationChanges {
         return newValues;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -265,7 +268,6 @@ public class ApplicationChanges {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -288,12 +290,8 @@ public class ApplicationChanges {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            createdAt,
-            effectiveAt,
-            actor,
-            changeType,
+            id, remoteId, createdAt,
+            effectiveAt, actor, changeType,
             newValues);
     }
     
@@ -308,26 +306,28 @@ public class ApplicationChanges {
                 "changeType", changeType,
                 "newValues", newValues);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private OffsetDateTime createdAt;
- 
+
         private JsonNullable<OffsetDateTime> effectiveAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Actor> actor = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ChangeType> changeType = JsonNullable.undefined();
- 
+
         private ApplicationChangesDataModel newValues;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -347,6 +347,7 @@ public class ApplicationChanges {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -365,6 +366,7 @@ public class ApplicationChanges {
             return this;
         }
 
+
         /**
          * Timestamp when the change was created
          */
@@ -373,6 +375,7 @@ public class ApplicationChanges {
             this.createdAt = createdAt;
             return this;
         }
+
 
         /**
          * Timestamp when the change became effective
@@ -392,6 +395,7 @@ public class ApplicationChanges {
             return this;
         }
 
+
         /**
          * The actor who made the change
          */
@@ -409,6 +413,7 @@ public class ApplicationChanges {
             this.actor = actor;
             return this;
         }
+
 
         /**
          * The type of change that occurred to the application
@@ -428,6 +433,7 @@ public class ApplicationChanges {
             return this;
         }
 
+
         /**
          * The new values for changed application properties. Only includes fields that commonly change over the application lifecycle.
          */
@@ -436,16 +442,14 @@ public class ApplicationChanges {
             this.newValues = newValues;
             return this;
         }
-        
+
         public ApplicationChanges build() {
+
             return new ApplicationChanges(
-                id,
-                remoteId,
-                createdAt,
-                effectiveAt,
-                actor,
-                changeType,
+                id, remoteId, createdAt,
+                effectiveAt, actor, changeType,
                 newValues);
         }
+
     }
 }

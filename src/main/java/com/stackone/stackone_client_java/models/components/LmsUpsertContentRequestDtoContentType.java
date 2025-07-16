@@ -25,6 +25,7 @@ public class LmsUpsertContentRequestDtoContentType {
     @JsonProperty("value")
     private JsonNullable<? extends LmsUpsertContentRequestDtoValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LmsUpsertContentRequestDtoSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class LmsUpsertContentRequestDtoContentType {
         return (JsonNullable<LmsUpsertContentRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public LmsUpsertContentRequestDtoContentType withValue(LmsUpsertContentRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class LmsUpsertContentRequestDtoContentType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class LmsUpsertContentRequestDtoContentType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class LmsUpsertContentRequestDtoContentType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends LmsUpsertContentRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsUpsertContentRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(LmsUpsertContentRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class LmsUpsertContentRequestDtoContentType {
             return this;
         }
 
+
         public Builder sourceValue(LmsUpsertContentRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class LmsUpsertContentRequestDtoContentType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public LmsUpsertContentRequestDtoContentType build() {
+
             return new LmsUpsertContentRequestDtoContentType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

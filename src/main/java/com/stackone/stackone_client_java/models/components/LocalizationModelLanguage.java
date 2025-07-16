@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The language associated with the localization details
  */
 public class LocalizationModelLanguage {
-
     /**
      * The Locale Code of the language
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LocalizationModelValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class LocalizationModelLanguage {
         return (JsonNullable<LocalizationModelSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Locale Code of the language
@@ -95,7 +96,6 @@ public class LocalizationModelLanguage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class LocalizationModelLanguage {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class LocalizationModelLanguage {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends LocalizationModelValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LocalizationModelSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Locale Code of the language
@@ -152,6 +153,7 @@ public class LocalizationModelLanguage {
             return this;
         }
 
+
         public Builder sourceValue(LocalizationModelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class LocalizationModelLanguage {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public LocalizationModelLanguage build() {
+
             return new LocalizationModelLanguage(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

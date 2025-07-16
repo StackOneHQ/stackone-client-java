@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Package {
 
+public class Package {
     /**
      * Unique identifier
      */
@@ -60,7 +60,8 @@ public class Package {
     }
     
     public Package() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -95,9 +96,10 @@ public class Package {
         return description;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -171,7 +173,6 @@ public class Package {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -191,9 +192,7 @@ public class Package {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
+            id, remoteId, name,
             description);
     }
     
@@ -205,20 +204,22 @@ public class Package {
                 "name", name,
                 "description", description);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -238,6 +239,7 @@ public class Package {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -255,6 +257,7 @@ public class Package {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Package name
@@ -274,6 +277,7 @@ public class Package {
             return this;
         }
 
+
         /**
          * Package description
          */
@@ -291,13 +295,13 @@ public class Package {
             this.description = description;
             return this;
         }
-        
+
         public Package build() {
+
             return new Package(
-                id,
-                remoteId,
-                name,
+                id, remoteId, name,
                 description);
         }
+
     }
 }

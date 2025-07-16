@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Template {
 
+public class Template {
     /**
      * Unique identifier
      */
@@ -32,9 +32,11 @@ public class Template {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
@@ -77,7 +79,8 @@ public class Template {
     }
     
     public Template() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -123,9 +126,10 @@ public class Template {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -223,7 +227,6 @@ public class Template {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -245,12 +248,8 @@ public class Template {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            tags,
-            createdAt,
-            updatedAt);
+            id, remoteId, name,
+            tags, createdAt, updatedAt);
     }
     
     @Override
@@ -263,24 +262,26 @@ public class Template {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -300,6 +301,7 @@ public class Template {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -318,6 +320,7 @@ public class Template {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -330,6 +333,7 @@ public class Template {
             return this;
         }
 
+
         public Builder tags(List<String> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = JsonNullable.of(tags);
@@ -341,6 +345,7 @@ public class Template {
             this.tags = tags;
             return this;
         }
+
 
         /**
          * Date of creation
@@ -360,6 +365,7 @@ public class Template {
             return this;
         }
 
+
         /**
          * Date of last update
          */
@@ -377,15 +383,13 @@ public class Template {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Template build() {
+
             return new Template(
-                id,
-                remoteId,
-                name,
-                tags,
-                createdAt,
-                updatedAt);
+                id, remoteId, name,
+                tags, createdAt, updatedAt);
         }
+
     }
 }

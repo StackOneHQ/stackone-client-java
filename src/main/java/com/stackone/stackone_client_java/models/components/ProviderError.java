@@ -15,8 +15,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ProviderError {
 
+public class ProviderError {
     /**
      * HTTP status code of the provider error
      */
@@ -62,7 +62,8 @@ public class ProviderError {
     }
     
     public ProviderError() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -99,9 +100,10 @@ public class ProviderError {
         return (JsonNullable<Headers>) headers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP status code of the provider error
@@ -175,7 +177,6 @@ public class ProviderError {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,9 +196,7 @@ public class ProviderError {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            status,
-            url,
-            raw,
+            status, url, raw,
             headers);
     }
     
@@ -209,20 +208,22 @@ public class ProviderError {
                 "raw", raw,
                 "headers", headers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Double> status = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Raw> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Headers> headers = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP status code of the provider error
@@ -242,6 +243,7 @@ public class ProviderError {
             return this;
         }
 
+
         /**
          * URL that caused the error
          */
@@ -259,6 +261,7 @@ public class ProviderError {
             this.url = url;
             return this;
         }
+
 
         /**
          * Raw error response from the provider
@@ -278,6 +281,7 @@ public class ProviderError {
             return this;
         }
 
+
         /**
          * Response headers
          */
@@ -295,13 +299,13 @@ public class ProviderError {
             this.headers = headers;
             return this;
         }
-        
+
         public ProviderError build() {
+
             return new ProviderError(
-                status,
-                url,
-                raw,
+                status, url, raw,
                 headers);
         }
+
     }
 }

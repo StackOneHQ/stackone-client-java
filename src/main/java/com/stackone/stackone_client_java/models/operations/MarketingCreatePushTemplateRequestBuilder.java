@@ -65,9 +65,7 @@ public class MarketingCreatePushTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreatePushTemplateRequest, MarketingCreatePushTemplateResponse> operation
-              = new MarketingCreatePushTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreatePushTemplateOperation(sdkConfiguration, options);
         MarketingCreatePushTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

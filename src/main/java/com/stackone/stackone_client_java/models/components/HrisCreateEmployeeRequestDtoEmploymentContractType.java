@@ -29,6 +29,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentContractType {
     @JsonProperty("value")
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentContractTypeValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue> sourceValue;
@@ -59,9 +60,10 @@ public class HrisCreateEmployeeRequestDtoEmploymentContractType {
         return (JsonNullable<HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisCreateEmployeeRequestDtoEmploymentContractType withValue(HrisCreateEmployeeRequestDtoEmploymentContractTypeValue value) {
         Utils.checkNotNull(value, "value");
@@ -87,7 +89,6 @@ public class HrisCreateEmployeeRequestDtoEmploymentContractType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,8 +106,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentContractType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -115,16 +115,18 @@ public class HrisCreateEmployeeRequestDtoEmploymentContractType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentContractTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HrisCreateEmployeeRequestDtoEmploymentContractTypeValue value) {
             Utils.checkNotNull(value, "value");
@@ -138,6 +140,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentContractType {
             return this;
         }
 
+
         public Builder sourceValue(HrisCreateEmployeeRequestDtoEmploymentContractTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -149,11 +152,12 @@ public class HrisCreateEmployeeRequestDtoEmploymentContractType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDtoEmploymentContractType build() {
+
             return new HrisCreateEmployeeRequestDtoEmploymentContractType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

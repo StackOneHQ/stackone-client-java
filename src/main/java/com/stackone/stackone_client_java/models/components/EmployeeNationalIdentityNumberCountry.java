@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The country code
  */
 public class EmployeeNationalIdentityNumberCountry {
-
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends EmployeeNationalIdentityNumberCountryValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class EmployeeNationalIdentityNumberCountry {
         return (JsonNullable<EmployeeNationalIdentityNumberCountrySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ISO3166-1 Alpha2 Code of the Country
@@ -95,7 +96,6 @@ public class EmployeeNationalIdentityNumberCountry {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class EmployeeNationalIdentityNumberCountry {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class EmployeeNationalIdentityNumberCountry {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmployeeNationalIdentityNumberCountryValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeNationalIdentityNumberCountrySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ISO3166-1 Alpha2 Code of the Country
@@ -152,6 +153,7 @@ public class EmployeeNationalIdentityNumberCountry {
             return this;
         }
 
+
         public Builder sourceValue(EmployeeNationalIdentityNumberCountrySourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class EmployeeNationalIdentityNumberCountry {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EmployeeNationalIdentityNumberCountry build() {
+
             return new EmployeeNationalIdentityNumberCountry(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CustomFields {
 
+public class CustomFields {
     /**
      * Unique identifier
      */
@@ -81,7 +81,8 @@ public class CustomFields {
     }
     
     public CustomFields() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -133,9 +134,10 @@ public class CustomFields {
         return remoteValueId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -245,7 +247,6 @@ public class CustomFields {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -267,12 +268,8 @@ public class CustomFields {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            value,
-            valueId,
-            remoteValueId);
+            id, remoteId, name,
+            value, valueId, remoteValueId);
     }
     
     @Override
@@ -285,24 +282,26 @@ public class CustomFields {
                 "valueId", valueId,
                 "remoteValueId", remoteValueId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CustomFieldsValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<String> valueId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteValueId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -322,6 +321,7 @@ public class CustomFields {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -339,6 +339,7 @@ public class CustomFields {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name of the custom field.
@@ -358,6 +359,7 @@ public class CustomFields {
             return this;
         }
 
+
         /**
          * The value associated with the custom field.
          */
@@ -375,6 +377,7 @@ public class CustomFields {
             this.value = value;
             return this;
         }
+
 
         /**
          * The unique identifier for the value of the custom field.
@@ -394,6 +397,7 @@ public class CustomFields {
             return this;
         }
 
+
         /**
          * Provider's unique identifier for the value of the custom field.
          */
@@ -411,15 +415,13 @@ public class CustomFields {
             this.remoteValueId = remoteValueId;
             return this;
         }
-        
+
         public CustomFields build() {
+
             return new CustomFields(
-                id,
-                remoteId,
-                name,
-                value,
-                valueId,
-                remoteValueId);
+                id, remoteId, name,
+                value, valueId, remoteValueId);
         }
+
     }
 }

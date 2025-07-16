@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamUpdateUserRequestDto {
 
+public class IamUpdateUserRequestDto {
     /**
      * Primary email address of the user. This is generally a work email address.
      */
@@ -25,9 +25,11 @@ public class IamUpdateUserRequestDto {
     @JsonProperty("primary_email_address")
     private JsonNullable<String> primaryEmailAddress;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("first_name")
     private JsonNullable<String> firstName;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("last_name")
@@ -40,6 +42,7 @@ public class IamUpdateUserRequestDto {
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("username")
     private JsonNullable<String> username;
@@ -50,6 +53,7 @@ public class IamUpdateUserRequestDto {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_bot_user")
     private JsonNullable<? extends IamUpdateUserRequestDtoIsBotUser> isBotUser;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
@@ -91,7 +95,9 @@ public class IamUpdateUserRequestDto {
     }
     
     public IamUpdateUserRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -149,9 +155,10 @@ public class IamUpdateUserRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Primary email address of the user. This is generally a work email address.
@@ -273,7 +280,6 @@ public class IamUpdateUserRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -297,14 +303,9 @@ public class IamUpdateUserRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            primaryEmailAddress,
-            firstName,
-            lastName,
-            name,
-            username,
-            isBotUser,
-            status,
-            passthrough);
+            primaryEmailAddress, firstName, lastName,
+            name, username, isBotUser,
+            status, passthrough);
     }
     
     @Override
@@ -319,28 +320,30 @@ public class IamUpdateUserRequestDto {
                 "status", status,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> primaryEmailAddress = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> username = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamUpdateUserRequestDtoIsBotUser> isBotUser = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamUpdateUserRequestDtoStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Primary email address of the user. This is generally a work email address.
@@ -360,6 +363,7 @@ public class IamUpdateUserRequestDto {
             return this;
         }
 
+
         public Builder firstName(String firstName) {
             Utils.checkNotNull(firstName, "firstName");
             this.firstName = JsonNullable.of(firstName);
@@ -372,6 +376,7 @@ public class IamUpdateUserRequestDto {
             return this;
         }
 
+
         public Builder lastName(String lastName) {
             Utils.checkNotNull(lastName, "lastName");
             this.lastName = JsonNullable.of(lastName);
@@ -383,6 +388,7 @@ public class IamUpdateUserRequestDto {
             this.lastName = lastName;
             return this;
         }
+
 
         /**
          * User's name which (can be a full name or display name)
@@ -402,6 +408,7 @@ public class IamUpdateUserRequestDto {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = JsonNullable.of(username);
@@ -413,6 +420,7 @@ public class IamUpdateUserRequestDto {
             this.username = username;
             return this;
         }
+
 
         /**
          * Indicates if the user is a bot or service user
@@ -432,6 +440,7 @@ public class IamUpdateUserRequestDto {
             return this;
         }
 
+
         public Builder status(IamUpdateUserRequestDtoStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = JsonNullable.of(status);
@@ -443,6 +452,7 @@ public class IamUpdateUserRequestDto {
             this.status = status;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -461,17 +471,14 @@ public class IamUpdateUserRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public IamUpdateUserRequestDto build() {
+
             return new IamUpdateUserRequestDto(
-                primaryEmailAddress,
-                firstName,
-                lastName,
-                name,
-                username,
-                isBotUser,
-                status,
-                passthrough);
+                primaryEmailAddress, firstName, lastName,
+                name, username, isBotUser,
+                status, passthrough);
         }
+
     }
 }

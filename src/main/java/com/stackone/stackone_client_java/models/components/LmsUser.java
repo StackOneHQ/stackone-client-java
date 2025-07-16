@@ -17,8 +17,8 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsUser {
 
+public class LmsUser {
     /**
      * Unique identifier
      */
@@ -124,7 +124,10 @@ public class LmsUser {
     }
     
     public LmsUser() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -209,9 +212,10 @@ public class LmsUser {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -393,7 +397,6 @@ public class LmsUser {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -419,15 +422,9 @@ public class LmsUser {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            externalReference,
-            name,
-            email,
-            phoneNumber,
-            active,
-            createdAt,
+            id, remoteId, unifiedCustomFields,
+            externalReference, name, email,
+            phoneNumber, active, createdAt,
             updatedAt);
     }
     
@@ -445,32 +442,34 @@ public class LmsUser {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
- 
+
         private JsonNullable<String> phoneNumber = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsUserActive> active = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -490,6 +489,7 @@ public class LmsUser {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -507,6 +507,7 @@ public class LmsUser {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -526,6 +527,7 @@ public class LmsUser {
             return this;
         }
 
+
         /**
          * The external ID associated with this user
          */
@@ -543,6 +545,7 @@ public class LmsUser {
             this.externalReference = externalReference;
             return this;
         }
+
 
         /**
          * The user name
@@ -562,6 +565,7 @@ public class LmsUser {
             return this;
         }
 
+
         /**
          * The user email
          */
@@ -579,6 +583,7 @@ public class LmsUser {
             this.email = email;
             return this;
         }
+
 
         /**
          * The user phone number
@@ -598,6 +603,7 @@ public class LmsUser {
             return this;
         }
 
+
         /**
          * The user active status
          */
@@ -615,6 +621,7 @@ public class LmsUser {
             this.active = active;
             return this;
         }
+
 
         /**
          * The created_at date
@@ -634,6 +641,7 @@ public class LmsUser {
             return this;
         }
 
+
         /**
          * The updated_at date
          */
@@ -651,19 +659,15 @@ public class LmsUser {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public LmsUser build() {
+
             return new LmsUser(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                externalReference,
-                name,
-                email,
-                phoneNumber,
-                active,
-                createdAt,
+                id, remoteId, unifiedCustomFields,
+                externalReference, name, email,
+                phoneNumber, active, createdAt,
                 updatedAt);
         }
+
     }
 }

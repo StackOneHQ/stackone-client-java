@@ -65,9 +65,7 @@ public class MarketingCreateContentBlockRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreateContentBlockRequest, MarketingCreateContentBlockResponse> operation
-              = new MarketingCreateContentBlockOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateContentBlockOperation(sdkConfiguration, options);
         MarketingCreateContentBlockRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

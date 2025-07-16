@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingEmploymentType {
 
+public class JobPostingEmploymentType {
     /**
      * The type of the employment.
      */
@@ -62,9 +62,10 @@ public class JobPostingEmploymentType {
         return (JsonNullable<JobPostingEmploymentTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the employment.
@@ -102,7 +103,6 @@ public class JobPostingEmploymentType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class JobPostingEmploymentType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class JobPostingEmploymentType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends JobPostingEmploymentTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingEmploymentTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the employment.
@@ -159,6 +160,7 @@ public class JobPostingEmploymentType {
             return this;
         }
 
+
         /**
          * The source value of the employment type.
          */
@@ -176,11 +178,12 @@ public class JobPostingEmploymentType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public JobPostingEmploymentType build() {
+
             return new JobPostingEmploymentType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

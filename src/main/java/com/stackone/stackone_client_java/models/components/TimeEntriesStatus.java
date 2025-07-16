@@ -25,6 +25,7 @@ public class TimeEntriesStatus {
     @JsonProperty("value")
     private JsonNullable<? extends TimeEntriesValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends TimeEntriesSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class TimeEntriesStatus {
         return (JsonNullable<TimeEntriesSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public TimeEntriesStatus withValue(TimeEntriesValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class TimeEntriesStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class TimeEntriesStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class TimeEntriesStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends TimeEntriesValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeEntriesSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(TimeEntriesValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class TimeEntriesStatus {
             return this;
         }
 
+
         public Builder sourceValue(TimeEntriesSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class TimeEntriesStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public TimeEntriesStatus build() {
+
             return new TimeEntriesStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

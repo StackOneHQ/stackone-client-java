@@ -14,18 +14,15 @@ import java.lang.String;
  * <p>Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
  */
 public class ConnectSessionTokenAuthLinkMetadata {
-
     @JsonCreator
     public ConnectSessionTokenAuthLinkMetadata() {
-        
-        
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -47,16 +44,19 @@ public class ConnectSessionTokenAuthLinkMetadata {
     public String toString() {
         return Utils.toString(ConnectSessionTokenAuthLinkMetadata.class);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public ConnectSessionTokenAuthLinkMetadata build() {
+
             return new ConnectSessionTokenAuthLinkMetadata(
                 );
         }
+
     }
 }

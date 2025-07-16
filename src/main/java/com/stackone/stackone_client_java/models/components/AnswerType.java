@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Type of the answer
  */
 public class AnswerType {
-
     /**
      * The type of the answer.
      */
@@ -67,9 +66,10 @@ public class AnswerType {
         return (JsonNullable<AnswerSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the answer.
@@ -107,7 +107,6 @@ public class AnswerType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class AnswerType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class AnswerType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AnswerValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AnswerSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the answer.
@@ -164,6 +164,7 @@ public class AnswerType {
             return this;
         }
 
+
         /**
          * The source value of the answer type.
          */
@@ -181,11 +182,12 @@ public class AnswerType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public AnswerType build() {
+
             return new AnswerType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

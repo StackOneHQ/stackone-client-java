@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The employee preferred language
  */
 public class PreferredLanguage {
-
     /**
      * The ISO639-2 Code of the language
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends EmployeePreferredLanguageValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class PreferredLanguage {
         return (JsonNullable<EmployeePreferredLanguageSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ISO639-2 Code of the language
@@ -95,7 +96,6 @@ public class PreferredLanguage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class PreferredLanguage {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class PreferredLanguage {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmployeePreferredLanguageValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeePreferredLanguageSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ISO639-2 Code of the language
@@ -152,6 +153,7 @@ public class PreferredLanguage {
             return this;
         }
 
+
         public Builder sourceValue(EmployeePreferredLanguageSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class PreferredLanguage {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public PreferredLanguage build() {
+
             return new PreferredLanguage(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

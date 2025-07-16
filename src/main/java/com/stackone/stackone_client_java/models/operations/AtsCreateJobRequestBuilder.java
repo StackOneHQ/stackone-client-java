@@ -65,9 +65,7 @@ public class AtsCreateJobRequestBuilder {
             .build());
 
         RequestOperation<AtsCreateJobRequest, AtsCreateJobResponse> operation
-              = new AtsCreateJobOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateJobOperation(sdkConfiguration, options);
         AtsCreateJobRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

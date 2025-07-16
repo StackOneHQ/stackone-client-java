@@ -29,6 +29,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType {
     @JsonProperty("value")
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceValue> sourceValue;
@@ -59,9 +60,10 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType {
         return (JsonNullable<HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType withValue(HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeValue value) {
         Utils.checkNotNull(value, "value");
@@ -87,7 +89,6 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,8 +106,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -115,16 +115,18 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeValue value) {
             Utils.checkNotNull(value, "value");
@@ -138,6 +140,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType {
             return this;
         }
 
+
         public Builder sourceValue(HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -149,11 +152,12 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType build() {
+
             return new HrisCreateEmployeeRequestDtoEmploymentEmploymentContractType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

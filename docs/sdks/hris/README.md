@@ -42,10 +42,14 @@
 * [listDepartmentGroups](#listdepartmentgroups) - List Department Groups
 * [listCostCenterGroups](#listcostcentergroups) - List Cost Center Groups
 * [listTeamGroups](#listteamgroups) - List Team Groups
+* [listDivisionGroups](#listdivisiongroups) - List Division Groups
+* [listCompaniesGroups](#listcompaniesgroups) - List Companies Groups
 * [getGroup](#getgroup) - Get Group
 * [getDepartmentGroup](#getdepartmentgroup) - Get Department Group
 * [getCostCenterGroup](#getcostcentergroup) - Get Cost Center Group
 * [getTeamGroup](#getteamgroup) - Get Team Group
+* [getDivisionGroup](#getdivisiongroup) - Get Division Group
+* [getCompanyGroup](#getcompanygroup) - Get Company Group
 * [listJobs](#listjobs) - List Jobs
 * [getJob](#getjob) - Get Job
 * [listLocations](#listlocations) - List Work Locations
@@ -56,6 +60,8 @@
 * [getTimeEntries](#gettimeentries) - Get Time Entry
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
+* [listShifts](#listshifts) - List Shifts
+* [getShift](#getshift) - Get Shift
 * [~~listTimeOffTypes~~](#listtimeofftypes) - List time off types :warning: **Deprecated**
 * [~~getTimeOffType~~](#gettimeofftype) - Get time off type :warning: **Deprecated**
 * [listTimeOffPolicies](#listtimeoffpolicies) - List Time Off Policies
@@ -68,6 +74,8 @@
 * [getEmployeeSkill](#getemployeeskill) - Get Employee Skill
 * [listEmployeeTasks](#listemployeetasks) - List Employee Tasks
 * [getEmployeeTask](#getemployeetask) - Get Employee Task
+* [listTasks](#listtasks) - List Tasks
+* [getTask](#gettask) - Get Task
 
 ## listCompanies
 
@@ -2939,7 +2947,7 @@ public class Application {
 
         HrisListDepartmentGroupsRequest req = HrisListDepartmentGroupsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name")
+                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListDepartmentGroupsQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -3130,6 +3138,152 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
+## listDivisionGroups
+
+List Division Groups
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListDivisionGroupsRequest req = HrisListDivisionGroupsRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
+                .filter(HrisListDivisionGroupsQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listDivisionGroups()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListDivisionGroupsResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [HrisListDivisionGroupsRequest](../../models/operations/HrisListDivisionGroupsRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+
+### Response
+
+**[HrisListDivisionGroupsResponse](../../models/operations/HrisListDivisionGroupsResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listCompaniesGroups
+
+List Companies Groups
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListCompaniesGroupsRequest req = HrisListCompaniesGroupsRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
+                .filter(HrisListCompaniesGroupsQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listCompaniesGroups()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListCompaniesGroupsResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `request`                                                                                   | [HrisListCompaniesGroupsRequest](../../models/operations/HrisListCompaniesGroupsRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+
+### Response
+
+**[HrisListCompaniesGroupsResponse](../../models/operations/HrisListCompaniesGroupsResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
 ## getGroup
 
 Get Group
@@ -3232,7 +3386,7 @@ public class Application {
         HrisGetDepartmentGroupRequest req = HrisGetDepartmentGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name")
+                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .build();
 
         HrisGetDepartmentGroupResponse res = sdk.hris().getDepartmentGroup()
@@ -3399,6 +3553,150 @@ public class Application {
 ### Response
 
 **[HrisGetTeamGroupResponse](../../models/operations/HrisGetTeamGroupResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getDivisionGroup
+
+Get Division Group
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetDivisionGroupRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetDivisionGroupResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetDivisionGroupRequest req = HrisGetDivisionGroupRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
+                .build();
+
+        HrisGetDivisionGroupResponse res = sdk.hris().getDivisionGroup()
+                .request(req)
+                .call();
+
+        if (res.hrisDivisionsResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [HrisGetDivisionGroupRequest](../../models/operations/HrisGetDivisionGroupRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+
+### Response
+
+**[HrisGetDivisionGroupResponse](../../models/operations/HrisGetDivisionGroupResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getCompanyGroup
+
+Get Company Group
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetCompanyGroupRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetCompanyGroupResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetCompanyGroupRequest req = HrisGetCompanyGroupRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
+                .build();
+
+        HrisGetCompanyGroupResponse res = sdk.hris().getCompanyGroup()
+                .request(req)
+                .call();
+
+        if (res.companyResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [HrisGetCompanyGroupRequest](../../models/operations/HrisGetCompanyGroupRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+
+### Response
+
+**[HrisGetCompanyGroupResponse](../../models/operations/HrisGetCompanyGroupResponse.md)**
 
 ### Errors
 
@@ -4127,6 +4425,149 @@ public class Application {
 ### Response
 
 **[HrisGetTimeOffRequestResponse](../../models/operations/HrisGetTimeOffRequestResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listShifts
+
+List Shifts
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListShiftsRequest req = HrisListShiftsRequest.builder()
+                .xAccountId("<id>")
+                .filter(HrisListShiftsQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.hris().listShifts()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListShiftsResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [HrisListShiftsRequest](../../models/operations/HrisListShiftsRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+
+### Response
+
+**[HrisListShiftsResponse](../../models/operations/HrisListShiftsResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getShift
+
+Get Shift
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetShiftRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetShiftResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetShiftRequest req = HrisGetShiftRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .build();
+
+        HrisGetShiftResponse res = sdk.hris().getShift()
+                .request(req)
+                .call();
+
+        if (res.hrisShiftResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [HrisGetShiftRequest](../../models/operations/HrisGetShiftRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+
+### Response
+
+**[HrisGetShiftResponse](../../models/operations/HrisGetShiftResponse.md)**
 
 ### Errors
 
@@ -5015,6 +5456,153 @@ public class Application {
 ### Response
 
 **[HrisGetEmployeeTaskResponse](../../models/operations/HrisGetEmployeeTaskResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listTasks
+
+List Tasks
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisListTasksRequest req = HrisListTasksRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at")
+                .filter(HrisListTasksQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .expand("attachments")
+                .build();
+
+        sdk.hris().listTasks()
+                .request(req)
+                .callAsStream()
+                .forEach((HrisListTasksResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [HrisListTasksRequest](../../models/operations/HrisListTasksRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+
+### Response
+
+**[HrisListTasksResponse](../../models/operations/HrisListTasksResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getTask
+
+Get Task
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisGetTaskRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetTaskResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        HrisGetTaskRequest req = HrisGetTaskRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at")
+                .expand("attachments")
+                .build();
+
+        HrisGetTaskResponse res = sdk.hris().getTask()
+                .request(req)
+                .call();
+
+        if (res.taskResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [HrisGetTaskRequest](../../models/operations/HrisGetTaskRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+
+### Response
+
+**[HrisGetTaskResponse](../../models/operations/HrisGetTaskResponse.md)**
 
 ### Errors
 

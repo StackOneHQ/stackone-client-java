@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Job {
 
+public class Job {
     /**
      * Unique identifier
      */
@@ -209,7 +209,12 @@ public class Job {
     }
     
     public Job() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -369,9 +374,10 @@ public class Job {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -703,7 +709,6 @@ public class Job {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -737,24 +742,12 @@ public class Job {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            code,
-            title,
-            description,
-            status,
-            jobStatus,
-            departmentIds,
-            remoteDepartmentIds,
-            locationIds,
-            remoteLocationIds,
-            hiringTeam,
-            interviewStages,
-            confidential,
-            customFields,
-            createdAt,
-            updatedAt);
+            id, remoteId, unifiedCustomFields,
+            code, title, description,
+            status, jobStatus, departmentIds,
+            remoteDepartmentIds, locationIds, remoteLocationIds,
+            hiringTeam, interviewStages, confidential,
+            customFields, createdAt, updatedAt);
     }
     
     @Override
@@ -779,49 +772,51 @@ public class Job {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> code = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> status = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobStatus> jobStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> departmentIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteDepartmentIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> locationIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteLocationIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<JobHiringTeam>> hiringTeam = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<InterviewStage>> interviewStages = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobConfidential> confidential = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -841,6 +836,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -858,6 +854,7 @@ public class Job {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -877,6 +874,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * Code of the job
          */
@@ -894,6 +892,7 @@ public class Job {
             this.code = code;
             return this;
         }
+
 
         /**
          * Title of the job
@@ -913,6 +912,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * Description of the job
          */
@@ -930,6 +930,7 @@ public class Job {
             this.description = description;
             return this;
         }
+
 
         /**
          * Status of the job
@@ -955,6 +956,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * Status of the job
          */
@@ -972,6 +974,7 @@ public class Job {
             this.jobStatus = jobStatus;
             return this;
         }
+
 
         /**
          * Department ids of the job
@@ -991,6 +994,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * Provider's department ids of the job
          */
@@ -1008,6 +1012,7 @@ public class Job {
             this.remoteDepartmentIds = remoteDepartmentIds;
             return this;
         }
+
 
         /**
          * Location ids of the job
@@ -1027,6 +1032,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * Provider's location ids of the job
          */
@@ -1044,6 +1050,7 @@ public class Job {
             this.remoteLocationIds = remoteLocationIds;
             return this;
         }
+
 
         /**
          * Hiring team for the job.
@@ -1063,6 +1070,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * Interview stages for the job.
          */
@@ -1080,6 +1088,7 @@ public class Job {
             this.interviewStages = interviewStages;
             return this;
         }
+
 
         /**
          * Confidential status of the job
@@ -1099,6 +1108,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * The job custom fields
          */
@@ -1116,6 +1126,7 @@ public class Job {
             this.customFields = customFields;
             return this;
         }
+
 
         /**
          * Date of creation
@@ -1135,6 +1146,7 @@ public class Job {
             return this;
         }
 
+
         /**
          * Date of last update
          */
@@ -1152,27 +1164,17 @@ public class Job {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Job build() {
+
             return new Job(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                code,
-                title,
-                description,
-                status,
-                jobStatus,
-                departmentIds,
-                remoteDepartmentIds,
-                locationIds,
-                remoteLocationIds,
-                hiringTeam,
-                interviewStages,
-                confidential,
-                customFields,
-                createdAt,
-                updatedAt);
+                id, remoteId, unifiedCustomFields,
+                code, title, description,
+                status, jobStatus, departmentIds,
+                remoteDepartmentIds, locationIds, remoteLocationIds,
+                hiringTeam, interviewStages, confidential,
+                customFields, createdAt, updatedAt);
         }
+
     }
 }

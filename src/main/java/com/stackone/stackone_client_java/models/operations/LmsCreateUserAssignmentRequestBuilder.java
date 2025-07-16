@@ -73,9 +73,7 @@ public class LmsCreateUserAssignmentRequestBuilder {
             .build());
 
         RequestOperation<LmsCreateUserAssignmentRequest, LmsCreateUserAssignmentResponse> operation
-              = new LmsCreateUserAssignmentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsCreateUserAssignmentOperation(sdkConfiguration, options);
         LmsCreateUserAssignmentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

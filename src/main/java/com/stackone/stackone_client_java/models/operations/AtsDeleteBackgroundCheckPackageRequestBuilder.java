@@ -64,9 +64,7 @@ public class AtsDeleteBackgroundCheckPackageRequestBuilder {
             .build());
 
         RequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
-              = new AtsDeleteBackgroundCheckPackageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsDeleteBackgroundCheckPackageOperation(sdkConfiguration, options);
         AtsDeleteBackgroundCheckPackageRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

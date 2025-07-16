@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AssessmentPackage {
 
+public class AssessmentPackage {
     /**
      * Unique identifier
      */
@@ -60,7 +60,8 @@ public class AssessmentPackage {
     }
     
     public AssessmentPackage() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -95,9 +96,10 @@ public class AssessmentPackage {
         return description;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -171,7 +173,6 @@ public class AssessmentPackage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -191,9 +192,7 @@ public class AssessmentPackage {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
+            id, remoteId, name,
             description);
     }
     
@@ -205,20 +204,22 @@ public class AssessmentPackage {
                 "name", name,
                 "description", description);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -238,6 +239,7 @@ public class AssessmentPackage {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -255,6 +257,7 @@ public class AssessmentPackage {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Package name
@@ -274,6 +277,7 @@ public class AssessmentPackage {
             return this;
         }
 
+
         /**
          * Package description
          */
@@ -291,13 +295,13 @@ public class AssessmentPackage {
             this.description = description;
             return this;
         }
-        
+
         public AssessmentPackage build() {
+
             return new AssessmentPackage(
-                id,
-                remoteId,
-                name,
+                id, remoteId, name,
                 description);
         }
+
     }
 }

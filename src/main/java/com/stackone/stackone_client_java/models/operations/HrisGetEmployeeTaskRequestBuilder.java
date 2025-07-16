@@ -47,9 +47,7 @@ public class HrisGetEmployeeTaskRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmployeeTaskRequest, HrisGetEmployeeTaskResponse> operation
-              = new HrisGetEmployeeTaskOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeTaskOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

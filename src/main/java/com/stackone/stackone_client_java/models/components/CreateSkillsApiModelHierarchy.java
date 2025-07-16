@@ -25,6 +25,7 @@ public class CreateSkillsApiModelHierarchy {
     @JsonProperty("value")
     private JsonNullable<? extends CreateSkillsApiModelValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CreateSkillsApiModelSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class CreateSkillsApiModelHierarchy {
         return (JsonNullable<CreateSkillsApiModelSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CreateSkillsApiModelHierarchy withValue(CreateSkillsApiModelValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class CreateSkillsApiModelHierarchy {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class CreateSkillsApiModelHierarchy {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class CreateSkillsApiModelHierarchy {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CreateSkillsApiModelValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateSkillsApiModelSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(CreateSkillsApiModelValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class CreateSkillsApiModelHierarchy {
             return this;
         }
 
+
         public Builder sourceValue(CreateSkillsApiModelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class CreateSkillsApiModelHierarchy {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CreateSkillsApiModelHierarchy build() {
+
             return new CreateSkillsApiModelHierarchy(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

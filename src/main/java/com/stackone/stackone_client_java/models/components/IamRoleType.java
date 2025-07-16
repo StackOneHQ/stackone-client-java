@@ -14,11 +14,13 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class IamRoleType {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends IamRoleValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -50,9 +52,10 @@ public class IamRoleType {
         return (JsonNullable<IamRoleSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public IamRoleType withValue(IamRoleValue value) {
         Utils.checkNotNull(value, "value");
@@ -78,7 +81,6 @@ public class IamRoleType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,8 +98,7 @@ public class IamRoleType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -106,16 +107,18 @@ public class IamRoleType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends IamRoleValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamRoleSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(IamRoleValue value) {
             Utils.checkNotNull(value, "value");
@@ -129,6 +132,7 @@ public class IamRoleType {
             return this;
         }
 
+
         public Builder sourceValue(IamRoleSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -140,11 +144,12 @@ public class IamRoleType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public IamRoleType build() {
+
             return new IamRoleType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

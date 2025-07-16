@@ -58,9 +58,7 @@ public class LmsListUserCompletionsRequestBuilder {
             .build());
 
         RequestOperation<LmsListUserCompletionsRequest, LmsListUserCompletionsResponse> operation
-              = new LmsListUserCompletionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListUserCompletionsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class LmsListUserCompletionsRequestBuilder {
             .build());
 
         RequestOperation<LmsListUserCompletionsRequest, LmsListUserCompletionsResponse> operation
-              = new LmsListUserCompletionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListUserCompletionsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

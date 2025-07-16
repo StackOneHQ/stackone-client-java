@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisDocumentsUploadRequestDto {
 
+public class HrisDocumentsUploadRequestDto {
     /**
      * The filename of the file to upload
      */
@@ -91,7 +91,9 @@ public class HrisDocumentsUploadRequestDto {
     }
     
     public HrisDocumentsUploadRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -153,9 +155,10 @@ public class HrisDocumentsUploadRequestDto {
         return (JsonNullable<HrisDocumentsUploadRequestDtoCategory>) category;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The filename of the file to upload
@@ -283,7 +286,6 @@ public class HrisDocumentsUploadRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -306,12 +308,8 @@ public class HrisDocumentsUploadRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            fileFormat,
-            content,
-            categoryId,
-            path,
-            confidential,
+            name, fileFormat, content,
+            categoryId, path, confidential,
             category);
     }
     
@@ -326,26 +324,28 @@ public class HrisDocumentsUploadRequestDto {
                 "confidential", confidential,
                 "category", category);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends FileFormat> fileFormat = JsonNullable.undefined();
- 
+
         private JsonNullable<String> content = JsonNullable.undefined();
- 
+
         private JsonNullable<String> categoryId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> path = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Confidential> confidential = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisDocumentsUploadRequestDtoCategory> category = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The filename of the file to upload
@@ -365,6 +365,7 @@ public class HrisDocumentsUploadRequestDto {
             return this;
         }
 
+
         /**
          * The file format of the file
          */
@@ -382,6 +383,7 @@ public class HrisDocumentsUploadRequestDto {
             this.fileFormat = fileFormat;
             return this;
         }
+
 
         /**
          * The base64 encoded content of the file to upload
@@ -401,6 +403,7 @@ public class HrisDocumentsUploadRequestDto {
             return this;
         }
 
+
         /**
          * The categoryId of the documents
          */
@@ -418,6 +421,7 @@ public class HrisDocumentsUploadRequestDto {
             this.categoryId = categoryId;
             return this;
         }
+
 
         /**
          * The path for the file to be uploaded to
@@ -437,6 +441,7 @@ public class HrisDocumentsUploadRequestDto {
             return this;
         }
 
+
         /**
          * The confidentiality level of the file to be uploaded
          */
@@ -455,6 +460,7 @@ public class HrisDocumentsUploadRequestDto {
             return this;
         }
 
+
         /**
          * The category to be associated with the file to be uploaded. Id will take precedence over name.
          */
@@ -472,16 +478,14 @@ public class HrisDocumentsUploadRequestDto {
             this.category = category;
             return this;
         }
-        
+
         public HrisDocumentsUploadRequestDto build() {
+
             return new HrisDocumentsUploadRequestDto(
-                name,
-                fileFormat,
-                content,
-                categoryId,
-                path,
-                confidential,
+                name, fileFormat, content,
+                categoryId, path, confidential,
                 category);
         }
+
     }
 }

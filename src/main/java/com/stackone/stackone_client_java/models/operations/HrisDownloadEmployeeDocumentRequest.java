@@ -11,16 +11,18 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisDownloadEmployeeDocumentRequest {
 
+public class HrisDownloadEmployeeDocumentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
@@ -60,7 +62,8 @@ public class HrisDownloadEmployeeDocumentRequest {
             String xAccountId,
             String id,
             String subResourceId) {
-        this(xAccountId, id, subResourceId, JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, id, subResourceId,
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -97,9 +100,10 @@ public class HrisDownloadEmployeeDocumentRequest {
         return exportFormat;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -158,7 +162,6 @@ public class HrisDownloadEmployeeDocumentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -179,11 +182,8 @@ public class HrisDownloadEmployeeDocumentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            subResourceId,
-            format,
-            exportFormat);
+            xAccountId, id, subResourceId,
+            format, exportFormat);
     }
     
     @Override
@@ -195,22 +195,24 @@ public class HrisDownloadEmployeeDocumentRequest {
                 "format", format,
                 "exportFormat", exportFormat);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private String subResourceId;
- 
+
         private JsonNullable<String> format = JsonNullable.undefined();
- 
+
         private JsonNullable<String> exportFormat = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -221,17 +223,20 @@ public class HrisDownloadEmployeeDocumentRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder subResourceId(String subResourceId) {
             Utils.checkNotNull(subResourceId, "subResourceId");
             this.subResourceId = subResourceId;
             return this;
         }
+
 
         /**
          * The format to download the file in
@@ -251,6 +256,7 @@ public class HrisDownloadEmployeeDocumentRequest {
             return this;
         }
 
+
         /**
          * The export format of the file
          */
@@ -268,14 +274,13 @@ public class HrisDownloadEmployeeDocumentRequest {
             this.exportFormat = exportFormat;
             return this;
         }
-        
+
         public HrisDownloadEmployeeDocumentRequest build() {
+
             return new HrisDownloadEmployeeDocumentRequest(
-                xAccountId,
-                id,
-                subResourceId,
-                format,
-                exportFormat);
+                xAccountId, id, subResourceId,
+                format, exportFormat);
         }
+
     }
 }

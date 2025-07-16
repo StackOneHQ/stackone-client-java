@@ -65,9 +65,7 @@ public class StackoneProxyRequestRequestBuilder {
             .build());
 
         RequestOperation<StackoneProxyRequestRequest, StackoneProxyRequestResponse> operation
-              = new StackoneProxyRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneProxyRequestOperation(sdkConfiguration, options);
         StackoneProxyRequestRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

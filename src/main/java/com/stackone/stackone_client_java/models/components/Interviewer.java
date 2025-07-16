@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Interviewer {
 
+public class Interviewer {
     /**
      * Unique identifier
      */
@@ -29,17 +29,21 @@ public class Interviewer {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("first_name")
     private JsonNullable<String> firstName;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("last_name")
     private JsonNullable<String> lastName;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("email")
@@ -68,7 +72,8 @@ public class Interviewer {
     }
     
     public Interviewer() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -107,9 +112,10 @@ public class Interviewer {
         return email;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -195,7 +201,6 @@ public class Interviewer {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -217,12 +222,8 @@ public class Interviewer {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            firstName,
-            lastName,
-            name,
-            email);
+            id, remoteId, firstName,
+            lastName, name, email);
     }
     
     @Override
@@ -235,24 +236,26 @@ public class Interviewer {
                 "name", name,
                 "email", email);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -272,6 +275,7 @@ public class Interviewer {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -290,6 +294,7 @@ public class Interviewer {
             return this;
         }
 
+
         public Builder firstName(String firstName) {
             Utils.checkNotNull(firstName, "firstName");
             this.firstName = JsonNullable.of(firstName);
@@ -301,6 +306,7 @@ public class Interviewer {
             this.firstName = firstName;
             return this;
         }
+
 
         public Builder lastName(String lastName) {
             Utils.checkNotNull(lastName, "lastName");
@@ -314,6 +320,7 @@ public class Interviewer {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -326,6 +333,7 @@ public class Interviewer {
             return this;
         }
 
+
         public Builder email(String email) {
             Utils.checkNotNull(email, "email");
             this.email = JsonNullable.of(email);
@@ -337,15 +345,13 @@ public class Interviewer {
             this.email = email;
             return this;
         }
-        
+
         public Interviewer build() {
+
             return new Interviewer(
-                id,
-                remoteId,
-                firstName,
-                lastName,
-                name,
-                email);
+                id, remoteId, firstName,
+                lastName, name, email);
         }
+
     }
 }

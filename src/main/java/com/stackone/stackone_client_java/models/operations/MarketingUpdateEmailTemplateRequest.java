@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class MarketingUpdateEmailTemplateRequest {
 
+public class MarketingUpdateEmailTemplateRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto;
@@ -56,9 +58,10 @@ public class MarketingUpdateEmailTemplateRequest {
         return marketingCreateEmailTemplateRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class MarketingUpdateEmailTemplateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class MarketingUpdateEmailTemplateRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            marketingCreateEmailTemplateRequestDto);
+            xAccountId, id, marketingCreateEmailTemplateRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class MarketingUpdateEmailTemplateRequest {
                 "id", id,
                 "marketingCreateEmailTemplateRequestDto", marketingCreateEmailTemplateRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class MarketingUpdateEmailTemplateRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder marketingCreateEmailTemplateRequestDto(MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) {
             Utils.checkNotNull(marketingCreateEmailTemplateRequestDto, "marketingCreateEmailTemplateRequestDto");
             this.marketingCreateEmailTemplateRequestDto = marketingCreateEmailTemplateRequestDto;
             return this;
         }
-        
+
         public MarketingUpdateEmailTemplateRequest build() {
+
             return new MarketingUpdateEmailTemplateRequest(
-                xAccountId,
-                id,
-                marketingCreateEmailTemplateRequestDto);
+                xAccountId, id, marketingCreateEmailTemplateRequestDto);
         }
+
     }
 }

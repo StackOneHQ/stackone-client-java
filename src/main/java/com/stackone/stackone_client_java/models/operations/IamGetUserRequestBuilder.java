@@ -47,9 +47,7 @@ public class IamGetUserRequestBuilder {
             .build());
 
         RequestOperation<IamGetUserRequest, IamGetUserResponse> operation
-              = new IamGetUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamGetUserOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

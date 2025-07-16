@@ -15,8 +15,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Skills {
 
+public class Skills {
     /**
      * The ID associated with this skill
      */
@@ -95,7 +95,9 @@ public class Skills {
     }
     
     public Skills() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -161,9 +163,10 @@ public class Skills {
         return (JsonNullable<SkillsLevel>) level;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with this skill
@@ -297,7 +300,6 @@ public class Skills {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -320,12 +322,8 @@ public class Skills {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            active,
-            hierarchy,
-            language,
+            id, remoteId, name,
+            active, hierarchy, language,
             level);
     }
     
@@ -340,27 +338,29 @@ public class Skills {
                 "language", language,
                 "level", level);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends SkillsActive> active = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends SkillsHierarchy> hierarchy = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends SkillsLanguage> language = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends SkillsLevel> level = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with this skill
@@ -380,6 +380,7 @@ public class Skills {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -397,6 +398,7 @@ public class Skills {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name associated with this skill
@@ -416,6 +418,7 @@ public class Skills {
             return this;
         }
 
+
         /**
          * Whether the skill is active and therefore available for use
          */
@@ -433,6 +436,7 @@ public class Skills {
             this.active = active;
             return this;
         }
+
 
         /**
          * The hierarchal level of the skill
@@ -452,6 +456,7 @@ public class Skills {
             return this;
         }
 
+
         /**
          * The language associated with this skill
          */
@@ -469,6 +474,7 @@ public class Skills {
             this.language = language;
             return this;
         }
+
 
         /**
          * The hierarchal level of the skill
@@ -493,16 +499,14 @@ public class Skills {
             this.level = level;
             return this;
         }
-        
+
         public Skills build() {
+
             return new Skills(
-                id,
-                remoteId,
-                name,
-                active,
-                hierarchy,
-                language,
+                id, remoteId, name,
+                active, hierarchy, language,
                 level);
         }
+
     }
 }

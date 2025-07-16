@@ -22,7 +22,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The advanced log request data
  */
 public class Request {
-
     /**
      * The request ID
      */
@@ -37,6 +36,7 @@ public class Request {
     @JsonProperty("method")
     private JsonNullable<String> method;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("headers")
     private JsonNullable<? extends Map<String, Object>> headers;
@@ -47,6 +47,7 @@ public class Request {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("url")
     private JsonNullable<? extends Url> url;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("body")
@@ -72,7 +73,8 @@ public class Request {
     }
     
     public Request() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -112,9 +114,10 @@ public class Request {
         return (JsonNullable<Object>) body;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The request ID
@@ -194,7 +197,6 @@ public class Request {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -215,11 +217,8 @@ public class Request {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            method,
-            headers,
-            url,
-            body);
+            id, method, headers,
+            url, body);
     }
     
     @Override
@@ -231,22 +230,24 @@ public class Request {
                 "url", url,
                 "body", body);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> method = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> headers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Url> url = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Object> body = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The request ID
@@ -266,6 +267,7 @@ public class Request {
             return this;
         }
 
+
         /**
          * The request method
          */
@@ -284,6 +286,7 @@ public class Request {
             return this;
         }
 
+
         public Builder headers(Map<String, Object> headers) {
             Utils.checkNotNull(headers, "headers");
             this.headers = JsonNullable.of(headers);
@@ -295,6 +298,7 @@ public class Request {
             this.headers = headers;
             return this;
         }
+
 
         /**
          * The request URL data
@@ -314,6 +318,7 @@ public class Request {
             return this;
         }
 
+
         public Builder body(Object body) {
             Utils.checkNotNull(body, "body");
             this.body = JsonNullable.of(body);
@@ -325,14 +330,13 @@ public class Request {
             this.body = body;
             return this;
         }
-        
+
         public Request build() {
+
             return new Request(
-                id,
-                method,
-                headers,
-                url,
-                body);
+                id, method, headers,
+                url, body);
         }
+
     }
 }

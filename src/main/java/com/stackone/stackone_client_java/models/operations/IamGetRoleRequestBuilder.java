@@ -47,9 +47,7 @@ public class IamGetRoleRequestBuilder {
             .build());
 
         RequestOperation<IamGetRoleRequest, IamGetRoleResponse> operation
-              = new IamGetRoleOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamGetRoleOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

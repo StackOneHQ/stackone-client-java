@@ -14,15 +14,18 @@ import java.lang.String;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class StatusReason {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("code")
     private JsonNullable<String> code;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
+
 
     @JsonProperty("timestamp")
     private OffsetDateTime timestamp;
@@ -60,9 +63,10 @@ public class StatusReason {
         return timestamp;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public StatusReason withCode(String code) {
         Utils.checkNotNull(code, "code");
@@ -94,7 +98,6 @@ public class StatusReason {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,9 +116,7 @@ public class StatusReason {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            code,
-            description,
-            timestamp);
+            code, description, timestamp);
     }
     
     @Override
@@ -125,18 +126,20 @@ public class StatusReason {
                 "description", description,
                 "timestamp", timestamp);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> code = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private OffsetDateTime timestamp;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder code(String code) {
             Utils.checkNotNull(code, "code");
@@ -150,6 +153,7 @@ public class StatusReason {
             return this;
         }
 
+
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
             this.description = JsonNullable.of(description);
@@ -162,17 +166,18 @@ public class StatusReason {
             return this;
         }
 
+
         public Builder timestamp(OffsetDateTime timestamp) {
             Utils.checkNotNull(timestamp, "timestamp");
             this.timestamp = timestamp;
             return this;
         }
-        
+
         public StatusReason build() {
+
             return new StatusReason(
-                code,
-                description,
-                timestamp);
+                code, description, timestamp);
         }
+
     }
 }

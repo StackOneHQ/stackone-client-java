@@ -29,7 +29,6 @@ import com.stackone.stackone_client_java.operations.StackoneUpdateAccountOperati
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -70,16 +69,11 @@ public class Accounts {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneListLinkedAccountsResponse listLinkedAccounts(
-            StackoneListLinkedAccountsRequest request,
-            Optional<Options> options) throws Exception {
+    public StackoneListLinkedAccountsResponse listLinkedAccounts(StackoneListLinkedAccountsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListLinkedAccountsRequest, StackoneListLinkedAccountsResponse> operation
-              = new StackoneListLinkedAccountsOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneListLinkedAccountsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Account
@@ -109,21 +103,16 @@ public class Accounts {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneGetAccountResponse getAccount(
-            String id,
-            Optional<Options> options) throws Exception {
+    public StackoneGetAccountResponse getAccount(String id, Optional<Options> options) throws Exception {
         StackoneGetAccountRequest request =
             StackoneGetAccountRequest
                 .builder()
                 .id(id)
                 .build();
         RequestOperation<StackoneGetAccountRequest, StackoneGetAccountResponse> operation
-              = new StackoneGetAccountOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneGetAccountOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Delete Account
@@ -153,21 +142,16 @@ public class Accounts {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneDeleteAccountResponse deleteAccount(
-            String id,
-            Optional<Options> options) throws Exception {
+    public StackoneDeleteAccountResponse deleteAccount(String id, Optional<Options> options) throws Exception {
         StackoneDeleteAccountRequest request =
             StackoneDeleteAccountRequest
                 .builder()
                 .id(id)
                 .build();
         RequestOperation<StackoneDeleteAccountRequest, StackoneDeleteAccountResponse> operation
-              = new StackoneDeleteAccountOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneDeleteAccountOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Account
@@ -186,9 +170,7 @@ public class Accounts {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneUpdateAccountResponse updateAccount(
-            String id,
-            PatchAccountExternalDto patchAccountExternalDto) throws Exception {
+    public StackoneUpdateAccountResponse updateAccount(String id, PatchAccountExternalDto patchAccountExternalDto) throws Exception {
         return updateAccount(id, patchAccountExternalDto, Optional.empty());
     }
 
@@ -202,8 +184,7 @@ public class Accounts {
      * @throws Exception if the API call fails
      */
     public StackoneUpdateAccountResponse updateAccount(
-            String id,
-            PatchAccountExternalDto patchAccountExternalDto,
+            String id, PatchAccountExternalDto patchAccountExternalDto,
             Optional<Options> options) throws Exception {
         StackoneUpdateAccountRequest request =
             StackoneUpdateAccountRequest
@@ -212,12 +193,9 @@ public class Accounts {
                 .patchAccountExternalDto(patchAccountExternalDto)
                 .build();
         RequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
-              = new StackoneUpdateAccountOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneUpdateAccountOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get meta information of the account
@@ -247,18 +225,14 @@ public class Accounts {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneGetAccountMetaInfoResponse getAccountMetaInfo(
-            String id,
-            Optional<Options> options) throws Exception {
+    public StackoneGetAccountMetaInfoResponse getAccountMetaInfo(String id, Optional<Options> options) throws Exception {
         StackoneGetAccountMetaInfoRequest request =
             StackoneGetAccountMetaInfoRequest
                 .builder()
                 .id(id)
                 .build();
         RequestOperation<StackoneGetAccountMetaInfoRequest, StackoneGetAccountMetaInfoResponse> operation
-              = new StackoneGetAccountMetaInfoOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneGetAccountMetaInfoOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

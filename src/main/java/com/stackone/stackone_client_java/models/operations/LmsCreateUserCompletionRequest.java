@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class LmsCreateUserCompletionRequest {
 
+public class LmsCreateUserCompletionRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto;
@@ -56,9 +58,10 @@ public class LmsCreateUserCompletionRequest {
         return lmsCreateCompletionRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class LmsCreateUserCompletionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class LmsCreateUserCompletionRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            lmsCreateCompletionRequestDto);
+            xAccountId, id, lmsCreateCompletionRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class LmsCreateUserCompletionRequest {
                 "id", id,
                 "lmsCreateCompletionRequestDto", lmsCreateCompletionRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class LmsCreateUserCompletionRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder lmsCreateCompletionRequestDto(LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) {
             Utils.checkNotNull(lmsCreateCompletionRequestDto, "lmsCreateCompletionRequestDto");
             this.lmsCreateCompletionRequestDto = lmsCreateCompletionRequestDto;
             return this;
         }
-        
+
         public LmsCreateUserCompletionRequest build() {
+
             return new LmsCreateUserCompletionRequest(
-                xAccountId,
-                id,
-                lmsCreateCompletionRequestDto);
+                xAccountId, id, lmsCreateCompletionRequestDto);
         }
+
     }
 }

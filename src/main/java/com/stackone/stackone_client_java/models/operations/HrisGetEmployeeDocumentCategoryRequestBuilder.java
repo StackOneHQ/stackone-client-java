@@ -47,9 +47,7 @@ public class HrisGetEmployeeDocumentCategoryRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmployeeDocumentCategoryRequest, HrisGetEmployeeDocumentCategoryResponse> operation
-              = new HrisGetEmployeeDocumentCategoryOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeDocumentCategoryOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

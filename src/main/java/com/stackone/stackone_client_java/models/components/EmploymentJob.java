@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The job of employee
  */
 public class EmploymentJob {
-
     /**
      * Unique identifier
      */
@@ -86,7 +85,8 @@ public class EmploymentJob {
     }
     
     public EmploymentJob() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -138,9 +138,10 @@ public class EmploymentJob {
         return parentId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -250,7 +251,6 @@ public class EmploymentJob {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -272,12 +272,8 @@ public class EmploymentJob {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            title,
-            description,
-            ownerId,
-            parentId);
+            id, remoteId, title,
+            description, ownerId, parentId);
     }
     
     @Override
@@ -290,24 +286,26 @@ public class EmploymentJob {
                 "ownerId", ownerId,
                 "parentId", parentId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Description> description = JsonNullable.undefined();
- 
+
         private JsonNullable<String> ownerId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> parentId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -327,6 +325,7 @@ public class EmploymentJob {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -344,6 +343,7 @@ public class EmploymentJob {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Title of the job
@@ -363,6 +363,7 @@ public class EmploymentJob {
             return this;
         }
 
+
         /**
          * The employee job description
          */
@@ -380,6 +381,7 @@ public class EmploymentJob {
             this.description = description;
             return this;
         }
+
 
         /**
          * The owner_id of the job
@@ -399,6 +401,7 @@ public class EmploymentJob {
             return this;
         }
 
+
         /**
          * The parent_id of the job
          */
@@ -416,15 +419,13 @@ public class EmploymentJob {
             this.parentId = parentId;
             return this;
         }
-        
+
         public EmploymentJob build() {
+
             return new EmploymentJob(
-                id,
-                remoteId,
-                title,
-                description,
-                ownerId,
-                parentId);
+                id, remoteId, title,
+                description, ownerId, parentId);
         }
+
     }
 }

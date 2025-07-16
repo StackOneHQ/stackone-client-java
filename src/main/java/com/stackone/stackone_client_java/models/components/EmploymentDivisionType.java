@@ -25,6 +25,7 @@ public class EmploymentDivisionType {
     @JsonProperty("value")
     private JsonNullable<? extends EmploymentDivisionValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends EmploymentDivisionSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class EmploymentDivisionType {
         return (JsonNullable<EmploymentDivisionSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public EmploymentDivisionType withValue(EmploymentDivisionValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class EmploymentDivisionType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class EmploymentDivisionType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class EmploymentDivisionType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmploymentDivisionValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentDivisionSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(EmploymentDivisionValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class EmploymentDivisionType {
             return this;
         }
 
+
         public Builder sourceValue(EmploymentDivisionSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class EmploymentDivisionType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EmploymentDivisionType build() {
+
             return new EmploymentDivisionType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

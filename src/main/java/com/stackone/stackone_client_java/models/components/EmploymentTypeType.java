@@ -25,6 +25,7 @@ public class EmploymentTypeType {
     @JsonProperty("value")
     private JsonNullable<? extends EmploymentTypeValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends EmploymentTypeSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class EmploymentTypeType {
         return (JsonNullable<EmploymentTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public EmploymentTypeType withValue(EmploymentTypeValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class EmploymentTypeType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class EmploymentTypeType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class EmploymentTypeType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmploymentTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(EmploymentTypeValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class EmploymentTypeType {
             return this;
         }
 
+
         public Builder sourceValue(EmploymentTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class EmploymentTypeType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EmploymentTypeType build() {
+
             return new EmploymentTypeType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

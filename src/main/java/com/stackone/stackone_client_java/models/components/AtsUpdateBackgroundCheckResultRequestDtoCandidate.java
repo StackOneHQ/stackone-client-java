@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsUpdateBackgroundCheckResultRequestDtoCandidate {
 
+public class AtsUpdateBackgroundCheckResultRequestDtoCandidate {
     /**
      * Unique identifier
      */
@@ -59,9 +59,10 @@ public class AtsUpdateBackgroundCheckResultRequestDtoCandidate {
         return profileUrl;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -99,7 +100,6 @@ public class AtsUpdateBackgroundCheckResultRequestDtoCandidate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -117,8 +117,7 @@ public class AtsUpdateBackgroundCheckResultRequestDtoCandidate {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            profileUrl);
+            id, profileUrl);
     }
     
     @Override
@@ -127,16 +126,18 @@ public class AtsUpdateBackgroundCheckResultRequestDtoCandidate {
                 "id", id,
                 "profileUrl", profileUrl);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> profileUrl = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -156,6 +157,7 @@ public class AtsUpdateBackgroundCheckResultRequestDtoCandidate {
             return this;
         }
 
+
         /**
          * Candidate profile url
          */
@@ -173,11 +175,12 @@ public class AtsUpdateBackgroundCheckResultRequestDtoCandidate {
             this.profileUrl = profileUrl;
             return this;
         }
-        
+
         public AtsUpdateBackgroundCheckResultRequestDtoCandidate build() {
+
             return new AtsUpdateBackgroundCheckResultRequestDtoCandidate(
-                id,
-                profileUrl);
+                id, profileUrl);
         }
+
     }
 }

@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The location of the time entry
  */
 public class Location {
-
     /**
      * The reference id
      */
@@ -66,7 +65,8 @@ public class Location {
     }
     
     public Location() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -102,9 +102,10 @@ public class Location {
         return (JsonNullable<TimeEntriesActive>) active;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The reference id
@@ -178,7 +179,6 @@ public class Location {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -198,9 +198,7 @@ public class Location {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
+            id, remoteId, name,
             active);
     }
     
@@ -212,20 +210,22 @@ public class Location {
                 "name", name,
                 "active", active);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeEntriesActive> active = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The reference id
@@ -245,6 +245,7 @@ public class Location {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -262,6 +263,7 @@ public class Location {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The reference name
@@ -281,6 +283,7 @@ public class Location {
             return this;
         }
 
+
         /**
          * The reference status
          */
@@ -298,13 +301,13 @@ public class Location {
             this.active = active;
             return this;
         }
-        
+
         public Location build() {
+
             return new Location(
-                id,
-                remoteId,
-                name,
+                id, remoteId, name,
                 active);
         }
+
     }
 }

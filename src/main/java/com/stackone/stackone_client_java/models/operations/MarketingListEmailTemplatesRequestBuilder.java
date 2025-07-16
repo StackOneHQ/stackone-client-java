@@ -58,9 +58,7 @@ public class MarketingListEmailTemplatesRequestBuilder {
             .build());
 
         RequestOperation<MarketingListEmailTemplatesRequest, MarketingListEmailTemplatesResponse> operation
-              = new MarketingListEmailTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListEmailTemplatesOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class MarketingListEmailTemplatesRequestBuilder {
             .build());
 
         RequestOperation<MarketingListEmailTemplatesRequest, MarketingListEmailTemplatesResponse> operation
-              = new MarketingListEmailTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListEmailTemplatesOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

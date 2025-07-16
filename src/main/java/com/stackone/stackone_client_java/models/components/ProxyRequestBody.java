@@ -18,8 +18,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ProxyRequestBody {
 
+public class ProxyRequestBody {
     /**
      * The base url of the request
      */
@@ -75,7 +75,8 @@ public class ProxyRequestBody {
     }
     
     public ProxyRequestBody() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -121,9 +122,10 @@ public class ProxyRequestBody {
         return (JsonNullable<Map<String, Object>>) body;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The base url of the request
@@ -215,7 +217,6 @@ public class ProxyRequestBody {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -236,11 +237,8 @@ public class ProxyRequestBody {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            url,
-            method,
-            path,
-            headers,
-            body);
+            url, method, path,
+            headers, body);
     }
     
     @Override
@@ -252,22 +250,24 @@ public class ProxyRequestBody {
                 "headers", headers,
                 "body", body);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Method> method;
- 
+
         private JsonNullable<String> path = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> headers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> body = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The base url of the request
@@ -287,6 +287,7 @@ public class ProxyRequestBody {
             return this;
         }
 
+
         /**
          * The method of the request
          */
@@ -304,6 +305,7 @@ public class ProxyRequestBody {
             this.method = method;
             return this;
         }
+
 
         /**
          * The path of the request including any query paramters
@@ -323,6 +325,7 @@ public class ProxyRequestBody {
             return this;
         }
 
+
         /**
          * The headers to send in the request
          */
@@ -341,6 +344,7 @@ public class ProxyRequestBody {
             return this;
         }
 
+
         /**
          * The body of the request
          */
@@ -358,18 +362,17 @@ public class ProxyRequestBody {
             this.body = body;
             return this;
         }
-        
+
         public ProxyRequestBody build() {
             if (method == null) {
                 method = _SINGLETON_VALUE_Method.value();
             }
+
             return new ProxyRequestBody(
-                url,
-                method,
-                path,
-                headers,
-                body);
+                url, method, path,
+                headers, body);
         }
+
 
         private static final LazySingletonValue<JsonNullable<? extends Method>> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

@@ -15,7 +15,6 @@ import com.stackone.stackone_client_java.operations.StackoneAuthenticateConnectS
 import com.stackone.stackone_client_java.operations.StackoneCreateConnectSessionOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -56,16 +55,11 @@ public class ConnectSessions {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneCreateConnectSessionResponse createConnectSession(
-            ConnectSessionCreate request,
-            Optional<Options> options) throws Exception {
+    public StackoneCreateConnectSessionResponse createConnectSession(ConnectSessionCreate request, Optional<Options> options) throws Exception {
         RequestOperation<ConnectSessionCreate, StackoneCreateConnectSessionResponse> operation
-              = new StackoneCreateConnectSessionOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneCreateConnectSessionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Authenticate Connect Session
@@ -95,13 +89,9 @@ public class ConnectSessions {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneAuthenticateConnectSessionResponse authenticateConnectSession(
-            ConnectSessionAuthenticate request,
-            Optional<Options> options) throws Exception {
+    public StackoneAuthenticateConnectSessionResponse authenticateConnectSession(ConnectSessionAuthenticate request, Optional<Options> options) throws Exception {
         RequestOperation<ConnectSessionAuthenticate, StackoneAuthenticateConnectSessionResponse> operation
-              = new StackoneAuthenticateConnectSessionOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneAuthenticateConnectSessionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

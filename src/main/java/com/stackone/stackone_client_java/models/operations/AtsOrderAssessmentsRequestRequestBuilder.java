@@ -65,9 +65,7 @@ public class AtsOrderAssessmentsRequestRequestBuilder {
             .build());
 
         RequestOperation<AtsOrderAssessmentsRequestRequest, AtsOrderAssessmentsRequestResponse> operation
-              = new AtsOrderAssessmentsRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsOrderAssessmentsRequestOperation(sdkConfiguration, options);
         AtsOrderAssessmentsRequestRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

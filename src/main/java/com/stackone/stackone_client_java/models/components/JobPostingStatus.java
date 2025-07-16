@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingStatus {
 
+public class JobPostingStatus {
     /**
      * The status of the job postings.
      */
@@ -62,9 +62,10 @@ public class JobPostingStatus {
         return (JsonNullable<JobPostingSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the job postings.
@@ -102,7 +103,6 @@ public class JobPostingStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class JobPostingStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class JobPostingStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends JobPostingValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the job postings.
@@ -159,6 +160,7 @@ public class JobPostingStatus {
             return this;
         }
 
+
         /**
          * The source value of the job postings status.
          */
@@ -176,11 +178,12 @@ public class JobPostingStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public JobPostingStatus build() {
+
             return new JobPostingStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

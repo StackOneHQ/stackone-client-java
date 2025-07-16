@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Resources for this provider, such as image assets
  */
 public class Resources {
-
     /**
      * Image assets for this provider
      */
@@ -48,9 +47,10 @@ public class Resources {
         return (JsonNullable<Images>) images;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Image assets for this provider
@@ -70,7 +70,6 @@ public class Resources {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,14 +94,16 @@ public class Resources {
         return Utils.toString(Resources.class,
                 "images", images);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Images> images = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Image assets for this provider
@@ -121,10 +122,12 @@ public class Resources {
             this.images = images;
             return this;
         }
-        
+
         public Resources build() {
+
             return new Resources(
                 images);
         }
+
     }
 }

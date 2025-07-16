@@ -18,8 +18,8 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateEmploymentApiModel {
 
+public class CreateEmploymentApiModel {
     /**
      * Custom Unified Fields configured in your StackOne project
      */
@@ -103,6 +103,7 @@ public class CreateEmploymentApiModel {
     @Deprecated
     private JsonNullable<? extends CreateEmploymentApiModelEmploymentContractType> employmentContractType;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("work_time")
     private JsonNullable<? extends CreateEmploymentApiModelWorkTime> workTime;
@@ -168,7 +169,11 @@ public class CreateEmploymentApiModel {
     }
     
     public CreateEmploymentApiModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -293,9 +298,10 @@ public class CreateEmploymentApiModel {
         return jobId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Custom Unified Fields configured in your StackOne project
@@ -555,7 +561,6 @@ public class CreateEmploymentApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -585,20 +590,11 @@ public class CreateEmploymentApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            unifiedCustomFields,
-            jobTitle,
-            payRate,
-            payPeriod,
-            payFrequency,
-            payCurrency,
-            effectiveDate,
-            endDate,
-            grade,
-            employmentType,
-            employmentContractType,
-            workTime,
-            payrollCode,
-            jobId);
+            unifiedCustomFields, jobTitle, payRate,
+            payPeriod, payFrequency, payCurrency,
+            effectiveDate, endDate, grade,
+            employmentType, employmentContractType, workTime,
+            payrollCode, jobId);
     }
     
     @Override
@@ -619,42 +615,44 @@ public class CreateEmploymentApiModel {
                 "payrollCode", payrollCode,
                 "jobId", jobId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobTitle = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payRate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateEmploymentApiModelPayPeriod> payPeriod = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateEmploymentApiModelPayFrequency> payFrequency = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> effectiveDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateEmploymentApiModelGrade> grade = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends CreateEmploymentApiModelEmploymentType> employmentType = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends CreateEmploymentApiModelEmploymentContractType> employmentContractType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateEmploymentApiModelWorkTime> workTime = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payrollCode = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -674,6 +672,7 @@ public class CreateEmploymentApiModel {
             return this;
         }
 
+
         /**
          * The job title of the employee
          */
@@ -691,6 +690,7 @@ public class CreateEmploymentApiModel {
             this.jobTitle = jobTitle;
             return this;
         }
+
 
         /**
          * The pay rate for the employee
@@ -710,6 +710,7 @@ public class CreateEmploymentApiModel {
             return this;
         }
 
+
         /**
          * The pay period
          */
@@ -727,6 +728,7 @@ public class CreateEmploymentApiModel {
             this.payPeriod = payPeriod;
             return this;
         }
+
 
         /**
          * The pay frequency
@@ -746,6 +748,7 @@ public class CreateEmploymentApiModel {
             return this;
         }
 
+
         /**
          * The currency used for pay
          */
@@ -763,6 +766,7 @@ public class CreateEmploymentApiModel {
             this.payCurrency = payCurrency;
             return this;
         }
+
 
         /**
          * The effective date of the employment contract
@@ -782,6 +786,7 @@ public class CreateEmploymentApiModel {
             return this;
         }
 
+
         /**
          * The end date of employment
          */
@@ -800,6 +805,7 @@ public class CreateEmploymentApiModel {
             return this;
         }
 
+
         /**
          * Represents the employee’s position within the organizational hierarchy.
          */
@@ -817,6 +823,7 @@ public class CreateEmploymentApiModel {
             this.grade = grade;
             return this;
         }
+
 
         /**
          * The type of employment (e.g., contractor, permanent)
@@ -842,6 +849,7 @@ public class CreateEmploymentApiModel {
             return this;
         }
 
+
         /**
          * The employment work schedule type (e.g., full-time, part-time)
          * 
@@ -866,6 +874,7 @@ public class CreateEmploymentApiModel {
             return this;
         }
 
+
         public Builder workTime(CreateEmploymentApiModelWorkTime workTime) {
             Utils.checkNotNull(workTime, "workTime");
             this.workTime = JsonNullable.of(workTime);
@@ -877,6 +886,7 @@ public class CreateEmploymentApiModel {
             this.workTime = workTime;
             return this;
         }
+
 
         /**
          * The payroll code of the employee
@@ -896,6 +906,7 @@ public class CreateEmploymentApiModel {
             return this;
         }
 
+
         /**
          * The employee job id
          */
@@ -913,23 +924,16 @@ public class CreateEmploymentApiModel {
             this.jobId = jobId;
             return this;
         }
-        
+
         public CreateEmploymentApiModel build() {
+
             return new CreateEmploymentApiModel(
-                unifiedCustomFields,
-                jobTitle,
-                payRate,
-                payPeriod,
-                payFrequency,
-                payCurrency,
-                effectiveDate,
-                endDate,
-                grade,
-                employmentType,
-                employmentContractType,
-                workTime,
-                payrollCode,
-                jobId);
+                unifiedCustomFields, jobTitle, payRate,
+                payPeriod, payFrequency, payCurrency,
+                effectiveDate, endDate, grade,
+                employmentType, employmentContractType, workTime,
+                payrollCode, jobId);
         }
+
     }
 }

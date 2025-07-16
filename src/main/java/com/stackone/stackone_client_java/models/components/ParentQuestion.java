@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ParentQuestion {
 
+public class ParentQuestion {
     /**
      * Unique identifier
      */
@@ -45,6 +45,7 @@ public class ParentQuestion {
     @JsonProperty("remote_option_ids")
     private JsonNullable<? extends List<String>> remoteOptionIds;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("condition_type")
     private JsonNullable<? extends ConditionType> conditionType;
@@ -69,7 +70,8 @@ public class ParentQuestion {
     }
     
     public ParentQuestion() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -112,9 +114,10 @@ public class ParentQuestion {
         return (JsonNullable<ConditionType>) conditionType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -200,7 +203,6 @@ public class ParentQuestion {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -221,11 +223,8 @@ public class ParentQuestion {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            optionIds,
-            remoteOptionIds,
-            conditionType);
+            id, remoteId, optionIds,
+            remoteOptionIds, conditionType);
     }
     
     @Override
@@ -237,22 +236,24 @@ public class ParentQuestion {
                 "remoteOptionIds", remoteOptionIds,
                 "conditionType", conditionType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> optionIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteOptionIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ConditionType> conditionType = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -272,6 +273,7 @@ public class ParentQuestion {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -289,6 +291,7 @@ public class ParentQuestion {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * List of parent questions's option IDs
@@ -308,6 +311,7 @@ public class ParentQuestion {
             return this;
         }
 
+
         /**
          * Provider's list of parent questions's option IDs
          */
@@ -326,6 +330,7 @@ public class ParentQuestion {
             return this;
         }
 
+
         public Builder conditionType(ConditionType conditionType) {
             Utils.checkNotNull(conditionType, "conditionType");
             this.conditionType = JsonNullable.of(conditionType);
@@ -337,14 +342,13 @@ public class ParentQuestion {
             this.conditionType = conditionType;
             return this;
         }
-        
+
         public ParentQuestion build() {
+
             return new ParentQuestion(
-                id,
-                remoteId,
-                optionIds,
-                remoteOptionIds,
-                conditionType);
+                id, remoteId, optionIds,
+                remoteOptionIds, conditionType);
         }
+
     }
 }

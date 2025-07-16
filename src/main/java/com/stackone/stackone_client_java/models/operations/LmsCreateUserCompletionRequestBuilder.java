@@ -73,9 +73,7 @@ public class LmsCreateUserCompletionRequestBuilder {
             .build());
 
         RequestOperation<LmsCreateUserCompletionRequest, LmsCreateUserCompletionResponse> operation
-              = new LmsCreateUserCompletionOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsCreateUserCompletionOperation(sdkConfiguration, options);
         LmsCreateUserCompletionRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

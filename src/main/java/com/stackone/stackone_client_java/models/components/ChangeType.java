@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The type of change that occurred to the application
  */
 public class ChangeType {
-
     /**
      * The type of change that occurred to the application
      */
@@ -67,9 +66,10 @@ public class ChangeType {
         return (JsonNullable<ApplicationChangesSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of change that occurred to the application
@@ -107,7 +107,6 @@ public class ChangeType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class ChangeType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class ChangeType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends ApplicationChangesValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ApplicationChangesSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of change that occurred to the application
@@ -164,6 +164,7 @@ public class ChangeType {
             return this;
         }
 
+
         /**
          * The source value of the change type
          */
@@ -181,11 +182,12 @@ public class ChangeType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public ChangeType build() {
+
             return new ChangeType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

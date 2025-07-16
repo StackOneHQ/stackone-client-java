@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The language associated with this skill
  */
 public class Language {
-
     /**
      * The Locale Code of the language
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends EntitySkillsValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class Language {
         return (JsonNullable<EntitySkillsSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Locale Code of the language
@@ -95,7 +96,6 @@ public class Language {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class Language {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class Language {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EntitySkillsValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EntitySkillsSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Locale Code of the language
@@ -152,6 +153,7 @@ public class Language {
             return this;
         }
 
+
         public Builder sourceValue(EntitySkillsSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class Language {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public Language build() {
+
             return new Language(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

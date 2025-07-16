@@ -18,8 +18,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class UnifiedLogsPartial {
 
+public class UnifiedLogsPartial {
     /**
      * The request ID
      */
@@ -255,7 +255,14 @@ public class UnifiedLogsPartial {
     }
     
     public UnifiedLogsPartial() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -443,9 +450,10 @@ public class UnifiedLogsPartial {
         return (JsonNullable<List<StepLogPartial>>) stepRequests;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The request ID
@@ -861,7 +869,6 @@ public class UnifiedLogsPartial {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -900,29 +907,14 @@ public class UnifiedLogsPartial {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            requestId,
-            eventDatetime,
-            startTime,
-            endTime,
-            accountId,
-            projectId,
-            httpMethod,
-            path,
-            url,
-            status,
-            duration,
-            success,
-            provider,
-            service,
-            resource,
-            childResource,
-            subResource,
-            action,
-            isWorker,
-            sourceType,
-            sourceValue,
-            sourceId,
-            stepRequests);
+            requestId, eventDatetime, startTime,
+            endTime, accountId, projectId,
+            httpMethod, path, url,
+            status, duration, success,
+            provider, service, resource,
+            childResource, subResource, action,
+            isWorker, sourceType, sourceValue,
+            sourceId, stepRequests);
     }
     
     @Override
@@ -952,58 +944,60 @@ public class UnifiedLogsPartial {
                 "sourceId", sourceId,
                 "stepRequests", stepRequests);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> requestId = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> eventDatetime = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startTime = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endTime = JsonNullable.undefined();
- 
+
         private JsonNullable<String> accountId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> projectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> httpMethod = JsonNullable.undefined();
- 
+
         private JsonNullable<String> path = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> status = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> duration = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> success = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> service = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> childResource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> subResource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> action = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> isWorker = JsonNullable.undefined();
- 
+
         private JsonNullable<String> sourceType = JsonNullable.undefined();
- 
+
         private JsonNullable<String> sourceValue = JsonNullable.undefined();
- 
+
         private JsonNullable<String> sourceId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<StepLogPartial>> stepRequests = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The request ID
@@ -1023,6 +1017,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The event ISO8601 date string
          */
@@ -1040,6 +1035,7 @@ public class UnifiedLogsPartial {
             this.eventDatetime = eventDatetime;
             return this;
         }
+
 
         /**
          * The request start time ISO8601 date string
@@ -1059,6 +1055,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The request end time ISO8601 date string
          */
@@ -1076,6 +1073,7 @@ public class UnifiedLogsPartial {
             this.endTime = endTime;
             return this;
         }
+
 
         /**
          * The account ID of the request
@@ -1095,6 +1093,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The project ID of the request
          */
@@ -1112,6 +1111,7 @@ public class UnifiedLogsPartial {
             this.projectId = projectId;
             return this;
         }
+
 
         /**
          * The requested HTTP method
@@ -1131,6 +1131,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The requested path
          */
@@ -1148,6 +1149,7 @@ public class UnifiedLogsPartial {
             this.path = path;
             return this;
         }
+
 
         /**
          * The requested URL
@@ -1167,6 +1169,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The requests response status code
          */
@@ -1184,6 +1187,7 @@ public class UnifiedLogsPartial {
             this.status = status;
             return this;
         }
+
 
         /**
          * The request duration in milliseconds
@@ -1203,6 +1207,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The request success flag
          */
@@ -1220,6 +1225,7 @@ public class UnifiedLogsPartial {
             this.success = success;
             return this;
         }
+
 
         /**
          * The requested provider
@@ -1239,6 +1245,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The requested service
          */
@@ -1256,6 +1263,7 @@ public class UnifiedLogsPartial {
             this.service = service;
             return this;
         }
+
 
         /**
          * The requested resource
@@ -1275,6 +1283,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The requested child resource
          */
@@ -1292,6 +1301,7 @@ public class UnifiedLogsPartial {
             this.childResource = childResource;
             return this;
         }
+
 
         /**
          * The requested sub resource
@@ -1311,6 +1321,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The requested action
          */
@@ -1328,6 +1339,7 @@ public class UnifiedLogsPartial {
             this.action = action;
             return this;
         }
+
 
         /**
          * The asynchronous worker flag
@@ -1347,6 +1359,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The requests source type
          */
@@ -1364,6 +1377,7 @@ public class UnifiedLogsPartial {
             this.sourceType = sourceType;
             return this;
         }
+
 
         /**
          * The requests source value
@@ -1383,6 +1397,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The requests source ID
          */
@@ -1401,6 +1416,7 @@ public class UnifiedLogsPartial {
             return this;
         }
 
+
         /**
          * The list of provider requests
          */
@@ -1418,32 +1434,19 @@ public class UnifiedLogsPartial {
             this.stepRequests = stepRequests;
             return this;
         }
-        
+
         public UnifiedLogsPartial build() {
+
             return new UnifiedLogsPartial(
-                requestId,
-                eventDatetime,
-                startTime,
-                endTime,
-                accountId,
-                projectId,
-                httpMethod,
-                path,
-                url,
-                status,
-                duration,
-                success,
-                provider,
-                service,
-                resource,
-                childResource,
-                subResource,
-                action,
-                isWorker,
-                sourceType,
-                sourceValue,
-                sourceId,
-                stepRequests);
+                requestId, eventDatetime, startTime,
+                endTime, accountId, projectId,
+                httpMethod, path, url,
+                status, duration, success,
+                provider, service, resource,
+                childResource, subResource, action,
+                isWorker, sourceType, sourceValue,
+                sourceId, stepRequests);
         }
+
     }
 }

@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ApplicationAttachmentContentType {
 
+public class ApplicationAttachmentContentType {
     /**
      * The content type of the attachment.
      */
@@ -62,9 +62,10 @@ public class ApplicationAttachmentContentType {
         return (JsonNullable<ApplicationAttachmentSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The content type of the attachment.
@@ -102,7 +103,6 @@ public class ApplicationAttachmentContentType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class ApplicationAttachmentContentType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class ApplicationAttachmentContentType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends ApplicationAttachmentValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ApplicationAttachmentSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The content type of the attachment.
@@ -159,6 +160,7 @@ public class ApplicationAttachmentContentType {
             return this;
         }
 
+
         /**
          * The source value of the content type.
          */
@@ -176,11 +178,12 @@ public class ApplicationAttachmentContentType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public ApplicationAttachmentContentType build() {
+
             return new ApplicationAttachmentContentType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

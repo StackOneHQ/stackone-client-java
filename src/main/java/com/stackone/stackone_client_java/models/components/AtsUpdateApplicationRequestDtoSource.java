@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsUpdateApplicationRequestDtoSource {
 
+public class AtsUpdateApplicationRequestDtoSource {
     /**
      * Unique identifier
      */
@@ -59,9 +59,10 @@ public class AtsUpdateApplicationRequestDtoSource {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -99,7 +100,6 @@ public class AtsUpdateApplicationRequestDtoSource {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -117,8 +117,7 @@ public class AtsUpdateApplicationRequestDtoSource {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            name);
+            id, name);
     }
     
     @Override
@@ -127,16 +126,18 @@ public class AtsUpdateApplicationRequestDtoSource {
                 "id", id,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -156,6 +157,7 @@ public class AtsUpdateApplicationRequestDtoSource {
             return this;
         }
 
+
         /**
          * The source of the application
          */
@@ -173,11 +175,12 @@ public class AtsUpdateApplicationRequestDtoSource {
             this.name = name;
             return this;
         }
-        
+
         public AtsUpdateApplicationRequestDtoSource build() {
+
             return new AtsUpdateApplicationRequestDtoSource(
-                id,
-                name);
+                id, name);
         }
+
     }
 }

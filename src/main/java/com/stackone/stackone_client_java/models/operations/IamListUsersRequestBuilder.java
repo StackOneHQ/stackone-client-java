@@ -58,9 +58,7 @@ public class IamListUsersRequestBuilder {
             .build());
 
         RequestOperation<IamListUsersRequest, IamListUsersResponse> operation
-              = new IamListUsersOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamListUsersOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class IamListUsersRequestBuilder {
             .build());
 
         RequestOperation<IamListUsersRequest, IamListUsersResponse> operation
-              = new IamListUsersOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamListUsersOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

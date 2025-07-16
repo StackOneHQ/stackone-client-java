@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class QuestionMultipleChoiceAnswers {
 
+public class QuestionMultipleChoiceAnswers {
     /**
      * Unique identifier
      */
@@ -28,6 +28,7 @@ public class QuestionMultipleChoiceAnswers {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("text")
@@ -71,9 +72,10 @@ public class QuestionMultipleChoiceAnswers {
         return text;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -123,7 +125,6 @@ public class QuestionMultipleChoiceAnswers {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -142,9 +143,7 @@ public class QuestionMultipleChoiceAnswers {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            text);
+            id, remoteId, text);
     }
     
     @Override
@@ -154,18 +153,20 @@ public class QuestionMultipleChoiceAnswers {
                 "remoteId", remoteId,
                 "text", text);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> text = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -185,6 +186,7 @@ public class QuestionMultipleChoiceAnswers {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -203,6 +205,7 @@ public class QuestionMultipleChoiceAnswers {
             return this;
         }
 
+
         public Builder text(String text) {
             Utils.checkNotNull(text, "text");
             this.text = JsonNullable.of(text);
@@ -214,12 +217,12 @@ public class QuestionMultipleChoiceAnswers {
             this.text = text;
             return this;
         }
-        
+
         public QuestionMultipleChoiceAnswers build() {
+
             return new QuestionMultipleChoiceAnswers(
-                id,
-                remoteId,
-                text);
+                id, remoteId, text);
         }
+
     }
 }

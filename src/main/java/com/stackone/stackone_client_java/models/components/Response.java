@@ -24,7 +24,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The advanced log response data
  */
 public class Response {
-
     /**
      * The response status code
      */
@@ -32,9 +31,11 @@ public class Response {
     @JsonProperty("status_code")
     private JsonNullable<Double> statusCode;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("headers")
     private JsonNullable<? extends Map<String, Object>> headers;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("body")
@@ -74,7 +75,8 @@ public class Response {
     }
     
     public Response() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -115,9 +117,10 @@ public class Response {
         return (JsonNullable<List<ProviderError>>) providerErrors;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The response status code
@@ -197,7 +200,6 @@ public class Response {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,11 +220,8 @@ public class Response {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            statusCode,
-            headers,
-            body,
-            customMappingErrors,
-            providerErrors);
+            statusCode, headers, body,
+            customMappingErrors, providerErrors);
     }
     
     @Override
@@ -234,22 +233,24 @@ public class Response {
                 "customMappingErrors", customMappingErrors,
                 "providerErrors", providerErrors);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Double> statusCode = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> headers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Object> body = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomMappingError>> customMappingErrors = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<ProviderError>> providerErrors = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The response status code
@@ -269,6 +270,7 @@ public class Response {
             return this;
         }
 
+
         public Builder headers(Map<String, Object> headers) {
             Utils.checkNotNull(headers, "headers");
             this.headers = JsonNullable.of(headers);
@@ -281,6 +283,7 @@ public class Response {
             return this;
         }
 
+
         public Builder body(Object body) {
             Utils.checkNotNull(body, "body");
             this.body = JsonNullable.of(body);
@@ -292,6 +295,7 @@ public class Response {
             this.body = body;
             return this;
         }
+
 
         /**
          * The custom mapping errors
@@ -311,6 +315,7 @@ public class Response {
             return this;
         }
 
+
         /**
          * The provider errors
          */
@@ -328,14 +333,13 @@ public class Response {
             this.providerErrors = providerErrors;
             return this;
         }
-        
+
         public Response build() {
+
             return new Response(
-                statusCode,
-                headers,
-                body,
-                customMappingErrors,
-                providerErrors);
+                statusCode, headers, body,
+                customMappingErrors, providerErrors);
         }
+
     }
 }

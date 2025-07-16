@@ -22,7 +22,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The request URL data
  */
 public class StepLogUrl {
-
     /**
      * The request URL
      */
@@ -68,7 +67,8 @@ public class StepLogUrl {
     }
     
     public StepLogUrl() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -104,9 +104,10 @@ public class StepLogUrl {
         return (JsonNullable<Map<String, Object>>) queryParams;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The request URL
@@ -180,7 +181,6 @@ public class StepLogUrl {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -200,9 +200,7 @@ public class StepLogUrl {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            url,
-            hostname,
-            path,
+            url, hostname, path,
             queryParams);
     }
     
@@ -214,20 +212,22 @@ public class StepLogUrl {
                 "path", path,
                 "queryParams", queryParams);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<String> hostname = JsonNullable.undefined();
- 
+
         private JsonNullable<String> path = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> queryParams = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The request URL
@@ -247,6 +247,7 @@ public class StepLogUrl {
             return this;
         }
 
+
         /**
          * The request URL hostname
          */
@@ -264,6 +265,7 @@ public class StepLogUrl {
             this.hostname = hostname;
             return this;
         }
+
 
         /**
          * The request path
@@ -283,6 +285,7 @@ public class StepLogUrl {
             return this;
         }
 
+
         /**
          * The request query parameters
          */
@@ -300,13 +303,13 @@ public class StepLogUrl {
             this.queryParams = queryParams;
             return this;
         }
-        
+
         public StepLogUrl build() {
+
             return new StepLogUrl(
-                url,
-                hostname,
-                path,
+                url, hostname, path,
                 queryParams);
         }
+
     }
 }

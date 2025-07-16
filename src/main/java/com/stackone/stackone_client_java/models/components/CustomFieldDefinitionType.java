@@ -25,6 +25,7 @@ public class CustomFieldDefinitionType {
     @JsonProperty("value")
     private JsonNullable<? extends CustomFieldDefinitionValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class CustomFieldDefinitionType {
         return (JsonNullable<CustomFieldDefinitionSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CustomFieldDefinitionType withValue(CustomFieldDefinitionValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class CustomFieldDefinitionType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class CustomFieldDefinitionType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class CustomFieldDefinitionType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CustomFieldDefinitionValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CustomFieldDefinitionSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(CustomFieldDefinitionValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class CustomFieldDefinitionType {
             return this;
         }
 
+
         public Builder sourceValue(CustomFieldDefinitionSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class CustomFieldDefinitionType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CustomFieldDefinitionType build() {
+
             return new CustomFieldDefinitionType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Status of the position
  */
 public class PositionStatus {
-
     /**
      * The status of the position.
      */
@@ -67,9 +66,10 @@ public class PositionStatus {
         return (JsonNullable<PositionSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the position.
@@ -107,7 +107,6 @@ public class PositionStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class PositionStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class PositionStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends PositionValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PositionSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the position.
@@ -164,6 +164,7 @@ public class PositionStatus {
             return this;
         }
 
+
         /**
          * The source value of the position status.
          */
@@ -181,11 +182,12 @@ public class PositionStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public PositionStatus build() {
+
             return new PositionStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

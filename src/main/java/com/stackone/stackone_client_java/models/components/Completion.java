@@ -17,8 +17,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Completion {
 
+public class Completion {
     /**
      * The ID associated with this completion
      */
@@ -268,7 +268,14 @@ public class Completion {
     }
     
     public Completion() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -474,9 +481,10 @@ public class Completion {
         return remoteCourseId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with this completion
@@ -922,7 +930,6 @@ public class Completion {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -960,27 +967,13 @@ public class Completion {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            externalReference,
-            result,
-            completedAt,
-            createdAt,
-            updatedAt,
-            learningObjectType,
-            learningObjectId,
-            remoteLearningObjectId,
-            learningObjectExternalReference,
-            userId,
-            remoteUserId,
-            timeSpent,
-            externalId,
-            contentExternalReference,
-            remoteExternalId,
-            contentId,
-            remoteContentId,
-            courseId,
+            id, remoteId, unifiedCustomFields,
+            externalReference, result, completedAt,
+            createdAt, updatedAt, learningObjectType,
+            learningObjectId, remoteLearningObjectId, learningObjectExternalReference,
+            userId, remoteUserId, timeSpent,
+            externalId, contentExternalReference, remoteExternalId,
+            contentId, remoteContentId, courseId,
             remoteCourseId);
     }
     
@@ -1010,64 +1003,66 @@ public class Completion {
                 "courseId", courseId,
                 "remoteCourseId", remoteCourseId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> externalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CompletionResult1> result = JsonNullable.undefined();
- 
+
         private JsonNullable<String> completedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CompletionLearningObjectType> learningObjectType = JsonNullable.undefined();
- 
+
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteLearningObjectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<String> userId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> timeSpent = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> externalId = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> contentExternalReference = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> remoteExternalId = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> contentId = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> remoteContentId = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> courseId = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> remoteCourseId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with this completion
@@ -1087,6 +1082,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -1105,6 +1101,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * Custom Unified Fields configured in your StackOne project
          */
@@ -1122,6 +1119,7 @@ public class Completion {
             this.unifiedCustomFields = unifiedCustomFields;
             return this;
         }
+
 
         /**
          * The external reference associated with this completion
@@ -1147,6 +1145,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * The result of the completion
          */
@@ -1164,6 +1163,7 @@ public class Completion {
             this.result = result;
             return this;
         }
+
 
         /**
          * The date the content was completed
@@ -1183,6 +1183,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * The created date of the completion
          */
@@ -1200,6 +1201,7 @@ public class Completion {
             this.createdAt = createdAt;
             return this;
         }
+
 
         /**
          * The updated date of the completion
@@ -1219,6 +1221,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * The learning object type of the completion
          */
@@ -1236,6 +1239,7 @@ public class Completion {
             this.learningObjectType = learningObjectType;
             return this;
         }
+
 
         /**
          * The id of the learning object associated with this completion. This is not required unless specified in an integration.
@@ -1255,6 +1259,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the learning object related to the completion
          */
@@ -1272,6 +1277,7 @@ public class Completion {
             this.remoteLearningObjectId = remoteLearningObjectId;
             return this;
         }
+
 
         /**
          * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
@@ -1291,6 +1297,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * The user ID associated with this completion
          */
@@ -1308,6 +1315,7 @@ public class Completion {
             this.userId = userId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the user related to the completion
@@ -1327,6 +1335,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * ISO 8601 duration format representing the time spent on completing the learning object
          */
@@ -1344,6 +1353,7 @@ public class Completion {
             this.timeSpent = timeSpent;
             return this;
         }
+
 
         /**
          * The external ID associated with this completion
@@ -1369,6 +1379,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * The external reference associated with this content
          * 
@@ -1392,6 +1403,7 @@ public class Completion {
             this.contentExternalReference = contentExternalReference;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the content external reference
@@ -1417,6 +1429,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * The content ID associated with this completion
          * 
@@ -1440,6 +1453,7 @@ public class Completion {
             this.contentId = contentId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the content associated with the completion
@@ -1465,6 +1479,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * The course ID associated with this completion
          * 
@@ -1489,6 +1504,7 @@ public class Completion {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the course associated with the completion
          * 
@@ -1512,31 +1528,19 @@ public class Completion {
             this.remoteCourseId = remoteCourseId;
             return this;
         }
-        
+
         public Completion build() {
+
             return new Completion(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                externalReference,
-                result,
-                completedAt,
-                createdAt,
-                updatedAt,
-                learningObjectType,
-                learningObjectId,
-                remoteLearningObjectId,
-                learningObjectExternalReference,
-                userId,
-                remoteUserId,
-                timeSpent,
-                externalId,
-                contentExternalReference,
-                remoteExternalId,
-                contentId,
-                remoteContentId,
-                courseId,
+                id, remoteId, unifiedCustomFields,
+                externalReference, result, completedAt,
+                createdAt, updatedAt, learningObjectType,
+                learningObjectId, remoteLearningObjectId, learningObjectExternalReference,
+                userId, remoteUserId, timeSpent,
+                externalId, contentExternalReference, remoteExternalId,
+                contentId, remoteContentId, courseId,
                 remoteCourseId);
         }
+
     }
 }

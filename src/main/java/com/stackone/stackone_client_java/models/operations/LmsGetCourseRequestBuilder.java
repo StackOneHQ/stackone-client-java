@@ -47,9 +47,7 @@ public class LmsGetCourseRequestBuilder {
             .build());
 
         RequestOperation<LmsGetCourseRequest, LmsGetCourseResponse> operation
-              = new LmsGetCourseOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetCourseOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

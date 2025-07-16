@@ -14,17 +14,21 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class RawResponse {
 
     @JsonProperty("method")
     private String method;
 
+
     @JsonProperty("url")
     private String url;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("body")
     private JsonNullable<? extends Body> body;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("response")
@@ -49,7 +53,8 @@ public class RawResponse {
     public RawResponse(
             String method,
             String url) {
-        this(method, url, JsonNullable.undefined(), JsonNullable.undefined());
+        this(method, url, JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -74,9 +79,10 @@ public class RawResponse {
         return (JsonNullable<RawResponseResponse>) response;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public RawResponse withMethod(String method) {
         Utils.checkNotNull(method, "method");
@@ -114,7 +120,6 @@ public class RawResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -134,9 +139,7 @@ public class RawResponse {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            method,
-            url,
-            body,
+            method, url, body,
             response);
     }
     
@@ -148,20 +151,22 @@ public class RawResponse {
                 "body", body,
                 "response", response);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String method;
- 
+
         private String url;
- 
+
         private JsonNullable<? extends Body> body = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends RawResponseResponse> response = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder method(String method) {
             Utils.checkNotNull(method, "method");
@@ -169,11 +174,13 @@ public class RawResponse {
             return this;
         }
 
+
         public Builder url(String url) {
             Utils.checkNotNull(url, "url");
             this.url = url;
             return this;
         }
+
 
         public Builder body(Body body) {
             Utils.checkNotNull(body, "body");
@@ -187,6 +194,7 @@ public class RawResponse {
             return this;
         }
 
+
         public Builder response(RawResponseResponse response) {
             Utils.checkNotNull(response, "response");
             this.response = JsonNullable.of(response);
@@ -198,13 +206,13 @@ public class RawResponse {
             this.response = response;
             return this;
         }
-        
+
         public RawResponse build() {
+
             return new RawResponse(
-                method,
-                url,
-                body,
+                method, url, body,
                 response);
         }
+
     }
 }

@@ -49,7 +49,6 @@ import com.stackone.stackone_client_java.operations.CrmUpdateContactOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -88,16 +87,11 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmListContactsResponse listContacts(
-            CrmListContactsRequest request,
-            Optional<Options> options) throws Exception {
+    public CrmListContactsResponse listContacts(CrmListContactsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmListContactsRequest, CrmListContactsResponse> operation
-              = new CrmListContactsOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmListContactsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Creates a new Contact
@@ -116,9 +110,7 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmCreateContactResponse createContact(
-            String xAccountId,
-            CrmCreateContactRequestDto crmCreateContactRequestDto) throws Exception {
+    public CrmCreateContactResponse createContact(String xAccountId, CrmCreateContactRequestDto crmCreateContactRequestDto) throws Exception {
         return createContact(xAccountId, crmCreateContactRequestDto, Optional.empty());
     }
 
@@ -132,8 +124,7 @@ public class Crm {
      * @throws Exception if the API call fails
      */
     public CrmCreateContactResponse createContact(
-            String xAccountId,
-            CrmCreateContactRequestDto crmCreateContactRequestDto,
+            String xAccountId, CrmCreateContactRequestDto crmCreateContactRequestDto,
             Optional<Options> options) throws Exception {
         CrmCreateContactRequest request =
             CrmCreateContactRequest
@@ -142,12 +133,9 @@ public class Crm {
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         RequestOperation<CrmCreateContactRequest, CrmCreateContactResponse> operation
-              = new CrmCreateContactOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmCreateContactOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Contact
@@ -177,16 +165,11 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmGetContactResponse getContact(
-            CrmGetContactRequest request,
-            Optional<Options> options) throws Exception {
+    public CrmGetContactResponse getContact(CrmGetContactRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmGetContactRequest, CrmGetContactResponse> operation
-              = new CrmGetContactOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmGetContactOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Contact (early access)
@@ -207,10 +190,10 @@ public class Crm {
      * @throws Exception if the API call fails
      */
     public CrmUpdateContactResponse updateContact(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             CrmCreateContactRequestDto crmCreateContactRequestDto) throws Exception {
-        return updateContact(xAccountId, id, crmCreateContactRequestDto, Optional.empty());
+        return updateContact(xAccountId, id, crmCreateContactRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -224,10 +207,8 @@ public class Crm {
      * @throws Exception if the API call fails
      */
     public CrmUpdateContactResponse updateContact(
-            String xAccountId,
-            String id,
-            CrmCreateContactRequestDto crmCreateContactRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            CrmCreateContactRequestDto crmCreateContactRequestDto, Optional<Options> options) throws Exception {
         CrmUpdateContactRequest request =
             CrmUpdateContactRequest
                 .builder()
@@ -236,12 +217,9 @@ public class Crm {
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         RequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation
-              = new CrmUpdateContactOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmUpdateContactOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Accounts
@@ -271,16 +249,11 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmListAccountsResponse listAccounts(
-            CrmListAccountsRequest request,
-            Optional<Options> options) throws Exception {
+    public CrmListAccountsResponse listAccounts(CrmListAccountsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmListAccountsRequest, CrmListAccountsResponse> operation
-              = new CrmListAccountsOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmListAccountsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Account
@@ -310,16 +283,11 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmGetAccountResponse getAccount(
-            CrmGetAccountRequest request,
-            Optional<Options> options) throws Exception {
+    public CrmGetAccountResponse getAccount(CrmGetAccountRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmGetAccountRequest, CrmGetAccountResponse> operation
-              = new CrmGetAccountOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmGetAccountOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get all Lists
@@ -349,16 +317,11 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmListListsResponse listLists(
-            CrmListListsRequest request,
-            Optional<Options> options) throws Exception {
+    public CrmListListsResponse listLists(CrmListListsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmListListsRequest, CrmListListsResponse> operation
-              = new CrmListListsOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmListListsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get List
@@ -388,16 +351,11 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmGetListResponse getList(
-            CrmGetListRequest request,
-            Optional<Options> options) throws Exception {
+    public CrmGetListResponse getList(CrmGetListRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmGetListRequest, CrmGetListResponse> operation
-              = new CrmGetListOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmGetListOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Contact Custom Field Definitions
@@ -427,16 +385,11 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmListContactCustomFieldDefinitionsResponse listContactCustomFieldDefinitions(
-            CrmListContactCustomFieldDefinitionsRequest request,
-            Optional<Options> options) throws Exception {
+    public CrmListContactCustomFieldDefinitionsResponse listContactCustomFieldDefinitions(CrmListContactCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmListContactCustomFieldDefinitionsRequest, CrmListContactCustomFieldDefinitionsResponse> operation
-              = new CrmListContactCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmListContactCustomFieldDefinitionsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Contact Custom Field Definition
@@ -466,13 +419,9 @@ public class Crm {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CrmGetContactCustomFieldDefinitionResponse getContactCustomFieldDefinition(
-            CrmGetContactCustomFieldDefinitionRequest request,
-            Optional<Options> options) throws Exception {
+    public CrmGetContactCustomFieldDefinitionResponse getContactCustomFieldDefinition(CrmGetContactCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmGetContactCustomFieldDefinitionRequest, CrmGetContactCustomFieldDefinitionResponse> operation
-              = new CrmGetContactCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmGetContactCustomFieldDefinitionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

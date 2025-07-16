@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The duration unit of the work time
  */
 public class HrisCreateEmploymentRequestDtoDurationUnit {
-
     /**
      * The unified value for the period.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
         return (JsonNullable<HrisCreateEmploymentRequestDtoWorkTimeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified value for the period.
@@ -95,7 +96,6 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified value for the period.
@@ -152,6 +153,7 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
             return this;
         }
 
+
         public Builder sourceValue(HrisCreateEmploymentRequestDtoWorkTimeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisCreateEmploymentRequestDtoDurationUnit build() {
+
             return new HrisCreateEmploymentRequestDtoDurationUnit(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

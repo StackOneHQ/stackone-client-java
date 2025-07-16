@@ -47,9 +47,7 @@ public class HrisGetTimeOffRequestRequestBuilder {
             .build());
 
         RequestOperation<HrisGetTimeOffRequestRequest, HrisGetTimeOffRequestResponse> operation
-              = new HrisGetTimeOffRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetTimeOffRequestOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -47,9 +47,7 @@ public class LmsGetUserRequestBuilder {
             .build());
 
         RequestOperation<LmsGetUserRequest, LmsGetUserResponse> operation
-              = new LmsGetUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetUserOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

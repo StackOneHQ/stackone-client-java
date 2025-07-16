@@ -12,13 +12,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
 
+
 public class UpdateResult {
 
     @JsonProperty("statusCode")
     private double statusCode;
 
+
     @JsonProperty("message")
     private String message;
+
 
     @JsonProperty("timestamp")
     private OffsetDateTime timestamp;
@@ -51,9 +54,10 @@ public class UpdateResult {
         return timestamp;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UpdateResult withStatusCode(double statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
@@ -73,7 +77,6 @@ public class UpdateResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -92,9 +95,7 @@ public class UpdateResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            statusCode,
-            message,
-            timestamp);
+            statusCode, message, timestamp);
     }
     
     @Override
@@ -104,18 +105,20 @@ public class UpdateResult {
                 "message", message,
                 "timestamp", timestamp);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Double statusCode;
- 
+
         private String message;
- 
+
         private OffsetDateTime timestamp;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder statusCode(double statusCode) {
             Utils.checkNotNull(statusCode, "statusCode");
@@ -123,23 +126,25 @@ public class UpdateResult {
             return this;
         }
 
+
         public Builder message(String message) {
             Utils.checkNotNull(message, "message");
             this.message = message;
             return this;
         }
 
+
         public Builder timestamp(OffsetDateTime timestamp) {
             Utils.checkNotNull(timestamp, "timestamp");
             this.timestamp = timestamp;
             return this;
         }
-        
+
         public UpdateResult build() {
+
             return new UpdateResult(
-                statusCode,
-                message,
-                timestamp);
+                statusCode, message, timestamp);
         }
+
     }
 }

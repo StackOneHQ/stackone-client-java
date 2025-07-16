@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class MarketingCreateOmniChannelTemplateRequest {
 
+public class MarketingCreateOmniChannelTemplateRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto;
@@ -45,9 +46,10 @@ public class MarketingCreateOmniChannelTemplateRequest {
         return marketingCreateTemplateRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class MarketingCreateOmniChannelTemplateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class MarketingCreateOmniChannelTemplateRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            marketingCreateTemplateRequestDto);
+            xAccountId, marketingCreateTemplateRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class MarketingCreateOmniChannelTemplateRequest {
                 "xAccountId", xAccountId,
                 "marketingCreateTemplateRequestDto", marketingCreateTemplateRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class MarketingCreateOmniChannelTemplateRequest {
             return this;
         }
 
+
         public Builder marketingCreateTemplateRequestDto(MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
             Utils.checkNotNull(marketingCreateTemplateRequestDto, "marketingCreateTemplateRequestDto");
             this.marketingCreateTemplateRequestDto = marketingCreateTemplateRequestDto;
             return this;
         }
-        
+
         public MarketingCreateOmniChannelTemplateRequest build() {
+
             return new MarketingCreateOmniChannelTemplateRequest(
-                xAccountId,
-                marketingCreateTemplateRequestDto);
+                xAccountId, marketingCreateTemplateRequestDto);
         }
+
     }
 }

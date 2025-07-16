@@ -47,9 +47,7 @@ public class HrisDownloadEmployeeDocumentRequestBuilder {
             .build());
 
         RequestOperation<HrisDownloadEmployeeDocumentRequest, HrisDownloadEmployeeDocumentResponse> operation
-              = new HrisDownloadEmployeeDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisDownloadEmployeeDocumentOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

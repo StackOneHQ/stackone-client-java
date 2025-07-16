@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CustomFieldDefinition {
 
+public class CustomFieldDefinition {
     /**
      * Unique identifier
      */
@@ -31,9 +31,11 @@ public class CustomFieldDefinition {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
@@ -76,7 +78,8 @@ public class CustomFieldDefinition {
     }
     
     public CustomFieldDefinition() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -123,9 +126,10 @@ public class CustomFieldDefinition {
         return (JsonNullable<List<CustomFieldOption>>) options;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -223,7 +227,6 @@ public class CustomFieldDefinition {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -245,12 +248,8 @@ public class CustomFieldDefinition {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            description,
-            type,
-            options);
+            id, remoteId, name,
+            description, type, options);
     }
     
     @Override
@@ -263,24 +262,26 @@ public class CustomFieldDefinition {
                 "type", type,
                 "options", options);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CustomFieldDefinitionType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFieldOption>> options = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -300,6 +301,7 @@ public class CustomFieldDefinition {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -318,6 +320,7 @@ public class CustomFieldDefinition {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -330,6 +333,7 @@ public class CustomFieldDefinition {
             return this;
         }
 
+
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
             this.description = JsonNullable.of(description);
@@ -341,6 +345,7 @@ public class CustomFieldDefinition {
             this.description = description;
             return this;
         }
+
 
         /**
          * The type of the custom field.
@@ -360,6 +365,7 @@ public class CustomFieldDefinition {
             return this;
         }
 
+
         /**
          * An array of possible options for the custom field.
          */
@@ -377,15 +383,13 @@ public class CustomFieldDefinition {
             this.options = options;
             return this;
         }
-        
+
         public CustomFieldDefinition build() {
+
             return new CustomFieldDefinition(
-                id,
-                remoteId,
-                name,
-                description,
-                type,
-                options);
+                id, remoteId, name,
+                description, type, options);
         }
+
     }
 }

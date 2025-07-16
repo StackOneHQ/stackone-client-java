@@ -47,9 +47,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmployeeCustomFieldDefinitionRequest, HrisGetEmployeeCustomFieldDefinitionResponse> operation
-              = new HrisGetEmployeeCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeCustomFieldDefinitionOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -17,15 +17,18 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class MarketingCreateInAppTemplateRequestDto {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
     private JsonNullable<? extends List<String>> tags;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("messages")
@@ -55,7 +58,8 @@ public class MarketingCreateInAppTemplateRequestDto {
     }
     
     public MarketingCreateInAppTemplateRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -84,9 +88,10 @@ public class MarketingCreateInAppTemplateRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public MarketingCreateInAppTemplateRequestDto withName(String name) {
         Utils.checkNotNull(name, "name");
@@ -142,7 +147,6 @@ public class MarketingCreateInAppTemplateRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -162,9 +166,7 @@ public class MarketingCreateInAppTemplateRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            tags,
-            messages,
+            name, tags, messages,
             passthrough);
     }
     
@@ -176,20 +178,22 @@ public class MarketingCreateInAppTemplateRequestDto {
                 "messages", messages,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<InAppMessages>> messages = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
@@ -203,6 +207,7 @@ public class MarketingCreateInAppTemplateRequestDto {
             return this;
         }
 
+
         public Builder tags(List<String> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = JsonNullable.of(tags);
@@ -215,6 +220,7 @@ public class MarketingCreateInAppTemplateRequestDto {
             return this;
         }
 
+
         public Builder messages(List<InAppMessages> messages) {
             Utils.checkNotNull(messages, "messages");
             this.messages = JsonNullable.of(messages);
@@ -226,6 +232,7 @@ public class MarketingCreateInAppTemplateRequestDto {
             this.messages = messages;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -244,13 +251,13 @@ public class MarketingCreateInAppTemplateRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public MarketingCreateInAppTemplateRequestDto build() {
+
             return new MarketingCreateInAppTemplateRequestDto(
-                name,
-                tags,
-                messages,
+                name, tags, messages,
                 passthrough);
         }
+
     }
 }

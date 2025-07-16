@@ -25,6 +25,7 @@ public class LmsCreateCompletionRequestDtoResult {
     @JsonProperty("value")
     private JsonNullable<? extends LmsCreateCompletionRequestDtoValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LmsCreateCompletionRequestDtoSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class LmsCreateCompletionRequestDtoResult {
         return (JsonNullable<LmsCreateCompletionRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public LmsCreateCompletionRequestDtoResult withValue(LmsCreateCompletionRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class LmsCreateCompletionRequestDtoResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class LmsCreateCompletionRequestDtoResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class LmsCreateCompletionRequestDtoResult {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends LmsCreateCompletionRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsCreateCompletionRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(LmsCreateCompletionRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class LmsCreateCompletionRequestDtoResult {
             return this;
         }
 
+
         public Builder sourceValue(LmsCreateCompletionRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class LmsCreateCompletionRequestDtoResult {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public LmsCreateCompletionRequestDtoResult build() {
+
             return new LmsCreateCompletionRequestDtoResult(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

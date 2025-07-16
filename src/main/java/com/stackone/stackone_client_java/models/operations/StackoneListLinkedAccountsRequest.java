@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class StackoneListLinkedAccountsRequest {
 
+public class StackoneListLinkedAccountsRequest {
     /**
      * The page number of the results to fetch
      */
@@ -91,7 +91,9 @@ public class StackoneListLinkedAccountsRequest {
     }
     
     public StackoneListLinkedAccountsRequest() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -156,9 +158,10 @@ public class StackoneListLinkedAccountsRequest {
         return (Optional<List<String>>) status;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The page number of the results to fetch
@@ -247,6 +250,7 @@ public class StackoneListLinkedAccountsRequest {
         return this;
     }
 
+
     /**
      * The providers list of the results to fetch
      */
@@ -264,6 +268,7 @@ public class StackoneListLinkedAccountsRequest {
         this.accountIds = Optional.ofNullable(accountIds);
         return this;
     }
+
 
     /**
      * The providers list of the results to fetch
@@ -283,6 +288,7 @@ public class StackoneListLinkedAccountsRequest {
         return this;
     }
 
+
     /**
      * The status of the results to fetch
      */
@@ -292,7 +298,6 @@ public class StackoneListLinkedAccountsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -315,12 +320,8 @@ public class StackoneListLinkedAccountsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            page,
-            pageSize,
-            provider,
-            originOwnerId,
-            providers,
-            accountIds,
+            page, pageSize, provider,
+            originOwnerId, providers, accountIds,
             status);
     }
     
@@ -335,27 +336,29 @@ public class StackoneListLinkedAccountsRequest {
                 "accountIds", accountIds,
                 "status", status);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Double> page = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> pageSize;
- 
+
         @Deprecated
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> originOwnerId = JsonNullable.undefined();
- 
+
         private Optional<? extends List<String>> providers = Optional.empty();
- 
+
         private Optional<? extends List<String>> accountIds = Optional.empty();
- 
+
         private Optional<? extends List<String>> status = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The page number of the results to fetch
@@ -375,6 +378,7 @@ public class StackoneListLinkedAccountsRequest {
             return this;
         }
 
+
         /**
          * The number of results per page
          */
@@ -392,6 +396,7 @@ public class StackoneListLinkedAccountsRequest {
             this.pageSize = pageSize;
             return this;
         }
+
 
         /**
          * The provider of the results to fetch
@@ -417,6 +422,7 @@ public class StackoneListLinkedAccountsRequest {
             return this;
         }
 
+
         /**
          * The origin owner identifier of the results to fetch
          */
@@ -434,6 +440,7 @@ public class StackoneListLinkedAccountsRequest {
             this.originOwnerId = originOwnerId;
             return this;
         }
+
 
         /**
          * The providers list of the results to fetch
@@ -453,6 +460,7 @@ public class StackoneListLinkedAccountsRequest {
             return this;
         }
 
+
         /**
          * The providers list of the results to fetch
          */
@@ -471,6 +479,7 @@ public class StackoneListLinkedAccountsRequest {
             return this;
         }
 
+
         /**
          * The status of the results to fetch
          */
@@ -488,20 +497,18 @@ public class StackoneListLinkedAccountsRequest {
             this.status = status;
             return this;
         }
-        
+
         public StackoneListLinkedAccountsRequest build() {
             if (pageSize == null) {
                 pageSize = _SINGLETON_VALUE_PageSize.value();
             }
+
             return new StackoneListLinkedAccountsRequest(
-                page,
-                pageSize,
-                provider,
-                originOwnerId,
-                providers,
-                accountIds,
+                page, pageSize, provider,
+                originOwnerId, providers, accountIds,
                 status);
         }
+
 
         private static final LazySingletonValue<JsonNullable<Double>> _SINGLETON_VALUE_PageSize =
                 new LazySingletonValue<>(

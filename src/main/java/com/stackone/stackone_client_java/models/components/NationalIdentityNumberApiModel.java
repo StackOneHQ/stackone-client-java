@@ -14,11 +14,13 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class NationalIdentityNumberApiModel {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<String> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
@@ -68,9 +70,10 @@ public class NationalIdentityNumberApiModel {
         return (JsonNullable<Country>) country;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public NationalIdentityNumberApiModel withValue(String value) {
         Utils.checkNotNull(value, "value");
@@ -114,7 +117,6 @@ public class NationalIdentityNumberApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -133,9 +135,7 @@ public class NationalIdentityNumberApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            type,
-            country);
+            value, type, country);
     }
     
     @Override
@@ -145,18 +145,20 @@ public class NationalIdentityNumberApiModel {
                 "type", type,
                 "country", country);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends NationalIdentityNumberApiModelType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Country> country = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(String value) {
             Utils.checkNotNull(value, "value");
@@ -170,6 +172,7 @@ public class NationalIdentityNumberApiModel {
             return this;
         }
 
+
         public Builder type(NationalIdentityNumberApiModelType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -181,6 +184,7 @@ public class NationalIdentityNumberApiModel {
             this.type = type;
             return this;
         }
+
 
         /**
          * The country code
@@ -199,12 +203,12 @@ public class NationalIdentityNumberApiModel {
             this.country = country;
             return this;
         }
-        
+
         public NationalIdentityNumberApiModel build() {
+
             return new NationalIdentityNumberApiModel(
-                value,
-                type,
-                country);
+                value, type, country);
         }
+
     }
 }

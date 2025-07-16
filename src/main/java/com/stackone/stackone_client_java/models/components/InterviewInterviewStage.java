@@ -18,8 +18,8 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class InterviewInterviewStage {
 
+public class InterviewInterviewStage {
     /**
      * Unique identifier
      */
@@ -41,9 +41,11 @@ public class InterviewInterviewStage {
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("order")
@@ -89,7 +91,9 @@ public class InterviewInterviewStage {
     }
     
     public InterviewInterviewStage() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -143,9 +147,10 @@ public class InterviewInterviewStage {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -261,7 +266,6 @@ public class InterviewInterviewStage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -284,12 +288,8 @@ public class InterviewInterviewStage {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            name,
-            order,
-            createdAt,
+            id, remoteId, unifiedCustomFields,
+            name, order, createdAt,
             updatedAt);
     }
     
@@ -304,26 +304,28 @@ public class InterviewInterviewStage {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> order = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -343,6 +345,7 @@ public class InterviewInterviewStage {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -360,6 +363,7 @@ public class InterviewInterviewStage {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -379,6 +383,7 @@ public class InterviewInterviewStage {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -391,6 +396,7 @@ public class InterviewInterviewStage {
             return this;
         }
 
+
         public Builder order(double order) {
             Utils.checkNotNull(order, "order");
             this.order = JsonNullable.of(order);
@@ -402,6 +408,7 @@ public class InterviewInterviewStage {
             this.order = order;
             return this;
         }
+
 
         /**
          * Interview Stage created date
@@ -421,6 +428,7 @@ public class InterviewInterviewStage {
             return this;
         }
 
+
         /**
          * Interview Stage updated date
          */
@@ -438,16 +446,14 @@ public class InterviewInterviewStage {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public InterviewInterviewStage build() {
+
             return new InterviewInterviewStage(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                name,
-                order,
-                createdAt,
+                id, remoteId, unifiedCustomFields,
+                name, order, createdAt,
                 updatedAt);
         }
+
     }
 }

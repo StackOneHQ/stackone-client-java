@@ -47,9 +47,7 @@ public class AtsGetListRequestBuilder {
             .build());
 
         RequestOperation<AtsGetListRequest, AtsGetListResponse> operation
-              = new AtsGetListOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetListOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

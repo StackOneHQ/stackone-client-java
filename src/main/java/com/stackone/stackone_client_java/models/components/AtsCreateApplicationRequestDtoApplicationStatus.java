@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateApplicationRequestDtoApplicationStatus {
 
+public class AtsCreateApplicationRequestDtoApplicationStatus {
     /**
      * The status of the application.
      */
@@ -62,9 +62,10 @@ public class AtsCreateApplicationRequestDtoApplicationStatus {
         return (JsonNullable<AtsCreateApplicationRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the application.
@@ -102,7 +103,6 @@ public class AtsCreateApplicationRequestDtoApplicationStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class AtsCreateApplicationRequestDtoApplicationStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class AtsCreateApplicationRequestDtoApplicationStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AtsCreateApplicationRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateApplicationRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the application.
@@ -159,6 +160,7 @@ public class AtsCreateApplicationRequestDtoApplicationStatus {
             return this;
         }
 
+
         /**
          * The source value of the application status.
          */
@@ -176,11 +178,12 @@ public class AtsCreateApplicationRequestDtoApplicationStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public AtsCreateApplicationRequestDtoApplicationStatus build() {
+
             return new AtsCreateApplicationRequestDtoApplicationStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

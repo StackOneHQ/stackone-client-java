@@ -10,8 +10,8 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class ConnectSessionAuthenticate {
 
+public class ConnectSessionAuthenticate {
     /**
      * The token to authenticate with
      */
@@ -33,9 +33,10 @@ public class ConnectSessionAuthenticate {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The token to authenticate with
@@ -46,7 +47,6 @@ public class ConnectSessionAuthenticate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,14 +71,16 @@ public class ConnectSessionAuthenticate {
         return Utils.toString(ConnectSessionAuthenticate.class,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The token to authenticate with
@@ -88,10 +90,12 @@ public class ConnectSessionAuthenticate {
             this.token = token;
             return this;
         }
-        
+
         public ConnectSessionAuthenticate build() {
+
             return new ConnectSessionAuthenticate(
                 token);
         }
+
     }
 }

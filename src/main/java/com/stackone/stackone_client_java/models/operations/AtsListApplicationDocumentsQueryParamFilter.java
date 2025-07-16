@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>ATS Document Filter
  */
 public class AtsListApplicationDocumentsQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -60,9 +59,10 @@ public class AtsListApplicationDocumentsQueryParamFilter {
         return type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -100,7 +100,6 @@ public class AtsListApplicationDocumentsQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,8 +117,7 @@ public class AtsListApplicationDocumentsQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            type);
+            updatedAfter, type);
     }
     
     @Override
@@ -128,16 +126,18 @@ public class AtsListApplicationDocumentsQueryParamFilter {
                 "updatedAfter", updatedAfter,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> type = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -157,6 +157,7 @@ public class AtsListApplicationDocumentsQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select documents by type
          */
@@ -174,11 +175,12 @@ public class AtsListApplicationDocumentsQueryParamFilter {
             this.type = type;
             return this;
         }
-        
+
         public AtsListApplicationDocumentsQueryParamFilter build() {
+
             return new AtsListApplicationDocumentsQueryParamFilter(
-                updatedAfter,
-                type);
+                updatedAfter, type);
         }
+
     }
 }

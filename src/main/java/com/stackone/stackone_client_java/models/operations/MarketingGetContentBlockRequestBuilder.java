@@ -47,9 +47,7 @@ public class MarketingGetContentBlockRequestBuilder {
             .build());
 
         RequestOperation<MarketingGetContentBlockRequest, MarketingGetContentBlockResponse> operation
-              = new MarketingGetContentBlockOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetContentBlockOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

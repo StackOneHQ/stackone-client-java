@@ -11,19 +11,22 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class HrisUpdateEmployeeEmploymentRequest {
 
+public class HrisUpdateEmployeeEmploymentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto;
@@ -67,9 +70,10 @@ public class HrisUpdateEmployeeEmploymentRequest {
         return hrisUpdateEmploymentRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -98,7 +102,6 @@ public class HrisUpdateEmployeeEmploymentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,9 +121,7 @@ public class HrisUpdateEmployeeEmploymentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            subResourceId,
+            xAccountId, id, subResourceId,
             hrisUpdateEmploymentRequestDto);
     }
     
@@ -132,20 +133,22 @@ public class HrisUpdateEmployeeEmploymentRequest {
                 "subResourceId", subResourceId,
                 "hrisUpdateEmploymentRequestDto", hrisUpdateEmploymentRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private String subResourceId;
- 
+
         private HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -156,11 +159,13 @@ public class HrisUpdateEmployeeEmploymentRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
+
 
         public Builder subResourceId(String subResourceId) {
             Utils.checkNotNull(subResourceId, "subResourceId");
@@ -168,18 +173,19 @@ public class HrisUpdateEmployeeEmploymentRequest {
             return this;
         }
 
+
         public Builder hrisUpdateEmploymentRequestDto(HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) {
             Utils.checkNotNull(hrisUpdateEmploymentRequestDto, "hrisUpdateEmploymentRequestDto");
             this.hrisUpdateEmploymentRequestDto = hrisUpdateEmploymentRequestDto;
             return this;
         }
-        
+
         public HrisUpdateEmployeeEmploymentRequest build() {
+
             return new HrisUpdateEmployeeEmploymentRequest(
-                xAccountId,
-                id,
-                subResourceId,
+                xAccountId, id, subResourceId,
                 hrisUpdateEmploymentRequestDto);
         }
+
     }
 }

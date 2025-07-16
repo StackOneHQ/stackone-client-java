@@ -14,18 +14,15 @@ import java.lang.String;
  * <p>Raw error response from the provider
  */
 public class Raw {
-
     @JsonCreator
     public Raw() {
-        
-        
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -47,16 +44,19 @@ public class Raw {
     public String toString() {
         return Utils.toString(Raw.class);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public Raw build() {
+
             return new Raw(
                 );
         }
+
     }
 }

@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Status of the job
  */
 public class JobStatus {
-
     /**
      * The status of the job.
      */
@@ -67,9 +66,10 @@ public class JobStatus {
         return (JsonNullable<JobSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the job.
@@ -107,7 +107,6 @@ public class JobStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class JobStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class JobStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends JobValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the job.
@@ -164,6 +164,7 @@ public class JobStatus {
             return this;
         }
 
+
         /**
          * The source value of the job status.
          */
@@ -181,11 +182,12 @@ public class JobStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public JobStatus build() {
+
             return new JobStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

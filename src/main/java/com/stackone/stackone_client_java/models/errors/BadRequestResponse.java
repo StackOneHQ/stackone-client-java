@@ -19,9 +19,9 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 @SuppressWarnings("serial")
 public class BadRequestResponse extends RuntimeException {
-
     /**
      * HTTP status code
      */
@@ -78,7 +78,8 @@ public class BadRequestResponse extends RuntimeException {
             double statusCode,
             String message,
             OffsetDateTime timestamp) {
-        this(statusCode, message, timestamp, JsonNullable.undefined(), JsonNullable.undefined());
+        this(statusCode, message, timestamp,
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -129,9 +130,10 @@ public class BadRequestResponse extends RuntimeException {
         return (JsonNullable<List<ProviderError>>) providerErrors;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP status code
@@ -196,7 +198,6 @@ public class BadRequestResponse extends RuntimeException {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -217,11 +218,8 @@ public class BadRequestResponse extends RuntimeException {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            statusCode,
-            message,
-            timestamp,
-            data,
-            providerErrors);
+            statusCode, message, timestamp,
+            data, providerErrors);
     }
     
     @Override
@@ -233,22 +231,24 @@ public class BadRequestResponse extends RuntimeException {
                 "data", data,
                 "providerErrors", providerErrors);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Double statusCode;
- 
+
         private String message;
- 
+
         private OffsetDateTime timestamp;
- 
+
         private JsonNullable<? extends Data> data = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<ProviderError>> providerErrors = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP status code
@@ -259,6 +259,7 @@ public class BadRequestResponse extends RuntimeException {
             return this;
         }
 
+
         /**
          * Error message
          */
@@ -268,6 +269,7 @@ public class BadRequestResponse extends RuntimeException {
             return this;
         }
 
+
         /**
          * Timestamp when the error occurred
          */
@@ -276,6 +278,7 @@ public class BadRequestResponse extends RuntimeException {
             this.timestamp = timestamp;
             return this;
         }
+
 
         /**
          * Error details
@@ -295,6 +298,7 @@ public class BadRequestResponse extends RuntimeException {
             return this;
         }
 
+
         /**
          * List of provider-specific errors
          */
@@ -312,15 +316,14 @@ public class BadRequestResponse extends RuntimeException {
             this.providerErrors = providerErrors;
             return this;
         }
-        
+
         public BadRequestResponse build() {
+
             return new BadRequestResponse(
-                statusCode,
-                message,
-                timestamp,
-                data,
-                providerErrors);
+                statusCode, message, timestamp,
+                data, providerErrors);
         }
+
     }
 }
 

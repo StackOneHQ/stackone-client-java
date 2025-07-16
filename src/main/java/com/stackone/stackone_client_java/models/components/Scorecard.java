@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Scorecard {
 
+public class Scorecard {
     /**
      * Unique identifier
      */
@@ -173,7 +173,11 @@ public class Scorecard {
     }
     
     public Scorecard() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -298,9 +302,10 @@ public class Scorecard {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -572,7 +577,6 @@ public class Scorecard {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -603,21 +607,11 @@ public class Scorecard {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            sections,
-            label,
-            candidateId,
-            remoteCandidateId,
-            applicationId,
-            remoteApplicationId,
-            interviewId,
-            remoteInterviewId,
-            authorId,
-            remoteAuthorId,
-            overallRecommendation,
-            createdAt,
-            updatedAt);
+            id, remoteId, sections,
+            label, candidateId, remoteCandidateId,
+            applicationId, remoteApplicationId, interviewId,
+            remoteInterviewId, authorId, remoteAuthorId,
+            overallRecommendation, createdAt, updatedAt);
     }
     
     @Override
@@ -639,42 +633,44 @@ public class Scorecard {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<ScorecardSection>> sections = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<String> candidateId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteCandidateId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> applicationId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteApplicationId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> interviewId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteInterviewId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> authorId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteAuthorId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends OverallRecommendation> overallRecommendation = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -694,6 +690,7 @@ public class Scorecard {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -711,6 +708,7 @@ public class Scorecard {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The sections in the scorecard
@@ -730,6 +728,7 @@ public class Scorecard {
             return this;
         }
 
+
         /**
          * The label of the scorecard
          */
@@ -747,6 +746,7 @@ public class Scorecard {
             this.label = label;
             return this;
         }
+
 
         /**
          * The candidate ID associated with the scorecard
@@ -766,6 +766,7 @@ public class Scorecard {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the candidate
          */
@@ -783,6 +784,7 @@ public class Scorecard {
             this.remoteCandidateId = remoteCandidateId;
             return this;
         }
+
 
         /**
          * The application ID associated with the scorecard
@@ -802,6 +804,7 @@ public class Scorecard {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the application
          */
@@ -819,6 +822,7 @@ public class Scorecard {
             this.remoteApplicationId = remoteApplicationId;
             return this;
         }
+
 
         /**
          * The interview ID associated with the scorecard
@@ -838,6 +842,7 @@ public class Scorecard {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the interview
          */
@@ -855,6 +860,7 @@ public class Scorecard {
             this.remoteInterviewId = remoteInterviewId;
             return this;
         }
+
 
         /**
          * The author ID of the scorecard
@@ -874,6 +880,7 @@ public class Scorecard {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the author
          */
@@ -891,6 +898,7 @@ public class Scorecard {
             this.remoteAuthorId = remoteAuthorId;
             return this;
         }
+
 
         /**
          * The overall recommendation
@@ -910,6 +918,7 @@ public class Scorecard {
             return this;
         }
 
+
         /**
          * The creation date of the scorecard
          */
@@ -928,6 +937,7 @@ public class Scorecard {
             return this;
         }
 
+
         /**
          * The update date of the scorecard
          */
@@ -945,24 +955,16 @@ public class Scorecard {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Scorecard build() {
+
             return new Scorecard(
-                id,
-                remoteId,
-                sections,
-                label,
-                candidateId,
-                remoteCandidateId,
-                applicationId,
-                remoteApplicationId,
-                interviewId,
-                remoteInterviewId,
-                authorId,
-                remoteAuthorId,
-                overallRecommendation,
-                createdAt,
-                updatedAt);
+                id, remoteId, sections,
+                label, candidateId, remoteCandidateId,
+                applicationId, remoteApplicationId, interviewId,
+                remoteInterviewId, authorId, remoteAuthorId,
+                overallRecommendation, createdAt, updatedAt);
         }
+
     }
 }

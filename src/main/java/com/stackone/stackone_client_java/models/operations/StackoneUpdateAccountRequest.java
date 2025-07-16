@@ -11,10 +11,12 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
+
 public class StackoneUpdateAccountRequest {
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private PatchAccountExternalDto patchAccountExternalDto;
@@ -39,9 +41,10 @@ public class StackoneUpdateAccountRequest {
         return patchAccountExternalDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public StackoneUpdateAccountRequest withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -55,7 +58,6 @@ public class StackoneUpdateAccountRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -73,8 +75,7 @@ public class StackoneUpdateAccountRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            patchAccountExternalDto);
+            id, patchAccountExternalDto);
     }
     
     @Override
@@ -83,16 +84,18 @@ public class StackoneUpdateAccountRequest {
                 "id", id,
                 "patchAccountExternalDto", patchAccountExternalDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
- 
+
         private PatchAccountExternalDto patchAccountExternalDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -100,16 +103,18 @@ public class StackoneUpdateAccountRequest {
             return this;
         }
 
+
         public Builder patchAccountExternalDto(PatchAccountExternalDto patchAccountExternalDto) {
             Utils.checkNotNull(patchAccountExternalDto, "patchAccountExternalDto");
             this.patchAccountExternalDto = patchAccountExternalDto;
             return this;
         }
-        
+
         public StackoneUpdateAccountRequest build() {
+
             return new StackoneUpdateAccountRequest(
-                id,
-                patchAccountExternalDto);
+                id, patchAccountExternalDto);
         }
+
     }
 }

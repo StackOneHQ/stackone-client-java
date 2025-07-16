@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class EmploymentManagerApiModel {
 
+public class EmploymentManagerApiModel {
     /**
      * Unique identifier
      */
@@ -79,9 +79,10 @@ public class EmploymentManagerApiModel {
         return (JsonNullable<Role>) role;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -137,7 +138,6 @@ public class EmploymentManagerApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -156,9 +156,7 @@ public class EmploymentManagerApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            role);
+            id, remoteId, role);
     }
     
     @Override
@@ -168,18 +166,20 @@ public class EmploymentManagerApiModel {
                 "remoteId", remoteId,
                 "role", role);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Role> role = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -199,6 +199,7 @@ public class EmploymentManagerApiModel {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -217,6 +218,7 @@ public class EmploymentManagerApiModel {
             return this;
         }
 
+
         /**
          * The role of manager
          */
@@ -234,12 +236,12 @@ public class EmploymentManagerApiModel {
             this.role = role;
             return this;
         }
-        
+
         public EmploymentManagerApiModel build() {
+
             return new EmploymentManagerApiModel(
-                id,
-                remoteId,
-                role);
+                id, remoteId, role);
         }
+
     }
 }

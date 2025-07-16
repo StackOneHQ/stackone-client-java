@@ -48,9 +48,7 @@ public class StackoneCreateConnectSessionRequestBuilder {
             .build());
 
         RequestOperation<ConnectSessionCreate, StackoneCreateConnectSessionResponse> operation
-              = new StackoneCreateConnectSessionOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneCreateConnectSessionOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

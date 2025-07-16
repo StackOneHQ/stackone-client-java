@@ -15,19 +15,23 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class ProviderErrorApiModel {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
     private JsonNullable<Double> status;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("url")
     private JsonNullable<String> url;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw")
     private JsonNullable<? extends ProviderErrorApiModelRaw> raw;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("headers")
@@ -50,7 +54,8 @@ public class ProviderErrorApiModel {
     }
     
     public ProviderErrorApiModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -75,9 +80,10 @@ public class ProviderErrorApiModel {
         return (JsonNullable<ProviderErrorApiModelHeaders>) headers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ProviderErrorApiModel withStatus(double status) {
         Utils.checkNotNull(status, "status");
@@ -127,7 +133,6 @@ public class ProviderErrorApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,9 +152,7 @@ public class ProviderErrorApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            status,
-            url,
-            raw,
+            status, url, raw,
             headers);
     }
     
@@ -161,20 +164,22 @@ public class ProviderErrorApiModel {
                 "raw", raw,
                 "headers", headers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Double> status = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ProviderErrorApiModelRaw> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ProviderErrorApiModelHeaders> headers = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder status(double status) {
             Utils.checkNotNull(status, "status");
@@ -188,6 +193,7 @@ public class ProviderErrorApiModel {
             return this;
         }
 
+
         public Builder url(String url) {
             Utils.checkNotNull(url, "url");
             this.url = JsonNullable.of(url);
@@ -199,6 +205,7 @@ public class ProviderErrorApiModel {
             this.url = url;
             return this;
         }
+
 
         public Builder raw(ProviderErrorApiModelRaw raw) {
             Utils.checkNotNull(raw, "raw");
@@ -212,6 +219,7 @@ public class ProviderErrorApiModel {
             return this;
         }
 
+
         public Builder headers(ProviderErrorApiModelHeaders headers) {
             Utils.checkNotNull(headers, "headers");
             this.headers = JsonNullable.of(headers);
@@ -223,13 +231,13 @@ public class ProviderErrorApiModel {
             this.headers = headers;
             return this;
         }
-        
+
         public ProviderErrorApiModel build() {
+
             return new ProviderErrorApiModel(
-                status,
-                url,
-                raw,
+                status, url, raw,
                 headers);
         }
+
     }
 }

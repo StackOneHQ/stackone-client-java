@@ -73,9 +73,7 @@ public class AtsUploadApplicationDocumentRequestBuilder {
             .build());
 
         RequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
-              = new AtsUploadApplicationDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUploadApplicationDocumentOperation(sdkConfiguration, options);
         AtsUploadApplicationDocumentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

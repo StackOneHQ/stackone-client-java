@@ -47,9 +47,7 @@ public class HrisGetEmploymentRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmploymentRequest, HrisGetEmploymentResponse> operation
-              = new HrisGetEmploymentOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmploymentOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

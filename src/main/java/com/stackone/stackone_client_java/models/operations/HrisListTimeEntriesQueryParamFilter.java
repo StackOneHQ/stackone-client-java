@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>HRIS Time Entries filters
  */
 public class HrisListTimeEntriesQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -59,7 +58,8 @@ public class HrisListTimeEntriesQueryParamFilter {
     }
     
     public HrisListTimeEntriesQueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -94,9 +94,10 @@ public class HrisListTimeEntriesQueryParamFilter {
         return endTime;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -170,7 +171,6 @@ public class HrisListTimeEntriesQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -190,9 +190,7 @@ public class HrisListTimeEntriesQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            employeeId,
-            startTime,
+            updatedAfter, employeeId, startTime,
             endTime);
     }
     
@@ -204,20 +202,22 @@ public class HrisListTimeEntriesQueryParamFilter {
                 "startTime", startTime,
                 "endTime", endTime);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> startTime = JsonNullable.undefined();
- 
+
         private JsonNullable<String> endTime = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -237,6 +237,7 @@ public class HrisListTimeEntriesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select time entries by employee_id
          */
@@ -254,6 +255,7 @@ public class HrisListTimeEntriesQueryParamFilter {
             this.employeeId = employeeId;
             return this;
         }
+
 
         /**
          * Filter to select time entries after a given time
@@ -273,6 +275,7 @@ public class HrisListTimeEntriesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select time entries before a given time
          */
@@ -290,13 +293,13 @@ public class HrisListTimeEntriesQueryParamFilter {
             this.endTime = endTime;
             return this;
         }
-        
+
         public HrisListTimeEntriesQueryParamFilter build() {
+
             return new HrisListTimeEntriesQueryParamFilter(
-                updatedAfter,
-                employeeId,
-                startTime,
+                updatedAfter, employeeId, startTime,
                 endTime);
         }
+
     }
 }

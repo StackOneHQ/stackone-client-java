@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class InterviewInterviewStatus {
 
+public class InterviewInterviewStatus {
     /**
      * The status of the interview.
      */
@@ -62,9 +62,10 @@ public class InterviewInterviewStatus {
         return (JsonNullable<InterviewSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the interview.
@@ -102,7 +103,6 @@ public class InterviewInterviewStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class InterviewInterviewStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class InterviewInterviewStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends InterviewValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends InterviewSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the interview.
@@ -159,6 +160,7 @@ public class InterviewInterviewStatus {
             return this;
         }
 
+
         /**
          * The source value of the interview status.
          */
@@ -176,11 +178,12 @@ public class InterviewInterviewStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public InterviewInterviewStatus build() {
+
             return new InterviewInterviewStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class CrmCreateContactRequest {
 
+public class CrmCreateContactRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private CrmCreateContactRequestDto crmCreateContactRequestDto;
@@ -45,9 +46,10 @@ public class CrmCreateContactRequest {
         return crmCreateContactRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class CrmCreateContactRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class CrmCreateContactRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            crmCreateContactRequestDto);
+            xAccountId, crmCreateContactRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class CrmCreateContactRequest {
                 "xAccountId", xAccountId,
                 "crmCreateContactRequestDto", crmCreateContactRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private CrmCreateContactRequestDto crmCreateContactRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class CrmCreateContactRequest {
             return this;
         }
 
+
         public Builder crmCreateContactRequestDto(CrmCreateContactRequestDto crmCreateContactRequestDto) {
             Utils.checkNotNull(crmCreateContactRequestDto, "crmCreateContactRequestDto");
             this.crmCreateContactRequestDto = crmCreateContactRequestDto;
             return this;
         }
-        
+
         public CrmCreateContactRequest build() {
+
             return new CrmCreateContactRequest(
-                xAccountId,
-                crmCreateContactRequestDto);
+                xAccountId, crmCreateContactRequestDto);
         }
+
     }
 }

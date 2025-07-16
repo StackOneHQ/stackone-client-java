@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The pay period
  */
 public class PayPeriod {
-
     /**
      * The pay period of the job postings.
      */
@@ -67,9 +66,10 @@ public class PayPeriod {
         return (JsonNullable<EmploymentSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The pay period of the job postings.
@@ -107,7 +107,6 @@ public class PayPeriod {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class PayPeriod {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class PayPeriod {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmploymentValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The pay period of the job postings.
@@ -164,6 +164,7 @@ public class PayPeriod {
             return this;
         }
 
+
         /**
          * The source value of the pay period.
          */
@@ -181,11 +182,12 @@ public class PayPeriod {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public PayPeriod build() {
+
             return new PayPeriod(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

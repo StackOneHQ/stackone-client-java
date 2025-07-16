@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ScorecardSection {
 
+public class ScorecardSection {
     /**
      * Unique identifier
      */
@@ -62,7 +62,8 @@ public class ScorecardSection {
     }
     
     public ScorecardSection() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -98,9 +99,10 @@ public class ScorecardSection {
         return (JsonNullable<List<Field>>) fields;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -174,7 +176,6 @@ public class ScorecardSection {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -194,9 +195,7 @@ public class ScorecardSection {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            label,
+            id, remoteId, label,
             fields);
     }
     
@@ -208,20 +207,22 @@ public class ScorecardSection {
                 "label", label,
                 "fields", fields);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Field>> fields = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -241,6 +242,7 @@ public class ScorecardSection {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -258,6 +260,7 @@ public class ScorecardSection {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The label of the section
@@ -277,6 +280,7 @@ public class ScorecardSection {
             return this;
         }
 
+
         /**
          * The fields within the section
          */
@@ -294,13 +298,13 @@ public class ScorecardSection {
             this.fields = fields;
             return this;
         }
-        
+
         public ScorecardSection build() {
+
             return new ScorecardSection(
-                id,
-                remoteId,
-                label,
+                id, remoteId, label,
                 fields);
         }
+
     }
 }

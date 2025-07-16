@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Campaign {
 
+public class Campaign {
     /**
      * Unique identifier
      */
@@ -31,6 +31,7 @@ public class Campaign {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
@@ -50,6 +51,7 @@ public class Campaign {
     @JsonProperty("updated_at")
     private JsonNullable<OffsetDateTime> updatedAt;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
@@ -68,9 +70,11 @@ public class Campaign {
     @JsonProperty("status")
     private JsonNullable<? extends CampaignStatus> status;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("archived")
     private JsonNullable<? extends Archived> archived;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("draft")
@@ -97,9 +101,11 @@ public class Campaign {
     @JsonProperty("last_sent_at")
     private JsonNullable<OffsetDateTime> lastSentAt;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
     private JsonNullable<? extends List<String>> tags;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("messages")
@@ -155,7 +161,11 @@ public class Campaign {
     }
     
     public Campaign() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -267,9 +277,10 @@ public class Campaign {
         return (JsonNullable<List<Message>>) messages;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -505,7 +516,6 @@ public class Campaign {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -536,21 +546,11 @@ public class Campaign {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            createdAt,
-            updatedAt,
-            description,
-            scheduleType,
-            status,
-            archived,
-            draft,
-            channels,
-            firstSentAt,
-            lastSentAt,
-            tags,
-            messages);
+            id, remoteId, name,
+            createdAt, updatedAt, description,
+            scheduleType, status, archived,
+            draft, channels, firstSentAt,
+            lastSentAt, tags, messages);
     }
     
     @Override
@@ -572,42 +572,44 @@ public class Campaign {
                 "tags", tags,
                 "messages", messages);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ScheduleType> scheduleType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CampaignStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Archived> archived = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Draft> draft = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<ChannelsEnum>> channels = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> firstSentAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> lastSentAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Message>> messages = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -627,6 +629,7 @@ public class Campaign {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -645,6 +648,7 @@ public class Campaign {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -656,6 +660,7 @@ public class Campaign {
             this.name = name;
             return this;
         }
+
 
         /**
          * The created_at date
@@ -675,6 +680,7 @@ public class Campaign {
             return this;
         }
 
+
         /**
          * The updated_at date
          */
@@ -693,6 +699,7 @@ public class Campaign {
             return this;
         }
 
+
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
             this.description = JsonNullable.of(description);
@@ -704,6 +711,7 @@ public class Campaign {
             this.description = description;
             return this;
         }
+
 
         /**
          * The schedule type
@@ -723,6 +731,7 @@ public class Campaign {
             return this;
         }
 
+
         /**
          * Status of the Campaign
          */
@@ -741,6 +750,7 @@ public class Campaign {
             return this;
         }
 
+
         public Builder archived(Archived archived) {
             Utils.checkNotNull(archived, "archived");
             this.archived = JsonNullable.of(archived);
@@ -753,6 +763,7 @@ public class Campaign {
             return this;
         }
 
+
         public Builder draft(Draft draft) {
             Utils.checkNotNull(draft, "draft");
             this.draft = JsonNullable.of(draft);
@@ -764,6 +775,7 @@ public class Campaign {
             this.draft = draft;
             return this;
         }
+
 
         /**
          * channels of the Campaign
@@ -783,6 +795,7 @@ public class Campaign {
             return this;
         }
 
+
         /**
          * The first_sent_at date
          */
@@ -800,6 +813,7 @@ public class Campaign {
             this.firstSentAt = firstSentAt;
             return this;
         }
+
 
         /**
          * The last_sent_at date
@@ -819,6 +833,7 @@ public class Campaign {
             return this;
         }
 
+
         public Builder tags(List<String> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = JsonNullable.of(tags);
@@ -831,6 +846,7 @@ public class Campaign {
             return this;
         }
 
+
         public Builder messages(List<Message> messages) {
             Utils.checkNotNull(messages, "messages");
             this.messages = JsonNullable.of(messages);
@@ -842,24 +858,16 @@ public class Campaign {
             this.messages = messages;
             return this;
         }
-        
+
         public Campaign build() {
+
             return new Campaign(
-                id,
-                remoteId,
-                name,
-                createdAt,
-                updatedAt,
-                description,
-                scheduleType,
-                status,
-                archived,
-                draft,
-                channels,
-                firstSentAt,
-                lastSentAt,
-                tags,
-                messages);
+                id, remoteId, name,
+                createdAt, updatedAt, description,
+                scheduleType, status, archived,
+                draft, channels, firstSentAt,
+                lastSentAt, tags, messages);
         }
+
     }
 }

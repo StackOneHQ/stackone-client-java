@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Filter parameters that allow greater customisation of the list response
  */
 public class QueryParamFilter {
-
     /**
      * A comma-separated list of account IDs to filter the results by.
      */
@@ -187,7 +186,12 @@ public class QueryParamFilter {
     }
     
     public QueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -336,9 +340,10 @@ public class QueryParamFilter {
         return (JsonNullable<StackoneListLogsQueryParamOrderDirection>) orderDirection;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A comma-separated list of account IDs to filter the results by.
@@ -664,7 +669,6 @@ public class QueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -698,24 +702,12 @@ public class QueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            accountIds,
-            startDate,
-            endDate,
-            requestIds,
-            sourceTypes,
-            sourceValues,
-            sourceIds,
-            httpMethods,
-            providers,
-            services,
-            resources,
-            childResources,
-            subResources,
-            actions,
-            statusCodes,
-            success,
-            orderBy,
-            orderDirection);
+            accountIds, startDate, endDate,
+            requestIds, sourceTypes, sourceValues,
+            sourceIds, httpMethods, providers,
+            services, resources, childResources,
+            subResources, actions, statusCodes,
+            success, orderBy, orderDirection);
     }
     
     @Override
@@ -740,48 +732,50 @@ public class QueryParamFilter {
                 "orderBy", orderBy,
                 "orderDirection", orderDirection);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> accountIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> endDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> requestIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> sourceTypes = JsonNullable.undefined();
- 
+
         private JsonNullable<String> sourceValues = JsonNullable.undefined();
- 
+
         private JsonNullable<String> sourceIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> httpMethods = JsonNullable.undefined();
- 
+
         private JsonNullable<String> providers = JsonNullable.undefined();
- 
+
         private JsonNullable<String> services = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resources = JsonNullable.undefined();
- 
+
         private JsonNullable<String> childResources = JsonNullable.undefined();
- 
+
         private JsonNullable<String> subResources = JsonNullable.undefined();
- 
+
         private JsonNullable<String> actions = JsonNullable.undefined();
- 
+
         private JsonNullable<String> statusCodes = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> success = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends StackoneListLogsQueryParamOrderBy> orderBy = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends StackoneListLogsQueryParamOrderDirection> orderDirection = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A comma-separated list of account IDs to filter the results by.
@@ -801,6 +795,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * A ISO8601 date string to filter the results by start_date.
          */
@@ -818,6 +813,7 @@ public class QueryParamFilter {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * A ISO8601 date string to filter the results by end_date.
@@ -837,6 +833,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * A comma-separated list of request IDs to filter the results by.
          */
@@ -854,6 +851,7 @@ public class QueryParamFilter {
             this.requestIds = requestIds;
             return this;
         }
+
 
         /**
          * A comma-separated list of source types to filter the results by.
@@ -873,6 +871,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * A comma-separated list of source values to filter the results by.
          */
@@ -890,6 +889,7 @@ public class QueryParamFilter {
             this.sourceValues = sourceValues;
             return this;
         }
+
 
         /**
          * A comma-separated list of source IDs to filter the results by.
@@ -909,6 +909,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * A comma-separated list of HTTP methods to filter the results by.
          */
@@ -926,6 +927,7 @@ public class QueryParamFilter {
             this.httpMethods = httpMethods;
             return this;
         }
+
 
         /**
          * A comma-separated list of provider keys to filter the results by.
@@ -945,6 +947,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * A comma-separated list of services to filter the results by.
          */
@@ -962,6 +965,7 @@ public class QueryParamFilter {
             this.services = services;
             return this;
         }
+
 
         /**
          * A comma-separated list of resources to filter the results by.
@@ -981,6 +985,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * A comma-separated list of child resources to filter the results by.
          */
@@ -998,6 +1003,7 @@ public class QueryParamFilter {
             this.childResources = childResources;
             return this;
         }
+
 
         /**
          * A comma-separated list of sub resources to filter the results by.
@@ -1017,6 +1023,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * A comma-separated list of actions to filter the results by.
          */
@@ -1034,6 +1041,7 @@ public class QueryParamFilter {
             this.actions = actions;
             return this;
         }
+
 
         /**
          * A comma-separated list of status codes to filter the results by.
@@ -1053,6 +1061,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * A boolean value to filter the results by success or failure.
          */
@@ -1070,6 +1079,7 @@ public class QueryParamFilter {
             this.success = success;
             return this;
         }
+
 
         /**
          * The field to order the results by.
@@ -1089,6 +1099,7 @@ public class QueryParamFilter {
             return this;
         }
 
+
         /**
          * The direction to order the results by.
          */
@@ -1106,27 +1117,17 @@ public class QueryParamFilter {
             this.orderDirection = orderDirection;
             return this;
         }
-        
+
         public QueryParamFilter build() {
+
             return new QueryParamFilter(
-                accountIds,
-                startDate,
-                endDate,
-                requestIds,
-                sourceTypes,
-                sourceValues,
-                sourceIds,
-                httpMethods,
-                providers,
-                services,
-                resources,
-                childResources,
-                subResources,
-                actions,
-                statusCodes,
-                success,
-                orderBy,
-                orderDirection);
+                accountIds, startDate, endDate,
+                requestIds, sourceTypes, sourceValues,
+                sourceIds, httpMethods, providers,
+                services, resources, childResources,
+                subResources, actions, statusCodes,
+                success, orderBy, orderDirection);
         }
+
     }
 }

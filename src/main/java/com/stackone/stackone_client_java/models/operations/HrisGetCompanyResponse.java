@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class HrisGetCompanyResponse implements Response {
 
+public class HrisGetCompanyResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
@@ -40,6 +40,7 @@ public class HrisGetCompanyResponse implements Response {
      */
     private Optional<? extends CompanyResult> companyResult;
 
+
     private Map<String, List<String>> headers;
 
     @JsonCreator
@@ -54,6 +55,7 @@ public class HrisGetCompanyResponse implements Response {
         Utils.checkNotNull(rawResponse, "rawResponse");
         Utils.checkNotNull(companyResult, "companyResult");
         headers = Utils.emptyMapIfNull(headers);
+        Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
@@ -66,7 +68,8 @@ public class HrisGetCompanyResponse implements Response {
             int statusCode,
             HttpResponse<InputStream> rawResponse,
             Map<String, List<String>> headers) {
-        this(contentType, statusCode, rawResponse, Optional.empty(), headers);
+        this(contentType, statusCode, rawResponse,
+            Optional.empty(), headers);
     }
 
     /**
@@ -107,9 +110,10 @@ public class HrisGetCompanyResponse implements Response {
         return headers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP response content type for this operation
@@ -147,6 +151,7 @@ public class HrisGetCompanyResponse implements Response {
         return this;
     }
 
+
     /**
      * The Company with the given identifier was retrieved.
      */
@@ -162,7 +167,6 @@ public class HrisGetCompanyResponse implements Response {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -183,11 +187,8 @@ public class HrisGetCompanyResponse implements Response {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            contentType,
-            statusCode,
-            rawResponse,
-            companyResult,
-            headers);
+            contentType, statusCode, rawResponse,
+            companyResult, headers);
     }
     
     @Override
@@ -199,22 +200,24 @@ public class HrisGetCompanyResponse implements Response {
                 "companyResult", companyResult,
                 "headers", headers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String contentType;
- 
+
         private Integer statusCode;
- 
+
         private HttpResponse<InputStream> rawResponse;
- 
+
         private Optional<? extends CompanyResult> companyResult = Optional.empty();
- 
+
         private Map<String, List<String>> headers;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP response content type for this operation
@@ -225,6 +228,7 @@ public class HrisGetCompanyResponse implements Response {
             return this;
         }
 
+
         /**
          * HTTP response status code for this operation
          */
@@ -234,6 +238,7 @@ public class HrisGetCompanyResponse implements Response {
             return this;
         }
 
+
         /**
          * Raw HTTP response; suitable for custom response parsing
          */
@@ -242,6 +247,7 @@ public class HrisGetCompanyResponse implements Response {
             this.rawResponse = rawResponse;
             return this;
         }
+
 
         /**
          * The Company with the given identifier was retrieved.
@@ -261,19 +267,19 @@ public class HrisGetCompanyResponse implements Response {
             return this;
         }
 
+
         public Builder headers(Map<String, List<String>> headers) {
             Utils.checkNotNull(headers, "headers");
             this.headers = headers;
             return this;
         }
-        
+
         public HrisGetCompanyResponse build() {
+
             return new HrisGetCompanyResponse(
-                contentType,
-                statusCode,
-                rawResponse,
-                companyResult,
-                headers);
+                contentType, statusCode, rawResponse,
+                companyResult, headers);
         }
+
     }
 }

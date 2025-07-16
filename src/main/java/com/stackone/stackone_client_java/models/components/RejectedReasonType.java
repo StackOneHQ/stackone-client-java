@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class RejectedReasonType {
 
+public class RejectedReasonType {
     /**
      * The type of the rejected reason.
      */
@@ -62,9 +62,10 @@ public class RejectedReasonType {
         return (JsonNullable<RejectedReasonSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the rejected reason.
@@ -102,7 +103,6 @@ public class RejectedReasonType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class RejectedReasonType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class RejectedReasonType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends RejectedReasonValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends RejectedReasonSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the rejected reason.
@@ -159,6 +160,7 @@ public class RejectedReasonType {
             return this;
         }
 
+
         /**
          * The source value of the rejected reason type.
          */
@@ -176,11 +178,12 @@ public class RejectedReasonType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public RejectedReasonType build() {
+
             return new RejectedReasonType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

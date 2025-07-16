@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsOrderAssessmentsRequestRequest {
 
+public class AtsOrderAssessmentsRequestRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto;
@@ -45,9 +46,10 @@ public class AtsOrderAssessmentsRequestRequest {
         return atsCreateCandidatesAssessmentsRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class AtsOrderAssessmentsRequestRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class AtsOrderAssessmentsRequestRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            atsCreateCandidatesAssessmentsRequestDto);
+            xAccountId, atsCreateCandidatesAssessmentsRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class AtsOrderAssessmentsRequestRequest {
                 "xAccountId", xAccountId,
                 "atsCreateCandidatesAssessmentsRequestDto", atsCreateCandidatesAssessmentsRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class AtsOrderAssessmentsRequestRequest {
             return this;
         }
 
+
         public Builder atsCreateCandidatesAssessmentsRequestDto(AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto) {
             Utils.checkNotNull(atsCreateCandidatesAssessmentsRequestDto, "atsCreateCandidatesAssessmentsRequestDto");
             this.atsCreateCandidatesAssessmentsRequestDto = atsCreateCandidatesAssessmentsRequestDto;
             return this;
         }
-        
+
         public AtsOrderAssessmentsRequestRequest build() {
+
             return new AtsOrderAssessmentsRequestRequest(
-                xAccountId,
-                atsCreateCandidatesAssessmentsRequestDto);
+                xAccountId, atsCreateCandidatesAssessmentsRequestDto);
         }
+
     }
 }

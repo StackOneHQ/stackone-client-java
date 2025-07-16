@@ -73,9 +73,7 @@ public class AtsRejectApplicationRequestBuilder {
             .build());
 
         RequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
-              = new AtsRejectApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsRejectApplicationOperation(sdkConfiguration, options);
         AtsRejectApplicationRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -47,9 +47,7 @@ public class AtsGetBackgroundCheckPackageRequestBuilder {
             .build());
 
         RequestOperation<AtsGetBackgroundCheckPackageRequest, AtsGetBackgroundCheckPackageResponse> operation
-              = new AtsGetBackgroundCheckPackageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetBackgroundCheckPackageOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

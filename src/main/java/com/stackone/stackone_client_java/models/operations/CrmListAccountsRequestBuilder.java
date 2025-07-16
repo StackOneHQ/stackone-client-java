@@ -58,9 +58,7 @@ public class CrmListAccountsRequestBuilder {
             .build());
 
         RequestOperation<CrmListAccountsRequest, CrmListAccountsResponse> operation
-              = new CrmListAccountsOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmListAccountsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class CrmListAccountsRequestBuilder {
             .build());
 
         RequestOperation<CrmListAccountsRequest, CrmListAccountsResponse> operation
-              = new CrmListAccountsOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmListAccountsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

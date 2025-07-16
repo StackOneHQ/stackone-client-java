@@ -24,7 +24,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @Deprecated
 public class HrisCreateEmployeeRequestDtoEmploymentEmploymentType {
-
     /**
      * The type of the employment.
      */
@@ -71,9 +70,10 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentType {
         return (JsonNullable<HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the employment.
@@ -111,7 +111,6 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,8 +128,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -139,16 +137,18 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentEmploymentTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the employment.
@@ -168,6 +168,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentType {
             return this;
         }
 
+
         /**
          * The source value of the employment type.
          */
@@ -185,11 +186,12 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDtoEmploymentEmploymentType build() {
+
             return new HrisCreateEmployeeRequestDtoEmploymentEmploymentType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

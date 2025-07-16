@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class QuestionType {
 
+public class QuestionType {
     /**
      * The type of the questions.
      */
@@ -62,9 +62,10 @@ public class QuestionType {
         return (JsonNullable<QuestionSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the questions.
@@ -102,7 +103,6 @@ public class QuestionType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class QuestionType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class QuestionType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends QuestionValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends QuestionSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the questions.
@@ -159,6 +160,7 @@ public class QuestionType {
             return this;
         }
 
+
         /**
          * The source value of the questions type.
          */
@@ -176,11 +178,12 @@ public class QuestionType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public QuestionType build() {
+
             return new QuestionType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class InAppTemplate {
 
+public class InAppTemplate {
     /**
      * Unique identifier
      */
@@ -32,9 +32,11 @@ public class InAppTemplate {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
@@ -53,6 +55,7 @@ public class InAppTemplate {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
     private JsonNullable<OffsetDateTime> updatedAt;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("messages")
@@ -84,7 +87,9 @@ public class InAppTemplate {
     }
     
     public InAppTemplate() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -136,9 +141,10 @@ public class InAppTemplate {
         return (JsonNullable<List<InAppMessages>>) messages;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -248,7 +254,6 @@ public class InAppTemplate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -271,12 +276,8 @@ public class InAppTemplate {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            tags,
-            createdAt,
-            updatedAt,
+            id, remoteId, name,
+            tags, createdAt, updatedAt,
             messages);
     }
     
@@ -291,26 +292,28 @@ public class InAppTemplate {
                 "updatedAt", updatedAt,
                 "messages", messages);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<InAppMessages>> messages = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -330,6 +333,7 @@ public class InAppTemplate {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -348,6 +352,7 @@ public class InAppTemplate {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -360,6 +365,7 @@ public class InAppTemplate {
             return this;
         }
 
+
         public Builder tags(List<String> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = JsonNullable.of(tags);
@@ -371,6 +377,7 @@ public class InAppTemplate {
             this.tags = tags;
             return this;
         }
+
 
         /**
          * Date of creation
@@ -390,6 +397,7 @@ public class InAppTemplate {
             return this;
         }
 
+
         /**
          * Date of last update
          */
@@ -408,6 +416,7 @@ public class InAppTemplate {
             return this;
         }
 
+
         public Builder messages(List<InAppMessages> messages) {
             Utils.checkNotNull(messages, "messages");
             this.messages = JsonNullable.of(messages);
@@ -419,16 +428,14 @@ public class InAppTemplate {
             this.messages = messages;
             return this;
         }
-        
+
         public InAppTemplate build() {
+
             return new InAppTemplate(
-                id,
-                remoteId,
-                name,
-                tags,
-                createdAt,
-                updatedAt,
+                id, remoteId, name,
+                tags, createdAt, updatedAt,
                 messages);
         }
+
     }
 }

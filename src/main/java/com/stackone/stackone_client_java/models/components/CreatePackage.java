@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreatePackage {
 
+public class CreatePackage {
     /**
      * Package name
      */
@@ -59,9 +59,10 @@ public class CreatePackage {
         return description;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Package name
@@ -99,7 +100,6 @@ public class CreatePackage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -117,8 +117,7 @@ public class CreatePackage {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            description);
+            name, description);
     }
     
     @Override
@@ -127,16 +126,18 @@ public class CreatePackage {
                 "name", name,
                 "description", description);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Package name
@@ -156,6 +157,7 @@ public class CreatePackage {
             return this;
         }
 
+
         /**
          * Package description
          */
@@ -173,11 +175,12 @@ public class CreatePackage {
             this.description = description;
             return this;
         }
-        
+
         public CreatePackage build() {
+
             return new CreatePackage(
-                name,
-                description);
+                name, description);
         }
+
     }
 }

@@ -11,10 +11,12 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
+
 public class Security implements HasSecurity {
 
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic,name=username")
     private String username;
+
 
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic,name=password")
     private String password;
@@ -39,9 +41,10 @@ public class Security implements HasSecurity {
         return password;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Security withUsername(String username) {
         Utils.checkNotNull(username, "username");
@@ -55,7 +58,6 @@ public class Security implements HasSecurity {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -73,8 +75,7 @@ public class Security implements HasSecurity {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            username,
-            password);
+            username, password);
     }
     
     @Override
@@ -83,16 +84,18 @@ public class Security implements HasSecurity {
                 "username", username,
                 "password", password);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String username;
- 
+
         private String password;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
@@ -100,16 +103,18 @@ public class Security implements HasSecurity {
             return this;
         }
 
+
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
             this.password = password;
             return this;
         }
-        
+
         public Security build() {
+
             return new Security(
-                username,
-                password);
+                username, password);
         }
+
     }
 }

@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ATSLocation {
 
+public class ATSLocation {
     /**
      * Unique identifier
      */
@@ -38,6 +38,7 @@ public class ATSLocation {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
@@ -60,7 +61,8 @@ public class ATSLocation {
     }
     
     public ATSLocation() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -93,9 +95,10 @@ public class ATSLocation {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -163,7 +166,6 @@ public class ATSLocation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -183,9 +185,7 @@ public class ATSLocation {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
+            id, remoteId, unifiedCustomFields,
             name);
     }
     
@@ -197,20 +197,22 @@ public class ATSLocation {
                 "unifiedCustomFields", unifiedCustomFields,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -230,6 +232,7 @@ public class ATSLocation {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -247,6 +250,7 @@ public class ATSLocation {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -266,6 +270,7 @@ public class ATSLocation {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -277,13 +282,13 @@ public class ATSLocation {
             this.name = name;
             return this;
         }
-        
+
         public ATSLocation build() {
+
             return new ATSLocation(
-                id,
-                remoteId,
-                unifiedCustomFields,
+                id, remoteId, unifiedCustomFields,
                 name);
         }
+
     }
 }

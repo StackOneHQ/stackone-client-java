@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ApplicationCandidate {
 
+public class ApplicationCandidate {
     /**
      * Candidate name
      */
@@ -112,7 +112,9 @@ public class ApplicationCandidate {
     }
     
     public ApplicationCandidate() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -190,9 +192,10 @@ public class ApplicationCandidate {
         return title;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Candidate name
@@ -356,7 +359,6 @@ public class ApplicationCandidate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -381,15 +383,9 @@ public class ApplicationCandidate {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            firstName,
-            lastName,
-            email,
-            emails,
-            phoneNumbers,
-            socialLinks,
-            company,
-            title);
+            name, firstName, lastName,
+            email, emails, phoneNumbers,
+            socialLinks, company, title);
     }
     
     @Override
@@ -405,30 +401,32 @@ public class ApplicationCandidate {
                 "company", company,
                 "title", title);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CandidateEmail>> emails = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<PhoneNumber>> phoneNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<SocialLink>> socialLinks = JsonNullable.undefined();
- 
+
         private JsonNullable<String> company = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Candidate name
@@ -448,6 +446,7 @@ public class ApplicationCandidate {
             return this;
         }
 
+
         /**
          * First name of the candidate
          */
@@ -465,6 +464,7 @@ public class ApplicationCandidate {
             this.firstName = firstName;
             return this;
         }
+
 
         /**
          * Last name of the candidate
@@ -484,6 +484,7 @@ public class ApplicationCandidate {
             return this;
         }
 
+
         /**
          * Email of the candidate
          */
@@ -501,6 +502,7 @@ public class ApplicationCandidate {
             this.email = email;
             return this;
         }
+
 
         /**
          * List of candidate emails
@@ -520,6 +522,7 @@ public class ApplicationCandidate {
             return this;
         }
 
+
         /**
          * List of candidate phone numbers including the type of the number when available
          */
@@ -537,6 +540,7 @@ public class ApplicationCandidate {
             this.phoneNumbers = phoneNumbers;
             return this;
         }
+
 
         /**
          * List of candidate social links
@@ -556,6 +560,7 @@ public class ApplicationCandidate {
             return this;
         }
 
+
         /**
          * Candidate company
          */
@@ -574,6 +579,7 @@ public class ApplicationCandidate {
             return this;
         }
 
+
         /**
          * Candidate title
          */
@@ -591,18 +597,14 @@ public class ApplicationCandidate {
             this.title = title;
             return this;
         }
-        
+
         public ApplicationCandidate build() {
+
             return new ApplicationCandidate(
-                name,
-                firstName,
-                lastName,
-                email,
-                emails,
-                phoneNumbers,
-                socialLinks,
-                company,
-                title);
+                name, firstName, lastName,
+                email, emails, phoneNumbers,
+                socialLinks, company, title);
         }
+
     }
 }

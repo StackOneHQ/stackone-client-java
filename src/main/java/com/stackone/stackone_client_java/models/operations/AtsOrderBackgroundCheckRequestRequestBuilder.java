@@ -65,9 +65,7 @@ public class AtsOrderBackgroundCheckRequestRequestBuilder {
             .build());
 
         RequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
-              = new AtsOrderBackgroundCheckRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsOrderBackgroundCheckRequestOperation(sdkConfiguration, options);
         AtsOrderBackgroundCheckRequestRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

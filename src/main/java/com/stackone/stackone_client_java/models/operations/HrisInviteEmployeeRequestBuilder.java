@@ -73,9 +73,7 @@ public class HrisInviteEmployeeRequestBuilder {
             .build());
 
         RequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
-              = new HrisInviteEmployeeOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisInviteEmployeeOperation(sdkConfiguration, options);
         HrisInviteEmployeeRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

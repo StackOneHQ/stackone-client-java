@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>LMS Users Filter
  */
 public class LmsListUsersQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -77,9 +76,10 @@ public class LmsListUsersQueryParamFilter {
         return externalReference;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -135,7 +135,6 @@ public class LmsListUsersQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +153,7 @@ public class LmsListUsersQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            email,
-            externalReference);
+            updatedAfter, email, externalReference);
     }
     
     @Override
@@ -166,18 +163,20 @@ public class LmsListUsersQueryParamFilter {
                 "email", email,
                 "externalReference", externalReference);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalReference = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -197,6 +196,7 @@ public class LmsListUsersQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select users by email
          */
@@ -215,6 +215,7 @@ public class LmsListUsersQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select users by external_reference
          */
@@ -232,12 +233,12 @@ public class LmsListUsersQueryParamFilter {
             this.externalReference = externalReference;
             return this;
         }
-        
+
         public LmsListUsersQueryParamFilter build() {
+
             return new LmsListUsersQueryParamFilter(
-                updatedAfter,
-                email,
-                externalReference);
+                updatedAfter, email, externalReference);
         }
+
     }
 }

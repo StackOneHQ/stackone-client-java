@@ -25,6 +25,7 @@ public class HrisCreateEmployeeRequestDtoGender {
     @JsonProperty("value")
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class HrisCreateEmployeeRequestDtoGender {
         return (JsonNullable<HrisCreateEmployeeRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisCreateEmployeeRequestDtoGender withValue(HrisCreateEmployeeRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class HrisCreateEmployeeRequestDtoGender {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class HrisCreateEmployeeRequestDtoGender {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class HrisCreateEmployeeRequestDtoGender {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HrisCreateEmployeeRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class HrisCreateEmployeeRequestDtoGender {
             return this;
         }
 
+
         public Builder sourceValue(HrisCreateEmployeeRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class HrisCreateEmployeeRequestDtoGender {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDtoGender build() {
+
             return new HrisCreateEmployeeRequestDtoGender(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

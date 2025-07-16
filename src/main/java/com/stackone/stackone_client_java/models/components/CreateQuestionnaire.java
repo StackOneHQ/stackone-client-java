@@ -15,14 +15,15 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateQuestionnaire {
 
+public class CreateQuestionnaire {
     /**
      * Unique identifier
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("id")
     private JsonNullable<String> id;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("answers")
@@ -56,9 +57,10 @@ public class CreateQuestionnaire {
         return (JsonNullable<List<CreateAnswer>>) answers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -90,7 +92,6 @@ public class CreateQuestionnaire {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,8 +109,7 @@ public class CreateQuestionnaire {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            answers);
+            id, answers);
     }
     
     @Override
@@ -118,16 +118,18 @@ public class CreateQuestionnaire {
                 "id", id,
                 "answers", answers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CreateAnswer>> answers = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -147,6 +149,7 @@ public class CreateQuestionnaire {
             return this;
         }
 
+
         public Builder answers(List<CreateAnswer> answers) {
             Utils.checkNotNull(answers, "answers");
             this.answers = JsonNullable.of(answers);
@@ -158,11 +161,12 @@ public class CreateQuestionnaire {
             this.answers = answers;
             return this;
         }
-        
+
         public CreateQuestionnaire build() {
+
             return new CreateQuestionnaire(
-                id,
-                answers);
+                id, answers);
         }
+
     }
 }

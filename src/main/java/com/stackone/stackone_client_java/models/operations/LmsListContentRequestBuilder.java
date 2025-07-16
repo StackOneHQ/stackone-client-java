@@ -58,9 +58,7 @@ public class LmsListContentRequestBuilder {
             .build());
 
         RequestOperation<LmsListContentRequest, LmsListContentResponse> operation
-              = new LmsListContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListContentOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class LmsListContentRequestBuilder {
             .build());
 
         RequestOperation<LmsListContentRequest, LmsListContentResponse> operation
-              = new LmsListContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListContentOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

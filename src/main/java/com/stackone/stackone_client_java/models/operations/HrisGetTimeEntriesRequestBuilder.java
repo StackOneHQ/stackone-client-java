@@ -47,9 +47,7 @@ public class HrisGetTimeEntriesRequestBuilder {
             .build());
 
         RequestOperation<HrisGetTimeEntriesRequest, HrisGetTimeEntriesResponse> operation
-              = new HrisGetTimeEntriesOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetTimeEntriesOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

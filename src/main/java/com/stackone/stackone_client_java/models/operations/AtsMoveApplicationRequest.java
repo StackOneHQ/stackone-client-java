@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsMoveApplicationRequest {
 
+public class AtsMoveApplicationRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsMoveApplicationRequestDto atsMoveApplicationRequestDto;
@@ -56,9 +58,10 @@ public class AtsMoveApplicationRequest {
         return atsMoveApplicationRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class AtsMoveApplicationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class AtsMoveApplicationRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            atsMoveApplicationRequestDto);
+            xAccountId, id, atsMoveApplicationRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class AtsMoveApplicationRequest {
                 "id", id,
                 "atsMoveApplicationRequestDto", atsMoveApplicationRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private AtsMoveApplicationRequestDto atsMoveApplicationRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class AtsMoveApplicationRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder atsMoveApplicationRequestDto(AtsMoveApplicationRequestDto atsMoveApplicationRequestDto) {
             Utils.checkNotNull(atsMoveApplicationRequestDto, "atsMoveApplicationRequestDto");
             this.atsMoveApplicationRequestDto = atsMoveApplicationRequestDto;
             return this;
         }
-        
+
         public AtsMoveApplicationRequest build() {
+
             return new AtsMoveApplicationRequest(
-                xAccountId,
-                id,
-                atsMoveApplicationRequestDto);
+                xAccountId, id, atsMoveApplicationRequestDto);
         }
+
     }
 }

@@ -15,8 +15,8 @@ import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
 
-public class StackoneProxyRequestResponse implements Response {
 
+public class StackoneProxyRequestResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
@@ -32,6 +32,7 @@ public class StackoneProxyRequestResponse implements Response {
      */
     private HttpResponse<InputStream> rawResponse;
 
+
     private Map<String, List<String>> headers;
 
     @JsonCreator
@@ -44,6 +45,7 @@ public class StackoneProxyRequestResponse implements Response {
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
         headers = Utils.emptyMapIfNull(headers);
+        Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
@@ -79,9 +81,10 @@ public class StackoneProxyRequestResponse implements Response {
         return headers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP response content type for this operation
@@ -116,7 +119,6 @@ public class StackoneProxyRequestResponse implements Response {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -136,9 +138,7 @@ public class StackoneProxyRequestResponse implements Response {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            contentType,
-            statusCode,
-            rawResponse,
+            contentType, statusCode, rawResponse,
             headers);
     }
     
@@ -150,20 +150,22 @@ public class StackoneProxyRequestResponse implements Response {
                 "rawResponse", rawResponse,
                 "headers", headers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String contentType;
- 
+
         private Integer statusCode;
- 
+
         private HttpResponse<InputStream> rawResponse;
- 
+
         private Map<String, List<String>> headers;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP response content type for this operation
@@ -174,6 +176,7 @@ public class StackoneProxyRequestResponse implements Response {
             return this;
         }
 
+
         /**
          * HTTP response status code for this operation
          */
@@ -182,6 +185,7 @@ public class StackoneProxyRequestResponse implements Response {
             this.statusCode = statusCode;
             return this;
         }
+
 
         /**
          * Raw HTTP response; suitable for custom response parsing
@@ -192,18 +196,19 @@ public class StackoneProxyRequestResponse implements Response {
             return this;
         }
 
+
         public Builder headers(Map<String, List<String>> headers) {
             Utils.checkNotNull(headers, "headers");
             this.headers = headers;
             return this;
         }
-        
+
         public StackoneProxyRequestResponse build() {
+
             return new StackoneProxyRequestResponse(
-                contentType,
-                statusCode,
-                rawResponse,
+                contentType, statusCode, rawResponse,
                 headers);
         }
+
     }
 }

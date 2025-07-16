@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamPermission {
 
+public class IamPermission {
     /**
      * Unique identifier
      */
@@ -39,6 +39,7 @@ public class IamPermission {
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends IamPermissionType> type;
@@ -50,13 +51,16 @@ public class IamPermission {
     @JsonProperty("resources")
     private JsonNullable<? extends List<IamResource>> resources;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
     private JsonNullable<OffsetDateTime> createdAt;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
@@ -91,7 +95,9 @@ public class IamPermission {
     }
     
     public IamPermission() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -148,9 +154,10 @@ public class IamPermission {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -272,7 +279,6 @@ public class IamPermission {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -296,14 +302,9 @@ public class IamPermission {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            type,
-            resources,
-            description,
-            createdAt,
-            updatedAt);
+            id, remoteId, name,
+            type, resources, description,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -318,28 +319,30 @@ public class IamPermission {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamPermissionType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<IamResource>> resources = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -359,6 +362,7 @@ public class IamPermission {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -376,6 +380,7 @@ public class IamPermission {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name of the permission.
@@ -395,6 +400,7 @@ public class IamPermission {
             return this;
         }
 
+
         public Builder type(IamPermissionType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -406,6 +412,7 @@ public class IamPermission {
             this.type = type;
             return this;
         }
+
 
         /**
          * The resources that the permission applies to.
@@ -425,6 +432,7 @@ public class IamPermission {
             return this;
         }
 
+
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
             this.description = JsonNullable.of(description);
@@ -436,6 +444,7 @@ public class IamPermission {
             this.description = description;
             return this;
         }
+
 
         public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
@@ -449,6 +458,7 @@ public class IamPermission {
             return this;
         }
 
+
         public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = JsonNullable.of(updatedAt);
@@ -460,17 +470,14 @@ public class IamPermission {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public IamPermission build() {
+
             return new IamPermission(
-                id,
-                remoteId,
-                name,
-                type,
-                resources,
-                description,
-                createdAt,
-                updatedAt);
+                id, remoteId, name,
+                type, resources, description,
+                createdAt, updatedAt);
         }
+
     }
 }

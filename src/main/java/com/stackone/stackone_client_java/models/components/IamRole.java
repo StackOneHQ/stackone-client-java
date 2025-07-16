@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamRole {
 
+public class IamRole {
     /**
      * Unique identifier
      */
@@ -32,13 +32,16 @@ public class IamRole {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
@@ -51,9 +54,11 @@ public class IamRole {
     @JsonProperty("policies")
     private JsonNullable<? extends List<IamPolicy>> policies;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
     private JsonNullable<OffsetDateTime> createdAt;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
@@ -88,7 +93,9 @@ public class IamRole {
     }
     
     public IamRole() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -142,9 +149,10 @@ public class IamRole {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -260,7 +268,6 @@ public class IamRole {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -284,14 +291,9 @@ public class IamRole {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            description,
-            type,
-            policies,
-            createdAt,
-            updatedAt);
+            id, remoteId, name,
+            description, type, policies,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -306,28 +308,30 @@ public class IamRole {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamRoleType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<IamPolicy>> policies = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -347,6 +351,7 @@ public class IamRole {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -365,6 +370,7 @@ public class IamRole {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -376,6 +382,7 @@ public class IamRole {
             this.name = name;
             return this;
         }
+
 
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
@@ -389,6 +396,7 @@ public class IamRole {
             return this;
         }
 
+
         public Builder type(IamRoleType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -400,6 +408,7 @@ public class IamRole {
             this.type = type;
             return this;
         }
+
 
         /**
          * The set of policies associated with the role.
@@ -419,6 +428,7 @@ public class IamRole {
             return this;
         }
 
+
         public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = JsonNullable.of(createdAt);
@@ -431,6 +441,7 @@ public class IamRole {
             return this;
         }
 
+
         public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = JsonNullable.of(updatedAt);
@@ -442,17 +453,14 @@ public class IamRole {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public IamRole build() {
+
             return new IamRole(
-                id,
-                remoteId,
-                name,
-                description,
-                type,
-                policies,
-                createdAt,
-                updatedAt);
+                id, remoteId, name,
+                description, type, policies,
+                createdAt, updatedAt);
         }
+
     }
 }

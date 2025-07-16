@@ -47,9 +47,7 @@ public class HrisGetEmployeesWorkEligibilityRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmployeesWorkEligibilityRequest, HrisGetEmployeesWorkEligibilityResponse> operation
-              = new HrisGetEmployeesWorkEligibilityOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeesWorkEligibilityOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

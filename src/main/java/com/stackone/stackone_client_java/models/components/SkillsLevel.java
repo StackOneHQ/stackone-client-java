@@ -29,6 +29,7 @@ public class SkillsLevel {
     @JsonProperty("value")
     private JsonNullable<? extends SkillsLevelValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends SkillsLevelSourceValue> sourceValue;
@@ -59,9 +60,10 @@ public class SkillsLevel {
         return (JsonNullable<SkillsLevelSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SkillsLevel withValue(SkillsLevelValue value) {
         Utils.checkNotNull(value, "value");
@@ -87,7 +89,6 @@ public class SkillsLevel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,8 +106,7 @@ public class SkillsLevel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -115,16 +115,18 @@ public class SkillsLevel {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends SkillsLevelValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends SkillsLevelSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(SkillsLevelValue value) {
             Utils.checkNotNull(value, "value");
@@ -138,6 +140,7 @@ public class SkillsLevel {
             return this;
         }
 
+
         public Builder sourceValue(SkillsLevelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -149,11 +152,12 @@ public class SkillsLevel {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public SkillsLevel build() {
+
             return new SkillsLevel(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

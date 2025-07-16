@@ -25,6 +25,7 @@ public class LmsCreateAssignmentRequestDtoStatus {
     @JsonProperty("value")
     private JsonNullable<? extends LmsCreateAssignmentRequestDtoValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LmsCreateAssignmentRequestDtoSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class LmsCreateAssignmentRequestDtoStatus {
         return (JsonNullable<LmsCreateAssignmentRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public LmsCreateAssignmentRequestDtoStatus withValue(LmsCreateAssignmentRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class LmsCreateAssignmentRequestDtoStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class LmsCreateAssignmentRequestDtoStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class LmsCreateAssignmentRequestDtoStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends LmsCreateAssignmentRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsCreateAssignmentRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(LmsCreateAssignmentRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class LmsCreateAssignmentRequestDtoStatus {
             return this;
         }
 
+
         public Builder sourceValue(LmsCreateAssignmentRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class LmsCreateAssignmentRequestDtoStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public LmsCreateAssignmentRequestDtoStatus build() {
+
             return new LmsCreateAssignmentRequestDtoStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

@@ -25,6 +25,7 @@ public class LearningObjectType {
     @JsonProperty("value")
     private JsonNullable<? extends AssignmentLearningObjectTypeValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends AssignmentLearningObjectTypeSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class LearningObjectType {
         return (JsonNullable<AssignmentLearningObjectTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public LearningObjectType withValue(AssignmentLearningObjectTypeValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class LearningObjectType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class LearningObjectType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class LearningObjectType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AssignmentLearningObjectTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AssignmentLearningObjectTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(AssignmentLearningObjectTypeValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class LearningObjectType {
             return this;
         }
 
+
         public Builder sourceValue(AssignmentLearningObjectTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class LearningObjectType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public LearningObjectType build() {
+
             return new LearningObjectType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

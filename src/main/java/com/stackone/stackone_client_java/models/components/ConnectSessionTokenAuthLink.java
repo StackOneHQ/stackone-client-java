@@ -17,42 +17,53 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class ConnectSessionTokenAuthLink {
 
     @JsonProperty("id")
     private double id;
 
+
     @JsonProperty("organization_id")
     private double organizationId;
 
+
     @JsonProperty("project_id")
     private String projectId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("categories")
     private JsonNullable<? extends List<ConnectSessionTokenAuthLinkCategories>> categories;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("provider")
     private JsonNullable<String> provider;
 
+
     @JsonProperty("origin_owner_id")
     private String originOwnerId;
 
+
     @JsonProperty("origin_owner_name")
     private String originOwnerName;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin_username")
     private JsonNullable<String> originUsername;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account_id")
     private JsonNullable<String> accountId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label")
     private JsonNullable<String> label;
+
 
     @JsonProperty("created_at")
     private OffsetDateTime createdAt;
@@ -78,8 +89,10 @@ public class ConnectSessionTokenAuthLink {
     @JsonProperty("type")
     private JsonNullable<? extends ConnectSessionTokenAuthLinkType> type;
 
+
     @JsonProperty("token")
     private String token;
+
 
     @JsonProperty("auth_link_url")
     private String authLinkUrl;
@@ -145,7 +158,12 @@ public class ConnectSessionTokenAuthLink {
             OffsetDateTime createdAt,
             String token,
             String authLinkUrl) {
-        this(id, organizationId, projectId, JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), token, authLinkUrl);
+        this(id, organizationId, projectId,
+            JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId,
+            originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), createdAt, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), token,
+            authLinkUrl);
     }
 
     @JsonIgnore
@@ -240,9 +258,10 @@ public class ConnectSessionTokenAuthLink {
         return authLinkUrl;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ConnectSessionTokenAuthLink withId(double id) {
         Utils.checkNotNull(id, "id");
@@ -406,7 +425,6 @@ public class ConnectSessionTokenAuthLink {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -438,21 +456,11 @@ public class ConnectSessionTokenAuthLink {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            organizationId,
-            projectId,
-            categories,
-            provider,
-            originOwnerId,
-            originOwnerName,
-            originUsername,
-            accountId,
-            label,
-            createdAt,
-            metadata,
-            externalTriggerToken,
-            type,
-            token,
+            id, organizationId, projectId,
+            categories, provider, originOwnerId,
+            originOwnerName, originUsername, accountId,
+            label, createdAt, metadata,
+            externalTriggerToken, type, token,
             authLinkUrl);
     }
     
@@ -476,44 +484,46 @@ public class ConnectSessionTokenAuthLink {
                 "token", token,
                 "authLinkUrl", authLinkUrl);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Double id;
- 
+
         private Double organizationId;
- 
+
         private String projectId;
- 
+
         private JsonNullable<? extends List<ConnectSessionTokenAuthLinkCategories>> categories = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private String originOwnerId;
- 
+
         private String originOwnerName;
- 
+
         private JsonNullable<String> originUsername = JsonNullable.undefined();
- 
+
         private JsonNullable<String> accountId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private OffsetDateTime createdAt;
- 
+
         private JsonNullable<? extends ConnectSessionTokenAuthLinkMetadata> metadata = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalTriggerToken = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ConnectSessionTokenAuthLinkType> type = JsonNullable.undefined();
- 
+
         private String token;
- 
+
         private String authLinkUrl;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(double id) {
             Utils.checkNotNull(id, "id");
@@ -521,17 +531,20 @@ public class ConnectSessionTokenAuthLink {
             return this;
         }
 
+
         public Builder organizationId(double organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;
         }
 
+
         public Builder projectId(String projectId) {
             Utils.checkNotNull(projectId, "projectId");
             this.projectId = projectId;
             return this;
         }
+
 
         public Builder categories(List<ConnectSessionTokenAuthLinkCategories> categories) {
             Utils.checkNotNull(categories, "categories");
@@ -545,6 +558,7 @@ public class ConnectSessionTokenAuthLink {
             return this;
         }
 
+
         public Builder provider(String provider) {
             Utils.checkNotNull(provider, "provider");
             this.provider = JsonNullable.of(provider);
@@ -557,17 +571,20 @@ public class ConnectSessionTokenAuthLink {
             return this;
         }
 
+
         public Builder originOwnerId(String originOwnerId) {
             Utils.checkNotNull(originOwnerId, "originOwnerId");
             this.originOwnerId = originOwnerId;
             return this;
         }
 
+
         public Builder originOwnerName(String originOwnerName) {
             Utils.checkNotNull(originOwnerName, "originOwnerName");
             this.originOwnerName = originOwnerName;
             return this;
         }
+
 
         public Builder originUsername(String originUsername) {
             Utils.checkNotNull(originUsername, "originUsername");
@@ -581,6 +598,7 @@ public class ConnectSessionTokenAuthLink {
             return this;
         }
 
+
         public Builder accountId(String accountId) {
             Utils.checkNotNull(accountId, "accountId");
             this.accountId = JsonNullable.of(accountId);
@@ -592,6 +610,7 @@ public class ConnectSessionTokenAuthLink {
             this.accountId = accountId;
             return this;
         }
+
 
         public Builder label(String label) {
             Utils.checkNotNull(label, "label");
@@ -605,11 +624,13 @@ public class ConnectSessionTokenAuthLink {
             return this;
         }
 
+
         public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;
         }
+
 
         /**
          * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
@@ -629,6 +650,7 @@ public class ConnectSessionTokenAuthLink {
             return this;
         }
 
+
         /**
          * External trigger token to be used to trigger actions on the account
          */
@@ -646,6 +668,7 @@ public class ConnectSessionTokenAuthLink {
             this.externalTriggerToken = externalTriggerToken;
             return this;
         }
+
 
         /**
          * The connect session account type
@@ -665,36 +688,30 @@ public class ConnectSessionTokenAuthLink {
             return this;
         }
 
+
         public Builder token(String token) {
             Utils.checkNotNull(token, "token");
             this.token = token;
             return this;
         }
 
+
         public Builder authLinkUrl(String authLinkUrl) {
             Utils.checkNotNull(authLinkUrl, "authLinkUrl");
             this.authLinkUrl = authLinkUrl;
             return this;
         }
-        
+
         public ConnectSessionTokenAuthLink build() {
+
             return new ConnectSessionTokenAuthLink(
-                id,
-                organizationId,
-                projectId,
-                categories,
-                provider,
-                originOwnerId,
-                originOwnerName,
-                originUsername,
-                accountId,
-                label,
-                createdAt,
-                metadata,
-                externalTriggerToken,
-                type,
-                token,
+                id, organizationId, projectId,
+                categories, provider, originOwnerId,
+                originOwnerName, originUsername, accountId,
+                label, createdAt, metadata,
+                externalTriggerToken, type, token,
                 authLinkUrl);
         }
+
     }
 }

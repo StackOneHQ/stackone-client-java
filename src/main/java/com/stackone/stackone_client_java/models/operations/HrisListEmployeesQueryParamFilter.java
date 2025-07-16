@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>HRIS Employees filters
  */
 public class HrisListEmployeesQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -77,9 +76,10 @@ public class HrisListEmployeesQueryParamFilter {
         return employeeNumber;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -135,7 +135,6 @@ public class HrisListEmployeesQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +153,7 @@ public class HrisListEmployeesQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            email,
-            employeeNumber);
+            updatedAfter, email, employeeNumber);
     }
     
     @Override
@@ -166,18 +163,20 @@ public class HrisListEmployeesQueryParamFilter {
                 "email", email,
                 "employeeNumber", employeeNumber);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeNumber = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -197,6 +196,7 @@ public class HrisListEmployeesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select employees by email
          */
@@ -215,6 +215,7 @@ public class HrisListEmployeesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select employees by employee_number
          */
@@ -232,12 +233,12 @@ public class HrisListEmployeesQueryParamFilter {
             this.employeeNumber = employeeNumber;
             return this;
         }
-        
+
         public HrisListEmployeesQueryParamFilter build() {
+
             return new HrisListEmployeesQueryParamFilter(
-                updatedAfter,
-                email,
-                employeeNumber);
+                updatedAfter, email, employeeNumber);
         }
+
     }
 }

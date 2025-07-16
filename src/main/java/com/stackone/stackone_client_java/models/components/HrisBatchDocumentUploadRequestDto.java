@@ -11,8 +11,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 
-public class HrisBatchDocumentUploadRequestDto {
 
+public class HrisBatchDocumentUploadRequestDto {
     /**
      * The batch of items to create
      */
@@ -34,9 +34,10 @@ public class HrisBatchDocumentUploadRequestDto {
         return items;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The batch of items to create
@@ -47,7 +48,6 @@ public class HrisBatchDocumentUploadRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -72,14 +72,16 @@ public class HrisBatchDocumentUploadRequestDto {
         return Utils.toString(HrisBatchDocumentUploadRequestDto.class,
                 "items", items);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<HrisDocumentsUploadRequestDto> items;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The batch of items to create
@@ -89,10 +91,12 @@ public class HrisBatchDocumentUploadRequestDto {
             this.items = items;
             return this;
         }
-        
+
         public HrisBatchDocumentUploadRequestDto build() {
+
             return new HrisBatchDocumentUploadRequestDto(
                 items);
         }
+
     }
 }

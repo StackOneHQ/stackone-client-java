@@ -14,23 +14,28 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class AccountAddress {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("street_1")
     private JsonNullable<String> street1;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("street_2")
     private JsonNullable<String> street2;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("city")
     private JsonNullable<String> city;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("state")
     private JsonNullable<String> state;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("zip_code")
@@ -76,7 +81,9 @@ public class AccountAddress {
     }
     
     public AccountAddress() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -122,9 +129,10 @@ public class AccountAddress {
         return (JsonNullable<AccountAddressLocationType>) locationType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AccountAddress withStreet1(String street1) {
         Utils.checkNotNull(street1, "street1");
@@ -222,7 +230,6 @@ public class AccountAddress {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -245,12 +252,8 @@ public class AccountAddress {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            street1,
-            street2,
-            city,
-            state,
-            zipCode,
-            country,
+            street1, street2, city,
+            state, zipCode, country,
             locationType);
     }
     
@@ -265,26 +268,28 @@ public class AccountAddress {
                 "country", country,
                 "locationType", locationType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> street1 = JsonNullable.undefined();
- 
+
         private JsonNullable<String> street2 = JsonNullable.undefined();
- 
+
         private JsonNullable<String> city = JsonNullable.undefined();
- 
+
         private JsonNullable<String> state = JsonNullable.undefined();
- 
+
         private JsonNullable<String> zipCode = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AccountAddressCountry> country = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AccountAddressLocationType> locationType = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder street1(String street1) {
             Utils.checkNotNull(street1, "street1");
@@ -298,6 +303,7 @@ public class AccountAddress {
             return this;
         }
 
+
         public Builder street2(String street2) {
             Utils.checkNotNull(street2, "street2");
             this.street2 = JsonNullable.of(street2);
@@ -309,6 +315,7 @@ public class AccountAddress {
             this.street2 = street2;
             return this;
         }
+
 
         public Builder city(String city) {
             Utils.checkNotNull(city, "city");
@@ -322,6 +329,7 @@ public class AccountAddress {
             return this;
         }
 
+
         public Builder state(String state) {
             Utils.checkNotNull(state, "state");
             this.state = JsonNullable.of(state);
@@ -334,6 +342,7 @@ public class AccountAddress {
             return this;
         }
 
+
         public Builder zipCode(String zipCode) {
             Utils.checkNotNull(zipCode, "zipCode");
             this.zipCode = JsonNullable.of(zipCode);
@@ -345,6 +354,7 @@ public class AccountAddress {
             this.zipCode = zipCode;
             return this;
         }
+
 
         /**
          * The country code
@@ -364,6 +374,7 @@ public class AccountAddress {
             return this;
         }
 
+
         /**
          * The location type
          */
@@ -381,16 +392,14 @@ public class AccountAddress {
             this.locationType = locationType;
             return this;
         }
-        
+
         public AccountAddress build() {
+
             return new AccountAddress(
-                street1,
-                street2,
-                city,
-                state,
-                zipCode,
-                country,
+                street1, street2, city,
+                state, zipCode, country,
                 locationType);
         }
+
     }
 }

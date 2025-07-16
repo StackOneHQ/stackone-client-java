@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Application {
 
+public class Application {
     /**
      * Unique identifier
      */
@@ -70,6 +70,7 @@ public class Application {
     @JsonProperty("remote_job_id")
     private JsonNullable<String> remoteJobId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interview_stage")
     private JsonNullable<? extends ApplicationInterviewStage> interviewStage;
@@ -87,6 +88,7 @@ public class Application {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_interview_stage_id")
     private JsonNullable<String> remoteInterviewStageId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("rejected_reasons")
@@ -144,6 +146,7 @@ public class Application {
     @JsonProperty("remote_location_ids")
     private JsonNullable<? extends List<String>> remoteLocationIds;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application_status")
     private JsonNullable<? extends ApplicationStatus> applicationStatus;
@@ -154,6 +157,7 @@ public class Application {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("questionnaires")
     private JsonNullable<? extends List<Questionnaire>> questionnaires;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("candidate")
@@ -176,9 +180,11 @@ public class Application {
     @JsonProperty("documents")
     private JsonNullable<? extends List<AtsDocumentApiModel>> documents;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("result_links")
     private JsonNullable<? extends List<ResultLink>> resultLinks;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source")
@@ -294,7 +300,16 @@ public class Application {
     }
     
     public Application() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -524,9 +539,10 @@ public class Application {
         return (JsonNullable<List<CustomFields>>) customFields;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -1008,7 +1024,6 @@ public class Application {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -1052,33 +1067,15 @@ public class Application {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            candidateId,
-            remoteCandidateId,
-            jobId,
-            remoteJobId,
-            interviewStage,
-            interviewStageId,
-            remoteInterviewStageId,
-            rejectedReasons,
-            rejectedReasonIds,
-            remoteRejectedReasonIds,
-            rejectedAt,
-            locationId,
-            remoteLocationId,
-            locationIds,
-            remoteLocationIds,
-            applicationStatus,
-            questionnaires,
-            candidate,
-            attachments,
-            documents,
-            resultLinks,
-            source,
-            createdAt,
-            updatedAt,
+            id, remoteId, unifiedCustomFields,
+            candidateId, remoteCandidateId, jobId,
+            remoteJobId, interviewStage, interviewStageId,
+            remoteInterviewStageId, rejectedReasons, rejectedReasonIds,
+            remoteRejectedReasonIds, rejectedAt, locationId,
+            remoteLocationId, locationIds, remoteLocationIds,
+            applicationStatus, questionnaires, candidate,
+            attachments, documents, resultLinks,
+            source, createdAt, updatedAt,
             customFields);
     }
     
@@ -1114,70 +1111,72 @@ public class Application {
                 "updatedAt", updatedAt,
                 "customFields", customFields);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> candidateId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteCandidateId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteJobId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ApplicationInterviewStage> interviewStage = JsonNullable.undefined();
- 
+
         private JsonNullable<String> interviewStageId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteInterviewStageId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<RejectedReason>> rejectedReasons = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> rejectedReasonIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteRejectedReasonIds = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> rejectedAt = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> locationId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteLocationId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> locationIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteLocationIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ApplicationStatus> applicationStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Questionnaire>> questionnaires = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ApplicationCandidate> candidate = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends List<ApplicationAttachment>> attachments = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<AtsDocumentApiModel>> documents = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<ResultLink>> resultLinks = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Source> source = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -1197,6 +1196,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -1214,6 +1214,7 @@ public class Application {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -1233,6 +1234,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Unique identifier of the candidate
          */
@@ -1250,6 +1252,7 @@ public class Application {
             this.candidateId = candidateId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the candidate
@@ -1269,6 +1272,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Unique identifier of the job
          */
@@ -1286,6 +1290,7 @@ public class Application {
             this.jobId = jobId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the job
@@ -1305,6 +1310,7 @@ public class Application {
             return this;
         }
 
+
         public Builder interviewStage(ApplicationInterviewStage interviewStage) {
             Utils.checkNotNull(interviewStage, "interviewStage");
             this.interviewStage = JsonNullable.of(interviewStage);
@@ -1316,6 +1322,7 @@ public class Application {
             this.interviewStage = interviewStage;
             return this;
         }
+
 
         /**
          * Unique identifier of the interview stage
@@ -1335,6 +1342,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the interview stage
          */
@@ -1353,6 +1361,7 @@ public class Application {
             return this;
         }
 
+
         public Builder rejectedReasons(List<RejectedReason> rejectedReasons) {
             Utils.checkNotNull(rejectedReasons, "rejectedReasons");
             this.rejectedReasons = JsonNullable.of(rejectedReasons);
@@ -1364,6 +1373,7 @@ public class Application {
             this.rejectedReasons = rejectedReasons;
             return this;
         }
+
 
         /**
          * Unique identifiers of the rejection reasons
@@ -1383,6 +1393,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Provider's unique identifiers of the rejection reasons
          */
@@ -1401,6 +1412,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Date of rejection
          */
@@ -1418,6 +1430,7 @@ public class Application {
             this.rejectedAt = rejectedAt;
             return this;
         }
+
 
         /**
          * Unique identifier of the location
@@ -1443,6 +1456,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the location
          */
@@ -1460,6 +1474,7 @@ public class Application {
             this.remoteLocationId = remoteLocationId;
             return this;
         }
+
 
         /**
          * Unique identifiers of the locations
@@ -1479,6 +1494,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Remote's unique identifiers of the locations
          */
@@ -1497,6 +1513,7 @@ public class Application {
             return this;
         }
 
+
         public Builder applicationStatus(ApplicationStatus applicationStatus) {
             Utils.checkNotNull(applicationStatus, "applicationStatus");
             this.applicationStatus = JsonNullable.of(applicationStatus);
@@ -1508,6 +1525,7 @@ public class Application {
             this.applicationStatus = applicationStatus;
             return this;
         }
+
 
         /**
          * Questionnaires associated with the application
@@ -1527,6 +1545,7 @@ public class Application {
             return this;
         }
 
+
         public Builder candidate(ApplicationCandidate candidate) {
             Utils.checkNotNull(candidate, "candidate");
             this.candidate = JsonNullable.of(candidate);
@@ -1538,6 +1557,7 @@ public class Application {
             this.candidate = candidate;
             return this;
         }
+
 
         /**
          * Use `documents` expand instead
@@ -1563,6 +1583,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * The documents attached to this application (eg. resume, cover letter etc.)
          */
@@ -1581,6 +1602,7 @@ public class Application {
             return this;
         }
 
+
         public Builder resultLinks(List<ResultLink> resultLinks) {
             Utils.checkNotNull(resultLinks, "resultLinks");
             this.resultLinks = JsonNullable.of(resultLinks);
@@ -1593,6 +1615,7 @@ public class Application {
             return this;
         }
 
+
         public Builder source(Source source) {
             Utils.checkNotNull(source, "source");
             this.source = JsonNullable.of(source);
@@ -1604,6 +1627,7 @@ public class Application {
             this.source = source;
             return this;
         }
+
 
         /**
          * Date of creation
@@ -1623,6 +1647,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * Date of last update
          */
@@ -1641,6 +1666,7 @@ public class Application {
             return this;
         }
 
+
         /**
          * The application custom fields
          */
@@ -1658,37 +1684,21 @@ public class Application {
             this.customFields = customFields;
             return this;
         }
-        
+
         public Application build() {
+
             return new Application(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                candidateId,
-                remoteCandidateId,
-                jobId,
-                remoteJobId,
-                interviewStage,
-                interviewStageId,
-                remoteInterviewStageId,
-                rejectedReasons,
-                rejectedReasonIds,
-                remoteRejectedReasonIds,
-                rejectedAt,
-                locationId,
-                remoteLocationId,
-                locationIds,
-                remoteLocationIds,
-                applicationStatus,
-                questionnaires,
-                candidate,
-                attachments,
-                documents,
-                resultLinks,
-                source,
-                createdAt,
-                updatedAt,
+                id, remoteId, unifiedCustomFields,
+                candidateId, remoteCandidateId, jobId,
+                remoteJobId, interviewStage, interviewStageId,
+                remoteInterviewStageId, rejectedReasons, rejectedReasonIds,
+                remoteRejectedReasonIds, rejectedAt, locationId,
+                remoteLocationId, locationIds, remoteLocationIds,
+                applicationStatus, questionnaires, candidate,
+                attachments, documents, resultLinks,
+                source, createdAt, updatedAt,
                 customFields);
         }
+
     }
 }

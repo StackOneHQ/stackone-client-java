@@ -10,13 +10,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class IamDeleteUserRequest {
 
+public class IamDeleteUserRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
@@ -44,9 +45,10 @@ public class IamDeleteUserRequest {
         return id;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -63,7 +65,6 @@ public class IamDeleteUserRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,8 +82,7 @@ public class IamDeleteUserRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id);
+            xAccountId, id);
     }
     
     @Override
@@ -91,16 +91,18 @@ public class IamDeleteUserRequest {
                 "xAccountId", xAccountId,
                 "id", id);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -111,16 +113,18 @@ public class IamDeleteUserRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
-        
+
         public IamDeleteUserRequest build() {
+
             return new IamDeleteUserRequest(
-                xAccountId,
-                id);
+                xAccountId, id);
         }
+
     }
 }

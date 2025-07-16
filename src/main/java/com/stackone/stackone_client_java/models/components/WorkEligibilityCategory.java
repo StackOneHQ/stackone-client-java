@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The category of the file
  */
 public class WorkEligibilityCategory {
-
     /**
      * The category of the file
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<String> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -60,9 +60,10 @@ public class WorkEligibilityCategory {
         return (JsonNullable<WorkEligibilityDocumentSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The category of the file
@@ -94,7 +95,6 @@ public class WorkEligibilityCategory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,8 +112,7 @@ public class WorkEligibilityCategory {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -122,16 +121,18 @@ public class WorkEligibilityCategory {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends WorkEligibilityDocumentSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The category of the file
@@ -151,6 +152,7 @@ public class WorkEligibilityCategory {
             return this;
         }
 
+
         public Builder sourceValue(WorkEligibilityDocumentSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -162,11 +164,12 @@ public class WorkEligibilityCategory {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public WorkEligibilityCategory build() {
+
             return new WorkEligibilityCategory(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

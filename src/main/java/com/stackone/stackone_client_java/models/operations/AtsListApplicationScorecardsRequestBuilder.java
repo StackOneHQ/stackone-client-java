@@ -58,9 +58,7 @@ public class AtsListApplicationScorecardsRequestBuilder {
             .build());
 
         RequestOperation<AtsListApplicationScorecardsRequest, AtsListApplicationScorecardsResponse> operation
-              = new AtsListApplicationScorecardsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationScorecardsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class AtsListApplicationScorecardsRequestBuilder {
             .build());
 
         RequestOperation<AtsListApplicationScorecardsRequest, AtsListApplicationScorecardsResponse> operation
-              = new AtsListApplicationScorecardsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationScorecardsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

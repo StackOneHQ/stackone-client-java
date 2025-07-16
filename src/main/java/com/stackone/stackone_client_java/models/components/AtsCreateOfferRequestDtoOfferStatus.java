@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateOfferRequestDtoOfferStatus {
 
+public class AtsCreateOfferRequestDtoOfferStatus {
     /**
      * The status of the offer.
      */
@@ -62,9 +62,10 @@ public class AtsCreateOfferRequestDtoOfferStatus {
         return (JsonNullable<AtsCreateOfferRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the offer.
@@ -102,7 +103,6 @@ public class AtsCreateOfferRequestDtoOfferStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class AtsCreateOfferRequestDtoOfferStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class AtsCreateOfferRequestDtoOfferStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AtsCreateOfferRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateOfferRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the offer.
@@ -159,6 +160,7 @@ public class AtsCreateOfferRequestDtoOfferStatus {
             return this;
         }
 
+
         /**
          * The source value of the offer status.
          */
@@ -176,11 +178,12 @@ public class AtsCreateOfferRequestDtoOfferStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public AtsCreateOfferRequestDtoOfferStatus build() {
+
             return new AtsCreateOfferRequestDtoOfferStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

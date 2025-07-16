@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class PhoneNumber {
 
+public class PhoneNumber {
     /**
      * Type of phone number
      */
@@ -61,9 +61,10 @@ public class PhoneNumber {
         return phone;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Type of phone number
@@ -101,7 +102,6 @@ public class PhoneNumber {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -119,8 +119,7 @@ public class PhoneNumber {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            type,
-            phone);
+            type, phone);
     }
     
     @Override
@@ -129,16 +128,18 @@ public class PhoneNumber {
                 "type", type,
                 "phone", phone);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends PhoneNumberType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> phone = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Type of phone number
@@ -158,6 +159,7 @@ public class PhoneNumber {
             return this;
         }
 
+
         /**
          * Phone number string
          */
@@ -175,11 +177,12 @@ public class PhoneNumber {
             this.phone = phone;
             return this;
         }
-        
+
         public PhoneNumber build() {
+
             return new PhoneNumber(
-                type,
-                phone);
+                type, phone);
         }
+
     }
 }

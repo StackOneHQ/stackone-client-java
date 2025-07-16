@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The country code
  */
 public class AccountAddressCountry {
-
     /**
      * The ISO 3166-1 alpha-2 code of the country.
      */
@@ -67,9 +66,10 @@ public class AccountAddressCountry {
         return (JsonNullable<AccountAddressSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ISO 3166-1 alpha-2 code of the country.
@@ -107,7 +107,6 @@ public class AccountAddressCountry {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class AccountAddressCountry {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class AccountAddressCountry {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AccountAddressValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AccountAddressSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ISO 3166-1 alpha-2 code of the country.
@@ -164,6 +164,7 @@ public class AccountAddressCountry {
             return this;
         }
 
+
         /**
          * The source value of the ISO 3166-1 alpha-2 code of the country.
          */
@@ -181,11 +182,12 @@ public class AccountAddressCountry {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public AccountAddressCountry build() {
+
             return new AccountAddressCountry(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

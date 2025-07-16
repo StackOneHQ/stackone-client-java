@@ -71,9 +71,7 @@ public class StackoneGetConnectorMetaRequestBuilder {
             .build());
 
         RequestOperation<StackoneGetConnectorMetaRequest, StackoneGetConnectorMetaResponse> operation
-              = new StackoneGetConnectorMetaOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneGetConnectorMetaOperation(sdkConfiguration, options);
         StackoneGetConnectorMetaRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

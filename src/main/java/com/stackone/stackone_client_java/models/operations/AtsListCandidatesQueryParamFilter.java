@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>ATS Candidate Filter
  */
 public class AtsListCandidatesQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -77,9 +76,10 @@ public class AtsListCandidatesQueryParamFilter {
         return email;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -135,7 +135,6 @@ public class AtsListCandidatesQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +153,7 @@ public class AtsListCandidatesQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            createdAfter,
-            email);
+            updatedAfter, createdAfter, email);
     }
     
     @Override
@@ -166,18 +163,20 @@ public class AtsListCandidatesQueryParamFilter {
                 "createdAfter", createdAfter,
                 "email", email);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> createdAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -197,6 +196,7 @@ public class AtsListCandidatesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Use a string with a date to only select results created after that given date
          */
@@ -215,6 +215,7 @@ public class AtsListCandidatesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select candidates by email
          */
@@ -232,12 +233,12 @@ public class AtsListCandidatesQueryParamFilter {
             this.email = email;
             return this;
         }
-        
+
         public AtsListCandidatesQueryParamFilter build() {
+
             return new AtsListCandidatesQueryParamFilter(
-                updatedAfter,
-                createdAfter,
-                email);
+                updatedAfter, createdAfter, email);
         }
+
     }
 }

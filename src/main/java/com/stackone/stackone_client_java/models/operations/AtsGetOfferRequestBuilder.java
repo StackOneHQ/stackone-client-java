@@ -47,9 +47,7 @@ public class AtsGetOfferRequestBuilder {
             .build());
 
         RequestOperation<AtsGetOfferRequest, AtsGetOfferResponse> operation
-              = new AtsGetOfferOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetOfferOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

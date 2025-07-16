@@ -47,9 +47,7 @@ public class MarketingGetEmailTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingGetEmailTemplateRequest, MarketingGetEmailTemplateResponse> operation
-              = new MarketingGetEmailTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetEmailTemplateOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

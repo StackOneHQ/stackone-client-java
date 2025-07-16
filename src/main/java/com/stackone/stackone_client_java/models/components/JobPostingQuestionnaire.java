@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingQuestionnaire {
 
+public class JobPostingQuestionnaire {
     /**
      * Unique identifier
      */
@@ -31,13 +31,16 @@ public class JobPostingQuestionnaire {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("internal")
     private JsonNullable<? extends JobPostingQuestionnaireInternal> internal;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("questions")
@@ -63,7 +66,8 @@ public class JobPostingQuestionnaire {
     }
     
     public JobPostingQuestionnaire() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -99,9 +103,10 @@ public class JobPostingQuestionnaire {
         return (JsonNullable<List<Question>>) questions;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -175,7 +180,6 @@ public class JobPostingQuestionnaire {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -196,11 +200,8 @@ public class JobPostingQuestionnaire {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            internal,
-            questions);
+            id, remoteId, name,
+            internal, questions);
     }
     
     @Override
@@ -212,22 +213,24 @@ public class JobPostingQuestionnaire {
                 "internal", internal,
                 "questions", questions);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingQuestionnaireInternal> internal = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Question>> questions = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -247,6 +250,7 @@ public class JobPostingQuestionnaire {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -265,6 +269,7 @@ public class JobPostingQuestionnaire {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -276,6 +281,7 @@ public class JobPostingQuestionnaire {
             this.name = name;
             return this;
         }
+
 
         public Builder internal(JobPostingQuestionnaireInternal internal) {
             Utils.checkNotNull(internal, "internal");
@@ -289,6 +295,7 @@ public class JobPostingQuestionnaire {
             return this;
         }
 
+
         public Builder questions(List<Question> questions) {
             Utils.checkNotNull(questions, "questions");
             this.questions = JsonNullable.of(questions);
@@ -300,14 +307,13 @@ public class JobPostingQuestionnaire {
             this.questions = questions;
             return this;
         }
-        
+
         public JobPostingQuestionnaire build() {
+
             return new JobPostingQuestionnaire(
-                id,
-                remoteId,
-                name,
-                internal,
-                questions);
+                id, remoteId, name,
+                internal, questions);
         }
+
     }
 }

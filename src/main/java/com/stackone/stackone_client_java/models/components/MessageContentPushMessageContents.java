@@ -13,15 +13,18 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class MessageContentPushMessageContents {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("title")
     private JsonNullable<String> title;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("subtitle")
     private JsonNullable<String> subtitle;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("body")
@@ -59,9 +62,10 @@ public class MessageContentPushMessageContents {
         return body;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public MessageContentPushMessageContents withTitle(String title) {
         Utils.checkNotNull(title, "title");
@@ -99,7 +103,6 @@ public class MessageContentPushMessageContents {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,9 +121,7 @@ public class MessageContentPushMessageContents {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            title,
-            subtitle,
-            body);
+            title, subtitle, body);
     }
     
     @Override
@@ -130,18 +131,20 @@ public class MessageContentPushMessageContents {
                 "subtitle", subtitle,
                 "body", body);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<String> subtitle = JsonNullable.undefined();
- 
+
         private JsonNullable<String> body = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder title(String title) {
             Utils.checkNotNull(title, "title");
@@ -155,6 +158,7 @@ public class MessageContentPushMessageContents {
             return this;
         }
 
+
         public Builder subtitle(String subtitle) {
             Utils.checkNotNull(subtitle, "subtitle");
             this.subtitle = JsonNullable.of(subtitle);
@@ -167,6 +171,7 @@ public class MessageContentPushMessageContents {
             return this;
         }
 
+
         public Builder body(String body) {
             Utils.checkNotNull(body, "body");
             this.body = JsonNullable.of(body);
@@ -178,12 +183,12 @@ public class MessageContentPushMessageContents {
             this.body = body;
             return this;
         }
-        
+
         public MessageContentPushMessageContents build() {
+
             return new MessageContentPushMessageContents(
-                title,
-                subtitle,
-                body);
+                title, subtitle, body);
         }
+
     }
 }

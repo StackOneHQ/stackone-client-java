@@ -13,7 +13,6 @@ import com.stackone.stackone_client_java.operations.StackoneProxyRequestOperatio
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,9 +42,7 @@ public class Proxy {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneProxyRequestResponse proxyRequest(
-            String xAccountId,
-            ProxyRequestBody proxyRequestBody) throws Exception {
+    public StackoneProxyRequestResponse proxyRequest(String xAccountId, ProxyRequestBody proxyRequestBody) throws Exception {
         return proxyRequest(xAccountId, proxyRequestBody, Optional.empty());
     }
 
@@ -59,8 +56,7 @@ public class Proxy {
      * @throws Exception if the API call fails
      */
     public StackoneProxyRequestResponse proxyRequest(
-            String xAccountId,
-            ProxyRequestBody proxyRequestBody,
+            String xAccountId, ProxyRequestBody proxyRequestBody,
             Optional<Options> options) throws Exception {
         StackoneProxyRequestRequest request =
             StackoneProxyRequestRequest
@@ -69,9 +65,7 @@ public class Proxy {
                 .proxyRequestBody(proxyRequestBody)
                 .build();
         RequestOperation<StackoneProxyRequestRequest, StackoneProxyRequestResponse> operation
-              = new StackoneProxyRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneProxyRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

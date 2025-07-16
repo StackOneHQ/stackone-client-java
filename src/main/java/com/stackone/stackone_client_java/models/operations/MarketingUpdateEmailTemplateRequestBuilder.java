@@ -73,9 +73,7 @@ public class MarketingUpdateEmailTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingUpdateEmailTemplateRequest, MarketingUpdateEmailTemplateResponse> operation
-              = new MarketingUpdateEmailTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateEmailTemplateOperation(sdkConfiguration, options);
         MarketingUpdateEmailTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

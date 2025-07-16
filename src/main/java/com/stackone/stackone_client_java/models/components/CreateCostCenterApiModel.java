@@ -14,8 +14,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateCostCenterApiModel {
 
+public class CreateCostCenterApiModel {
     /**
      * Unique identifier
      */
@@ -23,9 +23,11 @@ public class CreateCostCenterApiModel {
     @JsonProperty("id")
     private JsonNullable<String> id;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("distribution_percentage")
@@ -66,9 +68,10 @@ public class CreateCostCenterApiModel {
         return distributionPercentage;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -112,7 +115,6 @@ public class CreateCostCenterApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -131,9 +133,7 @@ public class CreateCostCenterApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            name,
-            distributionPercentage);
+            id, name, distributionPercentage);
     }
     
     @Override
@@ -143,18 +143,20 @@ public class CreateCostCenterApiModel {
                 "name", name,
                 "distributionPercentage", distributionPercentage);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> distributionPercentage = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -174,6 +176,7 @@ public class CreateCostCenterApiModel {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -186,6 +189,7 @@ public class CreateCostCenterApiModel {
             return this;
         }
 
+
         public Builder distributionPercentage(double distributionPercentage) {
             Utils.checkNotNull(distributionPercentage, "distributionPercentage");
             this.distributionPercentage = JsonNullable.of(distributionPercentage);
@@ -197,12 +201,12 @@ public class CreateCostCenterApiModel {
             this.distributionPercentage = distributionPercentage;
             return this;
         }
-        
+
         public CreateCostCenterApiModel build() {
+
             return new CreateCostCenterApiModel(
-                id,
-                name,
-                distributionPercentage);
+                id, name, distributionPercentage);
         }
+
     }
 }

@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Note {
 
+public class Note {
     /**
      * Unique identifier
      */
@@ -40,6 +40,7 @@ public class Note {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content")
@@ -122,7 +123,10 @@ public class Note {
     }
     
     public Note() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -205,9 +209,10 @@ public class Note {
         return deletedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -383,7 +388,6 @@ public class Note {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -409,15 +413,9 @@ public class Note {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            content,
-            authorId,
-            remoteAuthorId,
-            visibility,
-            createdAt,
-            updatedAt,
+            id, remoteId, unifiedCustomFields,
+            content, authorId, remoteAuthorId,
+            visibility, createdAt, updatedAt,
             deletedAt);
     }
     
@@ -435,32 +433,34 @@ public class Note {
                 "updatedAt", updatedAt,
                 "deletedAt", deletedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<NoteContentApiModel>> content = JsonNullable.undefined();
- 
+
         private JsonNullable<String> authorId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteAuthorId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Visibility> visibility = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> deletedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -480,6 +480,7 @@ public class Note {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -497,6 +498,7 @@ public class Note {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -516,6 +518,7 @@ public class Note {
             return this;
         }
 
+
         public Builder content(List<NoteContentApiModel> content) {
             Utils.checkNotNull(content, "content");
             this.content = JsonNullable.of(content);
@@ -527,6 +530,7 @@ public class Note {
             this.content = content;
             return this;
         }
+
 
         /**
          * Unique identifier of the author
@@ -546,6 +550,7 @@ public class Note {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the author
          */
@@ -563,6 +568,7 @@ public class Note {
             this.remoteAuthorId = remoteAuthorId;
             return this;
         }
+
 
         /**
          * Visibility of the note
@@ -582,6 +588,7 @@ public class Note {
             return this;
         }
 
+
         /**
          * Date of creation
          */
@@ -599,6 +606,7 @@ public class Note {
             this.createdAt = createdAt;
             return this;
         }
+
 
         /**
          * Date of last update
@@ -618,6 +626,7 @@ public class Note {
             return this;
         }
 
+
         /**
          * Date of Deletion
          */
@@ -635,19 +644,15 @@ public class Note {
             this.deletedAt = deletedAt;
             return this;
         }
-        
+
         public Note build() {
+
             return new Note(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                content,
-                authorId,
-                remoteAuthorId,
-                visibility,
-                createdAt,
-                updatedAt,
+                id, remoteId, unifiedCustomFields,
+                content, authorId, remoteAuthorId,
+                visibility, createdAt, updatedAt,
                 deletedAt);
         }
+
     }
 }

@@ -73,9 +73,7 @@ public class HrisCreateEmployeeSkillRequestBuilder {
             .build());
 
         RequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
-              = new HrisCreateEmployeeSkillOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisCreateEmployeeSkillOperation(sdkConfiguration, options);
         HrisCreateEmployeeSkillRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

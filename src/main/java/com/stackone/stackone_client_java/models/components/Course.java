@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Course {
 
+public class Course {
     /**
      * Unique identifier
      */
@@ -204,7 +204,12 @@ public class Course {
     }
     
     public Course() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -358,9 +363,10 @@ public class Course {
         return createdAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -686,7 +692,6 @@ public class Course {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -720,24 +725,12 @@ public class Course {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            externalReference,
-            contentIds,
-            remoteContentIds,
-            title,
-            description,
-            languages,
-            coverUrl,
-            url,
-            active,
-            duration,
-            categories,
-            skills,
-            provider,
-            updatedAt,
-            createdAt);
+            id, remoteId, unifiedCustomFields,
+            externalReference, contentIds, remoteContentIds,
+            title, description, languages,
+            coverUrl, url, active,
+            duration, categories, skills,
+            provider, updatedAt, createdAt);
     }
     
     @Override
@@ -762,48 +755,50 @@ public class Course {
                 "updatedAt", updatedAt,
                 "createdAt", createdAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> contentIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteContentIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<LanguageEnum>> languages = JsonNullable.undefined();
- 
+
         private JsonNullable<String> coverUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CourseActive> active = JsonNullable.undefined();
- 
+
         private JsonNullable<String> duration = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Category>> categories = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Skills>> skills = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> createdAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -823,6 +818,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -840,6 +836,7 @@ public class Course {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -859,6 +856,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * The external ID associated with this course
          */
@@ -876,6 +874,7 @@ public class Course {
             this.externalReference = externalReference;
             return this;
         }
+
 
         /**
          * The child ID/IDs associated with this course
@@ -895,6 +894,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the child content IDs associated with this course
          */
@@ -912,6 +912,7 @@ public class Course {
             this.remoteContentIds = remoteContentIds;
             return this;
         }
+
 
         /**
          * The title of the course
@@ -931,6 +932,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * The description of the course
          */
@@ -948,6 +950,7 @@ public class Course {
             this.description = description;
             return this;
         }
+
 
         /**
          * The languages associated with this course
@@ -967,6 +970,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * The URL of the thumbnail image associated with the course.
          */
@@ -984,6 +988,7 @@ public class Course {
             this.coverUrl = coverUrl;
             return this;
         }
+
 
         /**
          * The redirect URL of the course.
@@ -1003,6 +1008,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * Whether the course is active and available for users.
          */
@@ -1020,6 +1026,7 @@ public class Course {
             this.active = active;
             return this;
         }
+
 
         /**
          * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
@@ -1039,6 +1046,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * The categories associated with this course
          */
@@ -1056,6 +1064,7 @@ public class Course {
             this.categories = categories;
             return this;
         }
+
 
         /**
          * The skills associated with this course
@@ -1075,6 +1084,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * The name of the course provider
          */
@@ -1092,6 +1102,7 @@ public class Course {
             this.provider = provider;
             return this;
         }
+
 
         /**
          * The date on which the course was last updated.
@@ -1111,6 +1122,7 @@ public class Course {
             return this;
         }
 
+
         /**
          * The date on which the course was created.
          */
@@ -1128,27 +1140,17 @@ public class Course {
             this.createdAt = createdAt;
             return this;
         }
-        
+
         public Course build() {
+
             return new Course(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                externalReference,
-                contentIds,
-                remoteContentIds,
-                title,
-                description,
-                languages,
-                coverUrl,
-                url,
-                active,
-                duration,
-                categories,
-                skills,
-                provider,
-                updatedAt,
-                createdAt);
+                id, remoteId, unifiedCustomFields,
+                externalReference, contentIds, remoteContentIds,
+                title, description, languages,
+                coverUrl, url, active,
+                duration, categories, skills,
+                provider, updatedAt, createdAt);
         }
+
     }
 }

@@ -29,6 +29,7 @@ public class CreateCategoriesApiModelLevel {
     @JsonProperty("value")
     private JsonNullable<? extends CreateCategoriesApiModelLevelValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CreateCategoriesApiModelLevelSourceValue> sourceValue;
@@ -59,9 +60,10 @@ public class CreateCategoriesApiModelLevel {
         return (JsonNullable<CreateCategoriesApiModelLevelSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CreateCategoriesApiModelLevel withValue(CreateCategoriesApiModelLevelValue value) {
         Utils.checkNotNull(value, "value");
@@ -87,7 +89,6 @@ public class CreateCategoriesApiModelLevel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,8 +106,7 @@ public class CreateCategoriesApiModelLevel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -115,16 +115,18 @@ public class CreateCategoriesApiModelLevel {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CreateCategoriesApiModelLevelValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateCategoriesApiModelLevelSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(CreateCategoriesApiModelLevelValue value) {
             Utils.checkNotNull(value, "value");
@@ -138,6 +140,7 @@ public class CreateCategoriesApiModelLevel {
             return this;
         }
 
+
         public Builder sourceValue(CreateCategoriesApiModelLevelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -149,11 +152,12 @@ public class CreateCategoriesApiModelLevel {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CreateCategoriesApiModelLevel build() {
+
             return new CreateCategoriesApiModelLevel(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

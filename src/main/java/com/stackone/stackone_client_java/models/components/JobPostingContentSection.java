@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingContentSection {
 
+public class JobPostingContentSection {
     /**
      * Unique identifier
      */
@@ -30,13 +30,16 @@ public class JobPostingContentSection {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends JobPostingContentSectionType> type;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label")
     private JsonNullable<String> label;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content")
@@ -62,7 +65,8 @@ public class JobPostingContentSection {
     }
     
     public JobPostingContentSection() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -97,9 +101,10 @@ public class JobPostingContentSection {
         return content;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -173,7 +178,6 @@ public class JobPostingContentSection {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -194,11 +198,8 @@ public class JobPostingContentSection {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            type,
-            label,
-            content);
+            id, remoteId, type,
+            label, content);
     }
     
     @Override
@@ -210,22 +211,24 @@ public class JobPostingContentSection {
                 "label", label,
                 "content", content);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingContentSectionType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<String> content = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -245,6 +248,7 @@ public class JobPostingContentSection {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -263,6 +267,7 @@ public class JobPostingContentSection {
             return this;
         }
 
+
         public Builder type(JobPostingContentSectionType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -274,6 +279,7 @@ public class JobPostingContentSection {
             this.type = type;
             return this;
         }
+
 
         public Builder label(String label) {
             Utils.checkNotNull(label, "label");
@@ -287,6 +293,7 @@ public class JobPostingContentSection {
             return this;
         }
 
+
         public Builder content(String content) {
             Utils.checkNotNull(content, "content");
             this.content = JsonNullable.of(content);
@@ -298,14 +305,13 @@ public class JobPostingContentSection {
             this.content = content;
             return this;
         }
-        
+
         public JobPostingContentSection build() {
+
             return new JobPostingContentSection(
-                id,
-                remoteId,
-                type,
-                label,
-                content);
+                id, remoteId, type,
+                label, content);
         }
+
     }
 }

@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Visibility of the note
  */
 public class AtsUpdateNotesRequestDtoVisibility {
-
     /**
      * The visibility of the notes.
      */
@@ -67,9 +66,10 @@ public class AtsUpdateNotesRequestDtoVisibility {
         return (JsonNullable<AtsUpdateNotesRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The visibility of the notes.
@@ -107,7 +107,6 @@ public class AtsUpdateNotesRequestDtoVisibility {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class AtsUpdateNotesRequestDtoVisibility {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class AtsUpdateNotesRequestDtoVisibility {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AtsUpdateNotesRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsUpdateNotesRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The visibility of the notes.
@@ -164,6 +164,7 @@ public class AtsUpdateNotesRequestDtoVisibility {
             return this;
         }
 
+
         /**
          * The source value of the notes visibility.
          */
@@ -181,11 +182,12 @@ public class AtsUpdateNotesRequestDtoVisibility {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public AtsUpdateNotesRequestDtoVisibility build() {
+
             return new AtsUpdateNotesRequestDtoVisibility(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

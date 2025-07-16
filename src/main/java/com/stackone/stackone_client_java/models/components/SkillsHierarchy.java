@@ -25,6 +25,7 @@ public class SkillsHierarchy {
     @JsonProperty("value")
     private JsonNullable<? extends SkillsValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends SkillsSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class SkillsHierarchy {
         return (JsonNullable<SkillsSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SkillsHierarchy withValue(SkillsValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class SkillsHierarchy {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class SkillsHierarchy {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class SkillsHierarchy {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends SkillsValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends SkillsSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(SkillsValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class SkillsHierarchy {
             return this;
         }
 
+
         public Builder sourceValue(SkillsSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class SkillsHierarchy {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public SkillsHierarchy build() {
+
             return new SkillsHierarchy(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

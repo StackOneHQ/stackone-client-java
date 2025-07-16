@@ -47,9 +47,7 @@ public class AtsGetApplicationRequestBuilder {
             .build());
 
         RequestOperation<AtsGetApplicationRequest, AtsGetApplicationResponse> operation
-              = new AtsGetApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

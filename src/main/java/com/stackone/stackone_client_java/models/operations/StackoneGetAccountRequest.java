@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
+
 public class StackoneGetAccountRequest {
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
@@ -27,9 +28,10 @@ public class StackoneGetAccountRequest {
         return id;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public StackoneGetAccountRequest withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -37,7 +39,6 @@ public class StackoneGetAccountRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -62,24 +63,28 @@ public class StackoneGetAccountRequest {
         return Utils.toString(StackoneGetAccountRequest.class,
                 "id", id);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
-        
+
         public StackoneGetAccountRequest build() {
+
             return new StackoneGetAccountRequest(
                 id);
         }
+
     }
 }

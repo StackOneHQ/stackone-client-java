@@ -16,13 +16,14 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisListEmployeeTimeOffRequestsRequest {
 
+public class HrisListEmployeeTimeOffRequestsRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
@@ -127,7 +128,10 @@ public class HrisListEmployeeTimeOffRequestsRequest {
     public HrisListEmployeeTimeOffRequestsRequest(
             String xAccountId,
             String id) {
-        this(xAccountId, id, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, id, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -223,9 +227,10 @@ public class HrisListEmployeeTimeOffRequestsRequest {
         return expand;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -416,7 +421,6 @@ public class HrisListEmployeeTimeOffRequestsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -443,17 +447,10 @@ public class HrisListEmployeeTimeOffRequestsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            raw,
-            proxy,
-            fields,
-            filter,
-            page,
-            pageSize,
-            next,
-            updatedAfter,
-            expand);
+            xAccountId, id, raw,
+            proxy, fields, filter,
+            page, pageSize, next,
+            updatedAfter, expand);
     }
     
     @Override
@@ -471,36 +468,38 @@ public class HrisListEmployeeTimeOffRequestsRequest {
                 "updatedAfter", updatedAfter,
                 "expand", expand);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisListEmployeeTimeOffRequestsQueryParamFilter> filter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
- 
+
         private JsonNullable<String> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> expand = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -511,11 +510,13 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -535,6 +536,7 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -552,6 +554,7 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -571,6 +574,7 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             return this;
         }
 
+
         /**
          * HRIS Time Off filters
          */
@@ -588,6 +592,7 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             this.filter = filter;
             return this;
         }
+
 
         /**
          * The page number of the results to fetch
@@ -613,6 +618,7 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             return this;
         }
 
+
         /**
          * The number of results per page (default value is 25)
          */
@@ -631,6 +637,7 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -648,6 +655,7 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -673,6 +681,7 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             return this;
         }
 
+
         /**
          * The comma separated list of fields that will be expanded in the response
          */
@@ -690,20 +699,15 @@ public class HrisListEmployeeTimeOffRequestsRequest {
             this.expand = expand;
             return this;
         }
-        
+
         public HrisListEmployeeTimeOffRequestsRequest build() {
+
             return new HrisListEmployeeTimeOffRequestsRequest(
-                xAccountId,
-                id,
-                raw,
-                proxy,
-                fields,
-                filter,
-                page,
-                pageSize,
-                next,
-                updatedAfter,
-                expand);
+                xAccountId, id, raw,
+                proxy, fields, filter,
+                page, pageSize, next,
+                updatedAfter, expand);
         }
+
     }
 }

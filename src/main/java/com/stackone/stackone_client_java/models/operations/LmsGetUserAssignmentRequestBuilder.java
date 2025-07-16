@@ -47,9 +47,7 @@ public class LmsGetUserAssignmentRequestBuilder {
             .build());
 
         RequestOperation<LmsGetUserAssignmentRequest, LmsGetUserAssignmentResponse> operation
-              = new LmsGetUserAssignmentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetUserAssignmentOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -56,9 +56,7 @@ public class StackoneDeleteAccountRequestBuilder {
             .build());
 
         RequestOperation<StackoneDeleteAccountRequest, StackoneDeleteAccountResponse> operation
-              = new StackoneDeleteAccountOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneDeleteAccountOperation(sdkConfiguration, options);
         StackoneDeleteAccountRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

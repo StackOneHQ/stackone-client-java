@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The file format of the file
  */
 public class HrisCreateWorkEligibilityRequestDtoFileFormat {
-
     /**
      * The file format of the file, expressed as a file extension
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends HrisCreateWorkEligibilityRequestDtoDocumentValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class HrisCreateWorkEligibilityRequestDtoFileFormat {
         return (JsonNullable<HrisCreateWorkEligibilityRequestDtoDocumentSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The file format of the file, expressed as a file extension
@@ -95,7 +96,6 @@ public class HrisCreateWorkEligibilityRequestDtoFileFormat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class HrisCreateWorkEligibilityRequestDtoFileFormat {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class HrisCreateWorkEligibilityRequestDtoFileFormat {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisCreateWorkEligibilityRequestDtoDocumentValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateWorkEligibilityRequestDtoDocumentSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The file format of the file, expressed as a file extension
@@ -152,6 +153,7 @@ public class HrisCreateWorkEligibilityRequestDtoFileFormat {
             return this;
         }
 
+
         public Builder sourceValue(HrisCreateWorkEligibilityRequestDtoDocumentSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class HrisCreateWorkEligibilityRequestDtoFileFormat {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisCreateWorkEligibilityRequestDtoFileFormat build() {
+
             return new HrisCreateWorkEligibilityRequestDtoFileFormat(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

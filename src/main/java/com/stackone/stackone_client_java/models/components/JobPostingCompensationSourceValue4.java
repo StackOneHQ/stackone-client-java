@@ -8,19 +8,17 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class JobPostingCompensationSourceValue4 {
 
+public class JobPostingCompensationSourceValue4 {
     @JsonCreator
     public JobPostingCompensationSourceValue4() {
-        
-        
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -42,16 +40,19 @@ public class JobPostingCompensationSourceValue4 {
     public String toString() {
         return Utils.toString(JobPostingCompensationSourceValue4.class);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public JobPostingCompensationSourceValue4 build() {
+
             return new JobPostingCompensationSourceValue4(
                 );
         }
+
     }
 }
