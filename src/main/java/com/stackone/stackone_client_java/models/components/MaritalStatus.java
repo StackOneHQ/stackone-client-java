@@ -25,6 +25,7 @@ public class MaritalStatus {
     @JsonProperty("value")
     private JsonNullable<? extends EmployeeMaritalStatusValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends EmployeeMaritalStatusSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class MaritalStatus {
         return (JsonNullable<EmployeeMaritalStatusSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public MaritalStatus withValue(EmployeeMaritalStatusValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class MaritalStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class MaritalStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class MaritalStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmployeeMaritalStatusValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeMaritalStatusSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(EmployeeMaritalStatusValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class MaritalStatus {
             return this;
         }
 
+
         public Builder sourceValue(EmployeeMaritalStatusSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class MaritalStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public MaritalStatus build() {
+
             return new MaritalStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsMoveApplicationRequestDto {
 
+public class AtsMoveApplicationRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -63,9 +63,10 @@ public class AtsMoveApplicationRequestDto {
         return interviewStageId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -103,7 +104,6 @@ public class AtsMoveApplicationRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,8 +121,7 @@ public class AtsMoveApplicationRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            passthrough,
-            interviewStageId);
+            passthrough, interviewStageId);
     }
     
     @Override
@@ -131,16 +130,18 @@ public class AtsMoveApplicationRequestDto {
                 "passthrough", passthrough,
                 "interviewStageId", interviewStageId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<String> interviewStageId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -160,6 +161,7 @@ public class AtsMoveApplicationRequestDto {
             return this;
         }
 
+
         /**
          * Unique identifier of the application stage.
          */
@@ -177,11 +179,12 @@ public class AtsMoveApplicationRequestDto {
             this.interviewStageId = interviewStageId;
             return this;
         }
-        
+
         public AtsMoveApplicationRequestDto build() {
+
             return new AtsMoveApplicationRequestDto(
-                passthrough,
-                interviewStageId);
+                passthrough, interviewStageId);
         }
+
     }
 }

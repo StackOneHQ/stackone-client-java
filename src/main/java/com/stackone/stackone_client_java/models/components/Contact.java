@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Contact {
 
+public class Contact {
     /**
      * Unique identifier
      */
@@ -175,7 +175,11 @@ public class Contact {
     }
     
     public Contact() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -306,9 +310,10 @@ public class Contact {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -580,7 +585,6 @@ public class Contact {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -611,21 +615,11 @@ public class Contact {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            firstName,
-            lastName,
-            companyName,
-            emails,
-            phoneNumbers,
-            dealIds,
-            remoteDealIds,
-            accountIds,
-            remoteAccountIds,
-            customFields,
-            createdAt,
-            updatedAt);
+            id, remoteId, unifiedCustomFields,
+            firstName, lastName, companyName,
+            emails, phoneNumbers, dealIds,
+            remoteDealIds, accountIds, remoteAccountIds,
+            customFields, createdAt, updatedAt);
     }
     
     @Override
@@ -647,42 +641,44 @@ public class Contact {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> companyName = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> emails = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> phoneNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> dealIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteDealIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> accountIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteAccountIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -702,6 +698,7 @@ public class Contact {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -719,6 +716,7 @@ public class Contact {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -738,6 +736,7 @@ public class Contact {
             return this;
         }
 
+
         /**
          * The contact first name
          */
@@ -755,6 +754,7 @@ public class Contact {
             this.firstName = firstName;
             return this;
         }
+
 
         /**
          * The contact last name
@@ -774,6 +774,7 @@ public class Contact {
             return this;
         }
 
+
         /**
          * The contact company name
          */
@@ -791,6 +792,7 @@ public class Contact {
             this.companyName = companyName;
             return this;
         }
+
 
         /**
          * List of contact email addresses
@@ -810,6 +812,7 @@ public class Contact {
             return this;
         }
 
+
         /**
          * List of contact phone numbers
          */
@@ -827,6 +830,7 @@ public class Contact {
             this.phoneNumbers = phoneNumbers;
             return this;
         }
+
 
         /**
          * List of associated deal IDs
@@ -846,6 +850,7 @@ public class Contact {
             return this;
         }
 
+
         /**
          * Provider's list of associated deal IDs
          */
@@ -863,6 +868,7 @@ public class Contact {
             this.remoteDealIds = remoteDealIds;
             return this;
         }
+
 
         /**
          * List of associated account IDs
@@ -882,6 +888,7 @@ public class Contact {
             return this;
         }
 
+
         /**
          * Provider's list of associated account IDs
          */
@@ -899,6 +906,7 @@ public class Contact {
             this.remoteAccountIds = remoteAccountIds;
             return this;
         }
+
 
         /**
          * Contact custom fields
@@ -918,6 +926,7 @@ public class Contact {
             return this;
         }
 
+
         /**
          * Timestamp when the contact was created
          */
@@ -936,6 +945,7 @@ public class Contact {
             return this;
         }
 
+
         /**
          * Timestamp when the contact was last updated
          */
@@ -953,24 +963,16 @@ public class Contact {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Contact build() {
+
             return new Contact(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                firstName,
-                lastName,
-                companyName,
-                emails,
-                phoneNumbers,
-                dealIds,
-                remoteDealIds,
-                accountIds,
-                remoteAccountIds,
-                customFields,
-                createdAt,
-                updatedAt);
+                id, remoteId, unifiedCustomFields,
+                firstName, lastName, companyName,
+                emails, phoneNumbers, dealIds,
+                remoteDealIds, accountIds, remoteAccountIds,
+                customFields, createdAt, updatedAt);
         }
+
     }
 }

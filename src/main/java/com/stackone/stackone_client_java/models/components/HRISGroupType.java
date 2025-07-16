@@ -25,6 +25,7 @@ public class HRISGroupType {
     @JsonProperty("value")
     private JsonNullable<? extends HRISGroupValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HRISGroupSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class HRISGroupType {
         return (JsonNullable<HRISGroupSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HRISGroupType withValue(HRISGroupValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class HRISGroupType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class HRISGroupType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class HRISGroupType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HRISGroupValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HRISGroupSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HRISGroupValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class HRISGroupType {
             return this;
         }
 
+
         public Builder sourceValue(HRISGroupSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class HRISGroupType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HRISGroupType build() {
+
             return new HRISGroupType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

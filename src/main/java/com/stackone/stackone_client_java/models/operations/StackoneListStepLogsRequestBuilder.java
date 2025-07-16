@@ -47,9 +47,7 @@ public class StackoneListStepLogsRequestBuilder {
             .build());
 
         RequestOperation<StackoneListStepLogsRequest, StackoneListStepLogsResponse> operation
-              = new StackoneListStepLogsOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneListStepLogsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

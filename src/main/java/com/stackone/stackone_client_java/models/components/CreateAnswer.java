@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateAnswer {
 
+public class CreateAnswer {
     /**
      * Unique identifier
      */
@@ -81,9 +81,10 @@ public class CreateAnswer {
         return (JsonNullable<List<String>>) values;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -139,7 +140,6 @@ public class CreateAnswer {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -158,9 +158,7 @@ public class CreateAnswer {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            type,
-            values);
+            id, type, values);
     }
     
     @Override
@@ -170,18 +168,20 @@ public class CreateAnswer {
                 "type", type,
                 "values", values);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateAnswerType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> values = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -201,6 +201,7 @@ public class CreateAnswer {
             return this;
         }
 
+
         /**
          * Type of the answer
          */
@@ -219,6 +220,7 @@ public class CreateAnswer {
             return this;
         }
 
+
         /**
          * Values of the answer
          */
@@ -236,12 +238,12 @@ public class CreateAnswer {
             this.values = values;
             return this;
         }
-        
+
         public CreateAnswer build() {
+
             return new CreateAnswer(
-                id,
-                type,
-                values);
+                id, type, values);
         }
+
     }
 }

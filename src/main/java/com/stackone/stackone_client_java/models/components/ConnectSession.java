@@ -17,42 +17,53 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class ConnectSession {
 
     @JsonProperty("id")
     private double id;
 
+
     @JsonProperty("organization_id")
     private double organizationId;
 
+
     @JsonProperty("project_id")
     private String projectId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("categories")
     private JsonNullable<? extends List<ConnectSessionCategories>> categories;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("provider")
     private JsonNullable<String> provider;
 
+
     @JsonProperty("origin_owner_id")
     private String originOwnerId;
 
+
     @JsonProperty("origin_owner_name")
     private String originOwnerName;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin_username")
     private JsonNullable<String> originUsername;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account_id")
     private JsonNullable<String> accountId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label")
     private JsonNullable<String> label;
+
 
     @JsonProperty("created_at")
     private OffsetDateTime createdAt;
@@ -131,7 +142,11 @@ public class ConnectSession {
             String originOwnerId,
             String originOwnerName,
             OffsetDateTime createdAt) {
-        this(id, organizationId, projectId, JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), createdAt, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(id, organizationId, projectId,
+            JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId,
+            originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), createdAt, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -216,9 +231,10 @@ public class ConnectSession {
         return (JsonNullable<ConnectSessionType>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ConnectSession withId(double id) {
         Utils.checkNotNull(id, "id");
@@ -370,7 +386,6 @@ public class ConnectSession {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -400,20 +415,11 @@ public class ConnectSession {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            organizationId,
-            projectId,
-            categories,
-            provider,
-            originOwnerId,
-            originOwnerName,
-            originUsername,
-            accountId,
-            label,
-            createdAt,
-            metadata,
-            externalTriggerToken,
-            type);
+            id, organizationId, projectId,
+            categories, provider, originOwnerId,
+            originOwnerName, originUsername, accountId,
+            label, createdAt, metadata,
+            externalTriggerToken, type);
     }
     
     @Override
@@ -434,40 +440,42 @@ public class ConnectSession {
                 "externalTriggerToken", externalTriggerToken,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Double id;
- 
+
         private Double organizationId;
- 
+
         private String projectId;
- 
+
         private JsonNullable<? extends List<ConnectSessionCategories>> categories = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private String originOwnerId;
- 
+
         private String originOwnerName;
- 
+
         private JsonNullable<String> originUsername = JsonNullable.undefined();
- 
+
         private JsonNullable<String> accountId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private OffsetDateTime createdAt;
- 
+
         private JsonNullable<? extends ConnectSessionMetadata> metadata = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalTriggerToken = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ConnectSessionType> type = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(double id) {
             Utils.checkNotNull(id, "id");
@@ -475,17 +483,20 @@ public class ConnectSession {
             return this;
         }
 
+
         public Builder organizationId(double organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;
         }
 
+
         public Builder projectId(String projectId) {
             Utils.checkNotNull(projectId, "projectId");
             this.projectId = projectId;
             return this;
         }
+
 
         public Builder categories(List<ConnectSessionCategories> categories) {
             Utils.checkNotNull(categories, "categories");
@@ -499,6 +510,7 @@ public class ConnectSession {
             return this;
         }
 
+
         public Builder provider(String provider) {
             Utils.checkNotNull(provider, "provider");
             this.provider = JsonNullable.of(provider);
@@ -511,17 +523,20 @@ public class ConnectSession {
             return this;
         }
 
+
         public Builder originOwnerId(String originOwnerId) {
             Utils.checkNotNull(originOwnerId, "originOwnerId");
             this.originOwnerId = originOwnerId;
             return this;
         }
 
+
         public Builder originOwnerName(String originOwnerName) {
             Utils.checkNotNull(originOwnerName, "originOwnerName");
             this.originOwnerName = originOwnerName;
             return this;
         }
+
 
         public Builder originUsername(String originUsername) {
             Utils.checkNotNull(originUsername, "originUsername");
@@ -535,6 +550,7 @@ public class ConnectSession {
             return this;
         }
 
+
         public Builder accountId(String accountId) {
             Utils.checkNotNull(accountId, "accountId");
             this.accountId = JsonNullable.of(accountId);
@@ -546,6 +562,7 @@ public class ConnectSession {
             this.accountId = accountId;
             return this;
         }
+
 
         public Builder label(String label) {
             Utils.checkNotNull(label, "label");
@@ -559,11 +576,13 @@ public class ConnectSession {
             return this;
         }
 
+
         public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;
         }
+
 
         /**
          * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
@@ -583,6 +602,7 @@ public class ConnectSession {
             return this;
         }
 
+
         /**
          * External trigger token to be used to trigger actions on the account
          */
@@ -601,6 +621,7 @@ public class ConnectSession {
             return this;
         }
 
+
         /**
          * The connect session account type
          */
@@ -618,23 +639,16 @@ public class ConnectSession {
             this.type = type;
             return this;
         }
-        
+
         public ConnectSession build() {
+
             return new ConnectSession(
-                id,
-                organizationId,
-                projectId,
-                categories,
-                provider,
-                originOwnerId,
-                originOwnerName,
-                originUsername,
-                accountId,
-                label,
-                createdAt,
-                metadata,
-                externalTriggerToken,
-                type);
+                id, organizationId, projectId,
+                categories, provider, originOwnerId,
+                originOwnerName, originUsername, accountId,
+                label, createdAt, metadata,
+                externalTriggerToken, type);
         }
+
     }
 }

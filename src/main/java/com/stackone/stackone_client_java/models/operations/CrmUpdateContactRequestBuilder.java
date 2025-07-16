@@ -73,9 +73,7 @@ public class CrmUpdateContactRequestBuilder {
             .build());
 
         RequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation
-              = new CrmUpdateContactOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmUpdateContactOperation(sdkConfiguration, options);
         CrmUpdateContactRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

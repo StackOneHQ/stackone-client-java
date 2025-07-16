@@ -58,9 +58,7 @@ public class AtsListRejectedReasonsRequestBuilder {
             .build());
 
         RequestOperation<AtsListRejectedReasonsRequest, AtsListRejectedReasonsResponse> operation
-              = new AtsListRejectedReasonsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListRejectedReasonsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class AtsListRejectedReasonsRequestBuilder {
             .build());
 
         RequestOperation<AtsListRejectedReasonsRequest, AtsListRejectedReasonsResponse> operation
-              = new AtsListRejectedReasonsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListRejectedReasonsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

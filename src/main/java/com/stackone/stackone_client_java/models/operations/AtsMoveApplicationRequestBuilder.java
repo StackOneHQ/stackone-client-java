@@ -73,9 +73,7 @@ public class AtsMoveApplicationRequestBuilder {
             .build());
 
         RequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
-              = new AtsMoveApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsMoveApplicationOperation(sdkConfiguration, options);
         AtsMoveApplicationRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

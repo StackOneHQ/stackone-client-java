@@ -47,9 +47,7 @@ public class MarketingGetCampaignRequestBuilder {
             .build());
 
         RequestOperation<MarketingGetCampaignRequest, MarketingGetCampaignResponse> operation
-              = new MarketingGetCampaignOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetCampaignOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

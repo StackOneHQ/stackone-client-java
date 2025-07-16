@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class PushMessages {
 
+public class PushMessages {
     /**
      * Unique identifier
      */
@@ -30,13 +30,16 @@ public class PushMessages {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_type")
     private JsonNullable<? extends PushMessagesMessageType> messageType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_content")
@@ -62,7 +65,8 @@ public class PushMessages {
     }
     
     public PushMessages() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -98,9 +102,10 @@ public class PushMessages {
         return (JsonNullable<PushMessagesMessageContent>) messageContent;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -174,7 +179,6 @@ public class PushMessages {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,11 +199,8 @@ public class PushMessages {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            messageType,
-            messageContent);
+            id, remoteId, name,
+            messageType, messageContent);
     }
     
     @Override
@@ -211,22 +212,24 @@ public class PushMessages {
                 "messageType", messageType,
                 "messageContent", messageContent);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PushMessagesMessageType> messageType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PushMessagesMessageContent> messageContent = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -246,6 +249,7 @@ public class PushMessages {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -264,6 +268,7 @@ public class PushMessages {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -275,6 +280,7 @@ public class PushMessages {
             this.name = name;
             return this;
         }
+
 
         public Builder messageType(PushMessagesMessageType messageType) {
             Utils.checkNotNull(messageType, "messageType");
@@ -288,6 +294,7 @@ public class PushMessages {
             return this;
         }
 
+
         public Builder messageContent(PushMessagesMessageContent messageContent) {
             Utils.checkNotNull(messageContent, "messageContent");
             this.messageContent = JsonNullable.of(messageContent);
@@ -299,14 +306,13 @@ public class PushMessages {
             this.messageContent = messageContent;
             return this;
         }
-        
+
         public PushMessages build() {
+
             return new PushMessages(
-                id,
-                remoteId,
-                name,
-                messageType,
-                messageContent);
+                id, remoteId, name,
+                messageType, messageContent);
         }
+
     }
 }

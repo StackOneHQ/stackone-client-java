@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class NoteContentApiModel {
 
+public class NoteContentApiModel {
     /**
      * Body of the note
      */
@@ -41,9 +41,10 @@ public class NoteContentApiModel {
         return body;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Body of the note
@@ -63,7 +64,6 @@ public class NoteContentApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,14 +88,16 @@ public class NoteContentApiModel {
         return Utils.toString(NoteContentApiModel.class,
                 "body", body);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> body = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Body of the note
@@ -114,10 +116,12 @@ public class NoteContentApiModel {
             this.body = body;
             return this;
         }
-        
+
         public NoteContentApiModel build() {
+
             return new NoteContentApiModel(
                 body);
         }
+
     }
 }

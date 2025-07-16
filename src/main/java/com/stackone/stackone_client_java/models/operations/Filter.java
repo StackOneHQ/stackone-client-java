@@ -18,7 +18,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Filter parameters that allow greater customisation of the list response
  */
 public class Filter {
-
     /**
      * A comma-separated list of account IDs to filter the results by.
      */
@@ -141,7 +140,11 @@ public class Filter {
     }
     
     public Filter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -248,9 +251,10 @@ public class Filter {
         return success;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A comma-separated list of account IDs to filter the results by.
@@ -486,7 +490,6 @@ public class Filter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -515,18 +518,10 @@ public class Filter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            accountIds,
-            startDate,
-            endDate,
-            requestIds,
-            httpMethods,
-            providers,
-            services,
-            resources,
-            childResources,
-            subResources,
-            actions,
-            statusCodes,
+            accountIds, startDate, endDate,
+            requestIds, httpMethods, providers,
+            services, resources, childResources,
+            subResources, actions, statusCodes,
             success);
     }
     
@@ -547,38 +542,40 @@ public class Filter {
                 "statusCodes", statusCodes,
                 "success", success);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> accountIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> endDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> requestIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> httpMethods = JsonNullable.undefined();
- 
+
         private JsonNullable<String> providers = JsonNullable.undefined();
- 
+
         private JsonNullable<String> services = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resources = JsonNullable.undefined();
- 
+
         private JsonNullable<String> childResources = JsonNullable.undefined();
- 
+
         private JsonNullable<String> subResources = JsonNullable.undefined();
- 
+
         private JsonNullable<String> actions = JsonNullable.undefined();
- 
+
         private JsonNullable<String> statusCodes = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> success = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A comma-separated list of account IDs to filter the results by.
@@ -598,6 +595,7 @@ public class Filter {
             return this;
         }
 
+
         /**
          * A ISO8601 date string to filter the results by start_date.
          */
@@ -615,6 +613,7 @@ public class Filter {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * A ISO8601 date string to filter the results by end_date.
@@ -634,6 +633,7 @@ public class Filter {
             return this;
         }
 
+
         /**
          * A comma-separated list of request IDs to filter the results by.
          */
@@ -651,6 +651,7 @@ public class Filter {
             this.requestIds = requestIds;
             return this;
         }
+
 
         /**
          * A comma-separated list of HTTP methods to filter the results by.
@@ -670,6 +671,7 @@ public class Filter {
             return this;
         }
 
+
         /**
          * A comma-separated list of provider keys to filter the results by.
          */
@@ -687,6 +689,7 @@ public class Filter {
             this.providers = providers;
             return this;
         }
+
 
         /**
          * A comma-separated list of services to filter the results by.
@@ -706,6 +709,7 @@ public class Filter {
             return this;
         }
 
+
         /**
          * A comma-separated list of resources to filter the results by.
          */
@@ -723,6 +727,7 @@ public class Filter {
             this.resources = resources;
             return this;
         }
+
 
         /**
          * A comma-separated list of child resources to filter the results by.
@@ -742,6 +747,7 @@ public class Filter {
             return this;
         }
 
+
         /**
          * A comma-separated list of sub resources to filter the results by.
          */
@@ -759,6 +765,7 @@ public class Filter {
             this.subResources = subResources;
             return this;
         }
+
 
         /**
          * A comma-separated list of actions to filter the results by.
@@ -778,6 +785,7 @@ public class Filter {
             return this;
         }
 
+
         /**
          * A comma-separated list of status codes to filter the results by.
          */
@@ -796,6 +804,7 @@ public class Filter {
             return this;
         }
 
+
         /**
          * A boolean value to filter the results by success or failure.
          */
@@ -813,22 +822,16 @@ public class Filter {
             this.success = success;
             return this;
         }
-        
+
         public Filter build() {
+
             return new Filter(
-                accountIds,
-                startDate,
-                endDate,
-                requestIds,
-                httpMethods,
-                providers,
-                services,
-                resources,
-                childResources,
-                subResources,
-                actions,
-                statusCodes,
+                accountIds, startDate, endDate,
+                requestIds, httpMethods, providers,
+                services, resources, childResources,
+                subResources, actions, statusCodes,
                 success);
         }
+
     }
 }

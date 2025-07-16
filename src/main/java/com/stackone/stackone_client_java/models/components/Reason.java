@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Reason {
 
+public class Reason {
     /**
      * Unique identifier
      */
@@ -28,6 +28,7 @@ public class Reason {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
@@ -71,9 +72,10 @@ public class Reason {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -123,7 +125,6 @@ public class Reason {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -142,9 +143,7 @@ public class Reason {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name);
+            id, remoteId, name);
     }
     
     @Override
@@ -154,18 +153,20 @@ public class Reason {
                 "remoteId", remoteId,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -185,6 +186,7 @@ public class Reason {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -203,6 +205,7 @@ public class Reason {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -214,12 +217,12 @@ public class Reason {
             this.name = name;
             return this;
         }
-        
+
         public Reason build() {
+
             return new Reason(
-                id,
-                remoteId,
-                name);
+                id, remoteId, name);
         }
+
     }
 }

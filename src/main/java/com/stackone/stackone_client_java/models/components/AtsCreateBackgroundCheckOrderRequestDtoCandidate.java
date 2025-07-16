@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
 
+public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
     /**
      * Unique identifier
      */
@@ -94,7 +94,9 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
     }
     
     public AtsCreateBackgroundCheckOrderRequestDtoCandidate() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -155,9 +157,10 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
         return profileUrl;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -285,7 +288,6 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -308,12 +310,8 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            firstName,
-            lastName,
-            emails,
-            passthrough,
+            id, remoteId, firstName,
+            lastName, emails, passthrough,
             profileUrl);
     }
     
@@ -328,26 +326,28 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
                 "passthrough", passthrough,
                 "profileUrl", profileUrl);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CandidateEmail>> emails = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<String> profileUrl = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -367,6 +367,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -384,6 +385,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Candidate first name
@@ -403,6 +405,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
             return this;
         }
 
+
         /**
          * Candidate last name
          */
@@ -420,6 +423,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
             this.lastName = lastName;
             return this;
         }
+
 
         /**
          * List of candidate emails
@@ -439,6 +443,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -457,6 +462,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
             return this;
         }
 
+
         /**
          * Candidate profile url
          */
@@ -474,16 +480,14 @@ public class AtsCreateBackgroundCheckOrderRequestDtoCandidate {
             this.profileUrl = profileUrl;
             return this;
         }
-        
+
         public AtsCreateBackgroundCheckOrderRequestDtoCandidate build() {
+
             return new AtsCreateBackgroundCheckOrderRequestDtoCandidate(
-                id,
-                remoteId,
-                firstName,
-                lastName,
-                emails,
-                passthrough,
+                id, remoteId, firstName,
+                lastName, emails, passthrough,
                 profileUrl);
         }
+
     }
 }

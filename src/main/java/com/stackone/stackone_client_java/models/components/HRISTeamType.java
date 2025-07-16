@@ -25,6 +25,7 @@ public class HRISTeamType {
     @JsonProperty("value")
     private JsonNullable<? extends HRISTeamValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HRISTeamSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class HRISTeamType {
         return (JsonNullable<HRISTeamSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HRISTeamType withValue(HRISTeamValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class HRISTeamType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class HRISTeamType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class HRISTeamType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HRISTeamValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HRISTeamSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HRISTeamValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class HRISTeamType {
             return this;
         }
 
+
         public Builder sourceValue(HRISTeamSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class HRISTeamType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HRISTeamType build() {
+
             return new HRISTeamType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

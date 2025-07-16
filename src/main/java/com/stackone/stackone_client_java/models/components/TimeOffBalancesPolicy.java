@@ -22,7 +22,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The time off policy associated with this balance
  */
 public class TimeOffBalancesPolicy {
-
     /**
      * Unique identifier
      */
@@ -64,6 +63,7 @@ public class TimeOffBalancesPolicy {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("duration_unit")
     private JsonNullable<? extends TimeOffBalancesDurationUnit> durationUnit;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("reasons")
@@ -115,7 +115,9 @@ public class TimeOffBalancesPolicy {
     }
     
     public TimeOffBalancesPolicy() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -190,9 +192,10 @@ public class TimeOffBalancesPolicy {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -350,7 +353,6 @@ public class TimeOffBalancesPolicy {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -375,15 +377,9 @@ public class TimeOffBalancesPolicy {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            description,
-            type,
-            durationUnit,
-            reasons,
-            createdAt,
-            updatedAt);
+            id, remoteId, name,
+            description, type, durationUnit,
+            reasons, createdAt, updatedAt);
     }
     
     @Override
@@ -399,30 +395,32 @@ public class TimeOffBalancesPolicy {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffBalancesType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffBalancesDurationUnit> durationUnit = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Reason>> reasons = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -442,6 +440,7 @@ public class TimeOffBalancesPolicy {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -459,6 +458,7 @@ public class TimeOffBalancesPolicy {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name of this policy
@@ -478,6 +478,7 @@ public class TimeOffBalancesPolicy {
             return this;
         }
 
+
         /**
          * The description of this policy
          */
@@ -495,6 +496,7 @@ public class TimeOffBalancesPolicy {
             this.description = description;
             return this;
         }
+
 
         /**
          * The type of this policy
@@ -514,6 +516,7 @@ public class TimeOffBalancesPolicy {
             return this;
         }
 
+
         /**
          * The duration unit of the current policy
          */
@@ -532,6 +535,7 @@ public class TimeOffBalancesPolicy {
             return this;
         }
 
+
         public Builder reasons(List<Reason> reasons) {
             Utils.checkNotNull(reasons, "reasons");
             this.reasons = JsonNullable.of(reasons);
@@ -543,6 +547,7 @@ public class TimeOffBalancesPolicy {
             this.reasons = reasons;
             return this;
         }
+
 
         /**
          * The created_at date of this policy
@@ -562,6 +567,7 @@ public class TimeOffBalancesPolicy {
             return this;
         }
 
+
         /**
          * The updated_at date of this policy
          */
@@ -579,18 +585,14 @@ public class TimeOffBalancesPolicy {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public TimeOffBalancesPolicy build() {
+
             return new TimeOffBalancesPolicy(
-                id,
-                remoteId,
-                name,
-                description,
-                type,
-                durationUnit,
-                reasons,
-                createdAt,
-                updatedAt);
+                id, remoteId, name,
+                description, type, durationUnit,
+                reasons, createdAt, updatedAt);
         }
+
     }
 }

@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsUpdateApplicationRequest {
 
+public class AtsUpdateApplicationRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto;
@@ -56,9 +58,10 @@ public class AtsUpdateApplicationRequest {
         return atsUpdateApplicationRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class AtsUpdateApplicationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class AtsUpdateApplicationRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            atsUpdateApplicationRequestDto);
+            xAccountId, id, atsUpdateApplicationRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class AtsUpdateApplicationRequest {
                 "id", id,
                 "atsUpdateApplicationRequestDto", atsUpdateApplicationRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class AtsUpdateApplicationRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder atsUpdateApplicationRequestDto(AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto) {
             Utils.checkNotNull(atsUpdateApplicationRequestDto, "atsUpdateApplicationRequestDto");
             this.atsUpdateApplicationRequestDto = atsUpdateApplicationRequestDto;
             return this;
         }
-        
+
         public AtsUpdateApplicationRequest build() {
+
             return new AtsUpdateApplicationRequest(
-                xAccountId,
-                id,
-                atsUpdateApplicationRequestDto);
+                xAccountId, id, atsUpdateApplicationRequestDto);
         }
+
     }
 }

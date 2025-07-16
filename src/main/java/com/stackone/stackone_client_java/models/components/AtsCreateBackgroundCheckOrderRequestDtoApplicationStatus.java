@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus {
 
+public class AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus {
     /**
      * The status of the application.
      */
@@ -62,9 +62,10 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus {
         return (JsonNullable<AtsCreateBackgroundCheckOrderRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the application.
@@ -102,7 +103,6 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the application.
@@ -159,6 +160,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus {
             return this;
         }
 
+
         /**
          * The source value of the application status.
          */
@@ -176,11 +178,12 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus build() {
+
             return new AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

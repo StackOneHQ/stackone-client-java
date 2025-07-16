@@ -58,9 +58,7 @@ public class AtsListBackgroundCheckPackagesRequestBuilder {
             .build());
 
         RequestOperation<AtsListBackgroundCheckPackagesRequest, AtsListBackgroundCheckPackagesResponse> operation
-              = new AtsListBackgroundCheckPackagesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListBackgroundCheckPackagesOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class AtsListBackgroundCheckPackagesRequestBuilder {
             .build());
 
         RequestOperation<AtsListBackgroundCheckPackagesRequest, AtsListBackgroundCheckPackagesResponse> operation
-              = new AtsListBackgroundCheckPackagesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListBackgroundCheckPackagesOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

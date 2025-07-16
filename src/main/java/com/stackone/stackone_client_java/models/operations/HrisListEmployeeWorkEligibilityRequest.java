@@ -16,6 +16,7 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class HrisListEmployeeWorkEligibilityRequest {
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
@@ -118,7 +119,10 @@ public class HrisListEmployeeWorkEligibilityRequest {
     public HrisListEmployeeWorkEligibilityRequest(
             String id,
             String xAccountId) {
-        this(id, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), xAccountId);
+        this(id, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            xAccountId);
     }
 
     @JsonIgnore
@@ -206,9 +210,10 @@ public class HrisListEmployeeWorkEligibilityRequest {
         return xAccountId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisListEmployeeWorkEligibilityRequest withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -381,7 +386,6 @@ public class HrisListEmployeeWorkEligibilityRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -407,15 +411,9 @@ public class HrisListEmployeeWorkEligibilityRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            raw,
-            proxy,
-            fields,
-            filter,
-            page,
-            pageSize,
-            next,
-            updatedAfter,
+            id, raw, proxy,
+            fields, filter, page,
+            pageSize, next, updatedAfter,
             xAccountId);
     }
     
@@ -433,40 +431,43 @@ public class HrisListEmployeeWorkEligibilityRequest {
                 "updatedAfter", updatedAfter,
                 "xAccountId", xAccountId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisListEmployeeWorkEligibilityQueryParamFilter> filter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
- 
+
         private JsonNullable<String> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private String xAccountId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -486,6 +487,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -503,6 +505,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -522,6 +525,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             return this;
         }
 
+
         /**
          * Filter parameters that allow greater customisation of the list response
          */
@@ -539,6 +543,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             this.filter = filter;
             return this;
         }
+
 
         /**
          * The page number of the results to fetch
@@ -564,6 +569,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             return this;
         }
 
+
         /**
          * The number of results per page (default value is 25)
          */
@@ -582,6 +588,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -599,6 +606,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -624,6 +632,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             return this;
         }
 
+
         /**
          * The account identifier
          */
@@ -632,19 +641,15 @@ public class HrisListEmployeeWorkEligibilityRequest {
             this.xAccountId = xAccountId;
             return this;
         }
-        
+
         public HrisListEmployeeWorkEligibilityRequest build() {
+
             return new HrisListEmployeeWorkEligibilityRequest(
-                id,
-                raw,
-                proxy,
-                fields,
-                filter,
-                page,
-                pageSize,
-                next,
-                updatedAfter,
+                id, raw, proxy,
+                fields, filter, page,
+                pageSize, next, updatedAfter,
                 xAccountId);
         }
+
     }
 }

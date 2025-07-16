@@ -47,9 +47,7 @@ public class LmsGetUserCompletionRequestBuilder {
             .build());
 
         RequestOperation<LmsGetUserCompletionRequest, LmsGetUserCompletionResponse> operation
-              = new LmsGetUserCompletionOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetUserCompletionOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

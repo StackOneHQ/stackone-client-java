@@ -58,9 +58,7 @@ public class HrisListPositionsRequestBuilder {
             .build());
 
         RequestOperation<HrisListPositionsRequest, HrisListPositionsResponse> operation
-              = new HrisListPositionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListPositionsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class HrisListPositionsRequestBuilder {
             .build());
 
         RequestOperation<HrisListPositionsRequest, HrisListPositionsResponse> operation
-              = new HrisListPositionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListPositionsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

@@ -25,6 +25,7 @@ public class Gender {
     @JsonProperty("value")
     private JsonNullable<? extends EmployeeValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends EmployeeSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class Gender {
         return (JsonNullable<EmployeeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Gender withValue(EmployeeValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class Gender {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class Gender {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class Gender {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmployeeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(EmployeeValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class Gender {
             return this;
         }
 
+
         public Builder sourceValue(EmployeeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class Gender {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public Gender build() {
+
             return new Gender(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

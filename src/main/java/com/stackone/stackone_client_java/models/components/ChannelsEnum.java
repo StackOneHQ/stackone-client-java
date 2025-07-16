@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ChannelsEnum {
 
+public class ChannelsEnum {
     /**
      * The Channels of the campaign.
      */
@@ -62,9 +62,10 @@ public class ChannelsEnum {
         return (JsonNullable<ChannelsEnumSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Channels of the campaign.
@@ -102,7 +103,6 @@ public class ChannelsEnum {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class ChannelsEnum {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class ChannelsEnum {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends ChannelsEnumValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ChannelsEnumSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Channels of the campaign.
@@ -159,6 +160,7 @@ public class ChannelsEnum {
             return this;
         }
 
+
         /**
          * The source value of the Channels.
          */
@@ -176,11 +178,12 @@ public class ChannelsEnum {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public ChannelsEnum build() {
+
             return new ChannelsEnum(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

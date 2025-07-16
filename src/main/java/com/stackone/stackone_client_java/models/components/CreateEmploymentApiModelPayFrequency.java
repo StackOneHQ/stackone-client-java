@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The pay frequency
  */
 public class CreateEmploymentApiModelPayFrequency {
-
     /**
      * The pay frequency of the job postings.
      */
@@ -67,9 +66,10 @@ public class CreateEmploymentApiModelPayFrequency {
         return (JsonNullable<CreateEmploymentApiModelPayFrequencySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The pay frequency of the job postings.
@@ -107,7 +107,6 @@ public class CreateEmploymentApiModelPayFrequency {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class CreateEmploymentApiModelPayFrequency {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class CreateEmploymentApiModelPayFrequency {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CreateEmploymentApiModelPayFrequencyValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateEmploymentApiModelPayFrequencySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The pay frequency of the job postings.
@@ -164,6 +164,7 @@ public class CreateEmploymentApiModelPayFrequency {
             return this;
         }
 
+
         /**
          * The source value of the pay frequency.
          */
@@ -181,11 +182,12 @@ public class CreateEmploymentApiModelPayFrequency {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CreateEmploymentApiModelPayFrequency build() {
+
             return new CreateEmploymentApiModelPayFrequency(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

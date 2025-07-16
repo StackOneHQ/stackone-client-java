@@ -65,9 +65,7 @@ public class LmsBatchUpsertContentRequestBuilder {
             .build());
 
         RequestOperation<LmsBatchUpsertContentRequest, LmsBatchUpsertContentResponse> operation
-              = new LmsBatchUpsertContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsBatchUpsertContentOperation(sdkConfiguration, options);
         LmsBatchUpsertContentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

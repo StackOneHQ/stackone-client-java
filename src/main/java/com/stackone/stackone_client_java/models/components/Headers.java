@@ -14,18 +14,15 @@ import java.lang.String;
  * <p>Response headers
  */
 public class Headers {
-
     @JsonCreator
     public Headers() {
-        
-        
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -47,16 +44,19 @@ public class Headers {
     public String toString() {
         return Utils.toString(Headers.class);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public Headers build() {
+
             return new Headers(
                 );
         }
+
     }
 }

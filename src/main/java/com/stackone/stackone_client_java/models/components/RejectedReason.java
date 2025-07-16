@@ -17,8 +17,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class RejectedReason {
 
+public class RejectedReason {
     /**
      * Unique identifier
      */
@@ -57,6 +57,7 @@ public class RejectedReason {
     @Deprecated
     private JsonNullable<String> type;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("rejected_reason_type")
     private JsonNullable<? extends RejectedReasonType> rejectedReasonType;
@@ -84,7 +85,8 @@ public class RejectedReason {
     }
     
     public RejectedReason() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -137,9 +139,10 @@ public class RejectedReason {
         return (JsonNullable<RejectedReasonType>) rejectedReasonType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -249,7 +252,6 @@ public class RejectedReason {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -271,12 +273,8 @@ public class RejectedReason {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            label,
-            type,
-            rejectedReasonType);
+            id, remoteId, unifiedCustomFields,
+            label, type, rejectedReasonType);
     }
     
     @Override
@@ -289,25 +287,27 @@ public class RejectedReason {
                 "type", type,
                 "rejectedReasonType", rejectedReasonType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends RejectedReasonType> rejectedReasonType = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -327,6 +327,7 @@ public class RejectedReason {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -344,6 +345,7 @@ public class RejectedReason {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -363,6 +365,7 @@ public class RejectedReason {
             return this;
         }
 
+
         /**
          * The label of the rejected reason.
          */
@@ -380,6 +383,7 @@ public class RejectedReason {
             this.label = label;
             return this;
         }
+
 
         /**
          * The string type of the rejected reason.
@@ -405,6 +409,7 @@ public class RejectedReason {
             return this;
         }
 
+
         public Builder rejectedReasonType(RejectedReasonType rejectedReasonType) {
             Utils.checkNotNull(rejectedReasonType, "rejectedReasonType");
             this.rejectedReasonType = JsonNullable.of(rejectedReasonType);
@@ -416,15 +421,13 @@ public class RejectedReason {
             this.rejectedReasonType = rejectedReasonType;
             return this;
         }
-        
+
         public RejectedReason build() {
+
             return new RejectedReason(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                label,
-                type,
-                rejectedReasonType);
+                id, remoteId, unifiedCustomFields,
+                label, type, rejectedReasonType);
         }
+
     }
 }

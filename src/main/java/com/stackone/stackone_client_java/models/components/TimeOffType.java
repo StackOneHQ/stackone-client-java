@@ -29,6 +29,7 @@ public class TimeOffType {
     @JsonProperty("value")
     private JsonNullable<? extends TimeOffTypeValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends TimeOffTypeSourceValue> sourceValue;
@@ -59,9 +60,10 @@ public class TimeOffType {
         return (JsonNullable<TimeOffTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public TimeOffType withValue(TimeOffTypeValue value) {
         Utils.checkNotNull(value, "value");
@@ -87,7 +89,6 @@ public class TimeOffType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,8 +106,7 @@ public class TimeOffType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -115,16 +115,18 @@ public class TimeOffType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends TimeOffTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(TimeOffTypeValue value) {
             Utils.checkNotNull(value, "value");
@@ -138,6 +140,7 @@ public class TimeOffType {
             return this;
         }
 
+
         public Builder sourceValue(TimeOffTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -149,11 +152,12 @@ public class TimeOffType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public TimeOffType build() {
+
             return new TimeOffType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

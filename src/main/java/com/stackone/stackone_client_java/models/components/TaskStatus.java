@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The status of the task
  */
 public class TaskStatus {
-
     /**
      * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends TaskStatusValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class TaskStatus {
         return (JsonNullable<TaskStatusSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
@@ -95,7 +96,6 @@ public class TaskStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class TaskStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class TaskStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends TaskStatusValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TaskStatusSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
@@ -152,6 +153,7 @@ public class TaskStatus {
             return this;
         }
 
+
         public Builder sourceValue(TaskStatusSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class TaskStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public TaskStatus build() {
+
             return new TaskStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

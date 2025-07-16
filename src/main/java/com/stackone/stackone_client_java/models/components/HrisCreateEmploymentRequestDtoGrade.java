@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Represents the employee’s position within the organizational hierarchy.
  */
 public class HrisCreateEmploymentRequestDtoGrade {
-
     /**
      * The reference id
      */
@@ -65,7 +64,8 @@ public class HrisCreateEmploymentRequestDtoGrade {
     }
     
     public HrisCreateEmploymentRequestDtoGrade() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -100,9 +100,10 @@ public class HrisCreateEmploymentRequestDtoGrade {
         return description;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The reference id
@@ -176,7 +177,6 @@ public class HrisCreateEmploymentRequestDtoGrade {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -196,9 +196,7 @@ public class HrisCreateEmploymentRequestDtoGrade {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
+            id, remoteId, name,
             description);
     }
     
@@ -210,20 +208,22 @@ public class HrisCreateEmploymentRequestDtoGrade {
                 "name", name,
                 "description", description);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The reference id
@@ -243,6 +243,7 @@ public class HrisCreateEmploymentRequestDtoGrade {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -260,6 +261,7 @@ public class HrisCreateEmploymentRequestDtoGrade {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The reference name
@@ -279,6 +281,7 @@ public class HrisCreateEmploymentRequestDtoGrade {
             return this;
         }
 
+
         /**
          * description of the grade
          */
@@ -296,13 +299,13 @@ public class HrisCreateEmploymentRequestDtoGrade {
             this.description = description;
             return this;
         }
-        
+
         public HrisCreateEmploymentRequestDtoGrade build() {
+
             return new HrisCreateEmploymentRequestDtoGrade(
-                id,
-                remoteId,
-                name,
+                id, remoteId, name,
                 description);
         }
+
     }
 }

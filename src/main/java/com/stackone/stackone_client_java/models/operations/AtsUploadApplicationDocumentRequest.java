@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsUploadApplicationDocumentRequest {
 
+public class AtsUploadApplicationDocumentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private UnifiedUploadRequestDto unifiedUploadRequestDto;
@@ -56,9 +58,10 @@ public class AtsUploadApplicationDocumentRequest {
         return unifiedUploadRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class AtsUploadApplicationDocumentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class AtsUploadApplicationDocumentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            unifiedUploadRequestDto);
+            xAccountId, id, unifiedUploadRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class AtsUploadApplicationDocumentRequest {
                 "id", id,
                 "unifiedUploadRequestDto", unifiedUploadRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private UnifiedUploadRequestDto unifiedUploadRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class AtsUploadApplicationDocumentRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder unifiedUploadRequestDto(UnifiedUploadRequestDto unifiedUploadRequestDto) {
             Utils.checkNotNull(unifiedUploadRequestDto, "unifiedUploadRequestDto");
             this.unifiedUploadRequestDto = unifiedUploadRequestDto;
             return this;
         }
-        
+
         public AtsUploadApplicationDocumentRequest build() {
+
             return new AtsUploadApplicationDocumentRequest(
-                xAccountId,
-                id,
-                unifiedUploadRequestDto);
+                xAccountId, id, unifiedUploadRequestDto);
         }
+
     }
 }

@@ -17,8 +17,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Document {
 
+public class Document {
     /**
      * Unique identifier
      */
@@ -137,7 +137,10 @@ public class Document {
     }
     
     public Document() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -234,9 +237,10 @@ public class Document {
         return (JsonNullable<WorkEligibilityFileFormat>) fileFormat;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -442,7 +446,6 @@ public class Document {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -469,17 +472,10 @@ public class Document {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            path,
-            category,
-            contents,
-            categoryId,
-            createdAt,
-            updatedAt,
-            remoteUrl,
-            fileFormat);
+            id, remoteId, name,
+            path, category, contents,
+            categoryId, createdAt, updatedAt,
+            remoteUrl, fileFormat);
     }
     
     @Override
@@ -497,35 +493,37 @@ public class Document {
                 "remoteUrl", remoteUrl,
                 "fileFormat", fileFormat);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> path = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends WorkEligibilityCategory> category = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends List<Content>> contents = JsonNullable.undefined();
- 
+
         private JsonNullable<String> categoryId = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends WorkEligibilityFileFormat> fileFormat = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -545,6 +543,7 @@ public class Document {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -562,6 +561,7 @@ public class Document {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name of the file
@@ -581,6 +581,7 @@ public class Document {
             return this;
         }
 
+
         /**
          * The path where the file is stored
          */
@@ -599,6 +600,7 @@ public class Document {
             return this;
         }
 
+
         /**
          * The category of the file
          */
@@ -616,6 +618,7 @@ public class Document {
             this.category = category;
             return this;
         }
+
 
         /**
          * The content of the file. Deprecated, use `url` and `file_format` one level up instead
@@ -641,6 +644,7 @@ public class Document {
             return this;
         }
 
+
         /**
          * The categoryId of the documents
          */
@@ -658,6 +662,7 @@ public class Document {
             this.categoryId = categoryId;
             return this;
         }
+
 
         /**
          * The creation date of the file
@@ -677,6 +682,7 @@ public class Document {
             return this;
         }
 
+
         /**
          * The update date of the file
          */
@@ -694,6 +700,7 @@ public class Document {
             this.updatedAt = updatedAt;
             return this;
         }
+
 
         /**
          * URL where the file content is located
@@ -713,6 +720,7 @@ public class Document {
             return this;
         }
 
+
         /**
          * The file format of the file
          */
@@ -730,20 +738,15 @@ public class Document {
             this.fileFormat = fileFormat;
             return this;
         }
-        
+
         public Document build() {
+
             return new Document(
-                id,
-                remoteId,
-                name,
-                path,
-                category,
-                contents,
-                categoryId,
-                createdAt,
-                updatedAt,
-                remoteUrl,
-                fileFormat);
+                id, remoteId, name,
+                path, category, contents,
+                categoryId, createdAt, updatedAt,
+                remoteUrl, fileFormat);
         }
+
     }
 }

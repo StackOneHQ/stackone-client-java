@@ -40,9 +40,10 @@ public class LaborType {
         return code;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public LaborType withCode(String code) {
         Utils.checkNotNull(code, "code");
@@ -56,7 +57,6 @@ public class LaborType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,14 +81,16 @@ public class LaborType {
         return Utils.toString(LaborType.class,
                 "code", code);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> code = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder code(String code) {
             Utils.checkNotNull(code, "code");
@@ -101,10 +103,12 @@ public class LaborType {
             this.code = code;
             return this;
         }
-        
+
         public LaborType build() {
+
             return new LaborType(
                 code);
         }
+
     }
 }

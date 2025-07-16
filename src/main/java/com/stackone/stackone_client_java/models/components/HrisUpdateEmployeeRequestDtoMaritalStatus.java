@@ -25,6 +25,7 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatus {
     @JsonProperty("value")
     private JsonNullable<? extends HrisUpdateEmployeeRequestDtoMaritalStatusValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatus {
         return (JsonNullable<HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisUpdateEmployeeRequestDtoMaritalStatus withValue(HrisUpdateEmployeeRequestDtoMaritalStatusValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoMaritalStatusValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HrisUpdateEmployeeRequestDtoMaritalStatusValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatus {
             return this;
         }
 
+
         public Builder sourceValue(HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisUpdateEmployeeRequestDtoMaritalStatus build() {
+
             return new HrisUpdateEmployeeRequestDtoMaritalStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

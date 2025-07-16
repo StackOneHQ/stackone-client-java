@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>HRIS Time Off Balance filters
  */
 public class HrisListEmployeeTimeOffBalancesQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -63,9 +62,10 @@ public class HrisListEmployeeTimeOffBalancesQueryParamFilter {
         return (JsonNullable<List<String>>) policyIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -103,7 +103,6 @@ public class HrisListEmployeeTimeOffBalancesQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,8 +120,7 @@ public class HrisListEmployeeTimeOffBalancesQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            policyIds);
+            updatedAfter, policyIds);
     }
     
     @Override
@@ -131,16 +129,18 @@ public class HrisListEmployeeTimeOffBalancesQueryParamFilter {
                 "updatedAfter", updatedAfter,
                 "policyIds", policyIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> policyIds = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -160,6 +160,7 @@ public class HrisListEmployeeTimeOffBalancesQueryParamFilter {
             return this;
         }
 
+
         /**
          * List of policy ids to filter time off balances by.
          */
@@ -177,11 +178,12 @@ public class HrisListEmployeeTimeOffBalancesQueryParamFilter {
             this.policyIds = policyIds;
             return this;
         }
-        
+
         public HrisListEmployeeTimeOffBalancesQueryParamFilter build() {
+
             return new HrisListEmployeeTimeOffBalancesQueryParamFilter(
-                updatedAfter,
-                policyIds);
+                updatedAfter, policyIds);
         }
+
     }
 }

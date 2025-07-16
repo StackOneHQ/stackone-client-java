@@ -81,9 +81,7 @@ public class AtsUpdateApplicationNoteRequestBuilder {
             .build());
 
         RequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
-              = new AtsUpdateApplicationNoteOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateApplicationNoteOperation(sdkConfiguration, options);
         AtsUpdateApplicationNoteRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

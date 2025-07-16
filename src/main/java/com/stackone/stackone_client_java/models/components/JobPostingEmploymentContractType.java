@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingEmploymentContractType {
 
+public class JobPostingEmploymentContractType {
     /**
      * The employment contract type.
      */
@@ -62,9 +62,10 @@ public class JobPostingEmploymentContractType {
         return (JsonNullable<JobPostingEmploymentContractTypeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The employment contract type.
@@ -102,7 +103,6 @@ public class JobPostingEmploymentContractType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class JobPostingEmploymentContractType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class JobPostingEmploymentContractType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends JobPostingEmploymentContractTypeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingEmploymentContractTypeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The employment contract type.
@@ -159,6 +160,7 @@ public class JobPostingEmploymentContractType {
             return this;
         }
 
+
         /**
          * The source value of the employment contract type.
          */
@@ -176,11 +178,12 @@ public class JobPostingEmploymentContractType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public JobPostingEmploymentContractType build() {
+
             return new JobPostingEmploymentContractType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

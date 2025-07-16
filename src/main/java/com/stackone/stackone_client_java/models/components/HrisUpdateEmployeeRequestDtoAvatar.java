@@ -24,6 +24,7 @@ public class HrisUpdateEmployeeRequestDtoAvatar {
     @JsonProperty("url")
     private JsonNullable<String> url;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("base64")
     private JsonNullable<String> base64;
@@ -52,9 +53,10 @@ public class HrisUpdateEmployeeRequestDtoAvatar {
         return base64;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisUpdateEmployeeRequestDtoAvatar withUrl(String url) {
         Utils.checkNotNull(url, "url");
@@ -80,7 +82,6 @@ public class HrisUpdateEmployeeRequestDtoAvatar {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -98,8 +99,7 @@ public class HrisUpdateEmployeeRequestDtoAvatar {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            url,
-            base64);
+            url, base64);
     }
     
     @Override
@@ -108,16 +108,18 @@ public class HrisUpdateEmployeeRequestDtoAvatar {
                 "url", url,
                 "base64", base64);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<String> base64 = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder url(String url) {
             Utils.checkNotNull(url, "url");
@@ -131,6 +133,7 @@ public class HrisUpdateEmployeeRequestDtoAvatar {
             return this;
         }
 
+
         public Builder base64(String base64) {
             Utils.checkNotNull(base64, "base64");
             this.base64 = JsonNullable.of(base64);
@@ -142,11 +145,12 @@ public class HrisUpdateEmployeeRequestDtoAvatar {
             this.base64 = base64;
             return this;
         }
-        
+
         public HrisUpdateEmployeeRequestDtoAvatar build() {
+
             return new HrisUpdateEmployeeRequestDtoAvatar(
-                url,
-                base64);
+                url, base64);
         }
+
     }
 }

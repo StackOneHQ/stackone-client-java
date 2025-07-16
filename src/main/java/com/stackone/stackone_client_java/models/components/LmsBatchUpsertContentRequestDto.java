@@ -11,8 +11,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.List;
 
-public class LmsBatchUpsertContentRequestDto {
 
+public class LmsBatchUpsertContentRequestDto {
     /**
      * The batch of items to upsert
      */
@@ -34,9 +34,10 @@ public class LmsBatchUpsertContentRequestDto {
         return items;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The batch of items to upsert
@@ -47,7 +48,6 @@ public class LmsBatchUpsertContentRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -72,14 +72,16 @@ public class LmsBatchUpsertContentRequestDto {
         return Utils.toString(LmsBatchUpsertContentRequestDto.class,
                 "items", items);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<LmsUpsertContentRequestDto> items;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The batch of items to upsert
@@ -89,10 +91,12 @@ public class LmsBatchUpsertContentRequestDto {
             this.items = items;
             return this;
         }
-        
+
         public LmsBatchUpsertContentRequestDto build() {
+
             return new LmsBatchUpsertContentRequestDto(
                 items);
         }
+
     }
 }

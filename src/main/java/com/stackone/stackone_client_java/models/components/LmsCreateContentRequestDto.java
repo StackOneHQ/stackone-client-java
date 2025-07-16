@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsCreateContentRequestDto {
 
+public class LmsCreateContentRequestDto {
     /**
      * Custom Unified Fields configured in your StackOne project
      */
@@ -230,7 +230,13 @@ public class LmsCreateContentRequestDto {
     }
     
     public LmsCreateContentRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -405,9 +411,10 @@ public class LmsCreateContentRequestDto {
         return (JsonNullable<List<AdditionalData>>) additionalData;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Custom Unified Fields configured in your StackOne project
@@ -775,7 +782,6 @@ public class LmsCreateContentRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -811,26 +817,13 @@ public class LmsCreateContentRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            unifiedCustomFields,
-            externalReference,
-            title,
-            description,
-            languages,
-            contentUrl,
-            mobileLaunchContentUrl,
-            contentType,
-            coverUrl,
-            active,
-            duration,
-            skills,
-            order,
-            shortDescription,
-            localizations,
-            tags,
-            updatedAt,
-            createdAt,
-            categories,
-            additionalData);
+            unifiedCustomFields, externalReference, title,
+            description, languages, contentUrl,
+            mobileLaunchContentUrl, contentType, coverUrl,
+            active, duration, skills,
+            order, shortDescription, localizations,
+            tags, updatedAt, createdAt,
+            categories, additionalData);
     }
     
     @Override
@@ -857,53 +850,55 @@ public class LmsCreateContentRequestDto {
                 "categories", categories,
                 "additionalData", additionalData);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<LanguageEnum>> languages = JsonNullable.undefined();
- 
+
         private JsonNullable<String> contentUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<String> mobileLaunchContentUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsCreateContentRequestDtoContentType> contentType = JsonNullable.undefined();
- 
+
         private JsonNullable<String> coverUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsCreateContentRequestDtoActive> active = JsonNullable.undefined();
- 
+
         private JsonNullable<String> duration = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CreateSkillsApiModel>> skills = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> order = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> shortDescription = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<LocalizationModel>> localizations = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CreateCategoriesApiModel>> categories = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<AdditionalData>> additionalData = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -923,6 +918,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The external ID associated with this content
          */
@@ -940,6 +936,7 @@ public class LmsCreateContentRequestDto {
             this.externalReference = externalReference;
             return this;
         }
+
 
         /**
          * The title of the content
@@ -959,6 +956,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The description of the content
          */
@@ -976,6 +974,7 @@ public class LmsCreateContentRequestDto {
             this.description = description;
             return this;
         }
+
 
         /**
          * The languages associated with this content
@@ -995,6 +994,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The external URL of the content
          */
@@ -1012,6 +1012,7 @@ public class LmsCreateContentRequestDto {
             this.contentUrl = contentUrl;
             return this;
         }
+
 
         /**
          * The mobile friendly URL of the content
@@ -1031,6 +1032,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The type of content
          */
@@ -1048,6 +1050,7 @@ public class LmsCreateContentRequestDto {
             this.contentType = contentType;
             return this;
         }
+
 
         /**
          * The URL of the thumbnail image associated with the content.
@@ -1067,6 +1070,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * Whether the content is active and available for users.
          */
@@ -1084,6 +1088,7 @@ public class LmsCreateContentRequestDto {
             this.active = active;
             return this;
         }
+
 
         /**
          * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
@@ -1103,6 +1108,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The skills associated with this content
          */
@@ -1121,6 +1127,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
          */
@@ -1138,6 +1145,7 @@ public class LmsCreateContentRequestDto {
             this.order = order;
             return this;
         }
+
 
         /**
          * A short description or summary for the content
@@ -1163,6 +1171,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The localization data for this content
          */
@@ -1180,6 +1189,7 @@ public class LmsCreateContentRequestDto {
             this.localizations = localizations;
             return this;
         }
+
 
         /**
          * A list of tags associated with the content
@@ -1199,6 +1209,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The date on which the content was last updated.
          */
@@ -1216,6 +1227,7 @@ public class LmsCreateContentRequestDto {
             this.updatedAt = updatedAt;
             return this;
         }
+
 
         /**
          * The date on which the content was created.
@@ -1235,6 +1247,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The categories associated with this content
          */
@@ -1253,6 +1266,7 @@ public class LmsCreateContentRequestDto {
             return this;
         }
 
+
         /**
          * The additional_data associated with this content
          */
@@ -1270,29 +1284,18 @@ public class LmsCreateContentRequestDto {
             this.additionalData = additionalData;
             return this;
         }
-        
+
         public LmsCreateContentRequestDto build() {
+
             return new LmsCreateContentRequestDto(
-                unifiedCustomFields,
-                externalReference,
-                title,
-                description,
-                languages,
-                contentUrl,
-                mobileLaunchContentUrl,
-                contentType,
-                coverUrl,
-                active,
-                duration,
-                skills,
-                order,
-                shortDescription,
-                localizations,
-                tags,
-                updatedAt,
-                createdAt,
-                categories,
-                additionalData);
+                unifiedCustomFields, externalReference, title,
+                description, languages, contentUrl,
+                mobileLaunchContentUrl, contentType, coverUrl,
+                active, duration, skills,
+                order, shortDescription, localizations,
+                tags, updatedAt, createdAt,
+                categories, additionalData);
         }
+
     }
 }

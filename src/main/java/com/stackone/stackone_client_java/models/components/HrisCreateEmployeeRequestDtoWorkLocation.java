@@ -22,7 +22,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The employee work location
  */
 public class HrisCreateEmployeeRequestDtoWorkLocation {
-
     /**
      * Unique identifier
      */
@@ -128,7 +127,10 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
     }
     
     public HrisCreateEmployeeRequestDtoWorkLocation() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -214,9 +216,10 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
         return (JsonNullable<HrisCreateEmployeeRequestDtoState>) state;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -398,7 +401,6 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -424,15 +426,9 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            name,
-            phoneNumber,
-            street1,
-            street2,
-            city,
-            zipCode,
-            country,
-            passthrough,
+            id, name, phoneNumber,
+            street1, street2, city,
+            zipCode, country, passthrough,
             state);
     }
     
@@ -450,32 +446,34 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
                 "passthrough", passthrough,
                 "state", state);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> phoneNumber = JsonNullable.undefined();
- 
+
         private JsonNullable<String> street1 = JsonNullable.undefined();
- 
+
         private JsonNullable<String> street2 = JsonNullable.undefined();
- 
+
         private JsonNullable<String> city = JsonNullable.undefined();
- 
+
         private JsonNullable<String> zipCode = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoWorkLocationCountry> country = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoState> state = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -495,6 +493,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             return this;
         }
 
+
         /**
          * The name of the location
          */
@@ -512,6 +511,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             this.name = name;
             return this;
         }
+
 
         /**
          * The phone number of the location
@@ -531,6 +531,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             return this;
         }
 
+
         /**
          * The first line of the address
          */
@@ -548,6 +549,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             this.street1 = street1;
             return this;
         }
+
 
         /**
          * The second line of the address
@@ -567,6 +569,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             return this;
         }
 
+
         /**
          * The city where the location is situated
          */
@@ -584,6 +587,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             this.city = city;
             return this;
         }
+
 
         /**
          * The ZIP code/Postal code of the location
@@ -603,6 +607,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             return this;
         }
 
+
         /**
          * The country code
          */
@@ -620,6 +625,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             this.country = country;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -639,6 +645,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             return this;
         }
 
+
         /**
          * The ISO3166-2 sub division where the location is situated
          */
@@ -656,19 +663,15 @@ public class HrisCreateEmployeeRequestDtoWorkLocation {
             this.state = state;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDtoWorkLocation build() {
+
             return new HrisCreateEmployeeRequestDtoWorkLocation(
-                id,
-                name,
-                phoneNumber,
-                street1,
-                street2,
-                city,
-                zipCode,
-                country,
-                passthrough,
+                id, name, phoneNumber,
+                street1, street2, city,
+                zipCode, country, passthrough,
                 state);
         }
+
     }
 }

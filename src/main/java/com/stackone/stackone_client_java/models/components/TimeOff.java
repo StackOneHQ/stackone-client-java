@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class TimeOff {
 
+public class TimeOff {
     /**
      * Unique identifier
      */
@@ -126,6 +126,7 @@ public class TimeOff {
     @JsonProperty("remote_time_off_policy_id")
     private JsonNullable<String> remoteTimeOffPolicyId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("reason")
     private JsonNullable<? extends TimeOffReason> reason;
@@ -223,7 +224,13 @@ public class TimeOff {
     }
     
     public TimeOff() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -392,9 +399,10 @@ public class TimeOff {
         return comment;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -756,7 +764,6 @@ public class TimeOff {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -792,26 +799,13 @@ public class TimeOff {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            employeeId,
-            remoteEmployeeId,
-            approverId,
-            remoteApproverId,
-            status,
-            type,
-            startDate,
-            endDate,
-            startHalfDay,
-            endHalfDay,
-            duration,
-            timeOffPolicyId,
-            remoteTimeOffPolicyId,
-            reason,
-            createdDate,
-            updatedDate,
-            policy,
-            comment);
+            id, remoteId, employeeId,
+            remoteEmployeeId, approverId, remoteApproverId,
+            status, type, startDate,
+            endDate, startHalfDay, endHalfDay,
+            duration, timeOffPolicyId, remoteTimeOffPolicyId,
+            reason, createdDate, updatedDate,
+            policy, comment);
     }
     
     @Override
@@ -838,53 +832,55 @@ public class TimeOff {
                 "policy", policy,
                 "comment", comment);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteEmployeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> approverId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteApproverId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffStatus> status = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends TimeOffType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> endDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends StartHalfDay> startHalfDay = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EndHalfDay> endHalfDay = JsonNullable.undefined();
- 
+
         private JsonNullable<String> duration = JsonNullable.undefined();
- 
+
         private JsonNullable<String> timeOffPolicyId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteTimeOffPolicyId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffReason> reason = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Policy> policy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> comment = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -904,6 +900,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -921,6 +918,7 @@ public class TimeOff {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The employee ID
@@ -940,6 +938,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the employee
          */
@@ -957,6 +956,7 @@ public class TimeOff {
             this.remoteEmployeeId = remoteEmployeeId;
             return this;
         }
+
 
         /**
          * The approver ID
@@ -976,6 +976,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the approver
          */
@@ -994,6 +995,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * The status of the time off request
          */
@@ -1011,6 +1013,7 @@ public class TimeOff {
             this.status = status;
             return this;
         }
+
 
         /**
          * The type of the time off request
@@ -1036,6 +1039,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * The start date of the time off request (ISO8601 date-time without timezone)
          */
@@ -1053,6 +1057,7 @@ public class TimeOff {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
@@ -1072,6 +1077,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * True if the start of the time off request begins half way through the day
          */
@@ -1089,6 +1095,7 @@ public class TimeOff {
             this.startHalfDay = startHalfDay;
             return this;
         }
+
 
         /**
          * True if the end of the time off request ends half way through the day
@@ -1108,6 +1115,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * The duration of the time off request
          */
@@ -1125,6 +1133,7 @@ public class TimeOff {
             this.duration = duration;
             return this;
         }
+
 
         /**
          * The time off policy id associated with this time off request
@@ -1144,6 +1153,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the time off policy id associated with this time off request
          */
@@ -1162,6 +1172,7 @@ public class TimeOff {
             return this;
         }
 
+
         public Builder reason(TimeOffReason reason) {
             Utils.checkNotNull(reason, "reason");
             this.reason = JsonNullable.of(reason);
@@ -1173,6 +1184,7 @@ public class TimeOff {
             this.reason = reason;
             return this;
         }
+
 
         /**
          * The created date of the time off request
@@ -1192,6 +1204,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * The updated date of the time off request
          */
@@ -1209,6 +1222,7 @@ public class TimeOff {
             this.updatedDate = updatedDate;
             return this;
         }
+
 
         /**
          * The time off policy associated with Time Off
@@ -1228,6 +1242,7 @@ public class TimeOff {
             return this;
         }
 
+
         /**
          * Allows users to provide additional context or notes for their time off request
          */
@@ -1245,29 +1260,18 @@ public class TimeOff {
             this.comment = comment;
             return this;
         }
-        
+
         public TimeOff build() {
+
             return new TimeOff(
-                id,
-                remoteId,
-                employeeId,
-                remoteEmployeeId,
-                approverId,
-                remoteApproverId,
-                status,
-                type,
-                startDate,
-                endDate,
-                startHalfDay,
-                endHalfDay,
-                duration,
-                timeOffPolicyId,
-                remoteTimeOffPolicyId,
-                reason,
-                createdDate,
-                updatedDate,
-                policy,
-                comment);
+                id, remoteId, employeeId,
+                remoteEmployeeId, approverId, remoteApproverId,
+                status, type, startDate,
+                endDate, startHalfDay, endHalfDay,
+                duration, timeOffPolicyId, remoteTimeOffPolicyId,
+                reason, createdDate, updatedDate,
+                policy, comment);
         }
+
     }
 }

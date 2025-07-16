@@ -14,11 +14,13 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class WorkEligibilityType {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends WorkEligibilityValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -50,9 +52,10 @@ public class WorkEligibilityType {
         return (JsonNullable<WorkEligibilitySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public WorkEligibilityType withValue(WorkEligibilityValue value) {
         Utils.checkNotNull(value, "value");
@@ -78,7 +81,6 @@ public class WorkEligibilityType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,8 +98,7 @@ public class WorkEligibilityType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -106,16 +107,18 @@ public class WorkEligibilityType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends WorkEligibilityValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends WorkEligibilitySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(WorkEligibilityValue value) {
             Utils.checkNotNull(value, "value");
@@ -129,6 +132,7 @@ public class WorkEligibilityType {
             return this;
         }
 
+
         public Builder sourceValue(WorkEligibilitySourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -140,11 +144,12 @@ public class WorkEligibilityType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public WorkEligibilityType build() {
+
             return new WorkEligibilityType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

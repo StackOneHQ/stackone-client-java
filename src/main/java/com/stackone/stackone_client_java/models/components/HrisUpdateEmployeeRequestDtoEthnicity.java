@@ -25,6 +25,7 @@ public class HrisUpdateEmployeeRequestDtoEthnicity {
     @JsonProperty("value")
     private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEthnicityValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEthnicitySourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class HrisUpdateEmployeeRequestDtoEthnicity {
         return (JsonNullable<HrisUpdateEmployeeRequestDtoEthnicitySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisUpdateEmployeeRequestDtoEthnicity withValue(HrisUpdateEmployeeRequestDtoEthnicityValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class HrisUpdateEmployeeRequestDtoEthnicity {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class HrisUpdateEmployeeRequestDtoEthnicity {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class HrisUpdateEmployeeRequestDtoEthnicity {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEthnicityValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEthnicitySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HrisUpdateEmployeeRequestDtoEthnicityValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class HrisUpdateEmployeeRequestDtoEthnicity {
             return this;
         }
 
+
         public Builder sourceValue(HrisUpdateEmployeeRequestDtoEthnicitySourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class HrisUpdateEmployeeRequestDtoEthnicity {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisUpdateEmployeeRequestDtoEthnicity build() {
+
             return new HrisUpdateEmployeeRequestDtoEthnicity(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

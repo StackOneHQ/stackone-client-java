@@ -65,9 +65,7 @@ public class MarketingCreateEmailTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreateEmailTemplateRequest, MarketingCreateEmailTemplateResponse> operation
-              = new MarketingCreateEmailTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateEmailTemplateOperation(sdkConfiguration, options);
         MarketingCreateEmailTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

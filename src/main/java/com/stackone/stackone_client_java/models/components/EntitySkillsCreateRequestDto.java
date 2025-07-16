@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class EntitySkillsCreateRequestDto {
 
+public class EntitySkillsCreateRequestDto {
     /**
      * The ID associated with this skill
      */
@@ -61,7 +61,8 @@ public class EntitySkillsCreateRequestDto {
     }
     
     public EntitySkillsCreateRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -98,9 +99,10 @@ public class EntitySkillsCreateRequestDto {
         return (JsonNullable<EntitySkillsCreateRequestDtoMinimumProficiency>) minimumProficiency;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with this skill
@@ -174,7 +176,6 @@ public class EntitySkillsCreateRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -194,9 +195,7 @@ public class EntitySkillsCreateRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            name,
-            maximumProficiency,
+            id, name, maximumProficiency,
             minimumProficiency);
     }
     
@@ -208,20 +207,22 @@ public class EntitySkillsCreateRequestDto {
                 "maximumProficiency", maximumProficiency,
                 "minimumProficiency", minimumProficiency);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EntitySkillsCreateRequestDtoMaximumProficiency> maximumProficiency = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EntitySkillsCreateRequestDtoMinimumProficiency> minimumProficiency = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with this skill
@@ -241,6 +242,7 @@ public class EntitySkillsCreateRequestDto {
             return this;
         }
 
+
         /**
          * The name associated with this skill
          */
@@ -258,6 +260,7 @@ public class EntitySkillsCreateRequestDto {
             this.name = name;
             return this;
         }
+
 
         /**
          * The proficiency level of the skill
@@ -277,6 +280,7 @@ public class EntitySkillsCreateRequestDto {
             return this;
         }
 
+
         /**
          * The proficiency level of the skill
          */
@@ -294,13 +298,13 @@ public class EntitySkillsCreateRequestDto {
             this.minimumProficiency = minimumProficiency;
             return this;
         }
-        
+
         public EntitySkillsCreateRequestDto build() {
+
             return new EntitySkillsCreateRequestDto(
-                id,
-                name,
-                maximumProficiency,
+                id, name, maximumProficiency,
                 minimumProficiency);
         }
+
     }
 }

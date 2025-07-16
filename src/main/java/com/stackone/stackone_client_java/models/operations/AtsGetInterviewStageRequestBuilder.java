@@ -47,9 +47,7 @@ public class AtsGetInterviewStageRequestBuilder {
             .build());
 
         RequestOperation<AtsGetInterviewStageRequest, AtsGetInterviewStageResponse> operation
-              = new AtsGetInterviewStageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetInterviewStageOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

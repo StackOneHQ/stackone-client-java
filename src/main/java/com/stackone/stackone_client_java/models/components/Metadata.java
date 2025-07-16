@@ -14,18 +14,15 @@ import java.lang.String;
  * <p>The metadata for the connection
  */
 public class Metadata {
-
     @JsonCreator
     public Metadata() {
-        
-        
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -47,16 +44,19 @@ public class Metadata {
     public String toString() {
         return Utils.toString(Metadata.class);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public Metadata build() {
+
             return new Metadata(
                 );
         }
+
     }
 }

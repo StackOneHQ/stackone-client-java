@@ -47,9 +47,7 @@ public class HrisGetCostCenterGroupRequestBuilder {
             .build());
 
         RequestOperation<HrisGetCostCenterGroupRequest, HrisGetCostCenterGroupResponse> operation
-              = new HrisGetCostCenterGroupOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetCostCenterGroupOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

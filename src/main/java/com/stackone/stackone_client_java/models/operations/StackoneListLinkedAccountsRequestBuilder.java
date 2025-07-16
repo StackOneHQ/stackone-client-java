@@ -47,9 +47,7 @@ public class StackoneListLinkedAccountsRequestBuilder {
             .build());
 
         RequestOperation<StackoneListLinkedAccountsRequest, StackoneListLinkedAccountsResponse> operation
-              = new StackoneListLinkedAccountsOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneListLinkedAccountsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class UpdatePackage {
 
+public class UpdatePackage {
     /**
      * Unique identifier
      */
@@ -77,9 +77,10 @@ public class UpdatePackage {
         return description;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -135,7 +136,6 @@ public class UpdatePackage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +154,7 @@ public class UpdatePackage {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            name,
-            description);
+            id, name, description);
     }
     
     @Override
@@ -166,18 +164,20 @@ public class UpdatePackage {
                 "name", name,
                 "description", description);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -197,6 +197,7 @@ public class UpdatePackage {
             return this;
         }
 
+
         /**
          * Package name
          */
@@ -215,6 +216,7 @@ public class UpdatePackage {
             return this;
         }
 
+
         /**
          * Package description
          */
@@ -232,12 +234,12 @@ public class UpdatePackage {
             this.description = description;
             return this;
         }
-        
+
         public UpdatePackage build() {
+
             return new UpdatePackage(
-                id,
-                name,
-                description);
+                id, name, description);
         }
+
     }
 }

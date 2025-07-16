@@ -72,9 +72,7 @@ public class LmsDeleteUserCompletionRequestBuilder {
             .build());
 
         RequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
-              = new LmsDeleteUserCompletionOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsDeleteUserCompletionOperation(sdkConfiguration, options);
         LmsDeleteUserCompletionRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

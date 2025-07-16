@@ -58,9 +58,7 @@ public class AtsListJobCustomFieldDefinitionsRequestBuilder {
             .build());
 
         RequestOperation<AtsListJobCustomFieldDefinitionsRequest, AtsListJobCustomFieldDefinitionsResponse> operation
-              = new AtsListJobCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListJobCustomFieldDefinitionsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class AtsListJobCustomFieldDefinitionsRequestBuilder {
             .build());
 
         RequestOperation<AtsListJobCustomFieldDefinitionsRequest, AtsListJobCustomFieldDefinitionsResponse> operation
-              = new AtsListJobCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListJobCustomFieldDefinitionsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

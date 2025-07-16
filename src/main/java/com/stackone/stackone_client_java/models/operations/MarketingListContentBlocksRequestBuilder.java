@@ -58,9 +58,7 @@ public class MarketingListContentBlocksRequestBuilder {
             .build());
 
         RequestOperation<MarketingListContentBlocksRequest, MarketingListContentBlocksResponse> operation
-              = new MarketingListContentBlocksOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListContentBlocksOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class MarketingListContentBlocksRequestBuilder {
             .build());
 
         RequestOperation<MarketingListContentBlocksRequest, MarketingListContentBlocksResponse> operation
-              = new MarketingListContentBlocksOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListContentBlocksOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

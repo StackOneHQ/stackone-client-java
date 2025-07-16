@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Offer {
 
+public class Offer {
     /**
      * Unique identifier
      */
@@ -42,6 +42,7 @@ public class Offer {
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application_id")
     private JsonNullable<String> applicationId;
@@ -60,13 +61,16 @@ public class Offer {
     @JsonProperty("start_date")
     private JsonNullable<OffsetDateTime> startDate;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("offer_status")
     private JsonNullable<? extends OfferStatus> offerStatus;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("salary")
     private JsonNullable<Double> salary;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("currency")
@@ -85,6 +89,7 @@ public class Offer {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
     private JsonNullable<OffsetDateTime> updatedAt;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("offer_history")
@@ -131,7 +136,10 @@ public class Offer {
     }
     
     public Offer() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -218,9 +226,10 @@ public class Offer {
         return (JsonNullable<List<OfferHistory>>) offerHistory;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -408,7 +417,6 @@ public class Offer {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -436,18 +444,10 @@ public class Offer {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            applicationId,
-            remoteApplicationId,
-            startDate,
-            offerStatus,
-            salary,
-            currency,
-            createdAt,
-            updatedAt,
-            offerHistory);
+            id, remoteId, unifiedCustomFields,
+            applicationId, remoteApplicationId, startDate,
+            offerStatus, salary, currency,
+            createdAt, updatedAt, offerHistory);
     }
     
     @Override
@@ -466,36 +466,38 @@ public class Offer {
                 "updatedAt", updatedAt,
                 "offerHistory", offerHistory);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> applicationId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteApplicationId = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends OfferStatus> offerStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> salary = JsonNullable.undefined();
- 
+
         private JsonNullable<String> currency = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<OfferHistory>> offerHistory = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -515,6 +517,7 @@ public class Offer {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -532,6 +535,7 @@ public class Offer {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -551,6 +555,7 @@ public class Offer {
             return this;
         }
 
+
         public Builder applicationId(String applicationId) {
             Utils.checkNotNull(applicationId, "applicationId");
             this.applicationId = JsonNullable.of(applicationId);
@@ -562,6 +567,7 @@ public class Offer {
             this.applicationId = applicationId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the application
@@ -581,6 +587,7 @@ public class Offer {
             return this;
         }
 
+
         /**
          * Date of creation
          */
@@ -599,6 +606,7 @@ public class Offer {
             return this;
         }
 
+
         public Builder offerStatus(OfferStatus offerStatus) {
             Utils.checkNotNull(offerStatus, "offerStatus");
             this.offerStatus = JsonNullable.of(offerStatus);
@@ -610,6 +618,7 @@ public class Offer {
             this.offerStatus = offerStatus;
             return this;
         }
+
 
         public Builder salary(double salary) {
             Utils.checkNotNull(salary, "salary");
@@ -623,6 +632,7 @@ public class Offer {
             return this;
         }
 
+
         public Builder currency(String currency) {
             Utils.checkNotNull(currency, "currency");
             this.currency = JsonNullable.of(currency);
@@ -634,6 +644,7 @@ public class Offer {
             this.currency = currency;
             return this;
         }
+
 
         /**
          * Date of creation
@@ -653,6 +664,7 @@ public class Offer {
             return this;
         }
 
+
         /**
          * Date of last update
          */
@@ -671,6 +683,7 @@ public class Offer {
             return this;
         }
 
+
         public Builder offerHistory(List<OfferHistory> offerHistory) {
             Utils.checkNotNull(offerHistory, "offerHistory");
             this.offerHistory = JsonNullable.of(offerHistory);
@@ -682,21 +695,15 @@ public class Offer {
             this.offerHistory = offerHistory;
             return this;
         }
-        
+
         public Offer build() {
+
             return new Offer(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                applicationId,
-                remoteApplicationId,
-                startDate,
-                offerStatus,
-                salary,
-                currency,
-                createdAt,
-                updatedAt,
-                offerHistory);
+                id, remoteId, unifiedCustomFields,
+                applicationId, remoteApplicationId, startDate,
+                offerStatus, salary, currency,
+                createdAt, updatedAt, offerHistory);
         }
+
     }
 }

@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The type of this policy
  */
 public class TimeOffPolicyType {
-
     /**
      * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends TimeOffPolicyValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class TimeOffPolicyType {
         return (JsonNullable<TimeOffPolicySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
@@ -95,7 +96,6 @@ public class TimeOffPolicyType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class TimeOffPolicyType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class TimeOffPolicyType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends TimeOffPolicyValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffPolicySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
@@ -152,6 +153,7 @@ public class TimeOffPolicyType {
             return this;
         }
 
+
         public Builder sourceValue(TimeOffPolicySourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class TimeOffPolicyType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public TimeOffPolicyType build() {
+
             return new TimeOffPolicyType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

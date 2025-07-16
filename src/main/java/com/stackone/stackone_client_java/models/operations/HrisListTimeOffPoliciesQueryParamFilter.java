@@ -18,7 +18,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>HRIS Time-Off Policies filters
  */
 public class HrisListTimeOffPoliciesQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -62,9 +61,10 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
         return (JsonNullable<Type>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -102,7 +102,6 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +119,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            type);
+            updatedAfter, type);
     }
     
     @Override
@@ -130,16 +128,18 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
                 "updatedAfter", updatedAfter,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Type> type = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -159,6 +159,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select time-off policies by type
          */
@@ -176,11 +177,12 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
             this.type = type;
             return this;
         }
-        
+
         public HrisListTimeOffPoliciesQueryParamFilter build() {
+
             return new HrisListTimeOffPoliciesQueryParamFilter(
-                updatedAfter,
-                type);
+                updatedAfter, type);
         }
+
     }
 }

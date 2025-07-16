@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
 
+public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
     /**
      * Unique identifier
      */
@@ -72,7 +72,8 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
     }
     
     public AtsCreateBackgroundCheckOrderRequestDtoPackage() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -116,9 +117,10 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
         return (JsonNullable<List<Package>>) tests;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -210,7 +212,6 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -231,11 +232,8 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            description,
-            tests);
+            id, remoteId, name,
+            description, tests);
     }
     
     @Override
@@ -247,22 +245,24 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
                 "description", description,
                 "tests", tests);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Package>> tests = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -282,6 +282,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -299,6 +300,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Package name
@@ -318,6 +320,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
             return this;
         }
 
+
         /**
          * Package description
          */
@@ -336,6 +339,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
             return this;
         }
 
+
         /**
          * Package tests
          */
@@ -353,14 +357,13 @@ public class AtsCreateBackgroundCheckOrderRequestDtoPackage {
             this.tests = tests;
             return this;
         }
-        
+
         public AtsCreateBackgroundCheckOrderRequestDtoPackage build() {
+
             return new AtsCreateBackgroundCheckOrderRequestDtoPackage(
-                id,
-                remoteId,
-                name,
-                description,
-                tests);
+                id, remoteId, name,
+                description, tests);
         }
+
     }
 }

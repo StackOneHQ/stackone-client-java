@@ -16,47 +16,58 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class PatchAccountExternalDto {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("provider")
     private JsonNullable<String> provider;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin_owner_id")
     private JsonNullable<String> originOwnerId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin_owner_name")
     private JsonNullable<String> originOwnerName;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin_username")
     private JsonNullable<String> originUsername;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private JsonNullable<? extends PatchAccountExternalDtoCredentials> credentials;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("setup_information")
     private JsonNullable<? extends PatchAccountExternalDtoSetupInformation> setupInformation;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secrets")
     private JsonNullable<? extends Secrets> secrets;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authentication_config_key")
     private JsonNullable<String> authenticationConfigKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("environment")
     private JsonNullable<String> environment;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label")
     private JsonNullable<? extends Label> label;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata")
@@ -110,7 +121,10 @@ public class PatchAccountExternalDto {
     }
     
     public PatchAccountExternalDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -182,9 +196,10 @@ public class PatchAccountExternalDto {
         return (JsonNullable<PatchAccountExternalDtoType>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PatchAccountExternalDto withProvider(String provider) {
         Utils.checkNotNull(provider, "provider");
@@ -336,7 +351,6 @@ public class PatchAccountExternalDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -364,18 +378,10 @@ public class PatchAccountExternalDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            provider,
-            originOwnerId,
-            originOwnerName,
-            originUsername,
-            credentials,
-            setupInformation,
-            secrets,
-            authenticationConfigKey,
-            environment,
-            label,
-            metadata,
-            type);
+            provider, originOwnerId, originOwnerName,
+            originUsername, credentials, setupInformation,
+            secrets, authenticationConfigKey, environment,
+            label, metadata, type);
     }
     
     @Override
@@ -394,36 +400,38 @@ public class PatchAccountExternalDto {
                 "metadata", metadata,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> originOwnerId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> originOwnerName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> originUsername = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PatchAccountExternalDtoCredentials> credentials = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PatchAccountExternalDtoSetupInformation> setupInformation = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Secrets> secrets = JsonNullable.undefined();
- 
+
         private JsonNullable<String> authenticationConfigKey = JsonNullable.undefined();
- 
+
         private JsonNullable<String> environment = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Label> label = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PatchAccountExternalDtoMetadata> metadata = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PatchAccountExternalDtoType> type;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder provider(String provider) {
             Utils.checkNotNull(provider, "provider");
@@ -437,6 +445,7 @@ public class PatchAccountExternalDto {
             return this;
         }
 
+
         public Builder originOwnerId(String originOwnerId) {
             Utils.checkNotNull(originOwnerId, "originOwnerId");
             this.originOwnerId = JsonNullable.of(originOwnerId);
@@ -448,6 +457,7 @@ public class PatchAccountExternalDto {
             this.originOwnerId = originOwnerId;
             return this;
         }
+
 
         public Builder originOwnerName(String originOwnerName) {
             Utils.checkNotNull(originOwnerName, "originOwnerName");
@@ -461,6 +471,7 @@ public class PatchAccountExternalDto {
             return this;
         }
 
+
         public Builder originUsername(String originUsername) {
             Utils.checkNotNull(originUsername, "originUsername");
             this.originUsername = JsonNullable.of(originUsername);
@@ -472,6 +483,7 @@ public class PatchAccountExternalDto {
             this.originUsername = originUsername;
             return this;
         }
+
 
         public Builder credentials(PatchAccountExternalDtoCredentials credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -485,6 +497,7 @@ public class PatchAccountExternalDto {
             return this;
         }
 
+
         public Builder setupInformation(PatchAccountExternalDtoSetupInformation setupInformation) {
             Utils.checkNotNull(setupInformation, "setupInformation");
             this.setupInformation = JsonNullable.of(setupInformation);
@@ -496,6 +509,7 @@ public class PatchAccountExternalDto {
             this.setupInformation = setupInformation;
             return this;
         }
+
 
         public Builder secrets(Secrets secrets) {
             Utils.checkNotNull(secrets, "secrets");
@@ -509,6 +523,7 @@ public class PatchAccountExternalDto {
             return this;
         }
 
+
         public Builder authenticationConfigKey(String authenticationConfigKey) {
             Utils.checkNotNull(authenticationConfigKey, "authenticationConfigKey");
             this.authenticationConfigKey = JsonNullable.of(authenticationConfigKey);
@@ -520,6 +535,7 @@ public class PatchAccountExternalDto {
             this.authenticationConfigKey = authenticationConfigKey;
             return this;
         }
+
 
         public Builder environment(String environment) {
             Utils.checkNotNull(environment, "environment");
@@ -533,6 +549,7 @@ public class PatchAccountExternalDto {
             return this;
         }
 
+
         public Builder label(Label label) {
             Utils.checkNotNull(label, "label");
             this.label = JsonNullable.of(label);
@@ -545,6 +562,7 @@ public class PatchAccountExternalDto {
             return this;
         }
 
+
         public Builder metadata(PatchAccountExternalDtoMetadata metadata) {
             Utils.checkNotNull(metadata, "metadata");
             this.metadata = JsonNullable.of(metadata);
@@ -556,6 +574,7 @@ public class PatchAccountExternalDto {
             this.metadata = metadata;
             return this;
         }
+
 
         /**
          * The account type
@@ -574,25 +593,19 @@ public class PatchAccountExternalDto {
             this.type = type;
             return this;
         }
-        
+
         public PatchAccountExternalDto build() {
             if (type == null) {
                 type = _SINGLETON_VALUE_Type.value();
             }
+
             return new PatchAccountExternalDto(
-                provider,
-                originOwnerId,
-                originOwnerName,
-                originUsername,
-                credentials,
-                setupInformation,
-                secrets,
-                authenticationConfigKey,
-                environment,
-                label,
-                metadata,
-                type);
+                provider, originOwnerId, originOwnerName,
+                originUsername, credentials, setupInformation,
+                secrets, authenticationConfigKey, environment,
+                label, metadata, type);
         }
+
 
         private static final LazySingletonValue<JsonNullable<? extends PatchAccountExternalDtoType>> _SINGLETON_VALUE_Type =
                 new LazySingletonValue<>(

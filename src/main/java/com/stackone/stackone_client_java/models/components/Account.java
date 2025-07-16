@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Account {
 
+public class Account {
     /**
      * Unique identifier
      */
@@ -41,6 +41,7 @@ public class Account {
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("owner_id")
     private JsonNullable<String> ownerId;
@@ -52,9 +53,11 @@ public class Account {
     @JsonProperty("remote_owner_id")
     private JsonNullable<String> remoteOwnerId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
@@ -67,13 +70,16 @@ public class Account {
     @JsonProperty("industries")
     private JsonNullable<? extends List<String>> industries;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("annual_revenue")
     private JsonNullable<String> annualRevenue;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("website")
     private JsonNullable<String> website;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("addresses")
@@ -147,7 +153,11 @@ public class Account {
     }
     
     public Account() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -248,9 +258,10 @@ public class Account {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -468,7 +479,6 @@ public class Account {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -498,20 +508,11 @@ public class Account {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            ownerId,
-            remoteOwnerId,
-            name,
-            description,
-            industries,
-            annualRevenue,
-            website,
-            addresses,
-            phoneNumbers,
-            createdAt,
-            updatedAt);
+            id, remoteId, unifiedCustomFields,
+            ownerId, remoteOwnerId, name,
+            description, industries, annualRevenue,
+            website, addresses, phoneNumbers,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -532,40 +533,42 @@ public class Account {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> ownerId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteOwnerId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> industries = JsonNullable.undefined();
- 
+
         private JsonNullable<String> annualRevenue = JsonNullable.undefined();
- 
+
         private JsonNullable<String> website = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<AccountAddress>> addresses = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> phoneNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -585,6 +588,7 @@ public class Account {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -602,6 +606,7 @@ public class Account {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -621,6 +626,7 @@ public class Account {
             return this;
         }
 
+
         public Builder ownerId(String ownerId) {
             Utils.checkNotNull(ownerId, "ownerId");
             this.ownerId = JsonNullable.of(ownerId);
@@ -632,6 +638,7 @@ public class Account {
             this.ownerId = ownerId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the owner
@@ -651,6 +658,7 @@ public class Account {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -663,6 +671,7 @@ public class Account {
             return this;
         }
 
+
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
             this.description = JsonNullable.of(description);
@@ -674,6 +683,7 @@ public class Account {
             this.description = description;
             return this;
         }
+
 
         /**
          * Values of the industries
@@ -693,6 +703,7 @@ public class Account {
             return this;
         }
 
+
         public Builder annualRevenue(String annualRevenue) {
             Utils.checkNotNull(annualRevenue, "annualRevenue");
             this.annualRevenue = JsonNullable.of(annualRevenue);
@@ -704,6 +715,7 @@ public class Account {
             this.annualRevenue = annualRevenue;
             return this;
         }
+
 
         public Builder website(String website) {
             Utils.checkNotNull(website, "website");
@@ -717,6 +729,7 @@ public class Account {
             return this;
         }
 
+
         public Builder addresses(List<AccountAddress> addresses) {
             Utils.checkNotNull(addresses, "addresses");
             this.addresses = JsonNullable.of(addresses);
@@ -728,6 +741,7 @@ public class Account {
             this.addresses = addresses;
             return this;
         }
+
 
         /**
          * List of account phone numbers
@@ -747,6 +761,7 @@ public class Account {
             return this;
         }
 
+
         /**
          * Timestamp when the account was created
          */
@@ -765,6 +780,7 @@ public class Account {
             return this;
         }
 
+
         /**
          * Timestamp when the account was last updated
          */
@@ -782,23 +798,16 @@ public class Account {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Account build() {
+
             return new Account(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                ownerId,
-                remoteOwnerId,
-                name,
-                description,
-                industries,
-                annualRevenue,
-                website,
-                addresses,
-                phoneNumbers,
-                createdAt,
-                updatedAt);
+                id, remoteId, unifiedCustomFields,
+                ownerId, remoteOwnerId, name,
+                description, industries, annualRevenue,
+                website, addresses, phoneNumbers,
+                createdAt, updatedAt);
         }
+
     }
 }

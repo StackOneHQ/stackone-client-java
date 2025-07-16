@@ -11,8 +11,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class StackoneListConnectorsMetaRequest {
 
+public class StackoneListConnectorsMetaRequest {
     /**
      * The comma separated list of data that will be included in the response
      */
@@ -38,9 +38,10 @@ public class StackoneListConnectorsMetaRequest {
         return include;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The comma separated list of data that will be included in the response
@@ -60,7 +61,6 @@ public class StackoneListConnectorsMetaRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,14 +85,16 @@ public class StackoneListConnectorsMetaRequest {
         return Utils.toString(StackoneListConnectorsMetaRequest.class,
                 "include", include);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> include = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The comma separated list of data that will be included in the response
@@ -111,10 +113,12 @@ public class StackoneListConnectorsMetaRequest {
             this.include = include;
             return this;
         }
-        
+
         public StackoneListConnectorsMetaRequest build() {
+
             return new StackoneListConnectorsMetaRequest(
                 include);
         }
+
     }
 }

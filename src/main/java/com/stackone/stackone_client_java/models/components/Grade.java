@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Represents the employee’s position within the organizational hierarchy.
  */
 public class Grade {
-
     /**
      * The reference id
      */
@@ -65,7 +64,8 @@ public class Grade {
     }
     
     public Grade() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -100,9 +100,10 @@ public class Grade {
         return description;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The reference id
@@ -176,7 +177,6 @@ public class Grade {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -196,9 +196,7 @@ public class Grade {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
+            id, remoteId, name,
             description);
     }
     
@@ -210,20 +208,22 @@ public class Grade {
                 "name", name,
                 "description", description);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The reference id
@@ -243,6 +243,7 @@ public class Grade {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -260,6 +261,7 @@ public class Grade {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The reference name
@@ -279,6 +281,7 @@ public class Grade {
             return this;
         }
 
+
         /**
          * description of the grade
          */
@@ -296,13 +299,13 @@ public class Grade {
             this.description = description;
             return this;
         }
-        
+
         public Grade build() {
+
             return new Grade(
-                id,
-                remoteId,
-                name,
+                id, remoteId, name,
                 description);
         }
+
     }
 }

@@ -58,9 +58,7 @@ public class HrisListJobsRequestBuilder {
             .build());
 
         RequestOperation<HrisListJobsRequest, HrisListJobsResponse> operation
-              = new HrisListJobsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListJobsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class HrisListJobsRequestBuilder {
             .build());
 
         RequestOperation<HrisListJobsRequest, HrisListJobsResponse> operation
-              = new HrisListJobsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListJobsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

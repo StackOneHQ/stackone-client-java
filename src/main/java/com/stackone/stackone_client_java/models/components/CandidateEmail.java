@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CandidateEmail {
 
+public class CandidateEmail {
     /**
      * Type of the email
      */
@@ -59,9 +59,10 @@ public class CandidateEmail {
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Type of the email
@@ -99,7 +100,6 @@ public class CandidateEmail {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -117,8 +117,7 @@ public class CandidateEmail {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            type,
-            value);
+            type, value);
     }
     
     @Override
@@ -127,16 +126,18 @@ public class CandidateEmail {
                 "type", type,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> value = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Type of the email
@@ -156,6 +157,7 @@ public class CandidateEmail {
             return this;
         }
 
+
         /**
          * Email value
          */
@@ -173,11 +175,12 @@ public class CandidateEmail {
             this.value = value;
             return this;
         }
-        
+
         public CandidateEmail build() {
+
             return new CandidateEmail(
-                type,
-                value);
+                type, value);
         }
+
     }
 }

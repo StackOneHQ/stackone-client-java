@@ -58,9 +58,7 @@ public class MarketingListInAppTemplatesRequestBuilder {
             .build());
 
         RequestOperation<MarketingListInAppTemplatesRequest, MarketingListInAppTemplatesResponse> operation
-              = new MarketingListInAppTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListInAppTemplatesOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class MarketingListInAppTemplatesRequestBuilder {
             .build());
 
         RequestOperation<MarketingListInAppTemplatesRequest, MarketingListInAppTemplatesResponse> operation
-              = new MarketingListInAppTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListInAppTemplatesOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

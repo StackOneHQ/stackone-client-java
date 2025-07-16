@@ -11,6 +11,7 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
+
 public class HrisCreateEmployeeWorkEligibilityRequestRequest {
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
@@ -21,6 +22,7 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
@@ -56,9 +58,10 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
         return hrisCreateWorkEligibilityRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisCreateEmployeeWorkEligibilityRequestRequest withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -81,7 +84,6 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            xAccountId,
-            hrisCreateWorkEligibilityRequestDto);
+            id, xAccountId, hrisCreateWorkEligibilityRequestDto);
     }
     
     @Override
@@ -112,24 +112,27 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
                 "xAccountId", xAccountId,
                 "hrisCreateWorkEligibilityRequestDto", hrisCreateWorkEligibilityRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
- 
+
         private String xAccountId;
- 
+
         private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
+
 
         /**
          * The account identifier
@@ -140,17 +143,18 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
             return this;
         }
 
+
         public Builder hrisCreateWorkEligibilityRequestDto(HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
             Utils.checkNotNull(hrisCreateWorkEligibilityRequestDto, "hrisCreateWorkEligibilityRequestDto");
             this.hrisCreateWorkEligibilityRequestDto = hrisCreateWorkEligibilityRequestDto;
             return this;
         }
-        
+
         public HrisCreateEmployeeWorkEligibilityRequestRequest build() {
+
             return new HrisCreateEmployeeWorkEligibilityRequestRequest(
-                id,
-                xAccountId,
-                hrisCreateWorkEligibilityRequestDto);
+                id, xAccountId, hrisCreateWorkEligibilityRequestDto);
         }
+
     }
 }

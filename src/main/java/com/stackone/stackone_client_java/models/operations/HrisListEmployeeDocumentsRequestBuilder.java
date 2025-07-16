@@ -58,9 +58,7 @@ public class HrisListEmployeeDocumentsRequestBuilder {
             .build());
 
         RequestOperation<HrisListEmployeeDocumentsRequest, HrisListEmployeeDocumentsResponse> operation
-              = new HrisListEmployeeDocumentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeDocumentsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class HrisListEmployeeDocumentsRequestBuilder {
             .build());
 
         RequestOperation<HrisListEmployeeDocumentsRequest, HrisListEmployeeDocumentsResponse> operation
-              = new HrisListEmployeeDocumentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeDocumentsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

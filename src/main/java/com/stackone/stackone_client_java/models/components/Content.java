@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Content {
 
+public class Content {
     /**
      * Unique identifier
      */
@@ -270,7 +270,14 @@ public class Content {
     }
     
     public Content() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -478,9 +485,10 @@ public class Content {
         return createdAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -920,7 +928,6 @@ public class Content {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -960,30 +967,14 @@ public class Content {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            externalReference,
-            courseIds,
-            remoteCourseIds,
-            title,
-            description,
-            languages,
-            contentUrl,
-            mobileLaunchContentUrl,
-            contentType,
-            coverUrl,
-            active,
-            duration,
-            categories,
-            skills,
-            order,
-            provider,
-            shortDescription,
-            localizations,
-            tags,
-            updatedAt,
-            createdAt);
+            id, remoteId, unifiedCustomFields,
+            externalReference, courseIds, remoteCourseIds,
+            title, description, languages,
+            contentUrl, mobileLaunchContentUrl, contentType,
+            coverUrl, active, duration,
+            categories, skills, order,
+            provider, shortDescription, localizations,
+            tags, updatedAt, createdAt);
     }
     
     @Override
@@ -1014,61 +1005,63 @@ public class Content {
                 "updatedAt", updatedAt,
                 "createdAt", createdAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> courseIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteCourseIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<LanguageEnum>> languages = JsonNullable.undefined();
- 
+
         private JsonNullable<String> contentUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<String> mobileLaunchContentUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ContentType> contentType = JsonNullable.undefined();
- 
+
         private JsonNullable<String> coverUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Active> active = JsonNullable.undefined();
- 
+
         private JsonNullable<String> duration = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Category>> categories = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Skills>> skills = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> order = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> shortDescription = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<LocalizationModel>> localizations = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -1088,6 +1081,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -1105,6 +1099,7 @@ public class Content {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -1124,6 +1119,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The external ID associated with this content
          */
@@ -1141,6 +1137,7 @@ public class Content {
             this.externalReference = externalReference;
             return this;
         }
+
 
         /**
          * The parent ID/IDs associated with this content
@@ -1160,6 +1157,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the parent course ID associated with this content
          */
@@ -1177,6 +1175,7 @@ public class Content {
             this.remoteCourseIds = remoteCourseIds;
             return this;
         }
+
 
         /**
          * The title of the content
@@ -1196,6 +1195,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The description of the content
          */
@@ -1213,6 +1213,7 @@ public class Content {
             this.description = description;
             return this;
         }
+
 
         /**
          * The languages associated with this content
@@ -1232,6 +1233,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The external URL of the content
          */
@@ -1249,6 +1251,7 @@ public class Content {
             this.contentUrl = contentUrl;
             return this;
         }
+
 
         /**
          * The mobile friendly URL of the content
@@ -1268,6 +1271,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The type of content
          */
@@ -1285,6 +1289,7 @@ public class Content {
             this.contentType = contentType;
             return this;
         }
+
 
         /**
          * The URL of the thumbnail image associated with the content.
@@ -1304,6 +1309,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * Whether the content is active and available for users.
          */
@@ -1321,6 +1327,7 @@ public class Content {
             this.active = active;
             return this;
         }
+
 
         /**
          * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
@@ -1340,6 +1347,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The categories associated with this content
          */
@@ -1357,6 +1365,7 @@ public class Content {
             this.categories = categories;
             return this;
         }
+
 
         /**
          * The skills associated with this course
@@ -1376,6 +1385,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
          */
@@ -1394,6 +1404,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The name of the content provider
          */
@@ -1411,6 +1422,7 @@ public class Content {
             this.provider = provider;
             return this;
         }
+
 
         /**
          * A short description or summary for the content
@@ -1436,6 +1448,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * Localised content information
          */
@@ -1453,6 +1466,7 @@ public class Content {
             this.localizations = localizations;
             return this;
         }
+
 
         /**
          * A list of tags associated with the content
@@ -1472,6 +1486,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The date on which the content was last updated.
          */
@@ -1490,6 +1505,7 @@ public class Content {
             return this;
         }
 
+
         /**
          * The date on which the content was created.
          */
@@ -1507,33 +1523,19 @@ public class Content {
             this.createdAt = createdAt;
             return this;
         }
-        
+
         public Content build() {
+
             return new Content(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                externalReference,
-                courseIds,
-                remoteCourseIds,
-                title,
-                description,
-                languages,
-                contentUrl,
-                mobileLaunchContentUrl,
-                contentType,
-                coverUrl,
-                active,
-                duration,
-                categories,
-                skills,
-                order,
-                provider,
-                shortDescription,
-                localizations,
-                tags,
-                updatedAt,
-                createdAt);
+                id, remoteId, unifiedCustomFields,
+                externalReference, courseIds, remoteCourseIds,
+                title, description, languages,
+                contentUrl, mobileLaunchContentUrl, contentType,
+                coverUrl, active, duration,
+                categories, skills, order,
+                provider, shortDescription, localizations,
+                tags, updatedAt, createdAt);
         }
+
     }
 }

@@ -58,9 +58,7 @@ public class HrisListCostCenterGroupsRequestBuilder {
             .build());
 
         RequestOperation<HrisListCostCenterGroupsRequest, HrisListCostCenterGroupsResponse> operation
-              = new HrisListCostCenterGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListCostCenterGroupsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class HrisListCostCenterGroupsRequestBuilder {
             .build());
 
         RequestOperation<HrisListCostCenterGroupsRequest, HrisListCostCenterGroupsResponse> operation
-              = new HrisListCostCenterGroupsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListCostCenterGroupsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

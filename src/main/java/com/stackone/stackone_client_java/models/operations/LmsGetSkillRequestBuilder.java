@@ -47,9 +47,7 @@ public class LmsGetSkillRequestBuilder {
             .build());
 
         RequestOperation<LmsGetSkillRequest, LmsGetSkillResponse> operation
-              = new LmsGetSkillOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetSkillOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

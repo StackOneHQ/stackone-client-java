@@ -15,16 +15,18 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisGetEmployeeTimeOffBalanceRequest {
 
+public class HrisGetEmployeeTimeOffBalanceRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
@@ -82,7 +84,9 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             String xAccountId,
             String id,
             String subResourceId) {
-        this(xAccountId, id, subResourceId, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, id, subResourceId,
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -136,9 +140,10 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
         return expand;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -233,7 +238,6 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -256,12 +260,8 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            subResourceId,
-            raw,
-            proxy,
-            fields,
+            xAccountId, id, subResourceId,
+            raw, proxy, fields,
             expand);
     }
     
@@ -276,26 +276,28 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
                 "fields", fields,
                 "expand", expand);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private String subResourceId;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> expand = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -306,17 +308,20 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder subResourceId(String subResourceId) {
             Utils.checkNotNull(subResourceId, "subResourceId");
             this.subResourceId = subResourceId;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -336,6 +341,7 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -353,6 +359,7 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -372,6 +379,7 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             return this;
         }
 
+
         /**
          * The comma separated list of fields that will be expanded in the response
          */
@@ -389,16 +397,14 @@ public class HrisGetEmployeeTimeOffBalanceRequest {
             this.expand = expand;
             return this;
         }
-        
+
         public HrisGetEmployeeTimeOffBalanceRequest build() {
+
             return new HrisGetEmployeeTimeOffBalanceRequest(
-                xAccountId,
-                id,
-                subResourceId,
-                raw,
-                proxy,
-                fields,
+                xAccountId, id, subResourceId,
+                raw, proxy, fields,
                 expand);
         }
+
     }
 }

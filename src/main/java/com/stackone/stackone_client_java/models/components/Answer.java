@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Answer {
 
+public class Answer {
     /**
      * Unique identifier
      */
@@ -62,7 +62,8 @@ public class Answer {
     }
     
     public Answer() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -99,9 +100,10 @@ public class Answer {
         return (JsonNullable<List<String>>) values;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -175,7 +177,6 @@ public class Answer {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,9 +196,7 @@ public class Answer {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            type,
+            id, remoteId, type,
             values);
     }
     
@@ -209,20 +208,22 @@ public class Answer {
                 "type", type,
                 "values", values);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AnswerType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> values = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -242,6 +243,7 @@ public class Answer {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -259,6 +261,7 @@ public class Answer {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Type of the answer
@@ -278,6 +281,7 @@ public class Answer {
             return this;
         }
 
+
         /**
          * Values of the answer
          */
@@ -295,13 +299,13 @@ public class Answer {
             this.values = values;
             return this;
         }
-        
+
         public Answer build() {
+
             return new Answer(
-                id,
-                remoteId,
-                type,
+                id, remoteId, type,
                 values);
         }
+
     }
 }

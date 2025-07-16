@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Interview {
 
+public class Interview {
     /**
      * Unique identifier
      */
@@ -41,6 +41,7 @@ public class Interview {
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application_id")
     private JsonNullable<String> applicationId;
@@ -51,6 +52,7 @@ public class Interview {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_application_id")
     private JsonNullable<String> remoteApplicationId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interview_stage_id")
@@ -63,13 +65,16 @@ public class Interview {
     @JsonProperty("remote_interview_stage_id")
     private JsonNullable<String> remoteInterviewStageId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interview_stage")
     private JsonNullable<? extends InterviewInterviewStage> interviewStage;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interview_status")
     private JsonNullable<? extends InterviewInterviewStatus> interviewStatus;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interviewer_ids")
@@ -82,9 +87,11 @@ public class Interview {
     @JsonProperty("remote_interviewer_ids")
     private JsonNullable<? extends List<String>> remoteInterviewerIds;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interview_parts")
     private JsonNullable<? extends List<InterviewPart>> interviewParts;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interviewers")
@@ -103,6 +110,7 @@ public class Interview {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_at")
     private JsonNullable<OffsetDateTime> endAt;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("meeting_url")
@@ -181,7 +189,12 @@ public class Interview {
     }
     
     public Interview() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -311,9 +324,10 @@ public class Interview {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -591,7 +605,6 @@ public class Interview {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -625,24 +638,12 @@ public class Interview {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            applicationId,
-            remoteApplicationId,
-            interviewStageId,
-            remoteInterviewStageId,
-            interviewStage,
-            interviewStatus,
-            interviewerIds,
-            remoteInterviewerIds,
-            interviewParts,
-            interviewers,
-            startAt,
-            endAt,
-            meetingUrl,
-            createdAt,
-            updatedAt);
+            id, remoteId, unifiedCustomFields,
+            applicationId, remoteApplicationId, interviewStageId,
+            remoteInterviewStageId, interviewStage, interviewStatus,
+            interviewerIds, remoteInterviewerIds, interviewParts,
+            interviewers, startAt, endAt,
+            meetingUrl, createdAt, updatedAt);
     }
     
     @Override
@@ -667,48 +668,50 @@ public class Interview {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> applicationId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteApplicationId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> interviewStageId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteInterviewStageId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends InterviewInterviewStage> interviewStage = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends InterviewInterviewStatus> interviewStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> interviewerIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteInterviewerIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<InterviewPart>> interviewParts = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Interviewer>> interviewers = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> meetingUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -728,6 +731,7 @@ public class Interview {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -745,6 +749,7 @@ public class Interview {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -764,6 +769,7 @@ public class Interview {
             return this;
         }
 
+
         public Builder applicationId(String applicationId) {
             Utils.checkNotNull(applicationId, "applicationId");
             this.applicationId = JsonNullable.of(applicationId);
@@ -775,6 +781,7 @@ public class Interview {
             this.applicationId = applicationId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the application
@@ -794,6 +801,7 @@ public class Interview {
             return this;
         }
 
+
         public Builder interviewStageId(String interviewStageId) {
             Utils.checkNotNull(interviewStageId, "interviewStageId");
             this.interviewStageId = JsonNullable.of(interviewStageId);
@@ -805,6 +813,7 @@ public class Interview {
             this.interviewStageId = interviewStageId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the interview stage
@@ -824,6 +833,7 @@ public class Interview {
             return this;
         }
 
+
         public Builder interviewStage(InterviewInterviewStage interviewStage) {
             Utils.checkNotNull(interviewStage, "interviewStage");
             this.interviewStage = JsonNullable.of(interviewStage);
@@ -835,6 +845,7 @@ public class Interview {
             this.interviewStage = interviewStage;
             return this;
         }
+
 
         public Builder interviewStatus(InterviewInterviewStatus interviewStatus) {
             Utils.checkNotNull(interviewStatus, "interviewStatus");
@@ -848,6 +859,7 @@ public class Interview {
             return this;
         }
 
+
         public Builder interviewerIds(List<String> interviewerIds) {
             Utils.checkNotNull(interviewerIds, "interviewerIds");
             this.interviewerIds = JsonNullable.of(interviewerIds);
@@ -859,6 +871,7 @@ public class Interview {
             this.interviewerIds = interviewerIds;
             return this;
         }
+
 
         /**
          * Provider's unique identifiers of the interviewers
@@ -878,6 +891,7 @@ public class Interview {
             return this;
         }
 
+
         public Builder interviewParts(List<InterviewPart> interviewParts) {
             Utils.checkNotNull(interviewParts, "interviewParts");
             this.interviewParts = JsonNullable.of(interviewParts);
@@ -890,6 +904,7 @@ public class Interview {
             return this;
         }
 
+
         public Builder interviewers(List<Interviewer> interviewers) {
             Utils.checkNotNull(interviewers, "interviewers");
             this.interviewers = JsonNullable.of(interviewers);
@@ -901,6 +916,7 @@ public class Interview {
             this.interviewers = interviewers;
             return this;
         }
+
 
         /**
          * Interview start date
@@ -920,6 +936,7 @@ public class Interview {
             return this;
         }
 
+
         /**
          * Interview end date
          */
@@ -938,6 +955,7 @@ public class Interview {
             return this;
         }
 
+
         public Builder meetingUrl(String meetingUrl) {
             Utils.checkNotNull(meetingUrl, "meetingUrl");
             this.meetingUrl = JsonNullable.of(meetingUrl);
@@ -949,6 +967,7 @@ public class Interview {
             this.meetingUrl = meetingUrl;
             return this;
         }
+
 
         /**
          * Interview created date
@@ -968,6 +987,7 @@ public class Interview {
             return this;
         }
 
+
         /**
          * Interview updated date
          */
@@ -985,27 +1005,17 @@ public class Interview {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Interview build() {
+
             return new Interview(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                applicationId,
-                remoteApplicationId,
-                interviewStageId,
-                remoteInterviewStageId,
-                interviewStage,
-                interviewStatus,
-                interviewerIds,
-                remoteInterviewerIds,
-                interviewParts,
-                interviewers,
-                startAt,
-                endAt,
-                meetingUrl,
-                createdAt,
-                updatedAt);
+                id, remoteId, unifiedCustomFields,
+                applicationId, remoteApplicationId, interviewStageId,
+                remoteInterviewStageId, interviewStage, interviewStatus,
+                interviewerIds, remoteInterviewerIds, interviewParts,
+                interviewers, startAt, endAt,
+                meetingUrl, createdAt, updatedAt);
         }
+
     }
 }

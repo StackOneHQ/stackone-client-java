@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateAssessmentOrderResult {
 
+public class CreateAssessmentOrderResult {
     /**
      * Unique identifier
      */
@@ -77,9 +77,10 @@ public class CreateAssessmentOrderResult {
         return testUrl;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -135,7 +136,6 @@ public class CreateAssessmentOrderResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +154,7 @@ public class CreateAssessmentOrderResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            testUrl);
+            id, remoteId, testUrl);
     }
     
     @Override
@@ -166,18 +164,20 @@ public class CreateAssessmentOrderResult {
                 "remoteId", remoteId,
                 "testUrl", testUrl);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> testUrl = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -197,6 +197,7 @@ public class CreateAssessmentOrderResult {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -215,6 +216,7 @@ public class CreateAssessmentOrderResult {
             return this;
         }
 
+
         /**
          * Test url
          */
@@ -232,12 +234,12 @@ public class CreateAssessmentOrderResult {
             this.testUrl = testUrl;
             return this;
         }
-        
+
         public CreateAssessmentOrderResult build() {
+
             return new CreateAssessmentOrderResult(
-                id,
-                remoteId,
-                testUrl);
+                id, remoteId, testUrl);
         }
+
     }
 }

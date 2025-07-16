@@ -53,6 +53,9 @@ import com.stackone.stackone_client_java.models.operations.AtsDownloadApplicatio
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationCustomFieldDefinitionRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationCustomFieldDefinitionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationCustomFieldDefinitionResponse;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentCategoryRequest;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentCategoryRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentCategoryResponse;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentResponse;
@@ -131,6 +134,9 @@ import com.stackone.stackone_client_java.models.operations.AtsListApplicationCha
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationCustomFieldDefinitionsRequest;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationCustomFieldDefinitionsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationCustomFieldDefinitionsResponse;
+import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentCategoriesRequest;
+import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentCategoriesRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentCategoriesResponse;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentsRequest;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationDocumentsResponse;
@@ -243,6 +249,7 @@ import com.stackone.stackone_client_java.operations.AtsCreateOfferOperation;
 import com.stackone.stackone_client_java.operations.AtsDeleteBackgroundCheckPackageOperation;
 import com.stackone.stackone_client_java.operations.AtsDownloadApplicationDocumentOperation;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationCustomFieldDefinitionOperation;
+import com.stackone.stackone_client_java.operations.AtsGetApplicationDocumentCategoryOperation;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationDocumentOperation;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationNoteOperation;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationOfferOperation;
@@ -269,6 +276,7 @@ import com.stackone.stackone_client_java.operations.AtsGetRejectedReasonOperatio
 import com.stackone.stackone_client_java.operations.AtsGetUserOperation;
 import com.stackone.stackone_client_java.operations.AtsListApplicationChangesOperation;
 import com.stackone.stackone_client_java.operations.AtsListApplicationCustomFieldDefinitionsOperation;
+import com.stackone.stackone_client_java.operations.AtsListApplicationDocumentCategoriesOperation;
 import com.stackone.stackone_client_java.operations.AtsListApplicationDocumentsOperation;
 import com.stackone.stackone_client_java.operations.AtsListApplicationNotesOperation;
 import com.stackone.stackone_client_java.operations.AtsListApplicationScorecardsOperation;
@@ -306,7 +314,6 @@ import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -345,16 +352,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListApplicationsResponse listApplications(
-            AtsListApplicationsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListApplicationsResponse listApplications(AtsListApplicationsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationsRequest, AtsListApplicationsResponse> operation
-              = new AtsListApplicationsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Application
@@ -373,9 +375,7 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsCreateApplicationResponse createApplication(
-            String xAccountId,
-            AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) throws Exception {
+    public AtsCreateApplicationResponse createApplication(String xAccountId, AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) throws Exception {
         return createApplication(xAccountId, atsCreateApplicationRequestDto, Optional.empty());
     }
 
@@ -389,8 +389,7 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateApplicationResponse createApplication(
-            String xAccountId,
-            AtsCreateApplicationRequestDto atsCreateApplicationRequestDto,
+            String xAccountId, AtsCreateApplicationRequestDto atsCreateApplicationRequestDto,
             Optional<Options> options) throws Exception {
         AtsCreateApplicationRequest request =
             AtsCreateApplicationRequest
@@ -399,12 +398,9 @@ public class Ats {
                 .atsCreateApplicationRequestDto(atsCreateApplicationRequestDto)
                 .build();
         RequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
-              = new AtsCreateApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateApplicationOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Application
@@ -434,16 +430,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetApplicationResponse getApplication(
-            AtsGetApplicationRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetApplicationResponse getApplication(AtsGetApplicationRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationRequest, AtsGetApplicationResponse> operation
-              = new AtsGetApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update an Application
@@ -464,10 +455,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateApplicationResponse updateApplication(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto) throws Exception {
-        return updateApplication(xAccountId, id, atsUpdateApplicationRequestDto, Optional.empty());
+        return updateApplication(xAccountId, id, atsUpdateApplicationRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -481,10 +472,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateApplicationResponse updateApplication(
-            String xAccountId,
-            String id,
-            AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto, Optional<Options> options) throws Exception {
         AtsUpdateApplicationRequest request =
             AtsUpdateApplicationRequest
                 .builder()
@@ -493,12 +482,9 @@ public class Ats {
                 .atsUpdateApplicationRequestDto(atsUpdateApplicationRequestDto)
                 .build();
         RequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
-              = new AtsUpdateApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateApplicationOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Application Offers
@@ -528,16 +514,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListApplicationsOffersResponse listApplicationsOffers(
-            AtsListApplicationsOffersRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListApplicationsOffersResponse listApplicationsOffers(AtsListApplicationsOffersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationsOffersRequest, AtsListApplicationsOffersResponse> operation
-              = new AtsListApplicationsOffersOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationsOffersOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Move Application
@@ -558,10 +539,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsMoveApplicationResponse moveApplication(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsMoveApplicationRequestDto atsMoveApplicationRequestDto) throws Exception {
-        return moveApplication(xAccountId, id, atsMoveApplicationRequestDto, Optional.empty());
+        return moveApplication(xAccountId, id, atsMoveApplicationRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -575,10 +556,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsMoveApplicationResponse moveApplication(
-            String xAccountId,
-            String id,
-            AtsMoveApplicationRequestDto atsMoveApplicationRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsMoveApplicationRequestDto atsMoveApplicationRequestDto, Optional<Options> options) throws Exception {
         AtsMoveApplicationRequest request =
             AtsMoveApplicationRequest
                 .builder()
@@ -587,12 +566,9 @@ public class Ats {
                 .atsMoveApplicationRequestDto(atsMoveApplicationRequestDto)
                 .build();
         RequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
-              = new AtsMoveApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsMoveApplicationOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Reject Application
@@ -613,10 +589,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsRejectApplicationResponse rejectApplication(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsRejectApplicationRequestDto atsRejectApplicationRequestDto) throws Exception {
-        return rejectApplication(xAccountId, id, atsRejectApplicationRequestDto, Optional.empty());
+        return rejectApplication(xAccountId, id, atsRejectApplicationRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -630,10 +606,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsRejectApplicationResponse rejectApplication(
-            String xAccountId,
-            String id,
-            AtsRejectApplicationRequestDto atsRejectApplicationRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsRejectApplicationRequestDto atsRejectApplicationRequestDto, Optional<Options> options) throws Exception {
         AtsRejectApplicationRequest request =
             AtsRejectApplicationRequest
                 .builder()
@@ -642,12 +616,9 @@ public class Ats {
                 .atsRejectApplicationRequestDto(atsRejectApplicationRequestDto)
                 .build();
         RequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
-              = new AtsRejectApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsRejectApplicationOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Application Offer
@@ -677,16 +648,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetApplicationOfferResponse getApplicationOffer(
-            AtsGetApplicationOfferRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetApplicationOfferResponse getApplicationOffer(AtsGetApplicationOfferRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationOfferRequest, AtsGetApplicationOfferResponse> operation
-              = new AtsGetApplicationOfferOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationOfferOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Application Scorecards
@@ -716,16 +682,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListApplicationScorecardsResponse listApplicationScorecards(
-            AtsListApplicationScorecardsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListApplicationScorecardsResponse listApplicationScorecards(AtsListApplicationScorecardsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationScorecardsRequest, AtsListApplicationScorecardsResponse> operation
-              = new AtsListApplicationScorecardsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationScorecardsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Application Scorecard
@@ -755,16 +716,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetApplicationScorecardResponse getApplicationScorecard(
-            AtsGetApplicationScorecardRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetApplicationScorecardResponse getApplicationScorecard(AtsGetApplicationScorecardRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationScorecardRequest, AtsGetApplicationScorecardResponse> operation
-              = new AtsGetApplicationScorecardOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationScorecardOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Application Changes
@@ -794,16 +750,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListApplicationChangesResponse listApplicationChanges(
-            AtsListApplicationChangesRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListApplicationChangesResponse listApplicationChanges(AtsListApplicationChangesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationChangesRequest, AtsListApplicationChangesResponse> operation
-              = new AtsListApplicationChangesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationChangesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Application Notes
@@ -833,16 +784,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListApplicationNotesResponse listApplicationNotes(
-            AtsListApplicationNotesRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListApplicationNotesResponse listApplicationNotes(AtsListApplicationNotesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationNotesRequest, AtsListApplicationNotesResponse> operation
-              = new AtsListApplicationNotesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationNotesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Application Note
@@ -863,10 +809,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateApplicationNoteResponse createApplicationNote(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) throws Exception {
-        return createApplicationNote(xAccountId, id, atsCreateNotesRequestDto, Optional.empty());
+        return createApplicationNote(xAccountId, id, atsCreateNotesRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -880,10 +826,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateApplicationNoteResponse createApplicationNote(
-            String xAccountId,
-            String id,
-            AtsCreateNotesRequestDto atsCreateNotesRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) throws Exception {
         AtsCreateApplicationNoteRequest request =
             AtsCreateApplicationNoteRequest
                 .builder()
@@ -892,12 +836,9 @@ public class Ats {
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         RequestOperation<AtsCreateApplicationNoteRequest, AtsCreateApplicationNoteResponse> operation
-              = new AtsCreateApplicationNoteOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateApplicationNoteOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Application Note
@@ -927,16 +868,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetApplicationNoteResponse getApplicationNote(
-            AtsGetApplicationNoteRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetApplicationNoteResponse getApplicationNote(AtsGetApplicationNoteRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationNoteRequest, AtsGetApplicationNoteResponse> operation
-              = new AtsGetApplicationNoteOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationNoteOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update an Application Note
@@ -958,11 +894,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateApplicationNoteResponse updateApplicationNote(
-            String xAccountId,
-            String id,
-            String subResourceId,
-            AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) throws Exception {
-        return updateApplicationNote(xAccountId, id, subResourceId, atsUpdateNotesRequestDto, Optional.empty());
+            String xAccountId, String id,
+            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) throws Exception {
+        return updateApplicationNote(xAccountId, id, subResourceId,
+            atsUpdateNotesRequestDto, Optional.empty());
     }
 
     /**
@@ -977,10 +912,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateApplicationNoteResponse updateApplicationNote(
-            String xAccountId,
-            String id,
-            String subResourceId,
-            AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
+            String xAccountId, String id,
+            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
             Optional<Options> options) throws Exception {
         AtsUpdateApplicationNoteRequest request =
             AtsUpdateApplicationNoteRequest
@@ -991,12 +924,9 @@ public class Ats {
                 .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
                 .build();
         RequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
-              = new AtsUpdateApplicationNoteOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateApplicationNoteOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Applications scheduled interviews
@@ -1026,16 +956,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListApplicationsScheduledInterviewsResponse listApplicationsScheduledInterviews(
-            AtsListApplicationsScheduledInterviewsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListApplicationsScheduledInterviewsResponse listApplicationsScheduledInterviews(AtsListApplicationsScheduledInterviewsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationsScheduledInterviewsRequest, AtsListApplicationsScheduledInterviewsResponse> operation
-              = new AtsListApplicationsScheduledInterviewsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationsScheduledInterviewsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Applications scheduled interview
@@ -1065,16 +990,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetApplicationScheduledInterviewResponse getApplicationScheduledInterview(
-            AtsGetApplicationScheduledInterviewRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetApplicationScheduledInterviewResponse getApplicationScheduledInterview(AtsGetApplicationScheduledInterviewRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationScheduledInterviewRequest, AtsGetApplicationScheduledInterviewResponse> operation
-              = new AtsGetApplicationScheduledInterviewOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationScheduledInterviewOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Upload Application Document
@@ -1095,10 +1015,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUploadApplicationDocumentResponse uploadApplicationDocument(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             UnifiedUploadRequestDto unifiedUploadRequestDto) throws Exception {
-        return uploadApplicationDocument(xAccountId, id, unifiedUploadRequestDto, Optional.empty());
+        return uploadApplicationDocument(xAccountId, id, unifiedUploadRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1112,10 +1032,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUploadApplicationDocumentResponse uploadApplicationDocument(
-            String xAccountId,
-            String id,
-            UnifiedUploadRequestDto unifiedUploadRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            UnifiedUploadRequestDto unifiedUploadRequestDto, Optional<Options> options) throws Exception {
         AtsUploadApplicationDocumentRequest request =
             AtsUploadApplicationDocumentRequest
                 .builder()
@@ -1124,12 +1042,9 @@ public class Ats {
                 .unifiedUploadRequestDto(unifiedUploadRequestDto)
                 .build();
         RequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
-              = new AtsUploadApplicationDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUploadApplicationDocumentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Download Application Document
@@ -1159,16 +1074,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsDownloadApplicationDocumentResponse downloadApplicationDocument(
-            AtsDownloadApplicationDocumentRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsDownloadApplicationDocumentResponse downloadApplicationDocument(AtsDownloadApplicationDocumentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsDownloadApplicationDocumentRequest, AtsDownloadApplicationDocumentResponse> operation
-              = new AtsDownloadApplicationDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsDownloadApplicationDocumentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Application Documents
@@ -1198,16 +1108,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListApplicationDocumentsResponse listApplicationDocuments(
-            AtsListApplicationDocumentsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListApplicationDocumentsResponse listApplicationDocuments(AtsListApplicationDocumentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationDocumentsRequest, AtsListApplicationDocumentsResponse> operation
-              = new AtsListApplicationDocumentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationDocumentsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Application Document
@@ -1237,16 +1142,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetApplicationDocumentResponse getApplicationDocument(
-            AtsGetApplicationDocumentRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetApplicationDocumentResponse getApplicationDocument(AtsGetApplicationDocumentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationDocumentRequest, AtsGetApplicationDocumentResponse> operation
-              = new AtsGetApplicationDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationDocumentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Candidates
@@ -1276,16 +1176,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListCandidatesResponse listCandidates(
-            AtsListCandidatesRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListCandidatesResponse listCandidates(AtsListCandidatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListCandidatesRequest, AtsListCandidatesResponse> operation
-              = new AtsListCandidatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListCandidatesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Candidate
@@ -1304,9 +1199,7 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsCreateCandidateResponse createCandidate(
-            String xAccountId,
-            AtsCreateCandidateRequestDto atsCreateCandidateRequestDto) throws Exception {
+    public AtsCreateCandidateResponse createCandidate(String xAccountId, AtsCreateCandidateRequestDto atsCreateCandidateRequestDto) throws Exception {
         return createCandidate(xAccountId, atsCreateCandidateRequestDto, Optional.empty());
     }
 
@@ -1320,8 +1213,7 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateCandidateResponse createCandidate(
-            String xAccountId,
-            AtsCreateCandidateRequestDto atsCreateCandidateRequestDto,
+            String xAccountId, AtsCreateCandidateRequestDto atsCreateCandidateRequestDto,
             Optional<Options> options) throws Exception {
         AtsCreateCandidateRequest request =
             AtsCreateCandidateRequest
@@ -1330,12 +1222,9 @@ public class Ats {
                 .atsCreateCandidateRequestDto(atsCreateCandidateRequestDto)
                 .build();
         RequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
-              = new AtsCreateCandidateOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateCandidateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Candidate
@@ -1365,16 +1254,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetCandidateResponse getCandidate(
-            AtsGetCandidateRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetCandidateResponse getCandidate(AtsGetCandidateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetCandidateRequest, AtsGetCandidateResponse> operation
-              = new AtsGetCandidateOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetCandidateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Candidate
@@ -1395,10 +1279,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateCandidateResponse updateCandidate(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto) throws Exception {
-        return updateCandidate(xAccountId, id, atsUpdateCandidateRequestDto, Optional.empty());
+        return updateCandidate(xAccountId, id, atsUpdateCandidateRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1412,10 +1296,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateCandidateResponse updateCandidate(
-            String xAccountId,
-            String id,
-            AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto, Optional<Options> options) throws Exception {
         AtsUpdateCandidateRequest request =
             AtsUpdateCandidateRequest
                 .builder()
@@ -1424,12 +1306,9 @@ public class Ats {
                 .atsUpdateCandidateRequestDto(atsUpdateCandidateRequestDto)
                 .build();
         RequestOperation<AtsUpdateCandidateRequest, AtsUpdateCandidateResponse> operation
-              = new AtsUpdateCandidateOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateCandidateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Candidate Notes
@@ -1459,16 +1338,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListCandidateNotesResponse listCandidateNotes(
-            AtsListCandidateNotesRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListCandidateNotesResponse listCandidateNotes(AtsListCandidateNotesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListCandidateNotesRequest, AtsListCandidateNotesResponse> operation
-              = new AtsListCandidateNotesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListCandidateNotesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Candidate Note
@@ -1489,10 +1363,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateCandidateNoteResponse createCandidateNote(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) throws Exception {
-        return createCandidateNote(xAccountId, id, atsCreateNotesRequestDto, Optional.empty());
+        return createCandidateNote(xAccountId, id, atsCreateNotesRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1506,10 +1380,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateCandidateNoteResponse createCandidateNote(
-            String xAccountId,
-            String id,
-            AtsCreateNotesRequestDto atsCreateNotesRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) throws Exception {
         AtsCreateCandidateNoteRequest request =
             AtsCreateCandidateNoteRequest
                 .builder()
@@ -1518,12 +1390,9 @@ public class Ats {
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         RequestOperation<AtsCreateCandidateNoteRequest, AtsCreateCandidateNoteResponse> operation
-              = new AtsCreateCandidateNoteOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateCandidateNoteOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Candidate Note
@@ -1553,16 +1422,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetCandidateNoteResponse getCandidateNote(
-            AtsGetCandidateNoteRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetCandidateNoteResponse getCandidateNote(AtsGetCandidateNoteRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetCandidateNoteRequest, AtsGetCandidateNoteResponse> operation
-              = new AtsGetCandidateNoteOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetCandidateNoteOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Application Custom Field Definitions
@@ -1592,16 +1456,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListApplicationCustomFieldDefinitionsResponse listApplicationCustomFieldDefinitions(
-            AtsListApplicationCustomFieldDefinitionsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListApplicationCustomFieldDefinitionsResponse listApplicationCustomFieldDefinitions(AtsListApplicationCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationCustomFieldDefinitionsRequest, AtsListApplicationCustomFieldDefinitionsResponse> operation
-              = new AtsListApplicationCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListApplicationCustomFieldDefinitionsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Application Custom Field Definition
@@ -1631,16 +1490,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetApplicationCustomFieldDefinitionResponse getApplicationCustomFieldDefinition(
-            AtsGetApplicationCustomFieldDefinitionRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetApplicationCustomFieldDefinitionResponse getApplicationCustomFieldDefinition(AtsGetApplicationCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationCustomFieldDefinitionRequest, AtsGetApplicationCustomFieldDefinitionResponse> operation
-              = new AtsGetApplicationCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationCustomFieldDefinitionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Candidate Custom Field Definitions
@@ -1670,16 +1524,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListCandidateCustomFieldDefinitionsResponse listCandidateCustomFieldDefinitions(
-            AtsListCandidateCustomFieldDefinitionsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListCandidateCustomFieldDefinitionsResponse listCandidateCustomFieldDefinitions(AtsListCandidateCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListCandidateCustomFieldDefinitionsRequest, AtsListCandidateCustomFieldDefinitionsResponse> operation
-              = new AtsListCandidateCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListCandidateCustomFieldDefinitionsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Candidate Custom Field Definition
@@ -1709,16 +1558,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetCandidateCustomFieldDefinitionResponse getCandidateCustomFieldDefinition(
-            AtsGetCandidateCustomFieldDefinitionRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetCandidateCustomFieldDefinitionResponse getCandidateCustomFieldDefinition(AtsGetCandidateCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetCandidateCustomFieldDefinitionRequest, AtsGetCandidateCustomFieldDefinitionResponse> operation
-              = new AtsGetCandidateCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetCandidateCustomFieldDefinitionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Job Custom Field Definitions
@@ -1748,16 +1592,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListJobCustomFieldDefinitionsResponse listJobCustomFieldDefinitions(
-            AtsListJobCustomFieldDefinitionsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListJobCustomFieldDefinitionsResponse listJobCustomFieldDefinitions(AtsListJobCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListJobCustomFieldDefinitionsRequest, AtsListJobCustomFieldDefinitionsResponse> operation
-              = new AtsListJobCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListJobCustomFieldDefinitionsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Job Custom Field Definition
@@ -1787,16 +1626,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetJobCustomFieldDefinitionResponse getJobCustomFieldDefinition(
-            AtsGetJobCustomFieldDefinitionRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetJobCustomFieldDefinitionResponse getJobCustomFieldDefinition(AtsGetJobCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetJobCustomFieldDefinitionRequest, AtsGetJobCustomFieldDefinitionResponse> operation
-              = new AtsGetJobCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetJobCustomFieldDefinitionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Departments
@@ -1826,16 +1660,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListDepartmentsResponse listDepartments(
-            AtsListDepartmentsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListDepartmentsResponse listDepartments(AtsListDepartmentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListDepartmentsRequest, AtsListDepartmentsResponse> operation
-              = new AtsListDepartmentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListDepartmentsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Department
@@ -1865,16 +1694,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetDepartmentResponse getDepartment(
-            AtsGetDepartmentRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetDepartmentResponse getDepartment(AtsGetDepartmentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetDepartmentRequest, AtsGetDepartmentResponse> operation
-              = new AtsGetDepartmentOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetDepartmentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Interview Stages
@@ -1904,16 +1728,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListInterviewStagesResponse listInterviewStages(
-            AtsListInterviewStagesRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListInterviewStagesResponse listInterviewStages(AtsListInterviewStagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListInterviewStagesRequest, AtsListInterviewStagesResponse> operation
-              = new AtsListInterviewStagesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListInterviewStagesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Interview Stage
@@ -1943,16 +1762,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetInterviewStageResponse getInterviewStage(
-            AtsGetInterviewStageRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetInterviewStageResponse getInterviewStage(AtsGetInterviewStageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetInterviewStageRequest, AtsGetInterviewStageResponse> operation
-              = new AtsGetInterviewStageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetInterviewStageOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Interviews
@@ -1982,16 +1796,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListInterviewsResponse listInterviews(
-            AtsListInterviewsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListInterviewsResponse listInterviews(AtsListInterviewsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListInterviewsRequest, AtsListInterviewsResponse> operation
-              = new AtsListInterviewsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListInterviewsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Interview
@@ -2021,16 +1830,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetInterviewResponse getInterview(
-            AtsGetInterviewRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetInterviewResponse getInterview(AtsGetInterviewRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetInterviewRequest, AtsGetInterviewResponse> operation
-              = new AtsGetInterviewOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetInterviewOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Jobs
@@ -2060,16 +1864,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListJobsResponse listJobs(
-            AtsListJobsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListJobsResponse listJobs(AtsListJobsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListJobsRequest, AtsListJobsResponse> operation
-              = new AtsListJobsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListJobsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Job
@@ -2088,9 +1887,7 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsCreateJobResponse createJob(
-            String xAccountId,
-            AtsCreateJobRequestDto atsCreateJobRequestDto) throws Exception {
+    public AtsCreateJobResponse createJob(String xAccountId, AtsCreateJobRequestDto atsCreateJobRequestDto) throws Exception {
         return createJob(xAccountId, atsCreateJobRequestDto, Optional.empty());
     }
 
@@ -2104,8 +1901,7 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateJobResponse createJob(
-            String xAccountId,
-            AtsCreateJobRequestDto atsCreateJobRequestDto,
+            String xAccountId, AtsCreateJobRequestDto atsCreateJobRequestDto,
             Optional<Options> options) throws Exception {
         AtsCreateJobRequest request =
             AtsCreateJobRequest
@@ -2114,12 +1910,9 @@ public class Ats {
                 .atsCreateJobRequestDto(atsCreateJobRequestDto)
                 .build();
         RequestOperation<AtsCreateJobRequest, AtsCreateJobResponse> operation
-              = new AtsCreateJobOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Job
@@ -2149,16 +1942,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetJobResponse getJob(
-            AtsGetJobRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetJobResponse getJob(AtsGetJobRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetJobRequest, AtsGetJobResponse> operation
-              = new AtsGetJobOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Job
@@ -2179,10 +1967,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateJobResponse updateJob(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsUpdateJobRequestDto atsUpdateJobRequestDto) throws Exception {
-        return updateJob(xAccountId, id, atsUpdateJobRequestDto, Optional.empty());
+        return updateJob(xAccountId, id, atsUpdateJobRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -2196,10 +1984,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateJobResponse updateJob(
-            String xAccountId,
-            String id,
-            AtsUpdateJobRequestDto atsUpdateJobRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsUpdateJobRequestDto atsUpdateJobRequestDto, Optional<Options> options) throws Exception {
         AtsUpdateJobRequest request =
             AtsUpdateJobRequest
                 .builder()
@@ -2208,12 +1994,9 @@ public class Ats {
                 .atsUpdateJobRequestDto(atsUpdateJobRequestDto)
                 .build();
         RequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
-              = new AtsUpdateJobOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get all Lists
@@ -2243,16 +2026,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListListsResponse listLists(
-            AtsListListsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListListsResponse listLists(AtsListListsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListListsRequest, AtsListListsResponse> operation
-              = new AtsListListsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListListsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get List
@@ -2282,16 +2060,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetListResponse getList(
-            AtsGetListRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetListResponse getList(AtsGetListRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetListRequest, AtsGetListResponse> operation
-              = new AtsGetListOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetListOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List locations
@@ -2321,16 +2094,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListLocationsResponse listLocations(
-            AtsListLocationsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListLocationsResponse listLocations(AtsListLocationsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListLocationsRequest, AtsListLocationsResponse> operation
-              = new AtsListLocationsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListLocationsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Location
@@ -2360,16 +2128,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetLocationResponse getLocation(
-            AtsGetLocationRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetLocationResponse getLocation(AtsGetLocationRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetLocationRequest, AtsGetLocationResponse> operation
-              = new AtsGetLocationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetLocationOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Rejected Reasons
@@ -2399,16 +2162,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListRejectedReasonsResponse listRejectedReasons(
-            AtsListRejectedReasonsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListRejectedReasonsResponse listRejectedReasons(AtsListRejectedReasonsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListRejectedReasonsRequest, AtsListRejectedReasonsResponse> operation
-              = new AtsListRejectedReasonsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListRejectedReasonsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Rejected Reason
@@ -2438,16 +2196,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetRejectedReasonResponse getRejectedReason(
-            AtsGetRejectedReasonRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetRejectedReasonResponse getRejectedReason(AtsGetRejectedReasonRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetRejectedReasonRequest, AtsGetRejectedReasonResponse> operation
-              = new AtsGetRejectedReasonOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetRejectedReasonOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Users
@@ -2477,16 +2230,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListUsersResponse listUsers(
-            AtsListUsersRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListUsersResponse listUsers(AtsListUsersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListUsersRequest, AtsListUsersResponse> operation
-              = new AtsListUsersOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListUsersOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get User
@@ -2516,16 +2264,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetUserResponse getUser(
-            AtsGetUserRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetUserResponse getUser(AtsGetUserRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetUserRequest, AtsGetUserResponse> operation
-              = new AtsGetUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetUserOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Job Postings
@@ -2555,16 +2298,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListJobPostingsResponse listJobPostings(
-            AtsListJobPostingsRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListJobPostingsResponse listJobPostings(AtsListJobPostingsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListJobPostingsRequest, AtsListJobPostingsResponse> operation
-              = new AtsListJobPostingsOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListJobPostingsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Job Posting
@@ -2594,16 +2332,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetJobPostingResponse getJobPosting(
-            AtsGetJobPostingRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetJobPostingResponse getJobPosting(AtsGetJobPostingRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetJobPostingRequest, AtsGetJobPostingResponse> operation
-              = new AtsGetJobPostingOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetJobPostingOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Offers
@@ -2633,16 +2366,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListOffersResponse listOffers(
-            AtsListOffersRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListOffersResponse listOffers(AtsListOffersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListOffersRequest, AtsListOffersResponse> operation
-              = new AtsListOffersOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListOffersOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Creates an offer
@@ -2661,9 +2389,7 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsCreateOfferResponse createOffer(
-            String xAccountId,
-            AtsCreateOfferRequestDto atsCreateOfferRequestDto) throws Exception {
+    public AtsCreateOfferResponse createOffer(String xAccountId, AtsCreateOfferRequestDto atsCreateOfferRequestDto) throws Exception {
         return createOffer(xAccountId, atsCreateOfferRequestDto, Optional.empty());
     }
 
@@ -2677,8 +2403,7 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateOfferResponse createOffer(
-            String xAccountId,
-            AtsCreateOfferRequestDto atsCreateOfferRequestDto,
+            String xAccountId, AtsCreateOfferRequestDto atsCreateOfferRequestDto,
             Optional<Options> options) throws Exception {
         AtsCreateOfferRequest request =
             AtsCreateOfferRequest
@@ -2687,12 +2412,9 @@ public class Ats {
                 .atsCreateOfferRequestDto(atsCreateOfferRequestDto)
                 .build();
         RequestOperation<AtsCreateOfferRequest, AtsCreateOfferResponse> operation
-              = new AtsCreateOfferOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateOfferOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Offer
@@ -2722,16 +2444,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetOfferResponse getOffer(
-            AtsGetOfferRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetOfferResponse getOffer(AtsGetOfferRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetOfferRequest, AtsGetOfferResponse> operation
-              = new AtsGetOfferOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetOfferOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Assessments Packages
@@ -2761,16 +2478,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListAssessmentsPackagesResponse listAssessmentsPackages(
-            AtsListAssessmentsPackagesRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListAssessmentsPackagesResponse listAssessmentsPackages(AtsListAssessmentsPackagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListAssessmentsPackagesRequest, AtsListAssessmentsPackagesResponse> operation
-              = new AtsListAssessmentsPackagesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListAssessmentsPackagesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Assessments Package
@@ -2800,16 +2512,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetAssessmentsPackageResponse getAssessmentsPackage(
-            AtsGetAssessmentsPackageRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetAssessmentsPackageResponse getAssessmentsPackage(AtsGetAssessmentsPackageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetAssessmentsPackageRequest, AtsGetAssessmentsPackageResponse> operation
-              = new AtsGetAssessmentsPackageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetAssessmentsPackageOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Order Assessments Request
@@ -2828,9 +2535,7 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsOrderAssessmentsRequestResponse orderAssessmentsRequest(
-            String xAccountId,
-            AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto) throws Exception {
+    public AtsOrderAssessmentsRequestResponse orderAssessmentsRequest(String xAccountId, AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto) throws Exception {
         return orderAssessmentsRequest(xAccountId, atsCreateCandidatesAssessmentsRequestDto, Optional.empty());
     }
 
@@ -2844,8 +2549,7 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsOrderAssessmentsRequestResponse orderAssessmentsRequest(
-            String xAccountId,
-            AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto,
+            String xAccountId, AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto,
             Optional<Options> options) throws Exception {
         AtsOrderAssessmentsRequestRequest request =
             AtsOrderAssessmentsRequestRequest
@@ -2854,12 +2558,9 @@ public class Ats {
                 .atsCreateCandidatesAssessmentsRequestDto(atsCreateCandidatesAssessmentsRequestDto)
                 .build();
         RequestOperation<AtsOrderAssessmentsRequestRequest, AtsOrderAssessmentsRequestResponse> operation
-              = new AtsOrderAssessmentsRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsOrderAssessmentsRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Assessments Result
@@ -2880,10 +2581,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateAssessmentsResultResponse updateAssessmentsResult(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto) throws Exception {
-        return updateAssessmentsResult(xAccountId, id, atsUpdateCandidatesAssessmentsResultsRequestDto, Optional.empty());
+        return updateAssessmentsResult(xAccountId, id, atsUpdateCandidatesAssessmentsResultsRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -2897,10 +2598,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateAssessmentsResultResponse updateAssessmentsResult(
-            String xAccountId,
-            String id,
-            AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto, Optional<Options> options) throws Exception {
         AtsUpdateAssessmentsResultRequest request =
             AtsUpdateAssessmentsResultRequest
                 .builder()
@@ -2909,12 +2608,9 @@ public class Ats {
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(atsUpdateCandidatesAssessmentsResultsRequestDto)
                 .build();
         RequestOperation<AtsUpdateAssessmentsResultRequest, AtsUpdateAssessmentsResultResponse> operation
-              = new AtsUpdateAssessmentsResultOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateAssessmentsResultOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Assessments Results
@@ -2944,16 +2640,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetAssessmentsResultResponse getAssessmentsResult(
-            AtsGetAssessmentsResultRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetAssessmentsResultResponse getAssessmentsResult(AtsGetAssessmentsResultRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetAssessmentsResultRequest, AtsGetAssessmentsResultResponse> operation
-              = new AtsGetAssessmentsResultOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetAssessmentsResultOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Background Check Packages
@@ -2983,16 +2674,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsListBackgroundCheckPackagesResponse listBackgroundCheckPackages(
-            AtsListBackgroundCheckPackagesRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsListBackgroundCheckPackagesResponse listBackgroundCheckPackages(AtsListBackgroundCheckPackagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListBackgroundCheckPackagesRequest, AtsListBackgroundCheckPackagesResponse> operation
-              = new AtsListBackgroundCheckPackagesOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsListBackgroundCheckPackagesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Background Check Package
@@ -3011,9 +2697,7 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsCreateBackgroundCheckPackageResponse createBackgroundCheckPackage(
-            String xAccountId,
-            AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) throws Exception {
+    public AtsCreateBackgroundCheckPackageResponse createBackgroundCheckPackage(String xAccountId, AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) throws Exception {
         return createBackgroundCheckPackage(xAccountId, atsCreateBackgroundCheckPackagesRequestDto, Optional.empty());
     }
 
@@ -3027,8 +2711,7 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsCreateBackgroundCheckPackageResponse createBackgroundCheckPackage(
-            String xAccountId,
-            AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto,
+            String xAccountId, AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto,
             Optional<Options> options) throws Exception {
         AtsCreateBackgroundCheckPackageRequest request =
             AtsCreateBackgroundCheckPackageRequest
@@ -3037,12 +2720,9 @@ public class Ats {
                 .atsCreateBackgroundCheckPackagesRequestDto(atsCreateBackgroundCheckPackagesRequestDto)
                 .build();
         RequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
-              = new AtsCreateBackgroundCheckPackageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateBackgroundCheckPackageOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Background Check Package
@@ -3072,16 +2752,11 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetBackgroundCheckPackageResponse getBackgroundCheckPackage(
-            AtsGetBackgroundCheckPackageRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetBackgroundCheckPackageResponse getBackgroundCheckPackage(AtsGetBackgroundCheckPackageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetBackgroundCheckPackageRequest, AtsGetBackgroundCheckPackageResponse> operation
-              = new AtsGetBackgroundCheckPackageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetBackgroundCheckPackageOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Delete Background Check Package
@@ -3100,9 +2775,7 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsDeleteBackgroundCheckPackageResponse deleteBackgroundCheckPackage(
-            String xAccountId,
-            String id) throws Exception {
+    public AtsDeleteBackgroundCheckPackageResponse deleteBackgroundCheckPackage(String xAccountId, String id) throws Exception {
         return deleteBackgroundCheckPackage(xAccountId, id, Optional.empty());
     }
 
@@ -3116,8 +2789,7 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsDeleteBackgroundCheckPackageResponse deleteBackgroundCheckPackage(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             Optional<Options> options) throws Exception {
         AtsDeleteBackgroundCheckPackageRequest request =
             AtsDeleteBackgroundCheckPackageRequest
@@ -3126,12 +2798,9 @@ public class Ats {
                 .id(id)
                 .build();
         RequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
-              = new AtsDeleteBackgroundCheckPackageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsDeleteBackgroundCheckPackageOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Background Check Package
@@ -3152,10 +2821,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateBackgroundCheckPackageResponse updateBackgroundCheckPackage(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto) throws Exception {
-        return updateBackgroundCheckPackage(xAccountId, id, atsUpdateBackgroundCheckPackagesRequestDto, Optional.empty());
+        return updateBackgroundCheckPackage(xAccountId, id, atsUpdateBackgroundCheckPackagesRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -3169,10 +2838,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateBackgroundCheckPackageResponse updateBackgroundCheckPackage(
-            String xAccountId,
-            String id,
-            AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto, Optional<Options> options) throws Exception {
         AtsUpdateBackgroundCheckPackageRequest request =
             AtsUpdateBackgroundCheckPackageRequest
                 .builder()
@@ -3181,12 +2848,9 @@ public class Ats {
                 .atsUpdateBackgroundCheckPackagesRequestDto(atsUpdateBackgroundCheckPackagesRequestDto)
                 .build();
         RequestOperation<AtsUpdateBackgroundCheckPackageRequest, AtsUpdateBackgroundCheckPackageResponse> operation
-              = new AtsUpdateBackgroundCheckPackageOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateBackgroundCheckPackageOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Order Background Check Request
@@ -3205,9 +2869,7 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsOrderBackgroundCheckRequestResponse orderBackgroundCheckRequest(
-            String xAccountId,
-            AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) throws Exception {
+    public AtsOrderBackgroundCheckRequestResponse orderBackgroundCheckRequest(String xAccountId, AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) throws Exception {
         return orderBackgroundCheckRequest(xAccountId, atsCreateBackgroundCheckOrderRequestDto, Optional.empty());
     }
 
@@ -3221,8 +2883,7 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsOrderBackgroundCheckRequestResponse orderBackgroundCheckRequest(
-            String xAccountId,
-            AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto,
+            String xAccountId, AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto,
             Optional<Options> options) throws Exception {
         AtsOrderBackgroundCheckRequestRequest request =
             AtsOrderBackgroundCheckRequestRequest
@@ -3231,12 +2892,9 @@ public class Ats {
                 .atsCreateBackgroundCheckOrderRequestDto(atsCreateBackgroundCheckOrderRequestDto)
                 .build();
         RequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
-              = new AtsOrderBackgroundCheckRequestOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsOrderBackgroundCheckRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Background Check Result
@@ -3257,10 +2915,10 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateBackgroundCheckResultResponse updateBackgroundCheckResult(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto) throws Exception {
-        return updateBackgroundCheckResult(xAccountId, id, atsUpdateBackgroundCheckResultRequestDto, Optional.empty());
+        return updateBackgroundCheckResult(xAccountId, id, atsUpdateBackgroundCheckResultRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -3274,10 +2932,8 @@ public class Ats {
      * @throws Exception if the API call fails
      */
     public AtsUpdateBackgroundCheckResultResponse updateBackgroundCheckResult(
-            String xAccountId,
-            String id,
-            AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto, Optional<Options> options) throws Exception {
         AtsUpdateBackgroundCheckResultRequest request =
             AtsUpdateBackgroundCheckResultRequest
                 .builder()
@@ -3286,12 +2942,9 @@ public class Ats {
                 .atsUpdateBackgroundCheckResultRequestDto(atsUpdateBackgroundCheckResultRequestDto)
                 .build();
         RequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation
-              = new AtsUpdateBackgroundCheckResultOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateBackgroundCheckResultOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Background Check Results
@@ -3321,13 +2974,77 @@ public class Ats {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public AtsGetBackgroundCheckResultResponse getBackgroundCheckResult(
-            AtsGetBackgroundCheckResultRequest request,
-            Optional<Options> options) throws Exception {
+    public AtsGetBackgroundCheckResultResponse getBackgroundCheckResult(AtsGetBackgroundCheckResultRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetBackgroundCheckResultRequest, AtsGetBackgroundCheckResultResponse> operation
-              = new AtsGetBackgroundCheckResultOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetBackgroundCheckResultOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * List Application Document Categories
+     * 
+     * @return The call builder
+     */
+    public AtsListApplicationDocumentCategoriesRequestBuilder listApplicationDocumentCategories() {
+        return new AtsListApplicationDocumentCategoriesRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Application Document Categories
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsListApplicationDocumentCategoriesResponse listApplicationDocumentCategories(AtsListApplicationDocumentCategoriesRequest request) throws Exception {
+        return listApplicationDocumentCategories(request, Optional.empty());
+    }
+
+    /**
+     * List Application Document Categories
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsListApplicationDocumentCategoriesResponse listApplicationDocumentCategories(AtsListApplicationDocumentCategoriesRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<AtsListApplicationDocumentCategoriesRequest, AtsListApplicationDocumentCategoriesResponse> operation
+              = new AtsListApplicationDocumentCategoriesOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Get Application Document Category
+     * 
+     * @return The call builder
+     */
+    public AtsGetApplicationDocumentCategoryRequestBuilder getApplicationDocumentCategory() {
+        return new AtsGetApplicationDocumentCategoryRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Get Application Document Category
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsGetApplicationDocumentCategoryResponse getApplicationDocumentCategory(AtsGetApplicationDocumentCategoryRequest request) throws Exception {
+        return getApplicationDocumentCategory(request, Optional.empty());
+    }
+
+    /**
+     * Get Application Document Category
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsGetApplicationDocumentCategoryResponse getApplicationDocumentCategory(AtsGetApplicationDocumentCategoryRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<AtsGetApplicationDocumentCategoryRequest, AtsGetApplicationDocumentCategoryResponse> operation
+              = new AtsGetApplicationDocumentCategoryOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

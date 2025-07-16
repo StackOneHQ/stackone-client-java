@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamListGroupsRequest {
 
+public class IamListGroupsRequest {
     /**
      * The account identifier
      */
@@ -120,7 +120,10 @@ public class IamListGroupsRequest {
     
     public IamListGroupsRequest(
             String xAccountId) {
-        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -211,9 +214,10 @@ public class IamListGroupsRequest {
         return expand;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -398,7 +402,6 @@ public class IamListGroupsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -424,15 +427,9 @@ public class IamListGroupsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            raw,
-            proxy,
-            fields,
-            filter,
-            page,
-            pageSize,
-            next,
-            updatedAfter,
+            xAccountId, raw, proxy,
+            fields, filter, page,
+            pageSize, next, updatedAfter,
             expand);
     }
     
@@ -450,34 +447,36 @@ public class IamListGroupsRequest {
                 "updatedAfter", updatedAfter,
                 "expand", expand);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamListGroupsQueryParamFilter> filter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
- 
+
         private JsonNullable<String> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> expand = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -487,6 +486,7 @@ public class IamListGroupsRequest {
             this.xAccountId = xAccountId;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -506,6 +506,7 @@ public class IamListGroupsRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -523,6 +524,7 @@ public class IamListGroupsRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -542,6 +544,7 @@ public class IamListGroupsRequest {
             return this;
         }
 
+
         /**
          * Filter parameters that allow greater customisation of the list response
          */
@@ -559,6 +562,7 @@ public class IamListGroupsRequest {
             this.filter = filter;
             return this;
         }
+
 
         /**
          * The page number of the results to fetch
@@ -584,6 +588,7 @@ public class IamListGroupsRequest {
             return this;
         }
 
+
         /**
          * The number of results per page (default value is 25)
          */
@@ -602,6 +607,7 @@ public class IamListGroupsRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -619,6 +625,7 @@ public class IamListGroupsRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -644,6 +651,7 @@ public class IamListGroupsRequest {
             return this;
         }
 
+
         /**
          * The comma separated list of fields that will be expanded in the response
          */
@@ -661,19 +669,15 @@ public class IamListGroupsRequest {
             this.expand = expand;
             return this;
         }
-        
+
         public IamListGroupsRequest build() {
+
             return new IamListGroupsRequest(
-                xAccountId,
-                raw,
-                proxy,
-                fields,
-                filter,
-                page,
-                pageSize,
-                next,
-                updatedAfter,
+                xAccountId, raw, proxy,
+                fields, filter, page,
+                pageSize, next, updatedAfter,
                 expand);
         }
+
     }
 }

@@ -17,19 +17,23 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class BatchResultApiModel {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("statusCode")
     private JsonNullable<Double> statusCode;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message")
     private JsonNullable<String> message;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("timestamp")
     private JsonNullable<OffsetDateTime> timestamp;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("errors")
@@ -52,7 +56,8 @@ public class BatchResultApiModel {
     }
     
     public BatchResultApiModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -76,9 +81,10 @@ public class BatchResultApiModel {
         return (JsonNullable<List<List<String>>>) errors;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public BatchResultApiModel withStatusCode(double statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
@@ -128,7 +134,6 @@ public class BatchResultApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -148,9 +153,7 @@ public class BatchResultApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            statusCode,
-            message,
-            timestamp,
+            statusCode, message, timestamp,
             errors);
     }
     
@@ -162,20 +165,22 @@ public class BatchResultApiModel {
                 "timestamp", timestamp,
                 "errors", errors);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Double> statusCode = JsonNullable.undefined();
- 
+
         private JsonNullable<String> message = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> timestamp = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<List<String>>> errors = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder statusCode(double statusCode) {
             Utils.checkNotNull(statusCode, "statusCode");
@@ -189,6 +194,7 @@ public class BatchResultApiModel {
             return this;
         }
 
+
         public Builder message(String message) {
             Utils.checkNotNull(message, "message");
             this.message = JsonNullable.of(message);
@@ -200,6 +206,7 @@ public class BatchResultApiModel {
             this.message = message;
             return this;
         }
+
 
         public Builder timestamp(OffsetDateTime timestamp) {
             Utils.checkNotNull(timestamp, "timestamp");
@@ -213,6 +220,7 @@ public class BatchResultApiModel {
             return this;
         }
 
+
         public Builder errors(List<List<String>> errors) {
             Utils.checkNotNull(errors, "errors");
             this.errors = JsonNullable.of(errors);
@@ -224,13 +232,13 @@ public class BatchResultApiModel {
             this.errors = errors;
             return this;
         }
-        
+
         public BatchResultApiModel build() {
+
             return new BatchResultApiModel(
-                statusCode,
-                message,
-                timestamp,
+                statusCode, message, timestamp,
                 errors);
         }
+
     }
 }

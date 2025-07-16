@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Employee {
 
+public class Employee {
     /**
      * Unique identifier
      */
@@ -570,7 +570,23 @@ public class Employee {
     }
     
     public Employee() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -1036,9 +1052,10 @@ public class Employee {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -2024,7 +2041,6 @@ public class Employee {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -2091,57 +2107,23 @@ public class Employee {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            firstName,
-            lastName,
-            name,
-            displayName,
-            avatarUrl,
-            personalEmail,
-            personalPhoneNumber,
-            workEmail,
-            workPhoneNumber,
-            jobId,
-            jobTitle,
-            jobDescription,
-            departmentId,
-            department,
-            groups,
-            costCenters,
-            managerId,
-            remoteManagerId,
-            gender,
-            preferredLanguage,
-            ethnicity,
-            dateOfBirth,
-            birthday,
-            maritalStatus,
-            avatar,
-            hireDate,
-            startDate,
-            tenure,
-            workAnniversary,
-            employmentType,
-            employmentContractType,
-            employmentStatus,
-            terminationDate,
-            companyName,
-            companyId,
-            citizenships,
-            homeLocation,
-            workLocation,
-            company,
-            employments,
-            customFields,
-            benefits,
-            employeeNumber,
-            nationalIdentityNumber,
-            nationalIdentityNumbers,
-            skills,
-            createdAt,
-            updatedAt);
+            id, remoteId, unifiedCustomFields,
+            firstName, lastName, name,
+            displayName, avatarUrl, personalEmail,
+            personalPhoneNumber, workEmail, workPhoneNumber,
+            jobId, jobTitle, jobDescription,
+            departmentId, department, groups,
+            costCenters, managerId, remoteManagerId,
+            gender, preferredLanguage, ethnicity,
+            dateOfBirth, birthday, maritalStatus,
+            avatar, hireDate, startDate,
+            tenure, workAnniversary, employmentType,
+            employmentContractType, employmentStatus, terminationDate,
+            companyName, companyId, citizenships,
+            homeLocation, workLocation, company,
+            employments, customFields, benefits,
+            employeeNumber, nationalIdentityNumber, nationalIdentityNumbers,
+            skills, createdAt, updatedAt);
     }
     
     @Override
@@ -2199,125 +2181,127 @@ public class Employee {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> displayName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> avatarUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<String> personalEmail = JsonNullable.undefined();
- 
+
         private JsonNullable<String> personalPhoneNumber = JsonNullable.undefined();
- 
+
         private JsonNullable<String> workEmail = JsonNullable.undefined();
- 
+
         private JsonNullable<String> workPhoneNumber = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> jobId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobTitle = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends JobDescription> jobDescription = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> departmentId = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> department = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<HRISGroup>> groups = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends List<CostCenters>> costCenters = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> managerId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteManagerId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Gender> gender = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PreferredLanguage> preferredLanguage = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Ethnicity> ethnicity = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> dateOfBirth = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> birthday = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MaritalStatus> maritalStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Avatar> avatar = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> hireDate = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> tenure = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> workAnniversary = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends EmploymentType> employmentType = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends EmploymentContractType> employmentContractType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentStatus> employmentStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> terminationDate = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> companyName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> companyId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CountryCodeEnum>> citizenships = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HomeLocation> homeLocation = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends WorkLocation> workLocation = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeCompany> company = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Employment>> employments = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<HRISBenefit>> benefits = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeNumber = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends NationalIdentityNumber> nationalIdentityNumber = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<NationalIdentityNumberApiModel>> nationalIdentityNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<EntitySkills>> skills = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -2337,6 +2321,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -2354,6 +2339,7 @@ public class Employee {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -2373,6 +2359,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee first name
          */
@@ -2390,6 +2377,7 @@ public class Employee {
             this.firstName = firstName;
             return this;
         }
+
 
         /**
          * The employee last name
@@ -2409,6 +2397,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee name
          */
@@ -2426,6 +2415,7 @@ public class Employee {
             this.name = name;
             return this;
         }
+
 
         /**
          * The employee display name
@@ -2445,6 +2435,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee avatar Url
          */
@@ -2462,6 +2453,7 @@ public class Employee {
             this.avatarUrl = avatarUrl;
             return this;
         }
+
 
         /**
          * The employee personal email
@@ -2481,6 +2473,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee personal phone number
          */
@@ -2498,6 +2491,7 @@ public class Employee {
             this.personalPhoneNumber = personalPhoneNumber;
             return this;
         }
+
 
         /**
          * The employee work email
@@ -2517,6 +2511,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee work phone number
          */
@@ -2534,6 +2529,7 @@ public class Employee {
             this.workPhoneNumber = workPhoneNumber;
             return this;
         }
+
 
         /**
          * The employee job id
@@ -2559,6 +2555,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee job title
          */
@@ -2576,6 +2573,7 @@ public class Employee {
             this.jobTitle = jobTitle;
             return this;
         }
+
 
         /**
          * The employee job description
@@ -2601,6 +2599,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee department id
          * 
@@ -2624,6 +2623,7 @@ public class Employee {
             this.departmentId = departmentId;
             return this;
         }
+
 
         /**
          * The employee department
@@ -2649,6 +2649,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee groups
          */
@@ -2666,6 +2667,7 @@ public class Employee {
             this.groups = groups;
             return this;
         }
+
 
         /**
          * The employee cost centers
@@ -2691,6 +2693,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee manager ID
          * 
@@ -2715,6 +2718,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the manager
          */
@@ -2732,6 +2736,7 @@ public class Employee {
             this.remoteManagerId = remoteManagerId;
             return this;
         }
+
 
         /**
          * The employee gender
@@ -2751,6 +2756,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee preferred language
          */
@@ -2768,6 +2774,7 @@ public class Employee {
             this.preferredLanguage = preferredLanguage;
             return this;
         }
+
 
         /**
          * The employee ethnicity
@@ -2787,6 +2794,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee date_of_birth
          */
@@ -2804,6 +2812,7 @@ public class Employee {
             this.dateOfBirth = dateOfBirth;
             return this;
         }
+
 
         /**
          * The employee birthday
@@ -2823,6 +2832,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee marital status
          */
@@ -2840,6 +2850,7 @@ public class Employee {
             this.maritalStatus = maritalStatus;
             return this;
         }
+
 
         /**
          * The employee avatar
@@ -2859,6 +2870,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee hire date
          */
@@ -2876,6 +2888,7 @@ public class Employee {
             this.hireDate = hireDate;
             return this;
         }
+
 
         /**
          * The employee start date
@@ -2901,6 +2914,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee tenure
          */
@@ -2919,6 +2933,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee work anniversary
          */
@@ -2936,6 +2951,7 @@ public class Employee {
             this.workAnniversary = workAnniversary;
             return this;
         }
+
 
         /**
          * The employee employment type
@@ -2961,6 +2977,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employment work schedule type (e.g., full-time, part-time)
          * 
@@ -2985,6 +3002,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee employment status
          */
@@ -3003,6 +3021,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee termination date
          */
@@ -3020,6 +3039,7 @@ public class Employee {
             this.terminationDate = terminationDate;
             return this;
         }
+
 
         /**
          * The employee company name
@@ -3045,6 +3065,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee company id
          */
@@ -3062,6 +3083,7 @@ public class Employee {
             this.companyId = companyId;
             return this;
         }
+
 
         /**
          * The citizenships of the Employee
@@ -3081,6 +3103,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee home location
          */
@@ -3098,6 +3121,7 @@ public class Employee {
             this.homeLocation = homeLocation;
             return this;
         }
+
 
         /**
          * The employee work location
@@ -3117,6 +3141,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee company
          */
@@ -3134,6 +3159,7 @@ public class Employee {
             this.company = company;
             return this;
         }
+
 
         /**
          * The employee employments
@@ -3153,6 +3179,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The employee custom fields
          */
@@ -3170,6 +3197,7 @@ public class Employee {
             this.customFields = customFields;
             return this;
         }
+
 
         /**
          * Current benefits of the employee
@@ -3189,6 +3217,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The assigned employee number
          */
@@ -3206,6 +3235,7 @@ public class Employee {
             this.employeeNumber = employeeNumber;
             return this;
         }
+
 
         /**
          * The national identity number
@@ -3231,6 +3261,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The national identity numbers
          */
@@ -3248,6 +3279,7 @@ public class Employee {
             this.nationalIdentityNumbers = nationalIdentityNumbers;
             return this;
         }
+
 
         /**
          * The employee skills
@@ -3267,6 +3299,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The created_at date
          */
@@ -3285,6 +3318,7 @@ public class Employee {
             return this;
         }
 
+
         /**
          * The updated_at date
          */
@@ -3302,60 +3336,28 @@ public class Employee {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Employee build() {
+
             return new Employee(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                firstName,
-                lastName,
-                name,
-                displayName,
-                avatarUrl,
-                personalEmail,
-                personalPhoneNumber,
-                workEmail,
-                workPhoneNumber,
-                jobId,
-                jobTitle,
-                jobDescription,
-                departmentId,
-                department,
-                groups,
-                costCenters,
-                managerId,
-                remoteManagerId,
-                gender,
-                preferredLanguage,
-                ethnicity,
-                dateOfBirth,
-                birthday,
-                maritalStatus,
-                avatar,
-                hireDate,
-                startDate,
-                tenure,
-                workAnniversary,
-                employmentType,
-                employmentContractType,
-                employmentStatus,
-                terminationDate,
-                companyName,
-                companyId,
-                citizenships,
-                homeLocation,
-                workLocation,
-                company,
-                employments,
-                customFields,
-                benefits,
-                employeeNumber,
-                nationalIdentityNumber,
-                nationalIdentityNumbers,
-                skills,
-                createdAt,
-                updatedAt);
+                id, remoteId, unifiedCustomFields,
+                firstName, lastName, name,
+                displayName, avatarUrl, personalEmail,
+                personalPhoneNumber, workEmail, workPhoneNumber,
+                jobId, jobTitle, jobDescription,
+                departmentId, department, groups,
+                costCenters, managerId, remoteManagerId,
+                gender, preferredLanguage, ethnicity,
+                dateOfBirth, birthday, maritalStatus,
+                avatar, hireDate, startDate,
+                tenure, workAnniversary, employmentType,
+                employmentContractType, employmentStatus, terminationDate,
+                companyName, companyId, citizenships,
+                homeLocation, workLocation, company,
+                employments, customFields, benefits,
+                employeeNumber, nationalIdentityNumber, nationalIdentityNumbers,
+                skills, createdAt, updatedAt);
         }
+
     }
 }

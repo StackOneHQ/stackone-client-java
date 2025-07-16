@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class InterviewPart {
 
+public class InterviewPart {
     /**
      * Unique identifier
      */
@@ -31,6 +31,7 @@ public class InterviewPart {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
@@ -140,7 +141,10 @@ public class InterviewPart {
     }
     
     public InterviewPart() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -239,9 +243,10 @@ public class InterviewPart {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -453,7 +458,6 @@ public class InterviewPart {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -481,18 +485,10 @@ public class InterviewPart {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            type,
-            title,
-            interviewerIds,
-            remoteInterviewerIds,
-            meetingUrl,
-            meetingProvider,
-            startAt,
-            endAt,
-            createdAt,
-            updatedAt);
+            id, remoteId, type,
+            title, interviewerIds, remoteInterviewerIds,
+            meetingUrl, meetingProvider, startAt,
+            endAt, createdAt, updatedAt);
     }
     
     @Override
@@ -511,36 +507,38 @@ public class InterviewPart {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends InterviewPartType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> interviewerIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteInterviewerIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> meetingUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<String> meetingProvider = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -560,6 +558,7 @@ public class InterviewPart {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -578,6 +577,7 @@ public class InterviewPart {
             return this;
         }
 
+
         public Builder type(InterviewPartType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -589,6 +589,7 @@ public class InterviewPart {
             this.type = type;
             return this;
         }
+
 
         /**
          * The title of interview, usually corresponding to the title of an associated calendar event
@@ -608,6 +609,7 @@ public class InterviewPart {
             return this;
         }
 
+
         /**
          * The user (interviewer) IDs taking part in this specific interview.
          */
@@ -625,6 +627,7 @@ public class InterviewPart {
             this.interviewerIds = interviewerIds;
             return this;
         }
+
 
         /**
          * Provider's user (interviewer) IDs taking part in this specific interview.
@@ -644,6 +647,7 @@ public class InterviewPart {
             return this;
         }
 
+
         /**
          * The meeting URL for the interview - this may be populated using the underlying location if the location string extracted is a valid url.
          */
@@ -661,6 +665,7 @@ public class InterviewPart {
             this.meetingUrl = meetingUrl;
             return this;
         }
+
 
         /**
          * The video meeting provider used for the interview.
@@ -680,6 +685,7 @@ public class InterviewPart {
             return this;
         }
 
+
         /**
          * The specific interview part's start date
          */
@@ -697,6 +703,7 @@ public class InterviewPart {
             this.startAt = startAt;
             return this;
         }
+
 
         /**
          * The specific interview part's end date
@@ -716,6 +723,7 @@ public class InterviewPart {
             return this;
         }
 
+
         /**
          * Interview part created date
          */
@@ -734,6 +742,7 @@ public class InterviewPart {
             return this;
         }
 
+
         /**
          * Interview part updated date
          */
@@ -751,21 +760,15 @@ public class InterviewPart {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public InterviewPart build() {
+
             return new InterviewPart(
-                id,
-                remoteId,
-                type,
-                title,
-                interviewerIds,
-                remoteInterviewerIds,
-                meetingUrl,
-                meetingProvider,
-                startAt,
-                endAt,
-                createdAt,
-                updatedAt);
+                id, remoteId, type,
+                title, interviewerIds, remoteInterviewerIds,
+                meetingUrl, meetingProvider, startAt,
+                endAt, createdAt, updatedAt);
         }
+
     }
 }

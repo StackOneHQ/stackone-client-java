@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Question {
 
+public class Question {
     /**
      * Unique identifier
      */
@@ -31,25 +31,31 @@ public class Question {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends QuestionType> type;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("text")
     private JsonNullable<String> text;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("required")
     private JsonNullable<? extends QuestionRequired> required;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("multiple_choice_answers")
     private JsonNullable<? extends List<QuestionMultipleChoiceAnswers>> multipleChoiceAnswers;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("parent_question")
@@ -84,7 +90,9 @@ public class Question {
     }
     
     public Question() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -137,9 +145,10 @@ public class Question {
         return (JsonNullable<ParentQuestion>) parentQuestion;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -249,7 +258,6 @@ public class Question {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -273,14 +281,9 @@ public class Question {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            type,
-            text,
-            required,
-            multipleChoiceAnswers,
-            parentQuestion);
+            id, remoteId, name,
+            type, text, required,
+            multipleChoiceAnswers, parentQuestion);
     }
     
     @Override
@@ -295,28 +298,30 @@ public class Question {
                 "multipleChoiceAnswers", multipleChoiceAnswers,
                 "parentQuestion", parentQuestion);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends QuestionType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> text = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends QuestionRequired> required = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<QuestionMultipleChoiceAnswers>> multipleChoiceAnswers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ParentQuestion> parentQuestion = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -336,6 +341,7 @@ public class Question {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -354,6 +360,7 @@ public class Question {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -365,6 +372,7 @@ public class Question {
             this.name = name;
             return this;
         }
+
 
         public Builder type(QuestionType type) {
             Utils.checkNotNull(type, "type");
@@ -378,6 +386,7 @@ public class Question {
             return this;
         }
 
+
         public Builder text(String text) {
             Utils.checkNotNull(text, "text");
             this.text = JsonNullable.of(text);
@@ -389,6 +398,7 @@ public class Question {
             this.text = text;
             return this;
         }
+
 
         public Builder required(QuestionRequired required) {
             Utils.checkNotNull(required, "required");
@@ -402,6 +412,7 @@ public class Question {
             return this;
         }
 
+
         public Builder multipleChoiceAnswers(List<QuestionMultipleChoiceAnswers> multipleChoiceAnswers) {
             Utils.checkNotNull(multipleChoiceAnswers, "multipleChoiceAnswers");
             this.multipleChoiceAnswers = JsonNullable.of(multipleChoiceAnswers);
@@ -414,6 +425,7 @@ public class Question {
             return this;
         }
 
+
         public Builder parentQuestion(ParentQuestion parentQuestion) {
             Utils.checkNotNull(parentQuestion, "parentQuestion");
             this.parentQuestion = JsonNullable.of(parentQuestion);
@@ -425,17 +437,14 @@ public class Question {
             this.parentQuestion = parentQuestion;
             return this;
         }
-        
+
         public Question build() {
+
             return new Question(
-                id,
-                remoteId,
-                name,
-                type,
-                text,
-                required,
-                multipleChoiceAnswers,
-                parentQuestion);
+                id, remoteId, name,
+                type, text, required,
+                multipleChoiceAnswers, parentQuestion);
         }
+
     }
 }

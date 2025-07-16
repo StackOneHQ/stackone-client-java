@@ -47,9 +47,7 @@ public class HrisGetPositionRequestBuilder {
             .build());
 
         RequestOperation<HrisGetPositionRequest, HrisGetPositionResponse> operation
-              = new HrisGetPositionOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetPositionOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

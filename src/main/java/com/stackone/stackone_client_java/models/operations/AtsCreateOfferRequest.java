@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsCreateOfferRequest {
 
+public class AtsCreateOfferRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateOfferRequestDto atsCreateOfferRequestDto;
@@ -45,9 +46,10 @@ public class AtsCreateOfferRequest {
         return atsCreateOfferRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class AtsCreateOfferRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class AtsCreateOfferRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            atsCreateOfferRequestDto);
+            xAccountId, atsCreateOfferRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class AtsCreateOfferRequest {
                 "xAccountId", xAccountId,
                 "atsCreateOfferRequestDto", atsCreateOfferRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private AtsCreateOfferRequestDto atsCreateOfferRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class AtsCreateOfferRequest {
             return this;
         }
 
+
         public Builder atsCreateOfferRequestDto(AtsCreateOfferRequestDto atsCreateOfferRequestDto) {
             Utils.checkNotNull(atsCreateOfferRequestDto, "atsCreateOfferRequestDto");
             this.atsCreateOfferRequestDto = atsCreateOfferRequestDto;
             return this;
         }
-        
+
         public AtsCreateOfferRequest build() {
+
             return new AtsCreateOfferRequest(
-                xAccountId,
-                atsCreateOfferRequestDto);
+                xAccountId, atsCreateOfferRequestDto);
         }
+
     }
 }

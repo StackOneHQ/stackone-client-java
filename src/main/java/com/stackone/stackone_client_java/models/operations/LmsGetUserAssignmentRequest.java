@@ -15,16 +15,18 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsGetUserAssignmentRequest {
 
+public class LmsGetUserAssignmentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
@@ -73,7 +75,8 @@ public class LmsGetUserAssignmentRequest {
             String xAccountId,
             String id,
             String subResourceId) {
-        this(xAccountId, id, subResourceId, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, id, subResourceId,
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -119,9 +122,10 @@ public class LmsGetUserAssignmentRequest {
         return fields;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -198,7 +202,6 @@ public class LmsGetUserAssignmentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -220,12 +223,8 @@ public class LmsGetUserAssignmentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            subResourceId,
-            raw,
-            proxy,
-            fields);
+            xAccountId, id, subResourceId,
+            raw, proxy, fields);
     }
     
     @Override
@@ -238,24 +237,26 @@ public class LmsGetUserAssignmentRequest {
                 "proxy", proxy,
                 "fields", fields);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private String subResourceId;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -266,17 +267,20 @@ public class LmsGetUserAssignmentRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder subResourceId(String subResourceId) {
             Utils.checkNotNull(subResourceId, "subResourceId");
             this.subResourceId = subResourceId;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -296,6 +300,7 @@ public class LmsGetUserAssignmentRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -314,6 +319,7 @@ public class LmsGetUserAssignmentRequest {
             return this;
         }
 
+
         /**
          * The comma separated list of fields to return in the response (if empty, all fields are returned)
          */
@@ -331,15 +337,13 @@ public class LmsGetUserAssignmentRequest {
             this.fields = fields;
             return this;
         }
-        
+
         public LmsGetUserAssignmentRequest build() {
+
             return new LmsGetUserAssignmentRequest(
-                xAccountId,
-                id,
-                subResourceId,
-                raw,
-                proxy,
-                fields);
+                xAccountId, id, subResourceId,
+                raw, proxy, fields);
         }
+
     }
 }

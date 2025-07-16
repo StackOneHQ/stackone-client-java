@@ -18,7 +18,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Filter parameters for application changes (supports created_after and change_type)
  */
 public class AtsListApplicationChangesQueryParamFilter {
-
     /**
      * Use a string with a date to only select results created after that given date
      */
@@ -62,9 +61,10 @@ public class AtsListApplicationChangesQueryParamFilter {
         return (JsonNullable<ChangeType>) changeType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results created after that given date
@@ -102,7 +102,6 @@ public class AtsListApplicationChangesQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +119,7 @@ public class AtsListApplicationChangesQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            createdAfter,
-            changeType);
+            createdAfter, changeType);
     }
     
     @Override
@@ -130,16 +128,18 @@ public class AtsListApplicationChangesQueryParamFilter {
                 "createdAfter", createdAfter,
                 "changeType", changeType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> createdAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ChangeType> changeType = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results created after that given date
@@ -159,6 +159,7 @@ public class AtsListApplicationChangesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter by the type of change that occurred to the application
          */
@@ -176,11 +177,12 @@ public class AtsListApplicationChangesQueryParamFilter {
             this.changeType = changeType;
             return this;
         }
-        
+
         public AtsListApplicationChangesQueryParamFilter build() {
+
             return new AtsListApplicationChangesQueryParamFilter(
-                createdAfter,
-                changeType);
+                createdAfter, changeType);
         }
+
     }
 }

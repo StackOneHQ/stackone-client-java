@@ -12,16 +12,20 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
 
+
 public class InviteEmployeeResult {
 
     @JsonProperty("statusCode")
     private double statusCode;
 
+
     @JsonProperty("message")
     private String message;
 
+
     @JsonProperty("timestamp")
     private OffsetDateTime timestamp;
+
 
     @JsonProperty("data")
     private CreateResultDataApiModel data;
@@ -62,9 +66,10 @@ public class InviteEmployeeResult {
         return data;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public InviteEmployeeResult withStatusCode(double statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
@@ -90,7 +95,6 @@ public class InviteEmployeeResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,9 +114,7 @@ public class InviteEmployeeResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            statusCode,
-            message,
-            timestamp,
+            statusCode, message, timestamp,
             data);
     }
     
@@ -124,20 +126,22 @@ public class InviteEmployeeResult {
                 "timestamp", timestamp,
                 "data", data);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Double statusCode;
- 
+
         private String message;
- 
+
         private OffsetDateTime timestamp;
- 
+
         private CreateResultDataApiModel data;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder statusCode(double statusCode) {
             Utils.checkNotNull(statusCode, "statusCode");
@@ -145,11 +149,13 @@ public class InviteEmployeeResult {
             return this;
         }
 
+
         public Builder message(String message) {
             Utils.checkNotNull(message, "message");
             this.message = message;
             return this;
         }
+
 
         public Builder timestamp(OffsetDateTime timestamp) {
             Utils.checkNotNull(timestamp, "timestamp");
@@ -157,18 +163,19 @@ public class InviteEmployeeResult {
             return this;
         }
 
+
         public Builder data(CreateResultDataApiModel data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
-        
+
         public InviteEmployeeResult build() {
+
             return new InviteEmployeeResult(
-                statusCode,
-                message,
-                timestamp,
+                statusCode, message, timestamp,
                 data);
         }
+
     }
 }

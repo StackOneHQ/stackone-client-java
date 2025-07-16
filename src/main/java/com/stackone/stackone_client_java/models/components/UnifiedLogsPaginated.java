@@ -14,11 +14,13 @@ import java.lang.String;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class UnifiedLogsPaginated {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("next")
     private JsonNullable<String> next;
+
 
     @JsonProperty("data")
     private List<UnifiedLogsPartial> data;
@@ -48,9 +50,10 @@ public class UnifiedLogsPaginated {
         return data;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UnifiedLogsPaginated withNext(String next) {
         Utils.checkNotNull(next, "next");
@@ -70,7 +73,6 @@ public class UnifiedLogsPaginated {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,8 +90,7 @@ public class UnifiedLogsPaginated {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            next,
-            data);
+            next, data);
     }
     
     @Override
@@ -98,16 +99,18 @@ public class UnifiedLogsPaginated {
                 "next", next,
                 "data", data);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         private List<UnifiedLogsPartial> data;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder next(String next) {
             Utils.checkNotNull(next, "next");
@@ -121,16 +124,18 @@ public class UnifiedLogsPaginated {
             return this;
         }
 
+
         public Builder data(List<UnifiedLogsPartial> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
-        
+
         public UnifiedLogsPaginated build() {
+
             return new UnifiedLogsPaginated(
-                next,
-                data);
+                next, data);
         }
+
     }
 }

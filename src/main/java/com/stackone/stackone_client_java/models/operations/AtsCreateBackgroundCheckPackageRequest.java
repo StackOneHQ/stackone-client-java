@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsCreateBackgroundCheckPackageRequest {
 
+public class AtsCreateBackgroundCheckPackageRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto;
@@ -45,9 +46,10 @@ public class AtsCreateBackgroundCheckPackageRequest {
         return atsCreateBackgroundCheckPackagesRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class AtsCreateBackgroundCheckPackageRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class AtsCreateBackgroundCheckPackageRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            atsCreateBackgroundCheckPackagesRequestDto);
+            xAccountId, atsCreateBackgroundCheckPackagesRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class AtsCreateBackgroundCheckPackageRequest {
                 "xAccountId", xAccountId,
                 "atsCreateBackgroundCheckPackagesRequestDto", atsCreateBackgroundCheckPackagesRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class AtsCreateBackgroundCheckPackageRequest {
             return this;
         }
 
+
         public Builder atsCreateBackgroundCheckPackagesRequestDto(AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) {
             Utils.checkNotNull(atsCreateBackgroundCheckPackagesRequestDto, "atsCreateBackgroundCheckPackagesRequestDto");
             this.atsCreateBackgroundCheckPackagesRequestDto = atsCreateBackgroundCheckPackagesRequestDto;
             return this;
         }
-        
+
         public AtsCreateBackgroundCheckPackageRequest build() {
+
             return new AtsCreateBackgroundCheckPackageRequest(
-                xAccountId,
-                atsCreateBackgroundCheckPackagesRequestDto);
+                xAccountId, atsCreateBackgroundCheckPackagesRequestDto);
         }
+
     }
 }

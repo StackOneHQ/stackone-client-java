@@ -47,9 +47,7 @@ public class MarketingGetInAppTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingGetInAppTemplateRequest, MarketingGetInAppTemplateResponse> operation
-              = new MarketingGetInAppTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetInAppTemplateOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

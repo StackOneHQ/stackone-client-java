@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingCompensationPayPeriod {
 
+public class JobPostingCompensationPayPeriod {
     /**
      * The pay period of the job postings.
      */
@@ -62,9 +62,10 @@ public class JobPostingCompensationPayPeriod {
         return (JsonNullable<JobPostingCompensationPayPeriodSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The pay period of the job postings.
@@ -102,7 +103,6 @@ public class JobPostingCompensationPayPeriod {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class JobPostingCompensationPayPeriod {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class JobPostingCompensationPayPeriod {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends JobPostingCompensationPayPeriodValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingCompensationPayPeriodSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The pay period of the job postings.
@@ -159,6 +160,7 @@ public class JobPostingCompensationPayPeriod {
             return this;
         }
 
+
         /**
          * The source value of the pay period.
          */
@@ -176,11 +178,12 @@ public class JobPostingCompensationPayPeriod {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public JobPostingCompensationPayPeriod build() {
+
             return new JobPostingCompensationPayPeriod(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

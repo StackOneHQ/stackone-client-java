@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsOrderBackgroundCheckRequestRequest {
 
+public class AtsOrderBackgroundCheckRequestRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto;
@@ -45,9 +46,10 @@ public class AtsOrderBackgroundCheckRequestRequest {
         return atsCreateBackgroundCheckOrderRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class AtsOrderBackgroundCheckRequestRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class AtsOrderBackgroundCheckRequestRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            atsCreateBackgroundCheckOrderRequestDto);
+            xAccountId, atsCreateBackgroundCheckOrderRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class AtsOrderBackgroundCheckRequestRequest {
                 "xAccountId", xAccountId,
                 "atsCreateBackgroundCheckOrderRequestDto", atsCreateBackgroundCheckOrderRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class AtsOrderBackgroundCheckRequestRequest {
             return this;
         }
 
+
         public Builder atsCreateBackgroundCheckOrderRequestDto(AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) {
             Utils.checkNotNull(atsCreateBackgroundCheckOrderRequestDto, "atsCreateBackgroundCheckOrderRequestDto");
             this.atsCreateBackgroundCheckOrderRequestDto = atsCreateBackgroundCheckOrderRequestDto;
             return this;
         }
-        
+
         public AtsOrderBackgroundCheckRequestRequest build() {
+
             return new AtsOrderBackgroundCheckRequestRequest(
-                xAccountId,
-                atsCreateBackgroundCheckOrderRequestDto);
+                xAccountId, atsCreateBackgroundCheckOrderRequestDto);
         }
+
     }
 }

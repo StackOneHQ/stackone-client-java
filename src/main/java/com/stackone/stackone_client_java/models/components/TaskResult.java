@@ -15,11 +15,13 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class TaskResult {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data")
     private JsonNullable<? extends List<Task>> data;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw")
@@ -51,9 +53,10 @@ public class TaskResult {
         return (JsonNullable<List<RawResponse>>) raw;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public TaskResult withData(List<Task> data) {
         Utils.checkNotNull(data, "data");
@@ -79,7 +82,6 @@ public class TaskResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -97,8 +99,7 @@ public class TaskResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            data,
-            raw);
+            data, raw);
     }
     
     @Override
@@ -107,16 +108,18 @@ public class TaskResult {
                 "data", data,
                 "raw", raw);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends List<Task>> data = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<RawResponse>> raw = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder data(List<Task> data) {
             Utils.checkNotNull(data, "data");
@@ -130,6 +133,7 @@ public class TaskResult {
             return this;
         }
 
+
         public Builder raw(List<RawResponse> raw) {
             Utils.checkNotNull(raw, "raw");
             this.raw = JsonNullable.of(raw);
@@ -141,11 +145,12 @@ public class TaskResult {
             this.raw = raw;
             return this;
         }
-        
+
         public TaskResult build() {
+
             return new TaskResult(
-                data,
-                raw);
+                data, raw);
         }
+
     }
 }

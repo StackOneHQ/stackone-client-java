@@ -65,9 +65,7 @@ public class StackoneUpdateAccountRequestBuilder {
             .build());
 
         RequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
-              = new StackoneUpdateAccountOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneUpdateAccountOperation(sdkConfiguration, options);
         StackoneUpdateAccountRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CustomMappingError {
 
+public class CustomMappingError {
     /**
      * The custom mapping identifier
      */
@@ -77,9 +77,10 @@ public class CustomMappingError {
         return targetField;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The custom mapping identifier
@@ -135,7 +136,6 @@ public class CustomMappingError {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +154,7 @@ public class CustomMappingError {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            message,
-            targetField);
+            id, message, targetField);
     }
     
     @Override
@@ -166,18 +164,20 @@ public class CustomMappingError {
                 "message", message,
                 "targetField", targetField);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> message = JsonNullable.undefined();
- 
+
         private JsonNullable<String> targetField = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The custom mapping identifier
@@ -197,6 +197,7 @@ public class CustomMappingError {
             return this;
         }
 
+
         /**
          * The error message
          */
@@ -215,6 +216,7 @@ public class CustomMappingError {
             return this;
         }
 
+
         /**
          * The target field where the error occurred
          */
@@ -232,12 +234,12 @@ public class CustomMappingError {
             this.targetField = targetField;
             return this;
         }
-        
+
         public CustomMappingError build() {
+
             return new CustomMappingError(
-                id,
-                message,
-                targetField);
+                id, message, targetField);
         }
+
     }
 }

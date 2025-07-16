@@ -47,9 +47,7 @@ public class AtsDownloadApplicationDocumentRequestBuilder {
             .build());
 
         RequestOperation<AtsDownloadApplicationDocumentRequest, AtsDownloadApplicationDocumentResponse> operation
-              = new AtsDownloadApplicationDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsDownloadApplicationDocumentOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsCreateApplicationRequest {
 
+public class AtsCreateApplicationRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateApplicationRequestDto atsCreateApplicationRequestDto;
@@ -45,9 +46,10 @@ public class AtsCreateApplicationRequest {
         return atsCreateApplicationRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class AtsCreateApplicationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class AtsCreateApplicationRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            atsCreateApplicationRequestDto);
+            xAccountId, atsCreateApplicationRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class AtsCreateApplicationRequest {
                 "xAccountId", xAccountId,
                 "atsCreateApplicationRequestDto", atsCreateApplicationRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private AtsCreateApplicationRequestDto atsCreateApplicationRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class AtsCreateApplicationRequest {
             return this;
         }
 
+
         public Builder atsCreateApplicationRequestDto(AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) {
             Utils.checkNotNull(atsCreateApplicationRequestDto, "atsCreateApplicationRequestDto");
             this.atsCreateApplicationRequestDto = atsCreateApplicationRequestDto;
             return this;
         }
-        
+
         public AtsCreateApplicationRequest build() {
+
             return new AtsCreateApplicationRequest(
-                xAccountId,
-                atsCreateApplicationRequestDto);
+                xAccountId, atsCreateApplicationRequestDto);
         }
+
     }
 }

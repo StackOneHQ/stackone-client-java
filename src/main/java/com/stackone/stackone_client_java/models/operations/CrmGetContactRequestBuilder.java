@@ -47,9 +47,7 @@ public class CrmGetContactRequestBuilder {
             .build());
 
         RequestOperation<CrmGetContactRequest, CrmGetContactResponse> operation
-              = new CrmGetContactOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmGetContactOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

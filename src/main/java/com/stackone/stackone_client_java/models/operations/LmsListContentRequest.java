@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsListContentRequest {
 
+public class LmsListContentRequest {
     /**
      * The account identifier
      */
@@ -111,7 +111,9 @@ public class LmsListContentRequest {
     
     public LmsListContentRequest(
             String xAccountId) {
-        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -194,9 +196,10 @@ public class LmsListContentRequest {
         return updatedAfter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -363,7 +366,6 @@ public class LmsListContentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -388,15 +390,9 @@ public class LmsListContentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            raw,
-            proxy,
-            fields,
-            filter,
-            page,
-            pageSize,
-            next,
-            updatedAfter);
+            xAccountId, raw, proxy,
+            fields, filter, page,
+            pageSize, next, updatedAfter);
     }
     
     @Override
@@ -412,32 +408,34 @@ public class LmsListContentRequest {
                 "next", next,
                 "updatedAfter", updatedAfter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsListContentQueryParamFilter> filter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
- 
+
         private JsonNullable<String> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -447,6 +445,7 @@ public class LmsListContentRequest {
             this.xAccountId = xAccountId;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -466,6 +465,7 @@ public class LmsListContentRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -483,6 +483,7 @@ public class LmsListContentRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -502,6 +503,7 @@ public class LmsListContentRequest {
             return this;
         }
 
+
         /**
          * Filter parameters that allow greater customisation of the list response
          */
@@ -519,6 +521,7 @@ public class LmsListContentRequest {
             this.filter = filter;
             return this;
         }
+
 
         /**
          * The page number of the results to fetch
@@ -544,6 +547,7 @@ public class LmsListContentRequest {
             return this;
         }
 
+
         /**
          * The number of results per page (default value is 25)
          */
@@ -562,6 +566,7 @@ public class LmsListContentRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -579,6 +584,7 @@ public class LmsListContentRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -603,18 +609,14 @@ public class LmsListContentRequest {
             this.updatedAfter = updatedAfter;
             return this;
         }
-        
+
         public LmsListContentRequest build() {
+
             return new LmsListContentRequest(
-                xAccountId,
-                raw,
-                proxy,
-                fields,
-                filter,
-                page,
-                pageSize,
-                next,
-                updatedAfter);
+                xAccountId, raw, proxy,
+                fields, filter, page,
+                pageSize, next, updatedAfter);
         }
+
     }
 }

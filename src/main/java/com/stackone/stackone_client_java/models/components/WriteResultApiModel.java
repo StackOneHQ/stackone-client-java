@@ -17,23 +17,28 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class WriteResultApiModel {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("statusCode")
     private JsonNullable<Double> statusCode;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message")
     private JsonNullable<String> message;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("timestamp")
     private JsonNullable<OffsetDateTime> timestamp;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("provider_errors")
     private JsonNullable<? extends List<ProviderErrorApiModel>> providerErrors;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unified_warnings")
@@ -59,7 +64,8 @@ public class WriteResultApiModel {
     }
     
     public WriteResultApiModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -89,9 +95,10 @@ public class WriteResultApiModel {
         return (JsonNullable<List<UnifiedWarningApiModel>>) unifiedWarnings;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public WriteResultApiModel withStatusCode(double statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
@@ -153,7 +160,6 @@ public class WriteResultApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,11 +180,8 @@ public class WriteResultApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            statusCode,
-            message,
-            timestamp,
-            providerErrors,
-            unifiedWarnings);
+            statusCode, message, timestamp,
+            providerErrors, unifiedWarnings);
     }
     
     @Override
@@ -190,22 +193,24 @@ public class WriteResultApiModel {
                 "providerErrors", providerErrors,
                 "unifiedWarnings", unifiedWarnings);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Double> statusCode = JsonNullable.undefined();
- 
+
         private JsonNullable<String> message = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> timestamp = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<ProviderErrorApiModel>> providerErrors = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<UnifiedWarningApiModel>> unifiedWarnings = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder statusCode(double statusCode) {
             Utils.checkNotNull(statusCode, "statusCode");
@@ -219,6 +224,7 @@ public class WriteResultApiModel {
             return this;
         }
 
+
         public Builder message(String message) {
             Utils.checkNotNull(message, "message");
             this.message = JsonNullable.of(message);
@@ -230,6 +236,7 @@ public class WriteResultApiModel {
             this.message = message;
             return this;
         }
+
 
         public Builder timestamp(OffsetDateTime timestamp) {
             Utils.checkNotNull(timestamp, "timestamp");
@@ -243,6 +250,7 @@ public class WriteResultApiModel {
             return this;
         }
 
+
         public Builder providerErrors(List<ProviderErrorApiModel> providerErrors) {
             Utils.checkNotNull(providerErrors, "providerErrors");
             this.providerErrors = JsonNullable.of(providerErrors);
@@ -255,6 +263,7 @@ public class WriteResultApiModel {
             return this;
         }
 
+
         public Builder unifiedWarnings(List<UnifiedWarningApiModel> unifiedWarnings) {
             Utils.checkNotNull(unifiedWarnings, "unifiedWarnings");
             this.unifiedWarnings = JsonNullable.of(unifiedWarnings);
@@ -266,14 +275,13 @@ public class WriteResultApiModel {
             this.unifiedWarnings = unifiedWarnings;
             return this;
         }
-        
+
         public WriteResultApiModel build() {
+
             return new WriteResultApiModel(
-                statusCode,
-                message,
-                timestamp,
-                providerErrors,
-                unifiedWarnings);
+                statusCode, message, timestamp,
+                providerErrors, unifiedWarnings);
         }
+
     }
 }

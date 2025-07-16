@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class LmsUpdateContentRequest {
 
+public class LmsUpdateContentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private LmsCreateContentRequestDto lmsCreateContentRequestDto;
@@ -56,9 +58,10 @@ public class LmsUpdateContentRequest {
         return lmsCreateContentRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class LmsUpdateContentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class LmsUpdateContentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            lmsCreateContentRequestDto);
+            xAccountId, id, lmsCreateContentRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class LmsUpdateContentRequest {
                 "id", id,
                 "lmsCreateContentRequestDto", lmsCreateContentRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private LmsCreateContentRequestDto lmsCreateContentRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class LmsUpdateContentRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder lmsCreateContentRequestDto(LmsCreateContentRequestDto lmsCreateContentRequestDto) {
             Utils.checkNotNull(lmsCreateContentRequestDto, "lmsCreateContentRequestDto");
             this.lmsCreateContentRequestDto = lmsCreateContentRequestDto;
             return this;
         }
-        
+
         public LmsUpdateContentRequest build() {
+
             return new LmsUpdateContentRequest(
-                xAccountId,
-                id,
-                lmsCreateContentRequestDto);
+                xAccountId, id, lmsCreateContentRequestDto);
         }
+
     }
 }

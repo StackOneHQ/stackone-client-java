@@ -65,9 +65,7 @@ public class MarketingCreateInAppTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreateInAppTemplateRequest, MarketingCreateInAppTemplateResponse> operation
-              = new MarketingCreateInAppTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateInAppTemplateOperation(sdkConfiguration, options);
         MarketingCreateInAppTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

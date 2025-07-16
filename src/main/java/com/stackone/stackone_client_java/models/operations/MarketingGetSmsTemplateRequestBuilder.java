@@ -47,9 +47,7 @@ public class MarketingGetSmsTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingGetSmsTemplateRequest, MarketingGetSmsTemplateResponse> operation
-              = new MarketingGetSmsTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetSmsTemplateOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

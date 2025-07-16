@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateJobRequestDto {
 
+public class AtsCreateJobRequestDto {
     /**
      * Custom Unified Fields configured in your StackOne project
      */
@@ -158,7 +158,11 @@ public class AtsCreateJobRequestDto {
     }
     
     public AtsCreateJobRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -277,9 +281,10 @@ public class AtsCreateJobRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Custom Unified Fields configured in your StackOne project
@@ -521,7 +526,6 @@ public class AtsCreateJobRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -550,18 +554,10 @@ public class AtsCreateJobRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            unifiedCustomFields,
-            code,
-            title,
-            description,
-            status,
-            jobStatus,
-            departmentIds,
-            locationIds,
-            hiringTeam,
-            interviewStages,
-            confidential,
-            customFields,
+            unifiedCustomFields, code, title,
+            description, status, jobStatus,
+            departmentIds, locationIds, hiringTeam,
+            interviewStages, confidential, customFields,
             passthrough);
     }
     
@@ -582,39 +578,41 @@ public class AtsCreateJobRequestDto {
                 "customFields", customFields,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> code = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> status = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateJobRequestDtoJobStatus> jobStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> departmentIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> locationIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<JobHiringTeam>> hiringTeam = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<InterviewStage>> interviewStages = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateJobRequestDtoConfidential> confidential = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -634,6 +632,7 @@ public class AtsCreateJobRequestDto {
             return this;
         }
 
+
         /**
          * Code of the job
          */
@@ -651,6 +650,7 @@ public class AtsCreateJobRequestDto {
             this.code = code;
             return this;
         }
+
 
         /**
          * Title of the job
@@ -670,6 +670,7 @@ public class AtsCreateJobRequestDto {
             return this;
         }
 
+
         /**
          * Description of the job
          */
@@ -687,6 +688,7 @@ public class AtsCreateJobRequestDto {
             this.description = description;
             return this;
         }
+
 
         /**
          * Status of the job
@@ -712,6 +714,7 @@ public class AtsCreateJobRequestDto {
             return this;
         }
 
+
         /**
          * Status of the job
          */
@@ -729,6 +732,7 @@ public class AtsCreateJobRequestDto {
             this.jobStatus = jobStatus;
             return this;
         }
+
 
         /**
          * Department ids of the job
@@ -748,6 +752,7 @@ public class AtsCreateJobRequestDto {
             return this;
         }
 
+
         /**
          * Location ids of the job
          */
@@ -765,6 +770,7 @@ public class AtsCreateJobRequestDto {
             this.locationIds = locationIds;
             return this;
         }
+
 
         /**
          * Hiring team for the job.
@@ -784,6 +790,7 @@ public class AtsCreateJobRequestDto {
             return this;
         }
 
+
         /**
          * Interview stages for the job.
          */
@@ -801,6 +808,7 @@ public class AtsCreateJobRequestDto {
             this.interviewStages = interviewStages;
             return this;
         }
+
 
         /**
          * Confidential status of the job
@@ -820,6 +828,7 @@ public class AtsCreateJobRequestDto {
             return this;
         }
 
+
         /**
          * The job custom fields
          */
@@ -838,6 +847,7 @@ public class AtsCreateJobRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -855,22 +865,16 @@ public class AtsCreateJobRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsCreateJobRequestDto build() {
+
             return new AtsCreateJobRequestDto(
-                unifiedCustomFields,
-                code,
-                title,
-                description,
-                status,
-                jobStatus,
-                departmentIds,
-                locationIds,
-                hiringTeam,
-                interviewStages,
-                confidential,
-                customFields,
+                unifiedCustomFields, code, title,
+                description, status, jobStatus,
+                departmentIds, locationIds, hiringTeam,
+                interviewStages, confidential, customFields,
                 passthrough);
         }
+
     }
 }

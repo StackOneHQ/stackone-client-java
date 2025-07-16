@@ -14,8 +14,8 @@ import java.lang.String;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class TaskCommentApiModel {
 
+public class TaskCommentApiModel {
     /**
      * The Employee ID of the author of the comment
      */
@@ -78,9 +78,10 @@ public class TaskCommentApiModel {
         return createdAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Employee ID of the author of the comment
@@ -136,7 +137,6 @@ public class TaskCommentApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,9 +155,7 @@ public class TaskCommentApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            authorEmployeeId,
-            comment,
-            createdAt);
+            authorEmployeeId, comment, createdAt);
     }
     
     @Override
@@ -167,18 +165,20 @@ public class TaskCommentApiModel {
                 "comment", comment,
                 "createdAt", createdAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> authorEmployeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> comment = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Employee ID of the author of the comment
@@ -198,6 +198,7 @@ public class TaskCommentApiModel {
             return this;
         }
 
+
         /**
          * The text of the comment
          */
@@ -216,6 +217,7 @@ public class TaskCommentApiModel {
             return this;
         }
 
+
         /**
          * The creation date of this comment
          */
@@ -233,12 +235,12 @@ public class TaskCommentApiModel {
             this.createdAt = createdAt;
             return this;
         }
-        
+
         public TaskCommentApiModel build() {
+
             return new TaskCommentApiModel(
-                authorEmployeeId,
-                comment,
-                createdAt);
+                authorEmployeeId, comment, createdAt);
         }
+
     }
 }

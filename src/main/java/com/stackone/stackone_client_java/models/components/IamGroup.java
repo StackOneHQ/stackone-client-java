@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamGroup {
 
+public class IamGroup {
     /**
      * Unique identifier
      */
@@ -32,17 +32,21 @@ public class IamGroup {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends IamGroupType> type;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("roles")
@@ -62,9 +66,11 @@ public class IamGroup {
     @JsonProperty("remote_parent_id")
     private JsonNullable<String> remoteParentId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
     private JsonNullable<OffsetDateTime> createdAt;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
@@ -105,7 +111,10 @@ public class IamGroup {
     }
     
     public IamGroup() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -172,9 +181,10 @@ public class IamGroup {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -320,7 +330,6 @@ public class IamGroup {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -346,15 +355,9 @@ public class IamGroup {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            description,
-            type,
-            roles,
-            parentId,
-            remoteParentId,
-            createdAt,
+            id, remoteId, name,
+            description, type, roles,
+            parentId, remoteParentId, createdAt,
             updatedAt);
     }
     
@@ -372,32 +375,34 @@ public class IamGroup {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamGroupType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<IamRole>> roles = JsonNullable.undefined();
- 
+
         private JsonNullable<String> parentId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteParentId = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -417,6 +422,7 @@ public class IamGroup {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -435,6 +441,7 @@ public class IamGroup {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -446,6 +453,7 @@ public class IamGroup {
             this.name = name;
             return this;
         }
+
 
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
@@ -459,6 +467,7 @@ public class IamGroup {
             return this;
         }
 
+
         public Builder type(IamGroupType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -471,6 +480,7 @@ public class IamGroup {
             return this;
         }
 
+
         public Builder roles(List<IamRole> roles) {
             Utils.checkNotNull(roles, "roles");
             this.roles = JsonNullable.of(roles);
@@ -482,6 +492,7 @@ public class IamGroup {
             this.roles = roles;
             return this;
         }
+
 
         /**
          * The parent group id for when a group belongs to another group.
@@ -501,6 +512,7 @@ public class IamGroup {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the parent group id for when a group belongs to another group.
          */
@@ -519,6 +531,7 @@ public class IamGroup {
             return this;
         }
 
+
         public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = JsonNullable.of(createdAt);
@@ -531,6 +544,7 @@ public class IamGroup {
             return this;
         }
 
+
         public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = JsonNullable.of(updatedAt);
@@ -542,19 +556,15 @@ public class IamGroup {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public IamGroup build() {
+
             return new IamGroup(
-                id,
-                remoteId,
-                name,
-                description,
-                type,
-                roles,
-                parentId,
-                remoteParentId,
-                createdAt,
+                id, remoteId, name,
+                description, type, roles,
+                parentId, remoteParentId, createdAt,
                 updatedAt);
         }
+
     }
 }

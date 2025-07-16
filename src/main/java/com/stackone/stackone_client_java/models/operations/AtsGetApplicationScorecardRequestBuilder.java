@@ -47,9 +47,7 @@ public class AtsGetApplicationScorecardRequestBuilder {
             .build());
 
         RequestOperation<AtsGetApplicationScorecardRequest, AtsGetApplicationScorecardResponse> operation
-              = new AtsGetApplicationScorecardOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationScorecardOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

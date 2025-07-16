@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsCreateApplicationNoteRequest {
 
+public class AtsCreateApplicationNoteRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
@@ -56,9 +58,10 @@ public class AtsCreateApplicationNoteRequest {
         return atsCreateNotesRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class AtsCreateApplicationNoteRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class AtsCreateApplicationNoteRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            atsCreateNotesRequestDto);
+            xAccountId, id, atsCreateNotesRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class AtsCreateApplicationNoteRequest {
                 "id", id,
                 "atsCreateNotesRequestDto", atsCreateNotesRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class AtsCreateApplicationNoteRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder atsCreateNotesRequestDto(AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
             Utils.checkNotNull(atsCreateNotesRequestDto, "atsCreateNotesRequestDto");
             this.atsCreateNotesRequestDto = atsCreateNotesRequestDto;
             return this;
         }
-        
+
         public AtsCreateApplicationNoteRequest build() {
+
             return new AtsCreateApplicationNoteRequest(
-                xAccountId,
-                id,
-                atsCreateNotesRequestDto);
+                xAccountId, id, atsCreateNotesRequestDto);
         }
+
     }
 }

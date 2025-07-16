@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The category to be associated with the file to be uploaded. Id will take precedence over name.
  */
 public class HrisDocumentsUploadRequestDtoCategory {
-
     /**
      * The category name to associate with the file
      */
@@ -66,9 +65,10 @@ public class HrisDocumentsUploadRequestDtoCategory {
         return sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The category name to associate with the file
@@ -106,7 +106,6 @@ public class HrisDocumentsUploadRequestDtoCategory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -124,8 +123,7 @@ public class HrisDocumentsUploadRequestDtoCategory {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -134,16 +132,18 @@ public class HrisDocumentsUploadRequestDtoCategory {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisDocumentsUploadRequestDtoCategoryValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<String> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The category name to associate with the file
@@ -163,6 +163,7 @@ public class HrisDocumentsUploadRequestDtoCategory {
             return this;
         }
 
+
         /**
          * The provider specific category for associating uploaded files, if provided, the value will be ignored.
          */
@@ -180,11 +181,12 @@ public class HrisDocumentsUploadRequestDtoCategory {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisDocumentsUploadRequestDtoCategory build() {
+
             return new HrisDocumentsUploadRequestDtoCategory(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

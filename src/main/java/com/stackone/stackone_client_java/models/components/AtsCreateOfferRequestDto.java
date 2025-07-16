@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class AtsCreateOfferRequestDto {
 
     @JsonInclude(Include.NON_ABSENT)
@@ -32,17 +33,21 @@ public class AtsCreateOfferRequestDto {
     @JsonProperty("start_date")
     private JsonNullable<OffsetDateTime> startDate;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("offer_status")
     private JsonNullable<? extends AtsCreateOfferRequestDtoOfferStatus> offerStatus;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("salary")
     private JsonNullable<Double> salary;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("currency")
     private JsonNullable<String> currency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("offer_history")
@@ -81,7 +86,9 @@ public class AtsCreateOfferRequestDto {
     }
     
     public AtsCreateOfferRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -128,9 +135,10 @@ public class AtsCreateOfferRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AtsCreateOfferRequestDto withApplicationId(String applicationId) {
         Utils.checkNotNull(applicationId, "applicationId");
@@ -228,7 +236,6 @@ public class AtsCreateOfferRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -251,12 +258,8 @@ public class AtsCreateOfferRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            applicationId,
-            startDate,
-            offerStatus,
-            salary,
-            currency,
-            offerHistory,
+            applicationId, startDate, offerStatus,
+            salary, currency, offerHistory,
             passthrough);
     }
     
@@ -271,26 +274,28 @@ public class AtsCreateOfferRequestDto {
                 "offerHistory", offerHistory,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> applicationId = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateOfferRequestDtoOfferStatus> offerStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> salary = JsonNullable.undefined();
- 
+
         private JsonNullable<String> currency = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<OfferHistory>> offerHistory = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder applicationId(String applicationId) {
             Utils.checkNotNull(applicationId, "applicationId");
@@ -303,6 +308,7 @@ public class AtsCreateOfferRequestDto {
             this.applicationId = applicationId;
             return this;
         }
+
 
         /**
          * Date of creation
@@ -322,6 +328,7 @@ public class AtsCreateOfferRequestDto {
             return this;
         }
 
+
         public Builder offerStatus(AtsCreateOfferRequestDtoOfferStatus offerStatus) {
             Utils.checkNotNull(offerStatus, "offerStatus");
             this.offerStatus = JsonNullable.of(offerStatus);
@@ -333,6 +340,7 @@ public class AtsCreateOfferRequestDto {
             this.offerStatus = offerStatus;
             return this;
         }
+
 
         public Builder salary(double salary) {
             Utils.checkNotNull(salary, "salary");
@@ -346,6 +354,7 @@ public class AtsCreateOfferRequestDto {
             return this;
         }
 
+
         public Builder currency(String currency) {
             Utils.checkNotNull(currency, "currency");
             this.currency = JsonNullable.of(currency);
@@ -358,6 +367,7 @@ public class AtsCreateOfferRequestDto {
             return this;
         }
 
+
         public Builder offerHistory(List<OfferHistory> offerHistory) {
             Utils.checkNotNull(offerHistory, "offerHistory");
             this.offerHistory = JsonNullable.of(offerHistory);
@@ -369,6 +379,7 @@ public class AtsCreateOfferRequestDto {
             this.offerHistory = offerHistory;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -387,16 +398,14 @@ public class AtsCreateOfferRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsCreateOfferRequestDto build() {
+
             return new AtsCreateOfferRequestDto(
-                applicationId,
-                startDate,
-                offerStatus,
-                salary,
-                currency,
-                offerHistory,
+                applicationId, startDate, offerStatus,
+                salary, currency, offerHistory,
                 passthrough);
         }
+
     }
 }

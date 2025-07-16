@@ -25,6 +25,7 @@ public class Ethnicity {
     @JsonProperty("value")
     private JsonNullable<? extends EmployeeEthnicityValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends EmployeeEthnicitySourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class Ethnicity {
         return (JsonNullable<EmployeeEthnicitySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Ethnicity withValue(EmployeeEthnicityValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class Ethnicity {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class Ethnicity {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class Ethnicity {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmployeeEthnicityValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeEthnicitySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(EmployeeEthnicityValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class Ethnicity {
             return this;
         }
 
+
         public Builder sourceValue(EmployeeEthnicitySourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class Ethnicity {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public Ethnicity build() {
+
             return new Ethnicity(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

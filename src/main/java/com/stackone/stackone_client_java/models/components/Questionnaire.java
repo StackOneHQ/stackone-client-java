@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Questionnaire {
 
+public class Questionnaire {
     /**
      * Unique identifier
      */
@@ -30,6 +30,7 @@ public class Questionnaire {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("answers")
@@ -74,9 +75,10 @@ public class Questionnaire {
         return (JsonNullable<List<Answer>>) answers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -126,7 +128,6 @@ public class Questionnaire {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -145,9 +146,7 @@ public class Questionnaire {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            answers);
+            id, remoteId, answers);
     }
     
     @Override
@@ -157,18 +156,20 @@ public class Questionnaire {
                 "remoteId", remoteId,
                 "answers", answers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Answer>> answers = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -188,6 +189,7 @@ public class Questionnaire {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -206,6 +208,7 @@ public class Questionnaire {
             return this;
         }
 
+
         public Builder answers(List<Answer> answers) {
             Utils.checkNotNull(answers, "answers");
             this.answers = JsonNullable.of(answers);
@@ -217,12 +220,12 @@ public class Questionnaire {
             this.answers = answers;
             return this;
         }
-        
+
         public Questionnaire build() {
+
             return new Questionnaire(
-                id,
-                remoteId,
-                answers);
+                id, remoteId, answers);
         }
+
     }
 }

@@ -47,9 +47,7 @@ public class CrmGetListRequestBuilder {
             .build());
 
         RequestOperation<CrmGetListRequest, CrmGetListResponse> operation
-              = new CrmGetListOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmGetListOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

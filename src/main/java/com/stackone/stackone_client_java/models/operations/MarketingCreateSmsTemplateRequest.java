@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class MarketingCreateSmsTemplateRequest {
 
+public class MarketingCreateSmsTemplateRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto;
@@ -45,9 +46,10 @@ public class MarketingCreateSmsTemplateRequest {
         return marketingCreateSmsTemplateRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class MarketingCreateSmsTemplateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class MarketingCreateSmsTemplateRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            marketingCreateSmsTemplateRequestDto);
+            xAccountId, marketingCreateSmsTemplateRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class MarketingCreateSmsTemplateRequest {
                 "xAccountId", xAccountId,
                 "marketingCreateSmsTemplateRequestDto", marketingCreateSmsTemplateRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class MarketingCreateSmsTemplateRequest {
             return this;
         }
 
+
         public Builder marketingCreateSmsTemplateRequestDto(MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
             Utils.checkNotNull(marketingCreateSmsTemplateRequestDto, "marketingCreateSmsTemplateRequestDto");
             this.marketingCreateSmsTemplateRequestDto = marketingCreateSmsTemplateRequestDto;
             return this;
         }
-        
+
         public MarketingCreateSmsTemplateRequest build() {
+
             return new MarketingCreateSmsTemplateRequest(
-                xAccountId,
-                marketingCreateSmsTemplateRequestDto);
+                xAccountId, marketingCreateSmsTemplateRequestDto);
         }
+
     }
 }

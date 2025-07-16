@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
 
+public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
     /**
      * Unique identifier
      */
@@ -31,6 +31,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application_status")
@@ -60,7 +61,8 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
     }
     
     public AtsCreateBackgroundCheckOrderRequestDtoApplication() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -94,9 +96,10 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -164,7 +167,6 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -184,9 +186,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            applicationStatus,
+            id, remoteId, applicationStatus,
             passthrough);
     }
     
@@ -198,20 +198,22 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
                 "applicationStatus", applicationStatus,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus> applicationStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -231,6 +233,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -249,6 +252,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
             return this;
         }
 
+
         public Builder applicationStatus(AtsCreateBackgroundCheckOrderRequestDtoApplicationStatus applicationStatus) {
             Utils.checkNotNull(applicationStatus, "applicationStatus");
             this.applicationStatus = JsonNullable.of(applicationStatus);
@@ -260,6 +264,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
             this.applicationStatus = applicationStatus;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -278,13 +283,13 @@ public class AtsCreateBackgroundCheckOrderRequestDtoApplication {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsCreateBackgroundCheckOrderRequestDtoApplication build() {
+
             return new AtsCreateBackgroundCheckOrderRequestDtoApplication(
-                id,
-                remoteId,
-                applicationStatus,
+                id, remoteId, applicationStatus,
                 passthrough);
         }
+
     }
 }

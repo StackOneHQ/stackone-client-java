@@ -47,9 +47,7 @@ public class AtsGetDepartmentRequestBuilder {
             .build());
 
         RequestOperation<AtsGetDepartmentRequest, AtsGetDepartmentResponse> operation
-              = new AtsGetDepartmentOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetDepartmentOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

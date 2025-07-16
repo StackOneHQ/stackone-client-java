@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AssessmentResult {
 
+public class AssessmentResult {
     /**
      * Unique identifier
      */
@@ -32,9 +32,11 @@ public class AssessmentResult {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("candidate")
     private JsonNullable<? extends AssessmentResultCandidate> candidate;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("score")
@@ -61,6 +63,7 @@ public class AssessmentResult {
     @JsonProperty("summary")
     private JsonNullable<String> summary;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("result")
     private JsonNullable<? extends AssessmentResultResult> result;
@@ -71,6 +74,7 @@ public class AssessmentResult {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("result_url")
     private JsonNullable<String> resultUrl;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("attachments")
@@ -111,7 +115,10 @@ public class AssessmentResult {
     }
     
     public AssessmentResult() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -186,9 +193,10 @@ public class AssessmentResult {
         return (JsonNullable<List<Attachment>>) attachments;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -346,7 +354,6 @@ public class AssessmentResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -372,15 +379,9 @@ public class AssessmentResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            candidate,
-            score,
-            startDate,
-            submissionDate,
-            summary,
-            result,
-            resultUrl,
+            id, remoteId, candidate,
+            score, startDate, submissionDate,
+            summary, result, resultUrl,
             attachments);
     }
     
@@ -398,32 +399,34 @@ public class AssessmentResult {
                 "resultUrl", resultUrl,
                 "attachments", attachments);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AssessmentResultCandidate> candidate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AssessmentResultScore> score = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> submissionDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> summary = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AssessmentResultResult> result = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resultUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Attachment>> attachments = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -443,6 +446,7 @@ public class AssessmentResult {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -461,6 +465,7 @@ public class AssessmentResult {
             return this;
         }
 
+
         public Builder candidate(AssessmentResultCandidate candidate) {
             Utils.checkNotNull(candidate, "candidate");
             this.candidate = JsonNullable.of(candidate);
@@ -473,6 +478,7 @@ public class AssessmentResult {
             return this;
         }
 
+
         public Builder score(AssessmentResultScore score) {
             Utils.checkNotNull(score, "score");
             this.score = JsonNullable.of(score);
@@ -484,6 +490,7 @@ public class AssessmentResult {
             this.score = score;
             return this;
         }
+
 
         /**
          * The start date of the candidate test
@@ -503,6 +510,7 @@ public class AssessmentResult {
             return this;
         }
 
+
         /**
          * The submission date of the candidate test
          */
@@ -520,6 +528,7 @@ public class AssessmentResult {
             this.submissionDate = submissionDate;
             return this;
         }
+
 
         /**
          * The summary about the result of the test
@@ -539,6 +548,7 @@ public class AssessmentResult {
             return this;
         }
 
+
         public Builder result(AssessmentResultResult result) {
             Utils.checkNotNull(result, "result");
             this.result = JsonNullable.of(result);
@@ -550,6 +560,7 @@ public class AssessmentResult {
             this.result = result;
             return this;
         }
+
 
         /**
          * The test`s result url
@@ -569,6 +580,7 @@ public class AssessmentResult {
             return this;
         }
 
+
         public Builder attachments(List<Attachment> attachments) {
             Utils.checkNotNull(attachments, "attachments");
             this.attachments = JsonNullable.of(attachments);
@@ -580,19 +592,15 @@ public class AssessmentResult {
             this.attachments = attachments;
             return this;
         }
-        
+
         public AssessmentResult build() {
+
             return new AssessmentResult(
-                id,
-                remoteId,
-                candidate,
-                score,
-                startDate,
-                submissionDate,
-                summary,
-                result,
-                resultUrl,
+                id, remoteId, candidate,
+                score, startDate, submissionDate,
+                summary, result, resultUrl,
                 attachments);
         }
+
     }
 }

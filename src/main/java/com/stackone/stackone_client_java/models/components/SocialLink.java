@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class SocialLink {
 
+public class SocialLink {
     /**
      * Type of the social link
      */
@@ -59,9 +59,10 @@ public class SocialLink {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Type of the social link
@@ -99,7 +100,6 @@ public class SocialLink {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -117,8 +117,7 @@ public class SocialLink {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            type,
-            url);
+            type, url);
     }
     
     @Override
@@ -127,16 +126,18 @@ public class SocialLink {
                 "type", type,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Type of the social link
@@ -156,6 +157,7 @@ public class SocialLink {
             return this;
         }
 
+
         /**
          * URL of the social link
          */
@@ -173,11 +175,12 @@ public class SocialLink {
             this.url = url;
             return this;
         }
-        
+
         public SocialLink build() {
+
             return new SocialLink(
-                type,
-                url);
+                type, url);
         }
+
     }
 }

@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AssessmentResultScore {
 
+public class AssessmentResultScore {
     /**
      * The label of the score
      */
@@ -60,7 +60,8 @@ public class AssessmentResultScore {
     }
     
     public AssessmentResultScore() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -95,9 +96,10 @@ public class AssessmentResultScore {
         return max;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The label of the score
@@ -171,7 +173,6 @@ public class AssessmentResultScore {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -191,9 +192,7 @@ public class AssessmentResultScore {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            label,
-            value,
-            min,
+            label, value, min,
             max);
     }
     
@@ -205,20 +204,22 @@ public class AssessmentResultScore {
                 "min", min,
                 "max", max);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<String> value = JsonNullable.undefined();
- 
+
         private JsonNullable<String> min = JsonNullable.undefined();
- 
+
         private JsonNullable<String> max = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The label of the score
@@ -238,6 +239,7 @@ public class AssessmentResultScore {
             return this;
         }
 
+
         /**
          * The value is the actual score
          */
@@ -255,6 +257,7 @@ public class AssessmentResultScore {
             this.value = value;
             return this;
         }
+
 
         /**
          * The minimum value of the score
@@ -274,6 +277,7 @@ public class AssessmentResultScore {
             return this;
         }
 
+
         /**
          * The maximum value of the score
          */
@@ -291,13 +295,13 @@ public class AssessmentResultScore {
             this.max = max;
             return this;
         }
-        
+
         public AssessmentResultScore build() {
+
             return new AssessmentResultScore(
-                label,
-                value,
-                min,
+                label, value, min,
                 max);
         }
+
     }
 }

@@ -15,13 +15,14 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsGetContentRequest {
 
+public class LmsGetContentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
@@ -66,7 +67,8 @@ public class LmsGetContentRequest {
     public LmsGetContentRequest(
             String xAccountId,
             String id) {
-        this(xAccountId, id, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, id, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -107,9 +109,10 @@ public class LmsGetContentRequest {
         return fields;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -180,7 +183,6 @@ public class LmsGetContentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -201,11 +203,8 @@ public class LmsGetContentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            raw,
-            proxy,
-            fields);
+            xAccountId, id, raw,
+            proxy, fields);
     }
     
     @Override
@@ -217,22 +216,24 @@ public class LmsGetContentRequest {
                 "proxy", proxy,
                 "fields", fields);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -243,11 +244,13 @@ public class LmsGetContentRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -267,6 +270,7 @@ public class LmsGetContentRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -285,6 +289,7 @@ public class LmsGetContentRequest {
             return this;
         }
 
+
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
          */
@@ -302,14 +307,13 @@ public class LmsGetContentRequest {
             this.fields = fields;
             return this;
         }
-        
+
         public LmsGetContentRequest build() {
+
             return new LmsGetContentRequest(
-                xAccountId,
-                id,
-                raw,
-                proxy,
-                fields);
+                xAccountId, id, raw,
+                proxy, fields);
         }
+
     }
 }

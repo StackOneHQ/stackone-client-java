@@ -15,14 +15,17 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class TimeOffPoliciesPaginated {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("next")
     private JsonNullable<String> next;
 
+
     @JsonProperty("data")
     private List<TimeOffPolicies> data;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw")
@@ -62,9 +65,10 @@ public class TimeOffPoliciesPaginated {
         return (JsonNullable<List<RawResponse>>) raw;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public TimeOffPoliciesPaginated withNext(String next) {
         Utils.checkNotNull(next, "next");
@@ -96,7 +100,6 @@ public class TimeOffPoliciesPaginated {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -115,9 +118,7 @@ public class TimeOffPoliciesPaginated {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            next,
-            data,
-            raw);
+            next, data, raw);
     }
     
     @Override
@@ -127,18 +128,20 @@ public class TimeOffPoliciesPaginated {
                 "data", data,
                 "raw", raw);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         private List<TimeOffPolicies> data;
- 
+
         private JsonNullable<? extends List<RawResponse>> raw = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder next(String next) {
             Utils.checkNotNull(next, "next");
@@ -152,11 +155,13 @@ public class TimeOffPoliciesPaginated {
             return this;
         }
 
+
         public Builder data(List<TimeOffPolicies> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
+
 
         public Builder raw(List<RawResponse> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -169,12 +174,12 @@ public class TimeOffPoliciesPaginated {
             this.raw = raw;
             return this;
         }
-        
+
         public TimeOffPoliciesPaginated build() {
+
             return new TimeOffPoliciesPaginated(
-                next,
-                data,
-                raw);
+                next, data, raw);
         }
+
     }
 }

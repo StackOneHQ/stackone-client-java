@@ -1,22 +1,22 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 5edb1351a8e4f5412cf7efea168fbf80
+  docChecksum: cea4bae26fd4d3d609adc72a3ae7b857
   docVersion: 1.0.0
-  speakeasyVersion: 1.576.1
-  generationVersion: 2.651.2
-  releaseVersion: 0.7.0
-  configChecksum: 31bed04412d67dd7dc9af3c75f49eb04
+  speakeasyVersion: 1.582.0
+  generationVersion: 2.657.1
+  releaseVersion: 0.8.0
+  configChecksum: 2eeb61b85cfba7915bfb2c94bceae4ed
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.42.3
+    core: 3.44.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
-    examples: 2.81.5
+    examples: 2.81.6
     flattening: 2.81.1
     globalSecurity: 2.83.0
     globalSecurityCallbacks: 0.1.0
@@ -82,6 +82,7 @@ generatedFiles:
   - docs/models/components/ApplicationStatus.md
   - docs/models/components/ApplicationValue.md
   - docs/models/components/ApplicationsPaginated.md
+  - docs/models/components/ApprovalStatus.md
   - docs/models/components/Archived.md
   - docs/models/components/Archived2.md
   - docs/models/components/AssessmentPackage.md
@@ -396,6 +397,7 @@ generatedFiles:
   - docs/models/components/CustomFields.md
   - docs/models/components/CustomFieldsValue.md
   - docs/models/components/CustomMappingError.md
+  - docs/models/components/Data.md
   - docs/models/components/DeleteResult.md
   - docs/models/components/Department.md
   - docs/models/components/DepartmentResult.md
@@ -572,6 +574,13 @@ generatedFiles:
   - docs/models/components/HRISDepartmentValue.md
   - docs/models/components/HRISDepartmentsPaginated.md
   - docs/models/components/HRISDepartmentsResult.md
+  - docs/models/components/HRISDivision.md
+  - docs/models/components/HRISDivisionSourceValue.md
+  - docs/models/components/HRISDivisionSourceValue4.md
+  - docs/models/components/HRISDivisionType.md
+  - docs/models/components/HRISDivisionValue.md
+  - docs/models/components/HRISDivisionsPaginated.md
+  - docs/models/components/HRISDivisionsResult.md
   - docs/models/components/HRISGroup.md
   - docs/models/components/HRISGroupSourceValue.md
   - docs/models/components/HRISGroupSourceValue4.md
@@ -755,6 +764,24 @@ generatedFiles:
   - docs/models/components/HrisDocumentsUploadRequestDtoSourceValueConfidential4.md
   - docs/models/components/HrisDocumentsUploadRequestDtoValue.md
   - docs/models/components/HrisInviteEmployeeRequestDto.md
+  - docs/models/components/HrisShift.md
+  - docs/models/components/HrisShiftApprovalStatusSourceValue.md
+  - docs/models/components/HrisShiftApprovalStatusValue.md
+  - docs/models/components/HrisShiftResult.md
+  - docs/models/components/HrisShiftResultApprovalStatus.md
+  - docs/models/components/HrisShiftResultDataSourceValue.md
+  - docs/models/components/HrisShiftResultDataValue.md
+  - docs/models/components/HrisShiftResultSourceValue.md
+  - docs/models/components/HrisShiftResultSourceValue4.md
+  - docs/models/components/HrisShiftResultSourceValueData4.md
+  - docs/models/components/HrisShiftResultStatus.md
+  - docs/models/components/HrisShiftResultValue.md
+  - docs/models/components/HrisShiftSourceValue.md
+  - docs/models/components/HrisShiftSourceValue4.md
+  - docs/models/components/HrisShiftSourceValueApprovalStatus4.md
+  - docs/models/components/HrisShiftStatus.md
+  - docs/models/components/HrisShiftValue.md
+  - docs/models/components/HrisShiftsPaginated.md
   - docs/models/components/HrisUpdateEmployeeRequestDto.md
   - docs/models/components/HrisUpdateEmployeeRequestDtoAvatar.md
   - docs/models/components/HrisUpdateEmployeeRequestDtoCountry.md
@@ -1187,6 +1214,7 @@ generatedFiles:
   - docs/models/components/Secrets.md
   - docs/models/components/Security.md
   - docs/models/components/SetupInformation.md
+  - docs/models/components/ShiftBreak.md
   - docs/models/components/SkillResult.md
   - docs/models/components/Skills.md
   - docs/models/components/SkillsActive.md
@@ -1380,6 +1408,8 @@ generatedFiles:
   - docs/models/operations/AtsGetApplicationCustomFieldDefinitionQueryParamFilter.md
   - docs/models/operations/AtsGetApplicationCustomFieldDefinitionRequest.md
   - docs/models/operations/AtsGetApplicationCustomFieldDefinitionResponse.md
+  - docs/models/operations/AtsGetApplicationDocumentCategoryRequest.md
+  - docs/models/operations/AtsGetApplicationDocumentCategoryResponse.md
   - docs/models/operations/AtsGetApplicationDocumentRequest.md
   - docs/models/operations/AtsGetApplicationDocumentResponse.md
   - docs/models/operations/AtsGetApplicationNoteRequest.md
@@ -1436,6 +1466,9 @@ generatedFiles:
   - docs/models/operations/AtsListApplicationCustomFieldDefinitionsQueryParamFilter.md
   - docs/models/operations/AtsListApplicationCustomFieldDefinitionsRequest.md
   - docs/models/operations/AtsListApplicationCustomFieldDefinitionsResponse.md
+  - docs/models/operations/AtsListApplicationDocumentCategoriesQueryParamFilter.md
+  - docs/models/operations/AtsListApplicationDocumentCategoriesRequest.md
+  - docs/models/operations/AtsListApplicationDocumentCategoriesResponse.md
   - docs/models/operations/AtsListApplicationDocumentsQueryParamFilter.md
   - docs/models/operations/AtsListApplicationDocumentsRequest.md
   - docs/models/operations/AtsListApplicationDocumentsResponse.md
@@ -1485,6 +1518,7 @@ generatedFiles:
   - docs/models/operations/AtsListJobPostingsRequest.md
   - docs/models/operations/AtsListJobPostingsResponse.md
   - docs/models/operations/AtsListJobsQueryParamFilter.md
+  - docs/models/operations/AtsListJobsQueryParamStatus.md
   - docs/models/operations/AtsListJobsRequest.md
   - docs/models/operations/AtsListJobsResponse.md
   - docs/models/operations/AtsListListsQueryParamFilter.md
@@ -1571,12 +1605,16 @@ generatedFiles:
   - docs/models/operations/HrisDownloadEmployeeDocumentResponse.md
   - docs/models/operations/HrisGetBenefitRequest.md
   - docs/models/operations/HrisGetBenefitResponse.md
+  - docs/models/operations/HrisGetCompanyGroupRequest.md
+  - docs/models/operations/HrisGetCompanyGroupResponse.md
   - docs/models/operations/HrisGetCompanyRequest.md
   - docs/models/operations/HrisGetCompanyResponse.md
   - docs/models/operations/HrisGetCostCenterGroupRequest.md
   - docs/models/operations/HrisGetCostCenterGroupResponse.md
   - docs/models/operations/HrisGetDepartmentGroupRequest.md
   - docs/models/operations/HrisGetDepartmentGroupResponse.md
+  - docs/models/operations/HrisGetDivisionGroupRequest.md
+  - docs/models/operations/HrisGetDivisionGroupResponse.md
   - docs/models/operations/HrisGetEmployeeCustomFieldDefinitionQueryParamFilter.md
   - docs/models/operations/HrisGetEmployeeCustomFieldDefinitionRequest.md
   - docs/models/operations/HrisGetEmployeeCustomFieldDefinitionResponse.md
@@ -1608,6 +1646,10 @@ generatedFiles:
   - docs/models/operations/HrisGetLocationResponse.md
   - docs/models/operations/HrisGetPositionRequest.md
   - docs/models/operations/HrisGetPositionResponse.md
+  - docs/models/operations/HrisGetShiftRequest.md
+  - docs/models/operations/HrisGetShiftResponse.md
+  - docs/models/operations/HrisGetTaskRequest.md
+  - docs/models/operations/HrisGetTaskResponse.md
   - docs/models/operations/HrisGetTeamGroupRequest.md
   - docs/models/operations/HrisGetTeamGroupResponse.md
   - docs/models/operations/HrisGetTimeEntriesRequest.md
@@ -1623,6 +1665,9 @@ generatedFiles:
   - docs/models/operations/HrisListBenefitsQueryParamFilter.md
   - docs/models/operations/HrisListBenefitsRequest.md
   - docs/models/operations/HrisListBenefitsResponse.md
+  - docs/models/operations/HrisListCompaniesGroupsQueryParamFilter.md
+  - docs/models/operations/HrisListCompaniesGroupsRequest.md
+  - docs/models/operations/HrisListCompaniesGroupsResponse.md
   - docs/models/operations/HrisListCompaniesQueryParamFilter.md
   - docs/models/operations/HrisListCompaniesRequest.md
   - docs/models/operations/HrisListCompaniesResponse.md
@@ -1632,6 +1677,9 @@ generatedFiles:
   - docs/models/operations/HrisListDepartmentGroupsQueryParamFilter.md
   - docs/models/operations/HrisListDepartmentGroupsRequest.md
   - docs/models/operations/HrisListDepartmentGroupsResponse.md
+  - docs/models/operations/HrisListDivisionGroupsQueryParamFilter.md
+  - docs/models/operations/HrisListDivisionGroupsRequest.md
+  - docs/models/operations/HrisListDivisionGroupsResponse.md
   - docs/models/operations/HrisListEmployeeCategoriesQueryParamFilter.md
   - docs/models/operations/HrisListEmployeeCategoriesRequest.md
   - docs/models/operations/HrisListEmployeeCategoriesResponse.md
@@ -1680,6 +1728,12 @@ generatedFiles:
   - docs/models/operations/HrisListPositionsQueryParamFilter.md
   - docs/models/operations/HrisListPositionsRequest.md
   - docs/models/operations/HrisListPositionsResponse.md
+  - docs/models/operations/HrisListShiftsQueryParamFilter.md
+  - docs/models/operations/HrisListShiftsRequest.md
+  - docs/models/operations/HrisListShiftsResponse.md
+  - docs/models/operations/HrisListTasksQueryParamFilter.md
+  - docs/models/operations/HrisListTasksRequest.md
+  - docs/models/operations/HrisListTasksResponse.md
   - docs/models/operations/HrisListTeamGroupsQueryParamFilter.md
   - docs/models/operations/HrisListTeamGroupsRequest.md
   - docs/models/operations/HrisListTeamGroupsResponse.md
@@ -1966,6 +2020,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationStatus.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationsPaginated.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/ApprovalStatus.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Archived.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Archived2.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentPackage.java
@@ -2280,6 +2335,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/CustomFields.java
   - src/main/java/com/stackone/stackone_client_java/models/components/CustomFieldsValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/CustomMappingError.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/Data.java
   - src/main/java/com/stackone/stackone_client_java/models/components/DeleteResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Department.java
   - src/main/java/com/stackone/stackone_client_java/models/components/DepartmentResult.java
@@ -2456,6 +2512,13 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/HRISDepartmentValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HRISDepartmentsPaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HRISDepartmentsResult.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HRISDivision.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HRISDivisionSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HRISDivisionSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HRISDivisionType.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HRISDivisionValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HRISDivisionsPaginated.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HRISDivisionsResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HRISGroup.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HRISGroupSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HRISGroupSourceValue4.java
@@ -2639,6 +2702,24 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisDocumentsUploadRequestDtoSourceValueConfidential4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisDocumentsUploadRequestDtoValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisInviteEmployeeRequestDto.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShift.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftApprovalStatusSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftApprovalStatusValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResult.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResultApprovalStatus.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResultDataSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResultDataValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResultSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResultSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResultSourceValueData4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResultStatus.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftResultValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftSourceValueApprovalStatus4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftStatus.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftsPaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisUpdateEmployeeRequestDto.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisUpdateEmployeeRequestDtoAvatar.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisUpdateEmployeeRequestDtoCountry.java
@@ -3071,6 +3152,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/Secrets.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Security.java
   - src/main/java/com/stackone/stackone_client_java/models/components/SetupInformation.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/ShiftBreak.java
   - src/main/java/com/stackone/stackone_client_java/models/components/SkillResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Skills.java
   - src/main/java/com/stackone/stackone_client_java/models/components/SkillsActive.java
@@ -3276,6 +3358,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationCustomFieldDefinitionRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationCustomFieldDefinitionRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationCustomFieldDefinitionResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationDocumentCategoryRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationDocumentCategoryRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationDocumentCategoryResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationDocumentRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationDocumentRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetApplicationDocumentResponse.java
@@ -3358,6 +3443,10 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationCustomFieldDefinitionsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationCustomFieldDefinitionsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationCustomFieldDefinitionsResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationDocumentCategoriesQueryParamFilter.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationDocumentCategoriesRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationDocumentCategoriesRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationDocumentCategoriesResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationDocumentsQueryParamFilter.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationDocumentsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListApplicationDocumentsRequestBuilder.java
@@ -3423,6 +3512,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobPostingsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobPostingsResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobsQueryParamFilter.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobsQueryParamStatus.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobsResponse.java
@@ -3546,6 +3636,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetBenefitRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetBenefitRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetBenefitResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetCompanyGroupRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetCompanyGroupRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetCompanyGroupResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetCompanyRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetCompanyRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetCompanyResponse.java
@@ -3555,6 +3648,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetDepartmentGroupRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetDepartmentGroupRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetDepartmentGroupResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetDivisionGroupRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetDivisionGroupRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetDivisionGroupResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetEmployeeCustomFieldDefinitionQueryParamFilter.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetEmployeeCustomFieldDefinitionRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetEmployeeCustomFieldDefinitionRequestBuilder.java
@@ -3601,6 +3697,12 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetPositionRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetPositionRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetPositionResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetShiftRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetShiftRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetShiftResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetTaskRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetTaskRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetTaskResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetTeamGroupRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetTeamGroupRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisGetTeamGroupResponse.java
@@ -3623,6 +3725,10 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListBenefitsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListBenefitsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListBenefitsResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListCompaniesGroupsQueryParamFilter.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListCompaniesGroupsRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListCompaniesGroupsRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListCompaniesGroupsResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListCompaniesQueryParamFilter.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListCompaniesRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListCompaniesRequestBuilder.java
@@ -3635,6 +3741,10 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListDepartmentGroupsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListDepartmentGroupsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListDepartmentGroupsResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListDivisionGroupsQueryParamFilter.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListDivisionGroupsRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListDivisionGroupsRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListDivisionGroupsResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListEmployeeCategoriesQueryParamFilter.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListEmployeeCategoriesRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListEmployeeCategoriesRequestBuilder.java
@@ -3699,6 +3809,14 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListPositionsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListPositionsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListPositionsResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListShiftsQueryParamFilter.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListShiftsRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListShiftsRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListShiftsResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListTasksQueryParamFilter.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListTasksRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListTasksRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListTasksResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListTeamGroupsQueryParamFilter.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListTeamGroupsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisListTeamGroupsRequestBuilder.java
@@ -3997,6 +4115,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/AtsDeleteBackgroundCheckPackageOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsDownloadApplicationDocumentOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetApplicationCustomFieldDefinitionOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/AtsGetApplicationDocumentCategoryOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetApplicationDocumentOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetApplicationNoteOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetApplicationOfferOperation.java
@@ -4023,6 +4142,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetUserOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListApplicationChangesOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListApplicationCustomFieldDefinitionsOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/AtsListApplicationDocumentCategoriesOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListApplicationDocumentsOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListApplicationNotesOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListApplicationScorecardsOperation.java
@@ -4076,9 +4196,11 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/HrisCreateEmployeeWorkEligibilityRequestOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisDownloadEmployeeDocumentOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetBenefitOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisGetCompanyGroupOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetCompanyOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetCostCenterGroupOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetDepartmentGroupOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisGetDivisionGroupOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetEmployeeCustomFieldDefinitionOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetEmployeeDocumentCategoryOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetEmployeeDocumentOperation.java
@@ -4094,6 +4216,8 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetJobOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetLocationOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetPositionOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisGetShiftOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisGetTaskOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetTeamGroupOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetTimeEntriesOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetTimeOffPolicyOperation.java
@@ -4101,9 +4225,11 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/HrisGetTimeOffTypeOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisInviteEmployeeOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListBenefitsOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisListCompaniesGroupsOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListCompaniesOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListCostCenterGroupsOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListDepartmentGroupsOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisListDivisionGroupsOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListEmployeeCategoriesOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListEmployeeCustomFieldDefinitionsOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListEmployeeDocumentsOperation.java
@@ -4120,6 +4246,8 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListJobsOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListLocationsOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListPositionsOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisListShiftsOperation.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisListTasksOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListTeamGroupsOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListTimeEntriesOperation.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListTimeOffPoliciesOperation.java
@@ -6264,7 +6392,7 @@ examples:
     speakeasy-default-hris-list-department-groups:
       parameters:
         query:
-          fields: "id,remote_id,name"
+          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
         header:
           x-account-id: "<id>"
@@ -6407,7 +6535,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name"
+          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
         header:
           x-account-id: "<id>"
       responses:
@@ -12167,6 +12295,360 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "created_at": "2024-01-15T10:30:00Z", "effective_at": "2024-01-15T10:30:00Z", "actor": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "change_type": {"value": "application_status", "source_value": "StatusChange"}, "new_values": {"interview_stage_id": "18bcbb1b-3cbc-4198-a999-460861d19480", "rejected_reason_ids": ["f223d7f6-908b-48f0-9237-b201c307f609"], "application_status": null}}]}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_list_division_groups:
+    speakeasy-default-hris-list-division-groups:
+      parameters:
+        query:
+          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": []}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": null, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_list_companies_groups:
+    speakeasy-default-hris-list-companies-groups:
+      parameters:
+        query:
+          fields: "id,remote_id,name,full_name,display_name,created_at,updated_at"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "name": "StackOne Technologies PLC", "full_name": "American Express Company", "display_name": "StackOne", "created_at": "2023-02-23T00:00:00.000Z", "updated_at": "2024-02-23T00:00:00.000Z"}]}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_get_division_group:
+    speakeasy-default-hris-get-division-group:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "name": "Engineering", "parent_ids": ["cxIQNjUyNDM0", "cxIQNjQzNzI0MQ"], "remote_parent_ids": ["652434", "6437241"], "owner_ids": ["cxIQNjUyEDM0", "cxIQNjQzNzA0MQ"], "remote_owner_ids": ["475364", "4327652"], "company_id": "1234567890", "remote_company_id": "1234567890", "type": {"value": "division"}}}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_get_company_group:
+    speakeasy-default-hris-get-company-group:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,full_name,display_name,created_at,updated_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "name": "StackOne Technologies PLC", "full_name": "American Express Company", "display_name": "StackOne", "created_at": "2023-02-23T00:00:00.000Z", "updated_at": "2024-02-23T00:00:00.000Z"}}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_list_shifts:
+    speakeasy-default-hris-list-shifts:
+      parameters:
+        query:
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "emp_123456789", "location_id": "loc_123456789", "company_id": "comp_123456789", "start_time": "2024-03-20T09:00:00Z", "end_time": "2024-03-20T17:00:00Z", "break_duration": "PT1H30M", "status": {"value": "confirmed", "source_value": "Confirmed"}, "approval_status": {"value": "approved", "source_value": "Approved"}, "breaks": [{"id": "break_123456789", "start_time": "2024-03-20T12:00:00Z", "end_time": "2024-03-20T13:00:00Z", "duration": "PT1H", "is_paid": true, "created_at": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "created_at": "2024-03-20T08:00:00Z", "updated_at": "2024-03-20T08:00:00Z"}]}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_get_shift:
+    speakeasy-default-hris-get-shift:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "emp_123456789", "location_id": "loc_123456789", "company_id": "comp_123456789", "start_time": "2024-03-20T09:00:00Z", "end_time": "2024-03-20T17:00:00Z", "break_duration": "PT1H30M", "status": {"value": "confirmed", "source_value": "Confirmed"}, "approval_status": {"value": "approved", "source_value": "Approved"}, "breaks": [{"id": "break_123456789", "start_time": "2024-03-20T12:00:00Z", "end_time": "2024-03-20T13:00:00Z", "duration": "PT1H", "is_paid": true, "created_at": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "created_at": "2024-03-20T08:00:00Z", "updated_at": "2024-03-20T08:00:00Z"}}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_list_tasks:
+    speakeasy-default-hris-list-tasks:
+      parameters:
+        query:
+          fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+          expand: "attachments"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "cx280928937", "name": "Complete onboarding documents", "description": "Please complete all required onboarding documents in the employee portal", "type": {"value": "action"}, "status": {"value": "open"}, "due_date": "2024-03-20T23:59:59.000Z", "completion_date": "2024-03-19T15:30:00.000Z", "assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "link_to_task": "https://provider.com/tasks/123", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "comments": null, "attachments": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "category": {}, "category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-02T01:01:01.000Z", "remote_url": "https://example.com/file.pdf", "file_format": null}], "created_at": "2024-03-15T10:00:00.000Z", "updated_at": "2024-03-19T15:30:00.000Z"}]}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_get_task:
+    speakeasy-default-hris-get-task:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at"
+          expand: "attachments"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "cx280928937", "name": "Complete onboarding documents", "description": "Please complete all required onboarding documents in the employee portal", "type": {"value": "action"}, "status": {"value": "open"}, "due_date": "2024-03-20T23:59:59.000Z", "completion_date": "2024-03-19T15:30:00.000Z", "assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "link_to_task": "https://provider.com/tasks/123", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "comments": [{"comment": "Approved based on in-person assessment", "created_at": "2024-03-15T10:00:00.000Z"}], "attachments": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "category": {}, "category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-02T01:01:01.000Z", "remote_url": "https://example.com/file.pdf", "file_format": {"value": "pdf", "source_value": "application/pdf"}}], "created_at": "2024-03-15T10:00:00.000Z", "updated_at": "2024-03-19T15:30:00.000Z"}]}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_list_application_document_categories:
+    speakeasy-default-ats-list-application-document-categories:
+      parameters:
+        query:
+          fields: "id,remote_id,name,active"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "1687-3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "1687-4", "active": true}]}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_get_application_document_category:
+    speakeasy-default-ats-get-application-document-category:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,active"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"id": "1687-3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "1687-4", "active": true}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":

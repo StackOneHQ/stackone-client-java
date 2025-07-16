@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The duration unit of the current policy
  */
 public class DurationUnit {
-
     /**
      * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends TimeOffPoliciesDurationUnitValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class DurationUnit {
         return (JsonNullable<TimeOffPoliciesDurationUnitSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
@@ -95,7 +96,6 @@ public class DurationUnit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class DurationUnit {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class DurationUnit {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends TimeOffPoliciesDurationUnitValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeOffPoliciesDurationUnitSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
@@ -152,6 +153,7 @@ public class DurationUnit {
             return this;
         }
 
+
         public Builder sourceValue(TimeOffPoliciesDurationUnitSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class DurationUnit {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public DurationUnit build() {
+
             return new DurationUnit(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

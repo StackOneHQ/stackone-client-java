@@ -73,9 +73,7 @@ public class AtsCreateApplicationNoteRequestBuilder {
             .build());
 
         RequestOperation<AtsCreateApplicationNoteRequest, AtsCreateApplicationNoteResponse> operation
-              = new AtsCreateApplicationNoteOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateApplicationNoteOperation(sdkConfiguration, options);
         AtsCreateApplicationNoteRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

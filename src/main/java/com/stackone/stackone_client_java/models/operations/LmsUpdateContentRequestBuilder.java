@@ -73,9 +73,7 @@ public class LmsUpdateContentRequestBuilder {
             .build());
 
         RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsUpdateContentOperation(sdkConfiguration, options);
         LmsUpdateContentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsRejectApplicationRequest {
 
+public class AtsRejectApplicationRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsRejectApplicationRequestDto atsRejectApplicationRequestDto;
@@ -56,9 +58,10 @@ public class AtsRejectApplicationRequest {
         return atsRejectApplicationRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class AtsRejectApplicationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class AtsRejectApplicationRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            atsRejectApplicationRequestDto);
+            xAccountId, id, atsRejectApplicationRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class AtsRejectApplicationRequest {
                 "id", id,
                 "atsRejectApplicationRequestDto", atsRejectApplicationRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private AtsRejectApplicationRequestDto atsRejectApplicationRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class AtsRejectApplicationRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder atsRejectApplicationRequestDto(AtsRejectApplicationRequestDto atsRejectApplicationRequestDto) {
             Utils.checkNotNull(atsRejectApplicationRequestDto, "atsRejectApplicationRequestDto");
             this.atsRejectApplicationRequestDto = atsRejectApplicationRequestDto;
             return this;
         }
-        
+
         public AtsRejectApplicationRequest build() {
+
             return new AtsRejectApplicationRequest(
-                xAccountId,
-                id,
-                atsRejectApplicationRequestDto);
+                xAccountId, id, atsRejectApplicationRequestDto);
         }
+
     }
 }

@@ -75,6 +75,8 @@
 * [orderBackgroundCheckRequest](#orderbackgroundcheckrequest) - Order Background Check Request
 * [updateBackgroundCheckResult](#updatebackgroundcheckresult) - Update Background Check Result
 * [getBackgroundCheckResult](#getbackgroundcheckresult) - Get Background Check Results
+* [listApplicationDocumentCategories](#listapplicationdocumentcategories) - List Application Document Categories
+* [getApplicationDocumentCategory](#getapplicationdocumentcategory) - Get Application Document Category
 
 ## listApplications
 
@@ -5617,6 +5619,151 @@ public class Application {
 ### Response
 
 **[AtsGetBackgroundCheckResultResponse](../../models/operations/AtsGetBackgroundCheckResultResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## listApplicationDocumentCategories
+
+List Application Document Categories
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        AtsListApplicationDocumentCategoriesRequest req = AtsListApplicationDocumentCategoriesRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,name,active")
+                .filter(AtsListApplicationDocumentCategoriesQueryParamFilter.builder()
+                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .build())
+                .build();
+
+        sdk.ats().listApplicationDocumentCategories()
+                .request(req)
+                .callAsStream()
+                .forEach((AtsListApplicationDocumentCategoriesResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                             | [AtsListApplicationDocumentCategoriesRequest](../../models/operations/AtsListApplicationDocumentCategoriesRequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
+
+### Response
+
+**[AtsListApplicationDocumentCategoriesResponse](../../models/operations/AtsListApplicationDocumentCategoriesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getApplicationDocumentCategory
+
+Get Application Document Category
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentCategoryRequest;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationDocumentCategoryResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username(System.getenv().getOrDefault("", ""))
+                    .password(System.getenv().getOrDefault("", ""))
+                    .build())
+            .build();
+
+        AtsGetApplicationDocumentCategoryRequest req = AtsGetApplicationDocumentCategoryRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,active")
+                .build();
+
+        AtsGetApplicationDocumentCategoryResponse res = sdk.ats().getApplicationDocumentCategory()
+                .request(req)
+                .call();
+
+        if (res.referenceResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                       | [AtsGetApplicationDocumentCategoryRequest](../../models/operations/AtsGetApplicationDocumentCategoryRequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
+
+### Response
+
+**[AtsGetApplicationDocumentCategoryResponse](../../models/operations/AtsGetApplicationDocumentCategoryResponse.md)**
 
 ### Errors
 

@@ -21,10 +21,9 @@ public class StackOne {
      * SERVERS contains the list of server urls available to the SDK.
      */
     public static final String[] SERVERS = {
+
         "https://api.stackone.com",
     };
-
-    
 
     /**
      * Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
@@ -51,15 +50,21 @@ public class StackOne {
      */
     private final Proxy proxy;
 
+
     private final Hris hris;
+
 
     private final Ats ats;
 
+
     private final Crm crm;
+
 
     private final Iam iam;
 
+
     private final Marketing marketing;
+
 
     private final Lms lms;
 
@@ -98,30 +103,37 @@ public class StackOne {
         return proxy;
     }
 
+
     public Hris hris() {
         return hris;
     }
+
 
     public Ats ats() {
         return ats;
     }
 
+
     public Crm crm() {
         return crm;
     }
+
 
     public Iam iam() {
         return iam;
     }
 
+
     public Marketing marketing() {
         return marketing;
     }
 
+
     public Lms lms() {
         return lms;
     }
-    private SDKConfiguration sdkConfiguration;
+
+    private final SDKConfiguration sdkConfiguration;
 
     /**
      * The Builder class allows the configuration of a new instance of the SDK.
@@ -218,11 +230,13 @@ public class StackOne {
 
         /**
          * Enables debug logging for HTTP requests and responses, including JSON body content.
-         *
+         * <p>
          * Convenience method that calls {@link HTTPClient#enableDebugLogging(boolean)}.
          * {@link SpeakeasyHTTPClient} honors this setting. If you are using a custom HTTP client,
          * it is up to the custom client to honor this setting.
+         * </p>
          *
+         * @param enabled Whether to enable debug logging.
          * @return The builder instance.
          */
         public Builder enableHTTPDebugLogging(boolean enabled) {
@@ -268,6 +282,5 @@ public class StackOne {
         this.iam = new Iam(sdkConfiguration);
         this.marketing = new Marketing(sdkConfiguration);
         this.lms = new Lms(sdkConfiguration);
-        
     }
 }

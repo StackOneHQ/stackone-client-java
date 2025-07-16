@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateBackgroundCheckOrderRequestDto {
 
+public class AtsCreateBackgroundCheckOrderRequestDto {
     /**
      * Unique identifier
      */
@@ -32,17 +32,21 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application")
     private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoApplication> application;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("job")
     private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoJob> job;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("candidate")
     private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoCandidate> candidate;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("requester")
@@ -54,6 +58,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("results_update_url")
     private JsonNullable<String> resultsUpdateUrl;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("package")
@@ -98,7 +103,9 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
     }
     
     public AtsCreateBackgroundCheckOrderRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -164,9 +171,10 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -300,7 +308,6 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -325,15 +332,9 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            application,
-            job,
-            candidate,
-            requester,
-            resultsUpdateUrl,
-            package_,
-            passthrough);
+            id, remoteId, application,
+            job, candidate, requester,
+            resultsUpdateUrl, package_, passthrough);
     }
     
     @Override
@@ -349,30 +350,32 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
                 "package_", package_,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoApplication> application = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoJob> job = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoCandidate> candidate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoRequester> requester = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resultsUpdateUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateBackgroundCheckOrderRequestDtoPackage> package_ = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -392,6 +395,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -410,6 +414,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             return this;
         }
 
+
         public Builder application(AtsCreateBackgroundCheckOrderRequestDtoApplication application) {
             Utils.checkNotNull(application, "application");
             this.application = JsonNullable.of(application);
@@ -421,6 +426,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             this.application = application;
             return this;
         }
+
 
         public Builder job(AtsCreateBackgroundCheckOrderRequestDtoJob job) {
             Utils.checkNotNull(job, "job");
@@ -434,6 +440,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             return this;
         }
 
+
         public Builder candidate(AtsCreateBackgroundCheckOrderRequestDtoCandidate candidate) {
             Utils.checkNotNull(candidate, "candidate");
             this.candidate = JsonNullable.of(candidate);
@@ -446,6 +453,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             return this;
         }
 
+
         public Builder requester(AtsCreateBackgroundCheckOrderRequestDtoRequester requester) {
             Utils.checkNotNull(requester, "requester");
             this.requester = JsonNullable.of(requester);
@@ -457,6 +465,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             this.requester = requester;
             return this;
         }
+
 
         /**
          * Results update url
@@ -476,6 +485,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             return this;
         }
 
+
         public Builder package_(AtsCreateBackgroundCheckOrderRequestDtoPackage package_) {
             Utils.checkNotNull(package_, "package_");
             this.package_ = JsonNullable.of(package_);
@@ -487,6 +497,7 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             this.package_ = package_;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -505,18 +516,14 @@ public class AtsCreateBackgroundCheckOrderRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsCreateBackgroundCheckOrderRequestDto build() {
+
             return new AtsCreateBackgroundCheckOrderRequestDto(
-                id,
-                remoteId,
-                application,
-                job,
-                candidate,
-                requester,
-                resultsUpdateUrl,
-                package_,
-                passthrough);
+                id, remoteId, application,
+                job, candidate, requester,
+                resultsUpdateUrl, package_, passthrough);
         }
+
     }
 }

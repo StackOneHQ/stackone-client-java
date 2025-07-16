@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsRejectApplicationRequestDto {
 
+public class AtsRejectApplicationRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -63,9 +63,10 @@ public class AtsRejectApplicationRequestDto {
         return rejectedReasonId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -103,7 +104,6 @@ public class AtsRejectApplicationRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,8 +121,7 @@ public class AtsRejectApplicationRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            passthrough,
-            rejectedReasonId);
+            passthrough, rejectedReasonId);
     }
     
     @Override
@@ -131,16 +130,18 @@ public class AtsRejectApplicationRequestDto {
                 "passthrough", passthrough,
                 "rejectedReasonId", rejectedReasonId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<String> rejectedReasonId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -160,6 +161,7 @@ public class AtsRejectApplicationRequestDto {
             return this;
         }
 
+
         /**
          * Unique identifier of the rejection reason
          */
@@ -177,11 +179,12 @@ public class AtsRejectApplicationRequestDto {
             this.rejectedReasonId = rejectedReasonId;
             return this;
         }
-        
+
         public AtsRejectApplicationRequestDto build() {
+
             return new AtsRejectApplicationRequestDto(
-                passthrough,
-                rejectedReasonId);
+                passthrough, rejectedReasonId);
         }
+
     }
 }

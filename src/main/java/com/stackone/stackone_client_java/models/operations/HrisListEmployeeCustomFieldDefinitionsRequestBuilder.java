@@ -58,9 +58,7 @@ public class HrisListEmployeeCustomFieldDefinitionsRequestBuilder {
             .build());
 
         RequestOperation<HrisListEmployeeCustomFieldDefinitionsRequest, HrisListEmployeeCustomFieldDefinitionsResponse> operation
-              = new HrisListEmployeeCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeCustomFieldDefinitionsOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class HrisListEmployeeCustomFieldDefinitionsRequestBuilder {
             .build());
 
         RequestOperation<HrisListEmployeeCustomFieldDefinitionsRequest, HrisListEmployeeCustomFieldDefinitionsResponse> operation
-              = new HrisListEmployeeCustomFieldDefinitionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisListEmployeeCustomFieldDefinitionsOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

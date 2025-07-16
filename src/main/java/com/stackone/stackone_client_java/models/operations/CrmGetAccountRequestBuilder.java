@@ -47,9 +47,7 @@ public class CrmGetAccountRequestBuilder {
             .build());
 
         RequestOperation<CrmGetAccountRequest, CrmGetAccountResponse> operation
-              = new CrmGetAccountOperation(
-                 sdkConfiguration,
-                 options);
+              = new CrmGetAccountOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

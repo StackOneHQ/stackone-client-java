@@ -21,7 +21,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Error details
  */
 public class Data {
-
     /**
      * HTTP status code
      */
@@ -85,9 +84,10 @@ public class Data {
         return (JsonNullable<Headers>) headers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP status code
@@ -143,7 +143,6 @@ public class Data {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -162,9 +161,7 @@ public class Data {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            statusCode,
-            message,
-            headers);
+            statusCode, message, headers);
     }
     
     @Override
@@ -174,18 +171,20 @@ public class Data {
                 "message", message,
                 "headers", headers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Double> statusCode = JsonNullable.undefined();
- 
+
         private JsonNullable<String> message = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Headers> headers = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP status code
@@ -205,6 +204,7 @@ public class Data {
             return this;
         }
 
+
         /**
          * Error message
          */
@@ -223,6 +223,7 @@ public class Data {
             return this;
         }
 
+
         /**
          * Response headers
          */
@@ -240,12 +241,12 @@ public class Data {
             this.headers = headers;
             return this;
         }
-        
+
         public Data build() {
+
             return new Data(
-                statusCode,
-                message,
-                headers);
+                statusCode, message, headers);
         }
+
     }
 }

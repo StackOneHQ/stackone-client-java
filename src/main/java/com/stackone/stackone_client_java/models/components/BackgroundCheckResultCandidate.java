@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class BackgroundCheckResultCandidate {
 
+public class BackgroundCheckResultCandidate {
     /**
      * Unique identifier
      */
@@ -77,9 +77,10 @@ public class BackgroundCheckResultCandidate {
         return profileUrl;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -135,7 +136,6 @@ public class BackgroundCheckResultCandidate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +154,7 @@ public class BackgroundCheckResultCandidate {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            profileUrl);
+            id, remoteId, profileUrl);
     }
     
     @Override
@@ -166,18 +164,20 @@ public class BackgroundCheckResultCandidate {
                 "remoteId", remoteId,
                 "profileUrl", profileUrl);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> profileUrl = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -197,6 +197,7 @@ public class BackgroundCheckResultCandidate {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -215,6 +216,7 @@ public class BackgroundCheckResultCandidate {
             return this;
         }
 
+
         /**
          * Candidate profile url
          */
@@ -232,12 +234,12 @@ public class BackgroundCheckResultCandidate {
             this.profileUrl = profileUrl;
             return this;
         }
-        
+
         public BackgroundCheckResultCandidate build() {
+
             return new BackgroundCheckResultCandidate(
-                id,
-                remoteId,
-                profileUrl);
+                id, remoteId, profileUrl);
         }
+
     }
 }

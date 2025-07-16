@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsUpdateBackgroundCheckPackageRequest {
 
+public class AtsUpdateBackgroundCheckPackageRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto;
@@ -56,9 +58,10 @@ public class AtsUpdateBackgroundCheckPackageRequest {
         return atsUpdateBackgroundCheckPackagesRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class AtsUpdateBackgroundCheckPackageRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class AtsUpdateBackgroundCheckPackageRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            atsUpdateBackgroundCheckPackagesRequestDto);
+            xAccountId, id, atsUpdateBackgroundCheckPackagesRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class AtsUpdateBackgroundCheckPackageRequest {
                 "id", id,
                 "atsUpdateBackgroundCheckPackagesRequestDto", atsUpdateBackgroundCheckPackagesRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class AtsUpdateBackgroundCheckPackageRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder atsUpdateBackgroundCheckPackagesRequestDto(AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto) {
             Utils.checkNotNull(atsUpdateBackgroundCheckPackagesRequestDto, "atsUpdateBackgroundCheckPackagesRequestDto");
             this.atsUpdateBackgroundCheckPackagesRequestDto = atsUpdateBackgroundCheckPackagesRequestDto;
             return this;
         }
-        
+
         public AtsUpdateBackgroundCheckPackageRequest build() {
+
             return new AtsUpdateBackgroundCheckPackageRequest(
-                xAccountId,
-                id,
-                atsUpdateBackgroundCheckPackagesRequestDto);
+                xAccountId, id, atsUpdateBackgroundCheckPackagesRequestDto);
         }
+
     }
 }

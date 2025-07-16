@@ -13,11 +13,13 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class SmsMessagesMessageContent {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("body")
     private JsonNullable<String> body;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("from")
@@ -47,9 +49,10 @@ public class SmsMessagesMessageContent {
         return from;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SmsMessagesMessageContent withBody(String body) {
         Utils.checkNotNull(body, "body");
@@ -75,7 +78,6 @@ public class SmsMessagesMessageContent {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -93,8 +95,7 @@ public class SmsMessagesMessageContent {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            body,
-            from);
+            body, from);
     }
     
     @Override
@@ -103,16 +104,18 @@ public class SmsMessagesMessageContent {
                 "body", body,
                 "from", from);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> body = JsonNullable.undefined();
- 
+
         private JsonNullable<String> from = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder body(String body) {
             Utils.checkNotNull(body, "body");
@@ -126,6 +129,7 @@ public class SmsMessagesMessageContent {
             return this;
         }
 
+
         public Builder from(String from) {
             Utils.checkNotNull(from, "from");
             this.from = JsonNullable.of(from);
@@ -137,11 +141,12 @@ public class SmsMessagesMessageContent {
             this.from = from;
             return this;
         }
-        
+
         public SmsMessagesMessageContent build() {
+
             return new SmsMessagesMessageContent(
-                body,
-                from);
+                body, from);
         }
+
     }
 }

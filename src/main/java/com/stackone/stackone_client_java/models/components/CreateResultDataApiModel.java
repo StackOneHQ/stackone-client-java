@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateResultDataApiModel {
 
+public class CreateResultDataApiModel {
     /**
      * Unique identifier
      */
@@ -59,9 +59,10 @@ public class CreateResultDataApiModel {
         return remoteId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -99,7 +100,6 @@ public class CreateResultDataApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -117,8 +117,7 @@ public class CreateResultDataApiModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId);
+            id, remoteId);
     }
     
     @Override
@@ -127,16 +126,18 @@ public class CreateResultDataApiModel {
                 "id", id,
                 "remoteId", remoteId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -156,6 +157,7 @@ public class CreateResultDataApiModel {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -173,11 +175,12 @@ public class CreateResultDataApiModel {
             this.remoteId = remoteId;
             return this;
         }
-        
+
         public CreateResultDataApiModel build() {
+
             return new CreateResultDataApiModel(
-                id,
-                remoteId);
+                id, remoteId);
         }
+
     }
 }

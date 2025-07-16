@@ -47,9 +47,7 @@ public class MarketingGetPushTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingGetPushTemplateRequest, MarketingGetPushTemplateResponse> operation
-              = new MarketingGetPushTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetPushTemplateOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

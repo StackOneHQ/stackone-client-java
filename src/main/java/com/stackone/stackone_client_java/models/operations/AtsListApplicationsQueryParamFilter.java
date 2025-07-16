@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>ATS Application Filter
  */
 public class AtsListApplicationsQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -59,7 +58,8 @@ public class AtsListApplicationsQueryParamFilter {
     }
     
     public AtsListApplicationsQueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -94,9 +94,10 @@ public class AtsListApplicationsQueryParamFilter {
         return stage;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -170,7 +171,6 @@ public class AtsListApplicationsQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -190,9 +190,7 @@ public class AtsListApplicationsQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            createdAfter,
-            jobId,
+            updatedAfter, createdAfter, jobId,
             stage);
     }
     
@@ -204,20 +202,22 @@ public class AtsListApplicationsQueryParamFilter {
                 "jobId", jobId,
                 "stage", stage);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> createdAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> stage = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -237,6 +237,7 @@ public class AtsListApplicationsQueryParamFilter {
             return this;
         }
 
+
         /**
          * Use a string with a date to only select results created after that given date
          */
@@ -254,6 +255,7 @@ public class AtsListApplicationsQueryParamFilter {
             this.createdAfter = createdAfter;
             return this;
         }
+
 
         /**
          * Filter to select applications by job_id
@@ -273,6 +275,7 @@ public class AtsListApplicationsQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select applications by stage and sub-stage
          */
@@ -290,13 +293,13 @@ public class AtsListApplicationsQueryParamFilter {
             this.stage = stage;
             return this;
         }
-        
+
         public AtsListApplicationsQueryParamFilter build() {
+
             return new AtsListApplicationsQueryParamFilter(
-                updatedAfter,
-                createdAfter,
-                jobId,
+                updatedAfter, createdAfter, jobId,
                 stage);
         }
+
     }
 }

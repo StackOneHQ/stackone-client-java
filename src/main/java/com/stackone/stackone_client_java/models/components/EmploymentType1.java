@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The type of employment
  */
 public class EmploymentType1 {
-
     /**
      * Unique identifier
      */
@@ -66,7 +65,8 @@ public class EmploymentType1 {
     }
     
     public EmploymentType1() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -102,9 +102,10 @@ public class EmploymentType1 {
         return (JsonNullable<EmploymentTypeType>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -178,7 +179,6 @@ public class EmploymentType1 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -198,9 +198,7 @@ public class EmploymentType1 {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            label,
+            id, remoteId, label,
             type);
     }
     
@@ -212,20 +210,22 @@ public class EmploymentType1 {
                 "label", label,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentTypeType> type = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -245,6 +245,7 @@ public class EmploymentType1 {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -262,6 +263,7 @@ public class EmploymentType1 {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The label of the employment type
@@ -281,6 +283,7 @@ public class EmploymentType1 {
             return this;
         }
 
+
         /**
          * The type of employment (e.g., contractor, permanent)
          */
@@ -298,13 +301,13 @@ public class EmploymentType1 {
             this.type = type;
             return this;
         }
-        
+
         public EmploymentType1 build() {
+
             return new EmploymentType1(
-                id,
-                remoteId,
-                label,
+                id, remoteId, label,
                 type);
         }
+
     }
 }

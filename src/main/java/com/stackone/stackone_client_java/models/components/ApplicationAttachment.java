@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ApplicationAttachment {
 
+public class ApplicationAttachment {
     /**
      * The file name of the attachment.
      */
@@ -36,6 +36,7 @@ public class ApplicationAttachment {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("url")
     private JsonNullable<String> url;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content_type")
@@ -58,7 +59,8 @@ public class ApplicationAttachment {
     }
     
     public ApplicationAttachment() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -91,9 +93,10 @@ public class ApplicationAttachment {
         return (JsonNullable<ApplicationAttachmentContentType>) contentType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The file name of the attachment.
@@ -161,7 +164,6 @@ public class ApplicationAttachment {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -181,9 +183,7 @@ public class ApplicationAttachment {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            fileName,
-            content,
-            url,
+            fileName, content, url,
             contentType);
     }
     
@@ -195,20 +195,22 @@ public class ApplicationAttachment {
                 "url", url,
                 "contentType", contentType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> fileName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> content = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ApplicationAttachmentContentType> contentType = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The file name of the attachment.
@@ -228,6 +230,7 @@ public class ApplicationAttachment {
             return this;
         }
 
+
         /**
          * The content of the attachment.
          */
@@ -245,6 +248,7 @@ public class ApplicationAttachment {
             this.content = content;
             return this;
         }
+
 
         /**
          * The URL of the attachment.
@@ -264,6 +268,7 @@ public class ApplicationAttachment {
             return this;
         }
 
+
         public Builder contentType(ApplicationAttachmentContentType contentType) {
             Utils.checkNotNull(contentType, "contentType");
             this.contentType = JsonNullable.of(contentType);
@@ -275,13 +280,13 @@ public class ApplicationAttachment {
             this.contentType = contentType;
             return this;
         }
-        
+
         public ApplicationAttachment build() {
+
             return new ApplicationAttachment(
-                fileName,
-                content,
-                url,
+                fileName, content, url,
                 contentType);
         }
+
     }
 }

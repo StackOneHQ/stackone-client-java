@@ -18,7 +18,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>LMS Assignment Filter
  */
 public class LmsListUserAssignmentsQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -62,9 +61,10 @@ public class LmsListUserAssignmentsQueryParamFilter {
         return (JsonNullable<LmsListUserAssignmentsQueryParamStatus>) status;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -102,7 +102,6 @@ public class LmsListUserAssignmentsQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +119,7 @@ public class LmsListUserAssignmentsQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            status);
+            updatedAfter, status);
     }
     
     @Override
@@ -130,16 +128,18 @@ public class LmsListUserAssignmentsQueryParamFilter {
                 "updatedAfter", updatedAfter,
                 "status", status);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsListUserAssignmentsQueryParamStatus> status = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -159,6 +159,7 @@ public class LmsListUserAssignmentsQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select assignment by status
          */
@@ -176,11 +177,12 @@ public class LmsListUserAssignmentsQueryParamFilter {
             this.status = status;
             return this;
         }
-        
+
         public LmsListUserAssignmentsQueryParamFilter build() {
+
             return new LmsListUserAssignmentsQueryParamFilter(
-                updatedAfter,
-                status);
+                updatedAfter, status);
         }
+
     }
 }

@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class MarketingCreateInAppTemplateRequest {
 
+public class MarketingCreateInAppTemplateRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto;
@@ -45,9 +46,10 @@ public class MarketingCreateInAppTemplateRequest {
         return marketingCreateInAppTemplateRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class MarketingCreateInAppTemplateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class MarketingCreateInAppTemplateRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            marketingCreateInAppTemplateRequestDto);
+            xAccountId, marketingCreateInAppTemplateRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class MarketingCreateInAppTemplateRequest {
                 "xAccountId", xAccountId,
                 "marketingCreateInAppTemplateRequestDto", marketingCreateInAppTemplateRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class MarketingCreateInAppTemplateRequest {
             return this;
         }
 
+
         public Builder marketingCreateInAppTemplateRequestDto(MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
             Utils.checkNotNull(marketingCreateInAppTemplateRequestDto, "marketingCreateInAppTemplateRequestDto");
             this.marketingCreateInAppTemplateRequestDto = marketingCreateInAppTemplateRequestDto;
             return this;
         }
-        
+
         public MarketingCreateInAppTemplateRequest build() {
+
             return new MarketingCreateInAppTemplateRequest(
-                xAccountId,
-                marketingCreateInAppTemplateRequestDto);
+                xAccountId, marketingCreateInAppTemplateRequestDto);
         }
+
     }
 }

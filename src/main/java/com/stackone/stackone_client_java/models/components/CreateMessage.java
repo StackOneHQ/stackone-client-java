@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateMessage {
 
+public class CreateMessage {
     /**
      * Unique identifier
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("id")
     private JsonNullable<String> id;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
@@ -33,6 +34,7 @@ public class CreateMessage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_type")
     private JsonNullable<? extends CreateMessageMessageType> messageType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_content")
@@ -55,7 +57,8 @@ public class CreateMessage {
     }
     
     public CreateMessage() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -86,9 +89,10 @@ public class CreateMessage {
         return (JsonNullable<CreateMessageMessageContent>) messageContent;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -150,7 +154,6 @@ public class CreateMessage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,9 +173,7 @@ public class CreateMessage {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            name,
-            messageType,
+            id, name, messageType,
             messageContent);
     }
     
@@ -184,20 +185,22 @@ public class CreateMessage {
                 "messageType", messageType,
                 "messageContent", messageContent);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateMessageMessageType> messageType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateMessageMessageContent> messageContent = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -217,6 +220,7 @@ public class CreateMessage {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -228,6 +232,7 @@ public class CreateMessage {
             this.name = name;
             return this;
         }
+
 
         /**
          * Stackone enum identifying the type of message associated with the content.
@@ -247,6 +252,7 @@ public class CreateMessage {
             return this;
         }
 
+
         public Builder messageContent(CreateMessageMessageContent messageContent) {
             Utils.checkNotNull(messageContent, "messageContent");
             this.messageContent = JsonNullable.of(messageContent);
@@ -258,13 +264,13 @@ public class CreateMessage {
             this.messageContent = messageContent;
             return this;
         }
-        
+
         public CreateMessage build() {
+
             return new CreateMessage(
-                id,
-                name,
-                messageType,
+                id, name, messageType,
                 messageContent);
         }
+
     }
 }

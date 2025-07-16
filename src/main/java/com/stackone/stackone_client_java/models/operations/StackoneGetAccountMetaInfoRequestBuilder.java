@@ -56,9 +56,7 @@ public class StackoneGetAccountMetaInfoRequestBuilder {
             .build());
 
         RequestOperation<StackoneGetAccountMetaInfoRequest, StackoneGetAccountMetaInfoResponse> operation
-              = new StackoneGetAccountMetaInfoOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneGetAccountMetaInfoOperation(sdkConfiguration, options);
         StackoneGetAccountMetaInfoRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

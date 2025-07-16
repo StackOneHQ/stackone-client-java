@@ -25,6 +25,7 @@ public class ContentType {
     @JsonProperty("value")
     private JsonNullable<? extends ContentValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends ContentSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class ContentType {
         return (JsonNullable<ContentSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ContentType withValue(ContentValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class ContentType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class ContentType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class ContentType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends ContentValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ContentSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(ContentValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class ContentType {
             return this;
         }
 
+
         public Builder sourceValue(ContentSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class ContentType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public ContentType build() {
+
             return new ContentType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

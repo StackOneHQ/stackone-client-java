@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsUpdateBackgroundCheckResultRequestDtoResult {
 
+public class AtsUpdateBackgroundCheckResultRequestDtoResult {
     /**
      * The result of the test.
      */
@@ -62,9 +62,10 @@ public class AtsUpdateBackgroundCheckResultRequestDtoResult {
         return (JsonNullable<AtsUpdateBackgroundCheckResultRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The result of the test.
@@ -102,7 +103,6 @@ public class AtsUpdateBackgroundCheckResultRequestDtoResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class AtsUpdateBackgroundCheckResultRequestDtoResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class AtsUpdateBackgroundCheckResultRequestDtoResult {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AtsUpdateBackgroundCheckResultRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsUpdateBackgroundCheckResultRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The result of the test.
@@ -159,6 +160,7 @@ public class AtsUpdateBackgroundCheckResultRequestDtoResult {
             return this;
         }
 
+
         /**
          * The source value of the test result.
          */
@@ -176,11 +178,12 @@ public class AtsUpdateBackgroundCheckResultRequestDtoResult {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public AtsUpdateBackgroundCheckResultRequestDtoResult build() {
+
             return new AtsUpdateBackgroundCheckResultRequestDtoResult(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

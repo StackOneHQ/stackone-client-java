@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class HrisCreateEmployeeEmploymentRequest {
 
+public class HrisCreateEmployeeEmploymentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto;
@@ -56,9 +58,10 @@ public class HrisCreateEmployeeEmploymentRequest {
         return hrisCreateEmploymentRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class HrisCreateEmployeeEmploymentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class HrisCreateEmployeeEmploymentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            hrisCreateEmploymentRequestDto);
+            xAccountId, id, hrisCreateEmploymentRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class HrisCreateEmployeeEmploymentRequest {
                 "id", id,
                 "hrisCreateEmploymentRequestDto", hrisCreateEmploymentRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class HrisCreateEmployeeEmploymentRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder hrisCreateEmploymentRequestDto(HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto) {
             Utils.checkNotNull(hrisCreateEmploymentRequestDto, "hrisCreateEmploymentRequestDto");
             this.hrisCreateEmploymentRequestDto = hrisCreateEmploymentRequestDto;
             return this;
         }
-        
+
         public HrisCreateEmployeeEmploymentRequest build() {
+
             return new HrisCreateEmployeeEmploymentRequest(
-                xAccountId,
-                id,
-                hrisCreateEmploymentRequestDto);
+                xAccountId, id, hrisCreateEmploymentRequestDto);
         }
+
     }
 }

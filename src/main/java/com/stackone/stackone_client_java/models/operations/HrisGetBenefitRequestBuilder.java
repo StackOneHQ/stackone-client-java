@@ -47,9 +47,7 @@ public class HrisGetBenefitRequestBuilder {
             .build());
 
         RequestOperation<HrisGetBenefitRequest, HrisGetBenefitResponse> operation
-              = new HrisGetBenefitOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetBenefitOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

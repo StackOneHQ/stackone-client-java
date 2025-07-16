@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Stackone enum identifying the type of content block.
  */
 public class MarketingCreateContentBlocksRequestDtoType {
-
     /**
      * The type of the content blocks.
      */
@@ -67,9 +66,10 @@ public class MarketingCreateContentBlocksRequestDtoType {
         return (JsonNullable<MarketingCreateContentBlocksRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the content blocks.
@@ -107,7 +107,6 @@ public class MarketingCreateContentBlocksRequestDtoType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class MarketingCreateContentBlocksRequestDtoType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class MarketingCreateContentBlocksRequestDtoType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends MarketingCreateContentBlocksRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MarketingCreateContentBlocksRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the content blocks.
@@ -164,6 +164,7 @@ public class MarketingCreateContentBlocksRequestDtoType {
             return this;
         }
 
+
         /**
          * The source value of the type.
          */
@@ -181,11 +182,12 @@ public class MarketingCreateContentBlocksRequestDtoType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public MarketingCreateContentBlocksRequestDtoType build() {
+
             return new MarketingCreateContentBlocksRequestDtoType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

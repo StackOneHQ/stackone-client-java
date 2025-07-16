@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The actor who made the change
  */
 public class Actor {
-
     /**
      * Unique identifier
      */
@@ -64,9 +63,10 @@ public class Actor {
         return remoteId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -104,7 +104,6 @@ public class Actor {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,8 +121,7 @@ public class Actor {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId);
+            id, remoteId);
     }
     
     @Override
@@ -132,16 +130,18 @@ public class Actor {
                 "id", id,
                 "remoteId", remoteId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -161,6 +161,7 @@ public class Actor {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -178,11 +179,12 @@ public class Actor {
             this.remoteId = remoteId;
             return this;
         }
-        
+
         public Actor build() {
+
             return new Actor(
-                id,
-                remoteId);
+                id, remoteId);
         }
+
     }
 }

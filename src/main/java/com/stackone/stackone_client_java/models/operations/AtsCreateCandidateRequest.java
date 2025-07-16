@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsCreateCandidateRequest {
 
+public class AtsCreateCandidateRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateCandidateRequestDto atsCreateCandidateRequestDto;
@@ -45,9 +46,10 @@ public class AtsCreateCandidateRequest {
         return atsCreateCandidateRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class AtsCreateCandidateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class AtsCreateCandidateRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            atsCreateCandidateRequestDto);
+            xAccountId, atsCreateCandidateRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class AtsCreateCandidateRequest {
                 "xAccountId", xAccountId,
                 "atsCreateCandidateRequestDto", atsCreateCandidateRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private AtsCreateCandidateRequestDto atsCreateCandidateRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class AtsCreateCandidateRequest {
             return this;
         }
 
+
         public Builder atsCreateCandidateRequestDto(AtsCreateCandidateRequestDto atsCreateCandidateRequestDto) {
             Utils.checkNotNull(atsCreateCandidateRequestDto, "atsCreateCandidateRequestDto");
             this.atsCreateCandidateRequestDto = atsCreateCandidateRequestDto;
             return this;
         }
-        
+
         public AtsCreateCandidateRequest build() {
+
             return new AtsCreateCandidateRequest(
-                xAccountId,
-                atsCreateCandidateRequestDto);
+                xAccountId, atsCreateCandidateRequestDto);
         }
+
     }
 }

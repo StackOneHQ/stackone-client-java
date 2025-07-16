@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>HRIS Time Off filters
  */
 public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -63,9 +62,10 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
         return (JsonNullable<List<String>>) typeIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -103,7 +103,6 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,8 +120,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            typeIds);
+            updatedAfter, typeIds);
     }
     
     @Override
@@ -131,16 +129,18 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
                 "updatedAfter", updatedAfter,
                 "typeIds", typeIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> typeIds = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -160,6 +160,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
             return this;
         }
 
+
         /**
          * List of time off type ids to filter by.
          */
@@ -177,11 +178,12 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
             this.typeIds = typeIds;
             return this;
         }
-        
+
         public HrisListEmployeeTimeOffRequestsQueryParamFilter build() {
+
             return new HrisListEmployeeTimeOffRequestsQueryParamFilter(
-                updatedAfter,
-                typeIds);
+                updatedAfter, typeIds);
         }
+
     }
 }

@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Attachment {
 
+public class Attachment {
     /**
      * The URL of the attachment.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("url")
     private JsonNullable<String> url;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content_type")
@@ -55,9 +56,10 @@ public class Attachment {
         return (JsonNullable<AttachmentContentType>) contentType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The URL of the attachment.
@@ -89,7 +91,6 @@ public class Attachment {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -107,8 +108,7 @@ public class Attachment {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            url,
-            contentType);
+            url, contentType);
     }
     
     @Override
@@ -117,16 +117,18 @@ public class Attachment {
                 "url", url,
                 "contentType", contentType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AttachmentContentType> contentType = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The URL of the attachment.
@@ -146,6 +148,7 @@ public class Attachment {
             return this;
         }
 
+
         public Builder contentType(AttachmentContentType contentType) {
             Utils.checkNotNull(contentType, "contentType");
             this.contentType = JsonNullable.of(contentType);
@@ -157,11 +160,12 @@ public class Attachment {
             this.contentType = contentType;
             return this;
         }
-        
+
         public Attachment build() {
+
             return new Attachment(
-                url,
-                contentType);
+                url, contentType);
         }
+
     }
 }

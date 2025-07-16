@@ -16,7 +16,6 @@ import com.stackone.stackone_client_java.operations.StackoneListConnectorsMetaOp
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -57,21 +56,16 @@ public class Connectors {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneListConnectorsMetaResponse listConnectorsMeta(
-            JsonNullable<String> include,
-            Optional<Options> options) throws Exception {
+    public StackoneListConnectorsMetaResponse listConnectorsMeta(JsonNullable<String> include, Optional<Options> options) throws Exception {
         StackoneListConnectorsMetaRequest request =
             StackoneListConnectorsMetaRequest
                 .builder()
                 .include(include)
                 .build();
         RequestOperation<StackoneListConnectorsMetaRequest, StackoneListConnectorsMetaResponse> operation
-              = new StackoneListConnectorsMetaOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneListConnectorsMetaOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Connector Meta information for the given provider key
@@ -103,8 +97,7 @@ public class Connectors {
      * @throws Exception if the API call fails
      */
     public StackoneGetConnectorMetaResponse getConnectorMeta(
-            String provider,
-            JsonNullable<String> include,
+            String provider, JsonNullable<String> include,
             Optional<Options> options) throws Exception {
         StackoneGetConnectorMetaRequest request =
             StackoneGetConnectorMetaRequest
@@ -113,9 +106,7 @@ public class Connectors {
                 .include(include)
                 .build();
         RequestOperation<StackoneGetConnectorMetaRequest, StackoneGetConnectorMetaResponse> operation
-              = new StackoneGetConnectorMetaOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneGetConnectorMetaOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

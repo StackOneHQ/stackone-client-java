@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingCompensationType {
 
+public class JobPostingCompensationType {
     /**
      * The type of the compensation.
      */
@@ -62,9 +62,10 @@ public class JobPostingCompensationType {
         return (JsonNullable<JobPostingCompensationSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the compensation.
@@ -102,7 +103,6 @@ public class JobPostingCompensationType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class JobPostingCompensationType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class JobPostingCompensationType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends JobPostingCompensationValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingCompensationSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the compensation.
@@ -159,6 +160,7 @@ public class JobPostingCompensationType {
             return this;
         }
 
+
         /**
          * The source value of the compensation type.
          */
@@ -176,11 +178,12 @@ public class JobPostingCompensationType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public JobPostingCompensationType build() {
+
             return new JobPostingCompensationType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

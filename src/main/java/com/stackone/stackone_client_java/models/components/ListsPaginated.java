@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ListsPaginated {
 
+public class ListsPaginated {
     /**
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -27,12 +27,15 @@ public class ListsPaginated {
     @Deprecated
     private JsonNullable<String> nextPage;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("next")
     private JsonNullable<String> next;
 
+
     @JsonProperty("data")
     private List<com.stackone.stackone_client_java.models.components.List> data;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw")
@@ -56,7 +59,8 @@ public class ListsPaginated {
     
     public ListsPaginated(
             List<com.stackone.stackone_client_java.models.components.List> data) {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), data, JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), data,
+            JsonNullable.undefined());
     }
 
     /**
@@ -85,9 +89,10 @@ public class ListsPaginated {
         return (JsonNullable<List<RawResponse>>) raw;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * 
@@ -141,7 +146,6 @@ public class ListsPaginated {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,9 +165,7 @@ public class ListsPaginated {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            nextPage,
-            next,
-            data,
+            nextPage, next, data,
             raw);
     }
     
@@ -175,21 +177,23 @@ public class ListsPaginated {
                 "data", data,
                 "raw", raw);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         @Deprecated
         private JsonNullable<String> nextPage = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         private List<com.stackone.stackone_client_java.models.components.List> data;
- 
+
         private JsonNullable<? extends List<RawResponse>> raw = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * 
@@ -213,6 +217,7 @@ public class ListsPaginated {
             return this;
         }
 
+
         public Builder next(String next) {
             Utils.checkNotNull(next, "next");
             this.next = JsonNullable.of(next);
@@ -225,11 +230,13 @@ public class ListsPaginated {
             return this;
         }
 
+
         public Builder data(List<com.stackone.stackone_client_java.models.components.List> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
+
 
         public Builder raw(List<RawResponse> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -242,13 +249,13 @@ public class ListsPaginated {
             this.raw = raw;
             return this;
         }
-        
+
         public ListsPaginated build() {
+
             return new ListsPaginated(
-                nextPage,
-                next,
-                data,
+                nextPage, next, data,
                 raw);
         }
+
     }
 }

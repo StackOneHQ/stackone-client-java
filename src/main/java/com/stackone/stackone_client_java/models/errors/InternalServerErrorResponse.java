@@ -14,9 +14,9 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 
+
 @SuppressWarnings("serial")
 public class InternalServerErrorResponse extends RuntimeException {
-
     /**
      * HTTP status code
      */
@@ -79,9 +79,10 @@ public class InternalServerErrorResponse extends RuntimeException {
         return timestamp;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP status code
@@ -110,7 +111,6 @@ public class InternalServerErrorResponse extends RuntimeException {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,9 +129,7 @@ public class InternalServerErrorResponse extends RuntimeException {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            statusCode,
-            message,
-            timestamp);
+            statusCode, message, timestamp);
     }
     
     @Override
@@ -141,18 +139,20 @@ public class InternalServerErrorResponse extends RuntimeException {
                 "message", message,
                 "timestamp", timestamp);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Double statusCode;
- 
+
         private String message;
- 
+
         private OffsetDateTime timestamp;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP status code
@@ -163,6 +163,7 @@ public class InternalServerErrorResponse extends RuntimeException {
             return this;
         }
 
+
         /**
          * Error message
          */
@@ -172,6 +173,7 @@ public class InternalServerErrorResponse extends RuntimeException {
             return this;
         }
 
+
         /**
          * Timestamp when the error occurred
          */
@@ -180,13 +182,13 @@ public class InternalServerErrorResponse extends RuntimeException {
             this.timestamp = timestamp;
             return this;
         }
-        
+
         public InternalServerErrorResponse build() {
+
             return new InternalServerErrorResponse(
-                statusCode,
-                message,
-                timestamp);
+                statusCode, message, timestamp);
         }
+
     }
 }
 

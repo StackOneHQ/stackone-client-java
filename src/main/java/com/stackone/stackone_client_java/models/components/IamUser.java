@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamUser {
 
+public class IamUser {
     /**
      * Unique identifier
      */
@@ -48,9 +48,11 @@ public class IamUser {
     @JsonProperty("primary_email_address")
     private JsonNullable<String> primaryEmailAddress;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("first_name")
     private JsonNullable<String> firstName;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("last_name")
@@ -62,6 +64,7 @@ public class IamUser {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("username")
@@ -87,6 +90,7 @@ public class IamUser {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("groups")
     private JsonNullable<? extends List<IamGroup>> groups;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
@@ -193,7 +197,12 @@ public class IamUser {
     }
     
     public IamUser() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -335,9 +344,10 @@ public class IamUser {
         return (JsonNullable<IamUserAvatar>) avatar;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -639,7 +649,6 @@ public class IamUser {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -673,24 +682,12 @@ public class IamUser {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            primaryEmailAddress,
-            firstName,
-            lastName,
-            name,
-            username,
-            isBotUser,
-            roles,
-            groups,
-            status,
-            lastActiveAt,
-            lastLoginAt,
-            createdAt,
-            updatedAt,
-            multiFactorEnabled,
-            avatar);
+            id, remoteId, unifiedCustomFields,
+            primaryEmailAddress, firstName, lastName,
+            name, username, isBotUser,
+            roles, groups, status,
+            lastActiveAt, lastLoginAt, createdAt,
+            updatedAt, multiFactorEnabled, avatar);
     }
     
     @Override
@@ -715,48 +712,50 @@ public class IamUser {
                 "multiFactorEnabled", multiFactorEnabled,
                 "avatar", avatar);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> primaryEmailAddress = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> username = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IsBotUser> isBotUser = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<IamRole>> roles = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<IamGroup>> groups = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamUserStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> lastActiveAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> lastLoginAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<IamMfaTypeEnum>> multiFactorEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamUserAvatar> avatar = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -776,6 +775,7 @@ public class IamUser {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -793,6 +793,7 @@ public class IamUser {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -812,6 +813,7 @@ public class IamUser {
             return this;
         }
 
+
         /**
          * Primary email address of the user. This is generally a work email address.
          */
@@ -830,6 +832,7 @@ public class IamUser {
             return this;
         }
 
+
         public Builder firstName(String firstName) {
             Utils.checkNotNull(firstName, "firstName");
             this.firstName = JsonNullable.of(firstName);
@@ -842,6 +845,7 @@ public class IamUser {
             return this;
         }
 
+
         public Builder lastName(String lastName) {
             Utils.checkNotNull(lastName, "lastName");
             this.lastName = JsonNullable.of(lastName);
@@ -853,6 +857,7 @@ public class IamUser {
             this.lastName = lastName;
             return this;
         }
+
 
         /**
          * User's name which (can be a full name or display name)
@@ -872,6 +877,7 @@ public class IamUser {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = JsonNullable.of(username);
@@ -883,6 +889,7 @@ public class IamUser {
             this.username = username;
             return this;
         }
+
 
         /**
          * Indicates if the user is a bot or service user
@@ -902,6 +909,7 @@ public class IamUser {
             return this;
         }
 
+
         /**
          * List of roles the user is assigned to
          */
@@ -919,6 +927,7 @@ public class IamUser {
             this.roles = roles;
             return this;
         }
+
 
         /**
          * List of groups the user is assigned to
@@ -938,6 +947,7 @@ public class IamUser {
             return this;
         }
 
+
         public Builder status(IamUserStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = JsonNullable.of(status);
@@ -949,6 +959,7 @@ public class IamUser {
             this.status = status;
             return this;
         }
+
 
         /**
          * The date this user was last active
@@ -968,6 +979,7 @@ public class IamUser {
             return this;
         }
 
+
         /**
          * The date this user last logged in
          */
@@ -985,6 +997,7 @@ public class IamUser {
             this.lastLoginAt = lastLoginAt;
             return this;
         }
+
 
         /**
          * The date the user was created
@@ -1004,6 +1017,7 @@ public class IamUser {
             return this;
         }
 
+
         /**
          * The date the user was created
          */
@@ -1021,6 +1035,7 @@ public class IamUser {
             this.updatedAt = updatedAt;
             return this;
         }
+
 
         /**
          * The list of Multi-Factor Authentication (MFA) types enabled for the user.
@@ -1040,6 +1055,7 @@ public class IamUser {
             return this;
         }
 
+
         /**
          * The user's avatar data. This generally contains a URL within this property's 'contents' array.
          */
@@ -1057,27 +1073,17 @@ public class IamUser {
             this.avatar = avatar;
             return this;
         }
-        
+
         public IamUser build() {
+
             return new IamUser(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                primaryEmailAddress,
-                firstName,
-                lastName,
-                name,
-                username,
-                isBotUser,
-                roles,
-                groups,
-                status,
-                lastActiveAt,
-                lastLoginAt,
-                createdAt,
-                updatedAt,
-                multiFactorEnabled,
-                avatar);
+                id, remoteId, unifiedCustomFields,
+                primaryEmailAddress, firstName, lastName,
+                name, username, isBotUser,
+                roles, groups, status,
+                lastActiveAt, lastLoginAt, createdAt,
+                updatedAt, multiFactorEnabled, avatar);
         }
+
     }
 }

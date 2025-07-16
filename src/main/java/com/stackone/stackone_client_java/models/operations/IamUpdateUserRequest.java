@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class IamUpdateUserRequest {
 
+public class IamUpdateUserRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private IamUpdateUserRequestDto iamUpdateUserRequestDto;
@@ -56,9 +58,10 @@ public class IamUpdateUserRequest {
         return iamUpdateUserRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class IamUpdateUserRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class IamUpdateUserRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            iamUpdateUserRequestDto);
+            xAccountId, id, iamUpdateUserRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class IamUpdateUserRequest {
                 "id", id,
                 "iamUpdateUserRequestDto", iamUpdateUserRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private IamUpdateUserRequestDto iamUpdateUserRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class IamUpdateUserRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder iamUpdateUserRequestDto(IamUpdateUserRequestDto iamUpdateUserRequestDto) {
             Utils.checkNotNull(iamUpdateUserRequestDto, "iamUpdateUserRequestDto");
             this.iamUpdateUserRequestDto = iamUpdateUserRequestDto;
             return this;
         }
-        
+
         public IamUpdateUserRequest build() {
+
             return new IamUpdateUserRequest(
-                xAccountId,
-                id,
-                iamUpdateUserRequestDto);
+                xAccountId, id, iamUpdateUserRequestDto);
         }
+
     }
 }

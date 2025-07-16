@@ -65,9 +65,7 @@ public class AtsCreateCandidateRequestBuilder {
             .build());
 
         RequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
-              = new AtsCreateCandidateOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsCreateCandidateOperation(sdkConfiguration, options);
         AtsCreateCandidateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

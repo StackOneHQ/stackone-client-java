@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Status of the job
  */
 public class AtsCreateJobRequestDtoJobStatus {
-
     /**
      * The status of the job.
      */
@@ -67,9 +66,10 @@ public class AtsCreateJobRequestDtoJobStatus {
         return (JsonNullable<AtsCreateJobRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The status of the job.
@@ -107,7 +107,6 @@ public class AtsCreateJobRequestDtoJobStatus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class AtsCreateJobRequestDtoJobStatus {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class AtsCreateJobRequestDtoJobStatus {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends AtsCreateJobRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateJobRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The status of the job.
@@ -164,6 +164,7 @@ public class AtsCreateJobRequestDtoJobStatus {
             return this;
         }
 
+
         /**
          * The source value of the job status.
          */
@@ -181,11 +182,12 @@ public class AtsCreateJobRequestDtoJobStatus {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public AtsCreateJobRequestDtoJobStatus build() {
+
             return new AtsCreateJobRequestDtoJobStatus(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

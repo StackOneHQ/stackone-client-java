@@ -14,10 +14,12 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class ListResult {
 
     @JsonProperty("data")
     private List data;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw")
@@ -49,9 +51,10 @@ public class ListResult {
         return (JsonNullable<java.util.List<RawResponse>>) raw;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ListResult withData(List data) {
         Utils.checkNotNull(data, "data");
@@ -71,7 +74,6 @@ public class ListResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -89,8 +91,7 @@ public class ListResult {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            data,
-            raw);
+            data, raw);
     }
     
     @Override
@@ -99,22 +100,25 @@ public class ListResult {
                 "data", data,
                 "raw", raw);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List data;
- 
+
         private JsonNullable<? extends java.util.List<RawResponse>> raw = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder data(List data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
+
 
         public Builder raw(java.util.List<RawResponse> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -127,11 +131,12 @@ public class ListResult {
             this.raw = raw;
             return this;
         }
-        
+
         public ListResult build() {
+
             return new ListResult(
-                data,
-                raw);
+                data, raw);
         }
+
     }
 }

@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ContentBlock {
 
+public class ContentBlock {
     /**
      * Unique identifier
      */
@@ -32,13 +32,16 @@ public class ContentBlock {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
     private JsonNullable<? extends List<String>> tags;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content")
@@ -104,7 +107,9 @@ public class ContentBlock {
     }
     
     public ContentBlock() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -173,9 +178,10 @@ public class ContentBlock {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -321,7 +327,6 @@ public class ContentBlock {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -346,15 +351,9 @@ public class ContentBlock {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            tags,
-            content,
-            type,
-            status,
-            createdAt,
-            updatedAt);
+            id, remoteId, name,
+            tags, content, type,
+            status, createdAt, updatedAt);
     }
     
     @Override
@@ -370,30 +369,32 @@ public class ContentBlock {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
- 
+
         private JsonNullable<String> content = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ContentBlockType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ContentBlockStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -413,6 +414,7 @@ public class ContentBlock {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -431,6 +433,7 @@ public class ContentBlock {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -442,6 +445,7 @@ public class ContentBlock {
             this.name = name;
             return this;
         }
+
 
         public Builder tags(List<String> tags) {
             Utils.checkNotNull(tags, "tags");
@@ -455,6 +459,7 @@ public class ContentBlock {
             return this;
         }
 
+
         public Builder content(String content) {
             Utils.checkNotNull(content, "content");
             this.content = JsonNullable.of(content);
@@ -466,6 +471,7 @@ public class ContentBlock {
             this.content = content;
             return this;
         }
+
 
         /**
          * Stackone enum identifying the type of content block.
@@ -485,6 +491,7 @@ public class ContentBlock {
             return this;
         }
 
+
         /**
          * Stackone enum identifying the status of content block.
          */
@@ -502,6 +509,7 @@ public class ContentBlock {
             this.status = status;
             return this;
         }
+
 
         /**
          * Date of creation
@@ -521,6 +529,7 @@ public class ContentBlock {
             return this;
         }
 
+
         /**
          * Date of last update
          */
@@ -538,18 +547,14 @@ public class ContentBlock {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public ContentBlock build() {
+
             return new ContentBlock(
-                id,
-                remoteId,
-                name,
-                tags,
-                content,
-                type,
-                status,
-                createdAt,
-                updatedAt);
+                id, remoteId, name,
+                tags, content, type,
+                status, createdAt, updatedAt);
         }
+
     }
 }

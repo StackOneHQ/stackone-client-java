@@ -47,9 +47,7 @@ public class HrisGetEmployeeTimeOffBalanceRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmployeeTimeOffBalanceRequest, HrisGetEmployeeTimeOffBalanceResponse> operation
-              = new HrisGetEmployeeTimeOffBalanceOperation(
-                 sdkConfiguration,
-                 options);
+              = new HrisGetEmployeeTimeOffBalanceOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

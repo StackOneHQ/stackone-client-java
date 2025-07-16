@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Candidate {
 
+public class Candidate {
     /**
      * Unique identifier
      */
@@ -229,7 +229,13 @@ public class Candidate {
     }
     
     public Candidate() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -402,9 +408,10 @@ public class Candidate {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -772,7 +779,6 @@ public class Candidate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -808,26 +814,13 @@ public class Candidate {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            name,
-            firstName,
-            lastName,
-            email,
-            emails,
-            socialLinks,
-            phone,
-            phoneNumbers,
-            company,
-            title,
-            applicationIds,
-            remoteApplicationIds,
-            hiredAt,
-            country,
-            customFields,
-            createdAt,
-            updatedAt);
+            id, remoteId, unifiedCustomFields,
+            name, firstName, lastName,
+            email, emails, socialLinks,
+            phone, phoneNumbers, company,
+            title, applicationIds, remoteApplicationIds,
+            hiredAt, country, customFields,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -854,53 +847,55 @@ public class Candidate {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> email = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CandidateEmail>> emails = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<SocialLink>> socialLinks = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> phone = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<PhoneNumber>> phoneNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<String> company = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> applicationIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteApplicationIds = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> hiredAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> country = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -920,6 +915,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -937,6 +933,7 @@ public class Candidate {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -956,6 +953,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * Candidate name
          */
@@ -973,6 +971,7 @@ public class Candidate {
             this.name = name;
             return this;
         }
+
 
         /**
          * Candidate first name
@@ -992,6 +991,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * Candidate last name
          */
@@ -1009,6 +1009,7 @@ public class Candidate {
             this.lastName = lastName;
             return this;
         }
+
 
         /**
          * Candidate email
@@ -1028,6 +1029,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * List of candidate emails
          */
@@ -1046,6 +1048,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * List of candidate social links
          */
@@ -1063,6 +1066,7 @@ public class Candidate {
             this.socialLinks = socialLinks;
             return this;
         }
+
 
         /**
          * Candidate phone number
@@ -1088,6 +1092,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * List of candidate phone numbers including the type of the number when available
          */
@@ -1105,6 +1110,7 @@ public class Candidate {
             this.phoneNumbers = phoneNumbers;
             return this;
         }
+
 
         /**
          * Candidate company
@@ -1124,6 +1130,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * Candidate title
          */
@@ -1141,6 +1148,7 @@ public class Candidate {
             this.title = title;
             return this;
         }
+
 
         /**
          * List of candidate application IDs
@@ -1160,6 +1168,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * Provider's list of candidate application IDs
          */
@@ -1177,6 +1186,7 @@ public class Candidate {
             this.remoteApplicationIds = remoteApplicationIds;
             return this;
         }
+
 
         /**
          * Candidate hired date
@@ -1196,6 +1206,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * Candidate country
          */
@@ -1213,6 +1224,7 @@ public class Candidate {
             this.country = country;
             return this;
         }
+
 
         /**
          * The candidate custom fields
@@ -1232,6 +1244,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * Candidate created date
          */
@@ -1250,6 +1263,7 @@ public class Candidate {
             return this;
         }
 
+
         /**
          * Candidate updated date
          */
@@ -1267,29 +1281,18 @@ public class Candidate {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Candidate build() {
+
             return new Candidate(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                name,
-                firstName,
-                lastName,
-                email,
-                emails,
-                socialLinks,
-                phone,
-                phoneNumbers,
-                company,
-                title,
-                applicationIds,
-                remoteApplicationIds,
-                hiredAt,
-                country,
-                customFields,
-                createdAt,
-                updatedAt);
+                id, remoteId, unifiedCustomFields,
+                name, firstName, lastName,
+                email, emails, socialLinks,
+                phone, phoneNumbers, company,
+                title, applicationIds, remoteApplicationIds,
+                hiredAt, country, customFields,
+                createdAt, updatedAt);
         }
+
     }
 }

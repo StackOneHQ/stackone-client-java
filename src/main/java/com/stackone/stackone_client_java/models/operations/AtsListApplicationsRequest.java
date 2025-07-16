@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsListApplicationsRequest {
 
+public class AtsListApplicationsRequest {
     /**
      * The account identifier
      */
@@ -153,7 +153,11 @@ public class AtsListApplicationsRequest {
     
     public AtsListApplicationsRequest(
             String xAccountId) {
-        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -274,9 +278,10 @@ public class AtsListApplicationsRequest {
         return jobId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -527,7 +532,6 @@ public class AtsListApplicationsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -556,18 +560,10 @@ public class AtsListApplicationsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            raw,
-            proxy,
-            fields,
-            filter,
-            page,
-            pageSize,
-            next,
-            updatedAfter,
-            syncToken,
-            expand,
-            include,
+            xAccountId, raw, proxy,
+            fields, filter, page,
+            pageSize, next, updatedAfter,
+            syncToken, expand, include,
             jobId);
     }
     
@@ -588,42 +584,44 @@ public class AtsListApplicationsRequest {
                 "include", include,
                 "jobId", jobId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsListApplicationsQueryParamFilter> filter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
- 
+
         private JsonNullable<String> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> syncToken = JsonNullable.undefined();
- 
+
         private JsonNullable<String> expand = JsonNullable.undefined();
- 
+
         private JsonNullable<String> include = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> jobId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -633,6 +631,7 @@ public class AtsListApplicationsRequest {
             this.xAccountId = xAccountId;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -652,6 +651,7 @@ public class AtsListApplicationsRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -669,6 +669,7 @@ public class AtsListApplicationsRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -688,6 +689,7 @@ public class AtsListApplicationsRequest {
             return this;
         }
 
+
         /**
          * ATS Application Filter
          */
@@ -705,6 +707,7 @@ public class AtsListApplicationsRequest {
             this.filter = filter;
             return this;
         }
+
 
         /**
          * The page number of the results to fetch
@@ -730,6 +733,7 @@ public class AtsListApplicationsRequest {
             return this;
         }
 
+
         /**
          * The number of results per page (default value is 25)
          */
@@ -748,6 +752,7 @@ public class AtsListApplicationsRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -765,6 +770,7 @@ public class AtsListApplicationsRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -790,6 +796,7 @@ public class AtsListApplicationsRequest {
             return this;
         }
 
+
         /**
          * The sync token to select the only updated results
          * 
@@ -814,6 +821,7 @@ public class AtsListApplicationsRequest {
             return this;
         }
 
+
         /**
          * The comma separated list of fields that will be expanded in the response
          */
@@ -832,6 +840,7 @@ public class AtsListApplicationsRequest {
             return this;
         }
 
+
         /**
          * The comma separated list of fields that will be included in the response
          */
@@ -849,6 +858,7 @@ public class AtsListApplicationsRequest {
             this.include = include;
             return this;
         }
+
 
         /**
          * Filter for job ID to retrieve a list of applications related to this job
@@ -873,22 +883,16 @@ public class AtsListApplicationsRequest {
             this.jobId = jobId;
             return this;
         }
-        
+
         public AtsListApplicationsRequest build() {
+
             return new AtsListApplicationsRequest(
-                xAccountId,
-                raw,
-                proxy,
-                fields,
-                filter,
-                page,
-                pageSize,
-                next,
-                updatedAfter,
-                syncToken,
-                expand,
-                include,
+                xAccountId, raw, proxy,
+                fields, filter, page,
+                pageSize, next, updatedAfter,
+                syncToken, expand, include,
                 jobId);
         }
+
     }
 }

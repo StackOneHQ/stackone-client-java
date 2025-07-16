@@ -8,19 +8,17 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class TimeOffBalancesSourceValuePolicyType4 {
 
+public class TimeOffBalancesSourceValuePolicyType4 {
     @JsonCreator
     public TimeOffBalancesSourceValuePolicyType4() {
-        
-        
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -42,16 +40,19 @@ public class TimeOffBalancesSourceValuePolicyType4 {
     public String toString() {
         return Utils.toString(TimeOffBalancesSourceValuePolicyType4.class);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public TimeOffBalancesSourceValuePolicyType4 build() {
+
             return new TimeOffBalancesSourceValuePolicyType4(
                 );
         }
+
     }
 }

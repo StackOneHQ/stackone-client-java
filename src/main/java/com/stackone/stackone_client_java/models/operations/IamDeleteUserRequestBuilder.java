@@ -64,9 +64,7 @@ public class IamDeleteUserRequestBuilder {
             .build());
 
         RequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
-              = new IamDeleteUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamDeleteUserOperation(sdkConfiguration, options);
         IamDeleteUserRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

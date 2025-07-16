@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
 
+public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
     /**
      * Unique identifier
      */
@@ -31,6 +31,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application_status")
@@ -60,7 +61,8 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
     }
     
     public AtsCreateCandidatesAssessmentsRequestDtoApplication() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -94,9 +96,10 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -164,7 +167,6 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -184,9 +186,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            applicationStatus,
+            id, remoteId, applicationStatus,
             passthrough);
     }
     
@@ -198,20 +198,22 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
                 "applicationStatus", applicationStatus,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateCandidatesAssessmentsRequestDtoApplicationStatus> applicationStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -231,6 +233,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -249,6 +252,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
             return this;
         }
 
+
         public Builder applicationStatus(AtsCreateCandidatesAssessmentsRequestDtoApplicationStatus applicationStatus) {
             Utils.checkNotNull(applicationStatus, "applicationStatus");
             this.applicationStatus = JsonNullable.of(applicationStatus);
@@ -260,6 +264,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
             this.applicationStatus = applicationStatus;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -278,13 +283,13 @@ public class AtsCreateCandidatesAssessmentsRequestDtoApplication {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsCreateCandidatesAssessmentsRequestDtoApplication build() {
+
             return new AtsCreateCandidatesAssessmentsRequestDtoApplication(
-                id,
-                remoteId,
-                applicationStatus,
+                id, remoteId, applicationStatus,
                 passthrough);
         }
+
     }
 }

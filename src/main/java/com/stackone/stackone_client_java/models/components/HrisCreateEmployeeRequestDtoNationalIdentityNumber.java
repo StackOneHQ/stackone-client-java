@@ -29,6 +29,7 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumber {
     @JsonProperty("value")
     private JsonNullable<String> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoType> type;
@@ -77,9 +78,10 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumber {
         return (JsonNullable<HrisCreateEmployeeRequestDtoCountry>) country;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HrisCreateEmployeeRequestDtoNationalIdentityNumber withValue(String value) {
         Utils.checkNotNull(value, "value");
@@ -123,7 +125,6 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumber {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -142,9 +143,7 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumber {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            type,
-            country);
+            value, type, country);
     }
     
     @Override
@@ -154,18 +153,20 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumber {
                 "type", type,
                 "country", country);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoCountry> country = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(String value) {
             Utils.checkNotNull(value, "value");
@@ -179,6 +180,7 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumber {
             return this;
         }
 
+
         public Builder type(HrisCreateEmployeeRequestDtoType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
@@ -190,6 +192,7 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumber {
             this.type = type;
             return this;
         }
+
 
         /**
          * The country code
@@ -208,12 +211,12 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumber {
             this.country = country;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDtoNationalIdentityNumber build() {
+
             return new HrisCreateEmployeeRequestDtoNationalIdentityNumber(
-                value,
-                type,
-                country);
+                value, type, country);
         }
+
     }
 }

@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The ISO3166-2 sub division where the location is situated
  */
 public class HrisUpdateEmployeeRequestDtoWorkLocationState {
-
     /**
      * state (ISO3166-2 Sub Division Code) - value must be a valid enum value
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<String> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -60,9 +60,10 @@ public class HrisUpdateEmployeeRequestDtoWorkLocationState {
         return (JsonNullable<HrisUpdateEmployeeRequestDtoWorkLocationStateSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * state (ISO3166-2 Sub Division Code) - value must be a valid enum value
@@ -94,7 +95,6 @@ public class HrisUpdateEmployeeRequestDtoWorkLocationState {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,8 +112,7 @@ public class HrisUpdateEmployeeRequestDtoWorkLocationState {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -122,16 +121,18 @@ public class HrisUpdateEmployeeRequestDtoWorkLocationState {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoWorkLocationStateSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * state (ISO3166-2 Sub Division Code) - value must be a valid enum value
@@ -151,6 +152,7 @@ public class HrisUpdateEmployeeRequestDtoWorkLocationState {
             return this;
         }
 
+
         public Builder sourceValue(HrisUpdateEmployeeRequestDtoWorkLocationStateSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -162,11 +164,12 @@ public class HrisUpdateEmployeeRequestDtoWorkLocationState {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisUpdateEmployeeRequestDtoWorkLocationState build() {
+
             return new HrisUpdateEmployeeRequestDtoWorkLocationState(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

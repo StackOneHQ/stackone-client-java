@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPosting {
 
+public class JobPosting {
     /**
      * Unique identifier
      */
@@ -41,21 +41,26 @@ public class JobPosting {
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("title")
     private JsonNullable<String> title;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("locations")
     private JsonNullable<? extends List<JobPostingLocation>> locations;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("internal")
     private JsonNullable<? extends Internal> internal;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
     private JsonNullable<? extends JobPostingStatus> status;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("job_id")
@@ -68,29 +73,36 @@ public class JobPosting {
     @JsonProperty("remote_job_posting_id")
     private JsonNullable<String> remoteJobPostingId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content")
     private JsonNullable<? extends JobPostingContent> content;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compensation")
     private JsonNullable<? extends List<JobPostingCompensation>> compensation;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("employment_type")
     private JsonNullable<? extends JobPostingEmploymentType> employmentType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("employment_contract_type")
     private JsonNullable<? extends JobPostingEmploymentContractType> employmentContractType;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("external_url")
     private JsonNullable<String> externalUrl;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("external_apply_url")
     private JsonNullable<String> externalApplyUrl;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("questionnaires")
@@ -179,7 +191,13 @@ public class JobPosting {
     }
     
     public JobPosting() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -307,9 +325,10 @@ public class JobPosting {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -581,7 +600,6 @@ public class JobPosting {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -616,24 +634,12 @@ public class JobPosting {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            title,
-            locations,
-            internal,
-            status,
-            jobId,
-            remoteJobPostingId,
-            content,
-            compensation,
-            employmentType,
-            employmentContractType,
-            externalUrl,
-            externalApplyUrl,
-            questionnaires,
-            startDate,
-            createdAt,
+            id, remoteId, unifiedCustomFields,
+            title, locations, internal,
+            status, jobId, remoteJobPostingId,
+            content, compensation, employmentType,
+            employmentContractType, externalUrl, externalApplyUrl,
+            questionnaires, startDate, createdAt,
             updatedAt);
     }
     
@@ -660,50 +666,52 @@ public class JobPosting {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<JobPostingLocation>> locations = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Internal> internal = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteJobPostingId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingContent> content = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<JobPostingCompensation>> compensation = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingEmploymentType> employmentType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingEmploymentContractType> employmentContractType = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalApplyUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<JobPostingQuestionnaire>> questionnaires = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -723,6 +731,7 @@ public class JobPosting {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -740,6 +749,7 @@ public class JobPosting {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -759,6 +769,7 @@ public class JobPosting {
             return this;
         }
 
+
         public Builder title(String title) {
             Utils.checkNotNull(title, "title");
             this.title = JsonNullable.of(title);
@@ -770,6 +781,7 @@ public class JobPosting {
             this.title = title;
             return this;
         }
+
 
         public Builder locations(List<JobPostingLocation> locations) {
             Utils.checkNotNull(locations, "locations");
@@ -783,6 +795,7 @@ public class JobPosting {
             return this;
         }
 
+
         public Builder internal(Internal internal) {
             Utils.checkNotNull(internal, "internal");
             this.internal = JsonNullable.of(internal);
@@ -794,6 +807,7 @@ public class JobPosting {
             this.internal = internal;
             return this;
         }
+
 
         public Builder status(JobPostingStatus status) {
             Utils.checkNotNull(status, "status");
@@ -807,6 +821,7 @@ public class JobPosting {
             return this;
         }
 
+
         public Builder jobId(String jobId) {
             Utils.checkNotNull(jobId, "jobId");
             this.jobId = JsonNullable.of(jobId);
@@ -818,6 +833,7 @@ public class JobPosting {
             this.jobId = jobId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the job posting
@@ -837,6 +853,7 @@ public class JobPosting {
             return this;
         }
 
+
         public Builder content(JobPostingContent content) {
             Utils.checkNotNull(content, "content");
             this.content = JsonNullable.of(content);
@@ -848,6 +865,7 @@ public class JobPosting {
             this.content = content;
             return this;
         }
+
 
         public Builder compensation(List<JobPostingCompensation> compensation) {
             Utils.checkNotNull(compensation, "compensation");
@@ -861,6 +879,7 @@ public class JobPosting {
             return this;
         }
 
+
         public Builder employmentType(JobPostingEmploymentType employmentType) {
             Utils.checkNotNull(employmentType, "employmentType");
             this.employmentType = JsonNullable.of(employmentType);
@@ -872,6 +891,7 @@ public class JobPosting {
             this.employmentType = employmentType;
             return this;
         }
+
 
         public Builder employmentContractType(JobPostingEmploymentContractType employmentContractType) {
             Utils.checkNotNull(employmentContractType, "employmentContractType");
@@ -885,6 +905,7 @@ public class JobPosting {
             return this;
         }
 
+
         public Builder externalUrl(String externalUrl) {
             Utils.checkNotNull(externalUrl, "externalUrl");
             this.externalUrl = JsonNullable.of(externalUrl);
@@ -896,6 +917,7 @@ public class JobPosting {
             this.externalUrl = externalUrl;
             return this;
         }
+
 
         public Builder externalApplyUrl(String externalApplyUrl) {
             Utils.checkNotNull(externalApplyUrl, "externalApplyUrl");
@@ -909,6 +931,7 @@ public class JobPosting {
             return this;
         }
 
+
         public Builder questionnaires(List<JobPostingQuestionnaire> questionnaires) {
             Utils.checkNotNull(questionnaires, "questionnaires");
             this.questionnaires = JsonNullable.of(questionnaires);
@@ -920,6 +943,7 @@ public class JobPosting {
             this.questionnaires = questionnaires;
             return this;
         }
+
 
         /**
          * The posting start date
@@ -939,6 +963,7 @@ public class JobPosting {
             return this;
         }
 
+
         /**
          * Date of creation
          */
@@ -957,6 +982,7 @@ public class JobPosting {
             return this;
         }
 
+
         /**
          * Date of last update
          */
@@ -974,28 +1000,18 @@ public class JobPosting {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public JobPosting build() {
+
             return new JobPosting(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                title,
-                locations,
-                internal,
-                status,
-                jobId,
-                remoteJobPostingId,
-                content,
-                compensation,
-                employmentType,
-                employmentContractType,
-                externalUrl,
-                externalApplyUrl,
-                questionnaires,
-                startDate,
-                createdAt,
+                id, remoteId, unifiedCustomFields,
+                title, locations, internal,
+                status, jobId, remoteJobPostingId,
+                content, compensation, employmentType,
+                employmentContractType, externalUrl, externalApplyUrl,
+                questionnaires, startDate, createdAt,
                 updatedAt);
         }
+
     }
 }

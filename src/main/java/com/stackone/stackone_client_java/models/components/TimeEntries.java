@@ -18,8 +18,8 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class TimeEntries {
 
+public class TimeEntries {
     /**
      * Unique identifier
      */
@@ -165,7 +165,11 @@ public class TimeEntries {
     }
     
     public TimeEntries() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -284,9 +288,10 @@ public class TimeEntries {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -540,7 +545,6 @@ public class TimeEntries {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -570,20 +574,11 @@ public class TimeEntries {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            employeeId,
-            remoteEmployeeId,
-            startTime,
-            endTime,
-            hoursWorked,
-            breakDuration,
-            status,
-            laborType,
-            location,
-            createdAt,
-            updatedAt);
+            id, remoteId, unifiedCustomFields,
+            employeeId, remoteEmployeeId, startTime,
+            endTime, hoursWorked, breakDuration,
+            status, laborType, location,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -604,40 +599,42 @@ public class TimeEntries {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteEmployeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startTime = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endTime = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> hoursWorked = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> breakDuration = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TimeEntriesStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LaborType> laborType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Location> location = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -657,6 +654,7 @@ public class TimeEntries {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -674,6 +672,7 @@ public class TimeEntries {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -693,6 +692,7 @@ public class TimeEntries {
             return this;
         }
 
+
         /**
          * The employee ID associated with this time entry
          */
@@ -710,6 +710,7 @@ public class TimeEntries {
             this.employeeId = employeeId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the employee associated with this time entry
@@ -729,6 +730,7 @@ public class TimeEntries {
             return this;
         }
 
+
         /**
          * The start time of the time entry
          */
@@ -746,6 +748,7 @@ public class TimeEntries {
             this.startTime = startTime;
             return this;
         }
+
 
         /**
          * The end time of the time entry
@@ -765,6 +768,7 @@ public class TimeEntries {
             return this;
         }
 
+
         /**
          * The hours worked in the time entry
          */
@@ -782,6 +786,7 @@ public class TimeEntries {
             this.hoursWorked = hoursWorked;
             return this;
         }
+
 
         /**
          * The duration of the break taken during time entry in hours
@@ -801,6 +806,7 @@ public class TimeEntries {
             return this;
         }
 
+
         /**
          * The status of the time entry
          */
@@ -818,6 +824,7 @@ public class TimeEntries {
             this.status = status;
             return this;
         }
+
 
         /**
          * The labor type associated with this time entry
@@ -837,6 +844,7 @@ public class TimeEntries {
             return this;
         }
 
+
         /**
          * The location of the time entry
          */
@@ -854,6 +862,7 @@ public class TimeEntries {
             this.location = location;
             return this;
         }
+
 
         /**
          * The created_at date
@@ -873,6 +882,7 @@ public class TimeEntries {
             return this;
         }
 
+
         /**
          * The updated_at date
          */
@@ -890,23 +900,16 @@ public class TimeEntries {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public TimeEntries build() {
+
             return new TimeEntries(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                employeeId,
-                remoteEmployeeId,
-                startTime,
-                endTime,
-                hoursWorked,
-                breakDuration,
-                status,
-                laborType,
-                location,
-                createdAt,
-                updatedAt);
+                id, remoteId, unifiedCustomFields,
+                employeeId, remoteEmployeeId, startTime,
+                endTime, hoursWorked, breakDuration,
+                status, laborType, location,
+                createdAt, updatedAt);
         }
+
     }
 }

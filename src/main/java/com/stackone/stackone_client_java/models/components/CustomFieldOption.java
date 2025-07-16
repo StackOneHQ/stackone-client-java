@@ -10,8 +10,8 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class CustomFieldOption {
 
+public class CustomFieldOption {
     /**
      * The unique identifier for the option to be used when updating the custom field
      */
@@ -50,9 +50,10 @@ public class CustomFieldOption {
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unique identifier for the option to be used when updating the custom field
@@ -72,7 +73,6 @@ public class CustomFieldOption {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -90,8 +90,7 @@ public class CustomFieldOption {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            value);
+            id, value);
     }
     
     @Override
@@ -100,16 +99,18 @@ public class CustomFieldOption {
                 "id", id,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
- 
+
         private String value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unique identifier for the option to be used when updating the custom field
@@ -120,6 +121,7 @@ public class CustomFieldOption {
             return this;
         }
 
+
         /**
          * The human readable value of the option
          */
@@ -128,11 +130,12 @@ public class CustomFieldOption {
             this.value = value;
             return this;
         }
-        
+
         public CustomFieldOption build() {
+
             return new CustomFieldOption(
-                id,
-                value);
+                id, value);
         }
+
     }
 }

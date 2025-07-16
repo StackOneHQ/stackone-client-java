@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class LmsUpsertContentRequest {
 
+public class LmsUpsertContentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private LmsUpsertContentRequestDto lmsUpsertContentRequestDto;
@@ -45,9 +46,10 @@ public class LmsUpsertContentRequest {
         return lmsUpsertContentRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class LmsUpsertContentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class LmsUpsertContentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            lmsUpsertContentRequestDto);
+            xAccountId, lmsUpsertContentRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class LmsUpsertContentRequest {
                 "xAccountId", xAccountId,
                 "lmsUpsertContentRequestDto", lmsUpsertContentRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private LmsUpsertContentRequestDto lmsUpsertContentRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class LmsUpsertContentRequest {
             return this;
         }
 
+
         public Builder lmsUpsertContentRequestDto(LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
             Utils.checkNotNull(lmsUpsertContentRequestDto, "lmsUpsertContentRequestDto");
             this.lmsUpsertContentRequestDto = lmsUpsertContentRequestDto;
             return this;
         }
-        
+
         public LmsUpsertContentRequest build() {
+
             return new LmsUpsertContentRequest(
-                xAccountId,
-                lmsUpsertContentRequestDto);
+                xAccountId, lmsUpsertContentRequestDto);
         }
+
     }
 }

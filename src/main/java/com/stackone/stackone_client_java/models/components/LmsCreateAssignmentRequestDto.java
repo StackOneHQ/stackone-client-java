@@ -18,8 +18,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsCreateAssignmentRequestDto {
 
+public class LmsCreateAssignmentRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -108,7 +108,9 @@ public class LmsCreateAssignmentRequestDto {
     }
     
     public LmsCreateAssignmentRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -180,9 +182,10 @@ public class LmsCreateAssignmentRequestDto {
         return (JsonNullable<LmsCreateAssignmentRequestDtoStatus>) status;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -334,7 +337,6 @@ public class LmsCreateAssignmentRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -358,14 +360,9 @@ public class LmsCreateAssignmentRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            passthrough,
-            externalReference,
-            learningObjectId,
-            learningObjectExternalReference,
-            progress,
-            createdAt,
-            dueDate,
-            status);
+            passthrough, externalReference, learningObjectId,
+            learningObjectExternalReference, progress, createdAt,
+            dueDate, status);
     }
     
     @Override
@@ -380,29 +377,31 @@ public class LmsCreateAssignmentRequestDto {
                 "dueDate", dueDate,
                 "status", status);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> externalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> progress = JsonNullable.undefined();
- 
+
         private JsonNullable<String> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> dueDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsCreateAssignmentRequestDtoStatus> status = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -421,6 +420,7 @@ public class LmsCreateAssignmentRequestDto {
             this.passthrough = passthrough;
             return this;
         }
+
 
         /**
          * The external reference associated with this assignment
@@ -446,6 +446,7 @@ public class LmsCreateAssignmentRequestDto {
             return this;
         }
 
+
         /**
          * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
          */
@@ -463,6 +464,7 @@ public class LmsCreateAssignmentRequestDto {
             this.learningObjectId = learningObjectId;
             return this;
         }
+
 
         /**
          * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
@@ -482,6 +484,7 @@ public class LmsCreateAssignmentRequestDto {
             return this;
         }
 
+
         /**
          * The progress associated with this assigment
          */
@@ -499,6 +502,7 @@ public class LmsCreateAssignmentRequestDto {
             this.progress = progress;
             return this;
         }
+
 
         /**
          * The date the assignment was created
@@ -518,6 +522,7 @@ public class LmsCreateAssignmentRequestDto {
             return this;
         }
 
+
         /**
          * The date the assignment is due to be completed
          */
@@ -536,6 +541,7 @@ public class LmsCreateAssignmentRequestDto {
             return this;
         }
 
+
         /**
          * The status of the assignment
          */
@@ -553,17 +559,14 @@ public class LmsCreateAssignmentRequestDto {
             this.status = status;
             return this;
         }
-        
+
         public LmsCreateAssignmentRequestDto build() {
+
             return new LmsCreateAssignmentRequestDto(
-                passthrough,
-                externalReference,
-                learningObjectId,
-                learningObjectExternalReference,
-                progress,
-                createdAt,
-                dueDate,
-                status);
+                passthrough, externalReference, learningObjectId,
+                learningObjectExternalReference, progress, createdAt,
+                dueDate, status);
         }
+
     }
 }

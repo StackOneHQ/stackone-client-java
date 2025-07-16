@@ -18,14 +18,15 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsUpdateBackgroundCheckResultRequestDto {
 
+public class AtsUpdateBackgroundCheckResultRequestDto {
     /**
      * Unique identifier
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("id")
     private JsonNullable<String> id;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("score")
@@ -52,6 +53,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
     @JsonProperty("summary")
     private JsonNullable<String> summary;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("result")
     private JsonNullable<? extends AtsUpdateBackgroundCheckResultRequestDtoResult> result;
@@ -63,9 +65,11 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
     @JsonProperty("result_url")
     private JsonNullable<String> resultUrl;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("attachments")
     private JsonNullable<? extends List<Attachment>> attachments;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("candidate")
@@ -113,7 +117,10 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
     }
     
     public AtsUpdateBackgroundCheckResultRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -189,9 +196,10 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -349,7 +357,6 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -375,15 +382,9 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            score,
-            startDate,
-            submissionDate,
-            summary,
-            result,
-            resultUrl,
-            attachments,
-            candidate,
+            id, score, startDate,
+            submissionDate, summary, result,
+            resultUrl, attachments, candidate,
             passthrough);
     }
     
@@ -401,32 +402,34 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
                 "candidate", candidate,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsUpdateBackgroundCheckResultRequestDtoScore> score = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> submissionDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> summary = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsUpdateBackgroundCheckResultRequestDtoResult> result = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resultUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Attachment>> attachments = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsUpdateBackgroundCheckResultRequestDtoCandidate> candidate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -446,6 +449,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             return this;
         }
 
+
         public Builder score(AtsUpdateBackgroundCheckResultRequestDtoScore score) {
             Utils.checkNotNull(score, "score");
             this.score = JsonNullable.of(score);
@@ -457,6 +461,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             this.score = score;
             return this;
         }
+
 
         /**
          * The start date of the candidate test
@@ -476,6 +481,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             return this;
         }
 
+
         /**
          * The submission date of the candidate test
          */
@@ -493,6 +499,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             this.submissionDate = submissionDate;
             return this;
         }
+
 
         /**
          * The summary about the result of the test
@@ -512,6 +519,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             return this;
         }
 
+
         public Builder result(AtsUpdateBackgroundCheckResultRequestDtoResult result) {
             Utils.checkNotNull(result, "result");
             this.result = JsonNullable.of(result);
@@ -523,6 +531,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             this.result = result;
             return this;
         }
+
 
         /**
          * The test`s result url
@@ -542,6 +551,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             return this;
         }
 
+
         public Builder attachments(List<Attachment> attachments) {
             Utils.checkNotNull(attachments, "attachments");
             this.attachments = JsonNullable.of(attachments);
@@ -554,6 +564,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             return this;
         }
 
+
         public Builder candidate(AtsUpdateBackgroundCheckResultRequestDtoCandidate candidate) {
             Utils.checkNotNull(candidate, "candidate");
             this.candidate = JsonNullable.of(candidate);
@@ -565,6 +576,7 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             this.candidate = candidate;
             return this;
         }
+
 
         /**
          * Value to pass through to the provider
@@ -583,19 +595,15 @@ public class AtsUpdateBackgroundCheckResultRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsUpdateBackgroundCheckResultRequestDto build() {
+
             return new AtsUpdateBackgroundCheckResultRequestDto(
-                id,
-                score,
-                startDate,
-                submissionDate,
-                summary,
-                result,
-                resultUrl,
-                attachments,
-                candidate,
+                id, score, startDate,
+                submissionDate, summary, result,
+                resultUrl, attachments, candidate,
                 passthrough);
         }
+
     }
 }

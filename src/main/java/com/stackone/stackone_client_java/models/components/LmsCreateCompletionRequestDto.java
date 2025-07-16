@@ -17,8 +17,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsCreateCompletionRequestDto {
 
+public class LmsCreateCompletionRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -110,7 +110,9 @@ public class LmsCreateCompletionRequestDto {
     }
     
     public LmsCreateCompletionRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -185,9 +187,10 @@ public class LmsCreateCompletionRequestDto {
         return contentId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -345,7 +348,6 @@ public class LmsCreateCompletionRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -369,14 +371,9 @@ public class LmsCreateCompletionRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            passthrough,
-            result,
-            completedAt,
-            learningObjectId,
-            learningObjectExternalReference,
-            timeSpent,
-            contentExternalReference,
-            contentId);
+            passthrough, result, completedAt,
+            learningObjectId, learningObjectExternalReference, timeSpent,
+            contentExternalReference, contentId);
     }
     
     @Override
@@ -391,30 +388,32 @@ public class LmsCreateCompletionRequestDto {
                 "contentExternalReference", contentExternalReference,
                 "contentId", contentId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsCreateCompletionRequestDtoResult> result = JsonNullable.undefined();
- 
+
         private JsonNullable<String> completedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
- 
+
         private JsonNullable<String> timeSpent = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> contentExternalReference = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> contentId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -434,6 +433,7 @@ public class LmsCreateCompletionRequestDto {
             return this;
         }
 
+
         /**
          * The result of the completion
          */
@@ -451,6 +451,7 @@ public class LmsCreateCompletionRequestDto {
             this.result = result;
             return this;
         }
+
 
         /**
          * The date the content was completed
@@ -470,6 +471,7 @@ public class LmsCreateCompletionRequestDto {
             return this;
         }
 
+
         /**
          * The id of the learning object associated with this completion. This is not required unless specified in an integration.
          */
@@ -487,6 +489,7 @@ public class LmsCreateCompletionRequestDto {
             this.learningObjectId = learningObjectId;
             return this;
         }
+
 
         /**
          * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
@@ -506,6 +509,7 @@ public class LmsCreateCompletionRequestDto {
             return this;
         }
 
+
         /**
          * ISO 8601 duration format representing the time spent on completing the learning object
          */
@@ -523,6 +527,7 @@ public class LmsCreateCompletionRequestDto {
             this.timeSpent = timeSpent;
             return this;
         }
+
 
         /**
          * The external reference associated with this content
@@ -548,6 +553,7 @@ public class LmsCreateCompletionRequestDto {
             return this;
         }
 
+
         /**
          * The content ID associated with this completion
          * 
@@ -571,17 +577,14 @@ public class LmsCreateCompletionRequestDto {
             this.contentId = contentId;
             return this;
         }
-        
+
         public LmsCreateCompletionRequestDto build() {
+
             return new LmsCreateCompletionRequestDto(
-                passthrough,
-                result,
-                completedAt,
-                learningObjectId,
-                learningObjectExternalReference,
-                timeSpent,
-                contentExternalReference,
-                contentId);
+                passthrough, result, completedAt,
+                learningObjectId, learningObjectExternalReference, timeSpent,
+                contentExternalReference, contentId);
         }
+
     }
 }

@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LmsListAssignmentsRequest {
 
+public class LmsListAssignmentsRequest {
     /**
      * The account identifier
      */
@@ -129,7 +129,10 @@ public class LmsListAssignmentsRequest {
     
     public LmsListAssignmentsRequest(
             String xAccountId) {
-        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -228,9 +231,10 @@ public class LmsListAssignmentsRequest {
         return remoteUserId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -433,7 +437,6 @@ public class LmsListAssignmentsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -460,17 +463,10 @@ public class LmsListAssignmentsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            raw,
-            proxy,
-            fields,
-            filter,
-            page,
-            pageSize,
-            next,
-            updatedAfter,
-            userId,
-            remoteUserId);
+            xAccountId, raw, proxy,
+            fields, filter, page,
+            pageSize, next, updatedAfter,
+            userId, remoteUserId);
     }
     
     @Override
@@ -488,36 +484,38 @@ public class LmsListAssignmentsRequest {
                 "userId", userId,
                 "remoteUserId", remoteUserId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LmsListAssignmentsQueryParamFilter> filter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
- 
+
         private JsonNullable<String> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> userId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -527,6 +525,7 @@ public class LmsListAssignmentsRequest {
             this.xAccountId = xAccountId;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -546,6 +545,7 @@ public class LmsListAssignmentsRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -563,6 +563,7 @@ public class LmsListAssignmentsRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -582,6 +583,7 @@ public class LmsListAssignmentsRequest {
             return this;
         }
 
+
         /**
          * LMS Assignment Filter
          */
@@ -599,6 +601,7 @@ public class LmsListAssignmentsRequest {
             this.filter = filter;
             return this;
         }
+
 
         /**
          * The page number of the results to fetch
@@ -624,6 +627,7 @@ public class LmsListAssignmentsRequest {
             return this;
         }
 
+
         /**
          * The number of results per page (default value is 25)
          */
@@ -642,6 +646,7 @@ public class LmsListAssignmentsRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -659,6 +664,7 @@ public class LmsListAssignmentsRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -684,6 +690,7 @@ public class LmsListAssignmentsRequest {
             return this;
         }
 
+
         /**
          * The user ID associated with this assignment
          */
@@ -702,6 +709,7 @@ public class LmsListAssignmentsRequest {
             return this;
         }
 
+
         /**
          * Provider's unique identifier of the user related to the assignment
          */
@@ -719,20 +727,15 @@ public class LmsListAssignmentsRequest {
             this.remoteUserId = remoteUserId;
             return this;
         }
-        
+
         public LmsListAssignmentsRequest build() {
+
             return new LmsListAssignmentsRequest(
-                xAccountId,
-                raw,
-                proxy,
-                fields,
-                filter,
-                page,
-                pageSize,
-                next,
-                updatedAfter,
-                userId,
-                remoteUserId);
+                xAccountId, raw, proxy,
+                fields, filter, page,
+                pageSize, next, updatedAfter,
+                userId, remoteUserId);
         }
+
     }
 }

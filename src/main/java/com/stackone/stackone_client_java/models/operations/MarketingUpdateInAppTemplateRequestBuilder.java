@@ -73,9 +73,7 @@ public class MarketingUpdateInAppTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingUpdateInAppTemplateRequest, MarketingUpdateInAppTemplateResponse> operation
-              = new MarketingUpdateInAppTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateInAppTemplateOperation(sdkConfiguration, options);
         MarketingUpdateInAppTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -16,8 +16,8 @@ import java.lang.String;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class StepLogPartial {
 
+public class StepLogPartial {
     /**
      * The request ID
      */
@@ -213,7 +213,13 @@ public class StepLogPartial {
     }
     
     public StepLogPartial() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -368,9 +374,10 @@ public class StepLogPartial {
         return id;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The request ID
@@ -714,7 +721,6 @@ public class StepLogPartial {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -749,24 +755,12 @@ public class StepLogPartial {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            requestId,
-            startTime,
-            endTime,
-            accountId,
-            projectId,
-            httpMethod,
-            path,
-            url,
-            status,
-            duration,
-            success,
-            provider,
-            service,
-            resource,
-            childResource,
-            subResource,
-            action,
-            isWorker,
+            requestId, startTime, endTime,
+            accountId, projectId, httpMethod,
+            path, url, status,
+            duration, success, provider,
+            service, resource, childResource,
+            subResource, action, isWorker,
             id);
     }
     
@@ -793,50 +787,52 @@ public class StepLogPartial {
                 "isWorker", isWorker,
                 "id", id);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> requestId = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startTime = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endTime = JsonNullable.undefined();
- 
+
         private JsonNullable<String> accountId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> projectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> httpMethod = JsonNullable.undefined();
- 
+
         private JsonNullable<String> path = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> status = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> duration = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> success = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> service = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> childResource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> subResource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> action = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> isWorker = JsonNullable.undefined();
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The request ID
@@ -856,6 +852,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The request start time ISO8601 date string
          */
@@ -873,6 +870,7 @@ public class StepLogPartial {
             this.startTime = startTime;
             return this;
         }
+
 
         /**
          * The request end time ISO8601 date string
@@ -892,6 +890,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The account ID of the request
          */
@@ -909,6 +908,7 @@ public class StepLogPartial {
             this.accountId = accountId;
             return this;
         }
+
 
         /**
          * The project ID of the request
@@ -928,6 +928,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The requested HTTP method
          */
@@ -945,6 +946,7 @@ public class StepLogPartial {
             this.httpMethod = httpMethod;
             return this;
         }
+
 
         /**
          * The requested path
@@ -964,6 +966,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The requested URL
          */
@@ -981,6 +984,7 @@ public class StepLogPartial {
             this.url = url;
             return this;
         }
+
 
         /**
          * The requests response status code
@@ -1000,6 +1004,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The request duration in milliseconds
          */
@@ -1017,6 +1022,7 @@ public class StepLogPartial {
             this.duration = duration;
             return this;
         }
+
 
         /**
          * The request success flag
@@ -1036,6 +1042,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The requested provider
          */
@@ -1053,6 +1060,7 @@ public class StepLogPartial {
             this.provider = provider;
             return this;
         }
+
 
         /**
          * The requested service
@@ -1072,6 +1080,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The requested resource
          */
@@ -1089,6 +1098,7 @@ public class StepLogPartial {
             this.resource = resource;
             return this;
         }
+
 
         /**
          * The requested child resource
@@ -1108,6 +1118,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The requested sub resource
          */
@@ -1125,6 +1136,7 @@ public class StepLogPartial {
             this.subResource = subResource;
             return this;
         }
+
 
         /**
          * The requested action
@@ -1144,6 +1156,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The asynchronous worker flag
          */
@@ -1162,6 +1175,7 @@ public class StepLogPartial {
             return this;
         }
 
+
         /**
          * The provider request ID
          */
@@ -1179,28 +1193,18 @@ public class StepLogPartial {
             this.id = id;
             return this;
         }
-        
+
         public StepLogPartial build() {
+
             return new StepLogPartial(
-                requestId,
-                startTime,
-                endTime,
-                accountId,
-                projectId,
-                httpMethod,
-                path,
-                url,
-                status,
-                duration,
-                success,
-                provider,
-                service,
-                resource,
-                childResource,
-                subResource,
-                action,
-                isWorker,
+                requestId, startTime, endTime,
+                accountId, projectId, httpMethod,
+                path, url, status,
+                duration, success, provider,
+                service, resource, childResource,
+                subResource, action, isWorker,
                 id);
         }
+
     }
 }

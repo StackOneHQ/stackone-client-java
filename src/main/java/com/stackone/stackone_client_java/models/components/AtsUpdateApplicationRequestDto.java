@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsUpdateApplicationRequestDto {
 
+public class AtsUpdateApplicationRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -33,9 +33,11 @@ public class AtsUpdateApplicationRequestDto {
     @JsonProperty("custom_fields")
     private JsonNullable<? extends List<CustomFields>> customFields;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application_status")
     private JsonNullable<? extends AtsUpdateApplicationRequestDtoApplicationStatus> applicationStatus;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source")
@@ -58,7 +60,8 @@ public class AtsUpdateApplicationRequestDto {
     }
     
     public AtsUpdateApplicationRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -91,9 +94,10 @@ public class AtsUpdateApplicationRequestDto {
         return (JsonNullable<AtsUpdateApplicationRequestDtoSource>) source;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -155,7 +159,6 @@ public class AtsUpdateApplicationRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -175,9 +178,7 @@ public class AtsUpdateApplicationRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            passthrough,
-            customFields,
-            applicationStatus,
+            passthrough, customFields, applicationStatus,
             source);
     }
     
@@ -189,20 +190,22 @@ public class AtsUpdateApplicationRequestDto {
                 "applicationStatus", applicationStatus,
                 "source", source);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsUpdateApplicationRequestDtoApplicationStatus> applicationStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsUpdateApplicationRequestDtoSource> source = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -222,6 +225,7 @@ public class AtsUpdateApplicationRequestDto {
             return this;
         }
 
+
         /**
          * The application custom fields
          */
@@ -240,6 +244,7 @@ public class AtsUpdateApplicationRequestDto {
             return this;
         }
 
+
         public Builder applicationStatus(AtsUpdateApplicationRequestDtoApplicationStatus applicationStatus) {
             Utils.checkNotNull(applicationStatus, "applicationStatus");
             this.applicationStatus = JsonNullable.of(applicationStatus);
@@ -252,6 +257,7 @@ public class AtsUpdateApplicationRequestDto {
             return this;
         }
 
+
         public Builder source(AtsUpdateApplicationRequestDtoSource source) {
             Utils.checkNotNull(source, "source");
             this.source = JsonNullable.of(source);
@@ -263,13 +269,13 @@ public class AtsUpdateApplicationRequestDto {
             this.source = source;
             return this;
         }
-        
+
         public AtsUpdateApplicationRequestDto build() {
+
             return new AtsUpdateApplicationRequestDto(
-                passthrough,
-                customFields,
-                applicationStatus,
+                passthrough, customFields, applicationStatus,
                 source);
         }
+
     }
 }

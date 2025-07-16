@@ -65,9 +65,7 @@ public class LmsUpsertContentRequestBuilder {
             .build());
 
         RequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
-              = new LmsUpsertContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsUpsertContentOperation(sdkConfiguration, options);
         LmsUpsertContentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

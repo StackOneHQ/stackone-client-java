@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The proficiency level of the skill
  */
 public class EntitySkillsCreateRequestDtoMaximumProficiency {
-
     /**
      * Unique identifier
      */
@@ -42,9 +41,11 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends EntitySkillsCreateRequestDtoValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -70,7 +71,8 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
     }
     
     public EntitySkillsCreateRequestDtoMaximumProficiency() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -109,9 +111,10 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
         return (JsonNullable<EntitySkillsCreateRequestDtoSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -191,7 +194,6 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -212,11 +214,8 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            value,
-            sourceValue);
+            id, remoteId, name,
+            value, sourceValue);
     }
     
     @Override
@@ -228,22 +227,24 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EntitySkillsCreateRequestDtoValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EntitySkillsCreateRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -263,6 +264,7 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -280,6 +282,7 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name associated with this proficiency
@@ -299,6 +302,7 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
             return this;
         }
 
+
         public Builder value(EntitySkillsCreateRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
@@ -311,6 +315,7 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
             return this;
         }
 
+
         public Builder sourceValue(EntitySkillsCreateRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -322,14 +327,13 @@ public class EntitySkillsCreateRequestDtoMaximumProficiency {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EntitySkillsCreateRequestDtoMaximumProficiency build() {
+
             return new EntitySkillsCreateRequestDtoMaximumProficiency(
-                id,
-                remoteId,
-                name,
-                value,
-                sourceValue);
+                id, remoteId, name,
+                value, sourceValue);
         }
+
     }
 }

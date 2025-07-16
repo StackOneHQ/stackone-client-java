@@ -56,9 +56,7 @@ public class StackoneGetAccountRequestBuilder {
             .build());
 
         RequestOperation<StackoneGetAccountRequest, StackoneGetAccountResponse> operation
-              = new StackoneGetAccountOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneGetAccountOperation(sdkConfiguration, options);
         StackoneGetAccountRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

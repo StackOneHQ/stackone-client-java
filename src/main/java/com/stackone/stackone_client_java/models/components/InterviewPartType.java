@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class InterviewPartType {
 
+public class InterviewPartType {
     /**
      * The type of the interview.
      */
@@ -62,9 +62,10 @@ public class InterviewPartType {
         return (JsonNullable<InterviewPartSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the interview.
@@ -102,7 +103,6 @@ public class InterviewPartType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class InterviewPartType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class InterviewPartType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends InterviewPartValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends InterviewPartSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the interview.
@@ -159,6 +160,7 @@ public class InterviewPartType {
             return this;
         }
 
+
         /**
          * The source value of the interview type.
          */
@@ -176,11 +178,12 @@ public class InterviewPartType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public InterviewPartType build() {
+
             return new InterviewPartType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

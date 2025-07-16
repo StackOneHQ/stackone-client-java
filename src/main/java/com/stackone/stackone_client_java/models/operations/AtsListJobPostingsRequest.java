@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsListJobPostingsRequest {
 
+public class AtsListJobPostingsRequest {
     /**
      * The account identifier
      */
@@ -132,7 +132,10 @@ public class AtsListJobPostingsRequest {
     
     public AtsListJobPostingsRequest(
             String xAccountId) {
-        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -234,9 +237,10 @@ public class AtsListJobPostingsRequest {
         return include;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -445,7 +449,6 @@ public class AtsListJobPostingsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -472,17 +475,10 @@ public class AtsListJobPostingsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            raw,
-            proxy,
-            fields,
-            filter,
-            page,
-            pageSize,
-            next,
-            updatedAfter,
-            syncToken,
-            include);
+            xAccountId, raw, proxy,
+            fields, filter, page,
+            pageSize, next, updatedAfter,
+            syncToken, include);
     }
     
     @Override
@@ -500,37 +496,39 @@ public class AtsListJobPostingsRequest {
                 "syncToken", syncToken,
                 "include", include);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private JsonNullable<Boolean> raw = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsListJobPostingsQueryParamFilter> filter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> page = JsonNullable.undefined();
- 
+
         private JsonNullable<String> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> syncToken = JsonNullable.undefined();
- 
+
         private JsonNullable<String> include = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -540,6 +538,7 @@ public class AtsListJobPostingsRequest {
             this.xAccountId = xAccountId;
             return this;
         }
+
 
         /**
          * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
@@ -559,6 +558,7 @@ public class AtsListJobPostingsRequest {
             return this;
         }
 
+
         /**
          * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
          */
@@ -576,6 +576,7 @@ public class AtsListJobPostingsRequest {
             this.proxy = proxy;
             return this;
         }
+
 
         /**
          * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
@@ -595,6 +596,7 @@ public class AtsListJobPostingsRequest {
             return this;
         }
 
+
         /**
          * ATS Job Postings Filter
          */
@@ -612,6 +614,7 @@ public class AtsListJobPostingsRequest {
             this.filter = filter;
             return this;
         }
+
 
         /**
          * The page number of the results to fetch
@@ -637,6 +640,7 @@ public class AtsListJobPostingsRequest {
             return this;
         }
 
+
         /**
          * The number of results per page (default value is 25)
          */
@@ -655,6 +659,7 @@ public class AtsListJobPostingsRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -672,6 +677,7 @@ public class AtsListJobPostingsRequest {
             this.next = next;
             return this;
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -697,6 +703,7 @@ public class AtsListJobPostingsRequest {
             return this;
         }
 
+
         /**
          * The sync token to select the only updated results
          * 
@@ -721,6 +728,7 @@ public class AtsListJobPostingsRequest {
             return this;
         }
 
+
         /**
          * The comma separated list of fields that will be included in the response
          */
@@ -738,20 +746,15 @@ public class AtsListJobPostingsRequest {
             this.include = include;
             return this;
         }
-        
+
         public AtsListJobPostingsRequest build() {
+
             return new AtsListJobPostingsRequest(
-                xAccountId,
-                raw,
-                proxy,
-                fields,
-                filter,
-                page,
-                pageSize,
-                next,
-                updatedAfter,
-                syncToken,
-                include);
+                xAccountId, raw, proxy,
+                fields, filter, page,
+                pageSize, next, updatedAfter,
+                syncToken, include);
         }
+
     }
 }

@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HRISBenefit {
 
+public class HRISBenefit {
     /**
      * Unique identifier
      */
@@ -102,7 +102,9 @@ public class HRISBenefit {
     }
     
     public HRISBenefit() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -170,9 +172,10 @@ public class HRISBenefit {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -318,7 +321,6 @@ public class HRISBenefit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -342,14 +344,9 @@ public class HRISBenefit {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            benefitType,
-            provider,
-            description,
-            createdAt,
-            updatedAt);
+            id, remoteId, name,
+            benefitType, provider, description,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -364,28 +361,30 @@ public class HRISBenefit {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends BenefitType> benefitType = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -405,6 +404,7 @@ public class HRISBenefit {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -422,6 +422,7 @@ public class HRISBenefit {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The name of the benefit
@@ -441,6 +442,7 @@ public class HRISBenefit {
             return this;
         }
 
+
         /**
          * The type of the benefit
          */
@@ -458,6 +460,7 @@ public class HRISBenefit {
             this.benefitType = benefitType;
             return this;
         }
+
 
         /**
          * The provider of the benefit
@@ -477,6 +480,7 @@ public class HRISBenefit {
             return this;
         }
 
+
         /**
          * The description of the benefit
          */
@@ -494,6 +498,7 @@ public class HRISBenefit {
             this.description = description;
             return this;
         }
+
 
         /**
          * The date and time the benefit was created
@@ -513,6 +518,7 @@ public class HRISBenefit {
             return this;
         }
 
+
         /**
          * The date and time the benefit was last updated
          */
@@ -530,17 +536,14 @@ public class HRISBenefit {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public HRISBenefit build() {
+
             return new HRISBenefit(
-                id,
-                remoteId,
-                name,
-                benefitType,
-                provider,
-                description,
-                createdAt,
-                updatedAt);
+                id, remoteId, name,
+                benefitType, provider, description,
+                createdAt, updatedAt);
         }
+
     }
 }

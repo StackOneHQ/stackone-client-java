@@ -47,9 +47,7 @@ public class AtsGetApplicationScheduledInterviewRequestBuilder {
             .build());
 
         RequestOperation<AtsGetApplicationScheduledInterviewRequest, AtsGetApplicationScheduledInterviewResponse> operation
-              = new AtsGetApplicationScheduledInterviewOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationScheduledInterviewOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -23,7 +23,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The employee work location
  */
 public class WorkLocation {
-
     /**
      * Unique identifier
      */
@@ -189,7 +188,12 @@ public class WorkLocation {
     }
     
     public WorkLocation() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -323,9 +327,10 @@ public class WorkLocation {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -615,7 +620,6 @@ public class WorkLocation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -647,21 +651,11 @@ public class WorkLocation {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            employeeId,
-            remoteEmployeeId,
-            name,
-            phoneNumber,
-            street1,
-            street2,
-            city,
-            state,
-            zipCode,
-            country,
-            locationType,
-            createdAt,
+            id, remoteId, unifiedCustomFields,
+            employeeId, remoteEmployeeId, name,
+            phoneNumber, street1, street2,
+            city, state, zipCode,
+            country, locationType, createdAt,
             updatedAt);
     }
     
@@ -685,44 +679,46 @@ public class WorkLocation {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteEmployeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> phoneNumber = JsonNullable.undefined();
- 
+
         private JsonNullable<String> street1 = JsonNullable.undefined();
- 
+
         private JsonNullable<String> street2 = JsonNullable.undefined();
- 
+
         private JsonNullable<String> city = JsonNullable.undefined();
- 
+
         private JsonNullable<String> state = JsonNullable.undefined();
- 
+
         private JsonNullable<String> zipCode = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeCountry> country = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmployeeLocationType> locationType = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -742,6 +738,7 @@ public class WorkLocation {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -759,6 +756,7 @@ public class WorkLocation {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -778,6 +776,7 @@ public class WorkLocation {
             return this;
         }
 
+
         /**
          * The employee ID
          */
@@ -795,6 +794,7 @@ public class WorkLocation {
             this.employeeId = employeeId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the employee
@@ -814,6 +814,7 @@ public class WorkLocation {
             return this;
         }
 
+
         /**
          * The name of the location
          */
@@ -831,6 +832,7 @@ public class WorkLocation {
             this.name = name;
             return this;
         }
+
 
         /**
          * The phone number of the location
@@ -850,6 +852,7 @@ public class WorkLocation {
             return this;
         }
 
+
         /**
          * The first line of the address
          */
@@ -867,6 +870,7 @@ public class WorkLocation {
             this.street1 = street1;
             return this;
         }
+
 
         /**
          * The second line of the address
@@ -886,6 +890,7 @@ public class WorkLocation {
             return this;
         }
 
+
         /**
          * The city where the location is situated
          */
@@ -903,6 +908,7 @@ public class WorkLocation {
             this.city = city;
             return this;
         }
+
 
         /**
          * The state where the location is situated
@@ -922,6 +928,7 @@ public class WorkLocation {
             return this;
         }
 
+
         /**
          * The ZIP code/Postal code of the location
          */
@@ -939,6 +946,7 @@ public class WorkLocation {
             this.zipCode = zipCode;
             return this;
         }
+
 
         /**
          * The country code
@@ -958,6 +966,7 @@ public class WorkLocation {
             return this;
         }
 
+
         /**
          * The location type
          */
@@ -975,6 +984,7 @@ public class WorkLocation {
             this.locationType = locationType;
             return this;
         }
+
 
         /**
          * The created_at date
@@ -994,6 +1004,7 @@ public class WorkLocation {
             return this;
         }
 
+
         /**
          * The updated_at date
          */
@@ -1011,25 +1022,17 @@ public class WorkLocation {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public WorkLocation build() {
+
             return new WorkLocation(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                employeeId,
-                remoteEmployeeId,
-                name,
-                phoneNumber,
-                street1,
-                street2,
-                city,
-                state,
-                zipCode,
-                country,
-                locationType,
-                createdAt,
+                id, remoteId, unifiedCustomFields,
+                employeeId, remoteEmployeeId, name,
+                phoneNumber, street1, street2,
+                city, state, zipCode,
+                country, locationType, createdAt,
                 updatedAt);
         }
+
     }
 }

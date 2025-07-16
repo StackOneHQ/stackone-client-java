@@ -13,8 +13,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class StackoneListStepLogsRequest {
 
+public class StackoneListStepLogsRequest {
     /**
      * The field to order the results by.
      */
@@ -65,7 +65,8 @@ public class StackoneListStepLogsRequest {
     }
     
     public StackoneListStepLogsRequest() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -111,9 +112,10 @@ public class StackoneListStepLogsRequest {
         return (JsonNullable<Filter>) filter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The field to order the results by.
@@ -205,7 +207,6 @@ public class StackoneListStepLogsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -226,11 +227,8 @@ public class StackoneListStepLogsRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            orderBy,
-            orderDirection,
-            pageSize,
-            next,
-            filter);
+            orderBy, orderDirection, pageSize,
+            next, filter);
     }
     
     @Override
@@ -242,22 +240,24 @@ public class StackoneListStepLogsRequest {
                 "next", next,
                 "filter", filter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends OrderBy> orderBy = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends OrderDirection> orderDirection = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> pageSize = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Filter> filter = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The field to order the results by.
@@ -277,6 +277,7 @@ public class StackoneListStepLogsRequest {
             return this;
         }
 
+
         /**
          * The direction to order the results by.
          */
@@ -294,6 +295,7 @@ public class StackoneListStepLogsRequest {
             this.orderDirection = orderDirection;
             return this;
         }
+
 
         /**
          * The number of results per page (default value is 25)
@@ -313,6 +315,7 @@ public class StackoneListStepLogsRequest {
             return this;
         }
 
+
         /**
          * The unified cursor
          */
@@ -331,6 +334,7 @@ public class StackoneListStepLogsRequest {
             return this;
         }
 
+
         /**
          * Filter parameters that allow greater customisation of the list response
          */
@@ -348,14 +352,13 @@ public class StackoneListStepLogsRequest {
             this.filter = filter;
             return this;
         }
-        
+
         public StackoneListStepLogsRequest build() {
+
             return new StackoneListStepLogsRequest(
-                orderBy,
-                orderDirection,
-                pageSize,
-                next,
-                filter);
+                orderBy, orderDirection, pageSize,
+                next, filter);
         }
+
     }
 }

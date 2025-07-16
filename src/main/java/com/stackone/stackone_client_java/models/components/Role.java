@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The role of manager
  */
 public class Role {
-
     /**
      * Unique identifier
      */
@@ -66,7 +65,8 @@ public class Role {
     }
     
     public Role() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -102,9 +102,10 @@ public class Role {
         return (JsonNullable<RoleType>) roleType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -178,7 +179,6 @@ public class Role {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -198,9 +198,7 @@ public class Role {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            label,
+            id, remoteId, label,
             roleType);
     }
     
@@ -212,20 +210,22 @@ public class Role {
                 "label", label,
                 "roleType", roleType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends RoleType> roleType = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -245,6 +245,7 @@ public class Role {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -262,6 +263,7 @@ public class Role {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The label of the role type
@@ -281,6 +283,7 @@ public class Role {
             return this;
         }
 
+
         /**
          * The manager role type (e.g., admin, viewer)
          */
@@ -298,13 +301,13 @@ public class Role {
             this.roleType = roleType;
             return this;
         }
-        
+
         public Role build() {
+
             return new Role(
-                id,
-                remoteId,
-                label,
+                id, remoteId, label,
                 roleType);
         }
+
     }
 }

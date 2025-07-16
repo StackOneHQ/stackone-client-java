@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class LocalizationModel {
 
+public class LocalizationModel {
     /**
      * The title of the content
      */
@@ -62,7 +62,8 @@ public class LocalizationModel {
     }
     
     public LocalizationModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -99,9 +100,10 @@ public class LocalizationModel {
         return (JsonNullable<List<String>>) tags;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The title of the content
@@ -175,7 +177,6 @@ public class LocalizationModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,9 +196,7 @@ public class LocalizationModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            title,
-            description,
-            language,
+            title, description, language,
             tags);
     }
     
@@ -209,20 +208,22 @@ public class LocalizationModel {
                 "language", language,
                 "tags", tags);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends LocalizationModelLanguage> language = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The title of the content
@@ -242,6 +243,7 @@ public class LocalizationModel {
             return this;
         }
 
+
         /**
          * The description of the content
          */
@@ -259,6 +261,7 @@ public class LocalizationModel {
             this.description = description;
             return this;
         }
+
 
         /**
          * The language associated with the localization details
@@ -278,6 +281,7 @@ public class LocalizationModel {
             return this;
         }
 
+
         /**
          * The tags associated with the localization details
          */
@@ -295,13 +299,13 @@ public class LocalizationModel {
             this.tags = tags;
             return this;
         }
-        
+
         public LocalizationModel build() {
+
             return new LocalizationModel(
-                title,
-                description,
-                language,
+                title, description, language,
                 tags);
         }
+
     }
 }

@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>LMS Courses Filter
  */
 public class LmsListCoursesQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -60,9 +59,10 @@ public class LmsListCoursesQueryParamFilter {
         return externalReference;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -100,7 +100,6 @@ public class LmsListCoursesQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,8 +117,7 @@ public class LmsListCoursesQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            externalReference);
+            updatedAfter, externalReference);
     }
     
     @Override
@@ -128,16 +126,18 @@ public class LmsListCoursesQueryParamFilter {
                 "updatedAfter", updatedAfter,
                 "externalReference", externalReference);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalReference = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -157,6 +157,7 @@ public class LmsListCoursesQueryParamFilter {
             return this;
         }
 
+
         /**
          * Filter to select courses by external_reference
          */
@@ -174,11 +175,12 @@ public class LmsListCoursesQueryParamFilter {
             this.externalReference = externalReference;
             return this;
         }
-        
+
         public LmsListCoursesQueryParamFilter build() {
+
             return new LmsListCoursesQueryParamFilter(
-                updatedAfter,
-                externalReference);
+                updatedAfter, externalReference);
         }
+
     }
 }

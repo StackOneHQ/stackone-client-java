@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
+
 public class UnifiedLogResult {
 
     @JsonProperty("data")
@@ -27,9 +28,10 @@ public class UnifiedLogResult {
         return data;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UnifiedLogResult withData(UnifiedLogs data) {
         Utils.checkNotNull(data, "data");
@@ -37,7 +39,6 @@ public class UnifiedLogResult {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -62,24 +63,28 @@ public class UnifiedLogResult {
         return Utils.toString(UnifiedLogResult.class,
                 "data", data);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private UnifiedLogs data;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder data(UnifiedLogs data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
-        
+
         public UnifiedLogResult build() {
+
             return new UnifiedLogResult(
                 data);
         }
+
     }
 }

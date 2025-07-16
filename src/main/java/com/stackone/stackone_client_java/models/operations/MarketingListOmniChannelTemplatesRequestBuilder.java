@@ -58,9 +58,7 @@ public class MarketingListOmniChannelTemplatesRequestBuilder {
             .build());
 
         RequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
-              = new MarketingListOmniChannelTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListOmniChannelTemplatesOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -84,9 +82,7 @@ public class MarketingListOmniChannelTemplatesRequestBuilder {
             .build());
 
         RequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
-              = new MarketingListOmniChannelTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListOmniChannelTemplatesOperation(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

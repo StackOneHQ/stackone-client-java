@@ -15,14 +15,17 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class CategoriesPaginated {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("next")
     private JsonNullable<String> next;
 
+
     @JsonProperty("data")
     private List<Category> data;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw")
@@ -62,9 +65,10 @@ public class CategoriesPaginated {
         return (JsonNullable<List<RawResponse>>) raw;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CategoriesPaginated withNext(String next) {
         Utils.checkNotNull(next, "next");
@@ -96,7 +100,6 @@ public class CategoriesPaginated {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -115,9 +118,7 @@ public class CategoriesPaginated {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            next,
-            data,
-            raw);
+            next, data, raw);
     }
     
     @Override
@@ -127,18 +128,20 @@ public class CategoriesPaginated {
                 "data", data,
                 "raw", raw);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         private List<Category> data;
- 
+
         private JsonNullable<? extends List<RawResponse>> raw = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder next(String next) {
             Utils.checkNotNull(next, "next");
@@ -152,11 +155,13 @@ public class CategoriesPaginated {
             return this;
         }
 
+
         public Builder data(List<Category> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
+
 
         public Builder raw(List<RawResponse> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -169,12 +174,12 @@ public class CategoriesPaginated {
             this.raw = raw;
             return this;
         }
-        
+
         public CategoriesPaginated build() {
+
             return new CategoriesPaginated(
-                next,
-                data,
-                raw);
+                next, data, raw);
         }
+
     }
 }

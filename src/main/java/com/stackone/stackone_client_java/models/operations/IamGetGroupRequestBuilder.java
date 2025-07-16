@@ -47,9 +47,7 @@ public class IamGetGroupRequestBuilder {
             .build());
 
         RequestOperation<IamGetGroupRequest, IamGetGroupResponse> operation
-              = new IamGetGroupOperation(
-                 sdkConfiguration,
-                 options);
+              = new IamGetGroupOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

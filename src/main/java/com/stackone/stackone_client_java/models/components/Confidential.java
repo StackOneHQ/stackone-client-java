@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The confidentiality level of the file to be uploaded
  */
 public class Confidential {
-
     /**
      * Whether the file is confidential or not
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends HrisDocumentsUploadRequestDtoConfidentialValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class Confidential {
         return (JsonNullable<HrisDocumentsUploadRequestDtoConfidentialSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Whether the file is confidential or not
@@ -95,7 +96,6 @@ public class Confidential {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class Confidential {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class Confidential {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisDocumentsUploadRequestDtoConfidentialValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisDocumentsUploadRequestDtoConfidentialSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Whether the file is confidential or not
@@ -152,6 +153,7 @@ public class Confidential {
             return this;
         }
 
+
         public Builder sourceValue(HrisDocumentsUploadRequestDtoConfidentialSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class Confidential {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public Confidential build() {
+
             return new Confidential(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The type of the benefit
  */
 public class CreateHRISBenefitBenefitType {
-
     /**
      * The type of the benefit
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends CreateHRISBenefitValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class CreateHRISBenefitBenefitType {
         return (JsonNullable<CreateHRISBenefitSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the benefit
@@ -95,7 +96,6 @@ public class CreateHRISBenefitBenefitType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class CreateHRISBenefitBenefitType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class CreateHRISBenefitBenefitType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CreateHRISBenefitValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateHRISBenefitSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the benefit
@@ -152,6 +153,7 @@ public class CreateHRISBenefitBenefitType {
             return this;
         }
 
+
         public Builder sourceValue(CreateHRISBenefitSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class CreateHRISBenefitBenefitType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CreateHRISBenefitBenefitType build() {
+
             return new CreateHRISBenefitBenefitType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

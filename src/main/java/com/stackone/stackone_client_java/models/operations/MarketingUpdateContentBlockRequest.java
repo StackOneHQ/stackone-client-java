@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class MarketingUpdateContentBlockRequest {
 
+public class MarketingUpdateContentBlockRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto;
@@ -56,9 +58,10 @@ public class MarketingUpdateContentBlockRequest {
         return marketingCreateContentBlocksRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class MarketingUpdateContentBlockRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class MarketingUpdateContentBlockRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            marketingCreateContentBlocksRequestDto);
+            xAccountId, id, marketingCreateContentBlocksRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class MarketingUpdateContentBlockRequest {
                 "id", id,
                 "marketingCreateContentBlocksRequestDto", marketingCreateContentBlocksRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class MarketingUpdateContentBlockRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder marketingCreateContentBlocksRequestDto(MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
             Utils.checkNotNull(marketingCreateContentBlocksRequestDto, "marketingCreateContentBlocksRequestDto");
             this.marketingCreateContentBlocksRequestDto = marketingCreateContentBlocksRequestDto;
             return this;
         }
-        
+
         public MarketingUpdateContentBlockRequest build() {
+
             return new MarketingUpdateContentBlockRequest(
-                xAccountId,
-                id,
-                marketingCreateContentBlocksRequestDto);
+                xAccountId, id, marketingCreateContentBlocksRequestDto);
         }
+
     }
 }

@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HRISLocationsPaginated {
 
+public class HRISLocationsPaginated {
     /**
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -27,12 +27,15 @@ public class HRISLocationsPaginated {
     @Deprecated
     private JsonNullable<String> nextPage;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("next")
     private JsonNullable<String> next;
 
+
     @JsonProperty("data")
     private List<HRISLocation> data;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw")
@@ -56,7 +59,8 @@ public class HRISLocationsPaginated {
     
     public HRISLocationsPaginated(
             List<HRISLocation> data) {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), data, JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), data,
+            JsonNullable.undefined());
     }
 
     /**
@@ -85,9 +89,10 @@ public class HRISLocationsPaginated {
         return (JsonNullable<List<RawResponse>>) raw;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * 
@@ -141,7 +146,6 @@ public class HRISLocationsPaginated {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,9 +165,7 @@ public class HRISLocationsPaginated {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            nextPage,
-            next,
-            data,
+            nextPage, next, data,
             raw);
     }
     
@@ -175,21 +177,23 @@ public class HRISLocationsPaginated {
                 "data", data,
                 "raw", raw);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         @Deprecated
         private JsonNullable<String> nextPage = JsonNullable.undefined();
- 
+
         private JsonNullable<String> next = JsonNullable.undefined();
- 
+
         private List<HRISLocation> data;
- 
+
         private JsonNullable<? extends List<RawResponse>> raw = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * 
@@ -213,6 +217,7 @@ public class HRISLocationsPaginated {
             return this;
         }
 
+
         public Builder next(String next) {
             Utils.checkNotNull(next, "next");
             this.next = JsonNullable.of(next);
@@ -225,11 +230,13 @@ public class HRISLocationsPaginated {
             return this;
         }
 
+
         public Builder data(List<HRISLocation> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
+
 
         public Builder raw(List<RawResponse> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -242,13 +249,13 @@ public class HRISLocationsPaginated {
             this.raw = raw;
             return this;
         }
-        
+
         public HRISLocationsPaginated build() {
+
             return new HRISLocationsPaginated(
-                nextPage,
-                next,
-                data,
+                nextPage, next, data,
                 raw);
         }
+
     }
 }

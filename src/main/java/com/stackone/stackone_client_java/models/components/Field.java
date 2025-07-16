@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Field {
 
+public class Field {
     /**
      * Unique identifier
      */
@@ -82,7 +82,8 @@ public class Field {
     }
     
     public Field() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -136,9 +137,10 @@ public class Field {
         return (JsonNullable<Required>) required;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -248,7 +250,6 @@ public class Field {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -270,12 +271,8 @@ public class Field {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            label,
-            type,
-            values,
-            required);
+            id, remoteId, label,
+            type, values, required);
     }
     
     @Override
@@ -288,24 +285,26 @@ public class Field {
                 "values", values,
                 "required", required);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends FieldType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> values = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Required> required = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -325,6 +324,7 @@ public class Field {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -342,6 +342,7 @@ public class Field {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The label of the field
@@ -361,6 +362,7 @@ public class Field {
             return this;
         }
 
+
         /**
          * The type of the field
          */
@@ -378,6 +380,7 @@ public class Field {
             this.type = type;
             return this;
         }
+
 
         /**
          * The possible values for the field
@@ -397,6 +400,7 @@ public class Field {
             return this;
         }
 
+
         /**
          * Indicates if the field is required
          */
@@ -414,15 +418,13 @@ public class Field {
             this.required = required;
             return this;
         }
-        
+
         public Field build() {
+
             return new Field(
-                id,
-                remoteId,
-                label,
-                type,
-                values,
-                required);
+                id, remoteId, label,
+                type, values, required);
         }
+
     }
 }

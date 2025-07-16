@@ -47,9 +47,7 @@ public class MarketingGetOmniChannelTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingGetOmniChannelTemplateRequest, MarketingGetOmniChannelTemplateResponse> operation
-              = new MarketingGetOmniChannelTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetOmniChannelTemplateOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

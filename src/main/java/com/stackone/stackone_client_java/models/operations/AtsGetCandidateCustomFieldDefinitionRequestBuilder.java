@@ -47,9 +47,7 @@ public class AtsGetCandidateCustomFieldDefinitionRequestBuilder {
             .build());
 
         RequestOperation<AtsGetCandidateCustomFieldDefinitionRequest, AtsGetCandidateCustomFieldDefinitionResponse> operation
-              = new AtsGetCandidateCustomFieldDefinitionOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetCandidateCustomFieldDefinitionOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

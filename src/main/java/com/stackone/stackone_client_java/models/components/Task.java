@@ -16,8 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Task {
 
+public class Task {
     /**
      * Unique identifier
      */
@@ -213,7 +213,13 @@ public class Task {
     }
     
     public Task() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -373,9 +379,10 @@ public class Task {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -719,7 +726,6 @@ public class Task {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -754,24 +760,12 @@ public class Task {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            employeeId,
-            name,
-            description,
-            type,
-            status,
-            dueDate,
-            completionDate,
-            assignedByEmployeeId,
-            assignedByEmployeeName,
-            linkToTask,
-            extractedLinks,
-            nextTaskId,
-            parentProcessName,
-            comments,
-            attachments,
-            createdAt,
+            id, remoteId, employeeId,
+            name, description, type,
+            status, dueDate, completionDate,
+            assignedByEmployeeId, assignedByEmployeeName, linkToTask,
+            extractedLinks, nextTaskId, parentProcessName,
+            comments, attachments, createdAt,
             updatedAt);
     }
     
@@ -798,50 +792,52 @@ public class Task {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TaskType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends TaskStatus> status = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> dueDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> completionDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> assignedByEmployeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> assignedByEmployeeName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> linkToTask = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> extractedLinks = JsonNullable.undefined();
- 
+
         private JsonNullable<String> nextTaskId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> parentProcessName = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<TaskCommentApiModel>> comments = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<File>> attachments = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -861,6 +857,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -878,6 +875,7 @@ public class Task {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The employee ID associated with this task
@@ -897,6 +895,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * The name of the task
          */
@@ -914,6 +913,7 @@ public class Task {
             this.name = name;
             return this;
         }
+
 
         /**
          * The description of the task
@@ -933,6 +933,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * The type of the task
          */
@@ -950,6 +951,7 @@ public class Task {
             this.type = type;
             return this;
         }
+
 
         /**
          * The status of the task
@@ -969,6 +971,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * The due date of the task
          */
@@ -986,6 +989,7 @@ public class Task {
             this.dueDate = dueDate;
             return this;
         }
+
 
         /**
          * The completion date of the task
@@ -1005,6 +1009,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * The ID of the employee who assigned this task
          */
@@ -1022,6 +1027,7 @@ public class Task {
             this.assignedByEmployeeId = assignedByEmployeeId;
             return this;
         }
+
 
         /**
          * The name of the employee who assigned this task
@@ -1041,6 +1047,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * Link to the task in the provider system
          */
@@ -1058,6 +1065,7 @@ public class Task {
             this.linkToTask = linkToTask;
             return this;
         }
+
 
         /**
          * List of extracted links from the task
@@ -1077,6 +1085,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * ID of the next task in sequence
          */
@@ -1094,6 +1103,7 @@ public class Task {
             this.nextTaskId = nextTaskId;
             return this;
         }
+
 
         /**
          * Name of the parent process of this task
@@ -1113,6 +1123,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * The comments associated with this task
          */
@@ -1130,6 +1141,7 @@ public class Task {
             this.comments = comments;
             return this;
         }
+
 
         /**
          * The documents attached to this task
@@ -1149,6 +1161,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * The creation date of this task
          */
@@ -1167,6 +1180,7 @@ public class Task {
             return this;
         }
 
+
         /**
          * The last updated date of this task
          */
@@ -1184,28 +1198,18 @@ public class Task {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Task build() {
+
             return new Task(
-                id,
-                remoteId,
-                employeeId,
-                name,
-                description,
-                type,
-                status,
-                dueDate,
-                completionDate,
-                assignedByEmployeeId,
-                assignedByEmployeeName,
-                linkToTask,
-                extractedLinks,
-                nextTaskId,
-                parentProcessName,
-                comments,
-                attachments,
-                createdAt,
+                id, remoteId, employeeId,
+                name, description, type,
+                status, dueDate, completionDate,
+                assignedByEmployeeId, assignedByEmployeeName, linkToTask,
+                extractedLinks, nextTaskId, parentProcessName,
+                comments, attachments, createdAt,
                 updatedAt);
         }
+
     }
 }

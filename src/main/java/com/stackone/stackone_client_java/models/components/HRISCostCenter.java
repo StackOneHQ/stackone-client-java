@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HRISCostCenter {
 
+public class HRISCostCenter {
     /**
      * Unique identifier
      */
@@ -145,7 +145,10 @@ public class HRISCostCenter {
     }
     
     public HRISCostCenter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -250,9 +253,10 @@ public class HRISCostCenter {
         return (JsonNullable<HRISCostCenterType>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -470,7 +474,6 @@ public class HRISCostCenter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -498,18 +501,10 @@ public class HRISCostCenter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            name,
-            parentIds,
-            remoteParentIds,
-            ownerIds,
-            remoteOwnerIds,
-            companyId,
-            remoteCompanyId,
-            distributionPercentage,
-            type);
+            id, remoteId, unifiedCustomFields,
+            name, parentIds, remoteParentIds,
+            ownerIds, remoteOwnerIds, companyId,
+            remoteCompanyId, distributionPercentage, type);
     }
     
     @Override
@@ -528,36 +523,38 @@ public class HRISCostCenter {
                 "distributionPercentage", distributionPercentage,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> parentIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteParentIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> ownerIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> remoteOwnerIds = JsonNullable.undefined();
- 
+
         private JsonNullable<String> companyId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteCompanyId = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> distributionPercentage = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HRISCostCenterType> type = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -577,6 +574,7 @@ public class HRISCostCenter {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -594,6 +592,7 @@ public class HRISCostCenter {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -613,6 +612,7 @@ public class HRISCostCenter {
             return this;
         }
 
+
         /**
          * The name of the group
          */
@@ -630,6 +630,7 @@ public class HRISCostCenter {
             this.name = name;
             return this;
         }
+
 
         /**
          * The list of parent group ids of the given group
@@ -649,6 +650,7 @@ public class HRISCostCenter {
             return this;
         }
 
+
         /**
          * Provider's list of parent group remote ids of the given group
          */
@@ -666,6 +668,7 @@ public class HRISCostCenter {
             this.remoteParentIds = remoteParentIds;
             return this;
         }
+
 
         /**
          * The list of group owner ids of the given group
@@ -685,6 +688,7 @@ public class HRISCostCenter {
             return this;
         }
 
+
         /**
          * The list of remote group owner ids of the given group
          */
@@ -702,6 +706,7 @@ public class HRISCostCenter {
             this.remoteOwnerIds = remoteOwnerIds;
             return this;
         }
+
 
         /**
          * The id of the company that the group belongs to
@@ -721,6 +726,7 @@ public class HRISCostCenter {
             return this;
         }
 
+
         /**
          * Provider's id of the company that the group belongs to
          */
@@ -738,6 +744,7 @@ public class HRISCostCenter {
             this.remoteCompanyId = remoteCompanyId;
             return this;
         }
+
 
         /**
          * The distribution percentage for cost_center
@@ -757,6 +764,7 @@ public class HRISCostCenter {
             return this;
         }
 
+
         /**
          * The type of the group
          */
@@ -774,21 +782,15 @@ public class HRISCostCenter {
             this.type = type;
             return this;
         }
-        
+
         public HRISCostCenter build() {
+
             return new HRISCostCenter(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                name,
-                parentIds,
-                remoteParentIds,
-                ownerIds,
-                remoteOwnerIds,
-                companyId,
-                remoteCompanyId,
-                distributionPercentage,
-                type);
+                id, remoteId, unifiedCustomFields,
+                name, parentIds, remoteParentIds,
+                ownerIds, remoteOwnerIds, companyId,
+                remoteCompanyId, distributionPercentage, type);
         }
+
     }
 }

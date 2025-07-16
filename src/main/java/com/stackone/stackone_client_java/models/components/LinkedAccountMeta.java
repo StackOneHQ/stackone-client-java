@@ -12,13 +12,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.Map;
 
+
 public class LinkedAccountMeta {
 
     @JsonProperty("provider")
     private String provider;
 
+
     @JsonProperty("category")
     private LinkedAccountMetaCategory category;
+
 
     @JsonProperty("models")
     private Map<String, Object> models;
@@ -31,6 +34,7 @@ public class LinkedAccountMeta {
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(category, "category");
         models = Utils.emptyMapIfNull(models);
+        Utils.checkNotNull(models, "models");
         this.provider = provider;
         this.category = category;
         this.models = models;
@@ -51,9 +55,10 @@ public class LinkedAccountMeta {
         return models;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public LinkedAccountMeta withProvider(String provider) {
         Utils.checkNotNull(provider, "provider");
@@ -73,7 +78,6 @@ public class LinkedAccountMeta {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -92,9 +96,7 @@ public class LinkedAccountMeta {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            provider,
-            category,
-            models);
+            provider, category, models);
     }
     
     @Override
@@ -104,18 +106,20 @@ public class LinkedAccountMeta {
                 "category", category,
                 "models", models);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String provider;
- 
+
         private LinkedAccountMetaCategory category;
- 
+
         private Map<String, Object> models;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder provider(String provider) {
             Utils.checkNotNull(provider, "provider");
@@ -123,23 +127,25 @@ public class LinkedAccountMeta {
             return this;
         }
 
+
         public Builder category(LinkedAccountMetaCategory category) {
             Utils.checkNotNull(category, "category");
             this.category = category;
             return this;
         }
 
+
         public Builder models(Map<String, Object> models) {
             Utils.checkNotNull(models, "models");
             this.models = models;
             return this;
         }
-        
+
         public LinkedAccountMeta build() {
+
             return new LinkedAccountMeta(
-                provider,
-                category,
-                models);
+                provider, category, models);
         }
+
     }
 }

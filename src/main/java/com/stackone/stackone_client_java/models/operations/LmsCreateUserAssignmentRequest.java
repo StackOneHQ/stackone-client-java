@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class LmsCreateUserAssignmentRequest {
 
+public class LmsCreateUserAssignmentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto;
@@ -56,9 +58,10 @@ public class LmsCreateUserAssignmentRequest {
         return lmsCreateAssignmentRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class LmsCreateUserAssignmentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class LmsCreateUserAssignmentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            lmsCreateAssignmentRequestDto);
+            xAccountId, id, lmsCreateAssignmentRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class LmsCreateUserAssignmentRequest {
                 "id", id,
                 "lmsCreateAssignmentRequestDto", lmsCreateAssignmentRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class LmsCreateUserAssignmentRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder lmsCreateAssignmentRequestDto(LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto) {
             Utils.checkNotNull(lmsCreateAssignmentRequestDto, "lmsCreateAssignmentRequestDto");
             this.lmsCreateAssignmentRequestDto = lmsCreateAssignmentRequestDto;
             return this;
         }
-        
+
         public LmsCreateUserAssignmentRequest build() {
+
             return new LmsCreateUserAssignmentRequest(
-                xAccountId,
-                id,
-                lmsCreateAssignmentRequestDto);
+                xAccountId, id, lmsCreateAssignmentRequestDto);
         }
+
     }
 }

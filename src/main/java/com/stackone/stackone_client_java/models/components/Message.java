@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Message {
 
+public class Message {
     /**
      * Unique identifier
      */
@@ -30,6 +30,7 @@ public class Message {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
@@ -40,6 +41,7 @@ public class Message {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_type")
     private JsonNullable<? extends MessageMessageType> messageType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_content")
@@ -65,7 +67,8 @@ public class Message {
     }
     
     public Message() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -104,9 +107,10 @@ public class Message {
         return (JsonNullable<MessageMessageContent>) messageContent;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -186,7 +190,6 @@ public class Message {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -207,11 +210,8 @@ public class Message {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            messageType,
-            messageContent);
+            id, remoteId, name,
+            messageType, messageContent);
     }
     
     @Override
@@ -223,22 +223,24 @@ public class Message {
                 "messageType", messageType,
                 "messageContent", messageContent);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MessageMessageType> messageType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MessageMessageContent> messageContent = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -258,6 +260,7 @@ public class Message {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -276,6 +279,7 @@ public class Message {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -287,6 +291,7 @@ public class Message {
             this.name = name;
             return this;
         }
+
 
         /**
          * Stackone enum identifying the type of message associated with the content.
@@ -306,6 +311,7 @@ public class Message {
             return this;
         }
 
+
         public Builder messageContent(MessageMessageContent messageContent) {
             Utils.checkNotNull(messageContent, "messageContent");
             this.messageContent = JsonNullable.of(messageContent);
@@ -317,14 +323,13 @@ public class Message {
             this.messageContent = messageContent;
             return this;
         }
-        
+
         public Message build() {
+
             return new Message(
-                id,
-                remoteId,
-                name,
-                messageType,
-                messageContent);
+                id, remoteId, name,
+                messageType, messageContent);
         }
+
     }
 }

@@ -65,9 +65,7 @@ public class MarketingCreateOmniChannelTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreateOmniChannelTemplateRequest, MarketingCreateOmniChannelTemplateResponse> operation
-              = new MarketingCreateOmniChannelTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateOmniChannelTemplateOperation(sdkConfiguration, options);
         MarketingCreateOmniChannelTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

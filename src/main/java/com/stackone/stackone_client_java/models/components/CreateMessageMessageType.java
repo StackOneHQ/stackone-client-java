@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Stackone enum identifying the type of message associated with the content.
  */
 public class CreateMessageMessageType {
-
     /**
      * The unified message type.
      */
@@ -67,9 +66,10 @@ public class CreateMessageMessageType {
         return (JsonNullable<CreateMessageSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified message type.
@@ -107,7 +107,6 @@ public class CreateMessageMessageType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class CreateMessageMessageType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class CreateMessageMessageType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends CreateMessageValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateMessageSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified message type.
@@ -164,6 +164,7 @@ public class CreateMessageMessageType {
             return this;
         }
 
+
         /**
          * The original value from the provider used to derive the unified message type.
          */
@@ -181,11 +182,12 @@ public class CreateMessageMessageType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public CreateMessageMessageType build() {
+
             return new CreateMessageMessageType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

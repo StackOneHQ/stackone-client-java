@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>ATS Jobs filters
  */
 public class AtsListJobsQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -39,7 +38,7 @@ public class AtsListJobsQueryParamFilter {
      */
     @SpeakeasyMetadata("queryParam:name=status")
     @Deprecated
-    private JsonNullable<? extends QueryParamStatus> status;
+    private JsonNullable<? extends AtsListJobsQueryParamStatus> status;
 
     /**
      * The job_status of the job
@@ -51,7 +50,7 @@ public class AtsListJobsQueryParamFilter {
     public AtsListJobsQueryParamFilter(
             JsonNullable<String> updatedAfter,
             JsonNullable<String> createdAfter,
-            JsonNullable<? extends QueryParamStatus> status,
+            JsonNullable<? extends AtsListJobsQueryParamStatus> status,
             JsonNullable<? extends JobStatus> jobStatus) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(createdAfter, "createdAfter");
@@ -64,7 +63,8 @@ public class AtsListJobsQueryParamFilter {
     }
     
     public AtsListJobsQueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -91,8 +91,8 @@ public class AtsListJobsQueryParamFilter {
     @Deprecated
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<QueryParamStatus> status() {
-        return (JsonNullable<QueryParamStatus>) status;
+    public JsonNullable<AtsListJobsQueryParamStatus> status() {
+        return (JsonNullable<AtsListJobsQueryParamStatus>) status;
     }
 
     /**
@@ -104,9 +104,10 @@ public class AtsListJobsQueryParamFilter {
         return (JsonNullable<JobStatus>) jobStatus;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -150,7 +151,7 @@ public class AtsListJobsQueryParamFilter {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public AtsListJobsQueryParamFilter withStatus(QueryParamStatus status) {
+    public AtsListJobsQueryParamFilter withStatus(AtsListJobsQueryParamStatus status) {
         Utils.checkNotNull(status, "status");
         this.status = JsonNullable.of(status);
         return this;
@@ -162,7 +163,7 @@ public class AtsListJobsQueryParamFilter {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public AtsListJobsQueryParamFilter withStatus(JsonNullable<? extends QueryParamStatus> status) {
+    public AtsListJobsQueryParamFilter withStatus(JsonNullable<? extends AtsListJobsQueryParamStatus> status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
         return this;
@@ -186,7 +187,6 @@ public class AtsListJobsQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -206,9 +206,7 @@ public class AtsListJobsQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter,
-            createdAfter,
-            status,
+            updatedAfter, createdAfter, status,
             jobStatus);
     }
     
@@ -220,21 +218,23 @@ public class AtsListJobsQueryParamFilter {
                 "status", status,
                 "jobStatus", jobStatus);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> createdAfter = JsonNullable.undefined();
- 
+
         @Deprecated
-        private JsonNullable<? extends QueryParamStatus> status = JsonNullable.undefined();
- 
+        private JsonNullable<? extends AtsListJobsQueryParamStatus> status = JsonNullable.undefined();
+
         private JsonNullable<? extends JobStatus> jobStatus = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -254,6 +254,7 @@ public class AtsListJobsQueryParamFilter {
             return this;
         }
 
+
         /**
          * Use a string with a date to only select results created after that given date
          */
@@ -272,13 +273,14 @@ public class AtsListJobsQueryParamFilter {
             return this;
         }
 
+
         /**
          * The status of the job
          * 
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder status(QueryParamStatus status) {
+        public Builder status(AtsListJobsQueryParamStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = JsonNullable.of(status);
             return this;
@@ -290,11 +292,12 @@ public class AtsListJobsQueryParamFilter {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder status(JsonNullable<? extends QueryParamStatus> status) {
+        public Builder status(JsonNullable<? extends AtsListJobsQueryParamStatus> status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
         }
+
 
         /**
          * The job_status of the job
@@ -313,13 +316,13 @@ public class AtsListJobsQueryParamFilter {
             this.jobStatus = jobStatus;
             return this;
         }
-        
+
         public AtsListJobsQueryParamFilter build() {
+
             return new AtsListJobsQueryParamFilter(
-                updatedAfter,
-                createdAfter,
-                status,
+                updatedAfter, createdAfter, status,
                 jobStatus);
         }
+
     }
 }

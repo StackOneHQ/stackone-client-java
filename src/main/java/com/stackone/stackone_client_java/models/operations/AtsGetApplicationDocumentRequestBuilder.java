@@ -47,9 +47,7 @@ public class AtsGetApplicationDocumentRequestBuilder {
             .build());
 
         RequestOperation<AtsGetApplicationDocumentRequest, AtsGetApplicationDocumentResponse> operation
-              = new AtsGetApplicationDocumentOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetApplicationDocumentOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

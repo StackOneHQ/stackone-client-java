@@ -109,7 +109,6 @@ import com.stackone.stackone_client_java.operations.LmsUpsertContentOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -148,16 +147,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListCoursesResponse listCourses(
-            LmsListCoursesRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListCoursesResponse listCourses(LmsListCoursesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListCoursesRequest, LmsListCoursesResponse> operation
-              = new LmsListCoursesOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListCoursesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Course
@@ -187,16 +181,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetCourseResponse getCourse(
-            LmsGetCourseRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetCourseResponse getCourse(LmsGetCourseRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetCourseRequest, LmsGetCourseResponse> operation
-              = new LmsGetCourseOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetCourseOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List User Assignments
@@ -226,16 +215,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListUserAssignmentsResponse listUserAssignments(
-            LmsListUserAssignmentsRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListUserAssignmentsResponse listUserAssignments(LmsListUserAssignmentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListUserAssignmentsRequest, LmsListUserAssignmentsResponse> operation
-              = new LmsListUserAssignmentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListUserAssignmentsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create User Assignment
@@ -256,10 +240,10 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsCreateUserAssignmentResponse createUserAssignment(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto) throws Exception {
-        return createUserAssignment(xAccountId, id, lmsCreateAssignmentRequestDto, Optional.empty());
+        return createUserAssignment(xAccountId, id, lmsCreateAssignmentRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -273,10 +257,8 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsCreateUserAssignmentResponse createUserAssignment(
-            String xAccountId,
-            String id,
-            LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto, Optional<Options> options) throws Exception {
         LmsCreateUserAssignmentRequest request =
             LmsCreateUserAssignmentRequest
                 .builder()
@@ -285,12 +267,9 @@ public class Lms {
                 .lmsCreateAssignmentRequestDto(lmsCreateAssignmentRequestDto)
                 .build();
         RequestOperation<LmsCreateUserAssignmentRequest, LmsCreateUserAssignmentResponse> operation
-              = new LmsCreateUserAssignmentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsCreateUserAssignmentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get User Assignment
@@ -320,16 +299,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetUserAssignmentResponse getUserAssignment(
-            LmsGetUserAssignmentRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetUserAssignmentResponse getUserAssignment(LmsGetUserAssignmentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetUserAssignmentRequest, LmsGetUserAssignmentResponse> operation
-              = new LmsGetUserAssignmentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetUserAssignmentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Batch Upsert Content
@@ -348,9 +322,7 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsBatchUpsertContentResponse batchUpsertContent(
-            String xAccountId,
-            LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) throws Exception {
+    public LmsBatchUpsertContentResponse batchUpsertContent(String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) throws Exception {
         return batchUpsertContent(xAccountId, lmsBatchUpsertContentRequestDto, Optional.empty());
     }
 
@@ -364,8 +336,7 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsBatchUpsertContentResponse batchUpsertContent(
-            String xAccountId,
-            LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto,
+            String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto,
             Optional<Options> options) throws Exception {
         LmsBatchUpsertContentRequest request =
             LmsBatchUpsertContentRequest
@@ -374,12 +345,9 @@ public class Lms {
                 .lmsBatchUpsertContentRequestDto(lmsBatchUpsertContentRequestDto)
                 .build();
         RequestOperation<LmsBatchUpsertContentRequest, LmsBatchUpsertContentResponse> operation
-              = new LmsBatchUpsertContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsBatchUpsertContentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Content
@@ -409,16 +377,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListContentResponse listContent(
-            LmsListContentRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListContentResponse listContent(LmsListContentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListContentRequest, LmsListContentResponse> operation
-              = new LmsListContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListContentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Upsert Content
@@ -437,9 +400,7 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsUpsertContentResponse upsertContent(
-            String xAccountId,
-            LmsUpsertContentRequestDto lmsUpsertContentRequestDto) throws Exception {
+    public LmsUpsertContentResponse upsertContent(String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto) throws Exception {
         return upsertContent(xAccountId, lmsUpsertContentRequestDto, Optional.empty());
     }
 
@@ -453,8 +414,7 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsUpsertContentResponse upsertContent(
-            String xAccountId,
-            LmsUpsertContentRequestDto lmsUpsertContentRequestDto,
+            String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto,
             Optional<Options> options) throws Exception {
         LmsUpsertContentRequest request =
             LmsUpsertContentRequest
@@ -463,12 +423,9 @@ public class Lms {
                 .lmsUpsertContentRequestDto(lmsUpsertContentRequestDto)
                 .build();
         RequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
-              = new LmsUpsertContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsUpsertContentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Content
@@ -498,16 +455,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetContentResponse getContent(
-            LmsGetContentRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetContentResponse getContent(LmsGetContentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetContentRequest, LmsGetContentResponse> operation
-              = new LmsGetContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetContentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Content
@@ -528,10 +480,10 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsUpdateContentResponse updateContent(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             LmsCreateContentRequestDto lmsCreateContentRequestDto) throws Exception {
-        return updateContent(xAccountId, id, lmsCreateContentRequestDto, Optional.empty());
+        return updateContent(xAccountId, id, lmsCreateContentRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -545,10 +497,8 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsUpdateContentResponse updateContent(
-            String xAccountId,
-            String id,
-            LmsCreateContentRequestDto lmsCreateContentRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            LmsCreateContentRequestDto lmsCreateContentRequestDto, Optional<Options> options) throws Exception {
         LmsUpdateContentRequest request =
             LmsUpdateContentRequest
                 .builder()
@@ -557,12 +507,9 @@ public class Lms {
                 .lmsCreateContentRequestDto(lmsCreateContentRequestDto)
                 .build();
         RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsUpdateContentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List User Completions
@@ -592,16 +539,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListUserCompletionsResponse listUserCompletions(
-            LmsListUserCompletionsRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListUserCompletionsResponse listUserCompletions(LmsListUserCompletionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListUserCompletionsRequest, LmsListUserCompletionsResponse> operation
-              = new LmsListUserCompletionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListUserCompletionsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create User Completion
@@ -622,10 +564,10 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsCreateUserCompletionResponse createUserCompletion(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) throws Exception {
-        return createUserCompletion(xAccountId, id, lmsCreateCompletionRequestDto, Optional.empty());
+        return createUserCompletion(xAccountId, id, lmsCreateCompletionRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -639,10 +581,8 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsCreateUserCompletionResponse createUserCompletion(
-            String xAccountId,
-            String id,
-            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto, Optional<Options> options) throws Exception {
         LmsCreateUserCompletionRequest request =
             LmsCreateUserCompletionRequest
                 .builder()
@@ -651,12 +591,9 @@ public class Lms {
                 .lmsCreateCompletionRequestDto(lmsCreateCompletionRequestDto)
                 .build();
         RequestOperation<LmsCreateUserCompletionRequest, LmsCreateUserCompletionResponse> operation
-              = new LmsCreateUserCompletionOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsCreateUserCompletionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get User Completion
@@ -686,16 +623,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetUserCompletionResponse getUserCompletion(
-            LmsGetUserCompletionRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetUserCompletionResponse getUserCompletion(LmsGetUserCompletionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetUserCompletionRequest, LmsGetUserCompletionResponse> operation
-              = new LmsGetUserCompletionOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetUserCompletionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Delete User Completion
@@ -716,10 +648,10 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsDeleteUserCompletionResponse deleteUserCompletion(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             String subResourceId) throws Exception {
-        return deleteUserCompletion(xAccountId, id, subResourceId, Optional.empty());
+        return deleteUserCompletion(xAccountId, id, subResourceId,
+            Optional.empty());
     }
 
     /**
@@ -733,10 +665,8 @@ public class Lms {
      * @throws Exception if the API call fails
      */
     public LmsDeleteUserCompletionResponse deleteUserCompletion(
-            String xAccountId,
-            String id,
-            String subResourceId,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            String subResourceId, Optional<Options> options) throws Exception {
         LmsDeleteUserCompletionRequest request =
             LmsDeleteUserCompletionRequest
                 .builder()
@@ -745,12 +675,9 @@ public class Lms {
                 .subResourceId(subResourceId)
                 .build();
         RequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
-              = new LmsDeleteUserCompletionOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsDeleteUserCompletionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Completions
@@ -780,16 +707,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListCompletionsResponse listCompletions(
-            LmsListCompletionsRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListCompletionsResponse listCompletions(LmsListCompletionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListCompletionsRequest, LmsListCompletionsResponse> operation
-              = new LmsListCompletionsOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListCompletionsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Completion
@@ -819,16 +741,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetCompletionResponse getCompletion(
-            LmsGetCompletionRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetCompletionResponse getCompletion(LmsGetCompletionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetCompletionRequest, LmsGetCompletionResponse> operation
-              = new LmsGetCompletionOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetCompletionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Category
@@ -858,16 +775,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetCategoryResponse getCategory(
-            LmsGetCategoryRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetCategoryResponse getCategory(LmsGetCategoryRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetCategoryRequest, LmsGetCategoryResponse> operation
-              = new LmsGetCategoryOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetCategoryOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Categories
@@ -897,16 +809,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListCategoriesResponse listCategories(
-            LmsListCategoriesRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListCategoriesResponse listCategories(LmsListCategoriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListCategoriesRequest, LmsListCategoriesResponse> operation
-              = new LmsListCategoriesOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListCategoriesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Users
@@ -936,16 +843,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListUsersResponse listUsers(
-            LmsListUsersRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListUsersResponse listUsers(LmsListUsersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListUsersRequest, LmsListUsersResponse> operation
-              = new LmsListUsersOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListUsersOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get User
@@ -975,16 +877,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetUserResponse getUser(
-            LmsGetUserRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetUserResponse getUser(LmsGetUserRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetUserRequest, LmsGetUserResponse> operation
-              = new LmsGetUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetUserOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Skill
@@ -1014,16 +911,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetSkillResponse getSkill(
-            LmsGetSkillRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetSkillResponse getSkill(LmsGetSkillRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetSkillRequest, LmsGetSkillResponse> operation
-              = new LmsGetSkillOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetSkillOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Skills
@@ -1053,16 +945,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListSkillsResponse listSkills(
-            LmsListSkillsRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListSkillsResponse listSkills(LmsListSkillsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListSkillsRequest, LmsListSkillsResponse> operation
-              = new LmsListSkillsOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListSkillsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Assignments
@@ -1092,16 +979,11 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsListAssignmentsResponse listAssignments(
-            LmsListAssignmentsRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsListAssignmentsResponse listAssignments(LmsListAssignmentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListAssignmentsRequest, LmsListAssignmentsResponse> operation
-              = new LmsListAssignmentsOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsListAssignmentsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Assignment
@@ -1131,13 +1013,9 @@ public class Lms {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public LmsGetAssignmentResponse getAssignment(
-            LmsGetAssignmentRequest request,
-            Optional<Options> options) throws Exception {
+    public LmsGetAssignmentResponse getAssignment(LmsGetAssignmentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetAssignmentRequest, LmsGetAssignmentResponse> operation
-              = new LmsGetAssignmentOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetAssignmentOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

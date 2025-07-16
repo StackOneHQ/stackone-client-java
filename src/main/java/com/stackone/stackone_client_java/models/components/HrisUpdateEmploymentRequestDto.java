@@ -18,8 +18,8 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisUpdateEmploymentRequestDto {
 
+public class HrisUpdateEmploymentRequestDto {
     /**
      * Custom Unified Fields configured in your StackOne project
      */
@@ -103,6 +103,7 @@ public class HrisUpdateEmploymentRequestDto {
     @Deprecated
     private JsonNullable<? extends HrisUpdateEmploymentRequestDtoEmploymentContractType> employmentContractType;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("work_time")
     private JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTime> workTime;
@@ -168,7 +169,11 @@ public class HrisUpdateEmploymentRequestDto {
     }
     
     public HrisUpdateEmploymentRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -294,9 +299,10 @@ public class HrisUpdateEmploymentRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Custom Unified Fields configured in your StackOne project
@@ -556,7 +562,6 @@ public class HrisUpdateEmploymentRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -586,20 +591,11 @@ public class HrisUpdateEmploymentRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            unifiedCustomFields,
-            jobTitle,
-            payRate,
-            payPeriod,
-            payFrequency,
-            payCurrency,
-            effectiveDate,
-            endDate,
-            grade,
-            employmentType,
-            employmentContractType,
-            workTime,
-            payrollCode,
-            passthrough);
+            unifiedCustomFields, jobTitle, payRate,
+            payPeriod, payFrequency, payCurrency,
+            effectiveDate, endDate, grade,
+            employmentType, employmentContractType, workTime,
+            payrollCode, passthrough);
     }
     
     @Override
@@ -620,42 +616,44 @@ public class HrisUpdateEmploymentRequestDto {
                 "payrollCode", payrollCode,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobTitle = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payRate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayPeriod> payPeriod = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayFrequency> payFrequency = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> effectiveDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoGrade> grade = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoEmploymentType> employmentType = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoEmploymentContractType> employmentContractType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTime> workTime = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payrollCode = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -675,6 +673,7 @@ public class HrisUpdateEmploymentRequestDto {
             return this;
         }
 
+
         /**
          * The job title of the employee
          */
@@ -692,6 +691,7 @@ public class HrisUpdateEmploymentRequestDto {
             this.jobTitle = jobTitle;
             return this;
         }
+
 
         /**
          * The pay rate for the employee
@@ -711,6 +711,7 @@ public class HrisUpdateEmploymentRequestDto {
             return this;
         }
 
+
         /**
          * The pay period
          */
@@ -728,6 +729,7 @@ public class HrisUpdateEmploymentRequestDto {
             this.payPeriod = payPeriod;
             return this;
         }
+
 
         /**
          * The pay frequency
@@ -747,6 +749,7 @@ public class HrisUpdateEmploymentRequestDto {
             return this;
         }
 
+
         /**
          * The currency used for pay
          */
@@ -764,6 +767,7 @@ public class HrisUpdateEmploymentRequestDto {
             this.payCurrency = payCurrency;
             return this;
         }
+
 
         /**
          * The effective date of the employment contract
@@ -783,6 +787,7 @@ public class HrisUpdateEmploymentRequestDto {
             return this;
         }
 
+
         /**
          * The end date of employment
          */
@@ -801,6 +806,7 @@ public class HrisUpdateEmploymentRequestDto {
             return this;
         }
 
+
         /**
          * Represents the employee’s position within the organizational hierarchy.
          */
@@ -818,6 +824,7 @@ public class HrisUpdateEmploymentRequestDto {
             this.grade = grade;
             return this;
         }
+
 
         /**
          * The type of employment (e.g., contractor, permanent)
@@ -843,6 +850,7 @@ public class HrisUpdateEmploymentRequestDto {
             return this;
         }
 
+
         /**
          * The employment work schedule type (e.g., full-time, part-time)
          * 
@@ -867,6 +875,7 @@ public class HrisUpdateEmploymentRequestDto {
             return this;
         }
 
+
         public Builder workTime(HrisUpdateEmploymentRequestDtoWorkTime workTime) {
             Utils.checkNotNull(workTime, "workTime");
             this.workTime = JsonNullable.of(workTime);
@@ -878,6 +887,7 @@ public class HrisUpdateEmploymentRequestDto {
             this.workTime = workTime;
             return this;
         }
+
 
         /**
          * The payroll code of the employee
@@ -897,6 +907,7 @@ public class HrisUpdateEmploymentRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -914,23 +925,16 @@ public class HrisUpdateEmploymentRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public HrisUpdateEmploymentRequestDto build() {
+
             return new HrisUpdateEmploymentRequestDto(
-                unifiedCustomFields,
-                jobTitle,
-                payRate,
-                payPeriod,
-                payFrequency,
-                payCurrency,
-                effectiveDate,
-                endDate,
-                grade,
-                employmentType,
-                employmentContractType,
-                workTime,
-                payrollCode,
-                passthrough);
+                unifiedCustomFields, jobTitle, payRate,
+                payPeriod, payFrequency, payCurrency,
+                effectiveDate, endDate, grade,
+                employmentType, employmentContractType, workTime,
+                payrollCode, passthrough);
         }
+
     }
 }

@@ -25,6 +25,7 @@ public class EmploymentCostCenterType {
     @JsonProperty("value")
     private JsonNullable<? extends EmploymentCostCenterValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends EmploymentCostCenterSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class EmploymentCostCenterType {
         return (JsonNullable<EmploymentCostCenterSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public EmploymentCostCenterType withValue(EmploymentCostCenterValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class EmploymentCostCenterType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class EmploymentCostCenterType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class EmploymentCostCenterType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmploymentCostCenterValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentCostCenterSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(EmploymentCostCenterValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class EmploymentCostCenterType {
             return this;
         }
 
+
         public Builder sourceValue(EmploymentCostCenterSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class EmploymentCostCenterType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EmploymentCostCenterType build() {
+
             return new EmploymentCostCenterType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

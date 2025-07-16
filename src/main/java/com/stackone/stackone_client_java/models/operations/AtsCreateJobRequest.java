@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class AtsCreateJobRequest {
 
+public class AtsCreateJobRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateJobRequestDto atsCreateJobRequestDto;
@@ -45,9 +46,10 @@ public class AtsCreateJobRequest {
         return atsCreateJobRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class AtsCreateJobRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class AtsCreateJobRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            atsCreateJobRequestDto);
+            xAccountId, atsCreateJobRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class AtsCreateJobRequest {
                 "xAccountId", xAccountId,
                 "atsCreateJobRequestDto", atsCreateJobRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private AtsCreateJobRequestDto atsCreateJobRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class AtsCreateJobRequest {
             return this;
         }
 
+
         public Builder atsCreateJobRequestDto(AtsCreateJobRequestDto atsCreateJobRequestDto) {
             Utils.checkNotNull(atsCreateJobRequestDto, "atsCreateJobRequestDto");
             this.atsCreateJobRequestDto = atsCreateJobRequestDto;
             return this;
         }
-        
+
         public AtsCreateJobRequest build() {
+
             return new AtsCreateJobRequest(
-                xAccountId,
-                atsCreateJobRequestDto);
+                xAccountId, atsCreateJobRequestDto);
         }
+
     }
 }

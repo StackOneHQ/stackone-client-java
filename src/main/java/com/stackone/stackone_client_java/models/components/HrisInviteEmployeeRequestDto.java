@@ -16,8 +16,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisInviteEmployeeRequestDto {
 
+public class HrisInviteEmployeeRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -45,9 +45,10 @@ public class HrisInviteEmployeeRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -67,7 +68,6 @@ public class HrisInviteEmployeeRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -92,14 +92,16 @@ public class HrisInviteEmployeeRequestDto {
         return Utils.toString(HrisInviteEmployeeRequestDto.class,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -118,10 +120,12 @@ public class HrisInviteEmployeeRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public HrisInviteEmployeeRequestDto build() {
+
             return new HrisInviteEmployeeRequestDto(
                 passthrough);
         }
+
     }
 }

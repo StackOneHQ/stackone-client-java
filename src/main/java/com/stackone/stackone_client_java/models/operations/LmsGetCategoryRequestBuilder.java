@@ -47,9 +47,7 @@ public class LmsGetCategoryRequestBuilder {
             .build());
 
         RequestOperation<LmsGetCategoryRequest, LmsGetCategoryResponse> operation
-              = new LmsGetCategoryOperation(
-                 sdkConfiguration,
-                 options);
+              = new LmsGetCategoryOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Image assets for this provider
  */
 public class Images {
-
     /**
      * URL of the square logo designed and used by StackOne for this provider
      */
@@ -64,9 +63,10 @@ public class Images {
         return originalLogoHorizontalUrl;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * URL of the square logo designed and used by StackOne for this provider
@@ -104,7 +104,6 @@ public class Images {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,8 +121,7 @@ public class Images {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            logoUrl,
-            originalLogoHorizontalUrl);
+            logoUrl, originalLogoHorizontalUrl);
     }
     
     @Override
@@ -132,16 +130,18 @@ public class Images {
                 "logoUrl", logoUrl,
                 "originalLogoHorizontalUrl", originalLogoHorizontalUrl);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> logoUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<String> originalLogoHorizontalUrl = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * URL of the square logo designed and used by StackOne for this provider
@@ -161,6 +161,7 @@ public class Images {
             return this;
         }
 
+
         /**
          * URL of the original provider logo (with logo and/or name aligned horizontally)
          */
@@ -178,11 +179,12 @@ public class Images {
             this.originalLogoHorizontalUrl = originalLogoHorizontalUrl;
             return this;
         }
-        
+
         public Images build() {
+
             return new Images(
-                logoUrl,
-                originalLogoHorizontalUrl);
+                logoUrl, originalLogoHorizontalUrl);
         }
+
     }
 }

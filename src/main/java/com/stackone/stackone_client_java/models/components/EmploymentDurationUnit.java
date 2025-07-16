@@ -20,13 +20,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The duration unit of the work time
  */
 public class EmploymentDurationUnit {
-
     /**
      * The unified value for the period.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends EmploymentWorkTimeValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -61,9 +61,10 @@ public class EmploymentDurationUnit {
         return (JsonNullable<EmploymentWorkTimeSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unified value for the period.
@@ -95,7 +96,6 @@ public class EmploymentDurationUnit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,8 +113,7 @@ public class EmploymentDurationUnit {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -123,16 +122,18 @@ public class EmploymentDurationUnit {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends EmploymentWorkTimeValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentWorkTimeSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unified value for the period.
@@ -152,6 +153,7 @@ public class EmploymentDurationUnit {
             return this;
         }
 
+
         public Builder sourceValue(EmploymentWorkTimeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -163,11 +165,12 @@ public class EmploymentDurationUnit {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public EmploymentDurationUnit build() {
+
             return new EmploymentDurationUnit(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

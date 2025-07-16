@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class AtsCreateNotesRequestDto {
 
     @JsonInclude(Include.NON_ABSENT)
@@ -61,7 +62,8 @@ public class AtsCreateNotesRequestDto {
     }
     
     public AtsCreateNotesRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @SuppressWarnings("unchecked")
@@ -96,9 +98,10 @@ public class AtsCreateNotesRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AtsCreateNotesRequestDto withContent(List<NoteContentApiModel> content) {
         Utils.checkNotNull(content, "content");
@@ -166,7 +169,6 @@ public class AtsCreateNotesRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -186,9 +188,7 @@ public class AtsCreateNotesRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            content,
-            authorId,
-            visibility,
+            content, authorId, visibility,
             passthrough);
     }
     
@@ -200,20 +200,22 @@ public class AtsCreateNotesRequestDto {
                 "visibility", visibility,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends List<NoteContentApiModel>> content = JsonNullable.undefined();
- 
+
         private JsonNullable<String> authorId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateNotesRequestDtoVisibility> visibility = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder content(List<NoteContentApiModel> content) {
             Utils.checkNotNull(content, "content");
@@ -226,6 +228,7 @@ public class AtsCreateNotesRequestDto {
             this.content = content;
             return this;
         }
+
 
         /**
          * Unique identifier of the author
@@ -245,6 +248,7 @@ public class AtsCreateNotesRequestDto {
             return this;
         }
 
+
         /**
          * Visibility of the note
          */
@@ -263,6 +267,7 @@ public class AtsCreateNotesRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -280,13 +285,13 @@ public class AtsCreateNotesRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsCreateNotesRequestDto build() {
+
             return new AtsCreateNotesRequestDto(
-                content,
-                authorId,
-                visibility,
+                content, authorId, visibility,
                 passthrough);
         }
+
     }
 }

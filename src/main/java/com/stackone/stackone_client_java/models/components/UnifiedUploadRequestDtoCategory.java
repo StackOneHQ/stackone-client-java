@@ -19,7 +19,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
  */
 public class UnifiedUploadRequestDtoCategory {
-
     /**
      * The category name for associating uploaded files.
      */
@@ -64,9 +63,10 @@ public class UnifiedUploadRequestDtoCategory {
         return sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The category name for associating uploaded files.
@@ -104,7 +104,6 @@ public class UnifiedUploadRequestDtoCategory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,8 +121,7 @@ public class UnifiedUploadRequestDtoCategory {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -132,16 +130,18 @@ public class UnifiedUploadRequestDtoCategory {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> value = JsonNullable.undefined();
- 
+
         private JsonNullable<String> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The category name for associating uploaded files.
@@ -161,6 +161,7 @@ public class UnifiedUploadRequestDtoCategory {
             return this;
         }
 
+
         /**
          * The provider specific category for associating uploaded files, if provided, the value will be ignored.
          */
@@ -178,11 +179,12 @@ public class UnifiedUploadRequestDtoCategory {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public UnifiedUploadRequestDtoCategory build() {
+
             return new UnifiedUploadRequestDtoCategory(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

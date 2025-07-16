@@ -14,14 +14,15 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class IamResourceType {
 
+public class IamResourceType {
     /**
      * The type of the resource, e.g. user, group, permission, etc.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends IamResourceValue> value;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -56,9 +57,10 @@ public class IamResourceType {
         return (JsonNullable<IamResourceSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the resource, e.g. user, group, permission, etc.
@@ -90,7 +92,6 @@ public class IamResourceType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,8 +109,7 @@ public class IamResourceType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -118,16 +118,18 @@ public class IamResourceType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends IamResourceValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends IamResourceSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the resource, e.g. user, group, permission, etc.
@@ -147,6 +149,7 @@ public class IamResourceType {
             return this;
         }
 
+
         public Builder sourceValue(IamResourceSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -158,11 +161,12 @@ public class IamResourceType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public IamResourceType build() {
+
             return new IamResourceType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

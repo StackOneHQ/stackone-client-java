@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Employment {
 
+public class Employment {
     /**
      * Unique identifier
      */
@@ -119,6 +119,7 @@ public class Employment {
     @JsonProperty("employment_contract_type")
     @Deprecated
     private JsonNullable<? extends EmploymentEmploymentContractType> employmentContractType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("work_time")
@@ -337,7 +338,16 @@ public class Employment {
     }
     
     public Employment() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -604,9 +614,10 @@ public class Employment {
         return (JsonNullable<List<EmploymentManagerApiModel>>) manager;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -1166,7 +1177,6 @@ public class Employment {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -1212,36 +1222,16 @@ public class Employment {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            jobTitle,
-            payRate,
-            payPeriod,
-            payFrequency,
-            payCurrency,
-            effectiveDate,
-            endDate,
-            grade,
-            employmentType,
-            employmentContractType,
-            workTime,
-            payrollCode,
-            employeeId,
-            remoteEmployeeId,
-            fte,
-            createdAt,
-            updatedAt,
-            startDate,
-            active,
-            department,
-            costCenter,
-            costCenters,
-            division,
-            job,
-            type,
-            contractType,
-            manager);
+            id, remoteId, unifiedCustomFields,
+            jobTitle, payRate, payPeriod,
+            payFrequency, payCurrency, effectiveDate,
+            endDate, grade, employmentType,
+            employmentContractType, workTime, payrollCode,
+            employeeId, remoteEmployeeId, fte,
+            createdAt, updatedAt, startDate,
+            active, department, costCenter,
+            costCenters, division, job,
+            type, contractType, manager);
     }
     
     @Override
@@ -1278,76 +1268,78 @@ public class Employment {
                 "contractType", contractType,
                 "manager", manager);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobTitle = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payRate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PayPeriod> payPeriod = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends PayFrequency> payFrequency = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> effectiveDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Grade> grade = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends EmploymentEmploymentType> employmentType = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends EmploymentEmploymentContractType> employmentContractType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends WorkTime> workTime = JsonNullable.undefined();
- 
+
         private JsonNullable<String> payrollCode = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteEmployeeId = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> fte = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> active = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentDepartment> department = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends CostCenter> costCenter = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<HRISCostCenter>> costCenters = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Division> division = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentJob> job = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentType1> type = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ContractType> contractType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<EmploymentManagerApiModel>> manager = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -1367,6 +1359,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -1384,6 +1377,7 @@ public class Employment {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -1403,6 +1397,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The job title of the employee
          */
@@ -1420,6 +1415,7 @@ public class Employment {
             this.jobTitle = jobTitle;
             return this;
         }
+
 
         /**
          * The pay rate for the employee
@@ -1439,6 +1435,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The pay period
          */
@@ -1456,6 +1453,7 @@ public class Employment {
             this.payPeriod = payPeriod;
             return this;
         }
+
 
         /**
          * The pay frequency
@@ -1475,6 +1473,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The currency used for pay
          */
@@ -1492,6 +1491,7 @@ public class Employment {
             this.payCurrency = payCurrency;
             return this;
         }
+
 
         /**
          * The effective date of the employment contract
@@ -1511,6 +1511,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The end date of employment
          */
@@ -1529,6 +1530,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * Represents the employee’s position within the organizational hierarchy.
          */
@@ -1546,6 +1548,7 @@ public class Employment {
             this.grade = grade;
             return this;
         }
+
 
         /**
          * The type of employment (e.g., contractor, permanent)
@@ -1571,6 +1574,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The employment work schedule type (e.g., full-time, part-time)
          * 
@@ -1595,6 +1599,7 @@ public class Employment {
             return this;
         }
 
+
         public Builder workTime(WorkTime workTime) {
             Utils.checkNotNull(workTime, "workTime");
             this.workTime = JsonNullable.of(workTime);
@@ -1606,6 +1611,7 @@ public class Employment {
             this.workTime = workTime;
             return this;
         }
+
 
         /**
          * The payroll code of the employee
@@ -1625,6 +1631,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The employee ID associated with this employment
          */
@@ -1642,6 +1649,7 @@ public class Employment {
             this.employeeId = employeeId;
             return this;
         }
+
 
         /**
          * Provider's unique identifier of the employee associated with this employment
@@ -1661,6 +1669,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * the employee's working percentage relative to a full-time employee
          */
@@ -1678,6 +1687,7 @@ public class Employment {
             this.fte = fte;
             return this;
         }
+
 
         /**
          * The created_at date
@@ -1697,6 +1707,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The updated_at date
          */
@@ -1714,6 +1725,7 @@ public class Employment {
             this.updatedAt = updatedAt;
             return this;
         }
+
 
         /**
          * The start_date of employment
@@ -1739,6 +1751,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The employment active status
          */
@@ -1757,6 +1770,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The employee department
          */
@@ -1774,6 +1788,7 @@ public class Employment {
             this.department = department;
             return this;
         }
+
 
         /**
          * The employee cost_center
@@ -1799,6 +1814,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The employee cost_centers
          */
@@ -1816,6 +1832,7 @@ public class Employment {
             this.costCenters = costCenters;
             return this;
         }
+
 
         /**
          * The employee division
@@ -1835,6 +1852,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The job of employee
          */
@@ -1852,6 +1870,7 @@ public class Employment {
             this.job = job;
             return this;
         }
+
 
         /**
          * The type of employment
@@ -1871,6 +1890,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The employment work schedule type
          */
@@ -1889,6 +1909,7 @@ public class Employment {
             return this;
         }
 
+
         /**
          * The employee manager
          */
@@ -1906,39 +1927,21 @@ public class Employment {
             this.manager = manager;
             return this;
         }
-        
+
         public Employment build() {
+
             return new Employment(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                jobTitle,
-                payRate,
-                payPeriod,
-                payFrequency,
-                payCurrency,
-                effectiveDate,
-                endDate,
-                grade,
-                employmentType,
-                employmentContractType,
-                workTime,
-                payrollCode,
-                employeeId,
-                remoteEmployeeId,
-                fte,
-                createdAt,
-                updatedAt,
-                startDate,
-                active,
-                department,
-                costCenter,
-                costCenters,
-                division,
-                job,
-                type,
-                contractType,
-                manager);
+                id, remoteId, unifiedCustomFields,
+                jobTitle, payRate, payPeriod,
+                payFrequency, payCurrency, effectiveDate,
+                endDate, grade, employmentType,
+                employmentContractType, workTime, payrollCode,
+                employeeId, remoteEmployeeId, fte,
+                createdAt, updatedAt, startDate,
+                active, department, costCenter,
+                costCenters, division, job,
+                type, contractType, manager);
         }
+
     }
 }

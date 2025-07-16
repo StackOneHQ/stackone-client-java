@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class EmailMessages {
 
+public class EmailMessages {
     /**
      * Unique identifier
      */
@@ -30,13 +30,16 @@ public class EmailMessages {
     @JsonProperty("remote_id")
     private JsonNullable<String> remoteId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_type")
     private JsonNullable<? extends MessageType> messageType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_content")
@@ -62,7 +65,8 @@ public class EmailMessages {
     }
     
     public EmailMessages() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -98,9 +102,10 @@ public class EmailMessages {
         return (JsonNullable<MessageContent>) messageContent;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -174,7 +179,6 @@ public class EmailMessages {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,11 +199,8 @@ public class EmailMessages {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name,
-            messageType,
-            messageContent);
+            id, remoteId, name,
+            messageType, messageContent);
     }
     
     @Override
@@ -211,22 +212,24 @@ public class EmailMessages {
                 "messageType", messageType,
                 "messageContent", messageContent);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MessageType> messageType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends MessageContent> messageContent = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -246,6 +249,7 @@ public class EmailMessages {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -264,6 +268,7 @@ public class EmailMessages {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -275,6 +280,7 @@ public class EmailMessages {
             this.name = name;
             return this;
         }
+
 
         public Builder messageType(MessageType messageType) {
             Utils.checkNotNull(messageType, "messageType");
@@ -288,6 +294,7 @@ public class EmailMessages {
             return this;
         }
 
+
         public Builder messageContent(MessageContent messageContent) {
             Utils.checkNotNull(messageContent, "messageContent");
             this.messageContent = JsonNullable.of(messageContent);
@@ -299,14 +306,13 @@ public class EmailMessages {
             this.messageContent = messageContent;
             return this;
         }
-        
+
         public EmailMessages build() {
+
             return new EmailMessages(
-                id,
-                remoteId,
-                name,
-                messageType,
-                messageContent);
+                id, remoteId, name,
+                messageType, messageContent);
         }
+
     }
 }

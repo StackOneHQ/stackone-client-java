@@ -25,6 +25,7 @@ public class HRISDepartmentType {
     @JsonProperty("value")
     private JsonNullable<? extends HRISDepartmentValue> value;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends HRISDepartmentSourceValue> sourceValue;
@@ -55,9 +56,10 @@ public class HRISDepartmentType {
         return (JsonNullable<HRISDepartmentSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public HRISDepartmentType withValue(HRISDepartmentValue value) {
         Utils.checkNotNull(value, "value");
@@ -83,7 +85,6 @@ public class HRISDepartmentType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,8 +102,7 @@ public class HRISDepartmentType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class HRISDepartmentType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HRISDepartmentValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HRISDepartmentSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(HRISDepartmentValue value) {
             Utils.checkNotNull(value, "value");
@@ -134,6 +136,7 @@ public class HRISDepartmentType {
             return this;
         }
 
+
         public Builder sourceValue(HRISDepartmentSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
@@ -145,11 +148,12 @@ public class HRISDepartmentType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HRISDepartmentType build() {
+
             return new HRISDepartmentType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

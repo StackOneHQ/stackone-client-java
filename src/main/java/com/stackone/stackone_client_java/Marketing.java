@@ -119,7 +119,6 @@ import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -158,16 +157,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingListEmailTemplatesResponse listEmailTemplates(
-            MarketingListEmailTemplatesRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingListEmailTemplatesResponse listEmailTemplates(MarketingListEmailTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListEmailTemplatesRequest, MarketingListEmailTemplatesResponse> operation
-              = new MarketingListEmailTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListEmailTemplatesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Email Templates
@@ -186,9 +180,7 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingCreateEmailTemplateResponse createEmailTemplate(
-            String xAccountId,
-            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) throws Exception {
+    public MarketingCreateEmailTemplateResponse createEmailTemplate(String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) throws Exception {
         return createEmailTemplate(xAccountId, marketingCreateEmailTemplateRequestDto, Optional.empty());
     }
 
@@ -202,8 +194,7 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingCreateEmailTemplateResponse createEmailTemplate(
-            String xAccountId,
-            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
+            String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
             Optional<Options> options) throws Exception {
         MarketingCreateEmailTemplateRequest request =
             MarketingCreateEmailTemplateRequest
@@ -212,12 +203,9 @@ public class Marketing {
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateEmailTemplateRequest, MarketingCreateEmailTemplateResponse> operation
-              = new MarketingCreateEmailTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateEmailTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Email Templates
@@ -247,16 +235,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingGetEmailTemplateResponse getEmailTemplate(
-            MarketingGetEmailTemplateRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingGetEmailTemplateResponse getEmailTemplate(MarketingGetEmailTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetEmailTemplateRequest, MarketingGetEmailTemplateResponse> operation
-              = new MarketingGetEmailTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetEmailTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Email Templates
@@ -277,10 +260,10 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdateEmailTemplateResponse updateEmailTemplate(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) throws Exception {
-        return updateEmailTemplate(xAccountId, id, marketingCreateEmailTemplateRequestDto, Optional.empty());
+        return updateEmailTemplate(xAccountId, id, marketingCreateEmailTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -294,10 +277,8 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdateEmailTemplateResponse updateEmailTemplate(
-            String xAccountId,
-            String id,
-            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto, Optional<Options> options) throws Exception {
         MarketingUpdateEmailTemplateRequest request =
             MarketingUpdateEmailTemplateRequest
                 .builder()
@@ -306,12 +287,9 @@ public class Marketing {
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateEmailTemplateRequest, MarketingUpdateEmailTemplateResponse> operation
-              = new MarketingUpdateEmailTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateEmailTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List In-App Templates
@@ -341,16 +319,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingListInAppTemplatesResponse listInAppTemplates(
-            MarketingListInAppTemplatesRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingListInAppTemplatesResponse listInAppTemplates(MarketingListInAppTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListInAppTemplatesRequest, MarketingListInAppTemplatesResponse> operation
-              = new MarketingListInAppTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListInAppTemplatesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create In-App Template
@@ -369,9 +342,7 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingCreateInAppTemplateResponse createInAppTemplate(
-            String xAccountId,
-            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) throws Exception {
+    public MarketingCreateInAppTemplateResponse createInAppTemplate(String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) throws Exception {
         return createInAppTemplate(xAccountId, marketingCreateInAppTemplateRequestDto, Optional.empty());
     }
 
@@ -385,8 +356,7 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingCreateInAppTemplateResponse createInAppTemplate(
-            String xAccountId,
-            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
+            String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
             Optional<Options> options) throws Exception {
         MarketingCreateInAppTemplateRequest request =
             MarketingCreateInAppTemplateRequest
@@ -395,12 +365,9 @@ public class Marketing {
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateInAppTemplateRequest, MarketingCreateInAppTemplateResponse> operation
-              = new MarketingCreateInAppTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateInAppTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get In-App Template
@@ -430,16 +397,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingGetInAppTemplateResponse getInAppTemplate(
-            MarketingGetInAppTemplateRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingGetInAppTemplateResponse getInAppTemplate(MarketingGetInAppTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetInAppTemplateRequest, MarketingGetInAppTemplateResponse> operation
-              = new MarketingGetInAppTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetInAppTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update In-App Template
@@ -460,10 +422,10 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdateInAppTemplateResponse updateInAppTemplate(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) throws Exception {
-        return updateInAppTemplate(xAccountId, id, marketingCreateInAppTemplateRequestDto, Optional.empty());
+        return updateInAppTemplate(xAccountId, id, marketingCreateInAppTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -477,10 +439,8 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdateInAppTemplateResponse updateInAppTemplate(
-            String xAccountId,
-            String id,
-            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto, Optional<Options> options) throws Exception {
         MarketingUpdateInAppTemplateRequest request =
             MarketingUpdateInAppTemplateRequest
                 .builder()
@@ -489,12 +449,9 @@ public class Marketing {
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateInAppTemplateRequest, MarketingUpdateInAppTemplateResponse> operation
-              = new MarketingUpdateInAppTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateInAppTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List SMS Templates
@@ -524,16 +481,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingListSmsTemplatesResponse listSmsTemplates(
-            MarketingListSmsTemplatesRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingListSmsTemplatesResponse listSmsTemplates(MarketingListSmsTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListSmsTemplatesRequest, MarketingListSmsTemplatesResponse> operation
-              = new MarketingListSmsTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListSmsTemplatesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create SMS Template
@@ -552,9 +504,7 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingCreateSmsTemplateResponse createSmsTemplate(
-            String xAccountId,
-            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) throws Exception {
+    public MarketingCreateSmsTemplateResponse createSmsTemplate(String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) throws Exception {
         return createSmsTemplate(xAccountId, marketingCreateSmsTemplateRequestDto, Optional.empty());
     }
 
@@ -568,8 +518,7 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingCreateSmsTemplateResponse createSmsTemplate(
-            String xAccountId,
-            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
+            String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
             Optional<Options> options) throws Exception {
         MarketingCreateSmsTemplateRequest request =
             MarketingCreateSmsTemplateRequest
@@ -578,12 +527,9 @@ public class Marketing {
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateSmsTemplateRequest, MarketingCreateSmsTemplateResponse> operation
-              = new MarketingCreateSmsTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateSmsTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get SMS Template
@@ -613,16 +559,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingGetSmsTemplateResponse getSmsTemplate(
-            MarketingGetSmsTemplateRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingGetSmsTemplateResponse getSmsTemplate(MarketingGetSmsTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetSmsTemplateRequest, MarketingGetSmsTemplateResponse> operation
-              = new MarketingGetSmsTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetSmsTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update SMS Template
@@ -643,10 +584,10 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdateSmsTemplateResponse updateSmsTemplate(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) throws Exception {
-        return updateSmsTemplate(xAccountId, id, marketingCreateSmsTemplateRequestDto, Optional.empty());
+        return updateSmsTemplate(xAccountId, id, marketingCreateSmsTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -660,10 +601,8 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdateSmsTemplateResponse updateSmsTemplate(
-            String xAccountId,
-            String id,
-            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto, Optional<Options> options) throws Exception {
         MarketingUpdateSmsTemplateRequest request =
             MarketingUpdateSmsTemplateRequest
                 .builder()
@@ -672,12 +611,9 @@ public class Marketing {
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateSmsTemplateRequest, MarketingUpdateSmsTemplateResponse> operation
-              = new MarketingUpdateSmsTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateSmsTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Omni-Channel Templates
@@ -713,16 +649,11 @@ public class Marketing {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public MarketingListOmniChannelTemplatesResponse listOmniChannelTemplates(
-            MarketingListOmniChannelTemplatesRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingListOmniChannelTemplatesResponse listOmniChannelTemplates(MarketingListOmniChannelTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
-              = new MarketingListOmniChannelTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListOmniChannelTemplatesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Omni-Channel Template
@@ -745,9 +676,7 @@ public class Marketing {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(
-            String xAccountId,
-            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) throws Exception {
+    public MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(String xAccountId, MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) throws Exception {
         return createOmniChannelTemplate(xAccountId, marketingCreateTemplateRequestDto, Optional.empty());
     }
 
@@ -763,8 +692,7 @@ public class Marketing {
      */
     @Deprecated
     public MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(
-            String xAccountId,
-            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto,
+            String xAccountId, MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto,
             Optional<Options> options) throws Exception {
         MarketingCreateOmniChannelTemplateRequest request =
             MarketingCreateOmniChannelTemplateRequest
@@ -773,12 +701,9 @@ public class Marketing {
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateOmniChannelTemplateRequest, MarketingCreateOmniChannelTemplateResponse> operation
-              = new MarketingCreateOmniChannelTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateOmniChannelTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Omni-Channel Template
@@ -814,16 +739,11 @@ public class Marketing {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public MarketingGetOmniChannelTemplateResponse getOmniChannelTemplate(
-            MarketingGetOmniChannelTemplateRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingGetOmniChannelTemplateResponse getOmniChannelTemplate(MarketingGetOmniChannelTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetOmniChannelTemplateRequest, MarketingGetOmniChannelTemplateResponse> operation
-              = new MarketingGetOmniChannelTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetOmniChannelTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Omni-Channel Template
@@ -848,10 +768,10 @@ public class Marketing {
      */
     @Deprecated
     public MarketingUpdateOmniChannelTemplateResponse updateOmniChannelTemplate(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) throws Exception {
-        return updateOmniChannelTemplate(xAccountId, id, marketingCreateTemplateRequestDto, Optional.empty());
+        return updateOmniChannelTemplate(xAccountId, id, marketingCreateTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -867,10 +787,8 @@ public class Marketing {
      */
     @Deprecated
     public MarketingUpdateOmniChannelTemplateResponse updateOmniChannelTemplate(
-            String xAccountId,
-            String id,
-            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto, Optional<Options> options) throws Exception {
         MarketingUpdateOmniChannelTemplateRequest request =
             MarketingUpdateOmniChannelTemplateRequest
                 .builder()
@@ -879,12 +797,9 @@ public class Marketing {
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateOmniChannelTemplateRequest, MarketingUpdateOmniChannelTemplateResponse> operation
-              = new MarketingUpdateOmniChannelTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateOmniChannelTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Push Templates
@@ -914,16 +829,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingListPushTemplatesResponse listPushTemplates(
-            MarketingListPushTemplatesRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingListPushTemplatesResponse listPushTemplates(MarketingListPushTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListPushTemplatesRequest, MarketingListPushTemplatesResponse> operation
-              = new MarketingListPushTemplatesOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListPushTemplatesOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Push Template
@@ -942,9 +852,7 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingCreatePushTemplateResponse createPushTemplate(
-            String xAccountId,
-            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) throws Exception {
+    public MarketingCreatePushTemplateResponse createPushTemplate(String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) throws Exception {
         return createPushTemplate(xAccountId, marketingCreatePushTemplateRequestDto, Optional.empty());
     }
 
@@ -958,8 +866,7 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingCreatePushTemplateResponse createPushTemplate(
-            String xAccountId,
-            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
+            String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
             Optional<Options> options) throws Exception {
         MarketingCreatePushTemplateRequest request =
             MarketingCreatePushTemplateRequest
@@ -968,12 +875,9 @@ public class Marketing {
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreatePushTemplateRequest, MarketingCreatePushTemplateResponse> operation
-              = new MarketingCreatePushTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreatePushTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Push Template
@@ -1003,16 +907,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingGetPushTemplateResponse getPushTemplate(
-            MarketingGetPushTemplateRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingGetPushTemplateResponse getPushTemplate(MarketingGetPushTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetPushTemplateRequest, MarketingGetPushTemplateResponse> operation
-              = new MarketingGetPushTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetPushTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Push Template
@@ -1033,10 +932,10 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdatePushTemplateResponse updatePushTemplate(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) throws Exception {
-        return updatePushTemplate(xAccountId, id, marketingCreatePushTemplateRequestDto, Optional.empty());
+        return updatePushTemplate(xAccountId, id, marketingCreatePushTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1050,10 +949,8 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdatePushTemplateResponse updatePushTemplate(
-            String xAccountId,
-            String id,
-            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto, Optional<Options> options) throws Exception {
         MarketingUpdatePushTemplateRequest request =
             MarketingUpdatePushTemplateRequest
                 .builder()
@@ -1062,12 +959,9 @@ public class Marketing {
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdatePushTemplateRequest, MarketingUpdatePushTemplateResponse> operation
-              = new MarketingUpdatePushTemplateOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdatePushTemplateOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List campaigns
@@ -1097,16 +991,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingListCampaignsResponse listCampaigns(
-            MarketingListCampaignsRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingListCampaignsResponse listCampaigns(MarketingListCampaignsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListCampaignsRequest, MarketingListCampaignsResponse> operation
-              = new MarketingListCampaignsOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListCampaignsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get campaign
@@ -1136,16 +1025,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingGetCampaignResponse getCampaign(
-            MarketingGetCampaignRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingGetCampaignResponse getCampaign(MarketingGetCampaignRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetCampaignRequest, MarketingGetCampaignResponse> operation
-              = new MarketingGetCampaignOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetCampaignOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Content Blocks
@@ -1175,16 +1059,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingListContentBlocksResponse listContentBlocks(
-            MarketingListContentBlocksRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingListContentBlocksResponse listContentBlocks(MarketingListContentBlocksRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListContentBlocksRequest, MarketingListContentBlocksResponse> operation
-              = new MarketingListContentBlocksOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingListContentBlocksOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create Content Block
@@ -1203,9 +1082,7 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingCreateContentBlockResponse createContentBlock(
-            String xAccountId,
-            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) throws Exception {
+    public MarketingCreateContentBlockResponse createContentBlock(String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) throws Exception {
         return createContentBlock(xAccountId, marketingCreateContentBlocksRequestDto, Optional.empty());
     }
 
@@ -1219,8 +1096,7 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingCreateContentBlockResponse createContentBlock(
-            String xAccountId,
-            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
+            String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
             Optional<Options> options) throws Exception {
         MarketingCreateContentBlockRequest request =
             MarketingCreateContentBlockRequest
@@ -1229,12 +1105,9 @@ public class Marketing {
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         RequestOperation<MarketingCreateContentBlockRequest, MarketingCreateContentBlockResponse> operation
-              = new MarketingCreateContentBlockOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingCreateContentBlockOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get Content Blocks
@@ -1264,16 +1137,11 @@ public class Marketing {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public MarketingGetContentBlockResponse getContentBlock(
-            MarketingGetContentBlockRequest request,
-            Optional<Options> options) throws Exception {
+    public MarketingGetContentBlockResponse getContentBlock(MarketingGetContentBlockRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetContentBlockRequest, MarketingGetContentBlockResponse> operation
-              = new MarketingGetContentBlockOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingGetContentBlockOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update Content Block
@@ -1294,10 +1162,10 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdateContentBlockResponse updateContentBlock(
-            String xAccountId,
-            String id,
+            String xAccountId, String id,
             MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) throws Exception {
-        return updateContentBlock(xAccountId, id, marketingCreateContentBlocksRequestDto, Optional.empty());
+        return updateContentBlock(xAccountId, id, marketingCreateContentBlocksRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -1311,10 +1179,8 @@ public class Marketing {
      * @throws Exception if the API call fails
      */
     public MarketingUpdateContentBlockResponse updateContentBlock(
-            String xAccountId,
-            String id,
-            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
-            Optional<Options> options) throws Exception {
+            String xAccountId, String id,
+            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto, Optional<Options> options) throws Exception {
         MarketingUpdateContentBlockRequest request =
             MarketingUpdateContentBlockRequest
                 .builder()
@@ -1323,9 +1189,7 @@ public class Marketing {
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         RequestOperation<MarketingUpdateContentBlockRequest, MarketingUpdateContentBlockResponse> operation
-              = new MarketingUpdateContentBlockOperation(
-                 sdkConfiguration,
-                 options);
+              = new MarketingUpdateContentBlockOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

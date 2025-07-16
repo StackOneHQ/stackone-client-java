@@ -13,6 +13,7 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class UnifiedWarningApiModel {
 
     @JsonInclude(Include.NON_ABSENT)
@@ -35,9 +36,10 @@ public class UnifiedWarningApiModel {
         return message;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UnifiedWarningApiModel withMessage(String message) {
         Utils.checkNotNull(message, "message");
@@ -51,7 +53,6 @@ public class UnifiedWarningApiModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -76,14 +77,16 @@ public class UnifiedWarningApiModel {
         return Utils.toString(UnifiedWarningApiModel.class,
                 "message", message);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> message = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder message(String message) {
             Utils.checkNotNull(message, "message");
@@ -96,10 +99,12 @@ public class UnifiedWarningApiModel {
             this.message = message;
             return this;
         }
-        
+
         public UnifiedWarningApiModel build() {
+
             return new UnifiedWarningApiModel(
                 message);
         }
+
     }
 }

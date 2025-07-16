@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class UpsertResultDataExternalReferenceModel {
 
+public class UpsertResultDataExternalReferenceModel {
     /**
      * Unique identifier
      */
@@ -77,9 +77,10 @@ public class UpsertResultDataExternalReferenceModel {
         return externalReference;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -135,7 +136,6 @@ public class UpsertResultDataExternalReferenceModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +154,7 @@ public class UpsertResultDataExternalReferenceModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            externalReference);
+            id, remoteId, externalReference);
     }
     
     @Override
@@ -166,18 +164,20 @@ public class UpsertResultDataExternalReferenceModel {
                 "remoteId", remoteId,
                 "externalReference", externalReference);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> externalReference = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -197,6 +197,7 @@ public class UpsertResultDataExternalReferenceModel {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -215,6 +216,7 @@ public class UpsertResultDataExternalReferenceModel {
             return this;
         }
 
+
         /**
          * The external identifier
          */
@@ -232,12 +234,12 @@ public class UpsertResultDataExternalReferenceModel {
             this.externalReference = externalReference;
             return this;
         }
-        
+
         public UpsertResultDataExternalReferenceModel build() {
+
             return new UpsertResultDataExternalReferenceModel(
-                id,
-                remoteId,
-                externalReference);
+                id, remoteId, externalReference);
         }
+
     }
 }

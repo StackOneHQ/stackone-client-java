@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisCreateEmployeeRequestDto {
 
+public class HrisCreateEmployeeRequestDto {
     /**
      * The employee first name
      */
@@ -464,7 +464,20 @@ public class HrisCreateEmployeeRequestDto {
     }
     
     public HrisCreateEmployeeRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -840,9 +853,10 @@ public class HrisCreateEmployeeRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The employee first name
@@ -1636,7 +1650,6 @@ public class HrisCreateEmployeeRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -1694,48 +1707,20 @@ public class HrisCreateEmployeeRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            firstName,
-            lastName,
-            name,
-            displayName,
-            avatarUrl,
-            personalEmail,
-            personalPhoneNumber,
-            workEmail,
-            workPhoneNumber,
-            jobId,
-            jobTitle,
-            departmentId,
-            teamId,
-            department,
-            managerId,
-            gender,
-            preferredLanguage,
-            ethnicity,
-            dateOfBirth,
-            birthday,
-            maritalStatus,
-            avatar,
-            hireDate,
-            startDate,
-            employmentType,
-            employmentContractType,
-            employmentStatus,
-            terminationDate,
-            companyName,
-            companyId,
-            citizenships,
-            employments,
-            employment,
-            customFields,
-            benefits,
-            employeeNumber,
-            nationalIdentityNumber,
-            nationalIdentityNumbers,
-            homeLocation,
-            workLocation,
-            costCenters,
-            passthrough);
+            firstName, lastName, name,
+            displayName, avatarUrl, personalEmail,
+            personalPhoneNumber, workEmail, workPhoneNumber,
+            jobId, jobTitle, departmentId,
+            teamId, department, managerId,
+            gender, preferredLanguage, ethnicity,
+            dateOfBirth, birthday, maritalStatus,
+            avatar, hireDate, startDate,
+            employmentType, employmentContractType, employmentStatus,
+            terminationDate, companyName, companyId,
+            citizenships, employments, employment,
+            customFields, benefits, employeeNumber,
+            nationalIdentityNumber, nationalIdentityNumbers, homeLocation,
+            workLocation, costCenters, passthrough);
     }
     
     @Override
@@ -1784,102 +1769,104 @@ public class HrisCreateEmployeeRequestDto {
                 "costCenters", costCenters,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> firstName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> lastName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> displayName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> avatarUrl = JsonNullable.undefined();
- 
+
         private JsonNullable<String> personalEmail = JsonNullable.undefined();
- 
+
         private JsonNullable<String> personalPhoneNumber = JsonNullable.undefined();
- 
+
         private JsonNullable<String> workEmail = JsonNullable.undefined();
- 
+
         private JsonNullable<String> workPhoneNumber = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> jobId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobTitle = JsonNullable.undefined();
- 
+
         private JsonNullable<String> departmentId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> teamId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> department = JsonNullable.undefined();
- 
+
         private JsonNullable<String> managerId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoGender> gender = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoPreferredLanguage> preferredLanguage = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEthnicity> ethnicity = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> dateOfBirth = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> birthday = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoMaritalStatus> maritalStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoAvatar> avatar = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> hireDate = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentType> employmentType = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentContractType> employmentContractType = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentStatus> employmentStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> terminationDate = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<String> companyName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> companyId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CountryCodeEnum>> citizenships = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends List<CreateEmploymentApiModel>> employments = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmployment> employment = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CreateHRISBenefit>> benefits = JsonNullable.undefined();
- 
+
         private JsonNullable<String> employeeNumber = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoNationalIdentityNumber> nationalIdentityNumber = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<NationalIdentityNumberApiModel>> nationalIdentityNumbers = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoHomeLocation> homeLocation = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateEmployeeRequestDtoWorkLocation> workLocation = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CreateCostCenterApiModel>> costCenters = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The employee first name
@@ -1899,6 +1886,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee last name
          */
@@ -1916,6 +1904,7 @@ public class HrisCreateEmployeeRequestDto {
             this.lastName = lastName;
             return this;
         }
+
 
         /**
          * The employee name
@@ -1935,6 +1924,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee display name
          */
@@ -1952,6 +1942,7 @@ public class HrisCreateEmployeeRequestDto {
             this.displayName = displayName;
             return this;
         }
+
 
         /**
          * The employee avatar Url
@@ -1971,6 +1962,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee personal email
          */
@@ -1988,6 +1980,7 @@ public class HrisCreateEmployeeRequestDto {
             this.personalEmail = personalEmail;
             return this;
         }
+
 
         /**
          * The employee personal phone number
@@ -2007,6 +2000,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee work email
          */
@@ -2025,6 +2019,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee work phone number
          */
@@ -2042,6 +2037,7 @@ public class HrisCreateEmployeeRequestDto {
             this.workPhoneNumber = workPhoneNumber;
             return this;
         }
+
 
         /**
          * The employee job id
@@ -2067,6 +2063,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * If the source of the job_title is the Employee's current Employment, and that Employment pertains exclusively to this Employee, then the active Employment job_title will also be written
          */
@@ -2084,6 +2081,7 @@ public class HrisCreateEmployeeRequestDto {
             this.jobTitle = jobTitle;
             return this;
         }
+
 
         /**
          * The employee department id
@@ -2103,6 +2101,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee team id
          */
@@ -2120,6 +2119,7 @@ public class HrisCreateEmployeeRequestDto {
             this.teamId = teamId;
             return this;
         }
+
 
         /**
          * The employee department
@@ -2139,6 +2139,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee manager ID
          */
@@ -2156,6 +2157,7 @@ public class HrisCreateEmployeeRequestDto {
             this.managerId = managerId;
             return this;
         }
+
 
         /**
          * The employee gender
@@ -2175,6 +2177,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee preferred language
          */
@@ -2192,6 +2195,7 @@ public class HrisCreateEmployeeRequestDto {
             this.preferredLanguage = preferredLanguage;
             return this;
         }
+
 
         /**
          * The employee ethnicity
@@ -2211,6 +2215,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee date_of_birth
          */
@@ -2228,6 +2233,7 @@ public class HrisCreateEmployeeRequestDto {
             this.dateOfBirth = dateOfBirth;
             return this;
         }
+
 
         /**
          * The employee birthday
@@ -2247,6 +2253,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee marital status
          */
@@ -2264,6 +2271,7 @@ public class HrisCreateEmployeeRequestDto {
             this.maritalStatus = maritalStatus;
             return this;
         }
+
 
         /**
          * The employee avatar
@@ -2283,6 +2291,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee hire date
          */
@@ -2301,6 +2310,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee start date
          */
@@ -2318,6 +2328,7 @@ public class HrisCreateEmployeeRequestDto {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The employee employment type
@@ -2343,6 +2354,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employment work schedule type (e.g., full-time, part-time)
          * 
@@ -2367,6 +2379,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee employment status
          */
@@ -2385,6 +2398,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee termination date
          */
@@ -2402,6 +2416,7 @@ public class HrisCreateEmployeeRequestDto {
             this.terminationDate = terminationDate;
             return this;
         }
+
 
         /**
          * The employee company name
@@ -2427,6 +2442,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee company id
          */
@@ -2445,6 +2461,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The citizenships of the Employee
          */
@@ -2462,6 +2479,7 @@ public class HrisCreateEmployeeRequestDto {
             this.citizenships = citizenships;
             return this;
         }
+
 
         /**
          * The employee employments
@@ -2487,6 +2505,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee employment
          */
@@ -2504,6 +2523,7 @@ public class HrisCreateEmployeeRequestDto {
             this.employment = employment;
             return this;
         }
+
 
         /**
          * The employee custom fields
@@ -2523,6 +2543,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * Current benefits of the employee
          */
@@ -2541,6 +2562,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The assigned employee number
          */
@@ -2558,6 +2580,7 @@ public class HrisCreateEmployeeRequestDto {
             this.employeeNumber = employeeNumber;
             return this;
         }
+
 
         /**
          * The national identity number
@@ -2583,6 +2606,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The national identity numbers
          */
@@ -2600,6 +2624,7 @@ public class HrisCreateEmployeeRequestDto {
             this.nationalIdentityNumbers = nationalIdentityNumbers;
             return this;
         }
+
 
         /**
          * The employee home location
@@ -2619,6 +2644,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * The employee work location
          */
@@ -2636,6 +2662,7 @@ public class HrisCreateEmployeeRequestDto {
             this.workLocation = workLocation;
             return this;
         }
+
 
         /**
          * The employee cost centers
@@ -2655,6 +2682,7 @@ public class HrisCreateEmployeeRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -2672,51 +2700,25 @@ public class HrisCreateEmployeeRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequestDto build() {
+
             return new HrisCreateEmployeeRequestDto(
-                firstName,
-                lastName,
-                name,
-                displayName,
-                avatarUrl,
-                personalEmail,
-                personalPhoneNumber,
-                workEmail,
-                workPhoneNumber,
-                jobId,
-                jobTitle,
-                departmentId,
-                teamId,
-                department,
-                managerId,
-                gender,
-                preferredLanguage,
-                ethnicity,
-                dateOfBirth,
-                birthday,
-                maritalStatus,
-                avatar,
-                hireDate,
-                startDate,
-                employmentType,
-                employmentContractType,
-                employmentStatus,
-                terminationDate,
-                companyName,
-                companyId,
-                citizenships,
-                employments,
-                employment,
-                customFields,
-                benefits,
-                employeeNumber,
-                nationalIdentityNumber,
-                nationalIdentityNumbers,
-                homeLocation,
-                workLocation,
-                costCenters,
-                passthrough);
+                firstName, lastName, name,
+                displayName, avatarUrl, personalEmail,
+                personalPhoneNumber, workEmail, workPhoneNumber,
+                jobId, jobTitle, departmentId,
+                teamId, department, managerId,
+                gender, preferredLanguage, ethnicity,
+                dateOfBirth, birthday, maritalStatus,
+                avatar, hireDate, startDate,
+                employmentType, employmentContractType, employmentStatus,
+                terminationDate, companyName, companyId,
+                citizenships, employments, employment,
+                customFields, benefits, employeeNumber,
+                nationalIdentityNumber, nationalIdentityNumbers, homeLocation,
+                workLocation, costCenters, passthrough);
         }
+
     }
 }

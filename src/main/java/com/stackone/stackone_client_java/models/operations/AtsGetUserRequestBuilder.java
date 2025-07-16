@@ -47,9 +47,7 @@ public class AtsGetUserRequestBuilder {
             .build());
 
         RequestOperation<AtsGetUserRequest, AtsGetUserResponse> operation
-              = new AtsGetUserOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsGetUserOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

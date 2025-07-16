@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsCreateApplicationRequestDto {
 
+public class AtsCreateApplicationRequestDto {
     /**
      * Value to pass through to the provider
      */
@@ -47,6 +47,7 @@ public class AtsCreateApplicationRequestDto {
     @JsonProperty("location_id")
     private JsonNullable<String> locationId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application_status")
     private JsonNullable<? extends AtsCreateApplicationRequestDtoApplicationStatus> applicationStatus;
@@ -57,6 +58,7 @@ public class AtsCreateApplicationRequestDto {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("questionnaires")
     private JsonNullable<? extends List<CreateQuestionnaire>> questionnaires;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source")
@@ -118,7 +120,10 @@ public class AtsCreateApplicationRequestDto {
     }
     
     public AtsCreateApplicationRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -201,9 +206,10 @@ public class AtsCreateApplicationRequestDto {
         return (JsonNullable<List<UnifiedUploadRequestDto>>) documents;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Value to pass through to the provider
@@ -373,7 +379,6 @@ public class AtsCreateApplicationRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -399,15 +404,9 @@ public class AtsCreateApplicationRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            passthrough,
-            jobId,
-            jobPostingId,
-            locationId,
-            applicationStatus,
-            questionnaires,
-            source,
-            candidateId,
-            candidate,
+            passthrough, jobId, jobPostingId,
+            locationId, applicationStatus, questionnaires,
+            source, candidateId, candidate,
             documents);
     }
     
@@ -425,32 +424,34 @@ public class AtsCreateApplicationRequestDto {
                 "candidate", candidate,
                 "documents", documents);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> jobPostingId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> locationId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateApplicationRequestDtoApplicationStatus> applicationStatus = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<CreateQuestionnaire>> questionnaires = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateApplicationRequestDtoSource> source = JsonNullable.undefined();
- 
+
         private JsonNullable<String> candidateId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<UnifiedUploadRequestDto>> documents = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Value to pass through to the provider
@@ -470,6 +471,7 @@ public class AtsCreateApplicationRequestDto {
             return this;
         }
 
+
         /**
          * Unique identifier of the job
          */
@@ -487,6 +489,7 @@ public class AtsCreateApplicationRequestDto {
             this.jobId = jobId;
             return this;
         }
+
 
         /**
          * Unique identifier of the job posting that is associated with application
@@ -506,6 +509,7 @@ public class AtsCreateApplicationRequestDto {
             return this;
         }
 
+
         /**
          * Unique identifier of the location
          */
@@ -524,6 +528,7 @@ public class AtsCreateApplicationRequestDto {
             return this;
         }
 
+
         public Builder applicationStatus(AtsCreateApplicationRequestDtoApplicationStatus applicationStatus) {
             Utils.checkNotNull(applicationStatus, "applicationStatus");
             this.applicationStatus = JsonNullable.of(applicationStatus);
@@ -535,6 +540,7 @@ public class AtsCreateApplicationRequestDto {
             this.applicationStatus = applicationStatus;
             return this;
         }
+
 
         /**
          * Questionnaires associated with the application
@@ -554,6 +560,7 @@ public class AtsCreateApplicationRequestDto {
             return this;
         }
 
+
         public Builder source(AtsCreateApplicationRequestDtoSource source) {
             Utils.checkNotNull(source, "source");
             this.source = JsonNullable.of(source);
@@ -565,6 +572,7 @@ public class AtsCreateApplicationRequestDto {
             this.source = source;
             return this;
         }
+
 
         /**
          * Unique identifier of the candidate. Provide this OR candidate, but not both.
@@ -584,6 +592,7 @@ public class AtsCreateApplicationRequestDto {
             return this;
         }
 
+
         /**
          * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
          */
@@ -602,6 +611,7 @@ public class AtsCreateApplicationRequestDto {
             return this;
         }
 
+
         /**
          * Document Properties. Providing this attempts to upload files with the application.
          */
@@ -619,19 +629,15 @@ public class AtsCreateApplicationRequestDto {
             this.documents = documents;
             return this;
         }
-        
+
         public AtsCreateApplicationRequestDto build() {
+
             return new AtsCreateApplicationRequestDto(
-                passthrough,
-                jobId,
-                jobPostingId,
-                locationId,
-                applicationStatus,
-                questionnaires,
-                source,
-                candidateId,
-                candidate,
+                passthrough, jobId, jobPostingId,
+                locationId, applicationStatus, questionnaires,
+                source, candidateId, candidate,
                 documents);
         }
+
     }
 }

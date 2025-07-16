@@ -73,9 +73,7 @@ public class AtsUpdateBackgroundCheckResultRequestBuilder {
             .build());
 
         RequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation
-              = new AtsUpdateBackgroundCheckResultOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateBackgroundCheckResultOperation(sdkConfiguration, options);
         AtsUpdateBackgroundCheckResultRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

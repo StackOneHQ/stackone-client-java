@@ -11,16 +11,18 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class HrisCreateEmployeeTimeOffRequestRequest {
 
+public class HrisCreateEmployeeTimeOffRequestRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
@@ -56,9 +58,10 @@ public class HrisCreateEmployeeTimeOffRequestRequest {
         return hrisCreateTimeOffRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -81,7 +84,6 @@ public class HrisCreateEmployeeTimeOffRequestRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,9 +102,7 @@ public class HrisCreateEmployeeTimeOffRequestRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            id,
-            hrisCreateTimeOffRequestDto);
+            xAccountId, id, hrisCreateTimeOffRequestDto);
     }
     
     @Override
@@ -112,18 +112,20 @@ public class HrisCreateEmployeeTimeOffRequestRequest {
                 "id", id,
                 "hrisCreateTimeOffRequestDto", hrisCreateTimeOffRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private String id;
- 
+
         private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -134,23 +136,25 @@ public class HrisCreateEmployeeTimeOffRequestRequest {
             return this;
         }
 
+
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
+
         public Builder hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
             Utils.checkNotNull(hrisCreateTimeOffRequestDto, "hrisCreateTimeOffRequestDto");
             this.hrisCreateTimeOffRequestDto = hrisCreateTimeOffRequestDto;
             return this;
         }
-        
+
         public HrisCreateEmployeeTimeOffRequestRequest build() {
+
             return new HrisCreateEmployeeTimeOffRequestRequest(
-                xAccountId,
-                id,
-                hrisCreateTimeOffRequestDto);
+                xAccountId, id, hrisCreateTimeOffRequestDto);
         }
+
     }
 }

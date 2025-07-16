@@ -73,9 +73,7 @@ public class AtsUpdateApplicationRequestBuilder {
             .build());
 
         RequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
-              = new AtsUpdateApplicationOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateApplicationOperation(sdkConfiguration, options);
         AtsUpdateApplicationRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

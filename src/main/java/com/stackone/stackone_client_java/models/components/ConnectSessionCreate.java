@@ -19,8 +19,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ConnectSessionCreate {
 
+public class ConnectSessionCreate {
     /**
      * The categories of the provider to connect to
      */
@@ -146,7 +146,10 @@ public class ConnectSessionCreate {
     public ConnectSessionCreate(
             String originOwnerId,
             String originOwnerName) {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId, originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            originOwnerId, originOwnerName, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -248,9 +251,10 @@ public class ConnectSessionCreate {
         return (JsonNullable<Type>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The categories of the provider to connect to
@@ -450,7 +454,6 @@ public class ConnectSessionCreate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -478,18 +481,10 @@ public class ConnectSessionCreate {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            categories,
-            provider,
-            providerVersion,
-            originOwnerId,
-            originOwnerName,
-            originUsername,
-            accountId,
-            expiresIn,
-            metadata,
-            multiple,
-            label,
-            type);
+            categories, provider, providerVersion,
+            originOwnerId, originOwnerName, originUsername,
+            accountId, expiresIn, metadata,
+            multiple, label, type);
     }
     
     @Override
@@ -508,36 +503,38 @@ public class ConnectSessionCreate {
                 "label", label,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends List<Categories>> categories = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> providerVersion = JsonNullable.undefined();
- 
+
         private String originOwnerId;
- 
+
         private String originOwnerName;
- 
+
         private JsonNullable<String> originUsername = JsonNullable.undefined();
- 
+
         private JsonNullable<String> accountId = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> expiresIn;
- 
+
         private JsonNullable<? extends Metadata> metadata = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> multiple;
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Type> type;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The categories of the provider to connect to
@@ -557,6 +554,7 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
         /**
          * The provider to connect to
          */
@@ -574,6 +572,7 @@ public class ConnectSessionCreate {
             this.provider = provider;
             return this;
         }
+
 
         /**
          * The provider version to connect to
@@ -593,6 +592,7 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
         /**
          * The origin owner identifier
          */
@@ -602,6 +602,7 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
         /**
          * The origin owner name
          */
@@ -610,6 +611,7 @@ public class ConnectSessionCreate {
             this.originOwnerName = originOwnerName;
             return this;
         }
+
 
         /**
          * The origin username
@@ -629,6 +631,7 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
         /**
          * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
          */
@@ -646,6 +649,7 @@ public class ConnectSessionCreate {
             this.accountId = accountId;
             return this;
         }
+
 
         /**
          * How long the session should be valid for in seconds
@@ -665,6 +669,7 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
         /**
          * The metadata for the connection
          */
@@ -682,6 +687,7 @@ public class ConnectSessionCreate {
             this.metadata = metadata;
             return this;
         }
+
 
         /**
          * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
@@ -701,6 +707,7 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
         /**
          * The label to be applied to the account associated with this connect session.
          */
@@ -719,6 +726,7 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
         /**
          * The connect session account type
          */
@@ -736,7 +744,7 @@ public class ConnectSessionCreate {
             this.type = type;
             return this;
         }
-        
+
         public ConnectSessionCreate build() {
             if (expiresIn == null) {
                 expiresIn = _SINGLETON_VALUE_ExpiresIn.value();
@@ -747,20 +755,14 @@ public class ConnectSessionCreate {
             if (type == null) {
                 type = _SINGLETON_VALUE_Type.value();
             }
+
             return new ConnectSessionCreate(
-                categories,
-                provider,
-                providerVersion,
-                originOwnerId,
-                originOwnerName,
-                originUsername,
-                accountId,
-                expiresIn,
-                metadata,
-                multiple,
-                label,
-                type);
+                categories, provider, providerVersion,
+                originOwnerId, originOwnerName, originUsername,
+                accountId, expiresIn, metadata,
+                multiple, label, type);
         }
+
 
         private static final LazySingletonValue<JsonNullable<Double>> _SINGLETON_VALUE_ExpiresIn =
                 new LazySingletonValue<>(

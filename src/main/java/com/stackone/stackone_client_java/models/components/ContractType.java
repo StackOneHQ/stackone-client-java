@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The employment work schedule type
  */
 public class ContractType {
-
     /**
      * Unique identifier
      */
@@ -66,7 +65,8 @@ public class ContractType {
     }
     
     public ContractType() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -102,9 +102,10 @@ public class ContractType {
         return (JsonNullable<EmploymentContractTypeContractType>) contractType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -178,7 +179,6 @@ public class ContractType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -198,9 +198,7 @@ public class ContractType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            label,
+            id, remoteId, label,
             contractType);
     }
     
@@ -212,20 +210,22 @@ public class ContractType {
                 "label", label,
                 "contractType", contractType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends EmploymentContractTypeContractType> contractType = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -245,6 +245,7 @@ public class ContractType {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -262,6 +263,7 @@ public class ContractType {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * The label of the employment type
@@ -281,6 +283,7 @@ public class ContractType {
             return this;
         }
 
+
         /**
          * The employment work schedule type (e.g., full-time, part-time)
          */
@@ -298,13 +301,13 @@ public class ContractType {
             this.contractType = contractType;
             return this;
         }
-        
+
         public ContractType build() {
+
             return new ContractType(
-                id,
-                remoteId,
-                label,
+                id, remoteId, label,
                 contractType);
         }
+
     }
 }

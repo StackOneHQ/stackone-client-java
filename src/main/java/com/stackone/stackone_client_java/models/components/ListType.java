@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The list type
  */
 public class ListType {
-
     /**
      * The type of the list.
      */
@@ -67,9 +66,10 @@ public class ListType {
         return (JsonNullable<ListSourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of the list.
@@ -107,7 +107,6 @@ public class ListType {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class ListType {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class ListType {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends ListValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ListSourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of the list.
@@ -164,6 +164,7 @@ public class ListType {
             return this;
         }
 
+
         /**
          * The source value of the list type.
          */
@@ -181,11 +182,12 @@ public class ListType {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public ListType build() {
+
             return new ListType(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

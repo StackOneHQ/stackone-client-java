@@ -15,8 +15,8 @@ import java.lang.String;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class OfferHistory {
 
+public class OfferHistory {
     /**
      * Start Date of the offer
      */
@@ -24,9 +24,11 @@ public class OfferHistory {
     @JsonProperty("start_date")
     private JsonNullable<OffsetDateTime> startDate;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("salary")
     private JsonNullable<Double> salary;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("currency")
@@ -66,7 +68,8 @@ public class OfferHistory {
     }
     
     public OfferHistory() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -103,9 +106,10 @@ public class OfferHistory {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Start Date of the offer
@@ -185,7 +189,6 @@ public class OfferHistory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -206,11 +209,8 @@ public class OfferHistory {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            startDate,
-            salary,
-            currency,
-            createdAt,
-            updatedAt);
+            startDate, salary, currency,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -222,22 +222,24 @@ public class OfferHistory {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> salary = JsonNullable.undefined();
- 
+
         private JsonNullable<String> currency = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Start Date of the offer
@@ -257,6 +259,7 @@ public class OfferHistory {
             return this;
         }
 
+
         public Builder salary(double salary) {
             Utils.checkNotNull(salary, "salary");
             this.salary = JsonNullable.of(salary);
@@ -269,6 +272,7 @@ public class OfferHistory {
             return this;
         }
 
+
         public Builder currency(String currency) {
             Utils.checkNotNull(currency, "currency");
             this.currency = JsonNullable.of(currency);
@@ -280,6 +284,7 @@ public class OfferHistory {
             this.currency = currency;
             return this;
         }
+
 
         /**
          * Date of creation
@@ -299,6 +304,7 @@ public class OfferHistory {
             return this;
         }
 
+
         /**
          * Date of last update
          */
@@ -316,14 +322,13 @@ public class OfferHistory {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public OfferHistory build() {
+
             return new OfferHistory(
-                startDate,
-                salary,
-                currency,
-                createdAt,
-                updatedAt);
+                startDate, salary, currency,
+                createdAt, updatedAt);
         }
+
     }
 }

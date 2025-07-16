@@ -17,8 +17,8 @@ import java.lang.SuppressWarnings;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class HrisCreateTimeOffRequestDto {
 
+public class HrisCreateTimeOffRequestDto {
     /**
      * The approver ID
      */
@@ -78,6 +78,7 @@ public class HrisCreateTimeOffRequestDto {
     @JsonProperty("time_off_policy_id")
     private JsonNullable<String> timeOffPolicyId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("reason")
     private JsonNullable<? extends HrisCreateTimeOffRequestDtoReason> reason;
@@ -134,7 +135,10 @@ public class HrisCreateTimeOffRequestDto {
     }
     
     public HrisCreateTimeOffRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -231,9 +235,10 @@ public class HrisCreateTimeOffRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The approver ID
@@ -433,7 +438,6 @@ public class HrisCreateTimeOffRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -460,17 +464,10 @@ public class HrisCreateTimeOffRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            approverId,
-            status,
-            type,
-            startDate,
-            endDate,
-            startHalfDay,
-            endHalfDay,
-            timeOffPolicyId,
-            reason,
-            comment,
-            passthrough);
+            approverId, status, type,
+            startDate, endDate, startHalfDay,
+            endHalfDay, timeOffPolicyId, reason,
+            comment, passthrough);
     }
     
     @Override
@@ -488,35 +485,37 @@ public class HrisCreateTimeOffRequestDto {
                 "comment", comment,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> approverId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoStatus> status = JsonNullable.undefined();
- 
+
         @Deprecated
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoType> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> startDate = JsonNullable.undefined();
- 
+
         private JsonNullable<String> endDate = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoStartHalfDay> startHalfDay = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoEndHalfDay> endHalfDay = JsonNullable.undefined();
- 
+
         private JsonNullable<String> timeOffPolicyId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisCreateTimeOffRequestDtoReason> reason = JsonNullable.undefined();
- 
+
         private JsonNullable<String> comment = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The approver ID
@@ -536,6 +535,7 @@ public class HrisCreateTimeOffRequestDto {
             return this;
         }
 
+
         /**
          * The status of the time off request
          */
@@ -553,6 +553,7 @@ public class HrisCreateTimeOffRequestDto {
             this.status = status;
             return this;
         }
+
 
         /**
          * The type of the time off request
@@ -578,6 +579,7 @@ public class HrisCreateTimeOffRequestDto {
             return this;
         }
 
+
         /**
          * The start date of the time off request (ISO8601 date-time without timezone)
          */
@@ -595,6 +597,7 @@ public class HrisCreateTimeOffRequestDto {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
@@ -614,6 +617,7 @@ public class HrisCreateTimeOffRequestDto {
             return this;
         }
 
+
         /**
          * True if the start of the time off request begins half way through the day
          */
@@ -631,6 +635,7 @@ public class HrisCreateTimeOffRequestDto {
             this.startHalfDay = startHalfDay;
             return this;
         }
+
 
         /**
          * True if the end of the time off request ends half way through the day
@@ -650,6 +655,7 @@ public class HrisCreateTimeOffRequestDto {
             return this;
         }
 
+
         /**
          * The time off policy id associated with this time off request
          */
@@ -668,6 +674,7 @@ public class HrisCreateTimeOffRequestDto {
             return this;
         }
 
+
         public Builder reason(HrisCreateTimeOffRequestDtoReason reason) {
             Utils.checkNotNull(reason, "reason");
             this.reason = JsonNullable.of(reason);
@@ -679,6 +686,7 @@ public class HrisCreateTimeOffRequestDto {
             this.reason = reason;
             return this;
         }
+
 
         /**
          * Allows users to provide additional context or notes for their time off request
@@ -698,6 +706,7 @@ public class HrisCreateTimeOffRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -715,20 +724,15 @@ public class HrisCreateTimeOffRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public HrisCreateTimeOffRequestDto build() {
+
             return new HrisCreateTimeOffRequestDto(
-                approverId,
-                status,
-                type,
-                startDate,
-                endDate,
-                startHalfDay,
-                endHalfDay,
-                timeOffPolicyId,
-                reason,
-                comment,
-                passthrough);
+                approverId, status, type,
+                startDate, endDate, startHalfDay,
+                endHalfDay, timeOffPolicyId, reason,
+                comment, passthrough);
         }
+
     }
 }

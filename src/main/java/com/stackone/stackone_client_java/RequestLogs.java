@@ -21,7 +21,6 @@ import com.stackone.stackone_client_java.operations.StackoneListStepLogsOperatio
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -63,16 +62,11 @@ public class RequestLogs {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneListStepLogsResponse listStepLogs(
-            StackoneListStepLogsRequest request,
-            Optional<Options> options) throws Exception {
+    public StackoneListStepLogsResponse listStepLogs(StackoneListStepLogsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListStepLogsRequest, StackoneListStepLogsResponse> operation
-              = new StackoneListStepLogsOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneListStepLogsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get a Log
@@ -104,8 +98,7 @@ public class RequestLogs {
      * @throws Exception if the API call fails
      */
     public StackoneGetLogResponse getLog(
-            String id,
-            JsonNullable<? extends Include> include,
+            String id, JsonNullable<? extends Include> include,
             Optional<Options> options) throws Exception {
         StackoneGetLogRequest request =
             StackoneGetLogRequest
@@ -114,12 +107,9 @@ public class RequestLogs {
                 .include(include)
                 .build();
         RequestOperation<StackoneGetLogRequest, StackoneGetLogResponse> operation
-              = new StackoneGetLogOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneGetLogOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * List Logs
@@ -149,13 +139,9 @@ public class RequestLogs {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public StackoneListLogsResponse listLogs(
-            StackoneListLogsRequest request,
-            Optional<Options> options) throws Exception {
+    public StackoneListLogsResponse listLogs(StackoneListLogsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
-              = new StackoneListLogsOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneListLogsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

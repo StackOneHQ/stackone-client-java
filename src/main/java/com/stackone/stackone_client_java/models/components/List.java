@@ -17,8 +17,8 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class List {
 
+public class List {
     /**
      * Unique identifier
      */
@@ -40,9 +40,11 @@ public class List {
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("items")
@@ -98,7 +100,9 @@ public class List {
     }
     
     public List() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -162,9 +166,10 @@ public class List {
         return (JsonNullable<ListType>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -298,7 +303,6 @@ public class List {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -322,14 +326,9 @@ public class List {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            name,
-            items,
-            createdAt,
-            updatedAt,
-            type);
+            id, remoteId, unifiedCustomFields,
+            name, items, createdAt,
+            updatedAt, type);
     }
     
     @Override
@@ -344,28 +343,30 @@ public class List {
                 "updatedAt", updatedAt,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends java.util.List<ListItem>> items = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ListType> type = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -385,6 +386,7 @@ public class List {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -402,6 +404,7 @@ public class List {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -421,6 +424,7 @@ public class List {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -433,6 +437,7 @@ public class List {
             return this;
         }
 
+
         public Builder items(java.util.List<ListItem> items) {
             Utils.checkNotNull(items, "items");
             this.items = JsonNullable.of(items);
@@ -444,6 +449,7 @@ public class List {
             this.items = items;
             return this;
         }
+
 
         /**
          * Timestamp when the list was created
@@ -463,6 +469,7 @@ public class List {
             return this;
         }
 
+
         /**
          * Timestamp when the list was last updated
          */
@@ -481,6 +488,7 @@ public class List {
             return this;
         }
 
+
         /**
          * The list type
          */
@@ -498,17 +506,14 @@ public class List {
             this.type = type;
             return this;
         }
-        
+
         public List build() {
+
             return new List(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                name,
-                items,
-                createdAt,
-                updatedAt,
-                type);
+                id, remoteId, unifiedCustomFields,
+                name, items, createdAt,
+                updatedAt, type);
         }
+
     }
 }

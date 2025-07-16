@@ -17,8 +17,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class StepLog {
 
+public class StepLog {
     /**
      * The request ID
      */
@@ -234,7 +234,13 @@ public class StepLog {
     }
     
     public StepLog() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -407,9 +413,10 @@ public class StepLog {
         return (JsonNullable<StepLogResponse>) response;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The request ID
@@ -789,7 +796,6 @@ public class StepLog {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -826,27 +832,13 @@ public class StepLog {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            requestId,
-            startTime,
-            endTime,
-            accountId,
-            projectId,
-            httpMethod,
-            path,
-            url,
-            status,
-            duration,
-            success,
-            provider,
-            service,
-            resource,
-            childResource,
-            subResource,
-            action,
-            isWorker,
-            id,
-            request,
-            response);
+            requestId, startTime, endTime,
+            accountId, projectId, httpMethod,
+            path, url, status,
+            duration, success, provider,
+            service, resource, childResource,
+            subResource, action, isWorker,
+            id, request, response);
     }
     
     @Override
@@ -874,54 +866,56 @@ public class StepLog {
                 "request", request,
                 "response", response);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> requestId = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> startTime = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> endTime = JsonNullable.undefined();
- 
+
         private JsonNullable<String> accountId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> projectId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> httpMethod = JsonNullable.undefined();
- 
+
         private JsonNullable<String> path = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> status = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> duration = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> success = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> service = JsonNullable.undefined();
- 
+
         private JsonNullable<String> resource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> childResource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> subResource = JsonNullable.undefined();
- 
+
         private JsonNullable<String> action = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> isWorker = JsonNullable.undefined();
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends StepLogRequest> request = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends StepLogResponse> response = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The request ID
@@ -941,6 +935,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The request start time ISO8601 date string
          */
@@ -958,6 +953,7 @@ public class StepLog {
             this.startTime = startTime;
             return this;
         }
+
 
         /**
          * The request end time ISO8601 date string
@@ -977,6 +973,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The account ID of the request
          */
@@ -994,6 +991,7 @@ public class StepLog {
             this.accountId = accountId;
             return this;
         }
+
 
         /**
          * The project ID of the request
@@ -1013,6 +1011,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The requested HTTP method
          */
@@ -1030,6 +1029,7 @@ public class StepLog {
             this.httpMethod = httpMethod;
             return this;
         }
+
 
         /**
          * The requested path
@@ -1049,6 +1049,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The requested URL
          */
@@ -1066,6 +1067,7 @@ public class StepLog {
             this.url = url;
             return this;
         }
+
 
         /**
          * The requests response status code
@@ -1085,6 +1087,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The request duration in milliseconds
          */
@@ -1102,6 +1105,7 @@ public class StepLog {
             this.duration = duration;
             return this;
         }
+
 
         /**
          * The request success flag
@@ -1121,6 +1125,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The requested provider
          */
@@ -1138,6 +1143,7 @@ public class StepLog {
             this.provider = provider;
             return this;
         }
+
 
         /**
          * The requested service
@@ -1157,6 +1163,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The requested resource
          */
@@ -1174,6 +1181,7 @@ public class StepLog {
             this.resource = resource;
             return this;
         }
+
 
         /**
          * The requested child resource
@@ -1193,6 +1201,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The requested sub resource
          */
@@ -1210,6 +1219,7 @@ public class StepLog {
             this.subResource = subResource;
             return this;
         }
+
 
         /**
          * The requested action
@@ -1229,6 +1239,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The asynchronous worker flag
          */
@@ -1246,6 +1257,7 @@ public class StepLog {
             this.isWorker = isWorker;
             return this;
         }
+
 
         /**
          * The provider request ID
@@ -1265,6 +1277,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The advanced log request data
          */
@@ -1283,6 +1296,7 @@ public class StepLog {
             return this;
         }
 
+
         /**
          * The advanced log response data
          */
@@ -1300,30 +1314,18 @@ public class StepLog {
             this.response = response;
             return this;
         }
-        
+
         public StepLog build() {
+
             return new StepLog(
-                requestId,
-                startTime,
-                endTime,
-                accountId,
-                projectId,
-                httpMethod,
-                path,
-                url,
-                status,
-                duration,
-                success,
-                provider,
-                service,
-                resource,
-                childResource,
-                subResource,
-                action,
-                isWorker,
-                id,
-                request,
-                response);
+                requestId, startTime, endTime,
+                accountId, projectId, httpMethod,
+                path, url, status,
+                duration, success, provider,
+                service, resource, childResource,
+                subResource, action, isWorker,
+                id, request, response);
         }
+
     }
 }

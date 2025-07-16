@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ApplicationChangesDataModel {
 
+public class ApplicationChangesDataModel {
     /**
      * Unique identifier of the interview stage
      */
@@ -30,6 +30,7 @@ public class ApplicationChangesDataModel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("rejected_reason_ids")
     private JsonNullable<? extends List<String>> rejectedReasonIds;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("application_status")
@@ -75,9 +76,10 @@ public class ApplicationChangesDataModel {
         return (JsonNullable<ApplicationChangesDataModelApplicationStatus>) applicationStatus;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier of the interview stage
@@ -127,7 +129,6 @@ public class ApplicationChangesDataModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -146,9 +147,7 @@ public class ApplicationChangesDataModel {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            interviewStageId,
-            rejectedReasonIds,
-            applicationStatus);
+            interviewStageId, rejectedReasonIds, applicationStatus);
     }
     
     @Override
@@ -158,18 +157,20 @@ public class ApplicationChangesDataModel {
                 "rejectedReasonIds", rejectedReasonIds,
                 "applicationStatus", applicationStatus);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> interviewStageId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> rejectedReasonIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends ApplicationChangesDataModelApplicationStatus> applicationStatus = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier of the interview stage
@@ -189,6 +190,7 @@ public class ApplicationChangesDataModel {
             return this;
         }
 
+
         /**
          * Unique identifiers of the rejection reasons
          */
@@ -207,6 +209,7 @@ public class ApplicationChangesDataModel {
             return this;
         }
 
+
         public Builder applicationStatus(ApplicationChangesDataModelApplicationStatus applicationStatus) {
             Utils.checkNotNull(applicationStatus, "applicationStatus");
             this.applicationStatus = JsonNullable.of(applicationStatus);
@@ -218,12 +221,12 @@ public class ApplicationChangesDataModel {
             this.applicationStatus = applicationStatus;
             return this;
         }
-        
+
         public ApplicationChangesDataModel build() {
+
             return new ApplicationChangesDataModel(
-                interviewStageId,
-                rejectedReasonIds,
-                applicationStatus);
+                interviewStageId, rejectedReasonIds, applicationStatus);
         }
+
     }
 }

@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class AtsUpdateBackgroundCheckPackagesRequestDto {
 
+public class AtsUpdateBackgroundCheckPackagesRequestDto {
     /**
      * Package name
      */
@@ -64,7 +64,8 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
     }
     
     public AtsUpdateBackgroundCheckPackagesRequestDto() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -101,9 +102,10 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
         return (JsonNullable<Map<String, Object>>) passthrough;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Package name
@@ -177,7 +179,6 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -197,9 +198,7 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name,
-            description,
-            tests,
+            name, description, tests,
             passthrough);
     }
     
@@ -211,20 +210,22 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
                 "tests", tests,
                 "passthrough", passthrough);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<UpdatePackage>> tests = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Package name
@@ -244,6 +245,7 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
             return this;
         }
 
+
         /**
          * Package description
          */
@@ -261,6 +263,7 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
             this.description = description;
             return this;
         }
+
 
         /**
          * Package tests
@@ -280,6 +283,7 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
             return this;
         }
 
+
         /**
          * Value to pass through to the provider
          */
@@ -297,13 +301,13 @@ public class AtsUpdateBackgroundCheckPackagesRequestDto {
             this.passthrough = passthrough;
             return this;
         }
-        
+
         public AtsUpdateBackgroundCheckPackagesRequestDto build() {
+
             return new AtsUpdateBackgroundCheckPackagesRequestDto(
-                name,
-                description,
-                tests,
+                name, description, tests,
                 passthrough);
         }
+
     }
 }

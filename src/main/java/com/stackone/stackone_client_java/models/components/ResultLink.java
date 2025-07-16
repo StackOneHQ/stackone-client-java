@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class ResultLink {
 
+public class ResultLink {
     /**
      * The label of the result link.
      */
@@ -59,9 +59,10 @@ public class ResultLink {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The label of the result link.
@@ -99,7 +100,6 @@ public class ResultLink {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -117,8 +117,7 @@ public class ResultLink {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            label,
-            url);
+            label, url);
     }
     
     @Override
@@ -127,16 +126,18 @@ public class ResultLink {
                 "label", label,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> label = JsonNullable.undefined();
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The label of the result link.
@@ -156,6 +157,7 @@ public class ResultLink {
             return this;
         }
 
+
         /**
          * The URL of the result link.
          */
@@ -173,11 +175,12 @@ public class ResultLink {
             this.url = url;
             return this;
         }
-        
+
         public ResultLink build() {
+
             return new ResultLink(
-                label,
-                url);
+                label, url);
         }
+
     }
 }

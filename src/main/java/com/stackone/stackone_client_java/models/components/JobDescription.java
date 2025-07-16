@@ -44,9 +44,10 @@ public class JobDescription {
         return text;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public JobDescription withText(String text) {
         Utils.checkNotNull(text, "text");
@@ -60,7 +61,6 @@ public class JobDescription {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,14 +85,16 @@ public class JobDescription {
         return Utils.toString(JobDescription.class,
                 "text", text);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> text = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder text(String text) {
             Utils.checkNotNull(text, "text");
@@ -105,10 +107,12 @@ public class JobDescription {
             this.text = text;
             return this;
         }
-        
+
         public JobDescription build() {
+
             return new JobDescription(
                 text);
         }
+
     }
 }

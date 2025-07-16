@@ -20,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The pay frequency
  */
 public class HrisUpdateEmploymentRequestDtoPayFrequency {
-
     /**
      * The pay frequency of the job postings.
      */
@@ -67,9 +66,10 @@ public class HrisUpdateEmploymentRequestDtoPayFrequency {
         return (JsonNullable<HrisUpdateEmploymentRequestDtoPayFrequencySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The pay frequency of the job postings.
@@ -107,7 +107,6 @@ public class HrisUpdateEmploymentRequestDtoPayFrequency {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -125,8 +124,7 @@ public class HrisUpdateEmploymentRequestDtoPayFrequency {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -135,16 +133,18 @@ public class HrisUpdateEmploymentRequestDtoPayFrequency {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayFrequencyValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayFrequencySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The pay frequency of the job postings.
@@ -164,6 +164,7 @@ public class HrisUpdateEmploymentRequestDtoPayFrequency {
             return this;
         }
 
+
         /**
          * The source value of the pay frequency.
          */
@@ -181,11 +182,12 @@ public class HrisUpdateEmploymentRequestDtoPayFrequency {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public HrisUpdateEmploymentRequestDtoPayFrequency build() {
+
             return new HrisUpdateEmploymentRequestDtoPayFrequency(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

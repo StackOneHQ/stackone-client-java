@@ -15,8 +15,8 @@ import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CreateHRISBenefit {
 
+public class CreateHRISBenefit {
     /**
      * Unique identifier
      */
@@ -92,7 +92,9 @@ public class CreateHRISBenefit {
     }
     
     public CreateHRISBenefit() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -152,9 +154,10 @@ public class CreateHRISBenefit {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -282,7 +285,6 @@ public class CreateHRISBenefit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -305,12 +307,8 @@ public class CreateHRISBenefit {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            name,
-            benefitType,
-            provider,
-            description,
-            createdAt,
+            id, name, benefitType,
+            provider, description, createdAt,
             updatedAt);
     }
     
@@ -325,26 +323,28 @@ public class CreateHRISBenefit {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends CreateHRISBenefitBenefitType> benefitType = JsonNullable.undefined();
- 
+
         private JsonNullable<String> provider = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -364,6 +364,7 @@ public class CreateHRISBenefit {
             return this;
         }
 
+
         /**
          * The name of the benefit
          */
@@ -381,6 +382,7 @@ public class CreateHRISBenefit {
             this.name = name;
             return this;
         }
+
 
         /**
          * The type of the benefit
@@ -400,6 +402,7 @@ public class CreateHRISBenefit {
             return this;
         }
 
+
         /**
          * The provider of the benefit
          */
@@ -417,6 +420,7 @@ public class CreateHRISBenefit {
             this.provider = provider;
             return this;
         }
+
 
         /**
          * The description of the benefit
@@ -436,6 +440,7 @@ public class CreateHRISBenefit {
             return this;
         }
 
+
         /**
          * The date and time the benefit was created
          */
@@ -454,6 +459,7 @@ public class CreateHRISBenefit {
             return this;
         }
 
+
         /**
          * The date and time the benefit was last updated
          */
@@ -471,16 +477,14 @@ public class CreateHRISBenefit {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public CreateHRISBenefit build() {
+
             return new CreateHRISBenefit(
-                id,
-                name,
-                benefitType,
-                provider,
-                description,
-                createdAt,
+                id, name, benefitType,
+                provider, description, createdAt,
                 updatedAt);
         }
+
     }
 }

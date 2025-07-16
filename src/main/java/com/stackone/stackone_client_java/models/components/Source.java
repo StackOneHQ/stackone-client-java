@@ -13,8 +13,8 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Source {
 
+public class Source {
     /**
      * Unique identifier
      */
@@ -77,9 +77,10 @@ public class Source {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -135,7 +136,6 @@ public class Source {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,9 +154,7 @@ public class Source {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            name);
+            id, remoteId, name);
     }
     
     @Override
@@ -166,18 +164,20 @@ public class Source {
                 "remoteId", remoteId,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -197,6 +197,7 @@ public class Source {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -215,6 +216,7 @@ public class Source {
             return this;
         }
 
+
         /**
          * The source of the application
          */
@@ -232,12 +234,12 @@ public class Source {
             this.name = name;
             return this;
         }
-        
+
         public Source build() {
+
             return new Source(
-                id,
-                remoteId,
-                name);
+                id, remoteId, name);
         }
+
     }
 }

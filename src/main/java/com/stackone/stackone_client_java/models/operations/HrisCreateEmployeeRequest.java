@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class HrisCreateEmployeeRequest {
 
+public class HrisCreateEmployeeRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto;
@@ -45,9 +46,10 @@ public class HrisCreateEmployeeRequest {
         return hrisCreateEmployeeRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class HrisCreateEmployeeRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class HrisCreateEmployeeRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            hrisCreateEmployeeRequestDto);
+            xAccountId, hrisCreateEmployeeRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class HrisCreateEmployeeRequest {
                 "xAccountId", xAccountId,
                 "hrisCreateEmployeeRequestDto", hrisCreateEmployeeRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class HrisCreateEmployeeRequest {
             return this;
         }
 
+
         public Builder hrisCreateEmployeeRequestDto(HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
             Utils.checkNotNull(hrisCreateEmployeeRequestDto, "hrisCreateEmployeeRequestDto");
             this.hrisCreateEmployeeRequestDto = hrisCreateEmployeeRequestDto;
             return this;
         }
-        
+
         public HrisCreateEmployeeRequest build() {
+
             return new HrisCreateEmployeeRequest(
-                xAccountId,
-                hrisCreateEmployeeRequestDto);
+                xAccountId, hrisCreateEmployeeRequestDto);
         }
+
     }
 }

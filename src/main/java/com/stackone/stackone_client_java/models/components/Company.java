@@ -17,8 +17,8 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class Company {
 
+public class Company {
     /**
      * Unique identifier
      */
@@ -104,7 +104,9 @@ public class Company {
     }
     
     public Company() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -172,9 +174,10 @@ public class Company {
         return updatedAt;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Unique identifier
@@ -320,7 +323,6 @@ public class Company {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -344,14 +346,9 @@ public class Company {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id,
-            remoteId,
-            unifiedCustomFields,
-            name,
-            fullName,
-            displayName,
-            createdAt,
-            updatedAt);
+            id, remoteId, unifiedCustomFields,
+            name, fullName, displayName,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -366,28 +363,30 @@ public class Company {
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> id = JsonNullable.undefined();
- 
+
         private JsonNullable<String> remoteId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
- 
+
         private JsonNullable<String> name = JsonNullable.undefined();
- 
+
         private JsonNullable<String> fullName = JsonNullable.undefined();
- 
+
         private JsonNullable<String> displayName = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
- 
+
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Unique identifier
@@ -407,6 +406,7 @@ public class Company {
             return this;
         }
 
+
         /**
          * Provider's unique identifier
          */
@@ -424,6 +424,7 @@ public class Company {
             this.remoteId = remoteId;
             return this;
         }
+
 
         /**
          * Custom Unified Fields configured in your StackOne project
@@ -443,6 +444,7 @@ public class Company {
             return this;
         }
 
+
         /**
          * The name of the company
          */
@@ -460,6 +462,7 @@ public class Company {
             this.name = name;
             return this;
         }
+
 
         /**
          * The full name of the company
@@ -479,6 +482,7 @@ public class Company {
             return this;
         }
 
+
         /**
          * The display name of the company
          */
@@ -496,6 +500,7 @@ public class Company {
             this.displayName = displayName;
             return this;
         }
+
 
         /**
          * The created_at date
@@ -515,6 +520,7 @@ public class Company {
             return this;
         }
 
+
         /**
          * The updated_at date
          */
@@ -532,17 +538,14 @@ public class Company {
             this.updatedAt = updatedAt;
             return this;
         }
-        
+
         public Company build() {
+
             return new Company(
-                id,
-                remoteId,
-                unifiedCustomFields,
-                name,
-                fullName,
-                displayName,
-                createdAt,
-                updatedAt);
+                id, remoteId, unifiedCustomFields,
+                name, fullName, displayName,
+                createdAt, updatedAt);
         }
+
     }
 }

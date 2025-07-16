@@ -73,9 +73,7 @@ public class AtsUpdateJobRequestBuilder {
             .build());
 
         RequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
-              = new AtsUpdateJobOperation(
-                 sdkConfiguration,
-                 options);
+              = new AtsUpdateJobOperation(sdkConfiguration, options);
         AtsUpdateJobRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

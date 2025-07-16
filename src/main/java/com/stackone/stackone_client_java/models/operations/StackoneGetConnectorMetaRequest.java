@@ -11,6 +11,7 @@ import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+
 public class StackoneGetConnectorMetaRequest {
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=provider")
@@ -50,9 +51,10 @@ public class StackoneGetConnectorMetaRequest {
         return include;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public StackoneGetConnectorMetaRequest withProvider(String provider) {
         Utils.checkNotNull(provider, "provider");
@@ -78,7 +80,6 @@ public class StackoneGetConnectorMetaRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,8 +97,7 @@ public class StackoneGetConnectorMetaRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            provider,
-            include);
+            provider, include);
     }
     
     @Override
@@ -106,22 +106,25 @@ public class StackoneGetConnectorMetaRequest {
                 "provider", provider,
                 "include", include);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String provider;
- 
+
         private JsonNullable<String> include = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder provider(String provider) {
             Utils.checkNotNull(provider, "provider");
             this.provider = provider;
             return this;
         }
+
 
         /**
          * The comma separated list of data that will be included in the response
@@ -140,11 +143,12 @@ public class StackoneGetConnectorMetaRequest {
             this.include = include;
             return this;
         }
-        
+
         public StackoneGetConnectorMetaRequest build() {
+
             return new StackoneGetConnectorMetaRequest(
-                provider,
-                include);
+                provider, include);
         }
+
     }
 }

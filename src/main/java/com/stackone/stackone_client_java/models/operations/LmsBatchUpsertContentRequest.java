@@ -11,13 +11,14 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
-public class LmsBatchUpsertContentRequest {
 
+public class LmsBatchUpsertContentRequest {
     /**
      * The account identifier
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto;
@@ -45,9 +46,10 @@ public class LmsBatchUpsertContentRequest {
         return lmsBatchUpsertContentRequestDto;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account identifier
@@ -64,7 +66,6 @@ public class LmsBatchUpsertContentRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -82,8 +83,7 @@ public class LmsBatchUpsertContentRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId,
-            lmsBatchUpsertContentRequestDto);
+            xAccountId, lmsBatchUpsertContentRequestDto);
     }
     
     @Override
@@ -92,16 +92,18 @@ public class LmsBatchUpsertContentRequest {
                 "xAccountId", xAccountId,
                 "lmsBatchUpsertContentRequestDto", lmsBatchUpsertContentRequestDto);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAccountId;
- 
+
         private LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account identifier
@@ -112,16 +114,18 @@ public class LmsBatchUpsertContentRequest {
             return this;
         }
 
+
         public Builder lmsBatchUpsertContentRequestDto(LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) {
             Utils.checkNotNull(lmsBatchUpsertContentRequestDto, "lmsBatchUpsertContentRequestDto");
             this.lmsBatchUpsertContentRequestDto = lmsBatchUpsertContentRequestDto;
             return this;
         }
-        
+
         public LmsBatchUpsertContentRequest build() {
+
             return new LmsBatchUpsertContentRequest(
-                xAccountId,
-                lmsBatchUpsertContentRequestDto);
+                xAccountId, lmsBatchUpsertContentRequestDto);
         }
+
     }
 }

@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Filter parameters that allow greater customisation of the list response
  */
 public class AtsListAssessmentsPackagesQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -43,9 +42,10 @@ public class AtsListAssessmentsPackagesQueryParamFilter {
         return updatedAfter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -65,7 +65,6 @@ public class AtsListAssessmentsPackagesQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -90,14 +89,16 @@ public class AtsListAssessmentsPackagesQueryParamFilter {
         return Utils.toString(AtsListAssessmentsPackagesQueryParamFilter.class,
                 "updatedAfter", updatedAfter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -116,10 +117,12 @@ public class AtsListAssessmentsPackagesQueryParamFilter {
             this.updatedAfter = updatedAfter;
             return this;
         }
-        
+
         public AtsListAssessmentsPackagesQueryParamFilter build() {
+
             return new AtsListAssessmentsPackagesQueryParamFilter(
                 updatedAfter);
         }
+
     }
 }

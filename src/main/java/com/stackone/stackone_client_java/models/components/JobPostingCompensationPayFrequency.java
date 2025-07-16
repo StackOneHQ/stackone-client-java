@@ -14,8 +14,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class JobPostingCompensationPayFrequency {
 
+public class JobPostingCompensationPayFrequency {
     /**
      * The pay frequency of the job postings.
      */
@@ -62,9 +62,10 @@ public class JobPostingCompensationPayFrequency {
         return (JsonNullable<JobPostingCompensationPayFrequencySourceValue>) sourceValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The pay frequency of the job postings.
@@ -102,7 +103,6 @@ public class JobPostingCompensationPayFrequency {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,8 +120,7 @@ public class JobPostingCompensationPayFrequency {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value,
-            sourceValue);
+            value, sourceValue);
     }
     
     @Override
@@ -130,16 +129,18 @@ public class JobPostingCompensationPayFrequency {
                 "value", value,
                 "sourceValue", sourceValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends JobPostingCompensationPayFrequencyValue> value = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends JobPostingCompensationPayFrequencySourceValue> sourceValue = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The pay frequency of the job postings.
@@ -159,6 +160,7 @@ public class JobPostingCompensationPayFrequency {
             return this;
         }
 
+
         /**
          * The source value of the pay frequency.
          */
@@ -176,11 +178,12 @@ public class JobPostingCompensationPayFrequency {
             this.sourceValue = sourceValue;
             return this;
         }
-        
+
         public JobPostingCompensationPayFrequency build() {
+
             return new JobPostingCompensationPayFrequency(
-                value,
-                sourceValue);
+                value, sourceValue);
         }
+
     }
 }

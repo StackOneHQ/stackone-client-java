@@ -48,9 +48,7 @@ public class StackoneAuthenticateConnectSessionRequestBuilder {
             .build());
 
         RequestOperation<ConnectSessionAuthenticate, StackoneAuthenticateConnectSessionResponse> operation
-              = new StackoneAuthenticateConnectSessionOperation(
-                 sdkConfiguration,
-                 options);
+              = new StackoneAuthenticateConnectSessionOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

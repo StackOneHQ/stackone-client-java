@@ -17,7 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>LMS Completions Filter
  */
 public class LmsListCompletionsQueryParamFilter {
-
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -43,9 +42,10 @@ public class LmsListCompletionsQueryParamFilter {
         return updatedAfter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Use a string with a date to only select results updated after that given date
@@ -65,7 +65,6 @@ public class LmsListCompletionsQueryParamFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -90,14 +89,16 @@ public class LmsListCompletionsQueryParamFilter {
         return Utils.toString(LmsListCompletionsQueryParamFilter.class,
                 "updatedAfter", updatedAfter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> updatedAfter = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Use a string with a date to only select results updated after that given date
@@ -116,10 +117,12 @@ public class LmsListCompletionsQueryParamFilter {
             this.updatedAfter = updatedAfter;
             return this;
         }
-        
+
         public LmsListCompletionsQueryParamFilter build() {
+
             return new LmsListCompletionsQueryParamFilter(
                 updatedAfter);
         }
+
     }
 }
