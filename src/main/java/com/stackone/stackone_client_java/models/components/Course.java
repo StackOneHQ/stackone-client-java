@@ -132,6 +132,13 @@ public class Course {
     private JsonNullable<String> provider;
 
     /**
+     * The authors of the course
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("authors")
+    private JsonNullable<? extends List<AuthorModel>> authors;
+
+    /**
      * The date on which the course was last updated.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -163,6 +170,7 @@ public class Course {
             @JsonProperty("categories") JsonNullable<? extends List<Category>> categories,
             @JsonProperty("skills") JsonNullable<? extends List<Skills>> skills,
             @JsonProperty("provider") JsonNullable<String> provider,
+            @JsonProperty("authors") JsonNullable<? extends List<AuthorModel>> authors,
             @JsonProperty("updated_at") JsonNullable<String> updatedAt,
             @JsonProperty("created_at") JsonNullable<String> createdAt) {
         Utils.checkNotNull(id, "id");
@@ -181,6 +189,7 @@ public class Course {
         Utils.checkNotNull(categories, "categories");
         Utils.checkNotNull(skills, "skills");
         Utils.checkNotNull(provider, "provider");
+        Utils.checkNotNull(authors, "authors");
         Utils.checkNotNull(updatedAt, "updatedAt");
         Utils.checkNotNull(createdAt, "createdAt");
         this.id = id;
@@ -199,6 +208,7 @@ public class Course {
         this.categories = categories;
         this.skills = skills;
         this.provider = provider;
+        this.authors = authors;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
     }
@@ -209,7 +219,8 @@ public class Course {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -345,6 +356,15 @@ public class Course {
     @JsonIgnore
     public JsonNullable<String> provider() {
         return provider;
+    }
+
+    /**
+     * The authors of the course
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<AuthorModel>> authors() {
+        return (JsonNullable<List<AuthorModel>>) authors;
     }
 
     /**
@@ -657,6 +677,24 @@ public class Course {
     }
 
     /**
+     * The authors of the course
+     */
+    public Course withAuthors(List<AuthorModel> authors) {
+        Utils.checkNotNull(authors, "authors");
+        this.authors = JsonNullable.of(authors);
+        return this;
+    }
+
+    /**
+     * The authors of the course
+     */
+    public Course withAuthors(JsonNullable<? extends List<AuthorModel>> authors) {
+        Utils.checkNotNull(authors, "authors");
+        this.authors = authors;
+        return this;
+    }
+
+    /**
      * The date on which the course was last updated.
      */
     public Course withUpdatedAt(String updatedAt) {
@@ -718,6 +756,7 @@ public class Course {
             Utils.enhancedDeepEquals(this.categories, other.categories) &&
             Utils.enhancedDeepEquals(this.skills, other.skills) &&
             Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.authors, other.authors) &&
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt);
     }
@@ -730,7 +769,8 @@ public class Course {
             title, description, languages,
             coverUrl, url, active,
             duration, categories, skills,
-            provider, updatedAt, createdAt);
+            provider, authors, updatedAt,
+            createdAt);
     }
     
     @Override
@@ -752,6 +792,7 @@ public class Course {
                 "categories", categories,
                 "skills", skills,
                 "provider", provider,
+                "authors", authors,
                 "updatedAt", updatedAt,
                 "createdAt", createdAt);
     }
@@ -790,6 +831,8 @@ public class Course {
         private JsonNullable<? extends List<Skills>> skills = JsonNullable.undefined();
 
         private JsonNullable<String> provider = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<AuthorModel>> authors = JsonNullable.undefined();
 
         private JsonNullable<String> updatedAt = JsonNullable.undefined();
 
@@ -1105,6 +1148,25 @@ public class Course {
 
 
         /**
+         * The authors of the course
+         */
+        public Builder authors(List<AuthorModel> authors) {
+            Utils.checkNotNull(authors, "authors");
+            this.authors = JsonNullable.of(authors);
+            return this;
+        }
+
+        /**
+         * The authors of the course
+         */
+        public Builder authors(JsonNullable<? extends List<AuthorModel>> authors) {
+            Utils.checkNotNull(authors, "authors");
+            this.authors = authors;
+            return this;
+        }
+
+
+        /**
          * The date on which the course was last updated.
          */
         public Builder updatedAt(String updatedAt) {
@@ -1149,7 +1211,8 @@ public class Course {
                 title, description, languages,
                 coverUrl, url, active,
                 duration, categories, skills,
-                provider, updatedAt, createdAt);
+                provider, authors, updatedAt,
+                createdAt);
         }
 
     }
