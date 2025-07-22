@@ -180,6 +180,13 @@ public class Content {
     private JsonNullable<? extends List<String>> tags;
 
     /**
+     * The authors of the content
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("authors")
+    private JsonNullable<? extends List<AuthorModel>> authors;
+
+    /**
      * The date on which the content was last updated.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -217,6 +224,7 @@ public class Content {
             @JsonProperty("short_description") JsonNullable<String> shortDescription,
             @JsonProperty("localizations") JsonNullable<? extends List<LocalizationModel>> localizations,
             @JsonProperty("tags") JsonNullable<? extends List<String>> tags,
+            @JsonProperty("authors") JsonNullable<? extends List<AuthorModel>> authors,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt) {
         Utils.checkNotNull(id, "id");
@@ -241,6 +249,7 @@ public class Content {
         Utils.checkNotNull(shortDescription, "shortDescription");
         Utils.checkNotNull(localizations, "localizations");
         Utils.checkNotNull(tags, "tags");
+        Utils.checkNotNull(authors, "authors");
         Utils.checkNotNull(updatedAt, "updatedAt");
         Utils.checkNotNull(createdAt, "createdAt");
         this.id = id;
@@ -265,6 +274,7 @@ public class Content {
         this.shortDescription = shortDescription;
         this.localizations = localizations;
         this.tags = tags;
+        this.authors = authors;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
     }
@@ -277,7 +287,8 @@ public class Content {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -467,6 +478,15 @@ public class Content {
     @JsonIgnore
     public JsonNullable<List<String>> tags() {
         return (JsonNullable<List<String>>) tags;
+    }
+
+    /**
+     * The authors of the content
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<AuthorModel>> authors() {
+        return (JsonNullable<List<AuthorModel>>) authors;
     }
 
     /**
@@ -893,6 +913,24 @@ public class Content {
     }
 
     /**
+     * The authors of the content
+     */
+    public Content withAuthors(List<AuthorModel> authors) {
+        Utils.checkNotNull(authors, "authors");
+        this.authors = JsonNullable.of(authors);
+        return this;
+    }
+
+    /**
+     * The authors of the content
+     */
+    public Content withAuthors(JsonNullable<? extends List<AuthorModel>> authors) {
+        Utils.checkNotNull(authors, "authors");
+        this.authors = authors;
+        return this;
+    }
+
+    /**
      * The date on which the content was last updated.
      */
     public Content withUpdatedAt(OffsetDateTime updatedAt) {
@@ -960,6 +998,7 @@ public class Content {
             Utils.enhancedDeepEquals(this.shortDescription, other.shortDescription) &&
             Utils.enhancedDeepEquals(this.localizations, other.localizations) &&
             Utils.enhancedDeepEquals(this.tags, other.tags) &&
+            Utils.enhancedDeepEquals(this.authors, other.authors) &&
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt);
     }
@@ -974,7 +1013,8 @@ public class Content {
             coverUrl, active, duration,
             categories, skills, order,
             provider, shortDescription, localizations,
-            tags, updatedAt, createdAt);
+            tags, authors, updatedAt,
+            createdAt);
     }
     
     @Override
@@ -1002,6 +1042,7 @@ public class Content {
                 "shortDescription", shortDescription,
                 "localizations", localizations,
                 "tags", tags,
+                "authors", authors,
                 "updatedAt", updatedAt,
                 "createdAt", createdAt);
     }
@@ -1053,6 +1094,8 @@ public class Content {
         private JsonNullable<? extends List<LocalizationModel>> localizations = JsonNullable.undefined();
 
         private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<AuthorModel>> authors = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
 
@@ -1488,6 +1531,25 @@ public class Content {
 
 
         /**
+         * The authors of the content
+         */
+        public Builder authors(List<AuthorModel> authors) {
+            Utils.checkNotNull(authors, "authors");
+            this.authors = JsonNullable.of(authors);
+            return this;
+        }
+
+        /**
+         * The authors of the content
+         */
+        public Builder authors(JsonNullable<? extends List<AuthorModel>> authors) {
+            Utils.checkNotNull(authors, "authors");
+            this.authors = authors;
+            return this;
+        }
+
+
+        /**
          * The date on which the content was last updated.
          */
         public Builder updatedAt(OffsetDateTime updatedAt) {
@@ -1534,7 +1596,8 @@ public class Content {
                 coverUrl, active, duration,
                 categories, skills, order,
                 provider, shortDescription, localizations,
-                tags, updatedAt, createdAt);
+                tags, authors, updatedAt,
+                createdAt);
         }
 
     }

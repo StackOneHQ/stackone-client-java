@@ -58,7 +58,7 @@ public class Application {
 
         LmsListCoursesRequest req = LmsListCoursesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations")
+                .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors")
                 .filter(LmsListCoursesQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -133,7 +133,7 @@ public class Application {
         LmsGetCourseRequest req = LmsGetCourseRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations")
+                .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors")
                 .build();
 
         LmsGetCourseResponse res = sdk.lms().getCourse()
@@ -558,7 +558,7 @@ public class Application {
 
         LmsListContentRequest req = LmsListContentRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags")
+                .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors")
                 .filter(LmsListContentQueryParamFilter.builder()
                     .updatedAfter("2020-01-01T00:00:00.000Z")
                     .build())
@@ -668,6 +668,11 @@ public class Application {
                     .tags(List.of(
                         "Sales Techniques",
                         "Customer Service"))
+                    .authors(List.of(
+                        AuthorModel.builder()
+                            .id("123")
+                            .name("John Doe")
+                            .build()))
                     .updatedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .categories(List.of(
@@ -756,7 +761,7 @@ public class Application {
         LmsGetContentRequest req = LmsGetContentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags")
+                .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors")
                 .build();
 
         LmsGetContentResponse res = sdk.lms().getContent()
@@ -864,6 +869,11 @@ public class Application {
                     .tags(List.of(
                         "Sales Techniques",
                         "Customer Service"))
+                    .authors(List.of(
+                        AuthorModel.builder()
+                            .id("123")
+                            .name("John Doe")
+                            .build()))
                     .updatedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .categories(List.of(

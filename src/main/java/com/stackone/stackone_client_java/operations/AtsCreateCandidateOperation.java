@@ -182,7 +182,7 @@ public class AtsCreateCandidateOperation implements RequestOperation<AtsCreateCa
 
         AtsCreateCandidateResponse res = resBuilder.build();
         
-        if (Utils.statusCodeMatches(response.statusCode(), "200")) {
+        if (Utils.statusCodeMatches(response.statusCode(), "201")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
                 CreateResult out = Utils.mapper().readValue(
                     response.body(),
