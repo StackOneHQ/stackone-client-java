@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -23,7 +24,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @SpeakeasyMetadata("queryParam:name=updated_after")
-    private JsonNullable<String> updatedAfter;
+    private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
      * List of time off type ids to filter by.
@@ -33,7 +34,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
 
     @JsonCreator
     public HrisListEmployeeTimeOffRequestsQueryParamFilter(
-            JsonNullable<String> updatedAfter,
+            JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<? extends List<String>> typeIds) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(typeIds, "typeIds");
@@ -49,7 +50,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @JsonIgnore
-    public JsonNullable<String> updatedAfter() {
+    public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
     }
 
@@ -70,7 +71,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public HrisListEmployeeTimeOffRequestsQueryParamFilter withUpdatedAfter(String updatedAfter) {
+    public HrisListEmployeeTimeOffRequestsQueryParamFilter withUpdatedAfter(OffsetDateTime updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = JsonNullable.of(updatedAfter);
         return this;
@@ -79,7 +80,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public HrisListEmployeeTimeOffRequestsQueryParamFilter withUpdatedAfter(JsonNullable<String> updatedAfter) {
+    public HrisListEmployeeTimeOffRequestsQueryParamFilter withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
         return this;
@@ -133,7 +134,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<String> updatedAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<? extends List<String>> typeIds = JsonNullable.undefined();
 
@@ -145,7 +146,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(String updatedAfter) {
+        public Builder updatedAfter(OffsetDateTime updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = JsonNullable.of(updatedAfter);
             return this;
@@ -154,7 +155,7 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(JsonNullable<String> updatedAfter) {
+        public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
             return this;

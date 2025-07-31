@@ -94,7 +94,7 @@ public class Crm {
     }
 
     /**
-     * Creates a new Contact
+     * Create Contact
      * 
      * @return The call builder
      */
@@ -103,7 +103,7 @@ public class Crm {
     }
 
     /**
-     * Creates a new Contact
+     * Create Contact
      * 
      * @param xAccountId The account identifier
      * @param crmCreateContactRequestDto 
@@ -115,7 +115,7 @@ public class Crm {
     }
 
     /**
-     * Creates a new Contact
+     * Create Contact
      * 
      * @param xAccountId The account identifier
      * @param crmCreateContactRequestDto 

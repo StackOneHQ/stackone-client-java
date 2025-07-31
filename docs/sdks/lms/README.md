@@ -36,6 +36,7 @@ List Courses
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_courses" method="get" path="/unified/lms/courses" -->
 ```java
 package hello.world;
 
@@ -44,6 +45,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -60,7 +62,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors")
                 .filter(LmsListCoursesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -109,6 +111,7 @@ Get Course
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_course" method="get" path="/unified/lms/courses/{id}" -->
 ```java
 package hello.world;
 
@@ -181,6 +184,7 @@ List User Assignments
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_user_assignments" method="get" path="/unified/lms/users/{id}/assignments" -->
 ```java
 package hello.world;
 
@@ -189,6 +193,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -206,7 +211,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListUserAssignmentsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .userId("c28xyrc55866bvuv")
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
@@ -257,6 +262,7 @@ Create User Assignment
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_create_user_assignment" method="post" path="/unified/lms/users/{id}/assignments" -->
 ```java
 package hello.world;
 
@@ -265,6 +271,7 @@ import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsCreateUserAssignmentResponse;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 import java.util.Map;
 
 public class Application {
@@ -287,8 +294,8 @@ public class Application {
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .learningObjectExternalReference("learning-content-123")
                     .progress(40d)
-                    .createdAt("2021-07-21T14:00:00.000Z")
-                    .dueDate("2021-07-21T14:00:00.000Z")
+                    .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
+                    .dueDate(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .status(LmsCreateAssignmentRequestDtoStatus.builder()
                         .value(LmsCreateAssignmentRequestDtoValue.IN_PROGRESS)
                         .build())
@@ -338,6 +345,7 @@ Get User Assignment
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_user_assignment" method="get" path="/unified/lms/users/{id}/assignments/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -410,6 +418,7 @@ Batch Upsert Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_batch_upsert_content" method="post" path="/unified/lms/content/batch" -->
 ```java
 package hello.world;
 
@@ -536,6 +545,7 @@ List Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_content" method="get" path="/unified/lms/content" -->
 ```java
 package hello.world;
 
@@ -544,6 +554,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -560,7 +571,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors")
                 .filter(LmsListContentQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -609,6 +620,7 @@ Upsert Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_upsert_content" method="put" path="/unified/lms/content" -->
 ```java
 package hello.world;
 
@@ -737,6 +749,7 @@ Get Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_content" method="get" path="/unified/lms/content/{id}" -->
 ```java
 package hello.world;
 
@@ -809,6 +822,7 @@ Update Content
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_update_content" method="patch" path="/unified/lms/content/{id}" -->
 ```java
 package hello.world;
 
@@ -932,6 +946,7 @@ List User Completions
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_user_completions" method="get" path="/unified/lms/users/{id}/completions" -->
 ```java
 package hello.world;
 
@@ -940,6 +955,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -957,7 +973,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent")
                 .filter(LmsListUserCompletionsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1006,6 +1022,7 @@ Create User Completion
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_create_user_completion" method="post" path="/unified/lms/users/{id}/completions" -->
 ```java
 package hello.world;
 
@@ -1015,6 +1032,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsCreateUserCompletionResponse;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 import java.util.Map;
 
 public class Application {
@@ -1034,7 +1052,7 @@ public class Application {
                 .lmsCreateCompletionRequestDto(LmsCreateCompletionRequestDto.builder()
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
-                    .completedAt("2021-07-21T14:00:00.000Z")
+                    .completedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .learningObjectExternalReference("learning-content-123")
                     .timeSpent("PT1H30M45S")
@@ -1084,6 +1102,7 @@ Get User Completion
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_user_completion" method="get" path="/unified/lms/users/{id}/completions/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1156,6 +1175,7 @@ Delete User Completion
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_delete_user_completion" method="delete" path="/unified/lms/users/{id}/completions/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1225,6 +1245,7 @@ List Completions
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_completions" method="get" path="/unified/lms/completions" -->
 ```java
 package hello.world;
 
@@ -1233,6 +1254,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1249,7 +1271,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent")
                 .filter(LmsListCompletionsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1298,6 +1320,7 @@ Get Completion
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_completion" method="get" path="/unified/lms/completions/{id}" -->
 ```java
 package hello.world;
 
@@ -1369,6 +1392,7 @@ Get Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_category" method="get" path="/unified/lms/categories/{id}" -->
 ```java
 package hello.world;
 
@@ -1441,6 +1465,7 @@ List Categories
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_categories" method="get" path="/unified/lms/categories" -->
 ```java
 package hello.world;
 
@@ -1449,6 +1474,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1465,7 +1491,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,active,hierarchy,level,language")
                 .filter(LmsListCategoriesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1514,6 +1540,7 @@ List Users
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_users" method="get" path="/unified/lms/users" -->
 ```java
 package hello.world;
 
@@ -1587,6 +1614,7 @@ Get User
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_user" method="get" path="/unified/lms/users/{id}" -->
 ```java
 package hello.world;
 
@@ -1659,6 +1687,7 @@ Get Skill
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_skill" method="get" path="/unified/lms/skills/{id}" -->
 ```java
 package hello.world;
 
@@ -1731,6 +1760,7 @@ List Skills
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_skills" method="get" path="/unified/lms/skills" -->
 ```java
 package hello.world;
 
@@ -1739,6 +1769,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1755,7 +1786,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,active,hierarchy,language")
                 .filter(LmsListSkillsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1804,6 +1835,7 @@ List Assignments
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_list_assignments" method="get" path="/unified/lms/assignments" -->
 ```java
 package hello.world;
 
@@ -1812,6 +1844,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1828,7 +1861,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference")
                 .filter(LmsListAssignmentsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .userId("c28xyrc55866bvuv")
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
@@ -1879,6 +1912,7 @@ Get Assignment
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="lms_get_assignment" method="get" path="/unified/lms/assignments/{id}" -->
 ```java
 package hello.world;
 

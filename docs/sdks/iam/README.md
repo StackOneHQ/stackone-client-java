@@ -22,6 +22,7 @@ List Users
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_list_users" method="get" path="/unified/iam/users" -->
 ```java
 package hello.world;
 
@@ -30,6 +31,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -46,7 +48,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled")
                 .filter(IamListUsersQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("roles,groups")
                 .build();
@@ -96,6 +98,7 @@ Get User
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_get_user" method="get" path="/unified/iam/users/{id}" -->
 ```java
 package hello.world;
 
@@ -169,6 +172,7 @@ Delete User
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_delete_user" method="delete" path="/unified/iam/users/{id}" -->
 ```java
 package hello.world;
 
@@ -236,6 +240,7 @@ Update User
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_update_user" method="patch" path="/unified/iam/users/{id}" -->
 ```java
 package hello.world;
 
@@ -318,6 +323,7 @@ List Roles
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_list_roles" method="get" path="/unified/iam/roles" -->
 ```java
 package hello.world;
 
@@ -326,6 +332,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -342,7 +349,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,type,policies,description,created_at,updated_at")
                 .filter(IamListRolesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("policies")
                 .build();
@@ -392,6 +399,7 @@ Get Role
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_get_role" method="get" path="/unified/iam/roles/{id}" -->
 ```java
 package hello.world;
 
@@ -465,6 +473,7 @@ List Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_list_groups" method="get" path="/unified/iam/groups" -->
 ```java
 package hello.world;
 
@@ -539,6 +548,7 @@ Get Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_get_group" method="get" path="/unified/iam/groups/{id}" -->
 ```java
 package hello.world;
 
@@ -612,6 +622,7 @@ List Policies
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_list_policies" method="get" path="/unified/iam/policies" -->
 ```java
 package hello.world;
 
@@ -686,6 +697,7 @@ Get Policy
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="iam_get_policy" method="get" path="/unified/iam/policies/{id}" -->
 ```java
 package hello.world;
 

@@ -146,6 +146,13 @@ public class StepLog {
     private JsonNullable<Boolean> isWorker;
 
     /**
+     * The requests source IPV4 ip address
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("source_ip")
+    private JsonNullable<String> sourceIp;
+
+    /**
      * The provider request ID
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -186,6 +193,7 @@ public class StepLog {
             @JsonProperty("sub_resource") JsonNullable<String> subResource,
             @JsonProperty("action") JsonNullable<String> action,
             @JsonProperty("is_worker") JsonNullable<Boolean> isWorker,
+            @JsonProperty("source_ip") JsonNullable<String> sourceIp,
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("request") JsonNullable<? extends StepLogRequest> request,
             @JsonProperty("response") JsonNullable<? extends StepLogResponse> response) {
@@ -207,6 +215,7 @@ public class StepLog {
         Utils.checkNotNull(subResource, "subResource");
         Utils.checkNotNull(action, "action");
         Utils.checkNotNull(isWorker, "isWorker");
+        Utils.checkNotNull(sourceIp, "sourceIp");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(request, "request");
         Utils.checkNotNull(response, "response");
@@ -228,6 +237,7 @@ public class StepLog {
         this.subResource = subResource;
         this.action = action;
         this.isWorker = isWorker;
+        this.sourceIp = sourceIp;
         this.id = id;
         this.request = request;
         this.response = response;
@@ -240,7 +250,8 @@ public class StepLog {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -385,6 +396,14 @@ public class StepLog {
     @JsonIgnore
     public JsonNullable<Boolean> isWorker() {
         return isWorker;
+    }
+
+    /**
+     * The requests source IPV4 ip address
+     */
+    @JsonIgnore
+    public JsonNullable<String> sourceIp() {
+        return sourceIp;
     }
 
     /**
@@ -743,6 +762,24 @@ public class StepLog {
     }
 
     /**
+     * The requests source IPV4 ip address
+     */
+    public StepLog withSourceIp(String sourceIp) {
+        Utils.checkNotNull(sourceIp, "sourceIp");
+        this.sourceIp = JsonNullable.of(sourceIp);
+        return this;
+    }
+
+    /**
+     * The requests source IPV4 ip address
+     */
+    public StepLog withSourceIp(JsonNullable<String> sourceIp) {
+        Utils.checkNotNull(sourceIp, "sourceIp");
+        this.sourceIp = sourceIp;
+        return this;
+    }
+
+    /**
      * The provider request ID
      */
     public StepLog withId(String id) {
@@ -824,6 +861,7 @@ public class StepLog {
             Utils.enhancedDeepEquals(this.subResource, other.subResource) &&
             Utils.enhancedDeepEquals(this.action, other.action) &&
             Utils.enhancedDeepEquals(this.isWorker, other.isWorker) &&
+            Utils.enhancedDeepEquals(this.sourceIp, other.sourceIp) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.request, other.request) &&
             Utils.enhancedDeepEquals(this.response, other.response);
@@ -838,7 +876,8 @@ public class StepLog {
             duration, success, provider,
             service, resource, childResource,
             subResource, action, isWorker,
-            id, request, response);
+            sourceIp, id, request,
+            response);
     }
     
     @Override
@@ -862,6 +901,7 @@ public class StepLog {
                 "subResource", subResource,
                 "action", action,
                 "isWorker", isWorker,
+                "sourceIp", sourceIp,
                 "id", id,
                 "request", request,
                 "response", response);
@@ -905,6 +945,8 @@ public class StepLog {
         private JsonNullable<String> action = JsonNullable.undefined();
 
         private JsonNullable<Boolean> isWorker = JsonNullable.undefined();
+
+        private JsonNullable<String> sourceIp = JsonNullable.undefined();
 
         private JsonNullable<String> id = JsonNullable.undefined();
 
@@ -1260,6 +1302,25 @@ public class StepLog {
 
 
         /**
+         * The requests source IPV4 ip address
+         */
+        public Builder sourceIp(String sourceIp) {
+            Utils.checkNotNull(sourceIp, "sourceIp");
+            this.sourceIp = JsonNullable.of(sourceIp);
+            return this;
+        }
+
+        /**
+         * The requests source IPV4 ip address
+         */
+        public Builder sourceIp(JsonNullable<String> sourceIp) {
+            Utils.checkNotNull(sourceIp, "sourceIp");
+            this.sourceIp = sourceIp;
+            return this;
+        }
+
+
+        /**
          * The provider request ID
          */
         public Builder id(String id) {
@@ -1324,7 +1385,8 @@ public class StepLog {
                 duration, success, provider,
                 service, resource, childResource,
                 subResource, action, isWorker,
-                id, request, response);
+                sourceIp, id, request,
+                response);
         }
 
     }

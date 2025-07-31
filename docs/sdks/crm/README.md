@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [listContacts](#listcontacts) - List Contacts
-* [createContact](#createcontact) - Creates a new Contact
+* [createContact](#createcontact) - Create Contact
 * [getContact](#getcontact) - Get Contact
 * [updateContact](#updatecontact) - Update Contact (early access)
 * [listAccounts](#listaccounts) - List Accounts
@@ -22,6 +22,7 @@ List Contacts
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_list_contacts" method="get" path="/unified/crm/contacts" -->
 ```java
 package hello.world;
 
@@ -30,6 +31,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -46,7 +48,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at")
                 .filter(CrmListContactsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .include("custom_fields")
                 .build();
@@ -92,10 +94,11 @@ public class Application {
 
 ## createContact
 
-Creates a new Contact
+Create Contact
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_create_contact" method="post" path="/unified/crm/contacts" -->
 ```java
 package hello.world;
 
@@ -190,6 +193,7 @@ Get Contact
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_get_contact" method="get" path="/unified/crm/contacts/{id}" -->
 ```java
 package hello.world;
 
@@ -263,6 +267,7 @@ Update Contact (early access)
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_update_contact" method="patch" path="/unified/crm/contacts/{id}" -->
 ```java
 package hello.world;
 
@@ -359,6 +364,7 @@ List Accounts
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_list_accounts" method="get" path="/unified/crm/accounts" -->
 ```java
 package hello.world;
 
@@ -367,6 +373,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -383,7 +390,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at")
                 .filter(CrmListAccountsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -432,6 +439,7 @@ Get Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_get_account" method="get" path="/unified/crm/accounts/{id}" -->
 ```java
 package hello.world;
 
@@ -504,6 +512,7 @@ Get all Lists
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_list_lists" method="get" path="/unified/crm/lists" -->
 ```java
 package hello.world;
 
@@ -512,6 +521,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -528,7 +538,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,created_at,updated_at,items,type")
                 .filter(CrmListListsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -577,6 +587,7 @@ Get List
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_get_list" method="get" path="/unified/crm/lists/{id}" -->
 ```java
 package hello.world;
 
@@ -649,6 +660,7 @@ List Contact Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_list_contact_custom_field_definitions" method="get" path="/unified/crm/custom_field_definitions/contacts" -->
 ```java
 package hello.world;
 
@@ -657,6 +669,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -673,7 +686,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,description,type,options")
                 .filter(CrmListContactCustomFieldDefinitionsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -722,6 +735,7 @@ Get Contact Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="crm_get_contact_custom_field_definition" method="get" path="/unified/crm/custom_field_definitions/contacts/{id}" -->
 ```java
 package hello.world;
 
@@ -730,6 +744,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -747,7 +762,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,description,type,options")
                 .filter(CrmGetContactCustomFieldDefinitionQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 

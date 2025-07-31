@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -22,7 +23,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @SpeakeasyMetadata("queryParam:name=updated_after")
-    private JsonNullable<String> updatedAfter;
+    private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
      * Filter to select time-off policies by type
@@ -32,7 +33,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
 
     @JsonCreator
     public HrisListTimeOffPoliciesQueryParamFilter(
-            JsonNullable<String> updatedAfter,
+            JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<? extends Type> type) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(type, "type");
@@ -48,7 +49,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @JsonIgnore
-    public JsonNullable<String> updatedAfter() {
+    public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
     }
 
@@ -69,7 +70,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public HrisListTimeOffPoliciesQueryParamFilter withUpdatedAfter(String updatedAfter) {
+    public HrisListTimeOffPoliciesQueryParamFilter withUpdatedAfter(OffsetDateTime updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = JsonNullable.of(updatedAfter);
         return this;
@@ -78,7 +79,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public HrisListTimeOffPoliciesQueryParamFilter withUpdatedAfter(JsonNullable<String> updatedAfter) {
+    public HrisListTimeOffPoliciesQueryParamFilter withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
         return this;
@@ -132,7 +133,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<String> updatedAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<? extends Type> type = JsonNullable.undefined();
 
@@ -144,7 +145,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(String updatedAfter) {
+        public Builder updatedAfter(OffsetDateTime updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = JsonNullable.of(updatedAfter);
             return this;
@@ -153,7 +154,7 @@ public class HrisListTimeOffPoliciesQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(JsonNullable<String> updatedAfter) {
+        public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
             return this;

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
+import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -28,13 +29,13 @@ public class Filter {
      * A ISO8601 date string to filter the results by start_date.
      */
     @SpeakeasyMetadata("queryParam:name=start_date")
-    private JsonNullable<String> startDate;
+    private JsonNullable<OffsetDateTime> startDate;
 
     /**
      * A ISO8601 date string to filter the results by end_date.
      */
     @SpeakeasyMetadata("queryParam:name=end_date")
-    private JsonNullable<String> endDate;
+    private JsonNullable<OffsetDateTime> endDate;
 
     /**
      * A comma-separated list of request IDs to filter the results by.
@@ -99,8 +100,8 @@ public class Filter {
     @JsonCreator
     public Filter(
             JsonNullable<String> accountIds,
-            JsonNullable<String> startDate,
-            JsonNullable<String> endDate,
+            JsonNullable<OffsetDateTime> startDate,
+            JsonNullable<OffsetDateTime> endDate,
             JsonNullable<String> requestIds,
             JsonNullable<String> httpMethods,
             JsonNullable<String> providers,
@@ -159,7 +160,7 @@ public class Filter {
      * A ISO8601 date string to filter the results by start_date.
      */
     @JsonIgnore
-    public JsonNullable<String> startDate() {
+    public JsonNullable<OffsetDateTime> startDate() {
         return startDate;
     }
 
@@ -167,7 +168,7 @@ public class Filter {
      * A ISO8601 date string to filter the results by end_date.
      */
     @JsonIgnore
-    public JsonNullable<String> endDate() {
+    public JsonNullable<OffsetDateTime> endDate() {
         return endDate;
     }
 
@@ -277,7 +278,7 @@ public class Filter {
     /**
      * A ISO8601 date string to filter the results by start_date.
      */
-    public Filter withStartDate(String startDate) {
+    public Filter withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = JsonNullable.of(startDate);
         return this;
@@ -286,7 +287,7 @@ public class Filter {
     /**
      * A ISO8601 date string to filter the results by start_date.
      */
-    public Filter withStartDate(JsonNullable<String> startDate) {
+    public Filter withStartDate(JsonNullable<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
         return this;
@@ -295,7 +296,7 @@ public class Filter {
     /**
      * A ISO8601 date string to filter the results by end_date.
      */
-    public Filter withEndDate(String endDate) {
+    public Filter withEndDate(OffsetDateTime endDate) {
         Utils.checkNotNull(endDate, "endDate");
         this.endDate = JsonNullable.of(endDate);
         return this;
@@ -304,7 +305,7 @@ public class Filter {
     /**
      * A ISO8601 date string to filter the results by end_date.
      */
-    public Filter withEndDate(JsonNullable<String> endDate) {
+    public Filter withEndDate(JsonNullable<OffsetDateTime> endDate) {
         Utils.checkNotNull(endDate, "endDate");
         this.endDate = endDate;
         return this;
@@ -548,9 +549,9 @@ public class Filter {
 
         private JsonNullable<String> accountIds = JsonNullable.undefined();
 
-        private JsonNullable<String> startDate = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
 
-        private JsonNullable<String> endDate = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> endDate = JsonNullable.undefined();
 
         private JsonNullable<String> requestIds = JsonNullable.undefined();
 
@@ -599,7 +600,7 @@ public class Filter {
         /**
          * A ISO8601 date string to filter the results by start_date.
          */
-        public Builder startDate(String startDate) {
+        public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = JsonNullable.of(startDate);
             return this;
@@ -608,7 +609,7 @@ public class Filter {
         /**
          * A ISO8601 date string to filter the results by start_date.
          */
-        public Builder startDate(JsonNullable<String> startDate) {
+        public Builder startDate(JsonNullable<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
@@ -618,7 +619,7 @@ public class Filter {
         /**
          * A ISO8601 date string to filter the results by end_date.
          */
-        public Builder endDate(String endDate) {
+        public Builder endDate(OffsetDateTime endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = JsonNullable.of(endDate);
             return this;
@@ -627,7 +628,7 @@ public class Filter {
         /**
          * A ISO8601 date string to filter the results by end_date.
          */
-        public Builder endDate(JsonNullable<String> endDate) {
+        public Builder endDate(JsonNullable<OffsetDateTime> endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;

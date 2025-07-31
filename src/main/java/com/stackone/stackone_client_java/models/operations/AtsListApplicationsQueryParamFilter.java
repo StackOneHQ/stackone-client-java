@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -21,13 +22,13 @@ public class AtsListApplicationsQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @SpeakeasyMetadata("queryParam:name=updated_after")
-    private JsonNullable<String> updatedAfter;
+    private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
      * Use a string with a date to only select results created after that given date
      */
     @SpeakeasyMetadata("queryParam:name=created_after")
-    private JsonNullable<String> createdAfter;
+    private JsonNullable<OffsetDateTime> createdAfter;
 
     /**
      * Filter to select applications by job_id
@@ -43,8 +44,8 @@ public class AtsListApplicationsQueryParamFilter {
 
     @JsonCreator
     public AtsListApplicationsQueryParamFilter(
-            JsonNullable<String> updatedAfter,
-            JsonNullable<String> createdAfter,
+            JsonNullable<OffsetDateTime> updatedAfter,
+            JsonNullable<OffsetDateTime> createdAfter,
             JsonNullable<String> jobId,
             JsonNullable<String> stage) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
@@ -66,7 +67,7 @@ public class AtsListApplicationsQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @JsonIgnore
-    public JsonNullable<String> updatedAfter() {
+    public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
     }
 
@@ -74,7 +75,7 @@ public class AtsListApplicationsQueryParamFilter {
      * Use a string with a date to only select results created after that given date
      */
     @JsonIgnore
-    public JsonNullable<String> createdAfter() {
+    public JsonNullable<OffsetDateTime> createdAfter() {
         return createdAfter;
     }
 
@@ -102,7 +103,7 @@ public class AtsListApplicationsQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public AtsListApplicationsQueryParamFilter withUpdatedAfter(String updatedAfter) {
+    public AtsListApplicationsQueryParamFilter withUpdatedAfter(OffsetDateTime updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = JsonNullable.of(updatedAfter);
         return this;
@@ -111,7 +112,7 @@ public class AtsListApplicationsQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public AtsListApplicationsQueryParamFilter withUpdatedAfter(JsonNullable<String> updatedAfter) {
+    public AtsListApplicationsQueryParamFilter withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
         return this;
@@ -120,7 +121,7 @@ public class AtsListApplicationsQueryParamFilter {
     /**
      * Use a string with a date to only select results created after that given date
      */
-    public AtsListApplicationsQueryParamFilter withCreatedAfter(String createdAfter) {
+    public AtsListApplicationsQueryParamFilter withCreatedAfter(OffsetDateTime createdAfter) {
         Utils.checkNotNull(createdAfter, "createdAfter");
         this.createdAfter = JsonNullable.of(createdAfter);
         return this;
@@ -129,7 +130,7 @@ public class AtsListApplicationsQueryParamFilter {
     /**
      * Use a string with a date to only select results created after that given date
      */
-    public AtsListApplicationsQueryParamFilter withCreatedAfter(JsonNullable<String> createdAfter) {
+    public AtsListApplicationsQueryParamFilter withCreatedAfter(JsonNullable<OffsetDateTime> createdAfter) {
         Utils.checkNotNull(createdAfter, "createdAfter");
         this.createdAfter = createdAfter;
         return this;
@@ -206,9 +207,9 @@ public class AtsListApplicationsQueryParamFilter {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<String> updatedAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
-        private JsonNullable<String> createdAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> createdAfter = JsonNullable.undefined();
 
         private JsonNullable<String> jobId = JsonNullable.undefined();
 
@@ -222,7 +223,7 @@ public class AtsListApplicationsQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(String updatedAfter) {
+        public Builder updatedAfter(OffsetDateTime updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = JsonNullable.of(updatedAfter);
             return this;
@@ -231,7 +232,7 @@ public class AtsListApplicationsQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(JsonNullable<String> updatedAfter) {
+        public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
             return this;
@@ -241,7 +242,7 @@ public class AtsListApplicationsQueryParamFilter {
         /**
          * Use a string with a date to only select results created after that given date
          */
-        public Builder createdAfter(String createdAfter) {
+        public Builder createdAfter(OffsetDateTime createdAfter) {
             Utils.checkNotNull(createdAfter, "createdAfter");
             this.createdAfter = JsonNullable.of(createdAfter);
             return this;
@@ -250,7 +251,7 @@ public class AtsListApplicationsQueryParamFilter {
         /**
          * Use a string with a date to only select results created after that given date
          */
-        public Builder createdAfter(JsonNullable<String> createdAfter) {
+        public Builder createdAfter(JsonNullable<OffsetDateTime> createdAfter) {
             Utils.checkNotNull(createdAfter, "createdAfter");
             this.createdAfter = createdAfter;
             return this;

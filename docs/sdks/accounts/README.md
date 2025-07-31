@@ -11,7 +11,7 @@ Customer or business accounts.
 * [getAccount](#getaccount) - Get Account
 * [deleteAccount](#deleteaccount) - Delete Account
 * [updateAccount](#updateaccount) - Update Account
-* [getAccountMetaInfo](#getaccountmetainfo) - Get meta information of the account
+* [getAccountMetaInfo](#getaccountmetainfo) - Get Account Meta Information
 
 ## listLinkedAccounts
 
@@ -19,6 +19,7 @@ List Accounts
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_list_linked_accounts" method="get" path="/accounts" -->
 ```java
 package hello.world;
 
@@ -87,6 +88,7 @@ Get Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_get_account" method="get" path="/accounts/{id}" -->
 ```java
 package hello.world;
 
@@ -151,6 +153,7 @@ Delete Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_delete_account" method="delete" path="/accounts/{id}" -->
 ```java
 package hello.world;
 
@@ -215,6 +218,7 @@ Update Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_update_account" method="patch" path="/accounts/{id}" -->
 ```java
 package hello.world;
 
@@ -279,10 +283,11 @@ public class Application {
 
 ## getAccountMetaInfo
 
-Get meta information of the account
+Get Account Meta Information
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_get_account_meta_info" method="get" path="/accounts/{id}/meta" -->
 ```java
 package hello.world;
 

@@ -8,7 +8,7 @@
 * [listApplications](#listapplications) - List Applications
 * [createApplication](#createapplication) - Create Application
 * [getApplication](#getapplication) - Get Application
-* [updateApplication](#updateapplication) - Update an Application
+* [updateApplication](#updateapplication) - Update Application
 * [listApplicationsOffers](#listapplicationsoffers) - List Application Offers
 * [moveApplication](#moveapplication) - Move Application
 * [rejectApplication](#rejectapplication) - Reject Application
@@ -19,7 +19,7 @@
 * [listApplicationNotes](#listapplicationnotes) - List Application Notes
 * [createApplicationNote](#createapplicationnote) - Create Application Note
 * [getApplicationNote](#getapplicationnote) - Get Application Note
-* [updateApplicationNote](#updateapplicationnote) - Update an Application Note
+* [updateApplicationNote](#updateapplicationnote) - Update Application Note
 * [listApplicationsScheduledInterviews](#listapplicationsscheduledinterviews) - List Applications scheduled interviews
 * [getApplicationScheduledInterview](#getapplicationscheduledinterview) - Get Applications scheduled interview
 * [uploadApplicationDocument](#uploadapplicationdocument) - Upload Application Document
@@ -60,7 +60,7 @@
 * [listJobPostings](#listjobpostings) - List Job Postings
 * [getJobPosting](#getjobposting) - Get Job Posting
 * [listOffers](#listoffers) - List Offers
-* [createOffer](#createoffer) - Creates an offer
+* [createOffer](#createoffer) - Create Offer
 * [getOffer](#getoffer) - Get Offer
 * [listAssessmentsPackages](#listassessmentspackages) - List Assessments Packages
 * [getAssessmentsPackage](#getassessmentspackage) - Get Assessments Package
@@ -84,6 +84,7 @@ List Applications
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_applications" method="get" path="/unified/ats/applications" -->
 ```java
 package hello.world;
 
@@ -92,6 +93,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -108,8 +110,8 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate")
                 .filter(AtsListApplicationsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .createdAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("documents")
                 .include("attachments,custom_fields")
@@ -160,6 +162,7 @@ Create Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_create_application" method="post" path="/unified/ats/applications" -->
 ```java
 package hello.world;
 
@@ -291,6 +294,7 @@ Get Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_application" method="get" path="/unified/ats/applications/{id}" -->
 ```java
 package hello.world;
 
@@ -361,10 +365,11 @@ public class Application {
 
 ## updateApplication
 
-Update an Application
+Update Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_update_application" method="patch" path="/unified/ats/applications/{id}" -->
 ```java
 package hello.world;
 
@@ -456,6 +461,7 @@ List Application Offers
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_applications_offers" method="get" path="/unified/ats/applications/{id}/offers" -->
 ```java
 package hello.world;
 
@@ -464,6 +470,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -481,7 +488,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
                 .filter(AtsListApplicationsOffersQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -530,6 +537,7 @@ Move Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_move_application" method="post" path="/unified/ats/applications/{id}/move" -->
 ```java
 package hello.world;
 
@@ -605,6 +613,7 @@ Reject Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_reject_application" method="post" path="/unified/ats/applications/{id}/reject" -->
 ```java
 package hello.world;
 
@@ -680,6 +689,7 @@ Get Application Offer
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_application_offer" method="get" path="/unified/ats/applications/{id}/offers/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -753,6 +763,7 @@ List Application Scorecards
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_application_scorecards" method="get" path="/unified/ats/applications/{id}/scorecards" -->
 ```java
 package hello.world;
 
@@ -761,6 +772,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -778,7 +790,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at")
                 .filter(AtsListApplicationScorecardsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -827,6 +839,7 @@ Get Application Scorecard
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_application_scorecard" method="get" path="/unified/ats/applications/{id}/scorecards/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -900,6 +913,7 @@ List Application Changes
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_application_changes" method="get" path="/unified/ats/applications/{id}/changes" -->
 ```java
 package hello.world;
 
@@ -908,6 +922,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -925,7 +940,7 @@ public class Application {
                 .id("<id>")
                 .fields("event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values")
                 .filter(AtsListApplicationChangesQueryParamFilter.builder()
-                    .createdAfter("2020-01-01T00:00:00.000Z")
+                    .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -974,6 +989,7 @@ List Application Notes
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_application_notes" method="get" path="/unified/ats/applications/{id}/notes" -->
 ```java
 package hello.world;
 
@@ -982,6 +998,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -999,7 +1016,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
                 .filter(AtsListApplicationNotesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1048,6 +1065,7 @@ Create Application Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_create_application_note" method="post" path="/unified/ats/applications/{id}/notes" -->
 ```java
 package hello.world;
 
@@ -1131,6 +1149,7 @@ Get Application Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_application_note" method="get" path="/unified/ats/applications/{id}/notes/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1200,10 +1219,11 @@ public class Application {
 
 ## updateApplicationNote
 
-Update an Application Note
+Update Application Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_update_application_note" method="patch" path="/unified/ats/applications/{id}/notes/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1289,6 +1309,7 @@ List Applications scheduled interviews
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_applications_scheduled_interviews" method="get" path="/unified/ats/applications/{id}/scheduled_interviews" -->
 ```java
 package hello.world;
 
@@ -1297,6 +1318,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1314,7 +1336,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at")
                 .filter(AtsListApplicationsScheduledInterviewsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1363,6 +1385,7 @@ Get Applications scheduled interview
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_application_scheduled_interview" method="get" path="/unified/ats/applications/{id}/scheduled_interviews/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1436,6 +1459,7 @@ Upload Application Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_upload_application_document" method="post" path="/unified/ats/applications/{id}/documents/upload" -->
 ```java
 package hello.world;
 
@@ -1520,6 +1544,7 @@ Download Application Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_download_application_document" method="get" path="/unified/ats/applications/{id}/documents/{subResourceId}/download" -->
 ```java
 package hello.world;
 
@@ -1594,6 +1619,7 @@ List Application Documents
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_application_documents" method="get" path="/unified/ats/applications/{id}/documents" -->
 ```java
 package hello.world;
 
@@ -1602,6 +1628,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1619,7 +1646,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .filter(AtsListApplicationDocumentsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1668,6 +1695,7 @@ Get Application Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_application_document" method="get" path="/unified/ats/applications/{id}/documents/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1741,6 +1769,7 @@ List Candidates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_candidates" method="get" path="/unified/ats/candidates" -->
 ```java
 package hello.world;
 
@@ -1749,6 +1778,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1765,8 +1795,8 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at")
                 .filter(AtsListCandidatesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .createdAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .include("custom_fields")
                 .build();
@@ -1816,6 +1846,7 @@ Create Candidate
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_create_candidate" method="post" path="/unified/ats/candidates" -->
 ```java
 package hello.world;
 
@@ -1918,6 +1949,7 @@ Get Candidate
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_candidate" method="get" path="/unified/ats/candidates/{id}" -->
 ```java
 package hello.world;
 
@@ -1991,6 +2023,7 @@ Update Candidate
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_update_candidate" method="patch" path="/unified/ats/candidates/{id}" -->
 ```java
 package hello.world;
 
@@ -2096,6 +2129,7 @@ List Candidate Notes
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_candidate_notes" method="get" path="/unified/ats/candidates/{id}/notes" -->
 ```java
 package hello.world;
 
@@ -2104,6 +2138,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2121,7 +2156,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
                 .filter(AtsListCandidateNotesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2170,6 +2205,7 @@ Create Candidate Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_create_candidate_note" method="post" path="/unified/ats/candidates/{id}/notes" -->
 ```java
 package hello.world;
 
@@ -2253,6 +2289,7 @@ Get Candidate Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_candidate_note" method="get" path="/unified/ats/candidates/{id}/notes/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -2326,6 +2363,7 @@ List Application Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_application_custom_field_definitions" method="get" path="/unified/ats/custom_field_definitions/applications" -->
 ```java
 package hello.world;
 
@@ -2399,6 +2437,7 @@ Get Application Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_application_custom_field_definition" method="get" path="/unified/ats/custom_field_definitions/applications/{id}" -->
 ```java
 package hello.world;
 
@@ -2473,6 +2512,7 @@ List Candidate Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_candidate_custom_field_definitions" method="get" path="/unified/ats/custom_field_definitions/candidates" -->
 ```java
 package hello.world;
 
@@ -2481,6 +2521,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2497,7 +2538,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,description,type,options")
                 .filter(AtsListCandidateCustomFieldDefinitionsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2546,6 +2587,7 @@ Get Candidate Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_candidate_custom_field_definition" method="get" path="/unified/ats/custom_field_definitions/candidates/{id}" -->
 ```java
 package hello.world;
 
@@ -2554,6 +2596,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2571,7 +2614,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,description,type,options")
                 .filter(AtsGetCandidateCustomFieldDefinitionQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2620,6 +2663,7 @@ List Job Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_job_custom_field_definitions" method="get" path="/unified/ats/custom_field_definitions/jobs" -->
 ```java
 package hello.world;
 
@@ -2628,6 +2672,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2644,7 +2689,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,description,type,options")
                 .filter(AtsListJobCustomFieldDefinitionsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2693,6 +2738,7 @@ Get Job Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_job_custom_field_definition" method="get" path="/unified/ats/custom_field_definitions/jobs/{id}" -->
 ```java
 package hello.world;
 
@@ -2701,6 +2747,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2718,7 +2765,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,description,type,options")
                 .filter(AtsGetJobCustomFieldDefinitionQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2767,6 +2814,7 @@ List Departments
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_departments" method="get" path="/unified/ats/departments" -->
 ```java
 package hello.world;
 
@@ -2775,6 +2823,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2791,7 +2840,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name")
                 .filter(AtsListDepartmentsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2840,6 +2889,7 @@ Get Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_department" method="get" path="/unified/ats/departments/{id}" -->
 ```java
 package hello.world;
 
@@ -2912,6 +2962,7 @@ List Interview Stages
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_interview_stages" method="get" path="/unified/ats/interview_stages" -->
 ```java
 package hello.world;
 
@@ -2920,6 +2971,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2936,7 +2988,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,order,created_at,updated_at")
                 .filter(AtsListInterviewStagesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2985,6 +3037,7 @@ Get Interview Stage
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_interview_stage" method="get" path="/unified/ats/interview_stages/{id}" -->
 ```java
 package hello.world;
 
@@ -3057,6 +3110,7 @@ List Interviews
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_interviews" method="get" path="/unified/ats/interviews" -->
 ```java
 package hello.world;
 
@@ -3065,6 +3119,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3081,8 +3136,8 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at")
                 .filter(AtsListInterviewsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .createdAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3131,6 +3186,7 @@ Get Interview
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_interview" method="get" path="/unified/ats/interviews/{id}" -->
 ```java
 package hello.world;
 
@@ -3203,6 +3259,7 @@ List Jobs
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_jobs" method="get" path="/unified/ats/jobs" -->
 ```java
 package hello.world;
 
@@ -3211,6 +3268,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3227,8 +3285,8 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at")
                 .filter(AtsListJobsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .createdAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("job_postings,interview_stages")
                 .include("custom_fields")
@@ -3279,6 +3337,7 @@ Create Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_create_job" method="post" path="/unified/ats/jobs" -->
 ```java
 package hello.world;
 
@@ -3398,6 +3457,7 @@ Get Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_job" method="get" path="/unified/ats/jobs/{id}" -->
 ```java
 package hello.world;
 
@@ -3472,6 +3532,7 @@ Update Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_update_job" method="patch" path="/unified/ats/jobs/{id}" -->
 ```java
 package hello.world;
 
@@ -3576,6 +3637,7 @@ Get all Lists
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_lists" method="get" path="/unified/ats/lists" -->
 ```java
 package hello.world;
 
@@ -3649,6 +3711,7 @@ Get List
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_list" method="get" path="/unified/ats/lists/{id}" -->
 ```java
 package hello.world;
 
@@ -3721,6 +3784,7 @@ List locations
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_locations" method="get" path="/unified/ats/locations" -->
 ```java
 package hello.world;
 
@@ -3729,6 +3793,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3745,7 +3810,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name")
                 .filter(AtsListLocationsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3794,6 +3859,7 @@ Get Location
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_location" method="get" path="/unified/ats/locations/{id}" -->
 ```java
 package hello.world;
 
@@ -3866,6 +3932,7 @@ List Rejected Reasons
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_rejected_reasons" method="get" path="/unified/ats/rejected_reasons" -->
 ```java
 package hello.world;
 
@@ -3874,6 +3941,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3890,7 +3958,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,label,type,rejected_reason_type")
                 .filter(AtsListRejectedReasonsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3939,6 +4007,7 @@ Get Rejected Reason
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_rejected_reason" method="get" path="/unified/ats/rejected_reasons/{id}" -->
 ```java
 package hello.world;
 
@@ -4011,6 +4080,7 @@ List Users
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_users" method="get" path="/unified/ats/users" -->
 ```java
 package hello.world;
 
@@ -4084,6 +4154,7 @@ Get User
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_user" method="get" path="/unified/ats/users/{id}" -->
 ```java
 package hello.world;
 
@@ -4156,6 +4227,7 @@ List Job Postings
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_job_postings" method="get" path="/unified/ats/job_postings" -->
 ```java
 package hello.world;
 
@@ -4164,6 +4236,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4180,8 +4253,8 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at")
                 .filter(AtsListJobPostingsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
-                    .createdAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .include("questionnaires")
                 .build();
@@ -4231,6 +4304,7 @@ Get Job Posting
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_job_posting" method="get" path="/unified/ats/job_postings/{id}" -->
 ```java
 package hello.world;
 
@@ -4304,6 +4378,7 @@ List Offers
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_offers" method="get" path="/unified/ats/offers" -->
 ```java
 package hello.world;
 
@@ -4312,6 +4387,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4328,7 +4404,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
                 .filter(AtsListOffersQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -4373,10 +4449,11 @@ public class Application {
 
 ## createOffer
 
-Creates an offer
+Create Offer
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_create_offer" method="post" path="/unified/ats/offers" -->
 ```java
 package hello.world;
 
@@ -4461,6 +4538,7 @@ Get Offer
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_offer" method="get" path="/unified/ats/offers/{id}" -->
 ```java
 package hello.world;
 
@@ -4533,6 +4611,7 @@ List Assessments Packages
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_assessments_packages" method="get" path="/unified/ats/assessments/packages" -->
 ```java
 package hello.world;
 
@@ -4541,6 +4620,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4556,7 +4636,7 @@ public class Application {
         AtsListAssessmentsPackagesRequest req = AtsListAssessmentsPackagesRequest.builder()
                 .xAccountId("<id>")
                 .filter(AtsListAssessmentsPackagesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -4605,6 +4685,7 @@ Get Assessments Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_assessments_package" method="get" path="/unified/ats/assessments/packages/{id}" -->
 ```java
 package hello.world;
 
@@ -4676,6 +4757,7 @@ Order Assessments Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_order_assessments_request" method="post" path="/unified/ats/assessments/orders" -->
 ```java
 package hello.world;
 
@@ -4804,6 +4886,7 @@ Update Assessments Result
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_update_assessments_result" method="patch" path="/unified/ats/assessments/orders/{id}/result" -->
 ```java
 package hello.world;
 
@@ -4902,6 +4985,7 @@ Get Assessments Results
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_assessments_result" method="get" path="/unified/ats/assessments/orders/{id}/results" -->
 ```java
 package hello.world;
 
@@ -4974,6 +5058,7 @@ List Background Check Packages
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_background_check_packages" method="get" path="/unified/ats/background_checks/packages" -->
 ```java
 package hello.world;
 
@@ -4982,6 +5067,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4998,7 +5084,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,description,tests")
                 .filter(AtsListBackgroundCheckPackagesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -5047,6 +5133,7 @@ Create Background Check Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_create_background_check_package" method="post" path="/unified/ats/background_checks/packages" -->
 ```java
 package hello.world;
 
@@ -5126,6 +5213,7 @@ Get Background Check Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_background_check_package" method="get" path="/unified/ats/background_checks/packages/{id}" -->
 ```java
 package hello.world;
 
@@ -5198,6 +5286,7 @@ Delete Background Check Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_delete_background_check_package" method="delete" path="/unified/ats/background_checks/packages/{id}" -->
 ```java
 package hello.world;
 
@@ -5265,6 +5354,7 @@ Update Background Check Package
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_update_background_check_package" method="patch" path="/unified/ats/background_checks/packages/{id}" -->
 ```java
 package hello.world;
 
@@ -5347,6 +5437,7 @@ Order Background Check Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_order_background_check_request" method="post" path="/unified/ats/background_checks/orders" -->
 ```java
 package hello.world;
 
@@ -5470,6 +5561,7 @@ Update Background Check Result
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_update_background_check_result" method="patch" path="/unified/ats/background_checks/orders/{id}/result" -->
 ```java
 package hello.world;
 
@@ -5572,6 +5664,7 @@ Get Background Check Results
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_background_check_result" method="get" path="/unified/ats/background_checks/orders/{id}/results" -->
 ```java
 package hello.world;
 
@@ -5644,6 +5737,7 @@ List Application Document Categories
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_list_application_document_categories" method="get" path="/unified/ats/documents/application_categories" -->
 ```java
 package hello.world;
 
@@ -5652,6 +5746,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -5668,7 +5763,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,active")
                 .filter(AtsListApplicationDocumentCategoriesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -5717,6 +5812,7 @@ Get Application Document Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ats_get_application_document_category" method="get" path="/unified/ats/documents/application_categories/{id}" -->
 ```java
 package hello.world;
 

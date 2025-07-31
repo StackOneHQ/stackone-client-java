@@ -15,6 +15,7 @@ Proxy Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_proxy_request" method="post" path="/unified/proxy" -->
 ```java
 package hello.world;
 

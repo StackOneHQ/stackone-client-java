@@ -36,16 +36,16 @@ public class StartHalfDay {
         return new StartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
     }
 
-    public static StartHalfDay of(Two value) {
+    public static StartHalfDay of(StartHalfDay2 value) {
         Utils.checkNotNull(value, "value");
-        return new StartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Two>(){}));
+        return new StartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<StartHalfDay2>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code boolean}</li>
-     * <li>{@code com.stackone.stackone_client_java.models.components.Two}</li>
+     * <li>{@code com.stackone.stackone_client_java.models.components.StartHalfDay2}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -85,7 +85,7 @@ public class StartHalfDay {
 
         public _Deserializer() {
             super(StartHalfDay.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Two>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<StartHalfDay2>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
         }
     }

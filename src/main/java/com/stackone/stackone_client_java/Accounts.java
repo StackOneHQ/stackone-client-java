@@ -198,7 +198,7 @@ public class Accounts {
     }
 
     /**
-     * Get meta information of the account
+     * Get Account Meta Information
      * 
      * @return The call builder
      */
@@ -207,7 +207,7 @@ public class Accounts {
     }
 
     /**
-     * Get meta information of the account
+     * Get Account Meta Information
      * 
      * @param id 
      * @return The response from the API call
@@ -218,7 +218,7 @@ public class Accounts {
     }
 
     /**
-     * Get meta information of the account
+     * Get Account Meta Information
      * 
      * @param id 
      * @param options additional options

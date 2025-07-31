@@ -118,7 +118,7 @@ public class Content {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<? extends Active> active;
+    private JsonNullable<? extends ContentActive> active;
 
     /**
      * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
@@ -215,7 +215,7 @@ public class Content {
             @JsonProperty("mobile_launch_content_url") JsonNullable<String> mobileLaunchContentUrl,
             @JsonProperty("content_type") JsonNullable<? extends ContentType> contentType,
             @JsonProperty("cover_url") JsonNullable<String> coverUrl,
-            @JsonProperty("active") JsonNullable<? extends Active> active,
+            @JsonProperty("active") JsonNullable<? extends ContentActive> active,
             @JsonProperty("duration") JsonNullable<String> duration,
             @JsonProperty("categories") JsonNullable<? extends List<Category>> categories,
             @JsonProperty("skills") JsonNullable<? extends List<Skills>> skills,
@@ -405,8 +405,8 @@ public class Content {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Active> active() {
-        return (JsonNullable<Active>) active;
+    public JsonNullable<ContentActive> active() {
+        return (JsonNullable<ContentActive>) active;
     }
 
     /**
@@ -747,7 +747,7 @@ public class Content {
     /**
      * Whether the content is active and available for users.
      */
-    public Content withActive(Active active) {
+    public Content withActive(ContentActive active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -756,7 +756,7 @@ public class Content {
     /**
      * Whether the content is active and available for users.
      */
-    public Content withActive(JsonNullable<? extends Active> active) {
+    public Content withActive(JsonNullable<? extends ContentActive> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -1076,7 +1076,7 @@ public class Content {
 
         private JsonNullable<String> coverUrl = JsonNullable.undefined();
 
-        private JsonNullable<? extends Active> active = JsonNullable.undefined();
+        private JsonNullable<? extends ContentActive> active = JsonNullable.undefined();
 
         private JsonNullable<String> duration = JsonNullable.undefined();
 
@@ -1356,7 +1356,7 @@ public class Content {
         /**
          * Whether the content is active and available for users.
          */
-        public Builder active(Active active) {
+        public Builder active(ContentActive active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -1365,7 +1365,7 @@ public class Content {
         /**
          * Whether the content is active and available for users.
          */
-        public Builder active(JsonNullable<? extends Active> active) {
+        public Builder active(JsonNullable<? extends ContentActive> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;

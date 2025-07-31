@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Deprecated;
 import java.lang.Double;
 import java.lang.Object;
@@ -182,7 +181,7 @@ public class Employment {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<Boolean> active;
+    private JsonNullable<? extends Active> active;
 
     /**
      * The employee department
@@ -266,7 +265,7 @@ public class Employment {
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
             @JsonProperty("start_date") JsonNullable<OffsetDateTime> startDate,
-            @JsonProperty("active") JsonNullable<Boolean> active,
+            @JsonProperty("active") JsonNullable<? extends Active> active,
             @JsonProperty("department") JsonNullable<? extends EmploymentDepartment> department,
             @JsonProperty("cost_center") JsonNullable<? extends CostCenter> costCenter,
             @JsonProperty("cost_centers") JsonNullable<? extends List<HRISCostCenter>> costCenters,
@@ -534,9 +533,10 @@ public class Employment {
     /**
      * The employment active status
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> active() {
-        return active;
+    public JsonNullable<Active> active() {
+        return (JsonNullable<Active>) active;
     }
 
     /**
@@ -1012,7 +1012,7 @@ public class Employment {
     /**
      * The employment active status
      */
-    public Employment withActive(boolean active) {
+    public Employment withActive(Active active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -1021,7 +1021,7 @@ public class Employment {
     /**
      * The employment active status
      */
-    public Employment withActive(JsonNullable<Boolean> active) {
+    public Employment withActive(JsonNullable<? extends Active> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -1317,7 +1317,7 @@ public class Employment {
         @Deprecated
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
 
-        private JsonNullable<Boolean> active = JsonNullable.undefined();
+        private JsonNullable<? extends Active> active = JsonNullable.undefined();
 
         private JsonNullable<? extends EmploymentDepartment> department = JsonNullable.undefined();
 
@@ -1755,7 +1755,7 @@ public class Employment {
         /**
          * The employment active status
          */
-        public Builder active(boolean active) {
+        public Builder active(Active active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -1764,7 +1764,7 @@ public class Employment {
         /**
          * The employment active status
          */
-        public Builder active(JsonNullable<Boolean> active) {
+        public Builder active(JsonNullable<? extends Active> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;
