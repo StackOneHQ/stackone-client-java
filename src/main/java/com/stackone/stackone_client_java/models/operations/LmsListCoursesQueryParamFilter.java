@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -21,7 +22,7 @@ public class LmsListCoursesQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @SpeakeasyMetadata("queryParam:name=updated_after")
-    private JsonNullable<String> updatedAfter;
+    private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
      * Filter to select courses by external_reference
@@ -31,7 +32,7 @@ public class LmsListCoursesQueryParamFilter {
 
     @JsonCreator
     public LmsListCoursesQueryParamFilter(
-            JsonNullable<String> updatedAfter,
+            JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<String> externalReference) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(externalReference, "externalReference");
@@ -47,7 +48,7 @@ public class LmsListCoursesQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @JsonIgnore
-    public JsonNullable<String> updatedAfter() {
+    public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
     }
 
@@ -67,7 +68,7 @@ public class LmsListCoursesQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public LmsListCoursesQueryParamFilter withUpdatedAfter(String updatedAfter) {
+    public LmsListCoursesQueryParamFilter withUpdatedAfter(OffsetDateTime updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = JsonNullable.of(updatedAfter);
         return this;
@@ -76,7 +77,7 @@ public class LmsListCoursesQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public LmsListCoursesQueryParamFilter withUpdatedAfter(JsonNullable<String> updatedAfter) {
+    public LmsListCoursesQueryParamFilter withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
         return this;
@@ -130,7 +131,7 @@ public class LmsListCoursesQueryParamFilter {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<String> updatedAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<String> externalReference = JsonNullable.undefined();
 
@@ -142,7 +143,7 @@ public class LmsListCoursesQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(String updatedAfter) {
+        public Builder updatedAfter(OffsetDateTime updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = JsonNullable.of(updatedAfter);
             return this;
@@ -151,7 +152,7 @@ public class LmsListCoursesQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(JsonNullable<String> updatedAfter) {
+        public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
             return this;

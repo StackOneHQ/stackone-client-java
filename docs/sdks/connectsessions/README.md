@@ -16,6 +16,7 @@ Create Connect Session
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_create_connect_session" method="post" path="/connect_sessions" -->
 ```java
 package hello.world;
 
@@ -101,6 +102,7 @@ Authenticate Connect Session
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_authenticate_connect_session" method="post" path="/connect_sessions/authenticate" -->
 ```java
 package hello.world;
 

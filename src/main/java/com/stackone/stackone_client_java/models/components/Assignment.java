@@ -15,6 +15,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -84,21 +85,21 @@ public class Assignment {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
-    private JsonNullable<String> updatedAt;
+    private JsonNullable<OffsetDateTime> updatedAt;
 
     /**
      * The date the assignment was created
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
-    private JsonNullable<String> createdAt;
+    private JsonNullable<OffsetDateTime> createdAt;
 
     /**
      * The date the assignment is due to be completed
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("due_date")
-    private JsonNullable<String> dueDate;
+    private JsonNullable<OffsetDateTime> dueDate;
 
     /**
      * The status of the assignment
@@ -158,9 +159,9 @@ public class Assignment {
             @JsonProperty("remote_learning_object_id") JsonNullable<String> remoteLearningObjectId,
             @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
             @JsonProperty("progress") JsonNullable<Double> progress,
-            @JsonProperty("updated_at") JsonNullable<String> updatedAt,
-            @JsonProperty("created_at") JsonNullable<String> createdAt,
-            @JsonProperty("due_date") JsonNullable<String> dueDate,
+            @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
+            @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
+            @JsonProperty("due_date") JsonNullable<OffsetDateTime> dueDate,
             @JsonProperty("status") JsonNullable<? extends AssignmentStatus> status,
             @JsonProperty("learning_object_type") JsonNullable<? extends LearningObjectType> learningObjectType,
             @JsonProperty("user_id") JsonNullable<String> userId,
@@ -284,7 +285,7 @@ public class Assignment {
      * The date the assignment was last updated
      */
     @JsonIgnore
-    public JsonNullable<String> updatedAt() {
+    public JsonNullable<OffsetDateTime> updatedAt() {
         return updatedAt;
     }
 
@@ -292,7 +293,7 @@ public class Assignment {
      * The date the assignment was created
      */
     @JsonIgnore
-    public JsonNullable<String> createdAt() {
+    public JsonNullable<OffsetDateTime> createdAt() {
         return createdAt;
     }
 
@@ -300,7 +301,7 @@ public class Assignment {
      * The date the assignment is due to be completed
      */
     @JsonIgnore
-    public JsonNullable<String> dueDate() {
+    public JsonNullable<OffsetDateTime> dueDate() {
         return dueDate;
     }
 
@@ -518,7 +519,7 @@ public class Assignment {
     /**
      * The date the assignment was last updated
      */
-    public Assignment withUpdatedAt(String updatedAt) {
+    public Assignment withUpdatedAt(OffsetDateTime updatedAt) {
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.updatedAt = JsonNullable.of(updatedAt);
         return this;
@@ -527,7 +528,7 @@ public class Assignment {
     /**
      * The date the assignment was last updated
      */
-    public Assignment withUpdatedAt(JsonNullable<String> updatedAt) {
+    public Assignment withUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.updatedAt = updatedAt;
         return this;
@@ -536,7 +537,7 @@ public class Assignment {
     /**
      * The date the assignment was created
      */
-    public Assignment withCreatedAt(String createdAt) {
+    public Assignment withCreatedAt(OffsetDateTime createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = JsonNullable.of(createdAt);
         return this;
@@ -545,7 +546,7 @@ public class Assignment {
     /**
      * The date the assignment was created
      */
-    public Assignment withCreatedAt(JsonNullable<String> createdAt) {
+    public Assignment withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = createdAt;
         return this;
@@ -554,7 +555,7 @@ public class Assignment {
     /**
      * The date the assignment is due to be completed
      */
-    public Assignment withDueDate(String dueDate) {
+    public Assignment withDueDate(OffsetDateTime dueDate) {
         Utils.checkNotNull(dueDate, "dueDate");
         this.dueDate = JsonNullable.of(dueDate);
         return this;
@@ -563,7 +564,7 @@ public class Assignment {
     /**
      * The date the assignment is due to be completed
      */
-    public Assignment withDueDate(JsonNullable<String> dueDate) {
+    public Assignment withDueDate(JsonNullable<OffsetDateTime> dueDate) {
         Utils.checkNotNull(dueDate, "dueDate");
         this.dueDate = dueDate;
         return this;
@@ -771,11 +772,11 @@ public class Assignment {
 
         private JsonNullable<Double> progress = JsonNullable.undefined();
 
-        private JsonNullable<String> updatedAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
 
-        private JsonNullable<String> createdAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
 
-        private JsonNullable<String> dueDate = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> dueDate = JsonNullable.undefined();
 
         private JsonNullable<? extends AssignmentStatus> status = JsonNullable.undefined();
 
@@ -957,7 +958,7 @@ public class Assignment {
         /**
          * The date the assignment was last updated
          */
-        public Builder updatedAt(String updatedAt) {
+        public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = JsonNullable.of(updatedAt);
             return this;
@@ -966,7 +967,7 @@ public class Assignment {
         /**
          * The date the assignment was last updated
          */
-        public Builder updatedAt(JsonNullable<String> updatedAt) {
+        public Builder updatedAt(JsonNullable<OffsetDateTime> updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = updatedAt;
             return this;
@@ -976,7 +977,7 @@ public class Assignment {
         /**
          * The date the assignment was created
          */
-        public Builder createdAt(String createdAt) {
+        public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = JsonNullable.of(createdAt);
             return this;
@@ -985,7 +986,7 @@ public class Assignment {
         /**
          * The date the assignment was created
          */
-        public Builder createdAt(JsonNullable<String> createdAt) {
+        public Builder createdAt(JsonNullable<OffsetDateTime> createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;
@@ -995,7 +996,7 @@ public class Assignment {
         /**
          * The date the assignment is due to be completed
          */
-        public Builder dueDate(String dueDate) {
+        public Builder dueDate(OffsetDateTime dueDate) {
             Utils.checkNotNull(dueDate, "dueDate");
             this.dueDate = JsonNullable.of(dueDate);
             return this;
@@ -1004,7 +1005,7 @@ public class Assignment {
         /**
          * The date the assignment is due to be completed
          */
-        public Builder dueDate(JsonNullable<String> dueDate) {
+        public Builder dueDate(JsonNullable<OffsetDateTime> dueDate) {
             Utils.checkNotNull(dueDate, "dueDate");
             this.dueDate = dueDate;
             return this;

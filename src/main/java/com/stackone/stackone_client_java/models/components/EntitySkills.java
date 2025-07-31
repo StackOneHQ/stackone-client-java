@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -43,7 +42,7 @@ public class EntitySkills {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
-    private JsonNullable<Boolean> active;
+    private JsonNullable<? extends EntitySkillsActive> active;
 
     /**
      * The language associated with this skill
@@ -71,7 +70,7 @@ public class EntitySkills {
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("name") JsonNullable<String> name,
-            @JsonProperty("active") JsonNullable<Boolean> active,
+            @JsonProperty("active") JsonNullable<? extends EntitySkillsActive> active,
             @JsonProperty("language") JsonNullable<? extends Language> language,
             @JsonProperty("maximum_proficiency") JsonNullable<? extends MaximumProficiency> maximumProficiency,
             @JsonProperty("minimum_proficiency") JsonNullable<? extends MinimumProficiency> minimumProficiency) {
@@ -124,9 +123,10 @@ public class EntitySkills {
     /**
      * Whether the skill is active and therefore available for use
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> active() {
-        return active;
+    public JsonNullable<EntitySkillsActive> active() {
+        return (JsonNullable<EntitySkillsActive>) active;
     }
 
     /**
@@ -218,7 +218,7 @@ public class EntitySkills {
     /**
      * Whether the skill is active and therefore available for use
      */
-    public EntitySkills withActive(boolean active) {
+    public EntitySkills withActive(EntitySkillsActive active) {
         Utils.checkNotNull(active, "active");
         this.active = JsonNullable.of(active);
         return this;
@@ -227,7 +227,7 @@ public class EntitySkills {
     /**
      * Whether the skill is active and therefore available for use
      */
-    public EntitySkills withActive(JsonNullable<Boolean> active) {
+    public EntitySkills withActive(JsonNullable<? extends EntitySkillsActive> active) {
         Utils.checkNotNull(active, "active");
         this.active = active;
         return this;
@@ -335,7 +335,7 @@ public class EntitySkills {
 
         private JsonNullable<String> name = JsonNullable.undefined();
 
-        private JsonNullable<Boolean> active = JsonNullable.undefined();
+        private JsonNullable<? extends EntitySkillsActive> active = JsonNullable.undefined();
 
         private JsonNullable<? extends Language> language = JsonNullable.undefined();
 
@@ -408,7 +408,7 @@ public class EntitySkills {
         /**
          * Whether the skill is active and therefore available for use
          */
-        public Builder active(boolean active) {
+        public Builder active(EntitySkillsActive active) {
             Utils.checkNotNull(active, "active");
             this.active = JsonNullable.of(active);
             return this;
@@ -417,7 +417,7 @@ public class EntitySkills {
         /**
          * Whether the skill is active and therefore available for use
          */
-        public Builder active(JsonNullable<Boolean> active) {
+        public Builder active(JsonNullable<? extends EntitySkillsActive> active) {
             Utils.checkNotNull(active, "active");
             this.active = active;
             return this;

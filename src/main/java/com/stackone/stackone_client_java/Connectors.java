@@ -30,7 +30,7 @@ public class Connectors {
     }
 
     /**
-     * List Connectors Meta Information for all providers
+     * List Connector Meta Information
      * 
      * @return The call builder
      */
@@ -39,7 +39,7 @@ public class Connectors {
     }
 
     /**
-     * List Connectors Meta Information for all providers
+     * List Connector Meta Information
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -49,7 +49,7 @@ public class Connectors {
     }
 
     /**
-     * List Connectors Meta Information for all providers
+     * List Connector Meta Information
      * 
      * @param include The comma separated list of data that will be included in the response
      * @param options additional options
@@ -68,7 +68,7 @@ public class Connectors {
     }
 
     /**
-     * Get Connector Meta information for the given provider key
+     * Get Connector Meta Information
      * 
      * @return The call builder
      */
@@ -77,7 +77,7 @@ public class Connectors {
     }
 
     /**
-     * Get Connector Meta information for the given provider key
+     * Get Connector Meta Information
      * 
      * @param provider 
      * @return The response from the API call
@@ -88,7 +88,7 @@ public class Connectors {
     }
 
     /**
-     * Get Connector Meta information for the given provider key
+     * Get Connector Meta Information
      * 
      * @param provider 
      * @param include The comma separated list of data that will be included in the response

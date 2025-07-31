@@ -13,6 +13,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -143,14 +144,14 @@ public class Course {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
-    private JsonNullable<String> updatedAt;
+    private JsonNullable<OffsetDateTime> updatedAt;
 
     /**
      * The date on which the course was created.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
-    private JsonNullable<String> createdAt;
+    private JsonNullable<OffsetDateTime> createdAt;
 
     @JsonCreator
     public Course(
@@ -171,8 +172,8 @@ public class Course {
             @JsonProperty("skills") JsonNullable<? extends List<Skills>> skills,
             @JsonProperty("provider") JsonNullable<String> provider,
             @JsonProperty("authors") JsonNullable<? extends List<AuthorModel>> authors,
-            @JsonProperty("updated_at") JsonNullable<String> updatedAt,
-            @JsonProperty("created_at") JsonNullable<String> createdAt) {
+            @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
+            @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
@@ -371,7 +372,7 @@ public class Course {
      * The date on which the course was last updated.
      */
     @JsonIgnore
-    public JsonNullable<String> updatedAt() {
+    public JsonNullable<OffsetDateTime> updatedAt() {
         return updatedAt;
     }
 
@@ -379,7 +380,7 @@ public class Course {
      * The date on which the course was created.
      */
     @JsonIgnore
-    public JsonNullable<String> createdAt() {
+    public JsonNullable<OffsetDateTime> createdAt() {
         return createdAt;
     }
 
@@ -697,7 +698,7 @@ public class Course {
     /**
      * The date on which the course was last updated.
      */
-    public Course withUpdatedAt(String updatedAt) {
+    public Course withUpdatedAt(OffsetDateTime updatedAt) {
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.updatedAt = JsonNullable.of(updatedAt);
         return this;
@@ -706,7 +707,7 @@ public class Course {
     /**
      * The date on which the course was last updated.
      */
-    public Course withUpdatedAt(JsonNullable<String> updatedAt) {
+    public Course withUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.updatedAt = updatedAt;
         return this;
@@ -715,7 +716,7 @@ public class Course {
     /**
      * The date on which the course was created.
      */
-    public Course withCreatedAt(String createdAt) {
+    public Course withCreatedAt(OffsetDateTime createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = JsonNullable.of(createdAt);
         return this;
@@ -724,7 +725,7 @@ public class Course {
     /**
      * The date on which the course was created.
      */
-    public Course withCreatedAt(JsonNullable<String> createdAt) {
+    public Course withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = createdAt;
         return this;
@@ -834,9 +835,9 @@ public class Course {
 
         private JsonNullable<? extends List<AuthorModel>> authors = JsonNullable.undefined();
 
-        private JsonNullable<String> updatedAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
 
-        private JsonNullable<String> createdAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -1169,7 +1170,7 @@ public class Course {
         /**
          * The date on which the course was last updated.
          */
-        public Builder updatedAt(String updatedAt) {
+        public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = JsonNullable.of(updatedAt);
             return this;
@@ -1178,7 +1179,7 @@ public class Course {
         /**
          * The date on which the course was last updated.
          */
-        public Builder updatedAt(JsonNullable<String> updatedAt) {
+        public Builder updatedAt(JsonNullable<OffsetDateTime> updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = updatedAt;
             return this;
@@ -1188,7 +1189,7 @@ public class Course {
         /**
          * The date on which the course was created.
          */
-        public Builder createdAt(String createdAt) {
+        public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = JsonNullable.of(createdAt);
             return this;
@@ -1197,7 +1198,7 @@ public class Course {
         /**
          * The date on which the course was created.
          */
-        public Builder createdAt(JsonNullable<String> createdAt) {
+        public Builder createdAt(JsonNullable<OffsetDateTime> createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;

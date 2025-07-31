@@ -189,6 +189,13 @@ public class UnifiedLogs {
     private JsonNullable<? extends Response> response;
 
     /**
+     * The requests source IPV4 ip address
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("source_ip")
+    private JsonNullable<String> sourceIp;
+
+    /**
      * The list of provider requests
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -221,6 +228,7 @@ public class UnifiedLogs {
             @JsonProperty("source_id") JsonNullable<String> sourceId,
             @JsonProperty("request") JsonNullable<? extends Request> request,
             @JsonProperty("response") JsonNullable<? extends Response> response,
+            @JsonProperty("source_ip") JsonNullable<String> sourceIp,
             @JsonProperty("step_requests") JsonNullable<? extends List<StepLog>> stepRequests) {
         Utils.checkNotNull(requestId, "requestId");
         Utils.checkNotNull(eventDatetime, "eventDatetime");
@@ -246,6 +254,7 @@ public class UnifiedLogs {
         Utils.checkNotNull(sourceId, "sourceId");
         Utils.checkNotNull(request, "request");
         Utils.checkNotNull(response, "response");
+        Utils.checkNotNull(sourceIp, "sourceIp");
         Utils.checkNotNull(stepRequests, "stepRequests");
         this.requestId = requestId;
         this.eventDatetime = eventDatetime;
@@ -271,6 +280,7 @@ public class UnifiedLogs {
         this.sourceId = sourceId;
         this.request = request;
         this.response = response;
+        this.sourceIp = sourceIp;
         this.stepRequests = stepRequests;
     }
     
@@ -283,7 +293,7 @@ public class UnifiedLogs {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -478,6 +488,14 @@ public class UnifiedLogs {
     @JsonIgnore
     public JsonNullable<Response> response() {
         return (JsonNullable<Response>) response;
+    }
+
+    /**
+     * The requests source IPV4 ip address
+     */
+    @JsonIgnore
+    public JsonNullable<String> sourceIp() {
+        return sourceIp;
     }
 
     /**
@@ -927,6 +945,24 @@ public class UnifiedLogs {
     }
 
     /**
+     * The requests source IPV4 ip address
+     */
+    public UnifiedLogs withSourceIp(String sourceIp) {
+        Utils.checkNotNull(sourceIp, "sourceIp");
+        this.sourceIp = JsonNullable.of(sourceIp);
+        return this;
+    }
+
+    /**
+     * The requests source IPV4 ip address
+     */
+    public UnifiedLogs withSourceIp(JsonNullable<String> sourceIp) {
+        Utils.checkNotNull(sourceIp, "sourceIp");
+        this.sourceIp = sourceIp;
+        return this;
+    }
+
+    /**
      * The list of provider requests
      */
     public UnifiedLogs withStepRequests(List<StepLog> stepRequests) {
@@ -978,6 +1014,7 @@ public class UnifiedLogs {
             Utils.enhancedDeepEquals(this.sourceId, other.sourceId) &&
             Utils.enhancedDeepEquals(this.request, other.request) &&
             Utils.enhancedDeepEquals(this.response, other.response) &&
+            Utils.enhancedDeepEquals(this.sourceIp, other.sourceIp) &&
             Utils.enhancedDeepEquals(this.stepRequests, other.stepRequests);
     }
     
@@ -992,7 +1029,7 @@ public class UnifiedLogs {
             childResource, subResource, action,
             isWorker, sourceType, sourceValue,
             sourceId, request, response,
-            stepRequests);
+            sourceIp, stepRequests);
     }
     
     @Override
@@ -1022,6 +1059,7 @@ public class UnifiedLogs {
                 "sourceId", sourceId,
                 "request", request,
                 "response", response,
+                "sourceIp", sourceIp,
                 "stepRequests", stepRequests);
     }
 
@@ -1075,6 +1113,8 @@ public class UnifiedLogs {
         private JsonNullable<? extends Request> request = JsonNullable.undefined();
 
         private JsonNullable<? extends Response> response = JsonNullable.undefined();
+
+        private JsonNullable<String> sourceIp = JsonNullable.undefined();
 
         private JsonNullable<? extends List<StepLog>> stepRequests = JsonNullable.undefined();
 
@@ -1540,6 +1580,25 @@ public class UnifiedLogs {
 
 
         /**
+         * The requests source IPV4 ip address
+         */
+        public Builder sourceIp(String sourceIp) {
+            Utils.checkNotNull(sourceIp, "sourceIp");
+            this.sourceIp = JsonNullable.of(sourceIp);
+            return this;
+        }
+
+        /**
+         * The requests source IPV4 ip address
+         */
+        public Builder sourceIp(JsonNullable<String> sourceIp) {
+            Utils.checkNotNull(sourceIp, "sourceIp");
+            this.sourceIp = sourceIp;
+            return this;
+        }
+
+
+        /**
          * The list of provider requests
          */
         public Builder stepRequests(List<StepLog> stepRequests) {
@@ -1568,7 +1627,7 @@ public class UnifiedLogs {
                 childResource, subResource, action,
                 isWorker, sourceType, sourceValue,
                 sourceId, request, response,
-                stepRequests);
+                sourceIp, stepRequests);
         }
 
     }

@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -50,7 +50,7 @@ public class ShiftBreak {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_paid")
-    private JsonNullable<Boolean> isPaid;
+    private JsonNullable<? extends IsPaid> isPaid;
 
     /**
      * The date and time the break was created
@@ -72,7 +72,7 @@ public class ShiftBreak {
             @JsonProperty("start_time") JsonNullable<OffsetDateTime> startTime,
             @JsonProperty("end_time") JsonNullable<OffsetDateTime> endTime,
             @JsonProperty("duration") JsonNullable<String> duration,
-            @JsonProperty("is_paid") JsonNullable<Boolean> isPaid,
+            @JsonProperty("is_paid") JsonNullable<? extends IsPaid> isPaid,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt) {
         Utils.checkNotNull(id, "id");
@@ -132,9 +132,10 @@ public class ShiftBreak {
     /**
      * Whether the break is paid
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> isPaid() {
-        return isPaid;
+    public JsonNullable<IsPaid> isPaid() {
+        return (JsonNullable<IsPaid>) isPaid;
     }
 
     /**
@@ -233,7 +234,7 @@ public class ShiftBreak {
     /**
      * Whether the break is paid
      */
-    public ShiftBreak withIsPaid(boolean isPaid) {
+    public ShiftBreak withIsPaid(IsPaid isPaid) {
         Utils.checkNotNull(isPaid, "isPaid");
         this.isPaid = JsonNullable.of(isPaid);
         return this;
@@ -242,7 +243,7 @@ public class ShiftBreak {
     /**
      * Whether the break is paid
      */
-    public ShiftBreak withIsPaid(JsonNullable<Boolean> isPaid) {
+    public ShiftBreak withIsPaid(JsonNullable<? extends IsPaid> isPaid) {
         Utils.checkNotNull(isPaid, "isPaid");
         this.isPaid = isPaid;
         return this;
@@ -334,7 +335,7 @@ public class ShiftBreak {
 
         private JsonNullable<String> duration = JsonNullable.undefined();
 
-        private JsonNullable<Boolean> isPaid = JsonNullable.undefined();
+        private JsonNullable<? extends IsPaid> isPaid = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
 
@@ -424,7 +425,7 @@ public class ShiftBreak {
         /**
          * Whether the break is paid
          */
-        public Builder isPaid(boolean isPaid) {
+        public Builder isPaid(IsPaid isPaid) {
             Utils.checkNotNull(isPaid, "isPaid");
             this.isPaid = JsonNullable.of(isPaid);
             return this;
@@ -433,7 +434,7 @@ public class ShiftBreak {
         /**
          * Whether the break is paid
          */
-        public Builder isPaid(JsonNullable<Boolean> isPaid) {
+        public Builder isPaid(JsonNullable<? extends IsPaid> isPaid) {
             Utils.checkNotNull(isPaid, "isPaid");
             this.isPaid = isPaid;
             return this;

@@ -484,7 +484,7 @@ public class Hris {
     }
 
     /**
-     * Creates an employee
+     * Create Employee
      * 
      * @return The call builder
      */
@@ -493,7 +493,7 @@ public class Hris {
     }
 
     /**
-     * Creates an employee
+     * Create Employee
      * 
      * @param xAccountId The account identifier
      * @param hrisCreateEmployeeRequestDto 
@@ -505,7 +505,7 @@ public class Hris {
     }
 
     /**
-     * Creates an employee
+     * Create Employee
      * 
      * @param xAccountId The account identifier
      * @param hrisCreateEmployeeRequestDto 
@@ -562,7 +562,7 @@ public class Hris {
     }
 
     /**
-     * Updates an employee
+     * Update Employee
      * 
      * @return The call builder
      */
@@ -571,7 +571,7 @@ public class Hris {
     }
 
     /**
-     * Updates an employee
+     * Update Employee
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -587,7 +587,7 @@ public class Hris {
     }
 
     /**
-     * Updates an employee
+     * Update Employee
      * 
      * @param xAccountId The account identifier
      * @param id 

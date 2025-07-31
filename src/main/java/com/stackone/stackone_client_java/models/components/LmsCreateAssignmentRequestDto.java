@@ -15,6 +15,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -63,14 +64,14 @@ public class LmsCreateAssignmentRequestDto {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
-    private JsonNullable<String> createdAt;
+    private JsonNullable<OffsetDateTime> createdAt;
 
     /**
      * The date the assignment is due to be completed
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("due_date")
-    private JsonNullable<String> dueDate;
+    private JsonNullable<OffsetDateTime> dueDate;
 
     /**
      * The status of the assignment
@@ -86,8 +87,8 @@ public class LmsCreateAssignmentRequestDto {
             @JsonProperty("learning_object_id") JsonNullable<String> learningObjectId,
             @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
             @JsonProperty("progress") JsonNullable<Double> progress,
-            @JsonProperty("created_at") JsonNullable<String> createdAt,
-            @JsonProperty("due_date") JsonNullable<String> dueDate,
+            @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
+            @JsonProperty("due_date") JsonNullable<OffsetDateTime> dueDate,
             @JsonProperty("status") JsonNullable<? extends LmsCreateAssignmentRequestDtoStatus> status) {
         Utils.checkNotNull(passthrough, "passthrough");
         Utils.checkNotNull(externalReference, "externalReference");
@@ -161,7 +162,7 @@ public class LmsCreateAssignmentRequestDto {
      * The date the assignment was created
      */
     @JsonIgnore
-    public JsonNullable<String> createdAt() {
+    public JsonNullable<OffsetDateTime> createdAt() {
         return createdAt;
     }
 
@@ -169,7 +170,7 @@ public class LmsCreateAssignmentRequestDto {
      * The date the assignment is due to be completed
      */
     @JsonIgnore
-    public JsonNullable<String> dueDate() {
+    public JsonNullable<OffsetDateTime> dueDate() {
         return dueDate;
     }
 
@@ -286,7 +287,7 @@ public class LmsCreateAssignmentRequestDto {
     /**
      * The date the assignment was created
      */
-    public LmsCreateAssignmentRequestDto withCreatedAt(String createdAt) {
+    public LmsCreateAssignmentRequestDto withCreatedAt(OffsetDateTime createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = JsonNullable.of(createdAt);
         return this;
@@ -295,7 +296,7 @@ public class LmsCreateAssignmentRequestDto {
     /**
      * The date the assignment was created
      */
-    public LmsCreateAssignmentRequestDto withCreatedAt(JsonNullable<String> createdAt) {
+    public LmsCreateAssignmentRequestDto withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = createdAt;
         return this;
@@ -304,7 +305,7 @@ public class LmsCreateAssignmentRequestDto {
     /**
      * The date the assignment is due to be completed
      */
-    public LmsCreateAssignmentRequestDto withDueDate(String dueDate) {
+    public LmsCreateAssignmentRequestDto withDueDate(OffsetDateTime dueDate) {
         Utils.checkNotNull(dueDate, "dueDate");
         this.dueDate = JsonNullable.of(dueDate);
         return this;
@@ -313,7 +314,7 @@ public class LmsCreateAssignmentRequestDto {
     /**
      * The date the assignment is due to be completed
      */
-    public LmsCreateAssignmentRequestDto withDueDate(JsonNullable<String> dueDate) {
+    public LmsCreateAssignmentRequestDto withDueDate(JsonNullable<OffsetDateTime> dueDate) {
         Utils.checkNotNull(dueDate, "dueDate");
         this.dueDate = dueDate;
         return this;
@@ -392,9 +393,9 @@ public class LmsCreateAssignmentRequestDto {
 
         private JsonNullable<Double> progress = JsonNullable.undefined();
 
-        private JsonNullable<String> createdAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
 
-        private JsonNullable<String> dueDate = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> dueDate = JsonNullable.undefined();
 
         private JsonNullable<? extends LmsCreateAssignmentRequestDtoStatus> status = JsonNullable.undefined();
 
@@ -507,7 +508,7 @@ public class LmsCreateAssignmentRequestDto {
         /**
          * The date the assignment was created
          */
-        public Builder createdAt(String createdAt) {
+        public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = JsonNullable.of(createdAt);
             return this;
@@ -516,7 +517,7 @@ public class LmsCreateAssignmentRequestDto {
         /**
          * The date the assignment was created
          */
-        public Builder createdAt(JsonNullable<String> createdAt) {
+        public Builder createdAt(JsonNullable<OffsetDateTime> createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;
@@ -526,7 +527,7 @@ public class LmsCreateAssignmentRequestDto {
         /**
          * The date the assignment is due to be completed
          */
-        public Builder dueDate(String dueDate) {
+        public Builder dueDate(OffsetDateTime dueDate) {
             Utils.checkNotNull(dueDate, "dueDate");
             this.dueDate = JsonNullable.of(dueDate);
             return this;
@@ -535,7 +536,7 @@ public class LmsCreateAssignmentRequestDto {
         /**
          * The date the assignment is due to be completed
          */
-        public Builder dueDate(JsonNullable<String> dueDate) {
+        public Builder dueDate(JsonNullable<OffsetDateTime> dueDate) {
             Utils.checkNotNull(dueDate, "dueDate");
             this.dueDate = dueDate;
             return this;

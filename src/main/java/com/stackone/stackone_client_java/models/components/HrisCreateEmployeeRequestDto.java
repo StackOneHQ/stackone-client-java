@@ -151,14 +151,14 @@ public class HrisCreateEmployeeRequestDto {
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoEthnicity> ethnicity;
 
     /**
-     * The employee date_of_birth
+     * The date when the employee was born
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("date_of_birth")
     private JsonNullable<OffsetDateTime> dateOfBirth;
 
     /**
-     * The employee birthday
+     * The next birthday of the employee (upcoming birthday)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("birthday")
@@ -631,7 +631,7 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * The employee date_of_birth
+     * The date when the employee was born
      */
     @JsonIgnore
     public JsonNullable<OffsetDateTime> dateOfBirth() {
@@ -639,7 +639,7 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * The employee birthday
+     * The next birthday of the employee (upcoming birthday)
      */
     @JsonIgnore
     public JsonNullable<OffsetDateTime> birthday() {
@@ -1189,7 +1189,7 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * The employee date_of_birth
+     * The date when the employee was born
      */
     public HrisCreateEmployeeRequestDto withDateOfBirth(OffsetDateTime dateOfBirth) {
         Utils.checkNotNull(dateOfBirth, "dateOfBirth");
@@ -1198,7 +1198,7 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * The employee date_of_birth
+     * The date when the employee was born
      */
     public HrisCreateEmployeeRequestDto withDateOfBirth(JsonNullable<OffsetDateTime> dateOfBirth) {
         Utils.checkNotNull(dateOfBirth, "dateOfBirth");
@@ -1207,7 +1207,7 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * The employee birthday
+     * The next birthday of the employee (upcoming birthday)
      */
     public HrisCreateEmployeeRequestDto withBirthday(OffsetDateTime birthday) {
         Utils.checkNotNull(birthday, "birthday");
@@ -1216,7 +1216,7 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * The employee birthday
+     * The next birthday of the employee (upcoming birthday)
      */
     public HrisCreateEmployeeRequestDto withBirthday(JsonNullable<OffsetDateTime> birthday) {
         Utils.checkNotNull(birthday, "birthday");
@@ -2217,7 +2217,7 @@ public class HrisCreateEmployeeRequestDto {
 
 
         /**
-         * The employee date_of_birth
+         * The date when the employee was born
          */
         public Builder dateOfBirth(OffsetDateTime dateOfBirth) {
             Utils.checkNotNull(dateOfBirth, "dateOfBirth");
@@ -2226,7 +2226,7 @@ public class HrisCreateEmployeeRequestDto {
         }
 
         /**
-         * The employee date_of_birth
+         * The date when the employee was born
          */
         public Builder dateOfBirth(JsonNullable<OffsetDateTime> dateOfBirth) {
             Utils.checkNotNull(dateOfBirth, "dateOfBirth");
@@ -2236,7 +2236,7 @@ public class HrisCreateEmployeeRequestDto {
 
 
         /**
-         * The employee birthday
+         * The next birthday of the employee (upcoming birthday)
          */
         public Builder birthday(OffsetDateTime birthday) {
             Utils.checkNotNull(birthday, "birthday");
@@ -2245,7 +2245,7 @@ public class HrisCreateEmployeeRequestDto {
         }
 
         /**
-         * The employee birthday
+         * The next birthday of the employee (upcoming birthday)
          */
         public Builder birthday(JsonNullable<OffsetDateTime> birthday) {
             Utils.checkNotNull(birthday, "birthday");

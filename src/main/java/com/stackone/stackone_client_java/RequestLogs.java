@@ -12,11 +12,15 @@ import com.stackone.stackone_client_java.models.operations.StackoneGetLogRespons
 import com.stackone.stackone_client_java.models.operations.StackoneListLogsRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneListLogsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneListLogsResponse;
+import com.stackone.stackone_client_java.models.operations.StackoneListPlatformLogsRequest;
+import com.stackone.stackone_client_java.models.operations.StackoneListPlatformLogsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.StackoneListPlatformLogsResponse;
 import com.stackone.stackone_client_java.models.operations.StackoneListStepLogsRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneListStepLogsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneListStepLogsResponse;
 import com.stackone.stackone_client_java.operations.StackoneGetLogOperation;
 import com.stackone.stackone_client_java.operations.StackoneListLogsOperation;
+import com.stackone.stackone_client_java.operations.StackoneListPlatformLogsOperation;
 import com.stackone.stackone_client_java.operations.StackoneListStepLogsOperation;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
@@ -69,7 +73,7 @@ public class RequestLogs {
     }
 
     /**
-     * Get a Log
+     * Get Log
      * 
      * @return The call builder
      */
@@ -78,7 +82,7 @@ public class RequestLogs {
     }
 
     /**
-     * Get a Log
+     * Get Log
      * 
      * @param id 
      * @return The response from the API call
@@ -89,7 +93,7 @@ public class RequestLogs {
     }
 
     /**
-     * Get a Log
+     * Get Log
      * 
      * @param id 
      * @param include The include parameter allows you to include additional data in the response.
@@ -142,6 +146,40 @@ public class RequestLogs {
     public StackoneListLogsResponse listLogs(StackoneListLogsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
               = new StackoneListLogsOperation(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * List Platform Logs
+     * 
+     * @return The call builder
+     */
+    public StackoneListPlatformLogsRequestBuilder listPlatformLogs() {
+        return new StackoneListPlatformLogsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Platform Logs
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public StackoneListPlatformLogsResponse listPlatformLogs(StackoneListPlatformLogsRequest request) throws Exception {
+        return listPlatformLogs(request, Optional.empty());
+    }
+
+    /**
+     * List Platform Logs
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public StackoneListPlatformLogsResponse listPlatformLogs(StackoneListPlatformLogsRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<StackoneListPlatformLogsRequest, StackoneListPlatformLogsResponse> operation
+              = new StackoneListPlatformLogsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

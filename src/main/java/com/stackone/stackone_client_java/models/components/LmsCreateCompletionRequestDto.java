@@ -14,6 +14,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -38,7 +39,7 @@ public class LmsCreateCompletionRequestDto {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("completed_at")
-    private JsonNullable<String> completedAt;
+    private JsonNullable<OffsetDateTime> completedAt;
 
     /**
      * The id of the learning object associated with this completion. This is not required unless specified in an integration.
@@ -85,7 +86,7 @@ public class LmsCreateCompletionRequestDto {
     public LmsCreateCompletionRequestDto(
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough,
             @JsonProperty("result") JsonNullable<? extends LmsCreateCompletionRequestDtoResult> result,
-            @JsonProperty("completed_at") JsonNullable<String> completedAt,
+            @JsonProperty("completed_at") JsonNullable<OffsetDateTime> completedAt,
             @JsonProperty("learning_object_id") JsonNullable<String> learningObjectId,
             @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
             @JsonProperty("time_spent") JsonNullable<String> timeSpent,
@@ -137,7 +138,7 @@ public class LmsCreateCompletionRequestDto {
      * The date the content was completed
      */
     @JsonIgnore
-    public JsonNullable<String> completedAt() {
+    public JsonNullable<OffsetDateTime> completedAt() {
         return completedAt;
     }
 
@@ -231,7 +232,7 @@ public class LmsCreateCompletionRequestDto {
     /**
      * The date the content was completed
      */
-    public LmsCreateCompletionRequestDto withCompletedAt(String completedAt) {
+    public LmsCreateCompletionRequestDto withCompletedAt(OffsetDateTime completedAt) {
         Utils.checkNotNull(completedAt, "completedAt");
         this.completedAt = JsonNullable.of(completedAt);
         return this;
@@ -240,7 +241,7 @@ public class LmsCreateCompletionRequestDto {
     /**
      * The date the content was completed
      */
-    public LmsCreateCompletionRequestDto withCompletedAt(JsonNullable<String> completedAt) {
+    public LmsCreateCompletionRequestDto withCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         Utils.checkNotNull(completedAt, "completedAt");
         this.completedAt = completedAt;
         return this;
@@ -396,7 +397,7 @@ public class LmsCreateCompletionRequestDto {
 
         private JsonNullable<? extends LmsCreateCompletionRequestDtoResult> result = JsonNullable.undefined();
 
-        private JsonNullable<String> completedAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> completedAt = JsonNullable.undefined();
 
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
 
@@ -456,7 +457,7 @@ public class LmsCreateCompletionRequestDto {
         /**
          * The date the content was completed
          */
-        public Builder completedAt(String completedAt) {
+        public Builder completedAt(OffsetDateTime completedAt) {
             Utils.checkNotNull(completedAt, "completedAt");
             this.completedAt = JsonNullable.of(completedAt);
             return this;
@@ -465,7 +466,7 @@ public class LmsCreateCompletionRequestDto {
         /**
          * The date the content was completed
          */
-        public Builder completedAt(JsonNullable<String> completedAt) {
+        public Builder completedAt(JsonNullable<OffsetDateTime> completedAt) {
             Utils.checkNotNull(completedAt, "completedAt");
             this.completedAt = completedAt;
             return this;

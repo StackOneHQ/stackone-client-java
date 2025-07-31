@@ -10,9 +10,9 @@
 * [listEmployeeCustomFieldDefinitions](#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 * [getEmployeeCustomFieldDefinition](#getemployeecustomfielddefinition) - Get employee Custom Field Definition
 * [listEmployees](#listemployees) - List Employees
-* [createEmployee](#createemployee) - Creates an employee
+* [createEmployee](#createemployee) - Create Employee
 * [getEmployee](#getemployee) - Get Employee
-* [updateEmployee](#updateemployee) - Updates an employee
+* [updateEmployee](#updateemployee) - Update Employee
 * [inviteEmployee](#inviteemployee) - Invite Employee
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
@@ -83,6 +83,7 @@ List Companies
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_companies" method="get" path="/unified/hris/companies" -->
 ```java
 package hello.world;
 
@@ -91,6 +92,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -107,7 +109,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
                 .filter(HrisListCompaniesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -156,6 +158,7 @@ Get Company
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_company" method="get" path="/unified/hris/companies/{id}" -->
 ```java
 package hello.world;
 
@@ -228,6 +231,7 @@ List employee Custom Field Definitions
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_custom_field_definitions" method="get" path="/unified/hris/custom_field_definitions/employees" -->
 ```java
 package hello.world;
 
@@ -236,6 +240,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -252,7 +257,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,description,type,options")
                 .filter(HrisListEmployeeCustomFieldDefinitionsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -301,6 +306,7 @@ Get employee Custom Field Definition
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employee_custom_field_definition" method="get" path="/unified/hris/custom_field_definitions/employees/{id}" -->
 ```java
 package hello.world;
 
@@ -309,6 +315,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -326,7 +333,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,description,type,options")
                 .filter(HrisGetEmployeeCustomFieldDefinitionQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -375,6 +382,7 @@ List Employees
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employees" method="get" path="/unified/hris/employees" -->
 ```java
 package hello.world;
 
@@ -383,6 +391,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -399,7 +408,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills")
                 .filter(HrisListEmployeesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
@@ -446,10 +455,11 @@ public class Application {
 
 ## createEmployee
 
-Creates an employee
+Create Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_create_employee" method="post" path="/unified/hris/employees" -->
 ```java
 package hello.world;
 
@@ -614,6 +624,7 @@ Get Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employee" method="get" path="/unified/hris/employees/{id}" -->
 ```java
 package hello.world;
 
@@ -684,10 +695,11 @@ public class Application {
 
 ## updateEmployee
 
-Updates an employee
+Update Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_update_employee" method="patch" path="/unified/hris/employees/{id}" -->
 ```java
 package hello.world;
 
@@ -855,6 +867,7 @@ Invite Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_invite_employee" method="post" path="/unified/hris/employees/{id}/invite" -->
 ```java
 package hello.world;
 
@@ -929,6 +942,7 @@ List Employee Time Off Requests
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_time_off_requests" method="get" path="/unified/hris/employees/{id}/time_off" -->
 ```java
 package hello.world;
 
@@ -937,6 +951,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -954,7 +969,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy")
                 .filter(HrisListEmployeeTimeOffRequestsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("policy")
                 .build();
@@ -1004,6 +1019,7 @@ Create Employee Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_create_employee_time_off_request" method="post" path="/unified/hris/employees/{id}/time_off" -->
 ```java
 package hello.world;
 
@@ -1088,6 +1104,7 @@ Get Employees Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employees_time_off_request" method="get" path="/unified/hris/employees/{id}/time_off/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1162,6 +1179,7 @@ Cancel Employee Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_cancel_employee_time_off_request" method="delete" path="/unified/hris/employees/{id}/time_off/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1231,6 +1249,7 @@ Update Employee Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_update_employee_time_off_request" method="patch" path="/unified/hris/employees/{id}/time_off/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1317,6 +1336,7 @@ Batch Upload Employee Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_batch_upload_employee_document" method="post" path="/unified/hris/employees/{id}/documents/upload/batch" -->
 ```java
 package hello.world;
 
@@ -1405,6 +1425,7 @@ Upload Employee Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_upload_employee_document" method="post" path="/unified/hris/employees/{id}/documents/upload" -->
 ```java
 package hello.world;
 
@@ -1489,6 +1510,7 @@ Download Employee Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_download_employee_document" method="get" path="/unified/hris/employees/{id}/documents/{subResourceId}/download" -->
 ```java
 package hello.world;
 
@@ -1563,6 +1585,7 @@ List Employee Documents
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_documents" method="get" path="/unified/hris/employees/{id}/documents" -->
 ```java
 package hello.world;
 
@@ -1571,6 +1594,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1588,7 +1612,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .filter(HrisListEmployeeDocumentsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1637,6 +1661,7 @@ Get Employee Document
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employee_document" method="get" path="/unified/hris/employees/{id}/documents/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -1710,6 +1735,7 @@ List Employee Document Categories
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_categories" method="get" path="/unified/hris/documents/employee_categories" -->
 ```java
 package hello.world;
 
@@ -1718,6 +1744,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1734,7 +1761,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,active")
                 .filter(HrisListEmployeeCategoriesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1783,6 +1810,7 @@ Get Employee Document Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employee_document_category" method="get" path="/unified/hris/documents/employee_categories/{id}" -->
 ```java
 package hello.world;
 
@@ -1855,6 +1883,7 @@ List Employee Work Eligibility
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_work_eligibility" method="get" path="/unified/hris/employees/{id}/work_eligibility" -->
 ```java
 package hello.world;
 
@@ -1863,6 +1892,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1880,7 +1910,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number")
                 .filter(HrisListEmployeeWorkEligibilityQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1929,6 +1959,7 @@ Create Employee Work Eligibility Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_create_employee_work_eligibility_request" method="post" path="/unified/hris/employees/{id}/work_eligibility" -->
 ```java
 package hello.world;
 
@@ -2026,6 +2057,7 @@ Get Employees Work Eligibility
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employees_work_eligibility" method="get" path="/unified/hris/employees/{id}/work_eligibility/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -2099,6 +2131,7 @@ Update Employee Work Eligibility Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_update_employee_work_eligibility_request" method="patch" path="/unified/hris/employees/{id}/work_eligibility/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -2198,6 +2231,7 @@ List Employee Time Off Balances
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_time_off_balances" method="get" path="/unified/hris/employees/{id}/time_off_balances" -->
 ```java
 package hello.world;
 
@@ -2206,6 +2240,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2223,7 +2258,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,updated_at")
                 .filter(HrisListEmployeeTimeOffBalancesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("policy")
                 .build();
@@ -2273,6 +2308,7 @@ Get Employee Time Off Balance
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employee_time_off_balance" method="get" path="/unified/hris/employees/{id}/time_off_balances/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -2347,6 +2383,7 @@ List Employments
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employments" method="get" path="/unified/hris/employments" -->
 ```java
 package hello.world;
 
@@ -2355,6 +2392,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2371,7 +2409,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .filter(HrisListEmploymentsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("groups")
                 .build();
@@ -2421,6 +2459,7 @@ Get Employment
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employment" method="get" path="/unified/hris/employments/{id}" -->
 ```java
 package hello.world;
 
@@ -2494,6 +2533,7 @@ List Employee Employments
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_employments" method="get" path="/unified/hris/employees/{id}/employments" -->
 ```java
 package hello.world;
 
@@ -2502,6 +2542,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2519,7 +2560,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
                 .filter(HrisListEmployeeEmploymentsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("groups")
                 .build();
@@ -2569,6 +2610,7 @@ Create Employee Employment
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_create_employee_employment" method="post" path="/unified/hris/employees/{id}/employments" -->
 ```java
 package hello.world;
 
@@ -2673,6 +2715,7 @@ Get Employee Employment
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employee_employment" method="get" path="/unified/hris/employees/{id}/employments/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -2747,6 +2790,7 @@ Update Employee Employment
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_update_employee_employment" method="patch" path="/unified/hris/employees/{id}/employments/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -2852,6 +2896,7 @@ List Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_groups" method="get" path="/unified/hris/groups" -->
 ```java
 package hello.world;
 
@@ -2860,6 +2905,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2876,7 +2922,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListGroupsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2925,6 +2971,7 @@ List Department Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_department_groups" method="get" path="/unified/hris/groups/departments" -->
 ```java
 package hello.world;
 
@@ -2933,6 +2980,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -2949,7 +2997,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListDepartmentGroupsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -2998,6 +3046,7 @@ List Cost Center Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_cost_center_groups" method="get" path="/unified/hris/groups/cost_centers" -->
 ```java
 package hello.world;
 
@@ -3006,6 +3055,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3022,7 +3072,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListCostCenterGroupsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3071,6 +3121,7 @@ List Team Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_team_groups" method="get" path="/unified/hris/groups/teams" -->
 ```java
 package hello.world;
 
@@ -3079,6 +3130,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3095,7 +3147,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids")
                 .filter(HrisListTeamGroupsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3144,6 +3196,7 @@ List Division Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_division_groups" method="get" path="/unified/hris/groups/divisions" -->
 ```java
 package hello.world;
 
@@ -3152,6 +3205,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3168,7 +3222,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListDivisionGroupsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3217,6 +3271,7 @@ List Companies Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_companies_groups" method="get" path="/unified/hris/groups/companies" -->
 ```java
 package hello.world;
 
@@ -3225,6 +3280,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3241,7 +3297,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
                 .filter(HrisListCompaniesGroupsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3290,6 +3346,7 @@ Get Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_group" method="get" path="/unified/hris/groups/{id}" -->
 ```java
 package hello.world;
 
@@ -3362,6 +3419,7 @@ Get Department Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_department_group" method="get" path="/unified/hris/groups/departments/{id}" -->
 ```java
 package hello.world;
 
@@ -3434,6 +3492,7 @@ Get Cost Center Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_cost_center_group" method="get" path="/unified/hris/groups/cost_centers/{id}" -->
 ```java
 package hello.world;
 
@@ -3506,6 +3565,7 @@ Get Team Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_team_group" method="get" path="/unified/hris/groups/teams/{id}" -->
 ```java
 package hello.world;
 
@@ -3578,6 +3638,7 @@ Get Division Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_division_group" method="get" path="/unified/hris/groups/divisions/{id}" -->
 ```java
 package hello.world;
 
@@ -3650,6 +3711,7 @@ Get Company Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_company_group" method="get" path="/unified/hris/groups/companies/{id}" -->
 ```java
 package hello.world;
 
@@ -3722,6 +3784,7 @@ List Jobs
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_jobs" method="get" path="/unified/hris/jobs" -->
 ```java
 package hello.world;
 
@@ -3730,6 +3793,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3746,7 +3810,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
                 .filter(HrisListJobsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3795,6 +3859,7 @@ Get Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_job" method="get" path="/unified/hris/jobs/{id}" -->
 ```java
 package hello.world;
 
@@ -3867,6 +3932,7 @@ List Work Locations
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_locations" method="get" path="/unified/hris/locations" -->
 ```java
 package hello.world;
 
@@ -3875,6 +3941,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -3891,7 +3958,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at")
                 .filter(HrisListLocationsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -3940,6 +4007,7 @@ Get Work Location
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_location" method="get" path="/unified/hris/locations/{id}" -->
 ```java
 package hello.world;
 
@@ -4012,6 +4080,7 @@ List Positions
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_positions" method="get" path="/unified/hris/positions" -->
 ```java
 package hello.world;
 
@@ -4020,6 +4089,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4035,7 +4105,7 @@ public class Application {
         HrisListPositionsRequest req = HrisListPositionsRequest.builder()
                 .xAccountId("<id>")
                 .filter(HrisListPositionsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .status(Status.OPEN)
                 .build();
@@ -4085,6 +4155,7 @@ Get Position
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_position" method="get" path="/unified/hris/positions/{id}" -->
 ```java
 package hello.world;
 
@@ -4156,6 +4227,7 @@ List Time Entries
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_time_entries" method="get" path="/unified/hris/time_entries" -->
 ```java
 package hello.world;
 
@@ -4164,6 +4236,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4180,7 +4253,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at")
                 .filter(HrisListTimeEntriesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .startTime("2020-01-01T00:00:00.000Z")
                     .endTime("2020-01-01T00:00:00.000Z")
                     .build())
@@ -4231,6 +4304,7 @@ Get Time Entry
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_time_entries" method="get" path="/unified/hris/time_entries/{id}" -->
 ```java
 package hello.world;
 
@@ -4303,6 +4377,7 @@ List time off requests
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_time_off_requests" method="get" path="/unified/hris/time_off" -->
 ```java
 package hello.world;
 
@@ -4377,6 +4452,7 @@ Get time off request
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_time_off_request" method="get" path="/unified/hris/time_off/{id}" -->
 ```java
 package hello.world;
 
@@ -4450,6 +4526,7 @@ List Shifts
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_shifts" method="get" path="/unified/hris/shifts" -->
 ```java
 package hello.world;
 
@@ -4458,6 +4535,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4473,7 +4551,7 @@ public class Application {
         HrisListShiftsRequest req = HrisListShiftsRequest.builder()
                 .xAccountId("<id>")
                 .filter(HrisListShiftsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -4522,6 +4600,7 @@ Get Shift
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_shift" method="get" path="/unified/hris/shifts/{id}" -->
 ```java
 package hello.world;
 
@@ -4595,6 +4674,7 @@ List time off types
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_time_off_types" method="get" path="/unified/hris/time_off_types" -->
 ```java
 package hello.world;
 
@@ -4603,6 +4683,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4619,7 +4700,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,active")
                 .filter(HrisListTimeOffTypesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -4670,6 +4751,7 @@ Get time off type
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_time_off_type" method="get" path="/unified/hris/time_off_types/{id}" -->
 ```java
 package hello.world;
 
@@ -4742,6 +4824,7 @@ List Time Off Policies
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_time_off_policies" method="get" path="/unified/hris/time_off_policies" -->
 ```java
 package hello.world;
 
@@ -4750,6 +4833,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4766,7 +4850,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
                 .filter(HrisListTimeOffPoliciesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -4815,6 +4899,7 @@ Get Time Off Policy
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_time_off_policy" method="get" path="/unified/hris/time_off_policies/{id}" -->
 ```java
 package hello.world;
 
@@ -4887,6 +4972,7 @@ List Assigned Time Off Policies
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_time_off_policies" method="get" path="/unified/hris/employees/{id}/time_off_policies" -->
 ```java
 package hello.world;
 
@@ -4895,6 +4981,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4912,7 +4999,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at")
                 .filter(HrisListEmployeeTimeOffPoliciesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -4961,6 +5048,7 @@ List benefits
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_benefits" method="get" path="/unified/hris/benefits" -->
 ```java
 package hello.world;
 
@@ -4969,6 +5057,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -4985,7 +5074,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at")
                 .filter(HrisListBenefitsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -5034,6 +5123,7 @@ Get Benefit
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_benefit" method="get" path="/unified/hris/benefits/{id}" -->
 ```java
 package hello.world;
 
@@ -5106,6 +5196,7 @@ List Employee Skills
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_skills" method="get" path="/unified/hris/employees/{id}/skills" -->
 ```java
 package hello.world;
 
@@ -5114,6 +5205,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -5131,7 +5223,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency")
                 .filter(HrisListEmployeeSkillsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -5180,6 +5272,7 @@ Create Employee Skill
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_create_employee_skill" method="post" path="/unified/hris/employees/{id}/skills" -->
 ```java
 package hello.world;
 
@@ -5259,6 +5352,7 @@ Get Employee Skill
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employee_skill" method="get" path="/unified/hris/employees/{id}/skills/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -5332,6 +5426,7 @@ List Employee Tasks
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_employee_tasks" method="get" path="/unified/hris/employees/{id}/tasks" -->
 ```java
 package hello.world;
 
@@ -5340,6 +5435,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -5357,7 +5453,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at")
                 .filter(HrisListEmployeeTasksQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("attachments")
                 .build();
@@ -5407,6 +5503,7 @@ Get Employee Task
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_employee_task" method="get" path="/unified/hris/employees/{id}/tasks/{subResourceId}" -->
 ```java
 package hello.world;
 
@@ -5481,6 +5578,7 @@ List Tasks
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_list_tasks" method="get" path="/unified/hris/tasks" -->
 ```java
 package hello.world;
 
@@ -5489,6 +5587,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -5505,7 +5604,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at")
                 .filter(HrisListTasksQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("attachments")
                 .build();
@@ -5555,6 +5654,7 @@ Get Task
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="hris_get_task" method="get" path="/unified/hris/tasks/{id}" -->
 ```java
 package hello.world;
 

@@ -7,15 +7,16 @@ Retrieve metadata for connectors.
 
 ### Available Operations
 
-* [listConnectorsMeta](#listconnectorsmeta) - List Connectors Meta Information for all providers
-* [getConnectorMeta](#getconnectormeta) - Get Connector Meta information for the given provider key
+* [listConnectorsMeta](#listconnectorsmeta) - List Connector Meta Information
+* [getConnectorMeta](#getconnectormeta) - Get Connector Meta Information
 
 ## listConnectorsMeta
 
-List Connectors Meta Information for all providers
+List Connector Meta Information
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_list_connectors_meta" method="get" path="/connectors/meta" -->
 ```java
 package hello.world;
 
@@ -76,10 +77,11 @@ public class Application {
 
 ## getConnectorMeta
 
-Get Connector Meta information for the given provider key
+Get Connector Meta Information
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="stackone_get_connector_meta" method="get" path="/connectors/meta/{provider}" -->
 ```java
 package hello.world;
 

@@ -437,7 +437,7 @@ public class Ats {
     }
 
     /**
-     * Update an Application
+     * Update Application
      * 
      * @return The call builder
      */
@@ -446,7 +446,7 @@ public class Ats {
     }
 
     /**
-     * Update an Application
+     * Update Application
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -462,7 +462,7 @@ public class Ats {
     }
 
     /**
-     * Update an Application
+     * Update Application
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -875,7 +875,7 @@ public class Ats {
     }
 
     /**
-     * Update an Application Note
+     * Update Application Note
      * 
      * @return The call builder
      */
@@ -884,7 +884,7 @@ public class Ats {
     }
 
     /**
-     * Update an Application Note
+     * Update Application Note
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -901,7 +901,7 @@ public class Ats {
     }
 
     /**
-     * Update an Application Note
+     * Update Application Note
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -2373,7 +2373,7 @@ public class Ats {
     }
 
     /**
-     * Creates an offer
+     * Create Offer
      * 
      * @return The call builder
      */
@@ -2382,7 +2382,7 @@ public class Ats {
     }
 
     /**
-     * Creates an offer
+     * Create Offer
      * 
      * @param xAccountId The account identifier
      * @param atsCreateOfferRequestDto 
@@ -2394,7 +2394,7 @@ public class Ats {
     }
 
     /**
-     * Creates an offer
+     * Create Offer
      * 
      * @param xAccountId The account identifier
      * @param atsCreateOfferRequestDto 

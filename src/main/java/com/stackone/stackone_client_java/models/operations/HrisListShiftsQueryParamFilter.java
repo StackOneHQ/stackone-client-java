@@ -23,7 +23,7 @@ public class HrisListShiftsQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @SpeakeasyMetadata("queryParam:name=updated_after")
-    private JsonNullable<String> updatedAfter;
+    private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
      * Filter to select shifts by employee ID
@@ -51,7 +51,7 @@ public class HrisListShiftsQueryParamFilter {
 
     @JsonCreator
     public HrisListShiftsQueryParamFilter(
-            JsonNullable<String> updatedAfter,
+            JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<String> employeeId,
             JsonNullable<? extends QueryParamStatus> status,
             JsonNullable<OffsetDateTime> startsAfter,
@@ -77,7 +77,7 @@ public class HrisListShiftsQueryParamFilter {
      * Use a string with a date to only select results updated after that given date
      */
     @JsonIgnore
-    public JsonNullable<String> updatedAfter() {
+    public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
     }
 
@@ -122,7 +122,7 @@ public class HrisListShiftsQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public HrisListShiftsQueryParamFilter withUpdatedAfter(String updatedAfter) {
+    public HrisListShiftsQueryParamFilter withUpdatedAfter(OffsetDateTime updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = JsonNullable.of(updatedAfter);
         return this;
@@ -131,7 +131,7 @@ public class HrisListShiftsQueryParamFilter {
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    public HrisListShiftsQueryParamFilter withUpdatedAfter(JsonNullable<String> updatedAfter) {
+    public HrisListShiftsQueryParamFilter withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
         return this;
@@ -246,7 +246,7 @@ public class HrisListShiftsQueryParamFilter {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<String> updatedAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<String> employeeId = JsonNullable.undefined();
 
@@ -264,7 +264,7 @@ public class HrisListShiftsQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(String updatedAfter) {
+        public Builder updatedAfter(OffsetDateTime updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = JsonNullable.of(updatedAfter);
             return this;
@@ -273,7 +273,7 @@ public class HrisListShiftsQueryParamFilter {
         /**
          * Use a string with a date to only select results updated after that given date
          */
-        public Builder updatedAfter(JsonNullable<String> updatedAfter) {
+        public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
             return this;

@@ -14,6 +14,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -62,21 +63,21 @@ public class Completion {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("completed_at")
-    private JsonNullable<String> completedAt;
+    private JsonNullable<OffsetDateTime> completedAt;
 
     /**
      * The created date of the completion
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
-    private JsonNullable<String> createdAt;
+    private JsonNullable<OffsetDateTime> createdAt;
 
     /**
      * The updated date of the completion
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
-    private JsonNullable<String> updatedAt;
+    private JsonNullable<OffsetDateTime> updatedAt;
 
     /**
      * The learning object type of the completion
@@ -204,9 +205,9 @@ public class Completion {
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
             @JsonProperty("external_reference") JsonNullable<String> externalReference,
             @JsonProperty("result") JsonNullable<? extends CompletionResult1> result,
-            @JsonProperty("completed_at") JsonNullable<String> completedAt,
-            @JsonProperty("created_at") JsonNullable<String> createdAt,
-            @JsonProperty("updated_at") JsonNullable<String> updatedAt,
+            @JsonProperty("completed_at") JsonNullable<OffsetDateTime> completedAt,
+            @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
+            @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
             @JsonProperty("learning_object_type") JsonNullable<? extends CompletionLearningObjectType> learningObjectType,
             @JsonProperty("learning_object_id") JsonNullable<String> learningObjectId,
             @JsonProperty("remote_learning_object_id") JsonNullable<String> remoteLearningObjectId,
@@ -327,7 +328,7 @@ public class Completion {
      * The date the content was completed
      */
     @JsonIgnore
-    public JsonNullable<String> completedAt() {
+    public JsonNullable<OffsetDateTime> completedAt() {
         return completedAt;
     }
 
@@ -335,7 +336,7 @@ public class Completion {
      * The created date of the completion
      */
     @JsonIgnore
-    public JsonNullable<String> createdAt() {
+    public JsonNullable<OffsetDateTime> createdAt() {
         return createdAt;
     }
 
@@ -343,7 +344,7 @@ public class Completion {
      * The updated date of the completion
      */
     @JsonIgnore
-    public JsonNullable<String> updatedAt() {
+    public JsonNullable<OffsetDateTime> updatedAt() {
         return updatedAt;
     }
 
@@ -585,7 +586,7 @@ public class Completion {
     /**
      * The date the content was completed
      */
-    public Completion withCompletedAt(String completedAt) {
+    public Completion withCompletedAt(OffsetDateTime completedAt) {
         Utils.checkNotNull(completedAt, "completedAt");
         this.completedAt = JsonNullable.of(completedAt);
         return this;
@@ -594,7 +595,7 @@ public class Completion {
     /**
      * The date the content was completed
      */
-    public Completion withCompletedAt(JsonNullable<String> completedAt) {
+    public Completion withCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         Utils.checkNotNull(completedAt, "completedAt");
         this.completedAt = completedAt;
         return this;
@@ -603,7 +604,7 @@ public class Completion {
     /**
      * The created date of the completion
      */
-    public Completion withCreatedAt(String createdAt) {
+    public Completion withCreatedAt(OffsetDateTime createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = JsonNullable.of(createdAt);
         return this;
@@ -612,7 +613,7 @@ public class Completion {
     /**
      * The created date of the completion
      */
-    public Completion withCreatedAt(JsonNullable<String> createdAt) {
+    public Completion withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = createdAt;
         return this;
@@ -621,7 +622,7 @@ public class Completion {
     /**
      * The updated date of the completion
      */
-    public Completion withUpdatedAt(String updatedAt) {
+    public Completion withUpdatedAt(OffsetDateTime updatedAt) {
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.updatedAt = JsonNullable.of(updatedAt);
         return this;
@@ -630,7 +631,7 @@ public class Completion {
     /**
      * The updated date of the completion
      */
-    public Completion withUpdatedAt(JsonNullable<String> updatedAt) {
+    public Completion withUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.updatedAt = updatedAt;
         return this;
@@ -1018,11 +1019,11 @@ public class Completion {
 
         private JsonNullable<? extends CompletionResult1> result = JsonNullable.undefined();
 
-        private JsonNullable<String> completedAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> completedAt = JsonNullable.undefined();
 
-        private JsonNullable<String> createdAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
 
-        private JsonNullable<String> updatedAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
 
         private JsonNullable<? extends CompletionLearningObjectType> learningObjectType = JsonNullable.undefined();
 
@@ -1168,7 +1169,7 @@ public class Completion {
         /**
          * The date the content was completed
          */
-        public Builder completedAt(String completedAt) {
+        public Builder completedAt(OffsetDateTime completedAt) {
             Utils.checkNotNull(completedAt, "completedAt");
             this.completedAt = JsonNullable.of(completedAt);
             return this;
@@ -1177,7 +1178,7 @@ public class Completion {
         /**
          * The date the content was completed
          */
-        public Builder completedAt(JsonNullable<String> completedAt) {
+        public Builder completedAt(JsonNullable<OffsetDateTime> completedAt) {
             Utils.checkNotNull(completedAt, "completedAt");
             this.completedAt = completedAt;
             return this;
@@ -1187,7 +1188,7 @@ public class Completion {
         /**
          * The created date of the completion
          */
-        public Builder createdAt(String createdAt) {
+        public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = JsonNullable.of(createdAt);
             return this;
@@ -1196,7 +1197,7 @@ public class Completion {
         /**
          * The created date of the completion
          */
-        public Builder createdAt(JsonNullable<String> createdAt) {
+        public Builder createdAt(JsonNullable<OffsetDateTime> createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;
@@ -1206,7 +1207,7 @@ public class Completion {
         /**
          * The updated date of the completion
          */
-        public Builder updatedAt(String updatedAt) {
+        public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = JsonNullable.of(updatedAt);
             return this;
@@ -1215,7 +1216,7 @@ public class Completion {
         /**
          * The updated date of the completion
          */
-        public Builder updatedAt(JsonNullable<String> updatedAt) {
+        public Builder updatedAt(JsonNullable<OffsetDateTime> updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
             this.updatedAt = updatedAt;
             return this;

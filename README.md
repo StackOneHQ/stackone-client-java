@@ -44,7 +44,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.8.1'
+implementation 'com.stackone:stackone-client-java:0.9.0'
 ```
 
 Maven:
@@ -52,7 +52,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.8.1</version>
+    <version>0.9.0</version>
 </dependency>
 ```
 
@@ -84,6 +84,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -100,7 +101,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills")
                 .filter(HrisListEmployeesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
@@ -130,14 +131,14 @@ public class Application {
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 * [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
-* [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
+* [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
 
 ### [ats()](docs/sdks/ats/README.md)
 
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
-* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
+* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update Application
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
 * [moveApplication](docs/sdks/ats/README.md#moveapplication) - Move Application
 * [rejectApplication](docs/sdks/ats/README.md#rejectapplication) - Reject Application
@@ -148,7 +149,7 @@ public class Application {
 * [listApplicationNotes](docs/sdks/ats/README.md#listapplicationnotes) - List Application Notes
 * [createApplicationNote](docs/sdks/ats/README.md#createapplicationnote) - Create Application Note
 * [getApplicationNote](docs/sdks/ats/README.md#getapplicationnote) - Get Application Note
-* [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update an Application Note
+* [updateApplicationNote](docs/sdks/ats/README.md#updateapplicationnote) - Update Application Note
 * [listApplicationsScheduledInterviews](docs/sdks/ats/README.md#listapplicationsscheduledinterviews) - List Applications scheduled interviews
 * [getApplicationScheduledInterview](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
 * [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
@@ -189,7 +190,7 @@ public class Application {
 * [listJobPostings](docs/sdks/ats/README.md#listjobpostings) - List Job Postings
 * [getJobPosting](docs/sdks/ats/README.md#getjobposting) - Get Job Posting
 * [listOffers](docs/sdks/ats/README.md#listoffers) - List Offers
-* [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
+* [createOffer](docs/sdks/ats/README.md#createoffer) - Create Offer
 * [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
 * [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
 * [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
@@ -209,8 +210,8 @@ public class Application {
 
 ### [connectors()](docs/sdks/connectors/README.md)
 
-* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connectors Meta Information for all providers
-* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta information for the given provider key
+* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connector Meta Information
+* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta Information
 
 ### [connectSessions()](docs/sdks/connectsessions/README.md)
 
@@ -220,7 +221,7 @@ public class Application {
 ### [crm()](docs/sdks/crm/README.md)
 
 * [listContacts](docs/sdks/crm/README.md#listcontacts) - List Contacts
-* [createContact](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
+* [createContact](docs/sdks/crm/README.md#createcontact) - Create Contact
 * [getContact](docs/sdks/crm/README.md#getcontact) - Get Contact
 * [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
 * [listAccounts](docs/sdks/crm/README.md#listaccounts) - List Accounts
@@ -237,9 +238,9 @@ public class Application {
 * [listEmployeeCustomFieldDefinitions](docs/sdks/hris/README.md#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 * [getEmployeeCustomFieldDefinition](docs/sdks/hris/README.md#getemployeecustomfielddefinition) - Get employee Custom Field Definition
 * [listEmployees](docs/sdks/hris/README.md#listemployees) - List Employees
-* [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
+* [createEmployee](docs/sdks/hris/README.md#createemployee) - Create Employee
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
-* [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
+* [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Update Employee
 * [inviteEmployee](docs/sdks/hris/README.md#inviteemployee) - Invite Employee
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
@@ -380,8 +381,9 @@ public class Application {
 ### [requestLogs()](docs/sdks/requestlogs/README.md)
 
 * [listStepLogs](docs/sdks/requestlogs/README.md#liststeplogs) - List Step Logs
-* [getLog](docs/sdks/requestlogs/README.md#getlog) - Get a Log
+* [getLog](docs/sdks/requestlogs/README.md#getlog) - Get Log
 * [listLogs](docs/sdks/requestlogs/README.md#listlogs) - List Logs
+* [listPlatformLogs](docs/sdks/requestlogs/README.md#listplatformlogs) - List Platform Logs
 
 
 </details>
@@ -405,6 +407,7 @@ import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 import java.lang.Iterable;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -421,7 +424,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
                 .filter(HrisListCompaniesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 

@@ -36,16 +36,16 @@ public class HrisCreateTimeOffRequestDtoStartHalfDay {
         return new HrisCreateTimeOffRequestDtoStartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
     }
 
-    public static HrisCreateTimeOffRequestDtoStartHalfDay of(StartHalfDay2 value) {
+    public static HrisCreateTimeOffRequestDtoStartHalfDay of(HrisCreateTimeOffRequestDtoStartHalfDay2 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateTimeOffRequestDtoStartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<StartHalfDay2>(){}));
+        return new HrisCreateTimeOffRequestDtoStartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisCreateTimeOffRequestDtoStartHalfDay2>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code boolean}</li>
-     * <li>{@code com.stackone.stackone_client_java.models.components.StartHalfDay2}</li>
+     * <li>{@code com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDtoStartHalfDay2}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -85,7 +85,7 @@ public class HrisCreateTimeOffRequestDtoStartHalfDay {
 
         public _Deserializer() {
             super(HrisCreateTimeOffRequestDtoStartHalfDay.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<StartHalfDay2>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<HrisCreateTimeOffRequestDtoStartHalfDay2>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
         }
     }

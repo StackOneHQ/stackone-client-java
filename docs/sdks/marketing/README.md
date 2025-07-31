@@ -38,6 +38,7 @@ List Email Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_list_email_templates" method="get" path="/unified/marketing/templates/email" -->
 ```java
 package hello.world;
 
@@ -46,6 +47,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -62,7 +64,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .filter(MarketingListEmailTemplatesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -111,6 +113,7 @@ Create Email Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_create_email_template" method="post" path="/unified/marketing/templates/email" -->
 ```java
 package hello.world;
 
@@ -190,6 +193,7 @@ Get Email Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_get_email_template" method="get" path="/unified/marketing/templates/email/{id}" -->
 ```java
 package hello.world;
 
@@ -262,6 +266,7 @@ Update Email Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_update_email_template" method="patch" path="/unified/marketing/templates/email/{id}" -->
 ```java
 package hello.world;
 
@@ -345,6 +350,7 @@ List In-App Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_list_in_app_templates" method="get" path="/unified/marketing/templates/in_app" -->
 ```java
 package hello.world;
 
@@ -418,6 +424,7 @@ Create In-App Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_create_in_app_template" method="post" path="/unified/marketing/templates/in_app" -->
 ```java
 package hello.world;
 
@@ -499,6 +506,7 @@ Get In-App Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_get_in_app_template" method="get" path="/unified/marketing/templates/in_app/{id}" -->
 ```java
 package hello.world;
 
@@ -571,6 +579,7 @@ Update In-App Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_update_in_app_template" method="patch" path="/unified/marketing/templates/in_app/{id}" -->
 ```java
 package hello.world;
 
@@ -654,6 +663,7 @@ List SMS Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_list_sms_templates" method="get" path="/unified/marketing/templates/sms" -->
 ```java
 package hello.world;
 
@@ -662,6 +672,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -678,7 +689,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .filter(MarketingListSmsTemplatesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -727,6 +738,7 @@ Create SMS Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_create_sms_template" method="post" path="/unified/marketing/templates/sms" -->
 ```java
 package hello.world;
 
@@ -808,6 +820,7 @@ Get SMS Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_get_sms_template" method="get" path="/unified/marketing/templates/sms/{id}" -->
 ```java
 package hello.world;
 
@@ -880,6 +893,7 @@ Update SMS Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_update_sms_template" method="patch" path="/unified/marketing/templates/sms/{id}" -->
 ```java
 package hello.world;
 
@@ -965,6 +979,7 @@ List Omni-Channel Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_list_omni_channel_templates" method="get" path="/unified/marketing/templates/omni_channel" -->
 ```java
 package hello.world;
 
@@ -973,6 +988,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -989,7 +1005,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .filter(MarketingListOmniChannelTemplatesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1040,6 +1056,7 @@ Create Omni-Channel Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_create_omni_channel_template" method="post" path="/unified/marketing/templates/omni_channel" -->
 ```java
 package hello.world;
 
@@ -1122,6 +1139,7 @@ Get Omni-Channel Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_get_omni_channel_template" method="get" path="/unified/marketing/templates/omni_channel/{id}" -->
 ```java
 package hello.world;
 
@@ -1196,6 +1214,7 @@ Update Omni-Channel Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_update_omni_channel_template" method="patch" path="/unified/marketing/templates/omni_channel/{id}" -->
 ```java
 package hello.world;
 
@@ -1278,6 +1297,7 @@ List Push Templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_list_push_templates" method="get" path="/unified/marketing/templates/push" -->
 ```java
 package hello.world;
 
@@ -1286,6 +1306,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1302,7 +1323,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,messages,created_at,updated_at,tags")
                 .filter(MarketingListPushTemplatesQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1351,6 +1372,7 @@ Create Push Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_create_push_template" method="post" path="/unified/marketing/templates/push" -->
 ```java
 package hello.world;
 
@@ -1432,6 +1454,7 @@ Get Push Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_get_push_template" method="get" path="/unified/marketing/templates/push/{id}" -->
 ```java
 package hello.world;
 
@@ -1504,6 +1527,7 @@ Update Push Template
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_update_push_template" method="patch" path="/unified/marketing/templates/push/{id}" -->
 ```java
 package hello.world;
 
@@ -1587,6 +1611,7 @@ List campaigns
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_list_campaigns" method="get" path="/unified/marketing/campaigns" -->
 ```java
 package hello.world;
 
@@ -1595,6 +1620,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1611,7 +1637,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages")
                 .filter(MarketingListCampaignsQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1660,6 +1686,7 @@ Get campaign
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_get_campaign" method="get" path="/unified/marketing/campaigns/{id}" -->
 ```java
 package hello.world;
 
@@ -1732,6 +1759,7 @@ List Content Blocks
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_list_content_blocks" method="get" path="/unified/marketing/content_blocks" -->
 ```java
 package hello.world;
 
@@ -1740,6 +1768,7 @@ import com.stackone.stackone_client_java.models.components.Security;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -1756,7 +1785,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,name,type,content,status,tags,created_at,updated_at")
                 .filter(MarketingListContentBlocksQueryParamFilter.builder()
-                    .updatedAfter("2020-01-01T00:00:00.000Z")
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
@@ -1805,6 +1834,7 @@ Create Content Block
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_create_content_block" method="post" path="/unified/marketing/content_blocks" -->
 ```java
 package hello.world;
 
@@ -1880,6 +1910,7 @@ Get Content Blocks
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_get_content_block" method="get" path="/unified/marketing/content_blocks/{id}" -->
 ```java
 package hello.world;
 
@@ -1952,6 +1983,7 @@ Update Content Block
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="marketing_update_content_block" method="patch" path="/unified/marketing/content_blocks/{id}" -->
 ```java
 package hello.world;
 
