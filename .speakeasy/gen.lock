@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 814a93abb272c8de5c6d8485028c49be
+  docChecksum: c041dc6df6972912b4853e5f322d6dc6
   docVersion: 1.0.0
-  speakeasyVersion: 1.592.2
-  generationVersion: 2.668.4
-  releaseVersion: 0.9.0
-  configChecksum: a9caf8a713d5b98a101c61d8af6d6549
+  speakeasyVersion: 1.596.0
+  generationVersion: 2.672.0
+  releaseVersion: 0.9.1
+  configChecksum: 6298447a857e07d062785810b5659307
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
