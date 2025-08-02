@@ -13,6 +13,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -80,7 +81,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=updated_after")
     @Deprecated
-    private JsonNullable<String> updatedAfter;
+    private JsonNullable<OffsetDateTime> updatedAfter;
 
     @JsonCreator
     public HrisGetEmployeeCustomFieldDefinitionRequest(
@@ -93,7 +94,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequest {
             JsonNullable<String> page,
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
-            JsonNullable<String> updatedAfter) {
+            JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
@@ -206,7 +207,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequest {
      */
     @Deprecated
     @JsonIgnore
-    public JsonNullable<String> updatedAfter() {
+    public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
     }
 
@@ -368,7 +369,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequest {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public HrisGetEmployeeCustomFieldDefinitionRequest withUpdatedAfter(String updatedAfter) {
+    public HrisGetEmployeeCustomFieldDefinitionRequest withUpdatedAfter(OffsetDateTime updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = JsonNullable.of(updatedAfter);
         return this;
@@ -380,7 +381,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequest {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public HrisGetEmployeeCustomFieldDefinitionRequest withUpdatedAfter(JsonNullable<String> updatedAfter) {
+    public HrisGetEmployeeCustomFieldDefinitionRequest withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
         return this;
@@ -455,7 +456,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequest {
         private JsonNullable<String> next = JsonNullable.undefined();
 
         @Deprecated
-        private JsonNullable<String> updatedAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -624,7 +625,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequest {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder updatedAfter(String updatedAfter) {
+        public Builder updatedAfter(OffsetDateTime updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = JsonNullable.of(updatedAfter);
             return this;
@@ -636,7 +637,7 @@ public class HrisGetEmployeeCustomFieldDefinitionRequest {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder updatedAfter(JsonNullable<String> updatedAfter) {
+        public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
             return this;

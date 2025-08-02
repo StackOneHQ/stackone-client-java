@@ -13,6 +13,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -74,7 +75,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=updated_after")
     @Deprecated
-    private JsonNullable<String> updatedAfter;
+    private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
      * The account identifier
@@ -92,7 +93,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
             JsonNullable<String> page,
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
-            JsonNullable<String> updatedAfter,
+            JsonNullable<OffsetDateTime> updatedAfter,
             String xAccountId) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
@@ -198,7 +199,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
      */
     @Deprecated
     @JsonIgnore
-    public JsonNullable<String> updatedAfter() {
+    public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
     }
 
@@ -359,7 +360,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public HrisListEmployeeWorkEligibilityRequest withUpdatedAfter(String updatedAfter) {
+    public HrisListEmployeeWorkEligibilityRequest withUpdatedAfter(OffsetDateTime updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = JsonNullable.of(updatedAfter);
         return this;
@@ -371,7 +372,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public HrisListEmployeeWorkEligibilityRequest withUpdatedAfter(JsonNullable<String> updatedAfter) {
+    public HrisListEmployeeWorkEligibilityRequest withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
         return this;
@@ -453,7 +454,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
         private JsonNullable<String> next = JsonNullable.undefined();
 
         @Deprecated
-        private JsonNullable<String> updatedAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private String xAccountId;
 
@@ -614,7 +615,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder updatedAfter(String updatedAfter) {
+        public Builder updatedAfter(OffsetDateTime updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = JsonNullable.of(updatedAfter);
             return this;
@@ -626,7 +627,7 @@ public class HrisListEmployeeWorkEligibilityRequest {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder updatedAfter(JsonNullable<String> updatedAfter) {
+        public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
             return this;
