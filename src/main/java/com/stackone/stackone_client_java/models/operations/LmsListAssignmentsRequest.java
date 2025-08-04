@@ -13,6 +13,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -76,7 +77,7 @@ public class LmsListAssignmentsRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=updated_after")
     @Deprecated
-    private JsonNullable<String> updatedAfter;
+    private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
      * The user ID associated with this assignment
@@ -100,7 +101,7 @@ public class LmsListAssignmentsRequest {
             JsonNullable<String> page,
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
-            JsonNullable<String> updatedAfter,
+            JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<String> userId,
             JsonNullable<String> remoteUserId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
@@ -211,7 +212,7 @@ public class LmsListAssignmentsRequest {
      */
     @Deprecated
     @JsonIgnore
-    public JsonNullable<String> updatedAfter() {
+    public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
     }
 
@@ -383,7 +384,7 @@ public class LmsListAssignmentsRequest {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public LmsListAssignmentsRequest withUpdatedAfter(String updatedAfter) {
+    public LmsListAssignmentsRequest withUpdatedAfter(OffsetDateTime updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = JsonNullable.of(updatedAfter);
         return this;
@@ -395,7 +396,7 @@ public class LmsListAssignmentsRequest {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public LmsListAssignmentsRequest withUpdatedAfter(JsonNullable<String> updatedAfter) {
+    public LmsListAssignmentsRequest withUpdatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         this.updatedAfter = updatedAfter;
         return this;
@@ -506,7 +507,7 @@ public class LmsListAssignmentsRequest {
         private JsonNullable<String> next = JsonNullable.undefined();
 
         @Deprecated
-        private JsonNullable<String> updatedAfter = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<String> userId = JsonNullable.undefined();
 
@@ -672,7 +673,7 @@ public class LmsListAssignmentsRequest {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder updatedAfter(String updatedAfter) {
+        public Builder updatedAfter(OffsetDateTime updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = JsonNullable.of(updatedAfter);
             return this;
@@ -684,7 +685,7 @@ public class LmsListAssignmentsRequest {
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
         @Deprecated
-        public Builder updatedAfter(JsonNullable<String> updatedAfter) {
+        public Builder updatedAfter(JsonNullable<OffsetDateTime> updatedAfter) {
             Utils.checkNotNull(updatedAfter, "updatedAfter");
             this.updatedAfter = updatedAfter;
             return this;
