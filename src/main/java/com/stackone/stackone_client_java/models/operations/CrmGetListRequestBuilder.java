@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.CrmGetListOperation;
+import com.stackone.stackone_client_java.operations.CrmGetList;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -47,7 +47,7 @@ public class CrmGetListRequestBuilder {
             .build());
 
         RequestOperation<CrmGetListRequest, CrmGetListResponse> operation
-              = new CrmGetListOperation(sdkConfiguration, options);
+              = new CrmGetList.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

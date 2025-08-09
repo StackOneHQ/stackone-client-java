@@ -9,7 +9,7 @@ import static com.stackone.stackone_client_java.utils.Utils.transform;
 import static com.stackone.stackone_client_java.utils.Utils.toStream;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.HrisListBenefitsOperation;
+import com.stackone.stackone_client_java.operations.HrisListBenefits;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -58,7 +58,7 @@ public class HrisListBenefitsRequestBuilder {
             .build());
 
         RequestOperation<HrisListBenefitsRequest, HrisListBenefitsResponse> operation
-              = new HrisListBenefitsOperation(sdkConfiguration, options);
+              = new HrisListBenefits.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -82,7 +82,7 @@ public class HrisListBenefitsRequestBuilder {
             .build());
 
         RequestOperation<HrisListBenefitsRequest, HrisListBenefitsResponse> operation
-              = new HrisListBenefitsOperation(sdkConfiguration, options);
+              = new HrisListBenefits.Sync(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

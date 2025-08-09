@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.AtsGetApplicationDocumentOperation;
+import com.stackone.stackone_client_java.operations.AtsGetApplicationDocument;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -47,7 +47,7 @@ public class AtsGetApplicationDocumentRequestBuilder {
             .build());
 
         RequestOperation<AtsGetApplicationDocumentRequest, AtsGetApplicationDocumentResponse> operation
-              = new AtsGetApplicationDocumentOperation(sdkConfiguration, options);
+              = new AtsGetApplicationDocument.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

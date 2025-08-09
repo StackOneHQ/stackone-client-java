@@ -9,7 +9,7 @@ import static com.stackone.stackone_client_java.utils.Utils.transform;
 import static com.stackone.stackone_client_java.utils.Utils.toStream;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.HrisListCostCenterGroupsOperation;
+import com.stackone.stackone_client_java.operations.HrisListCostCenterGroups;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -58,7 +58,7 @@ public class HrisListCostCenterGroupsRequestBuilder {
             .build());
 
         RequestOperation<HrisListCostCenterGroupsRequest, HrisListCostCenterGroupsResponse> operation
-              = new HrisListCostCenterGroupsOperation(sdkConfiguration, options);
+              = new HrisListCostCenterGroups.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -82,7 +82,7 @@ public class HrisListCostCenterGroupsRequestBuilder {
             .build());
 
         RequestOperation<HrisListCostCenterGroupsRequest, HrisListCostCenterGroupsResponse> operation
-              = new HrisListCostCenterGroupsOperation(sdkConfiguration, options);
+              = new HrisListCostCenterGroups.Sync(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

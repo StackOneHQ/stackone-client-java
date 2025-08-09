@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateContentBlocksRequestDto;
-import com.stackone.stackone_client_java.operations.MarketingCreateContentBlockOperation;
+import com.stackone.stackone_client_java.operations.MarketingCreateContentBlock;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -65,7 +65,7 @@ public class MarketingCreateContentBlockRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreateContentBlockRequest, MarketingCreateContentBlockResponse> operation
-              = new MarketingCreateContentBlockOperation(sdkConfiguration, options);
+              = new MarketingCreateContentBlock.Sync(sdkConfiguration, options);
         MarketingCreateContentBlockRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

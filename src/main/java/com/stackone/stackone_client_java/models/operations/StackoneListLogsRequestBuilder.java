@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.StackoneListLogsOperation;
+import com.stackone.stackone_client_java.operations.StackoneListLogs;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -47,7 +47,7 @@ public class StackoneListLogsRequestBuilder {
             .build());
 
         RequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
-              = new StackoneListLogsOperation(sdkConfiguration, options);
+              = new StackoneListLogs.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

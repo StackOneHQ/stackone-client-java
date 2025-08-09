@@ -127,9 +127,12 @@ public class Application {
 
     /**
      * Provider's unique identifier of the location
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_location_id")
+    @Deprecated
     private JsonNullable<String> remoteLocationId;
 
     /**
@@ -436,7 +439,10 @@ public class Application {
 
     /**
      * Provider's unique identifier of the location
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     @JsonIgnore
     public JsonNullable<String> remoteLocationId() {
         return remoteLocationId;
@@ -810,7 +816,10 @@ public class Application {
 
     /**
      * Provider's unique identifier of the location
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public Application withRemoteLocationId(String remoteLocationId) {
         Utils.checkNotNull(remoteLocationId, "remoteLocationId");
         this.remoteLocationId = JsonNullable.of(remoteLocationId);
@@ -819,7 +828,10 @@ public class Application {
 
     /**
      * Provider's unique identifier of the location
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public Application withRemoteLocationId(JsonNullable<String> remoteLocationId) {
         Utils.checkNotNull(remoteLocationId, "remoteLocationId");
         this.remoteLocationId = remoteLocationId;
@@ -1146,6 +1158,7 @@ public class Application {
         @Deprecated
         private JsonNullable<String> locationId = JsonNullable.undefined();
 
+        @Deprecated
         private JsonNullable<String> remoteLocationId = JsonNullable.undefined();
 
         private JsonNullable<? extends List<String>> locationIds = JsonNullable.undefined();
@@ -1459,7 +1472,10 @@ public class Application {
 
         /**
          * Provider's unique identifier of the location
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder remoteLocationId(String remoteLocationId) {
             Utils.checkNotNull(remoteLocationId, "remoteLocationId");
             this.remoteLocationId = JsonNullable.of(remoteLocationId);
@@ -1468,7 +1484,10 @@ public class Application {
 
         /**
          * Provider's unique identifier of the location
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder remoteLocationId(JsonNullable<String> remoteLocationId) {
             Utils.checkNotNull(remoteLocationId, "remoteLocationId");
             this.remoteLocationId = remoteLocationId;

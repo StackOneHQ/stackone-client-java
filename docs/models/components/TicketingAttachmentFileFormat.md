@@ -1,0 +1,11 @@
+# TicketingAttachmentFileFormat
+
+The type of the file
+
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                | Example                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                    | [JsonNullable\<TicketingAttachmentValue>](../../models/components/TicketingAttachmentValue.md)             | :heavy_minus_sign:                                                                                         | The file format of the file, expressed as a file extension                                                 | pdf                                                                                                        |
+| `sourceValue`                                                                                              | [JsonNullable\<TicketingAttachmentSourceValue>](../../models/components/TicketingAttachmentSourceValue.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        | application/pdf                                                                                            |

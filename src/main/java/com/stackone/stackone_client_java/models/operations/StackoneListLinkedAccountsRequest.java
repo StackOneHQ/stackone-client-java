@@ -48,6 +48,12 @@ public class StackoneListLinkedAccountsRequest {
     private JsonNullable<String> originOwnerId;
 
     /**
+     * The origin owner identifiers of the results to fetch (supports multiple IDs)
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=origin_owner_ids")
+    private Optional<? extends List<String>> originOwnerIds;
+
+    /**
      * The providers list of the results to fetch
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=providers")
@@ -71,6 +77,7 @@ public class StackoneListLinkedAccountsRequest {
             JsonNullable<Double> pageSize,
             JsonNullable<String> provider,
             JsonNullable<String> originOwnerId,
+            Optional<? extends List<String>> originOwnerIds,
             Optional<? extends List<String>> providers,
             Optional<? extends List<String>> accountIds,
             Optional<? extends List<String>> status) {
@@ -78,6 +85,7 @@ public class StackoneListLinkedAccountsRequest {
         Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(originOwnerId, "originOwnerId");
+        Utils.checkNotNull(originOwnerIds, "originOwnerIds");
         Utils.checkNotNull(providers, "providers");
         Utils.checkNotNull(accountIds, "accountIds");
         Utils.checkNotNull(status, "status");
@@ -85,6 +93,7 @@ public class StackoneListLinkedAccountsRequest {
         this.pageSize = pageSize;
         this.provider = provider;
         this.originOwnerId = originOwnerId;
+        this.originOwnerIds = originOwnerIds;
         this.providers = providers;
         this.accountIds = accountIds;
         this.status = status;
@@ -93,7 +102,7 @@ public class StackoneListLinkedAccountsRequest {
     public StackoneListLinkedAccountsRequest() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), Optional.empty(), Optional.empty(),
-            Optional.empty());
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -129,6 +138,15 @@ public class StackoneListLinkedAccountsRequest {
     @JsonIgnore
     public JsonNullable<String> originOwnerId() {
         return originOwnerId;
+    }
+
+    /**
+     * The origin owner identifiers of the results to fetch (supports multiple IDs)
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<List<String>> originOwnerIds() {
+        return (Optional<List<String>>) originOwnerIds;
     }
 
     /**
@@ -242,6 +260,25 @@ public class StackoneListLinkedAccountsRequest {
     }
 
     /**
+     * The origin owner identifiers of the results to fetch (supports multiple IDs)
+     */
+    public StackoneListLinkedAccountsRequest withOriginOwnerIds(List<String> originOwnerIds) {
+        Utils.checkNotNull(originOwnerIds, "originOwnerIds");
+        this.originOwnerIds = Optional.ofNullable(originOwnerIds);
+        return this;
+    }
+
+
+    /**
+     * The origin owner identifiers of the results to fetch (supports multiple IDs)
+     */
+    public StackoneListLinkedAccountsRequest withOriginOwnerIds(Optional<? extends List<String>> originOwnerIds) {
+        Utils.checkNotNull(originOwnerIds, "originOwnerIds");
+        this.originOwnerIds = originOwnerIds;
+        return this;
+    }
+
+    /**
      * The providers list of the results to fetch
      */
     public StackoneListLinkedAccountsRequest withProviders(List<String> providers) {
@@ -312,6 +349,7 @@ public class StackoneListLinkedAccountsRequest {
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.provider, other.provider) &&
             Utils.enhancedDeepEquals(this.originOwnerId, other.originOwnerId) &&
+            Utils.enhancedDeepEquals(this.originOwnerIds, other.originOwnerIds) &&
             Utils.enhancedDeepEquals(this.providers, other.providers) &&
             Utils.enhancedDeepEquals(this.accountIds, other.accountIds) &&
             Utils.enhancedDeepEquals(this.status, other.status);
@@ -321,8 +359,8 @@ public class StackoneListLinkedAccountsRequest {
     public int hashCode() {
         return Utils.enhancedHash(
             page, pageSize, provider,
-            originOwnerId, providers, accountIds,
-            status);
+            originOwnerId, originOwnerIds, providers,
+            accountIds, status);
     }
     
     @Override
@@ -332,6 +370,7 @@ public class StackoneListLinkedAccountsRequest {
                 "pageSize", pageSize,
                 "provider", provider,
                 "originOwnerId", originOwnerId,
+                "originOwnerIds", originOwnerIds,
                 "providers", providers,
                 "accountIds", accountIds,
                 "status", status);
@@ -348,6 +387,8 @@ public class StackoneListLinkedAccountsRequest {
         private JsonNullable<String> provider = JsonNullable.undefined();
 
         private JsonNullable<String> originOwnerId = JsonNullable.undefined();
+
+        private Optional<? extends List<String>> originOwnerIds = Optional.empty();
 
         private Optional<? extends List<String>> providers = Optional.empty();
 
@@ -443,6 +484,25 @@ public class StackoneListLinkedAccountsRequest {
 
 
         /**
+         * The origin owner identifiers of the results to fetch (supports multiple IDs)
+         */
+        public Builder originOwnerIds(List<String> originOwnerIds) {
+            Utils.checkNotNull(originOwnerIds, "originOwnerIds");
+            this.originOwnerIds = Optional.ofNullable(originOwnerIds);
+            return this;
+        }
+
+        /**
+         * The origin owner identifiers of the results to fetch (supports multiple IDs)
+         */
+        public Builder originOwnerIds(Optional<? extends List<String>> originOwnerIds) {
+            Utils.checkNotNull(originOwnerIds, "originOwnerIds");
+            this.originOwnerIds = originOwnerIds;
+            return this;
+        }
+
+
+        /**
          * The providers list of the results to fetch
          */
         public Builder providers(List<String> providers) {
@@ -505,8 +565,8 @@ public class StackoneListLinkedAccountsRequest {
 
             return new StackoneListLinkedAccountsRequest(
                 page, pageSize, provider,
-                originOwnerId, providers, accountIds,
-                status);
+                originOwnerId, originOwnerIds, providers,
+                accountIds, status);
         }
 
 

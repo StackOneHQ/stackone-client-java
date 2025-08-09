@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreatePushTemplateRequestDto;
-import com.stackone.stackone_client_java.operations.MarketingUpdatePushTemplateOperation;
+import com.stackone.stackone_client_java.operations.MarketingUpdatePushTemplate;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class MarketingUpdatePushTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingUpdatePushTemplateRequest, MarketingUpdatePushTemplateResponse> operation
-              = new MarketingUpdatePushTemplateOperation(sdkConfiguration, options);
+              = new MarketingUpdatePushTemplate.Sync(sdkConfiguration, options);
         MarketingUpdatePushTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

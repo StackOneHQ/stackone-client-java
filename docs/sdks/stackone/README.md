@@ -2,6 +2,6 @@
 
 ## Overview
 
-LMS: The documentation for the StackOne Unified API - LMS
+Accounting: The documentation for the StackOne Unified API - ACCOUNTING
 
 ### Available Operations

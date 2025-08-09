@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateCandidateRequestDto;
-import com.stackone.stackone_client_java.operations.AtsCreateCandidateOperation;
+import com.stackone.stackone_client_java.operations.AtsCreateCandidate;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -65,7 +65,7 @@ public class AtsCreateCandidateRequestBuilder {
             .build());
 
         RequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
-              = new AtsCreateCandidateOperation(sdkConfiguration, options);
+              = new AtsCreateCandidate.Sync(sdkConfiguration, options);
         AtsCreateCandidateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

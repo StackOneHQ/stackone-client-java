@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDto;
-import com.stackone.stackone_client_java.operations.AtsUpdateApplicationOperation;
+import com.stackone.stackone_client_java.operations.AtsUpdateApplication;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class AtsUpdateApplicationRequestBuilder {
             .build());
 
         RequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
-              = new AtsUpdateApplicationOperation(sdkConfiguration, options);
+              = new AtsUpdateApplication.Sync(sdkConfiguration, options);
         AtsUpdateApplicationRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

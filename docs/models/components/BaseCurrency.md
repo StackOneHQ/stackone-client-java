@@ -1,0 +1,11 @@
+# BaseCurrency
+
+Default currency for the company
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                | [JsonNullable\<AccountingCompanyValue>](../../models/components/AccountingCompanyValue.md)             | :heavy_minus_sign:                                                                                     | Default currency for the company                                                                       | USD                                                                                                    |
+| `sourceValue`                                                                                          | [JsonNullable\<AccountingCompanySourceValue>](../../models/components/AccountingCompanySourceValue.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    | USD                                                                                                    |
