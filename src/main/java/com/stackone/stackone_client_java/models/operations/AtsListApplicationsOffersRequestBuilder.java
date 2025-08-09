@@ -9,7 +9,7 @@ import static com.stackone.stackone_client_java.utils.Utils.transform;
 import static com.stackone.stackone_client_java.utils.Utils.toStream;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.AtsListApplicationsOffersOperation;
+import com.stackone.stackone_client_java.operations.AtsListApplicationsOffers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -58,7 +58,7 @@ public class AtsListApplicationsOffersRequestBuilder {
             .build());
 
         RequestOperation<AtsListApplicationsOffersRequest, AtsListApplicationsOffersResponse> operation
-              = new AtsListApplicationsOffersOperation(sdkConfiguration, options);
+              = new AtsListApplicationsOffers.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -82,7 +82,7 @@ public class AtsListApplicationsOffersRequestBuilder {
             .build());
 
         RequestOperation<AtsListApplicationsOffersRequest, AtsListApplicationsOffersResponse> operation
-              = new AtsListApplicationsOffersOperation(sdkConfiguration, options);
+              = new AtsListApplicationsOffers.Sync(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

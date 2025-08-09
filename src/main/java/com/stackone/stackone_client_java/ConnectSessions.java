@@ -11,8 +11,8 @@ import com.stackone.stackone_client_java.models.operations.StackoneAuthenticateC
 import com.stackone.stackone_client_java.models.operations.StackoneAuthenticateConnectSessionResponse;
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
-import com.stackone.stackone_client_java.operations.StackoneAuthenticateConnectSessionOperation;
-import com.stackone.stackone_client_java.operations.StackoneCreateConnectSessionOperation;
+import com.stackone.stackone_client_java.operations.StackoneAuthenticateConnectSession;
+import com.stackone.stackone_client_java.operations.StackoneCreateConnectSession;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
@@ -57,7 +57,7 @@ public class ConnectSessions {
      */
     public StackoneCreateConnectSessionResponse createConnectSession(ConnectSessionCreate request, Optional<Options> options) throws Exception {
         RequestOperation<ConnectSessionCreate, StackoneCreateConnectSessionResponse> operation
-              = new StackoneCreateConnectSessionOperation(sdkConfiguration, options);
+              = new StackoneCreateConnectSession.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -91,7 +91,7 @@ public class ConnectSessions {
      */
     public StackoneAuthenticateConnectSessionResponse authenticateConnectSession(ConnectSessionAuthenticate request, Optional<Options> options) throws Exception {
         RequestOperation<ConnectSessionAuthenticate, StackoneAuthenticateConnectSessionResponse> operation
-              = new StackoneAuthenticateConnectSessionOperation(sdkConfiguration, options);
+              = new StackoneAuthenticateConnectSession.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

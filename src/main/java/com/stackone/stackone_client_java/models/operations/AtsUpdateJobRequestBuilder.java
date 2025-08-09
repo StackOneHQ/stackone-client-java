@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDto;
-import com.stackone.stackone_client_java.operations.AtsUpdateJobOperation;
+import com.stackone.stackone_client_java.operations.AtsUpdateJob;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class AtsUpdateJobRequestBuilder {
             .build());
 
         RequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
-              = new AtsUpdateJobOperation(sdkConfiguration, options);
+              = new AtsUpdateJob.Sync(sdkConfiguration, options);
         AtsUpdateJobRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

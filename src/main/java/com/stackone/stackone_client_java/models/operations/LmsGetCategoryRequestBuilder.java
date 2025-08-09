@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.LmsGetCategoryOperation;
+import com.stackone.stackone_client_java.operations.LmsGetCategory;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -47,7 +47,7 @@ public class LmsGetCategoryRequestBuilder {
             .build());
 
         RequestOperation<LmsGetCategoryRequest, LmsGetCategoryResponse> operation
-              = new LmsGetCategoryOperation(sdkConfiguration, options);
+              = new LmsGetCategory.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -9,13 +9,14 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * LmsListContentQueryParamFilter
  * 
- * <p>Filter parameters that allow greater customisation of the list response
+ * <p>LMS Courses Filter
  */
 public class LmsListContentQueryParamFilter {
     /**
@@ -24,15 +25,24 @@ public class LmsListContentQueryParamFilter {
     @SpeakeasyMetadata("queryParam:name=updated_after")
     private JsonNullable<OffsetDateTime> updatedAfter;
 
+    /**
+     * Filter to allow filtering of only active content
+     */
+    @SpeakeasyMetadata("queryParam:name=active")
+    private JsonNullable<? extends QueryParamActive> active;
+
     @JsonCreator
     public LmsListContentQueryParamFilter(
-            JsonNullable<OffsetDateTime> updatedAfter) {
+            JsonNullable<OffsetDateTime> updatedAfter,
+            JsonNullable<? extends QueryParamActive> active) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
+        Utils.checkNotNull(active, "active");
         this.updatedAfter = updatedAfter;
+        this.active = active;
     }
     
     public LmsListContentQueryParamFilter() {
-        this(JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -41,6 +51,15 @@ public class LmsListContentQueryParamFilter {
     @JsonIgnore
     public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
+    }
+
+    /**
+     * Filter to allow filtering of only active content
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<QueryParamActive> active() {
+        return (JsonNullable<QueryParamActive>) active;
     }
 
     public static Builder builder() {
@@ -66,6 +85,24 @@ public class LmsListContentQueryParamFilter {
         return this;
     }
 
+    /**
+     * Filter to allow filtering of only active content
+     */
+    public LmsListContentQueryParamFilter withActive(QueryParamActive active) {
+        Utils.checkNotNull(active, "active");
+        this.active = JsonNullable.of(active);
+        return this;
+    }
+
+    /**
+     * Filter to allow filtering of only active content
+     */
+    public LmsListContentQueryParamFilter withActive(JsonNullable<? extends QueryParamActive> active) {
+        Utils.checkNotNull(active, "active");
+        this.active = active;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -76,25 +113,29 @@ public class LmsListContentQueryParamFilter {
         }
         LmsListContentQueryParamFilter other = (LmsListContentQueryParamFilter) o;
         return 
-            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.active, other.active);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter);
+            updatedAfter, active);
     }
     
     @Override
     public String toString() {
         return Utils.toString(LmsListContentQueryParamFilter.class,
-                "updatedAfter", updatedAfter);
+                "updatedAfter", updatedAfter,
+                "active", active);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
+
+        private JsonNullable<? extends QueryParamActive> active = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -119,10 +160,29 @@ public class LmsListContentQueryParamFilter {
             return this;
         }
 
+
+        /**
+         * Filter to allow filtering of only active content
+         */
+        public Builder active(QueryParamActive active) {
+            Utils.checkNotNull(active, "active");
+            this.active = JsonNullable.of(active);
+            return this;
+        }
+
+        /**
+         * Filter to allow filtering of only active content
+         */
+        public Builder active(JsonNullable<? extends QueryParamActive> active) {
+            Utils.checkNotNull(active, "active");
+            this.active = active;
+            return this;
+        }
+
         public LmsListContentQueryParamFilter build() {
 
             return new LmsListContentQueryParamFilter(
-                updatedAfter);
+                updatedAfter, active);
         }
 
     }

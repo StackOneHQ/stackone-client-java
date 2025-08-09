@@ -1,0 +1,11 @@
+# AccountingAccountType
+
+Type of account
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                | [JsonNullable\<AccountingAccountValue>](../../models/components/AccountingAccountValue.md)             | :heavy_minus_sign:                                                                                     | Type of account                                                                                        | asset                                                                                                  |
+| `sourceValue`                                                                                          | [JsonNullable\<AccountingAccountSourceValue>](../../models/components/AccountingAccountSourceValue.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    | asset                                                                                                  |

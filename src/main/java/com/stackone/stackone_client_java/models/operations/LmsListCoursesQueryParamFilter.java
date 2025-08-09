@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -30,18 +31,27 @@ public class LmsListCoursesQueryParamFilter {
     @SpeakeasyMetadata("queryParam:name=external_reference")
     private JsonNullable<String> externalReference;
 
+    /**
+     * Filter to allow filtering of only active courses
+     */
+    @SpeakeasyMetadata("queryParam:name=active")
+    private JsonNullable<? extends Active> active;
+
     @JsonCreator
     public LmsListCoursesQueryParamFilter(
             JsonNullable<OffsetDateTime> updatedAfter,
-            JsonNullable<String> externalReference) {
+            JsonNullable<String> externalReference,
+            JsonNullable<? extends Active> active) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(externalReference, "externalReference");
+        Utils.checkNotNull(active, "active");
         this.updatedAfter = updatedAfter;
         this.externalReference = externalReference;
+        this.active = active;
     }
     
     public LmsListCoursesQueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -58,6 +68,15 @@ public class LmsListCoursesQueryParamFilter {
     @JsonIgnore
     public JsonNullable<String> externalReference() {
         return externalReference;
+    }
+
+    /**
+     * Filter to allow filtering of only active courses
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Active> active() {
+        return (JsonNullable<Active>) active;
     }
 
     public static Builder builder() {
@@ -101,6 +120,24 @@ public class LmsListCoursesQueryParamFilter {
         return this;
     }
 
+    /**
+     * Filter to allow filtering of only active courses
+     */
+    public LmsListCoursesQueryParamFilter withActive(Active active) {
+        Utils.checkNotNull(active, "active");
+        this.active = JsonNullable.of(active);
+        return this;
+    }
+
+    /**
+     * Filter to allow filtering of only active courses
+     */
+    public LmsListCoursesQueryParamFilter withActive(JsonNullable<? extends Active> active) {
+        Utils.checkNotNull(active, "active");
+        this.active = active;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,20 +149,22 @@ public class LmsListCoursesQueryParamFilter {
         LmsListCoursesQueryParamFilter other = (LmsListCoursesQueryParamFilter) o;
         return 
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
-            Utils.enhancedDeepEquals(this.externalReference, other.externalReference);
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
+            Utils.enhancedDeepEquals(this.active, other.active);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter, externalReference);
+            updatedAfter, externalReference, active);
     }
     
     @Override
     public String toString() {
         return Utils.toString(LmsListCoursesQueryParamFilter.class,
                 "updatedAfter", updatedAfter,
-                "externalReference", externalReference);
+                "externalReference", externalReference,
+                "active", active);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -134,6 +173,8 @@ public class LmsListCoursesQueryParamFilter {
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<String> externalReference = JsonNullable.undefined();
+
+        private JsonNullable<? extends Active> active = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -177,10 +218,29 @@ public class LmsListCoursesQueryParamFilter {
             return this;
         }
 
+
+        /**
+         * Filter to allow filtering of only active courses
+         */
+        public Builder active(Active active) {
+            Utils.checkNotNull(active, "active");
+            this.active = JsonNullable.of(active);
+            return this;
+        }
+
+        /**
+         * Filter to allow filtering of only active courses
+         */
+        public Builder active(JsonNullable<? extends Active> active) {
+            Utils.checkNotNull(active, "active");
+            this.active = active;
+            return this;
+        }
+
         public LmsListCoursesQueryParamFilter build() {
 
             return new LmsListCoursesQueryParamFilter(
-                updatedAfter, externalReference);
+                updatedAfter, externalReference, active);
         }
 
     }

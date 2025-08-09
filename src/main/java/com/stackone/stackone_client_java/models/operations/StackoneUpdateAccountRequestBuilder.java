@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.PatchAccountExternalDto;
-import com.stackone.stackone_client_java.operations.StackoneUpdateAccountOperation;
+import com.stackone.stackone_client_java.operations.StackoneUpdateAccount;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -65,7 +65,7 @@ public class StackoneUpdateAccountRequestBuilder {
             .build());
 
         RequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
-              = new StackoneUpdateAccountOperation(sdkConfiguration, options);
+              = new StackoneUpdateAccount.Sync(sdkConfiguration, options);
         StackoneUpdateAccountRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

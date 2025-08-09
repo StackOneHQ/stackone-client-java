@@ -9,7 +9,7 @@ import static com.stackone.stackone_client_java.utils.Utils.transform;
 import static com.stackone.stackone_client_java.utils.Utils.toStream;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeEmploymentsOperation;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeEmployments;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -58,7 +58,7 @@ public class HrisListEmployeeEmploymentsRequestBuilder {
             .build());
 
         RequestOperation<HrisListEmployeeEmploymentsRequest, HrisListEmployeeEmploymentsResponse> operation
-              = new HrisListEmployeeEmploymentsOperation(sdkConfiguration, options);
+              = new HrisListEmployeeEmployments.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -82,7 +82,7 @@ public class HrisListEmployeeEmploymentsRequestBuilder {
             .build());
 
         RequestOperation<HrisListEmployeeEmploymentsRequest, HrisListEmployeeEmploymentsResponse> operation
-              = new HrisListEmployeeEmploymentsOperation(sdkConfiguration, options);
+              = new HrisListEmployeeEmployments.Sync(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

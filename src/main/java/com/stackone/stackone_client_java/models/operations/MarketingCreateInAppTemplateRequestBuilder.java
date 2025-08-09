@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateInAppTemplateRequestDto;
-import com.stackone.stackone_client_java.operations.MarketingCreateInAppTemplateOperation;
+import com.stackone.stackone_client_java.operations.MarketingCreateInAppTemplate;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -65,7 +65,7 @@ public class MarketingCreateInAppTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreateInAppTemplateRequest, MarketingCreateInAppTemplateResponse> operation
-              = new MarketingCreateInAppTemplateOperation(sdkConfiguration, options);
+              = new MarketingCreateInAppTemplate.Sync(sdkConfiguration, options);
         MarketingCreateInAppTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

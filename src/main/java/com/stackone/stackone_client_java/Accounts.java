@@ -21,18 +21,18 @@ import com.stackone.stackone_client_java.models.operations.StackoneListLinkedAcc
 import com.stackone.stackone_client_java.models.operations.StackoneUpdateAccountRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneUpdateAccountRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneUpdateAccountResponse;
-import com.stackone.stackone_client_java.operations.StackoneDeleteAccountOperation;
-import com.stackone.stackone_client_java.operations.StackoneGetAccountMetaInfoOperation;
-import com.stackone.stackone_client_java.operations.StackoneGetAccountOperation;
-import com.stackone.stackone_client_java.operations.StackoneListLinkedAccountsOperation;
-import com.stackone.stackone_client_java.operations.StackoneUpdateAccountOperation;
+import com.stackone.stackone_client_java.operations.StackoneDeleteAccount;
+import com.stackone.stackone_client_java.operations.StackoneGetAccount;
+import com.stackone.stackone_client_java.operations.StackoneGetAccountMetaInfo;
+import com.stackone.stackone_client_java.operations.StackoneListLinkedAccounts;
+import com.stackone.stackone_client_java.operations.StackoneUpdateAccount;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
 /**
- * Customer or business accounts.
+ * Chart of accounts.
  */
 public class Accounts {
     private final SDKConfiguration sdkConfiguration;
@@ -71,7 +71,7 @@ public class Accounts {
      */
     public StackoneListLinkedAccountsResponse listLinkedAccounts(StackoneListLinkedAccountsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListLinkedAccountsRequest, StackoneListLinkedAccountsResponse> operation
-              = new StackoneListLinkedAccountsOperation(sdkConfiguration, options);
+              = new StackoneListLinkedAccounts.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -110,7 +110,7 @@ public class Accounts {
                 .id(id)
                 .build();
         RequestOperation<StackoneGetAccountRequest, StackoneGetAccountResponse> operation
-              = new StackoneGetAccountOperation(sdkConfiguration, options);
+              = new StackoneGetAccount.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -149,7 +149,7 @@ public class Accounts {
                 .id(id)
                 .build();
         RequestOperation<StackoneDeleteAccountRequest, StackoneDeleteAccountResponse> operation
-              = new StackoneDeleteAccountOperation(sdkConfiguration, options);
+              = new StackoneDeleteAccount.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -193,7 +193,7 @@ public class Accounts {
                 .patchAccountExternalDto(patchAccountExternalDto)
                 .build();
         RequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
-              = new StackoneUpdateAccountOperation(sdkConfiguration, options);
+              = new StackoneUpdateAccount.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -232,7 +232,7 @@ public class Accounts {
                 .id(id)
                 .build();
         RequestOperation<StackoneGetAccountMetaInfoRequest, StackoneGetAccountMetaInfoResponse> operation
-              = new StackoneGetAccountMetaInfoOperation(sdkConfiguration, options);
+              = new StackoneGetAccountMetaInfo.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

@@ -9,7 +9,7 @@ import static com.stackone.stackone_client_java.utils.Utils.transform;
 import static com.stackone.stackone_client_java.utils.Utils.toStream;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.MarketingListOmniChannelTemplatesOperation;
+import com.stackone.stackone_client_java.operations.MarketingListOmniChannelTemplates;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -58,7 +58,7 @@ public class MarketingListOmniChannelTemplatesRequestBuilder {
             .build());
 
         RequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
-              = new MarketingListOmniChannelTemplatesOperation(sdkConfiguration, options);
+              = new MarketingListOmniChannelTemplates.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -82,7 +82,7 @@ public class MarketingListOmniChannelTemplatesRequestBuilder {
             .build());
 
         RequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
-              = new MarketingListOmniChannelTemplatesOperation(sdkConfiguration, options);
+              = new MarketingListOmniChannelTemplates.Sync(sdkConfiguration, options);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

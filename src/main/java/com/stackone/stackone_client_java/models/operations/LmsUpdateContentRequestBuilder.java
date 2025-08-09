@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsCreateContentRequestDto;
-import com.stackone.stackone_client_java.operations.LmsUpdateContentOperation;
+import com.stackone.stackone_client_java.operations.LmsUpdateContent;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class LmsUpdateContentRequestBuilder {
             .build());
 
         RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContentOperation(sdkConfiguration, options);
+              = new LmsUpdateContent.Sync(sdkConfiguration, options);
         LmsUpdateContentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

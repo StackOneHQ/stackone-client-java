@@ -9,7 +9,7 @@ import com.stackone.stackone_client_java.models.components.ProxyRequestBody;
 import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestResponse;
-import com.stackone.stackone_client_java.operations.StackoneProxyRequestOperation;
+import com.stackone.stackone_client_java.operations.StackoneProxyRequest;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -65,7 +65,7 @@ public class Proxy {
                 .proxyRequestBody(proxyRequestBody)
                 .build();
         RequestOperation<StackoneProxyRequestRequest, StackoneProxyRequestResponse> operation
-              = new StackoneProxyRequestOperation(sdkConfiguration, options);
+              = new StackoneProxyRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

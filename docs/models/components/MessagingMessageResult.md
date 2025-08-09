@@ -1,0 +1,9 @@
+# MessagingMessageResult
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `data`                                                                                             | [JsonNullable\<MessagingMessageResultData>](../../models/components/MessagingMessageResultData.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `raw`                                                                                              | List\<[RawResponse](../../models/components/RawResponse.md)>                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

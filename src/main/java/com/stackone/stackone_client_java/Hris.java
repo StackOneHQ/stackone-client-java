@@ -228,77 +228,77 @@ import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeWor
 import com.stackone.stackone_client_java.models.operations.HrisUploadEmployeeDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisUploadEmployeeDocumentRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisUploadEmployeeDocumentResponse;
-import com.stackone.stackone_client_java.operations.HrisBatchUploadEmployeeDocumentOperation;
-import com.stackone.stackone_client_java.operations.HrisCancelEmployeeTimeOffRequestOperation;
-import com.stackone.stackone_client_java.operations.HrisCreateEmployeeEmploymentOperation;
-import com.stackone.stackone_client_java.operations.HrisCreateEmployeeOperation;
-import com.stackone.stackone_client_java.operations.HrisCreateEmployeeSkillOperation;
-import com.stackone.stackone_client_java.operations.HrisCreateEmployeeTimeOffRequestOperation;
-import com.stackone.stackone_client_java.operations.HrisCreateEmployeeWorkEligibilityRequestOperation;
-import com.stackone.stackone_client_java.operations.HrisDownloadEmployeeDocumentOperation;
-import com.stackone.stackone_client_java.operations.HrisGetBenefitOperation;
-import com.stackone.stackone_client_java.operations.HrisGetCompanyGroupOperation;
-import com.stackone.stackone_client_java.operations.HrisGetCompanyOperation;
-import com.stackone.stackone_client_java.operations.HrisGetCostCenterGroupOperation;
-import com.stackone.stackone_client_java.operations.HrisGetDepartmentGroupOperation;
-import com.stackone.stackone_client_java.operations.HrisGetDivisionGroupOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeCustomFieldDefinitionOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocumentCategoryOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocumentOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeEmploymentOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeSkillOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeTaskOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeTimeOffBalanceOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeesTimeOffRequestOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeesWorkEligibilityOperation;
-import com.stackone.stackone_client_java.operations.HrisGetEmploymentOperation;
-import com.stackone.stackone_client_java.operations.HrisGetGroupOperation;
-import com.stackone.stackone_client_java.operations.HrisGetJobOperation;
-import com.stackone.stackone_client_java.operations.HrisGetLocationOperation;
-import com.stackone.stackone_client_java.operations.HrisGetPositionOperation;
-import com.stackone.stackone_client_java.operations.HrisGetShiftOperation;
-import com.stackone.stackone_client_java.operations.HrisGetTaskOperation;
-import com.stackone.stackone_client_java.operations.HrisGetTeamGroupOperation;
-import com.stackone.stackone_client_java.operations.HrisGetTimeEntriesOperation;
-import com.stackone.stackone_client_java.operations.HrisGetTimeOffPolicyOperation;
-import com.stackone.stackone_client_java.operations.HrisGetTimeOffRequestOperation;
-import com.stackone.stackone_client_java.operations.HrisGetTimeOffTypeOperation;
-import com.stackone.stackone_client_java.operations.HrisInviteEmployeeOperation;
-import com.stackone.stackone_client_java.operations.HrisListBenefitsOperation;
-import com.stackone.stackone_client_java.operations.HrisListCompaniesGroupsOperation;
-import com.stackone.stackone_client_java.operations.HrisListCompaniesOperation;
-import com.stackone.stackone_client_java.operations.HrisListCostCenterGroupsOperation;
-import com.stackone.stackone_client_java.operations.HrisListDepartmentGroupsOperation;
-import com.stackone.stackone_client_java.operations.HrisListDivisionGroupsOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeCategoriesOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeCustomFieldDefinitionsOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeDocumentsOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeEmploymentsOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeSkillsOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeTasksOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeTimeOffBalancesOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeTimeOffPoliciesOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeTimeOffRequestsOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeeWorkEligibilityOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmployeesOperation;
-import com.stackone.stackone_client_java.operations.HrisListEmploymentsOperation;
-import com.stackone.stackone_client_java.operations.HrisListGroupsOperation;
-import com.stackone.stackone_client_java.operations.HrisListJobsOperation;
-import com.stackone.stackone_client_java.operations.HrisListLocationsOperation;
-import com.stackone.stackone_client_java.operations.HrisListPositionsOperation;
-import com.stackone.stackone_client_java.operations.HrisListShiftsOperation;
-import com.stackone.stackone_client_java.operations.HrisListTasksOperation;
-import com.stackone.stackone_client_java.operations.HrisListTeamGroupsOperation;
-import com.stackone.stackone_client_java.operations.HrisListTimeEntriesOperation;
-import com.stackone.stackone_client_java.operations.HrisListTimeOffPoliciesOperation;
-import com.stackone.stackone_client_java.operations.HrisListTimeOffRequestsOperation;
-import com.stackone.stackone_client_java.operations.HrisListTimeOffTypesOperation;
-import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeEmploymentOperation;
-import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeOperation;
-import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequestOperation;
-import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeWorkEligibilityRequestOperation;
-import com.stackone.stackone_client_java.operations.HrisUploadEmployeeDocumentOperation;
+import com.stackone.stackone_client_java.operations.HrisBatchUploadEmployeeDocument;
+import com.stackone.stackone_client_java.operations.HrisCancelEmployeeTimeOffRequest;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployee;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployeeEmployment;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployeeSkill;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployeeTimeOffRequest;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployeeWorkEligibilityRequest;
+import com.stackone.stackone_client_java.operations.HrisDownloadEmployeeDocument;
+import com.stackone.stackone_client_java.operations.HrisGetBenefit;
+import com.stackone.stackone_client_java.operations.HrisGetCompany;
+import com.stackone.stackone_client_java.operations.HrisGetCompanyGroup;
+import com.stackone.stackone_client_java.operations.HrisGetCostCenterGroup;
+import com.stackone.stackone_client_java.operations.HrisGetDepartmentGroup;
+import com.stackone.stackone_client_java.operations.HrisGetDivisionGroup;
+import com.stackone.stackone_client_java.operations.HrisGetEmployee;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeCustomFieldDefinition;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocument;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocumentCategory;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeEmployment;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeSkill;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeTask;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeTimeOffBalance;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeesTimeOffRequest;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeesWorkEligibility;
+import com.stackone.stackone_client_java.operations.HrisGetEmployment;
+import com.stackone.stackone_client_java.operations.HrisGetGroup;
+import com.stackone.stackone_client_java.operations.HrisGetJob;
+import com.stackone.stackone_client_java.operations.HrisGetLocation;
+import com.stackone.stackone_client_java.operations.HrisGetPosition;
+import com.stackone.stackone_client_java.operations.HrisGetShift;
+import com.stackone.stackone_client_java.operations.HrisGetTask;
+import com.stackone.stackone_client_java.operations.HrisGetTeamGroup;
+import com.stackone.stackone_client_java.operations.HrisGetTimeEntries;
+import com.stackone.stackone_client_java.operations.HrisGetTimeOffPolicy;
+import com.stackone.stackone_client_java.operations.HrisGetTimeOffRequest;
+import com.stackone.stackone_client_java.operations.HrisGetTimeOffType;
+import com.stackone.stackone_client_java.operations.HrisInviteEmployee;
+import com.stackone.stackone_client_java.operations.HrisListBenefits;
+import com.stackone.stackone_client_java.operations.HrisListCompanies;
+import com.stackone.stackone_client_java.operations.HrisListCompaniesGroups;
+import com.stackone.stackone_client_java.operations.HrisListCostCenterGroups;
+import com.stackone.stackone_client_java.operations.HrisListDepartmentGroups;
+import com.stackone.stackone_client_java.operations.HrisListDivisionGroups;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeCategories;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeCustomFieldDefinitions;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeDocuments;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeEmployments;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeSkills;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeTasks;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeTimeOffBalances;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeTimeOffPolicies;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeTimeOffRequests;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeWorkEligibility;
+import com.stackone.stackone_client_java.operations.HrisListEmployees;
+import com.stackone.stackone_client_java.operations.HrisListEmployments;
+import com.stackone.stackone_client_java.operations.HrisListGroups;
+import com.stackone.stackone_client_java.operations.HrisListJobs;
+import com.stackone.stackone_client_java.operations.HrisListLocations;
+import com.stackone.stackone_client_java.operations.HrisListPositions;
+import com.stackone.stackone_client_java.operations.HrisListShifts;
+import com.stackone.stackone_client_java.operations.HrisListTasks;
+import com.stackone.stackone_client_java.operations.HrisListTeamGroups;
+import com.stackone.stackone_client_java.operations.HrisListTimeEntries;
+import com.stackone.stackone_client_java.operations.HrisListTimeOffPolicies;
+import com.stackone.stackone_client_java.operations.HrisListTimeOffRequests;
+import com.stackone.stackone_client_java.operations.HrisListTimeOffTypes;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployee;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeEmployment;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequest;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeWorkEligibilityRequest;
+import com.stackone.stackone_client_java.operations.HrisUploadEmployeeDocument;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.Exception;
@@ -343,7 +343,7 @@ public class Hris {
      */
     public HrisListCompaniesResponse listCompanies(HrisListCompaniesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListCompaniesRequest, HrisListCompaniesResponse> operation
-              = new HrisListCompaniesOperation(sdkConfiguration, options);
+              = new HrisListCompanies.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -377,7 +377,7 @@ public class Hris {
      */
     public HrisGetCompanyResponse getCompany(HrisGetCompanyRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetCompanyRequest, HrisGetCompanyResponse> operation
-              = new HrisGetCompanyOperation(sdkConfiguration, options);
+              = new HrisGetCompany.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -411,7 +411,7 @@ public class Hris {
      */
     public HrisListEmployeeCustomFieldDefinitionsResponse listEmployeeCustomFieldDefinitions(HrisListEmployeeCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeCustomFieldDefinitionsRequest, HrisListEmployeeCustomFieldDefinitionsResponse> operation
-              = new HrisListEmployeeCustomFieldDefinitionsOperation(sdkConfiguration, options);
+              = new HrisListEmployeeCustomFieldDefinitions.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -445,7 +445,7 @@ public class Hris {
      */
     public HrisGetEmployeeCustomFieldDefinitionResponse getEmployeeCustomFieldDefinition(HrisGetEmployeeCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeCustomFieldDefinitionRequest, HrisGetEmployeeCustomFieldDefinitionResponse> operation
-              = new HrisGetEmployeeCustomFieldDefinitionOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeCustomFieldDefinition.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -479,7 +479,7 @@ public class Hris {
      */
     public HrisListEmployeesResponse listEmployees(HrisListEmployeesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeesRequest, HrisListEmployeesResponse> operation
-              = new HrisListEmployeesOperation(sdkConfiguration, options);
+              = new HrisListEmployees.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -523,7 +523,7 @@ public class Hris {
                 .hrisCreateEmployeeRequestDto(hrisCreateEmployeeRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeRequest, HrisCreateEmployeeResponse> operation
-              = new HrisCreateEmployeeOperation(sdkConfiguration, options);
+              = new HrisCreateEmployee.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -557,7 +557,7 @@ public class Hris {
      */
     public HrisGetEmployeeResponse getEmployee(HrisGetEmployeeRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeRequest, HrisGetEmployeeResponse> operation
-              = new HrisGetEmployeeOperation(sdkConfiguration, options);
+              = new HrisGetEmployee.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -607,7 +607,7 @@ public class Hris {
                 .hrisUpdateEmployeeRequestDto(hrisUpdateEmployeeRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeRequest, HrisUpdateEmployeeResponse> operation
-              = new HrisUpdateEmployeeOperation(sdkConfiguration, options);
+              = new HrisUpdateEmployee.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -657,7 +657,7 @@ public class Hris {
                 .hrisInviteEmployeeRequestDto(hrisInviteEmployeeRequestDto)
                 .build();
         RequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
-              = new HrisInviteEmployeeOperation(sdkConfiguration, options);
+              = new HrisInviteEmployee.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -691,7 +691,7 @@ public class Hris {
      */
     public HrisListEmployeeTimeOffRequestsResponse listEmployeeTimeOffRequests(HrisListEmployeeTimeOffRequestsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeTimeOffRequestsRequest, HrisListEmployeeTimeOffRequestsResponse> operation
-              = new HrisListEmployeeTimeOffRequestsOperation(sdkConfiguration, options);
+              = new HrisListEmployeeTimeOffRequests.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -741,7 +741,7 @@ public class Hris {
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeTimeOffRequestRequest, HrisCreateEmployeeTimeOffRequestResponse> operation
-              = new HrisCreateEmployeeTimeOffRequestOperation(sdkConfiguration, options);
+              = new HrisCreateEmployeeTimeOffRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -775,7 +775,7 @@ public class Hris {
      */
     public HrisGetEmployeesTimeOffRequestResponse getEmployeesTimeOffRequest(HrisGetEmployeesTimeOffRequestRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeesTimeOffRequestRequest, HrisGetEmployeesTimeOffRequestResponse> operation
-              = new HrisGetEmployeesTimeOffRequestOperation(sdkConfiguration, options);
+              = new HrisGetEmployeesTimeOffRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -825,7 +825,7 @@ public class Hris {
                 .subResourceId(subResourceId)
                 .build();
         RequestOperation<HrisCancelEmployeeTimeOffRequestRequest, HrisCancelEmployeeTimeOffRequestResponse> operation
-              = new HrisCancelEmployeeTimeOffRequestOperation(sdkConfiguration, options);
+              = new HrisCancelEmployeeTimeOffRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -879,7 +879,7 @@ public class Hris {
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
-              = new HrisUpdateEmployeeTimeOffRequestOperation(sdkConfiguration, options);
+              = new HrisUpdateEmployeeTimeOffRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -929,7 +929,7 @@ public class Hris {
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         RequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
-              = new HrisBatchUploadEmployeeDocumentOperation(sdkConfiguration, options);
+              = new HrisBatchUploadEmployeeDocument.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -979,7 +979,7 @@ public class Hris {
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         RequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
-              = new HrisUploadEmployeeDocumentOperation(sdkConfiguration, options);
+              = new HrisUploadEmployeeDocument.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1013,7 +1013,7 @@ public class Hris {
      */
     public HrisDownloadEmployeeDocumentResponse downloadEmployeeDocument(HrisDownloadEmployeeDocumentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisDownloadEmployeeDocumentRequest, HrisDownloadEmployeeDocumentResponse> operation
-              = new HrisDownloadEmployeeDocumentOperation(sdkConfiguration, options);
+              = new HrisDownloadEmployeeDocument.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1047,7 +1047,7 @@ public class Hris {
      */
     public HrisListEmployeeDocumentsResponse listEmployeeDocuments(HrisListEmployeeDocumentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeDocumentsRequest, HrisListEmployeeDocumentsResponse> operation
-              = new HrisListEmployeeDocumentsOperation(sdkConfiguration, options);
+              = new HrisListEmployeeDocuments.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1081,7 +1081,7 @@ public class Hris {
      */
     public HrisGetEmployeeDocumentResponse getEmployeeDocument(HrisGetEmployeeDocumentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeDocumentRequest, HrisGetEmployeeDocumentResponse> operation
-              = new HrisGetEmployeeDocumentOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeDocument.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1115,7 +1115,7 @@ public class Hris {
      */
     public HrisListEmployeeCategoriesResponse listEmployeeCategories(HrisListEmployeeCategoriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeCategoriesRequest, HrisListEmployeeCategoriesResponse> operation
-              = new HrisListEmployeeCategoriesOperation(sdkConfiguration, options);
+              = new HrisListEmployeeCategories.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1149,7 +1149,7 @@ public class Hris {
      */
     public HrisGetEmployeeDocumentCategoryResponse getEmployeeDocumentCategory(HrisGetEmployeeDocumentCategoryRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeDocumentCategoryRequest, HrisGetEmployeeDocumentCategoryResponse> operation
-              = new HrisGetEmployeeDocumentCategoryOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeDocumentCategory.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1183,7 +1183,7 @@ public class Hris {
      */
     public HrisListEmployeeWorkEligibilityResponse listEmployeeWorkEligibility(HrisListEmployeeWorkEligibilityRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeWorkEligibilityRequest, HrisListEmployeeWorkEligibilityResponse> operation
-              = new HrisListEmployeeWorkEligibilityOperation(sdkConfiguration, options);
+              = new HrisListEmployeeWorkEligibility.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1233,7 +1233,7 @@ public class Hris {
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeWorkEligibilityRequestRequest, HrisCreateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisCreateEmployeeWorkEligibilityRequestOperation(sdkConfiguration, options);
+              = new HrisCreateEmployeeWorkEligibilityRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1267,7 +1267,7 @@ public class Hris {
      */
     public HrisGetEmployeesWorkEligibilityResponse getEmployeesWorkEligibility(HrisGetEmployeesWorkEligibilityRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeesWorkEligibilityRequest, HrisGetEmployeesWorkEligibilityResponse> operation
-              = new HrisGetEmployeesWorkEligibilityOperation(sdkConfiguration, options);
+              = new HrisGetEmployeesWorkEligibility.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1321,7 +1321,7 @@ public class Hris {
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeWorkEligibilityRequestRequest, HrisUpdateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisUpdateEmployeeWorkEligibilityRequestOperation(sdkConfiguration, options);
+              = new HrisUpdateEmployeeWorkEligibilityRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1355,7 +1355,7 @@ public class Hris {
      */
     public HrisListEmployeeTimeOffBalancesResponse listEmployeeTimeOffBalances(HrisListEmployeeTimeOffBalancesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeTimeOffBalancesRequest, HrisListEmployeeTimeOffBalancesResponse> operation
-              = new HrisListEmployeeTimeOffBalancesOperation(sdkConfiguration, options);
+              = new HrisListEmployeeTimeOffBalances.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1389,7 +1389,7 @@ public class Hris {
      */
     public HrisGetEmployeeTimeOffBalanceResponse getEmployeeTimeOffBalance(HrisGetEmployeeTimeOffBalanceRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeTimeOffBalanceRequest, HrisGetEmployeeTimeOffBalanceResponse> operation
-              = new HrisGetEmployeeTimeOffBalanceOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeTimeOffBalance.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1423,7 +1423,7 @@ public class Hris {
      */
     public HrisListEmploymentsResponse listEmployments(HrisListEmploymentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmploymentsRequest, HrisListEmploymentsResponse> operation
-              = new HrisListEmploymentsOperation(sdkConfiguration, options);
+              = new HrisListEmployments.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1457,7 +1457,7 @@ public class Hris {
      */
     public HrisGetEmploymentResponse getEmployment(HrisGetEmploymentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmploymentRequest, HrisGetEmploymentResponse> operation
-              = new HrisGetEmploymentOperation(sdkConfiguration, options);
+              = new HrisGetEmployment.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1491,7 +1491,7 @@ public class Hris {
      */
     public HrisListEmployeeEmploymentsResponse listEmployeeEmployments(HrisListEmployeeEmploymentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeEmploymentsRequest, HrisListEmployeeEmploymentsResponse> operation
-              = new HrisListEmployeeEmploymentsOperation(sdkConfiguration, options);
+              = new HrisListEmployeeEmployments.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1541,7 +1541,7 @@ public class Hris {
                 .hrisCreateEmploymentRequestDto(hrisCreateEmploymentRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeEmploymentRequest, HrisCreateEmployeeEmploymentResponse> operation
-              = new HrisCreateEmployeeEmploymentOperation(sdkConfiguration, options);
+              = new HrisCreateEmployeeEmployment.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1575,7 +1575,7 @@ public class Hris {
      */
     public HrisGetEmployeeEmploymentResponse getEmployeeEmployment(HrisGetEmployeeEmploymentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeEmploymentRequest, HrisGetEmployeeEmploymentResponse> operation
-              = new HrisGetEmployeeEmploymentOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeEmployment.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1629,7 +1629,7 @@ public class Hris {
                 .hrisUpdateEmploymentRequestDto(hrisUpdateEmploymentRequestDto)
                 .build();
         RequestOperation<HrisUpdateEmployeeEmploymentRequest, HrisUpdateEmployeeEmploymentResponse> operation
-              = new HrisUpdateEmployeeEmploymentOperation(sdkConfiguration, options);
+              = new HrisUpdateEmployeeEmployment.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1663,7 +1663,7 @@ public class Hris {
      */
     public HrisListGroupsResponse listGroups(HrisListGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListGroupsRequest, HrisListGroupsResponse> operation
-              = new HrisListGroupsOperation(sdkConfiguration, options);
+              = new HrisListGroups.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1697,7 +1697,7 @@ public class Hris {
      */
     public HrisListDepartmentGroupsResponse listDepartmentGroups(HrisListDepartmentGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListDepartmentGroupsRequest, HrisListDepartmentGroupsResponse> operation
-              = new HrisListDepartmentGroupsOperation(sdkConfiguration, options);
+              = new HrisListDepartmentGroups.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1731,7 +1731,7 @@ public class Hris {
      */
     public HrisListCostCenterGroupsResponse listCostCenterGroups(HrisListCostCenterGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListCostCenterGroupsRequest, HrisListCostCenterGroupsResponse> operation
-              = new HrisListCostCenterGroupsOperation(sdkConfiguration, options);
+              = new HrisListCostCenterGroups.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1765,7 +1765,7 @@ public class Hris {
      */
     public HrisListTeamGroupsResponse listTeamGroups(HrisListTeamGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTeamGroupsRequest, HrisListTeamGroupsResponse> operation
-              = new HrisListTeamGroupsOperation(sdkConfiguration, options);
+              = new HrisListTeamGroups.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1799,7 +1799,7 @@ public class Hris {
      */
     public HrisListDivisionGroupsResponse listDivisionGroups(HrisListDivisionGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListDivisionGroupsRequest, HrisListDivisionGroupsResponse> operation
-              = new HrisListDivisionGroupsOperation(sdkConfiguration, options);
+              = new HrisListDivisionGroups.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1833,7 +1833,7 @@ public class Hris {
      */
     public HrisListCompaniesGroupsResponse listCompaniesGroups(HrisListCompaniesGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListCompaniesGroupsRequest, HrisListCompaniesGroupsResponse> operation
-              = new HrisListCompaniesGroupsOperation(sdkConfiguration, options);
+              = new HrisListCompaniesGroups.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1867,7 +1867,7 @@ public class Hris {
      */
     public HrisGetGroupResponse getGroup(HrisGetGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetGroupRequest, HrisGetGroupResponse> operation
-              = new HrisGetGroupOperation(sdkConfiguration, options);
+              = new HrisGetGroup.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1901,7 +1901,7 @@ public class Hris {
      */
     public HrisGetDepartmentGroupResponse getDepartmentGroup(HrisGetDepartmentGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetDepartmentGroupRequest, HrisGetDepartmentGroupResponse> operation
-              = new HrisGetDepartmentGroupOperation(sdkConfiguration, options);
+              = new HrisGetDepartmentGroup.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1935,7 +1935,7 @@ public class Hris {
      */
     public HrisGetCostCenterGroupResponse getCostCenterGroup(HrisGetCostCenterGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetCostCenterGroupRequest, HrisGetCostCenterGroupResponse> operation
-              = new HrisGetCostCenterGroupOperation(sdkConfiguration, options);
+              = new HrisGetCostCenterGroup.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1969,7 +1969,7 @@ public class Hris {
      */
     public HrisGetTeamGroupResponse getTeamGroup(HrisGetTeamGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTeamGroupRequest, HrisGetTeamGroupResponse> operation
-              = new HrisGetTeamGroupOperation(sdkConfiguration, options);
+              = new HrisGetTeamGroup.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2003,7 +2003,7 @@ public class Hris {
      */
     public HrisGetDivisionGroupResponse getDivisionGroup(HrisGetDivisionGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetDivisionGroupRequest, HrisGetDivisionGroupResponse> operation
-              = new HrisGetDivisionGroupOperation(sdkConfiguration, options);
+              = new HrisGetDivisionGroup.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2037,7 +2037,7 @@ public class Hris {
      */
     public HrisGetCompanyGroupResponse getCompanyGroup(HrisGetCompanyGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetCompanyGroupRequest, HrisGetCompanyGroupResponse> operation
-              = new HrisGetCompanyGroupOperation(sdkConfiguration, options);
+              = new HrisGetCompanyGroup.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2071,7 +2071,7 @@ public class Hris {
      */
     public HrisListJobsResponse listJobs(HrisListJobsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListJobsRequest, HrisListJobsResponse> operation
-              = new HrisListJobsOperation(sdkConfiguration, options);
+              = new HrisListJobs.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2105,7 +2105,7 @@ public class Hris {
      */
     public HrisGetJobResponse getJob(HrisGetJobRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetJobRequest, HrisGetJobResponse> operation
-              = new HrisGetJobOperation(sdkConfiguration, options);
+              = new HrisGetJob.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2139,7 +2139,7 @@ public class Hris {
      */
     public HrisListLocationsResponse listLocations(HrisListLocationsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListLocationsRequest, HrisListLocationsResponse> operation
-              = new HrisListLocationsOperation(sdkConfiguration, options);
+              = new HrisListLocations.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2173,7 +2173,7 @@ public class Hris {
      */
     public HrisGetLocationResponse getLocation(HrisGetLocationRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetLocationRequest, HrisGetLocationResponse> operation
-              = new HrisGetLocationOperation(sdkConfiguration, options);
+              = new HrisGetLocation.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2207,7 +2207,7 @@ public class Hris {
      */
     public HrisListPositionsResponse listPositions(HrisListPositionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListPositionsRequest, HrisListPositionsResponse> operation
-              = new HrisListPositionsOperation(sdkConfiguration, options);
+              = new HrisListPositions.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2241,7 +2241,7 @@ public class Hris {
      */
     public HrisGetPositionResponse getPosition(HrisGetPositionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetPositionRequest, HrisGetPositionResponse> operation
-              = new HrisGetPositionOperation(sdkConfiguration, options);
+              = new HrisGetPosition.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2275,7 +2275,7 @@ public class Hris {
      */
     public HrisListTimeEntriesResponse listTimeEntries(HrisListTimeEntriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTimeEntriesRequest, HrisListTimeEntriesResponse> operation
-              = new HrisListTimeEntriesOperation(sdkConfiguration, options);
+              = new HrisListTimeEntries.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2309,7 +2309,7 @@ public class Hris {
      */
     public HrisGetTimeEntriesResponse getTimeEntries(HrisGetTimeEntriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTimeEntriesRequest, HrisGetTimeEntriesResponse> operation
-              = new HrisGetTimeEntriesOperation(sdkConfiguration, options);
+              = new HrisGetTimeEntries.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2343,7 +2343,7 @@ public class Hris {
      */
     public HrisListTimeOffRequestsResponse listTimeOffRequests(HrisListTimeOffRequestsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTimeOffRequestsRequest, HrisListTimeOffRequestsResponse> operation
-              = new HrisListTimeOffRequestsOperation(sdkConfiguration, options);
+              = new HrisListTimeOffRequests.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2377,7 +2377,7 @@ public class Hris {
      */
     public HrisGetTimeOffRequestResponse getTimeOffRequest(HrisGetTimeOffRequestRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTimeOffRequestRequest, HrisGetTimeOffRequestResponse> operation
-              = new HrisGetTimeOffRequestOperation(sdkConfiguration, options);
+              = new HrisGetTimeOffRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2411,7 +2411,7 @@ public class Hris {
      */
     public HrisListShiftsResponse listShifts(HrisListShiftsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListShiftsRequest, HrisListShiftsResponse> operation
-              = new HrisListShiftsOperation(sdkConfiguration, options);
+              = new HrisListShifts.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2445,7 +2445,7 @@ public class Hris {
      */
     public HrisGetShiftResponse getShift(HrisGetShiftRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetShiftRequest, HrisGetShiftResponse> operation
-              = new HrisGetShiftOperation(sdkConfiguration, options);
+              = new HrisGetShift.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2485,7 +2485,7 @@ public class Hris {
     @Deprecated
     public HrisListTimeOffTypesResponse listTimeOffTypes(HrisListTimeOffTypesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTimeOffTypesRequest, HrisListTimeOffTypesResponse> operation
-              = new HrisListTimeOffTypesOperation(sdkConfiguration, options);
+              = new HrisListTimeOffTypes.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2525,7 +2525,7 @@ public class Hris {
     @Deprecated
     public HrisGetTimeOffTypeResponse getTimeOffType(HrisGetTimeOffTypeRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTimeOffTypeRequest, HrisGetTimeOffTypeResponse> operation
-              = new HrisGetTimeOffTypeOperation(sdkConfiguration, options);
+              = new HrisGetTimeOffType.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2559,7 +2559,7 @@ public class Hris {
      */
     public HrisListTimeOffPoliciesResponse listTimeOffPolicies(HrisListTimeOffPoliciesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTimeOffPoliciesRequest, HrisListTimeOffPoliciesResponse> operation
-              = new HrisListTimeOffPoliciesOperation(sdkConfiguration, options);
+              = new HrisListTimeOffPolicies.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2593,7 +2593,7 @@ public class Hris {
      */
     public HrisGetTimeOffPolicyResponse getTimeOffPolicy(HrisGetTimeOffPolicyRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTimeOffPolicyRequest, HrisGetTimeOffPolicyResponse> operation
-              = new HrisGetTimeOffPolicyOperation(sdkConfiguration, options);
+              = new HrisGetTimeOffPolicy.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2627,7 +2627,7 @@ public class Hris {
      */
     public HrisListEmployeeTimeOffPoliciesResponse listEmployeeTimeOffPolicies(HrisListEmployeeTimeOffPoliciesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeTimeOffPoliciesRequest, HrisListEmployeeTimeOffPoliciesResponse> operation
-              = new HrisListEmployeeTimeOffPoliciesOperation(sdkConfiguration, options);
+              = new HrisListEmployeeTimeOffPolicies.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2661,7 +2661,7 @@ public class Hris {
      */
     public HrisListBenefitsResponse listBenefits(HrisListBenefitsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListBenefitsRequest, HrisListBenefitsResponse> operation
-              = new HrisListBenefitsOperation(sdkConfiguration, options);
+              = new HrisListBenefits.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2695,7 +2695,7 @@ public class Hris {
      */
     public HrisGetBenefitResponse getBenefit(HrisGetBenefitRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetBenefitRequest, HrisGetBenefitResponse> operation
-              = new HrisGetBenefitOperation(sdkConfiguration, options);
+              = new HrisGetBenefit.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2729,7 +2729,7 @@ public class Hris {
      */
     public HrisListEmployeeSkillsResponse listEmployeeSkills(HrisListEmployeeSkillsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeSkillsRequest, HrisListEmployeeSkillsResponse> operation
-              = new HrisListEmployeeSkillsOperation(sdkConfiguration, options);
+              = new HrisListEmployeeSkills.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2779,7 +2779,7 @@ public class Hris {
                 .entitySkillsCreateRequestDto(entitySkillsCreateRequestDto)
                 .build();
         RequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
-              = new HrisCreateEmployeeSkillOperation(sdkConfiguration, options);
+              = new HrisCreateEmployeeSkill.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2813,7 +2813,7 @@ public class Hris {
      */
     public HrisGetEmployeeSkillResponse getEmployeeSkill(HrisGetEmployeeSkillRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeSkillRequest, HrisGetEmployeeSkillResponse> operation
-              = new HrisGetEmployeeSkillOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeSkill.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2847,7 +2847,7 @@ public class Hris {
      */
     public HrisListEmployeeTasksResponse listEmployeeTasks(HrisListEmployeeTasksRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListEmployeeTasksRequest, HrisListEmployeeTasksResponse> operation
-              = new HrisListEmployeeTasksOperation(sdkConfiguration, options);
+              = new HrisListEmployeeTasks.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2881,7 +2881,7 @@ public class Hris {
      */
     public HrisGetEmployeeTaskResponse getEmployeeTask(HrisGetEmployeeTaskRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeTaskRequest, HrisGetEmployeeTaskResponse> operation
-              = new HrisGetEmployeeTaskOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeTask.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2915,7 +2915,7 @@ public class Hris {
      */
     public HrisListTasksResponse listTasks(HrisListTasksRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisListTasksRequest, HrisListTasksResponse> operation
-              = new HrisListTasksOperation(sdkConfiguration, options);
+              = new HrisListTasks.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2949,7 +2949,7 @@ public class Hris {
      */
     public HrisGetTaskResponse getTask(HrisGetTaskRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetTaskRequest, HrisGetTaskResponse> operation
-              = new HrisGetTaskOperation(sdkConfiguration, options);
+              = new HrisGetTask.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

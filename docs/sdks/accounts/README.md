@@ -3,7 +3,7 @@
 
 ## Overview
 
-Customer or business accounts.
+Chart of accounts.
 
 ### Available Operations
 
@@ -36,8 +36,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username(System.getenv().getOrDefault("", ""))
-                    .password(System.getenv().getOrDefault("", ""))
+                    .username("")
+                    .password("")
                     .build())
             .build();
 
@@ -104,8 +104,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username(System.getenv().getOrDefault("", ""))
-                    .password(System.getenv().getOrDefault("", ""))
+                    .username("")
+                    .password("")
                     .build())
             .build();
 
@@ -169,8 +169,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username(System.getenv().getOrDefault("", ""))
-                    .password(System.getenv().getOrDefault("", ""))
+                    .username("")
+                    .password("")
                     .build())
             .build();
 
@@ -234,8 +234,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username(System.getenv().getOrDefault("", ""))
-                    .password(System.getenv().getOrDefault("", ""))
+                    .username("")
+                    .password("")
                     .build())
             .build();
 
@@ -303,8 +303,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username(System.getenv().getOrDefault("", ""))
-                    .password(System.getenv().getOrDefault("", ""))
+                    .username("")
+                    .password("")
                     .build())
             .build();
 

@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsCreateCompletionRequestDto;
-import com.stackone.stackone_client_java.operations.LmsCreateUserCompletionOperation;
+import com.stackone.stackone_client_java.operations.LmsCreateUserCompletion;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class LmsCreateUserCompletionRequestBuilder {
             .build());
 
         RequestOperation<LmsCreateUserCompletionRequest, LmsCreateUserCompletionResponse> operation
-              = new LmsCreateUserCompletionOperation(sdkConfiguration, options);
+              = new LmsCreateUserCompletion.Sync(sdkConfiguration, options);
         LmsCreateUserCompletionRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));
