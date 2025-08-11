@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsBatchUpsertContentRequestDto;
-import com.stackone.stackone_client_java.operations.LmsBatchUpsertContentOperation;
+import com.stackone.stackone_client_java.operations.LmsBatchUpsertContent;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -65,7 +65,7 @@ public class LmsBatchUpsertContentRequestBuilder {
             .build());
 
         RequestOperation<LmsBatchUpsertContentRequest, LmsBatchUpsertContentResponse> operation
-              = new LmsBatchUpsertContentOperation(sdkConfiguration, options);
+              = new LmsBatchUpsertContent.Sync(sdkConfiguration, options);
         LmsBatchUpsertContentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.StackoneGetAccountOperation;
+import com.stackone.stackone_client_java.operations.StackoneGetAccount;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -56,7 +56,7 @@ public class StackoneGetAccountRequestBuilder {
             .build());
 
         RequestOperation<StackoneGetAccountRequest, StackoneGetAccountResponse> operation
-              = new StackoneGetAccountOperation(sdkConfiguration, options);
+              = new StackoneGetAccount.Sync(sdkConfiguration, options);
         StackoneGetAccountRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

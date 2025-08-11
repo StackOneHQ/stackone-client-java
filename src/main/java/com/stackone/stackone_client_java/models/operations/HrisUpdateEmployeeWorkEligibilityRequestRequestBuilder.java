@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDto;
-import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeWorkEligibilityRequestOperation;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeWorkEligibilityRequest;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -81,7 +81,7 @@ public class HrisUpdateEmployeeWorkEligibilityRequestRequestBuilder {
             .build());
 
         RequestOperation<HrisUpdateEmployeeWorkEligibilityRequestRequest, HrisUpdateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisUpdateEmployeeWorkEligibilityRequestOperation(sdkConfiguration, options);
+              = new HrisUpdateEmployeeWorkEligibilityRequest.Sync(sdkConfiguration, options);
         HrisUpdateEmployeeWorkEligibilityRequestRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

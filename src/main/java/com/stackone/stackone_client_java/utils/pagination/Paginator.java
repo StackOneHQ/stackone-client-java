@@ -10,6 +10,7 @@ import com.jayway.jsonpath.ReadContext;
 import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 import com.stackone.stackone_client_java.utils.CopiableInputStream;
+import com.stackone.stackone_client_java.utils.ResponseWithBody;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -129,7 +130,7 @@ public class Paginator<ReqT, ProgressParamT> implements Iterator<HttpResponse<In
         try (InputStream body = response.body()) {
             CopiableInputStream copiableInputStream = new CopiableInputStream(body);
             ReadContext respJson = JsonPath.using(JSON_PATH_CONFIG).parse(copiableInputStream.copy());
-            currentResponse = new ResponseWithBody(response, copiableInputStream.copy());
+            currentResponse = new ResponseWithBody<>(response, given -> copiableInputStream.copy());
             boolean hasMorePages = progressTracker.advance(respJson);
             state = hasMorePages ? PaginationState.HAS_MORE_PAGES : PaginationState.EXHAUSTED;
         } catch (IOException e) {

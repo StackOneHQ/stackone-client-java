@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeSkillOperation;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeSkill;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -47,7 +47,7 @@ public class HrisGetEmployeeSkillRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmployeeSkillRequest, HrisGetEmployeeSkillResponse> operation
-              = new HrisGetEmployeeSkillOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeSkill.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

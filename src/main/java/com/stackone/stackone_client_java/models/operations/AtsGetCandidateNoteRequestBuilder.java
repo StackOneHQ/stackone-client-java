@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.AtsGetCandidateNoteOperation;
+import com.stackone.stackone_client_java.operations.AtsGetCandidateNote;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -47,7 +47,7 @@ public class AtsGetCandidateNoteRequestBuilder {
             .build());
 
         RequestOperation<AtsGetCandidateNoteRequest, AtsGetCandidateNoteResponse> operation
-              = new AtsGetCandidateNoteOperation(sdkConfiguration, options);
+              = new AtsGetCandidateNote.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

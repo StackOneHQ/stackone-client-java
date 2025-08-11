@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.AtsDeleteBackgroundCheckPackageOperation;
+import com.stackone.stackone_client_java.operations.AtsDeleteBackgroundCheckPackage;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -64,7 +64,7 @@ public class AtsDeleteBackgroundCheckPackageRequestBuilder {
             .build());
 
         RequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
-              = new AtsDeleteBackgroundCheckPackageOperation(sdkConfiguration, options);
+              = new AtsDeleteBackgroundCheckPackage.Sync(sdkConfiguration, options);
         AtsDeleteBackgroundCheckPackageRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

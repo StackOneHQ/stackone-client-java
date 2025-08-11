@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * LMS: The documentation for the StackOne Unified API - LMS
+ * Accounting: The documentation for the StackOne Unified API - ACCOUNTING
  */
 public class StackOne {
 
@@ -31,7 +31,7 @@ public class StackOne {
     private final ConnectSessions connectSessions;
 
     /**
-     * Customer or business accounts.
+     * Chart of accounts.
      */
     private final Accounts accounts;
 
@@ -68,6 +68,21 @@ public class StackOne {
 
     private final Lms lms;
 
+
+    private final Ticketing ticketing;
+
+
+    private final Documents documents;
+
+
+    private final Screening screening;
+
+
+    private final Messaging messaging;
+
+
+    private final Accounting accounting;
+
     /**
      * Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
      */
@@ -76,7 +91,7 @@ public class StackOne {
     }
 
     /**
-     * Customer or business accounts.
+     * Chart of accounts.
      */
     public Accounts accounts() {
         return accounts;
@@ -131,6 +146,31 @@ public class StackOne {
 
     public Lms lms() {
         return lms;
+    }
+
+
+    public Ticketing ticketing() {
+        return ticketing;
+    }
+
+
+    public Documents documents() {
+        return documents;
+    }
+
+
+    public Screening screening() {
+        return screening;
+    }
+
+
+    public Messaging messaging() {
+        return messaging;
+    }
+
+
+    public Accounting accounting() {
+        return accounting;
     }
 
     private final SDKConfiguration sdkConfiguration;
@@ -282,5 +322,10 @@ public class StackOne {
         this.iam = new Iam(sdkConfiguration);
         this.marketing = new Marketing(sdkConfiguration);
         this.lms = new Lms(sdkConfiguration);
+        this.ticketing = new Ticketing(sdkConfiguration);
+        this.documents = new Documents(sdkConfiguration);
+        this.screening = new Screening(sdkConfiguration);
+        this.messaging = new Messaging(sdkConfiguration);
+        this.accounting = new Accounting(sdkConfiguration);
     }
 }

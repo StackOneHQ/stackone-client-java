@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.StackoneGetConnectorMetaOperation;
+import com.stackone.stackone_client_java.operations.StackoneGetConnectorMeta;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -71,7 +71,7 @@ public class StackoneGetConnectorMetaRequestBuilder {
             .build());
 
         RequestOperation<StackoneGetConnectorMetaRequest, StackoneGetConnectorMetaResponse> operation
-              = new StackoneGetConnectorMetaOperation(sdkConfiguration, options);
+              = new StackoneGetConnectorMeta.Sync(sdkConfiguration, options);
         StackoneGetConnectorMetaRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

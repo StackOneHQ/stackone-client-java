@@ -44,7 +44,7 @@ public class LmsListContentRequest {
     private JsonNullable<String> fields;
 
     /**
-     * Filter parameters that allow greater customisation of the list response
+     * LMS Courses Filter
      */
     @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")
     private JsonNullable<? extends LmsListContentQueryParamFilter> filter;
@@ -151,7 +151,7 @@ public class LmsListContentRequest {
     }
 
     /**
-     * Filter parameters that allow greater customisation of the list response
+     * LMS Courses Filter
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -266,7 +266,7 @@ public class LmsListContentRequest {
     }
 
     /**
-     * Filter parameters that allow greater customisation of the list response
+     * LMS Courses Filter
      */
     public LmsListContentRequest withFilter(LmsListContentQueryParamFilter filter) {
         Utils.checkNotNull(filter, "filter");
@@ -275,7 +275,7 @@ public class LmsListContentRequest {
     }
 
     /**
-     * Filter parameters that allow greater customisation of the list response
+     * LMS Courses Filter
      */
     public LmsListContentRequest withFilter(JsonNullable<? extends LmsListContentQueryParamFilter> filter) {
         Utils.checkNotNull(filter, "filter");
@@ -506,7 +506,7 @@ public class LmsListContentRequest {
 
 
         /**
-         * Filter parameters that allow greater customisation of the list response
+         * LMS Courses Filter
          */
         public Builder filter(LmsListContentQueryParamFilter filter) {
             Utils.checkNotNull(filter, "filter");
@@ -515,7 +515,7 @@ public class LmsListContentRequest {
         }
 
         /**
-         * Filter parameters that allow greater customisation of the list response
+         * LMS Courses Filter
          */
         public Builder filter(JsonNullable<? extends LmsListContentQueryParamFilter> filter) {
             Utils.checkNotNull(filter, "filter");

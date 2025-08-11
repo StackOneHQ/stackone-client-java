@@ -182,9 +182,12 @@ public class Employee {
 
     /**
      * Provider's unique identifier of the manager
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_manager_id")
+    @Deprecated
     private JsonNullable<String> remoteManagerId;
 
     /**
@@ -773,7 +776,10 @@ public class Employee {
 
     /**
      * Provider's unique identifier of the manager
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     @JsonIgnore
     public JsonNullable<String> remoteManagerId() {
         return remoteManagerId;
@@ -1455,7 +1461,10 @@ public class Employee {
 
     /**
      * Provider's unique identifier of the manager
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public Employee withRemoteManagerId(String remoteManagerId) {
         Utils.checkNotNull(remoteManagerId, "remoteManagerId");
         this.remoteManagerId = JsonNullable.of(remoteManagerId);
@@ -1464,7 +1473,10 @@ public class Employee {
 
     /**
      * Provider's unique identifier of the manager
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public Employee withRemoteManagerId(JsonNullable<String> remoteManagerId) {
         Utils.checkNotNull(remoteManagerId, "remoteManagerId");
         this.remoteManagerId = remoteManagerId;
@@ -2231,6 +2243,7 @@ public class Employee {
         @Deprecated
         private JsonNullable<String> managerId = JsonNullable.undefined();
 
+        @Deprecated
         private JsonNullable<String> remoteManagerId = JsonNullable.undefined();
 
         private JsonNullable<? extends Gender> gender = JsonNullable.undefined();
@@ -2721,7 +2734,10 @@ public class Employee {
 
         /**
          * Provider's unique identifier of the manager
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder remoteManagerId(String remoteManagerId) {
             Utils.checkNotNull(remoteManagerId, "remoteManagerId");
             this.remoteManagerId = JsonNullable.of(remoteManagerId);
@@ -2730,7 +2746,10 @@ public class Employee {
 
         /**
          * Provider's unique identifier of the manager
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder remoteManagerId(JsonNullable<String> remoteManagerId) {
             Utils.checkNotNull(remoteManagerId, "remoteManagerId");
             this.remoteManagerId = remoteManagerId;

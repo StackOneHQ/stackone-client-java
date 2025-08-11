@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.AtsGetJobPostingOperation;
+import com.stackone.stackone_client_java.operations.AtsGetJobPosting;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -47,7 +47,7 @@ public class AtsGetJobPostingRequestBuilder {
             .build());
 
         RequestOperation<AtsGetJobPostingRequest, AtsGetJobPostingResponse> operation
-              = new AtsGetJobPostingOperation(sdkConfiguration, options);
+              = new AtsGetJobPosting.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

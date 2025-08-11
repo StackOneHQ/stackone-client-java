@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.EntitySkillsCreateRequestDto;
-import com.stackone.stackone_client_java.operations.HrisCreateEmployeeSkillOperation;
+import com.stackone.stackone_client_java.operations.HrisCreateEmployeeSkill;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class HrisCreateEmployeeSkillRequestBuilder {
             .build());
 
         RequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
-              = new HrisCreateEmployeeSkillOperation(sdkConfiguration, options);
+              = new HrisCreateEmployeeSkill.Sync(sdkConfiguration, options);
         HrisCreateEmployeeSkillRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

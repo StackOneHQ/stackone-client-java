@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocumentCategoryOperation;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocumentCategory;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -47,7 +47,7 @@ public class HrisGetEmployeeDocumentCategoryRequestBuilder {
             .build());
 
         RequestOperation<HrisGetEmployeeDocumentCategoryRequest, HrisGetEmployeeDocumentCategoryResponse> operation
-              = new HrisGetEmployeeDocumentCategoryOperation(sdkConfiguration, options);
+              = new HrisGetEmployeeDocumentCategory.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
