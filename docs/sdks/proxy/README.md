@@ -33,8 +33,8 @@ public class Application {
 
         StackOne sdk = StackOne.builder()
                 .security(Security.builder()
-                    .username(System.getenv().getOrDefault("", ""))
-                    .password(System.getenv().getOrDefault("", ""))
+                    .username("")
+                    .password("")
                     .build())
             .build();
 

@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateEmailTemplateRequestDto;
-import com.stackone.stackone_client_java.operations.MarketingUpdateEmailTemplateOperation;
+import com.stackone.stackone_client_java.operations.MarketingUpdateEmailTemplate;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class MarketingUpdateEmailTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingUpdateEmailTemplateRequest, MarketingUpdateEmailTemplateResponse> operation
-              = new MarketingUpdateEmailTemplateOperation(sdkConfiguration, options);
+              = new MarketingUpdateEmailTemplate.Sync(sdkConfiguration, options);
         MarketingUpdateEmailTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

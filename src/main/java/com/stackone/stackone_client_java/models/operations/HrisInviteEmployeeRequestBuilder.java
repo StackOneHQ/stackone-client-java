@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisInviteEmployeeRequestDto;
-import com.stackone.stackone_client_java.operations.HrisInviteEmployeeOperation;
+import com.stackone.stackone_client_java.operations.HrisInviteEmployee;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class HrisInviteEmployeeRequestBuilder {
             .build());
 
         RequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
-              = new HrisInviteEmployeeOperation(sdkConfiguration, options);
+              = new HrisInviteEmployee.Sync(sdkConfiguration, options);
         HrisInviteEmployeeRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

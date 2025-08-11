@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.CrmCreateContactRequestDto;
-import com.stackone.stackone_client_java.operations.CrmUpdateContactOperation;
+import com.stackone.stackone_client_java.operations.CrmUpdateContact;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class CrmUpdateContactRequestBuilder {
             .build());
 
         RequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation
-              = new CrmUpdateContactOperation(sdkConfiguration, options);
+              = new CrmUpdateContact.Sync(sdkConfiguration, options);
         CrmUpdateContactRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

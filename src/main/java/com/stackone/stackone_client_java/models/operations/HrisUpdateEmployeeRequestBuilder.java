@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDto;
-import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeOperation;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployee;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class HrisUpdateEmployeeRequestBuilder {
             .build());
 
         RequestOperation<HrisUpdateEmployeeRequest, HrisUpdateEmployeeResponse> operation
-              = new HrisUpdateEmployeeOperation(sdkConfiguration, options);
+              = new HrisUpdateEmployee.Sync(sdkConfiguration, options);
         HrisUpdateEmployeeRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckOrderRequestDto;
-import com.stackone.stackone_client_java.operations.AtsOrderBackgroundCheckRequestOperation;
+import com.stackone.stackone_client_java.operations.AtsOrderBackgroundCheckRequest;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -65,7 +65,7 @@ public class AtsOrderBackgroundCheckRequestRequestBuilder {
             .build());
 
         RequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
-              = new AtsOrderBackgroundCheckRequestOperation(sdkConfiguration, options);
+              = new AtsOrderBackgroundCheckRequest.Sync(sdkConfiguration, options);
         AtsOrderBackgroundCheckRequestRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

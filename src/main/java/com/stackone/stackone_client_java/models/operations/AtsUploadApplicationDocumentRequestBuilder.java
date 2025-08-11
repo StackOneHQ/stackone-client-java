@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDto;
-import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocumentOperation;
+import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -73,7 +73,7 @@ public class AtsUploadApplicationDocumentRequestBuilder {
             .build());
 
         RequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
-              = new AtsUploadApplicationDocumentOperation(sdkConfiguration, options);
+              = new AtsUploadApplicationDocument.Sync(sdkConfiguration, options);
         AtsUploadApplicationDocumentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

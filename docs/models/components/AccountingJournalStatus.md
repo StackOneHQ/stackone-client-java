@@ -1,0 +1,11 @@
+# AccountingJournalStatus
+
+Status of the journal
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `value`                                                                                                | [JsonNullable\<AccountingJournalValue>](../../models/components/AccountingJournalValue.md)             | :heavy_minus_sign:                                                                                     | The journal status                                                                                     | draft                                                                                                  |
+| `sourceValue`                                                                                          | [JsonNullable\<AccountingJournalSourceValue>](../../models/components/AccountingJournalSourceValue.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    | draft                                                                                                  |

@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.LmsDeleteUserCompletionOperation;
+import com.stackone.stackone_client_java.operations.LmsDeleteUserCompletion;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -72,7 +72,7 @@ public class LmsDeleteUserCompletionRequestBuilder {
             .build());
 
         RequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
-              = new LmsDeleteUserCompletionOperation(sdkConfiguration, options);
+              = new LmsDeleteUserCompletion.Sync(sdkConfiguration, options);
         LmsDeleteUserCompletionRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

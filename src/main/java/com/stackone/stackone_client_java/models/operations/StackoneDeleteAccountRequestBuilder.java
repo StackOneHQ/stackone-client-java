@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.operations.StackoneDeleteAccountOperation;
+import com.stackone.stackone_client_java.operations.StackoneDeleteAccount;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -56,7 +56,7 @@ public class StackoneDeleteAccountRequestBuilder {
             .build());
 
         RequestOperation<StackoneDeleteAccountRequest, StackoneDeleteAccountResponse> operation
-              = new StackoneDeleteAccountOperation(sdkConfiguration, options);
+              = new StackoneDeleteAccount.Sync(sdkConfiguration, options);
         StackoneDeleteAccountRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

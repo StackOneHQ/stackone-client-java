@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
-import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequestOperation;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequest;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -81,7 +81,7 @@ public class HrisUpdateEmployeeTimeOffRequestRequestBuilder {
             .build());
 
         RequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
-              = new HrisUpdateEmployeeTimeOffRequestOperation(sdkConfiguration, options);
+              = new HrisUpdateEmployeeTimeOffRequest.Sync(sdkConfiguration, options);
         HrisUpdateEmployeeTimeOffRequestRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

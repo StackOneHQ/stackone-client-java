@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Deprecated;
+import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -33,6 +34,11 @@ public class ContentPaginated {
     private JsonNullable<String> next;
 
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("total")
+    private JsonNullable<Double> total;
+
+
     @JsonProperty("data")
     private List<Content> data;
 
@@ -45,22 +51,25 @@ public class ContentPaginated {
     public ContentPaginated(
             @JsonProperty("next_page") JsonNullable<String> nextPage,
             @JsonProperty("next") JsonNullable<String> next,
+            @JsonProperty("total") JsonNullable<Double> total,
             @JsonProperty("data") List<Content> data,
             @JsonProperty("raw") JsonNullable<? extends List<RawResponse>> raw) {
         Utils.checkNotNull(nextPage, "nextPage");
         Utils.checkNotNull(next, "next");
+        Utils.checkNotNull(total, "total");
         Utils.checkNotNull(data, "data");
         Utils.checkNotNull(raw, "raw");
         this.nextPage = nextPage;
         this.next = next;
+        this.total = total;
         this.data = data;
         this.raw = raw;
     }
     
     public ContentPaginated(
             List<Content> data) {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), data,
-            JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            data, JsonNullable.undefined());
     }
 
     /**
@@ -76,6 +85,11 @@ public class ContentPaginated {
     @JsonIgnore
     public JsonNullable<String> next() {
         return next;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Double> total() {
+        return total;
     }
 
     @JsonIgnore
@@ -128,6 +142,18 @@ public class ContentPaginated {
         return this;
     }
 
+    public ContentPaginated withTotal(double total) {
+        Utils.checkNotNull(total, "total");
+        this.total = JsonNullable.of(total);
+        return this;
+    }
+
+    public ContentPaginated withTotal(JsonNullable<Double> total) {
+        Utils.checkNotNull(total, "total");
+        this.total = total;
+        return this;
+    }
+
     public ContentPaginated withData(List<Content> data) {
         Utils.checkNotNull(data, "data");
         this.data = data;
@@ -158,6 +184,7 @@ public class ContentPaginated {
         return 
             Utils.enhancedDeepEquals(this.nextPage, other.nextPage) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
+            Utils.enhancedDeepEquals(this.total, other.total) &&
             Utils.enhancedDeepEquals(this.data, other.data) &&
             Utils.enhancedDeepEquals(this.raw, other.raw);
     }
@@ -165,8 +192,8 @@ public class ContentPaginated {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            nextPage, next, data,
-            raw);
+            nextPage, next, total,
+            data, raw);
     }
     
     @Override
@@ -174,6 +201,7 @@ public class ContentPaginated {
         return Utils.toString(ContentPaginated.class,
                 "nextPage", nextPage,
                 "next", next,
+                "total", total,
                 "data", data,
                 "raw", raw);
     }
@@ -185,6 +213,8 @@ public class ContentPaginated {
         private JsonNullable<String> nextPage = JsonNullable.undefined();
 
         private JsonNullable<String> next = JsonNullable.undefined();
+
+        private JsonNullable<Double> total = JsonNullable.undefined();
 
         private List<Content> data;
 
@@ -231,6 +261,19 @@ public class ContentPaginated {
         }
 
 
+        public Builder total(double total) {
+            Utils.checkNotNull(total, "total");
+            this.total = JsonNullable.of(total);
+            return this;
+        }
+
+        public Builder total(JsonNullable<Double> total) {
+            Utils.checkNotNull(total, "total");
+            this.total = total;
+            return this;
+        }
+
+
         public Builder data(List<Content> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
@@ -253,8 +296,8 @@ public class ContentPaginated {
         public ContentPaginated build() {
 
             return new ContentPaginated(
-                nextPage, next, data,
-                raw);
+                nextPage, next, total,
+                data, raw);
         }
 
     }

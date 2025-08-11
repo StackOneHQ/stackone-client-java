@@ -7,7 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckPackagesRequestDto;
-import com.stackone.stackone_client_java.operations.AtsCreateBackgroundCheckPackageOperation;
+import com.stackone.stackone_client_java.operations.AtsCreateBackgroundCheckPackage;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -65,7 +65,7 @@ public class AtsCreateBackgroundCheckPackageRequestBuilder {
             .build());
 
         RequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
-              = new AtsCreateBackgroundCheckPackageOperation(sdkConfiguration, options);
+              = new AtsCreateBackgroundCheckPackage.Sync(sdkConfiguration, options);
         AtsCreateBackgroundCheckPackageRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

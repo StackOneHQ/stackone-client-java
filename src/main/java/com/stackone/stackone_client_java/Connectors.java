@@ -11,8 +11,8 @@ import com.stackone.stackone_client_java.models.operations.StackoneGetConnectorM
 import com.stackone.stackone_client_java.models.operations.StackoneListConnectorsMetaRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneListConnectorsMetaRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneListConnectorsMetaResponse;
-import com.stackone.stackone_client_java.operations.StackoneGetConnectorMetaOperation;
-import com.stackone.stackone_client_java.operations.StackoneListConnectorsMetaOperation;
+import com.stackone.stackone_client_java.operations.StackoneGetConnectorMeta;
+import com.stackone.stackone_client_java.operations.StackoneListConnectorsMeta;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -63,7 +63,7 @@ public class Connectors {
                 .include(include)
                 .build();
         RequestOperation<StackoneListConnectorsMetaRequest, StackoneListConnectorsMetaResponse> operation
-              = new StackoneListConnectorsMetaOperation(sdkConfiguration, options);
+              = new StackoneListConnectorsMeta.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -106,7 +106,7 @@ public class Connectors {
                 .include(include)
                 .build();
         RequestOperation<StackoneGetConnectorMetaRequest, StackoneGetConnectorMetaResponse> operation
-              = new StackoneGetConnectorMetaOperation(sdkConfiguration, options);
+              = new StackoneGetConnectorMeta.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
