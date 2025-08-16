@@ -80,6 +80,33 @@ public class StackoneGetConnectorMeta {
             return Optional.ofNullable(this.securitySource);
         }
 
+        BeforeRequestContextImpl createBeforeRequestContext() {
+            return new BeforeRequestContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "stackone_get_connector_meta",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
+        AfterSuccessContextImpl createAfterSuccessContext() {
+            return new AfterSuccessContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "stackone_get_connector_meta",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
+        AfterErrorContextImpl createAfterErrorContext() {
+            return new AfterErrorContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "stackone_get_connector_meta",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
         HttpRequest buildRequest(StackoneGetConnectorMetaRequest request) throws Exception {
             String url = Utils.generateURL(
                     StackoneGetConnectorMetaRequest.class,
@@ -96,14 +123,7 @@ public class StackoneGetConnectorMeta {
                     null));
             Utils.configureSecurity(req, this.sdkConfiguration.securitySource().getSecurity());
 
-            return sdkConfiguration.hooks().beforeRequest(
-                    new BeforeRequestContextImpl(
-                            this.sdkConfiguration,
-                            this.baseUrl,
-                            "stackone_get_connector_meta",
-                            java.util.Optional.of(java.util.List.of()),
-                            securitySource()),
-                    req.build());
+            return req.build();
         }
     }
 
@@ -113,29 +133,20 @@ public class StackoneGetConnectorMeta {
             super(sdkConfiguration, options);
         }
 
+        private HttpRequest onBuildRequest(StackoneGetConnectorMetaRequest request) throws Exception {
+            HttpRequest req = buildRequest(request);
+            return sdkConfiguration.hooks().beforeRequest(createBeforeRequestContext(), req);
+        }
+
         private HttpResponse<InputStream> onError(HttpResponse<InputStream> response, Exception error) throws Exception {
-            return sdkConfiguration.hooks()
-                    .afterError(
-                            new AfterErrorContextImpl(
-                                    this.sdkConfiguration,
-                                    this.baseUrl,
-                                    "stackone_get_connector_meta",
-                                    java.util.Optional.of(java.util.List.of()),
-                                    securitySource()),
-                            Optional.ofNullable(response),
-                            Optional.ofNullable(error));
+            return sdkConfiguration.hooks().afterError(
+                    createAfterErrorContext(),
+                    Optional.ofNullable(response),
+                    Optional.ofNullable(error));
         }
 
         private HttpResponse<InputStream> onSuccess(HttpResponse<InputStream> response) throws Exception {
-            return sdkConfiguration.hooks()
-                    .afterSuccess(
-                            new AfterSuccessContextImpl(
-                                    this.sdkConfiguration,
-                                    this.baseUrl,
-                                    "stackone_get_connector_meta",
-                                    java.util.Optional.of(java.util.List.of()),
-                                    securitySource()),
-                            response);
+            return sdkConfiguration.hooks().afterSuccess(createAfterSuccessContext(), response);
         }
 
         @Override
@@ -144,12 +155,16 @@ public class StackoneGetConnectorMeta {
                     .action(() -> {
                         HttpRequest r;
                         try {
-                            r = buildRequest(request);
+                            r = onBuildRequest(request);
                         } catch (Exception e) {
                             throw new NonRetryableException(e);
                         }
                         try {
-                            return client.send(r);
+                            HttpResponse<InputStream> httpRes = client.send(r);
+                            if (Utils.statusCodeMatches(httpRes.statusCode(), "400", "401", "403", "404", "408", "409", "422", "429", "4XX", "500", "501", "502", "5XX")) {
+                                return onError(httpRes, null);
+                            }
+                            return httpRes;
                         } catch (Exception e) {
                             return onError(null, e);
                         }
