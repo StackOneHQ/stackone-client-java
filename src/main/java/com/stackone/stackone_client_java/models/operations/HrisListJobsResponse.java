@@ -5,7 +5,7 @@ package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.stackone.stackone_client_java.models.components.JobsPaginated;
+import com.stackone.stackone_client_java.models.components.HrisJobsPaginated;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
@@ -38,7 +38,7 @@ public class HrisListJobsResponse implements Response {
     /**
      * The list of jobs was retrieved.
      */
-    private Optional<? extends JobsPaginated> jobsPaginated;
+    private Optional<? extends HrisJobsPaginated> hrisJobsPaginated;
 
 
     private Map<String, List<String>> headers;
@@ -48,18 +48,18 @@ public class HrisListJobsResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends JobsPaginated> jobsPaginated,
+            Optional<? extends HrisJobsPaginated> hrisJobsPaginated,
             Map<String, List<String>> headers) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(jobsPaginated, "jobsPaginated");
+        Utils.checkNotNull(hrisJobsPaginated, "hrisJobsPaginated");
         headers = Utils.emptyMapIfNull(headers);
         Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.jobsPaginated = jobsPaginated;
+        this.hrisJobsPaginated = hrisJobsPaginated;
         this.headers = headers;
     }
     
@@ -101,8 +101,8 @@ public class HrisListJobsResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<JobsPaginated> jobsPaginated() {
-        return (Optional<JobsPaginated>) jobsPaginated;
+    public Optional<HrisJobsPaginated> hrisJobsPaginated() {
+        return (Optional<HrisJobsPaginated>) hrisJobsPaginated;
     }
 
     @JsonIgnore
@@ -145,9 +145,9 @@ public class HrisListJobsResponse implements Response {
     /**
      * The list of jobs was retrieved.
      */
-    public HrisListJobsResponse withJobsPaginated(JobsPaginated jobsPaginated) {
-        Utils.checkNotNull(jobsPaginated, "jobsPaginated");
-        this.jobsPaginated = Optional.ofNullable(jobsPaginated);
+    public HrisListJobsResponse withHrisJobsPaginated(HrisJobsPaginated hrisJobsPaginated) {
+        Utils.checkNotNull(hrisJobsPaginated, "hrisJobsPaginated");
+        this.hrisJobsPaginated = Optional.ofNullable(hrisJobsPaginated);
         return this;
     }
 
@@ -155,9 +155,9 @@ public class HrisListJobsResponse implements Response {
     /**
      * The list of jobs was retrieved.
      */
-    public HrisListJobsResponse withJobsPaginated(Optional<? extends JobsPaginated> jobsPaginated) {
-        Utils.checkNotNull(jobsPaginated, "jobsPaginated");
-        this.jobsPaginated = jobsPaginated;
+    public HrisListJobsResponse withHrisJobsPaginated(Optional<? extends HrisJobsPaginated> hrisJobsPaginated) {
+        Utils.checkNotNull(hrisJobsPaginated, "hrisJobsPaginated");
+        this.hrisJobsPaginated = hrisJobsPaginated;
         return this;
     }
 
@@ -180,7 +180,7 @@ public class HrisListJobsResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.jobsPaginated, other.jobsPaginated) &&
+            Utils.enhancedDeepEquals(this.hrisJobsPaginated, other.hrisJobsPaginated) &&
             Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
@@ -188,7 +188,7 @@ public class HrisListJobsResponse implements Response {
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            jobsPaginated, headers);
+            hrisJobsPaginated, headers);
     }
     
     @Override
@@ -197,7 +197,7 @@ public class HrisListJobsResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "jobsPaginated", jobsPaginated,
+                "hrisJobsPaginated", hrisJobsPaginated,
                 "headers", headers);
     }
 
@@ -210,7 +210,7 @@ public class HrisListJobsResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Optional<? extends JobsPaginated> jobsPaginated = Optional.empty();
+        private Optional<? extends HrisJobsPaginated> hrisJobsPaginated = Optional.empty();
 
         private Map<String, List<String>> headers;
 
@@ -252,18 +252,18 @@ public class HrisListJobsResponse implements Response {
         /**
          * The list of jobs was retrieved.
          */
-        public Builder jobsPaginated(JobsPaginated jobsPaginated) {
-            Utils.checkNotNull(jobsPaginated, "jobsPaginated");
-            this.jobsPaginated = Optional.ofNullable(jobsPaginated);
+        public Builder hrisJobsPaginated(HrisJobsPaginated hrisJobsPaginated) {
+            Utils.checkNotNull(hrisJobsPaginated, "hrisJobsPaginated");
+            this.hrisJobsPaginated = Optional.ofNullable(hrisJobsPaginated);
             return this;
         }
 
         /**
          * The list of jobs was retrieved.
          */
-        public Builder jobsPaginated(Optional<? extends JobsPaginated> jobsPaginated) {
-            Utils.checkNotNull(jobsPaginated, "jobsPaginated");
-            this.jobsPaginated = jobsPaginated;
+        public Builder hrisJobsPaginated(Optional<? extends HrisJobsPaginated> hrisJobsPaginated) {
+            Utils.checkNotNull(hrisJobsPaginated, "hrisJobsPaginated");
+            this.hrisJobsPaginated = hrisJobsPaginated;
             return this;
         }
 
@@ -278,7 +278,7 @@ public class HrisListJobsResponse implements Response {
 
             return new HrisListJobsResponse(
                 contentType, statusCode, rawResponse,
-                jobsPaginated, headers);
+                hrisJobsPaginated, headers);
         }
 
     }

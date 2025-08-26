@@ -5,7 +5,7 @@ package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.stackone.stackone_client_java.models.components.JobResult;
+import com.stackone.stackone_client_java.models.components.HrisJobResult;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
@@ -38,7 +38,7 @@ public class HrisGetJobResponse implements Response {
     /**
      * The job with the given identifier was retrieved.
      */
-    private Optional<? extends JobResult> jobResult;
+    private Optional<? extends HrisJobResult> hrisJobResult;
 
 
     private Map<String, List<String>> headers;
@@ -48,18 +48,18 @@ public class HrisGetJobResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends JobResult> jobResult,
+            Optional<? extends HrisJobResult> hrisJobResult,
             Map<String, List<String>> headers) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(jobResult, "jobResult");
+        Utils.checkNotNull(hrisJobResult, "hrisJobResult");
         headers = Utils.emptyMapIfNull(headers);
         Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.jobResult = jobResult;
+        this.hrisJobResult = hrisJobResult;
         this.headers = headers;
     }
     
@@ -101,8 +101,8 @@ public class HrisGetJobResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<JobResult> jobResult() {
-        return (Optional<JobResult>) jobResult;
+    public Optional<HrisJobResult> hrisJobResult() {
+        return (Optional<HrisJobResult>) hrisJobResult;
     }
 
     @JsonIgnore
@@ -145,9 +145,9 @@ public class HrisGetJobResponse implements Response {
     /**
      * The job with the given identifier was retrieved.
      */
-    public HrisGetJobResponse withJobResult(JobResult jobResult) {
-        Utils.checkNotNull(jobResult, "jobResult");
-        this.jobResult = Optional.ofNullable(jobResult);
+    public HrisGetJobResponse withHrisJobResult(HrisJobResult hrisJobResult) {
+        Utils.checkNotNull(hrisJobResult, "hrisJobResult");
+        this.hrisJobResult = Optional.ofNullable(hrisJobResult);
         return this;
     }
 
@@ -155,9 +155,9 @@ public class HrisGetJobResponse implements Response {
     /**
      * The job with the given identifier was retrieved.
      */
-    public HrisGetJobResponse withJobResult(Optional<? extends JobResult> jobResult) {
-        Utils.checkNotNull(jobResult, "jobResult");
-        this.jobResult = jobResult;
+    public HrisGetJobResponse withHrisJobResult(Optional<? extends HrisJobResult> hrisJobResult) {
+        Utils.checkNotNull(hrisJobResult, "hrisJobResult");
+        this.hrisJobResult = hrisJobResult;
         return this;
     }
 
@@ -180,7 +180,7 @@ public class HrisGetJobResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.jobResult, other.jobResult) &&
+            Utils.enhancedDeepEquals(this.hrisJobResult, other.hrisJobResult) &&
             Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
@@ -188,7 +188,7 @@ public class HrisGetJobResponse implements Response {
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            jobResult, headers);
+            hrisJobResult, headers);
     }
     
     @Override
@@ -197,7 +197,7 @@ public class HrisGetJobResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "jobResult", jobResult,
+                "hrisJobResult", hrisJobResult,
                 "headers", headers);
     }
 
@@ -210,7 +210,7 @@ public class HrisGetJobResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Optional<? extends JobResult> jobResult = Optional.empty();
+        private Optional<? extends HrisJobResult> hrisJobResult = Optional.empty();
 
         private Map<String, List<String>> headers;
 
@@ -252,18 +252,18 @@ public class HrisGetJobResponse implements Response {
         /**
          * The job with the given identifier was retrieved.
          */
-        public Builder jobResult(JobResult jobResult) {
-            Utils.checkNotNull(jobResult, "jobResult");
-            this.jobResult = Optional.ofNullable(jobResult);
+        public Builder hrisJobResult(HrisJobResult hrisJobResult) {
+            Utils.checkNotNull(hrisJobResult, "hrisJobResult");
+            this.hrisJobResult = Optional.ofNullable(hrisJobResult);
             return this;
         }
 
         /**
          * The job with the given identifier was retrieved.
          */
-        public Builder jobResult(Optional<? extends JobResult> jobResult) {
-            Utils.checkNotNull(jobResult, "jobResult");
-            this.jobResult = jobResult;
+        public Builder hrisJobResult(Optional<? extends HrisJobResult> hrisJobResult) {
+            Utils.checkNotNull(hrisJobResult, "hrisJobResult");
+            this.hrisJobResult = hrisJobResult;
             return this;
         }
 
@@ -278,7 +278,7 @@ public class HrisGetJobResponse implements Response {
 
             return new HrisGetJobResponse(
                 contentType, statusCode, rawResponse,
-                jobResult, headers);
+                hrisJobResult, headers);
         }
 
     }

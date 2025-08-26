@@ -44,9 +44,9 @@ public class LanguageEnumSourceValue {
         return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
     }
 
-    public static LanguageEnumSourceValue of(SourceValue4 value) {
+    public static LanguageEnumSourceValue of(LanguageEnumSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceValue4>(){}));
+        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LanguageEnumSourceValue4>(){}));
     }
 
     public static LanguageEnumSourceValue of(List<Object> value) {
@@ -60,7 +60,7 @@ public class LanguageEnumSourceValue {
      * <li>{@code java.lang.String}</li>
      * <li>{@code double}</li>
      * <li>{@code boolean}</li>
-     * <li>{@code com.stackone.stackone_client_java.models.components.SourceValue4}</li>
+     * <li>{@code com.stackone.stackone_client_java.models.components.LanguageEnumSourceValue4}</li>
      * <li>{@code java.util.List<java.lang.Object>}</li>
      * </ul>
      * 
@@ -105,7 +105,7 @@ public class LanguageEnumSourceValue {
                   TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceValue4>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<LanguageEnumSourceValue4>() {}, JsonShape.DEFAULT));
         }
     }
     

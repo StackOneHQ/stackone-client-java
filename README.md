@@ -44,7 +44,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.9.2'
+implementation 'com.stackone:stackone-client-java:0.10.0'
 ```
 
 Maven:
@@ -52,7 +52,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.9.2</version>
+    <version>0.10.0</version>
 </dependency>
 ```
 
@@ -135,6 +135,7 @@ public class Application {
 * [getCompanyTaxRate](docs/sdks/accounting/README.md#getcompanytaxrate) - Get Tax Rate
 * [batchCreateCompanyJournals](docs/sdks/accounting/README.md#batchcreatecompanyjournals) - Batch Create Journals
 * [listCompanyJournals](docs/sdks/accounting/README.md#listcompanyjournals) - List Journals
+* [createCompanyJournal](docs/sdks/accounting/README.md#createcompanyjournal) - Create Journal
 * [getCompanyJournal](docs/sdks/accounting/README.md#getcompanyjournal) - Get Journal
 
 ### [accounts()](docs/sdks/accounts/README.md)
@@ -189,8 +190,10 @@ public class Application {
 * [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
 * [listJobs](docs/sdks/ats/README.md#listjobs) - List Jobs
 * [createJob](docs/sdks/ats/README.md#createjob) - Create Job
+* [listJobApplicationStages](docs/sdks/ats/README.md#listjobapplicationstages) - List Job Application Stages
 * [getJob](docs/sdks/ats/README.md#getjob) - Get Job
 * [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
+* [getJobApplicationStage](docs/sdks/ats/README.md#getjobapplicationstage) - Get Job Application Stage
 * [listLists](docs/sdks/ats/README.md#listlists) - Get all Lists
 * [getList](docs/sdks/ats/README.md#getlist) - Get List
 * [listLocations](docs/sdks/ats/README.md#listlocations) - List locations
@@ -208,7 +211,6 @@ public class Application {
 * [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
 * [orderAssessmentsRequest](docs/sdks/ats/README.md#orderassessmentsrequest) - Order Assessments Request
 * [updateAssessmentsResult](docs/sdks/ats/README.md#updateassessmentsresult) - Update Assessments Result
-* [getAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
 * [listBackgroundCheckPackages](docs/sdks/ats/README.md#listbackgroundcheckpackages) - List Background Check Packages
 * [createBackgroundCheckPackage](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
 * [getBackgroundCheckPackage](docs/sdks/ats/README.md#getbackgroundcheckpackage) - Get Background Check Package
@@ -216,7 +218,6 @@ public class Application {
 * [updateBackgroundCheckPackage](docs/sdks/ats/README.md#updatebackgroundcheckpackage) - Update Background Check Package
 * [orderBackgroundCheckRequest](docs/sdks/ats/README.md#orderbackgroundcheckrequest) - Order Background Check Request
 * [updateBackgroundCheckResult](docs/sdks/ats/README.md#updatebackgroundcheckresult) - Update Background Check Result
-* [getBackgroundCheckResult](docs/sdks/ats/README.md#getbackgroundcheckresult) - Get Background Check Results
 * [listApplicationDocumentCategories](docs/sdks/ats/README.md#listapplicationdocumentcategories) - List Application Document Categories
 * [getApplicationDocumentCategory](docs/sdks/ats/README.md#getapplicationdocumentcategory) - Get Application Document Category
 
@@ -325,6 +326,7 @@ public class Application {
 * [getEmployeeSkill](docs/sdks/hris/README.md#getemployeeskill) - Get Employee Skill
 * [listEmployeeTasks](docs/sdks/hris/README.md#listemployeetasks) - List Employee Tasks
 * [getEmployeeTask](docs/sdks/hris/README.md#getemployeetask) - Get Employee Task
+* [updateEmployeeTask](docs/sdks/hris/README.md#updateemployeetask) - Update Employee Task
 * [listTasks](docs/sdks/hris/README.md#listtasks) - List Tasks
 * [getTask](docs/sdks/hris/README.md#gettask) - Get Task
 

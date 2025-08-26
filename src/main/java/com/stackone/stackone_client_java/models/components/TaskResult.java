@@ -20,7 +20,7 @@ public class TaskResult {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data")
-    private JsonNullable<? extends List<Task>> data;
+    private JsonNullable<? extends TaskResultData> data;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -29,7 +29,7 @@ public class TaskResult {
 
     @JsonCreator
     public TaskResult(
-            @JsonProperty("data") JsonNullable<? extends List<Task>> data,
+            @JsonProperty("data") JsonNullable<? extends TaskResultData> data,
             @JsonProperty("raw") JsonNullable<? extends List<RawResponse>> raw) {
         Utils.checkNotNull(data, "data");
         Utils.checkNotNull(raw, "raw");
@@ -43,8 +43,8 @@ public class TaskResult {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<Task>> data() {
-        return (JsonNullable<List<Task>>) data;
+    public JsonNullable<TaskResultData> data() {
+        return (JsonNullable<TaskResultData>) data;
     }
 
     @SuppressWarnings("unchecked")
@@ -58,13 +58,13 @@ public class TaskResult {
     }
 
 
-    public TaskResult withData(List<Task> data) {
+    public TaskResult withData(TaskResultData data) {
         Utils.checkNotNull(data, "data");
         this.data = JsonNullable.of(data);
         return this;
     }
 
-    public TaskResult withData(JsonNullable<? extends List<Task>> data) {
+    public TaskResult withData(JsonNullable<? extends TaskResultData> data) {
         Utils.checkNotNull(data, "data");
         this.data = data;
         return this;
@@ -112,7 +112,7 @@ public class TaskResult {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends List<Task>> data = JsonNullable.undefined();
+        private JsonNullable<? extends TaskResultData> data = JsonNullable.undefined();
 
         private JsonNullable<? extends List<RawResponse>> raw = JsonNullable.undefined();
 
@@ -121,13 +121,13 @@ public class TaskResult {
         }
 
 
-        public Builder data(List<Task> data) {
+        public Builder data(TaskResultData data) {
             Utils.checkNotNull(data, "data");
             this.data = JsonNullable.of(data);
             return this;
         }
 
-        public Builder data(JsonNullable<? extends List<Task>> data) {
+        public Builder data(JsonNullable<? extends TaskResultData> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;

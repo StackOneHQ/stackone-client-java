@@ -50,6 +50,8 @@ import java.util.Optional;
 @JsonSerialize(using = AtsUpdateCandidatesAssessmentsResultsRequestDtoValue._Serializer.class)
 public class AtsUpdateCandidatesAssessmentsResultsRequestDtoValue {
 
+    public static final AtsUpdateCandidatesAssessmentsResultsRequestDtoValue INITIATED = new AtsUpdateCandidatesAssessmentsResultsRequestDtoValue("initiated");
+    public static final AtsUpdateCandidatesAssessmentsResultsRequestDtoValue IN_PROGRESS = new AtsUpdateCandidatesAssessmentsResultsRequestDtoValue("in_progress");
     public static final AtsUpdateCandidatesAssessmentsResultsRequestDtoValue CANCELLED = new AtsUpdateCandidatesAssessmentsResultsRequestDtoValue("cancelled");
     public static final AtsUpdateCandidatesAssessmentsResultsRequestDtoValue COMPLETED = new AtsUpdateCandidatesAssessmentsResultsRequestDtoValue("completed");
     public static final AtsUpdateCandidatesAssessmentsResultsRequestDtoValue EXPIRED = new AtsUpdateCandidatesAssessmentsResultsRequestDtoValue("expired");
@@ -127,6 +129,8 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDtoValue {
 
     private static final Map<String, AtsUpdateCandidatesAssessmentsResultsRequestDtoValue> createValuesMap() {
         Map<String, AtsUpdateCandidatesAssessmentsResultsRequestDtoValue> map = new LinkedHashMap<>();
+        map.put("initiated", INITIATED);
+        map.put("in_progress", IN_PROGRESS);
         map.put("cancelled", CANCELLED);
         map.put("completed", COMPLETED);
         map.put("expired", EXPIRED);
@@ -138,6 +142,8 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDtoValue {
 
     private static final Map<String, AtsUpdateCandidatesAssessmentsResultsRequestDtoValueEnum> createEnumsMap() {
         Map<String, AtsUpdateCandidatesAssessmentsResultsRequestDtoValueEnum> map = new HashMap<>();
+        map.put("initiated", AtsUpdateCandidatesAssessmentsResultsRequestDtoValueEnum.INITIATED);
+        map.put("in_progress", AtsUpdateCandidatesAssessmentsResultsRequestDtoValueEnum.IN_PROGRESS);
         map.put("cancelled", AtsUpdateCandidatesAssessmentsResultsRequestDtoValueEnum.CANCELLED);
         map.put("completed", AtsUpdateCandidatesAssessmentsResultsRequestDtoValueEnum.COMPLETED);
         map.put("expired", AtsUpdateCandidatesAssessmentsResultsRequestDtoValueEnum.EXPIRED);
@@ -179,6 +185,8 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDtoValue {
     
     public enum AtsUpdateCandidatesAssessmentsResultsRequestDtoValueEnum {
 
+        INITIATED("initiated"),
+        IN_PROGRESS("in_progress"),
         CANCELLED("cancelled"),
         COMPLETED("completed"),
         EXPIRED("expired"),

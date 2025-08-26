@@ -50,6 +50,8 @@ import java.util.Optional;
 @JsonSerialize(using = AtsUpdateBackgroundCheckResultRequestDtoValue._Serializer.class)
 public class AtsUpdateBackgroundCheckResultRequestDtoValue {
 
+    public static final AtsUpdateBackgroundCheckResultRequestDtoValue INITIATED = new AtsUpdateBackgroundCheckResultRequestDtoValue("initiated");
+    public static final AtsUpdateBackgroundCheckResultRequestDtoValue IN_PROGRESS = new AtsUpdateBackgroundCheckResultRequestDtoValue("in_progress");
     public static final AtsUpdateBackgroundCheckResultRequestDtoValue CANCELLED = new AtsUpdateBackgroundCheckResultRequestDtoValue("cancelled");
     public static final AtsUpdateBackgroundCheckResultRequestDtoValue COMPLETED = new AtsUpdateBackgroundCheckResultRequestDtoValue("completed");
     public static final AtsUpdateBackgroundCheckResultRequestDtoValue EXPIRED = new AtsUpdateBackgroundCheckResultRequestDtoValue("expired");
@@ -127,6 +129,8 @@ public class AtsUpdateBackgroundCheckResultRequestDtoValue {
 
     private static final Map<String, AtsUpdateBackgroundCheckResultRequestDtoValue> createValuesMap() {
         Map<String, AtsUpdateBackgroundCheckResultRequestDtoValue> map = new LinkedHashMap<>();
+        map.put("initiated", INITIATED);
+        map.put("in_progress", IN_PROGRESS);
         map.put("cancelled", CANCELLED);
         map.put("completed", COMPLETED);
         map.put("expired", EXPIRED);
@@ -138,6 +142,8 @@ public class AtsUpdateBackgroundCheckResultRequestDtoValue {
 
     private static final Map<String, AtsUpdateBackgroundCheckResultRequestDtoValueEnum> createEnumsMap() {
         Map<String, AtsUpdateBackgroundCheckResultRequestDtoValueEnum> map = new HashMap<>();
+        map.put("initiated", AtsUpdateBackgroundCheckResultRequestDtoValueEnum.INITIATED);
+        map.put("in_progress", AtsUpdateBackgroundCheckResultRequestDtoValueEnum.IN_PROGRESS);
         map.put("cancelled", AtsUpdateBackgroundCheckResultRequestDtoValueEnum.CANCELLED);
         map.put("completed", AtsUpdateBackgroundCheckResultRequestDtoValueEnum.COMPLETED);
         map.put("expired", AtsUpdateBackgroundCheckResultRequestDtoValueEnum.EXPIRED);
@@ -179,6 +185,8 @@ public class AtsUpdateBackgroundCheckResultRequestDtoValue {
     
     public enum AtsUpdateBackgroundCheckResultRequestDtoValueEnum {
 
+        INITIATED("initiated"),
+        IN_PROGRESS("in_progress"),
         CANCELLED("cancelled"),
         COMPLETED("completed"),
         EXPIRED("expired"),

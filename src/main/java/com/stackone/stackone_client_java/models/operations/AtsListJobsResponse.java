@@ -5,7 +5,7 @@ package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.stackone.stackone_client_java.models.components.JobsPaginated;
+import com.stackone.stackone_client_java.models.components.AtsJobsPaginated;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
@@ -38,7 +38,7 @@ public class AtsListJobsResponse implements Response {
     /**
      * The list of jobs was retrieved.
      */
-    private Optional<? extends JobsPaginated> jobsPaginated;
+    private Optional<? extends AtsJobsPaginated> atsJobsPaginated;
 
 
     private Map<String, List<String>> headers;
@@ -48,18 +48,18 @@ public class AtsListJobsResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends JobsPaginated> jobsPaginated,
+            Optional<? extends AtsJobsPaginated> atsJobsPaginated,
             Map<String, List<String>> headers) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(jobsPaginated, "jobsPaginated");
+        Utils.checkNotNull(atsJobsPaginated, "atsJobsPaginated");
         headers = Utils.emptyMapIfNull(headers);
         Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.jobsPaginated = jobsPaginated;
+        this.atsJobsPaginated = atsJobsPaginated;
         this.headers = headers;
     }
     
@@ -101,8 +101,8 @@ public class AtsListJobsResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<JobsPaginated> jobsPaginated() {
-        return (Optional<JobsPaginated>) jobsPaginated;
+    public Optional<AtsJobsPaginated> atsJobsPaginated() {
+        return (Optional<AtsJobsPaginated>) atsJobsPaginated;
     }
 
     @JsonIgnore
@@ -145,9 +145,9 @@ public class AtsListJobsResponse implements Response {
     /**
      * The list of jobs was retrieved.
      */
-    public AtsListJobsResponse withJobsPaginated(JobsPaginated jobsPaginated) {
-        Utils.checkNotNull(jobsPaginated, "jobsPaginated");
-        this.jobsPaginated = Optional.ofNullable(jobsPaginated);
+    public AtsListJobsResponse withAtsJobsPaginated(AtsJobsPaginated atsJobsPaginated) {
+        Utils.checkNotNull(atsJobsPaginated, "atsJobsPaginated");
+        this.atsJobsPaginated = Optional.ofNullable(atsJobsPaginated);
         return this;
     }
 
@@ -155,9 +155,9 @@ public class AtsListJobsResponse implements Response {
     /**
      * The list of jobs was retrieved.
      */
-    public AtsListJobsResponse withJobsPaginated(Optional<? extends JobsPaginated> jobsPaginated) {
-        Utils.checkNotNull(jobsPaginated, "jobsPaginated");
-        this.jobsPaginated = jobsPaginated;
+    public AtsListJobsResponse withAtsJobsPaginated(Optional<? extends AtsJobsPaginated> atsJobsPaginated) {
+        Utils.checkNotNull(atsJobsPaginated, "atsJobsPaginated");
+        this.atsJobsPaginated = atsJobsPaginated;
         return this;
     }
 
@@ -180,7 +180,7 @@ public class AtsListJobsResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.jobsPaginated, other.jobsPaginated) &&
+            Utils.enhancedDeepEquals(this.atsJobsPaginated, other.atsJobsPaginated) &&
             Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
@@ -188,7 +188,7 @@ public class AtsListJobsResponse implements Response {
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            jobsPaginated, headers);
+            atsJobsPaginated, headers);
     }
     
     @Override
@@ -197,7 +197,7 @@ public class AtsListJobsResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "jobsPaginated", jobsPaginated,
+                "atsJobsPaginated", atsJobsPaginated,
                 "headers", headers);
     }
 
@@ -210,7 +210,7 @@ public class AtsListJobsResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Optional<? extends JobsPaginated> jobsPaginated = Optional.empty();
+        private Optional<? extends AtsJobsPaginated> atsJobsPaginated = Optional.empty();
 
         private Map<String, List<String>> headers;
 
@@ -252,18 +252,18 @@ public class AtsListJobsResponse implements Response {
         /**
          * The list of jobs was retrieved.
          */
-        public Builder jobsPaginated(JobsPaginated jobsPaginated) {
-            Utils.checkNotNull(jobsPaginated, "jobsPaginated");
-            this.jobsPaginated = Optional.ofNullable(jobsPaginated);
+        public Builder atsJobsPaginated(AtsJobsPaginated atsJobsPaginated) {
+            Utils.checkNotNull(atsJobsPaginated, "atsJobsPaginated");
+            this.atsJobsPaginated = Optional.ofNullable(atsJobsPaginated);
             return this;
         }
 
         /**
          * The list of jobs was retrieved.
          */
-        public Builder jobsPaginated(Optional<? extends JobsPaginated> jobsPaginated) {
-            Utils.checkNotNull(jobsPaginated, "jobsPaginated");
-            this.jobsPaginated = jobsPaginated;
+        public Builder atsJobsPaginated(Optional<? extends AtsJobsPaginated> atsJobsPaginated) {
+            Utils.checkNotNull(atsJobsPaginated, "atsJobsPaginated");
+            this.atsJobsPaginated = atsJobsPaginated;
             return this;
         }
 
@@ -278,7 +278,7 @@ public class AtsListJobsResponse implements Response {
 
             return new AtsListJobsResponse(
                 contentType, statusCode, rawResponse,
-                jobsPaginated, headers);
+                atsJobsPaginated, headers);
         }
 
     }

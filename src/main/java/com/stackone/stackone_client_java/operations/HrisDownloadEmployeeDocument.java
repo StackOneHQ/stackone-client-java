@@ -80,6 +80,33 @@ public class HrisDownloadEmployeeDocument {
             return Optional.ofNullable(this.securitySource);
         }
 
+        BeforeRequestContextImpl createBeforeRequestContext() {
+            return new BeforeRequestContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "hris_download_employee_document",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
+        AfterSuccessContextImpl createAfterSuccessContext() {
+            return new AfterSuccessContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "hris_download_employee_document",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
+        AfterErrorContextImpl createAfterErrorContext() {
+            return new AfterErrorContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "hris_download_employee_document",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
         HttpRequest buildRequest(HrisDownloadEmployeeDocumentRequest request) throws Exception {
             String url = Utils.generateURL(
                     HrisDownloadEmployeeDocumentRequest.class,
@@ -87,7 +114,7 @@ public class HrisDownloadEmployeeDocument {
                     "/unified/hris/employees/{id}/documents/{subResourceId}/download",
                     request, null);
             HTTPRequest req = new HTTPRequest(url, "GET");
-            req.addHeader("Accept", "application/octet-stream")
+            req.addHeader("Accept", "application/json;q=1, text/csv;q=0.97, text/plain;q=0.95, application/gzip;q=0.92, application/msword;q=0.89, application/octet-stream;q=0.87, application/pdf;q=0.84, application/rtf;q=0.82, application/vnd.ms-excel;q=0.79, application/vnd.ms-outlook;q=0.76, application/vnd.ms-powerpoint;q=0.74, application/vnd.oasis.opendocument.presentation;q=0.71, application/vnd.oasis.opendocument.spreadsheet;q=0.68, application/vnd.oasis.opendocument.text;q=0.66, application/vnd.openxmlformats-officedocument.presentationml.presentation;q=0.63, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;q=0.61, application/vnd.openxmlformats-officedocument.wordprocessingml.document;q=0.58, application/x-7z-compressed;q=0.55, application/x-rar-compressed;q=0.53, application/xml;q=0.50, application/zip;q=0.47, audio/mp4;q=0.45, audio/mpeg;q=0.42, audio/wav;q=0.39, image/bmp;q=0.37, image/gif;q=0.34, image/heic;q=0.32, image/jpeg;q=0.29, image/png;q=0.26, image/tiff;q=0.24, image/webp;q=0.21, message/rfc822;q=0.18, text/html;q=0.16, text/rtf;q=0.13, video/avi;q=0.11, video/mp4;q=0.08, video/quicktime;q=0.05, video/webm;q=0")
                     .addHeader("user-agent", SDKConfiguration.USER_AGENT);
 
             req.addQueryParams(Utils.getQueryParams(
@@ -97,14 +124,7 @@ public class HrisDownloadEmployeeDocument {
             req.addHeaders(Utils.getHeadersFromMetadata(request, null));
             Utils.configureSecurity(req, this.sdkConfiguration.securitySource().getSecurity());
 
-            return sdkConfiguration.hooks().beforeRequest(
-                    new BeforeRequestContextImpl(
-                            this.sdkConfiguration,
-                            this.baseUrl,
-                            "hris_download_employee_document",
-                            java.util.Optional.of(java.util.List.of()),
-                            securitySource()),
-                    req.build());
+            return req.build();
         }
     }
 
@@ -114,29 +134,20 @@ public class HrisDownloadEmployeeDocument {
             super(sdkConfiguration, options);
         }
 
+        private HttpRequest onBuildRequest(HrisDownloadEmployeeDocumentRequest request) throws Exception {
+            HttpRequest req = buildRequest(request);
+            return sdkConfiguration.hooks().beforeRequest(createBeforeRequestContext(), req);
+        }
+
         private HttpResponse<InputStream> onError(HttpResponse<InputStream> response, Exception error) throws Exception {
-            return sdkConfiguration.hooks()
-                    .afterError(
-                            new AfterErrorContextImpl(
-                                    this.sdkConfiguration,
-                                    this.baseUrl,
-                                    "hris_download_employee_document",
-                                    java.util.Optional.of(java.util.List.of()),
-                                    securitySource()),
-                            Optional.ofNullable(response),
-                            Optional.ofNullable(error));
+            return sdkConfiguration.hooks().afterError(
+                    createAfterErrorContext(),
+                    Optional.ofNullable(response),
+                    Optional.ofNullable(error));
         }
 
         private HttpResponse<InputStream> onSuccess(HttpResponse<InputStream> response) throws Exception {
-            return sdkConfiguration.hooks()
-                    .afterSuccess(
-                            new AfterSuccessContextImpl(
-                                    this.sdkConfiguration,
-                                    this.baseUrl,
-                                    "hris_download_employee_document",
-                                    java.util.Optional.of(java.util.List.of()),
-                                    securitySource()),
-                            response);
+            return sdkConfiguration.hooks().afterSuccess(createAfterSuccessContext(), response);
         }
 
         @Override
@@ -145,12 +156,16 @@ public class HrisDownloadEmployeeDocument {
                     .action(() -> {
                         HttpRequest r;
                         try {
-                            r = buildRequest(request);
+                            r = onBuildRequest(request);
                         } catch (Exception e) {
                             throw new NonRetryableException(e);
                         }
                         try {
-                            return client.send(r);
+                            HttpResponse<InputStream> httpRes = client.send(r);
+                            if (Utils.statusCodeMatches(httpRes.statusCode(), "400", "401", "403", "404", "408", "409", "412", "422", "429", "4XX", "500", "501", "502", "5XX")) {
+                                return onError(httpRes, null);
+                            }
+                            return httpRes;
                         } catch (Exception e) {
                             return onError(null, e);
                         }
@@ -174,14 +189,199 @@ public class HrisDownloadEmployeeDocument {
                             .contentType(contentType)
                             .statusCode(response.statusCode())
                             .rawResponse(response);
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/pdf")) {
+                resBuilder.twoHundredApplicationPdfResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/msword")) {
+                resBuilder.twoHundredApplicationMswordResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.openxmlformats-officedocument.wordprocessingml.document")) {
+                resBuilder.twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.ms-excel")) {
+                resBuilder.twoHundredApplicationVndMsExcelResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+                resBuilder.twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.ms-powerpoint")) {
+                resBuilder.twoHundredApplicationVndMsPowerpointResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.openxmlformats-officedocument.presentationml.presentation")) {
+                resBuilder.twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/rtf")) {
+                resBuilder.twoHundredApplicationRtfResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "text/plain")) {
+                resBuilder.twoHundredTextPlainResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "image/jpeg")) {
+                resBuilder.twoHundredImageJpegResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "image/png")) {
+                resBuilder.twoHundredImagePngResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "image/gif")) {
+                resBuilder.twoHundredImageGifResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "image/tiff")) {
+                resBuilder.twoHundredImageTiffResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "image/bmp")) {
+                resBuilder.twoHundredImageBmpResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "image/heic")) {
+                resBuilder.twoHundredImageHeicResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/zip")) {
+                resBuilder.twoHundredApplicationZipResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/gzip")) {
+                resBuilder.twoHundredApplicationGzipResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/json")) {
+                resBuilder.twoHundredApplicationJsonResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/xml")) {
+                resBuilder.twoHundredApplicationXmlResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "text/csv")) {
+                resBuilder.twoHundredTextCsvResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.oasis.opendocument.text")) {
+                resBuilder.twoHundredApplicationVndOasisOpendocumentTextResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.oasis.opendocument.spreadsheet")) {
+                resBuilder.twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "audio/mpeg")) {
+                resBuilder.twoHundredAudioMpegResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "video/mp4")) {
+                resBuilder.twoHundredVideoMp4ResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "video/webm")) {
+                resBuilder.twoHundredVideoWebmResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "text/rtf")) {
+                resBuilder.twoHundredTextRtfResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/x-rar-compressed")) {
+                resBuilder.twoHundredApplicationXRarCompressedResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/x-7z-compressed")) {
+                resBuilder.twoHundredApplicationX7zCompressedResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "message/rfc822")) {
+                resBuilder.twoHundredMessageRfc822ResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.ms-outlook")) {
+                resBuilder.twoHundredApplicationVndMsOutlookResponseStream(response.body());
+            }
             if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/octet-stream")) {
-                resBuilder.responseStream(response.body());
+                resBuilder.twoHundredApplicationOctetStreamResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "text/html")) {
+                resBuilder.twoHundredTextHtmlResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "image/webp")) {
+                resBuilder.twoHundredImageWebpResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "application/vnd.oasis.opendocument.presentation")) {
+                resBuilder.twoHundredApplicationVndOasisOpendocumentPresentationResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "audio/wav")) {
+                resBuilder.twoHundredAudioWavResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "audio/mp4")) {
+                resBuilder.twoHundredAudioMp4ResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "video/avi")) {
+                resBuilder.twoHundredVideoAviResponseStream(response.body());
+            }
+            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "video/quicktime")) {
+                resBuilder.twoHundredVideoQuicktimeResponseStream(response.body());
             }
 
             HrisDownloadEmployeeDocumentResponse res = resBuilder.build();
             
             if (Utils.statusCodeMatches(response.statusCode(), "200")) {
-                if (Utils.contentTypeMatches(contentType, "application/octet-stream")) {
+                if (Utils.contentTypeMatches(contentType, "application/pdf")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/msword")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.openxmlformats-officedocument.wordprocessingml.document")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.ms-excel")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.ms-powerpoint")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.openxmlformats-officedocument.presentationml.presentation")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/rtf")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "text/plain")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "image/jpeg")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "image/png")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "image/gif")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "image/tiff")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "image/bmp")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "image/heic")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/zip")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/gzip")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/json")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/xml")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "text/csv")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.oasis.opendocument.text")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.oasis.opendocument.spreadsheet")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "audio/mpeg")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "video/mp4")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "video/webm")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "text/rtf")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/x-rar-compressed")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/x-7z-compressed")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "message/rfc822")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.ms-outlook")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/octet-stream")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "text/html")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "image/webp")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "application/vnd.oasis.opendocument.presentation")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "audio/wav")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "audio/mp4")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "video/avi")) {
+                    return res;
+                } else if (Utils.contentTypeMatches(contentType, "video/quicktime")) {
                     return res;
                 } else {
                     throw new SDKError(
