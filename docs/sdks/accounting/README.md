@@ -13,6 +13,7 @@
 * [getCompanyTaxRate](#getcompanytaxrate) - Get Tax Rate
 * [batchCreateCompanyJournals](#batchcreatecompanyjournals) - Batch Create Journals
 * [listCompanyJournals](#listcompanyjournals) - List Journals
+* [createCompanyJournal](#createcompanyjournal) - Create Journal
 * [getCompanyJournal](#getcompanyjournal) - Get Journal
 
 ## listCompanies
@@ -592,6 +593,95 @@ public class Application {
 ### Response
 
 **[AccountingListCompanyJournalsResponse](../../models/operations/AccountingListCompanyJournalsResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## createCompanyJournal
+
+Create Journal
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="accounting_create_company_journal" method="post" path="/unified/accounting/companies/{id}/journals" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AccountingCreateCompanyJournalResponse;
+import java.lang.Exception;
+import java.time.OffsetDateTime;
+import java.util.List;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        AccountingCreateCompanyJournalResponse res = sdk.accounting().createCompanyJournal()
+                .xAccountId("<id>")
+                .id("<id>")
+                .accountingJournalCreateRequestDto(AccountingJournalCreateRequestDto.builder()
+                    .reference("JRN-2024-001")
+                    .memo("Monthly closing entries")
+                    .currencyCode(CurrencyCode.builder()
+                        .value(AccountingJournalCreateRequestDtoValue.USD)
+                        .sourceValue(AccountingJournalCreateRequestDtoSourceValue.of("USD"))
+                        .build())
+                    .exchangeRate(1d)
+                    .transactionDate(OffsetDateTime.parse("2024-03-20T10:00:00Z"))
+                    .lines(List.of(
+                        CreateJournalLine.builder()
+                            .accountId("acc_123456789")
+                            .description("Payment for office supplies")
+                            .amount(10010d)
+                            .taxRateId("tax_123456789")
+                            .taxAmount(10010d)
+                            .build()))
+                    .build())
+                .call();
+
+        if (res.createResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                                      | *String*                                                                                          | :heavy_check_mark:                                                                                | The account identifier                                                                            |
+| `id`                                                                                              | *String*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `accountingJournalCreateRequestDto`                                                               | [AccountingJournalCreateRequestDto](../../models/components/AccountingJournalCreateRequestDto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+
+### Response
+
+**[AccountingCreateCompanyJournalResponse](../../models/operations/AccountingCreateCompanyJournalResponse.md)**
 
 ### Errors
 

@@ -83,7 +83,7 @@ public class AtsCreateApplicationRequestDto {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("documents")
-    private JsonNullable<? extends List<UnifiedUploadRequestDto>> documents;
+    private JsonNullable<? extends List<AtsDocumentsUploadRequestDto>> documents;
 
     @JsonCreator
     public AtsCreateApplicationRequestDto(
@@ -96,7 +96,7 @@ public class AtsCreateApplicationRequestDto {
             @JsonProperty("source") JsonNullable<? extends AtsCreateApplicationRequestDtoSource> source,
             @JsonProperty("candidate_id") JsonNullable<String> candidateId,
             @JsonProperty("candidate") JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate,
-            @JsonProperty("documents") JsonNullable<? extends List<UnifiedUploadRequestDto>> documents) {
+            @JsonProperty("documents") JsonNullable<? extends List<AtsDocumentsUploadRequestDto>> documents) {
         Utils.checkNotNull(passthrough, "passthrough");
         Utils.checkNotNull(jobId, "jobId");
         Utils.checkNotNull(jobPostingId, "jobPostingId");
@@ -202,8 +202,8 @@ public class AtsCreateApplicationRequestDto {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<UnifiedUploadRequestDto>> documents() {
-        return (JsonNullable<List<UnifiedUploadRequestDto>>) documents;
+    public JsonNullable<List<AtsDocumentsUploadRequestDto>> documents() {
+        return (JsonNullable<List<AtsDocumentsUploadRequestDto>>) documents;
     }
 
     public static Builder builder() {
@@ -364,7 +364,7 @@ public class AtsCreateApplicationRequestDto {
     /**
      * Document Properties. Providing this attempts to upload files with the application.
      */
-    public AtsCreateApplicationRequestDto withDocuments(List<UnifiedUploadRequestDto> documents) {
+    public AtsCreateApplicationRequestDto withDocuments(List<AtsDocumentsUploadRequestDto> documents) {
         Utils.checkNotNull(documents, "documents");
         this.documents = JsonNullable.of(documents);
         return this;
@@ -373,7 +373,7 @@ public class AtsCreateApplicationRequestDto {
     /**
      * Document Properties. Providing this attempts to upload files with the application.
      */
-    public AtsCreateApplicationRequestDto withDocuments(JsonNullable<? extends List<UnifiedUploadRequestDto>> documents) {
+    public AtsCreateApplicationRequestDto withDocuments(JsonNullable<? extends List<AtsDocumentsUploadRequestDto>> documents) {
         Utils.checkNotNull(documents, "documents");
         this.documents = documents;
         return this;
@@ -446,7 +446,7 @@ public class AtsCreateApplicationRequestDto {
 
         private JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate = JsonNullable.undefined();
 
-        private JsonNullable<? extends List<UnifiedUploadRequestDto>> documents = JsonNullable.undefined();
+        private JsonNullable<? extends List<AtsDocumentsUploadRequestDto>> documents = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -615,7 +615,7 @@ public class AtsCreateApplicationRequestDto {
         /**
          * Document Properties. Providing this attempts to upload files with the application.
          */
-        public Builder documents(List<UnifiedUploadRequestDto> documents) {
+        public Builder documents(List<AtsDocumentsUploadRequestDto> documents) {
             Utils.checkNotNull(documents, "documents");
             this.documents = JsonNullable.of(documents);
             return this;
@@ -624,7 +624,7 @@ public class AtsCreateApplicationRequestDto {
         /**
          * Document Properties. Providing this attempts to upload files with the application.
          */
-        public Builder documents(JsonNullable<? extends List<UnifiedUploadRequestDto>> documents) {
+        public Builder documents(JsonNullable<? extends List<AtsDocumentsUploadRequestDto>> documents) {
             Utils.checkNotNull(documents, "documents");
             this.documents = documents;
             return this;

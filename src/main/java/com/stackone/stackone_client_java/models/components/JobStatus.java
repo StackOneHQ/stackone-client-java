@@ -25,19 +25,19 @@ public class JobStatus {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
-    private JsonNullable<? extends JobValue> value;
+    private JsonNullable<? extends AtsJobValue> value;
 
     /**
      * The source value of the job status.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
-    private JsonNullable<? extends JobSourceValue> sourceValue;
+    private JsonNullable<? extends AtsJobSourceValue> sourceValue;
 
     @JsonCreator
     public JobStatus(
-            @JsonProperty("value") JsonNullable<? extends JobValue> value,
-            @JsonProperty("source_value") JsonNullable<? extends JobSourceValue> sourceValue) {
+            @JsonProperty("value") JsonNullable<? extends AtsJobValue> value,
+            @JsonProperty("source_value") JsonNullable<? extends AtsJobSourceValue> sourceValue) {
         Utils.checkNotNull(value, "value");
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.value = value;
@@ -53,8 +53,8 @@ public class JobStatus {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<JobValue> value() {
-        return (JsonNullable<JobValue>) value;
+    public JsonNullable<AtsJobValue> value() {
+        return (JsonNullable<AtsJobValue>) value;
     }
 
     /**
@@ -62,8 +62,8 @@ public class JobStatus {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<JobSourceValue> sourceValue() {
-        return (JsonNullable<JobSourceValue>) sourceValue;
+    public JsonNullable<AtsJobSourceValue> sourceValue() {
+        return (JsonNullable<AtsJobSourceValue>) sourceValue;
     }
 
     public static Builder builder() {
@@ -74,7 +74,7 @@ public class JobStatus {
     /**
      * The status of the job.
      */
-    public JobStatus withValue(JobValue value) {
+    public JobStatus withValue(AtsJobValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
@@ -83,7 +83,7 @@ public class JobStatus {
     /**
      * The status of the job.
      */
-    public JobStatus withValue(JsonNullable<? extends JobValue> value) {
+    public JobStatus withValue(JsonNullable<? extends AtsJobValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
@@ -92,7 +92,7 @@ public class JobStatus {
     /**
      * The source value of the job status.
      */
-    public JobStatus withSourceValue(JobSourceValue sourceValue) {
+    public JobStatus withSourceValue(AtsJobSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
@@ -101,7 +101,7 @@ public class JobStatus {
     /**
      * The source value of the job status.
      */
-    public JobStatus withSourceValue(JsonNullable<? extends JobSourceValue> sourceValue) {
+    public JobStatus withSourceValue(JsonNullable<? extends AtsJobSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
         return this;
@@ -137,9 +137,9 @@ public class JobStatus {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends JobValue> value = JsonNullable.undefined();
+        private JsonNullable<? extends AtsJobValue> value = JsonNullable.undefined();
 
-        private JsonNullable<? extends JobSourceValue> sourceValue = JsonNullable.undefined();
+        private JsonNullable<? extends AtsJobSourceValue> sourceValue = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -149,7 +149,7 @@ public class JobStatus {
         /**
          * The status of the job.
          */
-        public Builder value(JobValue value) {
+        public Builder value(AtsJobValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
@@ -158,7 +158,7 @@ public class JobStatus {
         /**
          * The status of the job.
          */
-        public Builder value(JsonNullable<? extends JobValue> value) {
+        public Builder value(JsonNullable<? extends AtsJobValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
@@ -168,7 +168,7 @@ public class JobStatus {
         /**
          * The source value of the job status.
          */
-        public Builder sourceValue(JobSourceValue sourceValue) {
+        public Builder sourceValue(AtsJobSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
@@ -177,7 +177,7 @@ public class JobStatus {
         /**
          * The source value of the job status.
          */
-        public Builder sourceValue(JsonNullable<? extends JobSourceValue> sourceValue) {
+        public Builder sourceValue(JsonNullable<? extends AtsJobSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;
             return this;

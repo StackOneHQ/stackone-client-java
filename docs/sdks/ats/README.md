@@ -47,8 +47,10 @@
 * [getInterview](#getinterview) - Get Interview
 * [listJobs](#listjobs) - List Jobs
 * [createJob](#createjob) - Create Job
+* [listJobApplicationStages](#listjobapplicationstages) - List Job Application Stages
 * [getJob](#getjob) - Get Job
 * [updateJob](#updatejob) - Update Job
+* [getJobApplicationStage](#getjobapplicationstage) - Get Job Application Stage
 * [listLists](#listlists) - Get all Lists
 * [getList](#getlist) - Get List
 * [listLocations](#listlocations) - List locations
@@ -66,7 +68,6 @@
 * [getAssessmentsPackage](#getassessmentspackage) - Get Assessments Package
 * [orderAssessmentsRequest](#orderassessmentsrequest) - Order Assessments Request
 * [updateAssessmentsResult](#updateassessmentsresult) - Update Assessments Result
-* [getAssessmentsResult](#getassessmentsresult) - Get Assessments Results
 * [listBackgroundCheckPackages](#listbackgroundcheckpackages) - List Background Check Packages
 * [createBackgroundCheckPackage](#createbackgroundcheckpackage) - Create Background Check Package
 * [getBackgroundCheckPackage](#getbackgroundcheckpackage) - Get Background Check Package
@@ -74,7 +75,6 @@
 * [updateBackgroundCheckPackage](#updatebackgroundcheckpackage) - Update Background Check Package
 * [orderBackgroundCheckRequest](#orderbackgroundcheckrequest) - Order Background Check Request
 * [updateBackgroundCheckResult](#updatebackgroundcheckresult) - Update Background Check Result
-* [getBackgroundCheckResult](#getbackgroundcheckresult) - Get Background Check Results
 * [listApplicationDocumentCategories](#listapplicationdocumentcategories) - List Application Document Categories
 * [getApplicationDocumentCategory](#getapplicationdocumentcategory) - Get Application Document Category
 
@@ -1484,19 +1484,17 @@ public class Application {
         AtsUploadApplicationDocumentResponse res = sdk.ats().uploadApplicationDocument()
                 .xAccountId("<id>")
                 .id("<id>")
-                .unifiedUploadRequestDto(UnifiedUploadRequestDto.builder()
+                .atsDocumentsUploadRequestDto(AtsDocumentsUploadRequestDto.builder()
                     .name("weather-forecast")
                     .fileFormat(JsonNullable.of(null))
                     .content("VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE")
                     .categoryId("6530")
                     .path("/path/to/file")
-                    .category(UnifiedUploadRequestDtoCategory.builder()
-                        .value("reports, resumes")
-                        .sourceValue("550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME")
+                    .confidential(AtsDocumentsUploadRequestDtoConfidential.builder()
+                        .value(AtsDocumentsUploadRequestDtoConfidentialValue.TRUE)
+                        .sourceValue(AtsDocumentsUploadRequestDtoConfidentialSourceValue.of("public"))
                         .build())
-                    .confidential(UnifiedUploadRequestDtoConfidential.builder()
-                        .value(UnifiedUploadRequestDtoConfidentialValue.TRUE)
-                        .sourceValue(UnifiedUploadRequestDtoConfidentialSourceValue.of("public"))
+                    .category(AtsDocumentsUploadRequestDtoCategory.builder()
                         .build())
                     .build())
                 .call();
@@ -1510,11 +1508,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `xAccountId`                                                                  | *String*                                                                      | :heavy_check_mark:                                                            | The account identifier                                                        |
-| `id`                                                                          | *String*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
-| `unifiedUploadRequestDto`                                                     | [UnifiedUploadRequestDto](../../models/components/UnifiedUploadRequestDto.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
+| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `atsDocumentsUploadRequestDto`                                                          | [AtsDocumentsUploadRequestDto](../../models/components/AtsDocumentsUploadRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
 
 ### Response
 
@@ -1578,7 +1576,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.responseStream().isPresent()) {
+        if (res.twoHundredApplicationPdfResponseStream().isPresent()) {
             // handle response
         }
     }
@@ -3383,7 +3381,7 @@ public class Application {
                         "678571",
                         "688572"))
                     .hiringTeam(List.of(
-                        JobHiringTeam.builder()
+                        AtsJobHiringTeam.builder()
                             .userId("123456")
                             .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                             .firstName("John")
@@ -3451,6 +3449,82 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
+## listJobApplicationStages
+
+List Job Application Stages
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="ats_list_job_application_stages" method="get" path="/unified/ats/jobs/{id}/application_stages" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+import java.time.OffsetDateTime;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        AtsListJobApplicationStagesRequest req = AtsListJobApplicationStagesRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,order,created_at,updated_at")
+                .filter(AtsListJobApplicationStagesQueryParamFilter.builder()
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .build())
+                .build();
+
+        sdk.ats().listJobApplicationStages()
+                .request(req)
+                .callAsStream()
+                .forEach((AtsListJobApplicationStagesResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `request`                                                                                           | [AtsListJobApplicationStagesRequest](../../models/operations/AtsListJobApplicationStagesRequest.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
+
+### Response
+
+**[AtsListJobApplicationStagesResponse](../../models/operations/AtsListJobApplicationStagesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
 ## getJob
 
 Get Job
@@ -3491,7 +3565,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.jobResult().isPresent()) {
+        if (res.atsJobResult().isPresent()) {
             // handle response
         }
     }
@@ -3579,7 +3653,7 @@ public class Application {
                         "678571",
                         "688572"))
                     .hiringTeam(List.of(
-                        JobHiringTeam.builder()
+                        AtsJobHiringTeam.builder()
                             .userId("123456")
                             .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                             .firstName("John")
@@ -3612,6 +3686,80 @@ public class Application {
 ### Response
 
 **[AtsUpdateJobResponse](../../models/operations/AtsUpdateJobResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getJobApplicationStage
+
+Get Job Application Stage
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="ats_get_job_application_stage" method="get" path="/unified/ats/jobs/{id}/application_stages/{subResourceId}" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsGetJobApplicationStageRequest;
+import com.stackone.stackone_client_java.models.operations.AtsGetJobApplicationStageResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        AtsGetJobApplicationStageRequest req = AtsGetJobApplicationStageRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .subResourceId("<id>")
+                .fields("id,remote_id,name,order,created_at,updated_at")
+                .build();
+
+        AtsGetJobApplicationStageResponse res = sdk.ats().getJobApplicationStage()
+                .request(req)
+                .call();
+
+        if (res.applicationStageResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [AtsGetJobApplicationStageRequest](../../models/operations/AtsGetJobApplicationStageRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+
+### Response
+
+**[AtsGetJobApplicationStageResponse](../../models/operations/AtsGetJobApplicationStageResponse.md)**
 
 ### Errors
 
@@ -4805,7 +4953,7 @@ public class Application {
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .title("Software Engineer")
                         .hiringTeam(List.of(
-                            JobHiringTeam.builder()
+                            AtsJobHiringTeam.builder()
                                 .userId("123456")
                                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                                 .firstName("John")
@@ -4915,7 +5063,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(AtsUpdateCandidatesAssessmentsResultsRequestDto.builder()
-                    .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                     .score(JsonNullable.of(null))
                     .startDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
                     .submissionDate(OffsetDateTime.parse("2021-01-01T01:01:01.000Z"))
@@ -4960,79 +5107,6 @@ public class Application {
 ### Response
 
 **[AtsUpdateAssessmentsResultResponse](../../models/operations/AtsUpdateAssessmentsResultResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## getAssessmentsResult
-
-Get Assessments Results
-
-### Example Usage
-
-<!-- UsageSnippet language="java" operationID="ats_get_assessments_result" method="get" path="/unified/ats/assessments/orders/{id}/results" -->
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsResultRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsResultResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsGetAssessmentsResultRequest req = AtsGetAssessmentsResultRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments")
-                .build();
-
-        AtsGetAssessmentsResultResponse res = sdk.ats().getAssessmentsResult()
-                .request(req)
-                .call();
-
-        if (res.assessmentResultsResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | [AtsGetAssessmentsResultRequest](../../models/operations/AtsGetAssessmentsResultRequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
-
-### Response
-
-**[AtsGetAssessmentsResultResponse](../../models/operations/AtsGetAssessmentsResultResponse.md)**
 
 ### Errors
 
@@ -5589,7 +5663,6 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .atsUpdateBackgroundCheckResultRequestDto(AtsUpdateBackgroundCheckResultRequestDto.builder()
-                    .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                     .score(AtsUpdateBackgroundCheckResultRequestDtoScore.builder()
                         .label("Percentage")
                         .value("80")
@@ -5639,79 +5712,6 @@ public class Application {
 ### Response
 
 **[AtsUpdateBackgroundCheckResultResponse](../../models/operations/AtsUpdateBackgroundCheckResultResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## getBackgroundCheckResult
-
-Get Background Check Results
-
-### Example Usage
-
-<!-- UsageSnippet language="java" operationID="ats_get_background_check_result" method="get" path="/unified/ats/background_checks/orders/{id}/results" -->
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckResultRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckResultResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        AtsGetBackgroundCheckResultRequest req = AtsGetBackgroundCheckResultRequest.builder()
-                .xAccountId("<id>")
-                .id("<id>")
-                .fields("id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments")
-                .build();
-
-        AtsGetBackgroundCheckResultResponse res = sdk.ats().getBackgroundCheckResult()
-                .request(req)
-                .call();
-
-        if (res.backgroundCheckResultsResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `request`                                                                                           | [AtsGetBackgroundCheckResultRequest](../../models/operations/AtsGetBackgroundCheckResultRequest.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
-
-### Response
-
-**[AtsGetBackgroundCheckResultResponse](../../models/operations/AtsGetBackgroundCheckResultResponse.md)**
 
 ### Errors
 

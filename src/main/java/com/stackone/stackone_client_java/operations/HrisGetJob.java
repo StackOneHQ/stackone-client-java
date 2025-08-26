@@ -9,7 +9,7 @@ import static com.stackone.stackone_client_java.utils.Retries.NonRetryableExcept
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.SecuritySource;
-import com.stackone.stackone_client_java.models.components.JobResult;
+import com.stackone.stackone_client_java.models.components.HrisJobResult;
 import com.stackone.stackone_client_java.models.errors.BadGatewayResponse;
 import com.stackone.stackone_client_java.models.errors.BadRequestResponse;
 import com.stackone.stackone_client_java.models.errors.ConflictResponse;
@@ -81,6 +81,33 @@ public class HrisGetJob {
             return Optional.ofNullable(this.securitySource);
         }
 
+        BeforeRequestContextImpl createBeforeRequestContext() {
+            return new BeforeRequestContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "hris_get_job",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
+        AfterSuccessContextImpl createAfterSuccessContext() {
+            return new AfterSuccessContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "hris_get_job",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
+        AfterErrorContextImpl createAfterErrorContext() {
+            return new AfterErrorContextImpl(
+                    this.sdkConfiguration,
+                    this.baseUrl,
+                    "hris_get_job",
+                    java.util.Optional.of(java.util.List.of()),
+                    securitySource());
+        }
+
         HttpRequest buildRequest(HrisGetJobRequest request) throws Exception {
             String url = Utils.generateURL(
                     HrisGetJobRequest.class,
@@ -98,14 +125,7 @@ public class HrisGetJob {
             req.addHeaders(Utils.getHeadersFromMetadata(request, null));
             Utils.configureSecurity(req, this.sdkConfiguration.securitySource().getSecurity());
 
-            return sdkConfiguration.hooks().beforeRequest(
-                    new BeforeRequestContextImpl(
-                            this.sdkConfiguration,
-                            this.baseUrl,
-                            "hris_get_job",
-                            java.util.Optional.of(java.util.List.of()),
-                            securitySource()),
-                    req.build());
+            return req.build();
         }
     }
 
@@ -115,29 +135,20 @@ public class HrisGetJob {
             super(sdkConfiguration, options);
         }
 
+        private HttpRequest onBuildRequest(HrisGetJobRequest request) throws Exception {
+            HttpRequest req = buildRequest(request);
+            return sdkConfiguration.hooks().beforeRequest(createBeforeRequestContext(), req);
+        }
+
         private HttpResponse<InputStream> onError(HttpResponse<InputStream> response, Exception error) throws Exception {
-            return sdkConfiguration.hooks()
-                    .afterError(
-                            new AfterErrorContextImpl(
-                                    this.sdkConfiguration,
-                                    this.baseUrl,
-                                    "hris_get_job",
-                                    java.util.Optional.of(java.util.List.of()),
-                                    securitySource()),
-                            Optional.ofNullable(response),
-                            Optional.ofNullable(error));
+            return sdkConfiguration.hooks().afterError(
+                    createAfterErrorContext(),
+                    Optional.ofNullable(response),
+                    Optional.ofNullable(error));
         }
 
         private HttpResponse<InputStream> onSuccess(HttpResponse<InputStream> response) throws Exception {
-            return sdkConfiguration.hooks()
-                    .afterSuccess(
-                            new AfterSuccessContextImpl(
-                                    this.sdkConfiguration,
-                                    this.baseUrl,
-                                    "hris_get_job",
-                                    java.util.Optional.of(java.util.List.of()),
-                                    securitySource()),
-                            response);
+            return sdkConfiguration.hooks().afterSuccess(createAfterSuccessContext(), response);
         }
 
         @Override
@@ -146,12 +157,16 @@ public class HrisGetJob {
                     .action(() -> {
                         HttpRequest r;
                         try {
-                            r = buildRequest(request);
+                            r = onBuildRequest(request);
                         } catch (Exception e) {
                             throw new NonRetryableException(e);
                         }
                         try {
-                            return client.send(r);
+                            HttpResponse<InputStream> httpRes = client.send(r);
+                            if (Utils.statusCodeMatches(httpRes.statusCode(), "400", "401", "403", "404", "408", "409", "412", "422", "429", "4XX", "500", "501", "502", "5XX")) {
+                                return onError(httpRes, null);
+                            }
+                            return httpRes;
                         } catch (Exception e) {
                             return onError(null, e);
                         }
@@ -180,11 +195,11 @@ public class HrisGetJob {
             
             if (Utils.statusCodeMatches(response.statusCode(), "200")) {
                 if (Utils.contentTypeMatches(contentType, "application/json")) {
-                    JobResult out = Utils.mapper().readValue(
+                    HrisJobResult out = Utils.mapper().readValue(
                             response.body(),
                             new TypeReference<>() {
                             });
-                    res.withJobResult(out);
+                    res.withHrisJobResult(out);
                     return res;
                 } else {
                     throw new SDKError(

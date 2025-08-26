@@ -45,7 +45,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoJob {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hiring_team")
-    private JsonNullable<? extends List<JobHiringTeam>> hiringTeam;
+    private JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam;
 
     /**
      * Value to pass through to the provider
@@ -59,7 +59,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoJob {
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("title") JsonNullable<String> title,
-            @JsonProperty("hiring_team") JsonNullable<? extends List<JobHiringTeam>> hiringTeam,
+            @JsonProperty("hiring_team") JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam,
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
@@ -107,8 +107,8 @@ public class AtsCreateCandidatesAssessmentsRequestDtoJob {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<JobHiringTeam>> hiringTeam() {
-        return (JsonNullable<List<JobHiringTeam>>) hiringTeam;
+    public JsonNullable<List<AtsJobHiringTeam>> hiringTeam() {
+        return (JsonNullable<List<AtsJobHiringTeam>>) hiringTeam;
     }
 
     /**
@@ -182,7 +182,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoJob {
     /**
      * Hiring team for the job.
      */
-    public AtsCreateCandidatesAssessmentsRequestDtoJob withHiringTeam(List<JobHiringTeam> hiringTeam) {
+    public AtsCreateCandidatesAssessmentsRequestDtoJob withHiringTeam(List<AtsJobHiringTeam> hiringTeam) {
         Utils.checkNotNull(hiringTeam, "hiringTeam");
         this.hiringTeam = JsonNullable.of(hiringTeam);
         return this;
@@ -191,7 +191,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoJob {
     /**
      * Hiring team for the job.
      */
-    public AtsCreateCandidatesAssessmentsRequestDtoJob withHiringTeam(JsonNullable<? extends List<JobHiringTeam>> hiringTeam) {
+    public AtsCreateCandidatesAssessmentsRequestDtoJob withHiringTeam(JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam) {
         Utils.checkNotNull(hiringTeam, "hiringTeam");
         this.hiringTeam = hiringTeam;
         return this;
@@ -258,7 +258,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoJob {
 
         private JsonNullable<String> title = JsonNullable.undefined();
 
-        private JsonNullable<? extends List<JobHiringTeam>> hiringTeam = JsonNullable.undefined();
+        private JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam = JsonNullable.undefined();
 
         private JsonNullable<? extends Map<String, Object>> passthrough = JsonNullable.undefined();
 
@@ -327,7 +327,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoJob {
         /**
          * Hiring team for the job.
          */
-        public Builder hiringTeam(List<JobHiringTeam> hiringTeam) {
+        public Builder hiringTeam(List<AtsJobHiringTeam> hiringTeam) {
             Utils.checkNotNull(hiringTeam, "hiringTeam");
             this.hiringTeam = JsonNullable.of(hiringTeam);
             return this;
@@ -336,7 +336,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoJob {
         /**
          * Hiring team for the job.
          */
-        public Builder hiringTeam(JsonNullable<? extends List<JobHiringTeam>> hiringTeam) {
+        public Builder hiringTeam(JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam) {
             Utils.checkNotNull(hiringTeam, "hiringTeam");
             this.hiringTeam = hiringTeam;
             return this;

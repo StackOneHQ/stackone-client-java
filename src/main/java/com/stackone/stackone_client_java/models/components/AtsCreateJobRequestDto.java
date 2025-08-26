@@ -84,7 +84,7 @@ public class AtsCreateJobRequestDto {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hiring_team")
-    private JsonNullable<? extends List<JobHiringTeam>> hiringTeam;
+    private JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam;
 
     /**
      * Interview stages for the job.
@@ -124,7 +124,7 @@ public class AtsCreateJobRequestDto {
             @JsonProperty("job_status") JsonNullable<? extends AtsCreateJobRequestDtoJobStatus> jobStatus,
             @JsonProperty("department_ids") JsonNullable<? extends List<String>> departmentIds,
             @JsonProperty("location_ids") JsonNullable<? extends List<String>> locationIds,
-            @JsonProperty("hiring_team") JsonNullable<? extends List<JobHiringTeam>> hiringTeam,
+            @JsonProperty("hiring_team") JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam,
             @JsonProperty("interview_stages") JsonNullable<? extends List<InterviewStage>> interviewStages,
             @JsonProperty("confidential") JsonNullable<? extends AtsCreateJobRequestDtoConfidential> confidential,
             @JsonProperty("custom_fields") JsonNullable<? extends List<CustomFields>> customFields,
@@ -241,8 +241,8 @@ public class AtsCreateJobRequestDto {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<JobHiringTeam>> hiringTeam() {
-        return (JsonNullable<List<JobHiringTeam>>) hiringTeam;
+    public JsonNullable<List<AtsJobHiringTeam>> hiringTeam() {
+        return (JsonNullable<List<AtsJobHiringTeam>>) hiringTeam;
     }
 
     /**
@@ -439,7 +439,7 @@ public class AtsCreateJobRequestDto {
     /**
      * Hiring team for the job.
      */
-    public AtsCreateJobRequestDto withHiringTeam(List<JobHiringTeam> hiringTeam) {
+    public AtsCreateJobRequestDto withHiringTeam(List<AtsJobHiringTeam> hiringTeam) {
         Utils.checkNotNull(hiringTeam, "hiringTeam");
         this.hiringTeam = JsonNullable.of(hiringTeam);
         return this;
@@ -448,7 +448,7 @@ public class AtsCreateJobRequestDto {
     /**
      * Hiring team for the job.
      */
-    public AtsCreateJobRequestDto withHiringTeam(JsonNullable<? extends List<JobHiringTeam>> hiringTeam) {
+    public AtsCreateJobRequestDto withHiringTeam(JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam) {
         Utils.checkNotNull(hiringTeam, "hiringTeam");
         this.hiringTeam = hiringTeam;
         return this;
@@ -599,7 +599,7 @@ public class AtsCreateJobRequestDto {
 
         private JsonNullable<? extends List<String>> locationIds = JsonNullable.undefined();
 
-        private JsonNullable<? extends List<JobHiringTeam>> hiringTeam = JsonNullable.undefined();
+        private JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam = JsonNullable.undefined();
 
         private JsonNullable<? extends List<InterviewStage>> interviewStages = JsonNullable.undefined();
 
@@ -775,7 +775,7 @@ public class AtsCreateJobRequestDto {
         /**
          * Hiring team for the job.
          */
-        public Builder hiringTeam(List<JobHiringTeam> hiringTeam) {
+        public Builder hiringTeam(List<AtsJobHiringTeam> hiringTeam) {
             Utils.checkNotNull(hiringTeam, "hiringTeam");
             this.hiringTeam = JsonNullable.of(hiringTeam);
             return this;
@@ -784,7 +784,7 @@ public class AtsCreateJobRequestDto {
         /**
          * Hiring team for the job.
          */
-        public Builder hiringTeam(JsonNullable<? extends List<JobHiringTeam>> hiringTeam) {
+        public Builder hiringTeam(JsonNullable<? extends List<AtsJobHiringTeam>> hiringTeam) {
             Utils.checkNotNull(hiringTeam, "hiringTeam");
             this.hiringTeam = hiringTeam;
             return this;

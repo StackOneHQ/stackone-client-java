@@ -5,7 +5,7 @@ package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.stackone.stackone_client_java.models.components.JobResult;
+import com.stackone.stackone_client_java.models.components.AtsJobResult;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
@@ -38,7 +38,7 @@ public class AtsGetJobResponse implements Response {
     /**
      * The job with the given identifier was retrieved.
      */
-    private Optional<? extends JobResult> jobResult;
+    private Optional<? extends AtsJobResult> atsJobResult;
 
 
     private Map<String, List<String>> headers;
@@ -48,18 +48,18 @@ public class AtsGetJobResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends JobResult> jobResult,
+            Optional<? extends AtsJobResult> atsJobResult,
             Map<String, List<String>> headers) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(jobResult, "jobResult");
+        Utils.checkNotNull(atsJobResult, "atsJobResult");
         headers = Utils.emptyMapIfNull(headers);
         Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.jobResult = jobResult;
+        this.atsJobResult = atsJobResult;
         this.headers = headers;
     }
     
@@ -101,8 +101,8 @@ public class AtsGetJobResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<JobResult> jobResult() {
-        return (Optional<JobResult>) jobResult;
+    public Optional<AtsJobResult> atsJobResult() {
+        return (Optional<AtsJobResult>) atsJobResult;
     }
 
     @JsonIgnore
@@ -145,9 +145,9 @@ public class AtsGetJobResponse implements Response {
     /**
      * The job with the given identifier was retrieved.
      */
-    public AtsGetJobResponse withJobResult(JobResult jobResult) {
-        Utils.checkNotNull(jobResult, "jobResult");
-        this.jobResult = Optional.ofNullable(jobResult);
+    public AtsGetJobResponse withAtsJobResult(AtsJobResult atsJobResult) {
+        Utils.checkNotNull(atsJobResult, "atsJobResult");
+        this.atsJobResult = Optional.ofNullable(atsJobResult);
         return this;
     }
 
@@ -155,9 +155,9 @@ public class AtsGetJobResponse implements Response {
     /**
      * The job with the given identifier was retrieved.
      */
-    public AtsGetJobResponse withJobResult(Optional<? extends JobResult> jobResult) {
-        Utils.checkNotNull(jobResult, "jobResult");
-        this.jobResult = jobResult;
+    public AtsGetJobResponse withAtsJobResult(Optional<? extends AtsJobResult> atsJobResult) {
+        Utils.checkNotNull(atsJobResult, "atsJobResult");
+        this.atsJobResult = atsJobResult;
         return this;
     }
 
@@ -180,7 +180,7 @@ public class AtsGetJobResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.jobResult, other.jobResult) &&
+            Utils.enhancedDeepEquals(this.atsJobResult, other.atsJobResult) &&
             Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
@@ -188,7 +188,7 @@ public class AtsGetJobResponse implements Response {
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            jobResult, headers);
+            atsJobResult, headers);
     }
     
     @Override
@@ -197,7 +197,7 @@ public class AtsGetJobResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "jobResult", jobResult,
+                "atsJobResult", atsJobResult,
                 "headers", headers);
     }
 
@@ -210,7 +210,7 @@ public class AtsGetJobResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Optional<? extends JobResult> jobResult = Optional.empty();
+        private Optional<? extends AtsJobResult> atsJobResult = Optional.empty();
 
         private Map<String, List<String>> headers;
 
@@ -252,18 +252,18 @@ public class AtsGetJobResponse implements Response {
         /**
          * The job with the given identifier was retrieved.
          */
-        public Builder jobResult(JobResult jobResult) {
-            Utils.checkNotNull(jobResult, "jobResult");
-            this.jobResult = Optional.ofNullable(jobResult);
+        public Builder atsJobResult(AtsJobResult atsJobResult) {
+            Utils.checkNotNull(atsJobResult, "atsJobResult");
+            this.atsJobResult = Optional.ofNullable(atsJobResult);
             return this;
         }
 
         /**
          * The job with the given identifier was retrieved.
          */
-        public Builder jobResult(Optional<? extends JobResult> jobResult) {
-            Utils.checkNotNull(jobResult, "jobResult");
-            this.jobResult = jobResult;
+        public Builder atsJobResult(Optional<? extends AtsJobResult> atsJobResult) {
+            Utils.checkNotNull(atsJobResult, "atsJobResult");
+            this.atsJobResult = atsJobResult;
             return this;
         }
 
@@ -278,7 +278,7 @@ public class AtsGetJobResponse implements Response {
 
             return new AtsGetJobResponse(
                 contentType, statusCode, rawResponse,
-                jobResult, headers);
+                atsJobResult, headers);
         }
 
     }

@@ -15,6 +15,7 @@ import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRe
 import com.stackone.stackone_client_java.models.components.HrisInviteEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmploymentRequestDto;
+import com.stackone.stackone_client_java.models.components.UpdateTaskRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentResponse;
@@ -219,6 +220,9 @@ import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeEmp
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeRequest;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeResponse;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTaskRequest;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTaskRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTaskResponse;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestRequest;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestResponse;
@@ -296,6 +300,7 @@ import com.stackone.stackone_client_java.operations.HrisListTimeOffRequests;
 import com.stackone.stackone_client_java.operations.HrisListTimeOffTypes;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployee;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeEmployment;
+import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTask;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequest;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeWorkEligibilityRequest;
 import com.stackone.stackone_client_java.operations.HrisUploadEmployeeDocument;
@@ -2882,6 +2887,60 @@ public class Hris {
     public HrisGetEmployeeTaskResponse getEmployeeTask(HrisGetEmployeeTaskRequest request, Optional<Options> options) throws Exception {
         RequestOperation<HrisGetEmployeeTaskRequest, HrisGetEmployeeTaskResponse> operation
               = new HrisGetEmployeeTask.Sync(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Update Employee Task
+     * 
+     * @return The call builder
+     */
+    public HrisUpdateEmployeeTaskRequestBuilder updateEmployeeTask() {
+        return new HrisUpdateEmployeeTaskRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Update Employee Task
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param subResourceId 
+     * @param updateTaskRequestDto 
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisUpdateEmployeeTaskResponse updateEmployeeTask(
+            String xAccountId, String id,
+            String subResourceId, UpdateTaskRequestDto updateTaskRequestDto) throws Exception {
+        return updateEmployeeTask(xAccountId, id, subResourceId,
+            updateTaskRequestDto, Optional.empty());
+    }
+
+    /**
+     * Update Employee Task
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param subResourceId 
+     * @param updateTaskRequestDto 
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public HrisUpdateEmployeeTaskResponse updateEmployeeTask(
+            String xAccountId, String id,
+            String subResourceId, UpdateTaskRequestDto updateTaskRequestDto,
+            Optional<Options> options) throws Exception {
+        HrisUpdateEmployeeTaskRequest request =
+            HrisUpdateEmployeeTaskRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .subResourceId(subResourceId)
+                .updateTaskRequestDto(updateTaskRequestDto)
+                .build();
+        RequestOperation<HrisUpdateEmployeeTaskRequest, HrisUpdateEmployeeTaskResponse> operation
+              = new HrisUpdateEmployeeTask.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

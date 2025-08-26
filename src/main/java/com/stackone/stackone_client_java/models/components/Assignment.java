@@ -130,6 +130,27 @@ public class Assignment {
     private JsonNullable<String> remoteUserId;
 
     /**
+     * The certification URL associated with this assignment
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("certificate_url")
+    private JsonNullable<String> certificateUrl;
+
+    /**
+     * The result of the assignment
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("result")
+    private JsonNullable<? extends AssignmentResult1> result;
+
+    /**
+     * The date the content was completed
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("completed_at")
+    private JsonNullable<OffsetDateTime> completedAt;
+
+    /**
      * The course ID associated with this assignment
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -166,6 +187,9 @@ public class Assignment {
             @JsonProperty("learning_object_type") JsonNullable<? extends LearningObjectType> learningObjectType,
             @JsonProperty("user_id") JsonNullable<String> userId,
             @JsonProperty("remote_user_id") JsonNullable<String> remoteUserId,
+            @JsonProperty("certificate_url") JsonNullable<String> certificateUrl,
+            @JsonProperty("result") JsonNullable<? extends AssignmentResult1> result,
+            @JsonProperty("completed_at") JsonNullable<OffsetDateTime> completedAt,
             @JsonProperty("course_id") JsonNullable<String> courseId,
             @JsonProperty("remote_course_id") JsonNullable<String> remoteCourseId) {
         Utils.checkNotNull(id, "id");
@@ -183,6 +207,9 @@ public class Assignment {
         Utils.checkNotNull(learningObjectType, "learningObjectType");
         Utils.checkNotNull(userId, "userId");
         Utils.checkNotNull(remoteUserId, "remoteUserId");
+        Utils.checkNotNull(certificateUrl, "certificateUrl");
+        Utils.checkNotNull(result, "result");
+        Utils.checkNotNull(completedAt, "completedAt");
         Utils.checkNotNull(courseId, "courseId");
         Utils.checkNotNull(remoteCourseId, "remoteCourseId");
         this.id = id;
@@ -200,12 +227,16 @@ public class Assignment {
         this.learningObjectType = learningObjectType;
         this.userId = userId;
         this.remoteUserId = remoteUserId;
+        this.certificateUrl = certificateUrl;
+        this.result = result;
+        this.completedAt = completedAt;
         this.courseId = courseId;
         this.remoteCourseId = remoteCourseId;
     }
     
     public Assignment() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
@@ -337,6 +368,31 @@ public class Assignment {
     @JsonIgnore
     public JsonNullable<String> remoteUserId() {
         return remoteUserId;
+    }
+
+    /**
+     * The certification URL associated with this assignment
+     */
+    @JsonIgnore
+    public JsonNullable<String> certificateUrl() {
+        return certificateUrl;
+    }
+
+    /**
+     * The result of the assignment
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<AssignmentResult1> result() {
+        return (JsonNullable<AssignmentResult1>) result;
+    }
+
+    /**
+     * The date the content was completed
+     */
+    @JsonIgnore
+    public JsonNullable<OffsetDateTime> completedAt() {
+        return completedAt;
     }
 
     /**
@@ -643,6 +699,60 @@ public class Assignment {
     }
 
     /**
+     * The certification URL associated with this assignment
+     */
+    public Assignment withCertificateUrl(String certificateUrl) {
+        Utils.checkNotNull(certificateUrl, "certificateUrl");
+        this.certificateUrl = JsonNullable.of(certificateUrl);
+        return this;
+    }
+
+    /**
+     * The certification URL associated with this assignment
+     */
+    public Assignment withCertificateUrl(JsonNullable<String> certificateUrl) {
+        Utils.checkNotNull(certificateUrl, "certificateUrl");
+        this.certificateUrl = certificateUrl;
+        return this;
+    }
+
+    /**
+     * The result of the assignment
+     */
+    public Assignment withResult(AssignmentResult1 result) {
+        Utils.checkNotNull(result, "result");
+        this.result = JsonNullable.of(result);
+        return this;
+    }
+
+    /**
+     * The result of the assignment
+     */
+    public Assignment withResult(JsonNullable<? extends AssignmentResult1> result) {
+        Utils.checkNotNull(result, "result");
+        this.result = result;
+        return this;
+    }
+
+    /**
+     * The date the content was completed
+     */
+    public Assignment withCompletedAt(OffsetDateTime completedAt) {
+        Utils.checkNotNull(completedAt, "completedAt");
+        this.completedAt = JsonNullable.of(completedAt);
+        return this;
+    }
+
+    /**
+     * The date the content was completed
+     */
+    public Assignment withCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
+        Utils.checkNotNull(completedAt, "completedAt");
+        this.completedAt = completedAt;
+        return this;
+    }
+
+    /**
      * The course ID associated with this assignment
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -715,6 +825,9 @@ public class Assignment {
             Utils.enhancedDeepEquals(this.learningObjectType, other.learningObjectType) &&
             Utils.enhancedDeepEquals(this.userId, other.userId) &&
             Utils.enhancedDeepEquals(this.remoteUserId, other.remoteUserId) &&
+            Utils.enhancedDeepEquals(this.certificateUrl, other.certificateUrl) &&
+            Utils.enhancedDeepEquals(this.result, other.result) &&
+            Utils.enhancedDeepEquals(this.completedAt, other.completedAt) &&
             Utils.enhancedDeepEquals(this.courseId, other.courseId) &&
             Utils.enhancedDeepEquals(this.remoteCourseId, other.remoteCourseId);
     }
@@ -727,6 +840,7 @@ public class Assignment {
             learningObjectExternalReference, progress, updatedAt,
             createdAt, dueDate, status,
             learningObjectType, userId, remoteUserId,
+            certificateUrl, result, completedAt,
             courseId, remoteCourseId);
     }
     
@@ -748,6 +862,9 @@ public class Assignment {
                 "learningObjectType", learningObjectType,
                 "userId", userId,
                 "remoteUserId", remoteUserId,
+                "certificateUrl", certificateUrl,
+                "result", result,
+                "completedAt", completedAt,
                 "courseId", courseId,
                 "remoteCourseId", remoteCourseId);
     }
@@ -785,6 +902,12 @@ public class Assignment {
         private JsonNullable<String> userId = JsonNullable.undefined();
 
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
+
+        private JsonNullable<String> certificateUrl = JsonNullable.undefined();
+
+        private JsonNullable<? extends AssignmentResult1> result = JsonNullable.undefined();
+
+        private JsonNullable<OffsetDateTime> completedAt = JsonNullable.undefined();
 
         @Deprecated
         private JsonNullable<String> courseId = JsonNullable.undefined();
@@ -1089,6 +1212,63 @@ public class Assignment {
 
 
         /**
+         * The certification URL associated with this assignment
+         */
+        public Builder certificateUrl(String certificateUrl) {
+            Utils.checkNotNull(certificateUrl, "certificateUrl");
+            this.certificateUrl = JsonNullable.of(certificateUrl);
+            return this;
+        }
+
+        /**
+         * The certification URL associated with this assignment
+         */
+        public Builder certificateUrl(JsonNullable<String> certificateUrl) {
+            Utils.checkNotNull(certificateUrl, "certificateUrl");
+            this.certificateUrl = certificateUrl;
+            return this;
+        }
+
+
+        /**
+         * The result of the assignment
+         */
+        public Builder result(AssignmentResult1 result) {
+            Utils.checkNotNull(result, "result");
+            this.result = JsonNullable.of(result);
+            return this;
+        }
+
+        /**
+         * The result of the assignment
+         */
+        public Builder result(JsonNullable<? extends AssignmentResult1> result) {
+            Utils.checkNotNull(result, "result");
+            this.result = result;
+            return this;
+        }
+
+
+        /**
+         * The date the content was completed
+         */
+        public Builder completedAt(OffsetDateTime completedAt) {
+            Utils.checkNotNull(completedAt, "completedAt");
+            this.completedAt = JsonNullable.of(completedAt);
+            return this;
+        }
+
+        /**
+         * The date the content was completed
+         */
+        public Builder completedAt(JsonNullable<OffsetDateTime> completedAt) {
+            Utils.checkNotNull(completedAt, "completedAt");
+            this.completedAt = completedAt;
+            return this;
+        }
+
+
+        /**
          * The course ID associated with this assignment
          * 
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -1145,6 +1325,7 @@ public class Assignment {
                 learningObjectExternalReference, progress, updatedAt,
                 createdAt, dueDate, status,
                 learningObjectType, userId, remoteUserId,
+                certificateUrl, result, completedAt,
                 courseId, remoteCourseId);
         }
 
