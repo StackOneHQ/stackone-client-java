@@ -6,7 +6,7 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsDocumentsUploadRequestDto;
 import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
@@ -19,7 +19,7 @@ public class AtsUploadApplicationDocumentRequestBuilder {
 
     private String xAccountId;
     private String id;
-    private UnifiedUploadRequestDto unifiedUploadRequestDto;
+    private AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
 
@@ -39,9 +39,9 @@ public class AtsUploadApplicationDocumentRequestBuilder {
         return this;
     }
 
-    public AtsUploadApplicationDocumentRequestBuilder unifiedUploadRequestDto(UnifiedUploadRequestDto unifiedUploadRequestDto) {
-        Utils.checkNotNull(unifiedUploadRequestDto, "unifiedUploadRequestDto");
-        this.unifiedUploadRequestDto = unifiedUploadRequestDto;
+    public AtsUploadApplicationDocumentRequestBuilder atsDocumentsUploadRequestDto(AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) {
+        Utils.checkNotNull(atsDocumentsUploadRequestDto, "atsDocumentsUploadRequestDto");
+        this.atsDocumentsUploadRequestDto = atsDocumentsUploadRequestDto;
         return this;
     }
                 
@@ -62,7 +62,7 @@ public class AtsUploadApplicationDocumentRequestBuilder {
 
         AtsUploadApplicationDocumentRequest request = new AtsUploadApplicationDocumentRequest(xAccountId,
             id,
-            unifiedUploadRequestDto);
+            atsDocumentsUploadRequestDto);
 
         return request;
     }

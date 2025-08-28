@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.components.AtsCreateCandidatesAs
 import com.stackone.stackone_client_java.models.components.AtsCreateJobRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsDocumentsUploadRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsMoveApplicationRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsRejectApplicationRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsUpdateApplicationRequestDto;
@@ -22,7 +23,6 @@ import com.stackone.stackone_client_java.models.components.AtsUpdateCandidateReq
 import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
-import com.stackone.stackone_client_java.models.components.UnifiedUploadRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationNoteRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationNoteResponse;
@@ -77,15 +77,9 @@ import com.stackone.stackone_client_java.models.operations.AtsGetApplicationScor
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsPackageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsPackageRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsPackageResponse;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsResultRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsResultRequestBuilder;
-import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsResultResponse;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckPackageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckPackageRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckPackageResponse;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckResultRequest;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckResultRequestBuilder;
-import com.stackone.stackone_client_java.models.operations.AtsGetBackgroundCheckResultResponse;
 import com.stackone.stackone_client_java.models.operations.AtsGetCandidateCustomFieldDefinitionRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetCandidateCustomFieldDefinitionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetCandidateCustomFieldDefinitionResponse;
@@ -104,6 +98,9 @@ import com.stackone.stackone_client_java.models.operations.AtsGetInterviewRespon
 import com.stackone.stackone_client_java.models.operations.AtsGetInterviewStageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetInterviewStageRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetInterviewStageResponse;
+import com.stackone.stackone_client_java.models.operations.AtsGetJobApplicationStageRequest;
+import com.stackone.stackone_client_java.models.operations.AtsGetJobApplicationStageRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AtsGetJobApplicationStageResponse;
 import com.stackone.stackone_client_java.models.operations.AtsGetJobCustomFieldDefinitionRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetJobCustomFieldDefinitionRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetJobCustomFieldDefinitionResponse;
@@ -179,6 +176,9 @@ import com.stackone.stackone_client_java.models.operations.AtsListInterviewStage
 import com.stackone.stackone_client_java.models.operations.AtsListInterviewsRequest;
 import com.stackone.stackone_client_java.models.operations.AtsListInterviewsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsListInterviewsResponse;
+import com.stackone.stackone_client_java.models.operations.AtsListJobApplicationStagesRequest;
+import com.stackone.stackone_client_java.models.operations.AtsListJobApplicationStagesRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AtsListJobApplicationStagesResponse;
 import com.stackone.stackone_client_java.models.operations.AtsListJobCustomFieldDefinitionsRequest;
 import com.stackone.stackone_client_java.models.operations.AtsListJobCustomFieldDefinitionsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsListJobCustomFieldDefinitionsResponse;
@@ -257,9 +257,7 @@ import com.stackone.stackone_client_java.operations.AtsGetApplicationOffer;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationScheduledInterview;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationScorecard;
 import com.stackone.stackone_client_java.operations.AtsGetAssessmentsPackage;
-import com.stackone.stackone_client_java.operations.AtsGetAssessmentsResult;
 import com.stackone.stackone_client_java.operations.AtsGetBackgroundCheckPackage;
-import com.stackone.stackone_client_java.operations.AtsGetBackgroundCheckResult;
 import com.stackone.stackone_client_java.operations.AtsGetCandidate;
 import com.stackone.stackone_client_java.operations.AtsGetCandidateCustomFieldDefinition;
 import com.stackone.stackone_client_java.operations.AtsGetCandidateNote;
@@ -267,6 +265,7 @@ import com.stackone.stackone_client_java.operations.AtsGetDepartment;
 import com.stackone.stackone_client_java.operations.AtsGetInterview;
 import com.stackone.stackone_client_java.operations.AtsGetInterviewStage;
 import com.stackone.stackone_client_java.operations.AtsGetJob;
+import com.stackone.stackone_client_java.operations.AtsGetJobApplicationStage;
 import com.stackone.stackone_client_java.operations.AtsGetJobCustomFieldDefinition;
 import com.stackone.stackone_client_java.operations.AtsGetJobPosting;
 import com.stackone.stackone_client_java.operations.AtsGetList;
@@ -291,6 +290,7 @@ import com.stackone.stackone_client_java.operations.AtsListCandidates;
 import com.stackone.stackone_client_java.operations.AtsListDepartments;
 import com.stackone.stackone_client_java.operations.AtsListInterviewStages;
 import com.stackone.stackone_client_java.operations.AtsListInterviews;
+import com.stackone.stackone_client_java.operations.AtsListJobApplicationStages;
 import com.stackone.stackone_client_java.operations.AtsListJobCustomFieldDefinitions;
 import com.stackone.stackone_client_java.operations.AtsListJobPostings;
 import com.stackone.stackone_client_java.operations.AtsListJobs;
@@ -1010,14 +1010,14 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @param unifiedUploadRequestDto 
+     * @param atsDocumentsUploadRequestDto 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public AtsUploadApplicationDocumentResponse uploadApplicationDocument(
             String xAccountId, String id,
-            UnifiedUploadRequestDto unifiedUploadRequestDto) throws Exception {
-        return uploadApplicationDocument(xAccountId, id, unifiedUploadRequestDto,
+            AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) throws Exception {
+        return uploadApplicationDocument(xAccountId, id, atsDocumentsUploadRequestDto,
             Optional.empty());
     }
 
@@ -1026,20 +1026,20 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @param unifiedUploadRequestDto 
+     * @param atsDocumentsUploadRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public AtsUploadApplicationDocumentResponse uploadApplicationDocument(
             String xAccountId, String id,
-            UnifiedUploadRequestDto unifiedUploadRequestDto, Optional<Options> options) throws Exception {
+            AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto, Optional<Options> options) throws Exception {
         AtsUploadApplicationDocumentRequest request =
             AtsUploadApplicationDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
-                .unifiedUploadRequestDto(unifiedUploadRequestDto)
+                .atsDocumentsUploadRequestDto(atsDocumentsUploadRequestDto)
                 .build();
         RequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
               = new AtsUploadApplicationDocument.Sync(sdkConfiguration, options);
@@ -1915,6 +1915,40 @@ public class Ats {
     }
 
     /**
+     * List Job Application Stages
+     * 
+     * @return The call builder
+     */
+    public AtsListJobApplicationStagesRequestBuilder listJobApplicationStages() {
+        return new AtsListJobApplicationStagesRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Job Application Stages
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsListJobApplicationStagesResponse listJobApplicationStages(AtsListJobApplicationStagesRequest request) throws Exception {
+        return listJobApplicationStages(request, Optional.empty());
+    }
+
+    /**
+     * List Job Application Stages
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsListJobApplicationStagesResponse listJobApplicationStages(AtsListJobApplicationStagesRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<AtsListJobApplicationStagesRequest, AtsListJobApplicationStagesResponse> operation
+              = new AtsListJobApplicationStages.Sync(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
      * Get Job
      * 
      * @return The call builder
@@ -1995,6 +2029,40 @@ public class Ats {
                 .build();
         RequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
               = new AtsUpdateJob.Sync(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Get Job Application Stage
+     * 
+     * @return The call builder
+     */
+    public AtsGetJobApplicationStageRequestBuilder getJobApplicationStage() {
+        return new AtsGetJobApplicationStageRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Get Job Application Stage
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsGetJobApplicationStageResponse getJobApplicationStage(AtsGetJobApplicationStageRequest request) throws Exception {
+        return getJobApplicationStage(request, Optional.empty());
+    }
+
+    /**
+     * Get Job Application Stage
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsGetJobApplicationStageResponse getJobApplicationStage(AtsGetJobApplicationStageRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<AtsGetJobApplicationStageRequest, AtsGetJobApplicationStageResponse> operation
+              = new AtsGetJobApplicationStage.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2613,40 +2681,6 @@ public class Ats {
     }
 
     /**
-     * Get Assessments Results
-     * 
-     * @return The call builder
-     */
-    public AtsGetAssessmentsResultRequestBuilder getAssessmentsResult() {
-        return new AtsGetAssessmentsResultRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Get Assessments Results
-     * 
-     * @param request The request object containing all the parameters for the API call.
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public AtsGetAssessmentsResultResponse getAssessmentsResult(AtsGetAssessmentsResultRequest request) throws Exception {
-        return getAssessmentsResult(request, Optional.empty());
-    }
-
-    /**
-     * Get Assessments Results
-     * 
-     * @param request The request object containing all the parameters for the API call.
-     * @param options additional options
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public AtsGetAssessmentsResultResponse getAssessmentsResult(AtsGetAssessmentsResultRequest request, Optional<Options> options) throws Exception {
-        RequestOperation<AtsGetAssessmentsResultRequest, AtsGetAssessmentsResultResponse> operation
-              = new AtsGetAssessmentsResult.Sync(sdkConfiguration, options);
-        return operation.handleResponse(operation.doRequest(request));
-    }
-
-    /**
      * List Background Check Packages
      * 
      * @return The call builder
@@ -2943,40 +2977,6 @@ public class Ats {
                 .build();
         RequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation
               = new AtsUpdateBackgroundCheckResult.Sync(sdkConfiguration, options);
-        return operation.handleResponse(operation.doRequest(request));
-    }
-
-    /**
-     * Get Background Check Results
-     * 
-     * @return The call builder
-     */
-    public AtsGetBackgroundCheckResultRequestBuilder getBackgroundCheckResult() {
-        return new AtsGetBackgroundCheckResultRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Get Background Check Results
-     * 
-     * @param request The request object containing all the parameters for the API call.
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public AtsGetBackgroundCheckResultResponse getBackgroundCheckResult(AtsGetBackgroundCheckResultRequest request) throws Exception {
-        return getBackgroundCheckResult(request, Optional.empty());
-    }
-
-    /**
-     * Get Background Check Results
-     * 
-     * @param request The request object containing all the parameters for the API call.
-     * @param options additional options
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public AtsGetBackgroundCheckResultResponse getBackgroundCheckResult(AtsGetBackgroundCheckResultRequest request, Optional<Options> options) throws Exception {
-        RequestOperation<AtsGetBackgroundCheckResultRequest, AtsGetBackgroundCheckResultResponse> operation
-              = new AtsGetBackgroundCheckResult.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

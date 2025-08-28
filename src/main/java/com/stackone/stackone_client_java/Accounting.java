@@ -6,9 +6,13 @@ package com.stackone.stackone_client_java;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.models.components.AccountingJournalBatchCreateRequestDto;
+import com.stackone.stackone_client_java.models.components.AccountingJournalCreateRequestDto;
 import com.stackone.stackone_client_java.models.operations.AccountingBatchCreateCompanyJournalsRequest;
 import com.stackone.stackone_client_java.models.operations.AccountingBatchCreateCompanyJournalsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AccountingBatchCreateCompanyJournalsResponse;
+import com.stackone.stackone_client_java.models.operations.AccountingCreateCompanyJournalRequest;
+import com.stackone.stackone_client_java.models.operations.AccountingCreateCompanyJournalRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AccountingCreateCompanyJournalResponse;
 import com.stackone.stackone_client_java.models.operations.AccountingGetCompanyAccountRequest;
 import com.stackone.stackone_client_java.models.operations.AccountingGetCompanyAccountRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AccountingGetCompanyAccountResponse;
@@ -34,6 +38,7 @@ import com.stackone.stackone_client_java.models.operations.AccountingListCompany
 import com.stackone.stackone_client_java.models.operations.AccountingListCompanyTaxRatesRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AccountingListCompanyTaxRatesResponse;
 import com.stackone.stackone_client_java.operations.AccountingBatchCreateCompanyJournals;
+import com.stackone.stackone_client_java.operations.AccountingCreateCompanyJournal;
 import com.stackone.stackone_client_java.operations.AccountingGetCompany;
 import com.stackone.stackone_client_java.operations.AccountingGetCompanyAccount;
 import com.stackone.stackone_client_java.operations.AccountingGetCompanyJournal;
@@ -340,6 +345,56 @@ public class Accounting {
     public AccountingListCompanyJournalsResponse listCompanyJournals(AccountingListCompanyJournalsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingListCompanyJournalsRequest, AccountingListCompanyJournalsResponse> operation
               = new AccountingListCompanyJournals.Sync(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Create Journal
+     * 
+     * @return The call builder
+     */
+    public AccountingCreateCompanyJournalRequestBuilder createCompanyJournal() {
+        return new AccountingCreateCompanyJournalRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Create Journal
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param accountingJournalCreateRequestDto 
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AccountingCreateCompanyJournalResponse createCompanyJournal(
+            String xAccountId, String id,
+            AccountingJournalCreateRequestDto accountingJournalCreateRequestDto) throws Exception {
+        return createCompanyJournal(xAccountId, id, accountingJournalCreateRequestDto,
+            Optional.empty());
+    }
+
+    /**
+     * Create Journal
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param accountingJournalCreateRequestDto 
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AccountingCreateCompanyJournalResponse createCompanyJournal(
+            String xAccountId, String id,
+            AccountingJournalCreateRequestDto accountingJournalCreateRequestDto, Optional<Options> options) throws Exception {
+        AccountingCreateCompanyJournalRequest request =
+            AccountingCreateCompanyJournalRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .accountingJournalCreateRequestDto(accountingJournalCreateRequestDto)
+                .build();
+        RequestOperation<AccountingCreateCompanyJournalRequest, AccountingCreateCompanyJournalResponse> operation
+              = new AccountingCreateCompanyJournal.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

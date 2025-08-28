@@ -1,0 +1,10 @@
+# AccountingCreateCompanyJournalRequest
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `xAccountId`                                                                                      | *String*                                                                                          | :heavy_check_mark:                                                                                | The account identifier                                                                            |
+| `id`                                                                                              | *String*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `accountingJournalCreateRequestDto`                                                               | [AccountingJournalCreateRequestDto](../../models/components/AccountingJournalCreateRequestDto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |

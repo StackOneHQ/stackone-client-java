@@ -22,12 +22,12 @@ public class CustomFieldOption {
      * The human readable value of the option
      */
     @JsonProperty("value")
-    private String value;
+    private Value value;
 
     @JsonCreator
     public CustomFieldOption(
             @JsonProperty("id") String id,
-            @JsonProperty("value") String value) {
+            @JsonProperty("value") Value value) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(value, "value");
         this.id = id;
@@ -46,7 +46,7 @@ public class CustomFieldOption {
      * The human readable value of the option
      */
     @JsonIgnore
-    public String value() {
+    public Value value() {
         return value;
     }
 
@@ -67,7 +67,7 @@ public class CustomFieldOption {
     /**
      * The human readable value of the option
      */
-    public CustomFieldOption withValue(String value) {
+    public CustomFieldOption withValue(Value value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
@@ -105,7 +105,7 @@ public class CustomFieldOption {
 
         private String id;
 
-        private String value;
+        private Value value;
 
         private Builder() {
           // force use of static builder() method
@@ -125,7 +125,7 @@ public class CustomFieldOption {
         /**
          * The human readable value of the option
          */
-        public Builder value(String value) {
+        public Builder value(Value value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;

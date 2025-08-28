@@ -20,13 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
-    /**
-     * Unique identifier
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("id")
-    private JsonNullable<String> id;
-
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("score")
@@ -84,7 +77,6 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
 
     @JsonCreator
     public AtsUpdateCandidatesAssessmentsResultsRequestDto(
-            @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("score") JsonNullable<? extends Score> score,
             @JsonProperty("start_date") JsonNullable<OffsetDateTime> startDate,
             @JsonProperty("submission_date") JsonNullable<OffsetDateTime> submissionDate,
@@ -94,7 +86,6 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
             @JsonProperty("attachments") JsonNullable<? extends List<Attachment>> attachments,
             @JsonProperty("candidate") JsonNullable<? extends AtsUpdateCandidatesAssessmentsResultsRequestDtoCandidate> candidate,
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough) {
-        Utils.checkNotNull(id, "id");
         Utils.checkNotNull(score, "score");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(submissionDate, "submissionDate");
@@ -104,7 +95,6 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
         Utils.checkNotNull(attachments, "attachments");
         Utils.checkNotNull(candidate, "candidate");
         Utils.checkNotNull(passthrough, "passthrough");
-        this.id = id;
         this.score = score;
         this.startDate = startDate;
         this.submissionDate = submissionDate;
@@ -119,16 +109,7 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
     public AtsUpdateCandidatesAssessmentsResultsRequestDto() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
-    }
-
-    /**
-     * Unique identifier
-     */
-    @JsonIgnore
-    public JsonNullable<String> id() {
-        return id;
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @SuppressWarnings("unchecked")
@@ -200,24 +181,6 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
         return new Builder();
     }
 
-
-    /**
-     * Unique identifier
-     */
-    public AtsUpdateCandidatesAssessmentsResultsRequestDto withId(String id) {
-        Utils.checkNotNull(id, "id");
-        this.id = JsonNullable.of(id);
-        return this;
-    }
-
-    /**
-     * Unique identifier
-     */
-    public AtsUpdateCandidatesAssessmentsResultsRequestDto withId(JsonNullable<String> id) {
-        Utils.checkNotNull(id, "id");
-        this.id = id;
-        return this;
-    }
 
     public AtsUpdateCandidatesAssessmentsResultsRequestDto withScore(Score score) {
         Utils.checkNotNull(score, "score");
@@ -367,7 +330,6 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
         }
         AtsUpdateCandidatesAssessmentsResultsRequestDto other = (AtsUpdateCandidatesAssessmentsResultsRequestDto) o;
         return 
-            Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.score, other.score) &&
             Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
             Utils.enhancedDeepEquals(this.submissionDate, other.submissionDate) &&
@@ -382,16 +344,14 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id, score, startDate,
-            submissionDate, summary, result,
-            resultUrl, attachments, candidate,
-            passthrough);
+            score, startDate, submissionDate,
+            summary, result, resultUrl,
+            attachments, candidate, passthrough);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AtsUpdateCandidatesAssessmentsResultsRequestDto.class,
-                "id", id,
                 "score", score,
                 "startDate", startDate,
                 "submissionDate", submissionDate,
@@ -405,8 +365,6 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-
-        private JsonNullable<String> id = JsonNullable.undefined();
 
         private JsonNullable<? extends Score> score = JsonNullable.undefined();
 
@@ -428,25 +386,6 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
 
         private Builder() {
           // force use of static builder() method
-        }
-
-
-        /**
-         * Unique identifier
-         */
-        public Builder id(String id) {
-            Utils.checkNotNull(id, "id");
-            this.id = JsonNullable.of(id);
-            return this;
-        }
-
-        /**
-         * Unique identifier
-         */
-        public Builder id(JsonNullable<String> id) {
-            Utils.checkNotNull(id, "id");
-            this.id = id;
-            return this;
         }
 
 
@@ -599,10 +538,9 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDto {
         public AtsUpdateCandidatesAssessmentsResultsRequestDto build() {
 
             return new AtsUpdateCandidatesAssessmentsResultsRequestDto(
-                id, score, startDate,
-                submissionDate, summary, result,
-                resultUrl, attachments, candidate,
-                passthrough);
+                score, startDate, submissionDate,
+                summary, result, resultUrl,
+                attachments, candidate, passthrough);
         }
 
     }
