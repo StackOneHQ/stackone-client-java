@@ -74,6 +74,7 @@
 * [getEmployeeSkill](#getemployeeskill) - Get Employee Skill
 * [listEmployeeTasks](#listemployeetasks) - List Employee Tasks
 * [getEmployeeTask](#getemployeetask) - Get Employee Task
+* [updateEmployeeTask](#updateemployeetask) - Update Employee Task
 * [listTasks](#listtasks) - List Tasks
 * [getTask](#gettask) - Get Task
 
@@ -522,7 +523,7 @@ public class Application {
                     .companyId("1234567890")
                     .citizenships(List.of(
                         CountryCodeEnum.builder()
-                            .value(Value.US)
+                            .value(CountryCodeEnumValue.US)
                             .build()))
                     .employment(JsonNullable.of(null))
                     .customFields(List.of(
@@ -763,7 +764,7 @@ public class Application {
                     .companyId("1234567890")
                     .citizenships(List.of(
                         CountryCodeEnum.builder()
-                            .value(Value.US)
+                            .value(CountryCodeEnumValue.US)
                             .build()))
                     .employment(JsonNullable.of(null))
                     .customFields(List.of(
@@ -1544,7 +1545,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.responseStream().isPresent()) {
+        if (res.twoHundredApplicationPdfResponseStream().isPresent()) {
             // handle response
         }
     }
@@ -3808,7 +3809,7 @@ public class Application {
 
         HrisListJobsRequest req = HrisListJobsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
+                .fields("id,remote_id,code,title,description,status,created_at,updated_at")
                 .filter(HrisListJobsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -3884,14 +3885,14 @@ public class Application {
         HrisGetJobRequest req = HrisGetJobRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id")
+                .fields("id,remote_id,code,title,description,status,created_at,updated_at")
                 .build();
 
         HrisGetJobResponse res = sdk.hris().getJob()
                 .request(req)
                 .call();
 
-        if (res.jobResult().isPresent()) {
+        if (res.hrisJobResult().isPresent()) {
             // handle response
         }
     }
@@ -5553,6 +5554,83 @@ public class Application {
 ### Response
 
 **[HrisGetEmployeeTaskResponse](../../models/operations/HrisGetEmployeeTaskResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## updateEmployeeTask
+
+Update Employee Task
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="hris_update_employee_task" method="patch" path="/unified/hris/employees/{id}/tasks/{subResourceId}" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTaskResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        HrisUpdateEmployeeTaskResponse res = sdk.hris().updateEmployeeTask()
+                .xAccountId("<id>")
+                .id("<id>")
+                .subResourceId("<id>")
+                .updateTaskRequestDto(UpdateTaskRequestDto.builder()
+                    .comment("All required documents have been submitted")
+                    .status(UpdateTaskRequestDtoStatus.builder()
+                        .value(UpdateTaskRequestDtoValue.OPEN)
+                        .build())
+                    .build())
+                .call();
+
+        if (res.updateResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `xAccountId`                                                            | *String*                                                                | :heavy_check_mark:                                                      | The account identifier                                                  |
+| `id`                                                                    | *String*                                                                | :heavy_check_mark:                                                      | N/A                                                                     |
+| `subResourceId`                                                         | *String*                                                                | :heavy_check_mark:                                                      | N/A                                                                     |
+| `updateTaskRequestDto`                                                  | [UpdateTaskRequestDto](../../models/components/UpdateTaskRequestDto.md) | :heavy_check_mark:                                                      | N/A                                                                     |
+
+### Response
+
+**[HrisUpdateEmployeeTaskResponse](../../models/operations/HrisUpdateEmployeeTaskResponse.md)**
 
 ### Errors
 

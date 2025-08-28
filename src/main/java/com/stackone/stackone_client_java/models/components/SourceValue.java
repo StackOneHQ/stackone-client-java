@@ -44,9 +44,9 @@ public class SourceValue {
         return new SourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
     }
 
-    public static SourceValue of(Four value) {
+    public static SourceValue of(SourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Four>(){}));
+        return new SourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceValue4>(){}));
     }
 
     public static SourceValue of(List<Object> value) {
@@ -60,7 +60,7 @@ public class SourceValue {
      * <li>{@code java.lang.String}</li>
      * <li>{@code double}</li>
      * <li>{@code boolean}</li>
-     * <li>{@code com.stackone.stackone_client_java.models.components.Four}</li>
+     * <li>{@code com.stackone.stackone_client_java.models.components.SourceValue4}</li>
      * <li>{@code java.util.List<java.lang.Object>}</li>
      * </ul>
      * 
@@ -105,7 +105,7 @@ public class SourceValue {
                   TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Four>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceValue4>() {}, JsonShape.DEFAULT));
         }
     }
     

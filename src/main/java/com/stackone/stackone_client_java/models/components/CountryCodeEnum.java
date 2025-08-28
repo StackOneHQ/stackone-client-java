@@ -21,7 +21,7 @@ public class CountryCodeEnum {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
-    private JsonNullable<? extends Value> value;
+    private JsonNullable<? extends CountryCodeEnumValue> value;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -30,7 +30,7 @@ public class CountryCodeEnum {
 
     @JsonCreator
     public CountryCodeEnum(
-            @JsonProperty("value") JsonNullable<? extends Value> value,
+            @JsonProperty("value") JsonNullable<? extends CountryCodeEnumValue> value,
             @JsonProperty("source_value") JsonNullable<? extends SourceValue> sourceValue) {
         Utils.checkNotNull(value, "value");
         Utils.checkNotNull(sourceValue, "sourceValue");
@@ -47,8 +47,8 @@ public class CountryCodeEnum {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Value> value() {
-        return (JsonNullable<Value>) value;
+    public JsonNullable<CountryCodeEnumValue> value() {
+        return (JsonNullable<CountryCodeEnumValue>) value;
     }
 
     @SuppressWarnings("unchecked")
@@ -65,7 +65,7 @@ public class CountryCodeEnum {
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
-    public CountryCodeEnum withValue(Value value) {
+    public CountryCodeEnum withValue(CountryCodeEnumValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
@@ -74,7 +74,7 @@ public class CountryCodeEnum {
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
-    public CountryCodeEnum withValue(JsonNullable<? extends Value> value) {
+    public CountryCodeEnum withValue(JsonNullable<? extends CountryCodeEnumValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
@@ -122,7 +122,7 @@ public class CountryCodeEnum {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends Value> value = JsonNullable.undefined();
+        private JsonNullable<? extends CountryCodeEnumValue> value = JsonNullable.undefined();
 
         private JsonNullable<? extends SourceValue> sourceValue = JsonNullable.undefined();
 
@@ -134,7 +134,7 @@ public class CountryCodeEnum {
         /**
          * The ISO3166-1 Alpha2 Code of the Country
          */
-        public Builder value(Value value) {
+        public Builder value(CountryCodeEnumValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
@@ -143,7 +143,7 @@ public class CountryCodeEnum {
         /**
          * The ISO3166-1 Alpha2 Code of the Country
          */
-        public Builder value(JsonNullable<? extends Value> value) {
+        public Builder value(JsonNullable<? extends CountryCodeEnumValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;

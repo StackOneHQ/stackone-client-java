@@ -219,7 +219,7 @@ public class Employment {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("job")
-    private JsonNullable<? extends EmploymentJob> job;
+    private JsonNullable<? extends Job> job;
 
     /**
      * The type of employment
@@ -270,7 +270,7 @@ public class Employment {
             @JsonProperty("cost_center") JsonNullable<? extends CostCenter> costCenter,
             @JsonProperty("cost_centers") JsonNullable<? extends List<HRISCostCenter>> costCenters,
             @JsonProperty("division") JsonNullable<? extends Division> division,
-            @JsonProperty("job") JsonNullable<? extends EmploymentJob> job,
+            @JsonProperty("job") JsonNullable<? extends Job> job,
             @JsonProperty("type") JsonNullable<? extends EmploymentType1> type,
             @JsonProperty("contract_type") JsonNullable<? extends ContractType> contractType,
             @JsonProperty("manager") JsonNullable<? extends List<EmploymentManagerApiModel>> manager) {
@@ -583,8 +583,8 @@ public class Employment {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<EmploymentJob> job() {
-        return (JsonNullable<EmploymentJob>) job;
+    public JsonNullable<Job> job() {
+        return (JsonNullable<Job>) job;
     }
 
     /**
@@ -1108,7 +1108,7 @@ public class Employment {
     /**
      * The job of employee
      */
-    public Employment withJob(EmploymentJob job) {
+    public Employment withJob(Job job) {
         Utils.checkNotNull(job, "job");
         this.job = JsonNullable.of(job);
         return this;
@@ -1117,7 +1117,7 @@ public class Employment {
     /**
      * The job of employee
      */
-    public Employment withJob(JsonNullable<? extends EmploymentJob> job) {
+    public Employment withJob(JsonNullable<? extends Job> job) {
         Utils.checkNotNull(job, "job");
         this.job = job;
         return this;
@@ -1328,7 +1328,7 @@ public class Employment {
 
         private JsonNullable<? extends Division> division = JsonNullable.undefined();
 
-        private JsonNullable<? extends EmploymentJob> job = JsonNullable.undefined();
+        private JsonNullable<? extends Job> job = JsonNullable.undefined();
 
         private JsonNullable<? extends EmploymentType1> type = JsonNullable.undefined();
 
@@ -1856,7 +1856,7 @@ public class Employment {
         /**
          * The job of employee
          */
-        public Builder job(EmploymentJob job) {
+        public Builder job(Job job) {
             Utils.checkNotNull(job, "job");
             this.job = JsonNullable.of(job);
             return this;
@@ -1865,7 +1865,7 @@ public class Employment {
         /**
          * The job of employee
          */
-        public Builder job(JsonNullable<? extends EmploymentJob> job) {
+        public Builder job(JsonNullable<? extends Job> job) {
             Utils.checkNotNull(job, "job");
             this.job = job;
             return this;

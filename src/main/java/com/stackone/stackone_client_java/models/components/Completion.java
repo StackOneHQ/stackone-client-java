@@ -129,6 +129,13 @@ public class Completion {
     private JsonNullable<String> timeSpent;
 
     /**
+     * The certification URL associated with this completion
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("certificate_url")
+    private JsonNullable<String> certificateUrl;
+
+    /**
      * The external ID associated with this completion
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -215,6 +222,7 @@ public class Completion {
             @JsonProperty("user_id") JsonNullable<String> userId,
             @JsonProperty("remote_user_id") JsonNullable<String> remoteUserId,
             @JsonProperty("time_spent") JsonNullable<String> timeSpent,
+            @JsonProperty("certificate_url") JsonNullable<String> certificateUrl,
             @JsonProperty("external_id") JsonNullable<String> externalId,
             @JsonProperty("content_external_reference") JsonNullable<String> contentExternalReference,
             @JsonProperty("remote_external_id") JsonNullable<String> remoteExternalId,
@@ -237,6 +245,7 @@ public class Completion {
         Utils.checkNotNull(userId, "userId");
         Utils.checkNotNull(remoteUserId, "remoteUserId");
         Utils.checkNotNull(timeSpent, "timeSpent");
+        Utils.checkNotNull(certificateUrl, "certificateUrl");
         Utils.checkNotNull(externalId, "externalId");
         Utils.checkNotNull(contentExternalReference, "contentExternalReference");
         Utils.checkNotNull(remoteExternalId, "remoteExternalId");
@@ -259,6 +268,7 @@ public class Completion {
         this.userId = userId;
         this.remoteUserId = remoteUserId;
         this.timeSpent = timeSpent;
+        this.certificateUrl = certificateUrl;
         this.externalId = externalId;
         this.contentExternalReference = contentExternalReference;
         this.remoteExternalId = remoteExternalId;
@@ -276,7 +286,7 @@ public class Completion {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -403,6 +413,14 @@ public class Completion {
     @JsonIgnore
     public JsonNullable<String> timeSpent() {
         return timeSpent;
+    }
+
+    /**
+     * The certification URL associated with this completion
+     */
+    @JsonIgnore
+    public JsonNullable<String> certificateUrl() {
+        return certificateUrl;
     }
 
     /**
@@ -764,6 +782,24 @@ public class Completion {
     }
 
     /**
+     * The certification URL associated with this completion
+     */
+    public Completion withCertificateUrl(String certificateUrl) {
+        Utils.checkNotNull(certificateUrl, "certificateUrl");
+        this.certificateUrl = JsonNullable.of(certificateUrl);
+        return this;
+    }
+
+    /**
+     * The certification URL associated with this completion
+     */
+    public Completion withCertificateUrl(JsonNullable<String> certificateUrl) {
+        Utils.checkNotNull(certificateUrl, "certificateUrl");
+        this.certificateUrl = certificateUrl;
+        return this;
+    }
+
+    /**
      * The external ID associated with this completion
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -956,6 +992,7 @@ public class Completion {
             Utils.enhancedDeepEquals(this.userId, other.userId) &&
             Utils.enhancedDeepEquals(this.remoteUserId, other.remoteUserId) &&
             Utils.enhancedDeepEquals(this.timeSpent, other.timeSpent) &&
+            Utils.enhancedDeepEquals(this.certificateUrl, other.certificateUrl) &&
             Utils.enhancedDeepEquals(this.externalId, other.externalId) &&
             Utils.enhancedDeepEquals(this.contentExternalReference, other.contentExternalReference) &&
             Utils.enhancedDeepEquals(this.remoteExternalId, other.remoteExternalId) &&
@@ -973,9 +1010,9 @@ public class Completion {
             createdAt, updatedAt, learningObjectType,
             learningObjectId, remoteLearningObjectId, learningObjectExternalReference,
             userId, remoteUserId, timeSpent,
-            externalId, contentExternalReference, remoteExternalId,
-            contentId, remoteContentId, courseId,
-            remoteCourseId);
+            certificateUrl, externalId, contentExternalReference,
+            remoteExternalId, contentId, remoteContentId,
+            courseId, remoteCourseId);
     }
     
     @Override
@@ -996,6 +1033,7 @@ public class Completion {
                 "userId", userId,
                 "remoteUserId", remoteUserId,
                 "timeSpent", timeSpent,
+                "certificateUrl", certificateUrl,
                 "externalId", externalId,
                 "contentExternalReference", contentExternalReference,
                 "remoteExternalId", remoteExternalId,
@@ -1038,6 +1076,8 @@ public class Completion {
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
 
         private JsonNullable<String> timeSpent = JsonNullable.undefined();
+
+        private JsonNullable<String> certificateUrl = JsonNullable.undefined();
 
         @Deprecated
         private JsonNullable<String> externalId = JsonNullable.undefined();
@@ -1357,6 +1397,25 @@ public class Completion {
 
 
         /**
+         * The certification URL associated with this completion
+         */
+        public Builder certificateUrl(String certificateUrl) {
+            Utils.checkNotNull(certificateUrl, "certificateUrl");
+            this.certificateUrl = JsonNullable.of(certificateUrl);
+            return this;
+        }
+
+        /**
+         * The certification URL associated with this completion
+         */
+        public Builder certificateUrl(JsonNullable<String> certificateUrl) {
+            Utils.checkNotNull(certificateUrl, "certificateUrl");
+            this.certificateUrl = certificateUrl;
+            return this;
+        }
+
+
+        /**
          * The external ID associated with this completion
          * 
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -1538,9 +1597,9 @@ public class Completion {
                 createdAt, updatedAt, learningObjectType,
                 learningObjectId, remoteLearningObjectId, learningObjectExternalReference,
                 userId, remoteUserId, timeSpent,
-                externalId, contentExternalReference, remoteExternalId,
-                contentId, remoteContentId, courseId,
-                remoteCourseId);
+                certificateUrl, externalId, contentExternalReference,
+                remoteExternalId, contentId, remoteContentId,
+                courseId, remoteCourseId);
         }
 
     }

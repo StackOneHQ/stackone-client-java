@@ -37,7 +37,192 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
     /**
      * The document related to the application with the given identifiers was retrieved.
      */
-    private Optional<? extends InputStream> responseStream;
+    private Optional<? extends InputStream> twoHundredApplicationPdfResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationMswordResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndMsExcelResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndMsPowerpointResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationRtfResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredTextPlainResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredImageJpegResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredImagePngResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredImageGifResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredImageTiffResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredImageBmpResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredImageHeicResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationZipResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationGzipResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationJsonResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationXmlResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredTextCsvResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentTextResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredAudioMpegResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredVideoMp4ResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredVideoWebmResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredTextRtfResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationXRarCompressedResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationX7zCompressedResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredMessageRfc822ResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndMsOutlookResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationOctetStreamResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredTextHtmlResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredImageWebpResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentPresentationResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredAudioWavResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredAudioMp4ResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredVideoAviResponseStream;
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    private Optional<? extends InputStream> twoHundredVideoQuicktimeResponseStream;
 
 
     private Map<String, List<String>> headers;
@@ -47,18 +232,129 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends InputStream> responseStream,
+            Optional<? extends InputStream> twoHundredApplicationPdfResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationMswordResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndMsExcelResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndMsPowerpointResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationRtfResponseStream,
+            Optional<? extends InputStream> twoHundredTextPlainResponseStream,
+            Optional<? extends InputStream> twoHundredImageJpegResponseStream,
+            Optional<? extends InputStream> twoHundredImagePngResponseStream,
+            Optional<? extends InputStream> twoHundredImageGifResponseStream,
+            Optional<? extends InputStream> twoHundredImageTiffResponseStream,
+            Optional<? extends InputStream> twoHundredImageBmpResponseStream,
+            Optional<? extends InputStream> twoHundredImageHeicResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationZipResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationGzipResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationJsonResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationXmlResponseStream,
+            Optional<? extends InputStream> twoHundredTextCsvResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentTextResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream,
+            Optional<? extends InputStream> twoHundredAudioMpegResponseStream,
+            Optional<? extends InputStream> twoHundredVideoMp4ResponseStream,
+            Optional<? extends InputStream> twoHundredVideoWebmResponseStream,
+            Optional<? extends InputStream> twoHundredTextRtfResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationXRarCompressedResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationX7zCompressedResponseStream,
+            Optional<? extends InputStream> twoHundredMessageRfc822ResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndMsOutlookResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationOctetStreamResponseStream,
+            Optional<? extends InputStream> twoHundredTextHtmlResponseStream,
+            Optional<? extends InputStream> twoHundredImageWebpResponseStream,
+            Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentPresentationResponseStream,
+            Optional<? extends InputStream> twoHundredAudioWavResponseStream,
+            Optional<? extends InputStream> twoHundredAudioMp4ResponseStream,
+            Optional<? extends InputStream> twoHundredVideoAviResponseStream,
+            Optional<? extends InputStream> twoHundredVideoQuicktimeResponseStream,
             Map<String, List<String>> headers) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(responseStream, "responseStream");
+        Utils.checkNotNull(twoHundredApplicationPdfResponseStream, "twoHundredApplicationPdfResponseStream");
+        Utils.checkNotNull(twoHundredApplicationMswordResponseStream, "twoHundredApplicationMswordResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndMsExcelResponseStream, "twoHundredApplicationVndMsExcelResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndMsPowerpointResponseStream, "twoHundredApplicationVndMsPowerpointResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream");
+        Utils.checkNotNull(twoHundredApplicationRtfResponseStream, "twoHundredApplicationRtfResponseStream");
+        Utils.checkNotNull(twoHundredTextPlainResponseStream, "twoHundredTextPlainResponseStream");
+        Utils.checkNotNull(twoHundredImageJpegResponseStream, "twoHundredImageJpegResponseStream");
+        Utils.checkNotNull(twoHundredImagePngResponseStream, "twoHundredImagePngResponseStream");
+        Utils.checkNotNull(twoHundredImageGifResponseStream, "twoHundredImageGifResponseStream");
+        Utils.checkNotNull(twoHundredImageTiffResponseStream, "twoHundredImageTiffResponseStream");
+        Utils.checkNotNull(twoHundredImageBmpResponseStream, "twoHundredImageBmpResponseStream");
+        Utils.checkNotNull(twoHundredImageHeicResponseStream, "twoHundredImageHeicResponseStream");
+        Utils.checkNotNull(twoHundredApplicationZipResponseStream, "twoHundredApplicationZipResponseStream");
+        Utils.checkNotNull(twoHundredApplicationGzipResponseStream, "twoHundredApplicationGzipResponseStream");
+        Utils.checkNotNull(twoHundredApplicationJsonResponseStream, "twoHundredApplicationJsonResponseStream");
+        Utils.checkNotNull(twoHundredApplicationXmlResponseStream, "twoHundredApplicationXmlResponseStream");
+        Utils.checkNotNull(twoHundredTextCsvResponseStream, "twoHundredTextCsvResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentTextResponseStream, "twoHundredApplicationVndOasisOpendocumentTextResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream, "twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream");
+        Utils.checkNotNull(twoHundredAudioMpegResponseStream, "twoHundredAudioMpegResponseStream");
+        Utils.checkNotNull(twoHundredVideoMp4ResponseStream, "twoHundredVideoMp4ResponseStream");
+        Utils.checkNotNull(twoHundredVideoWebmResponseStream, "twoHundredVideoWebmResponseStream");
+        Utils.checkNotNull(twoHundredTextRtfResponseStream, "twoHundredTextRtfResponseStream");
+        Utils.checkNotNull(twoHundredApplicationXRarCompressedResponseStream, "twoHundredApplicationXRarCompressedResponseStream");
+        Utils.checkNotNull(twoHundredApplicationX7zCompressedResponseStream, "twoHundredApplicationX7zCompressedResponseStream");
+        Utils.checkNotNull(twoHundredMessageRfc822ResponseStream, "twoHundredMessageRfc822ResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndMsOutlookResponseStream, "twoHundredApplicationVndMsOutlookResponseStream");
+        Utils.checkNotNull(twoHundredApplicationOctetStreamResponseStream, "twoHundredApplicationOctetStreamResponseStream");
+        Utils.checkNotNull(twoHundredTextHtmlResponseStream, "twoHundredTextHtmlResponseStream");
+        Utils.checkNotNull(twoHundredImageWebpResponseStream, "twoHundredImageWebpResponseStream");
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentPresentationResponseStream, "twoHundredApplicationVndOasisOpendocumentPresentationResponseStream");
+        Utils.checkNotNull(twoHundredAudioWavResponseStream, "twoHundredAudioWavResponseStream");
+        Utils.checkNotNull(twoHundredAudioMp4ResponseStream, "twoHundredAudioMp4ResponseStream");
+        Utils.checkNotNull(twoHundredVideoAviResponseStream, "twoHundredVideoAviResponseStream");
+        Utils.checkNotNull(twoHundredVideoQuicktimeResponseStream, "twoHundredVideoQuicktimeResponseStream");
         headers = Utils.emptyMapIfNull(headers);
         Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.responseStream = responseStream;
+        this.twoHundredApplicationPdfResponseStream = twoHundredApplicationPdfResponseStream;
+        this.twoHundredApplicationMswordResponseStream = twoHundredApplicationMswordResponseStream;
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream;
+        this.twoHundredApplicationVndMsExcelResponseStream = twoHundredApplicationVndMsExcelResponseStream;
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream;
+        this.twoHundredApplicationVndMsPowerpointResponseStream = twoHundredApplicationVndMsPowerpointResponseStream;
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream;
+        this.twoHundredApplicationRtfResponseStream = twoHundredApplicationRtfResponseStream;
+        this.twoHundredTextPlainResponseStream = twoHundredTextPlainResponseStream;
+        this.twoHundredImageJpegResponseStream = twoHundredImageJpegResponseStream;
+        this.twoHundredImagePngResponseStream = twoHundredImagePngResponseStream;
+        this.twoHundredImageGifResponseStream = twoHundredImageGifResponseStream;
+        this.twoHundredImageTiffResponseStream = twoHundredImageTiffResponseStream;
+        this.twoHundredImageBmpResponseStream = twoHundredImageBmpResponseStream;
+        this.twoHundredImageHeicResponseStream = twoHundredImageHeicResponseStream;
+        this.twoHundredApplicationZipResponseStream = twoHundredApplicationZipResponseStream;
+        this.twoHundredApplicationGzipResponseStream = twoHundredApplicationGzipResponseStream;
+        this.twoHundredApplicationJsonResponseStream = twoHundredApplicationJsonResponseStream;
+        this.twoHundredApplicationXmlResponseStream = twoHundredApplicationXmlResponseStream;
+        this.twoHundredTextCsvResponseStream = twoHundredTextCsvResponseStream;
+        this.twoHundredApplicationVndOasisOpendocumentTextResponseStream = twoHundredApplicationVndOasisOpendocumentTextResponseStream;
+        this.twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream = twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream;
+        this.twoHundredAudioMpegResponseStream = twoHundredAudioMpegResponseStream;
+        this.twoHundredVideoMp4ResponseStream = twoHundredVideoMp4ResponseStream;
+        this.twoHundredVideoWebmResponseStream = twoHundredVideoWebmResponseStream;
+        this.twoHundredTextRtfResponseStream = twoHundredTextRtfResponseStream;
+        this.twoHundredApplicationXRarCompressedResponseStream = twoHundredApplicationXRarCompressedResponseStream;
+        this.twoHundredApplicationX7zCompressedResponseStream = twoHundredApplicationX7zCompressedResponseStream;
+        this.twoHundredMessageRfc822ResponseStream = twoHundredMessageRfc822ResponseStream;
+        this.twoHundredApplicationVndMsOutlookResponseStream = twoHundredApplicationVndMsOutlookResponseStream;
+        this.twoHundredApplicationOctetStreamResponseStream = twoHundredApplicationOctetStreamResponseStream;
+        this.twoHundredTextHtmlResponseStream = twoHundredTextHtmlResponseStream;
+        this.twoHundredImageWebpResponseStream = twoHundredImageWebpResponseStream;
+        this.twoHundredApplicationVndOasisOpendocumentPresentationResponseStream = twoHundredApplicationVndOasisOpendocumentPresentationResponseStream;
+        this.twoHundredAudioWavResponseStream = twoHundredAudioWavResponseStream;
+        this.twoHundredAudioMp4ResponseStream = twoHundredAudioMp4ResponseStream;
+        this.twoHundredVideoAviResponseStream = twoHundredVideoAviResponseStream;
+        this.twoHundredVideoQuicktimeResponseStream = twoHundredVideoQuicktimeResponseStream;
         this.headers = headers;
     }
     
@@ -68,7 +364,19 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
             HttpResponse<InputStream> rawResponse,
             Map<String, List<String>> headers) {
         this(contentType, statusCode, rawResponse,
-            Optional.empty(), headers);
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), headers);
     }
 
     /**
@@ -100,8 +408,341 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<InputStream> responseStream() {
-        return (Optional<InputStream>) responseStream;
+    public Optional<InputStream> twoHundredApplicationPdfResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationPdfResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationMswordResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationMswordResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndMsExcelResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndMsExcelResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndMsPowerpointResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndMsPowerpointResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationRtfResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationRtfResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredTextPlainResponseStream() {
+        return (Optional<InputStream>) twoHundredTextPlainResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredImageJpegResponseStream() {
+        return (Optional<InputStream>) twoHundredImageJpegResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredImagePngResponseStream() {
+        return (Optional<InputStream>) twoHundredImagePngResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredImageGifResponseStream() {
+        return (Optional<InputStream>) twoHundredImageGifResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredImageTiffResponseStream() {
+        return (Optional<InputStream>) twoHundredImageTiffResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredImageBmpResponseStream() {
+        return (Optional<InputStream>) twoHundredImageBmpResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredImageHeicResponseStream() {
+        return (Optional<InputStream>) twoHundredImageHeicResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationZipResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationZipResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationGzipResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationGzipResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationJsonResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationJsonResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationXmlResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationXmlResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredTextCsvResponseStream() {
+        return (Optional<InputStream>) twoHundredTextCsvResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndOasisOpendocumentTextResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndOasisOpendocumentTextResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredAudioMpegResponseStream() {
+        return (Optional<InputStream>) twoHundredAudioMpegResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredVideoMp4ResponseStream() {
+        return (Optional<InputStream>) twoHundredVideoMp4ResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredVideoWebmResponseStream() {
+        return (Optional<InputStream>) twoHundredVideoWebmResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredTextRtfResponseStream() {
+        return (Optional<InputStream>) twoHundredTextRtfResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationXRarCompressedResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationXRarCompressedResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationX7zCompressedResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationX7zCompressedResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredMessageRfc822ResponseStream() {
+        return (Optional<InputStream>) twoHundredMessageRfc822ResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndMsOutlookResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndMsOutlookResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationOctetStreamResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationOctetStreamResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredTextHtmlResponseStream() {
+        return (Optional<InputStream>) twoHundredTextHtmlResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredImageWebpResponseStream() {
+        return (Optional<InputStream>) twoHundredImageWebpResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredApplicationVndOasisOpendocumentPresentationResponseStream() {
+        return (Optional<InputStream>) twoHundredApplicationVndOasisOpendocumentPresentationResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredAudioWavResponseStream() {
+        return (Optional<InputStream>) twoHundredAudioWavResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredAudioMp4ResponseStream() {
+        return (Optional<InputStream>) twoHundredAudioMp4ResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredVideoAviResponseStream() {
+        return (Optional<InputStream>) twoHundredVideoAviResponseStream;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InputStream> twoHundredVideoQuicktimeResponseStream() {
+        return (Optional<InputStream>) twoHundredVideoQuicktimeResponseStream;
     }
 
     @JsonIgnore
@@ -144,9 +785,9 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
     /**
      * The document related to the application with the given identifiers was retrieved.
      */
-    public AtsDownloadApplicationDocumentResponse withResponseStream(InputStream responseStream) {
-        Utils.checkNotNull(responseStream, "responseStream");
-        this.responseStream = Optional.ofNullable(responseStream);
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationPdfResponseStream(InputStream twoHundredApplicationPdfResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationPdfResponseStream, "twoHundredApplicationPdfResponseStream");
+        this.twoHundredApplicationPdfResponseStream = Optional.ofNullable(twoHundredApplicationPdfResponseStream);
         return this;
     }
 
@@ -154,9 +795,712 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
     /**
      * The document related to the application with the given identifiers was retrieved.
      */
-    public AtsDownloadApplicationDocumentResponse withResponseStream(Optional<? extends InputStream> responseStream) {
-        Utils.checkNotNull(responseStream, "responseStream");
-        this.responseStream = responseStream;
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationPdfResponseStream(Optional<? extends InputStream> twoHundredApplicationPdfResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationPdfResponseStream, "twoHundredApplicationPdfResponseStream");
+        this.twoHundredApplicationPdfResponseStream = twoHundredApplicationPdfResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationMswordResponseStream(InputStream twoHundredApplicationMswordResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationMswordResponseStream, "twoHundredApplicationMswordResponseStream");
+        this.twoHundredApplicationMswordResponseStream = Optional.ofNullable(twoHundredApplicationMswordResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationMswordResponseStream(Optional<? extends InputStream> twoHundredApplicationMswordResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationMswordResponseStream, "twoHundredApplicationMswordResponseStream");
+        this.twoHundredApplicationMswordResponseStream = twoHundredApplicationMswordResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream(InputStream twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream");
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream = Optional.ofNullable(twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream");
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndMsExcelResponseStream(InputStream twoHundredApplicationVndMsExcelResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndMsExcelResponseStream, "twoHundredApplicationVndMsExcelResponseStream");
+        this.twoHundredApplicationVndMsExcelResponseStream = Optional.ofNullable(twoHundredApplicationVndMsExcelResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndMsExcelResponseStream(Optional<? extends InputStream> twoHundredApplicationVndMsExcelResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndMsExcelResponseStream, "twoHundredApplicationVndMsExcelResponseStream");
+        this.twoHundredApplicationVndMsExcelResponseStream = twoHundredApplicationVndMsExcelResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream(InputStream twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream");
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream = Optional.ofNullable(twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream");
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndMsPowerpointResponseStream(InputStream twoHundredApplicationVndMsPowerpointResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndMsPowerpointResponseStream, "twoHundredApplicationVndMsPowerpointResponseStream");
+        this.twoHundredApplicationVndMsPowerpointResponseStream = Optional.ofNullable(twoHundredApplicationVndMsPowerpointResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndMsPowerpointResponseStream(Optional<? extends InputStream> twoHundredApplicationVndMsPowerpointResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndMsPowerpointResponseStream, "twoHundredApplicationVndMsPowerpointResponseStream");
+        this.twoHundredApplicationVndMsPowerpointResponseStream = twoHundredApplicationVndMsPowerpointResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream(InputStream twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream");
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream = Optional.ofNullable(twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream");
+        this.twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationRtfResponseStream(InputStream twoHundredApplicationRtfResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationRtfResponseStream, "twoHundredApplicationRtfResponseStream");
+        this.twoHundredApplicationRtfResponseStream = Optional.ofNullable(twoHundredApplicationRtfResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationRtfResponseStream(Optional<? extends InputStream> twoHundredApplicationRtfResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationRtfResponseStream, "twoHundredApplicationRtfResponseStream");
+        this.twoHundredApplicationRtfResponseStream = twoHundredApplicationRtfResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredTextPlainResponseStream(InputStream twoHundredTextPlainResponseStream) {
+        Utils.checkNotNull(twoHundredTextPlainResponseStream, "twoHundredTextPlainResponseStream");
+        this.twoHundredTextPlainResponseStream = Optional.ofNullable(twoHundredTextPlainResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredTextPlainResponseStream(Optional<? extends InputStream> twoHundredTextPlainResponseStream) {
+        Utils.checkNotNull(twoHundredTextPlainResponseStream, "twoHundredTextPlainResponseStream");
+        this.twoHundredTextPlainResponseStream = twoHundredTextPlainResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageJpegResponseStream(InputStream twoHundredImageJpegResponseStream) {
+        Utils.checkNotNull(twoHundredImageJpegResponseStream, "twoHundredImageJpegResponseStream");
+        this.twoHundredImageJpegResponseStream = Optional.ofNullable(twoHundredImageJpegResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageJpegResponseStream(Optional<? extends InputStream> twoHundredImageJpegResponseStream) {
+        Utils.checkNotNull(twoHundredImageJpegResponseStream, "twoHundredImageJpegResponseStream");
+        this.twoHundredImageJpegResponseStream = twoHundredImageJpegResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImagePngResponseStream(InputStream twoHundredImagePngResponseStream) {
+        Utils.checkNotNull(twoHundredImagePngResponseStream, "twoHundredImagePngResponseStream");
+        this.twoHundredImagePngResponseStream = Optional.ofNullable(twoHundredImagePngResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImagePngResponseStream(Optional<? extends InputStream> twoHundredImagePngResponseStream) {
+        Utils.checkNotNull(twoHundredImagePngResponseStream, "twoHundredImagePngResponseStream");
+        this.twoHundredImagePngResponseStream = twoHundredImagePngResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageGifResponseStream(InputStream twoHundredImageGifResponseStream) {
+        Utils.checkNotNull(twoHundredImageGifResponseStream, "twoHundredImageGifResponseStream");
+        this.twoHundredImageGifResponseStream = Optional.ofNullable(twoHundredImageGifResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageGifResponseStream(Optional<? extends InputStream> twoHundredImageGifResponseStream) {
+        Utils.checkNotNull(twoHundredImageGifResponseStream, "twoHundredImageGifResponseStream");
+        this.twoHundredImageGifResponseStream = twoHundredImageGifResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageTiffResponseStream(InputStream twoHundredImageTiffResponseStream) {
+        Utils.checkNotNull(twoHundredImageTiffResponseStream, "twoHundredImageTiffResponseStream");
+        this.twoHundredImageTiffResponseStream = Optional.ofNullable(twoHundredImageTiffResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageTiffResponseStream(Optional<? extends InputStream> twoHundredImageTiffResponseStream) {
+        Utils.checkNotNull(twoHundredImageTiffResponseStream, "twoHundredImageTiffResponseStream");
+        this.twoHundredImageTiffResponseStream = twoHundredImageTiffResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageBmpResponseStream(InputStream twoHundredImageBmpResponseStream) {
+        Utils.checkNotNull(twoHundredImageBmpResponseStream, "twoHundredImageBmpResponseStream");
+        this.twoHundredImageBmpResponseStream = Optional.ofNullable(twoHundredImageBmpResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageBmpResponseStream(Optional<? extends InputStream> twoHundredImageBmpResponseStream) {
+        Utils.checkNotNull(twoHundredImageBmpResponseStream, "twoHundredImageBmpResponseStream");
+        this.twoHundredImageBmpResponseStream = twoHundredImageBmpResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageHeicResponseStream(InputStream twoHundredImageHeicResponseStream) {
+        Utils.checkNotNull(twoHundredImageHeicResponseStream, "twoHundredImageHeicResponseStream");
+        this.twoHundredImageHeicResponseStream = Optional.ofNullable(twoHundredImageHeicResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageHeicResponseStream(Optional<? extends InputStream> twoHundredImageHeicResponseStream) {
+        Utils.checkNotNull(twoHundredImageHeicResponseStream, "twoHundredImageHeicResponseStream");
+        this.twoHundredImageHeicResponseStream = twoHundredImageHeicResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationZipResponseStream(InputStream twoHundredApplicationZipResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationZipResponseStream, "twoHundredApplicationZipResponseStream");
+        this.twoHundredApplicationZipResponseStream = Optional.ofNullable(twoHundredApplicationZipResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationZipResponseStream(Optional<? extends InputStream> twoHundredApplicationZipResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationZipResponseStream, "twoHundredApplicationZipResponseStream");
+        this.twoHundredApplicationZipResponseStream = twoHundredApplicationZipResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationGzipResponseStream(InputStream twoHundredApplicationGzipResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationGzipResponseStream, "twoHundredApplicationGzipResponseStream");
+        this.twoHundredApplicationGzipResponseStream = Optional.ofNullable(twoHundredApplicationGzipResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationGzipResponseStream(Optional<? extends InputStream> twoHundredApplicationGzipResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationGzipResponseStream, "twoHundredApplicationGzipResponseStream");
+        this.twoHundredApplicationGzipResponseStream = twoHundredApplicationGzipResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationJsonResponseStream(InputStream twoHundredApplicationJsonResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationJsonResponseStream, "twoHundredApplicationJsonResponseStream");
+        this.twoHundredApplicationJsonResponseStream = Optional.ofNullable(twoHundredApplicationJsonResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationJsonResponseStream(Optional<? extends InputStream> twoHundredApplicationJsonResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationJsonResponseStream, "twoHundredApplicationJsonResponseStream");
+        this.twoHundredApplicationJsonResponseStream = twoHundredApplicationJsonResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationXmlResponseStream(InputStream twoHundredApplicationXmlResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationXmlResponseStream, "twoHundredApplicationXmlResponseStream");
+        this.twoHundredApplicationXmlResponseStream = Optional.ofNullable(twoHundredApplicationXmlResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationXmlResponseStream(Optional<? extends InputStream> twoHundredApplicationXmlResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationXmlResponseStream, "twoHundredApplicationXmlResponseStream");
+        this.twoHundredApplicationXmlResponseStream = twoHundredApplicationXmlResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredTextCsvResponseStream(InputStream twoHundredTextCsvResponseStream) {
+        Utils.checkNotNull(twoHundredTextCsvResponseStream, "twoHundredTextCsvResponseStream");
+        this.twoHundredTextCsvResponseStream = Optional.ofNullable(twoHundredTextCsvResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredTextCsvResponseStream(Optional<? extends InputStream> twoHundredTextCsvResponseStream) {
+        Utils.checkNotNull(twoHundredTextCsvResponseStream, "twoHundredTextCsvResponseStream");
+        this.twoHundredTextCsvResponseStream = twoHundredTextCsvResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOasisOpendocumentTextResponseStream(InputStream twoHundredApplicationVndOasisOpendocumentTextResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentTextResponseStream, "twoHundredApplicationVndOasisOpendocumentTextResponseStream");
+        this.twoHundredApplicationVndOasisOpendocumentTextResponseStream = Optional.ofNullable(twoHundredApplicationVndOasisOpendocumentTextResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOasisOpendocumentTextResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentTextResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentTextResponseStream, "twoHundredApplicationVndOasisOpendocumentTextResponseStream");
+        this.twoHundredApplicationVndOasisOpendocumentTextResponseStream = twoHundredApplicationVndOasisOpendocumentTextResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream(InputStream twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream, "twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream");
+        this.twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream = Optional.ofNullable(twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream, "twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream");
+        this.twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream = twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredAudioMpegResponseStream(InputStream twoHundredAudioMpegResponseStream) {
+        Utils.checkNotNull(twoHundredAudioMpegResponseStream, "twoHundredAudioMpegResponseStream");
+        this.twoHundredAudioMpegResponseStream = Optional.ofNullable(twoHundredAudioMpegResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredAudioMpegResponseStream(Optional<? extends InputStream> twoHundredAudioMpegResponseStream) {
+        Utils.checkNotNull(twoHundredAudioMpegResponseStream, "twoHundredAudioMpegResponseStream");
+        this.twoHundredAudioMpegResponseStream = twoHundredAudioMpegResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredVideoMp4ResponseStream(InputStream twoHundredVideoMp4ResponseStream) {
+        Utils.checkNotNull(twoHundredVideoMp4ResponseStream, "twoHundredVideoMp4ResponseStream");
+        this.twoHundredVideoMp4ResponseStream = Optional.ofNullable(twoHundredVideoMp4ResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredVideoMp4ResponseStream(Optional<? extends InputStream> twoHundredVideoMp4ResponseStream) {
+        Utils.checkNotNull(twoHundredVideoMp4ResponseStream, "twoHundredVideoMp4ResponseStream");
+        this.twoHundredVideoMp4ResponseStream = twoHundredVideoMp4ResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredVideoWebmResponseStream(InputStream twoHundredVideoWebmResponseStream) {
+        Utils.checkNotNull(twoHundredVideoWebmResponseStream, "twoHundredVideoWebmResponseStream");
+        this.twoHundredVideoWebmResponseStream = Optional.ofNullable(twoHundredVideoWebmResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredVideoWebmResponseStream(Optional<? extends InputStream> twoHundredVideoWebmResponseStream) {
+        Utils.checkNotNull(twoHundredVideoWebmResponseStream, "twoHundredVideoWebmResponseStream");
+        this.twoHundredVideoWebmResponseStream = twoHundredVideoWebmResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredTextRtfResponseStream(InputStream twoHundredTextRtfResponseStream) {
+        Utils.checkNotNull(twoHundredTextRtfResponseStream, "twoHundredTextRtfResponseStream");
+        this.twoHundredTextRtfResponseStream = Optional.ofNullable(twoHundredTextRtfResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredTextRtfResponseStream(Optional<? extends InputStream> twoHundredTextRtfResponseStream) {
+        Utils.checkNotNull(twoHundredTextRtfResponseStream, "twoHundredTextRtfResponseStream");
+        this.twoHundredTextRtfResponseStream = twoHundredTextRtfResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationXRarCompressedResponseStream(InputStream twoHundredApplicationXRarCompressedResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationXRarCompressedResponseStream, "twoHundredApplicationXRarCompressedResponseStream");
+        this.twoHundredApplicationXRarCompressedResponseStream = Optional.ofNullable(twoHundredApplicationXRarCompressedResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationXRarCompressedResponseStream(Optional<? extends InputStream> twoHundredApplicationXRarCompressedResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationXRarCompressedResponseStream, "twoHundredApplicationXRarCompressedResponseStream");
+        this.twoHundredApplicationXRarCompressedResponseStream = twoHundredApplicationXRarCompressedResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationX7zCompressedResponseStream(InputStream twoHundredApplicationX7zCompressedResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationX7zCompressedResponseStream, "twoHundredApplicationX7zCompressedResponseStream");
+        this.twoHundredApplicationX7zCompressedResponseStream = Optional.ofNullable(twoHundredApplicationX7zCompressedResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationX7zCompressedResponseStream(Optional<? extends InputStream> twoHundredApplicationX7zCompressedResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationX7zCompressedResponseStream, "twoHundredApplicationX7zCompressedResponseStream");
+        this.twoHundredApplicationX7zCompressedResponseStream = twoHundredApplicationX7zCompressedResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredMessageRfc822ResponseStream(InputStream twoHundredMessageRfc822ResponseStream) {
+        Utils.checkNotNull(twoHundredMessageRfc822ResponseStream, "twoHundredMessageRfc822ResponseStream");
+        this.twoHundredMessageRfc822ResponseStream = Optional.ofNullable(twoHundredMessageRfc822ResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredMessageRfc822ResponseStream(Optional<? extends InputStream> twoHundredMessageRfc822ResponseStream) {
+        Utils.checkNotNull(twoHundredMessageRfc822ResponseStream, "twoHundredMessageRfc822ResponseStream");
+        this.twoHundredMessageRfc822ResponseStream = twoHundredMessageRfc822ResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndMsOutlookResponseStream(InputStream twoHundredApplicationVndMsOutlookResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndMsOutlookResponseStream, "twoHundredApplicationVndMsOutlookResponseStream");
+        this.twoHundredApplicationVndMsOutlookResponseStream = Optional.ofNullable(twoHundredApplicationVndMsOutlookResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndMsOutlookResponseStream(Optional<? extends InputStream> twoHundredApplicationVndMsOutlookResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndMsOutlookResponseStream, "twoHundredApplicationVndMsOutlookResponseStream");
+        this.twoHundredApplicationVndMsOutlookResponseStream = twoHundredApplicationVndMsOutlookResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationOctetStreamResponseStream(InputStream twoHundredApplicationOctetStreamResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationOctetStreamResponseStream, "twoHundredApplicationOctetStreamResponseStream");
+        this.twoHundredApplicationOctetStreamResponseStream = Optional.ofNullable(twoHundredApplicationOctetStreamResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationOctetStreamResponseStream(Optional<? extends InputStream> twoHundredApplicationOctetStreamResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationOctetStreamResponseStream, "twoHundredApplicationOctetStreamResponseStream");
+        this.twoHundredApplicationOctetStreamResponseStream = twoHundredApplicationOctetStreamResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredTextHtmlResponseStream(InputStream twoHundredTextHtmlResponseStream) {
+        Utils.checkNotNull(twoHundredTextHtmlResponseStream, "twoHundredTextHtmlResponseStream");
+        this.twoHundredTextHtmlResponseStream = Optional.ofNullable(twoHundredTextHtmlResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredTextHtmlResponseStream(Optional<? extends InputStream> twoHundredTextHtmlResponseStream) {
+        Utils.checkNotNull(twoHundredTextHtmlResponseStream, "twoHundredTextHtmlResponseStream");
+        this.twoHundredTextHtmlResponseStream = twoHundredTextHtmlResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageWebpResponseStream(InputStream twoHundredImageWebpResponseStream) {
+        Utils.checkNotNull(twoHundredImageWebpResponseStream, "twoHundredImageWebpResponseStream");
+        this.twoHundredImageWebpResponseStream = Optional.ofNullable(twoHundredImageWebpResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredImageWebpResponseStream(Optional<? extends InputStream> twoHundredImageWebpResponseStream) {
+        Utils.checkNotNull(twoHundredImageWebpResponseStream, "twoHundredImageWebpResponseStream");
+        this.twoHundredImageWebpResponseStream = twoHundredImageWebpResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOasisOpendocumentPresentationResponseStream(InputStream twoHundredApplicationVndOasisOpendocumentPresentationResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentPresentationResponseStream, "twoHundredApplicationVndOasisOpendocumentPresentationResponseStream");
+        this.twoHundredApplicationVndOasisOpendocumentPresentationResponseStream = Optional.ofNullable(twoHundredApplicationVndOasisOpendocumentPresentationResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredApplicationVndOasisOpendocumentPresentationResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentPresentationResponseStream) {
+        Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentPresentationResponseStream, "twoHundredApplicationVndOasisOpendocumentPresentationResponseStream");
+        this.twoHundredApplicationVndOasisOpendocumentPresentationResponseStream = twoHundredApplicationVndOasisOpendocumentPresentationResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredAudioWavResponseStream(InputStream twoHundredAudioWavResponseStream) {
+        Utils.checkNotNull(twoHundredAudioWavResponseStream, "twoHundredAudioWavResponseStream");
+        this.twoHundredAudioWavResponseStream = Optional.ofNullable(twoHundredAudioWavResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredAudioWavResponseStream(Optional<? extends InputStream> twoHundredAudioWavResponseStream) {
+        Utils.checkNotNull(twoHundredAudioWavResponseStream, "twoHundredAudioWavResponseStream");
+        this.twoHundredAudioWavResponseStream = twoHundredAudioWavResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredAudioMp4ResponseStream(InputStream twoHundredAudioMp4ResponseStream) {
+        Utils.checkNotNull(twoHundredAudioMp4ResponseStream, "twoHundredAudioMp4ResponseStream");
+        this.twoHundredAudioMp4ResponseStream = Optional.ofNullable(twoHundredAudioMp4ResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredAudioMp4ResponseStream(Optional<? extends InputStream> twoHundredAudioMp4ResponseStream) {
+        Utils.checkNotNull(twoHundredAudioMp4ResponseStream, "twoHundredAudioMp4ResponseStream");
+        this.twoHundredAudioMp4ResponseStream = twoHundredAudioMp4ResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredVideoAviResponseStream(InputStream twoHundredVideoAviResponseStream) {
+        Utils.checkNotNull(twoHundredVideoAviResponseStream, "twoHundredVideoAviResponseStream");
+        this.twoHundredVideoAviResponseStream = Optional.ofNullable(twoHundredVideoAviResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredVideoAviResponseStream(Optional<? extends InputStream> twoHundredVideoAviResponseStream) {
+        Utils.checkNotNull(twoHundredVideoAviResponseStream, "twoHundredVideoAviResponseStream");
+        this.twoHundredVideoAviResponseStream = twoHundredVideoAviResponseStream;
+        return this;
+    }
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredVideoQuicktimeResponseStream(InputStream twoHundredVideoQuicktimeResponseStream) {
+        Utils.checkNotNull(twoHundredVideoQuicktimeResponseStream, "twoHundredVideoQuicktimeResponseStream");
+        this.twoHundredVideoQuicktimeResponseStream = Optional.ofNullable(twoHundredVideoQuicktimeResponseStream);
+        return this;
+    }
+
+
+    /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    public AtsDownloadApplicationDocumentResponse withTwoHundredVideoQuicktimeResponseStream(Optional<? extends InputStream> twoHundredVideoQuicktimeResponseStream) {
+        Utils.checkNotNull(twoHundredVideoQuicktimeResponseStream, "twoHundredVideoQuicktimeResponseStream");
+        this.twoHundredVideoQuicktimeResponseStream = twoHundredVideoQuicktimeResponseStream;
         return this;
     }
 
@@ -179,7 +1523,44 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.responseStream, other.responseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationPdfResponseStream, other.twoHundredApplicationPdfResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationMswordResponseStream, other.twoHundredApplicationMswordResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream, other.twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndMsExcelResponseStream, other.twoHundredApplicationVndMsExcelResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream, other.twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndMsPowerpointResponseStream, other.twoHundredApplicationVndMsPowerpointResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream, other.twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationRtfResponseStream, other.twoHundredApplicationRtfResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredTextPlainResponseStream, other.twoHundredTextPlainResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredImageJpegResponseStream, other.twoHundredImageJpegResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredImagePngResponseStream, other.twoHundredImagePngResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredImageGifResponseStream, other.twoHundredImageGifResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredImageTiffResponseStream, other.twoHundredImageTiffResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredImageBmpResponseStream, other.twoHundredImageBmpResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredImageHeicResponseStream, other.twoHundredImageHeicResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationZipResponseStream, other.twoHundredApplicationZipResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationGzipResponseStream, other.twoHundredApplicationGzipResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationJsonResponseStream, other.twoHundredApplicationJsonResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationXmlResponseStream, other.twoHundredApplicationXmlResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredTextCsvResponseStream, other.twoHundredTextCsvResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndOasisOpendocumentTextResponseStream, other.twoHundredApplicationVndOasisOpendocumentTextResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream, other.twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredAudioMpegResponseStream, other.twoHundredAudioMpegResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredVideoMp4ResponseStream, other.twoHundredVideoMp4ResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredVideoWebmResponseStream, other.twoHundredVideoWebmResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredTextRtfResponseStream, other.twoHundredTextRtfResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationXRarCompressedResponseStream, other.twoHundredApplicationXRarCompressedResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationX7zCompressedResponseStream, other.twoHundredApplicationX7zCompressedResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredMessageRfc822ResponseStream, other.twoHundredMessageRfc822ResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndMsOutlookResponseStream, other.twoHundredApplicationVndMsOutlookResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationOctetStreamResponseStream, other.twoHundredApplicationOctetStreamResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredTextHtmlResponseStream, other.twoHundredTextHtmlResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredImageWebpResponseStream, other.twoHundredImageWebpResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredApplicationVndOasisOpendocumentPresentationResponseStream, other.twoHundredApplicationVndOasisOpendocumentPresentationResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredAudioWavResponseStream, other.twoHundredAudioWavResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredAudioMp4ResponseStream, other.twoHundredAudioMp4ResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredVideoAviResponseStream, other.twoHundredVideoAviResponseStream) &&
+            Utils.enhancedDeepEquals(this.twoHundredVideoQuicktimeResponseStream, other.twoHundredVideoQuicktimeResponseStream) &&
             Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
@@ -187,7 +1568,19 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            responseStream, headers);
+            twoHundredApplicationPdfResponseStream, twoHundredApplicationMswordResponseStream, twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream,
+            twoHundredApplicationVndMsExcelResponseStream, twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream, twoHundredApplicationVndMsPowerpointResponseStream,
+            twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream, twoHundredApplicationRtfResponseStream, twoHundredTextPlainResponseStream,
+            twoHundredImageJpegResponseStream, twoHundredImagePngResponseStream, twoHundredImageGifResponseStream,
+            twoHundredImageTiffResponseStream, twoHundredImageBmpResponseStream, twoHundredImageHeicResponseStream,
+            twoHundredApplicationZipResponseStream, twoHundredApplicationGzipResponseStream, twoHundredApplicationJsonResponseStream,
+            twoHundredApplicationXmlResponseStream, twoHundredTextCsvResponseStream, twoHundredApplicationVndOasisOpendocumentTextResponseStream,
+            twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream, twoHundredAudioMpegResponseStream, twoHundredVideoMp4ResponseStream,
+            twoHundredVideoWebmResponseStream, twoHundredTextRtfResponseStream, twoHundredApplicationXRarCompressedResponseStream,
+            twoHundredApplicationX7zCompressedResponseStream, twoHundredMessageRfc822ResponseStream, twoHundredApplicationVndMsOutlookResponseStream,
+            twoHundredApplicationOctetStreamResponseStream, twoHundredTextHtmlResponseStream, twoHundredImageWebpResponseStream,
+            twoHundredApplicationVndOasisOpendocumentPresentationResponseStream, twoHundredAudioWavResponseStream, twoHundredAudioMp4ResponseStream,
+            twoHundredVideoAviResponseStream, twoHundredVideoQuicktimeResponseStream, headers);
     }
     
     @Override
@@ -196,7 +1589,44 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "responseStream", responseStream,
+                "twoHundredApplicationPdfResponseStream", twoHundredApplicationPdfResponseStream,
+                "twoHundredApplicationMswordResponseStream", twoHundredApplicationMswordResponseStream,
+                "twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream", twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream,
+                "twoHundredApplicationVndMsExcelResponseStream", twoHundredApplicationVndMsExcelResponseStream,
+                "twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream", twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream,
+                "twoHundredApplicationVndMsPowerpointResponseStream", twoHundredApplicationVndMsPowerpointResponseStream,
+                "twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream", twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream,
+                "twoHundredApplicationRtfResponseStream", twoHundredApplicationRtfResponseStream,
+                "twoHundredTextPlainResponseStream", twoHundredTextPlainResponseStream,
+                "twoHundredImageJpegResponseStream", twoHundredImageJpegResponseStream,
+                "twoHundredImagePngResponseStream", twoHundredImagePngResponseStream,
+                "twoHundredImageGifResponseStream", twoHundredImageGifResponseStream,
+                "twoHundredImageTiffResponseStream", twoHundredImageTiffResponseStream,
+                "twoHundredImageBmpResponseStream", twoHundredImageBmpResponseStream,
+                "twoHundredImageHeicResponseStream", twoHundredImageHeicResponseStream,
+                "twoHundredApplicationZipResponseStream", twoHundredApplicationZipResponseStream,
+                "twoHundredApplicationGzipResponseStream", twoHundredApplicationGzipResponseStream,
+                "twoHundredApplicationJsonResponseStream", twoHundredApplicationJsonResponseStream,
+                "twoHundredApplicationXmlResponseStream", twoHundredApplicationXmlResponseStream,
+                "twoHundredTextCsvResponseStream", twoHundredTextCsvResponseStream,
+                "twoHundredApplicationVndOasisOpendocumentTextResponseStream", twoHundredApplicationVndOasisOpendocumentTextResponseStream,
+                "twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream", twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream,
+                "twoHundredAudioMpegResponseStream", twoHundredAudioMpegResponseStream,
+                "twoHundredVideoMp4ResponseStream", twoHundredVideoMp4ResponseStream,
+                "twoHundredVideoWebmResponseStream", twoHundredVideoWebmResponseStream,
+                "twoHundredTextRtfResponseStream", twoHundredTextRtfResponseStream,
+                "twoHundredApplicationXRarCompressedResponseStream", twoHundredApplicationXRarCompressedResponseStream,
+                "twoHundredApplicationX7zCompressedResponseStream", twoHundredApplicationX7zCompressedResponseStream,
+                "twoHundredMessageRfc822ResponseStream", twoHundredMessageRfc822ResponseStream,
+                "twoHundredApplicationVndMsOutlookResponseStream", twoHundredApplicationVndMsOutlookResponseStream,
+                "twoHundredApplicationOctetStreamResponseStream", twoHundredApplicationOctetStreamResponseStream,
+                "twoHundredTextHtmlResponseStream", twoHundredTextHtmlResponseStream,
+                "twoHundredImageWebpResponseStream", twoHundredImageWebpResponseStream,
+                "twoHundredApplicationVndOasisOpendocumentPresentationResponseStream", twoHundredApplicationVndOasisOpendocumentPresentationResponseStream,
+                "twoHundredAudioWavResponseStream", twoHundredAudioWavResponseStream,
+                "twoHundredAudioMp4ResponseStream", twoHundredAudioMp4ResponseStream,
+                "twoHundredVideoAviResponseStream", twoHundredVideoAviResponseStream,
+                "twoHundredVideoQuicktimeResponseStream", twoHundredVideoQuicktimeResponseStream,
                 "headers", headers);
     }
 
@@ -209,7 +1639,81 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Optional<? extends InputStream> responseStream = Optional.empty();
+        private Optional<? extends InputStream> twoHundredApplicationPdfResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationMswordResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndMsExcelResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndMsPowerpointResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationRtfResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredTextPlainResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredImageJpegResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredImagePngResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredImageGifResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredImageTiffResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredImageBmpResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredImageHeicResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationZipResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationGzipResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationJsonResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationXmlResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredTextCsvResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentTextResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredAudioMpegResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredVideoMp4ResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredVideoWebmResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredTextRtfResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationXRarCompressedResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationX7zCompressedResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredMessageRfc822ResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndMsOutlookResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationOctetStreamResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredTextHtmlResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredImageWebpResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentPresentationResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredAudioWavResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredAudioMp4ResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredVideoAviResponseStream = Optional.empty();
+
+        private Optional<? extends InputStream> twoHundredVideoQuicktimeResponseStream = Optional.empty();
 
         private Map<String, List<String>> headers;
 
@@ -251,18 +1755,721 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
         /**
          * The document related to the application with the given identifiers was retrieved.
          */
-        public Builder responseStream(InputStream responseStream) {
-            Utils.checkNotNull(responseStream, "responseStream");
-            this.responseStream = Optional.ofNullable(responseStream);
+        public Builder twoHundredApplicationPdfResponseStream(InputStream twoHundredApplicationPdfResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationPdfResponseStream, "twoHundredApplicationPdfResponseStream");
+            this.twoHundredApplicationPdfResponseStream = Optional.ofNullable(twoHundredApplicationPdfResponseStream);
             return this;
         }
 
         /**
          * The document related to the application with the given identifiers was retrieved.
          */
-        public Builder responseStream(Optional<? extends InputStream> responseStream) {
-            Utils.checkNotNull(responseStream, "responseStream");
-            this.responseStream = responseStream;
+        public Builder twoHundredApplicationPdfResponseStream(Optional<? extends InputStream> twoHundredApplicationPdfResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationPdfResponseStream, "twoHundredApplicationPdfResponseStream");
+            this.twoHundredApplicationPdfResponseStream = twoHundredApplicationPdfResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationMswordResponseStream(InputStream twoHundredApplicationMswordResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationMswordResponseStream, "twoHundredApplicationMswordResponseStream");
+            this.twoHundredApplicationMswordResponseStream = Optional.ofNullable(twoHundredApplicationMswordResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationMswordResponseStream(Optional<? extends InputStream> twoHundredApplicationMswordResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationMswordResponseStream, "twoHundredApplicationMswordResponseStream");
+            this.twoHundredApplicationMswordResponseStream = twoHundredApplicationMswordResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream(InputStream twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream");
+            this.twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream = Optional.ofNullable(twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream");
+            this.twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndMsExcelResponseStream(InputStream twoHundredApplicationVndMsExcelResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndMsExcelResponseStream, "twoHundredApplicationVndMsExcelResponseStream");
+            this.twoHundredApplicationVndMsExcelResponseStream = Optional.ofNullable(twoHundredApplicationVndMsExcelResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndMsExcelResponseStream(Optional<? extends InputStream> twoHundredApplicationVndMsExcelResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndMsExcelResponseStream, "twoHundredApplicationVndMsExcelResponseStream");
+            this.twoHundredApplicationVndMsExcelResponseStream = twoHundredApplicationVndMsExcelResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream(InputStream twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream");
+            this.twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream = Optional.ofNullable(twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream");
+            this.twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndMsPowerpointResponseStream(InputStream twoHundredApplicationVndMsPowerpointResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndMsPowerpointResponseStream, "twoHundredApplicationVndMsPowerpointResponseStream");
+            this.twoHundredApplicationVndMsPowerpointResponseStream = Optional.ofNullable(twoHundredApplicationVndMsPowerpointResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndMsPowerpointResponseStream(Optional<? extends InputStream> twoHundredApplicationVndMsPowerpointResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndMsPowerpointResponseStream, "twoHundredApplicationVndMsPowerpointResponseStream");
+            this.twoHundredApplicationVndMsPowerpointResponseStream = twoHundredApplicationVndMsPowerpointResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream(InputStream twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream");
+            this.twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream = Optional.ofNullable(twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream, "twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream");
+            this.twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream = twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationRtfResponseStream(InputStream twoHundredApplicationRtfResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationRtfResponseStream, "twoHundredApplicationRtfResponseStream");
+            this.twoHundredApplicationRtfResponseStream = Optional.ofNullable(twoHundredApplicationRtfResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationRtfResponseStream(Optional<? extends InputStream> twoHundredApplicationRtfResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationRtfResponseStream, "twoHundredApplicationRtfResponseStream");
+            this.twoHundredApplicationRtfResponseStream = twoHundredApplicationRtfResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredTextPlainResponseStream(InputStream twoHundredTextPlainResponseStream) {
+            Utils.checkNotNull(twoHundredTextPlainResponseStream, "twoHundredTextPlainResponseStream");
+            this.twoHundredTextPlainResponseStream = Optional.ofNullable(twoHundredTextPlainResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredTextPlainResponseStream(Optional<? extends InputStream> twoHundredTextPlainResponseStream) {
+            Utils.checkNotNull(twoHundredTextPlainResponseStream, "twoHundredTextPlainResponseStream");
+            this.twoHundredTextPlainResponseStream = twoHundredTextPlainResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageJpegResponseStream(InputStream twoHundredImageJpegResponseStream) {
+            Utils.checkNotNull(twoHundredImageJpegResponseStream, "twoHundredImageJpegResponseStream");
+            this.twoHundredImageJpegResponseStream = Optional.ofNullable(twoHundredImageJpegResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageJpegResponseStream(Optional<? extends InputStream> twoHundredImageJpegResponseStream) {
+            Utils.checkNotNull(twoHundredImageJpegResponseStream, "twoHundredImageJpegResponseStream");
+            this.twoHundredImageJpegResponseStream = twoHundredImageJpegResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImagePngResponseStream(InputStream twoHundredImagePngResponseStream) {
+            Utils.checkNotNull(twoHundredImagePngResponseStream, "twoHundredImagePngResponseStream");
+            this.twoHundredImagePngResponseStream = Optional.ofNullable(twoHundredImagePngResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImagePngResponseStream(Optional<? extends InputStream> twoHundredImagePngResponseStream) {
+            Utils.checkNotNull(twoHundredImagePngResponseStream, "twoHundredImagePngResponseStream");
+            this.twoHundredImagePngResponseStream = twoHundredImagePngResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageGifResponseStream(InputStream twoHundredImageGifResponseStream) {
+            Utils.checkNotNull(twoHundredImageGifResponseStream, "twoHundredImageGifResponseStream");
+            this.twoHundredImageGifResponseStream = Optional.ofNullable(twoHundredImageGifResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageGifResponseStream(Optional<? extends InputStream> twoHundredImageGifResponseStream) {
+            Utils.checkNotNull(twoHundredImageGifResponseStream, "twoHundredImageGifResponseStream");
+            this.twoHundredImageGifResponseStream = twoHundredImageGifResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageTiffResponseStream(InputStream twoHundredImageTiffResponseStream) {
+            Utils.checkNotNull(twoHundredImageTiffResponseStream, "twoHundredImageTiffResponseStream");
+            this.twoHundredImageTiffResponseStream = Optional.ofNullable(twoHundredImageTiffResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageTiffResponseStream(Optional<? extends InputStream> twoHundredImageTiffResponseStream) {
+            Utils.checkNotNull(twoHundredImageTiffResponseStream, "twoHundredImageTiffResponseStream");
+            this.twoHundredImageTiffResponseStream = twoHundredImageTiffResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageBmpResponseStream(InputStream twoHundredImageBmpResponseStream) {
+            Utils.checkNotNull(twoHundredImageBmpResponseStream, "twoHundredImageBmpResponseStream");
+            this.twoHundredImageBmpResponseStream = Optional.ofNullable(twoHundredImageBmpResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageBmpResponseStream(Optional<? extends InputStream> twoHundredImageBmpResponseStream) {
+            Utils.checkNotNull(twoHundredImageBmpResponseStream, "twoHundredImageBmpResponseStream");
+            this.twoHundredImageBmpResponseStream = twoHundredImageBmpResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageHeicResponseStream(InputStream twoHundredImageHeicResponseStream) {
+            Utils.checkNotNull(twoHundredImageHeicResponseStream, "twoHundredImageHeicResponseStream");
+            this.twoHundredImageHeicResponseStream = Optional.ofNullable(twoHundredImageHeicResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageHeicResponseStream(Optional<? extends InputStream> twoHundredImageHeicResponseStream) {
+            Utils.checkNotNull(twoHundredImageHeicResponseStream, "twoHundredImageHeicResponseStream");
+            this.twoHundredImageHeicResponseStream = twoHundredImageHeicResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationZipResponseStream(InputStream twoHundredApplicationZipResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationZipResponseStream, "twoHundredApplicationZipResponseStream");
+            this.twoHundredApplicationZipResponseStream = Optional.ofNullable(twoHundredApplicationZipResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationZipResponseStream(Optional<? extends InputStream> twoHundredApplicationZipResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationZipResponseStream, "twoHundredApplicationZipResponseStream");
+            this.twoHundredApplicationZipResponseStream = twoHundredApplicationZipResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationGzipResponseStream(InputStream twoHundredApplicationGzipResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationGzipResponseStream, "twoHundredApplicationGzipResponseStream");
+            this.twoHundredApplicationGzipResponseStream = Optional.ofNullable(twoHundredApplicationGzipResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationGzipResponseStream(Optional<? extends InputStream> twoHundredApplicationGzipResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationGzipResponseStream, "twoHundredApplicationGzipResponseStream");
+            this.twoHundredApplicationGzipResponseStream = twoHundredApplicationGzipResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationJsonResponseStream(InputStream twoHundredApplicationJsonResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationJsonResponseStream, "twoHundredApplicationJsonResponseStream");
+            this.twoHundredApplicationJsonResponseStream = Optional.ofNullable(twoHundredApplicationJsonResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationJsonResponseStream(Optional<? extends InputStream> twoHundredApplicationJsonResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationJsonResponseStream, "twoHundredApplicationJsonResponseStream");
+            this.twoHundredApplicationJsonResponseStream = twoHundredApplicationJsonResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationXmlResponseStream(InputStream twoHundredApplicationXmlResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationXmlResponseStream, "twoHundredApplicationXmlResponseStream");
+            this.twoHundredApplicationXmlResponseStream = Optional.ofNullable(twoHundredApplicationXmlResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationXmlResponseStream(Optional<? extends InputStream> twoHundredApplicationXmlResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationXmlResponseStream, "twoHundredApplicationXmlResponseStream");
+            this.twoHundredApplicationXmlResponseStream = twoHundredApplicationXmlResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredTextCsvResponseStream(InputStream twoHundredTextCsvResponseStream) {
+            Utils.checkNotNull(twoHundredTextCsvResponseStream, "twoHundredTextCsvResponseStream");
+            this.twoHundredTextCsvResponseStream = Optional.ofNullable(twoHundredTextCsvResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredTextCsvResponseStream(Optional<? extends InputStream> twoHundredTextCsvResponseStream) {
+            Utils.checkNotNull(twoHundredTextCsvResponseStream, "twoHundredTextCsvResponseStream");
+            this.twoHundredTextCsvResponseStream = twoHundredTextCsvResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOasisOpendocumentTextResponseStream(InputStream twoHundredApplicationVndOasisOpendocumentTextResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentTextResponseStream, "twoHundredApplicationVndOasisOpendocumentTextResponseStream");
+            this.twoHundredApplicationVndOasisOpendocumentTextResponseStream = Optional.ofNullable(twoHundredApplicationVndOasisOpendocumentTextResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOasisOpendocumentTextResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentTextResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentTextResponseStream, "twoHundredApplicationVndOasisOpendocumentTextResponseStream");
+            this.twoHundredApplicationVndOasisOpendocumentTextResponseStream = twoHundredApplicationVndOasisOpendocumentTextResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream(InputStream twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream, "twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream");
+            this.twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream = Optional.ofNullable(twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream, "twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream");
+            this.twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream = twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredAudioMpegResponseStream(InputStream twoHundredAudioMpegResponseStream) {
+            Utils.checkNotNull(twoHundredAudioMpegResponseStream, "twoHundredAudioMpegResponseStream");
+            this.twoHundredAudioMpegResponseStream = Optional.ofNullable(twoHundredAudioMpegResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredAudioMpegResponseStream(Optional<? extends InputStream> twoHundredAudioMpegResponseStream) {
+            Utils.checkNotNull(twoHundredAudioMpegResponseStream, "twoHundredAudioMpegResponseStream");
+            this.twoHundredAudioMpegResponseStream = twoHundredAudioMpegResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredVideoMp4ResponseStream(InputStream twoHundredVideoMp4ResponseStream) {
+            Utils.checkNotNull(twoHundredVideoMp4ResponseStream, "twoHundredVideoMp4ResponseStream");
+            this.twoHundredVideoMp4ResponseStream = Optional.ofNullable(twoHundredVideoMp4ResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredVideoMp4ResponseStream(Optional<? extends InputStream> twoHundredVideoMp4ResponseStream) {
+            Utils.checkNotNull(twoHundredVideoMp4ResponseStream, "twoHundredVideoMp4ResponseStream");
+            this.twoHundredVideoMp4ResponseStream = twoHundredVideoMp4ResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredVideoWebmResponseStream(InputStream twoHundredVideoWebmResponseStream) {
+            Utils.checkNotNull(twoHundredVideoWebmResponseStream, "twoHundredVideoWebmResponseStream");
+            this.twoHundredVideoWebmResponseStream = Optional.ofNullable(twoHundredVideoWebmResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredVideoWebmResponseStream(Optional<? extends InputStream> twoHundredVideoWebmResponseStream) {
+            Utils.checkNotNull(twoHundredVideoWebmResponseStream, "twoHundredVideoWebmResponseStream");
+            this.twoHundredVideoWebmResponseStream = twoHundredVideoWebmResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredTextRtfResponseStream(InputStream twoHundredTextRtfResponseStream) {
+            Utils.checkNotNull(twoHundredTextRtfResponseStream, "twoHundredTextRtfResponseStream");
+            this.twoHundredTextRtfResponseStream = Optional.ofNullable(twoHundredTextRtfResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredTextRtfResponseStream(Optional<? extends InputStream> twoHundredTextRtfResponseStream) {
+            Utils.checkNotNull(twoHundredTextRtfResponseStream, "twoHundredTextRtfResponseStream");
+            this.twoHundredTextRtfResponseStream = twoHundredTextRtfResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationXRarCompressedResponseStream(InputStream twoHundredApplicationXRarCompressedResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationXRarCompressedResponseStream, "twoHundredApplicationXRarCompressedResponseStream");
+            this.twoHundredApplicationXRarCompressedResponseStream = Optional.ofNullable(twoHundredApplicationXRarCompressedResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationXRarCompressedResponseStream(Optional<? extends InputStream> twoHundredApplicationXRarCompressedResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationXRarCompressedResponseStream, "twoHundredApplicationXRarCompressedResponseStream");
+            this.twoHundredApplicationXRarCompressedResponseStream = twoHundredApplicationXRarCompressedResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationX7zCompressedResponseStream(InputStream twoHundredApplicationX7zCompressedResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationX7zCompressedResponseStream, "twoHundredApplicationX7zCompressedResponseStream");
+            this.twoHundredApplicationX7zCompressedResponseStream = Optional.ofNullable(twoHundredApplicationX7zCompressedResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationX7zCompressedResponseStream(Optional<? extends InputStream> twoHundredApplicationX7zCompressedResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationX7zCompressedResponseStream, "twoHundredApplicationX7zCompressedResponseStream");
+            this.twoHundredApplicationX7zCompressedResponseStream = twoHundredApplicationX7zCompressedResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredMessageRfc822ResponseStream(InputStream twoHundredMessageRfc822ResponseStream) {
+            Utils.checkNotNull(twoHundredMessageRfc822ResponseStream, "twoHundredMessageRfc822ResponseStream");
+            this.twoHundredMessageRfc822ResponseStream = Optional.ofNullable(twoHundredMessageRfc822ResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredMessageRfc822ResponseStream(Optional<? extends InputStream> twoHundredMessageRfc822ResponseStream) {
+            Utils.checkNotNull(twoHundredMessageRfc822ResponseStream, "twoHundredMessageRfc822ResponseStream");
+            this.twoHundredMessageRfc822ResponseStream = twoHundredMessageRfc822ResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndMsOutlookResponseStream(InputStream twoHundredApplicationVndMsOutlookResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndMsOutlookResponseStream, "twoHundredApplicationVndMsOutlookResponseStream");
+            this.twoHundredApplicationVndMsOutlookResponseStream = Optional.ofNullable(twoHundredApplicationVndMsOutlookResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndMsOutlookResponseStream(Optional<? extends InputStream> twoHundredApplicationVndMsOutlookResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndMsOutlookResponseStream, "twoHundredApplicationVndMsOutlookResponseStream");
+            this.twoHundredApplicationVndMsOutlookResponseStream = twoHundredApplicationVndMsOutlookResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationOctetStreamResponseStream(InputStream twoHundredApplicationOctetStreamResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationOctetStreamResponseStream, "twoHundredApplicationOctetStreamResponseStream");
+            this.twoHundredApplicationOctetStreamResponseStream = Optional.ofNullable(twoHundredApplicationOctetStreamResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationOctetStreamResponseStream(Optional<? extends InputStream> twoHundredApplicationOctetStreamResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationOctetStreamResponseStream, "twoHundredApplicationOctetStreamResponseStream");
+            this.twoHundredApplicationOctetStreamResponseStream = twoHundredApplicationOctetStreamResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredTextHtmlResponseStream(InputStream twoHundredTextHtmlResponseStream) {
+            Utils.checkNotNull(twoHundredTextHtmlResponseStream, "twoHundredTextHtmlResponseStream");
+            this.twoHundredTextHtmlResponseStream = Optional.ofNullable(twoHundredTextHtmlResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredTextHtmlResponseStream(Optional<? extends InputStream> twoHundredTextHtmlResponseStream) {
+            Utils.checkNotNull(twoHundredTextHtmlResponseStream, "twoHundredTextHtmlResponseStream");
+            this.twoHundredTextHtmlResponseStream = twoHundredTextHtmlResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageWebpResponseStream(InputStream twoHundredImageWebpResponseStream) {
+            Utils.checkNotNull(twoHundredImageWebpResponseStream, "twoHundredImageWebpResponseStream");
+            this.twoHundredImageWebpResponseStream = Optional.ofNullable(twoHundredImageWebpResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredImageWebpResponseStream(Optional<? extends InputStream> twoHundredImageWebpResponseStream) {
+            Utils.checkNotNull(twoHundredImageWebpResponseStream, "twoHundredImageWebpResponseStream");
+            this.twoHundredImageWebpResponseStream = twoHundredImageWebpResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOasisOpendocumentPresentationResponseStream(InputStream twoHundredApplicationVndOasisOpendocumentPresentationResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentPresentationResponseStream, "twoHundredApplicationVndOasisOpendocumentPresentationResponseStream");
+            this.twoHundredApplicationVndOasisOpendocumentPresentationResponseStream = Optional.ofNullable(twoHundredApplicationVndOasisOpendocumentPresentationResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredApplicationVndOasisOpendocumentPresentationResponseStream(Optional<? extends InputStream> twoHundredApplicationVndOasisOpendocumentPresentationResponseStream) {
+            Utils.checkNotNull(twoHundredApplicationVndOasisOpendocumentPresentationResponseStream, "twoHundredApplicationVndOasisOpendocumentPresentationResponseStream");
+            this.twoHundredApplicationVndOasisOpendocumentPresentationResponseStream = twoHundredApplicationVndOasisOpendocumentPresentationResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredAudioWavResponseStream(InputStream twoHundredAudioWavResponseStream) {
+            Utils.checkNotNull(twoHundredAudioWavResponseStream, "twoHundredAudioWavResponseStream");
+            this.twoHundredAudioWavResponseStream = Optional.ofNullable(twoHundredAudioWavResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredAudioWavResponseStream(Optional<? extends InputStream> twoHundredAudioWavResponseStream) {
+            Utils.checkNotNull(twoHundredAudioWavResponseStream, "twoHundredAudioWavResponseStream");
+            this.twoHundredAudioWavResponseStream = twoHundredAudioWavResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredAudioMp4ResponseStream(InputStream twoHundredAudioMp4ResponseStream) {
+            Utils.checkNotNull(twoHundredAudioMp4ResponseStream, "twoHundredAudioMp4ResponseStream");
+            this.twoHundredAudioMp4ResponseStream = Optional.ofNullable(twoHundredAudioMp4ResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredAudioMp4ResponseStream(Optional<? extends InputStream> twoHundredAudioMp4ResponseStream) {
+            Utils.checkNotNull(twoHundredAudioMp4ResponseStream, "twoHundredAudioMp4ResponseStream");
+            this.twoHundredAudioMp4ResponseStream = twoHundredAudioMp4ResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredVideoAviResponseStream(InputStream twoHundredVideoAviResponseStream) {
+            Utils.checkNotNull(twoHundredVideoAviResponseStream, "twoHundredVideoAviResponseStream");
+            this.twoHundredVideoAviResponseStream = Optional.ofNullable(twoHundredVideoAviResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredVideoAviResponseStream(Optional<? extends InputStream> twoHundredVideoAviResponseStream) {
+            Utils.checkNotNull(twoHundredVideoAviResponseStream, "twoHundredVideoAviResponseStream");
+            this.twoHundredVideoAviResponseStream = twoHundredVideoAviResponseStream;
+            return this;
+        }
+
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredVideoQuicktimeResponseStream(InputStream twoHundredVideoQuicktimeResponseStream) {
+            Utils.checkNotNull(twoHundredVideoQuicktimeResponseStream, "twoHundredVideoQuicktimeResponseStream");
+            this.twoHundredVideoQuicktimeResponseStream = Optional.ofNullable(twoHundredVideoQuicktimeResponseStream);
+            return this;
+        }
+
+        /**
+         * The document related to the application with the given identifiers was retrieved.
+         */
+        public Builder twoHundredVideoQuicktimeResponseStream(Optional<? extends InputStream> twoHundredVideoQuicktimeResponseStream) {
+            Utils.checkNotNull(twoHundredVideoQuicktimeResponseStream, "twoHundredVideoQuicktimeResponseStream");
+            this.twoHundredVideoQuicktimeResponseStream = twoHundredVideoQuicktimeResponseStream;
             return this;
         }
 
@@ -277,7 +2484,19 @@ public class AtsDownloadApplicationDocumentResponse implements Response {
 
             return new AtsDownloadApplicationDocumentResponse(
                 contentType, statusCode, rawResponse,
-                responseStream, headers);
+                twoHundredApplicationPdfResponseStream, twoHundredApplicationMswordResponseStream, twoHundredApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocumentResponseStream,
+                twoHundredApplicationVndMsExcelResponseStream, twoHundredApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheetResponseStream, twoHundredApplicationVndMsPowerpointResponseStream,
+                twoHundredApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentationResponseStream, twoHundredApplicationRtfResponseStream, twoHundredTextPlainResponseStream,
+                twoHundredImageJpegResponseStream, twoHundredImagePngResponseStream, twoHundredImageGifResponseStream,
+                twoHundredImageTiffResponseStream, twoHundredImageBmpResponseStream, twoHundredImageHeicResponseStream,
+                twoHundredApplicationZipResponseStream, twoHundredApplicationGzipResponseStream, twoHundredApplicationJsonResponseStream,
+                twoHundredApplicationXmlResponseStream, twoHundredTextCsvResponseStream, twoHundredApplicationVndOasisOpendocumentTextResponseStream,
+                twoHundredApplicationVndOasisOpendocumentSpreadsheetResponseStream, twoHundredAudioMpegResponseStream, twoHundredVideoMp4ResponseStream,
+                twoHundredVideoWebmResponseStream, twoHundredTextRtfResponseStream, twoHundredApplicationXRarCompressedResponseStream,
+                twoHundredApplicationX7zCompressedResponseStream, twoHundredMessageRfc822ResponseStream, twoHundredApplicationVndMsOutlookResponseStream,
+                twoHundredApplicationOctetStreamResponseStream, twoHundredTextHtmlResponseStream, twoHundredImageWebpResponseStream,
+                twoHundredApplicationVndOasisOpendocumentPresentationResponseStream, twoHundredAudioWavResponseStream, twoHundredAudioMp4ResponseStream,
+                twoHundredVideoAviResponseStream, twoHundredVideoQuicktimeResponseStream, headers);
         }
 
     }

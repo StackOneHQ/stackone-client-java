@@ -17,6 +17,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 /**
@@ -58,6 +59,11 @@ public class CustomFieldsValue {
         Utils.checkNotNull(value, "value");
         return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
     }
+
+    public static CustomFieldsValue of(OffsetDateTime value) {
+        Utils.checkNotNull(value, "value");
+        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OffsetDateTime>(){}));
+    }
     
     /**
      * Returns an instance of one of these types:
@@ -67,6 +73,7 @@ public class CustomFieldsValue {
      * <li>{@code boolean}</li>
      * <li>{@code com.stackone.stackone_client_java.models.components.Value4}</li>
      * <li>{@code java.util.List<java.lang.Object>}</li>
+     * <li>{@code java.time.OffsetDateTime}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -106,6 +113,7 @@ public class CustomFieldsValue {
 
         public _Deserializer() {
             super(CustomFieldsValue.class, false,
+                  TypeReferenceWithShape.of(new TypeReference<OffsetDateTime>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<List<Object>>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),

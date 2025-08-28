@@ -1,19 +1,20 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: e3c0c117694e155daa5a026b99767977
+  docChecksum: 0ad07158c8cfa1087f906db2eda323f2
   docVersion: 1.0.0
-  speakeasyVersion: 1.600.2
-  generationVersion: 2.677.3
-  releaseVersion: 0.9.2
-  configChecksum: 02a863076768e1a2d55050c8e7f270ed
+  speakeasyVersion: 1.606.8
+  generationVersion: 2.687.13
+  releaseVersion: 0.10.0
+  configChecksum: 75698db1df048ca170de1566ae1b9f7b
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
   java:
+    acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.45.3
+    core: 3.46.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.6
@@ -132,6 +133,9 @@ generatedFiles:
   - docs/models/components/ApplicationResult.md
   - docs/models/components/ApplicationSourceValue.md
   - docs/models/components/ApplicationSourceValue4.md
+  - docs/models/components/ApplicationStage.md
+  - docs/models/components/ApplicationStageResult.md
+  - docs/models/components/ApplicationStagesPaginated.md
   - docs/models/components/ApplicationStatus.md
   - docs/models/components/ApplicationValue.md
   - docs/models/components/ApplicationsPaginated.md
@@ -141,21 +145,17 @@ generatedFiles:
   - docs/models/components/AssessmentPackage.md
   - docs/models/components/AssessmentPackagePaginated.md
   - docs/models/components/AssessmentPackageResult.md
-  - docs/models/components/AssessmentResult.md
-  - docs/models/components/AssessmentResultCandidate.md
-  - docs/models/components/AssessmentResultResult.md
-  - docs/models/components/AssessmentResultScore.md
-  - docs/models/components/AssessmentResultSourceValue.md
-  - docs/models/components/AssessmentResultSourceValue4.md
-  - docs/models/components/AssessmentResultValue.md
-  - docs/models/components/AssessmentResultsResult.md
   - docs/models/components/Assignment.md
   - docs/models/components/AssignmentLearningObjectTypeSourceValue.md
   - docs/models/components/AssignmentLearningObjectTypeValue.md
   - docs/models/components/AssignmentResult.md
+  - docs/models/components/AssignmentResult1.md
+  - docs/models/components/AssignmentResultSourceValue.md
+  - docs/models/components/AssignmentResultValue.md
   - docs/models/components/AssignmentSourceValue.md
   - docs/models/components/AssignmentSourceValue4.md
   - docs/models/components/AssignmentSourceValueLearningObjectType4.md
+  - docs/models/components/AssignmentSourceValueResult4.md
   - docs/models/components/AssignmentStatus.md
   - docs/models/components/AssignmentValue.md
   - docs/models/components/AssignmentsPaginated.md
@@ -217,6 +217,25 @@ generatedFiles:
   - docs/models/components/AtsDocumentApiModelValue.md
   - docs/models/components/AtsDocumentResult.md
   - docs/models/components/AtsDocumentsPaginated.md
+  - docs/models/components/AtsDocumentsUploadRequestDto.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoCategory.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoCategoryValue.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoConfidential.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoConfidentialSourceValue.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoConfidentialValue.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoFileFormat.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoSourceValue.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoSourceValue4.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoSourceValueConfidential4.md
+  - docs/models/components/AtsDocumentsUploadRequestDtoValue.md
+  - docs/models/components/AtsJob.md
+  - docs/models/components/AtsJobConfidential.md
+  - docs/models/components/AtsJobHiringTeam.md
+  - docs/models/components/AtsJobResult.md
+  - docs/models/components/AtsJobSourceValue.md
+  - docs/models/components/AtsJobSourceValue4.md
+  - docs/models/components/AtsJobValue.md
+  - docs/models/components/AtsJobsPaginated.md
   - docs/models/components/AtsMoveApplicationRequestDto.md
   - docs/models/components/AtsRejectApplicationRequestDto.md
   - docs/models/components/AtsUpdateApplicationRequestDto.md
@@ -261,14 +280,6 @@ generatedFiles:
   - docs/models/components/BackgroundCheckPackage.md
   - docs/models/components/BackgroundCheckPackagePaginated.md
   - docs/models/components/BackgroundCheckPackageResult.md
-  - docs/models/components/BackgroundCheckResult.md
-  - docs/models/components/BackgroundCheckResultCandidate.md
-  - docs/models/components/BackgroundCheckResultResult.md
-  - docs/models/components/BackgroundCheckResultScore.md
-  - docs/models/components/BackgroundCheckResultSourceValue.md
-  - docs/models/components/BackgroundCheckResultSourceValue4.md
-  - docs/models/components/BackgroundCheckResultValue.md
-  - docs/models/components/BackgroundCheckResultsResult.md
   - docs/models/components/BalanceUnit.md
   - docs/models/components/BaseCurrency.md
   - docs/models/components/BatchResultApiModel.md
@@ -367,6 +378,7 @@ generatedFiles:
   - docs/models/components/CostCenters.md
   - docs/models/components/Country.md
   - docs/models/components/CountryCodeEnum.md
+  - docs/models/components/CountryCodeEnumValue.md
   - docs/models/components/Course.md
   - docs/models/components/CourseActive.md
   - docs/models/components/CourseActive2.md
@@ -552,7 +564,6 @@ generatedFiles:
   - docs/models/components/EmploymentEmploymentType.md
   - docs/models/components/EmploymentEmploymentTypeSourceValue.md
   - docs/models/components/EmploymentEmploymentTypeValue.md
-  - docs/models/components/EmploymentJob.md
   - docs/models/components/EmploymentManagerApiModel.md
   - docs/models/components/EmploymentManagerApiModelSourceValue.md
   - docs/models/components/EmploymentManagerApiModelSourceValue4.md
@@ -850,6 +861,13 @@ generatedFiles:
   - docs/models/components/HrisDocumentsUploadRequestDtoSourceValueConfidential4.md
   - docs/models/components/HrisDocumentsUploadRequestDtoValue.md
   - docs/models/components/HrisInviteEmployeeRequestDto.md
+  - docs/models/components/HrisJob.md
+  - docs/models/components/HrisJobResult.md
+  - docs/models/components/HrisJobSourceValue.md
+  - docs/models/components/HrisJobSourceValue4.md
+  - docs/models/components/HrisJobStatus.md
+  - docs/models/components/HrisJobValue.md
+  - docs/models/components/HrisJobsPaginated.md
   - docs/models/components/HrisShift.md
   - docs/models/components/HrisShiftApprovalStatusSourceValue.md
   - docs/models/components/HrisShiftApprovalStatusValue.md
@@ -1061,9 +1079,7 @@ generatedFiles:
   - docs/models/components/IsRoot2.md
   - docs/models/components/IssuedBy.md
   - docs/models/components/Job.md
-  - docs/models/components/JobConfidential.md
   - docs/models/components/JobDescription.md
-  - docs/models/components/JobHiringTeam.md
   - docs/models/components/JobPosting.md
   - docs/models/components/JobPostingCompensation.md
   - docs/models/components/JobPostingCompensationPayFrequency.md
@@ -1101,12 +1117,7 @@ generatedFiles:
   - docs/models/components/JobPostingStatus.md
   - docs/models/components/JobPostingValue.md
   - docs/models/components/JobPostingsPaginated.md
-  - docs/models/components/JobResult.md
-  - docs/models/components/JobSourceValue.md
-  - docs/models/components/JobSourceValue4.md
   - docs/models/components/JobStatus.md
-  - docs/models/components/JobValue.md
-  - docs/models/components/JobsPaginated.md
   - docs/models/components/JournalLine.md
   - docs/models/components/JournalLineCurrencyCode.md
   - docs/models/components/JournalLineCurrencyCodeSourceValue.md
@@ -1120,6 +1131,7 @@ generatedFiles:
   - docs/models/components/Language.md
   - docs/models/components/LanguageEnum.md
   - docs/models/components/LanguageEnumSourceValue.md
+  - docs/models/components/LanguageEnumSourceValue4.md
   - docs/models/components/LanguageEnumValue.md
   - docs/models/components/LearningObjectType.md
   - docs/models/components/Level.md
@@ -1408,6 +1420,15 @@ generatedFiles:
   - docs/models/components/Task.md
   - docs/models/components/TaskCommentApiModel.md
   - docs/models/components/TaskResult.md
+  - docs/models/components/TaskResultData.md
+  - docs/models/components/TaskResultDataSourceValue.md
+  - docs/models/components/TaskResultDataValue.md
+  - docs/models/components/TaskResultSourceValue.md
+  - docs/models/components/TaskResultSourceValue4.md
+  - docs/models/components/TaskResultSourceValueData4.md
+  - docs/models/components/TaskResultStatus.md
+  - docs/models/components/TaskResultType.md
+  - docs/models/components/TaskResultValue.md
   - docs/models/components/TaskSourceValue.md
   - docs/models/components/TaskSourceValue4.md
   - docs/models/components/TaskSourceValueStatus4.md
@@ -1587,6 +1608,11 @@ generatedFiles:
   - docs/models/components/UnifiedWarningApiModel.md
   - docs/models/components/UpdatePackage.md
   - docs/models/components/UpdateResult.md
+  - docs/models/components/UpdateTaskRequestDto.md
+  - docs/models/components/UpdateTaskRequestDtoSourceValue.md
+  - docs/models/components/UpdateTaskRequestDtoSourceValue4.md
+  - docs/models/components/UpdateTaskRequestDtoStatus.md
+  - docs/models/components/UpdateTaskRequestDtoValue.md
   - docs/models/components/UpsertResult.md
   - docs/models/components/UpsertResultDataExternalReferenceModel.md
   - docs/models/components/Url.md
@@ -1631,6 +1657,8 @@ generatedFiles:
   - docs/models/errors/UnprocessableEntityResponse.md
   - docs/models/operations/AccountingBatchCreateCompanyJournalsRequest.md
   - docs/models/operations/AccountingBatchCreateCompanyJournalsResponse.md
+  - docs/models/operations/AccountingCreateCompanyJournalRequest.md
+  - docs/models/operations/AccountingCreateCompanyJournalResponse.md
   - docs/models/operations/AccountingGetCompanyAccountRequest.md
   - docs/models/operations/AccountingGetCompanyAccountResponse.md
   - docs/models/operations/AccountingGetCompanyJournalRequest.md
@@ -1689,12 +1717,8 @@ generatedFiles:
   - docs/models/operations/AtsGetApplicationScorecardResponse.md
   - docs/models/operations/AtsGetAssessmentsPackageRequest.md
   - docs/models/operations/AtsGetAssessmentsPackageResponse.md
-  - docs/models/operations/AtsGetAssessmentsResultRequest.md
-  - docs/models/operations/AtsGetAssessmentsResultResponse.md
   - docs/models/operations/AtsGetBackgroundCheckPackageRequest.md
   - docs/models/operations/AtsGetBackgroundCheckPackageResponse.md
-  - docs/models/operations/AtsGetBackgroundCheckResultRequest.md
-  - docs/models/operations/AtsGetBackgroundCheckResultResponse.md
   - docs/models/operations/AtsGetCandidateCustomFieldDefinitionQueryParamFilter.md
   - docs/models/operations/AtsGetCandidateCustomFieldDefinitionRequest.md
   - docs/models/operations/AtsGetCandidateCustomFieldDefinitionResponse.md
@@ -1708,6 +1732,8 @@ generatedFiles:
   - docs/models/operations/AtsGetInterviewResponse.md
   - docs/models/operations/AtsGetInterviewStageRequest.md
   - docs/models/operations/AtsGetInterviewStageResponse.md
+  - docs/models/operations/AtsGetJobApplicationStageRequest.md
+  - docs/models/operations/AtsGetJobApplicationStageResponse.md
   - docs/models/operations/AtsGetJobCustomFieldDefinitionQueryParamFilter.md
   - docs/models/operations/AtsGetJobCustomFieldDefinitionRequest.md
   - docs/models/operations/AtsGetJobCustomFieldDefinitionResponse.md
@@ -1776,6 +1802,9 @@ generatedFiles:
   - docs/models/operations/AtsListInterviewsQueryParamFilter.md
   - docs/models/operations/AtsListInterviewsRequest.md
   - docs/models/operations/AtsListInterviewsResponse.md
+  - docs/models/operations/AtsListJobApplicationStagesQueryParamFilter.md
+  - docs/models/operations/AtsListJobApplicationStagesRequest.md
+  - docs/models/operations/AtsListJobApplicationStagesResponse.md
   - docs/models/operations/AtsListJobCustomFieldDefinitionsQueryParamFilter.md
   - docs/models/operations/AtsListJobCustomFieldDefinitionsRequest.md
   - docs/models/operations/AtsListJobCustomFieldDefinitionsResponse.md
@@ -2037,6 +2066,8 @@ generatedFiles:
   - docs/models/operations/HrisUpdateEmployeeEmploymentResponse.md
   - docs/models/operations/HrisUpdateEmployeeRequest.md
   - docs/models/operations/HrisUpdateEmployeeResponse.md
+  - docs/models/operations/HrisUpdateEmployeeTaskRequest.md
+  - docs/models/operations/HrisUpdateEmployeeTaskResponse.md
   - docs/models/operations/HrisUpdateEmployeeTimeOffRequestRequest.md
   - docs/models/operations/HrisUpdateEmployeeTimeOffRequestResponse.md
   - docs/models/operations/HrisUpdateEmployeeWorkEligibilityRequestRequest.md
@@ -2455,6 +2486,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationStage.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationStageResult.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationStagesPaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationStatus.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ApplicationsPaginated.java
@@ -2464,21 +2498,17 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentPackage.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentPackagePaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentPackageResult.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentResult.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentResultCandidate.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentResultResult.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentResultScore.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentResultSourceValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentResultSourceValue4.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentResultValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/AssessmentResultsResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Assignment.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentLearningObjectTypeSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentLearningObjectTypeValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentResult.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentResult1.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentResultSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentResultValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentSourceValue4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentSourceValueLearningObjectType4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentSourceValueResult4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentStatus.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AssignmentsPaginated.java
@@ -2540,6 +2570,25 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentApiModelValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsPaginated.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDto.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoCategory.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoCategoryValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoConfidential.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoConfidentialSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoConfidentialValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoFileFormat.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoSourceValueConfidential4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsDocumentsUploadRequestDtoValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsJob.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsJobConfidential.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsJobHiringTeam.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsJobResult.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsJobSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsJobSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsJobValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/AtsJobsPaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AtsMoveApplicationRequestDto.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AtsRejectApplicationRequestDto.java
   - src/main/java/com/stackone/stackone_client_java/models/components/AtsUpdateApplicationRequestDto.java
@@ -2584,14 +2633,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckPackage.java
   - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckPackagePaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckPackageResult.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckResult.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckResultCandidate.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckResultResult.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckResultScore.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckResultSourceValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckResultSourceValue4.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckResultValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/BackgroundCheckResultsResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/BalanceUnit.java
   - src/main/java/com/stackone/stackone_client_java/models/components/BaseCurrency.java
   - src/main/java/com/stackone/stackone_client_java/models/components/BatchResultApiModel.java
@@ -2690,6 +2731,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/CostCenters.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Country.java
   - src/main/java/com/stackone/stackone_client_java/models/components/CountryCodeEnum.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/CountryCodeEnumValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Course.java
   - src/main/java/com/stackone/stackone_client_java/models/components/CourseActive.java
   - src/main/java/com/stackone/stackone_client_java/models/components/CourseActive2.java
@@ -2875,7 +2917,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/EmploymentEmploymentType.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EmploymentEmploymentTypeSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EmploymentEmploymentTypeValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/EmploymentJob.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EmploymentManagerApiModel.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EmploymentManagerApiModelSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EmploymentManagerApiModelSourceValue4.java
@@ -3173,6 +3214,13 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisDocumentsUploadRequestDtoSourceValueConfidential4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisDocumentsUploadRequestDtoValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisInviteEmployeeRequestDto.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisJob.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisJobResult.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisJobSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisJobSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisJobStatus.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisJobValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/HrisJobsPaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisShift.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftApprovalStatusSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/HrisShiftApprovalStatusValue.java
@@ -3384,9 +3432,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/IsRoot2.java
   - src/main/java/com/stackone/stackone_client_java/models/components/IssuedBy.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Job.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/JobConfidential.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JobDescription.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/JobHiringTeam.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JobPosting.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JobPostingCompensation.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JobPostingCompensationPayFrequency.java
@@ -3424,12 +3470,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/JobPostingStatus.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JobPostingValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JobPostingsPaginated.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/JobResult.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/JobSourceValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/JobSourceValue4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JobStatus.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/JobValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/JobsPaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JournalLine.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JournalLineCurrencyCode.java
   - src/main/java/com/stackone/stackone_client_java/models/components/JournalLineCurrencyCodeSourceValue.java
@@ -3443,6 +3484,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/Language.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LanguageEnum.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LanguageEnumSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/LanguageEnumSourceValue4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LanguageEnumValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LearningObjectType.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Level.java
@@ -3731,6 +3773,15 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/Task.java
   - src/main/java/com/stackone/stackone_client_java/models/components/TaskCommentApiModel.java
   - src/main/java/com/stackone/stackone_client_java/models/components/TaskResult.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultData.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultDataSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultDataValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultSourceValueData4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultStatus.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultType.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/TaskResultValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/TaskSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/TaskSourceValue4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/TaskSourceValueStatus4.java
@@ -3910,6 +3961,11 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/UnifiedWarningApiModel.java
   - src/main/java/com/stackone/stackone_client_java/models/components/UpdatePackage.java
   - src/main/java/com/stackone/stackone_client_java/models/components/UpdateResult.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/UpdateTaskRequestDto.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/UpdateTaskRequestDtoSourceValue.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/UpdateTaskRequestDtoSourceValue4.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/UpdateTaskRequestDtoStatus.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/UpdateTaskRequestDtoValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/UpsertResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/UpsertResultDataExternalReferenceModel.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Url.java
@@ -3957,6 +4013,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingBatchCreateCompanyJournalsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingBatchCreateCompanyJournalsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingBatchCreateCompanyJournalsResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingCreateCompanyJournalRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingCreateCompanyJournalRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingCreateCompanyJournalResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingGetCompanyAccountRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingGetCompanyAccountRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AccountingGetCompanyAccountResponse.java
@@ -4041,15 +4100,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetAssessmentsPackageRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetAssessmentsPackageRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetAssessmentsPackageResponse.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetAssessmentsResultRequest.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetAssessmentsResultRequestBuilder.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetAssessmentsResultResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetBackgroundCheckPackageRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetBackgroundCheckPackageRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetBackgroundCheckPackageResponse.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetBackgroundCheckResultRequest.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetBackgroundCheckResultRequestBuilder.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetBackgroundCheckResultResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetCandidateCustomFieldDefinitionQueryParamFilter.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetCandidateCustomFieldDefinitionRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetCandidateCustomFieldDefinitionRequestBuilder.java
@@ -4069,6 +4122,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetInterviewStageRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetInterviewStageRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetInterviewStageResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetJobApplicationStageRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetJobApplicationStageRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetJobApplicationStageResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetJobCustomFieldDefinitionQueryParamFilter.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetJobCustomFieldDefinitionRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsGetJobCustomFieldDefinitionRequestBuilder.java
@@ -4162,6 +4218,10 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListInterviewsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListInterviewsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListInterviewsResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobApplicationStagesQueryParamFilter.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobApplicationStagesRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobApplicationStagesRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobApplicationStagesResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobCustomFieldDefinitionsQueryParamFilter.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobCustomFieldDefinitionsRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsListJobCustomFieldDefinitionsRequestBuilder.java
@@ -4529,6 +4589,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTaskRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTaskRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTaskResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTimeOffRequestRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTimeOffRequestRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/HrisUpdateEmployeeTimeOffRequestResponse.java
@@ -4918,6 +4981,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/TicketingUpdateTicketResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/Type.java
   - src/main/java/com/stackone/stackone_client_java/operations/AccountingBatchCreateCompanyJournals.java
+  - src/main/java/com/stackone/stackone_client_java/operations/AccountingCreateCompanyJournal.java
   - src/main/java/com/stackone/stackone_client_java/operations/AccountingGetCompany.java
   - src/main/java/com/stackone/stackone_client_java/operations/AccountingGetCompanyAccount.java
   - src/main/java/com/stackone/stackone_client_java/operations/AccountingGetCompanyJournal.java
@@ -4944,9 +5008,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetApplicationScheduledInterview.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetApplicationScorecard.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetAssessmentsPackage.java
-  - src/main/java/com/stackone/stackone_client_java/operations/AtsGetAssessmentsResult.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetBackgroundCheckPackage.java
-  - src/main/java/com/stackone/stackone_client_java/operations/AtsGetBackgroundCheckResult.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetCandidate.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetCandidateCustomFieldDefinition.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetCandidateNote.java
@@ -4954,6 +5016,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetInterview.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetInterviewStage.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetJob.java
+  - src/main/java/com/stackone/stackone_client_java/operations/AtsGetJobApplicationStage.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetJobCustomFieldDefinition.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetJobPosting.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsGetList.java
@@ -4978,6 +5041,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListDepartments.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListInterviewStages.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListInterviews.java
+  - src/main/java/com/stackone/stackone_client_java/operations/AtsListJobApplicationStages.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListJobCustomFieldDefinitions.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListJobPostings.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsListJobs.java
@@ -5084,6 +5148,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/HrisListTimeOffTypes.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisUpdateEmployee.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisUpdateEmployeeEmployment.java
+  - src/main/java/com/stackone/stackone_client_java/operations/HrisUpdateEmployeeTask.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisUpdateEmployeeTimeOffRequest.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisUpdateEmployeeWorkEligibilityRequest.java
   - src/main/java/com/stackone/stackone_client_java/operations/HrisUploadEmployeeDocument.java
@@ -5199,13 +5264,12 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/utils/BackoffStrategy.java
   - src/main/java/com/stackone/stackone_client_java/utils/BigDecimalString.java
   - src/main/java/com/stackone/stackone_client_java/utils/BigIntegerString.java
+  - src/main/java/com/stackone/stackone_client_java/utils/BlockingParser.java
   - src/main/java/com/stackone/stackone_client_java/utils/Constants.java
   - src/main/java/com/stackone/stackone_client_java/utils/CopiableInputStream.java
   - src/main/java/com/stackone/stackone_client_java/utils/Deserializers.java
   - src/main/java/com/stackone/stackone_client_java/utils/EventStream.java
-  - src/main/java/com/stackone/stackone_client_java/utils/EventStreamLineReader.java
   - src/main/java/com/stackone/stackone_client_java/utils/EventStreamMessage.java
-  - src/main/java/com/stackone/stackone_client_java/utils/EventStreamReader.java
   - src/main/java/com/stackone/stackone_client_java/utils/Exceptions.java
   - src/main/java/com/stackone/stackone_client_java/utils/FormMetadata.java
   - src/main/java/com/stackone/stackone_client_java/utils/Globals.java
@@ -5230,6 +5294,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/utils/QueryParameters.java
   - src/main/java/com/stackone/stackone_client_java/utils/QueryParamsMetadata.java
   - src/main/java/com/stackone/stackone_client_java/utils/RecordingClient.java
+  - src/main/java/com/stackone/stackone_client_java/utils/Reflections.java
   - src/main/java/com/stackone/stackone_client_java/utils/RequestBody.java
   - src/main/java/com/stackone/stackone_client_java/utils/RequestMetadata.java
   - src/main/java/com/stackone/stackone_client_java/utils/Response.java
@@ -5242,6 +5307,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/utils/SessionManager.java
   - src/main/java/com/stackone/stackone_client_java/utils/SpeakeasyHTTPClient.java
   - src/main/java/com/stackone/stackone_client_java/utils/SpeakeasyMetadata.java
+  - src/main/java/com/stackone/stackone_client_java/utils/StreamingParser.java
   - src/main/java/com/stackone/stackone_client_java/utils/TypedObject.java
   - src/main/java/com/stackone/stackone_client_java/utils/Types.java
   - src/main/java/com/stackone/stackone_client_java/utils/Utf8UrlEncoder.java
@@ -6248,6 +6314,43 @@ examples:
       responses:
         "200":
           application/octet-stream: "x-file: example.file"
+          application/pdf: "x-file: example.file"
+          application/msword: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.wordprocessingml.document: "x-file: example.file"
+          application/vnd.ms-excel: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: "x-file: example.file"
+          application/vnd.ms-powerpoint: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.presentationml.presentation: "x-file: example.file"
+          application/rtf: "x-file: example.file"
+          text/plain: "x-file: example.file"
+          image/jpeg: "x-file: example.file"
+          image/png: "x-file: example.file"
+          image/gif: "x-file: example.file"
+          image/tiff: "x-file: example.file"
+          image/bmp: "x-file: example.file"
+          image/heic: "x-file: example.file"
+          application/zip: "x-file: example.file"
+          application/gzip: "x-file: example.file"
+          application/json: "x-file: example.file"
+          application/xml: "x-file: example.file"
+          text/csv: "x-file: example.file"
+          application/vnd.oasis.opendocument.text: "x-file: example.file"
+          application/vnd.oasis.opendocument.spreadsheet: "x-file: example.file"
+          audio/mpeg: "x-file: example.file"
+          video/mp4: "x-file: example.file"
+          video/webm: "x-file: example.file"
+          text/rtf: "x-file: example.file"
+          application/x-rar-compressed: "x-file: example.file"
+          application/x-7z-compressed: "x-file: example.file"
+          message/rfc822: "x-file: example.file"
+          application/vnd.ms-outlook: "x-file: example.file"
+          text/html: "x-file: example.file"
+          image/webp: "x-file: example.file"
+          application/vnd.oasis.opendocument.presentation: "x-file: example.file"
+          audio/wav: "x-file: example.file"
+          audio/mp4: "x-file: example.file"
+          video/avi: "x-file: example.file"
+          video/quicktime: "x-file: example.file"
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -7505,7 +7608,7 @@ examples:
     speakeasy-default-hris-list-jobs:
       parameters:
         query:
-          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
+          fields: "id,remote_id,code,title,description,status,created_at,updated_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
         header:
           x-account-id: "<id>"
@@ -7542,12 +7645,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id"
+          fields: "id,remote_id,code,title,description,status,created_at,updated_at"
         header:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "code": "184919", "title": "Software Engineer", "description": "Responsible for identifying business requirements", "job_status": {"value": "published", "source_value": "Published"}, "department_ids": ["308570", "308571", "308572"], "remote_department_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48"], "location_ids": ["668570", "678571", "688572"], "remote_location_ids": ["668570", "678571", "688572"], "hiring_team": [{"user_id": "123456", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "first_name": "John", "last_name": "Doe", "email": "john.doe@gmail.com", "role": "Software Engineer"}], "interview_stages": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-01T01:01:01.000Z"}], "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "value": "Completed", "value_id": "value_456", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48"}], "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-01T01:01:01.000Z"}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "code": "184919", "title": "Software Engineer", "description": "Responsible for identifying business requirements", "status": {"value": "open"}, "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-01T01:01:01.000Z"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -8460,7 +8563,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"name": "weather-forecast", "file_format": null, "content": "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE", "category_id": "6530", "path": "/path/to/file", "category": {"value": "reports, resumes", "source_value": "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME"}, "confidential": {"value": "true", "source_value": "public"}}
+        application/json: {"name": "weather-forecast", "file_format": null, "content": "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE", "category_id": "6530", "path": "/path/to/file", "confidential": {"value": "true", "source_value": "public"}, "category": {}}
       responses:
         "201":
           application/json: {"statusCode": 201, "message": "Employee created successfully", "timestamp": "2021-01-01T01:01:01.000Z", "provider_errors": [{"status": 400, "url": "https://api.someprovider.com/v1/endpoint", "raw": {}, "headers": {}}], "unified_warnings": [{"message": "The provided field type is not supported in the current model."}]}
@@ -8502,6 +8605,43 @@ examples:
       responses:
         "200":
           application/octet-stream: "x-file: example.file"
+          application/pdf: "x-file: example.file"
+          application/msword: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.wordprocessingml.document: "x-file: example.file"
+          application/vnd.ms-excel: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: "x-file: example.file"
+          application/vnd.ms-powerpoint: "x-file: example.file"
+          application/vnd.openxmlformats-officedocument.presentationml.presentation: "x-file: example.file"
+          application/rtf: "x-file: example.file"
+          text/plain: "x-file: example.file"
+          image/jpeg: "x-file: example.file"
+          image/png: "x-file: example.file"
+          image/gif: "x-file: example.file"
+          image/tiff: "x-file: example.file"
+          image/bmp: "x-file: example.file"
+          image/heic: "x-file: example.file"
+          application/zip: "x-file: example.file"
+          application/gzip: "x-file: example.file"
+          application/json: "x-file: example.file"
+          application/xml: "x-file: example.file"
+          text/csv: "x-file: example.file"
+          application/vnd.oasis.opendocument.text: "x-file: example.file"
+          application/vnd.oasis.opendocument.spreadsheet: "x-file: example.file"
+          audio/mpeg: "x-file: example.file"
+          video/mp4: "x-file: example.file"
+          video/webm: "x-file: example.file"
+          text/rtf: "x-file: example.file"
+          application/x-rar-compressed: "x-file: example.file"
+          application/x-7z-compressed: "x-file: example.file"
+          message/rfc822: "x-file: example.file"
+          application/vnd.ms-outlook: "x-file: example.file"
+          text/html: "x-file: example.file"
+          image/webp: "x-file: example.file"
+          application/vnd.oasis.opendocument.presentation: "x-file: example.file"
+          audio/wav: "x-file: example.file"
+          audio/mp4: "x-file: example.file"
+          video/avi: "x-file: example.file"
+          video/quicktime: "x-file: example.file"
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -10039,7 +10179,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "score": null, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed", "result": {"value": "passed", "source_value": "Passed"}, "result_url": "https://exmaple.com/result?id=xyz", "attachments": [{"url": "http://example.com/resume.pdf", "content_type": {"value": "text", "source_value": "Text"}}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "passthrough": {"other_known_names": "John Doe"}}
+        application/json: {"score": null, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed", "result": {"value": "passed", "source_value": "Passed"}, "result_url": "https://exmaple.com/result?id=xyz", "attachments": [{"url": "http://example.com/resume.pdf", "content_type": {"value": "text", "source_value": "Text"}}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "passthrough": {"other_known_names": "John Doe"}}
       responses:
         "200":
           application/json: {"statusCode": 200, "message": "Record updated successfully.", "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -10391,7 +10531,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "score": {"label": "Percentage", "value": "80", "min": "0", "max": "100"}, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed", "result": {"value": "passed", "source_value": "Passed"}, "result_url": "https://exmaple.com/result?id=xyz", "attachments": [{"url": "http://example.com/resume.pdf", "content_type": {"value": "text", "source_value": "Text"}}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "passthrough": {"other_known_names": "John Doe"}}
+        application/json: {"score": {"label": "Percentage", "value": "80", "min": "0", "max": "100"}, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed", "result": {"value": "passed", "source_value": "Passed"}, "result_url": "https://exmaple.com/result?id=xyz", "attachments": [{"url": "http://example.com/resume.pdf", "content_type": {"value": "text", "source_value": "Text"}}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "passthrough": {"other_known_names": "John Doe"}}
       responses:
         "200":
           application/json: {"statusCode": 200, "message": "Record updated successfully.", "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -12236,7 +12376,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference"
+          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           user_id: "c28xyrc55866bvuv"
           remote_user_id: "e3cb75bf-aa84-466e-a6c1-b8322b257a48"
@@ -12315,7 +12455,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "123456", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "learning_object_external_reference": "learning-content-123", "progress": 40, "updated_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "status": null, "user_id": "c28xyrc55866bvuv", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48"}}
+          application/json: {"data": {"id": "123456", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "learning_object_external_reference": "learning-content-123", "progress": 40, "updated_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "status": null, "user_id": "c28xyrc55866bvuv", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -12485,7 +12625,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent"
+          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
         header:
           x-account-id: "<id>"
@@ -12562,7 +12702,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "123456", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "updated_at": "2021-07-21T14:00:00.000Z", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "learning_object_external_reference": "learning-content-123", "user_id": "c28xyrc55866bvuv", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S"}}
+          application/json: {"data": {"id": "123456", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "updated_at": "2021-07-21T14:00:00.000Z", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "learning_object_external_reference": "learning-content-123", "user_id": "c28xyrc55866bvuv", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "certificate_url": "https://example.com/certificate/12345"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -12626,7 +12766,7 @@ examples:
     speakeasy-default-lms-list-completions:
       parameters:
         query:
-          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent"
+          fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
         header:
           x-account-id: "<id>"
@@ -12666,7 +12806,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "123456", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "updated_at": "2021-07-21T14:00:00.000Z", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "learning_object_external_reference": "learning-content-123", "user_id": "c28xyrc55866bvuv", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S"}}
+          application/json: {"data": {"id": "123456", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "completed_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "updated_at": "2021-07-21T14:00:00.000Z", "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "learning_object_external_reference": "learning-content-123", "user_id": "c28xyrc55866bvuv", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "time_spent": "PT1H30M45S", "certificate_url": "https://example.com/certificate/12345"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": null}
         "401":
@@ -12908,7 +13048,7 @@ examples:
     speakeasy-default-lms-list-assignments:
       parameters:
         query:
-          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference"
+          fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           user_id: "c28xyrc55866bvuv"
           remote_user_id: "e3cb75bf-aa84-466e-a6c1-b8322b257a48"
@@ -12950,7 +13090,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "123456", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "learning_object_external_reference": "learning-content-123", "progress": 40, "updated_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "status": {"value": "in_progress"}, "user_id": "c28xyrc55866bvuv", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48"}}
+          application/json: {"data": {"id": "123456", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "learning_object_id": "e3gd34-23tr21-er234-345er56", "remote_learning_object_id": "e3cb55bf-aa84-466e-a6c1-b8302b257a49", "learning_object_external_reference": "learning-content-123", "progress": 40, "updated_at": "2021-07-21T14:00:00.000Z", "created_at": "2021-07-21T14:00:00.000Z", "due_date": "2021-07-21T14:00:00.000Z", "status": {"value": "in_progress"}, "user_id": "c28xyrc55866bvuv", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "certificate_url": "https://example.com/certificate/12345", "completed_at": "2021-07-21T14:00:00.000Z"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -13445,7 +13585,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "cx280928937", "name": "Complete onboarding documents", "description": "Please complete all required onboarding documents in the employee portal", "type": {"value": "action"}, "status": {"value": "open"}, "due_date": "2024-03-20T23:59:59.000Z", "completion_date": "2024-03-19T15:30:00.000Z", "assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "link_to_task": "https://provider.com/tasks/123", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "comments": [{"comment": "Approved based on in-person assessment", "created_at": "2024-03-15T10:00:00.000Z"}], "attachments": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "category": {}, "category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-02T01:01:01.000Z", "remote_url": "https://example.com/file.pdf", "file_format": {"value": "pdf", "source_value": "application/pdf"}}], "created_at": "2024-03-15T10:00:00.000Z", "updated_at": "2024-03-19T15:30:00.000Z"}]}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "cx280928937", "name": "Complete onboarding documents", "description": "Please complete all required onboarding documents in the employee portal", "type": {"value": "action"}, "status": {"value": "open"}, "due_date": "2024-03-20T23:59:59.000Z", "completion_date": "2024-03-19T15:30:00.000Z", "assigned_by_employee_id": "cx280928938", "assigned_by_employee_name": "John Smith", "link_to_task": "https://provider.com/tasks/123", "extracted_links": ["https://provider.com/docs/1", "https://provider.com/forms/2"], "next_task_id": "cx280928939", "parent_process_name": "Onboarding Tasks", "comments": [{"comment": "Approved based on in-person assessment", "created_at": "2024-03-15T10:00:00.000Z"}], "attachments": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "My Document", "path": "/path/to/file", "category": {}, "category_id": "6530", "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-02T01:01:01.000Z", "remote_url": "https://example.com/file.pdf", "file_format": {"value": "pdf", "source_value": "application/pdf"}}], "created_at": "2024-03-15T10:00:00.000Z", "updated_at": "2024-03-19T15:30:00.000Z"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -15415,5 +15555,153 @@ examples:
           application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  hris_update_employee_task:
+    speakeasy-default-hris-update-employee-task:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"comment": "All required documents have been submitted", "status": {"value": "open"}}
+      responses:
+        "200":
+          application/json: {"statusCode": 200, "message": "Record updated successfully.", "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_list_job_application_stages:
+    speakeasy-default-ats-list-job-application-stages:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,order,created_at,updated_at"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "name": "Review", "order": 1, "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-01T01:01:01.000Z"}]}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_get_job_application_stage:
+    speakeasy-default-ats-get-job-application-stage:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        query:
+          fields: "id,remote_id,name,order,created_at,updated_at"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "name": "Review", "order": 1, "created_at": "2021-01-01T01:01:01.000Z", "updated_at": "2021-01-01T01:01:01.000Z"}}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  accounting_create_company_journal:
+    speakeasy-default-accounting-create-company-journal:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"reference": "JRN-2024-001", "memo": "Monthly closing entries", "currency_code": {"value": "USD", "source_value": "USD"}, "exchange_rate": 1, "transaction_date": "2024-03-20T10:00:00Z", "lines": [{"account_id": "acc_123456789", "description": "Payment for office supplies", "amount": 10010, "tax_rate_id": "tax_123456789", "tax_amount": 10010}]}
+      responses:
+        "200":
+          application/json: {"statusCode": 201, "message": "Record created successfully.", "timestamp": "2021-01-01T01:01:01.000Z", "data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## SDK Changes Detected:\n* `stackone.ats.createApplication()`:  `request.atscreateapplicationrequestdto` **Changed** **Breaking** :warning:\n* `stackone.crm.getContactCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.crm.listContactCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.updateBackgroundCheckResult()`: \n  *  `request.atsupdatebackgroundcheckresultrequestdto.id` **Removed** **Breaking** :warning:\n* `stackone.ats.updateAssessmentsResult()`: \n  *  `request.atsupdatecandidatesassessmentsresultsrequestdto.id` **Removed** **Breaking** :warning:\n* `stackone.ats.getJobCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.hris.listEmployeeCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployeeCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.listJobCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.getCandidateCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.listCandidateCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.getApplicationCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.listApplicationCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.hris.listJobs()`:  `response.data.[]` **Changed** **Breaking** :warning:\n* `stackone.hris.getJob()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployeeTask()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.getTask()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.ats.uploadApplicationDocument()`:  `request` **Changed** **Breaking** :warning:\n* `stackone.ats.getCandidate()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getJob()`:  `response.data` **Changed**\n* `stackone.ats.updateApplication()`: \n  *  `request.atsupdateapplicationrequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.listApplications()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.ats.downloadApplicationDocument()`:  `response.status[200]` **Changed**\n* `stackone.ats.listCandidates()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.ats.createCandidate()`: \n  *  `request.atscreatecandidaterequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.updateEmployeeTask()`: **Added**\n* `stackone.ats.updateCandidate()`: \n  *  `request.atsupdatecandidaterequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.downloadEmployeeDocument()`:  `response.status[200]` **Changed**\n* `stackone.hris.updateEmployee()`: \n  *  `request.hrisupdateemployeerequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.getEmployee()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.createEmployee()`: \n  *  `request.hriscreateemployeerequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.listEmployees()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getBackgroundCheckResult()`: **Deleted** **Breaking** :warning:\n* `stackone.ats.listJobs()`:  `response.data.[]` **Changed**\n* `stackone.ats.createJob()`: \n  *  `request.atscreatejobrequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getApplication()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.updateJob()`: \n  *  `request.atsupdatejobrequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getAssessmentsResult()`: **Deleted** **Breaking** :warning:\n* `stackone.accounting.createCompanyJournal()`: **Added**\n* `stackone.crm.listContacts()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.crm.createContact()`: \n  *  `request.crmcreatecontactrequestdto.customFields.[].value.[date-time]` **Added**\n  *  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.crm.getContact()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.crm.updateContact()`: \n  *  `request.crmcreatecontactrequestdto.customFields.[].value.[date-time]` **Added**\n  *  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getJobApplicationStage()`: **Added**\n* `stackone.ats.listJobApplicationStages()`: **Added**\n* `stackone.lms.listUserAssignments()`:  `response.data.[]` **Changed**\n* `stackone.lms.getUserAssignment()`:  `response.data` **Changed**\n* `stackone.lms.listUserCompletions()`:  `response.data.[].certificateUrl` **Added**\n* `stackone.lms.getUserCompletion()`:  `response.data.certificateUrl` **Added**\n* `stackone.lms.listCompletions()`:  `response.data.[].certificateUrl` **Added**\n* `stackone.lms.getCompletion()`:  `response.data.certificateUrl` **Added**\n* `stackone.lms.listAssignments()`:  `response.data.[]` **Changed**\n* `stackone.lms.getAssignment()`:  `response.data` **Changed**\n"
