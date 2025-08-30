@@ -718,7 +718,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.responseStream().isPresent()) {
+        if (res.body().isPresent()) {
             // handle response
         }
     }

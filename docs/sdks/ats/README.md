@@ -1576,7 +1576,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.twoHundredApplicationPdfResponseStream().isPresent()) {
+        if (res.body().isPresent()) {
             // handle response
         }
     }

@@ -189,9 +189,6 @@ public class MessagingDownloadMessagingAttachment {
                             .contentType(contentType)
                             .statusCode(response.statusCode())
                             .rawResponse(response);
-            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "*/*")) {
-                resBuilder.responseStream(response.body());
-            }
 
             MessagingDownloadMessagingAttachmentResponse res = resBuilder.build();
             

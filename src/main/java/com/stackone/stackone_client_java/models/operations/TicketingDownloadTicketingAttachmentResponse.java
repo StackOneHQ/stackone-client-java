@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
@@ -34,10 +35,8 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
      */
     private HttpResponse<InputStream> rawResponse;
 
-    /**
-     * The document related to the application with the given identifiers was retrieved.
-     */
-    private Optional<? extends InputStream> responseStream;
+
+    private Optional<byte[]> body;
 
 
     private Map<String, List<String>> headers;
@@ -47,18 +46,18 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends InputStream> responseStream,
+            Optional<byte[]> body,
             Map<String, List<String>> headers) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(responseStream, "responseStream");
+        Utils.checkNotNull(body, "body");
         headers = Utils.emptyMapIfNull(headers);
         Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.responseStream = responseStream;
+        this.body = body;
         this.headers = headers;
     }
     
@@ -95,13 +94,17 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
         return rawResponse;
     }
 
-    /**
-     * The document related to the application with the given identifiers was retrieved.
-     */
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<InputStream> responseStream() {
-        return (Optional<InputStream>) responseStream;
+    public Optional<byte[]> body() {
+        this.body = body
+        .or(() -> {
+            try {
+                return Optional.of(Utils.extractByteArrayFromBody(rawResponse));
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        });
+        return this.body;
     }
 
     @JsonIgnore
@@ -141,22 +144,16 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
         return this;
     }
 
-    /**
-     * The document related to the application with the given identifiers was retrieved.
-     */
-    public TicketingDownloadTicketingAttachmentResponse withResponseStream(InputStream responseStream) {
-        Utils.checkNotNull(responseStream, "responseStream");
-        this.responseStream = Optional.ofNullable(responseStream);
+    public TicketingDownloadTicketingAttachmentResponse withBody(byte[] body) {
+        Utils.checkNotNull(body, "body");
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
 
-    /**
-     * The document related to the application with the given identifiers was retrieved.
-     */
-    public TicketingDownloadTicketingAttachmentResponse withResponseStream(Optional<? extends InputStream> responseStream) {
-        Utils.checkNotNull(responseStream, "responseStream");
-        this.responseStream = responseStream;
+    public TicketingDownloadTicketingAttachmentResponse withBody(Optional<byte[]> body) {
+        Utils.checkNotNull(body, "body");
+        this.body = body;
         return this;
     }
 
@@ -179,7 +176,7 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.responseStream, other.responseStream) &&
+            Utils.enhancedDeepEquals(this.body, other.body) &&
             Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
@@ -187,7 +184,7 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            responseStream, headers);
+            body, headers);
     }
     
     @Override
@@ -196,7 +193,7 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "responseStream", responseStream,
+                "body", body,
                 "headers", headers);
     }
 
@@ -209,7 +206,7 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Optional<? extends InputStream> responseStream = Optional.empty();
+        private Optional<byte[]> body = Optional.empty();
 
         private Map<String, List<String>> headers;
 
@@ -248,21 +245,15 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
         }
 
 
-        /**
-         * The document related to the application with the given identifiers was retrieved.
-         */
-        public Builder responseStream(InputStream responseStream) {
-            Utils.checkNotNull(responseStream, "responseStream");
-            this.responseStream = Optional.ofNullable(responseStream);
+        public Builder body(byte[] body) {
+            Utils.checkNotNull(body, "body");
+            this.body = Optional.ofNullable(body);
             return this;
         }
 
-        /**
-         * The document related to the application with the given identifiers was retrieved.
-         */
-        public Builder responseStream(Optional<? extends InputStream> responseStream) {
-            Utils.checkNotNull(responseStream, "responseStream");
-            this.responseStream = responseStream;
+        public Builder body(Optional<byte[]> body) {
+            Utils.checkNotNull(body, "body");
+            this.body = body;
             return this;
         }
 
@@ -277,7 +268,7 @@ public class TicketingDownloadTicketingAttachmentResponse implements Response {
 
             return new TicketingDownloadTicketingAttachmentResponse(
                 contentType, statusCode, rawResponse,
-                responseStream, headers);
+                body, headers);
         }
 
     }

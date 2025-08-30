@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 0ad07158c8cfa1087f906db2eda323f2
+  docChecksum: 1d1ba8d67210928dd7dae6d13dace15a
   docVersion: 1.0.0
-  speakeasyVersion: 1.606.8
+  speakeasyVersion: 1.606.9
   generationVersion: 2.687.13
-  releaseVersion: 0.10.0
-  configChecksum: 75698db1df048ca170de1566ae1b9f7b
+  releaseVersion: 0.11.0
+  configChecksum: 6ba0671cefcdde628fb8f716868a09a8
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -16,7 +16,6 @@ features:
     constsAndDefaults: 0.1.1
     core: 3.46.0
     deprecations: 2.81.1
-    downloadStreams: 0.1.1
     examples: 2.81.6
     flattening: 2.81.1
     globalSecurity: 2.83.0
@@ -479,6 +478,8 @@ generatedFiles:
   - docs/models/components/Description.md
   - docs/models/components/Division.md
   - docs/models/components/Document.md
+  - docs/models/components/DownloadApiModel.md
+  - docs/models/components/DownloadHeadersApiModel.md
   - docs/models/components/Draft.md
   - docs/models/components/Draft2.md
   - docs/models/components/DriveResult.md
@@ -2832,6 +2833,8 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/Description.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Division.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Document.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/DownloadApiModel.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/DownloadHeadersApiModel.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Draft.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Draft2.java
   - src/main/java/com/stackone/stackone_client_java/models/components/DriveResult.java
@@ -6331,7 +6334,7 @@ examples:
           image/heic: "x-file: example.file"
           application/zip: "x-file: example.file"
           application/gzip: "x-file: example.file"
-          application/json: "x-file: example.file"
+          application/json: {"headers": {"content-disposition": "attachment; filename=\"example.pdf\"", "content-type": "application/pdf", "content-length": 1024, "content-range": "bytes 0-1023/2048", "content-encoding": "gzip", "transfer-encoding": "chunked"}, "data": "0xD8a7d4EC38"}
           application/xml: "x-file: example.file"
           text/csv: "x-file: example.file"
           application/vnd.oasis.opendocument.text: "x-file: example.file"
@@ -8622,7 +8625,7 @@ examples:
           image/heic: "x-file: example.file"
           application/zip: "x-file: example.file"
           application/gzip: "x-file: example.file"
-          application/json: "x-file: example.file"
+          application/json: {"headers": {"content-disposition": "attachment; filename=\"example.pdf\"", "content-type": "application/pdf", "content-length": 1024, "content-range": "bytes 0-1023/2048", "content-encoding": "gzip", "transfer-encoding": "chunked"}, "data": "0x22c19257bb"}
           application/xml: "x-file: example.file"
           text/csv: "x-file: example.file"
           application/vnd.oasis.opendocument.text: "x-file: example.file"
@@ -15704,4 +15707,10 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `stackone.ats.createApplication()`:  `request.atscreateapplicationrequestdto` **Changed** **Breaking** :warning:\n* `stackone.crm.getContactCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.crm.listContactCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.updateBackgroundCheckResult()`: \n  *  `request.atsupdatebackgroundcheckresultrequestdto.id` **Removed** **Breaking** :warning:\n* `stackone.ats.updateAssessmentsResult()`: \n  *  `request.atsupdatecandidatesassessmentsresultsrequestdto.id` **Removed** **Breaking** :warning:\n* `stackone.ats.getJobCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.hris.listEmployeeCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployeeCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.listJobCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.getCandidateCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.listCandidateCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.getApplicationCustomFieldDefinition()`:  `response.data.options.[].value` **Changed** **Breaking** :warning:\n* `stackone.ats.listApplicationCustomFieldDefinitions()`:  `response.data.[].options.[].value` **Changed** **Breaking** :warning:\n* `stackone.hris.listJobs()`:  `response.data.[]` **Changed** **Breaking** :warning:\n* `stackone.hris.getJob()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployeeTask()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.getTask()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.ats.uploadApplicationDocument()`:  `request` **Changed** **Breaking** :warning:\n* `stackone.ats.getCandidate()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getJob()`:  `response.data` **Changed**\n* `stackone.ats.updateApplication()`: \n  *  `request.atsupdateapplicationrequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.listApplications()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.ats.downloadApplicationDocument()`:  `response.status[200]` **Changed**\n* `stackone.ats.listCandidates()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.ats.createCandidate()`: \n  *  `request.atscreatecandidaterequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.updateEmployeeTask()`: **Added**\n* `stackone.ats.updateCandidate()`: \n  *  `request.atsupdatecandidaterequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.downloadEmployeeDocument()`:  `response.status[200]` **Changed**\n* `stackone.hris.updateEmployee()`: \n  *  `request.hrisupdateemployeerequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.getEmployee()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.createEmployee()`: \n  *  `request.hriscreateemployeerequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.hris.listEmployees()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getBackgroundCheckResult()`: **Deleted** **Breaking** :warning:\n* `stackone.ats.listJobs()`:  `response.data.[]` **Changed**\n* `stackone.ats.createJob()`: \n  *  `request.atscreatejobrequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getApplication()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.updateJob()`: \n  *  `request.atsupdatejobrequestdto.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getAssessmentsResult()`: **Deleted** **Breaking** :warning:\n* `stackone.accounting.createCompanyJournal()`: **Added**\n* `stackone.crm.listContacts()`:  `response.data.[].customFields.[].value.[date-time]` **Added**\n* `stackone.crm.createContact()`: \n  *  `request.crmcreatecontactrequestdto.customFields.[].value.[date-time]` **Added**\n  *  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.crm.getContact()`:  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.crm.updateContact()`: \n  *  `request.crmcreatecontactrequestdto.customFields.[].value.[date-time]` **Added**\n  *  `response.data.customFields.[].value.[date-time]` **Added**\n* `stackone.ats.getJobApplicationStage()`: **Added**\n* `stackone.ats.listJobApplicationStages()`: **Added**\n* `stackone.lms.listUserAssignments()`:  `response.data.[]` **Changed**\n* `stackone.lms.getUserAssignment()`:  `response.data` **Changed**\n* `stackone.lms.listUserCompletions()`:  `response.data.[].certificateUrl` **Added**\n* `stackone.lms.getUserCompletion()`:  `response.data.certificateUrl` **Added**\n* `stackone.lms.listCompletions()`:  `response.data.[].certificateUrl` **Added**\n* `stackone.lms.getCompletion()`:  `response.data.certificateUrl` **Added**\n* `stackone.lms.listAssignments()`:  `response.data.[]` **Changed**\n* `stackone.lms.getAssignment()`:  `response.data` **Changed**\n"
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `stackone.hris.downloadEmployeeDocument()`:  `response` **Changed** **Breaking** :warning:
+  * `stackone.ats.downloadApplicationDocument()`:  `response` **Changed** **Breaking** :warning:
+  * `stackone.ticketing.downloadTicketingAttachment()`:  `response` **Changed** **Breaking** :warning:
+  * `stackone.documents.downloadFile()`:  `response` **Changed** **Breaking** :warning:
+  * `stackone.messaging.downloadMessagingAttachment()`:  `response` **Changed** **Breaking** :warning:
