@@ -189,9 +189,6 @@ public class TicketingDownloadTicketingAttachment {
                             .contentType(contentType)
                             .statusCode(response.statusCode())
                             .rawResponse(response);
-            if (Utils.statusCodeMatches(response.statusCode(), "200") && Utils.contentTypeMatches(contentType, "*/*")) {
-                resBuilder.responseStream(response.body());
-            }
 
             TicketingDownloadTicketingAttachmentResponse res = resBuilder.build();
             
