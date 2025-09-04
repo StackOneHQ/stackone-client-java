@@ -132,18 +132,18 @@ public class TimeOff {
     private JsonNullable<? extends TimeOffReason> reason;
 
     /**
-     * The created date of the time off request
+     * Timestamp when the time off request was created
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("created_date")
-    private JsonNullable<OffsetDateTime> createdDate;
+    @JsonProperty("created_at")
+    private JsonNullable<OffsetDateTime> createdAt;
 
     /**
-     * The updated date of the time off request
+     * Timestamp when the time off request was last updated
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("updated_date")
-    private JsonNullable<OffsetDateTime> updatedDate;
+    @JsonProperty("updated_at")
+    private JsonNullable<OffsetDateTime> updatedAt;
 
     /**
      * The time off policy associated with Time Off
@@ -177,8 +177,8 @@ public class TimeOff {
             @JsonProperty("time_off_policy_id") JsonNullable<String> timeOffPolicyId,
             @JsonProperty("remote_time_off_policy_id") JsonNullable<String> remoteTimeOffPolicyId,
             @JsonProperty("reason") JsonNullable<? extends TimeOffReason> reason,
-            @JsonProperty("created_date") JsonNullable<OffsetDateTime> createdDate,
-            @JsonProperty("updated_date") JsonNullable<OffsetDateTime> updatedDate,
+            @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
+            @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
             @JsonProperty("policy") JsonNullable<? extends Policy> policy,
             @JsonProperty("comment") JsonNullable<String> comment) {
         Utils.checkNotNull(id, "id");
@@ -197,8 +197,8 @@ public class TimeOff {
         Utils.checkNotNull(timeOffPolicyId, "timeOffPolicyId");
         Utils.checkNotNull(remoteTimeOffPolicyId, "remoteTimeOffPolicyId");
         Utils.checkNotNull(reason, "reason");
-        Utils.checkNotNull(createdDate, "createdDate");
-        Utils.checkNotNull(updatedDate, "updatedDate");
+        Utils.checkNotNull(createdAt, "createdAt");
+        Utils.checkNotNull(updatedAt, "updatedAt");
         Utils.checkNotNull(policy, "policy");
         Utils.checkNotNull(comment, "comment");
         this.id = id;
@@ -217,8 +217,8 @@ public class TimeOff {
         this.timeOffPolicyId = timeOffPolicyId;
         this.remoteTimeOffPolicyId = remoteTimeOffPolicyId;
         this.reason = reason;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.policy = policy;
         this.comment = comment;
     }
@@ -367,19 +367,19 @@ public class TimeOff {
     }
 
     /**
-     * The created date of the time off request
+     * Timestamp when the time off request was created
      */
     @JsonIgnore
-    public JsonNullable<OffsetDateTime> createdDate() {
-        return createdDate;
+    public JsonNullable<OffsetDateTime> createdAt() {
+        return createdAt;
     }
 
     /**
-     * The updated date of the time off request
+     * Timestamp when the time off request was last updated
      */
     @JsonIgnore
-    public JsonNullable<OffsetDateTime> updatedDate() {
-        return updatedDate;
+    public JsonNullable<OffsetDateTime> updatedAt() {
+        return updatedAt;
     }
 
     /**
@@ -693,38 +693,38 @@ public class TimeOff {
     }
 
     /**
-     * The created date of the time off request
+     * Timestamp when the time off request was created
      */
-    public TimeOff withCreatedDate(OffsetDateTime createdDate) {
-        Utils.checkNotNull(createdDate, "createdDate");
-        this.createdDate = JsonNullable.of(createdDate);
+    public TimeOff withCreatedAt(OffsetDateTime createdAt) {
+        Utils.checkNotNull(createdAt, "createdAt");
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
     /**
-     * The created date of the time off request
+     * Timestamp when the time off request was created
      */
-    public TimeOff withCreatedDate(JsonNullable<OffsetDateTime> createdDate) {
-        Utils.checkNotNull(createdDate, "createdDate");
-        this.createdDate = createdDate;
+    public TimeOff withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
+        Utils.checkNotNull(createdAt, "createdAt");
+        this.createdAt = createdAt;
         return this;
     }
 
     /**
-     * The updated date of the time off request
+     * Timestamp when the time off request was last updated
      */
-    public TimeOff withUpdatedDate(OffsetDateTime updatedDate) {
-        Utils.checkNotNull(updatedDate, "updatedDate");
-        this.updatedDate = JsonNullable.of(updatedDate);
+    public TimeOff withUpdatedAt(OffsetDateTime updatedAt) {
+        Utils.checkNotNull(updatedAt, "updatedAt");
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
     /**
-     * The updated date of the time off request
+     * Timestamp when the time off request was last updated
      */
-    public TimeOff withUpdatedDate(JsonNullable<OffsetDateTime> updatedDate) {
-        Utils.checkNotNull(updatedDate, "updatedDate");
-        this.updatedDate = updatedDate;
+    public TimeOff withUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
+        Utils.checkNotNull(updatedAt, "updatedAt");
+        this.updatedAt = updatedAt;
         return this;
     }
 
@@ -790,8 +790,8 @@ public class TimeOff {
             Utils.enhancedDeepEquals(this.timeOffPolicyId, other.timeOffPolicyId) &&
             Utils.enhancedDeepEquals(this.remoteTimeOffPolicyId, other.remoteTimeOffPolicyId) &&
             Utils.enhancedDeepEquals(this.reason, other.reason) &&
-            Utils.enhancedDeepEquals(this.createdDate, other.createdDate) &&
-            Utils.enhancedDeepEquals(this.updatedDate, other.updatedDate) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
             Utils.enhancedDeepEquals(this.policy, other.policy) &&
             Utils.enhancedDeepEquals(this.comment, other.comment);
     }
@@ -804,7 +804,7 @@ public class TimeOff {
             status, type, startDate,
             endDate, startHalfDay, endHalfDay,
             duration, timeOffPolicyId, remoteTimeOffPolicyId,
-            reason, createdDate, updatedDate,
+            reason, createdAt, updatedAt,
             policy, comment);
     }
     
@@ -827,8 +827,8 @@ public class TimeOff {
                 "timeOffPolicyId", timeOffPolicyId,
                 "remoteTimeOffPolicyId", remoteTimeOffPolicyId,
                 "reason", reason,
-                "createdDate", createdDate,
-                "updatedDate", updatedDate,
+                "createdAt", createdAt,
+                "updatedAt", updatedAt,
                 "policy", policy,
                 "comment", comment);
     }
@@ -869,9 +869,9 @@ public class TimeOff {
 
         private JsonNullable<? extends TimeOffReason> reason = JsonNullable.undefined();
 
-        private JsonNullable<OffsetDateTime> createdDate = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
 
-        private JsonNullable<OffsetDateTime> updatedDate = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
 
         private JsonNullable<? extends Policy> policy = JsonNullable.undefined();
 
@@ -1187,39 +1187,39 @@ public class TimeOff {
 
 
         /**
-         * The created date of the time off request
+         * Timestamp when the time off request was created
          */
-        public Builder createdDate(OffsetDateTime createdDate) {
-            Utils.checkNotNull(createdDate, "createdDate");
-            this.createdDate = JsonNullable.of(createdDate);
+        public Builder createdAt(OffsetDateTime createdAt) {
+            Utils.checkNotNull(createdAt, "createdAt");
+            this.createdAt = JsonNullable.of(createdAt);
             return this;
         }
 
         /**
-         * The created date of the time off request
+         * Timestamp when the time off request was created
          */
-        public Builder createdDate(JsonNullable<OffsetDateTime> createdDate) {
-            Utils.checkNotNull(createdDate, "createdDate");
-            this.createdDate = createdDate;
+        public Builder createdAt(JsonNullable<OffsetDateTime> createdAt) {
+            Utils.checkNotNull(createdAt, "createdAt");
+            this.createdAt = createdAt;
             return this;
         }
 
 
         /**
-         * The updated date of the time off request
+         * Timestamp when the time off request was last updated
          */
-        public Builder updatedDate(OffsetDateTime updatedDate) {
-            Utils.checkNotNull(updatedDate, "updatedDate");
-            this.updatedDate = JsonNullable.of(updatedDate);
+        public Builder updatedAt(OffsetDateTime updatedAt) {
+            Utils.checkNotNull(updatedAt, "updatedAt");
+            this.updatedAt = JsonNullable.of(updatedAt);
             return this;
         }
 
         /**
-         * The updated date of the time off request
+         * Timestamp when the time off request was last updated
          */
-        public Builder updatedDate(JsonNullable<OffsetDateTime> updatedDate) {
-            Utils.checkNotNull(updatedDate, "updatedDate");
-            this.updatedDate = updatedDate;
+        public Builder updatedAt(JsonNullable<OffsetDateTime> updatedAt) {
+            Utils.checkNotNull(updatedAt, "updatedAt");
+            this.updatedAt = updatedAt;
             return this;
         }
 
@@ -1269,7 +1269,7 @@ public class TimeOff {
                 status, type, startDate,
                 endDate, startHalfDay, endHalfDay,
                 duration, timeOffPolicyId, remoteTimeOffPolicyId,
-                reason, createdDate, updatedDate,
+                reason, createdAt, updatedAt,
                 policy, comment);
         }
 
