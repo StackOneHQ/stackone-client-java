@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 1d1ba8d67210928dd7dae6d13dace15a
+  docChecksum: 089a45e6939ac65a4e4fd20409fc73f2
   docVersion: 1.0.0
   speakeasyVersion: 1.606.9
   generationVersion: 2.687.13
-  releaseVersion: 0.11.0
-  configChecksum: 6ba0671cefcdde628fb8f716868a09a8
+  releaseVersion: 0.12.1
+  configChecksum: 13c01c36beb5ad25574a313eb3e22967
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -15707,10 +15707,3 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * `stackone.hris.downloadEmployeeDocument()`:  `response` **Changed** **Breaking** :warning:
-  * `stackone.ats.downloadApplicationDocument()`:  `response` **Changed** **Breaking** :warning:
-  * `stackone.ticketing.downloadTicketingAttachment()`:  `response` **Changed** **Breaking** :warning:
-  * `stackone.documents.downloadFile()`:  `response` **Changed** **Breaking** :warning:
-  * `stackone.messaging.downloadMessagingAttachment()`:  `response` **Changed** **Breaking** :warning:

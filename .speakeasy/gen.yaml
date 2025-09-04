@@ -21,10 +21,11 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.11.0
+  version: 0.12.1
   additionalDependencies: []
   additionalPlugins: []
   artifactID: stackone-client-java
+  asyncMode: enabled
   baseErrorName: StackOneError
   clientServerStatusCodesAsErrors: true
   companyEmail: contact@stackone.com
@@ -33,6 +34,7 @@ java:
   defaultErrorName: SDKError
   enableAsync: false
   enableCustomCodeRegions: false
+  enableStreamingUploads: false
   flattenGlobalSecurity: true
   githubURL: github.com/owner/repo
   groupID: com.stackone
