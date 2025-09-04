@@ -37,7 +37,7 @@ public class AtsListApplicationsQueryParamFilter {
     private JsonNullable<String> jobId;
 
     /**
-     * Filter to select applications by stage and sub-stage
+     * Filter to select applications by application_stage id
      */
     @SpeakeasyMetadata("queryParam:name=stage")
     private JsonNullable<String> stage;
@@ -88,7 +88,7 @@ public class AtsListApplicationsQueryParamFilter {
     }
 
     /**
-     * Filter to select applications by stage and sub-stage
+     * Filter to select applications by application_stage id
      */
     @JsonIgnore
     public JsonNullable<String> stage() {
@@ -155,7 +155,7 @@ public class AtsListApplicationsQueryParamFilter {
     }
 
     /**
-     * Filter to select applications by stage and sub-stage
+     * Filter to select applications by application_stage id
      */
     public AtsListApplicationsQueryParamFilter withStage(String stage) {
         Utils.checkNotNull(stage, "stage");
@@ -164,7 +164,7 @@ public class AtsListApplicationsQueryParamFilter {
     }
 
     /**
-     * Filter to select applications by stage and sub-stage
+     * Filter to select applications by application_stage id
      */
     public AtsListApplicationsQueryParamFilter withStage(JsonNullable<String> stage) {
         Utils.checkNotNull(stage, "stage");
@@ -278,7 +278,7 @@ public class AtsListApplicationsQueryParamFilter {
 
 
         /**
-         * Filter to select applications by stage and sub-stage
+         * Filter to select applications by application_stage id
          */
         public Builder stage(String stage) {
             Utils.checkNotNull(stage, "stage");
@@ -287,7 +287,7 @@ public class AtsListApplicationsQueryParamFilter {
         }
 
         /**
-         * Filter to select applications by stage and sub-stage
+         * Filter to select applications by application_stage id
          */
         public Builder stage(JsonNullable<String> stage) {
             Utils.checkNotNull(stage, "stage");
