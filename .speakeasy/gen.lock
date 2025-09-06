@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 1420fe44878fd7285097f674d59f7821
+  docChecksum: 2af9e60acac9038f52b671c703dac21a
   docVersion: 1.0.0
   speakeasyVersion: 1.606.9
   generationVersion: 2.687.13
-  releaseVersion: 0.12.1
-  configChecksum: 13c01c36beb5ad25574a313eb3e22967
+  releaseVersion: 0.13.1
+  configChecksum: ba0228f3defef97f9522a96d2c5a618c
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -15707,9 +15707,4 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * `stackone.hris.listEmployeeTimeOffRequests()`:  `response.data.[]` **Changed** **Breaking** :warning:
-  * `stackone.hris.getEmployeesTimeOffRequest()`:  `response.data` **Changed** **Breaking** :warning:
-  * `stackone.hris.listTimeOffRequests()`:  `response.data.[]` **Changed** **Breaking** :warning:
-  * `stackone.hris.getTimeOffRequest()`:  `response.data` **Changed** **Breaking** :warning:
+releaseNotes: "## SDK Changes Detected:\n* `stackone.lms.listUserAssignments()`: \n  *  `request.filter` **Changed**\n* `stackone.lms.listAssignments()`: \n  *  `request.filter` **Changed**\n"
