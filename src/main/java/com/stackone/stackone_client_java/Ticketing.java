@@ -91,9 +91,20 @@ import java.util.Optional;
 
 public class Ticketing {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncTicketing asyncSDK;
 
     Ticketing(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncTicketing(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncTicketing async() {
+        return asyncSDK;
     }
 
     /**

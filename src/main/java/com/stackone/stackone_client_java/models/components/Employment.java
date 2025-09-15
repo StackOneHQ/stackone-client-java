@@ -119,6 +119,20 @@ public class Employment {
     @Deprecated
     private JsonNullable<? extends EmploymentEmploymentContractType> employmentContractType;
 
+    /**
+     * The type of employment
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends EmploymentType1> type;
+
+    /**
+     * The employment work schedule type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("contract_type")
+    private JsonNullable<? extends ContractType> contractType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("work_time")
@@ -222,20 +236,6 @@ public class Employment {
     private JsonNullable<? extends Job> job;
 
     /**
-     * The type of employment
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("type")
-    private JsonNullable<? extends EmploymentType1> type;
-
-    /**
-     * The employment work schedule type
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("contract_type")
-    private JsonNullable<? extends ContractType> contractType;
-
-    /**
      * The employee manager
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -257,6 +257,8 @@ public class Employment {
             @JsonProperty("grade") JsonNullable<? extends Grade> grade,
             @JsonProperty("employment_type") JsonNullable<? extends EmploymentEmploymentType> employmentType,
             @JsonProperty("employment_contract_type") JsonNullable<? extends EmploymentEmploymentContractType> employmentContractType,
+            @JsonProperty("type") JsonNullable<? extends EmploymentType1> type,
+            @JsonProperty("contract_type") JsonNullable<? extends ContractType> contractType,
             @JsonProperty("work_time") JsonNullable<? extends WorkTime> workTime,
             @JsonProperty("payroll_code") JsonNullable<String> payrollCode,
             @JsonProperty("employee_id") JsonNullable<String> employeeId,
@@ -271,8 +273,6 @@ public class Employment {
             @JsonProperty("cost_centers") JsonNullable<? extends List<HRISCostCenter>> costCenters,
             @JsonProperty("division") JsonNullable<? extends Division> division,
             @JsonProperty("job") JsonNullable<? extends Job> job,
-            @JsonProperty("type") JsonNullable<? extends EmploymentType1> type,
-            @JsonProperty("contract_type") JsonNullable<? extends ContractType> contractType,
             @JsonProperty("manager") JsonNullable<? extends List<EmploymentManagerApiModel>> manager) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
@@ -287,6 +287,8 @@ public class Employment {
         Utils.checkNotNull(grade, "grade");
         Utils.checkNotNull(employmentType, "employmentType");
         Utils.checkNotNull(employmentContractType, "employmentContractType");
+        Utils.checkNotNull(type, "type");
+        Utils.checkNotNull(contractType, "contractType");
         Utils.checkNotNull(workTime, "workTime");
         Utils.checkNotNull(payrollCode, "payrollCode");
         Utils.checkNotNull(employeeId, "employeeId");
@@ -301,8 +303,6 @@ public class Employment {
         Utils.checkNotNull(costCenters, "costCenters");
         Utils.checkNotNull(division, "division");
         Utils.checkNotNull(job, "job");
-        Utils.checkNotNull(type, "type");
-        Utils.checkNotNull(contractType, "contractType");
         Utils.checkNotNull(manager, "manager");
         this.id = id;
         this.remoteId = remoteId;
@@ -317,6 +317,8 @@ public class Employment {
         this.grade = grade;
         this.employmentType = employmentType;
         this.employmentContractType = employmentContractType;
+        this.type = type;
+        this.contractType = contractType;
         this.workTime = workTime;
         this.payrollCode = payrollCode;
         this.employeeId = employeeId;
@@ -331,8 +333,6 @@ public class Employment {
         this.costCenters = costCenters;
         this.division = division;
         this.job = job;
-        this.type = type;
-        this.contractType = contractType;
         this.manager = manager;
     }
     
@@ -465,6 +465,24 @@ public class Employment {
         return (JsonNullable<EmploymentEmploymentContractType>) employmentContractType;
     }
 
+    /**
+     * The type of employment
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<EmploymentType1> type() {
+        return (JsonNullable<EmploymentType1>) type;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<ContractType> contractType() {
+        return (JsonNullable<ContractType>) contractType;
+    }
+
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<WorkTime> workTime() {
@@ -585,24 +603,6 @@ public class Employment {
     @JsonIgnore
     public JsonNullable<Job> job() {
         return (JsonNullable<Job>) job;
-    }
-
-    /**
-     * The type of employment
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<EmploymentType1> type() {
-        return (JsonNullable<EmploymentType1>) type;
-    }
-
-    /**
-     * The employment work schedule type
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<ContractType> contractType() {
-        return (JsonNullable<ContractType>) contractType;
     }
 
     /**
@@ -865,6 +865,42 @@ public class Employment {
         return this;
     }
 
+    /**
+     * The type of employment
+     */
+    public Employment withType(EmploymentType1 type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The type of employment
+     */
+    public Employment withType(JsonNullable<? extends EmploymentType1> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    public Employment withContractType(ContractType contractType) {
+        Utils.checkNotNull(contractType, "contractType");
+        this.contractType = JsonNullable.of(contractType);
+        return this;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    public Employment withContractType(JsonNullable<? extends ContractType> contractType) {
+        Utils.checkNotNull(contractType, "contractType");
+        this.contractType = contractType;
+        return this;
+    }
+
     public Employment withWorkTime(WorkTime workTime) {
         Utils.checkNotNull(workTime, "workTime");
         this.workTime = JsonNullable.of(workTime);
@@ -1124,42 +1160,6 @@ public class Employment {
     }
 
     /**
-     * The type of employment
-     */
-    public Employment withType(EmploymentType1 type) {
-        Utils.checkNotNull(type, "type");
-        this.type = JsonNullable.of(type);
-        return this;
-    }
-
-    /**
-     * The type of employment
-     */
-    public Employment withType(JsonNullable<? extends EmploymentType1> type) {
-        Utils.checkNotNull(type, "type");
-        this.type = type;
-        return this;
-    }
-
-    /**
-     * The employment work schedule type
-     */
-    public Employment withContractType(ContractType contractType) {
-        Utils.checkNotNull(contractType, "contractType");
-        this.contractType = JsonNullable.of(contractType);
-        return this;
-    }
-
-    /**
-     * The employment work schedule type
-     */
-    public Employment withContractType(JsonNullable<? extends ContractType> contractType) {
-        Utils.checkNotNull(contractType, "contractType");
-        this.contractType = contractType;
-        return this;
-    }
-
-    /**
      * The employee manager
      */
     public Employment withManager(List<EmploymentManagerApiModel> manager) {
@@ -1200,6 +1200,8 @@ public class Employment {
             Utils.enhancedDeepEquals(this.grade, other.grade) &&
             Utils.enhancedDeepEquals(this.employmentType, other.employmentType) &&
             Utils.enhancedDeepEquals(this.employmentContractType, other.employmentContractType) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.contractType, other.contractType) &&
             Utils.enhancedDeepEquals(this.workTime, other.workTime) &&
             Utils.enhancedDeepEquals(this.payrollCode, other.payrollCode) &&
             Utils.enhancedDeepEquals(this.employeeId, other.employeeId) &&
@@ -1214,8 +1216,6 @@ public class Employment {
             Utils.enhancedDeepEquals(this.costCenters, other.costCenters) &&
             Utils.enhancedDeepEquals(this.division, other.division) &&
             Utils.enhancedDeepEquals(this.job, other.job) &&
-            Utils.enhancedDeepEquals(this.type, other.type) &&
-            Utils.enhancedDeepEquals(this.contractType, other.contractType) &&
             Utils.enhancedDeepEquals(this.manager, other.manager);
     }
     
@@ -1226,12 +1226,12 @@ public class Employment {
             jobTitle, payRate, payPeriod,
             payFrequency, payCurrency, effectiveDate,
             endDate, grade, employmentType,
-            employmentContractType, workTime, payrollCode,
-            employeeId, remoteEmployeeId, fte,
-            createdAt, updatedAt, startDate,
-            active, department, costCenter,
-            costCenters, division, job,
-            type, contractType, manager);
+            employmentContractType, type, contractType,
+            workTime, payrollCode, employeeId,
+            remoteEmployeeId, fte, createdAt,
+            updatedAt, startDate, active,
+            department, costCenter, costCenters,
+            division, job, manager);
     }
     
     @Override
@@ -1250,6 +1250,8 @@ public class Employment {
                 "grade", grade,
                 "employmentType", employmentType,
                 "employmentContractType", employmentContractType,
+                "type", type,
+                "contractType", contractType,
                 "workTime", workTime,
                 "payrollCode", payrollCode,
                 "employeeId", employeeId,
@@ -1264,8 +1266,6 @@ public class Employment {
                 "costCenters", costCenters,
                 "division", division,
                 "job", job,
-                "type", type,
-                "contractType", contractType,
                 "manager", manager);
     }
 
@@ -1300,6 +1300,10 @@ public class Employment {
         @Deprecated
         private JsonNullable<? extends EmploymentEmploymentContractType> employmentContractType = JsonNullable.undefined();
 
+        private JsonNullable<? extends EmploymentType1> type = JsonNullable.undefined();
+
+        private JsonNullable<? extends ContractType> contractType = JsonNullable.undefined();
+
         private JsonNullable<? extends WorkTime> workTime = JsonNullable.undefined();
 
         private JsonNullable<String> payrollCode = JsonNullable.undefined();
@@ -1329,10 +1333,6 @@ public class Employment {
         private JsonNullable<? extends Division> division = JsonNullable.undefined();
 
         private JsonNullable<? extends Job> job = JsonNullable.undefined();
-
-        private JsonNullable<? extends EmploymentType1> type = JsonNullable.undefined();
-
-        private JsonNullable<? extends ContractType> contractType = JsonNullable.undefined();
 
         private JsonNullable<? extends List<EmploymentManagerApiModel>> manager = JsonNullable.undefined();
 
@@ -1596,6 +1596,44 @@ public class Employment {
         public Builder employmentContractType(JsonNullable<? extends EmploymentEmploymentContractType> employmentContractType) {
             Utils.checkNotNull(employmentContractType, "employmentContractType");
             this.employmentContractType = employmentContractType;
+            return this;
+        }
+
+
+        /**
+         * The type of employment
+         */
+        public Builder type(EmploymentType1 type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The type of employment
+         */
+        public Builder type(JsonNullable<? extends EmploymentType1> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
+
+
+        /**
+         * The employment work schedule type
+         */
+        public Builder contractType(ContractType contractType) {
+            Utils.checkNotNull(contractType, "contractType");
+            this.contractType = JsonNullable.of(contractType);
+            return this;
+        }
+
+        /**
+         * The employment work schedule type
+         */
+        public Builder contractType(JsonNullable<? extends ContractType> contractType) {
+            Utils.checkNotNull(contractType, "contractType");
+            this.contractType = contractType;
             return this;
         }
 
@@ -1873,44 +1911,6 @@ public class Employment {
 
 
         /**
-         * The type of employment
-         */
-        public Builder type(EmploymentType1 type) {
-            Utils.checkNotNull(type, "type");
-            this.type = JsonNullable.of(type);
-            return this;
-        }
-
-        /**
-         * The type of employment
-         */
-        public Builder type(JsonNullable<? extends EmploymentType1> type) {
-            Utils.checkNotNull(type, "type");
-            this.type = type;
-            return this;
-        }
-
-
-        /**
-         * The employment work schedule type
-         */
-        public Builder contractType(ContractType contractType) {
-            Utils.checkNotNull(contractType, "contractType");
-            this.contractType = JsonNullable.of(contractType);
-            return this;
-        }
-
-        /**
-         * The employment work schedule type
-         */
-        public Builder contractType(JsonNullable<? extends ContractType> contractType) {
-            Utils.checkNotNull(contractType, "contractType");
-            this.contractType = contractType;
-            return this;
-        }
-
-
-        /**
          * The employee manager
          */
         public Builder manager(List<EmploymentManagerApiModel> manager) {
@@ -1935,12 +1935,12 @@ public class Employment {
                 jobTitle, payRate, payPeriod,
                 payFrequency, payCurrency, effectiveDate,
                 endDate, grade, employmentType,
-                employmentContractType, workTime, payrollCode,
-                employeeId, remoteEmployeeId, fte,
-                createdAt, updatedAt, startDate,
-                active, department, costCenter,
-                costCenters, division, job,
-                type, contractType, manager);
+                employmentContractType, type, contractType,
+                workTime, payrollCode, employeeId,
+                remoteEmployeeId, fte, createdAt,
+                updatedAt, startDate, active,
+                department, costCenter, costCenters,
+                division, job, manager);
         }
 
     }

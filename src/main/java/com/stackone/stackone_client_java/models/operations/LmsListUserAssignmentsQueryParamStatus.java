@@ -16,7 +16,8 @@ import java.util.Optional;
 public enum LmsListUserAssignmentsQueryParamStatus {
     PENDING("pending"),
     IN_PROGRESS("in_progress"),
-    COMPLETED("completed");
+    COMPLETED("completed"),
+    UNMAPPED_VALUE("unmapped_value");
 
     @JsonValue
     private final String value;

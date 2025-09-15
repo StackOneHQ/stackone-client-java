@@ -45,7 +45,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.12.1'
+implementation 'com.stackone:stackone-client-java:0.13.0'
 ```
 
 Maven:
@@ -53,7 +53,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.12.1</version>
+    <version>0.13.0</version>
 </dependency>
 ```
 
@@ -108,8 +108,8 @@ public class Application {
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
 
+
         sdk.hris().listEmployees()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeesResponse item) -> {
                    // handle page
@@ -118,6 +118,64 @@ public class Application {
     }
 }
 ```
+#### Asynchronous Call
+An asynchronous SDK client is also available that returns a [`CompletableFuture<T>`][comp-fut]. See [Asynchronous Support](#asynchronous-support) for more details on async benefits and reactive library integration.
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.AsyncStackOne;
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.operations.async.StackoneCreateConnectSessionResponse;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
+public class Application {
+
+    public static void main(String[] args) {
+
+        AsyncStackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build()
+            .async();
+
+        ConnectSessionCreate req = ConnectSessionCreate.builder()
+                .originOwnerId("<id>")
+                .originOwnerName("<value>")
+                .categories(List.of(
+                    Categories.ATS,
+                    Categories.HRIS,
+                    Categories.DOCUMENTS,
+                    Categories.CRM,
+                    Categories.IAM,
+                    Categories.MARKETING,
+                    Categories.LMS,
+                    Categories.IAM,
+                    Categories.DOCUMENTS,
+                    Categories.TICKETING,
+                    Categories.SCREENING,
+                    Categories.MESSAGING,
+                    Categories.ACCOUNTING))
+                .type(Type.TEST)
+                .build();
+
+        CompletableFuture<StackoneCreateConnectSessionResponse> resFut = sdk.connectSessions().createConnectSession()
+                .request(req)
+                .call();
+
+        resFut.thenAccept(res -> {
+            if (res.connectSessionTokenAuthLink().isPresent()) {
+            // handle response
+            }
+        });
+    }
+}
+```
+
+[comp-fut]: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
@@ -146,6 +204,11 @@ public class Application {
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 * [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
 * [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get Account Meta Information
+
+### [actions()](docs/sdks/actions/README.md)
+
+* [listActionsMeta](docs/sdks/actions/README.md#listactionsmeta) - List all actions metadata
+* [rpcAction](docs/sdks/actions/README.md#rpcaction) - Make an RPC call to an action
 
 ### [ats()](docs/sdks/ats/README.md)
 
@@ -185,8 +248,10 @@ public class Application {
 * [getJobCustomFieldDefinition](docs/sdks/ats/README.md#getjobcustomfielddefinition) - Get Job Custom Field Definition
 * [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
 * [getDepartment](docs/sdks/ats/README.md#getdepartment) - Get Department
-* [listInterviewStages](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages
-* [getInterviewStage](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
+* [~~listInterviewStages~~](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages :warning: **Deprecated**
+* [~~getInterviewStage~~](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage :warning: **Deprecated**
+* [listApplicationStages](docs/sdks/ats/README.md#listapplicationstages) - List Application Stages
+* [getApplicationStage](docs/sdks/ats/README.md#getapplicationstage) - Get Application Stage
 * [listInterviews](docs/sdks/ats/README.md#listinterviews) - List Interviews
 * [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
 * [listJobs](docs/sdks/ats/README.md#listjobs) - List Jobs
@@ -400,6 +465,12 @@ public class Application {
 * [getContentBlock](docs/sdks/marketing/README.md#getcontentblock) - Get Content Blocks
 * [updateContentBlock](docs/sdks/marketing/README.md#updatecontentblock) - Update Content Block
 
+### [mcp()](docs/sdks/mcp/README.md)
+
+* [mcpGet](docs/sdks/mcp/README.md#mcpget) - Open MCP SSE stream
+* [mcpPost](docs/sdks/mcp/README.md#mcppost) - Send MCP JSON-RPC message
+* [mcpDelete](docs/sdks/mcp/README.md#mcpdelete) - Delete MCP session
+
 ### [messaging()](docs/sdks/messaging/README.md)
 
 * [listConversations](docs/sdks/messaging/README.md#listconversations) - List Conversations
@@ -466,7 +537,6 @@ For certain operations, you can also use the `callAsStreamUnwrapped` method that
 
 Here's an example depicting the different ways to use pagination:
 
-
 ```java
 package hello.world;
 
@@ -476,7 +546,7 @@ import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.*;
 import java.lang.Exception;
 import java.lang.Iterable;
-import java.time.OffsetDateTime;
+import java.util.List;
 
 public class Application {
 
@@ -489,21 +559,24 @@ public class Application {
                     .build())
             .build();
 
-        HrisListCompaniesRequest req = HrisListCompaniesRequest.builder()
-                .xAccountId("<id>")
-                .fields("id,remote_id,name,full_name,display_name,created_at,updated_at")
-                .filter(HrisListCompaniesQueryParamFilter.builder()
-                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+        StackoneListActionsMetaRequest req = StackoneListActionsMetaRequest.builder()
+                .groupBy("[\"connector\"]")
+                .filter(StackoneListActionsMetaQueryParamFilter.builder()
+                    .connectors("connector1,connector2")
+                    .accountIds("account1,account2")
+                    .actionKey("action1")
                     .build())
+                .include(List.of(
+                    StackoneListActionsMetaQueryParamInclude.OPERATION_DETAILS))
                 .build();
 
-        var b = sdk.hris().listCompanies()
-                .request(req);
+
+        var b = sdk.actions().listActionsMeta();
 
         // Iterate through all pages using a traditional for-each loop
         // Each iteration returns a complete page response
-        Iterable<HrisListCompaniesResponse> iterable = b.callAsIterable();
-        for (HrisListCompaniesResponse page : iterable) {
+        Iterable<StackoneListActionsMetaResponse> iterable = b.callAsIterable();
+        for (StackoneListActionsMetaResponse page : iterable) {
             // handle page
         }
 
@@ -512,13 +585,65 @@ public class Application {
 
         // Stream through pages without unwrapping (each item is a complete page)
         b.callAsStream()
-            .forEach((HrisListCompaniesResponse page) -> {
+            .forEach((StackoneListActionsMetaResponse page) -> {
                 // handle page
             });
 
     }
 }
 ```
+#### Asynchronous Pagination
+An asynchronous SDK client is also available for pagination that returns a [`Flow.Publisher<T>`][flow-pub]. For async pagination, you can use `callAsPublisher()` to get pages as a publisher, or `callAsPublisherUnwrapped()` to get individual items directly. See [Asynchronous Support](#asynchronous-support) for more details on async benefits and reactive library integration.
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.AsyncStackOne;
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.operations.*;
+import com.stackone.stackone_client_java.models.operations.async.StackoneListActionsMetaResponse;
+import java.util.List;
+import reactor.core.publisher.Flux;
+
+public class Application {
+
+    public static void main(String[] args) {
+
+        AsyncStackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build()
+            .async();
+
+        StackoneListActionsMetaRequest req = StackoneListActionsMetaRequest.builder()
+                .groupBy("[\"connector\"]")
+                .filter(StackoneListActionsMetaQueryParamFilter.builder()
+                    .connectors("connector1,connector2")
+                    .accountIds("account1,account2")
+                    .actionKey("action1")
+                    .build())
+                .include(List.of(
+                    StackoneListActionsMetaQueryParamInclude.OPERATION_DETAILS))
+                .build();
+
+
+        var b = sdk.actions().listActionsMeta();
+
+        // Example using Project Reactor (illustrative) - pages
+        Flux<StackoneListActionsMetaResponse> pageFlux = Flux.from(b.callAsPublisher());
+        pageFlux.subscribe(
+            page -> System.out.println(page),
+            error -> error.printStackTrace(),
+            () -> System.out.println("Pagination completed")
+        );
+
+    }
+}
+```
+
+[flow-pub]: https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.Publisher.html
 <!-- End Pagination [pagination] -->
 
 <!-- Start Retries [retries] -->
@@ -922,6 +1047,38 @@ public class Application {
         if (res.connectSessionTokenAuthLink().isPresent()) {
             // handle response
         }
+    }
+}
+```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.StackoneMcpGetResponse;
+import com.stackone.stackone_client_java.models.operations.StackoneMcpGetSecurity;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+            .build();
+
+        StackoneMcpGetResponse res = sdk.mcp().mcpGet()
+                .security(StackoneMcpGetSecurity.builder()
+
+                    .build())
+                .xAccountId("<id>")
+                .mcpSessionId("<id>")
+                .call();
+
+        // handle response
     }
 }
 ```

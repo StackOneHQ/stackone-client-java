@@ -1,0 +1,11 @@
+# HrisUpdateEmploymentRequestDtoTypeType
+
+The type of employment (e.g., contractor, permanent)
+
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                                  | [JsonNullable\<HrisUpdateEmploymentRequestDtoTypeValue>](../../models/components/HrisUpdateEmploymentRequestDtoTypeValue.md)             | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `sourceValue`                                                                                                                            | [JsonNullable\<HrisUpdateEmploymentRequestDtoTypeSourceValue>](../../models/components/HrisUpdateEmploymentRequestDtoTypeSourceValue.md) | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |

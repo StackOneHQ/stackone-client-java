@@ -20,7 +20,7 @@ public class HrisShiftResult {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data")
-    private JsonNullable<? extends Data> data;
+    private JsonNullable<? extends HrisShiftResultData> data;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -29,7 +29,7 @@ public class HrisShiftResult {
 
     @JsonCreator
     public HrisShiftResult(
-            @JsonProperty("data") JsonNullable<? extends Data> data,
+            @JsonProperty("data") JsonNullable<? extends HrisShiftResultData> data,
             @JsonProperty("raw") JsonNullable<? extends List<RawResponse>> raw) {
         Utils.checkNotNull(data, "data");
         Utils.checkNotNull(raw, "raw");
@@ -43,8 +43,8 @@ public class HrisShiftResult {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Data> data() {
-        return (JsonNullable<Data>) data;
+    public JsonNullable<HrisShiftResultData> data() {
+        return (JsonNullable<HrisShiftResultData>) data;
     }
 
     @SuppressWarnings("unchecked")
@@ -58,13 +58,13 @@ public class HrisShiftResult {
     }
 
 
-    public HrisShiftResult withData(Data data) {
+    public HrisShiftResult withData(HrisShiftResultData data) {
         Utils.checkNotNull(data, "data");
         this.data = JsonNullable.of(data);
         return this;
     }
 
-    public HrisShiftResult withData(JsonNullable<? extends Data> data) {
+    public HrisShiftResult withData(JsonNullable<? extends HrisShiftResultData> data) {
         Utils.checkNotNull(data, "data");
         this.data = data;
         return this;
@@ -112,7 +112,7 @@ public class HrisShiftResult {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends Data> data = JsonNullable.undefined();
+        private JsonNullable<? extends HrisShiftResultData> data = JsonNullable.undefined();
 
         private JsonNullable<? extends List<RawResponse>> raw = JsonNullable.undefined();
 
@@ -121,13 +121,13 @@ public class HrisShiftResult {
         }
 
 
-        public Builder data(Data data) {
+        public Builder data(HrisShiftResultData data) {
             Utils.checkNotNull(data, "data");
             this.data = JsonNullable.of(data);
             return this;
         }
 
-        public Builder data(JsonNullable<? extends Data> data) {
+        public Builder data(JsonNullable<? extends HrisShiftResultData> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;

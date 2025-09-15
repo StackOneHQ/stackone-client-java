@@ -124,9 +124,20 @@ import java.util.Optional;
 
 public class Marketing {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncMarketing asyncSDK;
 
     Marketing(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncMarketing(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncMarketing async() {
+        return asyncSDK;
     }
 
     /**

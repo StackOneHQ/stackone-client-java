@@ -72,13 +72,6 @@ public class LmsUpsertContentRequestDto {
     private JsonNullable<String> mobileLaunchContentUrl;
 
     /**
-     * The type of content
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("content_type")
-    private JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType;
-
-    /**
      * The URL of the thumbnail image associated with the content.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -172,6 +165,13 @@ public class LmsUpsertContentRequestDto {
     @JsonProperty("additional_data")
     private JsonNullable<? extends List<AdditionalData>> additionalData;
 
+    /**
+     * The type of content
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("content_type")
+    private JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType;
+
     @JsonCreator
     public LmsUpsertContentRequestDto(
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
@@ -181,7 +181,6 @@ public class LmsUpsertContentRequestDto {
             @JsonProperty("languages") JsonNullable<? extends List<LanguageEnum>> languages,
             @JsonProperty("content_url") JsonNullable<String> contentUrl,
             @JsonProperty("mobile_launch_content_url") JsonNullable<String> mobileLaunchContentUrl,
-            @JsonProperty("content_type") JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType,
             @JsonProperty("cover_url") JsonNullable<String> coverUrl,
             @JsonProperty("active") JsonNullable<? extends LmsUpsertContentRequestDtoActive> active,
             @JsonProperty("duration") JsonNullable<String> duration,
@@ -194,7 +193,8 @@ public class LmsUpsertContentRequestDto {
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
             @JsonProperty("categories") JsonNullable<? extends List<CreateCategoriesApiModel>> categories,
-            @JsonProperty("additional_data") JsonNullable<? extends List<AdditionalData>> additionalData) {
+            @JsonProperty("additional_data") JsonNullable<? extends List<AdditionalData>> additionalData,
+            @JsonProperty("content_type") JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         Utils.checkNotNull(externalReference, "externalReference");
         Utils.checkNotNull(title, "title");
@@ -202,7 +202,6 @@ public class LmsUpsertContentRequestDto {
         Utils.checkNotNull(languages, "languages");
         Utils.checkNotNull(contentUrl, "contentUrl");
         Utils.checkNotNull(mobileLaunchContentUrl, "mobileLaunchContentUrl");
-        Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(coverUrl, "coverUrl");
         Utils.checkNotNull(active, "active");
         Utils.checkNotNull(duration, "duration");
@@ -216,6 +215,7 @@ public class LmsUpsertContentRequestDto {
         Utils.checkNotNull(createdAt, "createdAt");
         Utils.checkNotNull(categories, "categories");
         Utils.checkNotNull(additionalData, "additionalData");
+        Utils.checkNotNull(contentType, "contentType");
         this.unifiedCustomFields = unifiedCustomFields;
         this.externalReference = externalReference;
         this.title = title;
@@ -223,7 +223,6 @@ public class LmsUpsertContentRequestDto {
         this.languages = languages;
         this.contentUrl = contentUrl;
         this.mobileLaunchContentUrl = mobileLaunchContentUrl;
-        this.contentType = contentType;
         this.coverUrl = coverUrl;
         this.active = active;
         this.duration = duration;
@@ -237,6 +236,7 @@ public class LmsUpsertContentRequestDto {
         this.createdAt = createdAt;
         this.categories = categories;
         this.additionalData = additionalData;
+        this.contentType = contentType;
     }
     
     public LmsUpsertContentRequestDto() {
@@ -305,15 +305,6 @@ public class LmsUpsertContentRequestDto {
     @JsonIgnore
     public JsonNullable<String> mobileLaunchContentUrl() {
         return mobileLaunchContentUrl;
-    }
-
-    /**
-     * The type of content
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<LmsUpsertContentRequestDtoContentType> contentType() {
-        return (JsonNullable<LmsUpsertContentRequestDtoContentType>) contentType;
     }
 
     /**
@@ -428,6 +419,15 @@ public class LmsUpsertContentRequestDto {
     @JsonIgnore
     public JsonNullable<List<AdditionalData>> additionalData() {
         return (JsonNullable<List<AdditionalData>>) additionalData;
+    }
+
+    /**
+     * The type of content
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<LmsUpsertContentRequestDtoContentType> contentType() {
+        return (JsonNullable<LmsUpsertContentRequestDtoContentType>) contentType;
     }
 
     public static Builder builder() {
@@ -558,24 +558,6 @@ public class LmsUpsertContentRequestDto {
     public LmsUpsertContentRequestDto withMobileLaunchContentUrl(JsonNullable<String> mobileLaunchContentUrl) {
         Utils.checkNotNull(mobileLaunchContentUrl, "mobileLaunchContentUrl");
         this.mobileLaunchContentUrl = mobileLaunchContentUrl;
-        return this;
-    }
-
-    /**
-     * The type of content
-     */
-    public LmsUpsertContentRequestDto withContentType(LmsUpsertContentRequestDtoContentType contentType) {
-        Utils.checkNotNull(contentType, "contentType");
-        this.contentType = JsonNullable.of(contentType);
-        return this;
-    }
-
-    /**
-     * The type of content
-     */
-    public LmsUpsertContentRequestDto withContentType(JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType) {
-        Utils.checkNotNull(contentType, "contentType");
-        this.contentType = contentType;
         return this;
     }
 
@@ -819,6 +801,24 @@ public class LmsUpsertContentRequestDto {
         return this;
     }
 
+    /**
+     * The type of content
+     */
+    public LmsUpsertContentRequestDto withContentType(LmsUpsertContentRequestDtoContentType contentType) {
+        Utils.checkNotNull(contentType, "contentType");
+        this.contentType = JsonNullable.of(contentType);
+        return this;
+    }
+
+    /**
+     * The type of content
+     */
+    public LmsUpsertContentRequestDto withContentType(JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType) {
+        Utils.checkNotNull(contentType, "contentType");
+        this.contentType = contentType;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -836,7 +836,6 @@ public class LmsUpsertContentRequestDto {
             Utils.enhancedDeepEquals(this.languages, other.languages) &&
             Utils.enhancedDeepEquals(this.contentUrl, other.contentUrl) &&
             Utils.enhancedDeepEquals(this.mobileLaunchContentUrl, other.mobileLaunchContentUrl) &&
-            Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.coverUrl, other.coverUrl) &&
             Utils.enhancedDeepEquals(this.active, other.active) &&
             Utils.enhancedDeepEquals(this.duration, other.duration) &&
@@ -849,7 +848,8 @@ public class LmsUpsertContentRequestDto {
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
             Utils.enhancedDeepEquals(this.categories, other.categories) &&
-            Utils.enhancedDeepEquals(this.additionalData, other.additionalData);
+            Utils.enhancedDeepEquals(this.additionalData, other.additionalData) &&
+            Utils.enhancedDeepEquals(this.contentType, other.contentType);
     }
     
     @Override
@@ -857,11 +857,11 @@ public class LmsUpsertContentRequestDto {
         return Utils.enhancedHash(
             unifiedCustomFields, externalReference, title,
             description, languages, contentUrl,
-            mobileLaunchContentUrl, contentType, coverUrl,
-            active, duration, skills,
-            order, shortDescription, localizations,
-            tags, authors, updatedAt,
-            createdAt, categories, additionalData);
+            mobileLaunchContentUrl, coverUrl, active,
+            duration, skills, order,
+            shortDescription, localizations, tags,
+            authors, updatedAt, createdAt,
+            categories, additionalData, contentType);
     }
     
     @Override
@@ -874,7 +874,6 @@ public class LmsUpsertContentRequestDto {
                 "languages", languages,
                 "contentUrl", contentUrl,
                 "mobileLaunchContentUrl", mobileLaunchContentUrl,
-                "contentType", contentType,
                 "coverUrl", coverUrl,
                 "active", active,
                 "duration", duration,
@@ -887,7 +886,8 @@ public class LmsUpsertContentRequestDto {
                 "updatedAt", updatedAt,
                 "createdAt", createdAt,
                 "categories", categories,
-                "additionalData", additionalData);
+                "additionalData", additionalData,
+                "contentType", contentType);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -906,8 +906,6 @@ public class LmsUpsertContentRequestDto {
         private JsonNullable<String> contentUrl = JsonNullable.undefined();
 
         private JsonNullable<String> mobileLaunchContentUrl = JsonNullable.undefined();
-
-        private JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType = JsonNullable.undefined();
 
         private JsonNullable<String> coverUrl = JsonNullable.undefined();
 
@@ -935,6 +933,8 @@ public class LmsUpsertContentRequestDto {
         private JsonNullable<? extends List<CreateCategoriesApiModel>> categories = JsonNullable.undefined();
 
         private JsonNullable<? extends List<AdditionalData>> additionalData = JsonNullable.undefined();
+
+        private JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -1070,25 +1070,6 @@ public class LmsUpsertContentRequestDto {
         public Builder mobileLaunchContentUrl(JsonNullable<String> mobileLaunchContentUrl) {
             Utils.checkNotNull(mobileLaunchContentUrl, "mobileLaunchContentUrl");
             this.mobileLaunchContentUrl = mobileLaunchContentUrl;
-            return this;
-        }
-
-
-        /**
-         * The type of content
-         */
-        public Builder contentType(LmsUpsertContentRequestDtoContentType contentType) {
-            Utils.checkNotNull(contentType, "contentType");
-            this.contentType = JsonNullable.of(contentType);
-            return this;
-        }
-
-        /**
-         * The type of content
-         */
-        public Builder contentType(JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType) {
-            Utils.checkNotNull(contentType, "contentType");
-            this.contentType = contentType;
             return this;
         }
 
@@ -1345,16 +1326,35 @@ public class LmsUpsertContentRequestDto {
             return this;
         }
 
+
+        /**
+         * The type of content
+         */
+        public Builder contentType(LmsUpsertContentRequestDtoContentType contentType) {
+            Utils.checkNotNull(contentType, "contentType");
+            this.contentType = JsonNullable.of(contentType);
+            return this;
+        }
+
+        /**
+         * The type of content
+         */
+        public Builder contentType(JsonNullable<? extends LmsUpsertContentRequestDtoContentType> contentType) {
+            Utils.checkNotNull(contentType, "contentType");
+            this.contentType = contentType;
+            return this;
+        }
+
         public LmsUpsertContentRequestDto build() {
 
             return new LmsUpsertContentRequestDto(
                 unifiedCustomFields, externalReference, title,
                 description, languages, contentUrl,
-                mobileLaunchContentUrl, contentType, coverUrl,
-                active, duration, skills,
-                order, shortDescription, localizations,
-                tags, authors, updatedAt,
-                createdAt, categories, additionalData);
+                mobileLaunchContentUrl, coverUrl, active,
+                duration, skills, order,
+                shortDescription, localizations, tags,
+                authors, updatedAt, createdAt,
+                categories, additionalData, contentType);
         }
 
     }

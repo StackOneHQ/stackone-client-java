@@ -61,8 +61,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ticketing().listTickets()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListTicketsResponse item) -> {
                    // handle page
@@ -416,8 +416,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ticketing().listUsers()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListUsersResponse item) -> {
                    // handle page
@@ -565,8 +565,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ticketing().listComments()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListCommentsResponse item) -> {
                    // handle page
@@ -790,8 +790,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ticketing().listAttachments()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListAttachmentsResponse item) -> {
                    // handle page
@@ -939,8 +939,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ticketing().listTicketTypes()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListTicketTypesResponse item) -> {
                    // handle page
@@ -1087,8 +1087,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ticketing().listProjects()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListProjectsResponse item) -> {
                    // handle page
@@ -1235,8 +1235,8 @@ public class Application {
                 .filter(JsonNullable.of(null))
                 .build();
 
+
         sdk.ticketing().listProjectComponents()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListProjectComponentsResponse item) -> {
                    // handle page
@@ -1385,8 +1385,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ticketing().listProjectTicketTypes()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListProjectTicketTypesResponse item) -> {
                    // handle page
@@ -1460,8 +1460,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ticketing().listTicketStatuses()
-                .request(req)
                 .callAsStream()
                 .forEach((TicketingListTicketStatusesResponse item) -> {
                    // handle page

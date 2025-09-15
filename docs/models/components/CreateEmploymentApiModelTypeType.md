@@ -1,0 +1,11 @@
+# CreateEmploymentApiModelTypeType
+
+The type of employment (e.g., contractor, permanent)
+
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                      | [JsonNullable\<CreateEmploymentApiModelTypeValue>](../../models/components/CreateEmploymentApiModelTypeValue.md)             | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `sourceValue`                                                                                                                | [JsonNullable\<CreateEmploymentApiModelTypeSourceValue>](../../models/components/CreateEmploymentApiModelTypeSourceValue.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |

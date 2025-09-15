@@ -53,8 +53,8 @@ public class Application {
                 .expand("roles,groups")
                 .build();
 
+
         sdk.iam().listUsers()
-                .request(req)
                 .callAsStream()
                 .forEach((IamListUsersResponse item) -> {
                    // handle page
@@ -354,8 +354,8 @@ public class Application {
                 .expand("policies")
                 .build();
 
+
         sdk.iam().listRoles()
-                .request(req)
                 .callAsStream()
                 .forEach((IamListRolesResponse item) -> {
                    // handle page
@@ -503,8 +503,8 @@ public class Application {
                 .expand("roles")
                 .build();
 
+
         sdk.iam().listGroups()
-                .request(req)
                 .callAsStream()
                 .forEach((IamListGroupsResponse item) -> {
                    // handle page
@@ -652,8 +652,8 @@ public class Application {
                 .expand("permissions")
                 .build();
 
+
         sdk.iam().listPolicies()
-                .request(req)
                 .callAsStream()
                 .forEach((IamListPoliciesResponse item) -> {
                    // handle page

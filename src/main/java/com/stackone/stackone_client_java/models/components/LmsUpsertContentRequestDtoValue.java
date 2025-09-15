@@ -50,6 +50,11 @@ public class LmsUpsertContentRequestDtoValue {
     public static final LmsUpsertContentRequestDtoValue DOCUMENT = new LmsUpsertContentRequestDtoValue("document");
     public static final LmsUpsertContentRequestDtoValue AUDIO = new LmsUpsertContentRequestDtoValue("audio");
     public static final LmsUpsertContentRequestDtoValue ARTICLE = new LmsUpsertContentRequestDtoValue("article");
+    public static final LmsUpsertContentRequestDtoValue BOOK = new LmsUpsertContentRequestDtoValue("book");
+    public static final LmsUpsertContentRequestDtoValue EVENT = new LmsUpsertContentRequestDtoValue("event");
+    public static final LmsUpsertContentRequestDtoValue COURSE = new LmsUpsertContentRequestDtoValue("course");
+    public static final LmsUpsertContentRequestDtoValue COLLECTION = new LmsUpsertContentRequestDtoValue("collection");
+    public static final LmsUpsertContentRequestDtoValue INTERACTIVE = new LmsUpsertContentRequestDtoValue("interactive");
     public static final LmsUpsertContentRequestDtoValue UNMAPPED_VALUE = new LmsUpsertContentRequestDtoValue("unmapped_value");
 
     // This map will grow whenever a Color gets created with a new
@@ -127,6 +132,11 @@ public class LmsUpsertContentRequestDtoValue {
         map.put("document", DOCUMENT);
         map.put("audio", AUDIO);
         map.put("article", ARTICLE);
+        map.put("book", BOOK);
+        map.put("event", EVENT);
+        map.put("course", COURSE);
+        map.put("collection", COLLECTION);
+        map.put("interactive", INTERACTIVE);
         map.put("unmapped_value", UNMAPPED_VALUE);
         return map;
     }
@@ -138,6 +148,11 @@ public class LmsUpsertContentRequestDtoValue {
         map.put("document", LmsUpsertContentRequestDtoValueEnum.DOCUMENT);
         map.put("audio", LmsUpsertContentRequestDtoValueEnum.AUDIO);
         map.put("article", LmsUpsertContentRequestDtoValueEnum.ARTICLE);
+        map.put("book", LmsUpsertContentRequestDtoValueEnum.BOOK);
+        map.put("event", LmsUpsertContentRequestDtoValueEnum.EVENT);
+        map.put("course", LmsUpsertContentRequestDtoValueEnum.COURSE);
+        map.put("collection", LmsUpsertContentRequestDtoValueEnum.COLLECTION);
+        map.put("interactive", LmsUpsertContentRequestDtoValueEnum.INTERACTIVE);
         map.put("unmapped_value", LmsUpsertContentRequestDtoValueEnum.UNMAPPED_VALUE);
         return map;
     }
@@ -179,6 +194,11 @@ public class LmsUpsertContentRequestDtoValue {
         DOCUMENT("document"),
         AUDIO("audio"),
         ARTICLE("article"),
+        BOOK("book"),
+        EVENT("event"),
+        COURSE("course"),
+        COLLECTION("collection"),
+        INTERACTIVE("interactive"),
         UNMAPPED_VALUE("unmapped_value"),;
 
         private final String value;

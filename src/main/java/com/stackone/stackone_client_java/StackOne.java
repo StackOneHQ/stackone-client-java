@@ -50,6 +50,16 @@ public class StackOne {
      */
     private final Proxy proxy;
 
+    /**
+     * Model Context Protocol endpoint.
+     */
+    private final Mcp mcp;
+
+    /**
+     * Retrieve Actions metadata and definitions.
+     */
+    private final Actions actions;
+
 
     private final Hris hris;
 
@@ -118,6 +128,20 @@ public class StackOne {
         return proxy;
     }
 
+    /**
+     * Model Context Protocol endpoint.
+     */
+    public Mcp mcp() {
+        return mcp;
+    }
+
+    /**
+     * Retrieve Actions metadata and definitions.
+     */
+    public Actions actions() {
+        return actions;
+    }
+
 
     public Hris hris() {
         return hris;
@@ -174,6 +198,7 @@ public class StackOne {
     }
 
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncStackOne asyncSDK;
 
     /**
      * The Builder class allows the configuration of a new instance of the SDK.
@@ -316,6 +341,8 @@ public class StackOne {
         this.requestLogs = new RequestLogs(sdkConfiguration);
         this.connectors = new Connectors(sdkConfiguration);
         this.proxy = new Proxy(sdkConfiguration);
+        this.mcp = new Mcp(sdkConfiguration);
+        this.actions = new Actions(sdkConfiguration);
         this.hris = new Hris(sdkConfiguration);
         this.ats = new Ats(sdkConfiguration);
         this.crm = new Crm(sdkConfiguration);
@@ -327,5 +354,16 @@ public class StackOne {
         this.screening = new Screening(sdkConfiguration);
         this.messaging = new Messaging(sdkConfiguration);
         this.accounting = new Accounting(sdkConfiguration);
+        this.asyncSDK = new AsyncStackOne(this, sdkConfiguration);
     }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncStackOne async() {
+        return asyncSDK;
+    }
+
 }

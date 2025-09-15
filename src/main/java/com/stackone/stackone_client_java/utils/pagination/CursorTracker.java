@@ -27,7 +27,7 @@ public class CursorTracker<ProgressParamT> implements ProgressTrackerStrategy<Pr
     @Override
     public boolean advance(ReadContext respJson) {
         ProgressParamT cursor = respJson.read(cursorExpression, cursorType);
-        if (cursor == null) {
+        if (cursor == null || (cursorType == String.class && ((String) cursor).trim().isEmpty())) {
             return false;
         }
         currentCursor = cursor;

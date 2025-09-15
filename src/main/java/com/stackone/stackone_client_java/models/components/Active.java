@@ -36,16 +36,16 @@ public class Active {
         return new Active(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
     }
 
-    public static Active of(Two value) {
+    public static Active of(Active2 value) {
         Utils.checkNotNull(value, "value");
-        return new Active(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Two>(){}));
+        return new Active(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Active2>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code boolean}</li>
-     * <li>{@code com.stackone.stackone_client_java.models.components.Two}</li>
+     * <li>{@code com.stackone.stackone_client_java.models.components.Active2}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -85,7 +85,7 @@ public class Active {
 
         public _Deserializer() {
             super(Active.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Two>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Active2>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
         }
     }

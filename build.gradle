@@ -105,7 +105,7 @@ publishing {
             // https://github.com/gradle/gradle/issues/18619
             groupId = "com.stackone"
             artifactId = "stackone-client-java"
-            version = "0.12.1"
+            version = "0.13.0"
 
             from components.java
 
@@ -162,6 +162,7 @@ dependencies {
     api('org.openapitools:jackson-databind-nullable:0.2.6') {exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'}
     implementation 'commons-io:commons-io:2.18.0'
     implementation 'com.jayway.jsonpath:json-path:2.9.0'
+    api 'org.reactivestreams:reactive-streams:1.0.4'
 }
 
 apply from: 'build-extras.gradle'

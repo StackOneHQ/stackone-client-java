@@ -16,12 +16,13 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.12.1
+  version: 0.13.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: stackone-client-java
@@ -32,7 +33,6 @@ java:
   companyName: StackOne
   companyURL: www.stackone.com
   defaultErrorName: SDKError
-  enableAsync: false
   enableCustomCodeRegions: false
   enableStreamingUploads: false
   flattenGlobalSecurity: true

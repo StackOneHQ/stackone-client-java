@@ -41,8 +41,10 @@
 * [getJobCustomFieldDefinition](#getjobcustomfielddefinition) - Get Job Custom Field Definition
 * [listDepartments](#listdepartments) - List Departments
 * [getDepartment](#getdepartment) - Get Department
-* [listInterviewStages](#listinterviewstages) - List Interview Stages
-* [getInterviewStage](#getinterviewstage) - Get Interview Stage
+* [~~listInterviewStages~~](#listinterviewstages) - List Interview Stages :warning: **Deprecated**
+* [~~getInterviewStage~~](#getinterviewstage) - Get Interview Stage :warning: **Deprecated**
+* [listApplicationStages](#listapplicationstages) - List Application Stages
+* [getApplicationStage](#getapplicationstage) - Get Application Stage
 * [listInterviews](#listinterviews) - List Interviews
 * [getInterview](#getinterview) - Get Interview
 * [listJobs](#listjobs) - List Jobs
@@ -117,8 +119,8 @@ public class Application {
                 .include("attachments,custom_fields")
                 .build();
 
+
         sdk.ats().listApplications()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationsResponse item) -> {
                    // handle page
@@ -492,8 +494,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listApplicationsOffers()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationsOffersResponse item) -> {
                    // handle page
@@ -794,8 +796,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listApplicationScorecards()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationScorecardsResponse item) -> {
                    // handle page
@@ -944,8 +946,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listApplicationChanges()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationChangesResponse item) -> {
                    // handle page
@@ -1020,8 +1022,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listApplicationNotes()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationNotesResponse item) -> {
                    // handle page
@@ -1340,8 +1342,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listApplicationsScheduledInterviews()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationsScheduledInterviewsResponse item) -> {
                    // handle page
@@ -1642,14 +1644,14 @@ public class Application {
         AtsListApplicationDocumentsRequest req = AtsListApplicationDocumentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
+                .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .filter(AtsListApplicationDocumentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
+
         sdk.ats().listApplicationDocuments()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationDocumentsResponse item) -> {
                    // handle page
@@ -1719,7 +1721,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
+                .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .build();
 
         AtsGetApplicationDocumentResponse res = sdk.ats().getApplicationDocument()
@@ -1799,8 +1801,8 @@ public class Application {
                 .include("custom_fields")
                 .build();
 
+
         sdk.ats().listCandidates()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListCandidatesResponse item) -> {
                    // handle page
@@ -2158,8 +2160,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listCandidateNotes()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListCandidateNotesResponse item) -> {
                    // handle page
@@ -2390,8 +2392,8 @@ public class Application {
                 .filter(JsonNullable.of(null))
                 .build();
 
+
         sdk.ats().listApplicationCustomFieldDefinitions()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationCustomFieldDefinitionsResponse item) -> {
                    // handle page
@@ -2540,8 +2542,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listCandidateCustomFieldDefinitions()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListCandidateCustomFieldDefinitionsResponse item) -> {
                    // handle page
@@ -2691,8 +2693,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listJobCustomFieldDefinitions()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListJobCustomFieldDefinitionsResponse item) -> {
                    // handle page
@@ -2842,8 +2844,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listDepartments()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListDepartmentsResponse item) -> {
                    // handle page
@@ -2954,9 +2956,11 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## listInterviewStages
+## ~~listInterviewStages~~
 
 List Interview Stages
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -2990,8 +2994,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listInterviewStages()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListInterviewStagesResponse item) -> {
                    // handle page
@@ -3029,9 +3033,11 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
-## getInterviewStage
+## ~~getInterviewStage~~
 
 Get Interview Stage
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -3102,6 +3108,154 @@ public class Application {
 | models/errors/BadGatewayResponse          | 502                                       | application/json                          |
 | models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
 
+## listApplicationStages
+
+List Application Stages
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="ats_list_application_stages" method="get" path="/unified/ats/application_stages" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.*;
+import java.lang.Exception;
+import java.time.OffsetDateTime;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        AtsListApplicationStagesRequest req = AtsListApplicationStagesRequest.builder()
+                .xAccountId("<id>")
+                .fields("id,remote_id,name,order,created_at,updated_at")
+                .filter(AtsListApplicationStagesQueryParamFilter.builder()
+                    .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .build())
+                .build();
+
+
+        sdk.ats().listApplicationStages()
+                .callAsStream()
+                .forEach((AtsListApplicationStagesResponse item) -> {
+                   // handle page
+                });
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [AtsListApplicationStagesRequest](../../models/operations/AtsListApplicationStagesRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+
+### Response
+
+**[AtsListApplicationStagesResponse](../../models/operations/AtsListApplicationStagesResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## getApplicationStage
+
+Get Application Stage
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="ats_get_application_stage" method="get" path="/unified/ats/application_stages/{id}" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationStageRequest;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationStageResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        AtsGetApplicationStageRequest req = AtsGetApplicationStageRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .fields("id,remote_id,name,order,created_at,updated_at")
+                .build();
+
+        AtsGetApplicationStageResponse res = sdk.ats().getApplicationStage()
+                .request(req)
+                .call();
+
+        if (res.interviewStageResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [AtsGetApplicationStageRequest](../../models/operations/AtsGetApplicationStageRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+
+### Response
+
+**[AtsGetApplicationStageResponse](../../models/operations/AtsGetApplicationStageResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
 ## listInterviews
 
 List Interviews
@@ -3139,8 +3293,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listInterviews()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListInterviewsResponse item) -> {
                    // handle page
@@ -3290,8 +3444,8 @@ public class Application {
                 .include("custom_fields")
                 .build();
 
+
         sdk.ats().listJobs()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListJobsResponse item) -> {
                    // handle page
@@ -3486,8 +3640,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listJobApplicationStages()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListJobApplicationStagesResponse item) -> {
                    // handle page
@@ -3814,8 +3968,8 @@ public class Application {
                 .filter(JsonNullable.of(null))
                 .build();
 
+
         sdk.ats().listLists()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListListsResponse item) -> {
                    // handle page
@@ -3962,8 +4116,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listLocations()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListLocationsResponse item) -> {
                    // handle page
@@ -4110,8 +4264,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listRejectedReasons()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListRejectedReasonsResponse item) -> {
                    // handle page
@@ -4257,8 +4411,8 @@ public class Application {
                 .filter(JsonNullable.of(null))
                 .build();
 
+
         sdk.ats().listUsers()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListUsersResponse item) -> {
                    // handle page
@@ -4407,8 +4561,8 @@ public class Application {
                 .include("questionnaires")
                 .build();
 
+
         sdk.ats().listJobPostings()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListJobPostingsResponse item) -> {
                    // handle page
@@ -4556,8 +4710,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listOffers()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListOffersResponse item) -> {
                    // handle page
@@ -4788,8 +4942,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listAssessmentsPackages()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListAssessmentsPackagesResponse item) -> {
                    // handle page
@@ -5162,8 +5316,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listBackgroundCheckPackages()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListBackgroundCheckPackagesResponse item) -> {
                    // handle page
@@ -5767,8 +5921,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.ats().listApplicationDocumentCategories()
-                .request(req)
                 .callAsStream()
                 .forEach((AtsListApplicationDocumentCategoriesResponse item) -> {
                    // handle page

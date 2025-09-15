@@ -55,9 +55,20 @@ import java.util.Optional;
 
 public class Accounting {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncAccounting asyncSDK;
 
     Accounting(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncAccounting(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncAccounting async() {
+        return asyncSDK;
     }
 
     /**

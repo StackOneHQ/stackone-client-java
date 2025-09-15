@@ -46,8 +46,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.screening().listScreeningPackages()
-                .request(req)
                 .callAsStream()
                 .forEach((ScreeningListScreeningPackagesResponse item) -> {
                    // handle page

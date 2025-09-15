@@ -31,9 +31,20 @@ import java.util.Optional;
 
 public class Screening {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncScreening asyncSDK;
 
     Screening(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncScreening(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncScreening async() {
+        return asyncSDK;
     }
 
     /**

@@ -69,6 +69,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
+import com.stackone.stackone_client_java.models.errors.UncheckedSDKError;
+
+
 public final class Utils {
     
     private Utils() {
@@ -1596,5 +1599,21 @@ public final class Utils {
             // Fallback: treat as double
             return BigDecimal.valueOf(number.doubleValue());
         }
+    }
+
+    /**
+     * Creates a failed CompletableFuture with an async API exception.
+     * Uses the Blob to read the response body asynchronously.
+     */public static <T> CompletableFuture<T> createAsyncApiError(
+            HttpResponse<com.stackone.stackone_client_java.utils.Blob> response,
+            String reason) {
+        return response.body().toByteArray()
+                .thenApply(bodyBytes -> {
+                    throw new UncheckedSDKError(
+                            response,
+                            response.statusCode(),
+                            reason,
+                            bodyBytes);
+                });
     }
 }

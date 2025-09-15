@@ -3,6 +3,7 @@
  */
 package com.stackone.stackone_client_java;
 
+import com.stackone.stackone_client_java.utils.AsyncHooks;
 import com.stackone.stackone_client_java.utils.HTTPClient;
 import com.stackone.stackone_client_java.utils.Hooks;
 import com.stackone.stackone_client_java.utils.RetryConfig;
@@ -10,13 +11,15 @@ import com.stackone.stackone_client_java.utils.SpeakeasyHTTPClient;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.String;
 import java.util.Optional;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class SDKConfiguration {
 
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "1.0.0";
-    public static final String SDK_VERSION = "0.12.1";
-    public static final String GEN_VERSION = "2.687.13";
+    public static final String SDK_VERSION = "0.13.0";
+    public static final String GEN_VERSION = "2.698.4";
     private static final String BASE_PACKAGE = "com.stackone.stackone_client_java";
     public static final String USER_AGENT = 
             String.format("speakeasy-sdk/%s %s %s %s %s",
@@ -112,5 +115,26 @@ public class SDKConfiguration {
     public void setRetryConfig(Optional<RetryConfig> retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = retryConfig;
+    }
+    private ScheduledExecutorService retryScheduler = Executors.newSingleThreadScheduledExecutor();
+    
+    public ScheduledExecutorService retryScheduler() {
+        return retryScheduler;
+    }
+
+    public void setAsyncRetryScheduler(ScheduledExecutorService retryScheduler) {
+        Utils.checkNotNull(retryScheduler, "retryScheduler");
+        this.retryScheduler = retryScheduler;
+    }
+
+    private AsyncHooks _asyncHooks = new AsyncHooks();
+
+    public AsyncHooks asyncHooks() {
+        return _asyncHooks;
+    }
+
+    public void setAsyncHooks(AsyncHooks asyncHooks) {
+        Utils.checkNotNull(asyncHooks, "asyncHooks");
+        this._asyncHooks = asyncHooks;
     }
 }

@@ -35,7 +35,7 @@ public class ProxyRequestBody {
     private JsonNullable<? extends Method> method;
 
     /**
-     * The path of the request including any query paramters
+     * The path of the request including any query parameters
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("path")
@@ -97,7 +97,7 @@ public class ProxyRequestBody {
     }
 
     /**
-     * The path of the request including any query paramters
+     * The path of the request including any query parameters
      */
     @JsonIgnore
     public JsonNullable<String> path() {
@@ -164,7 +164,7 @@ public class ProxyRequestBody {
     }
 
     /**
-     * The path of the request including any query paramters
+     * The path of the request including any query parameters
      */
     public ProxyRequestBody withPath(String path) {
         Utils.checkNotNull(path, "path");
@@ -173,7 +173,7 @@ public class ProxyRequestBody {
     }
 
     /**
-     * The path of the request including any query paramters
+     * The path of the request including any query parameters
      */
     public ProxyRequestBody withPath(JsonNullable<String> path) {
         Utils.checkNotNull(path, "path");
@@ -308,7 +308,7 @@ public class ProxyRequestBody {
 
 
         /**
-         * The path of the request including any query paramters
+         * The path of the request including any query parameters
          */
         public Builder path(String path) {
             Utils.checkNotNull(path, "path");
@@ -317,7 +317,7 @@ public class ProxyRequestBody {
         }
 
         /**
-         * The path of the request including any query paramters
+         * The path of the request including any query parameters
          */
         public Builder path(JsonNullable<String> path) {
             Utils.checkNotNull(path, "path");

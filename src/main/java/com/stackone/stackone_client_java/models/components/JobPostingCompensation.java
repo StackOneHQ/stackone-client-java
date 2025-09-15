@@ -18,8 +18,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 public class JobPostingCompensation {
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("name")
-    private JsonNullable<String> name;
+    @JsonProperty("title")
+    private JsonNullable<String> title;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -48,40 +48,40 @@ public class JobPostingCompensation {
 
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("min_value")
-    private JsonNullable<String> minValue;
+    @JsonProperty("min_value_range")
+    private JsonNullable<String> minValueRange;
 
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("max_value")
-    private JsonNullable<String> maxValue;
+    @JsonProperty("max_value_range")
+    private JsonNullable<String> maxValueRange;
 
     @JsonCreator
     public JobPostingCompensation(
-            @JsonProperty("name") JsonNullable<String> name,
+            @JsonProperty("title") JsonNullable<String> title,
             @JsonProperty("type") JsonNullable<? extends JobPostingCompensationType> type,
             @JsonProperty("pay_period") JsonNullable<? extends JobPostingCompensationPayPeriod> payPeriod,
             @JsonProperty("pay_frequency") JsonNullable<? extends JobPostingCompensationPayFrequency> payFrequency,
             @JsonProperty("currency") JsonNullable<String> currency,
             @JsonProperty("value") JsonNullable<String> value,
-            @JsonProperty("min_value") JsonNullable<String> minValue,
-            @JsonProperty("max_value") JsonNullable<String> maxValue) {
-        Utils.checkNotNull(name, "name");
+            @JsonProperty("min_value_range") JsonNullable<String> minValueRange,
+            @JsonProperty("max_value_range") JsonNullable<String> maxValueRange) {
+        Utils.checkNotNull(title, "title");
         Utils.checkNotNull(type, "type");
         Utils.checkNotNull(payPeriod, "payPeriod");
         Utils.checkNotNull(payFrequency, "payFrequency");
         Utils.checkNotNull(currency, "currency");
         Utils.checkNotNull(value, "value");
-        Utils.checkNotNull(minValue, "minValue");
-        Utils.checkNotNull(maxValue, "maxValue");
-        this.name = name;
+        Utils.checkNotNull(minValueRange, "minValueRange");
+        Utils.checkNotNull(maxValueRange, "maxValueRange");
+        this.title = title;
         this.type = type;
         this.payPeriod = payPeriod;
         this.payFrequency = payFrequency;
         this.currency = currency;
         this.value = value;
-        this.minValue = minValue;
-        this.maxValue = maxValue;
+        this.minValueRange = minValueRange;
+        this.maxValueRange = maxValueRange;
     }
     
     public JobPostingCompensation() {
@@ -91,8 +91,8 @@ public class JobPostingCompensation {
     }
 
     @JsonIgnore
-    public JsonNullable<String> name() {
-        return name;
+    public JsonNullable<String> title() {
+        return title;
     }
 
     @SuppressWarnings("unchecked")
@@ -124,13 +124,13 @@ public class JobPostingCompensation {
     }
 
     @JsonIgnore
-    public JsonNullable<String> minValue() {
-        return minValue;
+    public JsonNullable<String> minValueRange() {
+        return minValueRange;
     }
 
     @JsonIgnore
-    public JsonNullable<String> maxValue() {
-        return maxValue;
+    public JsonNullable<String> maxValueRange() {
+        return maxValueRange;
     }
 
     public static Builder builder() {
@@ -138,15 +138,15 @@ public class JobPostingCompensation {
     }
 
 
-    public JobPostingCompensation withName(String name) {
-        Utils.checkNotNull(name, "name");
-        this.name = JsonNullable.of(name);
+    public JobPostingCompensation withTitle(String title) {
+        Utils.checkNotNull(title, "title");
+        this.title = JsonNullable.of(title);
         return this;
     }
 
-    public JobPostingCompensation withName(JsonNullable<String> name) {
-        Utils.checkNotNull(name, "name");
-        this.name = name;
+    public JobPostingCompensation withTitle(JsonNullable<String> title) {
+        Utils.checkNotNull(title, "title");
+        this.title = title;
         return this;
     }
 
@@ -210,27 +210,27 @@ public class JobPostingCompensation {
         return this;
     }
 
-    public JobPostingCompensation withMinValue(String minValue) {
-        Utils.checkNotNull(minValue, "minValue");
-        this.minValue = JsonNullable.of(minValue);
+    public JobPostingCompensation withMinValueRange(String minValueRange) {
+        Utils.checkNotNull(minValueRange, "minValueRange");
+        this.minValueRange = JsonNullable.of(minValueRange);
         return this;
     }
 
-    public JobPostingCompensation withMinValue(JsonNullable<String> minValue) {
-        Utils.checkNotNull(minValue, "minValue");
-        this.minValue = minValue;
+    public JobPostingCompensation withMinValueRange(JsonNullable<String> minValueRange) {
+        Utils.checkNotNull(minValueRange, "minValueRange");
+        this.minValueRange = minValueRange;
         return this;
     }
 
-    public JobPostingCompensation withMaxValue(String maxValue) {
-        Utils.checkNotNull(maxValue, "maxValue");
-        this.maxValue = JsonNullable.of(maxValue);
+    public JobPostingCompensation withMaxValueRange(String maxValueRange) {
+        Utils.checkNotNull(maxValueRange, "maxValueRange");
+        this.maxValueRange = JsonNullable.of(maxValueRange);
         return this;
     }
 
-    public JobPostingCompensation withMaxValue(JsonNullable<String> maxValue) {
-        Utils.checkNotNull(maxValue, "maxValue");
-        this.maxValue = maxValue;
+    public JobPostingCompensation withMaxValueRange(JsonNullable<String> maxValueRange) {
+        Utils.checkNotNull(maxValueRange, "maxValueRange");
+        this.maxValueRange = maxValueRange;
         return this;
     }
 
@@ -244,41 +244,41 @@ public class JobPostingCompensation {
         }
         JobPostingCompensation other = (JobPostingCompensation) o;
         return 
-            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
             Utils.enhancedDeepEquals(this.type, other.type) &&
             Utils.enhancedDeepEquals(this.payPeriod, other.payPeriod) &&
             Utils.enhancedDeepEquals(this.payFrequency, other.payFrequency) &&
             Utils.enhancedDeepEquals(this.currency, other.currency) &&
             Utils.enhancedDeepEquals(this.value, other.value) &&
-            Utils.enhancedDeepEquals(this.minValue, other.minValue) &&
-            Utils.enhancedDeepEquals(this.maxValue, other.maxValue);
+            Utils.enhancedDeepEquals(this.minValueRange, other.minValueRange) &&
+            Utils.enhancedDeepEquals(this.maxValueRange, other.maxValueRange);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            name, type, payPeriod,
+            title, type, payPeriod,
             payFrequency, currency, value,
-            minValue, maxValue);
+            minValueRange, maxValueRange);
     }
     
     @Override
     public String toString() {
         return Utils.toString(JobPostingCompensation.class,
-                "name", name,
+                "title", title,
                 "type", type,
                 "payPeriod", payPeriod,
                 "payFrequency", payFrequency,
                 "currency", currency,
                 "value", value,
-                "minValue", minValue,
-                "maxValue", maxValue);
+                "minValueRange", minValueRange,
+                "maxValueRange", maxValueRange);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<String> name = JsonNullable.undefined();
+        private JsonNullable<String> title = JsonNullable.undefined();
 
         private JsonNullable<? extends JobPostingCompensationType> type = JsonNullable.undefined();
 
@@ -290,24 +290,24 @@ public class JobPostingCompensation {
 
         private JsonNullable<String> value = JsonNullable.undefined();
 
-        private JsonNullable<String> minValue = JsonNullable.undefined();
+        private JsonNullable<String> minValueRange = JsonNullable.undefined();
 
-        private JsonNullable<String> maxValue = JsonNullable.undefined();
+        private JsonNullable<String> maxValueRange = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
         }
 
 
-        public Builder name(String name) {
-            Utils.checkNotNull(name, "name");
-            this.name = JsonNullable.of(name);
+        public Builder title(String title) {
+            Utils.checkNotNull(title, "title");
+            this.title = JsonNullable.of(title);
             return this;
         }
 
-        public Builder name(JsonNullable<String> name) {
-            Utils.checkNotNull(name, "name");
-            this.name = name;
+        public Builder title(JsonNullable<String> title) {
+            Utils.checkNotNull(title, "title");
+            this.title = title;
             return this;
         }
 
@@ -377,37 +377,37 @@ public class JobPostingCompensation {
         }
 
 
-        public Builder minValue(String minValue) {
-            Utils.checkNotNull(minValue, "minValue");
-            this.minValue = JsonNullable.of(minValue);
+        public Builder minValueRange(String minValueRange) {
+            Utils.checkNotNull(minValueRange, "minValueRange");
+            this.minValueRange = JsonNullable.of(minValueRange);
             return this;
         }
 
-        public Builder minValue(JsonNullable<String> minValue) {
-            Utils.checkNotNull(minValue, "minValue");
-            this.minValue = minValue;
+        public Builder minValueRange(JsonNullable<String> minValueRange) {
+            Utils.checkNotNull(minValueRange, "minValueRange");
+            this.minValueRange = minValueRange;
             return this;
         }
 
 
-        public Builder maxValue(String maxValue) {
-            Utils.checkNotNull(maxValue, "maxValue");
-            this.maxValue = JsonNullable.of(maxValue);
+        public Builder maxValueRange(String maxValueRange) {
+            Utils.checkNotNull(maxValueRange, "maxValueRange");
+            this.maxValueRange = JsonNullable.of(maxValueRange);
             return this;
         }
 
-        public Builder maxValue(JsonNullable<String> maxValue) {
-            Utils.checkNotNull(maxValue, "maxValue");
-            this.maxValue = maxValue;
+        public Builder maxValueRange(JsonNullable<String> maxValueRange) {
+            Utils.checkNotNull(maxValueRange, "maxValueRange");
+            this.maxValueRange = maxValueRange;
             return this;
         }
 
         public JobPostingCompensation build() {
 
             return new JobPostingCompensation(
-                name, type, payPeriod,
+                title, type, payPeriod,
                 payFrequency, currency, value,
-                minValue, maxValue);
+                minValueRange, maxValueRange);
         }
 
     }

@@ -45,13 +45,6 @@ public class IamUserAvatar {
     private JsonNullable<String> name;
 
     /**
-     * The path where the file is stored
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("path")
-    private JsonNullable<String> path;
-
-    /**
      * The category of the file
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -108,7 +101,6 @@ public class IamUserAvatar {
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("name") JsonNullable<String> name,
-            @JsonProperty("path") JsonNullable<String> path,
             @JsonProperty("category") JsonNullable<? extends IamUserCategory> category,
             @JsonProperty("contents") JsonNullable<? extends List<Content>> contents,
             @JsonProperty("category_id") JsonNullable<String> categoryId,
@@ -119,7 +111,6 @@ public class IamUserAvatar {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(name, "name");
-        Utils.checkNotNull(path, "path");
         Utils.checkNotNull(category, "category");
         Utils.checkNotNull(contents, "contents");
         Utils.checkNotNull(categoryId, "categoryId");
@@ -130,7 +121,6 @@ public class IamUserAvatar {
         this.id = id;
         this.remoteId = remoteId;
         this.name = name;
-        this.path = path;
         this.category = category;
         this.contents = contents;
         this.categoryId = categoryId;
@@ -144,7 +134,7 @@ public class IamUserAvatar {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined());
     }
 
     /**
@@ -169,14 +159,6 @@ public class IamUserAvatar {
     @JsonIgnore
     public JsonNullable<String> name() {
         return name;
-    }
-
-    /**
-     * The path where the file is stored
-     */
-    @JsonIgnore
-    public JsonNullable<String> path() {
-        return path;
     }
 
     /**
@@ -297,24 +279,6 @@ public class IamUserAvatar {
     public IamUserAvatar withName(JsonNullable<String> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
-        return this;
-    }
-
-    /**
-     * The path where the file is stored
-     */
-    public IamUserAvatar withPath(String path) {
-        Utils.checkNotNull(path, "path");
-        this.path = JsonNullable.of(path);
-        return this;
-    }
-
-    /**
-     * The path where the file is stored
-     */
-    public IamUserAvatar withPath(JsonNullable<String> path) {
-        Utils.checkNotNull(path, "path");
-        this.path = path;
         return this;
     }
 
@@ -463,7 +427,6 @@ public class IamUserAvatar {
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
-            Utils.enhancedDeepEquals(this.path, other.path) &&
             Utils.enhancedDeepEquals(this.category, other.category) &&
             Utils.enhancedDeepEquals(this.contents, other.contents) &&
             Utils.enhancedDeepEquals(this.categoryId, other.categoryId) &&
@@ -477,9 +440,9 @@ public class IamUserAvatar {
     public int hashCode() {
         return Utils.enhancedHash(
             id, remoteId, name,
-            path, category, contents,
-            categoryId, createdAt, updatedAt,
-            remoteUrl, fileFormat);
+            category, contents, categoryId,
+            createdAt, updatedAt, remoteUrl,
+            fileFormat);
     }
     
     @Override
@@ -488,7 +451,6 @@ public class IamUserAvatar {
                 "id", id,
                 "remoteId", remoteId,
                 "name", name,
-                "path", path,
                 "category", category,
                 "contents", contents,
                 "categoryId", categoryId,
@@ -506,8 +468,6 @@ public class IamUserAvatar {
         private JsonNullable<String> remoteId = JsonNullable.undefined();
 
         private JsonNullable<String> name = JsonNullable.undefined();
-
-        private JsonNullable<String> path = JsonNullable.undefined();
 
         private JsonNullable<? extends IamUserCategory> category = JsonNullable.undefined();
 
@@ -582,25 +542,6 @@ public class IamUserAvatar {
         public Builder name(JsonNullable<String> name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
-            return this;
-        }
-
-
-        /**
-         * The path where the file is stored
-         */
-        public Builder path(String path) {
-            Utils.checkNotNull(path, "path");
-            this.path = JsonNullable.of(path);
-            return this;
-        }
-
-        /**
-         * The path where the file is stored
-         */
-        public Builder path(JsonNullable<String> path) {
-            Utils.checkNotNull(path, "path");
-            this.path = path;
             return this;
         }
 
@@ -747,9 +688,9 @@ public class IamUserAvatar {
 
             return new IamUserAvatar(
                 id, remoteId, name,
-                path, category, contents,
-                categoryId, createdAt, updatedAt,
-                remoteUrl, fileFormat);
+                category, contents, categoryId,
+                createdAt, updatedAt, remoteUrl,
+                fileFormat);
         }
 
     }

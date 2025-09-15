@@ -22,9 +22,20 @@ import java.util.Optional;
  */
 public class ConnectSessions {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncConnectSessions asyncSDK;
 
     ConnectSessions(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncConnectSessions(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncConnectSessions async() {
+        return asyncSDK;
     }
 
     /**

@@ -32,8 +32,8 @@ public class Application {
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
 
+
         sdk.hris().listEmployees()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeesResponse item) -> {
                    // handle page

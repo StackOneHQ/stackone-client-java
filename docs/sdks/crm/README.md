@@ -53,8 +53,8 @@ public class Application {
                 .include("custom_fields")
                 .build();
 
+
         sdk.crm().listContacts()
-                .request(req)
                 .callAsStream()
                 .forEach((CrmListContactsResponse item) -> {
                    // handle page
@@ -394,8 +394,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.crm().listAccounts()
-                .request(req)
                 .callAsStream()
                 .forEach((CrmListAccountsResponse item) -> {
                    // handle page
@@ -542,8 +542,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.crm().listLists()
-                .request(req)
                 .callAsStream()
                 .forEach((CrmListListsResponse item) -> {
                    // handle page
@@ -690,8 +690,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.crm().listContactCustomFieldDefinitions()
-                .request(req)
                 .callAsStream()
                 .forEach((CrmListContactCustomFieldDefinitionsResponse item) -> {
                    // handle page

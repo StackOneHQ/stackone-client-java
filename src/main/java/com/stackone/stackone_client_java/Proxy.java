@@ -20,9 +20,20 @@ import java.util.Optional;
  */
 public class Proxy {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncProxy asyncSDK;
 
     Proxy(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncProxy(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncProxy async() {
+        return asyncSDK;
     }
 
     /**

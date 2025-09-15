@@ -66,8 +66,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.lms().listCourses()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListCoursesResponse item) -> {
                    // handle page
@@ -217,8 +217,8 @@ public class Application {
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                 .build();
 
+
         sdk.lms().listUserAssignments()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListUserAssignmentsResponse item) -> {
                    // handle page
@@ -575,8 +575,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.lms().listContent()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListContentResponse item) -> {
                    // handle page
@@ -977,8 +977,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.lms().listUserCompletions()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListUserCompletionsResponse item) -> {
                    // handle page
@@ -1275,8 +1275,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.lms().listCompletions()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListCompletionsResponse item) -> {
                    // handle page
@@ -1495,8 +1495,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.lms().listCategories()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListCategoriesResponse item) -> {
                    // handle page
@@ -1569,8 +1569,8 @@ public class Application {
                 .filter(JsonNullable.of(null))
                 .build();
 
+
         sdk.lms().listUsers()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListUsersResponse item) -> {
                    // handle page
@@ -1790,8 +1790,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.lms().listSkills()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListSkillsResponse item) -> {
                    // handle page
@@ -1867,8 +1867,8 @@ public class Application {
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
                 .build();
 
+
         sdk.lms().listAssignments()
-                .request(req)
                 .callAsStream()
                 .forEach((LmsListAssignmentsResponse item) -> {
                    // handle page
