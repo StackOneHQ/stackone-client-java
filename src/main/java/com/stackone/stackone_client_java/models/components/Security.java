@@ -10,34 +10,39 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class Security implements HasSecurity {
 
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic,name=username")
-    private String username;
+    private Optional<String> username;
 
 
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic,name=password")
-    private String password;
+    private Optional<String> password;
 
     @JsonCreator
     public Security(
-            String username,
-            String password) {
+            Optional<String> username,
+            Optional<String> password) {
         Utils.checkNotNull(username, "username");
         Utils.checkNotNull(password, "password");
         this.username = username;
         this.password = password;
     }
+    
+    public Security() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     @JsonIgnore
-    public String username() {
+    public Optional<String> username() {
         return username;
     }
 
     @JsonIgnore
-    public String password() {
+    public Optional<String> password() {
         return password;
     }
 
@@ -48,11 +53,25 @@ public class Security implements HasSecurity {
 
     public Security withUsername(String username) {
         Utils.checkNotNull(username, "username");
+        this.username = Optional.ofNullable(username);
+        return this;
+    }
+
+
+    public Security withUsername(Optional<String> username) {
+        Utils.checkNotNull(username, "username");
         this.username = username;
         return this;
     }
 
     public Security withPassword(String password) {
+        Utils.checkNotNull(password, "password");
+        this.password = Optional.ofNullable(password);
+        return this;
+    }
+
+
+    public Security withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
         this.password = password;
         return this;
@@ -88,9 +107,9 @@ public class Security implements HasSecurity {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private String username;
+        private Optional<String> username = Optional.empty();
 
-        private String password;
+        private Optional<String> password = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -99,12 +118,24 @@ public class Security implements HasSecurity {
 
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
+            this.username = Optional.ofNullable(username);
+            return this;
+        }
+
+        public Builder username(Optional<String> username) {
+            Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
 
 
         public Builder password(String password) {
+            Utils.checkNotNull(password, "password");
+            this.password = Optional.ofNullable(password);
+            return this;
+        }
+
+        public Builder password(Optional<String> password) {
             Utils.checkNotNull(password, "password");
             this.password = password;
             return this;

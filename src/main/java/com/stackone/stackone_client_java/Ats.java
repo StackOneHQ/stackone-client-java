@@ -74,6 +74,9 @@ import com.stackone.stackone_client_java.models.operations.AtsGetApplicationSche
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationScorecardRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationScorecardRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationScorecardResponse;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationStageRequest;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationStageRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AtsGetApplicationStageResponse;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsPackageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsPackageRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsGetAssessmentsPackageResponse;
@@ -143,6 +146,9 @@ import com.stackone.stackone_client_java.models.operations.AtsListApplicationNot
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationScorecardsRequest;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationScorecardsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationScorecardsResponse;
+import com.stackone.stackone_client_java.models.operations.AtsListApplicationStagesRequest;
+import com.stackone.stackone_client_java.models.operations.AtsListApplicationStagesRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AtsListApplicationStagesResponse;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsOffersRequest;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsOffersRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsListApplicationsOffersResponse;
@@ -256,6 +262,7 @@ import com.stackone.stackone_client_java.operations.AtsGetApplicationNote;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationOffer;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationScheduledInterview;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationScorecard;
+import com.stackone.stackone_client_java.operations.AtsGetApplicationStage;
 import com.stackone.stackone_client_java.operations.AtsGetAssessmentsPackage;
 import com.stackone.stackone_client_java.operations.AtsGetBackgroundCheckPackage;
 import com.stackone.stackone_client_java.operations.AtsGetCandidate;
@@ -279,6 +286,7 @@ import com.stackone.stackone_client_java.operations.AtsListApplicationDocumentCa
 import com.stackone.stackone_client_java.operations.AtsListApplicationDocuments;
 import com.stackone.stackone_client_java.operations.AtsListApplicationNotes;
 import com.stackone.stackone_client_java.operations.AtsListApplicationScorecards;
+import com.stackone.stackone_client_java.operations.AtsListApplicationStages;
 import com.stackone.stackone_client_java.operations.AtsListApplications;
 import com.stackone.stackone_client_java.operations.AtsListApplicationsOffers;
 import com.stackone.stackone_client_java.operations.AtsListApplicationsScheduledInterviews;
@@ -312,6 +320,7 @@ import com.stackone.stackone_client_java.operations.AtsUpdateCandidate;
 import com.stackone.stackone_client_java.operations.AtsUpdateJob;
 import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
 import com.stackone.stackone_client_java.utils.Options;
+import java.lang.Deprecated;
 import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
@@ -319,9 +328,20 @@ import java.util.Optional;
 
 public class Ats {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncAts asyncSDK;
 
     Ats(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncAts(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncAts async() {
+        return asyncSDK;
     }
 
     /**
@@ -1704,7 +1724,9 @@ public class Ats {
      * List Interview Stages
      * 
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public AtsListInterviewStagesRequestBuilder listInterviewStages() {
         return new AtsListInterviewStagesRequestBuilder(sdkConfiguration);
     }
@@ -1715,7 +1737,9 @@ public class Ats {
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public AtsListInterviewStagesResponse listInterviewStages(AtsListInterviewStagesRequest request) throws Exception {
         return listInterviewStages(request, Optional.empty());
     }
@@ -1727,7 +1751,9 @@ public class Ats {
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public AtsListInterviewStagesResponse listInterviewStages(AtsListInterviewStagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListInterviewStagesRequest, AtsListInterviewStagesResponse> operation
               = new AtsListInterviewStages.Sync(sdkConfiguration, options);
@@ -1738,7 +1764,9 @@ public class Ats {
      * Get Interview Stage
      * 
      * @return The call builder
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public AtsGetInterviewStageRequestBuilder getInterviewStage() {
         return new AtsGetInterviewStageRequestBuilder(sdkConfiguration);
     }
@@ -1749,7 +1777,9 @@ public class Ats {
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public AtsGetInterviewStageResponse getInterviewStage(AtsGetInterviewStageRequest request) throws Exception {
         return getInterviewStage(request, Optional.empty());
     }
@@ -1761,10 +1791,80 @@ public class Ats {
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public AtsGetInterviewStageResponse getInterviewStage(AtsGetInterviewStageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetInterviewStageRequest, AtsGetInterviewStageResponse> operation
               = new AtsGetInterviewStage.Sync(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * List Application Stages
+     * 
+     * @return The call builder
+     */
+    public AtsListApplicationStagesRequestBuilder listApplicationStages() {
+        return new AtsListApplicationStagesRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Application Stages
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsListApplicationStagesResponse listApplicationStages(AtsListApplicationStagesRequest request) throws Exception {
+        return listApplicationStages(request, Optional.empty());
+    }
+
+    /**
+     * List Application Stages
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsListApplicationStagesResponse listApplicationStages(AtsListApplicationStagesRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<AtsListApplicationStagesRequest, AtsListApplicationStagesResponse> operation
+              = new AtsListApplicationStages.Sync(sdkConfiguration, options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Get Application Stage
+     * 
+     * @return The call builder
+     */
+    public AtsGetApplicationStageRequestBuilder getApplicationStage() {
+        return new AtsGetApplicationStageRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Get Application Stage
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsGetApplicationStageResponse getApplicationStage(AtsGetApplicationStageRequest request) throws Exception {
+        return getApplicationStage(request, Optional.empty());
+    }
+
+    /**
+     * Get Application Stage
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public AtsGetApplicationStageResponse getApplicationStage(AtsGetApplicationStageRequest request, Optional<Options> options) throws Exception {
+        RequestOperation<AtsGetApplicationStageRequest, AtsGetApplicationStageResponse> operation
+              = new AtsGetApplicationStage.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

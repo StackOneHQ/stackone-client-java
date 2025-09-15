@@ -100,6 +100,20 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
     @Deprecated
     private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType> employmentContractType;
 
+    /**
+     * The type of employment
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type;
+
+    /**
+     * The employment work schedule type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("contract_type")
+    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoContractType> contractType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("work_time")
@@ -141,6 +155,8 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
             @JsonProperty("grade") JsonNullable<? extends HrisUpdateEmployeeRequestDtoGrade> grade,
             @JsonProperty("employment_type") JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentEmploymentType> employmentType,
             @JsonProperty("employment_contract_type") JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType> employmentContractType,
+            @JsonProperty("type") JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type,
+            @JsonProperty("contract_type") JsonNullable<? extends HrisUpdateEmployeeRequestDtoContractType> contractType,
             @JsonProperty("work_time") JsonNullable<? extends HrisUpdateEmployeeRequestDtoWorkTime> workTime,
             @JsonProperty("payroll_code") JsonNullable<String> payrollCode,
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough,
@@ -155,6 +171,8 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
         Utils.checkNotNull(grade, "grade");
         Utils.checkNotNull(employmentType, "employmentType");
         Utils.checkNotNull(employmentContractType, "employmentContractType");
+        Utils.checkNotNull(type, "type");
+        Utils.checkNotNull(contractType, "contractType");
         Utils.checkNotNull(workTime, "workTime");
         Utils.checkNotNull(payrollCode, "payrollCode");
         Utils.checkNotNull(passthrough, "passthrough");
@@ -169,6 +187,8 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
         this.grade = grade;
         this.employmentType = employmentType;
         this.employmentContractType = employmentContractType;
+        this.type = type;
+        this.contractType = contractType;
         this.workTime = workTime;
         this.payrollCode = payrollCode;
         this.passthrough = passthrough;
@@ -180,7 +200,8 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -273,6 +294,24 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
     @JsonIgnore
     public JsonNullable<HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType> employmentContractType() {
         return (JsonNullable<HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType>) employmentContractType;
+    }
+
+    /**
+     * The type of employment
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<HrisUpdateEmployeeRequestDtoType> type() {
+        return (JsonNullable<HrisUpdateEmployeeRequestDtoType>) type;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<HrisUpdateEmployeeRequestDtoContractType> contractType() {
+        return (JsonNullable<HrisUpdateEmployeeRequestDtoContractType>) contractType;
     }
 
     @SuppressWarnings("unchecked")
@@ -506,6 +545,42 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
         return this;
     }
 
+    /**
+     * The type of employment
+     */
+    public HrisUpdateEmployeeRequestDtoEmployment withType(HrisUpdateEmployeeRequestDtoType type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The type of employment
+     */
+    public HrisUpdateEmployeeRequestDtoEmployment withType(JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    public HrisUpdateEmployeeRequestDtoEmployment withContractType(HrisUpdateEmployeeRequestDtoContractType contractType) {
+        Utils.checkNotNull(contractType, "contractType");
+        this.contractType = JsonNullable.of(contractType);
+        return this;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    public HrisUpdateEmployeeRequestDtoEmployment withContractType(JsonNullable<? extends HrisUpdateEmployeeRequestDtoContractType> contractType) {
+        Utils.checkNotNull(contractType, "contractType");
+        this.contractType = contractType;
+        return this;
+    }
+
     public HrisUpdateEmployeeRequestDtoEmployment withWorkTime(HrisUpdateEmployeeRequestDtoWorkTime workTime) {
         Utils.checkNotNull(workTime, "workTime");
         this.workTime = JsonNullable.of(workTime);
@@ -598,6 +673,8 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
             Utils.enhancedDeepEquals(this.grade, other.grade) &&
             Utils.enhancedDeepEquals(this.employmentType, other.employmentType) &&
             Utils.enhancedDeepEquals(this.employmentContractType, other.employmentContractType) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.contractType, other.contractType) &&
             Utils.enhancedDeepEquals(this.workTime, other.workTime) &&
             Utils.enhancedDeepEquals(this.payrollCode, other.payrollCode) &&
             Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
@@ -610,8 +687,9 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
             unifiedCustomFields, jobTitle, payRate,
             payPeriod, payFrequency, payCurrency,
             endDate, grade, employmentType,
-            employmentContractType, workTime, payrollCode,
-            passthrough, effectiveDate);
+            employmentContractType, type, contractType,
+            workTime, payrollCode, passthrough,
+            effectiveDate);
     }
     
     @Override
@@ -627,6 +705,8 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
                 "grade", grade,
                 "employmentType", employmentType,
                 "employmentContractType", employmentContractType,
+                "type", type,
+                "contractType", contractType,
                 "workTime", workTime,
                 "payrollCode", payrollCode,
                 "passthrough", passthrough,
@@ -657,6 +737,10 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
 
         @Deprecated
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractType> employmentContractType = JsonNullable.undefined();
+
+        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type = JsonNullable.undefined();
+
+        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoContractType> contractType = JsonNullable.undefined();
 
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoWorkTime> workTime = JsonNullable.undefined();
 
@@ -874,6 +958,44 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
         }
 
 
+        /**
+         * The type of employment
+         */
+        public Builder type(HrisUpdateEmployeeRequestDtoType type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The type of employment
+         */
+        public Builder type(JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
+
+
+        /**
+         * The employment work schedule type
+         */
+        public Builder contractType(HrisUpdateEmployeeRequestDtoContractType contractType) {
+            Utils.checkNotNull(contractType, "contractType");
+            this.contractType = JsonNullable.of(contractType);
+            return this;
+        }
+
+        /**
+         * The employment work schedule type
+         */
+        public Builder contractType(JsonNullable<? extends HrisUpdateEmployeeRequestDtoContractType> contractType) {
+            Utils.checkNotNull(contractType, "contractType");
+            this.contractType = contractType;
+            return this;
+        }
+
+
         public Builder workTime(HrisUpdateEmployeeRequestDtoWorkTime workTime) {
             Utils.checkNotNull(workTime, "workTime");
             this.workTime = JsonNullable.of(workTime);
@@ -955,8 +1077,9 @@ public class HrisUpdateEmployeeRequestDtoEmployment {
                 unifiedCustomFields, jobTitle, payRate,
                 payPeriod, payFrequency, payCurrency,
                 endDate, grade, employmentType,
-                employmentContractType, workTime, payrollCode,
-                passthrough, effectiveDate);
+                employmentContractType, type, contractType,
+                workTime, payrollCode, passthrough,
+                effectiveDate);
         }
 
     }

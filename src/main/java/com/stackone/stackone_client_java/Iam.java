@@ -54,9 +54,20 @@ import java.util.Optional;
 
 public class Iam {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncIam asyncSDK;
 
     Iam(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncIam(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncIam async() {
+        return asyncSDK;
     }
 
     /**

@@ -32,7 +32,7 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumber {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
-    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type;
+    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberType> type;
 
     /**
      * The country code
@@ -44,7 +44,7 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumber {
     @JsonCreator
     public HrisUpdateEmployeeRequestDtoNationalIdentityNumber(
             @JsonProperty("value") JsonNullable<String> value,
-            @JsonProperty("type") JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type,
+            @JsonProperty("type") JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberType> type,
             @JsonProperty("country") JsonNullable<? extends HrisUpdateEmployeeRequestDtoCountry> country) {
         Utils.checkNotNull(value, "value");
         Utils.checkNotNull(type, "type");
@@ -65,8 +65,8 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumber {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<HrisUpdateEmployeeRequestDtoType> type() {
-        return (JsonNullable<HrisUpdateEmployeeRequestDtoType>) type;
+    public JsonNullable<HrisUpdateEmployeeRequestDtoNationalIdentityNumberType> type() {
+        return (JsonNullable<HrisUpdateEmployeeRequestDtoNationalIdentityNumberType>) type;
     }
 
     /**
@@ -95,13 +95,13 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumber {
         return this;
     }
 
-    public HrisUpdateEmployeeRequestDtoNationalIdentityNumber withType(HrisUpdateEmployeeRequestDtoType type) {
+    public HrisUpdateEmployeeRequestDtoNationalIdentityNumber withType(HrisUpdateEmployeeRequestDtoNationalIdentityNumberType type) {
         Utils.checkNotNull(type, "type");
         this.type = JsonNullable.of(type);
         return this;
     }
 
-    public HrisUpdateEmployeeRequestDtoNationalIdentityNumber withType(JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type) {
+    public HrisUpdateEmployeeRequestDtoNationalIdentityNumber withType(JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberType> type) {
         Utils.checkNotNull(type, "type");
         this.type = type;
         return this;
@@ -159,7 +159,7 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumber {
 
         private JsonNullable<String> value = JsonNullable.undefined();
 
-        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type = JsonNullable.undefined();
+        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberType> type = JsonNullable.undefined();
 
         private JsonNullable<? extends HrisUpdateEmployeeRequestDtoCountry> country = JsonNullable.undefined();
 
@@ -181,13 +181,13 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumber {
         }
 
 
-        public Builder type(HrisUpdateEmployeeRequestDtoType type) {
+        public Builder type(HrisUpdateEmployeeRequestDtoNationalIdentityNumberType type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
             return this;
         }
 
-        public Builder type(JsonNullable<? extends HrisUpdateEmployeeRequestDtoType> type) {
+        public Builder type(JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberType> type) {
             Utils.checkNotNull(type, "type");
             this.type = type;
             return this;

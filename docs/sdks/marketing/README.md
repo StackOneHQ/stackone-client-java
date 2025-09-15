@@ -68,8 +68,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.marketing().listEmailTemplates()
-                .request(req)
                 .callAsStream()
                 .forEach((MarketingListEmailTemplatesResponse item) -> {
                    // handle page
@@ -379,8 +379,8 @@ public class Application {
                 .filter(JsonNullable.of(null))
                 .build();
 
+
         sdk.marketing().listInAppTemplates()
-                .request(req)
                 .callAsStream()
                 .forEach((MarketingListInAppTemplatesResponse item) -> {
                    // handle page
@@ -693,8 +693,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.marketing().listSmsTemplates()
-                .request(req)
                 .callAsStream()
                 .forEach((MarketingListSmsTemplatesResponse item) -> {
                    // handle page
@@ -1009,8 +1009,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.marketing().listOmniChannelTemplates()
-                .request(req)
                 .callAsStream()
                 .forEach((MarketingListOmniChannelTemplatesResponse item) -> {
                    // handle page
@@ -1327,8 +1327,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.marketing().listPushTemplates()
-                .request(req)
                 .callAsStream()
                 .forEach((MarketingListPushTemplatesResponse item) -> {
                    // handle page
@@ -1641,8 +1641,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.marketing().listCampaigns()
-                .request(req)
                 .callAsStream()
                 .forEach((MarketingListCampaignsResponse item) -> {
                    // handle page
@@ -1789,8 +1789,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.marketing().listContentBlocks()
-                .request(req)
                 .callAsStream()
                 .forEach((MarketingListContentBlocksResponse item) -> {
                    // handle page

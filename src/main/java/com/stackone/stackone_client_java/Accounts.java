@@ -36,9 +36,20 @@ import java.util.Optional;
  */
 public class Accounts {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncAccounts asyncSDK;
 
     Accounts(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncAccounts(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncAccounts async() {
+        return asyncSDK;
     }
 
     /**

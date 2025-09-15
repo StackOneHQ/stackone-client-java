@@ -14,47 +14,92 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
+/**
+ * HrisUpdateEmployeeRequestDtoType
+ * 
+ * <p>The type of employment
+ */
 public class HrisUpdateEmployeeRequestDtoType {
     /**
-     * The type of the national identity number
+     * Unique identifier
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("value")
-    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue> value;
+    @JsonProperty("id")
+    private JsonNullable<String> id;
 
-
+    /**
+     * Provider's unique identifier
+     */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("source_value")
-    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue> sourceValue;
+    @JsonProperty("remote_id")
+    private JsonNullable<String> remoteId;
+
+    /**
+     * The label of the employment type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("label")
+    private JsonNullable<String> label;
+
+    /**
+     * The type of employment (e.g., contractor, permanent)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentTypeType> type;
 
     @JsonCreator
     public HrisUpdateEmployeeRequestDtoType(
-            @JsonProperty("value") JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue> value,
-            @JsonProperty("source_value") JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue> sourceValue) {
-        Utils.checkNotNull(value, "value");
-        Utils.checkNotNull(sourceValue, "sourceValue");
-        this.value = value;
-        this.sourceValue = sourceValue;
+            @JsonProperty("id") JsonNullable<String> id,
+            @JsonProperty("remote_id") JsonNullable<String> remoteId,
+            @JsonProperty("label") JsonNullable<String> label,
+            @JsonProperty("type") JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentTypeType> type) {
+        Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(remoteId, "remoteId");
+        Utils.checkNotNull(label, "label");
+        Utils.checkNotNull(type, "type");
+        this.id = id;
+        this.remoteId = remoteId;
+        this.label = label;
+        this.type = type;
     }
     
     public HrisUpdateEmployeeRequestDtoType() {
-        this(JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
-     * The type of the national identity number
+     * Unique identifier
+     */
+    @JsonIgnore
+    public JsonNullable<String> id() {
+        return id;
+    }
+
+    /**
+     * Provider's unique identifier
+     */
+    @JsonIgnore
+    public JsonNullable<String> remoteId() {
+        return remoteId;
+    }
+
+    /**
+     * The label of the employment type
+     */
+    @JsonIgnore
+    public JsonNullable<String> label() {
+        return label;
+    }
+
+    /**
+     * The type of employment (e.g., contractor, permanent)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue> value() {
-        return (JsonNullable<HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue>) value;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue> sourceValue() {
-        return (JsonNullable<HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue>) sourceValue;
+    public JsonNullable<HrisUpdateEmployeeRequestDtoEmploymentTypeType> type() {
+        return (JsonNullable<HrisUpdateEmployeeRequestDtoEmploymentTypeType>) type;
     }
 
     public static Builder builder() {
@@ -63,32 +108,74 @@ public class HrisUpdateEmployeeRequestDtoType {
 
 
     /**
-     * The type of the national identity number
+     * Unique identifier
      */
-    public HrisUpdateEmployeeRequestDtoType withValue(HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue value) {
-        Utils.checkNotNull(value, "value");
-        this.value = JsonNullable.of(value);
+    public HrisUpdateEmployeeRequestDtoType withId(String id) {
+        Utils.checkNotNull(id, "id");
+        this.id = JsonNullable.of(id);
         return this;
     }
 
     /**
-     * The type of the national identity number
+     * Unique identifier
      */
-    public HrisUpdateEmployeeRequestDtoType withValue(JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue> value) {
-        Utils.checkNotNull(value, "value");
-        this.value = value;
+    public HrisUpdateEmployeeRequestDtoType withId(JsonNullable<String> id) {
+        Utils.checkNotNull(id, "id");
+        this.id = id;
         return this;
     }
 
-    public HrisUpdateEmployeeRequestDtoType withSourceValue(HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue sourceValue) {
-        Utils.checkNotNull(sourceValue, "sourceValue");
-        this.sourceValue = JsonNullable.of(sourceValue);
+    /**
+     * Provider's unique identifier
+     */
+    public HrisUpdateEmployeeRequestDtoType withRemoteId(String remoteId) {
+        Utils.checkNotNull(remoteId, "remoteId");
+        this.remoteId = JsonNullable.of(remoteId);
         return this;
     }
 
-    public HrisUpdateEmployeeRequestDtoType withSourceValue(JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue> sourceValue) {
-        Utils.checkNotNull(sourceValue, "sourceValue");
-        this.sourceValue = sourceValue;
+    /**
+     * Provider's unique identifier
+     */
+    public HrisUpdateEmployeeRequestDtoType withRemoteId(JsonNullable<String> remoteId) {
+        Utils.checkNotNull(remoteId, "remoteId");
+        this.remoteId = remoteId;
+        return this;
+    }
+
+    /**
+     * The label of the employment type
+     */
+    public HrisUpdateEmployeeRequestDtoType withLabel(String label) {
+        Utils.checkNotNull(label, "label");
+        this.label = JsonNullable.of(label);
+        return this;
+    }
+
+    /**
+     * The label of the employment type
+     */
+    public HrisUpdateEmployeeRequestDtoType withLabel(JsonNullable<String> label) {
+        Utils.checkNotNull(label, "label");
+        this.label = label;
+        return this;
+    }
+
+    /**
+     * The type of employment (e.g., contractor, permanent)
+     */
+    public HrisUpdateEmployeeRequestDtoType withType(HrisUpdateEmployeeRequestDtoEmploymentTypeType type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The type of employment (e.g., contractor, permanent)
+     */
+    public HrisUpdateEmployeeRequestDtoType withType(JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentTypeType> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
         return this;
     }
 
@@ -102,29 +189,38 @@ public class HrisUpdateEmployeeRequestDtoType {
         }
         HrisUpdateEmployeeRequestDtoType other = (HrisUpdateEmployeeRequestDtoType) o;
         return 
-            Utils.enhancedDeepEquals(this.value, other.value) &&
-            Utils.enhancedDeepEquals(this.sourceValue, other.sourceValue);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.label, other.label) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            value, sourceValue);
+            id, remoteId, label,
+            type);
     }
     
     @Override
     public String toString() {
         return Utils.toString(HrisUpdateEmployeeRequestDtoType.class,
-                "value", value,
-                "sourceValue", sourceValue);
+                "id", id,
+                "remoteId", remoteId,
+                "label", label,
+                "type", type);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue> value = JsonNullable.undefined();
+        private JsonNullable<String> id = JsonNullable.undefined();
 
-        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue> sourceValue = JsonNullable.undefined();
+        private JsonNullable<String> remoteId = JsonNullable.undefined();
+
+        private JsonNullable<String> label = JsonNullable.undefined();
+
+        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentTypeType> type = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -132,40 +228,85 @@ public class HrisUpdateEmployeeRequestDtoType {
 
 
         /**
-         * The type of the national identity number
+         * Unique identifier
          */
-        public Builder value(HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue value) {
-            Utils.checkNotNull(value, "value");
-            this.value = JsonNullable.of(value);
+        public Builder id(String id) {
+            Utils.checkNotNull(id, "id");
+            this.id = JsonNullable.of(id);
             return this;
         }
 
         /**
-         * The type of the national identity number
+         * Unique identifier
          */
-        public Builder value(JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberValue> value) {
-            Utils.checkNotNull(value, "value");
-            this.value = value;
+        public Builder id(JsonNullable<String> id) {
+            Utils.checkNotNull(id, "id");
+            this.id = id;
             return this;
         }
 
 
-        public Builder sourceValue(HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue sourceValue) {
-            Utils.checkNotNull(sourceValue, "sourceValue");
-            this.sourceValue = JsonNullable.of(sourceValue);
+        /**
+         * Provider's unique identifier
+         */
+        public Builder remoteId(String remoteId) {
+            Utils.checkNotNull(remoteId, "remoteId");
+            this.remoteId = JsonNullable.of(remoteId);
             return this;
         }
 
-        public Builder sourceValue(JsonNullable<? extends HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue> sourceValue) {
-            Utils.checkNotNull(sourceValue, "sourceValue");
-            this.sourceValue = sourceValue;
+        /**
+         * Provider's unique identifier
+         */
+        public Builder remoteId(JsonNullable<String> remoteId) {
+            Utils.checkNotNull(remoteId, "remoteId");
+            this.remoteId = remoteId;
+            return this;
+        }
+
+
+        /**
+         * The label of the employment type
+         */
+        public Builder label(String label) {
+            Utils.checkNotNull(label, "label");
+            this.label = JsonNullable.of(label);
+            return this;
+        }
+
+        /**
+         * The label of the employment type
+         */
+        public Builder label(JsonNullable<String> label) {
+            Utils.checkNotNull(label, "label");
+            this.label = label;
+            return this;
+        }
+
+
+        /**
+         * The type of employment (e.g., contractor, permanent)
+         */
+        public Builder type(HrisUpdateEmployeeRequestDtoEmploymentTypeType type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The type of employment (e.g., contractor, permanent)
+         */
+        public Builder type(JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentTypeType> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
             return this;
         }
 
         public HrisUpdateEmployeeRequestDtoType build() {
 
             return new HrisUpdateEmployeeRequestDtoType(
-                value, sourceValue);
+                id, remoteId, label,
+                type);
         }
 
     }

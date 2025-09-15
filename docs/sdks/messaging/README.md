@@ -53,8 +53,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.messaging().listConversations()
-                .request(req)
                 .callAsStream()
                 .forEach((MessagingListConversationsResponse item) -> {
                    // handle page
@@ -352,8 +352,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.messaging().listAttachments()
-                .request(req)
                 .callAsStream()
                 .forEach((MessagingListAttachmentsResponse item) -> {
                    // handle page
@@ -501,8 +501,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.messaging().listUsers()
-                .request(req)
                 .callAsStream()
                 .forEach((MessagingListUsersResponse item) -> {
                    // handle page
@@ -650,8 +650,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.messaging().listConversationMessages()
-                .request(req)
                 .callAsStream()
                 .forEach((MessagingListConversationMessagesResponse item) -> {
                    // handle page

@@ -1,9 +1,7 @@
 # Two
 
 
-## Values
+## Fields
 
-| Name    | Value   |
-| ------- | ------- |
-| `TRUE`  | true    |
-| `FALSE` | false   |
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |

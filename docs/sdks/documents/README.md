@@ -218,8 +218,8 @@ public class Application {
                 .include("all_parent_folder_ids")
                 .build();
 
+
         sdk.documents().listFiles()
-                .request(req)
                 .callAsStream()
                 .forEach((DocumentsListFilesResponse item) -> {
                    // handle page
@@ -372,8 +372,8 @@ public class Application {
                 .include("all_parent_folder_ids")
                 .build();
 
+
         sdk.documents().listFolders()
-                .request(req)
                 .callAsStream()
                 .forEach((DocumentsListFoldersResponse item) -> {
                    // handle page
@@ -521,8 +521,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.documents().listDrives()
-                .request(req)
                 .callAsStream()
                 .forEach((DocumentsListDrivesResponse item) -> {
                    // handle page

@@ -59,9 +59,20 @@ import java.util.Optional;
 
 public class Messaging {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncMessaging asyncSDK;
 
     Messaging(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncMessaging(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncMessaging async() {
+        return asyncSDK;
     }
 
     /**

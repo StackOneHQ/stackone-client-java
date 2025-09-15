@@ -114,8 +114,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listCompanies()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListCompaniesResponse item) -> {
                    // handle page
@@ -262,8 +262,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listEmployeeCustomFieldDefinitions()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeCustomFieldDefinitionsResponse item) -> {
                    // handle page
@@ -415,8 +415,8 @@ public class Application {
                 .include("avatar_url,avatar,custom_fields,job_description,benefits")
                 .build();
 
+
         sdk.hris().listEmployees()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeesResponse item) -> {
                    // handle page
@@ -975,8 +975,8 @@ public class Application {
                 .expand("policy")
                 .build();
 
+
         sdk.hris().listEmployeeTimeOffRequests()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeTimeOffRequestsResponse item) -> {
                    // handle page
@@ -1611,14 +1611,14 @@ public class Application {
         HrisListEmployeeDocumentsRequest req = HrisListEmployeeDocumentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
+                .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .filter(HrisListEmployeeDocumentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
+
         sdk.hris().listEmployeeDocuments()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeDocumentsResponse item) -> {
                    // handle page
@@ -1688,7 +1688,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
+                .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
                 .build();
 
         HrisGetEmployeeDocumentResponse res = sdk.hris().getEmployeeDocument()
@@ -1766,8 +1766,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listEmployeeCategories()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeCategoriesResponse item) -> {
                    // handle page
@@ -1915,8 +1915,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listEmployeeWorkEligibility()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeWorkEligibilityResponse item) -> {
                    // handle page
@@ -1992,7 +1992,6 @@ public class Application {
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .name("My Document")
-                        .path("/path/to/file")
                         .category(HrisCreateWorkEligibilityRequestDtoCategory.builder()
                             .build())
                         .categoryId("6530")
@@ -2164,7 +2163,6 @@ public class Application {
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
                         .name("My Document")
-                        .path("/path/to/file")
                         .category(HrisCreateWorkEligibilityRequestDtoCategory.builder()
                             .build())
                         .categoryId("6530")
@@ -2264,8 +2262,8 @@ public class Application {
                 .expand("policy")
                 .build();
 
+
         sdk.hris().listEmployeeTimeOffBalances()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeTimeOffBalancesResponse item) -> {
                    // handle page
@@ -2408,15 +2406,15 @@ public class Application {
 
         HrisListEmploymentsRequest req = HrisListEmploymentsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
+                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager")
                 .filter(HrisListEmploymentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("groups")
                 .build();
 
+
         sdk.hris().listEmployments()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmploymentsResponse item) -> {
                    // handle page
@@ -2485,7 +2483,7 @@ public class Application {
         HrisGetEmploymentRequest req = HrisGetEmploymentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
+                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager")
                 .expand("groups")
                 .build();
 
@@ -2559,15 +2557,15 @@ public class Application {
         HrisListEmployeeEmploymentsRequest req = HrisListEmployeeEmploymentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
+                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager")
                 .filter(HrisListEmployeeEmploymentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("groups")
                 .build();
 
+
         sdk.hris().listEmployeeEmployments()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeEmploymentsResponse item) -> {
                    // handle page
@@ -2660,6 +2658,20 @@ public class Application {
                         .name("1687-4")
                         .description("Mid-level employee demonstrating proficiency and autonomy.")
                         .build())
+                    .type(HrisCreateEmploymentRequestDtoType.builder()
+                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .label("Permanent")
+                        .type(HrisCreateEmploymentRequestDtoTypeType.builder()
+                            .build())
+                        .build())
+                    .contractType(HrisCreateEmploymentRequestDtoContractType.builder()
+                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .label("Full-Time")
+                        .contractType(HrisCreateEmploymentRequestDtoContractTypeContractType.builder()
+                            .build())
+                        .build())
                     .workTime(HrisCreateEmploymentRequestDtoWorkTime.builder()
                         .duration("P0Y0M0DT8H0M0S")
                         .durationUnit(HrisCreateEmploymentRequestDtoDurationUnit.builder()
@@ -2742,7 +2754,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,type,contract_type,manager")
+                .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager")
                 .expand("groups")
                 .build();
 
@@ -2841,6 +2853,20 @@ public class Application {
                         .name("1687-4")
                         .description("Mid-level employee demonstrating proficiency and autonomy.")
                         .build())
+                    .type(HrisUpdateEmploymentRequestDtoType.builder()
+                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .label("Permanent")
+                        .type(HrisUpdateEmploymentRequestDtoTypeType.builder()
+                            .build())
+                        .build())
+                    .contractType(HrisUpdateEmploymentRequestDtoContractType.builder()
+                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .label("Full-Time")
+                        .contractType(HrisUpdateEmploymentRequestDtoContractTypeContractType.builder()
+                            .build())
+                        .build())
                     .workTime(HrisUpdateEmploymentRequestDtoWorkTime.builder()
                         .duration("P0Y0M0DT8H0M0S")
                         .durationUnit(HrisUpdateEmploymentRequestDtoDurationUnit.builder()
@@ -2927,8 +2953,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listGroups()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListGroupsResponse item) -> {
                    // handle page
@@ -3002,8 +3028,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listDepartmentGroups()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListDepartmentGroupsResponse item) -> {
                    // handle page
@@ -3077,8 +3103,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listCostCenterGroups()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListCostCenterGroupsResponse item) -> {
                    // handle page
@@ -3152,8 +3178,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listTeamGroups()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListTeamGroupsResponse item) -> {
                    // handle page
@@ -3227,8 +3253,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listDivisionGroups()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListDivisionGroupsResponse item) -> {
                    // handle page
@@ -3302,8 +3328,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listCompaniesGroups()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListCompaniesGroupsResponse item) -> {
                    // handle page
@@ -3815,8 +3841,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listJobs()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListJobsResponse item) -> {
                    // handle page
@@ -3963,8 +3989,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listLocations()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListLocationsResponse item) -> {
                    // handle page
@@ -4111,8 +4137,8 @@ public class Application {
                 .status(Status.OPEN)
                 .build();
 
+
         sdk.hris().listPositions()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListPositionsResponse item) -> {
                    // handle page
@@ -4260,8 +4286,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listTimeEntries()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListTimeEntriesResponse item) -> {
                    // handle page
@@ -4408,8 +4434,8 @@ public class Application {
                 .expand("policy")
                 .build();
 
+
         sdk.hris().listTimeOffRequests()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListTimeOffRequestsResponse item) -> {
                    // handle page
@@ -4556,8 +4582,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listShifts()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListShiftsResponse item) -> {
                    // handle page
@@ -4705,8 +4731,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listTimeOffTypes()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListTimeOffTypesResponse item) -> {
                    // handle page
@@ -4855,8 +4881,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listTimeOffPolicies()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListTimeOffPoliciesResponse item) -> {
                    // handle page
@@ -5004,8 +5030,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listEmployeeTimeOffPolicies()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeTimeOffPoliciesResponse item) -> {
                    // handle page
@@ -5079,8 +5105,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listBenefits()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListBenefitsResponse item) -> {
                    // handle page
@@ -5228,8 +5254,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.hris().listEmployeeSkills()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeSkillsResponse item) -> {
                    // handle page
@@ -5459,8 +5485,8 @@ public class Application {
                 .expand("attachments")
                 .build();
 
+
         sdk.hris().listEmployeeTasks()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListEmployeeTasksResponse item) -> {
                    // handle page
@@ -5687,8 +5713,8 @@ public class Application {
                 .expand("attachments")
                 .build();
 
+
         sdk.hris().listTasks()
-                .request(req)
                 .callAsStream()
                 .forEach((HrisListTasksResponse item) -> {
                    // handle page

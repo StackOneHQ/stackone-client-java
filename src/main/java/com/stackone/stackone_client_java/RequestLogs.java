@@ -33,9 +33,20 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 public class RequestLogs {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncRequestLogs asyncSDK;
 
     RequestLogs(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncRequestLogs(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncRequestLogs async() {
+        return asyncSDK;
     }
 
     /**

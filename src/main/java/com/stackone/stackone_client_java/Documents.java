@@ -46,9 +46,20 @@ import java.util.Optional;
 
 public class Documents {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncDocuments asyncSDK;
 
     Documents(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncDocuments(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncDocuments async() {
+        return asyncSDK;
     }
 
     /**

@@ -116,14 +116,14 @@ public class HrisDownloadEmployeeDocumentResponse implements Response {
     @JsonIgnore
     public Optional<byte[]> body() {
         this.body = body
-        .or(() -> {
-            try {
-                return Optional.of(Utils.extractByteArrayFromBody(rawResponse));
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
-        });
-        return this.body;
+            .or(() -> {
+                try {
+                    return Optional.of(Utils.extractByteArrayFromBody(rawResponse));
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
+            });
+        return  this.body;
     }
 
     /**

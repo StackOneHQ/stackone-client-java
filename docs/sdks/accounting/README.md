@@ -52,8 +52,8 @@ public class Application {
                     .build())
                 .build();
 
+
         sdk.accounting().listCompanies()
-                .request(req)
                 .callAsStream()
                 .forEach((AccountingListCompaniesResponse item) -> {
                    // handle page
@@ -200,8 +200,8 @@ public class Application {
                 .filter(JsonNullable.of(null))
                 .build();
 
+
         sdk.accounting().listCompanyAccounts()
-                .request(req)
                 .callAsStream()
                 .forEach((AccountingListCompanyAccountsResponse item) -> {
                    // handle page
@@ -344,14 +344,14 @@ public class Application {
         AccountingListCompanyTaxRatesRequest req = AccountingListCompanyTaxRatesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,company_id,remote_company_id,name,code,rate,active")
+                .fields("id,remote_id,company_id,remote_company_id,name,code,percentage,active")
                 .filter(AccountingListCompanyTaxRatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .build();
 
+
         sdk.accounting().listCompanyTaxRates()
-                .request(req)
                 .callAsStream()
                 .forEach((AccountingListCompanyTaxRatesResponse item) -> {
                    // handle page
@@ -421,7 +421,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,company_id,remote_company_id,name,code,rate,active")
+                .fields("id,remote_id,company_id,remote_company_id,name,code,percentage,active")
                 .build();
 
         AccountingGetCompanyTaxRateResponse res = sdk.accounting().getCompanyTaxRate()
@@ -573,8 +573,8 @@ public class Application {
                 .filter(JsonNullable.of(null))
                 .build();
 
+
         sdk.accounting().listCompanyJournals()
-                .request(req)
                 .callAsStream()
                 .forEach((AccountingListCompanyJournalsResponse item) -> {
                    // handle page

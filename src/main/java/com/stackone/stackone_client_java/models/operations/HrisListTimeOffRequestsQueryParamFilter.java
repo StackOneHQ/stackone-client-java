@@ -27,19 +27,19 @@ public class HrisListTimeOffRequestsQueryParamFilter {
     private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
-     * List of time off type ids to filter by.
+     * List of time off policy ids to filter by.
      */
-    @SpeakeasyMetadata("queryParam:name=type_ids")
-    private JsonNullable<? extends List<String>> typeIds;
+    @SpeakeasyMetadata("queryParam:name=policy_ids")
+    private JsonNullable<? extends List<String>> policyIds;
 
     @JsonCreator
     public HrisListTimeOffRequestsQueryParamFilter(
             JsonNullable<OffsetDateTime> updatedAfter,
-            JsonNullable<? extends List<String>> typeIds) {
+            JsonNullable<? extends List<String>> policyIds) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
-        Utils.checkNotNull(typeIds, "typeIds");
+        Utils.checkNotNull(policyIds, "policyIds");
         this.updatedAfter = updatedAfter;
-        this.typeIds = typeIds;
+        this.policyIds = policyIds;
     }
     
     public HrisListTimeOffRequestsQueryParamFilter() {
@@ -55,12 +55,12 @@ public class HrisListTimeOffRequestsQueryParamFilter {
     }
 
     /**
-     * List of time off type ids to filter by.
+     * List of time off policy ids to filter by.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<String>> typeIds() {
-        return (JsonNullable<List<String>>) typeIds;
+    public JsonNullable<List<String>> policyIds() {
+        return (JsonNullable<List<String>>) policyIds;
     }
 
     public static Builder builder() {
@@ -87,20 +87,20 @@ public class HrisListTimeOffRequestsQueryParamFilter {
     }
 
     /**
-     * List of time off type ids to filter by.
+     * List of time off policy ids to filter by.
      */
-    public HrisListTimeOffRequestsQueryParamFilter withTypeIds(List<String> typeIds) {
-        Utils.checkNotNull(typeIds, "typeIds");
-        this.typeIds = JsonNullable.of(typeIds);
+    public HrisListTimeOffRequestsQueryParamFilter withPolicyIds(List<String> policyIds) {
+        Utils.checkNotNull(policyIds, "policyIds");
+        this.policyIds = JsonNullable.of(policyIds);
         return this;
     }
 
     /**
-     * List of time off type ids to filter by.
+     * List of time off policy ids to filter by.
      */
-    public HrisListTimeOffRequestsQueryParamFilter withTypeIds(JsonNullable<? extends List<String>> typeIds) {
-        Utils.checkNotNull(typeIds, "typeIds");
-        this.typeIds = typeIds;
+    public HrisListTimeOffRequestsQueryParamFilter withPolicyIds(JsonNullable<? extends List<String>> policyIds) {
+        Utils.checkNotNull(policyIds, "policyIds");
+        this.policyIds = policyIds;
         return this;
     }
 
@@ -115,20 +115,20 @@ public class HrisListTimeOffRequestsQueryParamFilter {
         HrisListTimeOffRequestsQueryParamFilter other = (HrisListTimeOffRequestsQueryParamFilter) o;
         return 
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
-            Utils.enhancedDeepEquals(this.typeIds, other.typeIds);
+            Utils.enhancedDeepEquals(this.policyIds, other.policyIds);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter, typeIds);
+            updatedAfter, policyIds);
     }
     
     @Override
     public String toString() {
         return Utils.toString(HrisListTimeOffRequestsQueryParamFilter.class,
                 "updatedAfter", updatedAfter,
-                "typeIds", typeIds);
+                "policyIds", policyIds);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -136,7 +136,7 @@ public class HrisListTimeOffRequestsQueryParamFilter {
 
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
-        private JsonNullable<? extends List<String>> typeIds = JsonNullable.undefined();
+        private JsonNullable<? extends List<String>> policyIds = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -163,27 +163,27 @@ public class HrisListTimeOffRequestsQueryParamFilter {
 
 
         /**
-         * List of time off type ids to filter by.
+         * List of time off policy ids to filter by.
          */
-        public Builder typeIds(List<String> typeIds) {
-            Utils.checkNotNull(typeIds, "typeIds");
-            this.typeIds = JsonNullable.of(typeIds);
+        public Builder policyIds(List<String> policyIds) {
+            Utils.checkNotNull(policyIds, "policyIds");
+            this.policyIds = JsonNullable.of(policyIds);
             return this;
         }
 
         /**
-         * List of time off type ids to filter by.
+         * List of time off policy ids to filter by.
          */
-        public Builder typeIds(JsonNullable<? extends List<String>> typeIds) {
-            Utils.checkNotNull(typeIds, "typeIds");
-            this.typeIds = typeIds;
+        public Builder policyIds(JsonNullable<? extends List<String>> policyIds) {
+            Utils.checkNotNull(policyIds, "policyIds");
+            this.policyIds = policyIds;
             return this;
         }
 
         public HrisListTimeOffRequestsQueryParamFilter build() {
 
             return new HrisListTimeOffRequestsQueryParamFilter(
-                updatedAfter, typeIds);
+                updatedAfter, policyIds);
         }
 
     }

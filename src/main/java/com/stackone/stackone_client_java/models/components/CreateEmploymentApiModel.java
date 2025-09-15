@@ -103,6 +103,20 @@ public class CreateEmploymentApiModel {
     @Deprecated
     private JsonNullable<? extends CreateEmploymentApiModelEmploymentContractType> employmentContractType;
 
+    /**
+     * The type of employment
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    private JsonNullable<? extends CreateEmploymentApiModelType> type;
+
+    /**
+     * The employment work schedule type
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("contract_type")
+    private JsonNullable<? extends CreateEmploymentApiModelContractType> contractType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("work_time")
@@ -135,6 +149,8 @@ public class CreateEmploymentApiModel {
             @JsonProperty("grade") JsonNullable<? extends CreateEmploymentApiModelGrade> grade,
             @JsonProperty("employment_type") JsonNullable<? extends CreateEmploymentApiModelEmploymentType> employmentType,
             @JsonProperty("employment_contract_type") JsonNullable<? extends CreateEmploymentApiModelEmploymentContractType> employmentContractType,
+            @JsonProperty("type") JsonNullable<? extends CreateEmploymentApiModelType> type,
+            @JsonProperty("contract_type") JsonNullable<? extends CreateEmploymentApiModelContractType> contractType,
             @JsonProperty("work_time") JsonNullable<? extends CreateEmploymentApiModelWorkTime> workTime,
             @JsonProperty("payroll_code") JsonNullable<String> payrollCode,
             @JsonProperty("job_id") JsonNullable<String> jobId) {
@@ -149,6 +165,8 @@ public class CreateEmploymentApiModel {
         Utils.checkNotNull(grade, "grade");
         Utils.checkNotNull(employmentType, "employmentType");
         Utils.checkNotNull(employmentContractType, "employmentContractType");
+        Utils.checkNotNull(type, "type");
+        Utils.checkNotNull(contractType, "contractType");
         Utils.checkNotNull(workTime, "workTime");
         Utils.checkNotNull(payrollCode, "payrollCode");
         Utils.checkNotNull(jobId, "jobId");
@@ -163,6 +181,8 @@ public class CreateEmploymentApiModel {
         this.grade = grade;
         this.employmentType = employmentType;
         this.employmentContractType = employmentContractType;
+        this.type = type;
+        this.contractType = contractType;
         this.workTime = workTime;
         this.payrollCode = payrollCode;
         this.jobId = jobId;
@@ -173,7 +193,8 @@ public class CreateEmploymentApiModel {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -274,6 +295,24 @@ public class CreateEmploymentApiModel {
     @JsonIgnore
     public JsonNullable<CreateEmploymentApiModelEmploymentContractType> employmentContractType() {
         return (JsonNullable<CreateEmploymentApiModelEmploymentContractType>) employmentContractType;
+    }
+
+    /**
+     * The type of employment
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<CreateEmploymentApiModelType> type() {
+        return (JsonNullable<CreateEmploymentApiModelType>) type;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<CreateEmploymentApiModelContractType> contractType() {
+        return (JsonNullable<CreateEmploymentApiModelContractType>) contractType;
     }
 
     @SuppressWarnings("unchecked")
@@ -513,6 +552,42 @@ public class CreateEmploymentApiModel {
         return this;
     }
 
+    /**
+     * The type of employment
+     */
+    public CreateEmploymentApiModel withType(CreateEmploymentApiModelType type) {
+        Utils.checkNotNull(type, "type");
+        this.type = JsonNullable.of(type);
+        return this;
+    }
+
+    /**
+     * The type of employment
+     */
+    public CreateEmploymentApiModel withType(JsonNullable<? extends CreateEmploymentApiModelType> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    public CreateEmploymentApiModel withContractType(CreateEmploymentApiModelContractType contractType) {
+        Utils.checkNotNull(contractType, "contractType");
+        this.contractType = JsonNullable.of(contractType);
+        return this;
+    }
+
+    /**
+     * The employment work schedule type
+     */
+    public CreateEmploymentApiModel withContractType(JsonNullable<? extends CreateEmploymentApiModelContractType> contractType) {
+        Utils.checkNotNull(contractType, "contractType");
+        this.contractType = contractType;
+        return this;
+    }
+
     public CreateEmploymentApiModel withWorkTime(CreateEmploymentApiModelWorkTime workTime) {
         Utils.checkNotNull(workTime, "workTime");
         this.workTime = JsonNullable.of(workTime);
@@ -582,6 +657,8 @@ public class CreateEmploymentApiModel {
             Utils.enhancedDeepEquals(this.grade, other.grade) &&
             Utils.enhancedDeepEquals(this.employmentType, other.employmentType) &&
             Utils.enhancedDeepEquals(this.employmentContractType, other.employmentContractType) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.contractType, other.contractType) &&
             Utils.enhancedDeepEquals(this.workTime, other.workTime) &&
             Utils.enhancedDeepEquals(this.payrollCode, other.payrollCode) &&
             Utils.enhancedDeepEquals(this.jobId, other.jobId);
@@ -593,8 +670,9 @@ public class CreateEmploymentApiModel {
             unifiedCustomFields, jobTitle, payRate,
             payPeriod, payFrequency, payCurrency,
             effectiveDate, endDate, grade,
-            employmentType, employmentContractType, workTime,
-            payrollCode, jobId);
+            employmentType, employmentContractType, type,
+            contractType, workTime, payrollCode,
+            jobId);
     }
     
     @Override
@@ -611,6 +689,8 @@ public class CreateEmploymentApiModel {
                 "grade", grade,
                 "employmentType", employmentType,
                 "employmentContractType", employmentContractType,
+                "type", type,
+                "contractType", contractType,
                 "workTime", workTime,
                 "payrollCode", payrollCode,
                 "jobId", jobId);
@@ -642,6 +722,10 @@ public class CreateEmploymentApiModel {
 
         @Deprecated
         private JsonNullable<? extends CreateEmploymentApiModelEmploymentContractType> employmentContractType = JsonNullable.undefined();
+
+        private JsonNullable<? extends CreateEmploymentApiModelType> type = JsonNullable.undefined();
+
+        private JsonNullable<? extends CreateEmploymentApiModelContractType> contractType = JsonNullable.undefined();
 
         private JsonNullable<? extends CreateEmploymentApiModelWorkTime> workTime = JsonNullable.undefined();
 
@@ -875,6 +959,44 @@ public class CreateEmploymentApiModel {
         }
 
 
+        /**
+         * The type of employment
+         */
+        public Builder type(CreateEmploymentApiModelType type) {
+            Utils.checkNotNull(type, "type");
+            this.type = JsonNullable.of(type);
+            return this;
+        }
+
+        /**
+         * The type of employment
+         */
+        public Builder type(JsonNullable<? extends CreateEmploymentApiModelType> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
+
+
+        /**
+         * The employment work schedule type
+         */
+        public Builder contractType(CreateEmploymentApiModelContractType contractType) {
+            Utils.checkNotNull(contractType, "contractType");
+            this.contractType = JsonNullable.of(contractType);
+            return this;
+        }
+
+        /**
+         * The employment work schedule type
+         */
+        public Builder contractType(JsonNullable<? extends CreateEmploymentApiModelContractType> contractType) {
+            Utils.checkNotNull(contractType, "contractType");
+            this.contractType = contractType;
+            return this;
+        }
+
+
         public Builder workTime(CreateEmploymentApiModelWorkTime workTime) {
             Utils.checkNotNull(workTime, "workTime");
             this.workTime = JsonNullable.of(workTime);
@@ -931,8 +1053,9 @@ public class CreateEmploymentApiModel {
                 unifiedCustomFields, jobTitle, payRate,
                 payPeriod, payFrequency, payCurrency,
                 effectiveDate, endDate, grade,
-                employmentType, employmentContractType, workTime,
-                payrollCode, jobId);
+                employmentType, employmentContractType, type,
+                contractType, workTime, payrollCode,
+                jobId);
         }
 
     }

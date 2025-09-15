@@ -3,509 +3,66 @@
  */
 package com.stackone.stackone_client_java.models.components;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.stackone.stackone_client_java.utils.OneOfDeserializer;
+import com.stackone.stackone_client_java.utils.TypedObject;
+import com.stackone.stackone_client_java.utils.Utils.JsonShape;
+import com.stackone.stackone_client_java.utils.Utils.TypeReferenceWithShape;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.time.OffsetDateTime;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
-
+/**
+ * Data
+ * 
+ * <p>The response data from the action RPC call
+ */
+@JsonDeserialize(using = Data._Deserializer.class)
 public class Data {
-    /**
-     * Unique identifier
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("id")
-    private JsonNullable<String> id;
 
-    /**
-     * Provider's unique identifier
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("remote_id")
-    private JsonNullable<String> remoteId;
+    @JsonValue
+    private TypedObject value;
+    
+    private Data(TypedObject value) {
+        this.value = value;
+    }
 
-    /**
-     * The employee ID associated with this shift
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("employee_id")
-    private JsonNullable<String> employeeId;
+    public static Data of(One value) {
+        Utils.checkNotNull(value, "value");
+        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<One>(){}));
+    }
 
-    /**
-     * The location ID where this shift takes place
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("location_id")
-    private JsonNullable<String> locationId;
-
-    /**
-     * The company ID associated with this shift
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("company_id")
-    private JsonNullable<String> companyId;
-
-    /**
-     * The start time of the shift
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_time")
-    private JsonNullable<OffsetDateTime> startTime;
-
-    /**
-     * The end time of the shift
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("end_time")
-    private JsonNullable<OffsetDateTime> endTime;
-
-    /**
-     * The total break duration for this shift in ISO 8601 duration format
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("break_duration")
-    private JsonNullable<String> breakDuration;
-
-    /**
-     * The status of the shift
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("status")
-    private JsonNullable<? extends HrisShiftResultStatus> status;
-
-    /**
-     * The approval status of the shift
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("approval_status")
-    private JsonNullable<? extends HrisShiftResultApprovalStatus> approvalStatus;
-
-    /**
-     * The breaks taken during this shift
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("breaks")
-    private JsonNullable<? extends List<ShiftBreak>> breaks;
-
-    /**
-     * The date and time the shift was created
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("created_at")
-    private JsonNullable<OffsetDateTime> createdAt;
-
-    /**
-     * The date and time the shift was last updated
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("updated_at")
-    private JsonNullable<OffsetDateTime> updatedAt;
-
-    @JsonCreator
-    public Data(
-            @JsonProperty("id") JsonNullable<String> id,
-            @JsonProperty("remote_id") JsonNullable<String> remoteId,
-            @JsonProperty("employee_id") JsonNullable<String> employeeId,
-            @JsonProperty("location_id") JsonNullable<String> locationId,
-            @JsonProperty("company_id") JsonNullable<String> companyId,
-            @JsonProperty("start_time") JsonNullable<OffsetDateTime> startTime,
-            @JsonProperty("end_time") JsonNullable<OffsetDateTime> endTime,
-            @JsonProperty("break_duration") JsonNullable<String> breakDuration,
-            @JsonProperty("status") JsonNullable<? extends HrisShiftResultStatus> status,
-            @JsonProperty("approval_status") JsonNullable<? extends HrisShiftResultApprovalStatus> approvalStatus,
-            @JsonProperty("breaks") JsonNullable<? extends List<ShiftBreak>> breaks,
-            @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
-            @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt) {
-        Utils.checkNotNull(id, "id");
-        Utils.checkNotNull(remoteId, "remoteId");
-        Utils.checkNotNull(employeeId, "employeeId");
-        Utils.checkNotNull(locationId, "locationId");
-        Utils.checkNotNull(companyId, "companyId");
-        Utils.checkNotNull(startTime, "startTime");
-        Utils.checkNotNull(endTime, "endTime");
-        Utils.checkNotNull(breakDuration, "breakDuration");
-        Utils.checkNotNull(status, "status");
-        Utils.checkNotNull(approvalStatus, "approvalStatus");
-        Utils.checkNotNull(breaks, "breaks");
-        Utils.checkNotNull(createdAt, "createdAt");
-        Utils.checkNotNull(updatedAt, "updatedAt");
-        this.id = id;
-        this.remoteId = remoteId;
-        this.employeeId = employeeId;
-        this.locationId = locationId;
-        this.companyId = companyId;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.breakDuration = breakDuration;
-        this.status = status;
-        this.approvalStatus = approvalStatus;
-        this.breaks = breaks;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+    public static Data of(List<Two> value) {
+        Utils.checkNotNull(value, "value");
+        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Two>>(){}));
     }
     
-    public Data() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
-    }
-
     /**
-     * Unique identifier
-     */
-    @JsonIgnore
-    public JsonNullable<String> id() {
-        return id;
-    }
-
-    /**
-     * Provider's unique identifier
-     */
-    @JsonIgnore
-    public JsonNullable<String> remoteId() {
-        return remoteId;
-    }
-
-    /**
-     * The employee ID associated with this shift
-     */
-    @JsonIgnore
-    public JsonNullable<String> employeeId() {
-        return employeeId;
-    }
-
-    /**
-     * The location ID where this shift takes place
-     */
-    @JsonIgnore
-    public JsonNullable<String> locationId() {
-        return locationId;
-    }
-
-    /**
-     * The company ID associated with this shift
-     */
-    @JsonIgnore
-    public JsonNullable<String> companyId() {
-        return companyId;
-    }
-
-    /**
-     * The start time of the shift
-     */
-    @JsonIgnore
-    public JsonNullable<OffsetDateTime> startTime() {
-        return startTime;
-    }
-
-    /**
-     * The end time of the shift
-     */
-    @JsonIgnore
-    public JsonNullable<OffsetDateTime> endTime() {
-        return endTime;
-    }
-
-    /**
-     * The total break duration for this shift in ISO 8601 duration format
-     */
-    @JsonIgnore
-    public JsonNullable<String> breakDuration() {
-        return breakDuration;
-    }
-
-    /**
-     * The status of the shift
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<HrisShiftResultStatus> status() {
-        return (JsonNullable<HrisShiftResultStatus>) status;
-    }
-
-    /**
-     * The approval status of the shift
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<HrisShiftResultApprovalStatus> approvalStatus() {
-        return (JsonNullable<HrisShiftResultApprovalStatus>) approvalStatus;
-    }
-
-    /**
-     * The breaks taken during this shift
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<List<ShiftBreak>> breaks() {
-        return (JsonNullable<List<ShiftBreak>>) breaks;
-    }
-
-    /**
-     * The date and time the shift was created
-     */
-    @JsonIgnore
-    public JsonNullable<OffsetDateTime> createdAt() {
-        return createdAt;
-    }
-
-    /**
-     * The date and time the shift was last updated
-     */
-    @JsonIgnore
-    public JsonNullable<OffsetDateTime> updatedAt() {
-        return updatedAt;
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
-    /**
-     * Unique identifier
-     */
-    public Data withId(String id) {
-        Utils.checkNotNull(id, "id");
-        this.id = JsonNullable.of(id);
-        return this;
-    }
-
-    /**
-     * Unique identifier
-     */
-    public Data withId(JsonNullable<String> id) {
-        Utils.checkNotNull(id, "id");
-        this.id = id;
-        return this;
-    }
-
-    /**
-     * Provider's unique identifier
-     */
-    public Data withRemoteId(String remoteId) {
-        Utils.checkNotNull(remoteId, "remoteId");
-        this.remoteId = JsonNullable.of(remoteId);
-        return this;
-    }
-
-    /**
-     * Provider's unique identifier
-     */
-    public Data withRemoteId(JsonNullable<String> remoteId) {
-        Utils.checkNotNull(remoteId, "remoteId");
-        this.remoteId = remoteId;
-        return this;
-    }
-
-    /**
-     * The employee ID associated with this shift
-     */
-    public Data withEmployeeId(String employeeId) {
-        Utils.checkNotNull(employeeId, "employeeId");
-        this.employeeId = JsonNullable.of(employeeId);
-        return this;
-    }
-
-    /**
-     * The employee ID associated with this shift
-     */
-    public Data withEmployeeId(JsonNullable<String> employeeId) {
-        Utils.checkNotNull(employeeId, "employeeId");
-        this.employeeId = employeeId;
-        return this;
-    }
-
-    /**
-     * The location ID where this shift takes place
-     */
-    public Data withLocationId(String locationId) {
-        Utils.checkNotNull(locationId, "locationId");
-        this.locationId = JsonNullable.of(locationId);
-        return this;
-    }
-
-    /**
-     * The location ID where this shift takes place
-     */
-    public Data withLocationId(JsonNullable<String> locationId) {
-        Utils.checkNotNull(locationId, "locationId");
-        this.locationId = locationId;
-        return this;
-    }
-
-    /**
-     * The company ID associated with this shift
-     */
-    public Data withCompanyId(String companyId) {
-        Utils.checkNotNull(companyId, "companyId");
-        this.companyId = JsonNullable.of(companyId);
-        return this;
-    }
-
-    /**
-     * The company ID associated with this shift
-     */
-    public Data withCompanyId(JsonNullable<String> companyId) {
-        Utils.checkNotNull(companyId, "companyId");
-        this.companyId = companyId;
-        return this;
-    }
-
-    /**
-     * The start time of the shift
-     */
-    public Data withStartTime(OffsetDateTime startTime) {
-        Utils.checkNotNull(startTime, "startTime");
-        this.startTime = JsonNullable.of(startTime);
-        return this;
-    }
-
-    /**
-     * The start time of the shift
-     */
-    public Data withStartTime(JsonNullable<OffsetDateTime> startTime) {
-        Utils.checkNotNull(startTime, "startTime");
-        this.startTime = startTime;
-        return this;
-    }
-
-    /**
-     * The end time of the shift
-     */
-    public Data withEndTime(OffsetDateTime endTime) {
-        Utils.checkNotNull(endTime, "endTime");
-        this.endTime = JsonNullable.of(endTime);
-        return this;
-    }
-
-    /**
-     * The end time of the shift
-     */
-    public Data withEndTime(JsonNullable<OffsetDateTime> endTime) {
-        Utils.checkNotNull(endTime, "endTime");
-        this.endTime = endTime;
-        return this;
-    }
-
-    /**
-     * The total break duration for this shift in ISO 8601 duration format
-     */
-    public Data withBreakDuration(String breakDuration) {
-        Utils.checkNotNull(breakDuration, "breakDuration");
-        this.breakDuration = JsonNullable.of(breakDuration);
-        return this;
-    }
-
-    /**
-     * The total break duration for this shift in ISO 8601 duration format
-     */
-    public Data withBreakDuration(JsonNullable<String> breakDuration) {
-        Utils.checkNotNull(breakDuration, "breakDuration");
-        this.breakDuration = breakDuration;
-        return this;
-    }
-
-    /**
-     * The status of the shift
-     */
-    public Data withStatus(HrisShiftResultStatus status) {
-        Utils.checkNotNull(status, "status");
-        this.status = JsonNullable.of(status);
-        return this;
-    }
-
-    /**
-     * The status of the shift
-     */
-    public Data withStatus(JsonNullable<? extends HrisShiftResultStatus> status) {
-        Utils.checkNotNull(status, "status");
-        this.status = status;
-        return this;
-    }
-
-    /**
-     * The approval status of the shift
-     */
-    public Data withApprovalStatus(HrisShiftResultApprovalStatus approvalStatus) {
-        Utils.checkNotNull(approvalStatus, "approvalStatus");
-        this.approvalStatus = JsonNullable.of(approvalStatus);
-        return this;
-    }
-
-    /**
-     * The approval status of the shift
-     */
-    public Data withApprovalStatus(JsonNullable<? extends HrisShiftResultApprovalStatus> approvalStatus) {
-        Utils.checkNotNull(approvalStatus, "approvalStatus");
-        this.approvalStatus = approvalStatus;
-        return this;
-    }
-
-    /**
-     * The breaks taken during this shift
-     */
-    public Data withBreaks(List<ShiftBreak> breaks) {
-        Utils.checkNotNull(breaks, "breaks");
-        this.breaks = JsonNullable.of(breaks);
-        return this;
-    }
-
-    /**
-     * The breaks taken during this shift
-     */
-    public Data withBreaks(JsonNullable<? extends List<ShiftBreak>> breaks) {
-        Utils.checkNotNull(breaks, "breaks");
-        this.breaks = breaks;
-        return this;
-    }
-
-    /**
-     * The date and time the shift was created
-     */
-    public Data withCreatedAt(OffsetDateTime createdAt) {
-        Utils.checkNotNull(createdAt, "createdAt");
-        this.createdAt = JsonNullable.of(createdAt);
-        return this;
-    }
-
-    /**
-     * The date and time the shift was created
-     */
-    public Data withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
-        Utils.checkNotNull(createdAt, "createdAt");
-        this.createdAt = createdAt;
-        return this;
-    }
-
-    /**
-     * The date and time the shift was last updated
-     */
-    public Data withUpdatedAt(OffsetDateTime updatedAt) {
-        Utils.checkNotNull(updatedAt, "updatedAt");
-        this.updatedAt = JsonNullable.of(updatedAt);
-        return this;
-    }
-
-    /**
-     * The date and time the shift was last updated
-     */
-    public Data withUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
-        Utils.checkNotNull(updatedAt, "updatedAt");
-        this.updatedAt = updatedAt;
-        return this;
-    }
-
+     * Returns an instance of one of these types:
+     * <ul>
+     * <li>{@code com.stackone.stackone_client_java.models.components.One}</li>
+     * <li>{@code java.util.List<com.stackone.stackone_client_java.models.components.Two>}</li>
+     * </ul>
+     * 
+     * <p>Use {@code instanceof} to determine what type is returned. For example:
+     * 
+     * <pre>
+     * if (obj.value() instanceof String) {
+     *     String answer = (String) obj.value();
+     *     System.out.println("answer=" + answer);
+     * }
+     * </pre>
+     * 
+     * @return value of oneOf type
+     **/ 
+    public java.lang.Object value() {
+        return value.value();
+    }    
+    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -515,339 +72,29 @@ public class Data {
             return false;
         }
         Data other = (Data) o;
-        return 
-            Utils.enhancedDeepEquals(this.id, other.id) &&
-            Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
-            Utils.enhancedDeepEquals(this.employeeId, other.employeeId) &&
-            Utils.enhancedDeepEquals(this.locationId, other.locationId) &&
-            Utils.enhancedDeepEquals(this.companyId, other.companyId) &&
-            Utils.enhancedDeepEquals(this.startTime, other.startTime) &&
-            Utils.enhancedDeepEquals(this.endTime, other.endTime) &&
-            Utils.enhancedDeepEquals(this.breakDuration, other.breakDuration) &&
-            Utils.enhancedDeepEquals(this.status, other.status) &&
-            Utils.enhancedDeepEquals(this.approvalStatus, other.approvalStatus) &&
-            Utils.enhancedDeepEquals(this.breaks, other.breaks) &&
-            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
-            Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Utils.enhancedHash(
-            id, remoteId, employeeId,
-            locationId, companyId, startTime,
-            endTime, breakDuration, status,
-            approvalStatus, breaks, createdAt,
-            updatedAt);
+        return Utils.enhancedHash(value.value());
+    }
+    
+    @SuppressWarnings("serial")
+    public static final class _Deserializer extends OneOfDeserializer<Data> {
+
+        public _Deserializer() {
+            super(Data.class, false,
+                  TypeReferenceWithShape.of(new TypeReference<List<Two>>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<One>() {}, JsonShape.DEFAULT));
+        }
     }
     
     @Override
     public String toString() {
         return Utils.toString(Data.class,
-                "id", id,
-                "remoteId", remoteId,
-                "employeeId", employeeId,
-                "locationId", locationId,
-                "companyId", companyId,
-                "startTime", startTime,
-                "endTime", endTime,
-                "breakDuration", breakDuration,
-                "status", status,
-                "approvalStatus", approvalStatus,
-                "breaks", breaks,
-                "createdAt", createdAt,
-                "updatedAt", updatedAt);
+                "value", value);
     }
-
-    @SuppressWarnings("UnusedReturnValue")
-    public final static class Builder {
-
-        private JsonNullable<String> id = JsonNullable.undefined();
-
-        private JsonNullable<String> remoteId = JsonNullable.undefined();
-
-        private JsonNullable<String> employeeId = JsonNullable.undefined();
-
-        private JsonNullable<String> locationId = JsonNullable.undefined();
-
-        private JsonNullable<String> companyId = JsonNullable.undefined();
-
-        private JsonNullable<OffsetDateTime> startTime = JsonNullable.undefined();
-
-        private JsonNullable<OffsetDateTime> endTime = JsonNullable.undefined();
-
-        private JsonNullable<String> breakDuration = JsonNullable.undefined();
-
-        private JsonNullable<? extends HrisShiftResultStatus> status = JsonNullable.undefined();
-
-        private JsonNullable<? extends HrisShiftResultApprovalStatus> approvalStatus = JsonNullable.undefined();
-
-        private JsonNullable<? extends List<ShiftBreak>> breaks = JsonNullable.undefined();
-
-        private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
-
-        private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
-
-        private Builder() {
-          // force use of static builder() method
-        }
-
-
-        /**
-         * Unique identifier
-         */
-        public Builder id(String id) {
-            Utils.checkNotNull(id, "id");
-            this.id = JsonNullable.of(id);
-            return this;
-        }
-
-        /**
-         * Unique identifier
-         */
-        public Builder id(JsonNullable<String> id) {
-            Utils.checkNotNull(id, "id");
-            this.id = id;
-            return this;
-        }
-
-
-        /**
-         * Provider's unique identifier
-         */
-        public Builder remoteId(String remoteId) {
-            Utils.checkNotNull(remoteId, "remoteId");
-            this.remoteId = JsonNullable.of(remoteId);
-            return this;
-        }
-
-        /**
-         * Provider's unique identifier
-         */
-        public Builder remoteId(JsonNullable<String> remoteId) {
-            Utils.checkNotNull(remoteId, "remoteId");
-            this.remoteId = remoteId;
-            return this;
-        }
-
-
-        /**
-         * The employee ID associated with this shift
-         */
-        public Builder employeeId(String employeeId) {
-            Utils.checkNotNull(employeeId, "employeeId");
-            this.employeeId = JsonNullable.of(employeeId);
-            return this;
-        }
-
-        /**
-         * The employee ID associated with this shift
-         */
-        public Builder employeeId(JsonNullable<String> employeeId) {
-            Utils.checkNotNull(employeeId, "employeeId");
-            this.employeeId = employeeId;
-            return this;
-        }
-
-
-        /**
-         * The location ID where this shift takes place
-         */
-        public Builder locationId(String locationId) {
-            Utils.checkNotNull(locationId, "locationId");
-            this.locationId = JsonNullable.of(locationId);
-            return this;
-        }
-
-        /**
-         * The location ID where this shift takes place
-         */
-        public Builder locationId(JsonNullable<String> locationId) {
-            Utils.checkNotNull(locationId, "locationId");
-            this.locationId = locationId;
-            return this;
-        }
-
-
-        /**
-         * The company ID associated with this shift
-         */
-        public Builder companyId(String companyId) {
-            Utils.checkNotNull(companyId, "companyId");
-            this.companyId = JsonNullable.of(companyId);
-            return this;
-        }
-
-        /**
-         * The company ID associated with this shift
-         */
-        public Builder companyId(JsonNullable<String> companyId) {
-            Utils.checkNotNull(companyId, "companyId");
-            this.companyId = companyId;
-            return this;
-        }
-
-
-        /**
-         * The start time of the shift
-         */
-        public Builder startTime(OffsetDateTime startTime) {
-            Utils.checkNotNull(startTime, "startTime");
-            this.startTime = JsonNullable.of(startTime);
-            return this;
-        }
-
-        /**
-         * The start time of the shift
-         */
-        public Builder startTime(JsonNullable<OffsetDateTime> startTime) {
-            Utils.checkNotNull(startTime, "startTime");
-            this.startTime = startTime;
-            return this;
-        }
-
-
-        /**
-         * The end time of the shift
-         */
-        public Builder endTime(OffsetDateTime endTime) {
-            Utils.checkNotNull(endTime, "endTime");
-            this.endTime = JsonNullable.of(endTime);
-            return this;
-        }
-
-        /**
-         * The end time of the shift
-         */
-        public Builder endTime(JsonNullable<OffsetDateTime> endTime) {
-            Utils.checkNotNull(endTime, "endTime");
-            this.endTime = endTime;
-            return this;
-        }
-
-
-        /**
-         * The total break duration for this shift in ISO 8601 duration format
-         */
-        public Builder breakDuration(String breakDuration) {
-            Utils.checkNotNull(breakDuration, "breakDuration");
-            this.breakDuration = JsonNullable.of(breakDuration);
-            return this;
-        }
-
-        /**
-         * The total break duration for this shift in ISO 8601 duration format
-         */
-        public Builder breakDuration(JsonNullable<String> breakDuration) {
-            Utils.checkNotNull(breakDuration, "breakDuration");
-            this.breakDuration = breakDuration;
-            return this;
-        }
-
-
-        /**
-         * The status of the shift
-         */
-        public Builder status(HrisShiftResultStatus status) {
-            Utils.checkNotNull(status, "status");
-            this.status = JsonNullable.of(status);
-            return this;
-        }
-
-        /**
-         * The status of the shift
-         */
-        public Builder status(JsonNullable<? extends HrisShiftResultStatus> status) {
-            Utils.checkNotNull(status, "status");
-            this.status = status;
-            return this;
-        }
-
-
-        /**
-         * The approval status of the shift
-         */
-        public Builder approvalStatus(HrisShiftResultApprovalStatus approvalStatus) {
-            Utils.checkNotNull(approvalStatus, "approvalStatus");
-            this.approvalStatus = JsonNullable.of(approvalStatus);
-            return this;
-        }
-
-        /**
-         * The approval status of the shift
-         */
-        public Builder approvalStatus(JsonNullable<? extends HrisShiftResultApprovalStatus> approvalStatus) {
-            Utils.checkNotNull(approvalStatus, "approvalStatus");
-            this.approvalStatus = approvalStatus;
-            return this;
-        }
-
-
-        /**
-         * The breaks taken during this shift
-         */
-        public Builder breaks(List<ShiftBreak> breaks) {
-            Utils.checkNotNull(breaks, "breaks");
-            this.breaks = JsonNullable.of(breaks);
-            return this;
-        }
-
-        /**
-         * The breaks taken during this shift
-         */
-        public Builder breaks(JsonNullable<? extends List<ShiftBreak>> breaks) {
-            Utils.checkNotNull(breaks, "breaks");
-            this.breaks = breaks;
-            return this;
-        }
-
-
-        /**
-         * The date and time the shift was created
-         */
-        public Builder createdAt(OffsetDateTime createdAt) {
-            Utils.checkNotNull(createdAt, "createdAt");
-            this.createdAt = JsonNullable.of(createdAt);
-            return this;
-        }
-
-        /**
-         * The date and time the shift was created
-         */
-        public Builder createdAt(JsonNullable<OffsetDateTime> createdAt) {
-            Utils.checkNotNull(createdAt, "createdAt");
-            this.createdAt = createdAt;
-            return this;
-        }
-
-
-        /**
-         * The date and time the shift was last updated
-         */
-        public Builder updatedAt(OffsetDateTime updatedAt) {
-            Utils.checkNotNull(updatedAt, "updatedAt");
-            this.updatedAt = JsonNullable.of(updatedAt);
-            return this;
-        }
-
-        /**
-         * The date and time the shift was last updated
-         */
-        public Builder updatedAt(JsonNullable<OffsetDateTime> updatedAt) {
-            Utils.checkNotNull(updatedAt, "updatedAt");
-            this.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Data build() {
-
-            return new Data(
-                id, remoteId, employeeId,
-                locationId, companyId, startTime,
-                endTime, breakDuration, status,
-                approvalStatus, breaks, createdAt,
-                updatedAt);
-        }
-
-    }
+ 
 }
+
