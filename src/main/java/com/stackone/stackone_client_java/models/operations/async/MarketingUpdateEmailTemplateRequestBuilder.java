@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateEmailTemplateRequestDto;
 import com.stackone.stackone_client_java.models.operations.MarketingUpdateEmailTemplateRequest;
 import com.stackone.stackone_client_java.operations.MarketingUpdateEmailTemplate;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class MarketingUpdateEmailTemplateRequestBuilder {
     private MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public MarketingUpdateEmailTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class MarketingUpdateEmailTemplateRequestBuilder {
             .build());
 
         AsyncRequestOperation<MarketingUpdateEmailTemplateRequest, MarketingUpdateEmailTemplateResponse> operation
-              = new MarketingUpdateEmailTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateEmailTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         MarketingUpdateEmailTemplateRequest request = buildRequest();
 
         return operation.doRequest(request)

@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.StackoneMcpGetRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneMcpGetSecurity;
 import com.stackone.stackone_client_java.operations.StackoneMcpGet;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class StackoneMcpGetRequestBuilder {
     private String mcpSessionId;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public StackoneMcpGetRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -76,7 +78,7 @@ public class StackoneMcpGetRequestBuilder {
         AsyncRequestOperation<StackoneMcpGetRequest, StackoneMcpGetResponse> operation
               = new StackoneMcpGet.Async(
                                     sdkConfiguration, security, options,
-                                    sdkConfiguration.retryScheduler());
+                                    sdkConfiguration.retryScheduler(), _headers);
         StackoneMcpGetRequest request = buildRequest();
 
         return operation.doRequest(request)

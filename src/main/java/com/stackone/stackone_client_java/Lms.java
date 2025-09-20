@@ -106,6 +106,7 @@ import com.stackone.stackone_client_java.operations.LmsListUserCompletions;
 import com.stackone.stackone_client_java.operations.LmsListUsers;
 import com.stackone.stackone_client_java.operations.LmsUpdateContent;
 import com.stackone.stackone_client_java.operations.LmsUpsertContent;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -113,6 +114,7 @@ import java.util.Optional;
 
 
 public class Lms {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncLms asyncSDK;
 
@@ -160,7 +162,7 @@ public class Lms {
      */
     public LmsListCoursesResponse listCourses(LmsListCoursesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListCoursesRequest, LmsListCoursesResponse> operation
-              = new LmsListCourses.Sync(sdkConfiguration, options);
+              = new LmsListCourses.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -194,7 +196,7 @@ public class Lms {
      */
     public LmsGetCourseResponse getCourse(LmsGetCourseRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetCourseRequest, LmsGetCourseResponse> operation
-              = new LmsGetCourse.Sync(sdkConfiguration, options);
+              = new LmsGetCourse.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -228,7 +230,7 @@ public class Lms {
      */
     public LmsListUserAssignmentsResponse listUserAssignments(LmsListUserAssignmentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListUserAssignmentsRequest, LmsListUserAssignmentsResponse> operation
-              = new LmsListUserAssignments.Sync(sdkConfiguration, options);
+              = new LmsListUserAssignments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -278,7 +280,7 @@ public class Lms {
                 .lmsCreateAssignmentRequestDto(lmsCreateAssignmentRequestDto)
                 .build();
         RequestOperation<LmsCreateUserAssignmentRequest, LmsCreateUserAssignmentResponse> operation
-              = new LmsCreateUserAssignment.Sync(sdkConfiguration, options);
+              = new LmsCreateUserAssignment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -312,7 +314,7 @@ public class Lms {
      */
     public LmsGetUserAssignmentResponse getUserAssignment(LmsGetUserAssignmentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetUserAssignmentRequest, LmsGetUserAssignmentResponse> operation
-              = new LmsGetUserAssignment.Sync(sdkConfiguration, options);
+              = new LmsGetUserAssignment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -356,7 +358,7 @@ public class Lms {
                 .lmsBatchUpsertContentRequestDto(lmsBatchUpsertContentRequestDto)
                 .build();
         RequestOperation<LmsBatchUpsertContentRequest, LmsBatchUpsertContentResponse> operation
-              = new LmsBatchUpsertContent.Sync(sdkConfiguration, options);
+              = new LmsBatchUpsertContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -390,7 +392,7 @@ public class Lms {
      */
     public LmsListContentResponse listContent(LmsListContentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListContentRequest, LmsListContentResponse> operation
-              = new LmsListContent.Sync(sdkConfiguration, options);
+              = new LmsListContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -434,7 +436,7 @@ public class Lms {
                 .lmsUpsertContentRequestDto(lmsUpsertContentRequestDto)
                 .build();
         RequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
-              = new LmsUpsertContent.Sync(sdkConfiguration, options);
+              = new LmsUpsertContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -468,7 +470,7 @@ public class Lms {
      */
     public LmsGetContentResponse getContent(LmsGetContentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetContentRequest, LmsGetContentResponse> operation
-              = new LmsGetContent.Sync(sdkConfiguration, options);
+              = new LmsGetContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -518,7 +520,7 @@ public class Lms {
                 .lmsCreateContentRequestDto(lmsCreateContentRequestDto)
                 .build();
         RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContent.Sync(sdkConfiguration, options);
+              = new LmsUpdateContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -552,7 +554,7 @@ public class Lms {
      */
     public LmsListUserCompletionsResponse listUserCompletions(LmsListUserCompletionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListUserCompletionsRequest, LmsListUserCompletionsResponse> operation
-              = new LmsListUserCompletions.Sync(sdkConfiguration, options);
+              = new LmsListUserCompletions.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -602,7 +604,7 @@ public class Lms {
                 .lmsCreateCompletionRequestDto(lmsCreateCompletionRequestDto)
                 .build();
         RequestOperation<LmsCreateUserCompletionRequest, LmsCreateUserCompletionResponse> operation
-              = new LmsCreateUserCompletion.Sync(sdkConfiguration, options);
+              = new LmsCreateUserCompletion.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -636,7 +638,7 @@ public class Lms {
      */
     public LmsGetUserCompletionResponse getUserCompletion(LmsGetUserCompletionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetUserCompletionRequest, LmsGetUserCompletionResponse> operation
-              = new LmsGetUserCompletion.Sync(sdkConfiguration, options);
+              = new LmsGetUserCompletion.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -686,7 +688,7 @@ public class Lms {
                 .subResourceId(subResourceId)
                 .build();
         RequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
-              = new LmsDeleteUserCompletion.Sync(sdkConfiguration, options);
+              = new LmsDeleteUserCompletion.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -720,7 +722,7 @@ public class Lms {
      */
     public LmsListCompletionsResponse listCompletions(LmsListCompletionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListCompletionsRequest, LmsListCompletionsResponse> operation
-              = new LmsListCompletions.Sync(sdkConfiguration, options);
+              = new LmsListCompletions.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -754,7 +756,7 @@ public class Lms {
      */
     public LmsGetCompletionResponse getCompletion(LmsGetCompletionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetCompletionRequest, LmsGetCompletionResponse> operation
-              = new LmsGetCompletion.Sync(sdkConfiguration, options);
+              = new LmsGetCompletion.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -788,7 +790,7 @@ public class Lms {
      */
     public LmsGetCategoryResponse getCategory(LmsGetCategoryRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetCategoryRequest, LmsGetCategoryResponse> operation
-              = new LmsGetCategory.Sync(sdkConfiguration, options);
+              = new LmsGetCategory.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -822,7 +824,7 @@ public class Lms {
      */
     public LmsListCategoriesResponse listCategories(LmsListCategoriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListCategoriesRequest, LmsListCategoriesResponse> operation
-              = new LmsListCategories.Sync(sdkConfiguration, options);
+              = new LmsListCategories.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -856,7 +858,7 @@ public class Lms {
      */
     public LmsListUsersResponse listUsers(LmsListUsersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListUsersRequest, LmsListUsersResponse> operation
-              = new LmsListUsers.Sync(sdkConfiguration, options);
+              = new LmsListUsers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -890,7 +892,7 @@ public class Lms {
      */
     public LmsGetUserResponse getUser(LmsGetUserRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetUserRequest, LmsGetUserResponse> operation
-              = new LmsGetUser.Sync(sdkConfiguration, options);
+              = new LmsGetUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -924,7 +926,7 @@ public class Lms {
      */
     public LmsGetSkillResponse getSkill(LmsGetSkillRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetSkillRequest, LmsGetSkillResponse> operation
-              = new LmsGetSkill.Sync(sdkConfiguration, options);
+              = new LmsGetSkill.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -958,7 +960,7 @@ public class Lms {
      */
     public LmsListSkillsResponse listSkills(LmsListSkillsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListSkillsRequest, LmsListSkillsResponse> operation
-              = new LmsListSkills.Sync(sdkConfiguration, options);
+              = new LmsListSkills.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -992,7 +994,7 @@ public class Lms {
      */
     public LmsListAssignmentsResponse listAssignments(LmsListAssignmentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsListAssignmentsRequest, LmsListAssignmentsResponse> operation
-              = new LmsListAssignments.Sync(sdkConfiguration, options);
+              = new LmsListAssignments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1026,7 +1028,7 @@ public class Lms {
      */
     public LmsGetAssignmentResponse getAssignment(LmsGetAssignmentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<LmsGetAssignmentRequest, LmsGetAssignmentResponse> operation
-              = new LmsGetAssignment.Sync(sdkConfiguration, options);
+              = new LmsGetAssignment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

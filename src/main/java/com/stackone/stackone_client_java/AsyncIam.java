@@ -46,6 +46,7 @@ import com.stackone.stackone_client_java.operations.IamListPolicies;
 import com.stackone.stackone_client_java.operations.IamListRoles;
 import com.stackone.stackone_client_java.operations.IamListUsers;
 import com.stackone.stackone_client_java.operations.IamUpdateUser;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -53,6 +54,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncIam {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Iam syncSDK;
 
@@ -99,7 +101,9 @@ public class AsyncIam {
      */
     public CompletableFuture<IamListUsersResponse> listUsers(IamListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamListUsersRequest, IamListUsersResponse> operation
-              = new IamListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -133,7 +137,9 @@ public class AsyncIam {
      */
     public CompletableFuture<IamGetUserResponse> getUser(IamGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamGetUserRequest, IamGetUserResponse> operation
-              = new IamGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -177,7 +183,9 @@ public class AsyncIam {
                 .id(id)
                 .build();
         AsyncRequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
-              = new IamDeleteUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamDeleteUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -228,7 +236,9 @@ public class AsyncIam {
                 .iamUpdateUserRequestDto(iamUpdateUserRequestDto)
                 .build();
         AsyncRequestOperation<IamUpdateUserRequest, IamUpdateUserResponse> operation
-              = new IamUpdateUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamUpdateUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -262,7 +272,9 @@ public class AsyncIam {
      */
     public CompletableFuture<IamListRolesResponse> listRoles(IamListRolesRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamListRolesRequest, IamListRolesResponse> operation
-              = new IamListRoles.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamListRoles.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -296,7 +308,9 @@ public class AsyncIam {
      */
     public CompletableFuture<IamGetRoleResponse> getRole(IamGetRoleRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamGetRoleRequest, IamGetRoleResponse> operation
-              = new IamGetRole.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamGetRole.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -330,7 +344,9 @@ public class AsyncIam {
      */
     public CompletableFuture<IamListGroupsResponse> listGroups(IamListGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamListGroupsRequest, IamListGroupsResponse> operation
-              = new IamListGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamListGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -364,7 +380,9 @@ public class AsyncIam {
      */
     public CompletableFuture<IamGetGroupResponse> getGroup(IamGetGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamGetGroupRequest, IamGetGroupResponse> operation
-              = new IamGetGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamGetGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -398,7 +416,9 @@ public class AsyncIam {
      */
     public CompletableFuture<IamListPoliciesResponse> listPolicies(IamListPoliciesRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamListPoliciesRequest, IamListPoliciesResponse> operation
-              = new IamListPolicies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamListPolicies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -432,7 +452,9 @@ public class AsyncIam {
      */
     public CompletableFuture<IamGetPolicyResponse> getPolicy(IamGetPolicyRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamGetPolicyRequest, IamGetPolicyResponse> operation
-              = new IamGetPolicy.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamGetPolicy.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

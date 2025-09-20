@@ -319,6 +319,7 @@ import com.stackone.stackone_client_java.operations.AtsUpdateBackgroundCheckResu
 import com.stackone.stackone_client_java.operations.AtsUpdateCandidate;
 import com.stackone.stackone_client_java.operations.AtsUpdateJob;
 import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.String;
@@ -327,6 +328,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncAts {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Ats syncSDK;
 
@@ -373,7 +375,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationsResponse> listApplications(AtsListApplicationsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationsRequest, AtsListApplicationsResponse> operation
-              = new AtsListApplications.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplications.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -417,7 +421,9 @@ public class AsyncAts {
                 .atsCreateApplicationRequestDto(atsCreateApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
-              = new AtsCreateApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -451,7 +457,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationResponse> getApplication(AtsGetApplicationRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationRequest, AtsGetApplicationResponse> operation
-              = new AtsGetApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -502,7 +510,9 @@ public class AsyncAts {
                 .atsUpdateApplicationRequestDto(atsUpdateApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
-              = new AtsUpdateApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -536,7 +546,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationsOffersResponse> listApplicationsOffers(AtsListApplicationsOffersRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationsOffersRequest, AtsListApplicationsOffersResponse> operation
-              = new AtsListApplicationsOffers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationsOffers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -587,7 +599,9 @@ public class AsyncAts {
                 .atsMoveApplicationRequestDto(atsMoveApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
-              = new AtsMoveApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsMoveApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -638,7 +652,9 @@ public class AsyncAts {
                 .atsRejectApplicationRequestDto(atsRejectApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
-              = new AtsRejectApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsRejectApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -672,7 +688,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationOfferResponse> getApplicationOffer(AtsGetApplicationOfferRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationOfferRequest, AtsGetApplicationOfferResponse> operation
-              = new AtsGetApplicationOffer.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationOffer.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -706,7 +724,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationScorecardsResponse> listApplicationScorecards(AtsListApplicationScorecardsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationScorecardsRequest, AtsListApplicationScorecardsResponse> operation
-              = new AtsListApplicationScorecards.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationScorecards.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -740,7 +760,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationScorecardResponse> getApplicationScorecard(AtsGetApplicationScorecardRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationScorecardRequest, AtsGetApplicationScorecardResponse> operation
-              = new AtsGetApplicationScorecard.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationScorecard.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -774,7 +796,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationChangesResponse> listApplicationChanges(AtsListApplicationChangesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationChangesRequest, AtsListApplicationChangesResponse> operation
-              = new AtsListApplicationChanges.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationChanges.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -808,7 +832,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationNotesResponse> listApplicationNotes(AtsListApplicationNotesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationNotesRequest, AtsListApplicationNotesResponse> operation
-              = new AtsListApplicationNotes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationNotes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -859,7 +885,9 @@ public class AsyncAts {
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateApplicationNoteRequest, AtsCreateApplicationNoteResponse> operation
-              = new AtsCreateApplicationNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateApplicationNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -893,7 +921,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationNoteResponse> getApplicationNote(AtsGetApplicationNoteRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationNoteRequest, AtsGetApplicationNoteResponse> operation
-              = new AtsGetApplicationNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -948,7 +978,9 @@ public class AsyncAts {
                 .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
-              = new AtsUpdateApplicationNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateApplicationNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -982,7 +1014,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationsScheduledInterviewsResponse> listApplicationsScheduledInterviews(AtsListApplicationsScheduledInterviewsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationsScheduledInterviewsRequest, AtsListApplicationsScheduledInterviewsResponse> operation
-              = new AtsListApplicationsScheduledInterviews.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationsScheduledInterviews.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1016,7 +1050,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationScheduledInterviewResponse> getApplicationScheduledInterview(AtsGetApplicationScheduledInterviewRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationScheduledInterviewRequest, AtsGetApplicationScheduledInterviewResponse> operation
-              = new AtsGetApplicationScheduledInterview.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationScheduledInterview.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1067,7 +1103,9 @@ public class AsyncAts {
                 .atsDocumentsUploadRequestDto(atsDocumentsUploadRequestDto)
                 .build();
         AsyncRequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
-              = new AtsUploadApplicationDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUploadApplicationDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1101,7 +1139,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsDownloadApplicationDocumentResponse> downloadApplicationDocument(AtsDownloadApplicationDocumentRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsDownloadApplicationDocumentRequest, AtsDownloadApplicationDocumentResponse> operation
-              = new AtsDownloadApplicationDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsDownloadApplicationDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1135,7 +1175,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationDocumentsResponse> listApplicationDocuments(AtsListApplicationDocumentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationDocumentsRequest, AtsListApplicationDocumentsResponse> operation
-              = new AtsListApplicationDocuments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationDocuments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1169,7 +1211,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationDocumentResponse> getApplicationDocument(AtsGetApplicationDocumentRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationDocumentRequest, AtsGetApplicationDocumentResponse> operation
-              = new AtsGetApplicationDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1203,7 +1247,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListCandidatesResponse> listCandidates(AtsListCandidatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListCandidatesRequest, AtsListCandidatesResponse> operation
-              = new AtsListCandidates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListCandidates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1247,7 +1293,9 @@ public class AsyncAts {
                 .atsCreateCandidateRequestDto(atsCreateCandidateRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
-              = new AtsCreateCandidate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateCandidate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1281,7 +1329,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetCandidateResponse> getCandidate(AtsGetCandidateRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetCandidateRequest, AtsGetCandidateResponse> operation
-              = new AtsGetCandidate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetCandidate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1332,7 +1382,9 @@ public class AsyncAts {
                 .atsUpdateCandidateRequestDto(atsUpdateCandidateRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateCandidateRequest, AtsUpdateCandidateResponse> operation
-              = new AtsUpdateCandidate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateCandidate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1366,7 +1418,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListCandidateNotesResponse> listCandidateNotes(AtsListCandidateNotesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListCandidateNotesRequest, AtsListCandidateNotesResponse> operation
-              = new AtsListCandidateNotes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListCandidateNotes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1417,7 +1471,9 @@ public class AsyncAts {
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateCandidateNoteRequest, AtsCreateCandidateNoteResponse> operation
-              = new AtsCreateCandidateNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateCandidateNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1451,7 +1507,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetCandidateNoteResponse> getCandidateNote(AtsGetCandidateNoteRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetCandidateNoteRequest, AtsGetCandidateNoteResponse> operation
-              = new AtsGetCandidateNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetCandidateNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1485,7 +1543,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationCustomFieldDefinitionsResponse> listApplicationCustomFieldDefinitions(AtsListApplicationCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationCustomFieldDefinitionsRequest, AtsListApplicationCustomFieldDefinitionsResponse> operation
-              = new AtsListApplicationCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1519,7 +1579,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationCustomFieldDefinitionResponse> getApplicationCustomFieldDefinition(AtsGetApplicationCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationCustomFieldDefinitionRequest, AtsGetApplicationCustomFieldDefinitionResponse> operation
-              = new AtsGetApplicationCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1553,7 +1615,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListCandidateCustomFieldDefinitionsResponse> listCandidateCustomFieldDefinitions(AtsListCandidateCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListCandidateCustomFieldDefinitionsRequest, AtsListCandidateCustomFieldDefinitionsResponse> operation
-              = new AtsListCandidateCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListCandidateCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1587,7 +1651,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetCandidateCustomFieldDefinitionResponse> getCandidateCustomFieldDefinition(AtsGetCandidateCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetCandidateCustomFieldDefinitionRequest, AtsGetCandidateCustomFieldDefinitionResponse> operation
-              = new AtsGetCandidateCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetCandidateCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1621,7 +1687,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListJobCustomFieldDefinitionsResponse> listJobCustomFieldDefinitions(AtsListJobCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListJobCustomFieldDefinitionsRequest, AtsListJobCustomFieldDefinitionsResponse> operation
-              = new AtsListJobCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1655,7 +1723,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetJobCustomFieldDefinitionResponse> getJobCustomFieldDefinition(AtsGetJobCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetJobCustomFieldDefinitionRequest, AtsGetJobCustomFieldDefinitionResponse> operation
-              = new AtsGetJobCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetJobCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1689,7 +1759,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListDepartmentsResponse> listDepartments(AtsListDepartmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListDepartmentsRequest, AtsListDepartmentsResponse> operation
-              = new AtsListDepartments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListDepartments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1723,7 +1795,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetDepartmentResponse> getDepartment(AtsGetDepartmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetDepartmentRequest, AtsGetDepartmentResponse> operation
-              = new AtsGetDepartment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetDepartment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1763,7 +1837,9 @@ public class AsyncAts {
     @Deprecated
     public CompletableFuture<AtsListInterviewStagesResponse> listInterviewStages(AtsListInterviewStagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListInterviewStagesRequest, AtsListInterviewStagesResponse> operation
-              = new AtsListInterviewStages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListInterviewStages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1803,7 +1879,9 @@ public class AsyncAts {
     @Deprecated
     public CompletableFuture<AtsGetInterviewStageResponse> getInterviewStage(AtsGetInterviewStageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetInterviewStageRequest, AtsGetInterviewStageResponse> operation
-              = new AtsGetInterviewStage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetInterviewStage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1837,7 +1915,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationStagesResponse> listApplicationStages(AtsListApplicationStagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationStagesRequest, AtsListApplicationStagesResponse> operation
-              = new AtsListApplicationStages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationStages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1871,7 +1951,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationStageResponse> getApplicationStage(AtsGetApplicationStageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationStageRequest, AtsGetApplicationStageResponse> operation
-              = new AtsGetApplicationStage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationStage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1905,7 +1987,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListInterviewsResponse> listInterviews(AtsListInterviewsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListInterviewsRequest, AtsListInterviewsResponse> operation
-              = new AtsListInterviews.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListInterviews.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1939,7 +2023,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetInterviewResponse> getInterview(AtsGetInterviewRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetInterviewRequest, AtsGetInterviewResponse> operation
-              = new AtsGetInterview.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetInterview.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1973,7 +2059,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListJobsResponse> listJobs(AtsListJobsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListJobsRequest, AtsListJobsResponse> operation
-              = new AtsListJobs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2017,7 +2105,9 @@ public class AsyncAts {
                 .atsCreateJobRequestDto(atsCreateJobRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateJobRequest, AtsCreateJobResponse> operation
-              = new AtsCreateJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2051,7 +2141,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListJobApplicationStagesResponse> listJobApplicationStages(AtsListJobApplicationStagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListJobApplicationStagesRequest, AtsListJobApplicationStagesResponse> operation
-              = new AtsListJobApplicationStages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobApplicationStages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2085,7 +2177,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetJobResponse> getJob(AtsGetJobRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetJobRequest, AtsGetJobResponse> operation
-              = new AtsGetJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2136,7 +2230,9 @@ public class AsyncAts {
                 .atsUpdateJobRequestDto(atsUpdateJobRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
-              = new AtsUpdateJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2170,7 +2266,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetJobApplicationStageResponse> getJobApplicationStage(AtsGetJobApplicationStageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetJobApplicationStageRequest, AtsGetJobApplicationStageResponse> operation
-              = new AtsGetJobApplicationStage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetJobApplicationStage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2204,7 +2302,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListListsResponse> listLists(AtsListListsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListListsRequest, AtsListListsResponse> operation
-              = new AtsListLists.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListLists.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2238,7 +2338,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetListResponse> getList(AtsGetListRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetListRequest, AtsGetListResponse> operation
-              = new AtsGetList.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetList.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2272,7 +2374,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListLocationsResponse> listLocations(AtsListLocationsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListLocationsRequest, AtsListLocationsResponse> operation
-              = new AtsListLocations.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListLocations.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2306,7 +2410,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetLocationResponse> getLocation(AtsGetLocationRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetLocationRequest, AtsGetLocationResponse> operation
-              = new AtsGetLocation.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetLocation.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2340,7 +2446,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListRejectedReasonsResponse> listRejectedReasons(AtsListRejectedReasonsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListRejectedReasonsRequest, AtsListRejectedReasonsResponse> operation
-              = new AtsListRejectedReasons.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListRejectedReasons.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2374,7 +2482,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetRejectedReasonResponse> getRejectedReason(AtsGetRejectedReasonRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetRejectedReasonRequest, AtsGetRejectedReasonResponse> operation
-              = new AtsGetRejectedReason.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetRejectedReason.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2408,7 +2518,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListUsersResponse> listUsers(AtsListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListUsersRequest, AtsListUsersResponse> operation
-              = new AtsListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2442,7 +2554,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetUserResponse> getUser(AtsGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetUserRequest, AtsGetUserResponse> operation
-              = new AtsGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2476,7 +2590,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListJobPostingsResponse> listJobPostings(AtsListJobPostingsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListJobPostingsRequest, AtsListJobPostingsResponse> operation
-              = new AtsListJobPostings.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobPostings.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2510,7 +2626,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetJobPostingResponse> getJobPosting(AtsGetJobPostingRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetJobPostingRequest, AtsGetJobPostingResponse> operation
-              = new AtsGetJobPosting.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetJobPosting.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2544,7 +2662,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListOffersResponse> listOffers(AtsListOffersRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListOffersRequest, AtsListOffersResponse> operation
-              = new AtsListOffers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListOffers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2588,7 +2708,9 @@ public class AsyncAts {
                 .atsCreateOfferRequestDto(atsCreateOfferRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateOfferRequest, AtsCreateOfferResponse> operation
-              = new AtsCreateOffer.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateOffer.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2622,7 +2744,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetOfferResponse> getOffer(AtsGetOfferRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetOfferRequest, AtsGetOfferResponse> operation
-              = new AtsGetOffer.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetOffer.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2656,7 +2780,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListAssessmentsPackagesResponse> listAssessmentsPackages(AtsListAssessmentsPackagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListAssessmentsPackagesRequest, AtsListAssessmentsPackagesResponse> operation
-              = new AtsListAssessmentsPackages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListAssessmentsPackages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2690,7 +2816,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetAssessmentsPackageResponse> getAssessmentsPackage(AtsGetAssessmentsPackageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetAssessmentsPackageRequest, AtsGetAssessmentsPackageResponse> operation
-              = new AtsGetAssessmentsPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetAssessmentsPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2734,7 +2862,9 @@ public class AsyncAts {
                 .atsCreateCandidatesAssessmentsRequestDto(atsCreateCandidatesAssessmentsRequestDto)
                 .build();
         AsyncRequestOperation<AtsOrderAssessmentsRequestRequest, AtsOrderAssessmentsRequestResponse> operation
-              = new AtsOrderAssessmentsRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsOrderAssessmentsRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2785,7 +2915,9 @@ public class AsyncAts {
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(atsUpdateCandidatesAssessmentsResultsRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateAssessmentsResultRequest, AtsUpdateAssessmentsResultResponse> operation
-              = new AtsUpdateAssessmentsResult.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateAssessmentsResult.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2819,7 +2951,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListBackgroundCheckPackagesResponse> listBackgroundCheckPackages(AtsListBackgroundCheckPackagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListBackgroundCheckPackagesRequest, AtsListBackgroundCheckPackagesResponse> operation
-              = new AtsListBackgroundCheckPackages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListBackgroundCheckPackages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2863,7 +2997,9 @@ public class AsyncAts {
                 .atsCreateBackgroundCheckPackagesRequestDto(atsCreateBackgroundCheckPackagesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
-              = new AtsCreateBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2897,7 +3033,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetBackgroundCheckPackageResponse> getBackgroundCheckPackage(AtsGetBackgroundCheckPackageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetBackgroundCheckPackageRequest, AtsGetBackgroundCheckPackageResponse> operation
-              = new AtsGetBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2941,7 +3079,9 @@ public class AsyncAts {
                 .id(id)
                 .build();
         AsyncRequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
-              = new AtsDeleteBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsDeleteBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2992,7 +3132,9 @@ public class AsyncAts {
                 .atsUpdateBackgroundCheckPackagesRequestDto(atsUpdateBackgroundCheckPackagesRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateBackgroundCheckPackageRequest, AtsUpdateBackgroundCheckPackageResponse> operation
-              = new AtsUpdateBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3036,7 +3178,9 @@ public class AsyncAts {
                 .atsCreateBackgroundCheckOrderRequestDto(atsCreateBackgroundCheckOrderRequestDto)
                 .build();
         AsyncRequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
-              = new AtsOrderBackgroundCheckRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsOrderBackgroundCheckRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3087,7 +3231,9 @@ public class AsyncAts {
                 .atsUpdateBackgroundCheckResultRequestDto(atsUpdateBackgroundCheckResultRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation
-              = new AtsUpdateBackgroundCheckResult.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateBackgroundCheckResult.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3121,7 +3267,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsListApplicationDocumentCategoriesResponse> listApplicationDocumentCategories(AtsListApplicationDocumentCategoriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationDocumentCategoriesRequest, AtsListApplicationDocumentCategoriesResponse> operation
-              = new AtsListApplicationDocumentCategories.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationDocumentCategories.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3155,7 +3303,9 @@ public class AsyncAts {
      */
     public CompletableFuture<AtsGetApplicationDocumentCategoryResponse> getApplicationDocumentCategory(AtsGetApplicationDocumentCategoryRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationDocumentCategoryRequest, AtsGetApplicationDocumentCategoryResponse> operation
-              = new AtsGetApplicationDocumentCategory.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationDocumentCategory.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

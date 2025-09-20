@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmploymentRequestDto;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeEmployment;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
     private HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisUpdateEmployeeEmploymentRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -81,7 +83,7 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
             .build());
 
         RequestOperation<HrisUpdateEmployeeEmploymentRequest, HrisUpdateEmployeeEmploymentResponse> operation
-              = new HrisUpdateEmployeeEmployment.Sync(sdkConfiguration, options);
+              = new HrisUpdateEmployeeEmployment.Sync(sdkConfiguration, options, _headers);
         HrisUpdateEmployeeEmploymentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

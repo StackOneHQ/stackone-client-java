@@ -106,6 +106,7 @@ import com.stackone.stackone_client_java.operations.LmsListUserCompletions;
 import com.stackone.stackone_client_java.operations.LmsListUsers;
 import com.stackone.stackone_client_java.operations.LmsUpdateContent;
 import com.stackone.stackone_client_java.operations.LmsUpsertContent;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -113,6 +114,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncLms {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Lms syncSDK;
 
@@ -159,7 +161,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListCoursesResponse> listCourses(LmsListCoursesRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListCoursesRequest, LmsListCoursesResponse> operation
-              = new LmsListCourses.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListCourses.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -193,7 +197,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetCourseResponse> getCourse(LmsGetCourseRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetCourseRequest, LmsGetCourseResponse> operation
-              = new LmsGetCourse.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetCourse.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -227,7 +233,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListUserAssignmentsResponse> listUserAssignments(LmsListUserAssignmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListUserAssignmentsRequest, LmsListUserAssignmentsResponse> operation
-              = new LmsListUserAssignments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListUserAssignments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -278,7 +286,9 @@ public class AsyncLms {
                 .lmsCreateAssignmentRequestDto(lmsCreateAssignmentRequestDto)
                 .build();
         AsyncRequestOperation<LmsCreateUserAssignmentRequest, LmsCreateUserAssignmentResponse> operation
-              = new LmsCreateUserAssignment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsCreateUserAssignment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -312,7 +322,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetUserAssignmentResponse> getUserAssignment(LmsGetUserAssignmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetUserAssignmentRequest, LmsGetUserAssignmentResponse> operation
-              = new LmsGetUserAssignment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetUserAssignment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -356,7 +368,9 @@ public class AsyncLms {
                 .lmsBatchUpsertContentRequestDto(lmsBatchUpsertContentRequestDto)
                 .build();
         AsyncRequestOperation<LmsBatchUpsertContentRequest, LmsBatchUpsertContentResponse> operation
-              = new LmsBatchUpsertContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsBatchUpsertContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -390,7 +404,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListContentResponse> listContent(LmsListContentRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListContentRequest, LmsListContentResponse> operation
-              = new LmsListContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -434,7 +450,9 @@ public class AsyncLms {
                 .lmsUpsertContentRequestDto(lmsUpsertContentRequestDto)
                 .build();
         AsyncRequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
-              = new LmsUpsertContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsUpsertContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -468,7 +486,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetContentResponse> getContent(LmsGetContentRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetContentRequest, LmsGetContentResponse> operation
-              = new LmsGetContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -519,7 +539,9 @@ public class AsyncLms {
                 .lmsCreateContentRequestDto(lmsCreateContentRequestDto)
                 .build();
         AsyncRequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsUpdateContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -553,7 +575,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListUserCompletionsResponse> listUserCompletions(LmsListUserCompletionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListUserCompletionsRequest, LmsListUserCompletionsResponse> operation
-              = new LmsListUserCompletions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListUserCompletions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -604,7 +628,9 @@ public class AsyncLms {
                 .lmsCreateCompletionRequestDto(lmsCreateCompletionRequestDto)
                 .build();
         AsyncRequestOperation<LmsCreateUserCompletionRequest, LmsCreateUserCompletionResponse> operation
-              = new LmsCreateUserCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsCreateUserCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -638,7 +664,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetUserCompletionResponse> getUserCompletion(LmsGetUserCompletionRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetUserCompletionRequest, LmsGetUserCompletionResponse> operation
-              = new LmsGetUserCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetUserCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -689,7 +717,9 @@ public class AsyncLms {
                 .subResourceId(subResourceId)
                 .build();
         AsyncRequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
-              = new LmsDeleteUserCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsDeleteUserCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -723,7 +753,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListCompletionsResponse> listCompletions(LmsListCompletionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListCompletionsRequest, LmsListCompletionsResponse> operation
-              = new LmsListCompletions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListCompletions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -757,7 +789,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetCompletionResponse> getCompletion(LmsGetCompletionRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetCompletionRequest, LmsGetCompletionResponse> operation
-              = new LmsGetCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -791,7 +825,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetCategoryResponse> getCategory(LmsGetCategoryRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetCategoryRequest, LmsGetCategoryResponse> operation
-              = new LmsGetCategory.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetCategory.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -825,7 +861,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListCategoriesResponse> listCategories(LmsListCategoriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListCategoriesRequest, LmsListCategoriesResponse> operation
-              = new LmsListCategories.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListCategories.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -859,7 +897,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListUsersResponse> listUsers(LmsListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListUsersRequest, LmsListUsersResponse> operation
-              = new LmsListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -893,7 +933,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetUserResponse> getUser(LmsGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetUserRequest, LmsGetUserResponse> operation
-              = new LmsGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -927,7 +969,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetSkillResponse> getSkill(LmsGetSkillRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetSkillRequest, LmsGetSkillResponse> operation
-              = new LmsGetSkill.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetSkill.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -961,7 +1005,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListSkillsResponse> listSkills(LmsListSkillsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListSkillsRequest, LmsListSkillsResponse> operation
-              = new LmsListSkills.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListSkills.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -995,7 +1041,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsListAssignmentsResponse> listAssignments(LmsListAssignmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListAssignmentsRequest, LmsListAssignmentsResponse> operation
-              = new LmsListAssignments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListAssignments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1029,7 +1077,9 @@ public class AsyncLms {
      */
     public CompletableFuture<LmsGetAssignmentResponse> getAssignment(LmsGetAssignmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetAssignmentRequest, LmsGetAssignmentResponse> operation
-              = new LmsGetAssignment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetAssignment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

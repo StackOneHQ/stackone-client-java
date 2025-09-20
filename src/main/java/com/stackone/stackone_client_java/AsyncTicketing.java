@@ -83,6 +83,7 @@ import com.stackone.stackone_client_java.operations.TicketingListTicketTypes;
 import com.stackone.stackone_client_java.operations.TicketingListTickets;
 import com.stackone.stackone_client_java.operations.TicketingListUsers;
 import com.stackone.stackone_client_java.operations.TicketingUpdateTicket;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -90,6 +91,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncTicketing {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Ticketing syncSDK;
 
@@ -142,7 +144,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListTicketsResponse> listTickets(TicketingListTicketsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListTicketsRequest, TicketingListTicketsResponse> operation
-              = new TicketingListTickets.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListTickets.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -192,7 +196,9 @@ public class AsyncTicketing {
                 .ticketingTicketCreateRequestDto(ticketingTicketCreateRequestDto)
                 .build();
         AsyncRequestOperation<TicketingCreateTicketRequest, TicketingCreateTicketResponse> operation
-              = new TicketingCreateTicket.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingCreateTicket.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -232,7 +238,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingGetTicketResponse> getTicket(TicketingGetTicketRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetTicketRequest, TicketingGetTicketResponse> operation
-              = new TicketingGetTicket.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetTicket.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -289,7 +297,9 @@ public class AsyncTicketing {
                 .ticketingTicketUpdateRequestDto(ticketingTicketUpdateRequestDto)
                 .build();
         AsyncRequestOperation<TicketingUpdateTicketRequest, TicketingUpdateTicketResponse> operation
-              = new TicketingUpdateTicket.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingUpdateTicket.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -329,7 +339,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListUsersResponse> listUsers(TicketingListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListUsersRequest, TicketingListUsersResponse> operation
-              = new TicketingListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -369,7 +381,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingGetUserResponse> getUser(TicketingGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetUserRequest, TicketingGetUserResponse> operation
-              = new TicketingGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -409,7 +423,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListCommentsResponse> listComments(TicketingListCommentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListCommentsRequest, TicketingListCommentsResponse> operation
-              = new TicketingListComments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListComments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -449,7 +465,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingGetCommentResponse> getComment(TicketingGetCommentRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetCommentRequest, TicketingGetCommentResponse> operation
-              = new TicketingGetComment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetComment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -489,7 +507,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingDownloadTicketingAttachmentResponse> downloadTicketingAttachment(TicketingDownloadTicketingAttachmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingDownloadTicketingAttachmentRequest, TicketingDownloadTicketingAttachmentResponse> operation
-              = new TicketingDownloadTicketingAttachment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingDownloadTicketingAttachment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -529,7 +549,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListAttachmentsResponse> listAttachments(TicketingListAttachmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListAttachmentsRequest, TicketingListAttachmentsResponse> operation
-              = new TicketingListAttachments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListAttachments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -569,7 +591,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingGetAttachmentResponse> getAttachment(TicketingGetAttachmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetAttachmentRequest, TicketingGetAttachmentResponse> operation
-              = new TicketingGetAttachment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetAttachment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -609,7 +633,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListTicketTypesResponse> listTicketTypes(TicketingListTicketTypesRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListTicketTypesRequest, TicketingListTicketTypesResponse> operation
-              = new TicketingListTicketTypes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListTicketTypes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -649,7 +675,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingGetTicketTypeResponse> getTicketType(TicketingGetTicketTypeRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetTicketTypeRequest, TicketingGetTicketTypeResponse> operation
-              = new TicketingGetTicketType.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetTicketType.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -689,7 +717,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListProjectsResponse> listProjects(TicketingListProjectsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListProjectsRequest, TicketingListProjectsResponse> operation
-              = new TicketingListProjects.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListProjects.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -729,7 +759,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingGetProjectResponse> getProject(TicketingGetProjectRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetProjectRequest, TicketingGetProjectResponse> operation
-              = new TicketingGetProject.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetProject.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -769,7 +801,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListProjectComponentsResponse> listProjectComponents(TicketingListProjectComponentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListProjectComponentsRequest, TicketingListProjectComponentsResponse> operation
-              = new TicketingListProjectComponents.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListProjectComponents.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -809,7 +843,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingGetProjectComponentResponse> getProjectComponent(TicketingGetProjectComponentRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetProjectComponentRequest, TicketingGetProjectComponentResponse> operation
-              = new TicketingGetProjectComponent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetProjectComponent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -849,7 +885,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListProjectTicketTypesResponse> listProjectTicketTypes(TicketingListProjectTicketTypesRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListProjectTicketTypesRequest, TicketingListProjectTicketTypesResponse> operation
-              = new TicketingListProjectTicketTypes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListProjectTicketTypes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -889,7 +927,9 @@ public class AsyncTicketing {
      */
     public CompletableFuture<TicketingListTicketStatusesResponse> listTicketStatuses(TicketingListTicketStatusesRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListTicketStatusesRequest, TicketingListTicketStatusesResponse> operation
-              = new TicketingListTicketStatuses.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListTicketStatuses.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

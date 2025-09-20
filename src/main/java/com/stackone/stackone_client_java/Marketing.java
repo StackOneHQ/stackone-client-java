@@ -115,6 +115,7 @@ import com.stackone.stackone_client_java.operations.MarketingUpdateInAppTemplate
 import com.stackone.stackone_client_java.operations.MarketingUpdateOmniChannelTemplate;
 import com.stackone.stackone_client_java.operations.MarketingUpdatePushTemplate;
 import com.stackone.stackone_client_java.operations.MarketingUpdateSmsTemplate;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.Exception;
@@ -123,6 +124,7 @@ import java.util.Optional;
 
 
 public class Marketing {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncMarketing asyncSDK;
 
@@ -170,7 +172,7 @@ public class Marketing {
      */
     public MarketingListEmailTemplatesResponse listEmailTemplates(MarketingListEmailTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListEmailTemplatesRequest, MarketingListEmailTemplatesResponse> operation
-              = new MarketingListEmailTemplates.Sync(sdkConfiguration, options);
+              = new MarketingListEmailTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -214,7 +216,7 @@ public class Marketing {
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateEmailTemplateRequest, MarketingCreateEmailTemplateResponse> operation
-              = new MarketingCreateEmailTemplate.Sync(sdkConfiguration, options);
+              = new MarketingCreateEmailTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -248,7 +250,7 @@ public class Marketing {
      */
     public MarketingGetEmailTemplateResponse getEmailTemplate(MarketingGetEmailTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetEmailTemplateRequest, MarketingGetEmailTemplateResponse> operation
-              = new MarketingGetEmailTemplate.Sync(sdkConfiguration, options);
+              = new MarketingGetEmailTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -298,7 +300,7 @@ public class Marketing {
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateEmailTemplateRequest, MarketingUpdateEmailTemplateResponse> operation
-              = new MarketingUpdateEmailTemplate.Sync(sdkConfiguration, options);
+              = new MarketingUpdateEmailTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -332,7 +334,7 @@ public class Marketing {
      */
     public MarketingListInAppTemplatesResponse listInAppTemplates(MarketingListInAppTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListInAppTemplatesRequest, MarketingListInAppTemplatesResponse> operation
-              = new MarketingListInAppTemplates.Sync(sdkConfiguration, options);
+              = new MarketingListInAppTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -376,7 +378,7 @@ public class Marketing {
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateInAppTemplateRequest, MarketingCreateInAppTemplateResponse> operation
-              = new MarketingCreateInAppTemplate.Sync(sdkConfiguration, options);
+              = new MarketingCreateInAppTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -410,7 +412,7 @@ public class Marketing {
      */
     public MarketingGetInAppTemplateResponse getInAppTemplate(MarketingGetInAppTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetInAppTemplateRequest, MarketingGetInAppTemplateResponse> operation
-              = new MarketingGetInAppTemplate.Sync(sdkConfiguration, options);
+              = new MarketingGetInAppTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -460,7 +462,7 @@ public class Marketing {
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateInAppTemplateRequest, MarketingUpdateInAppTemplateResponse> operation
-              = new MarketingUpdateInAppTemplate.Sync(sdkConfiguration, options);
+              = new MarketingUpdateInAppTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -494,7 +496,7 @@ public class Marketing {
      */
     public MarketingListSmsTemplatesResponse listSmsTemplates(MarketingListSmsTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListSmsTemplatesRequest, MarketingListSmsTemplatesResponse> operation
-              = new MarketingListSmsTemplates.Sync(sdkConfiguration, options);
+              = new MarketingListSmsTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -538,7 +540,7 @@ public class Marketing {
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateSmsTemplateRequest, MarketingCreateSmsTemplateResponse> operation
-              = new MarketingCreateSmsTemplate.Sync(sdkConfiguration, options);
+              = new MarketingCreateSmsTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -572,7 +574,7 @@ public class Marketing {
      */
     public MarketingGetSmsTemplateResponse getSmsTemplate(MarketingGetSmsTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetSmsTemplateRequest, MarketingGetSmsTemplateResponse> operation
-              = new MarketingGetSmsTemplate.Sync(sdkConfiguration, options);
+              = new MarketingGetSmsTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -622,7 +624,7 @@ public class Marketing {
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateSmsTemplateRequest, MarketingUpdateSmsTemplateResponse> operation
-              = new MarketingUpdateSmsTemplate.Sync(sdkConfiguration, options);
+              = new MarketingUpdateSmsTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -662,7 +664,7 @@ public class Marketing {
     @Deprecated
     public MarketingListOmniChannelTemplatesResponse listOmniChannelTemplates(MarketingListOmniChannelTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
-              = new MarketingListOmniChannelTemplates.Sync(sdkConfiguration, options);
+              = new MarketingListOmniChannelTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -712,7 +714,7 @@ public class Marketing {
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateOmniChannelTemplateRequest, MarketingCreateOmniChannelTemplateResponse> operation
-              = new MarketingCreateOmniChannelTemplate.Sync(sdkConfiguration, options);
+              = new MarketingCreateOmniChannelTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -752,7 +754,7 @@ public class Marketing {
     @Deprecated
     public MarketingGetOmniChannelTemplateResponse getOmniChannelTemplate(MarketingGetOmniChannelTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetOmniChannelTemplateRequest, MarketingGetOmniChannelTemplateResponse> operation
-              = new MarketingGetOmniChannelTemplate.Sync(sdkConfiguration, options);
+              = new MarketingGetOmniChannelTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -808,7 +810,7 @@ public class Marketing {
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateOmniChannelTemplateRequest, MarketingUpdateOmniChannelTemplateResponse> operation
-              = new MarketingUpdateOmniChannelTemplate.Sync(sdkConfiguration, options);
+              = new MarketingUpdateOmniChannelTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -842,7 +844,7 @@ public class Marketing {
      */
     public MarketingListPushTemplatesResponse listPushTemplates(MarketingListPushTemplatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListPushTemplatesRequest, MarketingListPushTemplatesResponse> operation
-              = new MarketingListPushTemplates.Sync(sdkConfiguration, options);
+              = new MarketingListPushTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -886,7 +888,7 @@ public class Marketing {
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreatePushTemplateRequest, MarketingCreatePushTemplateResponse> operation
-              = new MarketingCreatePushTemplate.Sync(sdkConfiguration, options);
+              = new MarketingCreatePushTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -920,7 +922,7 @@ public class Marketing {
      */
     public MarketingGetPushTemplateResponse getPushTemplate(MarketingGetPushTemplateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetPushTemplateRequest, MarketingGetPushTemplateResponse> operation
-              = new MarketingGetPushTemplate.Sync(sdkConfiguration, options);
+              = new MarketingGetPushTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -970,7 +972,7 @@ public class Marketing {
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdatePushTemplateRequest, MarketingUpdatePushTemplateResponse> operation
-              = new MarketingUpdatePushTemplate.Sync(sdkConfiguration, options);
+              = new MarketingUpdatePushTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1004,7 +1006,7 @@ public class Marketing {
      */
     public MarketingListCampaignsResponse listCampaigns(MarketingListCampaignsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListCampaignsRequest, MarketingListCampaignsResponse> operation
-              = new MarketingListCampaigns.Sync(sdkConfiguration, options);
+              = new MarketingListCampaigns.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1038,7 +1040,7 @@ public class Marketing {
      */
     public MarketingGetCampaignResponse getCampaign(MarketingGetCampaignRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetCampaignRequest, MarketingGetCampaignResponse> operation
-              = new MarketingGetCampaign.Sync(sdkConfiguration, options);
+              = new MarketingGetCampaign.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1072,7 +1074,7 @@ public class Marketing {
      */
     public MarketingListContentBlocksResponse listContentBlocks(MarketingListContentBlocksRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingListContentBlocksRequest, MarketingListContentBlocksResponse> operation
-              = new MarketingListContentBlocks.Sync(sdkConfiguration, options);
+              = new MarketingListContentBlocks.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1116,7 +1118,7 @@ public class Marketing {
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         RequestOperation<MarketingCreateContentBlockRequest, MarketingCreateContentBlockResponse> operation
-              = new MarketingCreateContentBlock.Sync(sdkConfiguration, options);
+              = new MarketingCreateContentBlock.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1150,7 +1152,7 @@ public class Marketing {
      */
     public MarketingGetContentBlockResponse getContentBlock(MarketingGetContentBlockRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MarketingGetContentBlockRequest, MarketingGetContentBlockResponse> operation
-              = new MarketingGetContentBlock.Sync(sdkConfiguration, options);
+              = new MarketingGetContentBlock.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1200,7 +1202,7 @@ public class Marketing {
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         RequestOperation<MarketingUpdateContentBlockRequest, MarketingUpdateContentBlockResponse> operation
-              = new MarketingUpdateContentBlock.Sync(sdkConfiguration, options);
+              = new MarketingUpdateContentBlock.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.ScreeningResultWebhook;
 import com.stackone.stackone_client_java.operations.ScreeningWebhookScreeningResult;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -21,6 +22,7 @@ public class ScreeningWebhookScreeningResultRequestBuilder {
     private ScreeningResultWebhook screeningResultWebhook;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public ScreeningWebhookScreeningResultRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -65,7 +67,7 @@ public class ScreeningWebhookScreeningResultRequestBuilder {
             .build());
 
         RequestOperation<ScreeningWebhookScreeningResultRequest, ScreeningWebhookScreeningResultResponse> operation
-              = new ScreeningWebhookScreeningResult.Sync(sdkConfiguration, options);
+              = new ScreeningWebhookScreeningResult.Sync(sdkConfiguration, options, _headers);
         ScreeningWebhookScreeningResultRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -46,6 +46,7 @@ import com.stackone.stackone_client_java.operations.CrmListContactCustomFieldDef
 import com.stackone.stackone_client_java.operations.CrmListContacts;
 import com.stackone.stackone_client_java.operations.CrmListLists;
 import com.stackone.stackone_client_java.operations.CrmUpdateContact;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -53,6 +54,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncCrm {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Crm syncSDK;
 
@@ -99,7 +101,9 @@ public class AsyncCrm {
      */
     public CompletableFuture<CrmListContactsResponse> listContacts(CrmListContactsRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmListContactsRequest, CrmListContactsResponse> operation
-              = new CrmListContacts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmListContacts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -143,7 +147,9 @@ public class AsyncCrm {
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         AsyncRequestOperation<CrmCreateContactRequest, CrmCreateContactResponse> operation
-              = new CrmCreateContact.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmCreateContact.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -177,7 +183,9 @@ public class AsyncCrm {
      */
     public CompletableFuture<CrmGetContactResponse> getContact(CrmGetContactRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmGetContactRequest, CrmGetContactResponse> operation
-              = new CrmGetContact.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmGetContact.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -228,7 +236,9 @@ public class AsyncCrm {
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         AsyncRequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation
-              = new CrmUpdateContact.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmUpdateContact.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -262,7 +272,9 @@ public class AsyncCrm {
      */
     public CompletableFuture<CrmListAccountsResponse> listAccounts(CrmListAccountsRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmListAccountsRequest, CrmListAccountsResponse> operation
-              = new CrmListAccounts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmListAccounts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -296,7 +308,9 @@ public class AsyncCrm {
      */
     public CompletableFuture<CrmGetAccountResponse> getAccount(CrmGetAccountRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmGetAccountRequest, CrmGetAccountResponse> operation
-              = new CrmGetAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmGetAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -330,7 +344,9 @@ public class AsyncCrm {
      */
     public CompletableFuture<CrmListListsResponse> listLists(CrmListListsRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmListListsRequest, CrmListListsResponse> operation
-              = new CrmListLists.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmListLists.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -364,7 +380,9 @@ public class AsyncCrm {
      */
     public CompletableFuture<CrmGetListResponse> getList(CrmGetListRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmGetListRequest, CrmGetListResponse> operation
-              = new CrmGetList.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmGetList.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -398,7 +416,9 @@ public class AsyncCrm {
      */
     public CompletableFuture<CrmListContactCustomFieldDefinitionsResponse> listContactCustomFieldDefinitions(CrmListContactCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmListContactCustomFieldDefinitionsRequest, CrmListContactCustomFieldDefinitionsResponse> operation
-              = new CrmListContactCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmListContactCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -432,7 +452,9 @@ public class AsyncCrm {
      */
     public CompletableFuture<CrmGetContactCustomFieldDefinitionResponse> getContactCustomFieldDefinition(CrmGetContactCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmGetContactCustomFieldDefinitionRequest, CrmGetContactCustomFieldDefinitionResponse> operation
-              = new CrmGetContactCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmGetContactCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

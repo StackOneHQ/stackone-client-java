@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeTimeOffRequestRequest;
 import com.stackone.stackone_client_java.operations.HrisCreateEmployeeTimeOffRequest;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class HrisCreateEmployeeTimeOffRequestRequestBuilder {
     private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisCreateEmployeeTimeOffRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class HrisCreateEmployeeTimeOffRequestRequestBuilder {
             .build());
 
         AsyncRequestOperation<HrisCreateEmployeeTimeOffRequestRequest, HrisCreateEmployeeTimeOffRequestResponse> operation
-              = new HrisCreateEmployeeTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         HrisCreateEmployeeTimeOffRequestRequest request = buildRequest();
 
         return operation.doRequest(request)

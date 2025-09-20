@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.TicketingTicketCreateRequestDto;
 import com.stackone.stackone_client_java.models.operations.TicketingCreateTicketRequest;
 import com.stackone.stackone_client_java.operations.TicketingCreateTicket;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class TicketingCreateTicketRequestBuilder {
     private TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public TicketingCreateTicketRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class TicketingCreateTicketRequestBuilder {
             .build());
 
         AsyncRequestOperation<TicketingCreateTicketRequest, TicketingCreateTicketResponse> operation
-              = new TicketingCreateTicket.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingCreateTicket.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         TicketingCreateTicketRequest request = buildRequest();
 
         return operation.doRequest(request)

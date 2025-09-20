@@ -7,6 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.operations.LmsDeleteUserCompletion;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -21,6 +22,7 @@ public class LmsDeleteUserCompletionRequestBuilder {
     private String subResourceId;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public LmsDeleteUserCompletionRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -72,7 +74,7 @@ public class LmsDeleteUserCompletionRequestBuilder {
             .build());
 
         RequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
-              = new LmsDeleteUserCompletion.Sync(sdkConfiguration, options);
+              = new LmsDeleteUserCompletion.Sync(sdkConfiguration, options, _headers);
         LmsDeleteUserCompletionRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

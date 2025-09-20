@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisInviteEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisInviteEmployeeRequest;
 import com.stackone.stackone_client_java.operations.HrisInviteEmployee;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class HrisInviteEmployeeRequestBuilder {
     private HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisInviteEmployeeRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class HrisInviteEmployeeRequestBuilder {
             .build());
 
         AsyncRequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
-              = new HrisInviteEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisInviteEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         HrisInviteEmployeeRequest request = buildRequest();
 
         return operation.doRequest(request)

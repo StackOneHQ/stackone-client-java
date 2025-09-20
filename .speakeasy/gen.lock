@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 04ea86fd791e3c3dca8bd4c0fb874731
+  docChecksum: 61405cf4a5066cddae996c4e637435b8
   docVersion: 1.0.0
-  speakeasyVersion: 1.615.2
-  generationVersion: 2.698.4
-  releaseVersion: 0.13.0
-  configChecksum: 17ddfd6932be73e7c65effc20ce39a42
+  speakeasyVersion: 1.621.1
+  generationVersion: 2.708.2
+  releaseVersion: 0.14.0
+  configChecksum: df7da5484b33ac4fd408b31d053805c8
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -14,7 +14,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.47.2
+    core: 3.50.0
     deprecations: 2.81.1
     examples: 2.81.6
     flattening: 2.81.1
@@ -2455,7 +2455,15 @@ generatedFiles:
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew
   - gradlew.bat
+  - publishing.gradle
   - settings.gradle
+  - spring/stackone-client-java-spring-boot-autoconfigure/build.gradle
+  - spring/stackone-client-java-spring-boot-autoconfigure/src/main/java/com/stackone/stackone_client_java/ConditionalOnPropertyPrefix.java
+  - spring/stackone-client-java-spring-boot-autoconfigure/src/main/java/com/stackone/stackone_client_java/OnPropertyPrefixCondition.java
+  - spring/stackone-client-java-spring-boot-autoconfigure/src/main/java/com/stackone/stackone_client_java/StackoneClientJavaAutoConfig.java
+  - spring/stackone-client-java-spring-boot-autoconfigure/src/main/java/com/stackone/stackone_client_java/StackoneClientJavaAutoConfigProperties.java
+  - spring/stackone-client-java-spring-boot-autoconfigure/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports
+  - spring/stackone-client-java-spring-boot-starter/build.gradle
   - src/main/java/com/stackone/stackone_client_java/Accounting.java
   - src/main/java/com/stackone/stackone_client_java/Accounts.java
   - src/main/java/com/stackone/stackone_client_java/Actions.java
@@ -6078,6 +6086,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/utils/HTTPRequest.java
   - src/main/java/com/stackone/stackone_client_java/utils/HasSecurity.java
   - src/main/java/com/stackone/stackone_client_java/utils/HeaderMetadata.java
+  - src/main/java/com/stackone/stackone_client_java/utils/Headers.java
   - src/main/java/com/stackone/stackone_client_java/utils/Helpers.java
   - src/main/java/com/stackone/stackone_client_java/utils/Hook.java
   - src/main/java/com/stackone/stackone_client_java/utils/HookAdapters.java
@@ -15974,7 +15983,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "content": {"html": "<p>Hello world</p>", "plain": "Hello world"}, "parent_message_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "author": null, "created_at": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "content": {"html": "<p>Hello world</p>", "plain": "Hello world"}, "parent_message_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "attachments": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "file_name": "document.pdf", "file_size": 1024, "file_type": "application/pdf"}], "author": null, "created_at": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -16509,6 +16518,8 @@ examples:
           application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "201":
+          application/json: {"statusCode": 201, "message": "Record created successfully.", "timestamp": "2021-01-01T01:01:01.000Z", "data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
   stackone_mcp_get:
     speakeasy-default-stackone-mcp-get:
       parameters:
@@ -16789,4 +16800,9 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes Detected:\n* `stackone.hris.listEmployeeDocuments()`:  `response.data.[].path` **Removed** **Breaking** :warning:\n* `stackone.iam.getUser()`:  `response.data.avatar.path` **Removed** **Breaking** :warning:\n* `stackone.iam.listUsers()`:  `response.data.[].avatar.path` **Removed** **Breaking** :warning:\n* `stackone.ats.getJobPosting()`:  `response.data.compensation.[]` **Changed** **Breaking** :warning:\n* `stackone.ats.listJobPostings()`:  `response.data.[].compensation.[]` **Changed** **Breaking** :warning:\n* `stackone.ats.getApplicationDocument()`:  `response.data.path` **Removed** **Breaking** :warning:\n* `stackone.ats.listApplicationDocuments()`:  `response.data.[].path` **Removed** **Breaking** :warning:\n* `stackone.ats.getApplication()`:  `response.data.documents.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.listEmployeeTimeOffRequests()`: \n  *  `request.filter` **Changed** **Breaking** :warning:\n* `stackone.ats.listApplications()`:  `response.data.[].documents.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.listEmployeeWorkEligibility()`:  `response.data.[].document.path` **Removed** **Breaking** :warning:\n* `stackone.hris.getEmployeeDocument()`:  `response.data.path` **Removed** **Breaking** :warning:\n* `stackone.hris.getEmployeeTask()`:  `response.data.attachments.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.createEmployeeWorkEligibilityRequest()`: \n  *  `request.hriscreateworkeligibilityrequestdto.document.path` **Removed** **Breaking** :warning:\n* `stackone.hris.getEmployeesWorkEligibility()`:  `response.data.document.path` **Removed** **Breaking** :warning:\n* `stackone.hris.updateEmployeeWorkEligibilityRequest()`: \n  *  `request.hriscreateworkeligibilityrequestdto.document.path` **Removed** **Breaking** :warning:\n* `stackone.hris.getTask()`:  `response.data.attachments.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.listTasks()`:  `response.data.[].attachments.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.listTimeOffRequests()`: \n  *  `request.filter` **Changed** **Breaking** :warning:\n* `stackone.hris.listEmployeeTasks()`:  `response.data.[].attachments.[].path` **Removed** **Breaking** :warning:\n* `stackone.hris.updateEmployee()`: \n  *  `request.hrisupdateemployeerequestdto.employment` **Changed**\n* `stackone.hris.updateEmployeeEmployment()`:  `request.hrisupdateemploymentrequestdto` **Changed**\n* `stackone.hris.createEmployeeEmployment()`:  `request.hriscreateemploymentrequestdto` **Changed**\n* `stackone.mcp.mcpGet()`: **Added**\n* `stackone.hris.createEmployee()`:  `request.hriscreateemployeerequestdto` **Changed**\n* `stackone.ats.getApplicationStage()`: **Added**\n* `stackone.ats.listApplicationStages()`: **Added**\n* `stackone.ats.listInterviewStages()`: **Deprecated**\n* `stackone.ats.getInterviewStage()`: **Deprecated**\n* `stackone.actions.rpcAction()`: **Added**\n* `stackone.actions.listActionsMeta()`: **Added**\n* `stackone.mcp.mcpDelete()`: **Added**\n* `stackone.mcp.mcpPost()`: **Added**\n* `stackone.lms.listUserAssignments()`: \n  *  `request.filter` **Changed**\n* `stackone.lms.listAssignments()`: \n  *  `request.filter` **Changed**\n"
+releaseNotes: |
+  ## Java SDK Changes Detected:
+  * `stackone.actions.listActionsMeta()`:  `response.data.[].actions.[]` **Changed** **Breaking** :warning:
+  * `stackone.messaging.listConversationMessages()`:  `response.data.[].attachments.[]` **Changed** **Breaking** :warning:
+  * `stackone.messaging.getMessage()`:  `response.data.attachments.[]` **Changed** **Breaking** :warning:
+  * `stackone.accounting.createCompanyJournal()`:  `response` **Changed** **Breaking** :warning:

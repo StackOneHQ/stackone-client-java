@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.IamUpdateUserRequestDto;
 import com.stackone.stackone_client_java.operations.IamUpdateUser;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -22,6 +23,7 @@ public class IamUpdateUserRequestBuilder {
     private IamUpdateUserRequestDto iamUpdateUserRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public IamUpdateUserRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -73,7 +75,7 @@ public class IamUpdateUserRequestBuilder {
             .build());
 
         RequestOperation<IamUpdateUserRequest, IamUpdateUserResponse> operation
-              = new IamUpdateUser.Sync(sdkConfiguration, options);
+              = new IamUpdateUser.Sync(sdkConfiguration, options, _headers);
         IamUpdateUserRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

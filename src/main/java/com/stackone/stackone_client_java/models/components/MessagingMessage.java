@@ -51,7 +51,7 @@ public class MessagingMessage {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("attachments")
-    private JsonNullable<? extends List<String>> attachments;
+    private JsonNullable<? extends List<MessagingAttachment>> attachments;
 
     /**
      * Author of the message
@@ -80,7 +80,7 @@ public class MessagingMessage {
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("content") JsonNullable<? extends MessagingMessageContent> content,
             @JsonProperty("parent_message_id") JsonNullable<String> parentMessageId,
-            @JsonProperty("attachments") JsonNullable<? extends List<String>> attachments,
+            @JsonProperty("attachments") JsonNullable<? extends List<MessagingAttachment>> attachments,
             @JsonProperty("author") JsonNullable<? extends Author> author,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt) {
@@ -146,8 +146,8 @@ public class MessagingMessage {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<String>> attachments() {
-        return (JsonNullable<List<String>>) attachments;
+    public JsonNullable<List<MessagingAttachment>> attachments() {
+        return (JsonNullable<List<MessagingAttachment>>) attachments;
     }
 
     /**
@@ -255,7 +255,7 @@ public class MessagingMessage {
     /**
      * List of attachments in the message
      */
-    public MessagingMessage withAttachments(List<String> attachments) {
+    public MessagingMessage withAttachments(List<MessagingAttachment> attachments) {
         Utils.checkNotNull(attachments, "attachments");
         this.attachments = JsonNullable.of(attachments);
         return this;
@@ -264,7 +264,7 @@ public class MessagingMessage {
     /**
      * List of attachments in the message
      */
-    public MessagingMessage withAttachments(JsonNullable<? extends List<String>> attachments) {
+    public MessagingMessage withAttachments(JsonNullable<? extends List<MessagingAttachment>> attachments) {
         Utils.checkNotNull(attachments, "attachments");
         this.attachments = attachments;
         return this;
@@ -376,7 +376,7 @@ public class MessagingMessage {
 
         private JsonNullable<String> parentMessageId = JsonNullable.undefined();
 
-        private JsonNullable<? extends List<String>> attachments = JsonNullable.undefined();
+        private JsonNullable<? extends List<MessagingAttachment>> attachments = JsonNullable.undefined();
 
         private JsonNullable<? extends Author> author = JsonNullable.undefined();
 
@@ -468,7 +468,7 @@ public class MessagingMessage {
         /**
          * List of attachments in the message
          */
-        public Builder attachments(List<String> attachments) {
+        public Builder attachments(List<MessagingAttachment> attachments) {
             Utils.checkNotNull(attachments, "attachments");
             this.attachments = JsonNullable.of(attachments);
             return this;
@@ -477,7 +477,7 @@ public class MessagingMessage {
         /**
          * List of attachments in the message
          */
-        public Builder attachments(JsonNullable<? extends List<String>> attachments) {
+        public Builder attachments(JsonNullable<? extends List<MessagingAttachment>> attachments) {
             Utils.checkNotNull(attachments, "attachments");
             this.attachments = attachments;
             return this;

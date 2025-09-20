@@ -4,6 +4,7 @@
 package com.stackone.stackone_client_java;
 
 import com.stackone.stackone_client_java.utils.HTTPClient;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.SpeakeasyHTTPClient;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -15,6 +16,7 @@ import java.util.Optional;
  * Accounting: The documentation for the StackOne Unified API - ACCOUNTING
  */
 public class StackOne {
+    private static final Headers _headers = Headers.EMPTY;
 
 
     /**
@@ -309,6 +311,7 @@ public class StackOne {
             return this;
         }
 
+
         /**
          * Builds a new instance of the SDK.
          *
@@ -323,7 +326,7 @@ public class StackOne {
             return new StackOne(sdkConfiguration);
         }
     }
-    
+
     /**
      * Get a new instance of the SDK builder to configure a new instance of the SDK.
      *
@@ -333,7 +336,7 @@ public class StackOne {
         return new Builder();
     }
 
-    private StackOne(SDKConfiguration sdkConfiguration) {
+    public StackOne(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.sdkConfiguration.initialize();
         this.connectSessions = new ConnectSessions(sdkConfiguration);

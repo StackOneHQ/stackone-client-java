@@ -23,6 +23,7 @@ import com.stackone.stackone_client_java.operations.ScreeningCreateScreeningOrde
 import com.stackone.stackone_client_java.operations.ScreeningGetScreeningPackage;
 import com.stackone.stackone_client_java.operations.ScreeningListScreeningPackages;
 import com.stackone.stackone_client_java.operations.ScreeningWebhookScreeningResult;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -30,6 +31,7 @@ import java.util.Optional;
 
 
 public class Screening {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncScreening asyncSDK;
 
@@ -77,7 +79,7 @@ public class Screening {
      */
     public ScreeningListScreeningPackagesResponse listScreeningPackages(ScreeningListScreeningPackagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<ScreeningListScreeningPackagesRequest, ScreeningListScreeningPackagesResponse> operation
-              = new ScreeningListScreeningPackages.Sync(sdkConfiguration, options);
+              = new ScreeningListScreeningPackages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -111,7 +113,7 @@ public class Screening {
      */
     public ScreeningGetScreeningPackageResponse getScreeningPackage(ScreeningGetScreeningPackageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<ScreeningGetScreeningPackageRequest, ScreeningGetScreeningPackageResponse> operation
-              = new ScreeningGetScreeningPackage.Sync(sdkConfiguration, options);
+              = new ScreeningGetScreeningPackage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -155,7 +157,7 @@ public class Screening {
                 .screeningResultWebhook(screeningResultWebhook)
                 .build();
         RequestOperation<ScreeningWebhookScreeningResultRequest, ScreeningWebhookScreeningResultResponse> operation
-              = new ScreeningWebhookScreeningResult.Sync(sdkConfiguration, options);
+              = new ScreeningWebhookScreeningResult.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -199,7 +201,7 @@ public class Screening {
                 .screeningCreateOrderRequestDto(screeningCreateOrderRequestDto)
                 .build();
         RequestOperation<ScreeningCreateScreeningOrderRequest, ScreeningCreateScreeningOrderResponse> operation
-              = new ScreeningCreateScreeningOrder.Sync(sdkConfiguration, options);
+              = new ScreeningCreateScreeningOrder.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

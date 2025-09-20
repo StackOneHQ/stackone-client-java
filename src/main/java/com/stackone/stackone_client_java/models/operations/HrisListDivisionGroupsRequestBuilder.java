@@ -10,6 +10,7 @@ import static com.stackone.stackone_client_java.utils.Utils.toStream;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.operations.HrisListDivisionGroups;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -29,6 +30,7 @@ public class HrisListDivisionGroupsRequestBuilder {
     private HrisListDivisionGroupsRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisListDivisionGroupsRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -58,7 +60,7 @@ public class HrisListDivisionGroupsRequestBuilder {
             .build());
 
         RequestOperation<HrisListDivisionGroupsRequest, HrisListDivisionGroupsResponse> operation
-              = new HrisListDivisionGroups.Sync(sdkConfiguration, options);
+              = new HrisListDivisionGroups.Sync(sdkConfiguration, options, _headers);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -82,7 +84,7 @@ public class HrisListDivisionGroupsRequestBuilder {
             .build());
 
         RequestOperation<HrisListDivisionGroupsRequest, HrisListDivisionGroupsResponse> operation
-              = new HrisListDivisionGroups.Sync(sdkConfiguration, options);
+              = new HrisListDivisionGroups.Sync(sdkConfiguration, options, _headers);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

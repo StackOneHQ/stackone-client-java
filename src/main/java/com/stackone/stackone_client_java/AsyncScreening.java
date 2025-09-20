@@ -23,6 +23,7 @@ import com.stackone.stackone_client_java.operations.ScreeningCreateScreeningOrde
 import com.stackone.stackone_client_java.operations.ScreeningGetScreeningPackage;
 import com.stackone.stackone_client_java.operations.ScreeningListScreeningPackages;
 import com.stackone.stackone_client_java.operations.ScreeningWebhookScreeningResult;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -30,6 +31,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncScreening {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Screening syncSDK;
 
@@ -76,7 +78,9 @@ public class AsyncScreening {
      */
     public CompletableFuture<ScreeningListScreeningPackagesResponse> listScreeningPackages(ScreeningListScreeningPackagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<ScreeningListScreeningPackagesRequest, ScreeningListScreeningPackagesResponse> operation
-              = new ScreeningListScreeningPackages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningListScreeningPackages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -110,7 +114,9 @@ public class AsyncScreening {
      */
     public CompletableFuture<ScreeningGetScreeningPackageResponse> getScreeningPackage(ScreeningGetScreeningPackageRequest request, Optional<Options> options) {
         AsyncRequestOperation<ScreeningGetScreeningPackageRequest, ScreeningGetScreeningPackageResponse> operation
-              = new ScreeningGetScreeningPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningGetScreeningPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -154,7 +160,9 @@ public class AsyncScreening {
                 .screeningResultWebhook(screeningResultWebhook)
                 .build();
         AsyncRequestOperation<ScreeningWebhookScreeningResultRequest, ScreeningWebhookScreeningResultResponse> operation
-              = new ScreeningWebhookScreeningResult.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningWebhookScreeningResult.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -198,7 +206,9 @@ public class AsyncScreening {
                 .screeningCreateOrderRequestDto(screeningCreateOrderRequestDto)
                 .build();
         AsyncRequestOperation<ScreeningCreateScreeningOrderRequest, ScreeningCreateScreeningOrderResponse> operation
-              = new ScreeningCreateScreeningOrder.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningCreateScreeningOrder.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeSkillsRequest;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeSkills;
 import com.stackone.stackone_client_java.utils.Blob;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -29,6 +30,7 @@ public class HrisListEmployeeSkillsRequestBuilder {
     private HrisListEmployeeSkillsRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisListEmployeeSkillsRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -58,7 +60,9 @@ public class HrisListEmployeeSkillsRequestBuilder {
             .build());
 
         AsyncRequestOperation<HrisListEmployeeSkillsRequest, HrisListEmployeeSkillsResponse> operation
-              = new HrisListEmployeeSkills.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeSkills.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
@@ -85,7 +89,9 @@ public class HrisListEmployeeSkillsRequestBuilder {
             .build());
 
         AsyncRequestOperation<HrisListEmployeeSkillsRequest, HrisListEmployeeSkillsResponse> operation
-              = new HrisListEmployeeSkills.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeSkills.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,

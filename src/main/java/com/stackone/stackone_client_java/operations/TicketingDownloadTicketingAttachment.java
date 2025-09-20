@@ -30,6 +30,7 @@ import com.stackone.stackone_client_java.utils.Blob;
 import com.stackone.stackone_client_java.utils.Exceptions;
 import com.stackone.stackone_client_java.utils.HTTPClient;
 import com.stackone.stackone_client_java.utils.HTTPRequest;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Hook.AfterErrorContextImpl;
 import com.stackone.stackone_client_java.utils.Hook.AfterSuccessContextImpl;
 import com.stackone.stackone_client_java.utils.Hook.BeforeRequestContextImpl;
@@ -62,9 +63,13 @@ public class TicketingDownloadTicketingAttachment {
         final List<String> retryStatusCodes;
         final RetryConfig retryConfig;
         final HTTPClient client;
+        final Headers _headers;
 
-        public Base(SDKConfiguration sdkConfiguration, Optional<Options> options) {
+        public Base(
+                SDKConfiguration sdkConfiguration, Optional<Options> options,
+                Headers _headers) {
             this.sdkConfiguration = sdkConfiguration;
+            this._headers =_headers;
             this.baseUrl = this.sdkConfiguration.serverUrl();
             this.securitySource = this.sdkConfiguration.securitySource();
             options
@@ -123,6 +128,7 @@ public class TicketingDownloadTicketingAttachment {
             HTTPRequest req = new HTTPRequest(url, "GET");
             req.addHeader("Accept", "*/*")
                     .addHeader("user-agent", SDKConfiguration.USER_AGENT);
+            _headers.forEach((k, list) -> list.forEach(v -> req.addHeader(k, v)));
 
             req.addQueryParams(Utils.getQueryParams(
                     klass,
@@ -137,8 +143,12 @@ public class TicketingDownloadTicketingAttachment {
 
     public static class Sync extends Base
             implements RequestOperation<TicketingDownloadTicketingAttachmentRequest, TicketingDownloadTicketingAttachmentResponse> {
-        public Sync(SDKConfiguration sdkConfiguration, Optional<Options> options) {
-            super(sdkConfiguration, options);
+        public Sync(
+                SDKConfiguration sdkConfiguration, Optional<Options> options,
+                Headers _headers) {
+            super(
+                  sdkConfiguration, options,
+                  _headers);
         }
 
         private HttpRequest onBuildRequest(TicketingDownloadTicketingAttachmentRequest request) throws Exception {
@@ -435,8 +445,10 @@ public class TicketingDownloadTicketingAttachment {
 
         public Async(
                 SDKConfiguration sdkConfiguration, Optional<Options> options,
-                ScheduledExecutorService retryScheduler) {
-            super(sdkConfiguration, options);
+                ScheduledExecutorService retryScheduler, Headers _headers) {
+            super(
+                  sdkConfiguration, options,
+                  _headers);
             this.retryScheduler = retryScheduler;
         }
 

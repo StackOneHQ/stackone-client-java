@@ -26,6 +26,7 @@ import com.stackone.stackone_client_java.operations.StackoneGetAccount;
 import com.stackone.stackone_client_java.operations.StackoneGetAccountMetaInfo;
 import com.stackone.stackone_client_java.operations.StackoneListLinkedAccounts;
 import com.stackone.stackone_client_java.operations.StackoneUpdateAccount;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -35,6 +36,7 @@ import java.util.concurrent.CompletableFuture;
  * Chart of accounts.
  */
 public class AsyncAccounts {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Accounts syncSDK;
 
@@ -81,7 +83,9 @@ public class AsyncAccounts {
      */
     public CompletableFuture<StackoneListLinkedAccountsResponse> listLinkedAccounts(StackoneListLinkedAccountsRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListLinkedAccountsRequest, StackoneListLinkedAccountsResponse> operation
-              = new StackoneListLinkedAccounts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListLinkedAccounts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -120,7 +124,9 @@ public class AsyncAccounts {
                 .id(id)
                 .build();
         AsyncRequestOperation<StackoneGetAccountRequest, StackoneGetAccountResponse> operation
-              = new StackoneGetAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneGetAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -159,7 +165,9 @@ public class AsyncAccounts {
                 .id(id)
                 .build();
         AsyncRequestOperation<StackoneDeleteAccountRequest, StackoneDeleteAccountResponse> operation
-              = new StackoneDeleteAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneDeleteAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -203,7 +211,9 @@ public class AsyncAccounts {
                 .patchAccountExternalDto(patchAccountExternalDto)
                 .build();
         AsyncRequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
-              = new StackoneUpdateAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneUpdateAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -242,7 +252,9 @@ public class AsyncAccounts {
                 .id(id)
                 .build();
         AsyncRequestOperation<StackoneGetAccountMetaInfoRequest, StackoneGetAccountMetaInfoResponse> operation
-              = new StackoneGetAccountMetaInfo.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneGetAccountMetaInfo.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

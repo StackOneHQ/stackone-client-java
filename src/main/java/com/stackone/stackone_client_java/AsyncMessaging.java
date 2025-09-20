@@ -51,6 +51,7 @@ import com.stackone.stackone_client_java.operations.MessagingListConversationMes
 import com.stackone.stackone_client_java.operations.MessagingListConversations;
 import com.stackone.stackone_client_java.operations.MessagingListUsers;
 import com.stackone.stackone_client_java.operations.MessagingSendMessage;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -58,6 +59,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncMessaging {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Messaging syncSDK;
 
@@ -104,7 +106,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingListConversationsResponse> listConversations(MessagingListConversationsRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingListConversationsRequest, MessagingListConversationsResponse> operation
-              = new MessagingListConversations.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingListConversations.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -148,7 +152,9 @@ public class AsyncMessaging {
                 .messagingCreateConversationRequestDto(messagingCreateConversationRequestDto)
                 .build();
         AsyncRequestOperation<MessagingCreateConversationRequest, MessagingCreateConversationResponse> operation
-              = new MessagingCreateConversation.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingCreateConversation.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -182,7 +188,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingGetConversationResponse> getConversation(MessagingGetConversationRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingGetConversationRequest, MessagingGetConversationResponse> operation
-              = new MessagingGetConversation.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingGetConversation.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -216,7 +224,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingDownloadMessagingAttachmentResponse> downloadMessagingAttachment(MessagingDownloadMessagingAttachmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingDownloadMessagingAttachmentRequest, MessagingDownloadMessagingAttachmentResponse> operation
-              = new MessagingDownloadMessagingAttachment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingDownloadMessagingAttachment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -250,7 +260,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingListAttachmentsResponse> listAttachments(MessagingListAttachmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingListAttachmentsRequest, MessagingListAttachmentsResponse> operation
-              = new MessagingListAttachments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingListAttachments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -284,7 +296,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingGetAttachmentResponse> getAttachment(MessagingGetAttachmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingGetAttachmentRequest, MessagingGetAttachmentResponse> operation
-              = new MessagingGetAttachment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingGetAttachment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -318,7 +332,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingListUsersResponse> listUsers(MessagingListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingListUsersRequest, MessagingListUsersResponse> operation
-              = new MessagingListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -352,7 +368,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingGetUserResponse> getUser(MessagingGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingGetUserRequest, MessagingGetUserResponse> operation
-              = new MessagingGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -386,7 +404,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingListConversationMessagesResponse> listConversationMessages(MessagingListConversationMessagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingListConversationMessagesRequest, MessagingListConversationMessagesResponse> operation
-              = new MessagingListConversationMessages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingListConversationMessages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -420,7 +440,9 @@ public class AsyncMessaging {
      */
     public CompletableFuture<MessagingGetMessageResponse> getMessage(MessagingGetMessageRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingGetMessageRequest, MessagingGetMessageResponse> operation
-              = new MessagingGetMessage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingGetMessage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -464,7 +486,9 @@ public class AsyncMessaging {
                 .messagingMessageSendRequestDto(messagingMessageSendRequestDto)
                 .build();
         AsyncRequestOperation<MessagingSendMessageRequest, MessagingSendMessageResponse> operation
-              = new MessagingSendMessage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingSendMessage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
