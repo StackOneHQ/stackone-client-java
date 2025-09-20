@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.ScreeningCreateOrderRequestDto;
 import com.stackone.stackone_client_java.models.operations.ScreeningCreateScreeningOrderRequest;
 import com.stackone.stackone_client_java.operations.ScreeningCreateScreeningOrder;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class ScreeningCreateScreeningOrderRequestBuilder {
     private ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public ScreeningCreateScreeningOrderRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class ScreeningCreateScreeningOrderRequestBuilder {
             .build());
 
         AsyncRequestOperation<ScreeningCreateScreeningOrderRequest, ScreeningCreateScreeningOrderResponse> operation
-              = new ScreeningCreateScreeningOrder.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningCreateScreeningOrder.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         ScreeningCreateScreeningOrderRequest request = buildRequest();
 
         return operation.doRequest(request)

@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.MarketingCreateSmsTemplateRequestDto;
 import com.stackone.stackone_client_java.operations.MarketingCreateSmsTemplate;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -21,6 +22,7 @@ public class MarketingCreateSmsTemplateRequestBuilder {
     private MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public MarketingCreateSmsTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -65,7 +67,7 @@ public class MarketingCreateSmsTemplateRequestBuilder {
             .build());
 
         RequestOperation<MarketingCreateSmsTemplateRequest, MarketingCreateSmsTemplateResponse> operation
-              = new MarketingCreateSmsTemplate.Sync(sdkConfiguration, options);
+              = new MarketingCreateSmsTemplate.Sync(sdkConfiguration, options, _headers);
         MarketingCreateSmsTemplateRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

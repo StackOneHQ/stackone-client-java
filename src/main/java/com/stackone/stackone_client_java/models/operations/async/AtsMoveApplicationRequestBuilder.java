@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsMoveApplicationRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsMoveApplicationRequest;
 import com.stackone.stackone_client_java.operations.AtsMoveApplication;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class AtsMoveApplicationRequestBuilder {
     private AtsMoveApplicationRequestDto atsMoveApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsMoveApplicationRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class AtsMoveApplicationRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
-              = new AtsMoveApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsMoveApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AtsMoveApplicationRequest request = buildRequest();
 
         return operation.doRequest(request)

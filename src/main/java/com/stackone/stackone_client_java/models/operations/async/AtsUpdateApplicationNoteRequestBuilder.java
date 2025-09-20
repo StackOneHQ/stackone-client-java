@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateApplicationNoteRequest;
 import com.stackone.stackone_client_java.operations.AtsUpdateApplicationNote;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -25,6 +26,7 @@ public class AtsUpdateApplicationNoteRequestBuilder {
     private AtsUpdateNotesRequestDto atsUpdateNotesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsUpdateApplicationNoteRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -83,7 +85,9 @@ public class AtsUpdateApplicationNoteRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
-              = new AtsUpdateApplicationNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateApplicationNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AtsUpdateApplicationNoteRequest request = buildRequest();
 
         return operation.doRequest(request)

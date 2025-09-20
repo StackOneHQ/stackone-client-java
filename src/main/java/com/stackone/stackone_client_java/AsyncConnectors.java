@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.async.StackoneListCon
 import com.stackone.stackone_client_java.models.operations.async.StackoneListConnectorsMetaResponse;
 import com.stackone.stackone_client_java.operations.StackoneGetConnectorMeta;
 import com.stackone.stackone_client_java.operations.StackoneListConnectorsMeta;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -23,6 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Retrieve metadata for connectors.
  */
 public class AsyncConnectors {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Connectors syncSDK;
 
@@ -73,7 +75,9 @@ public class AsyncConnectors {
                 .include(include)
                 .build();
         AsyncRequestOperation<StackoneListConnectorsMetaRequest, StackoneListConnectorsMetaResponse> operation
-              = new StackoneListConnectorsMeta.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListConnectorsMeta.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -116,7 +120,9 @@ public class AsyncConnectors {
                 .include(include)
                 .build();
         AsyncRequestOperation<StackoneGetConnectorMetaRequest, StackoneGetConnectorMetaResponse> operation
-              = new StackoneGetConnectorMeta.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneGetConnectorMeta.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

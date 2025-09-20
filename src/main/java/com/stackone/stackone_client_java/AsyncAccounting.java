@@ -47,6 +47,7 @@ import com.stackone.stackone_client_java.operations.AccountingListCompanies;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyAccounts;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyJournals;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyTaxRates;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -54,6 +55,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncAccounting {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Accounting syncSDK;
 
@@ -100,7 +102,9 @@ public class AsyncAccounting {
      */
     public CompletableFuture<AccountingListCompaniesResponse> listCompanies(AccountingListCompaniesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingListCompaniesRequest, AccountingListCompaniesResponse> operation
-              = new AccountingListCompanies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -134,7 +138,9 @@ public class AsyncAccounting {
      */
     public CompletableFuture<AccountingGetCompanyResponse> getCompany(AccountingGetCompanyRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingGetCompanyRequest, AccountingGetCompanyResponse> operation
-              = new AccountingGetCompany.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingGetCompany.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -168,7 +174,9 @@ public class AsyncAccounting {
      */
     public CompletableFuture<AccountingListCompanyAccountsResponse> listCompanyAccounts(AccountingListCompanyAccountsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingListCompanyAccountsRequest, AccountingListCompanyAccountsResponse> operation
-              = new AccountingListCompanyAccounts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanyAccounts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -202,7 +210,9 @@ public class AsyncAccounting {
      */
     public CompletableFuture<AccountingGetCompanyAccountResponse> getCompanyAccount(AccountingGetCompanyAccountRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingGetCompanyAccountRequest, AccountingGetCompanyAccountResponse> operation
-              = new AccountingGetCompanyAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingGetCompanyAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -236,7 +246,9 @@ public class AsyncAccounting {
      */
     public CompletableFuture<AccountingListCompanyTaxRatesResponse> listCompanyTaxRates(AccountingListCompanyTaxRatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingListCompanyTaxRatesRequest, AccountingListCompanyTaxRatesResponse> operation
-              = new AccountingListCompanyTaxRates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanyTaxRates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -270,7 +282,9 @@ public class AsyncAccounting {
      */
     public CompletableFuture<AccountingGetCompanyTaxRateResponse> getCompanyTaxRate(AccountingGetCompanyTaxRateRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingGetCompanyTaxRateRequest, AccountingGetCompanyTaxRateResponse> operation
-              = new AccountingGetCompanyTaxRate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingGetCompanyTaxRate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -321,7 +335,9 @@ public class AsyncAccounting {
                 .accountingJournalBatchCreateRequestDto(accountingJournalBatchCreateRequestDto)
                 .build();
         AsyncRequestOperation<AccountingBatchCreateCompanyJournalsRequest, AccountingBatchCreateCompanyJournalsResponse> operation
-              = new AccountingBatchCreateCompanyJournals.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingBatchCreateCompanyJournals.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -355,7 +371,9 @@ public class AsyncAccounting {
      */
     public CompletableFuture<AccountingListCompanyJournalsResponse> listCompanyJournals(AccountingListCompanyJournalsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingListCompanyJournalsRequest, AccountingListCompanyJournalsResponse> operation
-              = new AccountingListCompanyJournals.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanyJournals.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -406,7 +424,9 @@ public class AsyncAccounting {
                 .accountingJournalCreateRequestDto(accountingJournalCreateRequestDto)
                 .build();
         AsyncRequestOperation<AccountingCreateCompanyJournalRequest, AccountingCreateCompanyJournalResponse> operation
-              = new AccountingCreateCompanyJournal.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingCreateCompanyJournal.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -440,7 +460,9 @@ public class AsyncAccounting {
      */
     public CompletableFuture<AccountingGetCompanyJournalResponse> getCompanyJournal(AccountingGetCompanyJournalRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingGetCompanyJournalRequest, AccountingGetCompanyJournalResponse> operation
-              = new AccountingGetCompanyJournal.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingGetCompanyJournal.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

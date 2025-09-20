@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.CrmCreateContactRequestDto;
 import com.stackone.stackone_client_java.models.operations.CrmCreateContactRequest;
 import com.stackone.stackone_client_java.operations.CrmCreateContact;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class CrmCreateContactRequestBuilder {
     private CrmCreateContactRequestDto crmCreateContactRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public CrmCreateContactRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class CrmCreateContactRequestBuilder {
             .build());
 
         AsyncRequestOperation<CrmCreateContactRequest, CrmCreateContactResponse> operation
-              = new CrmCreateContact.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmCreateContact.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         CrmCreateContactRequest request = buildRequest();
 
         return operation.doRequest(request)

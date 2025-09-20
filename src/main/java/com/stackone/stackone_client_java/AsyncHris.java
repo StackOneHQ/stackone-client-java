@@ -304,6 +304,7 @@ import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTask;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequest;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeWorkEligibilityRequest;
 import com.stackone.stackone_client_java.operations.HrisUploadEmployeeDocument;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.String;
@@ -312,6 +313,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncHris {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Hris syncSDK;
 
@@ -358,7 +360,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListCompaniesResponse> listCompanies(HrisListCompaniesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListCompaniesRequest, HrisListCompaniesResponse> operation
-              = new HrisListCompanies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListCompanies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -392,7 +396,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetCompanyResponse> getCompany(HrisGetCompanyRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetCompanyRequest, HrisGetCompanyResponse> operation
-              = new HrisGetCompany.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetCompany.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -426,7 +432,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeCustomFieldDefinitionsResponse> listEmployeeCustomFieldDefinitions(HrisListEmployeeCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeCustomFieldDefinitionsRequest, HrisListEmployeeCustomFieldDefinitionsResponse> operation
-              = new HrisListEmployeeCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -460,7 +468,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeeCustomFieldDefinitionResponse> getEmployeeCustomFieldDefinition(HrisGetEmployeeCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeCustomFieldDefinitionRequest, HrisGetEmployeeCustomFieldDefinitionResponse> operation
-              = new HrisGetEmployeeCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -494,7 +504,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeesResponse> listEmployees(HrisListEmployeesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeesRequest, HrisListEmployeesResponse> operation
-              = new HrisListEmployees.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployees.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -538,7 +550,9 @@ public class AsyncHris {
                 .hrisCreateEmployeeRequestDto(hrisCreateEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeRequest, HrisCreateEmployeeResponse> operation
-              = new HrisCreateEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -572,7 +586,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeeResponse> getEmployee(HrisGetEmployeeRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeRequest, HrisGetEmployeeResponse> operation
-              = new HrisGetEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -623,7 +639,9 @@ public class AsyncHris {
                 .hrisUpdateEmployeeRequestDto(hrisUpdateEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeRequest, HrisUpdateEmployeeResponse> operation
-              = new HrisUpdateEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -674,7 +692,9 @@ public class AsyncHris {
                 .hrisInviteEmployeeRequestDto(hrisInviteEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
-              = new HrisInviteEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisInviteEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -708,7 +728,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeTimeOffRequestsResponse> listEmployeeTimeOffRequests(HrisListEmployeeTimeOffRequestsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeTimeOffRequestsRequest, HrisListEmployeeTimeOffRequestsResponse> operation
-              = new HrisListEmployeeTimeOffRequests.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeTimeOffRequests.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -759,7 +781,9 @@ public class AsyncHris {
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeTimeOffRequestRequest, HrisCreateEmployeeTimeOffRequestResponse> operation
-              = new HrisCreateEmployeeTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -793,7 +817,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeesTimeOffRequestResponse> getEmployeesTimeOffRequest(HrisGetEmployeesTimeOffRequestRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeesTimeOffRequestRequest, HrisGetEmployeesTimeOffRequestResponse> operation
-              = new HrisGetEmployeesTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeesTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -844,7 +870,9 @@ public class AsyncHris {
                 .subResourceId(subResourceId)
                 .build();
         AsyncRequestOperation<HrisCancelEmployeeTimeOffRequestRequest, HrisCancelEmployeeTimeOffRequestResponse> operation
-              = new HrisCancelEmployeeTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCancelEmployeeTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -899,7 +927,9 @@ public class AsyncHris {
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
-              = new HrisUpdateEmployeeTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployeeTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -950,7 +980,9 @@ public class AsyncHris {
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         AsyncRequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
-              = new HrisBatchUploadEmployeeDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisBatchUploadEmployeeDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1001,7 +1033,9 @@ public class AsyncHris {
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         AsyncRequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
-              = new HrisUploadEmployeeDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUploadEmployeeDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1035,7 +1069,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisDownloadEmployeeDocumentResponse> downloadEmployeeDocument(HrisDownloadEmployeeDocumentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisDownloadEmployeeDocumentRequest, HrisDownloadEmployeeDocumentResponse> operation
-              = new HrisDownloadEmployeeDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisDownloadEmployeeDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1069,7 +1105,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeDocumentsResponse> listEmployeeDocuments(HrisListEmployeeDocumentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeDocumentsRequest, HrisListEmployeeDocumentsResponse> operation
-              = new HrisListEmployeeDocuments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeDocuments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1103,7 +1141,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeeDocumentResponse> getEmployeeDocument(HrisGetEmployeeDocumentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeDocumentRequest, HrisGetEmployeeDocumentResponse> operation
-              = new HrisGetEmployeeDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1137,7 +1177,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeCategoriesResponse> listEmployeeCategories(HrisListEmployeeCategoriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeCategoriesRequest, HrisListEmployeeCategoriesResponse> operation
-              = new HrisListEmployeeCategories.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeCategories.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1171,7 +1213,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeeDocumentCategoryResponse> getEmployeeDocumentCategory(HrisGetEmployeeDocumentCategoryRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeDocumentCategoryRequest, HrisGetEmployeeDocumentCategoryResponse> operation
-              = new HrisGetEmployeeDocumentCategory.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeDocumentCategory.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1205,7 +1249,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeWorkEligibilityResponse> listEmployeeWorkEligibility(HrisListEmployeeWorkEligibilityRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeWorkEligibilityRequest, HrisListEmployeeWorkEligibilityResponse> operation
-              = new HrisListEmployeeWorkEligibility.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeWorkEligibility.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1256,7 +1302,9 @@ public class AsyncHris {
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeWorkEligibilityRequestRequest, HrisCreateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisCreateEmployeeWorkEligibilityRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeWorkEligibilityRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1290,7 +1338,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeesWorkEligibilityResponse> getEmployeesWorkEligibility(HrisGetEmployeesWorkEligibilityRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeesWorkEligibilityRequest, HrisGetEmployeesWorkEligibilityResponse> operation
-              = new HrisGetEmployeesWorkEligibility.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeesWorkEligibility.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1345,7 +1395,9 @@ public class AsyncHris {
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeWorkEligibilityRequestRequest, HrisUpdateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisUpdateEmployeeWorkEligibilityRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployeeWorkEligibilityRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1379,7 +1431,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeTimeOffBalancesResponse> listEmployeeTimeOffBalances(HrisListEmployeeTimeOffBalancesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeTimeOffBalancesRequest, HrisListEmployeeTimeOffBalancesResponse> operation
-              = new HrisListEmployeeTimeOffBalances.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeTimeOffBalances.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1413,7 +1467,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeeTimeOffBalanceResponse> getEmployeeTimeOffBalance(HrisGetEmployeeTimeOffBalanceRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeTimeOffBalanceRequest, HrisGetEmployeeTimeOffBalanceResponse> operation
-              = new HrisGetEmployeeTimeOffBalance.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeTimeOffBalance.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1447,7 +1503,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmploymentsResponse> listEmployments(HrisListEmploymentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmploymentsRequest, HrisListEmploymentsResponse> operation
-              = new HrisListEmployments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1481,7 +1539,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmploymentResponse> getEmployment(HrisGetEmploymentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmploymentRequest, HrisGetEmploymentResponse> operation
-              = new HrisGetEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1515,7 +1575,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeEmploymentsResponse> listEmployeeEmployments(HrisListEmployeeEmploymentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeEmploymentsRequest, HrisListEmployeeEmploymentsResponse> operation
-              = new HrisListEmployeeEmployments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeEmployments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1566,7 +1628,9 @@ public class AsyncHris {
                 .hrisCreateEmploymentRequestDto(hrisCreateEmploymentRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeEmploymentRequest, HrisCreateEmployeeEmploymentResponse> operation
-              = new HrisCreateEmployeeEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1600,7 +1664,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeeEmploymentResponse> getEmployeeEmployment(HrisGetEmployeeEmploymentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeEmploymentRequest, HrisGetEmployeeEmploymentResponse> operation
-              = new HrisGetEmployeeEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1655,7 +1721,9 @@ public class AsyncHris {
                 .hrisUpdateEmploymentRequestDto(hrisUpdateEmploymentRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeEmploymentRequest, HrisUpdateEmployeeEmploymentResponse> operation
-              = new HrisUpdateEmployeeEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployeeEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1689,7 +1757,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListGroupsResponse> listGroups(HrisListGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListGroupsRequest, HrisListGroupsResponse> operation
-              = new HrisListGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1723,7 +1793,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListDepartmentGroupsResponse> listDepartmentGroups(HrisListDepartmentGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListDepartmentGroupsRequest, HrisListDepartmentGroupsResponse> operation
-              = new HrisListDepartmentGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListDepartmentGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1757,7 +1829,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListCostCenterGroupsResponse> listCostCenterGroups(HrisListCostCenterGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListCostCenterGroupsRequest, HrisListCostCenterGroupsResponse> operation
-              = new HrisListCostCenterGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListCostCenterGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1791,7 +1865,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListTeamGroupsResponse> listTeamGroups(HrisListTeamGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTeamGroupsRequest, HrisListTeamGroupsResponse> operation
-              = new HrisListTeamGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTeamGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1825,7 +1901,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListDivisionGroupsResponse> listDivisionGroups(HrisListDivisionGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListDivisionGroupsRequest, HrisListDivisionGroupsResponse> operation
-              = new HrisListDivisionGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListDivisionGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1859,7 +1937,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListCompaniesGroupsResponse> listCompaniesGroups(HrisListCompaniesGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListCompaniesGroupsRequest, HrisListCompaniesGroupsResponse> operation
-              = new HrisListCompaniesGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListCompaniesGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1893,7 +1973,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetGroupResponse> getGroup(HrisGetGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetGroupRequest, HrisGetGroupResponse> operation
-              = new HrisGetGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1927,7 +2009,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetDepartmentGroupResponse> getDepartmentGroup(HrisGetDepartmentGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetDepartmentGroupRequest, HrisGetDepartmentGroupResponse> operation
-              = new HrisGetDepartmentGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetDepartmentGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1961,7 +2045,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetCostCenterGroupResponse> getCostCenterGroup(HrisGetCostCenterGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetCostCenterGroupRequest, HrisGetCostCenterGroupResponse> operation
-              = new HrisGetCostCenterGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetCostCenterGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1995,7 +2081,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetTeamGroupResponse> getTeamGroup(HrisGetTeamGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTeamGroupRequest, HrisGetTeamGroupResponse> operation
-              = new HrisGetTeamGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTeamGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2029,7 +2117,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetDivisionGroupResponse> getDivisionGroup(HrisGetDivisionGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetDivisionGroupRequest, HrisGetDivisionGroupResponse> operation
-              = new HrisGetDivisionGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetDivisionGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2063,7 +2153,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetCompanyGroupResponse> getCompanyGroup(HrisGetCompanyGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetCompanyGroupRequest, HrisGetCompanyGroupResponse> operation
-              = new HrisGetCompanyGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetCompanyGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2097,7 +2189,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListJobsResponse> listJobs(HrisListJobsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListJobsRequest, HrisListJobsResponse> operation
-              = new HrisListJobs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListJobs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2131,7 +2225,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetJobResponse> getJob(HrisGetJobRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetJobRequest, HrisGetJobResponse> operation
-              = new HrisGetJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2165,7 +2261,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListLocationsResponse> listLocations(HrisListLocationsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListLocationsRequest, HrisListLocationsResponse> operation
-              = new HrisListLocations.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListLocations.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2199,7 +2297,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetLocationResponse> getLocation(HrisGetLocationRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetLocationRequest, HrisGetLocationResponse> operation
-              = new HrisGetLocation.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetLocation.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2233,7 +2333,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListPositionsResponse> listPositions(HrisListPositionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListPositionsRequest, HrisListPositionsResponse> operation
-              = new HrisListPositions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListPositions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2267,7 +2369,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetPositionResponse> getPosition(HrisGetPositionRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetPositionRequest, HrisGetPositionResponse> operation
-              = new HrisGetPosition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetPosition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2301,7 +2405,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListTimeEntriesResponse> listTimeEntries(HrisListTimeEntriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTimeEntriesRequest, HrisListTimeEntriesResponse> operation
-              = new HrisListTimeEntries.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTimeEntries.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2335,7 +2441,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetTimeEntriesResponse> getTimeEntries(HrisGetTimeEntriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTimeEntriesRequest, HrisGetTimeEntriesResponse> operation
-              = new HrisGetTimeEntries.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTimeEntries.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2369,7 +2477,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListTimeOffRequestsResponse> listTimeOffRequests(HrisListTimeOffRequestsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTimeOffRequestsRequest, HrisListTimeOffRequestsResponse> operation
-              = new HrisListTimeOffRequests.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTimeOffRequests.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2403,7 +2513,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetTimeOffRequestResponse> getTimeOffRequest(HrisGetTimeOffRequestRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTimeOffRequestRequest, HrisGetTimeOffRequestResponse> operation
-              = new HrisGetTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2437,7 +2549,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListShiftsResponse> listShifts(HrisListShiftsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListShiftsRequest, HrisListShiftsResponse> operation
-              = new HrisListShifts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListShifts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2471,7 +2585,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetShiftResponse> getShift(HrisGetShiftRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetShiftRequest, HrisGetShiftResponse> operation
-              = new HrisGetShift.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetShift.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2511,7 +2627,9 @@ public class AsyncHris {
     @Deprecated
     public CompletableFuture<HrisListTimeOffTypesResponse> listTimeOffTypes(HrisListTimeOffTypesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTimeOffTypesRequest, HrisListTimeOffTypesResponse> operation
-              = new HrisListTimeOffTypes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTimeOffTypes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2551,7 +2669,9 @@ public class AsyncHris {
     @Deprecated
     public CompletableFuture<HrisGetTimeOffTypeResponse> getTimeOffType(HrisGetTimeOffTypeRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTimeOffTypeRequest, HrisGetTimeOffTypeResponse> operation
-              = new HrisGetTimeOffType.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTimeOffType.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2585,7 +2705,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListTimeOffPoliciesResponse> listTimeOffPolicies(HrisListTimeOffPoliciesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTimeOffPoliciesRequest, HrisListTimeOffPoliciesResponse> operation
-              = new HrisListTimeOffPolicies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTimeOffPolicies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2619,7 +2741,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetTimeOffPolicyResponse> getTimeOffPolicy(HrisGetTimeOffPolicyRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTimeOffPolicyRequest, HrisGetTimeOffPolicyResponse> operation
-              = new HrisGetTimeOffPolicy.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTimeOffPolicy.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2653,7 +2777,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeTimeOffPoliciesResponse> listEmployeeTimeOffPolicies(HrisListEmployeeTimeOffPoliciesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeTimeOffPoliciesRequest, HrisListEmployeeTimeOffPoliciesResponse> operation
-              = new HrisListEmployeeTimeOffPolicies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeTimeOffPolicies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2687,7 +2813,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListBenefitsResponse> listBenefits(HrisListBenefitsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListBenefitsRequest, HrisListBenefitsResponse> operation
-              = new HrisListBenefits.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListBenefits.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2721,7 +2849,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetBenefitResponse> getBenefit(HrisGetBenefitRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetBenefitRequest, HrisGetBenefitResponse> operation
-              = new HrisGetBenefit.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetBenefit.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2755,7 +2885,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeSkillsResponse> listEmployeeSkills(HrisListEmployeeSkillsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeSkillsRequest, HrisListEmployeeSkillsResponse> operation
-              = new HrisListEmployeeSkills.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeSkills.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2806,7 +2938,9 @@ public class AsyncHris {
                 .entitySkillsCreateRequestDto(entitySkillsCreateRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
-              = new HrisCreateEmployeeSkill.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeSkill.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2840,7 +2974,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeeSkillResponse> getEmployeeSkill(HrisGetEmployeeSkillRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeSkillRequest, HrisGetEmployeeSkillResponse> operation
-              = new HrisGetEmployeeSkill.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeSkill.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2874,7 +3010,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListEmployeeTasksResponse> listEmployeeTasks(HrisListEmployeeTasksRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeTasksRequest, HrisListEmployeeTasksResponse> operation
-              = new HrisListEmployeeTasks.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeTasks.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2908,7 +3046,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetEmployeeTaskResponse> getEmployeeTask(HrisGetEmployeeTaskRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeTaskRequest, HrisGetEmployeeTaskResponse> operation
-              = new HrisGetEmployeeTask.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeTask.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2963,7 +3103,9 @@ public class AsyncHris {
                 .updateTaskRequestDto(updateTaskRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeTaskRequest, HrisUpdateEmployeeTaskResponse> operation
-              = new HrisUpdateEmployeeTask.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployeeTask.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2997,7 +3139,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisListTasksResponse> listTasks(HrisListTasksRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTasksRequest, HrisListTasksResponse> operation
-              = new HrisListTasks.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTasks.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3031,7 +3175,9 @@ public class AsyncHris {
      */
     public CompletableFuture<HrisGetTaskResponse> getTask(HrisGetTaskRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTaskRequest, HrisGetTaskResponse> operation
-              = new HrisGetTask.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTask.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsUpsertContentRequestDto;
 import com.stackone.stackone_client_java.models.operations.LmsUpsertContentRequest;
 import com.stackone.stackone_client_java.operations.LmsUpsertContent;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class LmsUpsertContentRequestBuilder {
     private LmsUpsertContentRequestDto lmsUpsertContentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public LmsUpsertContentRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class LmsUpsertContentRequestBuilder {
             .build());
 
         AsyncRequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
-              = new LmsUpsertContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsUpsertContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         LmsUpsertContentRequest request = buildRequest();
 
         return operation.doRequest(request)

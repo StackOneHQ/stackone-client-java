@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.StackoneRpcActionRequ
 import com.stackone.stackone_client_java.models.operations.StackoneRpcActionResponse;
 import com.stackone.stackone_client_java.operations.StackoneListActionsMeta;
 import com.stackone.stackone_client_java.operations.StackoneRpcAction;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
@@ -21,6 +22,7 @@ import java.util.Optional;
  * Retrieve Actions metadata and definitions.
  */
 public class Actions {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncActions asyncSDK;
 
@@ -74,7 +76,7 @@ public class Actions {
      */
     public StackoneListActionsMetaResponse listActionsMeta(StackoneListActionsMetaRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListActionsMetaRequest, StackoneListActionsMetaResponse> operation
-              = new StackoneListActionsMeta.Sync(sdkConfiguration, options);
+              = new StackoneListActionsMeta.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -114,7 +116,7 @@ public class Actions {
      */
     public StackoneRpcActionResponse rpcAction(ActionsRpcRequestDto request, Optional<Options> options) throws Exception {
         RequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> operation
-              = new StackoneRpcAction.Sync(sdkConfiguration, options);
+              = new StackoneRpcAction.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

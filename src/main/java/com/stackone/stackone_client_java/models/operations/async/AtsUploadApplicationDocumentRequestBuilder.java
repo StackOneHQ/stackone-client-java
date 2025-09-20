@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsDocumentsUploadRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsUploadApplicationDocumentRequest;
 import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class AtsUploadApplicationDocumentRequestBuilder {
     private AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsUploadApplicationDocumentRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class AtsUploadApplicationDocumentRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
-              = new AtsUploadApplicationDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUploadApplicationDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AtsUploadApplicationDocumentRequest request = buildRequest();
 
         return operation.doRequest(request)

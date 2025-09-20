@@ -115,6 +115,7 @@ import com.stackone.stackone_client_java.operations.MarketingUpdateInAppTemplate
 import com.stackone.stackone_client_java.operations.MarketingUpdateOmniChannelTemplate;
 import com.stackone.stackone_client_java.operations.MarketingUpdatePushTemplate;
 import com.stackone.stackone_client_java.operations.MarketingUpdateSmsTemplate;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.String;
@@ -123,6 +124,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncMarketing {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Marketing syncSDK;
 
@@ -169,7 +171,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingListEmailTemplatesResponse> listEmailTemplates(MarketingListEmailTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListEmailTemplatesRequest, MarketingListEmailTemplatesResponse> operation
-              = new MarketingListEmailTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListEmailTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -213,7 +217,9 @@ public class AsyncMarketing {
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateEmailTemplateRequest, MarketingCreateEmailTemplateResponse> operation
-              = new MarketingCreateEmailTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateEmailTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -247,7 +253,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingGetEmailTemplateResponse> getEmailTemplate(MarketingGetEmailTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetEmailTemplateRequest, MarketingGetEmailTemplateResponse> operation
-              = new MarketingGetEmailTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetEmailTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -298,7 +306,9 @@ public class AsyncMarketing {
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateEmailTemplateRequest, MarketingUpdateEmailTemplateResponse> operation
-              = new MarketingUpdateEmailTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateEmailTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -332,7 +342,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingListInAppTemplatesResponse> listInAppTemplates(MarketingListInAppTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListInAppTemplatesRequest, MarketingListInAppTemplatesResponse> operation
-              = new MarketingListInAppTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListInAppTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -376,7 +388,9 @@ public class AsyncMarketing {
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateInAppTemplateRequest, MarketingCreateInAppTemplateResponse> operation
-              = new MarketingCreateInAppTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateInAppTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -410,7 +424,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingGetInAppTemplateResponse> getInAppTemplate(MarketingGetInAppTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetInAppTemplateRequest, MarketingGetInAppTemplateResponse> operation
-              = new MarketingGetInAppTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetInAppTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -461,7 +477,9 @@ public class AsyncMarketing {
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateInAppTemplateRequest, MarketingUpdateInAppTemplateResponse> operation
-              = new MarketingUpdateInAppTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateInAppTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -495,7 +513,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingListSmsTemplatesResponse> listSmsTemplates(MarketingListSmsTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListSmsTemplatesRequest, MarketingListSmsTemplatesResponse> operation
-              = new MarketingListSmsTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListSmsTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -539,7 +559,9 @@ public class AsyncMarketing {
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateSmsTemplateRequest, MarketingCreateSmsTemplateResponse> operation
-              = new MarketingCreateSmsTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateSmsTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -573,7 +595,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingGetSmsTemplateResponse> getSmsTemplate(MarketingGetSmsTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetSmsTemplateRequest, MarketingGetSmsTemplateResponse> operation
-              = new MarketingGetSmsTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetSmsTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -624,7 +648,9 @@ public class AsyncMarketing {
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateSmsTemplateRequest, MarketingUpdateSmsTemplateResponse> operation
-              = new MarketingUpdateSmsTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateSmsTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -664,7 +690,9 @@ public class AsyncMarketing {
     @Deprecated
     public CompletableFuture<MarketingListOmniChannelTemplatesResponse> listOmniChannelTemplates(MarketingListOmniChannelTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
-              = new MarketingListOmniChannelTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListOmniChannelTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -714,7 +742,9 @@ public class AsyncMarketing {
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateOmniChannelTemplateRequest, MarketingCreateOmniChannelTemplateResponse> operation
-              = new MarketingCreateOmniChannelTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateOmniChannelTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -754,7 +784,9 @@ public class AsyncMarketing {
     @Deprecated
     public CompletableFuture<MarketingGetOmniChannelTemplateResponse> getOmniChannelTemplate(MarketingGetOmniChannelTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetOmniChannelTemplateRequest, MarketingGetOmniChannelTemplateResponse> operation
-              = new MarketingGetOmniChannelTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetOmniChannelTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -811,7 +843,9 @@ public class AsyncMarketing {
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateOmniChannelTemplateRequest, MarketingUpdateOmniChannelTemplateResponse> operation
-              = new MarketingUpdateOmniChannelTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateOmniChannelTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -845,7 +879,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingListPushTemplatesResponse> listPushTemplates(MarketingListPushTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListPushTemplatesRequest, MarketingListPushTemplatesResponse> operation
-              = new MarketingListPushTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListPushTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -889,7 +925,9 @@ public class AsyncMarketing {
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreatePushTemplateRequest, MarketingCreatePushTemplateResponse> operation
-              = new MarketingCreatePushTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreatePushTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -923,7 +961,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingGetPushTemplateResponse> getPushTemplate(MarketingGetPushTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetPushTemplateRequest, MarketingGetPushTemplateResponse> operation
-              = new MarketingGetPushTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetPushTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -974,7 +1014,9 @@ public class AsyncMarketing {
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdatePushTemplateRequest, MarketingUpdatePushTemplateResponse> operation
-              = new MarketingUpdatePushTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdatePushTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1008,7 +1050,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingListCampaignsResponse> listCampaigns(MarketingListCampaignsRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListCampaignsRequest, MarketingListCampaignsResponse> operation
-              = new MarketingListCampaigns.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListCampaigns.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1042,7 +1086,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingGetCampaignResponse> getCampaign(MarketingGetCampaignRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetCampaignRequest, MarketingGetCampaignResponse> operation
-              = new MarketingGetCampaign.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetCampaign.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1076,7 +1122,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingListContentBlocksResponse> listContentBlocks(MarketingListContentBlocksRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListContentBlocksRequest, MarketingListContentBlocksResponse> operation
-              = new MarketingListContentBlocks.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListContentBlocks.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1120,7 +1168,9 @@ public class AsyncMarketing {
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateContentBlockRequest, MarketingCreateContentBlockResponse> operation
-              = new MarketingCreateContentBlock.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateContentBlock.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1154,7 +1204,9 @@ public class AsyncMarketing {
      */
     public CompletableFuture<MarketingGetContentBlockResponse> getContentBlock(MarketingGetContentBlockRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetContentBlockRequest, MarketingGetContentBlockResponse> operation
-              = new MarketingGetContentBlock.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetContentBlock.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1205,7 +1257,9 @@ public class AsyncMarketing {
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateContentBlockRequest, MarketingUpdateContentBlockResponse> operation
-              = new MarketingUpdateContentBlock.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateContentBlock.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

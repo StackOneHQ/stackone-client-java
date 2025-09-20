@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.async.StackoneCreateC
 import com.stackone.stackone_client_java.models.operations.async.StackoneCreateConnectSessionResponse;
 import com.stackone.stackone_client_java.operations.StackoneAuthenticateConnectSession;
 import com.stackone.stackone_client_java.operations.StackoneCreateConnectSession;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +22,7 @@ import java.util.concurrent.CompletableFuture;
  * Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
  */
 public class AsyncConnectSessions {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final ConnectSessions syncSDK;
 
@@ -67,7 +69,9 @@ public class AsyncConnectSessions {
      */
     public CompletableFuture<StackoneCreateConnectSessionResponse> createConnectSession(ConnectSessionCreate request, Optional<Options> options) {
         AsyncRequestOperation<ConnectSessionCreate, StackoneCreateConnectSessionResponse> operation
-              = new StackoneCreateConnectSession.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneCreateConnectSession.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -101,7 +105,9 @@ public class AsyncConnectSessions {
      */
     public CompletableFuture<StackoneAuthenticateConnectSessionResponse> authenticateConnectSession(ConnectSessionAuthenticate request, Optional<Options> options) {
         AsyncRequestOperation<ConnectSessionAuthenticate, StackoneAuthenticateConnectSessionResponse> operation
-              = new StackoneAuthenticateConnectSession.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneAuthenticateConnectSession.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

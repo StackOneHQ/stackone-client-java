@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.ProxyRequestBody;
 import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestRequest;
 import com.stackone.stackone_client_java.operations.StackoneProxyRequest;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class StackoneProxyRequestRequestBuilder {
     private ProxyRequestBody proxyRequestBody;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public StackoneProxyRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class StackoneProxyRequestRequestBuilder {
             .build());
 
         AsyncRequestOperation<StackoneProxyRequestRequest, StackoneProxyRequestResponse> operation
-              = new StackoneProxyRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneProxyRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         StackoneProxyRequestRequest request = buildRequest();
 
         return operation.doRequest(request)

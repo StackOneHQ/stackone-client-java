@@ -22,6 +22,7 @@ import com.stackone.stackone_client_java.operations.StackoneGetLog;
 import com.stackone.stackone_client_java.operations.StackoneListLogs;
 import com.stackone.stackone_client_java.operations.StackoneListPlatformLogs;
 import com.stackone.stackone_client_java.operations.StackoneListStepLogs;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -32,6 +33,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * API requests and response logs.
  */
 public class AsyncRequestLogs {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final RequestLogs syncSDK;
 
@@ -78,7 +80,9 @@ public class AsyncRequestLogs {
      */
     public CompletableFuture<StackoneListStepLogsResponse> listStepLogs(StackoneListStepLogsRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListStepLogsRequest, StackoneListStepLogsResponse> operation
-              = new StackoneListStepLogs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListStepLogs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -121,7 +125,9 @@ public class AsyncRequestLogs {
                 .include(include)
                 .build();
         AsyncRequestOperation<StackoneGetLogRequest, StackoneGetLogResponse> operation
-              = new StackoneGetLog.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneGetLog.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -155,7 +161,9 @@ public class AsyncRequestLogs {
      */
     public CompletableFuture<StackoneListLogsResponse> listLogs(StackoneListLogsRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
-              = new StackoneListLogs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListLogs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -189,7 +197,9 @@ public class AsyncRequestLogs {
      */
     public CompletableFuture<StackoneListPlatformLogsResponse> listPlatformLogs(StackoneListPlatformLogsRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListPlatformLogsRequest, StackoneListPlatformLogsResponse> operation
-              = new StackoneListPlatformLogs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListPlatformLogs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.AccountingListCompanyJournalsRequest;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyJournals;
 import com.stackone.stackone_client_java.utils.Blob;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -29,6 +30,7 @@ public class AccountingListCompanyJournalsRequestBuilder {
     private AccountingListCompanyJournalsRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AccountingListCompanyJournalsRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -58,7 +60,9 @@ public class AccountingListCompanyJournalsRequestBuilder {
             .build());
 
         AsyncRequestOperation<AccountingListCompanyJournalsRequest, AccountingListCompanyJournalsResponse> operation
-              = new AccountingListCompanyJournals.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanyJournals.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
@@ -85,7 +89,9 @@ public class AccountingListCompanyJournalsRequestBuilder {
             .build());
 
         AsyncRequestOperation<AccountingListCompanyJournalsRequest, AccountingListCompanyJournalsResponse> operation
-              = new AccountingListCompanyJournals.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanyJournals.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,

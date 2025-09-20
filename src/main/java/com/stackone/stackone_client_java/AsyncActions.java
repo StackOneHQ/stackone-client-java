@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.async.StackoneRpcActi
 import com.stackone.stackone_client_java.models.operations.async.StackoneRpcActionResponse;
 import com.stackone.stackone_client_java.operations.StackoneListActionsMeta;
 import com.stackone.stackone_client_java.operations.StackoneRpcAction;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +22,7 @@ import java.util.concurrent.CompletableFuture;
  * Retrieve Actions metadata and definitions.
  */
 public class AsyncActions {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Actions syncSDK;
 
@@ -73,7 +75,9 @@ public class AsyncActions {
      */
     public CompletableFuture<StackoneListActionsMetaResponse> listActionsMeta(StackoneListActionsMetaRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListActionsMetaRequest, StackoneListActionsMetaResponse> operation
-              = new StackoneListActionsMeta.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListActionsMeta.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -113,7 +117,9 @@ public class AsyncActions {
      */
     public CompletableFuture<StackoneRpcActionResponse> rpcAction(ActionsRpcRequestDto request, Optional<Options> options) {
         AsyncRequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> operation
-              = new StackoneRpcAction.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneRpcAction.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

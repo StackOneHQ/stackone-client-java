@@ -7,6 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.operations.StackoneMcpDelete;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -21,6 +22,7 @@ public class StackoneMcpDeleteRequestBuilder {
     private String mcpSessionId;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public StackoneMcpDeleteRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -71,7 +73,9 @@ public class StackoneMcpDeleteRequestBuilder {
             .build());
 
         RequestOperation<StackoneMcpDeleteRequest, StackoneMcpDeleteResponse> operation
-              = new StackoneMcpDelete.Sync(sdkConfiguration, security, options);
+              = new StackoneMcpDelete.Sync(
+                                    sdkConfiguration, security, options,
+                                    _headers);
         StackoneMcpDeleteRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

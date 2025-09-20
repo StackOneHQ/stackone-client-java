@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.EntitySkillsCreateRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeSkillRequest;
 import com.stackone.stackone_client_java.operations.HrisCreateEmployeeSkill;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class HrisCreateEmployeeSkillRequestBuilder {
     private EntitySkillsCreateRequestDto entitySkillsCreateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisCreateEmployeeSkillRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class HrisCreateEmployeeSkillRequestBuilder {
             .build());
 
         AsyncRequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
-              = new HrisCreateEmployeeSkill.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeSkill.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         HrisCreateEmployeeSkillRequest request = buildRequest();
 
         return operation.doRequest(request)
