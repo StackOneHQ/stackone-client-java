@@ -46,6 +46,7 @@ import com.stackone.stackone_client_java.operations.IamListPolicies;
 import com.stackone.stackone_client_java.operations.IamListRoles;
 import com.stackone.stackone_client_java.operations.IamListUsers;
 import com.stackone.stackone_client_java.operations.IamUpdateUser;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -53,6 +54,7 @@ import java.util.Optional;
 
 
 public class Iam {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncIam asyncSDK;
 
@@ -100,7 +102,7 @@ public class Iam {
      */
     public IamListUsersResponse listUsers(IamListUsersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamListUsersRequest, IamListUsersResponse> operation
-              = new IamListUsers.Sync(sdkConfiguration, options);
+              = new IamListUsers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -134,7 +136,7 @@ public class Iam {
      */
     public IamGetUserResponse getUser(IamGetUserRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamGetUserRequest, IamGetUserResponse> operation
-              = new IamGetUser.Sync(sdkConfiguration, options);
+              = new IamGetUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -178,7 +180,7 @@ public class Iam {
                 .id(id)
                 .build();
         RequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
-              = new IamDeleteUser.Sync(sdkConfiguration, options);
+              = new IamDeleteUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -228,7 +230,7 @@ public class Iam {
                 .iamUpdateUserRequestDto(iamUpdateUserRequestDto)
                 .build();
         RequestOperation<IamUpdateUserRequest, IamUpdateUserResponse> operation
-              = new IamUpdateUser.Sync(sdkConfiguration, options);
+              = new IamUpdateUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -262,7 +264,7 @@ public class Iam {
      */
     public IamListRolesResponse listRoles(IamListRolesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamListRolesRequest, IamListRolesResponse> operation
-              = new IamListRoles.Sync(sdkConfiguration, options);
+              = new IamListRoles.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -296,7 +298,7 @@ public class Iam {
      */
     public IamGetRoleResponse getRole(IamGetRoleRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamGetRoleRequest, IamGetRoleResponse> operation
-              = new IamGetRole.Sync(sdkConfiguration, options);
+              = new IamGetRole.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -330,7 +332,7 @@ public class Iam {
      */
     public IamListGroupsResponse listGroups(IamListGroupsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamListGroupsRequest, IamListGroupsResponse> operation
-              = new IamListGroups.Sync(sdkConfiguration, options);
+              = new IamListGroups.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -364,7 +366,7 @@ public class Iam {
      */
     public IamGetGroupResponse getGroup(IamGetGroupRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamGetGroupRequest, IamGetGroupResponse> operation
-              = new IamGetGroup.Sync(sdkConfiguration, options);
+              = new IamGetGroup.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -398,7 +400,7 @@ public class Iam {
      */
     public IamListPoliciesResponse listPolicies(IamListPoliciesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamListPoliciesRequest, IamListPoliciesResponse> operation
-              = new IamListPolicies.Sync(sdkConfiguration, options);
+              = new IamListPolicies.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -432,7 +434,7 @@ public class Iam {
      */
     public IamGetPolicyResponse getPolicy(IamGetPolicyRequest request, Optional<Options> options) throws Exception {
         RequestOperation<IamGetPolicyRequest, IamGetPolicyResponse> operation
-              = new IamGetPolicy.Sync(sdkConfiguration, options);
+              = new IamGetPolicy.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

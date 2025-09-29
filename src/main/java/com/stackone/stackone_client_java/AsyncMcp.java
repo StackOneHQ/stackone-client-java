@@ -21,6 +21,7 @@ import com.stackone.stackone_client_java.models.operations.async.StackoneMcpPost
 import com.stackone.stackone_client_java.operations.StackoneMcpDelete;
 import com.stackone.stackone_client_java.operations.StackoneMcpGet;
 import com.stackone.stackone_client_java.operations.StackoneMcpPost;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -30,6 +31,7 @@ import java.util.concurrent.CompletableFuture;
  * Model Context Protocol endpoint.
  */
 public class AsyncMcp {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Mcp syncSDK;
 
@@ -67,7 +69,7 @@ public class AsyncMcp {
      * @param security The security details to use for authentication.
      * @param xAccountId Account secure id for the target provider account
      * @param mcpSessionId Session id
-     * @return CompletableFuture&lt;StackoneMcpGetResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneMcpGetResponse>} - The async response
      */
     public CompletableFuture<StackoneMcpGetResponse> mcpGet(
             StackoneMcpGetSecurity security, String xAccountId,
@@ -86,7 +88,7 @@ public class AsyncMcp {
      * @param xAccountId Account secure id for the target provider account
      * @param mcpSessionId Session id
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneMcpGetResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneMcpGetResponse>} - The async response
      */
     public CompletableFuture<StackoneMcpGetResponse> mcpGet(
             StackoneMcpGetSecurity security, String xAccountId,
@@ -100,7 +102,7 @@ public class AsyncMcp {
         AsyncRequestOperation<StackoneMcpGetRequest, StackoneMcpGetResponse> operation
               = new StackoneMcpGet.Async(
                                     sdkConfiguration, security, options,
-                                    sdkConfiguration.retryScheduler());
+                                    sdkConfiguration.retryScheduler(), _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -125,7 +127,7 @@ public class AsyncMcp {
      * @param security The security details to use for authentication.
      * @param xAccountId Account secure id for the target provider account
      * @param jsonRpcMessageDto 
-     * @return CompletableFuture&lt;StackoneMcpPostResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneMcpPostResponse>} - The async response
      */
     public CompletableFuture<StackoneMcpPostResponse> mcpPost(
             StackoneMcpPostSecurity security, String xAccountId,
@@ -145,7 +147,7 @@ public class AsyncMcp {
      * @param mcpSessionId Session id; omit for initialize, include for subsequent calls
      * @param jsonRpcMessageDto 
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneMcpPostResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneMcpPostResponse>} - The async response
      */
     public CompletableFuture<StackoneMcpPostResponse> mcpPost(
             StackoneMcpPostSecurity security, String xAccountId,
@@ -161,7 +163,7 @@ public class AsyncMcp {
         AsyncRequestOperation<StackoneMcpPostRequest, StackoneMcpPostResponse> operation
               = new StackoneMcpPost.Async(
                                     sdkConfiguration, security, options,
-                                    sdkConfiguration.retryScheduler());
+                                    sdkConfiguration.retryScheduler(), _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -186,7 +188,7 @@ public class AsyncMcp {
      * @param security The security details to use for authentication.
      * @param xAccountId Account secure id for the target provider account
      * @param mcpSessionId Session id
-     * @return CompletableFuture&lt;StackoneMcpDeleteResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneMcpDeleteResponse>} - The async response
      */
     public CompletableFuture<StackoneMcpDeleteResponse> mcpDelete(
             StackoneMcpDeleteSecurity security, String xAccountId,
@@ -205,7 +207,7 @@ public class AsyncMcp {
      * @param xAccountId Account secure id for the target provider account
      * @param mcpSessionId Session id
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneMcpDeleteResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneMcpDeleteResponse>} - The async response
      */
     public CompletableFuture<StackoneMcpDeleteResponse> mcpDelete(
             StackoneMcpDeleteSecurity security, String xAccountId,
@@ -219,7 +221,7 @@ public class AsyncMcp {
         AsyncRequestOperation<StackoneMcpDeleteRequest, StackoneMcpDeleteResponse> operation
               = new StackoneMcpDelete.Async(
                                     sdkConfiguration, security, options,
-                                    sdkConfiguration.retryScheduler());
+                                    sdkConfiguration.retryScheduler(), _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

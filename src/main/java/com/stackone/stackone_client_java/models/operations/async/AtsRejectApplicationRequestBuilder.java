@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsRejectApplicationRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsRejectApplicationRequest;
 import com.stackone.stackone_client_java.operations.AtsRejectApplication;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class AtsRejectApplicationRequestBuilder {
     private AtsRejectApplicationRequestDto atsRejectApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsRejectApplicationRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class AtsRejectApplicationRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
-              = new AtsRejectApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsRejectApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AtsRejectApplicationRequest request = buildRequest();
 
         return operation.doRequest(request)

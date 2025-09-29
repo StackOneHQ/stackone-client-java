@@ -21,7 +21,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 public class TimeOffPoliciesType {
     /**
-     * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+     * The unified value for the type of the time off policy. If the provider does not specify this unit,
+     * the value will be set to unmapped_value
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
@@ -47,7 +48,8 @@ public class TimeOffPoliciesType {
     }
 
     /**
-     * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+     * The unified value for the type of the time off policy. If the provider does not specify this unit,
+     * the value will be set to unmapped_value
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -67,7 +69,8 @@ public class TimeOffPoliciesType {
 
 
     /**
-     * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+     * The unified value for the type of the time off policy. If the provider does not specify this unit,
+     * the value will be set to unmapped_value
      */
     public TimeOffPoliciesType withValue(TimeOffPoliciesValue value) {
         Utils.checkNotNull(value, "value");
@@ -76,7 +79,8 @@ public class TimeOffPoliciesType {
     }
 
     /**
-     * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+     * The unified value for the type of the time off policy. If the provider does not specify this unit,
+     * the value will be set to unmapped_value
      */
     public TimeOffPoliciesType withValue(JsonNullable<? extends TimeOffPoliciesValue> value) {
         Utils.checkNotNull(value, "value");
@@ -136,7 +140,8 @@ public class TimeOffPoliciesType {
 
 
         /**
-         * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+         * The unified value for the type of the time off policy. If the provider does not specify this unit,
+         * the value will be set to unmapped_value
          */
         public Builder value(TimeOffPoliciesValue value) {
             Utils.checkNotNull(value, "value");
@@ -145,7 +150,8 @@ public class TimeOffPoliciesType {
         }
 
         /**
-         * The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+         * The unified value for the type of the time off policy. If the provider does not specify this unit,
+         * the value will be set to unmapped_value
          */
         public Builder value(JsonNullable<? extends TimeOffPoliciesValue> value) {
             Utils.checkNotNull(value, "value");

@@ -59,7 +59,8 @@ public class InterviewPart {
     private JsonNullable<? extends List<String>> remoteInterviewerIds;
 
     /**
-     * The meeting URL for the interview - this may be populated using the underlying location if the location string extracted is a valid url.
+     * The meeting URL for the interview - this may be populated using the underlying location if the
+     * location string extracted is a valid url.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("meeting_url")
@@ -196,7 +197,8 @@ public class InterviewPart {
     }
 
     /**
-     * The meeting URL for the interview - this may be populated using the underlying location if the location string extracted is a valid url.
+     * The meeting URL for the interview - this may be populated using the underlying location if the
+     * location string extracted is a valid url.
      */
     @JsonIgnore
     public JsonNullable<String> meetingUrl() {
@@ -351,7 +353,8 @@ public class InterviewPart {
     }
 
     /**
-     * The meeting URL for the interview - this may be populated using the underlying location if the location string extracted is a valid url.
+     * The meeting URL for the interview - this may be populated using the underlying location if the
+     * location string extracted is a valid url.
      */
     public InterviewPart withMeetingUrl(String meetingUrl) {
         Utils.checkNotNull(meetingUrl, "meetingUrl");
@@ -360,7 +363,8 @@ public class InterviewPart {
     }
 
     /**
-     * The meeting URL for the interview - this may be populated using the underlying location if the location string extracted is a valid url.
+     * The meeting URL for the interview - this may be populated using the underlying location if the
+     * location string extracted is a valid url.
      */
     public InterviewPart withMeetingUrl(JsonNullable<String> meetingUrl) {
         Utils.checkNotNull(meetingUrl, "meetingUrl");
@@ -649,7 +653,8 @@ public class InterviewPart {
 
 
         /**
-         * The meeting URL for the interview - this may be populated using the underlying location if the location string extracted is a valid url.
+         * The meeting URL for the interview - this may be populated using the underlying location if the
+         * location string extracted is a valid url.
          */
         public Builder meetingUrl(String meetingUrl) {
             Utils.checkNotNull(meetingUrl, "meetingUrl");
@@ -658,7 +663,8 @@ public class InterviewPart {
         }
 
         /**
-         * The meeting URL for the interview - this may be populated using the underlying location if the location string extracted is a valid url.
+         * The meeting URL for the interview - this may be populated using the underlying location if the
+         * location string extracted is a valid url.
          */
         public Builder meetingUrl(JsonNullable<String> meetingUrl) {
             Utils.checkNotNull(meetingUrl, "meetingUrl");

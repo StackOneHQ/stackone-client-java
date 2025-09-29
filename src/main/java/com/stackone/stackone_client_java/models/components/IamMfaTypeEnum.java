@@ -17,7 +17,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class IamMfaTypeEnum {
     /**
-     * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
+     * The unified value for the type of multi-factor authentication. If the provider does not send back a
+     * type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
@@ -43,7 +44,8 @@ public class IamMfaTypeEnum {
     }
 
     /**
-     * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
+     * The unified value for the type of multi-factor authentication. If the provider does not send back a
+     * type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -63,7 +65,8 @@ public class IamMfaTypeEnum {
 
 
     /**
-     * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
+     * The unified value for the type of multi-factor authentication. If the provider does not send back a
+     * type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
      */
     public IamMfaTypeEnum withValue(IamMfaTypeEnumValue value) {
         Utils.checkNotNull(value, "value");
@@ -72,7 +75,8 @@ public class IamMfaTypeEnum {
     }
 
     /**
-     * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
+     * The unified value for the type of multi-factor authentication. If the provider does not send back a
+     * type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
      */
     public IamMfaTypeEnum withValue(JsonNullable<? extends IamMfaTypeEnumValue> value) {
         Utils.checkNotNull(value, "value");
@@ -132,7 +136,8 @@ public class IamMfaTypeEnum {
 
 
         /**
-         * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
+         * The unified value for the type of multi-factor authentication. If the provider does not send back a
+         * type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
          */
         public Builder value(IamMfaTypeEnumValue value) {
             Utils.checkNotNull(value, "value");
@@ -141,7 +146,8 @@ public class IamMfaTypeEnum {
         }
 
         /**
-         * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
+         * The unified value for the type of multi-factor authentication. If the provider does not send back a
+         * type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
          */
         public Builder value(JsonNullable<? extends IamMfaTypeEnumValue> value) {
             Utils.checkNotNull(value, "value");

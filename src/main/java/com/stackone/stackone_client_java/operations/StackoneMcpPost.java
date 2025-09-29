@@ -30,6 +30,7 @@ import com.stackone.stackone_client_java.utils.Blob;
 import com.stackone.stackone_client_java.utils.Exceptions;
 import com.stackone.stackone_client_java.utils.HTTPClient;
 import com.stackone.stackone_client_java.utils.HTTPRequest;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Hook.AfterErrorContextImpl;
 import com.stackone.stackone_client_java.utils.Hook.AfterSuccessContextImpl;
 import com.stackone.stackone_client_java.utils.Hook.BeforeRequestContextImpl;
@@ -66,11 +67,13 @@ public class StackoneMcpPost {
         final List<String> retryStatusCodes;
         final RetryConfig retryConfig;
         final HTTPClient client;
+        final Headers _headers;
 
         public Base(
                 SDKConfiguration sdkConfiguration, StackoneMcpPostSecurity security,
-                Optional<Options> options) {
+                Optional<Options> options, Headers _headers) {
             this.sdkConfiguration = sdkConfiguration;
+            this._headers =_headers;
             this.baseUrl = this.sdkConfiguration.serverUrl();
             this.security = security;
             // hooks will be passed method level security only
@@ -142,6 +145,7 @@ public class StackoneMcpPost {
             req.setBody(Optional.ofNullable(serializedRequestBody));
             req.addHeader("Accept", "application/json")
                     .addHeader("user-agent", SDKConfiguration.USER_AGENT);
+            _headers.forEach((k, list) -> list.forEach(v -> req.addHeader(k, v)));
             req.addHeaders(Utils.getHeadersFromMetadata(request, null));
             Utils.configureSecurity(req, security);
 
@@ -153,10 +157,10 @@ public class StackoneMcpPost {
             implements RequestOperation<StackoneMcpPostRequest, StackoneMcpPostResponse> {
         public Sync(
                 SDKConfiguration sdkConfiguration, StackoneMcpPostSecurity security,
-                Optional<Options> options) {
+                Optional<Options> options, Headers _headers) {
             super(
                   sdkConfiguration, security,
-                  options);
+                  options, _headers);
         }
 
         private HttpRequest onBuildRequest(StackoneMcpPostRequest request) throws Exception {
@@ -430,10 +434,11 @@ public class StackoneMcpPost {
 
         public Async(
                 SDKConfiguration sdkConfiguration, StackoneMcpPostSecurity security,
-                Optional<Options> options, ScheduledExecutorService retryScheduler) {
+                Optional<Options> options, ScheduledExecutorService retryScheduler,
+                Headers _headers) {
             super(
                   sdkConfiguration, security,
-                  options);
+                  options, _headers);
             this.retryScheduler = retryScheduler;
         }
 

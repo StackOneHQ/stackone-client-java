@@ -93,7 +93,9 @@ public class LmsCreateContentRequestDto {
     private JsonNullable<? extends LmsCreateContentRequestDtoActive> active;
 
     /**
-     * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
+     * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will
+     * derive this from the smallest unit given in the duration string or the minimum unit accepted by the
+     * provider.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("duration")
@@ -107,7 +109,8 @@ public class LmsCreateContentRequestDto {
     private JsonNullable<? extends List<CreateSkillsApiModel>> skills;
 
     /**
-     * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
+     * The order of the individual content within a content grouping. This is not applicable for pushing
+     * individual content.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("order")
@@ -334,7 +337,9 @@ public class LmsCreateContentRequestDto {
     }
 
     /**
-     * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
+     * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will
+     * derive this from the smallest unit given in the duration string or the minimum unit accepted by the
+     * provider.
      */
     @JsonIgnore
     public JsonNullable<String> duration() {
@@ -351,7 +356,8 @@ public class LmsCreateContentRequestDto {
     }
 
     /**
-     * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
+     * The order of the individual content within a content grouping. This is not applicable for pushing
+     * individual content.
      */
     @JsonIgnore
     public JsonNullable<Double> order() {
@@ -616,7 +622,9 @@ public class LmsCreateContentRequestDto {
     }
 
     /**
-     * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
+     * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will
+     * derive this from the smallest unit given in the duration string or the minimum unit accepted by the
+     * provider.
      */
     public LmsCreateContentRequestDto withDuration(String duration) {
         Utils.checkNotNull(duration, "duration");
@@ -625,7 +633,9 @@ public class LmsCreateContentRequestDto {
     }
 
     /**
-     * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
+     * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will
+     * derive this from the smallest unit given in the duration string or the minimum unit accepted by the
+     * provider.
      */
     public LmsCreateContentRequestDto withDuration(JsonNullable<String> duration) {
         Utils.checkNotNull(duration, "duration");
@@ -652,7 +662,8 @@ public class LmsCreateContentRequestDto {
     }
 
     /**
-     * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
+     * The order of the individual content within a content grouping. This is not applicable for pushing
+     * individual content.
      */
     public LmsCreateContentRequestDto withOrder(double order) {
         Utils.checkNotNull(order, "order");
@@ -661,7 +672,8 @@ public class LmsCreateContentRequestDto {
     }
 
     /**
-     * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
+     * The order of the individual content within a content grouping. This is not applicable for pushing
+     * individual content.
      */
     public LmsCreateContentRequestDto withOrder(JsonNullable<Double> order) {
         Utils.checkNotNull(order, "order");
@@ -1132,7 +1144,9 @@ public class LmsCreateContentRequestDto {
 
 
         /**
-         * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
+         * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will
+         * derive this from the smallest unit given in the duration string or the minimum unit accepted by the
+         * provider.
          */
         public Builder duration(String duration) {
             Utils.checkNotNull(duration, "duration");
@@ -1141,7 +1155,9 @@ public class LmsCreateContentRequestDto {
         }
 
         /**
-         * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
+         * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will
+         * derive this from the smallest unit given in the duration string or the minimum unit accepted by the
+         * provider.
          */
         public Builder duration(JsonNullable<String> duration) {
             Utils.checkNotNull(duration, "duration");
@@ -1170,7 +1186,8 @@ public class LmsCreateContentRequestDto {
 
 
         /**
-         * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
+         * The order of the individual content within a content grouping. This is not applicable for pushing
+         * individual content.
          */
         public Builder order(double order) {
             Utils.checkNotNull(order, "order");
@@ -1179,7 +1196,8 @@ public class LmsCreateContentRequestDto {
         }
 
         /**
-         * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
+         * The order of the individual content within a content grouping. This is not applicable for pushing
+         * individual content.
          */
         public Builder order(JsonNullable<Double> order) {
             Utils.checkNotNull(order, "order");

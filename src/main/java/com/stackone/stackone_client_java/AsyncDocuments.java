@@ -38,6 +38,7 @@ import com.stackone.stackone_client_java.operations.DocumentsListDrives;
 import com.stackone.stackone_client_java.operations.DocumentsListFiles;
 import com.stackone.stackone_client_java.operations.DocumentsListFolders;
 import com.stackone.stackone_client_java.operations.DocumentsUploadFile;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -45,6 +46,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncDocuments {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Documents syncSDK;
 
@@ -76,7 +78,7 @@ public class AsyncDocuments {
      * Download File
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;DocumentsDownloadFileResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsDownloadFileResponse>} - The async response
      */
     public CompletableFuture<DocumentsDownloadFileResponse> downloadFile(DocumentsDownloadFileRequest request) {
         return downloadFile(request, Optional.empty());
@@ -87,11 +89,13 @@ public class AsyncDocuments {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;DocumentsDownloadFileResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsDownloadFileResponse>} - The async response
      */
     public CompletableFuture<DocumentsDownloadFileResponse> downloadFile(DocumentsDownloadFileRequest request, Optional<Options> options) {
         AsyncRequestOperation<DocumentsDownloadFileRequest, DocumentsDownloadFileResponse> operation
-              = new DocumentsDownloadFile.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new DocumentsDownloadFile.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -111,7 +115,7 @@ public class AsyncDocuments {
      * 
      * @param xAccountId The account identifier
      * @param unifiedUploadRequestDto 
-     * @return CompletableFuture&lt;DocumentsUploadFileResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsUploadFileResponse>} - The async response
      */
     public CompletableFuture<DocumentsUploadFileResponse> uploadFile(String xAccountId, UnifiedUploadRequestDto unifiedUploadRequestDto) {
         return uploadFile(
@@ -126,7 +130,7 @@ public class AsyncDocuments {
      * @param xStackoneApiSessionToken The session token
      * @param unifiedUploadRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;DocumentsUploadFileResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsUploadFileResponse>} - The async response
      */
     public CompletableFuture<DocumentsUploadFileResponse> uploadFile(
             String xAccountId, Optional<String> xStackoneApiSessionToken,
@@ -139,7 +143,9 @@ public class AsyncDocuments {
                 .unifiedUploadRequestDto(unifiedUploadRequestDto)
                 .build();
         AsyncRequestOperation<DocumentsUploadFileRequest, DocumentsUploadFileResponse> operation
-              = new DocumentsUploadFile.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new DocumentsUploadFile.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -158,7 +164,7 @@ public class AsyncDocuments {
      * List Files
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;DocumentsListFilesResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsListFilesResponse>} - The async response
      */
     public CompletableFuture<DocumentsListFilesResponse> listFiles(DocumentsListFilesRequest request) {
         return listFiles(request, Optional.empty());
@@ -169,11 +175,13 @@ public class AsyncDocuments {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;DocumentsListFilesResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsListFilesResponse>} - The async response
      */
     public CompletableFuture<DocumentsListFilesResponse> listFiles(DocumentsListFilesRequest request, Optional<Options> options) {
         AsyncRequestOperation<DocumentsListFilesRequest, DocumentsListFilesResponse> operation
-              = new DocumentsListFiles.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new DocumentsListFiles.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -192,7 +200,7 @@ public class AsyncDocuments {
      * Get File
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;DocumentsGetFileResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsGetFileResponse>} - The async response
      */
     public CompletableFuture<DocumentsGetFileResponse> getFile(DocumentsGetFileRequest request) {
         return getFile(request, Optional.empty());
@@ -203,11 +211,13 @@ public class AsyncDocuments {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;DocumentsGetFileResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsGetFileResponse>} - The async response
      */
     public CompletableFuture<DocumentsGetFileResponse> getFile(DocumentsGetFileRequest request, Optional<Options> options) {
         AsyncRequestOperation<DocumentsGetFileRequest, DocumentsGetFileResponse> operation
-              = new DocumentsGetFile.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new DocumentsGetFile.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -226,7 +236,7 @@ public class AsyncDocuments {
      * List Folders
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;DocumentsListFoldersResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsListFoldersResponse>} - The async response
      */
     public CompletableFuture<DocumentsListFoldersResponse> listFolders(DocumentsListFoldersRequest request) {
         return listFolders(request, Optional.empty());
@@ -237,11 +247,13 @@ public class AsyncDocuments {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;DocumentsListFoldersResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsListFoldersResponse>} - The async response
      */
     public CompletableFuture<DocumentsListFoldersResponse> listFolders(DocumentsListFoldersRequest request, Optional<Options> options) {
         AsyncRequestOperation<DocumentsListFoldersRequest, DocumentsListFoldersResponse> operation
-              = new DocumentsListFolders.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new DocumentsListFolders.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -260,7 +272,7 @@ public class AsyncDocuments {
      * Get Folder
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;DocumentsGetFolderResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsGetFolderResponse>} - The async response
      */
     public CompletableFuture<DocumentsGetFolderResponse> getFolder(DocumentsGetFolderRequest request) {
         return getFolder(request, Optional.empty());
@@ -271,11 +283,13 @@ public class AsyncDocuments {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;DocumentsGetFolderResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsGetFolderResponse>} - The async response
      */
     public CompletableFuture<DocumentsGetFolderResponse> getFolder(DocumentsGetFolderRequest request, Optional<Options> options) {
         AsyncRequestOperation<DocumentsGetFolderRequest, DocumentsGetFolderResponse> operation
-              = new DocumentsGetFolder.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new DocumentsGetFolder.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -294,7 +308,7 @@ public class AsyncDocuments {
      * List Drives
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;DocumentsListDrivesResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsListDrivesResponse>} - The async response
      */
     public CompletableFuture<DocumentsListDrivesResponse> listDrives(DocumentsListDrivesRequest request) {
         return listDrives(request, Optional.empty());
@@ -305,11 +319,13 @@ public class AsyncDocuments {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;DocumentsListDrivesResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsListDrivesResponse>} - The async response
      */
     public CompletableFuture<DocumentsListDrivesResponse> listDrives(DocumentsListDrivesRequest request, Optional<Options> options) {
         AsyncRequestOperation<DocumentsListDrivesRequest, DocumentsListDrivesResponse> operation
-              = new DocumentsListDrives.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new DocumentsListDrives.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -328,7 +344,7 @@ public class AsyncDocuments {
      * Get Drive
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;DocumentsGetDriveResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsGetDriveResponse>} - The async response
      */
     public CompletableFuture<DocumentsGetDriveResponse> getDrive(DocumentsGetDriveRequest request) {
         return getDrive(request, Optional.empty());
@@ -339,11 +355,13 @@ public class AsyncDocuments {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;DocumentsGetDriveResponse&gt; - The async response
+     * @return {@code CompletableFuture<DocumentsGetDriveResponse>} - The async response
      */
     public CompletableFuture<DocumentsGetDriveResponse> getDrive(DocumentsGetDriveRequest request, Optional<Options> options) {
         AsyncRequestOperation<DocumentsGetDriveRequest, DocumentsGetDriveResponse> operation
-              = new DocumentsGetDrive.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new DocumentsGetDrive.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

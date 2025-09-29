@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDto;
 import com.stackone.stackone_client_java.operations.HrisUploadEmployeeDocument;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -22,6 +23,7 @@ public class HrisUploadEmployeeDocumentRequestBuilder {
     private HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisUploadEmployeeDocumentRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -73,7 +75,7 @@ public class HrisUploadEmployeeDocumentRequestBuilder {
             .build());
 
         RequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
-              = new HrisUploadEmployeeDocument.Sync(sdkConfiguration, options);
+              = new HrisUploadEmployeeDocument.Sync(sdkConfiguration, options, _headers);
         HrisUploadEmployeeDocumentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -1,0 +1,29 @@
+description = 'stackone-client-java Spring Boot Starter'
+
+// Publishing configuration overrides
+ext {
+    publishingConfig = [
+        groupId: rootProject.group,
+        artifactId: 'stackone-client-java-spring-boot-starter',
+        version: rootProject.version,
+        name: 'StackOne Java SDK - Spring Boot Starter',
+        description: 'Spring Boot starter for the StackOne Java SDK.',
+    ]
+}
+
+dependencies {
+    api project(':')
+    api project(':stackone-client-java-spring-boot-autoconfigure')
+    api "org.springframework.boot:spring-boot-starter:${rootProject.springBootVersion}"
+}
+
+jar {
+    dependsOn 'generatePomFileForMavenPublication'
+    archiveBaseName = 'stackone-client-java-spring-boot-starter'
+    into("META-INF/maven/com.stackone/stackone-client-java-spring-boot-starter") {
+        from(layout.buildDirectory.file("pom.xml")) {
+            // Only include if it exists to avoid build ordering issues
+            duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        }
+    }
+}

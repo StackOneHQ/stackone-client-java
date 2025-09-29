@@ -16,7 +16,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * UnifiedUploadRequestDtoCategory
  * 
- * <p>The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
+ * <p>The category object for associating uploaded files. If both an ID and a name are provided, the ID
+ * takes precedence.
  */
 public class UnifiedUploadRequestDtoCategory {
     /**
@@ -27,7 +28,8 @@ public class UnifiedUploadRequestDtoCategory {
     private JsonNullable<String> value;
 
     /**
-     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     * The provider specific category for associating uploaded files, if provided, the value will be
+     * ignored.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -56,7 +58,8 @@ public class UnifiedUploadRequestDtoCategory {
     }
 
     /**
-     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     * The provider specific category for associating uploaded files, if provided, the value will be
+     * ignored.
      */
     @JsonIgnore
     public JsonNullable<String> sourceValue() {
@@ -87,7 +90,8 @@ public class UnifiedUploadRequestDtoCategory {
     }
 
     /**
-     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     * The provider specific category for associating uploaded files, if provided, the value will be
+     * ignored.
      */
     public UnifiedUploadRequestDtoCategory withSourceValue(String sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
@@ -96,7 +100,8 @@ public class UnifiedUploadRequestDtoCategory {
     }
 
     /**
-     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     * The provider specific category for associating uploaded files, if provided, the value will be
+     * ignored.
      */
     public UnifiedUploadRequestDtoCategory withSourceValue(JsonNullable<String> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
@@ -163,7 +168,8 @@ public class UnifiedUploadRequestDtoCategory {
 
 
         /**
-         * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+         * The provider specific category for associating uploaded files, if provided, the value will be
+         * ignored.
          */
         public Builder sourceValue(String sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
@@ -172,7 +178,8 @@ public class UnifiedUploadRequestDtoCategory {
         }
 
         /**
-         * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+         * The provider specific category for associating uploaded files, if provided, the value will be
+         * ignored.
          */
         public Builder sourceValue(JsonNullable<String> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");

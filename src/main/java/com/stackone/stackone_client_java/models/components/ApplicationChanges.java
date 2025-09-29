@@ -59,7 +59,8 @@ public class ApplicationChanges {
     private JsonNullable<? extends ChangeType> changeType;
 
     /**
-     * The new values for changed application properties. Only includes fields that commonly change over the application lifecycle.
+     * The new values for changed application properties. Only includes fields that commonly change over
+     * the application lifecycle.
      */
     @JsonProperty("new_values")
     private ApplicationChangesDataModel newValues;
@@ -148,7 +149,8 @@ public class ApplicationChanges {
     }
 
     /**
-     * The new values for changed application properties. Only includes fields that commonly change over the application lifecycle.
+     * The new values for changed application properties. Only includes fields that commonly change over
+     * the application lifecycle.
      */
     @JsonIgnore
     public ApplicationChangesDataModel newValues() {
@@ -260,7 +262,8 @@ public class ApplicationChanges {
     }
 
     /**
-     * The new values for changed application properties. Only includes fields that commonly change over the application lifecycle.
+     * The new values for changed application properties. Only includes fields that commonly change over
+     * the application lifecycle.
      */
     public ApplicationChanges withNewValues(ApplicationChangesDataModel newValues) {
         Utils.checkNotNull(newValues, "newValues");
@@ -435,7 +438,8 @@ public class ApplicationChanges {
 
 
         /**
-         * The new values for changed application properties. Only includes fields that commonly change over the application lifecycle.
+         * The new values for changed application properties. Only includes fields that commonly change over
+         * the application lifecycle.
          */
         public Builder newValues(ApplicationChangesDataModel newValues) {
             Utils.checkNotNull(newValues, "newValues");

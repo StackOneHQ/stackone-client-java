@@ -44,7 +44,8 @@ import java.util.Optional;
 /**
  * TimeOffPolicyValue
  * 
- * <p>The unified value for the type of the time off policy. If the provider does not specify this unit, the value will be set to unmapped_value
+ * <p>The unified value for the type of the time off policy. If the provider does not specify this unit,
+ * the value will be set to unmapped_value
  */
 @JsonDeserialize(using = TimeOffPolicyValue._Deserializer.class)
 @JsonSerialize(using = TimeOffPolicyValue._Serializer.class)

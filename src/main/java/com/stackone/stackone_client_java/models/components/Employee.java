@@ -248,12 +248,9 @@ public class Employee {
 
     /**
      * The employee start date
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
-    @Deprecated
     private JsonNullable<OffsetDateTime> startDate;
 
     /**
@@ -856,10 +853,7 @@ public class Employee {
 
     /**
      * The employee start date
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    @Deprecated
     @JsonIgnore
     public JsonNullable<OffsetDateTime> startDate() {
         return startDate;
@@ -1629,10 +1623,7 @@ public class Employee {
 
     /**
      * The employee start date
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    @Deprecated
     public Employee withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = JsonNullable.of(startDate);
@@ -1641,10 +1632,7 @@ public class Employee {
 
     /**
      * The employee start date
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    @Deprecated
     public Employee withStartDate(JsonNullable<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
@@ -2262,7 +2250,6 @@ public class Employee {
 
         private JsonNullable<OffsetDateTime> hireDate = JsonNullable.undefined();
 
-        @Deprecated
         private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
 
         private JsonNullable<Double> tenure = JsonNullable.undefined();
@@ -2911,10 +2898,7 @@ public class Employee {
 
         /**
          * The employee start date
-         * 
-         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
-        @Deprecated
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = JsonNullable.of(startDate);
@@ -2923,10 +2907,7 @@ public class Employee {
 
         /**
          * The employee start date
-         * 
-         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
-        @Deprecated
         public Builder startDate(JsonNullable<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;

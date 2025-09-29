@@ -17,7 +17,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AdditionalData {
     /**
-     * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
+     * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the
+     * specific use case
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("id")
@@ -55,7 +56,8 @@ public class AdditionalData {
     }
 
     /**
-     * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
+     * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the
+     * specific use case
      */
     @JsonIgnore
     public JsonNullable<String> id() {
@@ -85,7 +87,8 @@ public class AdditionalData {
 
 
     /**
-     * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
+     * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the
+     * specific use case
      */
     public AdditionalData withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -94,7 +97,8 @@ public class AdditionalData {
     }
 
     /**
-     * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
+     * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the
+     * specific use case
      */
     public AdditionalData withId(JsonNullable<String> id) {
         Utils.checkNotNull(id, "id");
@@ -182,7 +186,8 @@ public class AdditionalData {
 
 
         /**
-         * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
+         * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the
+         * specific use case
          */
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -191,7 +196,8 @@ public class AdditionalData {
         }
 
         /**
-         * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the specific use case
+         * The name of the additional data field. Speak to your Solutions Engineer to understand the id for the
+         * specific use case
          */
         public Builder id(JsonNullable<String> id) {
             Utils.checkNotNull(id, "id");

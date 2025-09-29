@@ -21,6 +21,7 @@ import com.stackone.stackone_client_java.models.operations.StackoneMcpPostSecuri
 import com.stackone.stackone_client_java.operations.StackoneMcpDelete;
 import com.stackone.stackone_client_java.operations.StackoneMcpGet;
 import com.stackone.stackone_client_java.operations.StackoneMcpPost;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -30,6 +31,7 @@ import java.util.Optional;
  * Model Context Protocol endpoint.
  */
 public class Mcp {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncMcp asyncSDK;
 
@@ -98,7 +100,9 @@ public class Mcp {
                 .mcpSessionId(mcpSessionId)
                 .build();
         RequestOperation<StackoneMcpGetRequest, StackoneMcpGetResponse> operation
-              = new StackoneMcpGet.Sync(sdkConfiguration, security, options);
+              = new StackoneMcpGet.Sync(
+                                    sdkConfiguration, security, options,
+                                    _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -156,7 +160,9 @@ public class Mcp {
                 .jsonRpcMessageDto(jsonRpcMessageDto)
                 .build();
         RequestOperation<StackoneMcpPostRequest, StackoneMcpPostResponse> operation
-              = new StackoneMcpPost.Sync(sdkConfiguration, security, options);
+              = new StackoneMcpPost.Sync(
+                                    sdkConfiguration, security, options,
+                                    _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -211,7 +217,9 @@ public class Mcp {
                 .mcpSessionId(mcpSessionId)
                 .build();
         RequestOperation<StackoneMcpDeleteRequest, StackoneMcpDeleteResponse> operation
-              = new StackoneMcpDelete.Sync(sdkConfiguration, security, options);
+              = new StackoneMcpDelete.Sync(
+                                    sdkConfiguration, security, options,
+                                    _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

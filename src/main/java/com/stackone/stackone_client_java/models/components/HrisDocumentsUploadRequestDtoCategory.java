@@ -28,7 +28,8 @@ public class HrisDocumentsUploadRequestDtoCategory {
     private JsonNullable<? extends HrisDocumentsUploadRequestDtoCategoryValue> value;
 
     /**
-     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     * The provider specific category for associating uploaded files, if provided, the value will be
+     * ignored.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -58,7 +59,8 @@ public class HrisDocumentsUploadRequestDtoCategory {
     }
 
     /**
-     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     * The provider specific category for associating uploaded files, if provided, the value will be
+     * ignored.
      */
     @JsonIgnore
     public JsonNullable<String> sourceValue() {
@@ -89,7 +91,8 @@ public class HrisDocumentsUploadRequestDtoCategory {
     }
 
     /**
-     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     * The provider specific category for associating uploaded files, if provided, the value will be
+     * ignored.
      */
     public HrisDocumentsUploadRequestDtoCategory withSourceValue(String sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
@@ -98,7 +101,8 @@ public class HrisDocumentsUploadRequestDtoCategory {
     }
 
     /**
-     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     * The provider specific category for associating uploaded files, if provided, the value will be
+     * ignored.
      */
     public HrisDocumentsUploadRequestDtoCategory withSourceValue(JsonNullable<String> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
@@ -165,7 +169,8 @@ public class HrisDocumentsUploadRequestDtoCategory {
 
 
         /**
-         * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+         * The provider specific category for associating uploaded files, if provided, the value will be
+         * ignored.
          */
         public Builder sourceValue(String sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
@@ -174,7 +179,8 @@ public class HrisDocumentsUploadRequestDtoCategory {
         }
 
         /**
-         * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+         * The provider specific category for associating uploaded files, if provided, the value will be
+         * ignored.
          */
         public Builder sourceValue(JsonNullable<String> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");

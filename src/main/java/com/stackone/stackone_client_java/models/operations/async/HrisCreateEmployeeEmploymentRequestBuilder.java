@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisCreateEmploymentRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeEmploymentRequest;
 import com.stackone.stackone_client_java.operations.HrisCreateEmployeeEmployment;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class HrisCreateEmployeeEmploymentRequestBuilder {
     private HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisCreateEmployeeEmploymentRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class HrisCreateEmployeeEmploymentRequestBuilder {
             .build());
 
         AsyncRequestOperation<HrisCreateEmployeeEmploymentRequest, HrisCreateEmployeeEmploymentResponse> operation
-              = new HrisCreateEmployeeEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         HrisCreateEmployeeEmploymentRequest request = buildRequest();
 
         return operation.doRequest(request)

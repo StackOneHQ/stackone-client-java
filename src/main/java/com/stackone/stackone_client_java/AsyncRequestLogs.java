@@ -22,6 +22,7 @@ import com.stackone.stackone_client_java.operations.StackoneGetLog;
 import com.stackone.stackone_client_java.operations.StackoneListLogs;
 import com.stackone.stackone_client_java.operations.StackoneListPlatformLogs;
 import com.stackone.stackone_client_java.operations.StackoneListStepLogs;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -32,6 +33,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * API requests and response logs.
  */
 public class AsyncRequestLogs {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final RequestLogs syncSDK;
 
@@ -63,7 +65,7 @@ public class AsyncRequestLogs {
      * List Step Logs
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;StackoneListStepLogsResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListStepLogsResponse>} - The async response
      */
     public CompletableFuture<StackoneListStepLogsResponse> listStepLogs(StackoneListStepLogsRequest request) {
         return listStepLogs(request, Optional.empty());
@@ -74,11 +76,13 @@ public class AsyncRequestLogs {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneListStepLogsResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListStepLogsResponse>} - The async response
      */
     public CompletableFuture<StackoneListStepLogsResponse> listStepLogs(StackoneListStepLogsRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListStepLogsRequest, StackoneListStepLogsResponse> operation
-              = new StackoneListStepLogs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListStepLogs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -97,7 +101,7 @@ public class AsyncRequestLogs {
      * Get Log
      * 
      * @param id 
-     * @return CompletableFuture&lt;StackoneGetLogResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneGetLogResponse>} - The async response
      */
     public CompletableFuture<StackoneGetLogResponse> getLog(String id) {
         return getLog(id, JsonNullable.undefined(), Optional.empty());
@@ -109,7 +113,7 @@ public class AsyncRequestLogs {
      * @param id 
      * @param include The include parameter allows you to include additional data in the response.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneGetLogResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneGetLogResponse>} - The async response
      */
     public CompletableFuture<StackoneGetLogResponse> getLog(
             String id, JsonNullable<? extends Include> include,
@@ -121,7 +125,9 @@ public class AsyncRequestLogs {
                 .include(include)
                 .build();
         AsyncRequestOperation<StackoneGetLogRequest, StackoneGetLogResponse> operation
-              = new StackoneGetLog.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneGetLog.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -140,7 +146,7 @@ public class AsyncRequestLogs {
      * List Logs
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;StackoneListLogsResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListLogsResponse>} - The async response
      */
     public CompletableFuture<StackoneListLogsResponse> listLogs(StackoneListLogsRequest request) {
         return listLogs(request, Optional.empty());
@@ -151,11 +157,13 @@ public class AsyncRequestLogs {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneListLogsResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListLogsResponse>} - The async response
      */
     public CompletableFuture<StackoneListLogsResponse> listLogs(StackoneListLogsRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
-              = new StackoneListLogs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListLogs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -174,7 +182,7 @@ public class AsyncRequestLogs {
      * List Platform Logs
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;StackoneListPlatformLogsResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListPlatformLogsResponse>} - The async response
      */
     public CompletableFuture<StackoneListPlatformLogsResponse> listPlatformLogs(StackoneListPlatformLogsRequest request) {
         return listPlatformLogs(request, Optional.empty());
@@ -185,11 +193,13 @@ public class AsyncRequestLogs {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneListPlatformLogsResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListPlatformLogsResponse>} - The async response
      */
     public CompletableFuture<StackoneListPlatformLogsResponse> listPlatformLogs(StackoneListPlatformLogsRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListPlatformLogsRequest, StackoneListPlatformLogsResponse> operation
-              = new StackoneListPlatformLogs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListPlatformLogs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

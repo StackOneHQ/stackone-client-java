@@ -44,7 +44,8 @@ import java.util.Optional;
 /**
  * UpdateTaskRequestDtoValue
  * 
- * <p>The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+ * <p>The unified value for the status of the task. If the provider does not specify this status, the
+ * value will be set to UnmappedValue
  */
 @JsonDeserialize(using = UpdateTaskRequestDtoValue._Deserializer.class)
 @JsonSerialize(using = UpdateTaskRequestDtoValue._Serializer.class)

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.AtsListJobPostingsRequest;
 import com.stackone.stackone_client_java.operations.AtsListJobPostings;
 import com.stackone.stackone_client_java.utils.Blob;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -29,6 +30,7 @@ public class AtsListJobPostingsRequestBuilder {
     private AtsListJobPostingsRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsListJobPostingsRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -58,7 +60,9 @@ public class AtsListJobPostingsRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsListJobPostingsRequest, AtsListJobPostingsResponse> operation
-              = new AtsListJobPostings.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobPostings.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
@@ -85,7 +89,9 @@ public class AtsListJobPostingsRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsListJobPostingsRequest, AtsListJobPostingsResponse> operation
-              = new AtsListJobPostings.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobPostings.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,

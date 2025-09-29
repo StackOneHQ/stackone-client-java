@@ -21,7 +21,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 public class UpdateTaskRequestDtoStatus {
     /**
-     * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+     * The unified value for the status of the task. If the provider does not specify this status, the
+     * value will be set to UnmappedValue
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
@@ -47,7 +48,8 @@ public class UpdateTaskRequestDtoStatus {
     }
 
     /**
-     * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+     * The unified value for the status of the task. If the provider does not specify this status, the
+     * value will be set to UnmappedValue
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -67,7 +69,8 @@ public class UpdateTaskRequestDtoStatus {
 
 
     /**
-     * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+     * The unified value for the status of the task. If the provider does not specify this status, the
+     * value will be set to UnmappedValue
      */
     public UpdateTaskRequestDtoStatus withValue(UpdateTaskRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
@@ -76,7 +79,8 @@ public class UpdateTaskRequestDtoStatus {
     }
 
     /**
-     * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+     * The unified value for the status of the task. If the provider does not specify this status, the
+     * value will be set to UnmappedValue
      */
     public UpdateTaskRequestDtoStatus withValue(JsonNullable<? extends UpdateTaskRequestDtoValue> value) {
         Utils.checkNotNull(value, "value");
@@ -136,7 +140,8 @@ public class UpdateTaskRequestDtoStatus {
 
 
         /**
-         * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+         * The unified value for the status of the task. If the provider does not specify this status, the
+         * value will be set to UnmappedValue
          */
         public Builder value(UpdateTaskRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
@@ -145,7 +150,8 @@ public class UpdateTaskRequestDtoStatus {
         }
 
         /**
-         * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+         * The unified value for the status of the task. If the provider does not specify this status, the
+         * value will be set to UnmappedValue
          */
         public Builder value(JsonNullable<? extends UpdateTaskRequestDtoValue> value) {
             Utils.checkNotNull(value, "value");

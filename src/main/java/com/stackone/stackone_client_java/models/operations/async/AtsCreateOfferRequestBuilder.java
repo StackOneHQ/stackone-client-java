@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateOfferRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsCreateOfferRequest;
 import com.stackone.stackone_client_java.operations.AtsCreateOffer;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class AtsCreateOfferRequestBuilder {
     private AtsCreateOfferRequestDto atsCreateOfferRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsCreateOfferRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class AtsCreateOfferRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsCreateOfferRequest, AtsCreateOfferResponse> operation
-              = new AtsCreateOffer.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateOffer.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AtsCreateOfferRequest request = buildRequest();
 
         return operation.doRequest(request)

@@ -26,6 +26,7 @@ import com.stackone.stackone_client_java.operations.StackoneGetAccount;
 import com.stackone.stackone_client_java.operations.StackoneGetAccountMetaInfo;
 import com.stackone.stackone_client_java.operations.StackoneListLinkedAccounts;
 import com.stackone.stackone_client_java.operations.StackoneUpdateAccount;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -35,6 +36,7 @@ import java.util.Optional;
  * Chart of accounts.
  */
 public class Accounts {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncAccounts asyncSDK;
 
@@ -82,7 +84,7 @@ public class Accounts {
      */
     public StackoneListLinkedAccountsResponse listLinkedAccounts(StackoneListLinkedAccountsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListLinkedAccountsRequest, StackoneListLinkedAccountsResponse> operation
-              = new StackoneListLinkedAccounts.Sync(sdkConfiguration, options);
+              = new StackoneListLinkedAccounts.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -121,7 +123,7 @@ public class Accounts {
                 .id(id)
                 .build();
         RequestOperation<StackoneGetAccountRequest, StackoneGetAccountResponse> operation
-              = new StackoneGetAccount.Sync(sdkConfiguration, options);
+              = new StackoneGetAccount.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -160,7 +162,7 @@ public class Accounts {
                 .id(id)
                 .build();
         RequestOperation<StackoneDeleteAccountRequest, StackoneDeleteAccountResponse> operation
-              = new StackoneDeleteAccount.Sync(sdkConfiguration, options);
+              = new StackoneDeleteAccount.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -204,7 +206,7 @@ public class Accounts {
                 .patchAccountExternalDto(patchAccountExternalDto)
                 .build();
         RequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
-              = new StackoneUpdateAccount.Sync(sdkConfiguration, options);
+              = new StackoneUpdateAccount.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -243,7 +245,7 @@ public class Accounts {
                 .id(id)
                 .build();
         RequestOperation<StackoneGetAccountMetaInfoRequest, StackoneGetAccountMetaInfoResponse> operation
-              = new StackoneGetAccountMetaInfo.Sync(sdkConfiguration, options);
+              = new StackoneGetAccountMetaInfo.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

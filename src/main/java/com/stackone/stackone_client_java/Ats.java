@@ -319,6 +319,7 @@ import com.stackone.stackone_client_java.operations.AtsUpdateBackgroundCheckResu
 import com.stackone.stackone_client_java.operations.AtsUpdateCandidate;
 import com.stackone.stackone_client_java.operations.AtsUpdateJob;
 import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.Exception;
@@ -327,6 +328,7 @@ import java.util.Optional;
 
 
 public class Ats {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncAts asyncSDK;
 
@@ -374,7 +376,7 @@ public class Ats {
      */
     public AtsListApplicationsResponse listApplications(AtsListApplicationsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationsRequest, AtsListApplicationsResponse> operation
-              = new AtsListApplications.Sync(sdkConfiguration, options);
+              = new AtsListApplications.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -418,7 +420,7 @@ public class Ats {
                 .atsCreateApplicationRequestDto(atsCreateApplicationRequestDto)
                 .build();
         RequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
-              = new AtsCreateApplication.Sync(sdkConfiguration, options);
+              = new AtsCreateApplication.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -452,7 +454,7 @@ public class Ats {
      */
     public AtsGetApplicationResponse getApplication(AtsGetApplicationRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationRequest, AtsGetApplicationResponse> operation
-              = new AtsGetApplication.Sync(sdkConfiguration, options);
+              = new AtsGetApplication.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -502,7 +504,7 @@ public class Ats {
                 .atsUpdateApplicationRequestDto(atsUpdateApplicationRequestDto)
                 .build();
         RequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
-              = new AtsUpdateApplication.Sync(sdkConfiguration, options);
+              = new AtsUpdateApplication.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -536,7 +538,7 @@ public class Ats {
      */
     public AtsListApplicationsOffersResponse listApplicationsOffers(AtsListApplicationsOffersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationsOffersRequest, AtsListApplicationsOffersResponse> operation
-              = new AtsListApplicationsOffers.Sync(sdkConfiguration, options);
+              = new AtsListApplicationsOffers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -586,7 +588,7 @@ public class Ats {
                 .atsMoveApplicationRequestDto(atsMoveApplicationRequestDto)
                 .build();
         RequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
-              = new AtsMoveApplication.Sync(sdkConfiguration, options);
+              = new AtsMoveApplication.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -636,7 +638,7 @@ public class Ats {
                 .atsRejectApplicationRequestDto(atsRejectApplicationRequestDto)
                 .build();
         RequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
-              = new AtsRejectApplication.Sync(sdkConfiguration, options);
+              = new AtsRejectApplication.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -670,7 +672,7 @@ public class Ats {
      */
     public AtsGetApplicationOfferResponse getApplicationOffer(AtsGetApplicationOfferRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationOfferRequest, AtsGetApplicationOfferResponse> operation
-              = new AtsGetApplicationOffer.Sync(sdkConfiguration, options);
+              = new AtsGetApplicationOffer.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -704,7 +706,7 @@ public class Ats {
      */
     public AtsListApplicationScorecardsResponse listApplicationScorecards(AtsListApplicationScorecardsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationScorecardsRequest, AtsListApplicationScorecardsResponse> operation
-              = new AtsListApplicationScorecards.Sync(sdkConfiguration, options);
+              = new AtsListApplicationScorecards.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -738,7 +740,7 @@ public class Ats {
      */
     public AtsGetApplicationScorecardResponse getApplicationScorecard(AtsGetApplicationScorecardRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationScorecardRequest, AtsGetApplicationScorecardResponse> operation
-              = new AtsGetApplicationScorecard.Sync(sdkConfiguration, options);
+              = new AtsGetApplicationScorecard.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -772,7 +774,7 @@ public class Ats {
      */
     public AtsListApplicationChangesResponse listApplicationChanges(AtsListApplicationChangesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationChangesRequest, AtsListApplicationChangesResponse> operation
-              = new AtsListApplicationChanges.Sync(sdkConfiguration, options);
+              = new AtsListApplicationChanges.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -806,7 +808,7 @@ public class Ats {
      */
     public AtsListApplicationNotesResponse listApplicationNotes(AtsListApplicationNotesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationNotesRequest, AtsListApplicationNotesResponse> operation
-              = new AtsListApplicationNotes.Sync(sdkConfiguration, options);
+              = new AtsListApplicationNotes.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -856,7 +858,7 @@ public class Ats {
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         RequestOperation<AtsCreateApplicationNoteRequest, AtsCreateApplicationNoteResponse> operation
-              = new AtsCreateApplicationNote.Sync(sdkConfiguration, options);
+              = new AtsCreateApplicationNote.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -890,7 +892,7 @@ public class Ats {
      */
     public AtsGetApplicationNoteResponse getApplicationNote(AtsGetApplicationNoteRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationNoteRequest, AtsGetApplicationNoteResponse> operation
-              = new AtsGetApplicationNote.Sync(sdkConfiguration, options);
+              = new AtsGetApplicationNote.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -944,7 +946,7 @@ public class Ats {
                 .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
                 .build();
         RequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
-              = new AtsUpdateApplicationNote.Sync(sdkConfiguration, options);
+              = new AtsUpdateApplicationNote.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -978,7 +980,7 @@ public class Ats {
      */
     public AtsListApplicationsScheduledInterviewsResponse listApplicationsScheduledInterviews(AtsListApplicationsScheduledInterviewsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationsScheduledInterviewsRequest, AtsListApplicationsScheduledInterviewsResponse> operation
-              = new AtsListApplicationsScheduledInterviews.Sync(sdkConfiguration, options);
+              = new AtsListApplicationsScheduledInterviews.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1012,7 +1014,7 @@ public class Ats {
      */
     public AtsGetApplicationScheduledInterviewResponse getApplicationScheduledInterview(AtsGetApplicationScheduledInterviewRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationScheduledInterviewRequest, AtsGetApplicationScheduledInterviewResponse> operation
-              = new AtsGetApplicationScheduledInterview.Sync(sdkConfiguration, options);
+              = new AtsGetApplicationScheduledInterview.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1062,7 +1064,7 @@ public class Ats {
                 .atsDocumentsUploadRequestDto(atsDocumentsUploadRequestDto)
                 .build();
         RequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
-              = new AtsUploadApplicationDocument.Sync(sdkConfiguration, options);
+              = new AtsUploadApplicationDocument.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1096,7 +1098,7 @@ public class Ats {
      */
     public AtsDownloadApplicationDocumentResponse downloadApplicationDocument(AtsDownloadApplicationDocumentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsDownloadApplicationDocumentRequest, AtsDownloadApplicationDocumentResponse> operation
-              = new AtsDownloadApplicationDocument.Sync(sdkConfiguration, options);
+              = new AtsDownloadApplicationDocument.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1130,7 +1132,7 @@ public class Ats {
      */
     public AtsListApplicationDocumentsResponse listApplicationDocuments(AtsListApplicationDocumentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationDocumentsRequest, AtsListApplicationDocumentsResponse> operation
-              = new AtsListApplicationDocuments.Sync(sdkConfiguration, options);
+              = new AtsListApplicationDocuments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1164,7 +1166,7 @@ public class Ats {
      */
     public AtsGetApplicationDocumentResponse getApplicationDocument(AtsGetApplicationDocumentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationDocumentRequest, AtsGetApplicationDocumentResponse> operation
-              = new AtsGetApplicationDocument.Sync(sdkConfiguration, options);
+              = new AtsGetApplicationDocument.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1198,7 +1200,7 @@ public class Ats {
      */
     public AtsListCandidatesResponse listCandidates(AtsListCandidatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListCandidatesRequest, AtsListCandidatesResponse> operation
-              = new AtsListCandidates.Sync(sdkConfiguration, options);
+              = new AtsListCandidates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1242,7 +1244,7 @@ public class Ats {
                 .atsCreateCandidateRequestDto(atsCreateCandidateRequestDto)
                 .build();
         RequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
-              = new AtsCreateCandidate.Sync(sdkConfiguration, options);
+              = new AtsCreateCandidate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1276,7 +1278,7 @@ public class Ats {
      */
     public AtsGetCandidateResponse getCandidate(AtsGetCandidateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetCandidateRequest, AtsGetCandidateResponse> operation
-              = new AtsGetCandidate.Sync(sdkConfiguration, options);
+              = new AtsGetCandidate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1326,7 +1328,7 @@ public class Ats {
                 .atsUpdateCandidateRequestDto(atsUpdateCandidateRequestDto)
                 .build();
         RequestOperation<AtsUpdateCandidateRequest, AtsUpdateCandidateResponse> operation
-              = new AtsUpdateCandidate.Sync(sdkConfiguration, options);
+              = new AtsUpdateCandidate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1360,7 +1362,7 @@ public class Ats {
      */
     public AtsListCandidateNotesResponse listCandidateNotes(AtsListCandidateNotesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListCandidateNotesRequest, AtsListCandidateNotesResponse> operation
-              = new AtsListCandidateNotes.Sync(sdkConfiguration, options);
+              = new AtsListCandidateNotes.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1410,7 +1412,7 @@ public class Ats {
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         RequestOperation<AtsCreateCandidateNoteRequest, AtsCreateCandidateNoteResponse> operation
-              = new AtsCreateCandidateNote.Sync(sdkConfiguration, options);
+              = new AtsCreateCandidateNote.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1444,7 +1446,7 @@ public class Ats {
      */
     public AtsGetCandidateNoteResponse getCandidateNote(AtsGetCandidateNoteRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetCandidateNoteRequest, AtsGetCandidateNoteResponse> operation
-              = new AtsGetCandidateNote.Sync(sdkConfiguration, options);
+              = new AtsGetCandidateNote.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1478,7 +1480,7 @@ public class Ats {
      */
     public AtsListApplicationCustomFieldDefinitionsResponse listApplicationCustomFieldDefinitions(AtsListApplicationCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationCustomFieldDefinitionsRequest, AtsListApplicationCustomFieldDefinitionsResponse> operation
-              = new AtsListApplicationCustomFieldDefinitions.Sync(sdkConfiguration, options);
+              = new AtsListApplicationCustomFieldDefinitions.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1512,7 +1514,7 @@ public class Ats {
      */
     public AtsGetApplicationCustomFieldDefinitionResponse getApplicationCustomFieldDefinition(AtsGetApplicationCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationCustomFieldDefinitionRequest, AtsGetApplicationCustomFieldDefinitionResponse> operation
-              = new AtsGetApplicationCustomFieldDefinition.Sync(sdkConfiguration, options);
+              = new AtsGetApplicationCustomFieldDefinition.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1546,7 +1548,7 @@ public class Ats {
      */
     public AtsListCandidateCustomFieldDefinitionsResponse listCandidateCustomFieldDefinitions(AtsListCandidateCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListCandidateCustomFieldDefinitionsRequest, AtsListCandidateCustomFieldDefinitionsResponse> operation
-              = new AtsListCandidateCustomFieldDefinitions.Sync(sdkConfiguration, options);
+              = new AtsListCandidateCustomFieldDefinitions.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1580,7 +1582,7 @@ public class Ats {
      */
     public AtsGetCandidateCustomFieldDefinitionResponse getCandidateCustomFieldDefinition(AtsGetCandidateCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetCandidateCustomFieldDefinitionRequest, AtsGetCandidateCustomFieldDefinitionResponse> operation
-              = new AtsGetCandidateCustomFieldDefinition.Sync(sdkConfiguration, options);
+              = new AtsGetCandidateCustomFieldDefinition.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1614,7 +1616,7 @@ public class Ats {
      */
     public AtsListJobCustomFieldDefinitionsResponse listJobCustomFieldDefinitions(AtsListJobCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListJobCustomFieldDefinitionsRequest, AtsListJobCustomFieldDefinitionsResponse> operation
-              = new AtsListJobCustomFieldDefinitions.Sync(sdkConfiguration, options);
+              = new AtsListJobCustomFieldDefinitions.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1648,7 +1650,7 @@ public class Ats {
      */
     public AtsGetJobCustomFieldDefinitionResponse getJobCustomFieldDefinition(AtsGetJobCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetJobCustomFieldDefinitionRequest, AtsGetJobCustomFieldDefinitionResponse> operation
-              = new AtsGetJobCustomFieldDefinition.Sync(sdkConfiguration, options);
+              = new AtsGetJobCustomFieldDefinition.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1682,7 +1684,7 @@ public class Ats {
      */
     public AtsListDepartmentsResponse listDepartments(AtsListDepartmentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListDepartmentsRequest, AtsListDepartmentsResponse> operation
-              = new AtsListDepartments.Sync(sdkConfiguration, options);
+              = new AtsListDepartments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1716,7 +1718,7 @@ public class Ats {
      */
     public AtsGetDepartmentResponse getDepartment(AtsGetDepartmentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetDepartmentRequest, AtsGetDepartmentResponse> operation
-              = new AtsGetDepartment.Sync(sdkConfiguration, options);
+              = new AtsGetDepartment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1756,7 +1758,7 @@ public class Ats {
     @Deprecated
     public AtsListInterviewStagesResponse listInterviewStages(AtsListInterviewStagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListInterviewStagesRequest, AtsListInterviewStagesResponse> operation
-              = new AtsListInterviewStages.Sync(sdkConfiguration, options);
+              = new AtsListInterviewStages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1796,7 +1798,7 @@ public class Ats {
     @Deprecated
     public AtsGetInterviewStageResponse getInterviewStage(AtsGetInterviewStageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetInterviewStageRequest, AtsGetInterviewStageResponse> operation
-              = new AtsGetInterviewStage.Sync(sdkConfiguration, options);
+              = new AtsGetInterviewStage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1830,7 +1832,7 @@ public class Ats {
      */
     public AtsListApplicationStagesResponse listApplicationStages(AtsListApplicationStagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationStagesRequest, AtsListApplicationStagesResponse> operation
-              = new AtsListApplicationStages.Sync(sdkConfiguration, options);
+              = new AtsListApplicationStages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1864,7 +1866,7 @@ public class Ats {
      */
     public AtsGetApplicationStageResponse getApplicationStage(AtsGetApplicationStageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationStageRequest, AtsGetApplicationStageResponse> operation
-              = new AtsGetApplicationStage.Sync(sdkConfiguration, options);
+              = new AtsGetApplicationStage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1898,7 +1900,7 @@ public class Ats {
      */
     public AtsListInterviewsResponse listInterviews(AtsListInterviewsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListInterviewsRequest, AtsListInterviewsResponse> operation
-              = new AtsListInterviews.Sync(sdkConfiguration, options);
+              = new AtsListInterviews.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1932,7 +1934,7 @@ public class Ats {
      */
     public AtsGetInterviewResponse getInterview(AtsGetInterviewRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetInterviewRequest, AtsGetInterviewResponse> operation
-              = new AtsGetInterview.Sync(sdkConfiguration, options);
+              = new AtsGetInterview.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -1966,7 +1968,7 @@ public class Ats {
      */
     public AtsListJobsResponse listJobs(AtsListJobsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListJobsRequest, AtsListJobsResponse> operation
-              = new AtsListJobs.Sync(sdkConfiguration, options);
+              = new AtsListJobs.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2010,7 +2012,7 @@ public class Ats {
                 .atsCreateJobRequestDto(atsCreateJobRequestDto)
                 .build();
         RequestOperation<AtsCreateJobRequest, AtsCreateJobResponse> operation
-              = new AtsCreateJob.Sync(sdkConfiguration, options);
+              = new AtsCreateJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2044,7 +2046,7 @@ public class Ats {
      */
     public AtsListJobApplicationStagesResponse listJobApplicationStages(AtsListJobApplicationStagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListJobApplicationStagesRequest, AtsListJobApplicationStagesResponse> operation
-              = new AtsListJobApplicationStages.Sync(sdkConfiguration, options);
+              = new AtsListJobApplicationStages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2078,7 +2080,7 @@ public class Ats {
      */
     public AtsGetJobResponse getJob(AtsGetJobRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetJobRequest, AtsGetJobResponse> operation
-              = new AtsGetJob.Sync(sdkConfiguration, options);
+              = new AtsGetJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2128,7 +2130,7 @@ public class Ats {
                 .atsUpdateJobRequestDto(atsUpdateJobRequestDto)
                 .build();
         RequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
-              = new AtsUpdateJob.Sync(sdkConfiguration, options);
+              = new AtsUpdateJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2162,7 +2164,7 @@ public class Ats {
      */
     public AtsGetJobApplicationStageResponse getJobApplicationStage(AtsGetJobApplicationStageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetJobApplicationStageRequest, AtsGetJobApplicationStageResponse> operation
-              = new AtsGetJobApplicationStage.Sync(sdkConfiguration, options);
+              = new AtsGetJobApplicationStage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2196,7 +2198,7 @@ public class Ats {
      */
     public AtsListListsResponse listLists(AtsListListsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListListsRequest, AtsListListsResponse> operation
-              = new AtsListLists.Sync(sdkConfiguration, options);
+              = new AtsListLists.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2230,7 +2232,7 @@ public class Ats {
      */
     public AtsGetListResponse getList(AtsGetListRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetListRequest, AtsGetListResponse> operation
-              = new AtsGetList.Sync(sdkConfiguration, options);
+              = new AtsGetList.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2264,7 +2266,7 @@ public class Ats {
      */
     public AtsListLocationsResponse listLocations(AtsListLocationsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListLocationsRequest, AtsListLocationsResponse> operation
-              = new AtsListLocations.Sync(sdkConfiguration, options);
+              = new AtsListLocations.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2298,7 +2300,7 @@ public class Ats {
      */
     public AtsGetLocationResponse getLocation(AtsGetLocationRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetLocationRequest, AtsGetLocationResponse> operation
-              = new AtsGetLocation.Sync(sdkConfiguration, options);
+              = new AtsGetLocation.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2332,7 +2334,7 @@ public class Ats {
      */
     public AtsListRejectedReasonsResponse listRejectedReasons(AtsListRejectedReasonsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListRejectedReasonsRequest, AtsListRejectedReasonsResponse> operation
-              = new AtsListRejectedReasons.Sync(sdkConfiguration, options);
+              = new AtsListRejectedReasons.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2366,7 +2368,7 @@ public class Ats {
      */
     public AtsGetRejectedReasonResponse getRejectedReason(AtsGetRejectedReasonRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetRejectedReasonRequest, AtsGetRejectedReasonResponse> operation
-              = new AtsGetRejectedReason.Sync(sdkConfiguration, options);
+              = new AtsGetRejectedReason.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2400,7 +2402,7 @@ public class Ats {
      */
     public AtsListUsersResponse listUsers(AtsListUsersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListUsersRequest, AtsListUsersResponse> operation
-              = new AtsListUsers.Sync(sdkConfiguration, options);
+              = new AtsListUsers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2434,7 +2436,7 @@ public class Ats {
      */
     public AtsGetUserResponse getUser(AtsGetUserRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetUserRequest, AtsGetUserResponse> operation
-              = new AtsGetUser.Sync(sdkConfiguration, options);
+              = new AtsGetUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2468,7 +2470,7 @@ public class Ats {
      */
     public AtsListJobPostingsResponse listJobPostings(AtsListJobPostingsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListJobPostingsRequest, AtsListJobPostingsResponse> operation
-              = new AtsListJobPostings.Sync(sdkConfiguration, options);
+              = new AtsListJobPostings.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2502,7 +2504,7 @@ public class Ats {
      */
     public AtsGetJobPostingResponse getJobPosting(AtsGetJobPostingRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetJobPostingRequest, AtsGetJobPostingResponse> operation
-              = new AtsGetJobPosting.Sync(sdkConfiguration, options);
+              = new AtsGetJobPosting.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2536,7 +2538,7 @@ public class Ats {
      */
     public AtsListOffersResponse listOffers(AtsListOffersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListOffersRequest, AtsListOffersResponse> operation
-              = new AtsListOffers.Sync(sdkConfiguration, options);
+              = new AtsListOffers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2580,7 +2582,7 @@ public class Ats {
                 .atsCreateOfferRequestDto(atsCreateOfferRequestDto)
                 .build();
         RequestOperation<AtsCreateOfferRequest, AtsCreateOfferResponse> operation
-              = new AtsCreateOffer.Sync(sdkConfiguration, options);
+              = new AtsCreateOffer.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2614,7 +2616,7 @@ public class Ats {
      */
     public AtsGetOfferResponse getOffer(AtsGetOfferRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetOfferRequest, AtsGetOfferResponse> operation
-              = new AtsGetOffer.Sync(sdkConfiguration, options);
+              = new AtsGetOffer.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2648,7 +2650,7 @@ public class Ats {
      */
     public AtsListAssessmentsPackagesResponse listAssessmentsPackages(AtsListAssessmentsPackagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListAssessmentsPackagesRequest, AtsListAssessmentsPackagesResponse> operation
-              = new AtsListAssessmentsPackages.Sync(sdkConfiguration, options);
+              = new AtsListAssessmentsPackages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2682,7 +2684,7 @@ public class Ats {
      */
     public AtsGetAssessmentsPackageResponse getAssessmentsPackage(AtsGetAssessmentsPackageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetAssessmentsPackageRequest, AtsGetAssessmentsPackageResponse> operation
-              = new AtsGetAssessmentsPackage.Sync(sdkConfiguration, options);
+              = new AtsGetAssessmentsPackage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2726,7 +2728,7 @@ public class Ats {
                 .atsCreateCandidatesAssessmentsRequestDto(atsCreateCandidatesAssessmentsRequestDto)
                 .build();
         RequestOperation<AtsOrderAssessmentsRequestRequest, AtsOrderAssessmentsRequestResponse> operation
-              = new AtsOrderAssessmentsRequest.Sync(sdkConfiguration, options);
+              = new AtsOrderAssessmentsRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2776,7 +2778,7 @@ public class Ats {
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(atsUpdateCandidatesAssessmentsResultsRequestDto)
                 .build();
         RequestOperation<AtsUpdateAssessmentsResultRequest, AtsUpdateAssessmentsResultResponse> operation
-              = new AtsUpdateAssessmentsResult.Sync(sdkConfiguration, options);
+              = new AtsUpdateAssessmentsResult.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2810,7 +2812,7 @@ public class Ats {
      */
     public AtsListBackgroundCheckPackagesResponse listBackgroundCheckPackages(AtsListBackgroundCheckPackagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListBackgroundCheckPackagesRequest, AtsListBackgroundCheckPackagesResponse> operation
-              = new AtsListBackgroundCheckPackages.Sync(sdkConfiguration, options);
+              = new AtsListBackgroundCheckPackages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2854,7 +2856,7 @@ public class Ats {
                 .atsCreateBackgroundCheckPackagesRequestDto(atsCreateBackgroundCheckPackagesRequestDto)
                 .build();
         RequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
-              = new AtsCreateBackgroundCheckPackage.Sync(sdkConfiguration, options);
+              = new AtsCreateBackgroundCheckPackage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2888,7 +2890,7 @@ public class Ats {
      */
     public AtsGetBackgroundCheckPackageResponse getBackgroundCheckPackage(AtsGetBackgroundCheckPackageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetBackgroundCheckPackageRequest, AtsGetBackgroundCheckPackageResponse> operation
-              = new AtsGetBackgroundCheckPackage.Sync(sdkConfiguration, options);
+              = new AtsGetBackgroundCheckPackage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2932,7 +2934,7 @@ public class Ats {
                 .id(id)
                 .build();
         RequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
-              = new AtsDeleteBackgroundCheckPackage.Sync(sdkConfiguration, options);
+              = new AtsDeleteBackgroundCheckPackage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -2982,7 +2984,7 @@ public class Ats {
                 .atsUpdateBackgroundCheckPackagesRequestDto(atsUpdateBackgroundCheckPackagesRequestDto)
                 .build();
         RequestOperation<AtsUpdateBackgroundCheckPackageRequest, AtsUpdateBackgroundCheckPackageResponse> operation
-              = new AtsUpdateBackgroundCheckPackage.Sync(sdkConfiguration, options);
+              = new AtsUpdateBackgroundCheckPackage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3026,7 +3028,7 @@ public class Ats {
                 .atsCreateBackgroundCheckOrderRequestDto(atsCreateBackgroundCheckOrderRequestDto)
                 .build();
         RequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
-              = new AtsOrderBackgroundCheckRequest.Sync(sdkConfiguration, options);
+              = new AtsOrderBackgroundCheckRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3076,7 +3078,7 @@ public class Ats {
                 .atsUpdateBackgroundCheckResultRequestDto(atsUpdateBackgroundCheckResultRequestDto)
                 .build();
         RequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation
-              = new AtsUpdateBackgroundCheckResult.Sync(sdkConfiguration, options);
+              = new AtsUpdateBackgroundCheckResult.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3110,7 +3112,7 @@ public class Ats {
      */
     public AtsListApplicationDocumentCategoriesResponse listApplicationDocumentCategories(AtsListApplicationDocumentCategoriesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsListApplicationDocumentCategoriesRequest, AtsListApplicationDocumentCategoriesResponse> operation
-              = new AtsListApplicationDocumentCategories.Sync(sdkConfiguration, options);
+              = new AtsListApplicationDocumentCategories.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3144,7 +3146,7 @@ public class Ats {
      */
     public AtsGetApplicationDocumentCategoryResponse getApplicationDocumentCategory(AtsGetApplicationDocumentCategoryRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AtsGetApplicationDocumentCategoryRequest, AtsGetApplicationDocumentCategoryResponse> operation
-              = new AtsGetApplicationDocumentCategory.Sync(sdkConfiguration, options);
+              = new AtsGetApplicationDocumentCategory.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

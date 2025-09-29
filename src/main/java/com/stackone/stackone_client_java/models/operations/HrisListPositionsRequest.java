@@ -26,13 +26,15 @@ public class HrisListPositionsRequest {
     private String xAccountId;
 
     /**
-     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+     * Indicates that the raw request result should be returned in addition to the mapped result (default
+     * value is false)
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")
     private JsonNullable<Boolean> raw;
 
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by
+     * surrounding them with 'proxy' key
      */
     @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=proxy")
     private JsonNullable<? extends Map<String, Object>> proxy;
@@ -83,7 +85,7 @@ public class HrisListPositionsRequest {
      * Filter positions by status
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")
-    private JsonNullable<? extends Status> status;
+    private JsonNullable<? extends QueryParamStatus> status;
 
     @JsonCreator
     public HrisListPositionsRequest(
@@ -96,7 +98,7 @@ public class HrisListPositionsRequest {
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
             JsonNullable<OffsetDateTime> updatedAfter,
-            JsonNullable<? extends Status> status) {
+            JsonNullable<? extends QueryParamStatus> status) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
@@ -136,7 +138,8 @@ public class HrisListPositionsRequest {
     }
 
     /**
-     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+     * Indicates that the raw request result should be returned in addition to the mapped result (default
+     * value is false)
      */
     @JsonIgnore
     public JsonNullable<Boolean> raw() {
@@ -144,7 +147,8 @@ public class HrisListPositionsRequest {
     }
 
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by
+     * surrounding them with 'proxy' key
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -212,8 +216,8 @@ public class HrisListPositionsRequest {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Status> status() {
-        return (JsonNullable<Status>) status;
+    public JsonNullable<QueryParamStatus> status() {
+        return (JsonNullable<QueryParamStatus>) status;
     }
 
     public static Builder builder() {
@@ -231,7 +235,8 @@ public class HrisListPositionsRequest {
     }
 
     /**
-     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+     * Indicates that the raw request result should be returned in addition to the mapped result (default
+     * value is false)
      */
     public HrisListPositionsRequest withRaw(boolean raw) {
         Utils.checkNotNull(raw, "raw");
@@ -240,7 +245,8 @@ public class HrisListPositionsRequest {
     }
 
     /**
-     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+     * Indicates that the raw request result should be returned in addition to the mapped result (default
+     * value is false)
      */
     public HrisListPositionsRequest withRaw(JsonNullable<Boolean> raw) {
         Utils.checkNotNull(raw, "raw");
@@ -249,7 +255,8 @@ public class HrisListPositionsRequest {
     }
 
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by
+     * surrounding them with 'proxy' key
      */
     public HrisListPositionsRequest withProxy(Map<String, Object> proxy) {
         Utils.checkNotNull(proxy, "proxy");
@@ -258,7 +265,8 @@ public class HrisListPositionsRequest {
     }
 
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by
+     * surrounding them with 'proxy' key
      */
     public HrisListPositionsRequest withProxy(JsonNullable<? extends Map<String, Object>> proxy) {
         Utils.checkNotNull(proxy, "proxy");
@@ -389,7 +397,7 @@ public class HrisListPositionsRequest {
     /**
      * Filter positions by status
      */
-    public HrisListPositionsRequest withStatus(Status status) {
+    public HrisListPositionsRequest withStatus(QueryParamStatus status) {
         Utils.checkNotNull(status, "status");
         this.status = JsonNullable.of(status);
         return this;
@@ -398,7 +406,7 @@ public class HrisListPositionsRequest {
     /**
      * Filter positions by status
      */
-    public HrisListPositionsRequest withStatus(JsonNullable<? extends Status> status) {
+    public HrisListPositionsRequest withStatus(JsonNullable<? extends QueryParamStatus> status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
         return this;
@@ -473,7 +481,7 @@ public class HrisListPositionsRequest {
         @Deprecated
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
-        private JsonNullable<? extends Status> status = JsonNullable.undefined();
+        private JsonNullable<? extends QueryParamStatus> status = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -491,7 +499,8 @@ public class HrisListPositionsRequest {
 
 
         /**
-         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+         * Indicates that the raw request result should be returned in addition to the mapped result (default
+         * value is false)
          */
         public Builder raw(boolean raw) {
             Utils.checkNotNull(raw, "raw");
@@ -500,7 +509,8 @@ public class HrisListPositionsRequest {
         }
 
         /**
-         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+         * Indicates that the raw request result should be returned in addition to the mapped result (default
+         * value is false)
          */
         public Builder raw(JsonNullable<Boolean> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -510,7 +520,8 @@ public class HrisListPositionsRequest {
 
 
         /**
-         * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+         * Query parameters that can be used to pass through parameters to the underlying provider request by
+         * surrounding them with 'proxy' key
          */
         public Builder proxy(Map<String, Object> proxy) {
             Utils.checkNotNull(proxy, "proxy");
@@ -519,7 +530,8 @@ public class HrisListPositionsRequest {
         }
 
         /**
-         * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+         * Query parameters that can be used to pass through parameters to the underlying provider request by
+         * surrounding them with 'proxy' key
          */
         public Builder proxy(JsonNullable<? extends Map<String, Object>> proxy) {
             Utils.checkNotNull(proxy, "proxy");
@@ -657,7 +669,7 @@ public class HrisListPositionsRequest {
         /**
          * Filter positions by status
          */
-        public Builder status(Status status) {
+        public Builder status(QueryParamStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = JsonNullable.of(status);
             return this;
@@ -666,7 +678,7 @@ public class HrisListPositionsRequest {
         /**
          * Filter positions by status
          */
-        public Builder status(JsonNullable<? extends Status> status) {
+        public Builder status(JsonNullable<? extends QueryParamStatus> status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;

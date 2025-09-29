@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.AsyncReque
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.AtsGetApplicationOfferRequest;
 import com.stackone.stackone_client_java.operations.AtsGetApplicationOffer;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -20,6 +21,7 @@ public class AtsGetApplicationOfferRequestBuilder {
     private AtsGetApplicationOfferRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsGetApplicationOfferRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -49,7 +51,9 @@ public class AtsGetApplicationOfferRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsGetApplicationOfferRequest, AtsGetApplicationOfferResponse> operation
-              = new AtsGetApplicationOffer.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationOffer.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

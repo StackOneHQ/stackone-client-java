@@ -35,6 +35,7 @@ import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeDocume
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeEmploymentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeRequest;
+import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeShiftRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeSkillRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeTaskRequest;
 import com.stackone.stackone_client_java.models.operations.HrisGetEmployeeTimeOffBalanceRequest;
@@ -63,6 +64,7 @@ import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCateg
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeCustomFieldDefinitionsRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeDocumentsRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeEmploymentsRequest;
+import com.stackone.stackone_client_java.models.operations.HrisListEmployeeShiftsRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeSkillsRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTasksRequest;
 import com.stackone.stackone_client_java.models.operations.HrisListEmployeeTimeOffBalancesRequest;
@@ -126,6 +128,8 @@ import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployee
 import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployeeEmploymentResponse;
 import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployeeRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployeeResponse;
+import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployeeShiftRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployeeShiftResponse;
 import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployeeSkillRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployeeSkillResponse;
 import com.stackone.stackone_client_java.models.operations.async.HrisGetEmployeeTaskRequestBuilder;
@@ -182,6 +186,8 @@ import com.stackone.stackone_client_java.models.operations.async.HrisListEmploye
 import com.stackone.stackone_client_java.models.operations.async.HrisListEmployeeDocumentsResponse;
 import com.stackone.stackone_client_java.models.operations.async.HrisListEmployeeEmploymentsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.HrisListEmployeeEmploymentsResponse;
+import com.stackone.stackone_client_java.models.operations.async.HrisListEmployeeShiftsRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.async.HrisListEmployeeShiftsResponse;
 import com.stackone.stackone_client_java.models.operations.async.HrisListEmployeeSkillsRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.HrisListEmployeeSkillsResponse;
 import com.stackone.stackone_client_java.models.operations.async.HrisListEmployeeTasksRequestBuilder;
@@ -251,6 +257,7 @@ import com.stackone.stackone_client_java.operations.HrisGetEmployeeCustomFieldDe
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocument;
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeDocumentCategory;
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeEmployment;
+import com.stackone.stackone_client_java.operations.HrisGetEmployeeShift;
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeSkill;
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeTask;
 import com.stackone.stackone_client_java.operations.HrisGetEmployeeTimeOffBalance;
@@ -279,6 +286,7 @@ import com.stackone.stackone_client_java.operations.HrisListEmployeeCategories;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeCustomFieldDefinitions;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeDocuments;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeEmployments;
+import com.stackone.stackone_client_java.operations.HrisListEmployeeShifts;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeSkills;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeTasks;
 import com.stackone.stackone_client_java.operations.HrisListEmployeeTimeOffBalances;
@@ -304,6 +312,7 @@ import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTask;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequest;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeWorkEligibilityRequest;
 import com.stackone.stackone_client_java.operations.HrisUploadEmployeeDocument;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.String;
@@ -312,6 +321,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncHris {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Hris syncSDK;
 
@@ -343,7 +353,7 @@ public class AsyncHris {
      * List Companies
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListCompaniesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListCompaniesResponse>} - The async response
      */
     public CompletableFuture<HrisListCompaniesResponse> listCompanies(HrisListCompaniesRequest request) {
         return listCompanies(request, Optional.empty());
@@ -354,11 +364,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListCompaniesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListCompaniesResponse>} - The async response
      */
     public CompletableFuture<HrisListCompaniesResponse> listCompanies(HrisListCompaniesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListCompaniesRequest, HrisListCompaniesResponse> operation
-              = new HrisListCompanies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListCompanies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -377,7 +389,7 @@ public class AsyncHris {
      * Get Company
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetCompanyResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetCompanyResponse>} - The async response
      */
     public CompletableFuture<HrisGetCompanyResponse> getCompany(HrisGetCompanyRequest request) {
         return getCompany(request, Optional.empty());
@@ -388,11 +400,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetCompanyResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetCompanyResponse>} - The async response
      */
     public CompletableFuture<HrisGetCompanyResponse> getCompany(HrisGetCompanyRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetCompanyRequest, HrisGetCompanyResponse> operation
-              = new HrisGetCompany.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetCompany.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -411,7 +425,7 @@ public class AsyncHris {
      * List employee Custom Field Definitions
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeCustomFieldDefinitionsResponse> listEmployeeCustomFieldDefinitions(HrisListEmployeeCustomFieldDefinitionsRequest request) {
         return listEmployeeCustomFieldDefinitions(request, Optional.empty());
@@ -422,11 +436,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeCustomFieldDefinitionsResponse> listEmployeeCustomFieldDefinitions(HrisListEmployeeCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeCustomFieldDefinitionsRequest, HrisListEmployeeCustomFieldDefinitionsResponse> operation
-              = new HrisListEmployeeCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -445,7 +461,7 @@ public class AsyncHris {
      * Get employee Custom Field Definition
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeeCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeCustomFieldDefinitionResponse> getEmployeeCustomFieldDefinition(HrisGetEmployeeCustomFieldDefinitionRequest request) {
         return getEmployeeCustomFieldDefinition(request, Optional.empty());
@@ -456,11 +472,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeeCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeCustomFieldDefinitionResponse> getEmployeeCustomFieldDefinition(HrisGetEmployeeCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeCustomFieldDefinitionRequest, HrisGetEmployeeCustomFieldDefinitionResponse> operation
-              = new HrisGetEmployeeCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -479,7 +497,7 @@ public class AsyncHris {
      * List Employees
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeesResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeesResponse> listEmployees(HrisListEmployeesRequest request) {
         return listEmployees(request, Optional.empty());
@@ -490,11 +508,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeesResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeesResponse> listEmployees(HrisListEmployeesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeesRequest, HrisListEmployeesResponse> operation
-              = new HrisListEmployees.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployees.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -514,7 +534,7 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param hrisCreateEmployeeRequestDto 
-     * @return CompletableFuture&lt;HrisCreateEmployeeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeResponse> createEmployee(String xAccountId, HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
         return createEmployee(xAccountId, hrisCreateEmployeeRequestDto, Optional.empty());
@@ -526,7 +546,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param hrisCreateEmployeeRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisCreateEmployeeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeResponse> createEmployee(
             String xAccountId, HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto,
@@ -538,7 +558,9 @@ public class AsyncHris {
                 .hrisCreateEmployeeRequestDto(hrisCreateEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeRequest, HrisCreateEmployeeResponse> operation
-              = new HrisCreateEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -557,7 +579,7 @@ public class AsyncHris {
      * Get Employee
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeResponse> getEmployee(HrisGetEmployeeRequest request) {
         return getEmployee(request, Optional.empty());
@@ -568,11 +590,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeResponse> getEmployee(HrisGetEmployeeRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeRequest, HrisGetEmployeeResponse> operation
-              = new HrisGetEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -593,7 +617,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param hrisUpdateEmployeeRequestDto 
-     * @return CompletableFuture&lt;HrisUpdateEmployeeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeResponse> updateEmployee(
             String xAccountId, String id,
@@ -610,7 +634,7 @@ public class AsyncHris {
      * @param id 
      * @param hrisUpdateEmployeeRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisUpdateEmployeeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeResponse> updateEmployee(
             String xAccountId, String id,
@@ -623,7 +647,9 @@ public class AsyncHris {
                 .hrisUpdateEmployeeRequestDto(hrisUpdateEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeRequest, HrisUpdateEmployeeResponse> operation
-              = new HrisUpdateEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -644,7 +670,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param hrisInviteEmployeeRequestDto 
-     * @return CompletableFuture&lt;HrisInviteEmployeeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisInviteEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisInviteEmployeeResponse> inviteEmployee(
             String xAccountId, String id,
@@ -661,7 +687,7 @@ public class AsyncHris {
      * @param id 
      * @param hrisInviteEmployeeRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisInviteEmployeeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisInviteEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisInviteEmployeeResponse> inviteEmployee(
             String xAccountId, String id,
@@ -674,7 +700,81 @@ public class AsyncHris {
                 .hrisInviteEmployeeRequestDto(hrisInviteEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
-              = new HrisInviteEmployee.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisInviteEmployee.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
+     * List Employee Shifts
+     * 
+     * @return The async call builder
+     */
+    public HrisListEmployeeShiftsRequestBuilder listEmployeeShifts() {
+        return new HrisListEmployeeShiftsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * List Employee Shifts
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<HrisListEmployeeShiftsResponse>} - The async response
+     */
+    public CompletableFuture<HrisListEmployeeShiftsResponse> listEmployeeShifts(HrisListEmployeeShiftsRequest request) {
+        return listEmployeeShifts(request, Optional.empty());
+    }
+
+    /**
+     * List Employee Shifts
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return {@code CompletableFuture<HrisListEmployeeShiftsResponse>} - The async response
+     */
+    public CompletableFuture<HrisListEmployeeShiftsResponse> listEmployeeShifts(HrisListEmployeeShiftsRequest request, Optional<Options> options) {
+        AsyncRequestOperation<HrisListEmployeeShiftsRequest, HrisListEmployeeShiftsResponse> operation
+              = new HrisListEmployeeShifts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
+     * Get Employee Shift
+     * 
+     * @return The async call builder
+     */
+    public HrisGetEmployeeShiftRequestBuilder getEmployeeShift() {
+        return new HrisGetEmployeeShiftRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Get Employee Shift
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<HrisGetEmployeeShiftResponse>} - The async response
+     */
+    public CompletableFuture<HrisGetEmployeeShiftResponse> getEmployeeShift(HrisGetEmployeeShiftRequest request) {
+        return getEmployeeShift(request, Optional.empty());
+    }
+
+    /**
+     * Get Employee Shift
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return {@code CompletableFuture<HrisGetEmployeeShiftResponse>} - The async response
+     */
+    public CompletableFuture<HrisGetEmployeeShiftResponse> getEmployeeShift(HrisGetEmployeeShiftRequest request, Optional<Options> options) {
+        AsyncRequestOperation<HrisGetEmployeeShiftRequest, HrisGetEmployeeShiftResponse> operation
+              = new HrisGetEmployeeShift.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -693,7 +793,7 @@ public class AsyncHris {
      * List Employee Time Off Requests
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeTimeOffRequestsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeTimeOffRequestsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeTimeOffRequestsResponse> listEmployeeTimeOffRequests(HrisListEmployeeTimeOffRequestsRequest request) {
         return listEmployeeTimeOffRequests(request, Optional.empty());
@@ -704,11 +804,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeTimeOffRequestsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeTimeOffRequestsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeTimeOffRequestsResponse> listEmployeeTimeOffRequests(HrisListEmployeeTimeOffRequestsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeTimeOffRequestsRequest, HrisListEmployeeTimeOffRequestsResponse> operation
-              = new HrisListEmployeeTimeOffRequests.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeTimeOffRequests.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -729,7 +831,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param hrisCreateTimeOffRequestDto 
-     * @return CompletableFuture&lt;HrisCreateEmployeeTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeTimeOffRequestResponse> createEmployeeTimeOffRequest(
             String xAccountId, String id,
@@ -746,7 +848,7 @@ public class AsyncHris {
      * @param id 
      * @param hrisCreateTimeOffRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisCreateEmployeeTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeTimeOffRequestResponse> createEmployeeTimeOffRequest(
             String xAccountId, String id,
@@ -759,7 +861,9 @@ public class AsyncHris {
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeTimeOffRequestRequest, HrisCreateEmployeeTimeOffRequestResponse> operation
-              = new HrisCreateEmployeeTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -778,7 +882,7 @@ public class AsyncHris {
      * Get Employees Time Off Request
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeesTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeesTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeesTimeOffRequestResponse> getEmployeesTimeOffRequest(HrisGetEmployeesTimeOffRequestRequest request) {
         return getEmployeesTimeOffRequest(request, Optional.empty());
@@ -789,11 +893,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeesTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeesTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeesTimeOffRequestResponse> getEmployeesTimeOffRequest(HrisGetEmployeesTimeOffRequestRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeesTimeOffRequestRequest, HrisGetEmployeesTimeOffRequestResponse> operation
-              = new HrisGetEmployeesTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeesTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -814,7 +920,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param subResourceId 
-     * @return CompletableFuture&lt;HrisCancelEmployeeTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCancelEmployeeTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCancelEmployeeTimeOffRequestResponse> cancelEmployeeTimeOffRequest(
             String xAccountId, String id,
@@ -831,7 +937,7 @@ public class AsyncHris {
      * @param id 
      * @param subResourceId 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisCancelEmployeeTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCancelEmployeeTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCancelEmployeeTimeOffRequestResponse> cancelEmployeeTimeOffRequest(
             String xAccountId, String id,
@@ -844,7 +950,9 @@ public class AsyncHris {
                 .subResourceId(subResourceId)
                 .build();
         AsyncRequestOperation<HrisCancelEmployeeTimeOffRequestRequest, HrisCancelEmployeeTimeOffRequestResponse> operation
-              = new HrisCancelEmployeeTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCancelEmployeeTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -866,7 +974,7 @@ public class AsyncHris {
      * @param id 
      * @param subResourceId 
      * @param hrisCreateTimeOffRequestDto 
-     * @return CompletableFuture&lt;HrisUpdateEmployeeTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse> updateEmployeeTimeOffRequest(
             String xAccountId, String id,
@@ -884,7 +992,7 @@ public class AsyncHris {
      * @param subResourceId 
      * @param hrisCreateTimeOffRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisUpdateEmployeeTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse> updateEmployeeTimeOffRequest(
             String xAccountId, String id,
@@ -899,7 +1007,9 @@ public class AsyncHris {
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
-              = new HrisUpdateEmployeeTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployeeTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -920,7 +1030,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param hrisBatchDocumentUploadRequestDto 
-     * @return CompletableFuture&lt;HrisBatchUploadEmployeeDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisBatchUploadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisBatchUploadEmployeeDocumentResponse> batchUploadEmployeeDocument(
             String xAccountId, String id,
@@ -937,7 +1047,7 @@ public class AsyncHris {
      * @param id 
      * @param hrisBatchDocumentUploadRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisBatchUploadEmployeeDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisBatchUploadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisBatchUploadEmployeeDocumentResponse> batchUploadEmployeeDocument(
             String xAccountId, String id,
@@ -950,7 +1060,9 @@ public class AsyncHris {
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         AsyncRequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
-              = new HrisBatchUploadEmployeeDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisBatchUploadEmployeeDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -971,7 +1083,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param hrisDocumentsUploadRequestDto 
-     * @return CompletableFuture&lt;HrisUploadEmployeeDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUploadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisUploadEmployeeDocumentResponse> uploadEmployeeDocument(
             String xAccountId, String id,
@@ -988,7 +1100,7 @@ public class AsyncHris {
      * @param id 
      * @param hrisDocumentsUploadRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisUploadEmployeeDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUploadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisUploadEmployeeDocumentResponse> uploadEmployeeDocument(
             String xAccountId, String id,
@@ -1001,7 +1113,9 @@ public class AsyncHris {
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         AsyncRequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
-              = new HrisUploadEmployeeDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUploadEmployeeDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1020,7 +1134,7 @@ public class AsyncHris {
      * Download Employee Document
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisDownloadEmployeeDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisDownloadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisDownloadEmployeeDocumentResponse> downloadEmployeeDocument(HrisDownloadEmployeeDocumentRequest request) {
         return downloadEmployeeDocument(request, Optional.empty());
@@ -1031,11 +1145,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisDownloadEmployeeDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisDownloadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisDownloadEmployeeDocumentResponse> downloadEmployeeDocument(HrisDownloadEmployeeDocumentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisDownloadEmployeeDocumentRequest, HrisDownloadEmployeeDocumentResponse> operation
-              = new HrisDownloadEmployeeDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisDownloadEmployeeDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1054,7 +1170,7 @@ public class AsyncHris {
      * List Employee Documents
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeDocumentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeDocumentsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeDocumentsResponse> listEmployeeDocuments(HrisListEmployeeDocumentsRequest request) {
         return listEmployeeDocuments(request, Optional.empty());
@@ -1065,11 +1181,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeDocumentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeDocumentsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeDocumentsResponse> listEmployeeDocuments(HrisListEmployeeDocumentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeDocumentsRequest, HrisListEmployeeDocumentsResponse> operation
-              = new HrisListEmployeeDocuments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeDocuments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1088,7 +1206,7 @@ public class AsyncHris {
      * Get Employee Document
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeeDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeDocumentResponse> getEmployeeDocument(HrisGetEmployeeDocumentRequest request) {
         return getEmployeeDocument(request, Optional.empty());
@@ -1099,11 +1217,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeeDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeDocumentResponse> getEmployeeDocument(HrisGetEmployeeDocumentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeDocumentRequest, HrisGetEmployeeDocumentResponse> operation
-              = new HrisGetEmployeeDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1122,7 +1242,7 @@ public class AsyncHris {
      * List Employee Document Categories
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeCategoriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeCategoriesResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeCategoriesResponse> listEmployeeCategories(HrisListEmployeeCategoriesRequest request) {
         return listEmployeeCategories(request, Optional.empty());
@@ -1133,11 +1253,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeCategoriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeCategoriesResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeCategoriesResponse> listEmployeeCategories(HrisListEmployeeCategoriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeCategoriesRequest, HrisListEmployeeCategoriesResponse> operation
-              = new HrisListEmployeeCategories.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeCategories.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1156,7 +1278,7 @@ public class AsyncHris {
      * Get Employee Document Category
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeeDocumentCategoryResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeDocumentCategoryResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeDocumentCategoryResponse> getEmployeeDocumentCategory(HrisGetEmployeeDocumentCategoryRequest request) {
         return getEmployeeDocumentCategory(request, Optional.empty());
@@ -1167,11 +1289,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeeDocumentCategoryResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeDocumentCategoryResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeDocumentCategoryResponse> getEmployeeDocumentCategory(HrisGetEmployeeDocumentCategoryRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeDocumentCategoryRequest, HrisGetEmployeeDocumentCategoryResponse> operation
-              = new HrisGetEmployeeDocumentCategory.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeDocumentCategory.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1190,7 +1314,7 @@ public class AsyncHris {
      * List Employee Work Eligibility
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeWorkEligibilityResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeWorkEligibilityResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeWorkEligibilityResponse> listEmployeeWorkEligibility(HrisListEmployeeWorkEligibilityRequest request) {
         return listEmployeeWorkEligibility(request, Optional.empty());
@@ -1201,11 +1325,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeWorkEligibilityResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeWorkEligibilityResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeWorkEligibilityResponse> listEmployeeWorkEligibility(HrisListEmployeeWorkEligibilityRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeWorkEligibilityRequest, HrisListEmployeeWorkEligibilityResponse> operation
-              = new HrisListEmployeeWorkEligibility.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeWorkEligibility.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1226,7 +1352,7 @@ public class AsyncHris {
      * @param id 
      * @param xAccountId The account identifier
      * @param hrisCreateWorkEligibilityRequestDto 
-     * @return CompletableFuture&lt;HrisCreateEmployeeWorkEligibilityRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeWorkEligibilityRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeWorkEligibilityRequestResponse> createEmployeeWorkEligibilityRequest(
             String id, String xAccountId,
@@ -1243,7 +1369,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param hrisCreateWorkEligibilityRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisCreateEmployeeWorkEligibilityRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeWorkEligibilityRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeWorkEligibilityRequestResponse> createEmployeeWorkEligibilityRequest(
             String id, String xAccountId,
@@ -1256,7 +1382,9 @@ public class AsyncHris {
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeWorkEligibilityRequestRequest, HrisCreateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisCreateEmployeeWorkEligibilityRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeWorkEligibilityRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1275,7 +1403,7 @@ public class AsyncHris {
      * Get Employees Work Eligibility
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeesWorkEligibilityResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeesWorkEligibilityResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeesWorkEligibilityResponse> getEmployeesWorkEligibility(HrisGetEmployeesWorkEligibilityRequest request) {
         return getEmployeesWorkEligibility(request, Optional.empty());
@@ -1286,11 +1414,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeesWorkEligibilityResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeesWorkEligibilityResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeesWorkEligibilityResponse> getEmployeesWorkEligibility(HrisGetEmployeesWorkEligibilityRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeesWorkEligibilityRequest, HrisGetEmployeesWorkEligibilityResponse> operation
-              = new HrisGetEmployeesWorkEligibility.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeesWorkEligibility.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1312,7 +1442,7 @@ public class AsyncHris {
      * @param subResourceId 
      * @param xAccountId The account identifier
      * @param hrisCreateWorkEligibilityRequestDto 
-     * @return CompletableFuture&lt;HrisUpdateEmployeeWorkEligibilityRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse> updateEmployeeWorkEligibilityRequest(
             String id, String subResourceId,
@@ -1330,7 +1460,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param hrisCreateWorkEligibilityRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisUpdateEmployeeWorkEligibilityRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse> updateEmployeeWorkEligibilityRequest(
             String id, String subResourceId,
@@ -1345,7 +1475,9 @@ public class AsyncHris {
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeWorkEligibilityRequestRequest, HrisUpdateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisUpdateEmployeeWorkEligibilityRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployeeWorkEligibilityRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1364,7 +1496,7 @@ public class AsyncHris {
      * List Employee Time Off Balances
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeTimeOffBalancesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeTimeOffBalancesResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeTimeOffBalancesResponse> listEmployeeTimeOffBalances(HrisListEmployeeTimeOffBalancesRequest request) {
         return listEmployeeTimeOffBalances(request, Optional.empty());
@@ -1375,11 +1507,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeTimeOffBalancesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeTimeOffBalancesResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeTimeOffBalancesResponse> listEmployeeTimeOffBalances(HrisListEmployeeTimeOffBalancesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeTimeOffBalancesRequest, HrisListEmployeeTimeOffBalancesResponse> operation
-              = new HrisListEmployeeTimeOffBalances.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeTimeOffBalances.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1398,7 +1532,7 @@ public class AsyncHris {
      * Get Employee Time Off Balance
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeeTimeOffBalanceResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeTimeOffBalanceResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeTimeOffBalanceResponse> getEmployeeTimeOffBalance(HrisGetEmployeeTimeOffBalanceRequest request) {
         return getEmployeeTimeOffBalance(request, Optional.empty());
@@ -1409,11 +1543,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeeTimeOffBalanceResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeTimeOffBalanceResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeTimeOffBalanceResponse> getEmployeeTimeOffBalance(HrisGetEmployeeTimeOffBalanceRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeTimeOffBalanceRequest, HrisGetEmployeeTimeOffBalanceResponse> operation
-              = new HrisGetEmployeeTimeOffBalance.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeTimeOffBalance.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1432,7 +1568,7 @@ public class AsyncHris {
      * List Employments
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmploymentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmploymentsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmploymentsResponse> listEmployments(HrisListEmploymentsRequest request) {
         return listEmployments(request, Optional.empty());
@@ -1443,11 +1579,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmploymentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmploymentsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmploymentsResponse> listEmployments(HrisListEmploymentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmploymentsRequest, HrisListEmploymentsResponse> operation
-              = new HrisListEmployments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1466,7 +1604,7 @@ public class AsyncHris {
      * Get Employment
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmploymentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmploymentResponse> getEmployment(HrisGetEmploymentRequest request) {
         return getEmployment(request, Optional.empty());
@@ -1477,11 +1615,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmploymentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmploymentResponse> getEmployment(HrisGetEmploymentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmploymentRequest, HrisGetEmploymentResponse> operation
-              = new HrisGetEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1500,7 +1640,7 @@ public class AsyncHris {
      * List Employee Employments
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeEmploymentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeEmploymentsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeEmploymentsResponse> listEmployeeEmployments(HrisListEmployeeEmploymentsRequest request) {
         return listEmployeeEmployments(request, Optional.empty());
@@ -1511,11 +1651,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeEmploymentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeEmploymentsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeEmploymentsResponse> listEmployeeEmployments(HrisListEmployeeEmploymentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeEmploymentsRequest, HrisListEmployeeEmploymentsResponse> operation
-              = new HrisListEmployeeEmployments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeEmployments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1536,7 +1678,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param hrisCreateEmploymentRequestDto 
-     * @return CompletableFuture&lt;HrisCreateEmployeeEmploymentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeEmploymentResponse> createEmployeeEmployment(
             String xAccountId, String id,
@@ -1553,7 +1695,7 @@ public class AsyncHris {
      * @param id 
      * @param hrisCreateEmploymentRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisCreateEmployeeEmploymentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeEmploymentResponse> createEmployeeEmployment(
             String xAccountId, String id,
@@ -1566,7 +1708,9 @@ public class AsyncHris {
                 .hrisCreateEmploymentRequestDto(hrisCreateEmploymentRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeEmploymentRequest, HrisCreateEmployeeEmploymentResponse> operation
-              = new HrisCreateEmployeeEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1585,7 +1729,7 @@ public class AsyncHris {
      * Get Employee Employment
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeeEmploymentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeEmploymentResponse> getEmployeeEmployment(HrisGetEmployeeEmploymentRequest request) {
         return getEmployeeEmployment(request, Optional.empty());
@@ -1596,11 +1740,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeeEmploymentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeEmploymentResponse> getEmployeeEmployment(HrisGetEmployeeEmploymentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeEmploymentRequest, HrisGetEmployeeEmploymentResponse> operation
-              = new HrisGetEmployeeEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1622,7 +1768,7 @@ public class AsyncHris {
      * @param id 
      * @param subResourceId 
      * @param hrisUpdateEmploymentRequestDto 
-     * @return CompletableFuture&lt;HrisUpdateEmployeeEmploymentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeEmploymentResponse> updateEmployeeEmployment(
             String xAccountId, String id,
@@ -1640,7 +1786,7 @@ public class AsyncHris {
      * @param subResourceId 
      * @param hrisUpdateEmploymentRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisUpdateEmployeeEmploymentResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeEmploymentResponse> updateEmployeeEmployment(
             String xAccountId, String id,
@@ -1655,7 +1801,9 @@ public class AsyncHris {
                 .hrisUpdateEmploymentRequestDto(hrisUpdateEmploymentRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeEmploymentRequest, HrisUpdateEmployeeEmploymentResponse> operation
-              = new HrisUpdateEmployeeEmployment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployeeEmployment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1674,7 +1822,7 @@ public class AsyncHris {
      * List Groups
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListGroupsResponse> listGroups(HrisListGroupsRequest request) {
         return listGroups(request, Optional.empty());
@@ -1685,11 +1833,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListGroupsResponse> listGroups(HrisListGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListGroupsRequest, HrisListGroupsResponse> operation
-              = new HrisListGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1708,7 +1858,7 @@ public class AsyncHris {
      * List Department Groups
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListDepartmentGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListDepartmentGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListDepartmentGroupsResponse> listDepartmentGroups(HrisListDepartmentGroupsRequest request) {
         return listDepartmentGroups(request, Optional.empty());
@@ -1719,11 +1869,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListDepartmentGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListDepartmentGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListDepartmentGroupsResponse> listDepartmentGroups(HrisListDepartmentGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListDepartmentGroupsRequest, HrisListDepartmentGroupsResponse> operation
-              = new HrisListDepartmentGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListDepartmentGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1742,7 +1894,7 @@ public class AsyncHris {
      * List Cost Center Groups
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListCostCenterGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListCostCenterGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListCostCenterGroupsResponse> listCostCenterGroups(HrisListCostCenterGroupsRequest request) {
         return listCostCenterGroups(request, Optional.empty());
@@ -1753,11 +1905,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListCostCenterGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListCostCenterGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListCostCenterGroupsResponse> listCostCenterGroups(HrisListCostCenterGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListCostCenterGroupsRequest, HrisListCostCenterGroupsResponse> operation
-              = new HrisListCostCenterGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListCostCenterGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1776,7 +1930,7 @@ public class AsyncHris {
      * List Team Groups
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListTeamGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTeamGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListTeamGroupsResponse> listTeamGroups(HrisListTeamGroupsRequest request) {
         return listTeamGroups(request, Optional.empty());
@@ -1787,11 +1941,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListTeamGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTeamGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListTeamGroupsResponse> listTeamGroups(HrisListTeamGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTeamGroupsRequest, HrisListTeamGroupsResponse> operation
-              = new HrisListTeamGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTeamGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1810,7 +1966,7 @@ public class AsyncHris {
      * List Division Groups
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListDivisionGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListDivisionGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListDivisionGroupsResponse> listDivisionGroups(HrisListDivisionGroupsRequest request) {
         return listDivisionGroups(request, Optional.empty());
@@ -1821,11 +1977,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListDivisionGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListDivisionGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListDivisionGroupsResponse> listDivisionGroups(HrisListDivisionGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListDivisionGroupsRequest, HrisListDivisionGroupsResponse> operation
-              = new HrisListDivisionGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListDivisionGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1844,7 +2002,7 @@ public class AsyncHris {
      * List Companies Groups
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListCompaniesGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListCompaniesGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListCompaniesGroupsResponse> listCompaniesGroups(HrisListCompaniesGroupsRequest request) {
         return listCompaniesGroups(request, Optional.empty());
@@ -1855,11 +2013,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListCompaniesGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListCompaniesGroupsResponse>} - The async response
      */
     public CompletableFuture<HrisListCompaniesGroupsResponse> listCompaniesGroups(HrisListCompaniesGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListCompaniesGroupsRequest, HrisListCompaniesGroupsResponse> operation
-              = new HrisListCompaniesGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListCompaniesGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1878,7 +2038,7 @@ public class AsyncHris {
      * Get Group
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetGroupResponse> getGroup(HrisGetGroupRequest request) {
         return getGroup(request, Optional.empty());
@@ -1889,11 +2049,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetGroupResponse> getGroup(HrisGetGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetGroupRequest, HrisGetGroupResponse> operation
-              = new HrisGetGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1912,7 +2074,7 @@ public class AsyncHris {
      * Get Department Group
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetDepartmentGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetDepartmentGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetDepartmentGroupResponse> getDepartmentGroup(HrisGetDepartmentGroupRequest request) {
         return getDepartmentGroup(request, Optional.empty());
@@ -1923,11 +2085,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetDepartmentGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetDepartmentGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetDepartmentGroupResponse> getDepartmentGroup(HrisGetDepartmentGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetDepartmentGroupRequest, HrisGetDepartmentGroupResponse> operation
-              = new HrisGetDepartmentGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetDepartmentGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1946,7 +2110,7 @@ public class AsyncHris {
      * Get Cost Center Group
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetCostCenterGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetCostCenterGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetCostCenterGroupResponse> getCostCenterGroup(HrisGetCostCenterGroupRequest request) {
         return getCostCenterGroup(request, Optional.empty());
@@ -1957,11 +2121,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetCostCenterGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetCostCenterGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetCostCenterGroupResponse> getCostCenterGroup(HrisGetCostCenterGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetCostCenterGroupRequest, HrisGetCostCenterGroupResponse> operation
-              = new HrisGetCostCenterGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetCostCenterGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1980,7 +2146,7 @@ public class AsyncHris {
      * Get Team Group
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetTeamGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTeamGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetTeamGroupResponse> getTeamGroup(HrisGetTeamGroupRequest request) {
         return getTeamGroup(request, Optional.empty());
@@ -1991,11 +2157,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetTeamGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTeamGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetTeamGroupResponse> getTeamGroup(HrisGetTeamGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTeamGroupRequest, HrisGetTeamGroupResponse> operation
-              = new HrisGetTeamGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTeamGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2014,7 +2182,7 @@ public class AsyncHris {
      * Get Division Group
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetDivisionGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetDivisionGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetDivisionGroupResponse> getDivisionGroup(HrisGetDivisionGroupRequest request) {
         return getDivisionGroup(request, Optional.empty());
@@ -2025,11 +2193,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetDivisionGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetDivisionGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetDivisionGroupResponse> getDivisionGroup(HrisGetDivisionGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetDivisionGroupRequest, HrisGetDivisionGroupResponse> operation
-              = new HrisGetDivisionGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetDivisionGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2048,7 +2218,7 @@ public class AsyncHris {
      * Get Company Group
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetCompanyGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetCompanyGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetCompanyGroupResponse> getCompanyGroup(HrisGetCompanyGroupRequest request) {
         return getCompanyGroup(request, Optional.empty());
@@ -2059,11 +2229,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetCompanyGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetCompanyGroupResponse>} - The async response
      */
     public CompletableFuture<HrisGetCompanyGroupResponse> getCompanyGroup(HrisGetCompanyGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetCompanyGroupRequest, HrisGetCompanyGroupResponse> operation
-              = new HrisGetCompanyGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetCompanyGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2082,7 +2254,7 @@ public class AsyncHris {
      * List Jobs
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListJobsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListJobsResponse>} - The async response
      */
     public CompletableFuture<HrisListJobsResponse> listJobs(HrisListJobsRequest request) {
         return listJobs(request, Optional.empty());
@@ -2093,11 +2265,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListJobsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListJobsResponse>} - The async response
      */
     public CompletableFuture<HrisListJobsResponse> listJobs(HrisListJobsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListJobsRequest, HrisListJobsResponse> operation
-              = new HrisListJobs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListJobs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2116,7 +2290,7 @@ public class AsyncHris {
      * Get Job
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetJobResponse>} - The async response
      */
     public CompletableFuture<HrisGetJobResponse> getJob(HrisGetJobRequest request) {
         return getJob(request, Optional.empty());
@@ -2127,11 +2301,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetJobResponse>} - The async response
      */
     public CompletableFuture<HrisGetJobResponse> getJob(HrisGetJobRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetJobRequest, HrisGetJobResponse> operation
-              = new HrisGetJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2150,7 +2326,7 @@ public class AsyncHris {
      * List Work Locations
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListLocationsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListLocationsResponse>} - The async response
      */
     public CompletableFuture<HrisListLocationsResponse> listLocations(HrisListLocationsRequest request) {
         return listLocations(request, Optional.empty());
@@ -2161,11 +2337,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListLocationsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListLocationsResponse>} - The async response
      */
     public CompletableFuture<HrisListLocationsResponse> listLocations(HrisListLocationsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListLocationsRequest, HrisListLocationsResponse> operation
-              = new HrisListLocations.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListLocations.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2184,7 +2362,7 @@ public class AsyncHris {
      * Get Work Location
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetLocationResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetLocationResponse>} - The async response
      */
     public CompletableFuture<HrisGetLocationResponse> getLocation(HrisGetLocationRequest request) {
         return getLocation(request, Optional.empty());
@@ -2195,11 +2373,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetLocationResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetLocationResponse>} - The async response
      */
     public CompletableFuture<HrisGetLocationResponse> getLocation(HrisGetLocationRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetLocationRequest, HrisGetLocationResponse> operation
-              = new HrisGetLocation.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetLocation.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2218,7 +2398,7 @@ public class AsyncHris {
      * List Positions
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListPositionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListPositionsResponse>} - The async response
      */
     public CompletableFuture<HrisListPositionsResponse> listPositions(HrisListPositionsRequest request) {
         return listPositions(request, Optional.empty());
@@ -2229,11 +2409,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListPositionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListPositionsResponse>} - The async response
      */
     public CompletableFuture<HrisListPositionsResponse> listPositions(HrisListPositionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListPositionsRequest, HrisListPositionsResponse> operation
-              = new HrisListPositions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListPositions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2252,7 +2434,7 @@ public class AsyncHris {
      * Get Position
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetPositionResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetPositionResponse>} - The async response
      */
     public CompletableFuture<HrisGetPositionResponse> getPosition(HrisGetPositionRequest request) {
         return getPosition(request, Optional.empty());
@@ -2263,11 +2445,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetPositionResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetPositionResponse>} - The async response
      */
     public CompletableFuture<HrisGetPositionResponse> getPosition(HrisGetPositionRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetPositionRequest, HrisGetPositionResponse> operation
-              = new HrisGetPosition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetPosition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2286,7 +2470,7 @@ public class AsyncHris {
      * List Time Entries
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListTimeEntriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTimeEntriesResponse>} - The async response
      */
     public CompletableFuture<HrisListTimeEntriesResponse> listTimeEntries(HrisListTimeEntriesRequest request) {
         return listTimeEntries(request, Optional.empty());
@@ -2297,11 +2481,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListTimeEntriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTimeEntriesResponse>} - The async response
      */
     public CompletableFuture<HrisListTimeEntriesResponse> listTimeEntries(HrisListTimeEntriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTimeEntriesRequest, HrisListTimeEntriesResponse> operation
-              = new HrisListTimeEntries.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTimeEntries.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2320,7 +2506,7 @@ public class AsyncHris {
      * Get Time Entry
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetTimeEntriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTimeEntriesResponse>} - The async response
      */
     public CompletableFuture<HrisGetTimeEntriesResponse> getTimeEntries(HrisGetTimeEntriesRequest request) {
         return getTimeEntries(request, Optional.empty());
@@ -2331,11 +2517,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetTimeEntriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTimeEntriesResponse>} - The async response
      */
     public CompletableFuture<HrisGetTimeEntriesResponse> getTimeEntries(HrisGetTimeEntriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTimeEntriesRequest, HrisGetTimeEntriesResponse> operation
-              = new HrisGetTimeEntries.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTimeEntries.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2354,7 +2542,7 @@ public class AsyncHris {
      * List time off requests
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListTimeOffRequestsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTimeOffRequestsResponse>} - The async response
      */
     public CompletableFuture<HrisListTimeOffRequestsResponse> listTimeOffRequests(HrisListTimeOffRequestsRequest request) {
         return listTimeOffRequests(request, Optional.empty());
@@ -2365,11 +2553,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListTimeOffRequestsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTimeOffRequestsResponse>} - The async response
      */
     public CompletableFuture<HrisListTimeOffRequestsResponse> listTimeOffRequests(HrisListTimeOffRequestsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTimeOffRequestsRequest, HrisListTimeOffRequestsResponse> operation
-              = new HrisListTimeOffRequests.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTimeOffRequests.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2388,7 +2578,7 @@ public class AsyncHris {
      * Get time off request
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisGetTimeOffRequestResponse> getTimeOffRequest(HrisGetTimeOffRequestRequest request) {
         return getTimeOffRequest(request, Optional.empty());
@@ -2399,11 +2589,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetTimeOffRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisGetTimeOffRequestResponse> getTimeOffRequest(HrisGetTimeOffRequestRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTimeOffRequestRequest, HrisGetTimeOffRequestResponse> operation
-              = new HrisGetTimeOffRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2422,7 +2614,7 @@ public class AsyncHris {
      * List Shifts
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListShiftsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListShiftsResponse>} - The async response
      */
     public CompletableFuture<HrisListShiftsResponse> listShifts(HrisListShiftsRequest request) {
         return listShifts(request, Optional.empty());
@@ -2433,11 +2625,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListShiftsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListShiftsResponse>} - The async response
      */
     public CompletableFuture<HrisListShiftsResponse> listShifts(HrisListShiftsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListShiftsRequest, HrisListShiftsResponse> operation
-              = new HrisListShifts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListShifts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2456,7 +2650,7 @@ public class AsyncHris {
      * Get Shift
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetShiftResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetShiftResponse>} - The async response
      */
     public CompletableFuture<HrisGetShiftResponse> getShift(HrisGetShiftRequest request) {
         return getShift(request, Optional.empty());
@@ -2467,11 +2661,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetShiftResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetShiftResponse>} - The async response
      */
     public CompletableFuture<HrisGetShiftResponse> getShift(HrisGetShiftRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetShiftRequest, HrisGetShiftResponse> operation
-              = new HrisGetShift.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetShift.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2492,7 +2688,7 @@ public class AsyncHris {
      * List time off types
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListTimeOffTypesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTimeOffTypesResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -2505,13 +2701,15 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListTimeOffTypesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTimeOffTypesResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public CompletableFuture<HrisListTimeOffTypesResponse> listTimeOffTypes(HrisListTimeOffTypesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTimeOffTypesRequest, HrisListTimeOffTypesResponse> operation
-              = new HrisListTimeOffTypes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTimeOffTypes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2532,7 +2730,7 @@ public class AsyncHris {
      * Get time off type
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetTimeOffTypeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTimeOffTypeResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -2545,13 +2743,15 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetTimeOffTypeResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTimeOffTypeResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public CompletableFuture<HrisGetTimeOffTypeResponse> getTimeOffType(HrisGetTimeOffTypeRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTimeOffTypeRequest, HrisGetTimeOffTypeResponse> operation
-              = new HrisGetTimeOffType.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTimeOffType.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2570,7 +2770,7 @@ public class AsyncHris {
      * List Time Off Policies
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListTimeOffPoliciesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTimeOffPoliciesResponse>} - The async response
      */
     public CompletableFuture<HrisListTimeOffPoliciesResponse> listTimeOffPolicies(HrisListTimeOffPoliciesRequest request) {
         return listTimeOffPolicies(request, Optional.empty());
@@ -2581,11 +2781,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListTimeOffPoliciesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTimeOffPoliciesResponse>} - The async response
      */
     public CompletableFuture<HrisListTimeOffPoliciesResponse> listTimeOffPolicies(HrisListTimeOffPoliciesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTimeOffPoliciesRequest, HrisListTimeOffPoliciesResponse> operation
-              = new HrisListTimeOffPolicies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTimeOffPolicies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2604,7 +2806,7 @@ public class AsyncHris {
      * Get Time Off Policy
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetTimeOffPolicyResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTimeOffPolicyResponse>} - The async response
      */
     public CompletableFuture<HrisGetTimeOffPolicyResponse> getTimeOffPolicy(HrisGetTimeOffPolicyRequest request) {
         return getTimeOffPolicy(request, Optional.empty());
@@ -2615,11 +2817,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetTimeOffPolicyResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTimeOffPolicyResponse>} - The async response
      */
     public CompletableFuture<HrisGetTimeOffPolicyResponse> getTimeOffPolicy(HrisGetTimeOffPolicyRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTimeOffPolicyRequest, HrisGetTimeOffPolicyResponse> operation
-              = new HrisGetTimeOffPolicy.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTimeOffPolicy.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2638,7 +2842,7 @@ public class AsyncHris {
      * List Assigned Time Off Policies
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeTimeOffPoliciesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeTimeOffPoliciesResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeTimeOffPoliciesResponse> listEmployeeTimeOffPolicies(HrisListEmployeeTimeOffPoliciesRequest request) {
         return listEmployeeTimeOffPolicies(request, Optional.empty());
@@ -2649,11 +2853,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeTimeOffPoliciesResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeTimeOffPoliciesResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeTimeOffPoliciesResponse> listEmployeeTimeOffPolicies(HrisListEmployeeTimeOffPoliciesRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeTimeOffPoliciesRequest, HrisListEmployeeTimeOffPoliciesResponse> operation
-              = new HrisListEmployeeTimeOffPolicies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeTimeOffPolicies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2672,7 +2878,7 @@ public class AsyncHris {
      * List benefits
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListBenefitsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListBenefitsResponse>} - The async response
      */
     public CompletableFuture<HrisListBenefitsResponse> listBenefits(HrisListBenefitsRequest request) {
         return listBenefits(request, Optional.empty());
@@ -2683,11 +2889,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListBenefitsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListBenefitsResponse>} - The async response
      */
     public CompletableFuture<HrisListBenefitsResponse> listBenefits(HrisListBenefitsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListBenefitsRequest, HrisListBenefitsResponse> operation
-              = new HrisListBenefits.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListBenefits.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2706,7 +2914,7 @@ public class AsyncHris {
      * Get Benefit
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetBenefitResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetBenefitResponse>} - The async response
      */
     public CompletableFuture<HrisGetBenefitResponse> getBenefit(HrisGetBenefitRequest request) {
         return getBenefit(request, Optional.empty());
@@ -2717,11 +2925,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetBenefitResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetBenefitResponse>} - The async response
      */
     public CompletableFuture<HrisGetBenefitResponse> getBenefit(HrisGetBenefitRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetBenefitRequest, HrisGetBenefitResponse> operation
-              = new HrisGetBenefit.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetBenefit.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2740,7 +2950,7 @@ public class AsyncHris {
      * List Employee Skills
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeSkillsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeSkillsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeSkillsResponse> listEmployeeSkills(HrisListEmployeeSkillsRequest request) {
         return listEmployeeSkills(request, Optional.empty());
@@ -2751,11 +2961,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeSkillsResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeSkillsResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeSkillsResponse> listEmployeeSkills(HrisListEmployeeSkillsRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeSkillsRequest, HrisListEmployeeSkillsResponse> operation
-              = new HrisListEmployeeSkills.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeSkills.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2776,7 +2988,7 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param entitySkillsCreateRequestDto 
-     * @return CompletableFuture&lt;HrisCreateEmployeeSkillResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeSkillResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeSkillResponse> createEmployeeSkill(
             String xAccountId, String id,
@@ -2793,7 +3005,7 @@ public class AsyncHris {
      * @param id 
      * @param entitySkillsCreateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisCreateEmployeeSkillResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisCreateEmployeeSkillResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeSkillResponse> createEmployeeSkill(
             String xAccountId, String id,
@@ -2806,7 +3018,9 @@ public class AsyncHris {
                 .entitySkillsCreateRequestDto(entitySkillsCreateRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
-              = new HrisCreateEmployeeSkill.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeSkill.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2825,7 +3039,7 @@ public class AsyncHris {
      * Get Employee Skill
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeeSkillResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeSkillResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeSkillResponse> getEmployeeSkill(HrisGetEmployeeSkillRequest request) {
         return getEmployeeSkill(request, Optional.empty());
@@ -2836,11 +3050,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeeSkillResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeSkillResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeSkillResponse> getEmployeeSkill(HrisGetEmployeeSkillRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeSkillRequest, HrisGetEmployeeSkillResponse> operation
-              = new HrisGetEmployeeSkill.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeSkill.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2859,7 +3075,7 @@ public class AsyncHris {
      * List Employee Tasks
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListEmployeeTasksResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeTasksResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeTasksResponse> listEmployeeTasks(HrisListEmployeeTasksRequest request) {
         return listEmployeeTasks(request, Optional.empty());
@@ -2870,11 +3086,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListEmployeeTasksResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListEmployeeTasksResponse>} - The async response
      */
     public CompletableFuture<HrisListEmployeeTasksResponse> listEmployeeTasks(HrisListEmployeeTasksRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListEmployeeTasksRequest, HrisListEmployeeTasksResponse> operation
-              = new HrisListEmployeeTasks.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListEmployeeTasks.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2893,7 +3111,7 @@ public class AsyncHris {
      * Get Employee Task
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetEmployeeTaskResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeTaskResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeTaskResponse> getEmployeeTask(HrisGetEmployeeTaskRequest request) {
         return getEmployeeTask(request, Optional.empty());
@@ -2904,11 +3122,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetEmployeeTaskResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetEmployeeTaskResponse>} - The async response
      */
     public CompletableFuture<HrisGetEmployeeTaskResponse> getEmployeeTask(HrisGetEmployeeTaskRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetEmployeeTaskRequest, HrisGetEmployeeTaskResponse> operation
-              = new HrisGetEmployeeTask.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetEmployeeTask.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2930,7 +3150,7 @@ public class AsyncHris {
      * @param id 
      * @param subResourceId 
      * @param updateTaskRequestDto 
-     * @return CompletableFuture&lt;HrisUpdateEmployeeTaskResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeTaskResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeTaskResponse> updateEmployeeTask(
             String xAccountId, String id,
@@ -2948,7 +3168,7 @@ public class AsyncHris {
      * @param subResourceId 
      * @param updateTaskRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;HrisUpdateEmployeeTaskResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisUpdateEmployeeTaskResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeTaskResponse> updateEmployeeTask(
             String xAccountId, String id,
@@ -2963,7 +3183,9 @@ public class AsyncHris {
                 .updateTaskRequestDto(updateTaskRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeTaskRequest, HrisUpdateEmployeeTaskResponse> operation
-              = new HrisUpdateEmployeeTask.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisUpdateEmployeeTask.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2982,7 +3204,7 @@ public class AsyncHris {
      * List Tasks
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisListTasksResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTasksResponse>} - The async response
      */
     public CompletableFuture<HrisListTasksResponse> listTasks(HrisListTasksRequest request) {
         return listTasks(request, Optional.empty());
@@ -2993,11 +3215,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisListTasksResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisListTasksResponse>} - The async response
      */
     public CompletableFuture<HrisListTasksResponse> listTasks(HrisListTasksRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisListTasksRequest, HrisListTasksResponse> operation
-              = new HrisListTasks.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisListTasks.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3016,7 +3240,7 @@ public class AsyncHris {
      * Get Task
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;HrisGetTaskResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTaskResponse>} - The async response
      */
     public CompletableFuture<HrisGetTaskResponse> getTask(HrisGetTaskRequest request) {
         return getTask(request, Optional.empty());
@@ -3027,11 +3251,13 @@ public class AsyncHris {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;HrisGetTaskResponse&gt; - The async response
+     * @return {@code CompletableFuture<HrisGetTaskResponse>} - The async response
      */
     public CompletableFuture<HrisGetTaskResponse> getTask(HrisGetTaskRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisGetTaskRequest, HrisGetTaskResponse> operation
-              = new HrisGetTask.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisGetTask.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

@@ -52,7 +52,8 @@ public class UnifiedUploadRequestDto {
     private JsonNullable<String> path;
 
     /**
-     * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
+     * The category object for associating uploaded files. If both an ID and a name are provided, the ID
+     * takes precedence.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("category")
@@ -138,7 +139,8 @@ public class UnifiedUploadRequestDto {
     }
 
     /**
-     * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
+     * The category object for associating uploaded files. If both an ID and a name are provided, the ID
+     * takes precedence.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -251,7 +253,8 @@ public class UnifiedUploadRequestDto {
     }
 
     /**
-     * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
+     * The category object for associating uploaded files. If both an ID and a name are provided, the ID
+     * takes precedence.
      */
     public UnifiedUploadRequestDto withCategory(UnifiedUploadRequestDtoCategory category) {
         Utils.checkNotNull(category, "category");
@@ -260,7 +263,8 @@ public class UnifiedUploadRequestDto {
     }
 
     /**
-     * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
+     * The category object for associating uploaded files. If both an ID and a name are provided, the ID
+     * takes precedence.
      */
     public UnifiedUploadRequestDto withCategory(JsonNullable<? extends UnifiedUploadRequestDtoCategory> category) {
         Utils.checkNotNull(category, "category");
@@ -443,7 +447,8 @@ public class UnifiedUploadRequestDto {
 
 
         /**
-         * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
+         * The category object for associating uploaded files. If both an ID and a name are provided, the ID
+         * takes precedence.
          */
         public Builder category(UnifiedUploadRequestDtoCategory category) {
             Utils.checkNotNull(category, "category");
@@ -452,7 +457,8 @@ public class UnifiedUploadRequestDto {
         }
 
         /**
-         * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
+         * The category object for associating uploaded files. If both an ID and a name are provided, the ID
+         * takes precedence.
          */
         public Builder category(JsonNullable<? extends UnifiedUploadRequestDtoCategory> category) {
             Utils.checkNotNull(category, "category");

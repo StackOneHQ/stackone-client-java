@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.PatchAccountExternalDto;
 import com.stackone.stackone_client_java.models.operations.StackoneUpdateAccountRequest;
 import com.stackone.stackone_client_java.operations.StackoneUpdateAccount;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class StackoneUpdateAccountRequestBuilder {
     private PatchAccountExternalDto patchAccountExternalDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public StackoneUpdateAccountRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class StackoneUpdateAccountRequestBuilder {
             .build());
 
         AsyncRequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
-              = new StackoneUpdateAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneUpdateAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         StackoneUpdateAccountRequest request = buildRequest();
 
         return operation.doRequest(request)

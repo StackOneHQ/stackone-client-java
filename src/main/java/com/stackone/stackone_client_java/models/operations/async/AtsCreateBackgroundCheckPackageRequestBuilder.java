@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateBackgroundCheckPackagesRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsCreateBackgroundCheckPackageRequest;
 import com.stackone.stackone_client_java.operations.AtsCreateBackgroundCheckPackage;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class AtsCreateBackgroundCheckPackageRequestBuilder {
     private AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsCreateBackgroundCheckPackageRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class AtsCreateBackgroundCheckPackageRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
-              = new AtsCreateBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AtsCreateBackgroundCheckPackageRequest request = buildRequest();
 
         return operation.doRequest(request)

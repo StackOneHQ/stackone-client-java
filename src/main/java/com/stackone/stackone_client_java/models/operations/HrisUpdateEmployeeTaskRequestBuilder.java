@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.UpdateTaskRequestDto;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTask;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class HrisUpdateEmployeeTaskRequestBuilder {
     private UpdateTaskRequestDto updateTaskRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisUpdateEmployeeTaskRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -81,7 +83,7 @@ public class HrisUpdateEmployeeTaskRequestBuilder {
             .build());
 
         RequestOperation<HrisUpdateEmployeeTaskRequest, HrisUpdateEmployeeTaskResponse> operation
-              = new HrisUpdateEmployeeTask.Sync(sdkConfiguration, options);
+              = new HrisUpdateEmployeeTask.Sync(sdkConfiguration, options, _headers);
         HrisUpdateEmployeeTaskRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -83,6 +83,7 @@ import com.stackone.stackone_client_java.operations.TicketingListTicketTypes;
 import com.stackone.stackone_client_java.operations.TicketingListTickets;
 import com.stackone.stackone_client_java.operations.TicketingListUsers;
 import com.stackone.stackone_client_java.operations.TicketingUpdateTicket;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -90,6 +91,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncTicketing {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Ticketing syncSDK;
 
@@ -125,7 +127,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of tickets.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListTicketsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListTicketsResponse>} - The async response
      */
     public CompletableFuture<TicketingListTicketsResponse> listTickets(TicketingListTicketsRequest request) {
         return listTickets(request, Optional.empty());
@@ -138,11 +140,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListTicketsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListTicketsResponse>} - The async response
      */
     public CompletableFuture<TicketingListTicketsResponse> listTickets(TicketingListTicketsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListTicketsRequest, TicketingListTicketsResponse> operation
-              = new TicketingListTickets.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListTickets.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -166,7 +170,7 @@ public class AsyncTicketing {
      * 
      * @param xAccountId The account identifier
      * @param ticketingTicketCreateRequestDto 
-     * @return CompletableFuture&lt;TicketingCreateTicketResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingCreateTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingCreateTicketResponse> createTicket(String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) {
         return createTicket(xAccountId, ticketingTicketCreateRequestDto, Optional.empty());
@@ -180,7 +184,7 @@ public class AsyncTicketing {
      * @param xAccountId The account identifier
      * @param ticketingTicketCreateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingCreateTicketResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingCreateTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingCreateTicketResponse> createTicket(
             String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto,
@@ -192,7 +196,9 @@ public class AsyncTicketing {
                 .ticketingTicketCreateRequestDto(ticketingTicketCreateRequestDto)
                 .build();
         AsyncRequestOperation<TicketingCreateTicketRequest, TicketingCreateTicketResponse> operation
-              = new TicketingCreateTicket.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingCreateTicket.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -215,7 +221,7 @@ public class AsyncTicketing {
      * <p>Retrieve a single ticket by its identifier.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingGetTicketResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingGetTicketResponse> getTicket(TicketingGetTicketRequest request) {
         return getTicket(request, Optional.empty());
@@ -228,11 +234,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingGetTicketResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingGetTicketResponse> getTicket(TicketingGetTicketRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetTicketRequest, TicketingGetTicketResponse> operation
-              = new TicketingGetTicket.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetTicket.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -257,7 +265,7 @@ public class AsyncTicketing {
      * @param xAccountId The account identifier
      * @param id 
      * @param ticketingTicketUpdateRequestDto 
-     * @return CompletableFuture&lt;TicketingUpdateTicketResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingUpdateTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingUpdateTicketResponse> updateTicket(
             String xAccountId, String id,
@@ -276,7 +284,7 @@ public class AsyncTicketing {
      * @param id 
      * @param ticketingTicketUpdateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingUpdateTicketResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingUpdateTicketResponse>} - The async response
      */
     public CompletableFuture<TicketingUpdateTicketResponse> updateTicket(
             String xAccountId, String id,
@@ -289,7 +297,9 @@ public class AsyncTicketing {
                 .ticketingTicketUpdateRequestDto(ticketingTicketUpdateRequestDto)
                 .build();
         AsyncRequestOperation<TicketingUpdateTicketRequest, TicketingUpdateTicketResponse> operation
-              = new TicketingUpdateTicket.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingUpdateTicket.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -312,7 +322,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of users.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListUsersResponse>} - The async response
      */
     public CompletableFuture<TicketingListUsersResponse> listUsers(TicketingListUsersRequest request) {
         return listUsers(request, Optional.empty());
@@ -325,11 +335,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListUsersResponse>} - The async response
      */
     public CompletableFuture<TicketingListUsersResponse> listUsers(TicketingListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListUsersRequest, TicketingListUsersResponse> operation
-              = new TicketingListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -352,7 +364,7 @@ public class AsyncTicketing {
      * <p>Retrieve a single user by their identifier.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetUserResponse>} - The async response
      */
     public CompletableFuture<TicketingGetUserResponse> getUser(TicketingGetUserRequest request) {
         return getUser(request, Optional.empty());
@@ -365,11 +377,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetUserResponse>} - The async response
      */
     public CompletableFuture<TicketingGetUserResponse> getUser(TicketingGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetUserRequest, TicketingGetUserResponse> operation
-              = new TicketingGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -392,7 +406,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of comments for a ticket.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListCommentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListCommentsResponse>} - The async response
      */
     public CompletableFuture<TicketingListCommentsResponse> listComments(TicketingListCommentsRequest request) {
         return listComments(request, Optional.empty());
@@ -405,11 +419,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListCommentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListCommentsResponse>} - The async response
      */
     public CompletableFuture<TicketingListCommentsResponse> listComments(TicketingListCommentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListCommentsRequest, TicketingListCommentsResponse> operation
-              = new TicketingListComments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListComments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -432,7 +448,7 @@ public class AsyncTicketing {
      * <p>Retrieve a single comment by its identifier for a ticket.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingGetCommentResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetCommentResponse>} - The async response
      */
     public CompletableFuture<TicketingGetCommentResponse> getComment(TicketingGetCommentRequest request) {
         return getComment(request, Optional.empty());
@@ -445,11 +461,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingGetCommentResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetCommentResponse>} - The async response
      */
     public CompletableFuture<TicketingGetCommentResponse> getComment(TicketingGetCommentRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetCommentRequest, TicketingGetCommentResponse> operation
-              = new TicketingGetComment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetComment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -472,7 +490,7 @@ public class AsyncTicketing {
      * <p>Download the attachment file from a ticket.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingDownloadTicketingAttachmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingDownloadTicketingAttachmentResponse>} - The async response
      */
     public CompletableFuture<TicketingDownloadTicketingAttachmentResponse> downloadTicketingAttachment(TicketingDownloadTicketingAttachmentRequest request) {
         return downloadTicketingAttachment(request, Optional.empty());
@@ -485,11 +503,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingDownloadTicketingAttachmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingDownloadTicketingAttachmentResponse>} - The async response
      */
     public CompletableFuture<TicketingDownloadTicketingAttachmentResponse> downloadTicketingAttachment(TicketingDownloadTicketingAttachmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingDownloadTicketingAttachmentRequest, TicketingDownloadTicketingAttachmentResponse> operation
-              = new TicketingDownloadTicketingAttachment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingDownloadTicketingAttachment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -512,7 +532,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of attachment details for a ticket.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListAttachmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListAttachmentsResponse>} - The async response
      */
     public CompletableFuture<TicketingListAttachmentsResponse> listAttachments(TicketingListAttachmentsRequest request) {
         return listAttachments(request, Optional.empty());
@@ -525,11 +545,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListAttachmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListAttachmentsResponse>} - The async response
      */
     public CompletableFuture<TicketingListAttachmentsResponse> listAttachments(TicketingListAttachmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListAttachmentsRequest, TicketingListAttachmentsResponse> operation
-              = new TicketingListAttachments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListAttachments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -552,7 +574,7 @@ public class AsyncTicketing {
      * <p>Retrieve the details of a single attachment for a ticket.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingGetAttachmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetAttachmentResponse>} - The async response
      */
     public CompletableFuture<TicketingGetAttachmentResponse> getAttachment(TicketingGetAttachmentRequest request) {
         return getAttachment(request, Optional.empty());
@@ -565,11 +587,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingGetAttachmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetAttachmentResponse>} - The async response
      */
     public CompletableFuture<TicketingGetAttachmentResponse> getAttachment(TicketingGetAttachmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetAttachmentRequest, TicketingGetAttachmentResponse> operation
-              = new TicketingGetAttachment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetAttachment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -592,7 +616,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of all ticket types.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListTicketTypesResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListTicketTypesResponse>} - The async response
      */
     public CompletableFuture<TicketingListTicketTypesResponse> listTicketTypes(TicketingListTicketTypesRequest request) {
         return listTicketTypes(request, Optional.empty());
@@ -605,11 +629,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListTicketTypesResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListTicketTypesResponse>} - The async response
      */
     public CompletableFuture<TicketingListTicketTypesResponse> listTicketTypes(TicketingListTicketTypesRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListTicketTypesRequest, TicketingListTicketTypesResponse> operation
-              = new TicketingListTicketTypes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListTicketTypes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -632,7 +658,7 @@ public class AsyncTicketing {
      * <p>Retrieve a single ticket type by its identifier.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingGetTicketTypeResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetTicketTypeResponse>} - The async response
      */
     public CompletableFuture<TicketingGetTicketTypeResponse> getTicketType(TicketingGetTicketTypeRequest request) {
         return getTicketType(request, Optional.empty());
@@ -645,11 +671,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingGetTicketTypeResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetTicketTypeResponse>} - The async response
      */
     public CompletableFuture<TicketingGetTicketTypeResponse> getTicketType(TicketingGetTicketTypeRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetTicketTypeRequest, TicketingGetTicketTypeResponse> operation
-              = new TicketingGetTicketType.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetTicketType.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -672,7 +700,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of projects.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListProjectsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListProjectsResponse>} - The async response
      */
     public CompletableFuture<TicketingListProjectsResponse> listProjects(TicketingListProjectsRequest request) {
         return listProjects(request, Optional.empty());
@@ -685,11 +713,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListProjectsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListProjectsResponse>} - The async response
      */
     public CompletableFuture<TicketingListProjectsResponse> listProjects(TicketingListProjectsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListProjectsRequest, TicketingListProjectsResponse> operation
-              = new TicketingListProjects.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListProjects.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -712,7 +742,7 @@ public class AsyncTicketing {
      * <p>Retrieve a single project by its identifier.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingGetProjectResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetProjectResponse>} - The async response
      */
     public CompletableFuture<TicketingGetProjectResponse> getProject(TicketingGetProjectRequest request) {
         return getProject(request, Optional.empty());
@@ -725,11 +755,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingGetProjectResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetProjectResponse>} - The async response
      */
     public CompletableFuture<TicketingGetProjectResponse> getProject(TicketingGetProjectRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetProjectRequest, TicketingGetProjectResponse> operation
-              = new TicketingGetProject.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetProject.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -752,7 +784,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of project components.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListProjectComponentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListProjectComponentsResponse>} - The async response
      */
     public CompletableFuture<TicketingListProjectComponentsResponse> listProjectComponents(TicketingListProjectComponentsRequest request) {
         return listProjectComponents(request, Optional.empty());
@@ -765,11 +797,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListProjectComponentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListProjectComponentsResponse>} - The async response
      */
     public CompletableFuture<TicketingListProjectComponentsResponse> listProjectComponents(TicketingListProjectComponentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListProjectComponentsRequest, TicketingListProjectComponentsResponse> operation
-              = new TicketingListProjectComponents.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListProjectComponents.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -792,7 +826,7 @@ public class AsyncTicketing {
      * <p>Retrieve a single project component by its identifier.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingGetProjectComponentResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetProjectComponentResponse>} - The async response
      */
     public CompletableFuture<TicketingGetProjectComponentResponse> getProjectComponent(TicketingGetProjectComponentRequest request) {
         return getProjectComponent(request, Optional.empty());
@@ -805,11 +839,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingGetProjectComponentResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingGetProjectComponentResponse>} - The async response
      */
     public CompletableFuture<TicketingGetProjectComponentResponse> getProjectComponent(TicketingGetProjectComponentRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingGetProjectComponentRequest, TicketingGetProjectComponentResponse> operation
-              = new TicketingGetProjectComponent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingGetProjectComponent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -832,7 +868,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of ticket types for a project.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListProjectTicketTypesResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListProjectTicketTypesResponse>} - The async response
      */
     public CompletableFuture<TicketingListProjectTicketTypesResponse> listProjectTicketTypes(TicketingListProjectTicketTypesRequest request) {
         return listProjectTicketTypes(request, Optional.empty());
@@ -845,11 +881,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListProjectTicketTypesResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListProjectTicketTypesResponse>} - The async response
      */
     public CompletableFuture<TicketingListProjectTicketTypesResponse> listProjectTicketTypes(TicketingListProjectTicketTypesRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListProjectTicketTypesRequest, TicketingListProjectTicketTypesResponse> operation
-              = new TicketingListProjectTicketTypes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListProjectTicketTypes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -872,7 +910,7 @@ public class AsyncTicketing {
      * <p>Retrieve a paginated list of statuses for a ticket.
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;TicketingListTicketStatusesResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListTicketStatusesResponse>} - The async response
      */
     public CompletableFuture<TicketingListTicketStatusesResponse> listTicketStatuses(TicketingListTicketStatusesRequest request) {
         return listTicketStatuses(request, Optional.empty());
@@ -885,11 +923,13 @@ public class AsyncTicketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;TicketingListTicketStatusesResponse&gt; - The async response
+     * @return {@code CompletableFuture<TicketingListTicketStatusesResponse>} - The async response
      */
     public CompletableFuture<TicketingListTicketStatusesResponse> listTicketStatuses(TicketingListTicketStatusesRequest request, Optional<Options> options) {
         AsyncRequestOperation<TicketingListTicketStatusesRequest, TicketingListTicketStatusesResponse> operation
-              = new TicketingListTicketStatuses.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListTicketStatuses.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateApplicationRequestDto;
 import com.stackone.stackone_client_java.operations.AtsCreateApplication;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -21,6 +22,7 @@ public class AtsCreateApplicationRequestBuilder {
     private AtsCreateApplicationRequestDto atsCreateApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsCreateApplicationRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -65,7 +67,7 @@ public class AtsCreateApplicationRequestBuilder {
             .build());
 
         RequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
-              = new AtsCreateApplication.Sync(sdkConfiguration, options);
+              = new AtsCreateApplication.Sync(sdkConfiguration, options, _headers);
         AtsCreateApplicationRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

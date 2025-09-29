@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsCreateContentRequestDto;
 import com.stackone.stackone_client_java.operations.LmsUpdateContent;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -22,6 +23,7 @@ public class LmsUpdateContentRequestBuilder {
     private LmsCreateContentRequestDto lmsCreateContentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public LmsUpdateContentRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -73,7 +75,7 @@ public class LmsUpdateContentRequestBuilder {
             .build());
 
         RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContent.Sync(sdkConfiguration, options);
+              = new LmsUpdateContent.Sync(sdkConfiguration, options, _headers);
         LmsUpdateContentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

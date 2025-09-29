@@ -106,6 +106,7 @@ import com.stackone.stackone_client_java.operations.LmsListUserCompletions;
 import com.stackone.stackone_client_java.operations.LmsListUsers;
 import com.stackone.stackone_client_java.operations.LmsUpdateContent;
 import com.stackone.stackone_client_java.operations.LmsUpsertContent;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -113,6 +114,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncLms {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Lms syncSDK;
 
@@ -144,7 +146,7 @@ public class AsyncLms {
      * List Courses
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListCoursesResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListCoursesResponse>} - The async response
      */
     public CompletableFuture<LmsListCoursesResponse> listCourses(LmsListCoursesRequest request) {
         return listCourses(request, Optional.empty());
@@ -155,11 +157,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListCoursesResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListCoursesResponse>} - The async response
      */
     public CompletableFuture<LmsListCoursesResponse> listCourses(LmsListCoursesRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListCoursesRequest, LmsListCoursesResponse> operation
-              = new LmsListCourses.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListCourses.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -178,7 +182,7 @@ public class AsyncLms {
      * Get Course
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetCourseResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetCourseResponse>} - The async response
      */
     public CompletableFuture<LmsGetCourseResponse> getCourse(LmsGetCourseRequest request) {
         return getCourse(request, Optional.empty());
@@ -189,11 +193,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetCourseResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetCourseResponse>} - The async response
      */
     public CompletableFuture<LmsGetCourseResponse> getCourse(LmsGetCourseRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetCourseRequest, LmsGetCourseResponse> operation
-              = new LmsGetCourse.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetCourse.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -212,7 +218,7 @@ public class AsyncLms {
      * List User Assignments
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListUserAssignmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListUserAssignmentsResponse>} - The async response
      */
     public CompletableFuture<LmsListUserAssignmentsResponse> listUserAssignments(LmsListUserAssignmentsRequest request) {
         return listUserAssignments(request, Optional.empty());
@@ -223,11 +229,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListUserAssignmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListUserAssignmentsResponse>} - The async response
      */
     public CompletableFuture<LmsListUserAssignmentsResponse> listUserAssignments(LmsListUserAssignmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListUserAssignmentsRequest, LmsListUserAssignmentsResponse> operation
-              = new LmsListUserAssignments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListUserAssignments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -248,7 +256,7 @@ public class AsyncLms {
      * @param xAccountId The account identifier
      * @param id 
      * @param lmsCreateAssignmentRequestDto 
-     * @return CompletableFuture&lt;LmsCreateUserAssignmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsCreateUserAssignmentResponse>} - The async response
      */
     public CompletableFuture<LmsCreateUserAssignmentResponse> createUserAssignment(
             String xAccountId, String id,
@@ -265,7 +273,7 @@ public class AsyncLms {
      * @param id 
      * @param lmsCreateAssignmentRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;LmsCreateUserAssignmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsCreateUserAssignmentResponse>} - The async response
      */
     public CompletableFuture<LmsCreateUserAssignmentResponse> createUserAssignment(
             String xAccountId, String id,
@@ -278,7 +286,9 @@ public class AsyncLms {
                 .lmsCreateAssignmentRequestDto(lmsCreateAssignmentRequestDto)
                 .build();
         AsyncRequestOperation<LmsCreateUserAssignmentRequest, LmsCreateUserAssignmentResponse> operation
-              = new LmsCreateUserAssignment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsCreateUserAssignment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -297,7 +307,7 @@ public class AsyncLms {
      * Get User Assignment
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetUserAssignmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetUserAssignmentResponse>} - The async response
      */
     public CompletableFuture<LmsGetUserAssignmentResponse> getUserAssignment(LmsGetUserAssignmentRequest request) {
         return getUserAssignment(request, Optional.empty());
@@ -308,11 +318,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetUserAssignmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetUserAssignmentResponse>} - The async response
      */
     public CompletableFuture<LmsGetUserAssignmentResponse> getUserAssignment(LmsGetUserAssignmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetUserAssignmentRequest, LmsGetUserAssignmentResponse> operation
-              = new LmsGetUserAssignment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetUserAssignment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -332,7 +344,7 @@ public class AsyncLms {
      * 
      * @param xAccountId The account identifier
      * @param lmsBatchUpsertContentRequestDto 
-     * @return CompletableFuture&lt;LmsBatchUpsertContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsBatchUpsertContentResponse>} - The async response
      */
     public CompletableFuture<LmsBatchUpsertContentResponse> batchUpsertContent(String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) {
         return batchUpsertContent(xAccountId, lmsBatchUpsertContentRequestDto, Optional.empty());
@@ -344,7 +356,7 @@ public class AsyncLms {
      * @param xAccountId The account identifier
      * @param lmsBatchUpsertContentRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;LmsBatchUpsertContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsBatchUpsertContentResponse>} - The async response
      */
     public CompletableFuture<LmsBatchUpsertContentResponse> batchUpsertContent(
             String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto,
@@ -356,7 +368,9 @@ public class AsyncLms {
                 .lmsBatchUpsertContentRequestDto(lmsBatchUpsertContentRequestDto)
                 .build();
         AsyncRequestOperation<LmsBatchUpsertContentRequest, LmsBatchUpsertContentResponse> operation
-              = new LmsBatchUpsertContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsBatchUpsertContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -375,7 +389,7 @@ public class AsyncLms {
      * List Content
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListContentResponse>} - The async response
      */
     public CompletableFuture<LmsListContentResponse> listContent(LmsListContentRequest request) {
         return listContent(request, Optional.empty());
@@ -386,11 +400,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListContentResponse>} - The async response
      */
     public CompletableFuture<LmsListContentResponse> listContent(LmsListContentRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListContentRequest, LmsListContentResponse> operation
-              = new LmsListContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -410,7 +426,7 @@ public class AsyncLms {
      * 
      * @param xAccountId The account identifier
      * @param lmsUpsertContentRequestDto 
-     * @return CompletableFuture&lt;LmsUpsertContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsUpsertContentResponse>} - The async response
      */
     public CompletableFuture<LmsUpsertContentResponse> upsertContent(String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
         return upsertContent(xAccountId, lmsUpsertContentRequestDto, Optional.empty());
@@ -422,7 +438,7 @@ public class AsyncLms {
      * @param xAccountId The account identifier
      * @param lmsUpsertContentRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;LmsUpsertContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsUpsertContentResponse>} - The async response
      */
     public CompletableFuture<LmsUpsertContentResponse> upsertContent(
             String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto,
@@ -434,7 +450,9 @@ public class AsyncLms {
                 .lmsUpsertContentRequestDto(lmsUpsertContentRequestDto)
                 .build();
         AsyncRequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
-              = new LmsUpsertContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsUpsertContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -453,7 +471,7 @@ public class AsyncLms {
      * Get Content
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetContentResponse>} - The async response
      */
     public CompletableFuture<LmsGetContentResponse> getContent(LmsGetContentRequest request) {
         return getContent(request, Optional.empty());
@@ -464,11 +482,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetContentResponse>} - The async response
      */
     public CompletableFuture<LmsGetContentResponse> getContent(LmsGetContentRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetContentRequest, LmsGetContentResponse> operation
-              = new LmsGetContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -489,7 +509,7 @@ public class AsyncLms {
      * @param xAccountId The account identifier
      * @param id 
      * @param lmsCreateContentRequestDto 
-     * @return CompletableFuture&lt;LmsUpdateContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsUpdateContentResponse>} - The async response
      */
     public CompletableFuture<LmsUpdateContentResponse> updateContent(
             String xAccountId, String id,
@@ -506,7 +526,7 @@ public class AsyncLms {
      * @param id 
      * @param lmsCreateContentRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;LmsUpdateContentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsUpdateContentResponse>} - The async response
      */
     public CompletableFuture<LmsUpdateContentResponse> updateContent(
             String xAccountId, String id,
@@ -519,7 +539,9 @@ public class AsyncLms {
                 .lmsCreateContentRequestDto(lmsCreateContentRequestDto)
                 .build();
         AsyncRequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContent.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsUpdateContent.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -538,7 +560,7 @@ public class AsyncLms {
      * List User Completions
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListUserCompletionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListUserCompletionsResponse>} - The async response
      */
     public CompletableFuture<LmsListUserCompletionsResponse> listUserCompletions(LmsListUserCompletionsRequest request) {
         return listUserCompletions(request, Optional.empty());
@@ -549,11 +571,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListUserCompletionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListUserCompletionsResponse>} - The async response
      */
     public CompletableFuture<LmsListUserCompletionsResponse> listUserCompletions(LmsListUserCompletionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListUserCompletionsRequest, LmsListUserCompletionsResponse> operation
-              = new LmsListUserCompletions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListUserCompletions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -574,7 +598,7 @@ public class AsyncLms {
      * @param xAccountId The account identifier
      * @param id 
      * @param lmsCreateCompletionRequestDto 
-     * @return CompletableFuture&lt;LmsCreateUserCompletionResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsCreateUserCompletionResponse>} - The async response
      */
     public CompletableFuture<LmsCreateUserCompletionResponse> createUserCompletion(
             String xAccountId, String id,
@@ -591,7 +615,7 @@ public class AsyncLms {
      * @param id 
      * @param lmsCreateCompletionRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;LmsCreateUserCompletionResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsCreateUserCompletionResponse>} - The async response
      */
     public CompletableFuture<LmsCreateUserCompletionResponse> createUserCompletion(
             String xAccountId, String id,
@@ -604,7 +628,9 @@ public class AsyncLms {
                 .lmsCreateCompletionRequestDto(lmsCreateCompletionRequestDto)
                 .build();
         AsyncRequestOperation<LmsCreateUserCompletionRequest, LmsCreateUserCompletionResponse> operation
-              = new LmsCreateUserCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsCreateUserCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -623,7 +649,7 @@ public class AsyncLms {
      * Get User Completion
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetUserCompletionResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetUserCompletionResponse>} - The async response
      */
     public CompletableFuture<LmsGetUserCompletionResponse> getUserCompletion(LmsGetUserCompletionRequest request) {
         return getUserCompletion(request, Optional.empty());
@@ -634,11 +660,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetUserCompletionResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetUserCompletionResponse>} - The async response
      */
     public CompletableFuture<LmsGetUserCompletionResponse> getUserCompletion(LmsGetUserCompletionRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetUserCompletionRequest, LmsGetUserCompletionResponse> operation
-              = new LmsGetUserCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetUserCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -659,7 +687,7 @@ public class AsyncLms {
      * @param xAccountId The account identifier
      * @param id 
      * @param subResourceId 
-     * @return CompletableFuture&lt;LmsDeleteUserCompletionResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsDeleteUserCompletionResponse>} - The async response
      */
     public CompletableFuture<LmsDeleteUserCompletionResponse> deleteUserCompletion(
             String xAccountId, String id,
@@ -676,7 +704,7 @@ public class AsyncLms {
      * @param id 
      * @param subResourceId 
      * @param options additional options
-     * @return CompletableFuture&lt;LmsDeleteUserCompletionResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsDeleteUserCompletionResponse>} - The async response
      */
     public CompletableFuture<LmsDeleteUserCompletionResponse> deleteUserCompletion(
             String xAccountId, String id,
@@ -689,7 +717,9 @@ public class AsyncLms {
                 .subResourceId(subResourceId)
                 .build();
         AsyncRequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
-              = new LmsDeleteUserCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsDeleteUserCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -708,7 +738,7 @@ public class AsyncLms {
      * List Completions
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListCompletionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListCompletionsResponse>} - The async response
      */
     public CompletableFuture<LmsListCompletionsResponse> listCompletions(LmsListCompletionsRequest request) {
         return listCompletions(request, Optional.empty());
@@ -719,11 +749,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListCompletionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListCompletionsResponse>} - The async response
      */
     public CompletableFuture<LmsListCompletionsResponse> listCompletions(LmsListCompletionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListCompletionsRequest, LmsListCompletionsResponse> operation
-              = new LmsListCompletions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListCompletions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -742,7 +774,7 @@ public class AsyncLms {
      * Get Completion
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetCompletionResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetCompletionResponse>} - The async response
      */
     public CompletableFuture<LmsGetCompletionResponse> getCompletion(LmsGetCompletionRequest request) {
         return getCompletion(request, Optional.empty());
@@ -753,11 +785,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetCompletionResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetCompletionResponse>} - The async response
      */
     public CompletableFuture<LmsGetCompletionResponse> getCompletion(LmsGetCompletionRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetCompletionRequest, LmsGetCompletionResponse> operation
-              = new LmsGetCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -776,7 +810,7 @@ public class AsyncLms {
      * Get Category
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetCategoryResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetCategoryResponse>} - The async response
      */
     public CompletableFuture<LmsGetCategoryResponse> getCategory(LmsGetCategoryRequest request) {
         return getCategory(request, Optional.empty());
@@ -787,11 +821,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetCategoryResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetCategoryResponse>} - The async response
      */
     public CompletableFuture<LmsGetCategoryResponse> getCategory(LmsGetCategoryRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetCategoryRequest, LmsGetCategoryResponse> operation
-              = new LmsGetCategory.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetCategory.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -810,7 +846,7 @@ public class AsyncLms {
      * List Categories
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListCategoriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListCategoriesResponse>} - The async response
      */
     public CompletableFuture<LmsListCategoriesResponse> listCategories(LmsListCategoriesRequest request) {
         return listCategories(request, Optional.empty());
@@ -821,11 +857,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListCategoriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListCategoriesResponse>} - The async response
      */
     public CompletableFuture<LmsListCategoriesResponse> listCategories(LmsListCategoriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListCategoriesRequest, LmsListCategoriesResponse> operation
-              = new LmsListCategories.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListCategories.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -844,7 +882,7 @@ public class AsyncLms {
      * List Users
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListUsersResponse>} - The async response
      */
     public CompletableFuture<LmsListUsersResponse> listUsers(LmsListUsersRequest request) {
         return listUsers(request, Optional.empty());
@@ -855,11 +893,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListUsersResponse>} - The async response
      */
     public CompletableFuture<LmsListUsersResponse> listUsers(LmsListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListUsersRequest, LmsListUsersResponse> operation
-              = new LmsListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -878,7 +918,7 @@ public class AsyncLms {
      * Get User
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetUserResponse>} - The async response
      */
     public CompletableFuture<LmsGetUserResponse> getUser(LmsGetUserRequest request) {
         return getUser(request, Optional.empty());
@@ -889,11 +929,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetUserResponse>} - The async response
      */
     public CompletableFuture<LmsGetUserResponse> getUser(LmsGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetUserRequest, LmsGetUserResponse> operation
-              = new LmsGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -912,7 +954,7 @@ public class AsyncLms {
      * Get Skill
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetSkillResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetSkillResponse>} - The async response
      */
     public CompletableFuture<LmsGetSkillResponse> getSkill(LmsGetSkillRequest request) {
         return getSkill(request, Optional.empty());
@@ -923,11 +965,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetSkillResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetSkillResponse>} - The async response
      */
     public CompletableFuture<LmsGetSkillResponse> getSkill(LmsGetSkillRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetSkillRequest, LmsGetSkillResponse> operation
-              = new LmsGetSkill.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetSkill.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -946,7 +990,7 @@ public class AsyncLms {
      * List Skills
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListSkillsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListSkillsResponse>} - The async response
      */
     public CompletableFuture<LmsListSkillsResponse> listSkills(LmsListSkillsRequest request) {
         return listSkills(request, Optional.empty());
@@ -957,11 +1001,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListSkillsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListSkillsResponse>} - The async response
      */
     public CompletableFuture<LmsListSkillsResponse> listSkills(LmsListSkillsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListSkillsRequest, LmsListSkillsResponse> operation
-              = new LmsListSkills.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListSkills.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -980,7 +1026,7 @@ public class AsyncLms {
      * List Assignments
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsListAssignmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListAssignmentsResponse>} - The async response
      */
     public CompletableFuture<LmsListAssignmentsResponse> listAssignments(LmsListAssignmentsRequest request) {
         return listAssignments(request, Optional.empty());
@@ -991,11 +1037,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsListAssignmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsListAssignmentsResponse>} - The async response
      */
     public CompletableFuture<LmsListAssignmentsResponse> listAssignments(LmsListAssignmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsListAssignmentsRequest, LmsListAssignmentsResponse> operation
-              = new LmsListAssignments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsListAssignments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1014,7 +1062,7 @@ public class AsyncLms {
      * Get Assignment
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;LmsGetAssignmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetAssignmentResponse>} - The async response
      */
     public CompletableFuture<LmsGetAssignmentResponse> getAssignment(LmsGetAssignmentRequest request) {
         return getAssignment(request, Optional.empty());
@@ -1025,11 +1073,13 @@ public class AsyncLms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;LmsGetAssignmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<LmsGetAssignmentResponse>} - The async response
      */
     public CompletableFuture<LmsGetAssignmentResponse> getAssignment(LmsGetAssignmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<LmsGetAssignmentRequest, LmsGetAssignmentResponse> operation
-              = new LmsGetAssignment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsGetAssignment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

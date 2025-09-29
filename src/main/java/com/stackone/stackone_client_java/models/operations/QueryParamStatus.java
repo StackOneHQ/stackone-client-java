@@ -11,13 +11,12 @@ import java.util.Optional;
 /**
  * QueryParamStatus
  * 
- * <p>Filter to select shifts by status
+ * <p>Filter positions by status
  */
 public enum QueryParamStatus {
-    DRAFT("draft"),
-    PUBLISHED("published"),
-    CONFIRMED("confirmed"),
-    CANCELLED("cancelled"),
+    OPEN("open"),
+    CLOSED("closed"),
+    PAUSED("paused"),
     UNMAPPED_VALUE("unmapped_value");
 
     @JsonValue

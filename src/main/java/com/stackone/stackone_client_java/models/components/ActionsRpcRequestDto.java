@@ -9,9 +9,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -23,25 +25,56 @@ public class ActionsRpcRequestDto {
     private String action;
 
     /**
-     * Input parameters for the action
+     * Path parameters for the action
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("input")
-    private JsonNullable<? extends Input> input;
+    @JsonProperty("path")
+    private JsonNullable<? extends Map<String, Object>> path;
+
+    /**
+     * Query parameters for the action
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("query")
+    private JsonNullable<? extends Map<String, Object>> query;
+
+    /**
+     * Headers for the action
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("headers")
+    private JsonNullable<? extends Map<String, Object>> headers;
+
+    /**
+     * Request body for the action
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("body")
+    private JsonNullable<? extends Map<String, Object>> body;
 
     @JsonCreator
     public ActionsRpcRequestDto(
             @JsonProperty("action") String action,
-            @JsonProperty("input") JsonNullable<? extends Input> input) {
+            @JsonProperty("path") JsonNullable<? extends Map<String, Object>> path,
+            @JsonProperty("query") JsonNullable<? extends Map<String, Object>> query,
+            @JsonProperty("headers") JsonNullable<? extends Map<String, Object>> headers,
+            @JsonProperty("body") JsonNullable<? extends Map<String, Object>> body) {
         Utils.checkNotNull(action, "action");
-        Utils.checkNotNull(input, "input");
+        Utils.checkNotNull(path, "path");
+        Utils.checkNotNull(query, "query");
+        Utils.checkNotNull(headers, "headers");
+        Utils.checkNotNull(body, "body");
         this.action = action;
-        this.input = input;
+        this.path = path;
+        this.query = query;
+        this.headers = headers;
+        this.body = body;
     }
     
     public ActionsRpcRequestDto(
             String action) {
-        this(action, JsonNullable.undefined());
+        this(action, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -53,12 +86,39 @@ public class ActionsRpcRequestDto {
     }
 
     /**
-     * Input parameters for the action
+     * Path parameters for the action
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Input> input() {
-        return (JsonNullable<Input>) input;
+    public JsonNullable<Map<String, Object>> path() {
+        return (JsonNullable<Map<String, Object>>) path;
+    }
+
+    /**
+     * Query parameters for the action
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Map<String, Object>> query() {
+        return (JsonNullable<Map<String, Object>>) query;
+    }
+
+    /**
+     * Headers for the action
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Map<String, Object>> headers() {
+        return (JsonNullable<Map<String, Object>>) headers;
+    }
+
+    /**
+     * Request body for the action
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<Map<String, Object>> body() {
+        return (JsonNullable<Map<String, Object>>) body;
     }
 
     public static Builder builder() {
@@ -76,20 +136,74 @@ public class ActionsRpcRequestDto {
     }
 
     /**
-     * Input parameters for the action
+     * Path parameters for the action
      */
-    public ActionsRpcRequestDto withInput(Input input) {
-        Utils.checkNotNull(input, "input");
-        this.input = JsonNullable.of(input);
+    public ActionsRpcRequestDto withPath(Map<String, Object> path) {
+        Utils.checkNotNull(path, "path");
+        this.path = JsonNullable.of(path);
         return this;
     }
 
     /**
-     * Input parameters for the action
+     * Path parameters for the action
      */
-    public ActionsRpcRequestDto withInput(JsonNullable<? extends Input> input) {
-        Utils.checkNotNull(input, "input");
-        this.input = input;
+    public ActionsRpcRequestDto withPath(JsonNullable<? extends Map<String, Object>> path) {
+        Utils.checkNotNull(path, "path");
+        this.path = path;
+        return this;
+    }
+
+    /**
+     * Query parameters for the action
+     */
+    public ActionsRpcRequestDto withQuery(Map<String, Object> query) {
+        Utils.checkNotNull(query, "query");
+        this.query = JsonNullable.of(query);
+        return this;
+    }
+
+    /**
+     * Query parameters for the action
+     */
+    public ActionsRpcRequestDto withQuery(JsonNullable<? extends Map<String, Object>> query) {
+        Utils.checkNotNull(query, "query");
+        this.query = query;
+        return this;
+    }
+
+    /**
+     * Headers for the action
+     */
+    public ActionsRpcRequestDto withHeaders(Map<String, Object> headers) {
+        Utils.checkNotNull(headers, "headers");
+        this.headers = JsonNullable.of(headers);
+        return this;
+    }
+
+    /**
+     * Headers for the action
+     */
+    public ActionsRpcRequestDto withHeaders(JsonNullable<? extends Map<String, Object>> headers) {
+        Utils.checkNotNull(headers, "headers");
+        this.headers = headers;
+        return this;
+    }
+
+    /**
+     * Request body for the action
+     */
+    public ActionsRpcRequestDto withBody(Map<String, Object> body) {
+        Utils.checkNotNull(body, "body");
+        this.body = JsonNullable.of(body);
+        return this;
+    }
+
+    /**
+     * Request body for the action
+     */
+    public ActionsRpcRequestDto withBody(JsonNullable<? extends Map<String, Object>> body) {
+        Utils.checkNotNull(body, "body");
+        this.body = body;
         return this;
     }
 
@@ -104,20 +218,27 @@ public class ActionsRpcRequestDto {
         ActionsRpcRequestDto other = (ActionsRpcRequestDto) o;
         return 
             Utils.enhancedDeepEquals(this.action, other.action) &&
-            Utils.enhancedDeepEquals(this.input, other.input);
+            Utils.enhancedDeepEquals(this.path, other.path) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.headers, other.headers) &&
+            Utils.enhancedDeepEquals(this.body, other.body);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            action, input);
+            action, path, query,
+            headers, body);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ActionsRpcRequestDto.class,
                 "action", action,
-                "input", input);
+                "path", path,
+                "query", query,
+                "headers", headers,
+                "body", body);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -125,7 +246,13 @@ public class ActionsRpcRequestDto {
 
         private String action;
 
-        private JsonNullable<? extends Input> input = JsonNullable.undefined();
+        private JsonNullable<? extends Map<String, Object>> path = JsonNullable.undefined();
+
+        private JsonNullable<? extends Map<String, Object>> query = JsonNullable.undefined();
+
+        private JsonNullable<? extends Map<String, Object>> headers = JsonNullable.undefined();
+
+        private JsonNullable<? extends Map<String, Object>> body = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -143,27 +270,85 @@ public class ActionsRpcRequestDto {
 
 
         /**
-         * Input parameters for the action
+         * Path parameters for the action
          */
-        public Builder input(Input input) {
-            Utils.checkNotNull(input, "input");
-            this.input = JsonNullable.of(input);
+        public Builder path(Map<String, Object> path) {
+            Utils.checkNotNull(path, "path");
+            this.path = JsonNullable.of(path);
             return this;
         }
 
         /**
-         * Input parameters for the action
+         * Path parameters for the action
          */
-        public Builder input(JsonNullable<? extends Input> input) {
-            Utils.checkNotNull(input, "input");
-            this.input = input;
+        public Builder path(JsonNullable<? extends Map<String, Object>> path) {
+            Utils.checkNotNull(path, "path");
+            this.path = path;
+            return this;
+        }
+
+
+        /**
+         * Query parameters for the action
+         */
+        public Builder query(Map<String, Object> query) {
+            Utils.checkNotNull(query, "query");
+            this.query = JsonNullable.of(query);
+            return this;
+        }
+
+        /**
+         * Query parameters for the action
+         */
+        public Builder query(JsonNullable<? extends Map<String, Object>> query) {
+            Utils.checkNotNull(query, "query");
+            this.query = query;
+            return this;
+        }
+
+
+        /**
+         * Headers for the action
+         */
+        public Builder headers(Map<String, Object> headers) {
+            Utils.checkNotNull(headers, "headers");
+            this.headers = JsonNullable.of(headers);
+            return this;
+        }
+
+        /**
+         * Headers for the action
+         */
+        public Builder headers(JsonNullable<? extends Map<String, Object>> headers) {
+            Utils.checkNotNull(headers, "headers");
+            this.headers = headers;
+            return this;
+        }
+
+
+        /**
+         * Request body for the action
+         */
+        public Builder body(Map<String, Object> body) {
+            Utils.checkNotNull(body, "body");
+            this.body = JsonNullable.of(body);
+            return this;
+        }
+
+        /**
+         * Request body for the action
+         */
+        public Builder body(JsonNullable<? extends Map<String, Object>> body) {
+            Utils.checkNotNull(body, "body");
+            this.body = body;
             return this;
         }
 
         public ActionsRpcRequestDto build() {
 
             return new ActionsRpcRequestDto(
-                action, input);
+                action, path, query,
+                headers, body);
         }
 
     }
