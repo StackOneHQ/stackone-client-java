@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.StackoneListConnector
 import com.stackone.stackone_client_java.models.operations.StackoneListConnectorsMetaResponse;
 import com.stackone.stackone_client_java.operations.StackoneGetConnectorMeta;
 import com.stackone.stackone_client_java.operations.StackoneListConnectorsMeta;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -23,6 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Retrieve metadata for connectors.
  */
 public class Connectors {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncConnectors asyncSDK;
 
@@ -74,7 +76,7 @@ public class Connectors {
                 .include(include)
                 .build();
         RequestOperation<StackoneListConnectorsMetaRequest, StackoneListConnectorsMetaResponse> operation
-              = new StackoneListConnectorsMeta.Sync(sdkConfiguration, options);
+              = new StackoneListConnectorsMeta.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -117,7 +119,7 @@ public class Connectors {
                 .include(include)
                 .build();
         RequestOperation<StackoneGetConnectorMetaRequest, StackoneGetConnectorMetaResponse> operation
-              = new StackoneGetConnectorMeta.Sync(sdkConfiguration, options);
+              = new StackoneGetConnectorMeta.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.AsyncReque
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.MarketingGetContentBlockRequest;
 import com.stackone.stackone_client_java.operations.MarketingGetContentBlock;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -20,6 +21,7 @@ public class MarketingGetContentBlockRequestBuilder {
     private MarketingGetContentBlockRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public MarketingGetContentBlockRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -49,7 +51,9 @@ public class MarketingGetContentBlockRequestBuilder {
             .build());
 
         AsyncRequestOperation<MarketingGetContentBlockRequest, MarketingGetContentBlockResponse> operation
-              = new MarketingGetContentBlock.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetContentBlock.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

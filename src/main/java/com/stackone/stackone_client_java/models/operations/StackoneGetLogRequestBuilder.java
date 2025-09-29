@@ -7,6 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.operations.StackoneGetLog;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -21,6 +22,7 @@ public class StackoneGetLogRequestBuilder {
     private JsonNullable<? extends Include> include = JsonNullable.undefined();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public StackoneGetLogRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -71,7 +73,7 @@ public class StackoneGetLogRequestBuilder {
             .build());
 
         RequestOperation<StackoneGetLogRequest, StackoneGetLogResponse> operation
-              = new StackoneGetLog.Sync(sdkConfiguration, options);
+              = new StackoneGetLog.Sync(sdkConfiguration, options, _headers);
         StackoneGetLogRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

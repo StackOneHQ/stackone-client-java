@@ -1,0 +1,35 @@
+description = 'stackone-client-java Spring Boot Auto Configuration'
+
+// Publishing configuration overrides
+ext {
+    publishingConfig = [
+        groupId: rootProject.group,
+        artifactId: 'stackone-client-java-spring-boot-autoconfigure',
+        version: rootProject.version,
+        name: 'StackOne Java SDK - Spring Boot Auto Configuration',
+        description: 'Spring Boot auto-configuration for the StackOne Java SDK.',
+    ]
+}
+
+dependencies {
+    api project(':')
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    dependsOn 'generatePomFileForMavenPublication'
+    archiveBaseName = 'stackone-client-java-spring-boot-autoconfigure'
+    into("META-INF/maven/com.stackone/stackone-client-java-spring-boot-autoconfigure") {
+        from(layout.buildDirectory.file("pom.xml")) {
+            // Only include if it exists to avoid build ordering issues
+            duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        }
+    }
+}

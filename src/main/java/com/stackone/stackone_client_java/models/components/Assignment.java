@@ -53,7 +53,8 @@ public class Assignment {
     private JsonNullable<String> externalReference;
 
     /**
-     * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
+     * The learning_object_id associated with this assignment. This is not required unless specified in an
+     * integration.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("learning_object_id")
@@ -67,7 +68,8 @@ public class Assignment {
     private JsonNullable<String> remoteLearningObjectId;
 
     /**
-     * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
+     * The external reference of the learning object associated with this assignment, this is the main
+     * identifier for creating assignments.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("learning_object_external_reference")
@@ -281,7 +283,8 @@ public class Assignment {
     }
 
     /**
-     * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
+     * The learning_object_id associated with this assignment. This is not required unless specified in an
+     * integration.
      */
     @JsonIgnore
     public JsonNullable<String> learningObjectId() {
@@ -297,7 +300,8 @@ public class Assignment {
     }
 
     /**
-     * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
+     * The external reference of the learning object associated with this assignment, this is the main
+     * identifier for creating assignments.
      */
     @JsonIgnore
     public JsonNullable<String> learningObjectExternalReference() {
@@ -501,7 +505,8 @@ public class Assignment {
     }
 
     /**
-     * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
+     * The learning_object_id associated with this assignment. This is not required unless specified in an
+     * integration.
      */
     public Assignment withLearningObjectId(String learningObjectId) {
         Utils.checkNotNull(learningObjectId, "learningObjectId");
@@ -510,7 +515,8 @@ public class Assignment {
     }
 
     /**
-     * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
+     * The learning_object_id associated with this assignment. This is not required unless specified in an
+     * integration.
      */
     public Assignment withLearningObjectId(JsonNullable<String> learningObjectId) {
         Utils.checkNotNull(learningObjectId, "learningObjectId");
@@ -537,7 +543,8 @@ public class Assignment {
     }
 
     /**
-     * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
+     * The external reference of the learning object associated with this assignment, this is the main
+     * identifier for creating assignments.
      */
     public Assignment withLearningObjectExternalReference(String learningObjectExternalReference) {
         Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
@@ -546,7 +553,8 @@ public class Assignment {
     }
 
     /**
-     * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
+     * The external reference of the learning object associated with this assignment, this is the main
+     * identifier for creating assignments.
      */
     public Assignment withLearningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
         Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
@@ -1003,7 +1011,8 @@ public class Assignment {
 
 
         /**
-         * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
+         * The learning_object_id associated with this assignment. This is not required unless specified in an
+         * integration.
          */
         public Builder learningObjectId(String learningObjectId) {
             Utils.checkNotNull(learningObjectId, "learningObjectId");
@@ -1012,7 +1021,8 @@ public class Assignment {
         }
 
         /**
-         * The learning_object_id associated with this assignment. This is not required unless specified in an integration.
+         * The learning_object_id associated with this assignment. This is not required unless specified in an
+         * integration.
          */
         public Builder learningObjectId(JsonNullable<String> learningObjectId) {
             Utils.checkNotNull(learningObjectId, "learningObjectId");
@@ -1041,7 +1051,8 @@ public class Assignment {
 
 
         /**
-         * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
+         * The external reference of the learning object associated with this assignment, this is the main
+         * identifier for creating assignments.
          */
         public Builder learningObjectExternalReference(String learningObjectExternalReference) {
             Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
@@ -1050,7 +1061,8 @@ public class Assignment {
         }
 
         /**
-         * The external reference of the learning object associated with this assignment, this is the main identifier for creating assignments.
+         * The external reference of the learning object associated with this assignment, this is the main
+         * identifier for creating assignments.
          */
         public Builder learningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
             Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");

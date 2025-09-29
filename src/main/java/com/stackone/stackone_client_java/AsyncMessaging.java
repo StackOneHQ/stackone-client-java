@@ -51,6 +51,7 @@ import com.stackone.stackone_client_java.operations.MessagingListConversationMes
 import com.stackone.stackone_client_java.operations.MessagingListConversations;
 import com.stackone.stackone_client_java.operations.MessagingListUsers;
 import com.stackone.stackone_client_java.operations.MessagingSendMessage;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -58,6 +59,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncMessaging {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Messaging syncSDK;
 
@@ -89,7 +91,7 @@ public class AsyncMessaging {
      * List Conversations
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingListConversationsResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingListConversationsResponse>} - The async response
      */
     public CompletableFuture<MessagingListConversationsResponse> listConversations(MessagingListConversationsRequest request) {
         return listConversations(request, Optional.empty());
@@ -100,11 +102,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingListConversationsResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingListConversationsResponse>} - The async response
      */
     public CompletableFuture<MessagingListConversationsResponse> listConversations(MessagingListConversationsRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingListConversationsRequest, MessagingListConversationsResponse> operation
-              = new MessagingListConversations.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingListConversations.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -124,7 +128,7 @@ public class AsyncMessaging {
      * 
      * @param xAccountId The account identifier
      * @param messagingCreateConversationRequestDto 
-     * @return CompletableFuture&lt;MessagingCreateConversationResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingCreateConversationResponse>} - The async response
      */
     public CompletableFuture<MessagingCreateConversationResponse> createConversation(String xAccountId, MessagingCreateConversationRequestDto messagingCreateConversationRequestDto) {
         return createConversation(xAccountId, messagingCreateConversationRequestDto, Optional.empty());
@@ -136,7 +140,7 @@ public class AsyncMessaging {
      * @param xAccountId The account identifier
      * @param messagingCreateConversationRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingCreateConversationResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingCreateConversationResponse>} - The async response
      */
     public CompletableFuture<MessagingCreateConversationResponse> createConversation(
             String xAccountId, MessagingCreateConversationRequestDto messagingCreateConversationRequestDto,
@@ -148,7 +152,9 @@ public class AsyncMessaging {
                 .messagingCreateConversationRequestDto(messagingCreateConversationRequestDto)
                 .build();
         AsyncRequestOperation<MessagingCreateConversationRequest, MessagingCreateConversationResponse> operation
-              = new MessagingCreateConversation.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingCreateConversation.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -167,7 +173,7 @@ public class AsyncMessaging {
      * Get Conversation
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingGetConversationResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingGetConversationResponse>} - The async response
      */
     public CompletableFuture<MessagingGetConversationResponse> getConversation(MessagingGetConversationRequest request) {
         return getConversation(request, Optional.empty());
@@ -178,11 +184,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingGetConversationResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingGetConversationResponse>} - The async response
      */
     public CompletableFuture<MessagingGetConversationResponse> getConversation(MessagingGetConversationRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingGetConversationRequest, MessagingGetConversationResponse> operation
-              = new MessagingGetConversation.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingGetConversation.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -201,7 +209,7 @@ public class AsyncMessaging {
      * Download Attachment
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingDownloadMessagingAttachmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingDownloadMessagingAttachmentResponse>} - The async response
      */
     public CompletableFuture<MessagingDownloadMessagingAttachmentResponse> downloadMessagingAttachment(MessagingDownloadMessagingAttachmentRequest request) {
         return downloadMessagingAttachment(request, Optional.empty());
@@ -212,11 +220,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingDownloadMessagingAttachmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingDownloadMessagingAttachmentResponse>} - The async response
      */
     public CompletableFuture<MessagingDownloadMessagingAttachmentResponse> downloadMessagingAttachment(MessagingDownloadMessagingAttachmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingDownloadMessagingAttachmentRequest, MessagingDownloadMessagingAttachmentResponse> operation
-              = new MessagingDownloadMessagingAttachment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingDownloadMessagingAttachment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -235,7 +245,7 @@ public class AsyncMessaging {
      * List Attachments
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingListAttachmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingListAttachmentsResponse>} - The async response
      */
     public CompletableFuture<MessagingListAttachmentsResponse> listAttachments(MessagingListAttachmentsRequest request) {
         return listAttachments(request, Optional.empty());
@@ -246,11 +256,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingListAttachmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingListAttachmentsResponse>} - The async response
      */
     public CompletableFuture<MessagingListAttachmentsResponse> listAttachments(MessagingListAttachmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingListAttachmentsRequest, MessagingListAttachmentsResponse> operation
-              = new MessagingListAttachments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingListAttachments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -269,7 +281,7 @@ public class AsyncMessaging {
      * Get Attachment
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingGetAttachmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingGetAttachmentResponse>} - The async response
      */
     public CompletableFuture<MessagingGetAttachmentResponse> getAttachment(MessagingGetAttachmentRequest request) {
         return getAttachment(request, Optional.empty());
@@ -280,11 +292,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingGetAttachmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingGetAttachmentResponse>} - The async response
      */
     public CompletableFuture<MessagingGetAttachmentResponse> getAttachment(MessagingGetAttachmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingGetAttachmentRequest, MessagingGetAttachmentResponse> operation
-              = new MessagingGetAttachment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingGetAttachment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -303,7 +317,7 @@ public class AsyncMessaging {
      * List Users
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingListUsersResponse>} - The async response
      */
     public CompletableFuture<MessagingListUsersResponse> listUsers(MessagingListUsersRequest request) {
         return listUsers(request, Optional.empty());
@@ -314,11 +328,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingListUsersResponse>} - The async response
      */
     public CompletableFuture<MessagingListUsersResponse> listUsers(MessagingListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingListUsersRequest, MessagingListUsersResponse> operation
-              = new MessagingListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -337,7 +353,7 @@ public class AsyncMessaging {
      * Get User
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingGetUserResponse>} - The async response
      */
     public CompletableFuture<MessagingGetUserResponse> getUser(MessagingGetUserRequest request) {
         return getUser(request, Optional.empty());
@@ -348,11 +364,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingGetUserResponse>} - The async response
      */
     public CompletableFuture<MessagingGetUserResponse> getUser(MessagingGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingGetUserRequest, MessagingGetUserResponse> operation
-              = new MessagingGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -371,7 +389,7 @@ public class AsyncMessaging {
      * List Conversation Messages
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingListConversationMessagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingListConversationMessagesResponse>} - The async response
      */
     public CompletableFuture<MessagingListConversationMessagesResponse> listConversationMessages(MessagingListConversationMessagesRequest request) {
         return listConversationMessages(request, Optional.empty());
@@ -382,11 +400,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingListConversationMessagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingListConversationMessagesResponse>} - The async response
      */
     public CompletableFuture<MessagingListConversationMessagesResponse> listConversationMessages(MessagingListConversationMessagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingListConversationMessagesRequest, MessagingListConversationMessagesResponse> operation
-              = new MessagingListConversationMessages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingListConversationMessages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -405,7 +425,7 @@ public class AsyncMessaging {
      * Get Message
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MessagingGetMessageResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingGetMessageResponse>} - The async response
      */
     public CompletableFuture<MessagingGetMessageResponse> getMessage(MessagingGetMessageRequest request) {
         return getMessage(request, Optional.empty());
@@ -416,11 +436,13 @@ public class AsyncMessaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingGetMessageResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingGetMessageResponse>} - The async response
      */
     public CompletableFuture<MessagingGetMessageResponse> getMessage(MessagingGetMessageRequest request, Optional<Options> options) {
         AsyncRequestOperation<MessagingGetMessageRequest, MessagingGetMessageResponse> operation
-              = new MessagingGetMessage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingGetMessage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -440,7 +462,7 @@ public class AsyncMessaging {
      * 
      * @param xAccountId The account identifier
      * @param messagingMessageSendRequestDto 
-     * @return CompletableFuture&lt;MessagingSendMessageResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingSendMessageResponse>} - The async response
      */
     public CompletableFuture<MessagingSendMessageResponse> sendMessage(String xAccountId, MessagingMessageSendRequestDto messagingMessageSendRequestDto) {
         return sendMessage(xAccountId, messagingMessageSendRequestDto, Optional.empty());
@@ -452,7 +474,7 @@ public class AsyncMessaging {
      * @param xAccountId The account identifier
      * @param messagingMessageSendRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MessagingSendMessageResponse&gt; - The async response
+     * @return {@code CompletableFuture<MessagingSendMessageResponse>} - The async response
      */
     public CompletableFuture<MessagingSendMessageResponse> sendMessage(
             String xAccountId, MessagingMessageSendRequestDto messagingMessageSendRequestDto,
@@ -464,7 +486,9 @@ public class AsyncMessaging {
                 .messagingMessageSendRequestDto(messagingMessageSendRequestDto)
                 .build();
         AsyncRequestOperation<MessagingSendMessageRequest, MessagingSendMessageResponse> operation
-              = new MessagingSendMessage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MessagingSendMessage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

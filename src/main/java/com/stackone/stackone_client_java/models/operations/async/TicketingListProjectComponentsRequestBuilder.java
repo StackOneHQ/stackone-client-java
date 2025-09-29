@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.TicketingListProjectComponentsRequest;
 import com.stackone.stackone_client_java.operations.TicketingListProjectComponents;
 import com.stackone.stackone_client_java.utils.Blob;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -29,6 +30,7 @@ public class TicketingListProjectComponentsRequestBuilder {
     private TicketingListProjectComponentsRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public TicketingListProjectComponentsRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -58,7 +60,9 @@ public class TicketingListProjectComponentsRequestBuilder {
             .build());
 
         AsyncRequestOperation<TicketingListProjectComponentsRequest, TicketingListProjectComponentsResponse> operation
-              = new TicketingListProjectComponents.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListProjectComponents.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
@@ -85,7 +89,9 @@ public class TicketingListProjectComponentsRequestBuilder {
             .build());
 
         AsyncRequestOperation<TicketingListProjectComponentsRequest, TicketingListProjectComponentsResponse> operation
-              = new TicketingListProjectComponents.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new TicketingListProjectComponents.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         Flow.Publisher<HttpResponse<Blob>> asyncPaginator = new AsyncPaginator<>(
             request,

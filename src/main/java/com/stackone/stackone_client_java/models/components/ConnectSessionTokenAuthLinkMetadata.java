@@ -11,7 +11,8 @@ import java.lang.String;
 /**
  * ConnectSessionTokenAuthLinkMetadata
  * 
- * <p>Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+ * <p>Arbitrary set of key and values defined during the session token creation. This can be used to tag
+ * an account (eg. based on their pricing plan)
  */
 public class ConnectSessionTokenAuthLinkMetadata {
     @JsonCreator

@@ -85,7 +85,8 @@ public class TimeOff {
     private JsonNullable<String> startDate;
 
     /**
-     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+     * includes this day
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
@@ -311,7 +312,8 @@ public class TimeOff {
     }
 
     /**
-     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+     * includes this day
      */
     @JsonIgnore
     public JsonNullable<String> endDate() {
@@ -573,7 +575,8 @@ public class TimeOff {
     }
 
     /**
-     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+     * includes this day
      */
     public TimeOff withEndDate(String endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -582,7 +585,8 @@ public class TimeOff {
     }
 
     /**
-     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+     * includes this day
      */
     public TimeOff withEndDate(JsonNullable<String> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -1060,7 +1064,8 @@ public class TimeOff {
 
 
         /**
-         * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+         * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+         * includes this day
          */
         public Builder endDate(String endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -1069,7 +1074,8 @@ public class TimeOff {
         }
 
         /**
-         * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+         * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+         * includes this day
          */
         public Builder endDate(JsonNullable<String> endDate) {
             Utils.checkNotNull(endDate, "endDate");

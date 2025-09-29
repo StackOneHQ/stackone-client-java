@@ -31,6 +31,7 @@ import com.stackone.stackone_client_java.utils.Blob;
 import com.stackone.stackone_client_java.utils.Exceptions;
 import com.stackone.stackone_client_java.utils.HTTPClient;
 import com.stackone.stackone_client_java.utils.HTTPRequest;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Hook.AfterErrorContextImpl;
 import com.stackone.stackone_client_java.utils.Hook.AfterSuccessContextImpl;
 import com.stackone.stackone_client_java.utils.Hook.BeforeRequestContextImpl;
@@ -66,9 +67,13 @@ public class AccountingCreateCompanyJournal {
         final List<String> retryStatusCodes;
         final RetryConfig retryConfig;
         final HTTPClient client;
+        final Headers _headers;
 
-        public Base(SDKConfiguration sdkConfiguration, Optional<Options> options) {
+        public Base(
+                SDKConfiguration sdkConfiguration, Optional<Options> options,
+                Headers _headers) {
             this.sdkConfiguration = sdkConfiguration;
+            this._headers =_headers;
             this.baseUrl = this.sdkConfiguration.serverUrl();
             this.securitySource = this.sdkConfiguration.securitySource();
             options
@@ -140,6 +145,7 @@ public class AccountingCreateCompanyJournal {
             req.setBody(Optional.ofNullable(serializedRequestBody));
             req.addHeader("Accept", "application/json")
                     .addHeader("user-agent", SDKConfiguration.USER_AGENT);
+            _headers.forEach((k, list) -> list.forEach(v -> req.addHeader(k, v)));
             req.addHeaders(Utils.getHeadersFromMetadata(request, null));
             Utils.configureSecurity(req, this.sdkConfiguration.securitySource().getSecurity());
 
@@ -149,8 +155,12 @@ public class AccountingCreateCompanyJournal {
 
     public static class Sync extends Base
             implements RequestOperation<AccountingCreateCompanyJournalRequest, AccountingCreateCompanyJournalResponse> {
-        public Sync(SDKConfiguration sdkConfiguration, Optional<Options> options) {
-            super(sdkConfiguration, options);
+        public Sync(
+                SDKConfiguration sdkConfiguration, Optional<Options> options,
+                Headers _headers) {
+            super(
+                  sdkConfiguration, options,
+                  _headers);
         }
 
         private HttpRequest onBuildRequest(AccountingCreateCompanyJournalRequest request) throws Exception {
@@ -211,7 +221,7 @@ public class AccountingCreateCompanyJournal {
 
             AccountingCreateCompanyJournalResponse res = resBuilder.build();
             
-            if (Utils.statusCodeMatches(response.statusCode(), "200")) {
+            if (Utils.statusCodeMatches(response.statusCode(), "201")) {
                 if (Utils.contentTypeMatches(contentType, "application/json")) {
                     CreateResult out = Utils.mapper().readValue(
                             response.body(),
@@ -452,8 +462,10 @@ public class AccountingCreateCompanyJournal {
 
         public Async(
                 SDKConfiguration sdkConfiguration, Optional<Options> options,
-                ScheduledExecutorService retryScheduler) {
-            super(sdkConfiguration, options);
+                ScheduledExecutorService retryScheduler, Headers _headers) {
+            super(
+                  sdkConfiguration, options,
+                  _headers);
             this.retryScheduler = retryScheduler;
         }
 
@@ -507,7 +519,7 @@ public class AccountingCreateCompanyJournal {
 
             com.stackone.stackone_client_java.models.operations.async.AccountingCreateCompanyJournalResponse res = resBuilder.build();
             
-            if (Utils.statusCodeMatches(response.statusCode(), "200")) {
+            if (Utils.statusCodeMatches(response.statusCode(), "201")) {
                 if (Utils.contentTypeMatches(contentType, "application/json")) {
                     return response.body().toByteArray().thenApply(bodyBytes -> {
                         try {

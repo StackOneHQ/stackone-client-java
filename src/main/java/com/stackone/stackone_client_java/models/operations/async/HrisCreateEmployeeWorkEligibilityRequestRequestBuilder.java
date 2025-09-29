@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibilityRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeWorkEligibilityRequestRequest;
 import com.stackone.stackone_client_java.operations.HrisCreateEmployeeWorkEligibilityRequest;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
     private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
             .build());
 
         AsyncRequestOperation<HrisCreateEmployeeWorkEligibilityRequestRequest, HrisCreateEmployeeWorkEligibilityRequestResponse> operation
-              = new HrisCreateEmployeeWorkEligibilityRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new HrisCreateEmployeeWorkEligibilityRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         HrisCreateEmployeeWorkEligibilityRequestRequest request = buildRequest();
 
         return operation.doRequest(request)

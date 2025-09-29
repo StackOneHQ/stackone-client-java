@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.async.StackoneRpcActi
 import com.stackone.stackone_client_java.models.operations.async.StackoneRpcActionResponse;
 import com.stackone.stackone_client_java.operations.StackoneListActionsMeta;
 import com.stackone.stackone_client_java.operations.StackoneRpcAction;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +22,7 @@ import java.util.concurrent.CompletableFuture;
  * Retrieve Actions metadata and definitions.
  */
 public class AsyncActions {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Actions syncSDK;
 
@@ -56,7 +58,7 @@ public class AsyncActions {
      * <p>Retrieves a list of all actions metadata
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;StackoneListActionsMetaResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListActionsMetaResponse>} - The async response
      */
     public CompletableFuture<StackoneListActionsMetaResponse> listActionsMeta(StackoneListActionsMetaRequest request) {
         return listActionsMeta(request, Optional.empty());
@@ -69,11 +71,13 @@ public class AsyncActions {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneListActionsMetaResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListActionsMetaResponse>} - The async response
      */
     public CompletableFuture<StackoneListActionsMetaResponse> listActionsMeta(StackoneListActionsMetaRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListActionsMetaRequest, StackoneListActionsMetaResponse> operation
-              = new StackoneListActionsMeta.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListActionsMeta.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -96,7 +100,7 @@ public class AsyncActions {
      * <p>Makes a remote procedure call to the specified action
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;StackoneRpcActionResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneRpcActionResponse>} - The async response
      */
     public CompletableFuture<StackoneRpcActionResponse> rpcAction(ActionsRpcRequestDto request) {
         return rpcAction(request, Optional.empty());
@@ -109,11 +113,13 @@ public class AsyncActions {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneRpcActionResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneRpcActionResponse>} - The async response
      */
     public CompletableFuture<StackoneRpcActionResponse> rpcAction(ActionsRpcRequestDto request, Optional<Options> options) {
         AsyncRequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> operation
-              = new StackoneRpcAction.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneRpcAction.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

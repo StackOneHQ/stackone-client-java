@@ -51,7 +51,8 @@ public class HrisCreateTimeOffRequestDto {
     private JsonNullable<String> startDate;
 
     /**
-     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+     * includes this day
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
@@ -179,7 +180,8 @@ public class HrisCreateTimeOffRequestDto {
     }
 
     /**
-     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+     * includes this day
      */
     @JsonIgnore
     public JsonNullable<String> endDate() {
@@ -319,7 +321,8 @@ public class HrisCreateTimeOffRequestDto {
     }
 
     /**
-     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+     * includes this day
      */
     public HrisCreateTimeOffRequestDto withEndDate(String endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -328,7 +331,8 @@ public class HrisCreateTimeOffRequestDto {
     }
 
     /**
-     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+     * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+     * includes this day
      */
     public HrisCreateTimeOffRequestDto withEndDate(JsonNullable<String> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -600,7 +604,8 @@ public class HrisCreateTimeOffRequestDto {
 
 
         /**
-         * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+         * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+         * includes this day
          */
         public Builder endDate(String endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -609,7 +614,8 @@ public class HrisCreateTimeOffRequestDto {
         }
 
         /**
-         * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off includes this day
+         * Inclusive end date of the time off request (ISO8601 date-time without timezone). The time off
+         * includes this day
          */
         public Builder endDate(JsonNullable<String> endDate) {
             Utils.checkNotNull(endDate, "endDate");

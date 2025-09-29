@@ -47,6 +47,7 @@ import com.stackone.stackone_client_java.operations.AccountingListCompanies;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyAccounts;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyJournals;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyTaxRates;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -54,6 +55,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncAccounting {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Accounting syncSDK;
 
@@ -85,7 +87,7 @@ public class AsyncAccounting {
      * List Companies
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AccountingListCompaniesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingListCompaniesResponse>} - The async response
      */
     public CompletableFuture<AccountingListCompaniesResponse> listCompanies(AccountingListCompaniesRequest request) {
         return listCompanies(request, Optional.empty());
@@ -96,11 +98,13 @@ public class AsyncAccounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingListCompaniesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingListCompaniesResponse>} - The async response
      */
     public CompletableFuture<AccountingListCompaniesResponse> listCompanies(AccountingListCompaniesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingListCompaniesRequest, AccountingListCompaniesResponse> operation
-              = new AccountingListCompanies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -119,7 +123,7 @@ public class AsyncAccounting {
      * Get Company
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AccountingGetCompanyResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingGetCompanyResponse>} - The async response
      */
     public CompletableFuture<AccountingGetCompanyResponse> getCompany(AccountingGetCompanyRequest request) {
         return getCompany(request, Optional.empty());
@@ -130,11 +134,13 @@ public class AsyncAccounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingGetCompanyResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingGetCompanyResponse>} - The async response
      */
     public CompletableFuture<AccountingGetCompanyResponse> getCompany(AccountingGetCompanyRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingGetCompanyRequest, AccountingGetCompanyResponse> operation
-              = new AccountingGetCompany.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingGetCompany.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -153,7 +159,7 @@ public class AsyncAccounting {
      * List Accounts
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AccountingListCompanyAccountsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingListCompanyAccountsResponse>} - The async response
      */
     public CompletableFuture<AccountingListCompanyAccountsResponse> listCompanyAccounts(AccountingListCompanyAccountsRequest request) {
         return listCompanyAccounts(request, Optional.empty());
@@ -164,11 +170,13 @@ public class AsyncAccounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingListCompanyAccountsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingListCompanyAccountsResponse>} - The async response
      */
     public CompletableFuture<AccountingListCompanyAccountsResponse> listCompanyAccounts(AccountingListCompanyAccountsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingListCompanyAccountsRequest, AccountingListCompanyAccountsResponse> operation
-              = new AccountingListCompanyAccounts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanyAccounts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -187,7 +195,7 @@ public class AsyncAccounting {
      * Get Account
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AccountingGetCompanyAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingGetCompanyAccountResponse>} - The async response
      */
     public CompletableFuture<AccountingGetCompanyAccountResponse> getCompanyAccount(AccountingGetCompanyAccountRequest request) {
         return getCompanyAccount(request, Optional.empty());
@@ -198,11 +206,13 @@ public class AsyncAccounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingGetCompanyAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingGetCompanyAccountResponse>} - The async response
      */
     public CompletableFuture<AccountingGetCompanyAccountResponse> getCompanyAccount(AccountingGetCompanyAccountRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingGetCompanyAccountRequest, AccountingGetCompanyAccountResponse> operation
-              = new AccountingGetCompanyAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingGetCompanyAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -221,7 +231,7 @@ public class AsyncAccounting {
      * List Tax Rates
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AccountingListCompanyTaxRatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingListCompanyTaxRatesResponse>} - The async response
      */
     public CompletableFuture<AccountingListCompanyTaxRatesResponse> listCompanyTaxRates(AccountingListCompanyTaxRatesRequest request) {
         return listCompanyTaxRates(request, Optional.empty());
@@ -232,11 +242,13 @@ public class AsyncAccounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingListCompanyTaxRatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingListCompanyTaxRatesResponse>} - The async response
      */
     public CompletableFuture<AccountingListCompanyTaxRatesResponse> listCompanyTaxRates(AccountingListCompanyTaxRatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingListCompanyTaxRatesRequest, AccountingListCompanyTaxRatesResponse> operation
-              = new AccountingListCompanyTaxRates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanyTaxRates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -255,7 +267,7 @@ public class AsyncAccounting {
      * Get Tax Rate
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AccountingGetCompanyTaxRateResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingGetCompanyTaxRateResponse>} - The async response
      */
     public CompletableFuture<AccountingGetCompanyTaxRateResponse> getCompanyTaxRate(AccountingGetCompanyTaxRateRequest request) {
         return getCompanyTaxRate(request, Optional.empty());
@@ -266,11 +278,13 @@ public class AsyncAccounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingGetCompanyTaxRateResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingGetCompanyTaxRateResponse>} - The async response
      */
     public CompletableFuture<AccountingGetCompanyTaxRateResponse> getCompanyTaxRate(AccountingGetCompanyTaxRateRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingGetCompanyTaxRateRequest, AccountingGetCompanyTaxRateResponse> operation
-              = new AccountingGetCompanyTaxRate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingGetCompanyTaxRate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -291,7 +305,7 @@ public class AsyncAccounting {
      * @param xAccountId The account identifier
      * @param id 
      * @param accountingJournalBatchCreateRequestDto 
-     * @return CompletableFuture&lt;AccountingBatchCreateCompanyJournalsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingBatchCreateCompanyJournalsResponse>} - The async response
      */
     public CompletableFuture<AccountingBatchCreateCompanyJournalsResponse> batchCreateCompanyJournals(
             String xAccountId, String id,
@@ -308,7 +322,7 @@ public class AsyncAccounting {
      * @param id 
      * @param accountingJournalBatchCreateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingBatchCreateCompanyJournalsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingBatchCreateCompanyJournalsResponse>} - The async response
      */
     public CompletableFuture<AccountingBatchCreateCompanyJournalsResponse> batchCreateCompanyJournals(
             String xAccountId, String id,
@@ -321,7 +335,9 @@ public class AsyncAccounting {
                 .accountingJournalBatchCreateRequestDto(accountingJournalBatchCreateRequestDto)
                 .build();
         AsyncRequestOperation<AccountingBatchCreateCompanyJournalsRequest, AccountingBatchCreateCompanyJournalsResponse> operation
-              = new AccountingBatchCreateCompanyJournals.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingBatchCreateCompanyJournals.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -340,7 +356,7 @@ public class AsyncAccounting {
      * List Journals
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AccountingListCompanyJournalsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingListCompanyJournalsResponse>} - The async response
      */
     public CompletableFuture<AccountingListCompanyJournalsResponse> listCompanyJournals(AccountingListCompanyJournalsRequest request) {
         return listCompanyJournals(request, Optional.empty());
@@ -351,11 +367,13 @@ public class AsyncAccounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingListCompanyJournalsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingListCompanyJournalsResponse>} - The async response
      */
     public CompletableFuture<AccountingListCompanyJournalsResponse> listCompanyJournals(AccountingListCompanyJournalsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingListCompanyJournalsRequest, AccountingListCompanyJournalsResponse> operation
-              = new AccountingListCompanyJournals.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingListCompanyJournals.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -376,7 +394,7 @@ public class AsyncAccounting {
      * @param xAccountId The account identifier
      * @param id 
      * @param accountingJournalCreateRequestDto 
-     * @return CompletableFuture&lt;AccountingCreateCompanyJournalResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingCreateCompanyJournalResponse>} - The async response
      */
     public CompletableFuture<AccountingCreateCompanyJournalResponse> createCompanyJournal(
             String xAccountId, String id,
@@ -393,7 +411,7 @@ public class AsyncAccounting {
      * @param id 
      * @param accountingJournalCreateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingCreateCompanyJournalResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingCreateCompanyJournalResponse>} - The async response
      */
     public CompletableFuture<AccountingCreateCompanyJournalResponse> createCompanyJournal(
             String xAccountId, String id,
@@ -406,7 +424,9 @@ public class AsyncAccounting {
                 .accountingJournalCreateRequestDto(accountingJournalCreateRequestDto)
                 .build();
         AsyncRequestOperation<AccountingCreateCompanyJournalRequest, AccountingCreateCompanyJournalResponse> operation
-              = new AccountingCreateCompanyJournal.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingCreateCompanyJournal.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -425,7 +445,7 @@ public class AsyncAccounting {
      * Get Journal
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AccountingGetCompanyJournalResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingGetCompanyJournalResponse>} - The async response
      */
     public CompletableFuture<AccountingGetCompanyJournalResponse> getCompanyJournal(AccountingGetCompanyJournalRequest request) {
         return getCompanyJournal(request, Optional.empty());
@@ -436,11 +456,13 @@ public class AsyncAccounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AccountingGetCompanyJournalResponse&gt; - The async response
+     * @return {@code CompletableFuture<AccountingGetCompanyJournalResponse>} - The async response
      */
     public CompletableFuture<AccountingGetCompanyJournalResponse> getCompanyJournal(AccountingGetCompanyJournalRequest request, Optional<Options> options) {
         AsyncRequestOperation<AccountingGetCompanyJournalRequest, AccountingGetCompanyJournalResponse> operation
-              = new AccountingGetCompanyJournal.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingGetCompanyJournal.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

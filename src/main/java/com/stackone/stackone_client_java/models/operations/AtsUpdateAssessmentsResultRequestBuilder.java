@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDto;
 import com.stackone.stackone_client_java.operations.AtsUpdateAssessmentsResult;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -22,6 +23,7 @@ public class AtsUpdateAssessmentsResultRequestBuilder {
     private AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsUpdateAssessmentsResultRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -73,7 +75,7 @@ public class AtsUpdateAssessmentsResultRequestBuilder {
             .build());
 
         RequestOperation<AtsUpdateAssessmentsResultRequest, AtsUpdateAssessmentsResultResponse> operation
-              = new AtsUpdateAssessmentsResult.Sync(sdkConfiguration, options);
+              = new AtsUpdateAssessmentsResult.Sync(sdkConfiguration, options, _headers);
         AtsUpdateAssessmentsResultRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

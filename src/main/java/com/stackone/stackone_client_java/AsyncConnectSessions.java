@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.async.StackoneCreateC
 import com.stackone.stackone_client_java.models.operations.async.StackoneCreateConnectSessionResponse;
 import com.stackone.stackone_client_java.operations.StackoneAuthenticateConnectSession;
 import com.stackone.stackone_client_java.operations.StackoneCreateConnectSession;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +22,7 @@ import java.util.concurrent.CompletableFuture;
  * Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
  */
 public class AsyncConnectSessions {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final ConnectSessions syncSDK;
 
@@ -52,7 +54,7 @@ public class AsyncConnectSessions {
      * Create Connect Session
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;StackoneCreateConnectSessionResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneCreateConnectSessionResponse>} - The async response
      */
     public CompletableFuture<StackoneCreateConnectSessionResponse> createConnectSession(ConnectSessionCreate request) {
         return createConnectSession(request, Optional.empty());
@@ -63,11 +65,13 @@ public class AsyncConnectSessions {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneCreateConnectSessionResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneCreateConnectSessionResponse>} - The async response
      */
     public CompletableFuture<StackoneCreateConnectSessionResponse> createConnectSession(ConnectSessionCreate request, Optional<Options> options) {
         AsyncRequestOperation<ConnectSessionCreate, StackoneCreateConnectSessionResponse> operation
-              = new StackoneCreateConnectSession.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneCreateConnectSession.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -86,7 +90,7 @@ public class AsyncConnectSessions {
      * Authenticate Connect Session
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;StackoneAuthenticateConnectSessionResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneAuthenticateConnectSessionResponse>} - The async response
      */
     public CompletableFuture<StackoneAuthenticateConnectSessionResponse> authenticateConnectSession(ConnectSessionAuthenticate request) {
         return authenticateConnectSession(request, Optional.empty());
@@ -97,11 +101,13 @@ public class AsyncConnectSessions {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneAuthenticateConnectSessionResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneAuthenticateConnectSessionResponse>} - The async response
      */
     public CompletableFuture<StackoneAuthenticateConnectSessionResponse> authenticateConnectSession(ConnectSessionAuthenticate request, Optional<Options> options) {
         AsyncRequestOperation<ConnectSessionAuthenticate, StackoneAuthenticateConnectSessionResponse> operation
-              = new StackoneAuthenticateConnectSession.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneAuthenticateConnectSession.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

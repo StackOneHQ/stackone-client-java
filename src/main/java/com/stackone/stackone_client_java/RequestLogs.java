@@ -22,6 +22,7 @@ import com.stackone.stackone_client_java.operations.StackoneGetLog;
 import com.stackone.stackone_client_java.operations.StackoneListLogs;
 import com.stackone.stackone_client_java.operations.StackoneListPlatformLogs;
 import com.stackone.stackone_client_java.operations.StackoneListStepLogs;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -32,6 +33,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * API requests and response logs.
  */
 public class RequestLogs {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncRequestLogs asyncSDK;
 
@@ -79,7 +81,7 @@ public class RequestLogs {
      */
     public StackoneListStepLogsResponse listStepLogs(StackoneListStepLogsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListStepLogsRequest, StackoneListStepLogsResponse> operation
-              = new StackoneListStepLogs.Sync(sdkConfiguration, options);
+              = new StackoneListStepLogs.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -122,7 +124,7 @@ public class RequestLogs {
                 .include(include)
                 .build();
         RequestOperation<StackoneGetLogRequest, StackoneGetLogResponse> operation
-              = new StackoneGetLog.Sync(sdkConfiguration, options);
+              = new StackoneGetLog.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -156,7 +158,7 @@ public class RequestLogs {
      */
     public StackoneListLogsResponse listLogs(StackoneListLogsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
-              = new StackoneListLogs.Sync(sdkConfiguration, options);
+              = new StackoneListLogs.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -190,7 +192,7 @@ public class RequestLogs {
      */
     public StackoneListPlatformLogsResponse listPlatformLogs(StackoneListPlatformLogsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<StackoneListPlatformLogsRequest, StackoneListPlatformLogsResponse> operation
-              = new StackoneListPlatformLogs.Sync(sdkConfiguration, options);
+              = new StackoneListPlatformLogs.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

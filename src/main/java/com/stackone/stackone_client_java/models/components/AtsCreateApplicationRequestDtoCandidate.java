@@ -22,7 +22,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * AtsCreateApplicationRequestDtoCandidate
  * 
- * <p>Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
+ * <p>Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create
+ * a new candidate with the application.
  */
 public class AtsCreateApplicationRequestDtoCandidate {
     /**

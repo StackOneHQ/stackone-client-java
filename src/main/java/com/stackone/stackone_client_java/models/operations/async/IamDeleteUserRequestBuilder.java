@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.AsyncReque
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.IamDeleteUserRequest;
 import com.stackone.stackone_client_java.operations.IamDeleteUser;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -22,6 +23,7 @@ public class IamDeleteUserRequestBuilder {
     private String id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public IamDeleteUserRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -66,7 +68,9 @@ public class IamDeleteUserRequestBuilder {
             .build());
 
         AsyncRequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
-              = new IamDeleteUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamDeleteUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         IamDeleteUserRequest request = buildRequest();
 
         return operation.doRequest(request)

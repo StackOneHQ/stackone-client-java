@@ -47,6 +47,7 @@ import com.stackone.stackone_client_java.operations.AccountingListCompanies;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyAccounts;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyJournals;
 import com.stackone.stackone_client_java.operations.AccountingListCompanyTaxRates;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -54,6 +55,7 @@ import java.util.Optional;
 
 
 public class Accounting {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncAccounting asyncSDK;
 
@@ -101,7 +103,7 @@ public class Accounting {
      */
     public AccountingListCompaniesResponse listCompanies(AccountingListCompaniesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingListCompaniesRequest, AccountingListCompaniesResponse> operation
-              = new AccountingListCompanies.Sync(sdkConfiguration, options);
+              = new AccountingListCompanies.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -135,7 +137,7 @@ public class Accounting {
      */
     public AccountingGetCompanyResponse getCompany(AccountingGetCompanyRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingGetCompanyRequest, AccountingGetCompanyResponse> operation
-              = new AccountingGetCompany.Sync(sdkConfiguration, options);
+              = new AccountingGetCompany.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -169,7 +171,7 @@ public class Accounting {
      */
     public AccountingListCompanyAccountsResponse listCompanyAccounts(AccountingListCompanyAccountsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingListCompanyAccountsRequest, AccountingListCompanyAccountsResponse> operation
-              = new AccountingListCompanyAccounts.Sync(sdkConfiguration, options);
+              = new AccountingListCompanyAccounts.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -203,7 +205,7 @@ public class Accounting {
      */
     public AccountingGetCompanyAccountResponse getCompanyAccount(AccountingGetCompanyAccountRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingGetCompanyAccountRequest, AccountingGetCompanyAccountResponse> operation
-              = new AccountingGetCompanyAccount.Sync(sdkConfiguration, options);
+              = new AccountingGetCompanyAccount.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -237,7 +239,7 @@ public class Accounting {
      */
     public AccountingListCompanyTaxRatesResponse listCompanyTaxRates(AccountingListCompanyTaxRatesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingListCompanyTaxRatesRequest, AccountingListCompanyTaxRatesResponse> operation
-              = new AccountingListCompanyTaxRates.Sync(sdkConfiguration, options);
+              = new AccountingListCompanyTaxRates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -271,7 +273,7 @@ public class Accounting {
      */
     public AccountingGetCompanyTaxRateResponse getCompanyTaxRate(AccountingGetCompanyTaxRateRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingGetCompanyTaxRateRequest, AccountingGetCompanyTaxRateResponse> operation
-              = new AccountingGetCompanyTaxRate.Sync(sdkConfiguration, options);
+              = new AccountingGetCompanyTaxRate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -321,7 +323,7 @@ public class Accounting {
                 .accountingJournalBatchCreateRequestDto(accountingJournalBatchCreateRequestDto)
                 .build();
         RequestOperation<AccountingBatchCreateCompanyJournalsRequest, AccountingBatchCreateCompanyJournalsResponse> operation
-              = new AccountingBatchCreateCompanyJournals.Sync(sdkConfiguration, options);
+              = new AccountingBatchCreateCompanyJournals.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -355,7 +357,7 @@ public class Accounting {
      */
     public AccountingListCompanyJournalsResponse listCompanyJournals(AccountingListCompanyJournalsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingListCompanyJournalsRequest, AccountingListCompanyJournalsResponse> operation
-              = new AccountingListCompanyJournals.Sync(sdkConfiguration, options);
+              = new AccountingListCompanyJournals.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -405,7 +407,7 @@ public class Accounting {
                 .accountingJournalCreateRequestDto(accountingJournalCreateRequestDto)
                 .build();
         RequestOperation<AccountingCreateCompanyJournalRequest, AccountingCreateCompanyJournalResponse> operation
-              = new AccountingCreateCompanyJournal.Sync(sdkConfiguration, options);
+              = new AccountingCreateCompanyJournal.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -439,7 +441,7 @@ public class Accounting {
      */
     public AccountingGetCompanyJournalResponse getCompanyJournal(AccountingGetCompanyJournalRequest request, Optional<Options> options) throws Exception {
         RequestOperation<AccountingGetCompanyJournalRequest, AccountingGetCompanyJournalResponse> operation
-              = new AccountingGetCompanyJournal.Sync(sdkConfiguration, options);
+              = new AccountingGetCompanyJournal.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

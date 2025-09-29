@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.AsyncReque
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.MarketingGetPushTemplateRequest;
 import com.stackone.stackone_client_java.operations.MarketingGetPushTemplate;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -20,6 +21,7 @@ public class MarketingGetPushTemplateRequestBuilder {
     private MarketingGetPushTemplateRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public MarketingGetPushTemplateRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -49,7 +51,9 @@ public class MarketingGetPushTemplateRequestBuilder {
             .build());
 
         AsyncRequestOperation<MarketingGetPushTemplateRequest, MarketingGetPushTemplateResponse> operation
-              = new MarketingGetPushTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetPushTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

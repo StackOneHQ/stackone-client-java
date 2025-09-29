@@ -45,7 +45,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.13.0'
+implementation 'com.stackone:stackone-client-java:0.14.0'
 ```
 
 Maven:
@@ -53,7 +53,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.13.0</version>
+    <version>0.14.0</version>
 </dependency>
 ```
 
@@ -332,6 +332,8 @@ public class Application {
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Update Employee
 * [inviteEmployee](docs/sdks/hris/README.md#inviteemployee) - Invite Employee
+* [listEmployeeShifts](docs/sdks/hris/README.md#listemployeeshifts) - List Employee Shifts
+* [getEmployeeShift](docs/sdks/hris/README.md#getemployeeshift) - Get Employee Shift
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [getEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request

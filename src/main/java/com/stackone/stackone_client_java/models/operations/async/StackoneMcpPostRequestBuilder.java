@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.models.components.JsonRpcMessageDto;
 import com.stackone.stackone_client_java.models.operations.StackoneMcpPostRequest;
 import com.stackone.stackone_client_java.models.operations.StackoneMcpPostSecurity;
 import com.stackone.stackone_client_java.operations.StackoneMcpPost;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -26,6 +27,7 @@ public class StackoneMcpPostRequestBuilder {
     private JsonRpcMessageDto jsonRpcMessageDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public StackoneMcpPostRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -91,7 +93,7 @@ public class StackoneMcpPostRequestBuilder {
         AsyncRequestOperation<StackoneMcpPostRequest, StackoneMcpPostResponse> operation
               = new StackoneMcpPost.Async(
                                     sdkConfiguration, security, options,
-                                    sdkConfiguration.retryScheduler());
+                                    sdkConfiguration.retryScheduler(), _headers);
         StackoneMcpPostRequest request = buildRequest();
 
         return operation.doRequest(request)

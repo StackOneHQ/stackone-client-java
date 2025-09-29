@@ -62,7 +62,8 @@ public class ConnectSessionCreate {
     private JsonNullable<String> originUsername;
 
     /**
-     * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
+     * The unique identifier for the account associated with this connect session. When this field is
+     * present, the hub will launch in edit mode using the retrieved token.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account_id")
@@ -83,7 +84,8 @@ public class ConnectSessionCreate {
     private JsonNullable<? extends Metadata> metadata;
 
     /**
-     * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
+     * If set, this connect session will allow creation of multiple accounts with the same origin owner id
+     * and provider. Has no effect if account_id is set.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("multiple")
@@ -202,7 +204,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
+     * The unique identifier for the account associated with this connect session. When this field is
+     * present, the hub will launch in edit mode using the retrieved token.
      */
     @JsonIgnore
     public JsonNullable<String> accountId() {
@@ -227,7 +230,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
+     * If set, this connect session will allow creation of multiple accounts with the same origin owner id
+     * and provider. Has no effect if account_id is set.
      */
     @JsonIgnore
     public JsonNullable<Boolean> multiple() {
@@ -347,7 +351,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
+     * The unique identifier for the account associated with this connect session. When this field is
+     * present, the hub will launch in edit mode using the retrieved token.
      */
     public ConnectSessionCreate withAccountId(String accountId) {
         Utils.checkNotNull(accountId, "accountId");
@@ -356,7 +361,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
+     * The unique identifier for the account associated with this connect session. When this field is
+     * present, the hub will launch in edit mode using the retrieved token.
      */
     public ConnectSessionCreate withAccountId(JsonNullable<String> accountId) {
         Utils.checkNotNull(accountId, "accountId");
@@ -401,7 +407,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
+     * If set, this connect session will allow creation of multiple accounts with the same origin owner id
+     * and provider. Has no effect if account_id is set.
      */
     public ConnectSessionCreate withMultiple(boolean multiple) {
         Utils.checkNotNull(multiple, "multiple");
@@ -410,7 +417,8 @@ public class ConnectSessionCreate {
     }
 
     /**
-     * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
+     * If set, this connect session will allow creation of multiple accounts with the same origin owner id
+     * and provider. Has no effect if account_id is set.
      */
     public ConnectSessionCreate withMultiple(JsonNullable<Boolean> multiple) {
         Utils.checkNotNull(multiple, "multiple");
@@ -633,7 +641,8 @@ public class ConnectSessionCreate {
 
 
         /**
-         * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
+         * The unique identifier for the account associated with this connect session. When this field is
+         * present, the hub will launch in edit mode using the retrieved token.
          */
         public Builder accountId(String accountId) {
             Utils.checkNotNull(accountId, "accountId");
@@ -642,7 +651,8 @@ public class ConnectSessionCreate {
         }
 
         /**
-         * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
+         * The unique identifier for the account associated with this connect session. When this field is
+         * present, the hub will launch in edit mode using the retrieved token.
          */
         public Builder accountId(JsonNullable<String> accountId) {
             Utils.checkNotNull(accountId, "accountId");
@@ -690,7 +700,8 @@ public class ConnectSessionCreate {
 
 
         /**
-         * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
+         * If set, this connect session will allow creation of multiple accounts with the same origin owner id
+         * and provider. Has no effect if account_id is set.
          */
         public Builder multiple(boolean multiple) {
             Utils.checkNotNull(multiple, "multiple");
@@ -699,7 +710,8 @@ public class ConnectSessionCreate {
         }
 
         /**
-         * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
+         * If set, this connect session will allow creation of multiple accounts with the same origin owner id
+         * and provider. Has no effect if account_id is set.
          */
         public Builder multiple(JsonNullable<Boolean> multiple) {
             Utils.checkNotNull(multiple, "multiple");

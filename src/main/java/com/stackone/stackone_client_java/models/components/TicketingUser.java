@@ -86,7 +86,8 @@ public class TicketingUser {
     private JsonNullable<String> lastName;
 
     /**
-     * The unique account reference assigned as an external user (e.g. the customer account identifier registered on the customer-facing site or portal)
+     * The unique account reference assigned as an external user (e.g. the customer account identifier
+     * registered on the customer-facing site or portal)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("customer_account_reference")
@@ -237,7 +238,8 @@ public class TicketingUser {
     }
 
     /**
-     * The unique account reference assigned as an external user (e.g. the customer account identifier registered on the customer-facing site or portal)
+     * The unique account reference assigned as an external user (e.g. the customer account identifier
+     * registered on the customer-facing site or portal)
      */
     @JsonIgnore
     public JsonNullable<String> customerAccountReference() {
@@ -440,7 +442,8 @@ public class TicketingUser {
     }
 
     /**
-     * The unique account reference assigned as an external user (e.g. the customer account identifier registered on the customer-facing site or portal)
+     * The unique account reference assigned as an external user (e.g. the customer account identifier
+     * registered on the customer-facing site or portal)
      */
     public TicketingUser withCustomerAccountReference(String customerAccountReference) {
         Utils.checkNotNull(customerAccountReference, "customerAccountReference");
@@ -449,7 +452,8 @@ public class TicketingUser {
     }
 
     /**
-     * The unique account reference assigned as an external user (e.g. the customer account identifier registered on the customer-facing site or portal)
+     * The unique account reference assigned as an external user (e.g. the customer account identifier
+     * registered on the customer-facing site or portal)
      */
     public TicketingUser withCustomerAccountReference(JsonNullable<String> customerAccountReference) {
         Utils.checkNotNull(customerAccountReference, "customerAccountReference");
@@ -765,7 +769,8 @@ public class TicketingUser {
 
 
         /**
-         * The unique account reference assigned as an external user (e.g. the customer account identifier registered on the customer-facing site or portal)
+         * The unique account reference assigned as an external user (e.g. the customer account identifier
+         * registered on the customer-facing site or portal)
          */
         public Builder customerAccountReference(String customerAccountReference) {
             Utils.checkNotNull(customerAccountReference, "customerAccountReference");
@@ -774,7 +779,8 @@ public class TicketingUser {
         }
 
         /**
-         * The unique account reference assigned as an external user (e.g. the customer account identifier registered on the customer-facing site or portal)
+         * The unique account reference assigned as an external user (e.g. the customer account identifier
+         * registered on the customer-facing site or portal)
          */
         public Builder customerAccountReference(JsonNullable<String> customerAccountReference) {
             Utils.checkNotNull(customerAccountReference, "customerAccountReference");

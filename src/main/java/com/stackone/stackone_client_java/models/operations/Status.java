@@ -11,12 +11,13 @@ import java.util.Optional;
 /**
  * Status
  * 
- * <p>Filter positions by status
+ * <p>Filter to select shifts by status
  */
 public enum Status {
-    OPEN("open"),
-    CLOSED("closed"),
-    PAUSED("paused"),
+    DRAFT("draft"),
+    PUBLISHED("published"),
+    CONFIRMED("confirmed"),
+    CANCELLED("cancelled"),
     UNMAPPED_VALUE("unmapped_value");
 
     @JsonValue

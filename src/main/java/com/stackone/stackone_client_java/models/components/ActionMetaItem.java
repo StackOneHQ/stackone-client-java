@@ -27,11 +27,11 @@ public class ActionMetaItem {
     private JsonNullable<String> id;
 
     /**
-     * The action name
+     * The action label
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("name")
-    private JsonNullable<String> name;
+    @JsonProperty("label")
+    private JsonNullable<String> label;
 
     /**
      * The action description
@@ -46,6 +46,13 @@ public class ActionMetaItem {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema_type")
     private JsonNullable<String> schemaType;
+
+    /**
+     * The tags associated with this action
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("tags")
+    private JsonNullable<? extends List<String>> tags;
 
     /**
      * The authentication methods supported by this action
@@ -64,28 +71,32 @@ public class ActionMetaItem {
     @JsonCreator
     public ActionMetaItem(
             @JsonProperty("id") JsonNullable<String> id,
-            @JsonProperty("name") JsonNullable<String> name,
+            @JsonProperty("label") JsonNullable<String> label,
             @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("schema_type") JsonNullable<String> schemaType,
+            @JsonProperty("tags") JsonNullable<? extends List<String>> tags,
             @JsonProperty("authentication") JsonNullable<? extends List<AuthenticationMetaItem>> authentication,
             @JsonProperty("operation_details") JsonNullable<? extends Map<String, Object>> operationDetails) {
         Utils.checkNotNull(id, "id");
-        Utils.checkNotNull(name, "name");
+        Utils.checkNotNull(label, "label");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(schemaType, "schemaType");
+        Utils.checkNotNull(tags, "tags");
         Utils.checkNotNull(authentication, "authentication");
         Utils.checkNotNull(operationDetails, "operationDetails");
         this.id = id;
-        this.name = name;
+        this.label = label;
         this.description = description;
         this.schemaType = schemaType;
+        this.tags = tags;
         this.authentication = authentication;
         this.operationDetails = operationDetails;
     }
     
     public ActionMetaItem() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -97,11 +108,11 @@ public class ActionMetaItem {
     }
 
     /**
-     * The action name
+     * The action label
      */
     @JsonIgnore
-    public JsonNullable<String> name() {
-        return name;
+    public JsonNullable<String> label() {
+        return label;
     }
 
     /**
@@ -118,6 +129,15 @@ public class ActionMetaItem {
     @JsonIgnore
     public JsonNullable<String> schemaType() {
         return schemaType;
+    }
+
+    /**
+     * The tags associated with this action
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<String>> tags() {
+        return (JsonNullable<List<String>>) tags;
     }
 
     /**
@@ -162,20 +182,20 @@ public class ActionMetaItem {
     }
 
     /**
-     * The action name
+     * The action label
      */
-    public ActionMetaItem withName(String name) {
-        Utils.checkNotNull(name, "name");
-        this.name = JsonNullable.of(name);
+    public ActionMetaItem withLabel(String label) {
+        Utils.checkNotNull(label, "label");
+        this.label = JsonNullable.of(label);
         return this;
     }
 
     /**
-     * The action name
+     * The action label
      */
-    public ActionMetaItem withName(JsonNullable<String> name) {
-        Utils.checkNotNull(name, "name");
-        this.name = name;
+    public ActionMetaItem withLabel(JsonNullable<String> label) {
+        Utils.checkNotNull(label, "label");
+        this.label = label;
         return this;
     }
 
@@ -212,6 +232,24 @@ public class ActionMetaItem {
     public ActionMetaItem withSchemaType(JsonNullable<String> schemaType) {
         Utils.checkNotNull(schemaType, "schemaType");
         this.schemaType = schemaType;
+        return this;
+    }
+
+    /**
+     * The tags associated with this action
+     */
+    public ActionMetaItem withTags(List<String> tags) {
+        Utils.checkNotNull(tags, "tags");
+        this.tags = JsonNullable.of(tags);
+        return this;
+    }
+
+    /**
+     * The tags associated with this action
+     */
+    public ActionMetaItem withTags(JsonNullable<? extends List<String>> tags) {
+        Utils.checkNotNull(tags, "tags");
+        this.tags = tags;
         return this;
     }
 
@@ -262,9 +300,10 @@ public class ActionMetaItem {
         ActionMetaItem other = (ActionMetaItem) o;
         return 
             Utils.enhancedDeepEquals(this.id, other.id) &&
-            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.label, other.label) &&
             Utils.enhancedDeepEquals(this.description, other.description) &&
             Utils.enhancedDeepEquals(this.schemaType, other.schemaType) &&
+            Utils.enhancedDeepEquals(this.tags, other.tags) &&
             Utils.enhancedDeepEquals(this.authentication, other.authentication) &&
             Utils.enhancedDeepEquals(this.operationDetails, other.operationDetails);
     }
@@ -272,17 +311,19 @@ public class ActionMetaItem {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id, name, description,
-            schemaType, authentication, operationDetails);
+            id, label, description,
+            schemaType, tags, authentication,
+            operationDetails);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ActionMetaItem.class,
                 "id", id,
-                "name", name,
+                "label", label,
                 "description", description,
                 "schemaType", schemaType,
+                "tags", tags,
                 "authentication", authentication,
                 "operationDetails", operationDetails);
     }
@@ -292,11 +333,13 @@ public class ActionMetaItem {
 
         private JsonNullable<String> id = JsonNullable.undefined();
 
-        private JsonNullable<String> name = JsonNullable.undefined();
+        private JsonNullable<String> label = JsonNullable.undefined();
 
         private JsonNullable<String> description = JsonNullable.undefined();
 
         private JsonNullable<String> schemaType = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<String>> tags = JsonNullable.undefined();
 
         private JsonNullable<? extends List<AuthenticationMetaItem>> authentication = JsonNullable.undefined();
 
@@ -327,20 +370,20 @@ public class ActionMetaItem {
 
 
         /**
-         * The action name
+         * The action label
          */
-        public Builder name(String name) {
-            Utils.checkNotNull(name, "name");
-            this.name = JsonNullable.of(name);
+        public Builder label(String label) {
+            Utils.checkNotNull(label, "label");
+            this.label = JsonNullable.of(label);
             return this;
         }
 
         /**
-         * The action name
+         * The action label
          */
-        public Builder name(JsonNullable<String> name) {
-            Utils.checkNotNull(name, "name");
-            this.name = name;
+        public Builder label(JsonNullable<String> label) {
+            Utils.checkNotNull(label, "label");
+            this.label = label;
             return this;
         }
 
@@ -379,6 +422,25 @@ public class ActionMetaItem {
         public Builder schemaType(JsonNullable<String> schemaType) {
             Utils.checkNotNull(schemaType, "schemaType");
             this.schemaType = schemaType;
+            return this;
+        }
+
+
+        /**
+         * The tags associated with this action
+         */
+        public Builder tags(List<String> tags) {
+            Utils.checkNotNull(tags, "tags");
+            this.tags = JsonNullable.of(tags);
+            return this;
+        }
+
+        /**
+         * The tags associated with this action
+         */
+        public Builder tags(JsonNullable<? extends List<String>> tags) {
+            Utils.checkNotNull(tags, "tags");
+            this.tags = tags;
             return this;
         }
 
@@ -423,8 +485,9 @@ public class ActionMetaItem {
         public ActionMetaItem build() {
 
             return new ActionMetaItem(
-                id, name, description,
-                schemaType, authentication, operationDetails);
+                id, label, description,
+                schemaType, tags, authentication,
+                operationDetails);
         }
 
     }

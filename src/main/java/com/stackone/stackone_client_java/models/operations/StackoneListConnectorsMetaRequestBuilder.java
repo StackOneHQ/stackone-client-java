@@ -7,6 +7,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.operations.StackoneListConnectorsMeta;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -20,6 +21,7 @@ public class StackoneListConnectorsMetaRequestBuilder {
     private JsonNullable<String> include = JsonNullable.undefined();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public StackoneListConnectorsMetaRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -63,7 +65,7 @@ public class StackoneListConnectorsMetaRequestBuilder {
             .build());
 
         RequestOperation<StackoneListConnectorsMetaRequest, StackoneListConnectorsMetaResponse> operation
-              = new StackoneListConnectorsMeta.Sync(sdkConfiguration, options);
+              = new StackoneListConnectorsMeta.Sync(sdkConfiguration, options, _headers);
         StackoneListConnectorsMetaRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestR
 import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestResponse;
 import com.stackone.stackone_client_java.operations.StackoneProxyRequest;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -19,6 +20,7 @@ import java.util.Optional;
  * Routing API requests through StackOne directly to the underlying provider.
  */
 public class Proxy {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncProxy asyncSDK;
 
@@ -76,7 +78,7 @@ public class Proxy {
                 .proxyRequestBody(proxyRequestBody)
                 .build();
         RequestOperation<StackoneProxyRequestRequest, StackoneProxyRequestResponse> operation
-              = new StackoneProxyRequest.Sync(sdkConfiguration, options);
+              = new StackoneProxyRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

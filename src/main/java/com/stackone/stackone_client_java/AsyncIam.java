@@ -46,6 +46,7 @@ import com.stackone.stackone_client_java.operations.IamListPolicies;
 import com.stackone.stackone_client_java.operations.IamListRoles;
 import com.stackone.stackone_client_java.operations.IamListUsers;
 import com.stackone.stackone_client_java.operations.IamUpdateUser;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -53,6 +54,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncIam {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Iam syncSDK;
 
@@ -84,7 +86,7 @@ public class AsyncIam {
      * List Users
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;IamListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamListUsersResponse>} - The async response
      */
     public CompletableFuture<IamListUsersResponse> listUsers(IamListUsersRequest request) {
         return listUsers(request, Optional.empty());
@@ -95,11 +97,13 @@ public class AsyncIam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;IamListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamListUsersResponse>} - The async response
      */
     public CompletableFuture<IamListUsersResponse> listUsers(IamListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamListUsersRequest, IamListUsersResponse> operation
-              = new IamListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -118,7 +122,7 @@ public class AsyncIam {
      * Get User
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;IamGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamGetUserResponse>} - The async response
      */
     public CompletableFuture<IamGetUserResponse> getUser(IamGetUserRequest request) {
         return getUser(request, Optional.empty());
@@ -129,11 +133,13 @@ public class AsyncIam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;IamGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamGetUserResponse>} - The async response
      */
     public CompletableFuture<IamGetUserResponse> getUser(IamGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamGetUserRequest, IamGetUserResponse> operation
-              = new IamGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -153,7 +159,7 @@ public class AsyncIam {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @return CompletableFuture&lt;IamDeleteUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamDeleteUserResponse>} - The async response
      */
     public CompletableFuture<IamDeleteUserResponse> deleteUser(String xAccountId, String id) {
         return deleteUser(xAccountId, id, Optional.empty());
@@ -165,7 +171,7 @@ public class AsyncIam {
      * @param xAccountId The account identifier
      * @param id 
      * @param options additional options
-     * @return CompletableFuture&lt;IamDeleteUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamDeleteUserResponse>} - The async response
      */
     public CompletableFuture<IamDeleteUserResponse> deleteUser(
             String xAccountId, String id,
@@ -177,7 +183,9 @@ public class AsyncIam {
                 .id(id)
                 .build();
         AsyncRequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
-              = new IamDeleteUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamDeleteUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -198,7 +206,7 @@ public class AsyncIam {
      * @param xAccountId The account identifier
      * @param id 
      * @param iamUpdateUserRequestDto 
-     * @return CompletableFuture&lt;IamUpdateUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamUpdateUserResponse>} - The async response
      */
     public CompletableFuture<IamUpdateUserResponse> updateUser(
             String xAccountId, String id,
@@ -215,7 +223,7 @@ public class AsyncIam {
      * @param id 
      * @param iamUpdateUserRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;IamUpdateUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamUpdateUserResponse>} - The async response
      */
     public CompletableFuture<IamUpdateUserResponse> updateUser(
             String xAccountId, String id,
@@ -228,7 +236,9 @@ public class AsyncIam {
                 .iamUpdateUserRequestDto(iamUpdateUserRequestDto)
                 .build();
         AsyncRequestOperation<IamUpdateUserRequest, IamUpdateUserResponse> operation
-              = new IamUpdateUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamUpdateUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -247,7 +257,7 @@ public class AsyncIam {
      * List Roles
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;IamListRolesResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamListRolesResponse>} - The async response
      */
     public CompletableFuture<IamListRolesResponse> listRoles(IamListRolesRequest request) {
         return listRoles(request, Optional.empty());
@@ -258,11 +268,13 @@ public class AsyncIam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;IamListRolesResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamListRolesResponse>} - The async response
      */
     public CompletableFuture<IamListRolesResponse> listRoles(IamListRolesRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamListRolesRequest, IamListRolesResponse> operation
-              = new IamListRoles.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamListRoles.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -281,7 +293,7 @@ public class AsyncIam {
      * Get Role
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;IamGetRoleResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamGetRoleResponse>} - The async response
      */
     public CompletableFuture<IamGetRoleResponse> getRole(IamGetRoleRequest request) {
         return getRole(request, Optional.empty());
@@ -292,11 +304,13 @@ public class AsyncIam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;IamGetRoleResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamGetRoleResponse>} - The async response
      */
     public CompletableFuture<IamGetRoleResponse> getRole(IamGetRoleRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamGetRoleRequest, IamGetRoleResponse> operation
-              = new IamGetRole.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamGetRole.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -315,7 +329,7 @@ public class AsyncIam {
      * List Groups
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;IamListGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamListGroupsResponse>} - The async response
      */
     public CompletableFuture<IamListGroupsResponse> listGroups(IamListGroupsRequest request) {
         return listGroups(request, Optional.empty());
@@ -326,11 +340,13 @@ public class AsyncIam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;IamListGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamListGroupsResponse>} - The async response
      */
     public CompletableFuture<IamListGroupsResponse> listGroups(IamListGroupsRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamListGroupsRequest, IamListGroupsResponse> operation
-              = new IamListGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamListGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -349,7 +365,7 @@ public class AsyncIam {
      * Get Group
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;IamGetGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamGetGroupResponse>} - The async response
      */
     public CompletableFuture<IamGetGroupResponse> getGroup(IamGetGroupRequest request) {
         return getGroup(request, Optional.empty());
@@ -360,11 +376,13 @@ public class AsyncIam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;IamGetGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamGetGroupResponse>} - The async response
      */
     public CompletableFuture<IamGetGroupResponse> getGroup(IamGetGroupRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamGetGroupRequest, IamGetGroupResponse> operation
-              = new IamGetGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamGetGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -383,7 +401,7 @@ public class AsyncIam {
      * List Policies
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;IamListPoliciesResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamListPoliciesResponse>} - The async response
      */
     public CompletableFuture<IamListPoliciesResponse> listPolicies(IamListPoliciesRequest request) {
         return listPolicies(request, Optional.empty());
@@ -394,11 +412,13 @@ public class AsyncIam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;IamListPoliciesResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamListPoliciesResponse>} - The async response
      */
     public CompletableFuture<IamListPoliciesResponse> listPolicies(IamListPoliciesRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamListPoliciesRequest, IamListPoliciesResponse> operation
-              = new IamListPolicies.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamListPolicies.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -417,7 +437,7 @@ public class AsyncIam {
      * Get Policy
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;IamGetPolicyResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamGetPolicyResponse>} - The async response
      */
     public CompletableFuture<IamGetPolicyResponse> getPolicy(IamGetPolicyRequest request) {
         return getPolicy(request, Optional.empty());
@@ -428,11 +448,13 @@ public class AsyncIam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;IamGetPolicyResponse&gt; - The async response
+     * @return {@code CompletableFuture<IamGetPolicyResponse>} - The async response
      */
     public CompletableFuture<IamGetPolicyResponse> getPolicy(IamGetPolicyRequest request, Optional<Options> options) {
         AsyncRequestOperation<IamGetPolicyRequest, IamGetPolicyResponse> operation
-              = new IamGetPolicy.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new IamGetPolicy.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

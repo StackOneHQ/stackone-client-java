@@ -105,7 +105,8 @@ public class Course {
     private JsonNullable<? extends CourseActive> active;
 
     /**
-     * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
+     * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will
+     * derive this from the smallest unit given in the duration string
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("duration")
@@ -326,7 +327,8 @@ public class Course {
     }
 
     /**
-     * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
+     * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will
+     * derive this from the smallest unit given in the duration string
      */
     @JsonIgnore
     public JsonNullable<String> duration() {
@@ -606,7 +608,8 @@ public class Course {
     }
 
     /**
-     * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
+     * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will
+     * derive this from the smallest unit given in the duration string
      */
     public Course withDuration(String duration) {
         Utils.checkNotNull(duration, "duration");
@@ -615,7 +618,8 @@ public class Course {
     }
 
     /**
-     * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
+     * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will
+     * derive this from the smallest unit given in the duration string
      */
     public Course withDuration(JsonNullable<String> duration) {
         Utils.checkNotNull(duration, "duration");
@@ -1073,7 +1077,8 @@ public class Course {
 
 
         /**
-         * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
+         * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will
+         * derive this from the smallest unit given in the duration string
          */
         public Builder duration(String duration) {
             Utils.checkNotNull(duration, "duration");
@@ -1082,7 +1087,8 @@ public class Course {
         }
 
         /**
-         * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
+         * The duration of the course following the ISO8601 standard. If duration_unit is applicable we will
+         * derive this from the smallest unit given in the duration string
          */
         public Builder duration(JsonNullable<String> duration) {
             Utils.checkNotNull(duration, "duration");

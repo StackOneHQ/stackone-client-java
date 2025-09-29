@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AccountingJournalBatchCreateRequestDto;
 import com.stackone.stackone_client_java.models.operations.AccountingBatchCreateCompanyJournalsRequest;
 import com.stackone.stackone_client_java.operations.AccountingBatchCreateCompanyJournals;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class AccountingBatchCreateCompanyJournalsRequestBuilder {
     private AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AccountingBatchCreateCompanyJournalsRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class AccountingBatchCreateCompanyJournalsRequestBuilder {
             .build());
 
         AsyncRequestOperation<AccountingBatchCreateCompanyJournalsRequest, AccountingBatchCreateCompanyJournalsResponse> operation
-              = new AccountingBatchCreateCompanyJournals.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AccountingBatchCreateCompanyJournals.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AccountingBatchCreateCompanyJournalsRequest request = buildRequest();
 
         return operation.doRequest(request)

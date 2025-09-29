@@ -21,7 +21,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 public class TaskStatus {
     /**
-     * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+     * The unified value for the status of the task. If the provider does not specify this status, the
+     * value will be set to UnmappedValue
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
@@ -47,7 +48,8 @@ public class TaskStatus {
     }
 
     /**
-     * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+     * The unified value for the status of the task. If the provider does not specify this status, the
+     * value will be set to UnmappedValue
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -67,7 +69,8 @@ public class TaskStatus {
 
 
     /**
-     * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+     * The unified value for the status of the task. If the provider does not specify this status, the
+     * value will be set to UnmappedValue
      */
     public TaskStatus withValue(TaskStatusValue value) {
         Utils.checkNotNull(value, "value");
@@ -76,7 +79,8 @@ public class TaskStatus {
     }
 
     /**
-     * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+     * The unified value for the status of the task. If the provider does not specify this status, the
+     * value will be set to UnmappedValue
      */
     public TaskStatus withValue(JsonNullable<? extends TaskStatusValue> value) {
         Utils.checkNotNull(value, "value");
@@ -136,7 +140,8 @@ public class TaskStatus {
 
 
         /**
-         * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+         * The unified value for the status of the task. If the provider does not specify this status, the
+         * value will be set to UnmappedValue
          */
         public Builder value(TaskStatusValue value) {
             Utils.checkNotNull(value, "value");
@@ -145,7 +150,8 @@ public class TaskStatus {
         }
 
         /**
-         * The unified value for the status of the task. If the provider does not specify this status, the value will be set to UnmappedValue
+         * The unified value for the status of the task. If the provider does not specify this status, the
+         * value will be set to UnmappedValue
          */
         public Builder value(JsonNullable<? extends TaskStatusValue> value) {
             Utils.checkNotNull(value, "value");

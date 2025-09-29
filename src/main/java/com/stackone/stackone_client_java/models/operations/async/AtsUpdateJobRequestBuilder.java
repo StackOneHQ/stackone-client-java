@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateJobRequest;
 import com.stackone.stackone_client_java.operations.AtsUpdateJob;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -24,6 +25,7 @@ public class AtsUpdateJobRequestBuilder {
     private AtsUpdateJobRequestDto atsUpdateJobRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsUpdateJobRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -75,7 +77,9 @@ public class AtsUpdateJobRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
-              = new AtsUpdateJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AtsUpdateJobRequest request = buildRequest();
 
         return operation.doRequest(request)

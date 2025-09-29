@@ -21,7 +21,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 public class BalanceUnit {
     /**
-     * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+     * The unified value for the duration unit. If the provider does not specify this unit, the value will
+     * be set to unknown
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
@@ -47,7 +48,8 @@ public class BalanceUnit {
     }
 
     /**
-     * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+     * The unified value for the duration unit. If the provider does not specify this unit, the value will
+     * be set to unknown
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -67,7 +69,8 @@ public class BalanceUnit {
 
 
     /**
-     * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+     * The unified value for the duration unit. If the provider does not specify this unit, the value will
+     * be set to unknown
      */
     public BalanceUnit withValue(TimeOffBalancesValue value) {
         Utils.checkNotNull(value, "value");
@@ -76,7 +79,8 @@ public class BalanceUnit {
     }
 
     /**
-     * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+     * The unified value for the duration unit. If the provider does not specify this unit, the value will
+     * be set to unknown
      */
     public BalanceUnit withValue(JsonNullable<? extends TimeOffBalancesValue> value) {
         Utils.checkNotNull(value, "value");
@@ -136,7 +140,8 @@ public class BalanceUnit {
 
 
         /**
-         * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+         * The unified value for the duration unit. If the provider does not specify this unit, the value will
+         * be set to unknown
          */
         public Builder value(TimeOffBalancesValue value) {
             Utils.checkNotNull(value, "value");
@@ -145,7 +150,8 @@ public class BalanceUnit {
         }
 
         /**
-         * The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+         * The unified value for the duration unit. If the provider does not specify this unit, the value will
+         * be set to unknown
          */
         public Builder value(JsonNullable<? extends TimeOffBalancesValue> value) {
             Utils.checkNotNull(value, "value");

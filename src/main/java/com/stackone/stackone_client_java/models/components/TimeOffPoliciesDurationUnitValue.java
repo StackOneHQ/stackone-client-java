@@ -44,7 +44,8 @@ import java.util.Optional;
 /**
  * TimeOffPoliciesDurationUnitValue
  * 
- * <p>The unified value for the duration unit. If the provider does not specify this unit, the value will be set to unknown
+ * <p>The unified value for the duration unit. If the provider does not specify this unit, the value will
+ * be set to unknown
  */
 @JsonDeserialize(using = TimeOffPoliciesDurationUnitValue._Deserializer.class)
 @JsonSerialize(using = TimeOffPoliciesDurationUnitValue._Serializer.class)

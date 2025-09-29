@@ -319,6 +319,7 @@ import com.stackone.stackone_client_java.operations.AtsUpdateBackgroundCheckResu
 import com.stackone.stackone_client_java.operations.AtsUpdateCandidate;
 import com.stackone.stackone_client_java.operations.AtsUpdateJob;
 import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.String;
@@ -327,6 +328,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncAts {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Ats syncSDK;
 
@@ -358,7 +360,7 @@ public class AsyncAts {
      * List Applications
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationsResponse> listApplications(AtsListApplicationsRequest request) {
         return listApplications(request, Optional.empty());
@@ -369,11 +371,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationsResponse> listApplications(AtsListApplicationsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationsRequest, AtsListApplicationsResponse> operation
-              = new AtsListApplications.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplications.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -393,7 +397,7 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param atsCreateApplicationRequestDto 
-     * @return CompletableFuture&lt;AtsCreateApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsCreateApplicationResponse> createApplication(String xAccountId, AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) {
         return createApplication(xAccountId, atsCreateApplicationRequestDto, Optional.empty());
@@ -405,7 +409,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param atsCreateApplicationRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsCreateApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsCreateApplicationResponse> createApplication(
             String xAccountId, AtsCreateApplicationRequestDto atsCreateApplicationRequestDto,
@@ -417,7 +421,9 @@ public class AsyncAts {
                 .atsCreateApplicationRequestDto(atsCreateApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
-              = new AtsCreateApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -436,7 +442,7 @@ public class AsyncAts {
      * Get Application
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationResponse> getApplication(AtsGetApplicationRequest request) {
         return getApplication(request, Optional.empty());
@@ -447,11 +453,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationResponse> getApplication(AtsGetApplicationRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationRequest, AtsGetApplicationResponse> operation
-              = new AtsGetApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -472,7 +480,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsUpdateApplicationRequestDto 
-     * @return CompletableFuture&lt;AtsUpdateApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateApplicationResponse> updateApplication(
             String xAccountId, String id,
@@ -489,7 +497,7 @@ public class AsyncAts {
      * @param id 
      * @param atsUpdateApplicationRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsUpdateApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateApplicationResponse> updateApplication(
             String xAccountId, String id,
@@ -502,7 +510,9 @@ public class AsyncAts {
                 .atsUpdateApplicationRequestDto(atsUpdateApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
-              = new AtsUpdateApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -521,7 +531,7 @@ public class AsyncAts {
      * List Application Offers
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationsOffersResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationsOffersResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationsOffersResponse> listApplicationsOffers(AtsListApplicationsOffersRequest request) {
         return listApplicationsOffers(request, Optional.empty());
@@ -532,11 +542,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationsOffersResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationsOffersResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationsOffersResponse> listApplicationsOffers(AtsListApplicationsOffersRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationsOffersRequest, AtsListApplicationsOffersResponse> operation
-              = new AtsListApplicationsOffers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationsOffers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -557,7 +569,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsMoveApplicationRequestDto 
-     * @return CompletableFuture&lt;AtsMoveApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsMoveApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsMoveApplicationResponse> moveApplication(
             String xAccountId, String id,
@@ -574,7 +586,7 @@ public class AsyncAts {
      * @param id 
      * @param atsMoveApplicationRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsMoveApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsMoveApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsMoveApplicationResponse> moveApplication(
             String xAccountId, String id,
@@ -587,7 +599,9 @@ public class AsyncAts {
                 .atsMoveApplicationRequestDto(atsMoveApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
-              = new AtsMoveApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsMoveApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -608,7 +622,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsRejectApplicationRequestDto 
-     * @return CompletableFuture&lt;AtsRejectApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsRejectApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsRejectApplicationResponse> rejectApplication(
             String xAccountId, String id,
@@ -625,7 +639,7 @@ public class AsyncAts {
      * @param id 
      * @param atsRejectApplicationRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsRejectApplicationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsRejectApplicationResponse>} - The async response
      */
     public CompletableFuture<AtsRejectApplicationResponse> rejectApplication(
             String xAccountId, String id,
@@ -638,7 +652,9 @@ public class AsyncAts {
                 .atsRejectApplicationRequestDto(atsRejectApplicationRequestDto)
                 .build();
         AsyncRequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
-              = new AtsRejectApplication.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsRejectApplication.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -657,7 +673,7 @@ public class AsyncAts {
      * Get Application Offer
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationOfferResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationOfferResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationOfferResponse> getApplicationOffer(AtsGetApplicationOfferRequest request) {
         return getApplicationOffer(request, Optional.empty());
@@ -668,11 +684,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationOfferResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationOfferResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationOfferResponse> getApplicationOffer(AtsGetApplicationOfferRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationOfferRequest, AtsGetApplicationOfferResponse> operation
-              = new AtsGetApplicationOffer.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationOffer.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -691,7 +709,7 @@ public class AsyncAts {
      * List Application Scorecards
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationScorecardsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationScorecardsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationScorecardsResponse> listApplicationScorecards(AtsListApplicationScorecardsRequest request) {
         return listApplicationScorecards(request, Optional.empty());
@@ -702,11 +720,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationScorecardsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationScorecardsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationScorecardsResponse> listApplicationScorecards(AtsListApplicationScorecardsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationScorecardsRequest, AtsListApplicationScorecardsResponse> operation
-              = new AtsListApplicationScorecards.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationScorecards.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -725,7 +745,7 @@ public class AsyncAts {
      * Get Application Scorecard
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationScorecardResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationScorecardResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationScorecardResponse> getApplicationScorecard(AtsGetApplicationScorecardRequest request) {
         return getApplicationScorecard(request, Optional.empty());
@@ -736,11 +756,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationScorecardResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationScorecardResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationScorecardResponse> getApplicationScorecard(AtsGetApplicationScorecardRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationScorecardRequest, AtsGetApplicationScorecardResponse> operation
-              = new AtsGetApplicationScorecard.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationScorecard.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -759,7 +781,7 @@ public class AsyncAts {
      * List Application Changes
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationChangesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationChangesResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationChangesResponse> listApplicationChanges(AtsListApplicationChangesRequest request) {
         return listApplicationChanges(request, Optional.empty());
@@ -770,11 +792,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationChangesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationChangesResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationChangesResponse> listApplicationChanges(AtsListApplicationChangesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationChangesRequest, AtsListApplicationChangesResponse> operation
-              = new AtsListApplicationChanges.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationChanges.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -793,7 +817,7 @@ public class AsyncAts {
      * List Application Notes
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationNotesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationNotesResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationNotesResponse> listApplicationNotes(AtsListApplicationNotesRequest request) {
         return listApplicationNotes(request, Optional.empty());
@@ -804,11 +828,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationNotesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationNotesResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationNotesResponse> listApplicationNotes(AtsListApplicationNotesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationNotesRequest, AtsListApplicationNotesResponse> operation
-              = new AtsListApplicationNotes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationNotes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -829,7 +855,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsCreateNotesRequestDto 
-     * @return CompletableFuture&lt;AtsCreateApplicationNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateApplicationNoteResponse>} - The async response
      */
     public CompletableFuture<AtsCreateApplicationNoteResponse> createApplicationNote(
             String xAccountId, String id,
@@ -846,7 +872,7 @@ public class AsyncAts {
      * @param id 
      * @param atsCreateNotesRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsCreateApplicationNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateApplicationNoteResponse>} - The async response
      */
     public CompletableFuture<AtsCreateApplicationNoteResponse> createApplicationNote(
             String xAccountId, String id,
@@ -859,7 +885,9 @@ public class AsyncAts {
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateApplicationNoteRequest, AtsCreateApplicationNoteResponse> operation
-              = new AtsCreateApplicationNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateApplicationNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -878,7 +906,7 @@ public class AsyncAts {
      * Get Application Note
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationNoteResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationNoteResponse> getApplicationNote(AtsGetApplicationNoteRequest request) {
         return getApplicationNote(request, Optional.empty());
@@ -889,11 +917,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationNoteResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationNoteResponse> getApplicationNote(AtsGetApplicationNoteRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationNoteRequest, AtsGetApplicationNoteResponse> operation
-              = new AtsGetApplicationNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -915,7 +945,7 @@ public class AsyncAts {
      * @param id 
      * @param subResourceId 
      * @param atsUpdateNotesRequestDto 
-     * @return CompletableFuture&lt;AtsUpdateApplicationNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateApplicationNoteResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateApplicationNoteResponse> updateApplicationNote(
             String xAccountId, String id,
@@ -933,7 +963,7 @@ public class AsyncAts {
      * @param subResourceId 
      * @param atsUpdateNotesRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsUpdateApplicationNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateApplicationNoteResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateApplicationNoteResponse> updateApplicationNote(
             String xAccountId, String id,
@@ -948,7 +978,9 @@ public class AsyncAts {
                 .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
-              = new AtsUpdateApplicationNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateApplicationNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -967,7 +999,7 @@ public class AsyncAts {
      * List Applications scheduled interviews
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationsScheduledInterviewsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationsScheduledInterviewsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationsScheduledInterviewsResponse> listApplicationsScheduledInterviews(AtsListApplicationsScheduledInterviewsRequest request) {
         return listApplicationsScheduledInterviews(request, Optional.empty());
@@ -978,11 +1010,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationsScheduledInterviewsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationsScheduledInterviewsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationsScheduledInterviewsResponse> listApplicationsScheduledInterviews(AtsListApplicationsScheduledInterviewsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationsScheduledInterviewsRequest, AtsListApplicationsScheduledInterviewsResponse> operation
-              = new AtsListApplicationsScheduledInterviews.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationsScheduledInterviews.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1001,7 +1035,7 @@ public class AsyncAts {
      * Get Applications scheduled interview
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationScheduledInterviewResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationScheduledInterviewResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationScheduledInterviewResponse> getApplicationScheduledInterview(AtsGetApplicationScheduledInterviewRequest request) {
         return getApplicationScheduledInterview(request, Optional.empty());
@@ -1012,11 +1046,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationScheduledInterviewResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationScheduledInterviewResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationScheduledInterviewResponse> getApplicationScheduledInterview(AtsGetApplicationScheduledInterviewRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationScheduledInterviewRequest, AtsGetApplicationScheduledInterviewResponse> operation
-              = new AtsGetApplicationScheduledInterview.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationScheduledInterview.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1037,7 +1073,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsDocumentsUploadRequestDto 
-     * @return CompletableFuture&lt;AtsUploadApplicationDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUploadApplicationDocumentResponse>} - The async response
      */
     public CompletableFuture<AtsUploadApplicationDocumentResponse> uploadApplicationDocument(
             String xAccountId, String id,
@@ -1054,7 +1090,7 @@ public class AsyncAts {
      * @param id 
      * @param atsDocumentsUploadRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsUploadApplicationDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUploadApplicationDocumentResponse>} - The async response
      */
     public CompletableFuture<AtsUploadApplicationDocumentResponse> uploadApplicationDocument(
             String xAccountId, String id,
@@ -1067,7 +1103,9 @@ public class AsyncAts {
                 .atsDocumentsUploadRequestDto(atsDocumentsUploadRequestDto)
                 .build();
         AsyncRequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
-              = new AtsUploadApplicationDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUploadApplicationDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1086,7 +1124,7 @@ public class AsyncAts {
      * Download Application Document
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsDownloadApplicationDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsDownloadApplicationDocumentResponse>} - The async response
      */
     public CompletableFuture<AtsDownloadApplicationDocumentResponse> downloadApplicationDocument(AtsDownloadApplicationDocumentRequest request) {
         return downloadApplicationDocument(request, Optional.empty());
@@ -1097,11 +1135,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsDownloadApplicationDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsDownloadApplicationDocumentResponse>} - The async response
      */
     public CompletableFuture<AtsDownloadApplicationDocumentResponse> downloadApplicationDocument(AtsDownloadApplicationDocumentRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsDownloadApplicationDocumentRequest, AtsDownloadApplicationDocumentResponse> operation
-              = new AtsDownloadApplicationDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsDownloadApplicationDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1120,7 +1160,7 @@ public class AsyncAts {
      * List Application Documents
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationDocumentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationDocumentsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationDocumentsResponse> listApplicationDocuments(AtsListApplicationDocumentsRequest request) {
         return listApplicationDocuments(request, Optional.empty());
@@ -1131,11 +1171,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationDocumentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationDocumentsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationDocumentsResponse> listApplicationDocuments(AtsListApplicationDocumentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationDocumentsRequest, AtsListApplicationDocumentsResponse> operation
-              = new AtsListApplicationDocuments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationDocuments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1154,7 +1196,7 @@ public class AsyncAts {
      * Get Application Document
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationDocumentResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationDocumentResponse> getApplicationDocument(AtsGetApplicationDocumentRequest request) {
         return getApplicationDocument(request, Optional.empty());
@@ -1165,11 +1207,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationDocumentResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationDocumentResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationDocumentResponse> getApplicationDocument(AtsGetApplicationDocumentRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationDocumentRequest, AtsGetApplicationDocumentResponse> operation
-              = new AtsGetApplicationDocument.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationDocument.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1188,7 +1232,7 @@ public class AsyncAts {
      * List Candidates
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListCandidatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListCandidatesResponse>} - The async response
      */
     public CompletableFuture<AtsListCandidatesResponse> listCandidates(AtsListCandidatesRequest request) {
         return listCandidates(request, Optional.empty());
@@ -1199,11 +1243,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListCandidatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListCandidatesResponse>} - The async response
      */
     public CompletableFuture<AtsListCandidatesResponse> listCandidates(AtsListCandidatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListCandidatesRequest, AtsListCandidatesResponse> operation
-              = new AtsListCandidates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListCandidates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1223,7 +1269,7 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param atsCreateCandidateRequestDto 
-     * @return CompletableFuture&lt;AtsCreateCandidateResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsCreateCandidateResponse> createCandidate(String xAccountId, AtsCreateCandidateRequestDto atsCreateCandidateRequestDto) {
         return createCandidate(xAccountId, atsCreateCandidateRequestDto, Optional.empty());
@@ -1235,7 +1281,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param atsCreateCandidateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsCreateCandidateResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsCreateCandidateResponse> createCandidate(
             String xAccountId, AtsCreateCandidateRequestDto atsCreateCandidateRequestDto,
@@ -1247,7 +1293,9 @@ public class AsyncAts {
                 .atsCreateCandidateRequestDto(atsCreateCandidateRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
-              = new AtsCreateCandidate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateCandidate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1266,7 +1314,7 @@ public class AsyncAts {
      * Get Candidate
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetCandidateResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsGetCandidateResponse> getCandidate(AtsGetCandidateRequest request) {
         return getCandidate(request, Optional.empty());
@@ -1277,11 +1325,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetCandidateResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsGetCandidateResponse> getCandidate(AtsGetCandidateRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetCandidateRequest, AtsGetCandidateResponse> operation
-              = new AtsGetCandidate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetCandidate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1302,7 +1352,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsUpdateCandidateRequestDto 
-     * @return CompletableFuture&lt;AtsUpdateCandidateResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateCandidateResponse> updateCandidate(
             String xAccountId, String id,
@@ -1319,7 +1369,7 @@ public class AsyncAts {
      * @param id 
      * @param atsUpdateCandidateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsUpdateCandidateResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateCandidateResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateCandidateResponse> updateCandidate(
             String xAccountId, String id,
@@ -1332,7 +1382,9 @@ public class AsyncAts {
                 .atsUpdateCandidateRequestDto(atsUpdateCandidateRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateCandidateRequest, AtsUpdateCandidateResponse> operation
-              = new AtsUpdateCandidate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateCandidate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1351,7 +1403,7 @@ public class AsyncAts {
      * List Candidate Notes
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListCandidateNotesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListCandidateNotesResponse>} - The async response
      */
     public CompletableFuture<AtsListCandidateNotesResponse> listCandidateNotes(AtsListCandidateNotesRequest request) {
         return listCandidateNotes(request, Optional.empty());
@@ -1362,11 +1414,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListCandidateNotesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListCandidateNotesResponse>} - The async response
      */
     public CompletableFuture<AtsListCandidateNotesResponse> listCandidateNotes(AtsListCandidateNotesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListCandidateNotesRequest, AtsListCandidateNotesResponse> operation
-              = new AtsListCandidateNotes.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListCandidateNotes.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1387,7 +1441,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsCreateNotesRequestDto 
-     * @return CompletableFuture&lt;AtsCreateCandidateNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateCandidateNoteResponse>} - The async response
      */
     public CompletableFuture<AtsCreateCandidateNoteResponse> createCandidateNote(
             String xAccountId, String id,
@@ -1404,7 +1458,7 @@ public class AsyncAts {
      * @param id 
      * @param atsCreateNotesRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsCreateCandidateNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateCandidateNoteResponse>} - The async response
      */
     public CompletableFuture<AtsCreateCandidateNoteResponse> createCandidateNote(
             String xAccountId, String id,
@@ -1417,7 +1471,9 @@ public class AsyncAts {
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateCandidateNoteRequest, AtsCreateCandidateNoteResponse> operation
-              = new AtsCreateCandidateNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateCandidateNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1436,7 +1492,7 @@ public class AsyncAts {
      * Get Candidate Note
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetCandidateNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetCandidateNoteResponse>} - The async response
      */
     public CompletableFuture<AtsGetCandidateNoteResponse> getCandidateNote(AtsGetCandidateNoteRequest request) {
         return getCandidateNote(request, Optional.empty());
@@ -1447,11 +1503,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetCandidateNoteResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetCandidateNoteResponse>} - The async response
      */
     public CompletableFuture<AtsGetCandidateNoteResponse> getCandidateNote(AtsGetCandidateNoteRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetCandidateNoteRequest, AtsGetCandidateNoteResponse> operation
-              = new AtsGetCandidateNote.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetCandidateNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1470,7 +1528,7 @@ public class AsyncAts {
      * List Application Custom Field Definitions
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationCustomFieldDefinitionsResponse> listApplicationCustomFieldDefinitions(AtsListApplicationCustomFieldDefinitionsRequest request) {
         return listApplicationCustomFieldDefinitions(request, Optional.empty());
@@ -1481,11 +1539,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationCustomFieldDefinitionsResponse> listApplicationCustomFieldDefinitions(AtsListApplicationCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationCustomFieldDefinitionsRequest, AtsListApplicationCustomFieldDefinitionsResponse> operation
-              = new AtsListApplicationCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1504,7 +1564,7 @@ public class AsyncAts {
      * Get Application Custom Field Definition
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationCustomFieldDefinitionResponse> getApplicationCustomFieldDefinition(AtsGetApplicationCustomFieldDefinitionRequest request) {
         return getApplicationCustomFieldDefinition(request, Optional.empty());
@@ -1515,11 +1575,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationCustomFieldDefinitionResponse> getApplicationCustomFieldDefinition(AtsGetApplicationCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationCustomFieldDefinitionRequest, AtsGetApplicationCustomFieldDefinitionResponse> operation
-              = new AtsGetApplicationCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1538,7 +1600,7 @@ public class AsyncAts {
      * List Candidate Custom Field Definitions
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListCandidateCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListCandidateCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<AtsListCandidateCustomFieldDefinitionsResponse> listCandidateCustomFieldDefinitions(AtsListCandidateCustomFieldDefinitionsRequest request) {
         return listCandidateCustomFieldDefinitions(request, Optional.empty());
@@ -1549,11 +1611,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListCandidateCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListCandidateCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<AtsListCandidateCustomFieldDefinitionsResponse> listCandidateCustomFieldDefinitions(AtsListCandidateCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListCandidateCustomFieldDefinitionsRequest, AtsListCandidateCustomFieldDefinitionsResponse> operation
-              = new AtsListCandidateCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListCandidateCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1572,7 +1636,7 @@ public class AsyncAts {
      * Get Candidate Custom Field Definition
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetCandidateCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetCandidateCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<AtsGetCandidateCustomFieldDefinitionResponse> getCandidateCustomFieldDefinition(AtsGetCandidateCustomFieldDefinitionRequest request) {
         return getCandidateCustomFieldDefinition(request, Optional.empty());
@@ -1583,11 +1647,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetCandidateCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetCandidateCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<AtsGetCandidateCustomFieldDefinitionResponse> getCandidateCustomFieldDefinition(AtsGetCandidateCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetCandidateCustomFieldDefinitionRequest, AtsGetCandidateCustomFieldDefinitionResponse> operation
-              = new AtsGetCandidateCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetCandidateCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1606,7 +1672,7 @@ public class AsyncAts {
      * List Job Custom Field Definitions
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListJobCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListJobCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<AtsListJobCustomFieldDefinitionsResponse> listJobCustomFieldDefinitions(AtsListJobCustomFieldDefinitionsRequest request) {
         return listJobCustomFieldDefinitions(request, Optional.empty());
@@ -1617,11 +1683,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListJobCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListJobCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<AtsListJobCustomFieldDefinitionsResponse> listJobCustomFieldDefinitions(AtsListJobCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListJobCustomFieldDefinitionsRequest, AtsListJobCustomFieldDefinitionsResponse> operation
-              = new AtsListJobCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1640,7 +1708,7 @@ public class AsyncAts {
      * Get Job Custom Field Definition
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetJobCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetJobCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<AtsGetJobCustomFieldDefinitionResponse> getJobCustomFieldDefinition(AtsGetJobCustomFieldDefinitionRequest request) {
         return getJobCustomFieldDefinition(request, Optional.empty());
@@ -1651,11 +1719,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetJobCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetJobCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<AtsGetJobCustomFieldDefinitionResponse> getJobCustomFieldDefinition(AtsGetJobCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetJobCustomFieldDefinitionRequest, AtsGetJobCustomFieldDefinitionResponse> operation
-              = new AtsGetJobCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetJobCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1674,7 +1744,7 @@ public class AsyncAts {
      * List Departments
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListDepartmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListDepartmentsResponse>} - The async response
      */
     public CompletableFuture<AtsListDepartmentsResponse> listDepartments(AtsListDepartmentsRequest request) {
         return listDepartments(request, Optional.empty());
@@ -1685,11 +1755,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListDepartmentsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListDepartmentsResponse>} - The async response
      */
     public CompletableFuture<AtsListDepartmentsResponse> listDepartments(AtsListDepartmentsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListDepartmentsRequest, AtsListDepartmentsResponse> operation
-              = new AtsListDepartments.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListDepartments.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1708,7 +1780,7 @@ public class AsyncAts {
      * Get Department
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetDepartmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetDepartmentResponse>} - The async response
      */
     public CompletableFuture<AtsGetDepartmentResponse> getDepartment(AtsGetDepartmentRequest request) {
         return getDepartment(request, Optional.empty());
@@ -1719,11 +1791,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetDepartmentResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetDepartmentResponse>} - The async response
      */
     public CompletableFuture<AtsGetDepartmentResponse> getDepartment(AtsGetDepartmentRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetDepartmentRequest, AtsGetDepartmentResponse> operation
-              = new AtsGetDepartment.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetDepartment.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1744,7 +1818,7 @@ public class AsyncAts {
      * List Interview Stages
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListInterviewStagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListInterviewStagesResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -1757,13 +1831,15 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListInterviewStagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListInterviewStagesResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public CompletableFuture<AtsListInterviewStagesResponse> listInterviewStages(AtsListInterviewStagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListInterviewStagesRequest, AtsListInterviewStagesResponse> operation
-              = new AtsListInterviewStages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListInterviewStages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1784,7 +1860,7 @@ public class AsyncAts {
      * Get Interview Stage
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetInterviewStageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetInterviewStageResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -1797,13 +1873,15 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetInterviewStageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetInterviewStageResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public CompletableFuture<AtsGetInterviewStageResponse> getInterviewStage(AtsGetInterviewStageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetInterviewStageRequest, AtsGetInterviewStageResponse> operation
-              = new AtsGetInterviewStage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetInterviewStage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1822,7 +1900,7 @@ public class AsyncAts {
      * List Application Stages
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationStagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationStagesResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationStagesResponse> listApplicationStages(AtsListApplicationStagesRequest request) {
         return listApplicationStages(request, Optional.empty());
@@ -1833,11 +1911,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationStagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationStagesResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationStagesResponse> listApplicationStages(AtsListApplicationStagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationStagesRequest, AtsListApplicationStagesResponse> operation
-              = new AtsListApplicationStages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationStages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1856,7 +1936,7 @@ public class AsyncAts {
      * Get Application Stage
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationStageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationStageResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationStageResponse> getApplicationStage(AtsGetApplicationStageRequest request) {
         return getApplicationStage(request, Optional.empty());
@@ -1867,11 +1947,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationStageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationStageResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationStageResponse> getApplicationStage(AtsGetApplicationStageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationStageRequest, AtsGetApplicationStageResponse> operation
-              = new AtsGetApplicationStage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationStage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1890,7 +1972,7 @@ public class AsyncAts {
      * List Interviews
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListInterviewsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListInterviewsResponse>} - The async response
      */
     public CompletableFuture<AtsListInterviewsResponse> listInterviews(AtsListInterviewsRequest request) {
         return listInterviews(request, Optional.empty());
@@ -1901,11 +1983,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListInterviewsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListInterviewsResponse>} - The async response
      */
     public CompletableFuture<AtsListInterviewsResponse> listInterviews(AtsListInterviewsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListInterviewsRequest, AtsListInterviewsResponse> operation
-              = new AtsListInterviews.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListInterviews.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1924,7 +2008,7 @@ public class AsyncAts {
      * Get Interview
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetInterviewResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetInterviewResponse>} - The async response
      */
     public CompletableFuture<AtsGetInterviewResponse> getInterview(AtsGetInterviewRequest request) {
         return getInterview(request, Optional.empty());
@@ -1935,11 +2019,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetInterviewResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetInterviewResponse>} - The async response
      */
     public CompletableFuture<AtsGetInterviewResponse> getInterview(AtsGetInterviewRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetInterviewRequest, AtsGetInterviewResponse> operation
-              = new AtsGetInterview.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetInterview.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1958,7 +2044,7 @@ public class AsyncAts {
      * List Jobs
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListJobsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListJobsResponse>} - The async response
      */
     public CompletableFuture<AtsListJobsResponse> listJobs(AtsListJobsRequest request) {
         return listJobs(request, Optional.empty());
@@ -1969,11 +2055,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListJobsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListJobsResponse>} - The async response
      */
     public CompletableFuture<AtsListJobsResponse> listJobs(AtsListJobsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListJobsRequest, AtsListJobsResponse> operation
-              = new AtsListJobs.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobs.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1993,7 +2081,7 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param atsCreateJobRequestDto 
-     * @return CompletableFuture&lt;AtsCreateJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateJobResponse>} - The async response
      */
     public CompletableFuture<AtsCreateJobResponse> createJob(String xAccountId, AtsCreateJobRequestDto atsCreateJobRequestDto) {
         return createJob(xAccountId, atsCreateJobRequestDto, Optional.empty());
@@ -2005,7 +2093,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param atsCreateJobRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsCreateJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateJobResponse>} - The async response
      */
     public CompletableFuture<AtsCreateJobResponse> createJob(
             String xAccountId, AtsCreateJobRequestDto atsCreateJobRequestDto,
@@ -2017,7 +2105,9 @@ public class AsyncAts {
                 .atsCreateJobRequestDto(atsCreateJobRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateJobRequest, AtsCreateJobResponse> operation
-              = new AtsCreateJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2036,7 +2126,7 @@ public class AsyncAts {
      * List Job Application Stages
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListJobApplicationStagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListJobApplicationStagesResponse>} - The async response
      */
     public CompletableFuture<AtsListJobApplicationStagesResponse> listJobApplicationStages(AtsListJobApplicationStagesRequest request) {
         return listJobApplicationStages(request, Optional.empty());
@@ -2047,11 +2137,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListJobApplicationStagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListJobApplicationStagesResponse>} - The async response
      */
     public CompletableFuture<AtsListJobApplicationStagesResponse> listJobApplicationStages(AtsListJobApplicationStagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListJobApplicationStagesRequest, AtsListJobApplicationStagesResponse> operation
-              = new AtsListJobApplicationStages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobApplicationStages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2070,7 +2162,7 @@ public class AsyncAts {
      * Get Job
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetJobResponse>} - The async response
      */
     public CompletableFuture<AtsGetJobResponse> getJob(AtsGetJobRequest request) {
         return getJob(request, Optional.empty());
@@ -2081,11 +2173,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetJobResponse>} - The async response
      */
     public CompletableFuture<AtsGetJobResponse> getJob(AtsGetJobRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetJobRequest, AtsGetJobResponse> operation
-              = new AtsGetJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2106,7 +2200,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsUpdateJobRequestDto 
-     * @return CompletableFuture&lt;AtsUpdateJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateJobResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateJobResponse> updateJob(
             String xAccountId, String id,
@@ -2123,7 +2217,7 @@ public class AsyncAts {
      * @param id 
      * @param atsUpdateJobRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsUpdateJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateJobResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateJobResponse> updateJob(
             String xAccountId, String id,
@@ -2136,7 +2230,9 @@ public class AsyncAts {
                 .atsUpdateJobRequestDto(atsUpdateJobRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
-              = new AtsUpdateJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2155,7 +2251,7 @@ public class AsyncAts {
      * Get Job Application Stage
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetJobApplicationStageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetJobApplicationStageResponse>} - The async response
      */
     public CompletableFuture<AtsGetJobApplicationStageResponse> getJobApplicationStage(AtsGetJobApplicationStageRequest request) {
         return getJobApplicationStage(request, Optional.empty());
@@ -2166,11 +2262,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetJobApplicationStageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetJobApplicationStageResponse>} - The async response
      */
     public CompletableFuture<AtsGetJobApplicationStageResponse> getJobApplicationStage(AtsGetJobApplicationStageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetJobApplicationStageRequest, AtsGetJobApplicationStageResponse> operation
-              = new AtsGetJobApplicationStage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetJobApplicationStage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2189,7 +2287,7 @@ public class AsyncAts {
      * Get all Lists
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListListsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListListsResponse>} - The async response
      */
     public CompletableFuture<AtsListListsResponse> listLists(AtsListListsRequest request) {
         return listLists(request, Optional.empty());
@@ -2200,11 +2298,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListListsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListListsResponse>} - The async response
      */
     public CompletableFuture<AtsListListsResponse> listLists(AtsListListsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListListsRequest, AtsListListsResponse> operation
-              = new AtsListLists.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListLists.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2223,7 +2323,7 @@ public class AsyncAts {
      * Get List
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetListResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetListResponse>} - The async response
      */
     public CompletableFuture<AtsGetListResponse> getList(AtsGetListRequest request) {
         return getList(request, Optional.empty());
@@ -2234,11 +2334,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetListResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetListResponse>} - The async response
      */
     public CompletableFuture<AtsGetListResponse> getList(AtsGetListRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetListRequest, AtsGetListResponse> operation
-              = new AtsGetList.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetList.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2257,7 +2359,7 @@ public class AsyncAts {
      * List locations
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListLocationsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListLocationsResponse>} - The async response
      */
     public CompletableFuture<AtsListLocationsResponse> listLocations(AtsListLocationsRequest request) {
         return listLocations(request, Optional.empty());
@@ -2268,11 +2370,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListLocationsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListLocationsResponse>} - The async response
      */
     public CompletableFuture<AtsListLocationsResponse> listLocations(AtsListLocationsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListLocationsRequest, AtsListLocationsResponse> operation
-              = new AtsListLocations.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListLocations.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2291,7 +2395,7 @@ public class AsyncAts {
      * Get Location
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetLocationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetLocationResponse>} - The async response
      */
     public CompletableFuture<AtsGetLocationResponse> getLocation(AtsGetLocationRequest request) {
         return getLocation(request, Optional.empty());
@@ -2302,11 +2406,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetLocationResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetLocationResponse>} - The async response
      */
     public CompletableFuture<AtsGetLocationResponse> getLocation(AtsGetLocationRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetLocationRequest, AtsGetLocationResponse> operation
-              = new AtsGetLocation.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetLocation.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2325,7 +2431,7 @@ public class AsyncAts {
      * List Rejected Reasons
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListRejectedReasonsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListRejectedReasonsResponse>} - The async response
      */
     public CompletableFuture<AtsListRejectedReasonsResponse> listRejectedReasons(AtsListRejectedReasonsRequest request) {
         return listRejectedReasons(request, Optional.empty());
@@ -2336,11 +2442,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListRejectedReasonsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListRejectedReasonsResponse>} - The async response
      */
     public CompletableFuture<AtsListRejectedReasonsResponse> listRejectedReasons(AtsListRejectedReasonsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListRejectedReasonsRequest, AtsListRejectedReasonsResponse> operation
-              = new AtsListRejectedReasons.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListRejectedReasons.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2359,7 +2467,7 @@ public class AsyncAts {
      * Get Rejected Reason
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetRejectedReasonResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetRejectedReasonResponse>} - The async response
      */
     public CompletableFuture<AtsGetRejectedReasonResponse> getRejectedReason(AtsGetRejectedReasonRequest request) {
         return getRejectedReason(request, Optional.empty());
@@ -2370,11 +2478,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetRejectedReasonResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetRejectedReasonResponse>} - The async response
      */
     public CompletableFuture<AtsGetRejectedReasonResponse> getRejectedReason(AtsGetRejectedReasonRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetRejectedReasonRequest, AtsGetRejectedReasonResponse> operation
-              = new AtsGetRejectedReason.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetRejectedReason.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2393,7 +2503,7 @@ public class AsyncAts {
      * List Users
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListUsersResponse>} - The async response
      */
     public CompletableFuture<AtsListUsersResponse> listUsers(AtsListUsersRequest request) {
         return listUsers(request, Optional.empty());
@@ -2404,11 +2514,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListUsersResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListUsersResponse>} - The async response
      */
     public CompletableFuture<AtsListUsersResponse> listUsers(AtsListUsersRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListUsersRequest, AtsListUsersResponse> operation
-              = new AtsListUsers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListUsers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2427,7 +2539,7 @@ public class AsyncAts {
      * Get User
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetUserResponse>} - The async response
      */
     public CompletableFuture<AtsGetUserResponse> getUser(AtsGetUserRequest request) {
         return getUser(request, Optional.empty());
@@ -2438,11 +2550,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetUserResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetUserResponse>} - The async response
      */
     public CompletableFuture<AtsGetUserResponse> getUser(AtsGetUserRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetUserRequest, AtsGetUserResponse> operation
-              = new AtsGetUser.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2461,7 +2575,7 @@ public class AsyncAts {
      * List Job Postings
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListJobPostingsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListJobPostingsResponse>} - The async response
      */
     public CompletableFuture<AtsListJobPostingsResponse> listJobPostings(AtsListJobPostingsRequest request) {
         return listJobPostings(request, Optional.empty());
@@ -2472,11 +2586,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListJobPostingsResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListJobPostingsResponse>} - The async response
      */
     public CompletableFuture<AtsListJobPostingsResponse> listJobPostings(AtsListJobPostingsRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListJobPostingsRequest, AtsListJobPostingsResponse> operation
-              = new AtsListJobPostings.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListJobPostings.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2495,7 +2611,7 @@ public class AsyncAts {
      * Get Job Posting
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetJobPostingResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetJobPostingResponse>} - The async response
      */
     public CompletableFuture<AtsGetJobPostingResponse> getJobPosting(AtsGetJobPostingRequest request) {
         return getJobPosting(request, Optional.empty());
@@ -2506,11 +2622,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetJobPostingResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetJobPostingResponse>} - The async response
      */
     public CompletableFuture<AtsGetJobPostingResponse> getJobPosting(AtsGetJobPostingRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetJobPostingRequest, AtsGetJobPostingResponse> operation
-              = new AtsGetJobPosting.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetJobPosting.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2529,7 +2647,7 @@ public class AsyncAts {
      * List Offers
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListOffersResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListOffersResponse>} - The async response
      */
     public CompletableFuture<AtsListOffersResponse> listOffers(AtsListOffersRequest request) {
         return listOffers(request, Optional.empty());
@@ -2540,11 +2658,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListOffersResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListOffersResponse>} - The async response
      */
     public CompletableFuture<AtsListOffersResponse> listOffers(AtsListOffersRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListOffersRequest, AtsListOffersResponse> operation
-              = new AtsListOffers.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListOffers.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2564,7 +2684,7 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param atsCreateOfferRequestDto 
-     * @return CompletableFuture&lt;AtsCreateOfferResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateOfferResponse>} - The async response
      */
     public CompletableFuture<AtsCreateOfferResponse> createOffer(String xAccountId, AtsCreateOfferRequestDto atsCreateOfferRequestDto) {
         return createOffer(xAccountId, atsCreateOfferRequestDto, Optional.empty());
@@ -2576,7 +2696,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param atsCreateOfferRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsCreateOfferResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateOfferResponse>} - The async response
      */
     public CompletableFuture<AtsCreateOfferResponse> createOffer(
             String xAccountId, AtsCreateOfferRequestDto atsCreateOfferRequestDto,
@@ -2588,7 +2708,9 @@ public class AsyncAts {
                 .atsCreateOfferRequestDto(atsCreateOfferRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateOfferRequest, AtsCreateOfferResponse> operation
-              = new AtsCreateOffer.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateOffer.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2607,7 +2729,7 @@ public class AsyncAts {
      * Get Offer
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetOfferResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetOfferResponse>} - The async response
      */
     public CompletableFuture<AtsGetOfferResponse> getOffer(AtsGetOfferRequest request) {
         return getOffer(request, Optional.empty());
@@ -2618,11 +2740,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetOfferResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetOfferResponse>} - The async response
      */
     public CompletableFuture<AtsGetOfferResponse> getOffer(AtsGetOfferRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetOfferRequest, AtsGetOfferResponse> operation
-              = new AtsGetOffer.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetOffer.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2641,7 +2765,7 @@ public class AsyncAts {
      * List Assessments Packages
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListAssessmentsPackagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListAssessmentsPackagesResponse>} - The async response
      */
     public CompletableFuture<AtsListAssessmentsPackagesResponse> listAssessmentsPackages(AtsListAssessmentsPackagesRequest request) {
         return listAssessmentsPackages(request, Optional.empty());
@@ -2652,11 +2776,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListAssessmentsPackagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListAssessmentsPackagesResponse>} - The async response
      */
     public CompletableFuture<AtsListAssessmentsPackagesResponse> listAssessmentsPackages(AtsListAssessmentsPackagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListAssessmentsPackagesRequest, AtsListAssessmentsPackagesResponse> operation
-              = new AtsListAssessmentsPackages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListAssessmentsPackages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2675,7 +2801,7 @@ public class AsyncAts {
      * Get Assessments Package
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetAssessmentsPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetAssessmentsPackageResponse>} - The async response
      */
     public CompletableFuture<AtsGetAssessmentsPackageResponse> getAssessmentsPackage(AtsGetAssessmentsPackageRequest request) {
         return getAssessmentsPackage(request, Optional.empty());
@@ -2686,11 +2812,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetAssessmentsPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetAssessmentsPackageResponse>} - The async response
      */
     public CompletableFuture<AtsGetAssessmentsPackageResponse> getAssessmentsPackage(AtsGetAssessmentsPackageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetAssessmentsPackageRequest, AtsGetAssessmentsPackageResponse> operation
-              = new AtsGetAssessmentsPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetAssessmentsPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2710,7 +2838,7 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param atsCreateCandidatesAssessmentsRequestDto 
-     * @return CompletableFuture&lt;AtsOrderAssessmentsRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsOrderAssessmentsRequestResponse>} - The async response
      */
     public CompletableFuture<AtsOrderAssessmentsRequestResponse> orderAssessmentsRequest(String xAccountId, AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto) {
         return orderAssessmentsRequest(xAccountId, atsCreateCandidatesAssessmentsRequestDto, Optional.empty());
@@ -2722,7 +2850,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param atsCreateCandidatesAssessmentsRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsOrderAssessmentsRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsOrderAssessmentsRequestResponse>} - The async response
      */
     public CompletableFuture<AtsOrderAssessmentsRequestResponse> orderAssessmentsRequest(
             String xAccountId, AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto,
@@ -2734,7 +2862,9 @@ public class AsyncAts {
                 .atsCreateCandidatesAssessmentsRequestDto(atsCreateCandidatesAssessmentsRequestDto)
                 .build();
         AsyncRequestOperation<AtsOrderAssessmentsRequestRequest, AtsOrderAssessmentsRequestResponse> operation
-              = new AtsOrderAssessmentsRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsOrderAssessmentsRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2755,7 +2885,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsUpdateCandidatesAssessmentsResultsRequestDto 
-     * @return CompletableFuture&lt;AtsUpdateAssessmentsResultResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateAssessmentsResultResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateAssessmentsResultResponse> updateAssessmentsResult(
             String xAccountId, String id,
@@ -2772,7 +2902,7 @@ public class AsyncAts {
      * @param id 
      * @param atsUpdateCandidatesAssessmentsResultsRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsUpdateAssessmentsResultResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateAssessmentsResultResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateAssessmentsResultResponse> updateAssessmentsResult(
             String xAccountId, String id,
@@ -2785,7 +2915,9 @@ public class AsyncAts {
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(atsUpdateCandidatesAssessmentsResultsRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateAssessmentsResultRequest, AtsUpdateAssessmentsResultResponse> operation
-              = new AtsUpdateAssessmentsResult.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateAssessmentsResult.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2804,7 +2936,7 @@ public class AsyncAts {
      * List Background Check Packages
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListBackgroundCheckPackagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListBackgroundCheckPackagesResponse>} - The async response
      */
     public CompletableFuture<AtsListBackgroundCheckPackagesResponse> listBackgroundCheckPackages(AtsListBackgroundCheckPackagesRequest request) {
         return listBackgroundCheckPackages(request, Optional.empty());
@@ -2815,11 +2947,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListBackgroundCheckPackagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListBackgroundCheckPackagesResponse>} - The async response
      */
     public CompletableFuture<AtsListBackgroundCheckPackagesResponse> listBackgroundCheckPackages(AtsListBackgroundCheckPackagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListBackgroundCheckPackagesRequest, AtsListBackgroundCheckPackagesResponse> operation
-              = new AtsListBackgroundCheckPackages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListBackgroundCheckPackages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2839,7 +2973,7 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param atsCreateBackgroundCheckPackagesRequestDto 
-     * @return CompletableFuture&lt;AtsCreateBackgroundCheckPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsCreateBackgroundCheckPackageResponse> createBackgroundCheckPackage(String xAccountId, AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) {
         return createBackgroundCheckPackage(xAccountId, atsCreateBackgroundCheckPackagesRequestDto, Optional.empty());
@@ -2851,7 +2985,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param atsCreateBackgroundCheckPackagesRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsCreateBackgroundCheckPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsCreateBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsCreateBackgroundCheckPackageResponse> createBackgroundCheckPackage(
             String xAccountId, AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto,
@@ -2863,7 +2997,9 @@ public class AsyncAts {
                 .atsCreateBackgroundCheckPackagesRequestDto(atsCreateBackgroundCheckPackagesRequestDto)
                 .build();
         AsyncRequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
-              = new AtsCreateBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2882,7 +3018,7 @@ public class AsyncAts {
      * Get Background Check Package
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetBackgroundCheckPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsGetBackgroundCheckPackageResponse> getBackgroundCheckPackage(AtsGetBackgroundCheckPackageRequest request) {
         return getBackgroundCheckPackage(request, Optional.empty());
@@ -2893,11 +3029,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetBackgroundCheckPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsGetBackgroundCheckPackageResponse> getBackgroundCheckPackage(AtsGetBackgroundCheckPackageRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetBackgroundCheckPackageRequest, AtsGetBackgroundCheckPackageResponse> operation
-              = new AtsGetBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2917,7 +3055,7 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param id 
-     * @return CompletableFuture&lt;AtsDeleteBackgroundCheckPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsDeleteBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsDeleteBackgroundCheckPackageResponse> deleteBackgroundCheckPackage(String xAccountId, String id) {
         return deleteBackgroundCheckPackage(xAccountId, id, Optional.empty());
@@ -2929,7 +3067,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsDeleteBackgroundCheckPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsDeleteBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsDeleteBackgroundCheckPackageResponse> deleteBackgroundCheckPackage(
             String xAccountId, String id,
@@ -2941,7 +3079,9 @@ public class AsyncAts {
                 .id(id)
                 .build();
         AsyncRequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
-              = new AtsDeleteBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsDeleteBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -2962,7 +3102,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsUpdateBackgroundCheckPackagesRequestDto 
-     * @return CompletableFuture&lt;AtsUpdateBackgroundCheckPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateBackgroundCheckPackageResponse> updateBackgroundCheckPackage(
             String xAccountId, String id,
@@ -2979,7 +3119,7 @@ public class AsyncAts {
      * @param id 
      * @param atsUpdateBackgroundCheckPackagesRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsUpdateBackgroundCheckPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateBackgroundCheckPackageResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateBackgroundCheckPackageResponse> updateBackgroundCheckPackage(
             String xAccountId, String id,
@@ -2992,7 +3132,9 @@ public class AsyncAts {
                 .atsUpdateBackgroundCheckPackagesRequestDto(atsUpdateBackgroundCheckPackagesRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateBackgroundCheckPackageRequest, AtsUpdateBackgroundCheckPackageResponse> operation
-              = new AtsUpdateBackgroundCheckPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateBackgroundCheckPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3012,7 +3154,7 @@ public class AsyncAts {
      * 
      * @param xAccountId The account identifier
      * @param atsCreateBackgroundCheckOrderRequestDto 
-     * @return CompletableFuture&lt;AtsOrderBackgroundCheckRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsOrderBackgroundCheckRequestResponse>} - The async response
      */
     public CompletableFuture<AtsOrderBackgroundCheckRequestResponse> orderBackgroundCheckRequest(String xAccountId, AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) {
         return orderBackgroundCheckRequest(xAccountId, atsCreateBackgroundCheckOrderRequestDto, Optional.empty());
@@ -3024,7 +3166,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param atsCreateBackgroundCheckOrderRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsOrderBackgroundCheckRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsOrderBackgroundCheckRequestResponse>} - The async response
      */
     public CompletableFuture<AtsOrderBackgroundCheckRequestResponse> orderBackgroundCheckRequest(
             String xAccountId, AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto,
@@ -3036,7 +3178,9 @@ public class AsyncAts {
                 .atsCreateBackgroundCheckOrderRequestDto(atsCreateBackgroundCheckOrderRequestDto)
                 .build();
         AsyncRequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
-              = new AtsOrderBackgroundCheckRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsOrderBackgroundCheckRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3057,7 +3201,7 @@ public class AsyncAts {
      * @param xAccountId The account identifier
      * @param id 
      * @param atsUpdateBackgroundCheckResultRequestDto 
-     * @return CompletableFuture&lt;AtsUpdateBackgroundCheckResultResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateBackgroundCheckResultResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateBackgroundCheckResultResponse> updateBackgroundCheckResult(
             String xAccountId, String id,
@@ -3074,7 +3218,7 @@ public class AsyncAts {
      * @param id 
      * @param atsUpdateBackgroundCheckResultRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;AtsUpdateBackgroundCheckResultResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsUpdateBackgroundCheckResultResponse>} - The async response
      */
     public CompletableFuture<AtsUpdateBackgroundCheckResultResponse> updateBackgroundCheckResult(
             String xAccountId, String id,
@@ -3087,7 +3231,9 @@ public class AsyncAts {
                 .atsUpdateBackgroundCheckResultRequestDto(atsUpdateBackgroundCheckResultRequestDto)
                 .build();
         AsyncRequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation
-              = new AtsUpdateBackgroundCheckResult.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsUpdateBackgroundCheckResult.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3106,7 +3252,7 @@ public class AsyncAts {
      * List Application Document Categories
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsListApplicationDocumentCategoriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationDocumentCategoriesResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationDocumentCategoriesResponse> listApplicationDocumentCategories(AtsListApplicationDocumentCategoriesRequest request) {
         return listApplicationDocumentCategories(request, Optional.empty());
@@ -3117,11 +3263,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsListApplicationDocumentCategoriesResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsListApplicationDocumentCategoriesResponse>} - The async response
      */
     public CompletableFuture<AtsListApplicationDocumentCategoriesResponse> listApplicationDocumentCategories(AtsListApplicationDocumentCategoriesRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsListApplicationDocumentCategoriesRequest, AtsListApplicationDocumentCategoriesResponse> operation
-              = new AtsListApplicationDocumentCategories.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsListApplicationDocumentCategories.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -3140,7 +3288,7 @@ public class AsyncAts {
      * Get Application Document Category
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;AtsGetApplicationDocumentCategoryResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationDocumentCategoryResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationDocumentCategoryResponse> getApplicationDocumentCategory(AtsGetApplicationDocumentCategoryRequest request) {
         return getApplicationDocumentCategory(request, Optional.empty());
@@ -3151,11 +3299,13 @@ public class AsyncAts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;AtsGetApplicationDocumentCategoryResponse&gt; - The async response
+     * @return {@code CompletableFuture<AtsGetApplicationDocumentCategoryResponse>} - The async response
      */
     public CompletableFuture<AtsGetApplicationDocumentCategoryResponse> getApplicationDocumentCategory(AtsGetApplicationDocumentCategoryRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetApplicationDocumentCategoryRequest, AtsGetApplicationDocumentCategoryResponse> operation
-              = new AtsGetApplicationDocumentCategory.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsGetApplicationDocumentCategory.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

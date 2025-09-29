@@ -8,3 +8,14 @@
  */
 
 rootProject.name = 'stackone-client-java'
+
+include 'stackone-client-java-spring-boot-autoconfigure'
+include 'stackone-client-java-spring-boot-starter'
+
+project(':stackone-client-java-spring-boot-autoconfigure').projectDir = file('spring/stackone-client-java-spring-boot-autoconfigure')
+project(':stackone-client-java-spring-boot-starter').projectDir = file('spring/stackone-client-java-spring-boot-starter')
+
+// Apply additional settings if the file exists
+if (file('settings-extra.gradle').exists()) {
+    apply from: 'settings-extra.gradle'
+}

@@ -87,7 +87,8 @@ public class Completion {
     private JsonNullable<? extends CompletionLearningObjectType> learningObjectType;
 
     /**
-     * The id of the learning object associated with this completion. This is not required unless specified in an integration.
+     * The id of the learning object associated with this completion. This is not required unless specified
+     * in an integration.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("learning_object_id")
@@ -101,7 +102,8 @@ public class Completion {
     private JsonNullable<String> remoteLearningObjectId;
 
     /**
-     * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("learning_object_external_reference")
@@ -368,7 +370,8 @@ public class Completion {
     }
 
     /**
-     * The id of the learning object associated with this completion. This is not required unless specified in an integration.
+     * The id of the learning object associated with this completion. This is not required unless specified
+     * in an integration.
      */
     @JsonIgnore
     public JsonNullable<String> learningObjectId() {
@@ -384,7 +387,8 @@ public class Completion {
     }
 
     /**
-     * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
      */
     @JsonIgnore
     public JsonNullable<String> learningObjectExternalReference() {
@@ -674,7 +678,8 @@ public class Completion {
     }
 
     /**
-     * The id of the learning object associated with this completion. This is not required unless specified in an integration.
+     * The id of the learning object associated with this completion. This is not required unless specified
+     * in an integration.
      */
     public Completion withLearningObjectId(String learningObjectId) {
         Utils.checkNotNull(learningObjectId, "learningObjectId");
@@ -683,7 +688,8 @@ public class Completion {
     }
 
     /**
-     * The id of the learning object associated with this completion. This is not required unless specified in an integration.
+     * The id of the learning object associated with this completion. This is not required unless specified
+     * in an integration.
      */
     public Completion withLearningObjectId(JsonNullable<String> learningObjectId) {
         Utils.checkNotNull(learningObjectId, "learningObjectId");
@@ -710,7 +716,8 @@ public class Completion {
     }
 
     /**
-     * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
      */
     public Completion withLearningObjectExternalReference(String learningObjectExternalReference) {
         Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
@@ -719,7 +726,8 @@ public class Completion {
     }
 
     /**
-     * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
      */
     public Completion withLearningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
         Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
@@ -1283,7 +1291,8 @@ public class Completion {
 
 
         /**
-         * The id of the learning object associated with this completion. This is not required unless specified in an integration.
+         * The id of the learning object associated with this completion. This is not required unless specified
+         * in an integration.
          */
         public Builder learningObjectId(String learningObjectId) {
             Utils.checkNotNull(learningObjectId, "learningObjectId");
@@ -1292,7 +1301,8 @@ public class Completion {
         }
 
         /**
-         * The id of the learning object associated with this completion. This is not required unless specified in an integration.
+         * The id of the learning object associated with this completion. This is not required unless specified
+         * in an integration.
          */
         public Builder learningObjectId(JsonNullable<String> learningObjectId) {
             Utils.checkNotNull(learningObjectId, "learningObjectId");
@@ -1321,7 +1331,8 @@ public class Completion {
 
 
         /**
-         * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
+         * The external reference of the learning object associated with this completion, this is the main
+         * identifier for creating completions.
          */
         public Builder learningObjectExternalReference(String learningObjectExternalReference) {
             Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
@@ -1330,7 +1341,8 @@ public class Completion {
         }
 
         /**
-         * The external reference of the learning object associated with this completion, this is the main identifier for creating completions.
+         * The external reference of the learning object associated with this completion, this is the main
+         * identifier for creating completions.
          */
         public Builder learningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
             Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");

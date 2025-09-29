@@ -75,7 +75,8 @@ public class TimeOffBalances {
     private JsonNullable<Double> currentBalance;
 
     /**
-     * The initial numeric balance for the associated employee and time off policy as of the balance start date
+     * The initial numeric balance for the associated employee and time off policy as of the balance start
+     * date
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("initial_balance")
@@ -226,7 +227,8 @@ public class TimeOffBalances {
     }
 
     /**
-     * The initial numeric balance for the associated employee and time off policy as of the balance start date
+     * The initial numeric balance for the associated employee and time off policy as of the balance start
+     * date
      */
     @JsonIgnore
     public JsonNullable<Double> initialBalance() {
@@ -416,7 +418,8 @@ public class TimeOffBalances {
     }
 
     /**
-     * The initial numeric balance for the associated employee and time off policy as of the balance start date
+     * The initial numeric balance for the associated employee and time off policy as of the balance start
+     * date
      */
     public TimeOffBalances withInitialBalance(double initialBalance) {
         Utils.checkNotNull(initialBalance, "initialBalance");
@@ -425,7 +428,8 @@ public class TimeOffBalances {
     }
 
     /**
-     * The initial numeric balance for the associated employee and time off policy as of the balance start date
+     * The initial numeric balance for the associated employee and time off policy as of the balance start
+     * date
      */
     public TimeOffBalances withInitialBalance(JsonNullable<Double> initialBalance) {
         Utils.checkNotNull(initialBalance, "initialBalance");
@@ -745,7 +749,8 @@ public class TimeOffBalances {
 
 
         /**
-         * The initial numeric balance for the associated employee and time off policy as of the balance start date
+         * The initial numeric balance for the associated employee and time off policy as of the balance start
+         * date
          */
         public Builder initialBalance(double initialBalance) {
             Utils.checkNotNull(initialBalance, "initialBalance");
@@ -754,7 +759,8 @@ public class TimeOffBalances {
         }
 
         /**
-         * The initial numeric balance for the associated employee and time off policy as of the balance start date
+         * The initial numeric balance for the associated employee and time off policy as of the balance start
+         * date
          */
         public Builder initialBalance(JsonNullable<Double> initialBalance) {
             Utils.checkNotNull(initialBalance, "initialBalance");

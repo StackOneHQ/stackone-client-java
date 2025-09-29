@@ -44,7 +44,8 @@ import java.util.Optional;
 /**
  * IamMfaTypeEnumValue
  * 
- * <p>The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
+ * <p>The unified value for the type of multi-factor authentication. If the provider does not send back a
+ * type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
  */
 @JsonDeserialize(using = IamMfaTypeEnumValue._Deserializer.class)
 @JsonSerialize(using = IamMfaTypeEnumValue._Serializer.class)

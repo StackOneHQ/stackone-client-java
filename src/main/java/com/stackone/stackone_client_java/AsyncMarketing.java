@@ -115,6 +115,7 @@ import com.stackone.stackone_client_java.operations.MarketingUpdateInAppTemplate
 import com.stackone.stackone_client_java.operations.MarketingUpdateOmniChannelTemplate;
 import com.stackone.stackone_client_java.operations.MarketingUpdatePushTemplate;
 import com.stackone.stackone_client_java.operations.MarketingUpdateSmsTemplate;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
 import java.lang.String;
@@ -123,6 +124,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncMarketing {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Marketing syncSDK;
 
@@ -154,7 +156,7 @@ public class AsyncMarketing {
      * List Email Templates
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingListEmailTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListEmailTemplatesResponse>} - The async response
      */
     public CompletableFuture<MarketingListEmailTemplatesResponse> listEmailTemplates(MarketingListEmailTemplatesRequest request) {
         return listEmailTemplates(request, Optional.empty());
@@ -165,11 +167,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingListEmailTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListEmailTemplatesResponse>} - The async response
      */
     public CompletableFuture<MarketingListEmailTemplatesResponse> listEmailTemplates(MarketingListEmailTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListEmailTemplatesRequest, MarketingListEmailTemplatesResponse> operation
-              = new MarketingListEmailTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListEmailTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -189,7 +193,7 @@ public class AsyncMarketing {
      * 
      * @param xAccountId The account identifier
      * @param marketingCreateEmailTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingCreateEmailTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateEmailTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingCreateEmailTemplateResponse> createEmailTemplate(String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) {
         return createEmailTemplate(xAccountId, marketingCreateEmailTemplateRequestDto, Optional.empty());
@@ -201,7 +205,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param marketingCreateEmailTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingCreateEmailTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateEmailTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingCreateEmailTemplateResponse> createEmailTemplate(
             String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
@@ -213,7 +217,9 @@ public class AsyncMarketing {
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateEmailTemplateRequest, MarketingCreateEmailTemplateResponse> operation
-              = new MarketingCreateEmailTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateEmailTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -232,7 +238,7 @@ public class AsyncMarketing {
      * Get Email Templates
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingGetEmailTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetEmailTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingGetEmailTemplateResponse> getEmailTemplate(MarketingGetEmailTemplateRequest request) {
         return getEmailTemplate(request, Optional.empty());
@@ -243,11 +249,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingGetEmailTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetEmailTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingGetEmailTemplateResponse> getEmailTemplate(MarketingGetEmailTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetEmailTemplateRequest, MarketingGetEmailTemplateResponse> operation
-              = new MarketingGetEmailTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetEmailTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -268,7 +276,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param id 
      * @param marketingCreateEmailTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingUpdateEmailTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateEmailTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdateEmailTemplateResponse> updateEmailTemplate(
             String xAccountId, String id,
@@ -285,7 +293,7 @@ public class AsyncMarketing {
      * @param id 
      * @param marketingCreateEmailTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingUpdateEmailTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateEmailTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdateEmailTemplateResponse> updateEmailTemplate(
             String xAccountId, String id,
@@ -298,7 +306,9 @@ public class AsyncMarketing {
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateEmailTemplateRequest, MarketingUpdateEmailTemplateResponse> operation
-              = new MarketingUpdateEmailTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateEmailTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -317,7 +327,7 @@ public class AsyncMarketing {
      * List In-App Templates
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingListInAppTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListInAppTemplatesResponse>} - The async response
      */
     public CompletableFuture<MarketingListInAppTemplatesResponse> listInAppTemplates(MarketingListInAppTemplatesRequest request) {
         return listInAppTemplates(request, Optional.empty());
@@ -328,11 +338,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingListInAppTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListInAppTemplatesResponse>} - The async response
      */
     public CompletableFuture<MarketingListInAppTemplatesResponse> listInAppTemplates(MarketingListInAppTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListInAppTemplatesRequest, MarketingListInAppTemplatesResponse> operation
-              = new MarketingListInAppTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListInAppTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -352,7 +364,7 @@ public class AsyncMarketing {
      * 
      * @param xAccountId The account identifier
      * @param marketingCreateInAppTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingCreateInAppTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateInAppTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingCreateInAppTemplateResponse> createInAppTemplate(String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
         return createInAppTemplate(xAccountId, marketingCreateInAppTemplateRequestDto, Optional.empty());
@@ -364,7 +376,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param marketingCreateInAppTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingCreateInAppTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateInAppTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingCreateInAppTemplateResponse> createInAppTemplate(
             String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
@@ -376,7 +388,9 @@ public class AsyncMarketing {
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateInAppTemplateRequest, MarketingCreateInAppTemplateResponse> operation
-              = new MarketingCreateInAppTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateInAppTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -395,7 +409,7 @@ public class AsyncMarketing {
      * Get In-App Template
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingGetInAppTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetInAppTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingGetInAppTemplateResponse> getInAppTemplate(MarketingGetInAppTemplateRequest request) {
         return getInAppTemplate(request, Optional.empty());
@@ -406,11 +420,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingGetInAppTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetInAppTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingGetInAppTemplateResponse> getInAppTemplate(MarketingGetInAppTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetInAppTemplateRequest, MarketingGetInAppTemplateResponse> operation
-              = new MarketingGetInAppTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetInAppTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -431,7 +447,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param id 
      * @param marketingCreateInAppTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingUpdateInAppTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateInAppTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdateInAppTemplateResponse> updateInAppTemplate(
             String xAccountId, String id,
@@ -448,7 +464,7 @@ public class AsyncMarketing {
      * @param id 
      * @param marketingCreateInAppTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingUpdateInAppTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateInAppTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdateInAppTemplateResponse> updateInAppTemplate(
             String xAccountId, String id,
@@ -461,7 +477,9 @@ public class AsyncMarketing {
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateInAppTemplateRequest, MarketingUpdateInAppTemplateResponse> operation
-              = new MarketingUpdateInAppTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateInAppTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -480,7 +498,7 @@ public class AsyncMarketing {
      * List SMS Templates
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingListSmsTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListSmsTemplatesResponse>} - The async response
      */
     public CompletableFuture<MarketingListSmsTemplatesResponse> listSmsTemplates(MarketingListSmsTemplatesRequest request) {
         return listSmsTemplates(request, Optional.empty());
@@ -491,11 +509,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingListSmsTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListSmsTemplatesResponse>} - The async response
      */
     public CompletableFuture<MarketingListSmsTemplatesResponse> listSmsTemplates(MarketingListSmsTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListSmsTemplatesRequest, MarketingListSmsTemplatesResponse> operation
-              = new MarketingListSmsTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListSmsTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -515,7 +535,7 @@ public class AsyncMarketing {
      * 
      * @param xAccountId The account identifier
      * @param marketingCreateSmsTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingCreateSmsTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateSmsTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingCreateSmsTemplateResponse> createSmsTemplate(String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
         return createSmsTemplate(xAccountId, marketingCreateSmsTemplateRequestDto, Optional.empty());
@@ -527,7 +547,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param marketingCreateSmsTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingCreateSmsTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateSmsTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingCreateSmsTemplateResponse> createSmsTemplate(
             String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
@@ -539,7 +559,9 @@ public class AsyncMarketing {
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateSmsTemplateRequest, MarketingCreateSmsTemplateResponse> operation
-              = new MarketingCreateSmsTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateSmsTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -558,7 +580,7 @@ public class AsyncMarketing {
      * Get SMS Template
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingGetSmsTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetSmsTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingGetSmsTemplateResponse> getSmsTemplate(MarketingGetSmsTemplateRequest request) {
         return getSmsTemplate(request, Optional.empty());
@@ -569,11 +591,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingGetSmsTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetSmsTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingGetSmsTemplateResponse> getSmsTemplate(MarketingGetSmsTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetSmsTemplateRequest, MarketingGetSmsTemplateResponse> operation
-              = new MarketingGetSmsTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetSmsTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -594,7 +618,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param id 
      * @param marketingCreateSmsTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingUpdateSmsTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateSmsTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdateSmsTemplateResponse> updateSmsTemplate(
             String xAccountId, String id,
@@ -611,7 +635,7 @@ public class AsyncMarketing {
      * @param id 
      * @param marketingCreateSmsTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingUpdateSmsTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateSmsTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdateSmsTemplateResponse> updateSmsTemplate(
             String xAccountId, String id,
@@ -624,7 +648,9 @@ public class AsyncMarketing {
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateSmsTemplateRequest, MarketingUpdateSmsTemplateResponse> operation
-              = new MarketingUpdateSmsTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateSmsTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -645,7 +671,7 @@ public class AsyncMarketing {
      * List Omni-Channel Templates
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingListOmniChannelTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListOmniChannelTemplatesResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -658,13 +684,15 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingListOmniChannelTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListOmniChannelTemplatesResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public CompletableFuture<MarketingListOmniChannelTemplatesResponse> listOmniChannelTemplates(MarketingListOmniChannelTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
-              = new MarketingListOmniChannelTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListOmniChannelTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -686,7 +714,7 @@ public class AsyncMarketing {
      * 
      * @param xAccountId The account identifier
      * @param marketingCreateTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingCreateOmniChannelTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateOmniChannelTemplateResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -700,7 +728,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param marketingCreateTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingCreateOmniChannelTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateOmniChannelTemplateResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -714,7 +742,9 @@ public class AsyncMarketing {
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateOmniChannelTemplateRequest, MarketingCreateOmniChannelTemplateResponse> operation
-              = new MarketingCreateOmniChannelTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateOmniChannelTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -735,7 +765,7 @@ public class AsyncMarketing {
      * Get Omni-Channel Template
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingGetOmniChannelTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetOmniChannelTemplateResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -748,13 +778,15 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingGetOmniChannelTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetOmniChannelTemplateResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public CompletableFuture<MarketingGetOmniChannelTemplateResponse> getOmniChannelTemplate(MarketingGetOmniChannelTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetOmniChannelTemplateRequest, MarketingGetOmniChannelTemplateResponse> operation
-              = new MarketingGetOmniChannelTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetOmniChannelTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -777,7 +809,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param id 
      * @param marketingCreateTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingUpdateOmniChannelTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateOmniChannelTemplateResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -796,7 +828,7 @@ public class AsyncMarketing {
      * @param id 
      * @param marketingCreateTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingUpdateOmniChannelTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateOmniChannelTemplateResponse>} - The async response
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
@@ -811,7 +843,9 @@ public class AsyncMarketing {
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateOmniChannelTemplateRequest, MarketingUpdateOmniChannelTemplateResponse> operation
-              = new MarketingUpdateOmniChannelTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateOmniChannelTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -830,7 +864,7 @@ public class AsyncMarketing {
      * List Push Templates
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingListPushTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListPushTemplatesResponse>} - The async response
      */
     public CompletableFuture<MarketingListPushTemplatesResponse> listPushTemplates(MarketingListPushTemplatesRequest request) {
         return listPushTemplates(request, Optional.empty());
@@ -841,11 +875,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingListPushTemplatesResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListPushTemplatesResponse>} - The async response
      */
     public CompletableFuture<MarketingListPushTemplatesResponse> listPushTemplates(MarketingListPushTemplatesRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListPushTemplatesRequest, MarketingListPushTemplatesResponse> operation
-              = new MarketingListPushTemplates.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListPushTemplates.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -865,7 +901,7 @@ public class AsyncMarketing {
      * 
      * @param xAccountId The account identifier
      * @param marketingCreatePushTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingCreatePushTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreatePushTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingCreatePushTemplateResponse> createPushTemplate(String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
         return createPushTemplate(xAccountId, marketingCreatePushTemplateRequestDto, Optional.empty());
@@ -877,7 +913,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param marketingCreatePushTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingCreatePushTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreatePushTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingCreatePushTemplateResponse> createPushTemplate(
             String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
@@ -889,7 +925,9 @@ public class AsyncMarketing {
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreatePushTemplateRequest, MarketingCreatePushTemplateResponse> operation
-              = new MarketingCreatePushTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreatePushTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -908,7 +946,7 @@ public class AsyncMarketing {
      * Get Push Template
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingGetPushTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetPushTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingGetPushTemplateResponse> getPushTemplate(MarketingGetPushTemplateRequest request) {
         return getPushTemplate(request, Optional.empty());
@@ -919,11 +957,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingGetPushTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetPushTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingGetPushTemplateResponse> getPushTemplate(MarketingGetPushTemplateRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetPushTemplateRequest, MarketingGetPushTemplateResponse> operation
-              = new MarketingGetPushTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetPushTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -944,7 +984,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param id 
      * @param marketingCreatePushTemplateRequestDto 
-     * @return CompletableFuture&lt;MarketingUpdatePushTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdatePushTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdatePushTemplateResponse> updatePushTemplate(
             String xAccountId, String id,
@@ -961,7 +1001,7 @@ public class AsyncMarketing {
      * @param id 
      * @param marketingCreatePushTemplateRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingUpdatePushTemplateResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdatePushTemplateResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdatePushTemplateResponse> updatePushTemplate(
             String xAccountId, String id,
@@ -974,7 +1014,9 @@ public class AsyncMarketing {
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdatePushTemplateRequest, MarketingUpdatePushTemplateResponse> operation
-              = new MarketingUpdatePushTemplate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdatePushTemplate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -993,7 +1035,7 @@ public class AsyncMarketing {
      * List campaigns
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingListCampaignsResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListCampaignsResponse>} - The async response
      */
     public CompletableFuture<MarketingListCampaignsResponse> listCampaigns(MarketingListCampaignsRequest request) {
         return listCampaigns(request, Optional.empty());
@@ -1004,11 +1046,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingListCampaignsResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListCampaignsResponse>} - The async response
      */
     public CompletableFuture<MarketingListCampaignsResponse> listCampaigns(MarketingListCampaignsRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListCampaignsRequest, MarketingListCampaignsResponse> operation
-              = new MarketingListCampaigns.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListCampaigns.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1027,7 +1071,7 @@ public class AsyncMarketing {
      * Get campaign
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingGetCampaignResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetCampaignResponse>} - The async response
      */
     public CompletableFuture<MarketingGetCampaignResponse> getCampaign(MarketingGetCampaignRequest request) {
         return getCampaign(request, Optional.empty());
@@ -1038,11 +1082,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingGetCampaignResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetCampaignResponse>} - The async response
      */
     public CompletableFuture<MarketingGetCampaignResponse> getCampaign(MarketingGetCampaignRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetCampaignRequest, MarketingGetCampaignResponse> operation
-              = new MarketingGetCampaign.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetCampaign.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1061,7 +1107,7 @@ public class AsyncMarketing {
      * List Content Blocks
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingListContentBlocksResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListContentBlocksResponse>} - The async response
      */
     public CompletableFuture<MarketingListContentBlocksResponse> listContentBlocks(MarketingListContentBlocksRequest request) {
         return listContentBlocks(request, Optional.empty());
@@ -1072,11 +1118,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingListContentBlocksResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingListContentBlocksResponse>} - The async response
      */
     public CompletableFuture<MarketingListContentBlocksResponse> listContentBlocks(MarketingListContentBlocksRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingListContentBlocksRequest, MarketingListContentBlocksResponse> operation
-              = new MarketingListContentBlocks.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingListContentBlocks.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1096,7 +1144,7 @@ public class AsyncMarketing {
      * 
      * @param xAccountId The account identifier
      * @param marketingCreateContentBlocksRequestDto 
-     * @return CompletableFuture&lt;MarketingCreateContentBlockResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateContentBlockResponse>} - The async response
      */
     public CompletableFuture<MarketingCreateContentBlockResponse> createContentBlock(String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
         return createContentBlock(xAccountId, marketingCreateContentBlocksRequestDto, Optional.empty());
@@ -1108,7 +1156,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param marketingCreateContentBlocksRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingCreateContentBlockResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingCreateContentBlockResponse>} - The async response
      */
     public CompletableFuture<MarketingCreateContentBlockResponse> createContentBlock(
             String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
@@ -1120,7 +1168,9 @@ public class AsyncMarketing {
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         AsyncRequestOperation<MarketingCreateContentBlockRequest, MarketingCreateContentBlockResponse> operation
-              = new MarketingCreateContentBlock.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingCreateContentBlock.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1139,7 +1189,7 @@ public class AsyncMarketing {
      * Get Content Blocks
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;MarketingGetContentBlockResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetContentBlockResponse>} - The async response
      */
     public CompletableFuture<MarketingGetContentBlockResponse> getContentBlock(MarketingGetContentBlockRequest request) {
         return getContentBlock(request, Optional.empty());
@@ -1150,11 +1200,13 @@ public class AsyncMarketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingGetContentBlockResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingGetContentBlockResponse>} - The async response
      */
     public CompletableFuture<MarketingGetContentBlockResponse> getContentBlock(MarketingGetContentBlockRequest request, Optional<Options> options) {
         AsyncRequestOperation<MarketingGetContentBlockRequest, MarketingGetContentBlockResponse> operation
-              = new MarketingGetContentBlock.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingGetContentBlock.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -1175,7 +1227,7 @@ public class AsyncMarketing {
      * @param xAccountId The account identifier
      * @param id 
      * @param marketingCreateContentBlocksRequestDto 
-     * @return CompletableFuture&lt;MarketingUpdateContentBlockResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateContentBlockResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdateContentBlockResponse> updateContentBlock(
             String xAccountId, String id,
@@ -1192,7 +1244,7 @@ public class AsyncMarketing {
      * @param id 
      * @param marketingCreateContentBlocksRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;MarketingUpdateContentBlockResponse&gt; - The async response
+     * @return {@code CompletableFuture<MarketingUpdateContentBlockResponse>} - The async response
      */
     public CompletableFuture<MarketingUpdateContentBlockResponse> updateContentBlock(
             String xAccountId, String id,
@@ -1205,7 +1257,9 @@ public class AsyncMarketing {
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         AsyncRequestOperation<MarketingUpdateContentBlockRequest, MarketingUpdateContentBlockResponse> operation
-              = new MarketingUpdateContentBlock.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new MarketingUpdateContentBlock.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

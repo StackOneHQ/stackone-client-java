@@ -95,7 +95,8 @@ public class HrisCreateEmployeeRequestDto {
     private JsonNullable<String> jobId;
 
     /**
-     * If the source of the job_title is the Employee's current Employment, and that Employment pertains exclusively to this Employee, then the active Employment job_title will also be written
+     * If the source of the job_title is the Employee's current Employment, and that Employment pertains
+     * exclusively to this Employee, then the active Employment job_title will also be written
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("job_title")
@@ -564,7 +565,8 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * If the source of the job_title is the Employee's current Employment, and that Employment pertains exclusively to this Employee, then the active Employment job_title will also be written
+     * If the source of the job_title is the Employee's current Employment, and that Employment pertains
+     * exclusively to this Employee, then the active Employment job_title will also be written
      */
     @JsonIgnore
     public JsonNullable<String> jobTitle() {
@@ -1045,7 +1047,8 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * If the source of the job_title is the Employee's current Employment, and that Employment pertains exclusively to this Employee, then the active Employment job_title will also be written
+     * If the source of the job_title is the Employee's current Employment, and that Employment pertains
+     * exclusively to this Employee, then the active Employment job_title will also be written
      */
     public HrisCreateEmployeeRequestDto withJobTitle(String jobTitle) {
         Utils.checkNotNull(jobTitle, "jobTitle");
@@ -1054,7 +1057,8 @@ public class HrisCreateEmployeeRequestDto {
     }
 
     /**
-     * If the source of the job_title is the Employee's current Employment, and that Employment pertains exclusively to this Employee, then the active Employment job_title will also be written
+     * If the source of the job_title is the Employee's current Employment, and that Employment pertains
+     * exclusively to this Employee, then the active Employment job_title will also be written
      */
     public HrisCreateEmployeeRequestDto withJobTitle(JsonNullable<String> jobTitle) {
         Utils.checkNotNull(jobTitle, "jobTitle");
@@ -2065,7 +2069,8 @@ public class HrisCreateEmployeeRequestDto {
 
 
         /**
-         * If the source of the job_title is the Employee's current Employment, and that Employment pertains exclusively to this Employee, then the active Employment job_title will also be written
+         * If the source of the job_title is the Employee's current Employment, and that Employment pertains
+         * exclusively to this Employee, then the active Employment job_title will also be written
          */
         public Builder jobTitle(String jobTitle) {
             Utils.checkNotNull(jobTitle, "jobTitle");
@@ -2074,7 +2079,8 @@ public class HrisCreateEmployeeRequestDto {
         }
 
         /**
-         * If the source of the job_title is the Employee's current Employment, and that Employment pertains exclusively to this Employee, then the active Employment job_title will also be written
+         * If the source of the job_title is the Employee's current Employment, and that Employment pertains
+         * exclusively to this Employee, then the active Employment job_title will also be written
          */
         public Builder jobTitle(JsonNullable<String> jobTitle) {
             Utils.checkNotNull(jobTitle, "jobTitle");

@@ -26,16 +26,10 @@ public class HrisListShiftsQueryParamFilter {
     private JsonNullable<OffsetDateTime> updatedAfter;
 
     /**
-     * Filter to select shifts by employee ID
-     */
-    @SpeakeasyMetadata("queryParam:name=employee_id")
-    private JsonNullable<String> employeeId;
-
-    /**
      * Filter to select shifts by status
      */
     @SpeakeasyMetadata("queryParam:name=status")
-    private JsonNullable<? extends QueryParamStatus> status;
+    private JsonNullable<? extends HrisListShiftsQueryParamStatus> status;
 
     /**
      * Filter shifts that start after this date
@@ -52,17 +46,14 @@ public class HrisListShiftsQueryParamFilter {
     @JsonCreator
     public HrisListShiftsQueryParamFilter(
             JsonNullable<OffsetDateTime> updatedAfter,
-            JsonNullable<String> employeeId,
-            JsonNullable<? extends QueryParamStatus> status,
+            JsonNullable<? extends HrisListShiftsQueryParamStatus> status,
             JsonNullable<OffsetDateTime> startsAfter,
             JsonNullable<OffsetDateTime> endsBefore) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
-        Utils.checkNotNull(employeeId, "employeeId");
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(startsAfter, "startsAfter");
         Utils.checkNotNull(endsBefore, "endsBefore");
         this.updatedAfter = updatedAfter;
-        this.employeeId = employeeId;
         this.status = status;
         this.startsAfter = startsAfter;
         this.endsBefore = endsBefore;
@@ -70,7 +61,7 @@ public class HrisListShiftsQueryParamFilter {
     
     public HrisListShiftsQueryParamFilter() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined());
     }
 
     /**
@@ -82,20 +73,12 @@ public class HrisListShiftsQueryParamFilter {
     }
 
     /**
-     * Filter to select shifts by employee ID
-     */
-    @JsonIgnore
-    public JsonNullable<String> employeeId() {
-        return employeeId;
-    }
-
-    /**
      * Filter to select shifts by status
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<QueryParamStatus> status() {
-        return (JsonNullable<QueryParamStatus>) status;
+    public JsonNullable<HrisListShiftsQueryParamStatus> status() {
+        return (JsonNullable<HrisListShiftsQueryParamStatus>) status;
     }
 
     /**
@@ -138,27 +121,9 @@ public class HrisListShiftsQueryParamFilter {
     }
 
     /**
-     * Filter to select shifts by employee ID
-     */
-    public HrisListShiftsQueryParamFilter withEmployeeId(String employeeId) {
-        Utils.checkNotNull(employeeId, "employeeId");
-        this.employeeId = JsonNullable.of(employeeId);
-        return this;
-    }
-
-    /**
-     * Filter to select shifts by employee ID
-     */
-    public HrisListShiftsQueryParamFilter withEmployeeId(JsonNullable<String> employeeId) {
-        Utils.checkNotNull(employeeId, "employeeId");
-        this.employeeId = employeeId;
-        return this;
-    }
-
-    /**
      * Filter to select shifts by status
      */
-    public HrisListShiftsQueryParamFilter withStatus(QueryParamStatus status) {
+    public HrisListShiftsQueryParamFilter withStatus(HrisListShiftsQueryParamStatus status) {
         Utils.checkNotNull(status, "status");
         this.status = JsonNullable.of(status);
         return this;
@@ -167,7 +132,7 @@ public class HrisListShiftsQueryParamFilter {
     /**
      * Filter to select shifts by status
      */
-    public HrisListShiftsQueryParamFilter withStatus(JsonNullable<? extends QueryParamStatus> status) {
+    public HrisListShiftsQueryParamFilter withStatus(JsonNullable<? extends HrisListShiftsQueryParamStatus> status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
         return this;
@@ -220,7 +185,6 @@ public class HrisListShiftsQueryParamFilter {
         HrisListShiftsQueryParamFilter other = (HrisListShiftsQueryParamFilter) o;
         return 
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
-            Utils.enhancedDeepEquals(this.employeeId, other.employeeId) &&
             Utils.enhancedDeepEquals(this.status, other.status) &&
             Utils.enhancedDeepEquals(this.startsAfter, other.startsAfter) &&
             Utils.enhancedDeepEquals(this.endsBefore, other.endsBefore);
@@ -229,15 +193,14 @@ public class HrisListShiftsQueryParamFilter {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter, employeeId, status,
-            startsAfter, endsBefore);
+            updatedAfter, status, startsAfter,
+            endsBefore);
     }
     
     @Override
     public String toString() {
         return Utils.toString(HrisListShiftsQueryParamFilter.class,
                 "updatedAfter", updatedAfter,
-                "employeeId", employeeId,
                 "status", status,
                 "startsAfter", startsAfter,
                 "endsBefore", endsBefore);
@@ -248,9 +211,7 @@ public class HrisListShiftsQueryParamFilter {
 
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
-        private JsonNullable<String> employeeId = JsonNullable.undefined();
-
-        private JsonNullable<? extends QueryParamStatus> status = JsonNullable.undefined();
+        private JsonNullable<? extends HrisListShiftsQueryParamStatus> status = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> startsAfter = JsonNullable.undefined();
 
@@ -281,28 +242,9 @@ public class HrisListShiftsQueryParamFilter {
 
 
         /**
-         * Filter to select shifts by employee ID
-         */
-        public Builder employeeId(String employeeId) {
-            Utils.checkNotNull(employeeId, "employeeId");
-            this.employeeId = JsonNullable.of(employeeId);
-            return this;
-        }
-
-        /**
-         * Filter to select shifts by employee ID
-         */
-        public Builder employeeId(JsonNullable<String> employeeId) {
-            Utils.checkNotNull(employeeId, "employeeId");
-            this.employeeId = employeeId;
-            return this;
-        }
-
-
-        /**
          * Filter to select shifts by status
          */
-        public Builder status(QueryParamStatus status) {
+        public Builder status(HrisListShiftsQueryParamStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = JsonNullable.of(status);
             return this;
@@ -311,7 +253,7 @@ public class HrisListShiftsQueryParamFilter {
         /**
          * Filter to select shifts by status
          */
-        public Builder status(JsonNullable<? extends QueryParamStatus> status) {
+        public Builder status(JsonNullable<? extends HrisListShiftsQueryParamStatus> status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
@@ -358,8 +300,8 @@ public class HrisListShiftsQueryParamFilter {
         public HrisListShiftsQueryParamFilter build() {
 
             return new HrisListShiftsQueryParamFilter(
-                updatedAfter, employeeId, status,
-                startsAfter, endsBefore);
+                updatedAfter, status, startsAfter,
+                endsBefore);
         }
 
     }

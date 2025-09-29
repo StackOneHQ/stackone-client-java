@@ -10,6 +10,7 @@ import static com.stackone.stackone_client_java.utils.Utils.toStream;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.operations.DocumentsListFolders;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -29,6 +30,7 @@ public class DocumentsListFoldersRequestBuilder {
     private DocumentsListFoldersRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public DocumentsListFoldersRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -58,7 +60,7 @@ public class DocumentsListFoldersRequestBuilder {
             .build());
 
         RequestOperation<DocumentsListFoldersRequest, DocumentsListFoldersResponse> operation
-              = new DocumentsListFolders.Sync(sdkConfiguration, options);
+              = new DocumentsListFolders.Sync(sdkConfiguration, options, _headers);
 
         return operation.handleResponse(operation.doRequest(request));
     }
@@ -82,7 +84,7 @@ public class DocumentsListFoldersRequestBuilder {
             .build());
 
         RequestOperation<DocumentsListFoldersRequest, DocumentsListFoldersResponse> operation
-              = new DocumentsListFolders.Sync(sdkConfiguration, options);
+              = new DocumentsListFolders.Sync(sdkConfiguration, options, _headers);
         Iterator<HttpResponse<InputStream>> iterator = new Paginator<>(
             request,
             new CursorTracker<>("$.next", String.class),

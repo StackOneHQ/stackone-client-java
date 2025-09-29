@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.ScreeningResultWebhook;
 import com.stackone.stackone_client_java.models.operations.ScreeningWebhookScreeningResultRequest;
 import com.stackone.stackone_client_java.operations.ScreeningWebhookScreeningResult;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class ScreeningWebhookScreeningResultRequestBuilder {
     private ScreeningResultWebhook screeningResultWebhook;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public ScreeningWebhookScreeningResultRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class ScreeningWebhookScreeningResultRequestBuilder {
             .build());
 
         AsyncRequestOperation<ScreeningWebhookScreeningResultRequest, ScreeningWebhookScreeningResultResponse> operation
-              = new ScreeningWebhookScreeningResult.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningWebhookScreeningResult.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         ScreeningWebhookScreeningResultRequest request = buildRequest();
 
         return operation.doRequest(request)

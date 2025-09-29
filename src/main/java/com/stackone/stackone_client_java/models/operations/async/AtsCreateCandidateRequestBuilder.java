@@ -9,6 +9,7 @@ import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.AtsCreateCandidateRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateRequest;
 import com.stackone.stackone_client_java.operations.AtsCreateCandidate;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class AtsCreateCandidateRequestBuilder {
     private AtsCreateCandidateRequestDto atsCreateCandidateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public AtsCreateCandidateRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -67,7 +69,9 @@ public class AtsCreateCandidateRequestBuilder {
             .build());
 
         AsyncRequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
-              = new AtsCreateCandidate.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new AtsCreateCandidate.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         AtsCreateCandidateRequest request = buildRequest();
 
         return operation.doRequest(request)

@@ -23,6 +23,7 @@ import com.stackone.stackone_client_java.operations.ScreeningCreateScreeningOrde
 import com.stackone.stackone_client_java.operations.ScreeningGetScreeningPackage;
 import com.stackone.stackone_client_java.operations.ScreeningListScreeningPackages;
 import com.stackone.stackone_client_java.operations.ScreeningWebhookScreeningResult;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -30,6 +31,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncScreening {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Screening syncSDK;
 
@@ -61,7 +63,7 @@ public class AsyncScreening {
      * List Screening Packages
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;ScreeningListScreeningPackagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<ScreeningListScreeningPackagesResponse>} - The async response
      */
     public CompletableFuture<ScreeningListScreeningPackagesResponse> listScreeningPackages(ScreeningListScreeningPackagesRequest request) {
         return listScreeningPackages(request, Optional.empty());
@@ -72,11 +74,13 @@ public class AsyncScreening {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;ScreeningListScreeningPackagesResponse&gt; - The async response
+     * @return {@code CompletableFuture<ScreeningListScreeningPackagesResponse>} - The async response
      */
     public CompletableFuture<ScreeningListScreeningPackagesResponse> listScreeningPackages(ScreeningListScreeningPackagesRequest request, Optional<Options> options) {
         AsyncRequestOperation<ScreeningListScreeningPackagesRequest, ScreeningListScreeningPackagesResponse> operation
-              = new ScreeningListScreeningPackages.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningListScreeningPackages.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -95,7 +99,7 @@ public class AsyncScreening {
      * Get Screening Package
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;ScreeningGetScreeningPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<ScreeningGetScreeningPackageResponse>} - The async response
      */
     public CompletableFuture<ScreeningGetScreeningPackageResponse> getScreeningPackage(ScreeningGetScreeningPackageRequest request) {
         return getScreeningPackage(request, Optional.empty());
@@ -106,11 +110,13 @@ public class AsyncScreening {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;ScreeningGetScreeningPackageResponse&gt; - The async response
+     * @return {@code CompletableFuture<ScreeningGetScreeningPackageResponse>} - The async response
      */
     public CompletableFuture<ScreeningGetScreeningPackageResponse> getScreeningPackage(ScreeningGetScreeningPackageRequest request, Optional<Options> options) {
         AsyncRequestOperation<ScreeningGetScreeningPackageRequest, ScreeningGetScreeningPackageResponse> operation
-              = new ScreeningGetScreeningPackage.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningGetScreeningPackage.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -130,7 +136,7 @@ public class AsyncScreening {
      * 
      * @param xAccountId The account identifier
      * @param screeningResultWebhook 
-     * @return CompletableFuture&lt;ScreeningWebhookScreeningResultResponse&gt; - The async response
+     * @return {@code CompletableFuture<ScreeningWebhookScreeningResultResponse>} - The async response
      */
     public CompletableFuture<ScreeningWebhookScreeningResultResponse> webhookScreeningResult(String xAccountId, ScreeningResultWebhook screeningResultWebhook) {
         return webhookScreeningResult(xAccountId, screeningResultWebhook, Optional.empty());
@@ -142,7 +148,7 @@ public class AsyncScreening {
      * @param xAccountId The account identifier
      * @param screeningResultWebhook 
      * @param options additional options
-     * @return CompletableFuture&lt;ScreeningWebhookScreeningResultResponse&gt; - The async response
+     * @return {@code CompletableFuture<ScreeningWebhookScreeningResultResponse>} - The async response
      */
     public CompletableFuture<ScreeningWebhookScreeningResultResponse> webhookScreeningResult(
             String xAccountId, ScreeningResultWebhook screeningResultWebhook,
@@ -154,7 +160,9 @@ public class AsyncScreening {
                 .screeningResultWebhook(screeningResultWebhook)
                 .build();
         AsyncRequestOperation<ScreeningWebhookScreeningResultRequest, ScreeningWebhookScreeningResultResponse> operation
-              = new ScreeningWebhookScreeningResult.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningWebhookScreeningResult.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -174,7 +182,7 @@ public class AsyncScreening {
      * 
      * @param xAccountId The account identifier
      * @param screeningCreateOrderRequestDto 
-     * @return CompletableFuture&lt;ScreeningCreateScreeningOrderResponse&gt; - The async response
+     * @return {@code CompletableFuture<ScreeningCreateScreeningOrderResponse>} - The async response
      */
     public CompletableFuture<ScreeningCreateScreeningOrderResponse> createScreeningOrder(String xAccountId, ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto) {
         return createScreeningOrder(xAccountId, screeningCreateOrderRequestDto, Optional.empty());
@@ -186,7 +194,7 @@ public class AsyncScreening {
      * @param xAccountId The account identifier
      * @param screeningCreateOrderRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;ScreeningCreateScreeningOrderResponse&gt; - The async response
+     * @return {@code CompletableFuture<ScreeningCreateScreeningOrderResponse>} - The async response
      */
     public CompletableFuture<ScreeningCreateScreeningOrderResponse> createScreeningOrder(
             String xAccountId, ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto,
@@ -198,7 +206,9 @@ public class AsyncScreening {
                 .screeningCreateOrderRequestDto(screeningCreateOrderRequestDto)
                 .build();
         AsyncRequestOperation<ScreeningCreateScreeningOrderRequest, ScreeningCreateScreeningOrderResponse> operation
-              = new ScreeningCreateScreeningOrder.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ScreeningCreateScreeningOrder.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

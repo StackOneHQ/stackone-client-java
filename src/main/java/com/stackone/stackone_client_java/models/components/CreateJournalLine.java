@@ -31,7 +31,8 @@ public class CreateJournalLine {
     private JsonNullable<String> description;
 
     /**
-     * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative for credit
+     * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative
+     * for credit
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("amount")
@@ -92,7 +93,8 @@ public class CreateJournalLine {
     }
 
     /**
-     * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative for credit
+     * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative
+     * for credit
      */
     @JsonIgnore
     public JsonNullable<Double> amount() {
@@ -157,7 +159,8 @@ public class CreateJournalLine {
     }
 
     /**
-     * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative for credit
+     * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative
+     * for credit
      */
     public CreateJournalLine withAmount(double amount) {
         Utils.checkNotNull(amount, "amount");
@@ -166,7 +169,8 @@ public class CreateJournalLine {
     }
 
     /**
-     * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative for credit
+     * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative
+     * for credit
      */
     public CreateJournalLine withAmount(JsonNullable<Double> amount) {
         Utils.checkNotNull(amount, "amount");
@@ -301,7 +305,8 @@ public class CreateJournalLine {
 
 
         /**
-         * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative for credit
+         * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative
+         * for credit
          */
         public Builder amount(double amount) {
             Utils.checkNotNull(amount, "amount");
@@ -310,7 +315,8 @@ public class CreateJournalLine {
         }
 
         /**
-         * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative for credit
+         * Amount of the journal line in minor units, e.g. 10010 for 100.10 USD. Positive for debit, negative
+         * for credit
          */
         public Builder amount(JsonNullable<Double> amount) {
             Utils.checkNotNull(amount, "amount");

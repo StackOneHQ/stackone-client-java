@@ -36,7 +36,8 @@ public class AtsGetApplicationNoteResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The note with the given identifier related to the application with the given identifier was retrieved.
+     * The note with the given identifier related to the application with the given identifier was
+     * retrieved.
      */
     private Optional<? extends NoteResult> noteResult;
 
@@ -97,7 +98,8 @@ public class AtsGetApplicationNoteResponse implements Response {
     }
 
     /**
-     * The note with the given identifier related to the application with the given identifier was retrieved.
+     * The note with the given identifier related to the application with the given identifier was
+     * retrieved.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -143,7 +145,8 @@ public class AtsGetApplicationNoteResponse implements Response {
     }
 
     /**
-     * The note with the given identifier related to the application with the given identifier was retrieved.
+     * The note with the given identifier related to the application with the given identifier was
+     * retrieved.
      */
     public AtsGetApplicationNoteResponse withNoteResult(NoteResult noteResult) {
         Utils.checkNotNull(noteResult, "noteResult");
@@ -153,7 +156,8 @@ public class AtsGetApplicationNoteResponse implements Response {
 
 
     /**
-     * The note with the given identifier related to the application with the given identifier was retrieved.
+     * The note with the given identifier related to the application with the given identifier was
+     * retrieved.
      */
     public AtsGetApplicationNoteResponse withNoteResult(Optional<? extends NoteResult> noteResult) {
         Utils.checkNotNull(noteResult, "noteResult");
@@ -250,7 +254,8 @@ public class AtsGetApplicationNoteResponse implements Response {
 
 
         /**
-         * The note with the given identifier related to the application with the given identifier was retrieved.
+         * The note with the given identifier related to the application with the given identifier was
+         * retrieved.
          */
         public Builder noteResult(NoteResult noteResult) {
             Utils.checkNotNull(noteResult, "noteResult");
@@ -259,7 +264,8 @@ public class AtsGetApplicationNoteResponse implements Response {
         }
 
         /**
-         * The note with the given identifier related to the application with the given identifier was retrieved.
+         * The note with the given identifier related to the application with the given identifier was
+         * retrieved.
          */
         public Builder noteResult(Optional<? extends NoteResult> noteResult) {
             Utils.checkNotNull(noteResult, "noteResult");

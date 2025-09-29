@@ -72,7 +72,8 @@ public class AtsCreateApplicationRequestDto {
     private JsonNullable<String> candidateId;
 
     /**
-     * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
+     * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create
+     * a new candidate with the application.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("candidate")
@@ -189,7 +190,8 @@ public class AtsCreateApplicationRequestDto {
     }
 
     /**
-     * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
+     * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create
+     * a new candidate with the application.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -344,7 +346,8 @@ public class AtsCreateApplicationRequestDto {
     }
 
     /**
-     * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
+     * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create
+     * a new candidate with the application.
      */
     public AtsCreateApplicationRequestDto withCandidate(AtsCreateApplicationRequestDtoCandidate candidate) {
         Utils.checkNotNull(candidate, "candidate");
@@ -353,7 +356,8 @@ public class AtsCreateApplicationRequestDto {
     }
 
     /**
-     * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
+     * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create
+     * a new candidate with the application.
      */
     public AtsCreateApplicationRequestDto withCandidate(JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate) {
         Utils.checkNotNull(candidate, "candidate");
@@ -594,7 +598,8 @@ public class AtsCreateApplicationRequestDto {
 
 
         /**
-         * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
+         * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create
+         * a new candidate with the application.
          */
         public Builder candidate(AtsCreateApplicationRequestDtoCandidate candidate) {
             Utils.checkNotNull(candidate, "candidate");
@@ -603,7 +608,8 @@ public class AtsCreateApplicationRequestDto {
         }
 
         /**
-         * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
+         * Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create
+         * a new candidate with the application.
          */
         public Builder candidate(JsonNullable<? extends AtsCreateApplicationRequestDtoCandidate> candidate) {
             Utils.checkNotNull(candidate, "candidate");

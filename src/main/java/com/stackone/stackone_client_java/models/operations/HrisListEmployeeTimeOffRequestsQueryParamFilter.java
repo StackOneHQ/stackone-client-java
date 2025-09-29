@@ -32,18 +32,37 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
     @SpeakeasyMetadata("queryParam:name=policy_ids")
     private JsonNullable<? extends List<String>> policyIds;
 
+    /**
+     * Filter to include time off requests that start on or after this date.
+     */
+    @SpeakeasyMetadata("queryParam:name=start_date")
+    private JsonNullable<OffsetDateTime> startDate;
+
+    /**
+     * Filter to include time off requests that end on or before this date.
+     */
+    @SpeakeasyMetadata("queryParam:name=end_date")
+    private JsonNullable<OffsetDateTime> endDate;
+
     @JsonCreator
     public HrisListEmployeeTimeOffRequestsQueryParamFilter(
             JsonNullable<OffsetDateTime> updatedAfter,
-            JsonNullable<? extends List<String>> policyIds) {
+            JsonNullable<? extends List<String>> policyIds,
+            JsonNullable<OffsetDateTime> startDate,
+            JsonNullable<OffsetDateTime> endDate) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(policyIds, "policyIds");
+        Utils.checkNotNull(startDate, "startDate");
+        Utils.checkNotNull(endDate, "endDate");
         this.updatedAfter = updatedAfter;
         this.policyIds = policyIds;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
     
     public HrisListEmployeeTimeOffRequestsQueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -61,6 +80,22 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
     @JsonIgnore
     public JsonNullable<List<String>> policyIds() {
         return (JsonNullable<List<String>>) policyIds;
+    }
+
+    /**
+     * Filter to include time off requests that start on or after this date.
+     */
+    @JsonIgnore
+    public JsonNullable<OffsetDateTime> startDate() {
+        return startDate;
+    }
+
+    /**
+     * Filter to include time off requests that end on or before this date.
+     */
+    @JsonIgnore
+    public JsonNullable<OffsetDateTime> endDate() {
+        return endDate;
     }
 
     public static Builder builder() {
@@ -104,6 +139,42 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
         return this;
     }
 
+    /**
+     * Filter to include time off requests that start on or after this date.
+     */
+    public HrisListEmployeeTimeOffRequestsQueryParamFilter withStartDate(OffsetDateTime startDate) {
+        Utils.checkNotNull(startDate, "startDate");
+        this.startDate = JsonNullable.of(startDate);
+        return this;
+    }
+
+    /**
+     * Filter to include time off requests that start on or after this date.
+     */
+    public HrisListEmployeeTimeOffRequestsQueryParamFilter withStartDate(JsonNullable<OffsetDateTime> startDate) {
+        Utils.checkNotNull(startDate, "startDate");
+        this.startDate = startDate;
+        return this;
+    }
+
+    /**
+     * Filter to include time off requests that end on or before this date.
+     */
+    public HrisListEmployeeTimeOffRequestsQueryParamFilter withEndDate(OffsetDateTime endDate) {
+        Utils.checkNotNull(endDate, "endDate");
+        this.endDate = JsonNullable.of(endDate);
+        return this;
+    }
+
+    /**
+     * Filter to include time off requests that end on or before this date.
+     */
+    public HrisListEmployeeTimeOffRequestsQueryParamFilter withEndDate(JsonNullable<OffsetDateTime> endDate) {
+        Utils.checkNotNull(endDate, "endDate");
+        this.endDate = endDate;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -115,20 +186,25 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
         HrisListEmployeeTimeOffRequestsQueryParamFilter other = (HrisListEmployeeTimeOffRequestsQueryParamFilter) o;
         return 
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
-            Utils.enhancedDeepEquals(this.policyIds, other.policyIds);
+            Utils.enhancedDeepEquals(this.policyIds, other.policyIds) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter, policyIds);
+            updatedAfter, policyIds, startDate,
+            endDate);
     }
     
     @Override
     public String toString() {
         return Utils.toString(HrisListEmployeeTimeOffRequestsQueryParamFilter.class,
                 "updatedAfter", updatedAfter,
-                "policyIds", policyIds);
+                "policyIds", policyIds,
+                "startDate", startDate,
+                "endDate", endDate);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -137,6 +213,10 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<? extends List<String>> policyIds = JsonNullable.undefined();
+
+        private JsonNullable<OffsetDateTime> startDate = JsonNullable.undefined();
+
+        private JsonNullable<OffsetDateTime> endDate = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -180,10 +260,49 @@ public class HrisListEmployeeTimeOffRequestsQueryParamFilter {
             return this;
         }
 
+
+        /**
+         * Filter to include time off requests that start on or after this date.
+         */
+        public Builder startDate(OffsetDateTime startDate) {
+            Utils.checkNotNull(startDate, "startDate");
+            this.startDate = JsonNullable.of(startDate);
+            return this;
+        }
+
+        /**
+         * Filter to include time off requests that start on or after this date.
+         */
+        public Builder startDate(JsonNullable<OffsetDateTime> startDate) {
+            Utils.checkNotNull(startDate, "startDate");
+            this.startDate = startDate;
+            return this;
+        }
+
+
+        /**
+         * Filter to include time off requests that end on or before this date.
+         */
+        public Builder endDate(OffsetDateTime endDate) {
+            Utils.checkNotNull(endDate, "endDate");
+            this.endDate = JsonNullable.of(endDate);
+            return this;
+        }
+
+        /**
+         * Filter to include time off requests that end on or before this date.
+         */
+        public Builder endDate(JsonNullable<OffsetDateTime> endDate) {
+            Utils.checkNotNull(endDate, "endDate");
+            this.endDate = endDate;
+            return this;
+        }
+
         public HrisListEmployeeTimeOffRequestsQueryParamFilter build() {
 
             return new HrisListEmployeeTimeOffRequestsQueryParamFilter(
-                updatedAfter, policyIds);
+                updatedAfter, policyIds, startDate,
+                endDate);
         }
 
     }

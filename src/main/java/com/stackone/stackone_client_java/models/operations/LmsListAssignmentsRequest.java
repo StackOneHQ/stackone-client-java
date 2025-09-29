@@ -26,19 +26,22 @@ public class LmsListAssignmentsRequest {
     private String xAccountId;
 
     /**
-     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+     * Indicates that the raw request result should be returned in addition to the mapped result (default
+     * value is false)
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")
     private JsonNullable<Boolean> raw;
 
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by
+     * surrounding them with 'proxy' key
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=proxy")
     private JsonNullable<? extends Map<String, Object>> proxy;
 
     /**
-     * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
+     * The comma separated list of fields that will be returned in the response (if empty, all fields are
+     * returned)
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")
     private JsonNullable<String> fields;
@@ -145,7 +148,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+     * Indicates that the raw request result should be returned in addition to the mapped result (default
+     * value is false)
      */
     @JsonIgnore
     public JsonNullable<Boolean> raw() {
@@ -153,7 +157,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by
+     * surrounding them with 'proxy' key
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -162,7 +167,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
+     * The comma separated list of fields that will be returned in the response (if empty, all fields are
+     * returned)
      */
     @JsonIgnore
     public JsonNullable<String> fields() {
@@ -247,7 +253,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+     * Indicates that the raw request result should be returned in addition to the mapped result (default
+     * value is false)
      */
     public LmsListAssignmentsRequest withRaw(boolean raw) {
         Utils.checkNotNull(raw, "raw");
@@ -256,7 +263,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+     * Indicates that the raw request result should be returned in addition to the mapped result (default
+     * value is false)
      */
     public LmsListAssignmentsRequest withRaw(JsonNullable<Boolean> raw) {
         Utils.checkNotNull(raw, "raw");
@@ -265,7 +273,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by
+     * surrounding them with 'proxy' key
      */
     public LmsListAssignmentsRequest withProxy(Map<String, Object> proxy) {
         Utils.checkNotNull(proxy, "proxy");
@@ -274,7 +283,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by
+     * surrounding them with 'proxy' key
      */
     public LmsListAssignmentsRequest withProxy(JsonNullable<? extends Map<String, Object>> proxy) {
         Utils.checkNotNull(proxy, "proxy");
@@ -283,7 +293,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
+     * The comma separated list of fields that will be returned in the response (if empty, all fields are
+     * returned)
      */
     public LmsListAssignmentsRequest withFields(String fields) {
         Utils.checkNotNull(fields, "fields");
@@ -292,7 +303,8 @@ public class LmsListAssignmentsRequest {
     }
 
     /**
-     * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
+     * The comma separated list of fields that will be returned in the response (if empty, all fields are
+     * returned)
      */
     public LmsListAssignmentsRequest withFields(JsonNullable<String> fields) {
         Utils.checkNotNull(fields, "fields");
@@ -529,7 +541,8 @@ public class LmsListAssignmentsRequest {
 
 
         /**
-         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+         * Indicates that the raw request result should be returned in addition to the mapped result (default
+         * value is false)
          */
         public Builder raw(boolean raw) {
             Utils.checkNotNull(raw, "raw");
@@ -538,7 +551,8 @@ public class LmsListAssignmentsRequest {
         }
 
         /**
-         * Indicates that the raw request result should be returned in addition to the mapped result (default value is false)
+         * Indicates that the raw request result should be returned in addition to the mapped result (default
+         * value is false)
          */
         public Builder raw(JsonNullable<Boolean> raw) {
             Utils.checkNotNull(raw, "raw");
@@ -548,7 +562,8 @@ public class LmsListAssignmentsRequest {
 
 
         /**
-         * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+         * Query parameters that can be used to pass through parameters to the underlying provider request by
+         * surrounding them with 'proxy' key
          */
         public Builder proxy(Map<String, Object> proxy) {
             Utils.checkNotNull(proxy, "proxy");
@@ -557,7 +572,8 @@ public class LmsListAssignmentsRequest {
         }
 
         /**
-         * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
+         * Query parameters that can be used to pass through parameters to the underlying provider request by
+         * surrounding them with 'proxy' key
          */
         public Builder proxy(JsonNullable<? extends Map<String, Object>> proxy) {
             Utils.checkNotNull(proxy, "proxy");
@@ -567,7 +583,8 @@ public class LmsListAssignmentsRequest {
 
 
         /**
-         * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
+         * The comma separated list of fields that will be returned in the response (if empty, all fields are
+         * returned)
          */
         public Builder fields(String fields) {
             Utils.checkNotNull(fields, "fields");
@@ -576,7 +593,8 @@ public class LmsListAssignmentsRequest {
         }
 
         /**
-         * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
+         * The comma separated list of fields that will be returned in the response (if empty, all fields are
+         * returned)
          */
         public Builder fields(JsonNullable<String> fields) {
             Utils.checkNotNull(fields, "fields");

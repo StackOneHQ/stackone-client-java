@@ -46,6 +46,7 @@ import com.stackone.stackone_client_java.operations.CrmListContactCustomFieldDef
 import com.stackone.stackone_client_java.operations.CrmListContacts;
 import com.stackone.stackone_client_java.operations.CrmListLists;
 import com.stackone.stackone_client_java.operations.CrmUpdateContact;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -53,6 +54,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncCrm {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Crm syncSDK;
 
@@ -84,7 +86,7 @@ public class AsyncCrm {
      * List Contacts
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;CrmListContactsResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmListContactsResponse>} - The async response
      */
     public CompletableFuture<CrmListContactsResponse> listContacts(CrmListContactsRequest request) {
         return listContacts(request, Optional.empty());
@@ -95,11 +97,13 @@ public class AsyncCrm {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CrmListContactsResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmListContactsResponse>} - The async response
      */
     public CompletableFuture<CrmListContactsResponse> listContacts(CrmListContactsRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmListContactsRequest, CrmListContactsResponse> operation
-              = new CrmListContacts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmListContacts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -119,7 +123,7 @@ public class AsyncCrm {
      * 
      * @param xAccountId The account identifier
      * @param crmCreateContactRequestDto 
-     * @return CompletableFuture&lt;CrmCreateContactResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmCreateContactResponse>} - The async response
      */
     public CompletableFuture<CrmCreateContactResponse> createContact(String xAccountId, CrmCreateContactRequestDto crmCreateContactRequestDto) {
         return createContact(xAccountId, crmCreateContactRequestDto, Optional.empty());
@@ -131,7 +135,7 @@ public class AsyncCrm {
      * @param xAccountId The account identifier
      * @param crmCreateContactRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;CrmCreateContactResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmCreateContactResponse>} - The async response
      */
     public CompletableFuture<CrmCreateContactResponse> createContact(
             String xAccountId, CrmCreateContactRequestDto crmCreateContactRequestDto,
@@ -143,7 +147,9 @@ public class AsyncCrm {
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         AsyncRequestOperation<CrmCreateContactRequest, CrmCreateContactResponse> operation
-              = new CrmCreateContact.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmCreateContact.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -162,7 +168,7 @@ public class AsyncCrm {
      * Get Contact
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;CrmGetContactResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmGetContactResponse>} - The async response
      */
     public CompletableFuture<CrmGetContactResponse> getContact(CrmGetContactRequest request) {
         return getContact(request, Optional.empty());
@@ -173,11 +179,13 @@ public class AsyncCrm {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CrmGetContactResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmGetContactResponse>} - The async response
      */
     public CompletableFuture<CrmGetContactResponse> getContact(CrmGetContactRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmGetContactRequest, CrmGetContactResponse> operation
-              = new CrmGetContact.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmGetContact.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -198,7 +206,7 @@ public class AsyncCrm {
      * @param xAccountId The account identifier
      * @param id 
      * @param crmCreateContactRequestDto 
-     * @return CompletableFuture&lt;CrmUpdateContactResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmUpdateContactResponse>} - The async response
      */
     public CompletableFuture<CrmUpdateContactResponse> updateContact(
             String xAccountId, String id,
@@ -215,7 +223,7 @@ public class AsyncCrm {
      * @param id 
      * @param crmCreateContactRequestDto 
      * @param options additional options
-     * @return CompletableFuture&lt;CrmUpdateContactResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmUpdateContactResponse>} - The async response
      */
     public CompletableFuture<CrmUpdateContactResponse> updateContact(
             String xAccountId, String id,
@@ -228,7 +236,9 @@ public class AsyncCrm {
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         AsyncRequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation
-              = new CrmUpdateContact.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmUpdateContact.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -247,7 +257,7 @@ public class AsyncCrm {
      * List Accounts
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;CrmListAccountsResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmListAccountsResponse>} - The async response
      */
     public CompletableFuture<CrmListAccountsResponse> listAccounts(CrmListAccountsRequest request) {
         return listAccounts(request, Optional.empty());
@@ -258,11 +268,13 @@ public class AsyncCrm {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CrmListAccountsResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmListAccountsResponse>} - The async response
      */
     public CompletableFuture<CrmListAccountsResponse> listAccounts(CrmListAccountsRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmListAccountsRequest, CrmListAccountsResponse> operation
-              = new CrmListAccounts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmListAccounts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -281,7 +293,7 @@ public class AsyncCrm {
      * Get Account
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;CrmGetAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmGetAccountResponse>} - The async response
      */
     public CompletableFuture<CrmGetAccountResponse> getAccount(CrmGetAccountRequest request) {
         return getAccount(request, Optional.empty());
@@ -292,11 +304,13 @@ public class AsyncCrm {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CrmGetAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmGetAccountResponse>} - The async response
      */
     public CompletableFuture<CrmGetAccountResponse> getAccount(CrmGetAccountRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmGetAccountRequest, CrmGetAccountResponse> operation
-              = new CrmGetAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmGetAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -315,7 +329,7 @@ public class AsyncCrm {
      * Get all Lists
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;CrmListListsResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmListListsResponse>} - The async response
      */
     public CompletableFuture<CrmListListsResponse> listLists(CrmListListsRequest request) {
         return listLists(request, Optional.empty());
@@ -326,11 +340,13 @@ public class AsyncCrm {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CrmListListsResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmListListsResponse>} - The async response
      */
     public CompletableFuture<CrmListListsResponse> listLists(CrmListListsRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmListListsRequest, CrmListListsResponse> operation
-              = new CrmListLists.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmListLists.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -349,7 +365,7 @@ public class AsyncCrm {
      * Get List
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;CrmGetListResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmGetListResponse>} - The async response
      */
     public CompletableFuture<CrmGetListResponse> getList(CrmGetListRequest request) {
         return getList(request, Optional.empty());
@@ -360,11 +376,13 @@ public class AsyncCrm {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CrmGetListResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmGetListResponse>} - The async response
      */
     public CompletableFuture<CrmGetListResponse> getList(CrmGetListRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmGetListRequest, CrmGetListResponse> operation
-              = new CrmGetList.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmGetList.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -383,7 +401,7 @@ public class AsyncCrm {
      * List Contact Custom Field Definitions
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;CrmListContactCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmListContactCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<CrmListContactCustomFieldDefinitionsResponse> listContactCustomFieldDefinitions(CrmListContactCustomFieldDefinitionsRequest request) {
         return listContactCustomFieldDefinitions(request, Optional.empty());
@@ -394,11 +412,13 @@ public class AsyncCrm {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CrmListContactCustomFieldDefinitionsResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmListContactCustomFieldDefinitionsResponse>} - The async response
      */
     public CompletableFuture<CrmListContactCustomFieldDefinitionsResponse> listContactCustomFieldDefinitions(CrmListContactCustomFieldDefinitionsRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmListContactCustomFieldDefinitionsRequest, CrmListContactCustomFieldDefinitionsResponse> operation
-              = new CrmListContactCustomFieldDefinitions.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmListContactCustomFieldDefinitions.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -417,7 +437,7 @@ public class AsyncCrm {
      * Get Contact Custom Field Definition
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;CrmGetContactCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmGetContactCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<CrmGetContactCustomFieldDefinitionResponse> getContactCustomFieldDefinition(CrmGetContactCustomFieldDefinitionRequest request) {
         return getContactCustomFieldDefinition(request, Optional.empty());
@@ -428,11 +448,13 @@ public class AsyncCrm {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CrmGetContactCustomFieldDefinitionResponse&gt; - The async response
+     * @return {@code CompletableFuture<CrmGetContactCustomFieldDefinitionResponse>} - The async response
      */
     public CompletableFuture<CrmGetContactCustomFieldDefinitionResponse> getContactCustomFieldDefinition(CrmGetContactCustomFieldDefinitionRequest request, Optional<Options> options) {
         AsyncRequestOperation<CrmGetContactCustomFieldDefinitionRequest, CrmGetContactCustomFieldDefinitionResponse> operation
-              = new CrmGetContactCustomFieldDefinition.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CrmGetContactCustomFieldDefinition.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

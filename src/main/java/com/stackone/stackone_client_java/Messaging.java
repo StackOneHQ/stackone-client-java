@@ -51,6 +51,7 @@ import com.stackone.stackone_client_java.operations.MessagingListConversationMes
 import com.stackone.stackone_client_java.operations.MessagingListConversations;
 import com.stackone.stackone_client_java.operations.MessagingListUsers;
 import com.stackone.stackone_client_java.operations.MessagingSendMessage;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -58,6 +59,7 @@ import java.util.Optional;
 
 
 public class Messaging {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncMessaging asyncSDK;
 
@@ -105,7 +107,7 @@ public class Messaging {
      */
     public MessagingListConversationsResponse listConversations(MessagingListConversationsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingListConversationsRequest, MessagingListConversationsResponse> operation
-              = new MessagingListConversations.Sync(sdkConfiguration, options);
+              = new MessagingListConversations.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -149,7 +151,7 @@ public class Messaging {
                 .messagingCreateConversationRequestDto(messagingCreateConversationRequestDto)
                 .build();
         RequestOperation<MessagingCreateConversationRequest, MessagingCreateConversationResponse> operation
-              = new MessagingCreateConversation.Sync(sdkConfiguration, options);
+              = new MessagingCreateConversation.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -183,7 +185,7 @@ public class Messaging {
      */
     public MessagingGetConversationResponse getConversation(MessagingGetConversationRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingGetConversationRequest, MessagingGetConversationResponse> operation
-              = new MessagingGetConversation.Sync(sdkConfiguration, options);
+              = new MessagingGetConversation.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -217,7 +219,7 @@ public class Messaging {
      */
     public MessagingDownloadMessagingAttachmentResponse downloadMessagingAttachment(MessagingDownloadMessagingAttachmentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingDownloadMessagingAttachmentRequest, MessagingDownloadMessagingAttachmentResponse> operation
-              = new MessagingDownloadMessagingAttachment.Sync(sdkConfiguration, options);
+              = new MessagingDownloadMessagingAttachment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -251,7 +253,7 @@ public class Messaging {
      */
     public MessagingListAttachmentsResponse listAttachments(MessagingListAttachmentsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingListAttachmentsRequest, MessagingListAttachmentsResponse> operation
-              = new MessagingListAttachments.Sync(sdkConfiguration, options);
+              = new MessagingListAttachments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -285,7 +287,7 @@ public class Messaging {
      */
     public MessagingGetAttachmentResponse getAttachment(MessagingGetAttachmentRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingGetAttachmentRequest, MessagingGetAttachmentResponse> operation
-              = new MessagingGetAttachment.Sync(sdkConfiguration, options);
+              = new MessagingGetAttachment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -319,7 +321,7 @@ public class Messaging {
      */
     public MessagingListUsersResponse listUsers(MessagingListUsersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingListUsersRequest, MessagingListUsersResponse> operation
-              = new MessagingListUsers.Sync(sdkConfiguration, options);
+              = new MessagingListUsers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -353,7 +355,7 @@ public class Messaging {
      */
     public MessagingGetUserResponse getUser(MessagingGetUserRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingGetUserRequest, MessagingGetUserResponse> operation
-              = new MessagingGetUser.Sync(sdkConfiguration, options);
+              = new MessagingGetUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -387,7 +389,7 @@ public class Messaging {
      */
     public MessagingListConversationMessagesResponse listConversationMessages(MessagingListConversationMessagesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingListConversationMessagesRequest, MessagingListConversationMessagesResponse> operation
-              = new MessagingListConversationMessages.Sync(sdkConfiguration, options);
+              = new MessagingListConversationMessages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -421,7 +423,7 @@ public class Messaging {
      */
     public MessagingGetMessageResponse getMessage(MessagingGetMessageRequest request, Optional<Options> options) throws Exception {
         RequestOperation<MessagingGetMessageRequest, MessagingGetMessageResponse> operation
-              = new MessagingGetMessage.Sync(sdkConfiguration, options);
+              = new MessagingGetMessage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -465,7 +467,7 @@ public class Messaging {
                 .messagingMessageSendRequestDto(messagingMessageSendRequestDto)
                 .build();
         RequestOperation<MessagingSendMessageRequest, MessagingSendMessageResponse> operation
-              = new MessagingSendMessage.Sync(sdkConfiguration, options);
+              = new MessagingSendMessage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

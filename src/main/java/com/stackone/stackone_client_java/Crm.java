@@ -46,6 +46,7 @@ import com.stackone.stackone_client_java.operations.CrmListContactCustomFieldDef
 import com.stackone.stackone_client_java.operations.CrmListContacts;
 import com.stackone.stackone_client_java.operations.CrmListLists;
 import com.stackone.stackone_client_java.operations.CrmUpdateContact;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -53,6 +54,7 @@ import java.util.Optional;
 
 
 public class Crm {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncCrm asyncSDK;
 
@@ -100,7 +102,7 @@ public class Crm {
      */
     public CrmListContactsResponse listContacts(CrmListContactsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmListContactsRequest, CrmListContactsResponse> operation
-              = new CrmListContacts.Sync(sdkConfiguration, options);
+              = new CrmListContacts.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -144,7 +146,7 @@ public class Crm {
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         RequestOperation<CrmCreateContactRequest, CrmCreateContactResponse> operation
-              = new CrmCreateContact.Sync(sdkConfiguration, options);
+              = new CrmCreateContact.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -178,7 +180,7 @@ public class Crm {
      */
     public CrmGetContactResponse getContact(CrmGetContactRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmGetContactRequest, CrmGetContactResponse> operation
-              = new CrmGetContact.Sync(sdkConfiguration, options);
+              = new CrmGetContact.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -228,7 +230,7 @@ public class Crm {
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         RequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation
-              = new CrmUpdateContact.Sync(sdkConfiguration, options);
+              = new CrmUpdateContact.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -262,7 +264,7 @@ public class Crm {
      */
     public CrmListAccountsResponse listAccounts(CrmListAccountsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmListAccountsRequest, CrmListAccountsResponse> operation
-              = new CrmListAccounts.Sync(sdkConfiguration, options);
+              = new CrmListAccounts.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -296,7 +298,7 @@ public class Crm {
      */
     public CrmGetAccountResponse getAccount(CrmGetAccountRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmGetAccountRequest, CrmGetAccountResponse> operation
-              = new CrmGetAccount.Sync(sdkConfiguration, options);
+              = new CrmGetAccount.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -330,7 +332,7 @@ public class Crm {
      */
     public CrmListListsResponse listLists(CrmListListsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmListListsRequest, CrmListListsResponse> operation
-              = new CrmListLists.Sync(sdkConfiguration, options);
+              = new CrmListLists.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -364,7 +366,7 @@ public class Crm {
      */
     public CrmGetListResponse getList(CrmGetListRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmGetListRequest, CrmGetListResponse> operation
-              = new CrmGetList.Sync(sdkConfiguration, options);
+              = new CrmGetList.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -398,7 +400,7 @@ public class Crm {
      */
     public CrmListContactCustomFieldDefinitionsResponse listContactCustomFieldDefinitions(CrmListContactCustomFieldDefinitionsRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmListContactCustomFieldDefinitionsRequest, CrmListContactCustomFieldDefinitionsResponse> operation
-              = new CrmListContactCustomFieldDefinitions.Sync(sdkConfiguration, options);
+              = new CrmListContactCustomFieldDefinitions.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -432,7 +434,7 @@ public class Crm {
      */
     public CrmGetContactCustomFieldDefinitionResponse getContactCustomFieldDefinition(CrmGetContactCustomFieldDefinitionRequest request, Optional<Options> options) throws Exception {
         RequestOperation<CrmGetContactCustomFieldDefinitionRequest, CrmGetContactCustomFieldDefinitionResponse> operation
-              = new CrmGetContactCustomFieldDefinition.Sync(sdkConfiguration, options);
+              = new CrmGetContactCustomFieldDefinition.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

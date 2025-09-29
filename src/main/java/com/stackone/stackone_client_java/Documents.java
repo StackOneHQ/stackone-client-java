@@ -38,6 +38,7 @@ import com.stackone.stackone_client_java.operations.DocumentsListDrives;
 import com.stackone.stackone_client_java.operations.DocumentsListFiles;
 import com.stackone.stackone_client_java.operations.DocumentsListFolders;
 import com.stackone.stackone_client_java.operations.DocumentsUploadFile;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -45,6 +46,7 @@ import java.util.Optional;
 
 
 public class Documents {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncDocuments asyncSDK;
 
@@ -92,7 +94,7 @@ public class Documents {
      */
     public DocumentsDownloadFileResponse downloadFile(DocumentsDownloadFileRequest request, Optional<Options> options) throws Exception {
         RequestOperation<DocumentsDownloadFileRequest, DocumentsDownloadFileResponse> operation
-              = new DocumentsDownloadFile.Sync(sdkConfiguration, options);
+              = new DocumentsDownloadFile.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -139,7 +141,7 @@ public class Documents {
                 .unifiedUploadRequestDto(unifiedUploadRequestDto)
                 .build();
         RequestOperation<DocumentsUploadFileRequest, DocumentsUploadFileResponse> operation
-              = new DocumentsUploadFile.Sync(sdkConfiguration, options);
+              = new DocumentsUploadFile.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -173,7 +175,7 @@ public class Documents {
      */
     public DocumentsListFilesResponse listFiles(DocumentsListFilesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<DocumentsListFilesRequest, DocumentsListFilesResponse> operation
-              = new DocumentsListFiles.Sync(sdkConfiguration, options);
+              = new DocumentsListFiles.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -207,7 +209,7 @@ public class Documents {
      */
     public DocumentsGetFileResponse getFile(DocumentsGetFileRequest request, Optional<Options> options) throws Exception {
         RequestOperation<DocumentsGetFileRequest, DocumentsGetFileResponse> operation
-              = new DocumentsGetFile.Sync(sdkConfiguration, options);
+              = new DocumentsGetFile.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -241,7 +243,7 @@ public class Documents {
      */
     public DocumentsListFoldersResponse listFolders(DocumentsListFoldersRequest request, Optional<Options> options) throws Exception {
         RequestOperation<DocumentsListFoldersRequest, DocumentsListFoldersResponse> operation
-              = new DocumentsListFolders.Sync(sdkConfiguration, options);
+              = new DocumentsListFolders.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -275,7 +277,7 @@ public class Documents {
      */
     public DocumentsGetFolderResponse getFolder(DocumentsGetFolderRequest request, Optional<Options> options) throws Exception {
         RequestOperation<DocumentsGetFolderRequest, DocumentsGetFolderResponse> operation
-              = new DocumentsGetFolder.Sync(sdkConfiguration, options);
+              = new DocumentsGetFolder.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -309,7 +311,7 @@ public class Documents {
      */
     public DocumentsListDrivesResponse listDrives(DocumentsListDrivesRequest request, Optional<Options> options) throws Exception {
         RequestOperation<DocumentsListDrivesRequest, DocumentsListDrivesResponse> operation
-              = new DocumentsListDrives.Sync(sdkConfiguration, options);
+              = new DocumentsListDrives.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -343,7 +345,7 @@ public class Documents {
      */
     public DocumentsGetDriveResponse getDrive(DocumentsGetDriveRequest request, Optional<Options> options) throws Exception {
         RequestOperation<DocumentsGetDriveRequest, DocumentsGetDriveResponse> operation
-              = new DocumentsGetDrive.Sync(sdkConfiguration, options);
+              = new DocumentsGetDrive.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

@@ -69,7 +69,8 @@ public class ConnectSession {
     private OffsetDateTime createdAt;
 
     /**
-     * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+     * Arbitrary set of key and values defined during the session token creation. This can be used to tag
+     * an account (eg. based on their pricing plan)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata")
@@ -206,7 +207,8 @@ public class ConnectSession {
     }
 
     /**
-     * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+     * Arbitrary set of key and values defined during the session token creation. This can be used to tag
+     * an account (eg. based on their pricing plan)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -333,7 +335,8 @@ public class ConnectSession {
     }
 
     /**
-     * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+     * Arbitrary set of key and values defined during the session token creation. This can be used to tag
+     * an account (eg. based on their pricing plan)
      */
     public ConnectSession withMetadata(ConnectSessionMetadata metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -342,7 +345,8 @@ public class ConnectSession {
     }
 
     /**
-     * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+     * Arbitrary set of key and values defined during the session token creation. This can be used to tag
+     * an account (eg. based on their pricing plan)
      */
     public ConnectSession withMetadata(JsonNullable<? extends ConnectSessionMetadata> metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -585,7 +589,8 @@ public class ConnectSession {
 
 
         /**
-         * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+         * Arbitrary set of key and values defined during the session token creation. This can be used to tag
+         * an account (eg. based on their pricing plan)
          */
         public Builder metadata(ConnectSessionMetadata metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -594,7 +599,8 @@ public class ConnectSession {
         }
 
         /**
-         * Arbitrary set of key and values defined during the session token creation. This can be used to tag an account (eg. based on their pricing plan)
+         * Arbitrary set of key and values defined during the session token creation. This can be used to tag
+         * an account (eg. based on their pricing plan)
          */
         public Builder metadata(JsonNullable<? extends ConnectSessionMetadata> metadata) {
             Utils.checkNotNull(metadata, "metadata");

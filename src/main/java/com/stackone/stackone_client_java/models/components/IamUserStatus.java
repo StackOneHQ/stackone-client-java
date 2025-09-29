@@ -17,7 +17,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class IamUserStatus {
     /**
-     * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
+     * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is
+     * pending (ie: awaiting approval by the user or an admin).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
@@ -43,7 +44,8 @@ public class IamUserStatus {
     }
 
     /**
-     * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
+     * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is
+     * pending (ie: awaiting approval by the user or an admin).
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -63,7 +65,8 @@ public class IamUserStatus {
 
 
     /**
-     * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
+     * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is
+     * pending (ie: awaiting approval by the user or an admin).
      */
     public IamUserStatus withValue(IamUserValue value) {
         Utils.checkNotNull(value, "value");
@@ -72,7 +75,8 @@ public class IamUserStatus {
     }
 
     /**
-     * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
+     * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is
+     * pending (ie: awaiting approval by the user or an admin).
      */
     public IamUserStatus withValue(JsonNullable<? extends IamUserValue> value) {
         Utils.checkNotNull(value, "value");
@@ -132,7 +136,8 @@ public class IamUserStatus {
 
 
         /**
-         * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
+         * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is
+         * pending (ie: awaiting approval by the user or an admin).
          */
         public Builder value(IamUserValue value) {
             Utils.checkNotNull(value, "value");
@@ -141,7 +146,8 @@ public class IamUserStatus {
         }
 
         /**
-         * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
+         * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is
+         * pending (ie: awaiting approval by the user or an admin).
          */
         public Builder value(JsonNullable<? extends IamUserValue> value) {
             Utils.checkNotNull(value, "value");

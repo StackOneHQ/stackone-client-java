@@ -44,7 +44,8 @@ import java.util.Optional;
 /**
  * TaskResultValue
  * 
- * <p>The unified value for the type of the task. If the provider does not specify this type, the value will be set to UnmappedValue
+ * <p>The unified value for the type of the task. If the provider does not specify this type, the value
+ * will be set to UnmappedValue
  */
 @JsonDeserialize(using = TaskResultValue._Deserializer.class)
 @JsonSerialize(using = TaskResultValue._Serializer.class)

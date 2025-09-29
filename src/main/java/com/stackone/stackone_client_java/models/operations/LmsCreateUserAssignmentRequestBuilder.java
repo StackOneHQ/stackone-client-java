@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDto;
 import com.stackone.stackone_client_java.operations.LmsCreateUserAssignment;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -22,6 +23,7 @@ public class LmsCreateUserAssignmentRequestBuilder {
     private LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public LmsCreateUserAssignmentRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -73,7 +75,7 @@ public class LmsCreateUserAssignmentRequestBuilder {
             .build());
 
         RequestOperation<LmsCreateUserAssignmentRequest, LmsCreateUserAssignmentResponse> operation
-              = new LmsCreateUserAssignment.Sync(sdkConfiguration, options);
+              = new LmsCreateUserAssignment.Sync(sdkConfiguration, options, _headers);
         LmsCreateUserAssignmentRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

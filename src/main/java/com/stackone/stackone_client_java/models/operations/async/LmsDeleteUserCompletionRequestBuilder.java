@@ -8,6 +8,7 @@ import static com.stackone.stackone_client_java.operations.Operations.AsyncReque
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.models.operations.LmsDeleteUserCompletionRequest;
 import com.stackone.stackone_client_java.operations.LmsDeleteUserCompletion;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
@@ -23,6 +24,7 @@ public class LmsDeleteUserCompletionRequestBuilder {
     private String subResourceId;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public LmsDeleteUserCompletionRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -74,7 +76,9 @@ public class LmsDeleteUserCompletionRequestBuilder {
             .build());
 
         AsyncRequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
-              = new LmsDeleteUserCompletion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new LmsDeleteUserCompletion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         LmsDeleteUserCompletionRequest request = buildRequest();
 
         return operation.doRequest(request)

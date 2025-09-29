@@ -13,6 +13,7 @@ import com.stackone.stackone_client_java.models.operations.StackoneCreateConnect
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
 import com.stackone.stackone_client_java.operations.StackoneAuthenticateConnectSession;
 import com.stackone.stackone_client_java.operations.StackoneCreateConnectSession;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
@@ -21,6 +22,7 @@ import java.util.Optional;
  * Generate connection session tokens or auth URLs to allow your customers to connect their accounts.
  */
 public class ConnectSessions {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncConnectSessions asyncSDK;
 
@@ -68,7 +70,7 @@ public class ConnectSessions {
      */
     public StackoneCreateConnectSessionResponse createConnectSession(ConnectSessionCreate request, Optional<Options> options) throws Exception {
         RequestOperation<ConnectSessionCreate, StackoneCreateConnectSessionResponse> operation
-              = new StackoneCreateConnectSession.Sync(sdkConfiguration, options);
+              = new StackoneCreateConnectSession.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -102,7 +104,7 @@ public class ConnectSessions {
      */
     public StackoneAuthenticateConnectSessionResponse authenticateConnectSession(ConnectSessionAuthenticate request, Optional<Options> options) throws Exception {
         RequestOperation<ConnectSessionAuthenticate, StackoneAuthenticateConnectSessionResponse> operation
-              = new StackoneAuthenticateConnectSession.Sync(sdkConfiguration, options);
+              = new StackoneAuthenticateConnectSession.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

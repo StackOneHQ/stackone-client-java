@@ -44,7 +44,8 @@ import java.util.Optional;
 /**
  * IamUserValue
  * 
- * <p>The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
+ * <p>The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is
+ * pending (ie: awaiting approval by the user or an admin).
  */
 @JsonDeserialize(using = IamUserValue._Deserializer.class)
 @JsonSerialize(using = IamUserValue._Serializer.class)

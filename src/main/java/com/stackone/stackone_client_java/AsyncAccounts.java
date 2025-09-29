@@ -26,6 +26,7 @@ import com.stackone.stackone_client_java.operations.StackoneGetAccount;
 import com.stackone.stackone_client_java.operations.StackoneGetAccountMetaInfo;
 import com.stackone.stackone_client_java.operations.StackoneListLinkedAccounts;
 import com.stackone.stackone_client_java.operations.StackoneUpdateAccount;
+import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -35,6 +36,7 @@ import java.util.concurrent.CompletableFuture;
  * Chart of accounts.
  */
 public class AsyncAccounts {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Accounts syncSDK;
 
@@ -66,7 +68,7 @@ public class AsyncAccounts {
      * List Accounts
      * 
      * @param request The request object containing all the parameters for the API call.
-     * @return CompletableFuture&lt;StackoneListLinkedAccountsResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListLinkedAccountsResponse>} - The async response
      */
     public CompletableFuture<StackoneListLinkedAccountsResponse> listLinkedAccounts(StackoneListLinkedAccountsRequest request) {
         return listLinkedAccounts(request, Optional.empty());
@@ -77,11 +79,13 @@ public class AsyncAccounts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneListLinkedAccountsResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneListLinkedAccountsResponse>} - The async response
      */
     public CompletableFuture<StackoneListLinkedAccountsResponse> listLinkedAccounts(StackoneListLinkedAccountsRequest request, Optional<Options> options) {
         AsyncRequestOperation<StackoneListLinkedAccountsRequest, StackoneListLinkedAccountsResponse> operation
-              = new StackoneListLinkedAccounts.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneListLinkedAccounts.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -100,7 +104,7 @@ public class AsyncAccounts {
      * Get Account
      * 
      * @param id 
-     * @return CompletableFuture&lt;StackoneGetAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneGetAccountResponse>} - The async response
      */
     public CompletableFuture<StackoneGetAccountResponse> getAccount(String id) {
         return getAccount(id, Optional.empty());
@@ -111,7 +115,7 @@ public class AsyncAccounts {
      * 
      * @param id 
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneGetAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneGetAccountResponse>} - The async response
      */
     public CompletableFuture<StackoneGetAccountResponse> getAccount(String id, Optional<Options> options) {
         StackoneGetAccountRequest request =
@@ -120,7 +124,9 @@ public class AsyncAccounts {
                 .id(id)
                 .build();
         AsyncRequestOperation<StackoneGetAccountRequest, StackoneGetAccountResponse> operation
-              = new StackoneGetAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneGetAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -139,7 +145,7 @@ public class AsyncAccounts {
      * Delete Account
      * 
      * @param id 
-     * @return CompletableFuture&lt;StackoneDeleteAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneDeleteAccountResponse>} - The async response
      */
     public CompletableFuture<StackoneDeleteAccountResponse> deleteAccount(String id) {
         return deleteAccount(id, Optional.empty());
@@ -150,7 +156,7 @@ public class AsyncAccounts {
      * 
      * @param id 
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneDeleteAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneDeleteAccountResponse>} - The async response
      */
     public CompletableFuture<StackoneDeleteAccountResponse> deleteAccount(String id, Optional<Options> options) {
         StackoneDeleteAccountRequest request =
@@ -159,7 +165,9 @@ public class AsyncAccounts {
                 .id(id)
                 .build();
         AsyncRequestOperation<StackoneDeleteAccountRequest, StackoneDeleteAccountResponse> operation
-              = new StackoneDeleteAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneDeleteAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -179,7 +187,7 @@ public class AsyncAccounts {
      * 
      * @param id 
      * @param patchAccountExternalDto 
-     * @return CompletableFuture&lt;StackoneUpdateAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneUpdateAccountResponse>} - The async response
      */
     public CompletableFuture<StackoneUpdateAccountResponse> updateAccount(String id, PatchAccountExternalDto patchAccountExternalDto) {
         return updateAccount(id, patchAccountExternalDto, Optional.empty());
@@ -191,7 +199,7 @@ public class AsyncAccounts {
      * @param id 
      * @param patchAccountExternalDto 
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneUpdateAccountResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneUpdateAccountResponse>} - The async response
      */
     public CompletableFuture<StackoneUpdateAccountResponse> updateAccount(
             String id, PatchAccountExternalDto patchAccountExternalDto,
@@ -203,7 +211,9 @@ public class AsyncAccounts {
                 .patchAccountExternalDto(patchAccountExternalDto)
                 .build();
         AsyncRequestOperation<StackoneUpdateAccountRequest, StackoneUpdateAccountResponse> operation
-              = new StackoneUpdateAccount.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneUpdateAccount.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -222,7 +232,7 @@ public class AsyncAccounts {
      * Get Account Meta Information
      * 
      * @param id 
-     * @return CompletableFuture&lt;StackoneGetAccountMetaInfoResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneGetAccountMetaInfoResponse>} - The async response
      */
     public CompletableFuture<StackoneGetAccountMetaInfoResponse> getAccountMetaInfo(String id) {
         return getAccountMetaInfo(id, Optional.empty());
@@ -233,7 +243,7 @@ public class AsyncAccounts {
      * 
      * @param id 
      * @param options additional options
-     * @return CompletableFuture&lt;StackoneGetAccountMetaInfoResponse&gt; - The async response
+     * @return {@code CompletableFuture<StackoneGetAccountMetaInfoResponse>} - The async response
      */
     public CompletableFuture<StackoneGetAccountMetaInfoResponse> getAccountMetaInfo(String id, Optional<Options> options) {
         StackoneGetAccountMetaInfoRequest request =
@@ -242,7 +252,9 @@ public class AsyncAccounts {
                 .id(id)
                 .build();
         AsyncRequestOperation<StackoneGetAccountMetaInfoRequest, StackoneGetAccountMetaInfoResponse> operation
-              = new StackoneGetAccountMetaInfo.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new StackoneGetAccountMetaInfo.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
