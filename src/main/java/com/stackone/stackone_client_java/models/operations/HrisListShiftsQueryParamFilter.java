@@ -11,6 +11,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -35,20 +36,20 @@ public class HrisListShiftsQueryParamFilter {
      * Filter shifts that start after this date
      */
     @SpeakeasyMetadata("queryParam:name=starts_after")
-    private JsonNullable<OffsetDateTime> startsAfter;
+    private Optional<String> startsAfter;
 
     /**
      * Filter shifts that end before this date
      */
     @SpeakeasyMetadata("queryParam:name=ends_before")
-    private JsonNullable<OffsetDateTime> endsBefore;
+    private Optional<String> endsBefore;
 
     @JsonCreator
     public HrisListShiftsQueryParamFilter(
             JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<? extends HrisListShiftsQueryParamStatus> status,
-            JsonNullable<OffsetDateTime> startsAfter,
-            JsonNullable<OffsetDateTime> endsBefore) {
+            Optional<String> startsAfter,
+            Optional<String> endsBefore) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(startsAfter, "startsAfter");
@@ -60,8 +61,8 @@ public class HrisListShiftsQueryParamFilter {
     }
     
     public HrisListShiftsQueryParamFilter() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -85,7 +86,7 @@ public class HrisListShiftsQueryParamFilter {
      * Filter shifts that start after this date
      */
     @JsonIgnore
-    public JsonNullable<OffsetDateTime> startsAfter() {
+    public Optional<String> startsAfter() {
         return startsAfter;
     }
 
@@ -93,7 +94,7 @@ public class HrisListShiftsQueryParamFilter {
      * Filter shifts that end before this date
      */
     @JsonIgnore
-    public JsonNullable<OffsetDateTime> endsBefore() {
+    public Optional<String> endsBefore() {
         return endsBefore;
     }
 
@@ -141,16 +142,17 @@ public class HrisListShiftsQueryParamFilter {
     /**
      * Filter shifts that start after this date
      */
-    public HrisListShiftsQueryParamFilter withStartsAfter(OffsetDateTime startsAfter) {
+    public HrisListShiftsQueryParamFilter withStartsAfter(String startsAfter) {
         Utils.checkNotNull(startsAfter, "startsAfter");
-        this.startsAfter = JsonNullable.of(startsAfter);
+        this.startsAfter = Optional.ofNullable(startsAfter);
         return this;
     }
+
 
     /**
      * Filter shifts that start after this date
      */
-    public HrisListShiftsQueryParamFilter withStartsAfter(JsonNullable<OffsetDateTime> startsAfter) {
+    public HrisListShiftsQueryParamFilter withStartsAfter(Optional<String> startsAfter) {
         Utils.checkNotNull(startsAfter, "startsAfter");
         this.startsAfter = startsAfter;
         return this;
@@ -159,16 +161,17 @@ public class HrisListShiftsQueryParamFilter {
     /**
      * Filter shifts that end before this date
      */
-    public HrisListShiftsQueryParamFilter withEndsBefore(OffsetDateTime endsBefore) {
+    public HrisListShiftsQueryParamFilter withEndsBefore(String endsBefore) {
         Utils.checkNotNull(endsBefore, "endsBefore");
-        this.endsBefore = JsonNullable.of(endsBefore);
+        this.endsBefore = Optional.ofNullable(endsBefore);
         return this;
     }
+
 
     /**
      * Filter shifts that end before this date
      */
-    public HrisListShiftsQueryParamFilter withEndsBefore(JsonNullable<OffsetDateTime> endsBefore) {
+    public HrisListShiftsQueryParamFilter withEndsBefore(Optional<String> endsBefore) {
         Utils.checkNotNull(endsBefore, "endsBefore");
         this.endsBefore = endsBefore;
         return this;
@@ -213,9 +216,9 @@ public class HrisListShiftsQueryParamFilter {
 
         private JsonNullable<? extends HrisListShiftsQueryParamStatus> status = JsonNullable.undefined();
 
-        private JsonNullable<OffsetDateTime> startsAfter = JsonNullable.undefined();
+        private Optional<String> startsAfter = Optional.empty();
 
-        private JsonNullable<OffsetDateTime> endsBefore = JsonNullable.undefined();
+        private Optional<String> endsBefore = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -263,16 +266,16 @@ public class HrisListShiftsQueryParamFilter {
         /**
          * Filter shifts that start after this date
          */
-        public Builder startsAfter(OffsetDateTime startsAfter) {
+        public Builder startsAfter(String startsAfter) {
             Utils.checkNotNull(startsAfter, "startsAfter");
-            this.startsAfter = JsonNullable.of(startsAfter);
+            this.startsAfter = Optional.ofNullable(startsAfter);
             return this;
         }
 
         /**
          * Filter shifts that start after this date
          */
-        public Builder startsAfter(JsonNullable<OffsetDateTime> startsAfter) {
+        public Builder startsAfter(Optional<String> startsAfter) {
             Utils.checkNotNull(startsAfter, "startsAfter");
             this.startsAfter = startsAfter;
             return this;
@@ -282,16 +285,16 @@ public class HrisListShiftsQueryParamFilter {
         /**
          * Filter shifts that end before this date
          */
-        public Builder endsBefore(OffsetDateTime endsBefore) {
+        public Builder endsBefore(String endsBefore) {
             Utils.checkNotNull(endsBefore, "endsBefore");
-            this.endsBefore = JsonNullable.of(endsBefore);
+            this.endsBefore = Optional.ofNullable(endsBefore);
             return this;
         }
 
         /**
          * Filter shifts that end before this date
          */
-        public Builder endsBefore(JsonNullable<OffsetDateTime> endsBefore) {
+        public Builder endsBefore(Optional<String> endsBefore) {
             Utils.checkNotNull(endsBefore, "endsBefore");
             this.endsBefore = endsBefore;
             return this;

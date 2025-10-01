@@ -49,14 +49,14 @@ public class StackOne {
     private final Connectors connectors;
 
     /**
-     * Routing API requests through StackOne directly to the underlying provider.
-     */
-    private final Proxy proxy;
-
-    /**
      * Model Context Protocol endpoint.
      */
     private final Mcp mcp;
+
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
+    private final Proxy proxy;
 
     /**
      * Retrieve Actions metadata and definitions.
@@ -125,17 +125,17 @@ public class StackOne {
     }
 
     /**
-     * Routing API requests through StackOne directly to the underlying provider.
-     */
-    public Proxy proxy() {
-        return proxy;
-    }
-
-    /**
      * Model Context Protocol endpoint.
      */
     public Mcp mcp() {
         return mcp;
+    }
+
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
+    public Proxy proxy() {
+        return proxy;
     }
 
     /**
@@ -341,8 +341,8 @@ public class StackOne {
         this.accounts = new Accounts(sdkConfiguration);
         this.requestLogs = new RequestLogs(sdkConfiguration);
         this.connectors = new Connectors(sdkConfiguration);
-        this.proxy = new Proxy(sdkConfiguration);
         this.mcp = new Mcp(sdkConfiguration);
+        this.proxy = new Proxy(sdkConfiguration);
         this.actions = new Actions(sdkConfiguration);
         this.hris = new Hris(sdkConfiguration);
         this.ats = new Ats(sdkConfiguration);

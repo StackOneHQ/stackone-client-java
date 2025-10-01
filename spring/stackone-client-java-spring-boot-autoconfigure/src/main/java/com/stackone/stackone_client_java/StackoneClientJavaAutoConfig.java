@@ -272,17 +272,6 @@ public class StackoneClientJavaAutoConfig {
         return stackOne.connectors();
     }
     /**
-     * Creates a Proxy sub-SDK bean if none exists.
-     *
-     * @param stackOne the main SDK instance
-     * @return A configured Proxy instance
-     */
-    @Bean
-    @ConditionalOnMissingBean
-    public Proxy proxy(StackOne stackOne) {
-        return stackOne.proxy();
-    }
-    /**
      * Creates a Mcp sub-SDK bean if none exists.
      *
      * @param stackOne the main SDK instance
@@ -292,6 +281,17 @@ public class StackoneClientJavaAutoConfig {
     @ConditionalOnMissingBean
     public Mcp mcp(StackOne stackOne) {
         return stackOne.mcp();
+    }
+    /**
+     * Creates a Proxy sub-SDK bean if none exists.
+     *
+     * @param stackOne the main SDK instance
+     * @return A configured Proxy instance
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public Proxy proxy(StackOne stackOne) {
+        return stackOne.proxy();
     }
     /**
      * Creates a Actions sub-SDK bean if none exists.
@@ -483,17 +483,6 @@ public class StackoneClientJavaAutoConfig {
         return asyncStackOne.connectors();
     }
     /**
-     * Creates an AsyncProxy sub-SDK bean if none exists.
-     *
-     * @param asyncStackOne the async SDK instance
-     * @return A configured AsyncProxy instance
-     */
-    @Bean
-    @ConditionalOnMissingBean
-    public AsyncProxy asyncProxy(AsyncStackOne asyncStackOne) {
-        return asyncStackOne.proxy();
-    }
-    /**
      * Creates an AsyncMcp sub-SDK bean if none exists.
      *
      * @param asyncStackOne the async SDK instance
@@ -503,6 +492,17 @@ public class StackoneClientJavaAutoConfig {
     @ConditionalOnMissingBean
     public AsyncMcp asyncMcp(AsyncStackOne asyncStackOne) {
         return asyncStackOne.mcp();
+    }
+    /**
+     * Creates an AsyncProxy sub-SDK bean if none exists.
+     *
+     * @param asyncStackOne the async SDK instance
+     * @return A configured AsyncProxy instance
+     */
+    @Bean
+    @ConditionalOnMissingBean
+    public AsyncProxy asyncProxy(AsyncStackOne asyncStackOne) {
+        return asyncStackOne.proxy();
     }
     /**
      * Creates an AsyncActions sub-SDK bean if none exists.

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: e3b504b3b4b57d46e73a1fb5de9fb816
+  docChecksum: 05f12307228100d16e6af14b27f80ab4
   docVersion: 1.0.0
-  speakeasyVersion: 1.631.4
+  speakeasyVersion: 1.631.5
   generationVersion: 2.716.16
-  releaseVersion: 0.14.0
-  configChecksum: df7da5484b33ac4fd408b31d053805c8
+  releaseVersion: 0.14.1
+  configChecksum: d70a855da22674ae85ec4cf15e6e14b5
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -14307,7 +14307,7 @@ examples:
     speakeasy-default-hris-list-shifts:
       parameters:
         query:
-          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z", "starts_after": "2024-01-15T09:00", "ends_before": "2024-01-15T17:00"}
         header:
           x-account-id: "<id>"
       responses:
@@ -14346,7 +14346,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "emp_123456789", "location_id": "loc_123456789", "company_id": "comp_123456789", "start_time": "2024-03-20T09:00:00Z", "end_time": "2024-03-20T17:00:00Z", "break_duration": "PT1H30M", "status": {"value": "confirmed", "source_value": "Confirmed"}, "approval_status": {"value": "approved", "source_value": "Approved"}, "breaks": [{"id": "break_123456789", "start_time": "2024-03-20T12:00:00Z", "end_time": "2024-03-20T13:00:00Z", "duration": "PT1H", "is_paid": true, "created_at": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "created_at": "2024-03-20T08:00:00Z", "updated_at": "2024-03-20T08:00:00Z"}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "emp_123456789", "location_id": "loc_123456789", "company_id": "comp_123456789", "start_time": "2024-03-20T09:00:00.000", "end_time": "2024-03-20T17:00:00.000", "break_duration": "PT1H30M", "status": {"value": "confirmed", "source_value": "Confirmed"}, "approval_status": {"value": "approved", "source_value": "Approved"}, "breaks": [{"id": "break_123456789", "start_time": "2024-03-20T12:00:00Z", "end_time": "2024-03-20T13:00:00Z", "duration": "PT1H", "is_paid": true, "created_at": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "created_at": "2024-03-20T08:00:00Z", "updated_at": "2024-03-20T08:00:00Z"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -16822,7 +16822,7 @@ examples:
         path:
           id: "<id>"
         query:
-          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z", "starts_after": "2024-01-15T09:00", "ends_before": "2024-01-15T17:00"}
         header:
           x-account-id: "<id>"
       responses:
@@ -16862,7 +16862,7 @@ examples:
           x-account-id: "<id>"
       responses:
         "200":
-          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "emp_123456789", "location_id": "loc_123456789", "company_id": "comp_123456789", "start_time": "2024-03-20T09:00:00Z", "end_time": "2024-03-20T17:00:00Z", "break_duration": "PT1H30M", "status": {"value": "confirmed", "source_value": "Confirmed"}, "approval_status": null, "breaks": [{"id": "break_123456789", "start_time": "2024-03-20T12:00:00Z", "end_time": "2024-03-20T13:00:00Z", "duration": "PT1H", "is_paid": true, "created_at": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "created_at": "2024-03-20T08:00:00Z", "updated_at": "2024-03-20T08:00:00Z"}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "employee_id": "emp_123456789", "location_id": "loc_123456789", "company_id": "comp_123456789", "start_time": "2024-03-20T09:00:00.000", "end_time": "2024-03-20T17:00:00.000", "break_duration": "PT1H30M", "status": {"value": "confirmed", "source_value": "Confirmed"}, "approval_status": null, "breaks": [{"id": "break_123456789", "start_time": "2024-03-20T12:00:00Z", "end_time": "2024-03-20T13:00:00Z", "duration": "PT1H", "is_paid": true, "created_at": "2024-03-20T10:00:00Z", "updated_at": "2024-03-20T10:00:00Z"}], "created_at": "2024-03-20T08:00:00Z", "updated_at": "2024-03-20T08:00:00Z"}}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -16889,4 +16889,4 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes Detected:\n* `stackone.actions.listActionsMeta()`:  `response.data.[].actions.[]` **Changed** **Breaking** :warning:\n* `stackone.actions.rpcAction()`:  `request` **Changed** **Breaking** :warning:\n* `stackone.hris.listShifts()`: \n  *  `request.filter` **Changed** **Breaking** :warning:\n* `stackone.messaging.listConversationMessages()`:  `response.data.[].attachments.[]` **Changed** **Breaking** :warning:\n* `stackone.messaging.getMessage()`:  `response.data.attachments.[]` **Changed** **Breaking** :warning:\n* `stackone.accounting.createCompanyJournal()`:  `response` **Changed** **Breaking** :warning:\n* `stackone.hris.listEmployeeShifts()`: **Added**\n* `stackone.hris.getEmployeeShift()`: **Added**\n* `stackone.hris.listEmployeeTimeOffRequests()`: \n  *  `request.filter` **Changed**\n* `stackone.hris.listTimeOffRequests()`: \n  *  `request.filter` **Changed**\n"
+releaseNotes: "## Java SDK Changes Detected:\n* `stackone.hris.listEmployeeShifts()`: \n  *  `request.filter` **Changed** **Breaking** :warning:\n  *  `response.data.[]` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployeeShift()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.listShifts()`: \n  *  `request.filter` **Changed** **Breaking** :warning:\n  *  `response.data.[]` **Changed** **Breaking** :warning:\n* `stackone.hris.getShift()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.listTimeOffPolicies()`: \n  *  `request.filter` **Changed**\n* `stackone.hris.listEmployeeTimeOffPolicies()`: \n  *  `request.filter` **Changed**\n"

@@ -67,6 +67,7 @@ public class HrisCreateTimeOffRequestDtoTypeValue {
     public static final HrisCreateTimeOffRequestDtoTypeValue PERSONAL = new HrisCreateTimeOffRequestDtoTypeValue("personal");
     public static final HrisCreateTimeOffRequestDtoTypeValue IN_LIEU = new HrisCreateTimeOffRequestDtoTypeValue("in_lieu");
     public static final HrisCreateTimeOffRequestDtoTypeValue BEREAVEMENT = new HrisCreateTimeOffRequestDtoTypeValue("bereavement");
+    public static final HrisCreateTimeOffRequestDtoTypeValue OTHER = new HrisCreateTimeOffRequestDtoTypeValue("other");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
@@ -160,6 +161,7 @@ public class HrisCreateTimeOffRequestDtoTypeValue {
         map.put("personal", PERSONAL);
         map.put("in_lieu", IN_LIEU);
         map.put("bereavement", BEREAVEMENT);
+        map.put("other", OTHER);
         return map;
     }
 
@@ -187,6 +189,7 @@ public class HrisCreateTimeOffRequestDtoTypeValue {
         map.put("personal", HrisCreateTimeOffRequestDtoTypeValueEnum.PERSONAL);
         map.put("in_lieu", HrisCreateTimeOffRequestDtoTypeValueEnum.IN_LIEU);
         map.put("bereavement", HrisCreateTimeOffRequestDtoTypeValueEnum.BEREAVEMENT);
+        map.put("other", HrisCreateTimeOffRequestDtoTypeValueEnum.OTHER);
         return map;
     }
     
@@ -243,7 +246,8 @@ public class HrisCreateTimeOffRequestDtoTypeValue {
         HOLIDAY("holiday"),
         PERSONAL("personal"),
         IN_LIEU("in_lieu"),
-        BEREAVEMENT("bereavement"),;
+        BEREAVEMENT("bereavement"),
+        OTHER("other"),;
 
         private final String value;
 

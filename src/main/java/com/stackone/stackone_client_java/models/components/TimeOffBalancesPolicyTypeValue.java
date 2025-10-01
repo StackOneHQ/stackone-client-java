@@ -73,6 +73,7 @@ public class TimeOffBalancesPolicyTypeValue {
     public static final TimeOffBalancesPolicyTypeValue PERSONAL = new TimeOffBalancesPolicyTypeValue("personal");
     public static final TimeOffBalancesPolicyTypeValue IN_LIEU = new TimeOffBalancesPolicyTypeValue("in_lieu");
     public static final TimeOffBalancesPolicyTypeValue BEREAVEMENT = new TimeOffBalancesPolicyTypeValue("bereavement");
+    public static final TimeOffBalancesPolicyTypeValue OTHER = new TimeOffBalancesPolicyTypeValue("other");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
@@ -166,6 +167,7 @@ public class TimeOffBalancesPolicyTypeValue {
         map.put("personal", PERSONAL);
         map.put("in_lieu", IN_LIEU);
         map.put("bereavement", BEREAVEMENT);
+        map.put("other", OTHER);
         return map;
     }
 
@@ -193,6 +195,7 @@ public class TimeOffBalancesPolicyTypeValue {
         map.put("personal", TimeOffBalancesPolicyTypeValueEnum.PERSONAL);
         map.put("in_lieu", TimeOffBalancesPolicyTypeValueEnum.IN_LIEU);
         map.put("bereavement", TimeOffBalancesPolicyTypeValueEnum.BEREAVEMENT);
+        map.put("other", TimeOffBalancesPolicyTypeValueEnum.OTHER);
         return map;
     }
     
@@ -249,7 +252,8 @@ public class TimeOffBalancesPolicyTypeValue {
         HOLIDAY("holiday"),
         PERSONAL("personal"),
         IN_LIEU("in_lieu"),
-        BEREAVEMENT("bereavement"),;
+        BEREAVEMENT("bereavement"),
+        OTHER("other"),;
 
         private final String value;
 
