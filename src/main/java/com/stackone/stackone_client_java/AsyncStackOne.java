@@ -27,13 +27,13 @@ public class AsyncStackOne {
      */
     private final AsyncConnectors connectors;
     /**
-     * Routing API requests through StackOne directly to the underlying provider.
-     */
-    private final AsyncProxy proxy;
-    /**
      * Model Context Protocol endpoint.
      */
     private final AsyncMcp mcp;
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
+    private final AsyncProxy proxy;
     /**
      * Retrieve Actions metadata and definitions.
      */
@@ -85,16 +85,16 @@ public class AsyncStackOne {
         return connectors;
     }
     /**
-     * Routing API requests through StackOne directly to the underlying provider.
-     */
-    public AsyncProxy proxy() {
-        return proxy;
-    }
-    /**
      * Model Context Protocol endpoint.
      */
     public AsyncMcp mcp() {
         return mcp;
+    }
+    /**
+     * Routing API requests through StackOne directly to the underlying provider.
+     */
+    public AsyncProxy proxy() {
+        return proxy;
     }
     /**
      * Retrieve Actions metadata and definitions.
@@ -157,8 +157,8 @@ public class AsyncStackOne {
         this.accounts = new AsyncAccounts(syncSDK.accounts(), sdkConfiguration);
         this.requestLogs = new AsyncRequestLogs(syncSDK.requestLogs(), sdkConfiguration);
         this.connectors = new AsyncConnectors(syncSDK.connectors(), sdkConfiguration);
-        this.proxy = new AsyncProxy(syncSDK.proxy(), sdkConfiguration);
         this.mcp = new AsyncMcp(syncSDK.mcp(), sdkConfiguration);
+        this.proxy = new AsyncProxy(syncSDK.proxy(), sdkConfiguration);
         this.actions = new AsyncActions(syncSDK.actions(), sdkConfiguration);
         this.hris = new AsyncHris(syncSDK.hris(), sdkConfiguration);
         this.ats = new AsyncAts(syncSDK.ats(), sdkConfiguration);

@@ -972,6 +972,8 @@ public class Application {
                 .id("<id>")
                 .filter(HrisListEmployeeShiftsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .startsAfter("2024-01-15T09:00")
+                    .endsBefore("2024-01-15T17:00")
                     .build())
                 .build();
 
@@ -4731,6 +4733,8 @@ public class Application {
                 .xAccountId("<id>")
                 .filter(HrisListShiftsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
+                    .startsAfter("2024-01-15T09:00")
+                    .endsBefore("2024-01-15T17:00")
                     .build())
                 .build();
 

@@ -35,7 +35,8 @@ public enum Type {
     HOLIDAY("holiday"),
     PERSONAL("personal"),
     IN_LIEU("in_lieu"),
-    BEREAVEMENT("bereavement");
+    BEREAVEMENT("bereavement"),
+    OTHER("other");
 
     @JsonValue
     private final String value;

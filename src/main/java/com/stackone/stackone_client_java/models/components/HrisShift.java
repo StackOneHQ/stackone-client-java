@@ -54,18 +54,18 @@ public class HrisShift {
     private JsonNullable<String> companyId;
 
     /**
-     * The start time of the shift
+     * The start time of the shift (ISO8601 date-time without timezone)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_time")
-    private JsonNullable<OffsetDateTime> startTime;
+    private JsonNullable<String> startTime;
 
     /**
-     * The end time of the shift
+     * The end time of the shift (ISO8601 date-time without timezone)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_time")
-    private JsonNullable<OffsetDateTime> endTime;
+    private JsonNullable<String> endTime;
 
     /**
      * The total break duration for this shift in ISO 8601 duration format
@@ -116,8 +116,8 @@ public class HrisShift {
             @JsonProperty("employee_id") JsonNullable<String> employeeId,
             @JsonProperty("location_id") JsonNullable<String> locationId,
             @JsonProperty("company_id") JsonNullable<String> companyId,
-            @JsonProperty("start_time") JsonNullable<OffsetDateTime> startTime,
-            @JsonProperty("end_time") JsonNullable<OffsetDateTime> endTime,
+            @JsonProperty("start_time") JsonNullable<String> startTime,
+            @JsonProperty("end_time") JsonNullable<String> endTime,
             @JsonProperty("break_duration") JsonNullable<String> breakDuration,
             @JsonProperty("status") JsonNullable<? extends HrisShiftStatus> status,
             @JsonProperty("approval_status") JsonNullable<? extends ApprovalStatus> approvalStatus,
@@ -201,18 +201,18 @@ public class HrisShift {
     }
 
     /**
-     * The start time of the shift
+     * The start time of the shift (ISO8601 date-time without timezone)
      */
     @JsonIgnore
-    public JsonNullable<OffsetDateTime> startTime() {
+    public JsonNullable<String> startTime() {
         return startTime;
     }
 
     /**
-     * The end time of the shift
+     * The end time of the shift (ISO8601 date-time without timezone)
      */
     @JsonIgnore
-    public JsonNullable<OffsetDateTime> endTime() {
+    public JsonNullable<String> endTime() {
         return endTime;
     }
 
@@ -363,36 +363,36 @@ public class HrisShift {
     }
 
     /**
-     * The start time of the shift
+     * The start time of the shift (ISO8601 date-time without timezone)
      */
-    public HrisShift withStartTime(OffsetDateTime startTime) {
+    public HrisShift withStartTime(String startTime) {
         Utils.checkNotNull(startTime, "startTime");
         this.startTime = JsonNullable.of(startTime);
         return this;
     }
 
     /**
-     * The start time of the shift
+     * The start time of the shift (ISO8601 date-time without timezone)
      */
-    public HrisShift withStartTime(JsonNullable<OffsetDateTime> startTime) {
+    public HrisShift withStartTime(JsonNullable<String> startTime) {
         Utils.checkNotNull(startTime, "startTime");
         this.startTime = startTime;
         return this;
     }
 
     /**
-     * The end time of the shift
+     * The end time of the shift (ISO8601 date-time without timezone)
      */
-    public HrisShift withEndTime(OffsetDateTime endTime) {
+    public HrisShift withEndTime(String endTime) {
         Utils.checkNotNull(endTime, "endTime");
         this.endTime = JsonNullable.of(endTime);
         return this;
     }
 
     /**
-     * The end time of the shift
+     * The end time of the shift (ISO8601 date-time without timezone)
      */
-    public HrisShift withEndTime(JsonNullable<OffsetDateTime> endTime) {
+    public HrisShift withEndTime(JsonNullable<String> endTime) {
         Utils.checkNotNull(endTime, "endTime");
         this.endTime = endTime;
         return this;
@@ -572,9 +572,9 @@ public class HrisShift {
 
         private JsonNullable<String> companyId = JsonNullable.undefined();
 
-        private JsonNullable<OffsetDateTime> startTime = JsonNullable.undefined();
+        private JsonNullable<String> startTime = JsonNullable.undefined();
 
-        private JsonNullable<OffsetDateTime> endTime = JsonNullable.undefined();
+        private JsonNullable<String> endTime = JsonNullable.undefined();
 
         private JsonNullable<String> breakDuration = JsonNullable.undefined();
 
@@ -689,18 +689,18 @@ public class HrisShift {
 
 
         /**
-         * The start time of the shift
+         * The start time of the shift (ISO8601 date-time without timezone)
          */
-        public Builder startTime(OffsetDateTime startTime) {
+        public Builder startTime(String startTime) {
             Utils.checkNotNull(startTime, "startTime");
             this.startTime = JsonNullable.of(startTime);
             return this;
         }
 
         /**
-         * The start time of the shift
+         * The start time of the shift (ISO8601 date-time without timezone)
          */
-        public Builder startTime(JsonNullable<OffsetDateTime> startTime) {
+        public Builder startTime(JsonNullable<String> startTime) {
             Utils.checkNotNull(startTime, "startTime");
             this.startTime = startTime;
             return this;
@@ -708,18 +708,18 @@ public class HrisShift {
 
 
         /**
-         * The end time of the shift
+         * The end time of the shift (ISO8601 date-time without timezone)
          */
-        public Builder endTime(OffsetDateTime endTime) {
+        public Builder endTime(String endTime) {
             Utils.checkNotNull(endTime, "endTime");
             this.endTime = JsonNullable.of(endTime);
             return this;
         }
 
         /**
-         * The end time of the shift
+         * The end time of the shift (ISO8601 date-time without timezone)
          */
-        public Builder endTime(JsonNullable<OffsetDateTime> endTime) {
+        public Builder endTime(JsonNullable<String> endTime) {
             Utils.checkNotNull(endTime, "endTime");
             this.endTime = endTime;
             return this;
