@@ -60,7 +60,7 @@ public class Application {
 
         LmsListCoursesRequest req = LmsListCoursesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors")
+                .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors,unified_custom_fields")
                 .filter(LmsListCoursesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -136,7 +136,7 @@ public class Application {
         LmsGetCourseRequest req = LmsGetCourseRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors")
+                .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors,unified_custom_fields")
                 .build();
 
         LmsGetCourseResponse res = sdk.lms().getCourse()
@@ -209,7 +209,7 @@ public class Application {
         LmsListUserAssignmentsRequest req = LmsListUserAssignmentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at")
+                .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields")
                 .filter(LmsListUserAssignmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -569,7 +569,7 @@ public class Application {
 
         LmsListContentRequest req = LmsListContentRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors")
+                .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors,unified_custom_fields")
                 .filter(LmsListContentQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -774,7 +774,7 @@ public class Application {
         LmsGetContentRequest req = LmsGetContentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors")
+                .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors,unified_custom_fields")
                 .build();
 
         LmsGetContentResponse res = sdk.lms().getContent()
@@ -971,7 +971,7 @@ public class Application {
         LmsListUserCompletionsRequest req = LmsListUserCompletionsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url")
+                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,unified_custom_fields")
                 .filter(LmsListUserCompletionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1269,7 +1269,7 @@ public class Application {
 
         LmsListCompletionsRequest req = LmsListCompletionsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url")
+                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,unified_custom_fields")
                 .filter(LmsListCompletionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1417,7 +1417,7 @@ public class Application {
         LmsGetCategoryRequest req = LmsGetCategoryRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,active,hierarchy,level,language")
+                .fields("id,remote_id,name,active,hierarchy,level,language,unified_custom_fields")
                 .build();
 
         LmsGetCategoryResponse res = sdk.lms().getCategory()
@@ -1489,7 +1489,7 @@ public class Application {
 
         LmsListCategoriesRequest req = LmsListCategoriesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,active,hierarchy,level,language")
+                .fields("id,remote_id,name,active,hierarchy,level,language,unified_custom_fields")
                 .filter(LmsListCategoriesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1565,7 +1565,7 @@ public class Application {
 
         LmsListUsersRequest req = LmsListUsersRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name")
+                .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -1639,7 +1639,7 @@ public class Application {
         LmsGetUserRequest req = LmsGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name")
+                .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name,unified_custom_fields")
                 .build();
 
         LmsGetUserResponse res = sdk.lms().getUser()
@@ -1712,7 +1712,7 @@ public class Application {
         LmsGetSkillRequest req = LmsGetSkillRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,active,hierarchy,language")
+                .fields("id,remote_id,name,active,hierarchy,language,unified_custom_fields")
                 .build();
 
         LmsGetSkillResponse res = sdk.lms().getSkill()
@@ -1784,7 +1784,7 @@ public class Application {
 
         LmsListSkillsRequest req = LmsListSkillsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,active,hierarchy,language")
+                .fields("id,remote_id,name,active,hierarchy,language,unified_custom_fields")
                 .filter(LmsListSkillsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1859,7 +1859,7 @@ public class Application {
 
         LmsListAssignmentsRequest req = LmsListAssignmentsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at")
+                .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields")
                 .filter(LmsListAssignmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())

@@ -46,7 +46,7 @@ public class Application {
 
         CrmListContactsRequest req = CrmListContactsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at")
+                .fields("id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at,unified_custom_fields")
                 .filter(CrmListContactsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -218,7 +218,7 @@ public class Application {
         CrmGetContactRequest req = CrmGetContactRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at")
+                .fields("id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at,unified_custom_fields")
                 .include("custom_fields")
                 .build();
 
@@ -388,7 +388,7 @@ public class Application {
 
         CrmListAccountsRequest req = CrmListAccountsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at")
+                .fields("id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at,unified_custom_fields")
                 .filter(CrmListAccountsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -464,7 +464,7 @@ public class Application {
         CrmGetAccountRequest req = CrmGetAccountRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at")
+                .fields("id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at,unified_custom_fields")
                 .build();
 
         CrmGetAccountResponse res = sdk.crm().getAccount()
@@ -536,7 +536,7 @@ public class Application {
 
         CrmListListsRequest req = CrmListListsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,created_at,updated_at,items,type")
+                .fields("id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields")
                 .filter(CrmListListsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -612,7 +612,7 @@ public class Application {
         CrmGetListRequest req = CrmGetListRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,created_at,updated_at,items,type")
+                .fields("id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields")
                 .build();
 
         CrmGetListResponse res = sdk.crm().getList()
@@ -684,7 +684,7 @@ public class Application {
 
         CrmListContactCustomFieldDefinitionsRequest req = CrmListContactCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description,type,options")
+                .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(CrmListContactCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -760,7 +760,7 @@ public class Application {
         CrmGetContactCustomFieldDefinitionRequest req = CrmGetContactCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description,type,options")
+                .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(CrmGetContactCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())

@@ -204,7 +204,7 @@ public class Application {
 
         DocumentsListFilesRequest req = DocumentsListFilesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids")
+                .fields("id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields")
                 .filter(DocumentsListFilesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .name("john_doe_resume.pdf")
@@ -288,7 +288,7 @@ public class Application {
         DocumentsGetFileRequest req = DocumentsGetFileRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids")
+                .fields("id,remote_id,name,description,url,size,file_format,path,owner_id,remote_owner_id,folder_id,remote_folder_id,drive_id,remote_drive_id,export_formats,default_download_format,created_at,updated_at,has_content,has_children,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields")
                 .include("all_parent_folder_ids")
                 .build();
 
@@ -361,7 +361,7 @@ public class Application {
 
         DocumentsListFoldersRequest req = DocumentsListFoldersRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids")
+                .fields("id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields")
                 .filter(DocumentsListFoldersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .driveId("1234567890")
@@ -442,7 +442,7 @@ public class Application {
         DocumentsGetFolderRequest req = DocumentsGetFolderRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids")
+                .fields("id,remote_id,name,description,url,size,path,owner_id,remote_owner_id,parent_folder_id,remote_parent_folder_id,drive_id,remote_drive_id,created_at,updated_at,has_content,has_children,is_root,all_parent_folder_ids,remote_all_parent_folder_ids,unified_custom_fields")
                 .include("all_parent_folder_ids")
                 .build();
 
@@ -515,7 +515,7 @@ public class Application {
 
         DocumentsListDrivesRequest req = DocumentsListDrivesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description,url,created_at,updated_at")
+                .fields("id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields")
                 .filter(DocumentsListDrivesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -591,7 +591,7 @@ public class Application {
         DocumentsGetDriveRequest req = DocumentsGetDriveRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description,url,created_at,updated_at")
+                .fields("id,remote_id,name,description,url,created_at,updated_at,unified_custom_fields")
                 .build();
 
         DocumentsGetDriveResponse res = sdk.documents().getDrive()
