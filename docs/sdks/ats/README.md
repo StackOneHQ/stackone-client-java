@@ -110,7 +110,7 @@ public class Application {
 
         AtsListApplicationsRequest req = AtsListApplicationsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate")
+                .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields")
                 .filter(AtsListApplicationsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
@@ -321,7 +321,7 @@ public class Application {
         AtsGetApplicationRequest req = AtsGetApplicationRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate")
+                .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields")
                 .expand("documents")
                 .include("attachments,custom_fields")
                 .build();
@@ -488,7 +488,7 @@ public class Application {
         AtsListApplicationsOffersRequest req = AtsListApplicationsOffersRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
+                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
                 .filter(AtsListApplicationsOffersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -717,7 +717,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
+                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
                 .build();
 
         AtsGetApplicationOfferResponse res = sdk.ats().getApplicationOffer()
@@ -790,7 +790,7 @@ public class Application {
         AtsListApplicationScorecardsRequest req = AtsListApplicationScorecardsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at")
+                .fields("id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListApplicationScorecardsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -867,7 +867,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at")
+                .fields("id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at,unified_custom_fields")
                 .build();
 
         AtsGetApplicationScorecardResponse res = sdk.ats().getApplicationScorecard()
@@ -940,7 +940,7 @@ public class Application {
         AtsListApplicationChangesRequest req = AtsListApplicationChangesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values")
+                .fields("event_id,remote_event_id,created_at,effective_at,change_type,actor,new_values,unified_custom_fields")
                 .filter(AtsListApplicationChangesQueryParamFilter.builder()
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1016,7 +1016,7 @@ public class Application {
         AtsListApplicationNotesRequest req = AtsListApplicationNotesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
+                .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields")
                 .filter(AtsListApplicationNotesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1177,7 +1177,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
+                .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields")
                 .build();
 
         AtsGetApplicationNoteResponse res = sdk.ats().getApplicationNote()
@@ -1336,7 +1336,7 @@ public class Application {
         AtsListApplicationsScheduledInterviewsRequest req = AtsListApplicationsScheduledInterviewsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at")
+                .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListApplicationsScheduledInterviewsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1413,7 +1413,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate")
+                .fields("id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate,unified_custom_fields")
                 .build();
 
         AtsGetApplicationScheduledInterviewResponse res = sdk.ats().getApplicationScheduledInterview()
@@ -1644,7 +1644,7 @@ public class Application {
         AtsListApplicationDocumentsRequest req = AtsListApplicationDocumentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
+                .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields")
                 .filter(AtsListApplicationDocumentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1721,7 +1721,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format")
+                .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields")
                 .build();
 
         AtsGetApplicationDocumentResponse res = sdk.ats().getApplicationDocument()
@@ -1793,7 +1793,7 @@ public class Application {
 
         AtsListCandidatesRequest req = AtsListCandidatesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at")
+                .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListCandidatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
@@ -1974,7 +1974,7 @@ public class Application {
         AtsGetCandidateRequest req = AtsGetCandidateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at")
+                .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at,unified_custom_fields")
                 .include("custom_fields")
                 .build();
 
@@ -2154,7 +2154,7 @@ public class Application {
         AtsListCandidateNotesRequest req = AtsListCandidateNotesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
+                .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields")
                 .filter(AtsListCandidateNotesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -2315,7 +2315,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at")
+                .fields("id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at,unified_custom_fields")
                 .build();
 
         AtsGetCandidateNoteResponse res = sdk.ats().getCandidateNote()
@@ -2388,7 +2388,7 @@ public class Application {
 
         AtsListApplicationCustomFieldDefinitionsRequest req = AtsListApplicationCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description,type,options")
+                .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -2463,7 +2463,7 @@ public class Application {
         AtsGetApplicationCustomFieldDefinitionRequest req = AtsGetApplicationCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description,type,options")
+                .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -2536,7 +2536,7 @@ public class Application {
 
         AtsListCandidateCustomFieldDefinitionsRequest req = AtsListCandidateCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description,type,options")
+                .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(AtsListCandidateCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -2612,7 +2612,7 @@ public class Application {
         AtsGetCandidateCustomFieldDefinitionRequest req = AtsGetCandidateCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description,type,options")
+                .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(AtsGetCandidateCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -2687,7 +2687,7 @@ public class Application {
 
         AtsListJobCustomFieldDefinitionsRequest req = AtsListJobCustomFieldDefinitionsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description,type,options")
+                .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(AtsListJobCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -2763,7 +2763,7 @@ public class Application {
         AtsGetJobCustomFieldDefinitionRequest req = AtsGetJobCustomFieldDefinitionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description,type,options")
+                .fields("id,remote_id,name,description,type,options,unified_custom_fields")
                 .filter(AtsGetJobCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -2838,7 +2838,7 @@ public class Application {
 
         AtsListDepartmentsRequest req = AtsListDepartmentsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name")
+                .fields("id,remote_id,name,unified_custom_fields")
                 .filter(AtsListDepartmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -2914,7 +2914,7 @@ public class Application {
         AtsGetDepartmentRequest req = AtsGetDepartmentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name")
+                .fields("id,remote_id,name,unified_custom_fields")
                 .build();
 
         AtsGetDepartmentResponse res = sdk.ats().getDepartment()
@@ -2988,7 +2988,7 @@ public class Application {
 
         AtsListInterviewStagesRequest req = AtsListInterviewStagesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,order,created_at,updated_at")
+                .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListInterviewStagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -3066,7 +3066,7 @@ public class Application {
         AtsGetInterviewStageRequest req = AtsGetInterviewStageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,order,created_at,updated_at")
+                .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
                 .build();
 
         AtsGetInterviewStageResponse res = sdk.ats().getInterviewStage()
@@ -3138,7 +3138,7 @@ public class Application {
 
         AtsListApplicationStagesRequest req = AtsListApplicationStagesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,order,created_at,updated_at")
+                .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListApplicationStagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -3214,7 +3214,7 @@ public class Application {
         AtsGetApplicationStageRequest req = AtsGetApplicationStageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,order,created_at,updated_at")
+                .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
                 .build();
 
         AtsGetApplicationStageResponse res = sdk.ats().getApplicationStage()
@@ -3286,7 +3286,7 @@ public class Application {
 
         AtsListInterviewsRequest req = AtsListInterviewsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at")
+                .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListInterviewsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
@@ -3363,7 +3363,7 @@ public class Application {
         AtsGetInterviewRequest req = AtsGetInterviewRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at")
+                .fields("id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at,unified_custom_fields")
                 .build();
 
         AtsGetInterviewResponse res = sdk.ats().getInterview()
@@ -3435,7 +3435,7 @@ public class Application {
 
         AtsListJobsRequest req = AtsListJobsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at")
+                .fields("id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListJobsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
@@ -3634,7 +3634,7 @@ public class Application {
         AtsListJobApplicationStagesRequest req = AtsListJobApplicationStagesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,order,created_at,updated_at")
+                .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListJobApplicationStagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -3710,7 +3710,7 @@ public class Application {
         AtsGetJobRequest req = AtsGetJobRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at")
+                .fields("id,remote_id,code,title,description,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at,unified_custom_fields")
                 .expand("job_postings,interview_stages")
                 .include("custom_fields")
                 .build();
@@ -3891,7 +3891,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,name,order,created_at,updated_at")
+                .fields("id,remote_id,name,order,created_at,updated_at,unified_custom_fields")
                 .build();
 
         AtsGetJobApplicationStageResponse res = sdk.ats().getJobApplicationStage()
@@ -3964,7 +3964,7 @@ public class Application {
 
         AtsListListsRequest req = AtsListListsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,created_at,updated_at,items,type")
+                .fields("id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -4038,7 +4038,7 @@ public class Application {
         AtsGetListRequest req = AtsGetListRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,created_at,updated_at,items,type")
+                .fields("id,remote_id,name,created_at,updated_at,items,type,unified_custom_fields")
                 .build();
 
         AtsGetListResponse res = sdk.ats().getList()
@@ -4110,7 +4110,7 @@ public class Application {
 
         AtsListLocationsRequest req = AtsListLocationsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name")
+                .fields("id,remote_id,name,unified_custom_fields")
                 .filter(AtsListLocationsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -4186,7 +4186,7 @@ public class Application {
         AtsGetLocationRequest req = AtsGetLocationRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name")
+                .fields("id,remote_id,name,unified_custom_fields")
                 .build();
 
         AtsGetLocationResponse res = sdk.ats().getLocation()
@@ -4258,7 +4258,7 @@ public class Application {
 
         AtsListRejectedReasonsRequest req = AtsListRejectedReasonsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,label,type,rejected_reason_type")
+                .fields("id,remote_id,label,type,rejected_reason_type,unified_custom_fields")
                 .filter(AtsListRejectedReasonsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -4334,7 +4334,7 @@ public class Application {
         AtsGetRejectedReasonRequest req = AtsGetRejectedReasonRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,label,type,rejected_reason_type")
+                .fields("id,remote_id,label,type,rejected_reason_type,unified_custom_fields")
                 .build();
 
         AtsGetRejectedReasonResponse res = sdk.ats().getRejectedReason()
@@ -4407,7 +4407,7 @@ public class Application {
 
         AtsListUsersRequest req = AtsListUsersRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,first_name,last_name,name,email,phone")
+                .fields("id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -4481,7 +4481,7 @@ public class Application {
         AtsGetUserRequest req = AtsGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,first_name,last_name,name,email,phone")
+                .fields("id,remote_id,first_name,last_name,name,email,phone,unified_custom_fields")
                 .build();
 
         AtsGetUserResponse res = sdk.ats().getUser()
@@ -4553,7 +4553,7 @@ public class Application {
 
         AtsListJobPostingsRequest req = AtsListJobPostingsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at")
+                .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at,unified_custom_fields")
                 .filter(AtsListJobPostingsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
@@ -4631,7 +4631,7 @@ public class Application {
         AtsGetJobPostingRequest req = AtsGetJobPostingRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at")
+                .fields("id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,start_date,updated_at,created_at,unified_custom_fields")
                 .include("questionnaires")
                 .build();
 
@@ -4704,7 +4704,7 @@ public class Application {
 
         AtsListOffersRequest req = AtsListOffersRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
+                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
                 .filter(AtsListOffersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -4865,7 +4865,7 @@ public class Application {
         AtsGetOfferRequest req = AtsGetOfferRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history")
+                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
                 .build();
 
         AtsGetOfferResponse res = sdk.ats().getOffer()
@@ -5310,7 +5310,7 @@ public class Application {
 
         AtsListBackgroundCheckPackagesRequest req = AtsListBackgroundCheckPackagesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description,tests")
+                .fields("id,remote_id,name,description,tests,unified_custom_fields")
                 .filter(AtsListBackgroundCheckPackagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -5466,7 +5466,7 @@ public class Application {
         AtsGetBackgroundCheckPackageRequest req = AtsGetBackgroundCheckPackageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description,tests")
+                .fields("id,remote_id,name,description,tests,unified_custom_fields")
                 .build();
 
         AtsGetBackgroundCheckPackageResponse res = sdk.ats().getBackgroundCheckPackage()
@@ -5915,7 +5915,7 @@ public class Application {
 
         AtsListApplicationDocumentCategoriesRequest req = AtsListApplicationDocumentCategoriesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,active")
+                .fields("id,remote_id,name,active,unified_custom_fields")
                 .filter(AtsListApplicationDocumentCategoriesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -5991,7 +5991,7 @@ public class Application {
         AtsGetApplicationDocumentCategoryRequest req = AtsGetApplicationDocumentCategoryRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,active")
+                .fields("id,remote_id,name,active,unified_custom_fields")
                 .build();
 
         AtsGetApplicationDocumentCategoryResponse res = sdk.ats().getApplicationDocumentCategory()

@@ -47,7 +47,7 @@ public class Application {
 
         MessagingListConversationsRequest req = MessagingListConversationsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,participants,name,private,created_at,last_message_at")
+                .fields("id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields")
                 .filter(MessagingListConversationsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -198,7 +198,7 @@ public class Application {
         MessagingGetConversationRequest req = MessagingGetConversationRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,participants,name,private,created_at,last_message_at")
+                .fields("id,remote_id,participants,name,private,created_at,last_message_at,unified_custom_fields")
                 .build();
 
         MessagingGetConversationResponse res = sdk.messaging().getConversation()
@@ -346,7 +346,7 @@ public class Application {
         MessagingListAttachmentsRequest req = MessagingListAttachmentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,file_name,file_size,file_type")
+                .fields("id,remote_id,file_name,file_size,file_type,unified_custom_fields")
                 .filter(MessagingListAttachmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -423,7 +423,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,file_name,file_size,file_type")
+                .fields("id,remote_id,file_name,file_size,file_type,unified_custom_fields")
                 .build();
 
         MessagingGetAttachmentResponse res = sdk.messaging().getAttachment()
@@ -495,7 +495,7 @@ public class Application {
 
         MessagingListUsersRequest req = MessagingListUsersRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,email,username,name,first_name,last_name,bot,active")
+                .fields("id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields")
                 .filter(MessagingListUsersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -571,7 +571,7 @@ public class Application {
         MessagingGetUserRequest req = MessagingGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,email,username,name,first_name,last_name,bot,active")
+                .fields("id,remote_id,email,username,name,first_name,last_name,bot,active,unified_custom_fields")
                 .build();
 
         MessagingGetUserResponse res = sdk.messaging().getUser()
@@ -644,7 +644,7 @@ public class Application {
         MessagingListConversationMessagesRequest req = MessagingListConversationMessagesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at")
+                .fields("id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields")
                 .filter(MessagingListConversationMessagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -720,7 +720,7 @@ public class Application {
         MessagingGetMessageRequest req = MessagingGetMessageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at")
+                .fields("id,remote_id,content,parent_message_id,remote_parent_message_id,attachments,author,created_at,updated_at,unified_custom_fields")
                 .build();
 
         MessagingGetMessageResponse res = sdk.messaging().getMessage()

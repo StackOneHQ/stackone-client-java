@@ -62,7 +62,7 @@ public class Application {
 
         MarketingListEmailTemplatesRequest req = MarketingListEmailTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .filter(MarketingListEmailTemplatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -218,7 +218,7 @@ public class Application {
         MarketingGetEmailTemplateRequest req = MarketingGetEmailTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .build();
 
         MarketingGetEmailTemplateResponse res = sdk.marketing().getEmailTemplate()
@@ -375,7 +375,7 @@ public class Application {
 
         MarketingListInAppTemplatesRequest req = MarketingListInAppTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -531,7 +531,7 @@ public class Application {
         MarketingGetInAppTemplateRequest req = MarketingGetInAppTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .build();
 
         MarketingGetInAppTemplateResponse res = sdk.marketing().getInAppTemplate()
@@ -687,7 +687,7 @@ public class Application {
 
         MarketingListSmsTemplatesRequest req = MarketingListSmsTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .filter(MarketingListSmsTemplatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -845,7 +845,7 @@ public class Application {
         MarketingGetSmsTemplateRequest req = MarketingGetSmsTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .build();
 
         MarketingGetSmsTemplateResponse res = sdk.marketing().getSmsTemplate()
@@ -1003,7 +1003,7 @@ public class Application {
 
         MarketingListOmniChannelTemplatesRequest req = MarketingListOmniChannelTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .filter(MarketingListOmniChannelTemplatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1164,7 +1164,7 @@ public class Application {
         MarketingGetOmniChannelTemplateRequest req = MarketingGetOmniChannelTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .build();
 
         MarketingGetOmniChannelTemplateResponse res = sdk.marketing().getOmniChannelTemplate()
@@ -1321,7 +1321,7 @@ public class Application {
 
         MarketingListPushTemplatesRequest req = MarketingListPushTemplatesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .filter(MarketingListPushTemplatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1479,7 +1479,7 @@ public class Application {
         MarketingGetPushTemplateRequest req = MarketingGetPushTemplateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,messages,created_at,updated_at,tags")
+                .fields("id,remote_id,name,messages,created_at,updated_at,tags,unified_custom_fields")
                 .build();
 
         MarketingGetPushTemplateResponse res = sdk.marketing().getPushTemplate()
@@ -1635,7 +1635,7 @@ public class Application {
 
         MarketingListCampaignsRequest req = MarketingListCampaignsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages")
+                .fields("id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields")
                 .filter(MarketingListCampaignsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1711,7 +1711,7 @@ public class Application {
         MarketingGetCampaignRequest req = MarketingGetCampaignRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages")
+                .fields("id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages,unified_custom_fields")
                 .build();
 
         MarketingGetCampaignResponse res = sdk.marketing().getCampaign()
@@ -1783,7 +1783,7 @@ public class Application {
 
         MarketingListContentBlocksRequest req = MarketingListContentBlocksRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,type,content,status,tags,created_at,updated_at")
+                .fields("id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields")
                 .filter(MarketingListContentBlocksQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1935,7 +1935,7 @@ public class Application {
         MarketingGetContentBlockRequest req = MarketingGetContentBlockRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,type,content,status,tags,created_at,updated_at")
+                .fields("id,remote_id,name,type,content,status,tags,created_at,updated_at,unified_custom_fields")
                 .build();
 
         MarketingGetContentBlockResponse res = sdk.marketing().getContentBlock()
