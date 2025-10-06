@@ -46,7 +46,7 @@ public class Application {
 
         IamListUsersRequest req = IamListUsersRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled")
+                .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields")
                 .filter(IamListUsersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -123,7 +123,7 @@ public class Application {
         IamGetUserRequest req = IamGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled")
+                .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields")
                 .expand("roles,groups")
                 .build();
 
@@ -347,7 +347,7 @@ public class Application {
 
         IamListRolesRequest req = IamListRolesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,type,policies,description,created_at,updated_at")
+                .fields("id,remote_id,name,type,policies,description,created_at,updated_at,unified_custom_fields")
                 .filter(IamListRolesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -424,7 +424,7 @@ public class Application {
         IamGetRoleRequest req = IamGetRoleRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,type,policies,description,created_at,updated_at")
+                .fields("id,remote_id,name,type,policies,description,created_at,updated_at,unified_custom_fields")
                 .expand("policies")
                 .build();
 
@@ -498,7 +498,7 @@ public class Application {
 
         IamListGroupsRequest req = IamListGroupsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at")
+                .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .expand("roles")
                 .build();
@@ -573,7 +573,7 @@ public class Application {
         IamGetGroupRequest req = IamGetGroupRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at")
+                .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields")
                 .expand("roles")
                 .build();
 
@@ -647,7 +647,7 @@ public class Application {
 
         IamListPoliciesRequest req = IamListPoliciesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,permissions,description,created_at,updated_at")
+                .fields("id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .expand("permissions")
                 .build();
@@ -722,7 +722,7 @@ public class Application {
         IamGetPolicyRequest req = IamGetPolicyRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,permissions,description,created_at,updated_at")
+                .fields("id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields")
                 .expand("permissions")
                 .build();
 

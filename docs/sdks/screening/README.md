@@ -40,7 +40,7 @@ public class Application {
 
         ScreeningListScreeningPackagesRequest req = ScreeningListScreeningPackagesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,description")
+                .fields("id,remote_id,name,description,unified_custom_fields")
                 .filter(ScreeningListScreeningPackagesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -116,7 +116,7 @@ public class Application {
         ScreeningGetScreeningPackageRequest req = ScreeningGetScreeningPackageRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,description")
+                .fields("id,remote_id,name,description,unified_custom_fields")
                 .build();
 
         ScreeningGetScreeningPackageResponse res = sdk.screening().getScreeningPackage()
