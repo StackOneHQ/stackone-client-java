@@ -46,7 +46,7 @@ public class Application {
 
         AccountingListCompaniesRequest req = AccountingListCompaniesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day")
+                .fields("id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields")
                 .filter(AccountingListCompaniesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -122,7 +122,7 @@ public class Application {
         AccountingGetCompanyRequest req = AccountingGetCompanyRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day")
+                .fields("id,remote_id,name,base_currency,fiscal_year_start_month,fiscal_year_start_day,unified_custom_fields")
                 .build();
 
         AccountingGetCompanyResponse res = sdk.accounting().getCompany()
@@ -196,7 +196,7 @@ public class Application {
         AccountingListCompanyAccountsRequest req = AccountingListCompanyAccountsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,company_id,remote_company_id,code,name,type,active")
+                .fields("id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -271,7 +271,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,company_id,remote_company_id,code,name,type,active")
+                .fields("id,remote_id,company_id,remote_company_id,code,name,type,active,unified_custom_fields")
                 .build();
 
         AccountingGetCompanyAccountResponse res = sdk.accounting().getCompanyAccount()
@@ -344,7 +344,7 @@ public class Application {
         AccountingListCompanyTaxRatesRequest req = AccountingListCompanyTaxRatesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,company_id,remote_company_id,name,code,percentage,active")
+                .fields("id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields")
                 .filter(AccountingListCompanyTaxRatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -421,7 +421,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,company_id,remote_company_id,name,code,percentage,active")
+                .fields("id,remote_id,company_id,remote_company_id,name,code,percentage,active,unified_custom_fields")
                 .build();
 
         AccountingGetCompanyTaxRateResponse res = sdk.accounting().getCompanyTaxRate()
@@ -569,7 +569,7 @@ public class Application {
         AccountingListCompanyJournalsRequest req = AccountingListCompanyJournalsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at")
+                .fields("id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -733,7 +733,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at")
+                .fields("id,remote_id,company_id,remote_company_id,reference,memo,transaction_date,status,lines,created_at,updated_at,posted_at,unified_custom_fields")
                 .build();
 
         AccountingGetCompanyJournalResponse res = sdk.accounting().getCompanyJournal()

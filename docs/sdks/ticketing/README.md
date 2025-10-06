@@ -55,7 +55,7 @@ public class Application {
 
         TicketingListTicketsRequest req = TicketingListTicketsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at")
+                .fields("id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at,unified_custom_fields")
                 .filter(TicketingListTicketsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -231,7 +231,7 @@ public class Application {
         TicketingGetTicketRequest req = TicketingGetTicketRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at")
+                .fields("id,remote_id,type,ticket_number,title,creator_id,remote_creator_id,reporters,assignees,content,parent_id,remote_parent_id,closed_at,ticket_url,status,priority,tags,projects,components,organization,created_at,updated_at,unified_custom_fields")
                 .build();
 
         TicketingGetTicketResponse res = sdk.ticketing().getTicket()
@@ -410,7 +410,7 @@ public class Application {
 
         TicketingListUsersRequest req = TicketingListUsersRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at")
+                .fields("id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at,unified_custom_fields")
                 .filter(TicketingListUsersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -486,7 +486,7 @@ public class Application {
         TicketingGetUserRequest req = TicketingGetUserRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at")
+                .fields("id,remote_id,type,name,primary_email,primary_phone,username,active,first_name,last_name,customer_account_reference,created_at,updated_at,unified_custom_fields")
                 .build();
 
         TicketingGetUserResponse res = sdk.ticketing().getUser()
@@ -559,7 +559,7 @@ public class Application {
         TicketingListCommentsRequest req = TicketingListCommentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at")
+                .fields("id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at,unified_custom_fields")
                 .filter(TicketingListCommentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -636,7 +636,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at")
+                .fields("id,remote_id,ticket_id,remote_ticket_id,content,user_id,remote_user_id,internal,created_at,updated_at,unified_custom_fields")
                 .build();
 
         TicketingGetCommentResponse res = sdk.ticketing().getComment()
@@ -784,7 +784,7 @@ public class Application {
         TicketingListAttachmentsRequest req = TicketingListAttachmentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at")
+                .fields("id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at,unified_custom_fields")
                 .filter(TicketingListAttachmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -861,7 +861,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at")
+                .fields("id,remote_id,ticket_id,remote_ticket_id,user_id,remote_user_id,file_name,file_format,file_url,size,created_at,updated_at,unified_custom_fields")
                 .build();
 
         TicketingGetAttachmentResponse res = sdk.ticketing().getAttachment()
@@ -933,7 +933,7 @@ public class Application {
 
         TicketingListTicketTypesRequest req = TicketingListTicketTypesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,project_id,remote_project_id")
+                .fields("id,remote_id,name,project_id,remote_project_id,unified_custom_fields")
                 .filter(TicketingListTicketTypesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1009,7 +1009,7 @@ public class Application {
         TicketingGetTicketTypeRequest req = TicketingGetTicketTypeRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,project_id,remote_project_id")
+                .fields("id,remote_id,name,project_id,remote_project_id,unified_custom_fields")
                 .build();
 
         TicketingGetTicketTypeResponse res = sdk.ticketing().getTicketType()
@@ -1081,7 +1081,7 @@ public class Application {
 
         TicketingListProjectsRequest req = TicketingListProjectsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at")
+                .fields("id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at,unified_custom_fields")
                 .filter(TicketingListProjectsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1157,7 +1157,7 @@ public class Application {
         TicketingGetProjectRequest req = TicketingGetProjectRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at")
+                .fields("id,remote_id,organization_id,remote_organization_id,name,description,created_at,updated_at,unified_custom_fields")
                 .build();
 
         TicketingGetProjectResponse res = sdk.ticketing().getProject()
@@ -1231,7 +1231,7 @@ public class Application {
         TicketingListProjectComponentsRequest req = TicketingListProjectComponentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at")
+                .fields("id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .build();
 
@@ -1306,7 +1306,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at")
+                .fields("id,remote_id,organization_id,remote_organization_id,project_id,remote_project_id,name,description,created_at,updated_at,unified_custom_fields")
                 .build();
 
         TicketingGetProjectComponentResponse res = sdk.ticketing().getProjectComponent()
@@ -1379,7 +1379,7 @@ public class Application {
         TicketingListProjectTicketTypesRequest req = TicketingListProjectTicketTypesRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,project_id,remote_project_id")
+                .fields("id,remote_id,name,project_id,remote_project_id,unified_custom_fields")
                 .filter(TicketingListProjectTicketTypesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())

@@ -18,8 +18,8 @@ public class SDKConfiguration {
 
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "1.0.0";
-    public static final String SDK_VERSION = "0.14.1";
-    public static final String GEN_VERSION = "2.716.16";
+    public static final String SDK_VERSION = "0.14.2";
+    public static final String GEN_VERSION = "2.721.3";
     private static final String BASE_PACKAGE = "com.stackone.stackone_client_java";
     public static final String USER_AGENT = 
             String.format("speakeasy-sdk/%s %s %s %s %s",
