@@ -44,7 +44,8 @@ import java.util.Optional;
 /**
  * CreateCategoriesApiModelLanguageValue
  * 
- * <p>The Locale Code of the language
+ * <p>The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+ * "unmapped_value" to use source_value instead.
  */
 @JsonDeserialize(using = CreateCategoriesApiModelLanguageValue._Deserializer.class)
 @JsonSerialize(using = CreateCategoriesApiModelLanguageValue._Serializer.class)

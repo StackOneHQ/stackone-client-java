@@ -41,6 +41,12 @@ import java.util.Optional;
  * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
  *
  */
+/**
+ * LmsUpsertContentRequestDtoValue
+ * 
+ * <p>The content type for write operations. Provide one of the listed enum values. If omitted or set to
+ * "unmapped_value", the source_value will be sent to the provider instead.
+ */
 @JsonDeserialize(using = LmsUpsertContentRequestDtoValue._Deserializer.class)
 @JsonSerialize(using = LmsUpsertContentRequestDtoValue._Serializer.class)
 public class LmsUpsertContentRequestDtoValue {

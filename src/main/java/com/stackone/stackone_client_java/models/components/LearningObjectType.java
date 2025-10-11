@@ -20,12 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The learning object type of the assignment
  */
 public class LearningObjectType {
-
+    /**
+     * The StackOne unified learning object type.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends AssignmentLearningObjectTypeValue> value;
 
-
+    /**
+     * The original learning object type from the provider before normalization.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends AssignmentLearningObjectTypeSourceValue> sourceValue;
@@ -44,12 +48,18 @@ public class LearningObjectType {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The StackOne unified learning object type.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<AssignmentLearningObjectTypeValue> value() {
         return (JsonNullable<AssignmentLearningObjectTypeValue>) value;
     }
 
+    /**
+     * The original learning object type from the provider before normalization.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<AssignmentLearningObjectTypeSourceValue> sourceValue() {
@@ -61,24 +71,36 @@ public class LearningObjectType {
     }
 
 
+    /**
+     * The StackOne unified learning object type.
+     */
     public LearningObjectType withValue(AssignmentLearningObjectTypeValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The StackOne unified learning object type.
+     */
     public LearningObjectType withValue(JsonNullable<? extends AssignmentLearningObjectTypeValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The original learning object type from the provider before normalization.
+     */
     public LearningObjectType withSourceValue(AssignmentLearningObjectTypeSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The original learning object type from the provider before normalization.
+     */
     public LearningObjectType withSourceValue(JsonNullable<? extends AssignmentLearningObjectTypeSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +146,18 @@ public class LearningObjectType {
         }
 
 
+        /**
+         * The StackOne unified learning object type.
+         */
         public Builder value(AssignmentLearningObjectTypeValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The StackOne unified learning object type.
+         */
         public Builder value(JsonNullable<? extends AssignmentLearningObjectTypeValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +165,18 @@ public class LearningObjectType {
         }
 
 
+        /**
+         * The original learning object type from the provider before normalization.
+         */
         public Builder sourceValue(AssignmentLearningObjectTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The original learning object type from the provider before normalization.
+         */
         public Builder sourceValue(JsonNullable<? extends AssignmentLearningObjectTypeSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

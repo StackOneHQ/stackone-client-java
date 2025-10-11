@@ -98,7 +98,7 @@ public class StackoneListLinkedAccounts {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "stackone_list_linked_accounts",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -107,7 +107,7 @@ public class StackoneListLinkedAccounts {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "stackone_list_linked_accounts",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -116,7 +116,7 @@ public class StackoneListLinkedAccounts {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "stackone_list_linked_accounts",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T>HttpRequest buildRequest(T request, Class<T> klass) throws Exception {

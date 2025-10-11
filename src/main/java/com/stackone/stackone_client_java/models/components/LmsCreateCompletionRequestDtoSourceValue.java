@@ -19,6 +19,11 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 
+/**
+ * LmsCreateCompletionRequestDtoSourceValue
+ * 
+ * <p>The original result status from the provider before normalization.
+ */
 @JsonDeserialize(using = LmsCreateCompletionRequestDtoSourceValue._Deserializer.class)
 public class LmsCreateCompletionRequestDtoSourceValue {
 

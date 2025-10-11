@@ -15,34 +15,34 @@ import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * HrisCreateEmploymentRequestDtoDurationUnit
+ * CreateEmploymentApiModelPeriod
  * 
- * <p>The duration unit of the work time
+ * <p>The period of the work time
  */
-public class HrisCreateEmploymentRequestDtoDurationUnit {
+public class CreateEmploymentApiModelPeriod {
     /**
      * The unified value for the period.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
-    private JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeValue> value;
+    private JsonNullable<? extends CreateEmploymentApiModelWorkTimeValue> value;
 
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
-    private JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeSourceValue> sourceValue;
+    private JsonNullable<? extends CreateEmploymentApiModelWorkTimeSourceValue> sourceValue;
 
     @JsonCreator
-    public HrisCreateEmploymentRequestDtoDurationUnit(
-            @JsonProperty("value") JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeValue> value,
-            @JsonProperty("source_value") JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeSourceValue> sourceValue) {
+    public CreateEmploymentApiModelPeriod(
+            @JsonProperty("value") JsonNullable<? extends CreateEmploymentApiModelWorkTimeValue> value,
+            @JsonProperty("source_value") JsonNullable<? extends CreateEmploymentApiModelWorkTimeSourceValue> sourceValue) {
         Utils.checkNotNull(value, "value");
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.value = value;
         this.sourceValue = sourceValue;
     }
     
-    public HrisCreateEmploymentRequestDtoDurationUnit() {
+    public CreateEmploymentApiModelPeriod() {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
@@ -51,14 +51,14 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<HrisCreateEmploymentRequestDtoWorkTimeValue> value() {
-        return (JsonNullable<HrisCreateEmploymentRequestDtoWorkTimeValue>) value;
+    public JsonNullable<CreateEmploymentApiModelWorkTimeValue> value() {
+        return (JsonNullable<CreateEmploymentApiModelWorkTimeValue>) value;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<HrisCreateEmploymentRequestDtoWorkTimeSourceValue> sourceValue() {
-        return (JsonNullable<HrisCreateEmploymentRequestDtoWorkTimeSourceValue>) sourceValue;
+    public JsonNullable<CreateEmploymentApiModelWorkTimeSourceValue> sourceValue() {
+        return (JsonNullable<CreateEmploymentApiModelWorkTimeSourceValue>) sourceValue;
     }
 
     public static Builder builder() {
@@ -69,7 +69,7 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
     /**
      * The unified value for the period.
      */
-    public HrisCreateEmploymentRequestDtoDurationUnit withValue(HrisCreateEmploymentRequestDtoWorkTimeValue value) {
+    public CreateEmploymentApiModelPeriod withValue(CreateEmploymentApiModelWorkTimeValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
@@ -78,19 +78,19 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
     /**
      * The unified value for the period.
      */
-    public HrisCreateEmploymentRequestDtoDurationUnit withValue(JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeValue> value) {
+    public CreateEmploymentApiModelPeriod withValue(JsonNullable<? extends CreateEmploymentApiModelWorkTimeValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
-    public HrisCreateEmploymentRequestDtoDurationUnit withSourceValue(HrisCreateEmploymentRequestDtoWorkTimeSourceValue sourceValue) {
+    public CreateEmploymentApiModelPeriod withSourceValue(CreateEmploymentApiModelWorkTimeSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
-    public HrisCreateEmploymentRequestDtoDurationUnit withSourceValue(JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeSourceValue> sourceValue) {
+    public CreateEmploymentApiModelPeriod withSourceValue(JsonNullable<? extends CreateEmploymentApiModelWorkTimeSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
         return this;
@@ -104,7 +104,7 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        HrisCreateEmploymentRequestDtoDurationUnit other = (HrisCreateEmploymentRequestDtoDurationUnit) o;
+        CreateEmploymentApiModelPeriod other = (CreateEmploymentApiModelPeriod) o;
         return 
             Utils.enhancedDeepEquals(this.value, other.value) &&
             Utils.enhancedDeepEquals(this.sourceValue, other.sourceValue);
@@ -118,7 +118,7 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
     
     @Override
     public String toString() {
-        return Utils.toString(HrisCreateEmploymentRequestDtoDurationUnit.class,
+        return Utils.toString(CreateEmploymentApiModelPeriod.class,
                 "value", value,
                 "sourceValue", sourceValue);
     }
@@ -126,9 +126,9 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeValue> value = JsonNullable.undefined();
+        private JsonNullable<? extends CreateEmploymentApiModelWorkTimeValue> value = JsonNullable.undefined();
 
-        private JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeSourceValue> sourceValue = JsonNullable.undefined();
+        private JsonNullable<? extends CreateEmploymentApiModelWorkTimeSourceValue> sourceValue = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -138,7 +138,7 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
         /**
          * The unified value for the period.
          */
-        public Builder value(HrisCreateEmploymentRequestDtoWorkTimeValue value) {
+        public Builder value(CreateEmploymentApiModelWorkTimeValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
@@ -147,28 +147,28 @@ public class HrisCreateEmploymentRequestDtoDurationUnit {
         /**
          * The unified value for the period.
          */
-        public Builder value(JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeValue> value) {
+        public Builder value(JsonNullable<? extends CreateEmploymentApiModelWorkTimeValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
 
 
-        public Builder sourceValue(HrisCreateEmploymentRequestDtoWorkTimeSourceValue sourceValue) {
+        public Builder sourceValue(CreateEmploymentApiModelWorkTimeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
-        public Builder sourceValue(JsonNullable<? extends HrisCreateEmploymentRequestDtoWorkTimeSourceValue> sourceValue) {
+        public Builder sourceValue(JsonNullable<? extends CreateEmploymentApiModelWorkTimeSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;
             return this;
         }
 
-        public HrisCreateEmploymentRequestDtoDurationUnit build() {
+        public CreateEmploymentApiModelPeriod build() {
 
-            return new HrisCreateEmploymentRequestDtoDurationUnit(
+            return new CreateEmploymentApiModelPeriod(
                 value, sourceValue);
         }
 

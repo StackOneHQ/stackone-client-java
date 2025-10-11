@@ -102,7 +102,7 @@ public class HrisCreateEmployeeTimeOffRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_create_employee_time_off_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -111,7 +111,7 @@ public class HrisCreateEmployeeTimeOffRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_create_employee_time_off_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -120,7 +120,7 @@ public class HrisCreateEmployeeTimeOffRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_create_employee_time_off_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T, U>HttpRequest buildRequest(T request, Class<T> klass, TypeReference<U> typeReference) throws Exception {

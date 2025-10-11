@@ -19,6 +19,12 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 
+/**
+ * LmsUpsertContentRequestDtoSourceValue
+ * 
+ * <p>The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+ * responsible for ensuring this matches the provider's expected format.
+ */
 @JsonDeserialize(using = LmsUpsertContentRequestDtoSourceValue._Deserializer.class)
 public class LmsUpsertContentRequestDtoSourceValue {
 

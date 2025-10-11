@@ -19,6 +19,11 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 
+/**
+ * AssignmentResultSourceValue
+ * 
+ * <p>The original result status from the provider before normalization.
+ */
 @JsonDeserialize(using = AssignmentResultSourceValue._Deserializer.class)
 public class AssignmentResultSourceValue {
 

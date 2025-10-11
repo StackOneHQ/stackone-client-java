@@ -20,12 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The type of content
  */
 public class LmsCreateContentRequestDtoContentType {
-
+    /**
+     * The StackOne unified content type.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LmsCreateContentRequestDtoValue> value;
 
-
+    /**
+     * The original value from the provider before normalization.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LmsCreateContentRequestDtoSourceValue> sourceValue;
@@ -44,12 +48,18 @@ public class LmsCreateContentRequestDtoContentType {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The StackOne unified content type.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LmsCreateContentRequestDtoValue> value() {
         return (JsonNullable<LmsCreateContentRequestDtoValue>) value;
     }
 
+    /**
+     * The original value from the provider before normalization.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LmsCreateContentRequestDtoSourceValue> sourceValue() {
@@ -61,24 +71,36 @@ public class LmsCreateContentRequestDtoContentType {
     }
 
 
+    /**
+     * The StackOne unified content type.
+     */
     public LmsCreateContentRequestDtoContentType withValue(LmsCreateContentRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The StackOne unified content type.
+     */
     public LmsCreateContentRequestDtoContentType withValue(JsonNullable<? extends LmsCreateContentRequestDtoValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The original value from the provider before normalization.
+     */
     public LmsCreateContentRequestDtoContentType withSourceValue(LmsCreateContentRequestDtoSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The original value from the provider before normalization.
+     */
     public LmsCreateContentRequestDtoContentType withSourceValue(JsonNullable<? extends LmsCreateContentRequestDtoSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +146,18 @@ public class LmsCreateContentRequestDtoContentType {
         }
 
 
+        /**
+         * The StackOne unified content type.
+         */
         public Builder value(LmsCreateContentRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The StackOne unified content type.
+         */
         public Builder value(JsonNullable<? extends LmsCreateContentRequestDtoValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +165,18 @@ public class LmsCreateContentRequestDtoContentType {
         }
 
 
+        /**
+         * The original value from the provider before normalization.
+         */
         public Builder sourceValue(LmsCreateContentRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The original value from the provider before normalization.
+         */
         public Builder sourceValue(JsonNullable<? extends LmsCreateContentRequestDtoSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

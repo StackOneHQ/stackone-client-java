@@ -102,7 +102,7 @@ public class AtsOrderAssessmentsRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "ats_order_assessments_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -111,7 +111,7 @@ public class AtsOrderAssessmentsRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "ats_order_assessments_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -120,7 +120,7 @@ public class AtsOrderAssessmentsRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "ats_order_assessments_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T, U>HttpRequest buildRequest(T request, TypeReference<U> typeReference) throws Exception {

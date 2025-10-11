@@ -21,13 +21,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 public class SkillsLanguage {
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends SkillsLanguageValue> value;
 
-
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends SkillsLanguageSourceValue> sourceValue;
@@ -47,7 +52,8 @@ public class SkillsLanguage {
     }
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -55,6 +61,11 @@ public class SkillsLanguage {
         return (JsonNullable<SkillsLanguageValue>) value;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<SkillsLanguageSourceValue> sourceValue() {
@@ -67,7 +78,8 @@ public class SkillsLanguage {
 
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     public SkillsLanguage withValue(SkillsLanguageValue value) {
         Utils.checkNotNull(value, "value");
@@ -76,7 +88,8 @@ public class SkillsLanguage {
     }
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     public SkillsLanguage withValue(JsonNullable<? extends SkillsLanguageValue> value) {
         Utils.checkNotNull(value, "value");
@@ -84,12 +97,22 @@ public class SkillsLanguage {
         return this;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public SkillsLanguage withSourceValue(SkillsLanguageSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public SkillsLanguage withSourceValue(JsonNullable<? extends SkillsLanguageSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -136,7 +159,8 @@ public class SkillsLanguage {
 
 
         /**
-         * The Locale Code of the language
+         * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+         * "unmapped_value" to use source_value instead.
          */
         public Builder value(SkillsLanguageValue value) {
             Utils.checkNotNull(value, "value");
@@ -145,7 +169,8 @@ public class SkillsLanguage {
         }
 
         /**
-         * The Locale Code of the language
+         * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+         * "unmapped_value" to use source_value instead.
          */
         public Builder value(JsonNullable<? extends SkillsLanguageValue> value) {
             Utils.checkNotNull(value, "value");
@@ -154,12 +179,22 @@ public class SkillsLanguage {
         }
 
 
+        /**
+         * For read operations: the original language code from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(SkillsLanguageSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * For read operations: the original language code from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(JsonNullable<? extends SkillsLanguageSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

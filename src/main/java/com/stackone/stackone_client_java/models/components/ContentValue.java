@@ -41,6 +41,11 @@ import java.util.Optional;
  * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
  *
  */
+/**
+ * ContentValue
+ * 
+ * <p>The StackOne unified content type.
+ */
 @JsonDeserialize(using = ContentValue._Deserializer.class)
 @JsonSerialize(using = ContentValue._Serializer.class)
 public class ContentValue {
