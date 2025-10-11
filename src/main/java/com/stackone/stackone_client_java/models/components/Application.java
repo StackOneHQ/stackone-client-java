@@ -70,24 +70,53 @@ public class Application {
     @JsonProperty("remote_job_id")
     private JsonNullable<String> remoteJobId;
 
-
+    /**
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interview_stage")
+    @Deprecated
     private JsonNullable<? extends ApplicationInterviewStage> interviewStage;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("application_stage")
+    private JsonNullable<? extends ApplicationApplicationStage> applicationStage;
 
     /**
      * Unique identifier of the interview stage
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interview_stage_id")
+    @Deprecated
     private JsonNullable<String> interviewStageId;
 
     /**
      * Provider's unique identifier of the interview stage
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_interview_stage_id")
+    @Deprecated
     private JsonNullable<String> remoteInterviewStageId;
+
+    /**
+     * Unique identifier of the application stage
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("application_stage_id")
+    private JsonNullable<String> applicationStageId;
+
+    /**
+     * Unique identifier of the application stage
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("remote_application_stage_id")
+    private JsonNullable<String> remoteApplicationStageId;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -224,8 +253,11 @@ public class Application {
             @JsonProperty("job_id") JsonNullable<String> jobId,
             @JsonProperty("remote_job_id") JsonNullable<String> remoteJobId,
             @JsonProperty("interview_stage") JsonNullable<? extends ApplicationInterviewStage> interviewStage,
+            @JsonProperty("application_stage") JsonNullable<? extends ApplicationApplicationStage> applicationStage,
             @JsonProperty("interview_stage_id") JsonNullable<String> interviewStageId,
             @JsonProperty("remote_interview_stage_id") JsonNullable<String> remoteInterviewStageId,
+            @JsonProperty("application_stage_id") JsonNullable<String> applicationStageId,
+            @JsonProperty("remote_application_stage_id") JsonNullable<String> remoteApplicationStageId,
             @JsonProperty("rejected_reasons") JsonNullable<? extends List<RejectedReason>> rejectedReasons,
             @JsonProperty("rejected_reason_ids") JsonNullable<? extends List<String>> rejectedReasonIds,
             @JsonProperty("remote_rejected_reason_ids") JsonNullable<? extends List<String>> remoteRejectedReasonIds,
@@ -252,8 +284,11 @@ public class Application {
         Utils.checkNotNull(jobId, "jobId");
         Utils.checkNotNull(remoteJobId, "remoteJobId");
         Utils.checkNotNull(interviewStage, "interviewStage");
+        Utils.checkNotNull(applicationStage, "applicationStage");
         Utils.checkNotNull(interviewStageId, "interviewStageId");
         Utils.checkNotNull(remoteInterviewStageId, "remoteInterviewStageId");
+        Utils.checkNotNull(applicationStageId, "applicationStageId");
+        Utils.checkNotNull(remoteApplicationStageId, "remoteApplicationStageId");
         Utils.checkNotNull(rejectedReasons, "rejectedReasons");
         Utils.checkNotNull(rejectedReasonIds, "rejectedReasonIds");
         Utils.checkNotNull(remoteRejectedReasonIds, "remoteRejectedReasonIds");
@@ -280,8 +315,11 @@ public class Application {
         this.jobId = jobId;
         this.remoteJobId = remoteJobId;
         this.interviewStage = interviewStage;
+        this.applicationStage = applicationStage;
         this.interviewStageId = interviewStageId;
         this.remoteInterviewStageId = remoteInterviewStageId;
+        this.applicationStageId = applicationStageId;
+        this.remoteApplicationStageId = remoteApplicationStageId;
         this.rejectedReasons = rejectedReasons;
         this.rejectedReasonIds = rejectedReasonIds;
         this.remoteRejectedReasonIds = remoteRejectedReasonIds;
@@ -304,6 +342,7 @@ public class Application {
     
     public Application() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
@@ -372,15 +411,29 @@ public class Application {
         return remoteJobId;
     }
 
+    /**
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    @Deprecated
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<ApplicationInterviewStage> interviewStage() {
         return (JsonNullable<ApplicationInterviewStage>) interviewStage;
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<ApplicationApplicationStage> applicationStage() {
+        return (JsonNullable<ApplicationApplicationStage>) applicationStage;
+    }
+
     /**
      * Unique identifier of the interview stage
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     @JsonIgnore
     public JsonNullable<String> interviewStageId() {
         return interviewStageId;
@@ -388,10 +441,29 @@ public class Application {
 
     /**
      * Provider's unique identifier of the interview stage
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     @JsonIgnore
     public JsonNullable<String> remoteInterviewStageId() {
         return remoteInterviewStageId;
+    }
+
+    /**
+     * Unique identifier of the application stage
+     */
+    @JsonIgnore
+    public JsonNullable<String> applicationStageId() {
+        return applicationStageId;
+    }
+
+    /**
+     * Unique identifier of the application stage
+     */
+    @JsonIgnore
+    public JsonNullable<String> remoteApplicationStageId() {
+        return remoteApplicationStageId;
     }
 
     @SuppressWarnings("unchecked")
@@ -676,21 +748,46 @@ public class Application {
         return this;
     }
 
+    /**
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    @Deprecated
     public Application withInterviewStage(ApplicationInterviewStage interviewStage) {
         Utils.checkNotNull(interviewStage, "interviewStage");
         this.interviewStage = JsonNullable.of(interviewStage);
         return this;
     }
 
+    /**
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    @Deprecated
     public Application withInterviewStage(JsonNullable<? extends ApplicationInterviewStage> interviewStage) {
         Utils.checkNotNull(interviewStage, "interviewStage");
         this.interviewStage = interviewStage;
         return this;
     }
 
+    public Application withApplicationStage(ApplicationApplicationStage applicationStage) {
+        Utils.checkNotNull(applicationStage, "applicationStage");
+        this.applicationStage = JsonNullable.of(applicationStage);
+        return this;
+    }
+
+    public Application withApplicationStage(JsonNullable<? extends ApplicationApplicationStage> applicationStage) {
+        Utils.checkNotNull(applicationStage, "applicationStage");
+        this.applicationStage = applicationStage;
+        return this;
+    }
+
     /**
      * Unique identifier of the interview stage
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public Application withInterviewStageId(String interviewStageId) {
         Utils.checkNotNull(interviewStageId, "interviewStageId");
         this.interviewStageId = JsonNullable.of(interviewStageId);
@@ -699,7 +796,10 @@ public class Application {
 
     /**
      * Unique identifier of the interview stage
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public Application withInterviewStageId(JsonNullable<String> interviewStageId) {
         Utils.checkNotNull(interviewStageId, "interviewStageId");
         this.interviewStageId = interviewStageId;
@@ -708,7 +808,10 @@ public class Application {
 
     /**
      * Provider's unique identifier of the interview stage
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public Application withRemoteInterviewStageId(String remoteInterviewStageId) {
         Utils.checkNotNull(remoteInterviewStageId, "remoteInterviewStageId");
         this.remoteInterviewStageId = JsonNullable.of(remoteInterviewStageId);
@@ -717,10 +820,49 @@ public class Application {
 
     /**
      * Provider's unique identifier of the interview stage
+     * 
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
+    @Deprecated
     public Application withRemoteInterviewStageId(JsonNullable<String> remoteInterviewStageId) {
         Utils.checkNotNull(remoteInterviewStageId, "remoteInterviewStageId");
         this.remoteInterviewStageId = remoteInterviewStageId;
+        return this;
+    }
+
+    /**
+     * Unique identifier of the application stage
+     */
+    public Application withApplicationStageId(String applicationStageId) {
+        Utils.checkNotNull(applicationStageId, "applicationStageId");
+        this.applicationStageId = JsonNullable.of(applicationStageId);
+        return this;
+    }
+
+    /**
+     * Unique identifier of the application stage
+     */
+    public Application withApplicationStageId(JsonNullable<String> applicationStageId) {
+        Utils.checkNotNull(applicationStageId, "applicationStageId");
+        this.applicationStageId = applicationStageId;
+        return this;
+    }
+
+    /**
+     * Unique identifier of the application stage
+     */
+    public Application withRemoteApplicationStageId(String remoteApplicationStageId) {
+        Utils.checkNotNull(remoteApplicationStageId, "remoteApplicationStageId");
+        this.remoteApplicationStageId = JsonNullable.of(remoteApplicationStageId);
+        return this;
+    }
+
+    /**
+     * Unique identifier of the application stage
+     */
+    public Application withRemoteApplicationStageId(JsonNullable<String> remoteApplicationStageId) {
+        Utils.checkNotNull(remoteApplicationStageId, "remoteApplicationStageId");
+        this.remoteApplicationStageId = remoteApplicationStageId;
         return this;
     }
 
@@ -1054,8 +1196,11 @@ public class Application {
             Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
             Utils.enhancedDeepEquals(this.remoteJobId, other.remoteJobId) &&
             Utils.enhancedDeepEquals(this.interviewStage, other.interviewStage) &&
+            Utils.enhancedDeepEquals(this.applicationStage, other.applicationStage) &&
             Utils.enhancedDeepEquals(this.interviewStageId, other.interviewStageId) &&
             Utils.enhancedDeepEquals(this.remoteInterviewStageId, other.remoteInterviewStageId) &&
+            Utils.enhancedDeepEquals(this.applicationStageId, other.applicationStageId) &&
+            Utils.enhancedDeepEquals(this.remoteApplicationStageId, other.remoteApplicationStageId) &&
             Utils.enhancedDeepEquals(this.rejectedReasons, other.rejectedReasons) &&
             Utils.enhancedDeepEquals(this.rejectedReasonIds, other.rejectedReasonIds) &&
             Utils.enhancedDeepEquals(this.remoteRejectedReasonIds, other.remoteRejectedReasonIds) &&
@@ -1081,8 +1226,9 @@ public class Application {
         return Utils.enhancedHash(
             id, remoteId, unifiedCustomFields,
             candidateId, remoteCandidateId, jobId,
-            remoteJobId, interviewStage, interviewStageId,
-            remoteInterviewStageId, rejectedReasons, rejectedReasonIds,
+            remoteJobId, interviewStage, applicationStage,
+            interviewStageId, remoteInterviewStageId, applicationStageId,
+            remoteApplicationStageId, rejectedReasons, rejectedReasonIds,
             remoteRejectedReasonIds, rejectedAt, locationId,
             remoteLocationId, locationIds, remoteLocationIds,
             applicationStatus, questionnaires, candidate,
@@ -1102,8 +1248,11 @@ public class Application {
                 "jobId", jobId,
                 "remoteJobId", remoteJobId,
                 "interviewStage", interviewStage,
+                "applicationStage", applicationStage,
                 "interviewStageId", interviewStageId,
                 "remoteInterviewStageId", remoteInterviewStageId,
+                "applicationStageId", applicationStageId,
+                "remoteApplicationStageId", remoteApplicationStageId,
                 "rejectedReasons", rejectedReasons,
                 "rejectedReasonIds", rejectedReasonIds,
                 "remoteRejectedReasonIds", remoteRejectedReasonIds,
@@ -1141,11 +1290,20 @@ public class Application {
 
         private JsonNullable<String> remoteJobId = JsonNullable.undefined();
 
+        @Deprecated
         private JsonNullable<? extends ApplicationInterviewStage> interviewStage = JsonNullable.undefined();
 
+        private JsonNullable<? extends ApplicationApplicationStage> applicationStage = JsonNullable.undefined();
+
+        @Deprecated
         private JsonNullable<String> interviewStageId = JsonNullable.undefined();
 
+        @Deprecated
         private JsonNullable<String> remoteInterviewStageId = JsonNullable.undefined();
+
+        private JsonNullable<String> applicationStageId = JsonNullable.undefined();
+
+        private JsonNullable<String> remoteApplicationStageId = JsonNullable.undefined();
 
         private JsonNullable<? extends List<RejectedReason>> rejectedReasons = JsonNullable.undefined();
 
@@ -1324,12 +1482,22 @@ public class Application {
         }
 
 
+        /**
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+         */
+        @Deprecated
         public Builder interviewStage(ApplicationInterviewStage interviewStage) {
             Utils.checkNotNull(interviewStage, "interviewStage");
             this.interviewStage = JsonNullable.of(interviewStage);
             return this;
         }
 
+        /**
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+         */
+        @Deprecated
         public Builder interviewStage(JsonNullable<? extends ApplicationInterviewStage> interviewStage) {
             Utils.checkNotNull(interviewStage, "interviewStage");
             this.interviewStage = interviewStage;
@@ -1337,9 +1505,25 @@ public class Application {
         }
 
 
+        public Builder applicationStage(ApplicationApplicationStage applicationStage) {
+            Utils.checkNotNull(applicationStage, "applicationStage");
+            this.applicationStage = JsonNullable.of(applicationStage);
+            return this;
+        }
+
+        public Builder applicationStage(JsonNullable<? extends ApplicationApplicationStage> applicationStage) {
+            Utils.checkNotNull(applicationStage, "applicationStage");
+            this.applicationStage = applicationStage;
+            return this;
+        }
+
+
         /**
          * Unique identifier of the interview stage
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder interviewStageId(String interviewStageId) {
             Utils.checkNotNull(interviewStageId, "interviewStageId");
             this.interviewStageId = JsonNullable.of(interviewStageId);
@@ -1348,7 +1532,10 @@ public class Application {
 
         /**
          * Unique identifier of the interview stage
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder interviewStageId(JsonNullable<String> interviewStageId) {
             Utils.checkNotNull(interviewStageId, "interviewStageId");
             this.interviewStageId = interviewStageId;
@@ -1358,7 +1545,10 @@ public class Application {
 
         /**
          * Provider's unique identifier of the interview stage
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder remoteInterviewStageId(String remoteInterviewStageId) {
             Utils.checkNotNull(remoteInterviewStageId, "remoteInterviewStageId");
             this.remoteInterviewStageId = JsonNullable.of(remoteInterviewStageId);
@@ -1367,10 +1557,51 @@ public class Application {
 
         /**
          * Provider's unique identifier of the interview stage
+         * 
+         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
          */
+        @Deprecated
         public Builder remoteInterviewStageId(JsonNullable<String> remoteInterviewStageId) {
             Utils.checkNotNull(remoteInterviewStageId, "remoteInterviewStageId");
             this.remoteInterviewStageId = remoteInterviewStageId;
+            return this;
+        }
+
+
+        /**
+         * Unique identifier of the application stage
+         */
+        public Builder applicationStageId(String applicationStageId) {
+            Utils.checkNotNull(applicationStageId, "applicationStageId");
+            this.applicationStageId = JsonNullable.of(applicationStageId);
+            return this;
+        }
+
+        /**
+         * Unique identifier of the application stage
+         */
+        public Builder applicationStageId(JsonNullable<String> applicationStageId) {
+            Utils.checkNotNull(applicationStageId, "applicationStageId");
+            this.applicationStageId = applicationStageId;
+            return this;
+        }
+
+
+        /**
+         * Unique identifier of the application stage
+         */
+        public Builder remoteApplicationStageId(String remoteApplicationStageId) {
+            Utils.checkNotNull(remoteApplicationStageId, "remoteApplicationStageId");
+            this.remoteApplicationStageId = JsonNullable.of(remoteApplicationStageId);
+            return this;
+        }
+
+        /**
+         * Unique identifier of the application stage
+         */
+        public Builder remoteApplicationStageId(JsonNullable<String> remoteApplicationStageId) {
+            Utils.checkNotNull(remoteApplicationStageId, "remoteApplicationStageId");
+            this.remoteApplicationStageId = remoteApplicationStageId;
             return this;
         }
 
@@ -1709,8 +1940,9 @@ public class Application {
             return new Application(
                 id, remoteId, unifiedCustomFields,
                 candidateId, remoteCandidateId, jobId,
-                remoteJobId, interviewStage, interviewStageId,
-                remoteInterviewStageId, rejectedReasons, rejectedReasonIds,
+                remoteJobId, interviewStage, applicationStage,
+                interviewStageId, remoteInterviewStageId, applicationStageId,
+                remoteApplicationStageId, rejectedReasons, rejectedReasonIds,
                 remoteRejectedReasonIds, rejectedAt, locationId,
                 remoteLocationId, locationIds, remoteLocationIds,
                 applicationStatus, questionnaires, candidate,

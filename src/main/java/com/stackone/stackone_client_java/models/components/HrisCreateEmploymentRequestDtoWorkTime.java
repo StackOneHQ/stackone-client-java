@@ -24,20 +24,20 @@ public class HrisCreateEmploymentRequestDtoWorkTime {
     private JsonNullable<String> duration;
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("duration_unit")
-    private JsonNullable<? extends HrisCreateEmploymentRequestDtoDurationUnit> durationUnit;
+    @JsonProperty("period")
+    private JsonNullable<? extends HrisCreateEmploymentRequestDtoPeriod> period;
 
     @JsonCreator
     public HrisCreateEmploymentRequestDtoWorkTime(
             @JsonProperty("duration") JsonNullable<String> duration,
-            @JsonProperty("duration_unit") JsonNullable<? extends HrisCreateEmploymentRequestDtoDurationUnit> durationUnit) {
+            @JsonProperty("period") JsonNullable<? extends HrisCreateEmploymentRequestDtoPeriod> period) {
         Utils.checkNotNull(duration, "duration");
-        Utils.checkNotNull(durationUnit, "durationUnit");
+        Utils.checkNotNull(period, "period");
         this.duration = duration;
-        this.durationUnit = durationUnit;
+        this.period = period;
     }
     
     public HrisCreateEmploymentRequestDtoWorkTime() {
@@ -53,12 +53,12 @@ public class HrisCreateEmploymentRequestDtoWorkTime {
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<HrisCreateEmploymentRequestDtoDurationUnit> durationUnit() {
-        return (JsonNullable<HrisCreateEmploymentRequestDtoDurationUnit>) durationUnit;
+    public JsonNullable<HrisCreateEmploymentRequestDtoPeriod> period() {
+        return (JsonNullable<HrisCreateEmploymentRequestDtoPeriod>) period;
     }
 
     public static Builder builder() {
@@ -85,20 +85,20 @@ public class HrisCreateEmploymentRequestDtoWorkTime {
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
-    public HrisCreateEmploymentRequestDtoWorkTime withDurationUnit(HrisCreateEmploymentRequestDtoDurationUnit durationUnit) {
-        Utils.checkNotNull(durationUnit, "durationUnit");
-        this.durationUnit = JsonNullable.of(durationUnit);
+    public HrisCreateEmploymentRequestDtoWorkTime withPeriod(HrisCreateEmploymentRequestDtoPeriod period) {
+        Utils.checkNotNull(period, "period");
+        this.period = JsonNullable.of(period);
         return this;
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
-    public HrisCreateEmploymentRequestDtoWorkTime withDurationUnit(JsonNullable<? extends HrisCreateEmploymentRequestDtoDurationUnit> durationUnit) {
-        Utils.checkNotNull(durationUnit, "durationUnit");
-        this.durationUnit = durationUnit;
+    public HrisCreateEmploymentRequestDtoWorkTime withPeriod(JsonNullable<? extends HrisCreateEmploymentRequestDtoPeriod> period) {
+        Utils.checkNotNull(period, "period");
+        this.period = period;
         return this;
     }
 
@@ -113,20 +113,20 @@ public class HrisCreateEmploymentRequestDtoWorkTime {
         HrisCreateEmploymentRequestDtoWorkTime other = (HrisCreateEmploymentRequestDtoWorkTime) o;
         return 
             Utils.enhancedDeepEquals(this.duration, other.duration) &&
-            Utils.enhancedDeepEquals(this.durationUnit, other.durationUnit);
+            Utils.enhancedDeepEquals(this.period, other.period);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            duration, durationUnit);
+            duration, period);
     }
     
     @Override
     public String toString() {
         return Utils.toString(HrisCreateEmploymentRequestDtoWorkTime.class,
                 "duration", duration,
-                "durationUnit", durationUnit);
+                "period", period);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -134,7 +134,7 @@ public class HrisCreateEmploymentRequestDtoWorkTime {
 
         private JsonNullable<String> duration = JsonNullable.undefined();
 
-        private JsonNullable<? extends HrisCreateEmploymentRequestDtoDurationUnit> durationUnit = JsonNullable.undefined();
+        private JsonNullable<? extends HrisCreateEmploymentRequestDtoPeriod> period = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -161,27 +161,27 @@ public class HrisCreateEmploymentRequestDtoWorkTime {
 
 
         /**
-         * The duration unit of the work time
+         * The period of the work time
          */
-        public Builder durationUnit(HrisCreateEmploymentRequestDtoDurationUnit durationUnit) {
-            Utils.checkNotNull(durationUnit, "durationUnit");
-            this.durationUnit = JsonNullable.of(durationUnit);
+        public Builder period(HrisCreateEmploymentRequestDtoPeriod period) {
+            Utils.checkNotNull(period, "period");
+            this.period = JsonNullable.of(period);
             return this;
         }
 
         /**
-         * The duration unit of the work time
+         * The period of the work time
          */
-        public Builder durationUnit(JsonNullable<? extends HrisCreateEmploymentRequestDtoDurationUnit> durationUnit) {
-            Utils.checkNotNull(durationUnit, "durationUnit");
-            this.durationUnit = durationUnit;
+        public Builder period(JsonNullable<? extends HrisCreateEmploymentRequestDtoPeriod> period) {
+            Utils.checkNotNull(period, "period");
+            this.period = period;
             return this;
         }
 
         public HrisCreateEmploymentRequestDtoWorkTime build() {
 
             return new HrisCreateEmploymentRequestDtoWorkTime(
-                duration, durationUnit);
+                duration, period);
         }
 
     }

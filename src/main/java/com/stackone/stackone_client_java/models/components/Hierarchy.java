@@ -20,12 +20,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The hierarchal level of the category
  */
 public class Hierarchy {
-
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends CategoryValue> value;
 
-
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CategorySourceValue> sourceValue;
@@ -44,12 +51,21 @@ public class Hierarchy {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CategoryValue> value() {
         return (JsonNullable<CategoryValue>) value;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CategorySourceValue> sourceValue() {
@@ -61,24 +77,42 @@ public class Hierarchy {
     }
 
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     public Hierarchy withValue(CategoryValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     public Hierarchy withValue(JsonNullable<? extends CategoryValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public Hierarchy withSourceValue(CategorySourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public Hierarchy withSourceValue(JsonNullable<? extends CategorySourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +158,20 @@ public class Hierarchy {
         }
 
 
+        /**
+         * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+         * to "unmapped_value" to use source_value instead.
+         */
         public Builder value(CategoryValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+         * to "unmapped_value" to use source_value instead.
+         */
         public Builder value(JsonNullable<? extends CategoryValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +179,22 @@ public class Hierarchy {
         }
 
 
+        /**
+         * For read operations: the original category level from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(CategorySourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * For read operations: the original category level from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(JsonNullable<? extends CategorySourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

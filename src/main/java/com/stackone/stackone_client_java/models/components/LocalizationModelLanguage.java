@@ -21,13 +21,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 public class LocalizationModelLanguage {
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LocalizationModelValue> value;
 
-
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LocalizationModelSourceValue> sourceValue;
@@ -47,7 +52,8 @@ public class LocalizationModelLanguage {
     }
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -55,6 +61,11 @@ public class LocalizationModelLanguage {
         return (JsonNullable<LocalizationModelValue>) value;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LocalizationModelSourceValue> sourceValue() {
@@ -67,7 +78,8 @@ public class LocalizationModelLanguage {
 
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     public LocalizationModelLanguage withValue(LocalizationModelValue value) {
         Utils.checkNotNull(value, "value");
@@ -76,7 +88,8 @@ public class LocalizationModelLanguage {
     }
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     public LocalizationModelLanguage withValue(JsonNullable<? extends LocalizationModelValue> value) {
         Utils.checkNotNull(value, "value");
@@ -84,12 +97,22 @@ public class LocalizationModelLanguage {
         return this;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public LocalizationModelLanguage withSourceValue(LocalizationModelSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public LocalizationModelLanguage withSourceValue(JsonNullable<? extends LocalizationModelSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -136,7 +159,8 @@ public class LocalizationModelLanguage {
 
 
         /**
-         * The Locale Code of the language
+         * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+         * "unmapped_value" to use source_value instead.
          */
         public Builder value(LocalizationModelValue value) {
             Utils.checkNotNull(value, "value");
@@ -145,7 +169,8 @@ public class LocalizationModelLanguage {
         }
 
         /**
-         * The Locale Code of the language
+         * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+         * "unmapped_value" to use source_value instead.
          */
         public Builder value(JsonNullable<? extends LocalizationModelValue> value) {
             Utils.checkNotNull(value, "value");
@@ -154,12 +179,22 @@ public class LocalizationModelLanguage {
         }
 
 
+        /**
+         * For read operations: the original language code from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(LocalizationModelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * For read operations: the original language code from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(JsonNullable<? extends LocalizationModelSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

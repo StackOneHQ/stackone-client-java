@@ -41,6 +41,11 @@ import java.util.Optional;
  * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
  *
  */
+/**
+ * LmsCreateContentRequestDtoValue
+ * 
+ * <p>The StackOne unified content type.
+ */
 @JsonDeserialize(using = LmsCreateContentRequestDtoValue._Deserializer.class)
 @JsonSerialize(using = LmsCreateContentRequestDtoValue._Serializer.class)
 public class LmsCreateContentRequestDtoValue {

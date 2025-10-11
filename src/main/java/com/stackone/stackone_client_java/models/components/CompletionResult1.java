@@ -20,12 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The result of the completion
  */
 public class CompletionResult1 {
-
+    /**
+     * The StackOne unified result status.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends CompletionValue> value;
 
-
+    /**
+     * The original result status from the provider before normalization.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CompletionSourceValue> sourceValue;
@@ -44,12 +48,18 @@ public class CompletionResult1 {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The StackOne unified result status.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CompletionValue> value() {
         return (JsonNullable<CompletionValue>) value;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CompletionSourceValue> sourceValue() {
@@ -61,24 +71,36 @@ public class CompletionResult1 {
     }
 
 
+    /**
+     * The StackOne unified result status.
+     */
     public CompletionResult1 withValue(CompletionValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The StackOne unified result status.
+     */
     public CompletionResult1 withValue(JsonNullable<? extends CompletionValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     public CompletionResult1 withSourceValue(CompletionSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     public CompletionResult1 withSourceValue(JsonNullable<? extends CompletionSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +146,18 @@ public class CompletionResult1 {
         }
 
 
+        /**
+         * The StackOne unified result status.
+         */
         public Builder value(CompletionValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The StackOne unified result status.
+         */
         public Builder value(JsonNullable<? extends CompletionValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +165,18 @@ public class CompletionResult1 {
         }
 
 
+        /**
+         * The original result status from the provider before normalization.
+         */
         public Builder sourceValue(CompletionSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The original result status from the provider before normalization.
+         */
         public Builder sourceValue(JsonNullable<? extends CompletionSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

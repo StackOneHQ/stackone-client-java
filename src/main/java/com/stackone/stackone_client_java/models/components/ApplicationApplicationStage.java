@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Deprecated;
 import java.lang.Double;
 import java.lang.Object;
 import java.lang.Override;
@@ -19,13 +18,8 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-/**
- * ApplicationInterviewStage
- * 
- * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
- */
-@Deprecated
-public class ApplicationInterviewStage {
+
+public class ApplicationApplicationStage {
     /**
      * Unique identifier
      */
@@ -47,32 +41,36 @@ public class ApplicationInterviewStage {
     @JsonProperty("unified_custom_fields")
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
-
+    /**
+     * Application Stage name
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
 
-
+    /**
+     * Application Stage order
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("order")
     private JsonNullable<Double> order;
 
     /**
-     * Interview Stage created date
+     * Application Stage created date
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("created_at")
     private JsonNullable<OffsetDateTime> createdAt;
 
     /**
-     * Interview Stage updated date
+     * Application Stage updated date
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_at")
     private JsonNullable<OffsetDateTime> updatedAt;
 
     @JsonCreator
-    public ApplicationInterviewStage(
+    public ApplicationApplicationStage(
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
@@ -96,7 +94,7 @@ public class ApplicationInterviewStage {
         this.updatedAt = updatedAt;
     }
     
-    public ApplicationInterviewStage() {
+    public ApplicationApplicationStage() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined());
@@ -127,18 +125,24 @@ public class ApplicationInterviewStage {
         return (JsonNullable<Map<String, Object>>) unifiedCustomFields;
     }
 
+    /**
+     * Application Stage name
+     */
     @JsonIgnore
     public JsonNullable<String> name() {
         return name;
     }
 
+    /**
+     * Application Stage order
+     */
     @JsonIgnore
     public JsonNullable<Double> order() {
         return order;
     }
 
     /**
-     * Interview Stage created date
+     * Application Stage created date
      */
     @JsonIgnore
     public JsonNullable<OffsetDateTime> createdAt() {
@@ -146,7 +150,7 @@ public class ApplicationInterviewStage {
     }
 
     /**
-     * Interview Stage updated date
+     * Application Stage updated date
      */
     @JsonIgnore
     public JsonNullable<OffsetDateTime> updatedAt() {
@@ -161,7 +165,7 @@ public class ApplicationInterviewStage {
     /**
      * Unique identifier
      */
-    public ApplicationInterviewStage withId(String id) {
+    public ApplicationApplicationStage withId(String id) {
         Utils.checkNotNull(id, "id");
         this.id = JsonNullable.of(id);
         return this;
@@ -170,7 +174,7 @@ public class ApplicationInterviewStage {
     /**
      * Unique identifier
      */
-    public ApplicationInterviewStage withId(JsonNullable<String> id) {
+    public ApplicationApplicationStage withId(JsonNullable<String> id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
@@ -179,7 +183,7 @@ public class ApplicationInterviewStage {
     /**
      * Provider's unique identifier
      */
-    public ApplicationInterviewStage withRemoteId(String remoteId) {
+    public ApplicationApplicationStage withRemoteId(String remoteId) {
         Utils.checkNotNull(remoteId, "remoteId");
         this.remoteId = JsonNullable.of(remoteId);
         return this;
@@ -188,7 +192,7 @@ public class ApplicationInterviewStage {
     /**
      * Provider's unique identifier
      */
-    public ApplicationInterviewStage withRemoteId(JsonNullable<String> remoteId) {
+    public ApplicationApplicationStage withRemoteId(JsonNullable<String> remoteId) {
         Utils.checkNotNull(remoteId, "remoteId");
         this.remoteId = remoteId;
         return this;
@@ -197,7 +201,7 @@ public class ApplicationInterviewStage {
     /**
      * Custom Unified Fields configured in your StackOne project
      */
-    public ApplicationInterviewStage withUnifiedCustomFields(Map<String, Object> unifiedCustomFields) {
+    public ApplicationApplicationStage withUnifiedCustomFields(Map<String, Object> unifiedCustomFields) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         this.unifiedCustomFields = JsonNullable.of(unifiedCustomFields);
         return this;
@@ -206,67 +210,79 @@ public class ApplicationInterviewStage {
     /**
      * Custom Unified Fields configured in your StackOne project
      */
-    public ApplicationInterviewStage withUnifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
+    public ApplicationApplicationStage withUnifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         this.unifiedCustomFields = unifiedCustomFields;
         return this;
     }
 
-    public ApplicationInterviewStage withName(String name) {
+    /**
+     * Application Stage name
+     */
+    public ApplicationApplicationStage withName(String name) {
         Utils.checkNotNull(name, "name");
         this.name = JsonNullable.of(name);
         return this;
     }
 
-    public ApplicationInterviewStage withName(JsonNullable<String> name) {
+    /**
+     * Application Stage name
+     */
+    public ApplicationApplicationStage withName(JsonNullable<String> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
         return this;
     }
 
-    public ApplicationInterviewStage withOrder(double order) {
+    /**
+     * Application Stage order
+     */
+    public ApplicationApplicationStage withOrder(double order) {
         Utils.checkNotNull(order, "order");
         this.order = JsonNullable.of(order);
         return this;
     }
 
-    public ApplicationInterviewStage withOrder(JsonNullable<Double> order) {
+    /**
+     * Application Stage order
+     */
+    public ApplicationApplicationStage withOrder(JsonNullable<Double> order) {
         Utils.checkNotNull(order, "order");
         this.order = order;
         return this;
     }
 
     /**
-     * Interview Stage created date
+     * Application Stage created date
      */
-    public ApplicationInterviewStage withCreatedAt(OffsetDateTime createdAt) {
+    public ApplicationApplicationStage withCreatedAt(OffsetDateTime createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
     /**
-     * Interview Stage created date
+     * Application Stage created date
      */
-    public ApplicationInterviewStage withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
+    public ApplicationApplicationStage withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = createdAt;
         return this;
     }
 
     /**
-     * Interview Stage updated date
+     * Application Stage updated date
      */
-    public ApplicationInterviewStage withUpdatedAt(OffsetDateTime updatedAt) {
+    public ApplicationApplicationStage withUpdatedAt(OffsetDateTime updatedAt) {
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
     /**
-     * Interview Stage updated date
+     * Application Stage updated date
      */
-    public ApplicationInterviewStage withUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
+    public ApplicationApplicationStage withUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.updatedAt = updatedAt;
         return this;
@@ -280,7 +296,7 @@ public class ApplicationInterviewStage {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ApplicationInterviewStage other = (ApplicationInterviewStage) o;
+        ApplicationApplicationStage other = (ApplicationApplicationStage) o;
         return 
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
@@ -301,7 +317,7 @@ public class ApplicationInterviewStage {
     
     @Override
     public String toString() {
-        return Utils.toString(ApplicationInterviewStage.class,
+        return Utils.toString(ApplicationApplicationStage.class,
                 "id", id,
                 "remoteId", remoteId,
                 "unifiedCustomFields", unifiedCustomFields,
@@ -390,12 +406,18 @@ public class ApplicationInterviewStage {
         }
 
 
+        /**
+         * Application Stage name
+         */
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
             return this;
         }
 
+        /**
+         * Application Stage name
+         */
         public Builder name(JsonNullable<String> name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
@@ -403,12 +425,18 @@ public class ApplicationInterviewStage {
         }
 
 
+        /**
+         * Application Stage order
+         */
         public Builder order(double order) {
             Utils.checkNotNull(order, "order");
             this.order = JsonNullable.of(order);
             return this;
         }
 
+        /**
+         * Application Stage order
+         */
         public Builder order(JsonNullable<Double> order) {
             Utils.checkNotNull(order, "order");
             this.order = order;
@@ -417,7 +445,7 @@ public class ApplicationInterviewStage {
 
 
         /**
-         * Interview Stage created date
+         * Application Stage created date
          */
         public Builder createdAt(OffsetDateTime createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
@@ -426,7 +454,7 @@ public class ApplicationInterviewStage {
         }
 
         /**
-         * Interview Stage created date
+         * Application Stage created date
          */
         public Builder createdAt(JsonNullable<OffsetDateTime> createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
@@ -436,7 +464,7 @@ public class ApplicationInterviewStage {
 
 
         /**
-         * Interview Stage updated date
+         * Application Stage updated date
          */
         public Builder updatedAt(OffsetDateTime updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
@@ -445,7 +473,7 @@ public class ApplicationInterviewStage {
         }
 
         /**
-         * Interview Stage updated date
+         * Application Stage updated date
          */
         public Builder updatedAt(JsonNullable<OffsetDateTime> updatedAt) {
             Utils.checkNotNull(updatedAt, "updatedAt");
@@ -453,9 +481,9 @@ public class ApplicationInterviewStage {
             return this;
         }
 
-        public ApplicationInterviewStage build() {
+        public ApplicationApplicationStage build() {
 
-            return new ApplicationInterviewStage(
+            return new ApplicationApplicationStage(
                 id, remoteId, unifiedCustomFields,
                 name, order, createdAt,
                 updatedAt);

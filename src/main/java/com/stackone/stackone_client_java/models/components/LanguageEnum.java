@@ -17,13 +17,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class LanguageEnum {
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LanguageEnumValue> value;
 
-
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LanguageEnumSourceValue> sourceValue;
@@ -43,7 +48,8 @@ public class LanguageEnum {
     }
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -51,6 +57,11 @@ public class LanguageEnum {
         return (JsonNullable<LanguageEnumValue>) value;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LanguageEnumSourceValue> sourceValue() {
@@ -63,7 +74,8 @@ public class LanguageEnum {
 
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     public LanguageEnum withValue(LanguageEnumValue value) {
         Utils.checkNotNull(value, "value");
@@ -72,7 +84,8 @@ public class LanguageEnum {
     }
 
     /**
-     * The Locale Code of the language
+     * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
      */
     public LanguageEnum withValue(JsonNullable<? extends LanguageEnumValue> value) {
         Utils.checkNotNull(value, "value");
@@ -80,12 +93,22 @@ public class LanguageEnum {
         return this;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public LanguageEnum withSourceValue(LanguageEnumSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * For read operations: the original language code from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public LanguageEnum withSourceValue(JsonNullable<? extends LanguageEnumSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -132,7 +155,8 @@ public class LanguageEnum {
 
 
         /**
-         * The Locale Code of the language
+         * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+         * "unmapped_value" to use source_value instead.
          */
         public Builder value(LanguageEnumValue value) {
             Utils.checkNotNull(value, "value");
@@ -141,7 +165,8 @@ public class LanguageEnum {
         }
 
         /**
-         * The Locale Code of the language
+         * The unified locale code. For write operations: provide one of the listed enum values, or omit/set to
+         * "unmapped_value" to use source_value instead.
          */
         public Builder value(JsonNullable<? extends LanguageEnumValue> value) {
             Utils.checkNotNull(value, "value");
@@ -150,12 +175,22 @@ public class LanguageEnum {
         }
 
 
+        /**
+         * For read operations: the original language code from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(LanguageEnumSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * For read operations: the original language code from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(JsonNullable<? extends LanguageEnumSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

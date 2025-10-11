@@ -41,6 +41,11 @@ import java.util.Optional;
  * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
  *
  */
+/**
+ * CompletionValue
+ * 
+ * <p>The StackOne unified result status.
+ */
 @JsonDeserialize(using = CompletionValue._Deserializer.class)
 @JsonSerialize(using = CompletionValue._Serializer.class)
 public class CompletionValue {

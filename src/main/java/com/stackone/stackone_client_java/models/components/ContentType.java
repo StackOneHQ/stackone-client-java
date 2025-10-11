@@ -20,12 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The type of content
  */
 public class ContentType {
-
+    /**
+     * The StackOne unified content type.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends ContentValue> value;
 
-
+    /**
+     * The original value from the provider before normalization.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends ContentSourceValue> sourceValue;
@@ -44,12 +48,18 @@ public class ContentType {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The StackOne unified content type.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<ContentValue> value() {
         return (JsonNullable<ContentValue>) value;
     }
 
+    /**
+     * The original value from the provider before normalization.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<ContentSourceValue> sourceValue() {
@@ -61,24 +71,36 @@ public class ContentType {
     }
 
 
+    /**
+     * The StackOne unified content type.
+     */
     public ContentType withValue(ContentValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The StackOne unified content type.
+     */
     public ContentType withValue(JsonNullable<? extends ContentValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The original value from the provider before normalization.
+     */
     public ContentType withSourceValue(ContentSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The original value from the provider before normalization.
+     */
     public ContentType withSourceValue(JsonNullable<? extends ContentSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +146,18 @@ public class ContentType {
         }
 
 
+        /**
+         * The StackOne unified content type.
+         */
         public Builder value(ContentValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The StackOne unified content type.
+         */
         public Builder value(JsonNullable<? extends ContentValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +165,18 @@ public class ContentType {
         }
 
 
+        /**
+         * The original value from the provider before normalization.
+         */
         public Builder sourceValue(ContentSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The original value from the provider before normalization.
+         */
         public Builder sourceValue(JsonNullable<? extends ContentSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

@@ -19,6 +19,11 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 
+/**
+ * AssignmentSourceValue
+ * 
+ * <p>The original status value from the provider before normalization.
+ */
 @JsonDeserialize(using = AssignmentSourceValue._Deserializer.class)
 public class AssignmentSourceValue {
 

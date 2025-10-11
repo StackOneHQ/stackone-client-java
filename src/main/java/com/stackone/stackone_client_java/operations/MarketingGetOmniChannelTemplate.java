@@ -99,7 +99,7 @@ public class MarketingGetOmniChannelTemplate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "marketing_get_omni_channel_template",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -108,7 +108,7 @@ public class MarketingGetOmniChannelTemplate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "marketing_get_omni_channel_template",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -117,7 +117,7 @@ public class MarketingGetOmniChannelTemplate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "marketing_get_omni_channel_template",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T>HttpRequest buildRequest(T request, Class<T> klass) throws Exception {

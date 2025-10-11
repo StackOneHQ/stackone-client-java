@@ -98,7 +98,7 @@ public class MessagingDownloadMessagingAttachment {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "messaging_download_messaging_attachment",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -107,7 +107,7 @@ public class MessagingDownloadMessagingAttachment {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "messaging_download_messaging_attachment",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -116,7 +116,7 @@ public class MessagingDownloadMessagingAttachment {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "messaging_download_messaging_attachment",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T>HttpRequest buildRequest(T request, Class<T> klass) throws Exception {

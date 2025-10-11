@@ -15,11 +15,11 @@ import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * HrisCreateEmployeeRequestDtoDurationUnit
+ * HrisCreateEmployeeRequestDtoPeriod
  * 
- * <p>The duration unit of the work time
+ * <p>The period of the work time
  */
-public class HrisCreateEmployeeRequestDtoDurationUnit {
+public class HrisCreateEmployeeRequestDtoPeriod {
     /**
      * The unified value for the period.
      */
@@ -33,7 +33,7 @@ public class HrisCreateEmployeeRequestDtoDurationUnit {
     private JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue;
 
     @JsonCreator
-    public HrisCreateEmployeeRequestDtoDurationUnit(
+    public HrisCreateEmployeeRequestDtoPeriod(
             @JsonProperty("value") JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentWorkTimeValue> value,
             @JsonProperty("source_value") JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue) {
         Utils.checkNotNull(value, "value");
@@ -42,7 +42,7 @@ public class HrisCreateEmployeeRequestDtoDurationUnit {
         this.sourceValue = sourceValue;
     }
     
-    public HrisCreateEmployeeRequestDtoDurationUnit() {
+    public HrisCreateEmployeeRequestDtoPeriod() {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
@@ -69,7 +69,7 @@ public class HrisCreateEmployeeRequestDtoDurationUnit {
     /**
      * The unified value for the period.
      */
-    public HrisCreateEmployeeRequestDtoDurationUnit withValue(HrisCreateEmployeeRequestDtoEmploymentWorkTimeValue value) {
+    public HrisCreateEmployeeRequestDtoPeriod withValue(HrisCreateEmployeeRequestDtoEmploymentWorkTimeValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
@@ -78,19 +78,19 @@ public class HrisCreateEmployeeRequestDtoDurationUnit {
     /**
      * The unified value for the period.
      */
-    public HrisCreateEmployeeRequestDtoDurationUnit withValue(JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentWorkTimeValue> value) {
+    public HrisCreateEmployeeRequestDtoPeriod withValue(JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentWorkTimeValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
-    public HrisCreateEmployeeRequestDtoDurationUnit withSourceValue(HrisCreateEmployeeRequestDtoEmploymentWorkTimeSourceValue sourceValue) {
+    public HrisCreateEmployeeRequestDtoPeriod withSourceValue(HrisCreateEmployeeRequestDtoEmploymentWorkTimeSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
-    public HrisCreateEmployeeRequestDtoDurationUnit withSourceValue(JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue) {
+    public HrisCreateEmployeeRequestDtoPeriod withSourceValue(JsonNullable<? extends HrisCreateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
         return this;
@@ -104,7 +104,7 @@ public class HrisCreateEmployeeRequestDtoDurationUnit {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        HrisCreateEmployeeRequestDtoDurationUnit other = (HrisCreateEmployeeRequestDtoDurationUnit) o;
+        HrisCreateEmployeeRequestDtoPeriod other = (HrisCreateEmployeeRequestDtoPeriod) o;
         return 
             Utils.enhancedDeepEquals(this.value, other.value) &&
             Utils.enhancedDeepEquals(this.sourceValue, other.sourceValue);
@@ -118,7 +118,7 @@ public class HrisCreateEmployeeRequestDtoDurationUnit {
     
     @Override
     public String toString() {
-        return Utils.toString(HrisCreateEmployeeRequestDtoDurationUnit.class,
+        return Utils.toString(HrisCreateEmployeeRequestDtoPeriod.class,
                 "value", value,
                 "sourceValue", sourceValue);
     }
@@ -166,9 +166,9 @@ public class HrisCreateEmployeeRequestDtoDurationUnit {
             return this;
         }
 
-        public HrisCreateEmployeeRequestDtoDurationUnit build() {
+        public HrisCreateEmployeeRequestDtoPeriod build() {
 
-            return new HrisCreateEmployeeRequestDtoDurationUnit(
+            return new HrisCreateEmployeeRequestDtoPeriod(
                 value, sourceValue);
         }
 

@@ -99,7 +99,7 @@ public class HrisListTimeOffPolicies {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_list_time_off_policies",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -108,7 +108,7 @@ public class HrisListTimeOffPolicies {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_list_time_off_policies",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -117,7 +117,7 @@ public class HrisListTimeOffPolicies {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_list_time_off_policies",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T>HttpRequest buildRequest(T request, Class<T> klass) throws Exception {

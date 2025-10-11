@@ -101,7 +101,7 @@ public class HrisUpdateEmployeeWorkEligibilityRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_update_employee_work_eligibility_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -110,7 +110,7 @@ public class HrisUpdateEmployeeWorkEligibilityRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_update_employee_work_eligibility_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -119,7 +119,7 @@ public class HrisUpdateEmployeeWorkEligibilityRequest {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "hris_update_employee_work_eligibility_request",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T, U>HttpRequest buildRequest(T request, Class<T> klass, TypeReference<U> typeReference) throws Exception {
