@@ -24,12 +24,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @Deprecated
 public class CreateSkillsApiModelLevel {
-
+    /**
+     * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends CreateSkillsApiModelLevelValue> value;
 
-
+    /**
+     * For read operations: the original skill level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CreateSkillsApiModelLevelSourceValue> sourceValue;
@@ -48,12 +55,21 @@ public class CreateSkillsApiModelLevel {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CreateSkillsApiModelLevelValue> value() {
         return (JsonNullable<CreateSkillsApiModelLevelValue>) value;
     }
 
+    /**
+     * For read operations: the original skill level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CreateSkillsApiModelLevelSourceValue> sourceValue() {
@@ -65,24 +81,42 @@ public class CreateSkillsApiModelLevel {
     }
 
 
+    /**
+     * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
+     */
     public CreateSkillsApiModelLevel withValue(CreateSkillsApiModelLevelValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to
+     * "unmapped_value" to use source_value instead.
+     */
     public CreateSkillsApiModelLevel withValue(JsonNullable<? extends CreateSkillsApiModelLevelValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * For read operations: the original skill level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public CreateSkillsApiModelLevel withSourceValue(CreateSkillsApiModelLevelSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * For read operations: the original skill level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public CreateSkillsApiModelLevel withSourceValue(JsonNullable<? extends CreateSkillsApiModelLevelSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -128,12 +162,20 @@ public class CreateSkillsApiModelLevel {
         }
 
 
+        /**
+         * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to
+         * "unmapped_value" to use source_value instead.
+         */
         public Builder value(CreateSkillsApiModelLevelValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The unified skill level. For write operations: provide one of the listed enum values, or omit/set to
+         * "unmapped_value" to use source_value instead.
+         */
         public Builder value(JsonNullable<? extends CreateSkillsApiModelLevelValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -141,12 +183,22 @@ public class CreateSkillsApiModelLevel {
         }
 
 
+        /**
+         * For read operations: the original skill level from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(CreateSkillsApiModelLevelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * For read operations: the original skill level from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(JsonNullable<? extends CreateSkillsApiModelLevelSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

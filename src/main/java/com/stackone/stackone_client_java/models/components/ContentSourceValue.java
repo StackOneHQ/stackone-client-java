@@ -19,6 +19,11 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 
+/**
+ * ContentSourceValue
+ * 
+ * <p>The original value from the provider before normalization.
+ */
 @JsonDeserialize(using = ContentSourceValue._Deserializer.class)
 public class ContentSourceValue {
 

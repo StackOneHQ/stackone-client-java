@@ -24,12 +24,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @Deprecated
 public class Level {
-
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends CategoryLevelValue> value;
 
-
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CategoryLevelSourceValue> sourceValue;
@@ -48,12 +55,21 @@ public class Level {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CategoryLevelValue> value() {
         return (JsonNullable<CategoryLevelValue>) value;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CategoryLevelSourceValue> sourceValue() {
@@ -65,24 +81,42 @@ public class Level {
     }
 
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     public Level withValue(CategoryLevelValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     public Level withValue(JsonNullable<? extends CategoryLevelValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public Level withSourceValue(CategoryLevelSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public Level withSourceValue(JsonNullable<? extends CategoryLevelSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -128,12 +162,20 @@ public class Level {
         }
 
 
+        /**
+         * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+         * to "unmapped_value" to use source_value instead.
+         */
         public Builder value(CategoryLevelValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+         * to "unmapped_value" to use source_value instead.
+         */
         public Builder value(JsonNullable<? extends CategoryLevelValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -141,12 +183,22 @@ public class Level {
         }
 
 
+        /**
+         * For read operations: the original category level from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(CategoryLevelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * For read operations: the original category level from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(JsonNullable<? extends CategoryLevelSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

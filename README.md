@@ -45,7 +45,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.14.2'
+implementation 'com.stackone:stackone-client-java:0.14.3'
 ```
 
 Maven:
@@ -53,7 +53,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.14.2</version>
+    <version>0.14.3</version>
 </dependency>
 ```
 
@@ -504,7 +504,6 @@ public class Application {
 * [getScreeningPackage](docs/sdks/screening/README.md#getscreeningpackage) - Get Screening Package
 * [webhookScreeningResult](docs/sdks/screening/README.md#webhookscreeningresult) - Webhook Screening Result
 * [createScreeningOrder](docs/sdks/screening/README.md#createscreeningorder) - Create Screening Order
-
 
 ### [ticketing()](docs/sdks/ticketing/README.md)
 

@@ -42,25 +42,34 @@ public class AtsListApplicationsQueryParamFilter {
     @SpeakeasyMetadata("queryParam:name=stage")
     private JsonNullable<String> stage;
 
+    /**
+     * Filter to select applications by application_stage_id
+     */
+    @SpeakeasyMetadata("queryParam:name=application_stage_id")
+    private JsonNullable<String> applicationStageId;
+
     @JsonCreator
     public AtsListApplicationsQueryParamFilter(
             JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<OffsetDateTime> createdAfter,
             JsonNullable<String> jobId,
-            JsonNullable<String> stage) {
+            JsonNullable<String> stage,
+            JsonNullable<String> applicationStageId) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(createdAfter, "createdAfter");
         Utils.checkNotNull(jobId, "jobId");
         Utils.checkNotNull(stage, "stage");
+        Utils.checkNotNull(applicationStageId, "applicationStageId");
         this.updatedAfter = updatedAfter;
         this.createdAfter = createdAfter;
         this.jobId = jobId;
         this.stage = stage;
+        this.applicationStageId = applicationStageId;
     }
     
     public AtsListApplicationsQueryParamFilter() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -93,6 +102,14 @@ public class AtsListApplicationsQueryParamFilter {
     @JsonIgnore
     public JsonNullable<String> stage() {
         return stage;
+    }
+
+    /**
+     * Filter to select applications by application_stage_id
+     */
+    @JsonIgnore
+    public JsonNullable<String> applicationStageId() {
+        return applicationStageId;
     }
 
     public static Builder builder() {
@@ -172,6 +189,24 @@ public class AtsListApplicationsQueryParamFilter {
         return this;
     }
 
+    /**
+     * Filter to select applications by application_stage_id
+     */
+    public AtsListApplicationsQueryParamFilter withApplicationStageId(String applicationStageId) {
+        Utils.checkNotNull(applicationStageId, "applicationStageId");
+        this.applicationStageId = JsonNullable.of(applicationStageId);
+        return this;
+    }
+
+    /**
+     * Filter to select applications by application_stage_id
+     */
+    public AtsListApplicationsQueryParamFilter withApplicationStageId(JsonNullable<String> applicationStageId) {
+        Utils.checkNotNull(applicationStageId, "applicationStageId");
+        this.applicationStageId = applicationStageId;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -185,14 +220,15 @@ public class AtsListApplicationsQueryParamFilter {
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
             Utils.enhancedDeepEquals(this.createdAfter, other.createdAfter) &&
             Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
-            Utils.enhancedDeepEquals(this.stage, other.stage);
+            Utils.enhancedDeepEquals(this.stage, other.stage) &&
+            Utils.enhancedDeepEquals(this.applicationStageId, other.applicationStageId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             updatedAfter, createdAfter, jobId,
-            stage);
+            stage, applicationStageId);
     }
     
     @Override
@@ -201,7 +237,8 @@ public class AtsListApplicationsQueryParamFilter {
                 "updatedAfter", updatedAfter,
                 "createdAfter", createdAfter,
                 "jobId", jobId,
-                "stage", stage);
+                "stage", stage,
+                "applicationStageId", applicationStageId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -214,6 +251,8 @@ public class AtsListApplicationsQueryParamFilter {
         private JsonNullable<String> jobId = JsonNullable.undefined();
 
         private JsonNullable<String> stage = JsonNullable.undefined();
+
+        private JsonNullable<String> applicationStageId = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -295,11 +334,30 @@ public class AtsListApplicationsQueryParamFilter {
             return this;
         }
 
+
+        /**
+         * Filter to select applications by application_stage_id
+         */
+        public Builder applicationStageId(String applicationStageId) {
+            Utils.checkNotNull(applicationStageId, "applicationStageId");
+            this.applicationStageId = JsonNullable.of(applicationStageId);
+            return this;
+        }
+
+        /**
+         * Filter to select applications by application_stage_id
+         */
+        public Builder applicationStageId(JsonNullable<String> applicationStageId) {
+            Utils.checkNotNull(applicationStageId, "applicationStageId");
+            this.applicationStageId = applicationStageId;
+            return this;
+        }
+
         public AtsListApplicationsQueryParamFilter build() {
 
             return new AtsListApplicationsQueryParamFilter(
                 updatedAfter, createdAfter, jobId,
-                stage);
+                stage, applicationStageId);
         }
 
     }

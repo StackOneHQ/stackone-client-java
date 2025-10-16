@@ -41,6 +41,11 @@ import java.util.Optional;
  * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
  *
  */
+/**
+ * CompletionLearningObjectTypeValue
+ * 
+ * <p>The StackOne unified learning object type.
+ */
 @JsonDeserialize(using = CompletionLearningObjectTypeValue._Deserializer.class)
 @JsonSerialize(using = CompletionLearningObjectTypeValue._Serializer.class)
 public class CompletionLearningObjectTypeValue {

@@ -41,6 +41,12 @@ import java.util.Optional;
  * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
  *
  */
+/**
+ * CreateSkillsApiModelValue
+ * 
+ * <p>The unified skill level. For write operations: provide one of the listed enum values, or omit/set to
+ * "unmapped_value" to use source_value instead.
+ */
 @JsonDeserialize(using = CreateSkillsApiModelValue._Deserializer.class)
 @JsonSerialize(using = CreateSkillsApiModelValue._Serializer.class)
 public class CreateSkillsApiModelValue {

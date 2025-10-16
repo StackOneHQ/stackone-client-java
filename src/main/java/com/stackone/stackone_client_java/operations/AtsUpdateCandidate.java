@@ -102,7 +102,7 @@ public class AtsUpdateCandidate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "ats_update_candidate",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -111,7 +111,7 @@ public class AtsUpdateCandidate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "ats_update_candidate",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -120,7 +120,7 @@ public class AtsUpdateCandidate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "ats_update_candidate",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T, U>HttpRequest buildRequest(T request, Class<T> klass, TypeReference<U> typeReference) throws Exception {

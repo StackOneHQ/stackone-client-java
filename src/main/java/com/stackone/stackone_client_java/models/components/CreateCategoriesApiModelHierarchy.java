@@ -20,12 +20,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The hierarchal level of the category
  */
 public class CreateCategoriesApiModelHierarchy {
-
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends CreateCategoriesApiModelValue> value;
 
-
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CreateCategoriesApiModelSourceValue> sourceValue;
@@ -44,12 +51,21 @@ public class CreateCategoriesApiModelHierarchy {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CreateCategoriesApiModelValue> value() {
         return (JsonNullable<CreateCategoriesApiModelValue>) value;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CreateCategoriesApiModelSourceValue> sourceValue() {
@@ -61,24 +77,42 @@ public class CreateCategoriesApiModelHierarchy {
     }
 
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     public CreateCategoriesApiModelHierarchy withValue(CreateCategoriesApiModelValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+     * to "unmapped_value" to use source_value instead.
+     */
     public CreateCategoriesApiModelHierarchy withValue(JsonNullable<? extends CreateCategoriesApiModelValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public CreateCategoriesApiModelHierarchy withSourceValue(CreateCategoriesApiModelSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * For read operations: the original category level from the provider. For write operations: fallback
+     * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+     * format.
+     */
     public CreateCategoriesApiModelHierarchy withSourceValue(JsonNullable<? extends CreateCategoriesApiModelSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +158,20 @@ public class CreateCategoriesApiModelHierarchy {
         }
 
 
+        /**
+         * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+         * to "unmapped_value" to use source_value instead.
+         */
         public Builder value(CreateCategoriesApiModelValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The unified category level. For write operations: provide one of the listed enum values, or omit/set
+         * to "unmapped_value" to use source_value instead.
+         */
         public Builder value(JsonNullable<? extends CreateCategoriesApiModelValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +179,22 @@ public class CreateCategoriesApiModelHierarchy {
         }
 
 
+        /**
+         * For read operations: the original category level from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(CreateCategoriesApiModelSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * For read operations: the original category level from the provider. For write operations: fallback
+         * value used when value is omitted or "unmapped_value". You must ensure this matches the provider's
+         * format.
+         */
         public Builder sourceValue(JsonNullable<? extends CreateCategoriesApiModelSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

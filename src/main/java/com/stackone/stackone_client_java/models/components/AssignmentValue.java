@@ -41,6 +41,11 @@ import java.util.Optional;
  * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
  *
  */
+/**
+ * AssignmentValue
+ * 
+ * <p>The StackOne unified assignment status.
+ */
 @JsonDeserialize(using = AssignmentValue._Deserializer.class)
 @JsonSerialize(using = AssignmentValue._Serializer.class)
 public class AssignmentValue {

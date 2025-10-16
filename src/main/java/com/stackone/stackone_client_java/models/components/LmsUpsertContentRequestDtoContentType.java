@@ -20,12 +20,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The type of content
  */
 public class LmsUpsertContentRequestDtoContentType {
-
+    /**
+     * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+     * "unmapped_value", the source_value will be sent to the provider instead.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LmsUpsertContentRequestDtoValue> value;
 
-
+    /**
+     * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+     * responsible for ensuring this matches the provider's expected format.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LmsUpsertContentRequestDtoSourceValue> sourceValue;
@@ -44,12 +50,20 @@ public class LmsUpsertContentRequestDtoContentType {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+     * "unmapped_value", the source_value will be sent to the provider instead.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LmsUpsertContentRequestDtoValue> value() {
         return (JsonNullable<LmsUpsertContentRequestDtoValue>) value;
     }
 
+    /**
+     * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+     * responsible for ensuring this matches the provider's expected format.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LmsUpsertContentRequestDtoSourceValue> sourceValue() {
@@ -61,24 +75,40 @@ public class LmsUpsertContentRequestDtoContentType {
     }
 
 
+    /**
+     * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+     * "unmapped_value", the source_value will be sent to the provider instead.
+     */
     public LmsUpsertContentRequestDtoContentType withValue(LmsUpsertContentRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+     * "unmapped_value", the source_value will be sent to the provider instead.
+     */
     public LmsUpsertContentRequestDtoContentType withValue(JsonNullable<? extends LmsUpsertContentRequestDtoValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+     * responsible for ensuring this matches the provider's expected format.
+     */
     public LmsUpsertContentRequestDtoContentType withSourceValue(LmsUpsertContentRequestDtoSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+     * responsible for ensuring this matches the provider's expected format.
+     */
     public LmsUpsertContentRequestDtoContentType withSourceValue(JsonNullable<? extends LmsUpsertContentRequestDtoSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +154,20 @@ public class LmsUpsertContentRequestDtoContentType {
         }
 
 
+        /**
+         * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+         * "unmapped_value", the source_value will be sent to the provider instead.
+         */
         public Builder value(LmsUpsertContentRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+         * "unmapped_value", the source_value will be sent to the provider instead.
+         */
         public Builder value(JsonNullable<? extends LmsUpsertContentRequestDtoValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +175,20 @@ public class LmsUpsertContentRequestDtoContentType {
         }
 
 
+        /**
+         * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+         * responsible for ensuring this matches the provider's expected format.
+         */
         public Builder sourceValue(LmsUpsertContentRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+         * responsible for ensuring this matches the provider's expected format.
+         */
         public Builder sourceValue(JsonNullable<? extends LmsUpsertContentRequestDtoSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

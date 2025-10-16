@@ -101,7 +101,7 @@ public class StackoneRpcAction {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "stackone_rpc_action",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -110,7 +110,7 @@ public class StackoneRpcAction {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "stackone_rpc_action",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -119,7 +119,7 @@ public class StackoneRpcAction {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "stackone_rpc_action",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T, U>HttpRequest buildRequest(T request, TypeReference<U> typeReference) throws Exception {

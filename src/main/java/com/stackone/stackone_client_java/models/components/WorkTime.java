@@ -24,20 +24,20 @@ public class WorkTime {
     private JsonNullable<String> duration;
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("duration_unit")
-    private JsonNullable<? extends EmploymentDurationUnit> durationUnit;
+    @JsonProperty("period")
+    private JsonNullable<? extends Period> period;
 
     @JsonCreator
     public WorkTime(
             @JsonProperty("duration") JsonNullable<String> duration,
-            @JsonProperty("duration_unit") JsonNullable<? extends EmploymentDurationUnit> durationUnit) {
+            @JsonProperty("period") JsonNullable<? extends Period> period) {
         Utils.checkNotNull(duration, "duration");
-        Utils.checkNotNull(durationUnit, "durationUnit");
+        Utils.checkNotNull(period, "period");
         this.duration = duration;
-        this.durationUnit = durationUnit;
+        this.period = period;
     }
     
     public WorkTime() {
@@ -53,12 +53,12 @@ public class WorkTime {
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<EmploymentDurationUnit> durationUnit() {
-        return (JsonNullable<EmploymentDurationUnit>) durationUnit;
+    public JsonNullable<Period> period() {
+        return (JsonNullable<Period>) period;
     }
 
     public static Builder builder() {
@@ -85,20 +85,20 @@ public class WorkTime {
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
-    public WorkTime withDurationUnit(EmploymentDurationUnit durationUnit) {
-        Utils.checkNotNull(durationUnit, "durationUnit");
-        this.durationUnit = JsonNullable.of(durationUnit);
+    public WorkTime withPeriod(Period period) {
+        Utils.checkNotNull(period, "period");
+        this.period = JsonNullable.of(period);
         return this;
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
-    public WorkTime withDurationUnit(JsonNullable<? extends EmploymentDurationUnit> durationUnit) {
-        Utils.checkNotNull(durationUnit, "durationUnit");
-        this.durationUnit = durationUnit;
+    public WorkTime withPeriod(JsonNullable<? extends Period> period) {
+        Utils.checkNotNull(period, "period");
+        this.period = period;
         return this;
     }
 
@@ -113,20 +113,20 @@ public class WorkTime {
         WorkTime other = (WorkTime) o;
         return 
             Utils.enhancedDeepEquals(this.duration, other.duration) &&
-            Utils.enhancedDeepEquals(this.durationUnit, other.durationUnit);
+            Utils.enhancedDeepEquals(this.period, other.period);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            duration, durationUnit);
+            duration, period);
     }
     
     @Override
     public String toString() {
         return Utils.toString(WorkTime.class,
                 "duration", duration,
-                "durationUnit", durationUnit);
+                "period", period);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -134,7 +134,7 @@ public class WorkTime {
 
         private JsonNullable<String> duration = JsonNullable.undefined();
 
-        private JsonNullable<? extends EmploymentDurationUnit> durationUnit = JsonNullable.undefined();
+        private JsonNullable<? extends Period> period = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -161,27 +161,27 @@ public class WorkTime {
 
 
         /**
-         * The duration unit of the work time
+         * The period of the work time
          */
-        public Builder durationUnit(EmploymentDurationUnit durationUnit) {
-            Utils.checkNotNull(durationUnit, "durationUnit");
-            this.durationUnit = JsonNullable.of(durationUnit);
+        public Builder period(Period period) {
+            Utils.checkNotNull(period, "period");
+            this.period = JsonNullable.of(period);
             return this;
         }
 
         /**
-         * The duration unit of the work time
+         * The period of the work time
          */
-        public Builder durationUnit(JsonNullable<? extends EmploymentDurationUnit> durationUnit) {
-            Utils.checkNotNull(durationUnit, "durationUnit");
-            this.durationUnit = durationUnit;
+        public Builder period(JsonNullable<? extends Period> period) {
+            Utils.checkNotNull(period, "period");
+            this.period = period;
             return this;
         }
 
         public WorkTime build() {
 
             return new WorkTime(
-                duration, durationUnit);
+                duration, period);
         }
 
     }
