@@ -41,6 +41,12 @@ import java.util.Optional;
  * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
  *
  */
+/**
+ * CreateCategoriesApiModelValue
+ * 
+ * <p>The unified category level. For write operations: provide one of the listed enum values, or omit/set
+ * to "unmapped_value" to use source_value instead.
+ */
 @JsonDeserialize(using = CreateCategoriesApiModelValue._Deserializer.class)
 @JsonSerialize(using = CreateCategoriesApiModelValue._Serializer.class)
 public class CreateCategoriesApiModelValue {

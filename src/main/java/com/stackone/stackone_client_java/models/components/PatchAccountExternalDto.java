@@ -8,8 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.stackone.stackone_client_java.utils.LazySingletonValue;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
@@ -426,7 +424,7 @@ public class PatchAccountExternalDto {
 
         private JsonNullable<? extends PatchAccountExternalDtoMetadata> metadata = JsonNullable.undefined();
 
-        private JsonNullable<? extends PatchAccountExternalDtoType> type;
+        private JsonNullable<? extends PatchAccountExternalDtoType> type = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -595,9 +593,6 @@ public class PatchAccountExternalDto {
         }
 
         public PatchAccountExternalDto build() {
-            if (type == null) {
-                type = _SINGLETON_VALUE_Type.value();
-            }
 
             return new PatchAccountExternalDto(
                 provider, originOwnerId, originOwnerName,
@@ -606,11 +601,5 @@ public class PatchAccountExternalDto {
                 label, metadata, type);
         }
 
-
-        private static final LazySingletonValue<JsonNullable<? extends PatchAccountExternalDtoType>> _SINGLETON_VALUE_Type =
-                new LazySingletonValue<>(
-                        "type",
-                        "\"production\"",
-                        new TypeReference<JsonNullable<? extends PatchAccountExternalDtoType>>() {});
     }
 }

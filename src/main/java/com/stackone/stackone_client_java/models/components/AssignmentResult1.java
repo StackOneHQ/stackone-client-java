@@ -20,12 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The result of the assignment
  */
 public class AssignmentResult1 {
-
+    /**
+     * The StackOne unified result status.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends AssignmentResultValue> value;
 
-
+    /**
+     * The original result status from the provider before normalization.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends AssignmentResultSourceValue> sourceValue;
@@ -44,12 +48,18 @@ public class AssignmentResult1 {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The StackOne unified result status.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<AssignmentResultValue> value() {
         return (JsonNullable<AssignmentResultValue>) value;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<AssignmentResultSourceValue> sourceValue() {
@@ -61,24 +71,36 @@ public class AssignmentResult1 {
     }
 
 
+    /**
+     * The StackOne unified result status.
+     */
     public AssignmentResult1 withValue(AssignmentResultValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The StackOne unified result status.
+     */
     public AssignmentResult1 withValue(JsonNullable<? extends AssignmentResultValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     public AssignmentResult1 withSourceValue(AssignmentResultSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     public AssignmentResult1 withSourceValue(JsonNullable<? extends AssignmentResultSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +146,18 @@ public class AssignmentResult1 {
         }
 
 
+        /**
+         * The StackOne unified result status.
+         */
         public Builder value(AssignmentResultValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The StackOne unified result status.
+         */
         public Builder value(JsonNullable<? extends AssignmentResultValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +165,18 @@ public class AssignmentResult1 {
         }
 
 
+        /**
+         * The original result status from the provider before normalization.
+         */
         public Builder sourceValue(AssignmentResultSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The original result status from the provider before normalization.
+         */
         public Builder sourceValue(JsonNullable<? extends AssignmentResultSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

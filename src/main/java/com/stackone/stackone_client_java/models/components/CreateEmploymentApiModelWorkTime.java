@@ -24,20 +24,20 @@ public class CreateEmploymentApiModelWorkTime {
     private JsonNullable<String> duration;
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("duration_unit")
-    private JsonNullable<? extends CreateEmploymentApiModelDurationUnit> durationUnit;
+    @JsonProperty("period")
+    private JsonNullable<? extends CreateEmploymentApiModelPeriod> period;
 
     @JsonCreator
     public CreateEmploymentApiModelWorkTime(
             @JsonProperty("duration") JsonNullable<String> duration,
-            @JsonProperty("duration_unit") JsonNullable<? extends CreateEmploymentApiModelDurationUnit> durationUnit) {
+            @JsonProperty("period") JsonNullable<? extends CreateEmploymentApiModelPeriod> period) {
         Utils.checkNotNull(duration, "duration");
-        Utils.checkNotNull(durationUnit, "durationUnit");
+        Utils.checkNotNull(period, "period");
         this.duration = duration;
-        this.durationUnit = durationUnit;
+        this.period = period;
     }
     
     public CreateEmploymentApiModelWorkTime() {
@@ -53,12 +53,12 @@ public class CreateEmploymentApiModelWorkTime {
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<CreateEmploymentApiModelDurationUnit> durationUnit() {
-        return (JsonNullable<CreateEmploymentApiModelDurationUnit>) durationUnit;
+    public JsonNullable<CreateEmploymentApiModelPeriod> period() {
+        return (JsonNullable<CreateEmploymentApiModelPeriod>) period;
     }
 
     public static Builder builder() {
@@ -85,20 +85,20 @@ public class CreateEmploymentApiModelWorkTime {
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
-    public CreateEmploymentApiModelWorkTime withDurationUnit(CreateEmploymentApiModelDurationUnit durationUnit) {
-        Utils.checkNotNull(durationUnit, "durationUnit");
-        this.durationUnit = JsonNullable.of(durationUnit);
+    public CreateEmploymentApiModelWorkTime withPeriod(CreateEmploymentApiModelPeriod period) {
+        Utils.checkNotNull(period, "period");
+        this.period = JsonNullable.of(period);
         return this;
     }
 
     /**
-     * The duration unit of the work time
+     * The period of the work time
      */
-    public CreateEmploymentApiModelWorkTime withDurationUnit(JsonNullable<? extends CreateEmploymentApiModelDurationUnit> durationUnit) {
-        Utils.checkNotNull(durationUnit, "durationUnit");
-        this.durationUnit = durationUnit;
+    public CreateEmploymentApiModelWorkTime withPeriod(JsonNullable<? extends CreateEmploymentApiModelPeriod> period) {
+        Utils.checkNotNull(period, "period");
+        this.period = period;
         return this;
     }
 
@@ -113,20 +113,20 @@ public class CreateEmploymentApiModelWorkTime {
         CreateEmploymentApiModelWorkTime other = (CreateEmploymentApiModelWorkTime) o;
         return 
             Utils.enhancedDeepEquals(this.duration, other.duration) &&
-            Utils.enhancedDeepEquals(this.durationUnit, other.durationUnit);
+            Utils.enhancedDeepEquals(this.period, other.period);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            duration, durationUnit);
+            duration, period);
     }
     
     @Override
     public String toString() {
         return Utils.toString(CreateEmploymentApiModelWorkTime.class,
                 "duration", duration,
-                "durationUnit", durationUnit);
+                "period", period);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -134,7 +134,7 @@ public class CreateEmploymentApiModelWorkTime {
 
         private JsonNullable<String> duration = JsonNullable.undefined();
 
-        private JsonNullable<? extends CreateEmploymentApiModelDurationUnit> durationUnit = JsonNullable.undefined();
+        private JsonNullable<? extends CreateEmploymentApiModelPeriod> period = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -161,27 +161,27 @@ public class CreateEmploymentApiModelWorkTime {
 
 
         /**
-         * The duration unit of the work time
+         * The period of the work time
          */
-        public Builder durationUnit(CreateEmploymentApiModelDurationUnit durationUnit) {
-            Utils.checkNotNull(durationUnit, "durationUnit");
-            this.durationUnit = JsonNullable.of(durationUnit);
+        public Builder period(CreateEmploymentApiModelPeriod period) {
+            Utils.checkNotNull(period, "period");
+            this.period = JsonNullable.of(period);
             return this;
         }
 
         /**
-         * The duration unit of the work time
+         * The period of the work time
          */
-        public Builder durationUnit(JsonNullable<? extends CreateEmploymentApiModelDurationUnit> durationUnit) {
-            Utils.checkNotNull(durationUnit, "durationUnit");
-            this.durationUnit = durationUnit;
+        public Builder period(JsonNullable<? extends CreateEmploymentApiModelPeriod> period) {
+            Utils.checkNotNull(period, "period");
+            this.period = period;
             return this;
         }
 
         public CreateEmploymentApiModelWorkTime build() {
 
             return new CreateEmploymentApiModelWorkTime(
-                duration, durationUnit);
+                duration, period);
         }
 
     }

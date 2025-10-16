@@ -104,6 +104,13 @@ public class TimeOffBalances {
     private JsonNullable<OffsetDateTime> balanceExpiryDate;
 
     /**
+     * Indicates if this time off balance represents unlimited leave
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("is_unlimited")
+    private JsonNullable<? extends IsUnlimited> isUnlimited;
+
+    /**
      * The updated_at date of this time off balance
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -124,6 +131,7 @@ public class TimeOffBalances {
             @JsonProperty("balance_unit") JsonNullable<? extends BalanceUnit> balanceUnit,
             @JsonProperty("balance_start_date") JsonNullable<OffsetDateTime> balanceStartDate,
             @JsonProperty("balance_expiry_date") JsonNullable<OffsetDateTime> balanceExpiryDate,
+            @JsonProperty("is_unlimited") JsonNullable<? extends IsUnlimited> isUnlimited,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
@@ -137,6 +145,7 @@ public class TimeOffBalances {
         Utils.checkNotNull(balanceUnit, "balanceUnit");
         Utils.checkNotNull(balanceStartDate, "balanceStartDate");
         Utils.checkNotNull(balanceExpiryDate, "balanceExpiryDate");
+        Utils.checkNotNull(isUnlimited, "isUnlimited");
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.id = id;
         this.remoteId = remoteId;
@@ -150,6 +159,7 @@ public class TimeOffBalances {
         this.balanceUnit = balanceUnit;
         this.balanceStartDate = balanceStartDate;
         this.balanceExpiryDate = balanceExpiryDate;
+        this.isUnlimited = isUnlimited;
         this.updatedAt = updatedAt;
     }
     
@@ -158,7 +168,7 @@ public class TimeOffBalances {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -258,6 +268,15 @@ public class TimeOffBalances {
     @JsonIgnore
     public JsonNullable<OffsetDateTime> balanceExpiryDate() {
         return balanceExpiryDate;
+    }
+
+    /**
+     * Indicates if this time off balance represents unlimited leave
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<IsUnlimited> isUnlimited() {
+        return (JsonNullable<IsUnlimited>) isUnlimited;
     }
 
     /**
@@ -492,6 +511,24 @@ public class TimeOffBalances {
     }
 
     /**
+     * Indicates if this time off balance represents unlimited leave
+     */
+    public TimeOffBalances withIsUnlimited(IsUnlimited isUnlimited) {
+        Utils.checkNotNull(isUnlimited, "isUnlimited");
+        this.isUnlimited = JsonNullable.of(isUnlimited);
+        return this;
+    }
+
+    /**
+     * Indicates if this time off balance represents unlimited leave
+     */
+    public TimeOffBalances withIsUnlimited(JsonNullable<? extends IsUnlimited> isUnlimited) {
+        Utils.checkNotNull(isUnlimited, "isUnlimited");
+        this.isUnlimited = isUnlimited;
+        return this;
+    }
+
+    /**
      * The updated_at date of this time off balance
      */
     public TimeOffBalances withUpdatedAt(OffsetDateTime updatedAt) {
@@ -531,6 +568,7 @@ public class TimeOffBalances {
             Utils.enhancedDeepEquals(this.balanceUnit, other.balanceUnit) &&
             Utils.enhancedDeepEquals(this.balanceStartDate, other.balanceStartDate) &&
             Utils.enhancedDeepEquals(this.balanceExpiryDate, other.balanceExpiryDate) &&
+            Utils.enhancedDeepEquals(this.isUnlimited, other.isUnlimited) &&
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
     
@@ -541,7 +579,7 @@ public class TimeOffBalances {
             remoteEmployeeId, policyId, remotePolicyId,
             policy, currentBalance, initialBalance,
             balanceUnit, balanceStartDate, balanceExpiryDate,
-            updatedAt);
+            isUnlimited, updatedAt);
     }
     
     @Override
@@ -559,6 +597,7 @@ public class TimeOffBalances {
                 "balanceUnit", balanceUnit,
                 "balanceStartDate", balanceStartDate,
                 "balanceExpiryDate", balanceExpiryDate,
+                "isUnlimited", isUnlimited,
                 "updatedAt", updatedAt);
     }
 
@@ -588,6 +627,8 @@ public class TimeOffBalances {
         private JsonNullable<OffsetDateTime> balanceStartDate = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> balanceExpiryDate = JsonNullable.undefined();
+
+        private JsonNullable<? extends IsUnlimited> isUnlimited = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
 
@@ -827,6 +868,25 @@ public class TimeOffBalances {
 
 
         /**
+         * Indicates if this time off balance represents unlimited leave
+         */
+        public Builder isUnlimited(IsUnlimited isUnlimited) {
+            Utils.checkNotNull(isUnlimited, "isUnlimited");
+            this.isUnlimited = JsonNullable.of(isUnlimited);
+            return this;
+        }
+
+        /**
+         * Indicates if this time off balance represents unlimited leave
+         */
+        public Builder isUnlimited(JsonNullable<? extends IsUnlimited> isUnlimited) {
+            Utils.checkNotNull(isUnlimited, "isUnlimited");
+            this.isUnlimited = isUnlimited;
+            return this;
+        }
+
+
+        /**
          * The updated_at date of this time off balance
          */
         public Builder updatedAt(OffsetDateTime updatedAt) {
@@ -851,7 +911,7 @@ public class TimeOffBalances {
                 remoteEmployeeId, policyId, remotePolicyId,
                 policy, currentBalance, initialBalance,
                 balanceUnit, balanceStartDate, balanceExpiryDate,
-                updatedAt);
+                isUnlimited, updatedAt);
         }
 
     }

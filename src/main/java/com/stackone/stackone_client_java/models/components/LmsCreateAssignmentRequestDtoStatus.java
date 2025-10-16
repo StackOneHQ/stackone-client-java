@@ -20,12 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The status of the assignment
  */
 public class LmsCreateAssignmentRequestDtoStatus {
-
+    /**
+     * The StackOne unified assignment status.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LmsCreateAssignmentRequestDtoValue> value;
 
-
+    /**
+     * The original status value from the provider before normalization.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LmsCreateAssignmentRequestDtoSourceValue> sourceValue;
@@ -44,12 +48,18 @@ public class LmsCreateAssignmentRequestDtoStatus {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The StackOne unified assignment status.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LmsCreateAssignmentRequestDtoValue> value() {
         return (JsonNullable<LmsCreateAssignmentRequestDtoValue>) value;
     }
 
+    /**
+     * The original status value from the provider before normalization.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LmsCreateAssignmentRequestDtoSourceValue> sourceValue() {
@@ -61,24 +71,36 @@ public class LmsCreateAssignmentRequestDtoStatus {
     }
 
 
+    /**
+     * The StackOne unified assignment status.
+     */
     public LmsCreateAssignmentRequestDtoStatus withValue(LmsCreateAssignmentRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The StackOne unified assignment status.
+     */
     public LmsCreateAssignmentRequestDtoStatus withValue(JsonNullable<? extends LmsCreateAssignmentRequestDtoValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The original status value from the provider before normalization.
+     */
     public LmsCreateAssignmentRequestDtoStatus withSourceValue(LmsCreateAssignmentRequestDtoSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The original status value from the provider before normalization.
+     */
     public LmsCreateAssignmentRequestDtoStatus withSourceValue(JsonNullable<? extends LmsCreateAssignmentRequestDtoSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +146,18 @@ public class LmsCreateAssignmentRequestDtoStatus {
         }
 
 
+        /**
+         * The StackOne unified assignment status.
+         */
         public Builder value(LmsCreateAssignmentRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The StackOne unified assignment status.
+         */
         public Builder value(JsonNullable<? extends LmsCreateAssignmentRequestDtoValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +165,18 @@ public class LmsCreateAssignmentRequestDtoStatus {
         }
 
 
+        /**
+         * The original status value from the provider before normalization.
+         */
         public Builder sourceValue(LmsCreateAssignmentRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The original status value from the provider before normalization.
+         */
         public Builder sourceValue(JsonNullable<? extends LmsCreateAssignmentRequestDtoSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

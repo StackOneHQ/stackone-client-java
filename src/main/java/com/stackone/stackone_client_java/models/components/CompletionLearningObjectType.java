@@ -20,12 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The learning object type of the completion
  */
 public class CompletionLearningObjectType {
-
+    /**
+     * The StackOne unified learning object type.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends CompletionLearningObjectTypeValue> value;
 
-
+    /**
+     * The original learning object type from the provider before normalization.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends CompletionLearningObjectTypeSourceValue> sourceValue;
@@ -44,12 +48,18 @@ public class CompletionLearningObjectType {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The StackOne unified learning object type.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CompletionLearningObjectTypeValue> value() {
         return (JsonNullable<CompletionLearningObjectTypeValue>) value;
     }
 
+    /**
+     * The original learning object type from the provider before normalization.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<CompletionLearningObjectTypeSourceValue> sourceValue() {
@@ -61,24 +71,36 @@ public class CompletionLearningObjectType {
     }
 
 
+    /**
+     * The StackOne unified learning object type.
+     */
     public CompletionLearningObjectType withValue(CompletionLearningObjectTypeValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The StackOne unified learning object type.
+     */
     public CompletionLearningObjectType withValue(JsonNullable<? extends CompletionLearningObjectTypeValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The original learning object type from the provider before normalization.
+     */
     public CompletionLearningObjectType withSourceValue(CompletionLearningObjectTypeSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The original learning object type from the provider before normalization.
+     */
     public CompletionLearningObjectType withSourceValue(JsonNullable<? extends CompletionLearningObjectTypeSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +146,18 @@ public class CompletionLearningObjectType {
         }
 
 
+        /**
+         * The StackOne unified learning object type.
+         */
         public Builder value(CompletionLearningObjectTypeValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The StackOne unified learning object type.
+         */
         public Builder value(JsonNullable<? extends CompletionLearningObjectTypeValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +165,18 @@ public class CompletionLearningObjectType {
         }
 
 
+        /**
+         * The original learning object type from the provider before normalization.
+         */
         public Builder sourceValue(CompletionLearningObjectTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The original learning object type from the provider before normalization.
+         */
         public Builder sourceValue(JsonNullable<? extends CompletionLearningObjectTypeSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

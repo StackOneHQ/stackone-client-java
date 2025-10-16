@@ -99,7 +99,7 @@ public class IamGetRole {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "iam_get_role",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -108,7 +108,7 @@ public class IamGetRole {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "iam_get_role",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -117,7 +117,7 @@ public class IamGetRole {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "iam_get_role",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T>HttpRequest buildRequest(T request, Class<T> klass) throws Exception {

@@ -102,7 +102,7 @@ public class MarketingUpdatePushTemplate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "marketing_update_push_template",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -111,7 +111,7 @@ public class MarketingUpdatePushTemplate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "marketing_update_push_template",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
 
@@ -120,7 +120,7 @@ public class MarketingUpdatePushTemplate {
                     this.sdkConfiguration,
                     this.baseUrl,
                     "marketing_update_push_template",
-                    java.util.Optional.of(java.util.List.of()),
+                    java.util.Optional.empty(),
                     securitySource());
         }
         <T, U>HttpRequest buildRequest(T request, Class<T> klass, TypeReference<U> typeReference) throws Exception {

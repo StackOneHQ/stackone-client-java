@@ -15,34 +15,34 @@ import java.lang.SuppressWarnings;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * HrisUpdateEmploymentRequestDtoDurationUnit
+ * HrisUpdateEmployeeRequestDtoPeriod
  * 
- * <p>The duration unit of the work time
+ * <p>The period of the work time
  */
-public class HrisUpdateEmploymentRequestDtoDurationUnit {
+public class HrisUpdateEmployeeRequestDtoPeriod {
     /**
      * The unified value for the period.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
-    private JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeValue> value;
+    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue> value;
 
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
-    private JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeSourceValue> sourceValue;
+    private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue;
 
     @JsonCreator
-    public HrisUpdateEmploymentRequestDtoDurationUnit(
-            @JsonProperty("value") JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeValue> value,
-            @JsonProperty("source_value") JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeSourceValue> sourceValue) {
+    public HrisUpdateEmployeeRequestDtoPeriod(
+            @JsonProperty("value") JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue> value,
+            @JsonProperty("source_value") JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue) {
         Utils.checkNotNull(value, "value");
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.value = value;
         this.sourceValue = sourceValue;
     }
     
-    public HrisUpdateEmploymentRequestDtoDurationUnit() {
+    public HrisUpdateEmployeeRequestDtoPeriod() {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
@@ -51,14 +51,14 @@ public class HrisUpdateEmploymentRequestDtoDurationUnit {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<HrisUpdateEmploymentRequestDtoWorkTimeValue> value() {
-        return (JsonNullable<HrisUpdateEmploymentRequestDtoWorkTimeValue>) value;
+    public JsonNullable<HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue> value() {
+        return (JsonNullable<HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue>) value;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<HrisUpdateEmploymentRequestDtoWorkTimeSourceValue> sourceValue() {
-        return (JsonNullable<HrisUpdateEmploymentRequestDtoWorkTimeSourceValue>) sourceValue;
+    public JsonNullable<HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue() {
+        return (JsonNullable<HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue>) sourceValue;
     }
 
     public static Builder builder() {
@@ -69,7 +69,7 @@ public class HrisUpdateEmploymentRequestDtoDurationUnit {
     /**
      * The unified value for the period.
      */
-    public HrisUpdateEmploymentRequestDtoDurationUnit withValue(HrisUpdateEmploymentRequestDtoWorkTimeValue value) {
+    public HrisUpdateEmployeeRequestDtoPeriod withValue(HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
@@ -78,19 +78,19 @@ public class HrisUpdateEmploymentRequestDtoDurationUnit {
     /**
      * The unified value for the period.
      */
-    public HrisUpdateEmploymentRequestDtoDurationUnit withValue(JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeValue> value) {
+    public HrisUpdateEmployeeRequestDtoPeriod withValue(JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
-    public HrisUpdateEmploymentRequestDtoDurationUnit withSourceValue(HrisUpdateEmploymentRequestDtoWorkTimeSourceValue sourceValue) {
+    public HrisUpdateEmployeeRequestDtoPeriod withSourceValue(HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
-    public HrisUpdateEmploymentRequestDtoDurationUnit withSourceValue(JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeSourceValue> sourceValue) {
+    public HrisUpdateEmployeeRequestDtoPeriod withSourceValue(JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
         return this;
@@ -104,7 +104,7 @@ public class HrisUpdateEmploymentRequestDtoDurationUnit {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        HrisUpdateEmploymentRequestDtoDurationUnit other = (HrisUpdateEmploymentRequestDtoDurationUnit) o;
+        HrisUpdateEmployeeRequestDtoPeriod other = (HrisUpdateEmployeeRequestDtoPeriod) o;
         return 
             Utils.enhancedDeepEquals(this.value, other.value) &&
             Utils.enhancedDeepEquals(this.sourceValue, other.sourceValue);
@@ -118,7 +118,7 @@ public class HrisUpdateEmploymentRequestDtoDurationUnit {
     
     @Override
     public String toString() {
-        return Utils.toString(HrisUpdateEmploymentRequestDtoDurationUnit.class,
+        return Utils.toString(HrisUpdateEmployeeRequestDtoPeriod.class,
                 "value", value,
                 "sourceValue", sourceValue);
     }
@@ -126,9 +126,9 @@ public class HrisUpdateEmploymentRequestDtoDurationUnit {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeValue> value = JsonNullable.undefined();
+        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue> value = JsonNullable.undefined();
 
-        private JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeSourceValue> sourceValue = JsonNullable.undefined();
+        private JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -138,7 +138,7 @@ public class HrisUpdateEmploymentRequestDtoDurationUnit {
         /**
          * The unified value for the period.
          */
-        public Builder value(HrisUpdateEmploymentRequestDtoWorkTimeValue value) {
+        public Builder value(HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
@@ -147,28 +147,28 @@ public class HrisUpdateEmploymentRequestDtoDurationUnit {
         /**
          * The unified value for the period.
          */
-        public Builder value(JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeValue> value) {
+        public Builder value(JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
 
 
-        public Builder sourceValue(HrisUpdateEmploymentRequestDtoWorkTimeSourceValue sourceValue) {
+        public Builder sourceValue(HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
-        public Builder sourceValue(JsonNullable<? extends HrisUpdateEmploymentRequestDtoWorkTimeSourceValue> sourceValue) {
+        public Builder sourceValue(JsonNullable<? extends HrisUpdateEmployeeRequestDtoEmploymentWorkTimeSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;
             return this;
         }
 
-        public HrisUpdateEmploymentRequestDtoDurationUnit build() {
+        public HrisUpdateEmployeeRequestDtoPeriod build() {
 
-            return new HrisUpdateEmploymentRequestDtoDurationUnit(
+            return new HrisUpdateEmployeeRequestDtoPeriod(
                 value, sourceValue);
         }
 

@@ -19,6 +19,11 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 
+/**
+ * LmsCreateContentRequestDtoSourceValue
+ * 
+ * <p>The original value from the provider before normalization.
+ */
 @JsonDeserialize(using = LmsCreateContentRequestDtoSourceValue._Deserializer.class)
 public class LmsCreateContentRequestDtoSourceValue {
 

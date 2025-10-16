@@ -20,12 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>The result of the completion
  */
 public class LmsCreateCompletionRequestDtoResult {
-
+    /**
+     * The StackOne unified result status.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LmsCreateCompletionRequestDtoValue> value;
 
-
+    /**
+     * The original result status from the provider before normalization.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
     private JsonNullable<? extends LmsCreateCompletionRequestDtoSourceValue> sourceValue;
@@ -44,12 +48,18 @@ public class LmsCreateCompletionRequestDtoResult {
         this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    /**
+     * The StackOne unified result status.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LmsCreateCompletionRequestDtoValue> value() {
         return (JsonNullable<LmsCreateCompletionRequestDtoValue>) value;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<LmsCreateCompletionRequestDtoSourceValue> sourceValue() {
@@ -61,24 +71,36 @@ public class LmsCreateCompletionRequestDtoResult {
     }
 
 
+    /**
+     * The StackOne unified result status.
+     */
     public LmsCreateCompletionRequestDtoResult withValue(LmsCreateCompletionRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
+    /**
+     * The StackOne unified result status.
+     */
     public LmsCreateCompletionRequestDtoResult withValue(JsonNullable<? extends LmsCreateCompletionRequestDtoValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     public LmsCreateCompletionRequestDtoResult withSourceValue(LmsCreateCompletionRequestDtoSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
+    /**
+     * The original result status from the provider before normalization.
+     */
     public LmsCreateCompletionRequestDtoResult withSourceValue(JsonNullable<? extends LmsCreateCompletionRequestDtoSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
@@ -124,12 +146,18 @@ public class LmsCreateCompletionRequestDtoResult {
         }
 
 
+        /**
+         * The StackOne unified result status.
+         */
         public Builder value(LmsCreateCompletionRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
+        /**
+         * The StackOne unified result status.
+         */
         public Builder value(JsonNullable<? extends LmsCreateCompletionRequestDtoValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
@@ -137,12 +165,18 @@ public class LmsCreateCompletionRequestDtoResult {
         }
 
 
+        /**
+         * The original result status from the provider before normalization.
+         */
         public Builder sourceValue(LmsCreateCompletionRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
+        /**
+         * The original result status from the provider before normalization.
+         */
         public Builder sourceValue(JsonNullable<? extends LmsCreateCompletionRequestDtoSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;

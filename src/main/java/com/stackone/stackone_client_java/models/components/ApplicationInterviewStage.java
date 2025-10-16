@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Deprecated;
 import java.lang.Double;
 import java.lang.Object;
 import java.lang.Override;
@@ -18,7 +19,12 @@ import java.time.OffsetDateTime;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
+/**
+ * ApplicationInterviewStage
+ * 
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+ */
+@Deprecated
 public class ApplicationInterviewStage {
     /**
      * Unique identifier

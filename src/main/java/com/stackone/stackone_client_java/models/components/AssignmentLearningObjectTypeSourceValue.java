@@ -19,6 +19,11 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 
+/**
+ * AssignmentLearningObjectTypeSourceValue
+ * 
+ * <p>The original learning object type from the provider before normalization.
+ */
 @JsonDeserialize(using = AssignmentLearningObjectTypeSourceValue._Deserializer.class)
 public class AssignmentLearningObjectTypeSourceValue {
 
