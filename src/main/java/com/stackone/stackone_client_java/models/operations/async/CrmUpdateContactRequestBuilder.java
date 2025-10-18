@@ -13,7 +13,6 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -71,7 +70,7 @@ public class CrmUpdateContactRequestBuilder {
         return request;
     }
 
-    public CompletableFuture<CrmUpdateContactResponse> call() throws Exception {
+    public CompletableFuture<CrmUpdateContactResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

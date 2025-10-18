@@ -11,7 +11,6 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -67,7 +66,7 @@ public class StackoneGetConnectorMetaRequestBuilder {
         return request;
     }
 
-    public StackoneGetConnectorMetaResponse call() throws Exception {
+    public StackoneGetConnectorMetaResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

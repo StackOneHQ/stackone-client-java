@@ -259,3 +259,13 @@ Based on:
 - [java v0.14.3] .
 ### Releases
 - [Maven Central v0.14.3] https://central.sonatype.com/artifact/com.stackone/stackone-client-java/0.14.3 - .
+
+## 2025-10-18 00:05:39
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.637.0 (2.727.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.15.0] .
+### Releases
+- [Maven Central v0.15.0] https://central.sonatype.com/artifact/com.stackone/stackone-client-java/0.15.0 - .

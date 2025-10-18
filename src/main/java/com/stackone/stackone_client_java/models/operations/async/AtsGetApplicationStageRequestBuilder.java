@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Exception;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -45,7 +44,7 @@ public class AtsGetApplicationStageRequestBuilder {
         return this;
     }
 
-    public CompletableFuture<AtsGetApplicationStageResponse> call() throws Exception {
+    public CompletableFuture<AtsGetApplicationStageResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

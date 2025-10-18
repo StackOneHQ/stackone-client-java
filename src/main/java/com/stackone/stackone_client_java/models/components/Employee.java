@@ -44,6 +44,13 @@ public class Employee {
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
     /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("title")
+    private JsonNullable<String> title;
+
+    /**
      * The employee first name
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -417,6 +424,7 @@ public class Employee {
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
+            @JsonProperty("title") JsonNullable<String> title,
             @JsonProperty("first_name") JsonNullable<String> firstName,
             @JsonProperty("last_name") JsonNullable<String> lastName,
             @JsonProperty("name") JsonNullable<String> name,
@@ -468,6 +476,7 @@ public class Employee {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
+        Utils.checkNotNull(title, "title");
         Utils.checkNotNull(firstName, "firstName");
         Utils.checkNotNull(lastName, "lastName");
         Utils.checkNotNull(name, "name");
@@ -519,6 +528,7 @@ public class Employee {
         this.id = id;
         this.remoteId = remoteId;
         this.unifiedCustomFields = unifiedCustomFields;
+        this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
         this.name = name;
@@ -586,7 +596,8 @@ public class Employee {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -612,6 +623,14 @@ public class Employee {
     @JsonIgnore
     public JsonNullable<Map<String, Object>> unifiedCustomFields() {
         return (JsonNullable<Map<String, Object>>) unifiedCustomFields;
+    }
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    @JsonIgnore
+    public JsonNullable<String> title() {
+        return title;
     }
 
     /**
@@ -1108,6 +1127,24 @@ public class Employee {
     public Employee withUnifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         this.unifiedCustomFields = unifiedCustomFields;
+        return this;
+    }
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    public Employee withTitle(String title) {
+        Utils.checkNotNull(title, "title");
+        this.title = JsonNullable.of(title);
+        return this;
+    }
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    public Employee withTitle(JsonNullable<String> title) {
+        Utils.checkNotNull(title, "title");
+        this.title = title;
         return this;
     }
 
@@ -2054,6 +2091,7 @@ public class Employee {
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
             Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
             Utils.enhancedDeepEquals(this.firstName, other.firstName) &&
             Utils.enhancedDeepEquals(this.lastName, other.lastName) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
@@ -2108,22 +2146,23 @@ public class Employee {
     public int hashCode() {
         return Utils.enhancedHash(
             id, remoteId, unifiedCustomFields,
-            firstName, lastName, name,
-            displayName, avatarUrl, personalEmail,
-            personalPhoneNumber, workEmail, workPhoneNumber,
-            jobId, jobTitle, jobDescription,
-            departmentId, department, groups,
-            costCenters, managerId, remoteManagerId,
-            gender, preferredLanguage, ethnicity,
-            dateOfBirth, birthday, maritalStatus,
-            avatar, hireDate, startDate,
-            tenure, workAnniversary, employmentType,
-            employmentContractType, employmentStatus, terminationDate,
-            companyName, companyId, citizenships,
-            homeLocation, workLocation, company,
-            employments, customFields, benefits,
-            employeeNumber, nationalIdentityNumber, nationalIdentityNumbers,
-            skills, createdAt, updatedAt);
+            title, firstName, lastName,
+            name, displayName, avatarUrl,
+            personalEmail, personalPhoneNumber, workEmail,
+            workPhoneNumber, jobId, jobTitle,
+            jobDescription, departmentId, department,
+            groups, costCenters, managerId,
+            remoteManagerId, gender, preferredLanguage,
+            ethnicity, dateOfBirth, birthday,
+            maritalStatus, avatar, hireDate,
+            startDate, tenure, workAnniversary,
+            employmentType, employmentContractType, employmentStatus,
+            terminationDate, companyName, companyId,
+            citizenships, homeLocation, workLocation,
+            company, employments, customFields,
+            benefits, employeeNumber, nationalIdentityNumber,
+            nationalIdentityNumbers, skills, createdAt,
+            updatedAt);
     }
     
     @Override
@@ -2132,6 +2171,7 @@ public class Employee {
                 "id", id,
                 "remoteId", remoteId,
                 "unifiedCustomFields", unifiedCustomFields,
+                "title", title,
                 "firstName", firstName,
                 "lastName", lastName,
                 "name", name,
@@ -2190,6 +2230,8 @@ public class Employee {
         private JsonNullable<String> remoteId = JsonNullable.undefined();
 
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
+
+        private JsonNullable<String> title = JsonNullable.undefined();
 
         private JsonNullable<String> firstName = JsonNullable.undefined();
 
@@ -2356,6 +2398,25 @@ public class Employee {
         public Builder unifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
             Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
             this.unifiedCustomFields = unifiedCustomFields;
+            return this;
+        }
+
+
+        /**
+         * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+         */
+        public Builder title(String title) {
+            Utils.checkNotNull(title, "title");
+            this.title = JsonNullable.of(title);
+            return this;
+        }
+
+        /**
+         * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+         */
+        public Builder title(JsonNullable<String> title) {
+            Utils.checkNotNull(title, "title");
+            this.title = title;
             return this;
         }
 
@@ -3341,22 +3402,23 @@ public class Employee {
 
             return new Employee(
                 id, remoteId, unifiedCustomFields,
-                firstName, lastName, name,
-                displayName, avatarUrl, personalEmail,
-                personalPhoneNumber, workEmail, workPhoneNumber,
-                jobId, jobTitle, jobDescription,
-                departmentId, department, groups,
-                costCenters, managerId, remoteManagerId,
-                gender, preferredLanguage, ethnicity,
-                dateOfBirth, birthday, maritalStatus,
-                avatar, hireDate, startDate,
-                tenure, workAnniversary, employmentType,
-                employmentContractType, employmentStatus, terminationDate,
-                companyName, companyId, citizenships,
-                homeLocation, workLocation, company,
-                employments, customFields, benefits,
-                employeeNumber, nationalIdentityNumber, nationalIdentityNumbers,
-                skills, createdAt, updatedAt);
+                title, firstName, lastName,
+                name, displayName, avatarUrl,
+                personalEmail, personalPhoneNumber, workEmail,
+                workPhoneNumber, jobId, jobTitle,
+                jobDescription, departmentId, department,
+                groups, costCenters, managerId,
+                remoteManagerId, gender, preferredLanguage,
+                ethnicity, dateOfBirth, birthday,
+                maritalStatus, avatar, hireDate,
+                startDate, tenure, workAnniversary,
+                employmentType, employmentContractType, employmentStatus,
+                terminationDate, companyName, companyId,
+                citizenships, homeLocation, workLocation,
+                company, employments, customFields,
+                benefits, employeeNumber, nationalIdentityNumber,
+                nationalIdentityNumbers, skills, createdAt,
+                updatedAt);
         }
 
     }

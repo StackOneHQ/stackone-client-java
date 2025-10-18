@@ -13,7 +13,6 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -63,7 +62,7 @@ public class AtsCreateApplicationRequestBuilder {
         return request;
     }
 
-    public CompletableFuture<AtsCreateApplicationResponse> call() throws Exception {
+    public CompletableFuture<AtsCreateApplicationResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

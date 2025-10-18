@@ -11,7 +11,6 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Exception;
 import java.util.Optional;
 
 public class AtsGetApplicationScheduledInterviewRequestBuilder {
@@ -43,7 +42,7 @@ public class AtsGetApplicationScheduledInterviewRequestBuilder {
         return this;
     }
 
-    public AtsGetApplicationScheduledInterviewResponse call() throws Exception {
+    public AtsGetApplicationScheduledInterviewResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

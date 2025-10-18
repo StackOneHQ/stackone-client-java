@@ -25,7 +25,6 @@ import com.stackone.stackone_client_java.operations.ScreeningListScreeningPackag
 import com.stackone.stackone_client_java.operations.ScreeningWebhookScreeningResult;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -63,9 +62,9 @@ public class Screening {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ScreeningListScreeningPackagesResponse listScreeningPackages(ScreeningListScreeningPackagesRequest request) throws Exception {
+    public ScreeningListScreeningPackagesResponse listScreeningPackages(ScreeningListScreeningPackagesRequest request) {
         return listScreeningPackages(request, Optional.empty());
     }
 
@@ -75,9 +74,9 @@ public class Screening {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ScreeningListScreeningPackagesResponse listScreeningPackages(ScreeningListScreeningPackagesRequest request, Optional<Options> options) throws Exception {
+    public ScreeningListScreeningPackagesResponse listScreeningPackages(ScreeningListScreeningPackagesRequest request, Optional<Options> options) {
         RequestOperation<ScreeningListScreeningPackagesRequest, ScreeningListScreeningPackagesResponse> operation
               = new ScreeningListScreeningPackages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -97,9 +96,9 @@ public class Screening {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ScreeningGetScreeningPackageResponse getScreeningPackage(ScreeningGetScreeningPackageRequest request) throws Exception {
+    public ScreeningGetScreeningPackageResponse getScreeningPackage(ScreeningGetScreeningPackageRequest request) {
         return getScreeningPackage(request, Optional.empty());
     }
 
@@ -109,9 +108,9 @@ public class Screening {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ScreeningGetScreeningPackageResponse getScreeningPackage(ScreeningGetScreeningPackageRequest request, Optional<Options> options) throws Exception {
+    public ScreeningGetScreeningPackageResponse getScreeningPackage(ScreeningGetScreeningPackageRequest request, Optional<Options> options) {
         RequestOperation<ScreeningGetScreeningPackageRequest, ScreeningGetScreeningPackageResponse> operation
               = new ScreeningGetScreeningPackage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -132,9 +131,9 @@ public class Screening {
      * @param xAccountId The account identifier
      * @param screeningResultWebhook 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ScreeningWebhookScreeningResultResponse webhookScreeningResult(String xAccountId, ScreeningResultWebhook screeningResultWebhook) throws Exception {
+    public ScreeningWebhookScreeningResultResponse webhookScreeningResult(String xAccountId, ScreeningResultWebhook screeningResultWebhook) {
         return webhookScreeningResult(xAccountId, screeningResultWebhook, Optional.empty());
     }
 
@@ -145,11 +144,11 @@ public class Screening {
      * @param screeningResultWebhook 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public ScreeningWebhookScreeningResultResponse webhookScreeningResult(
             String xAccountId, ScreeningResultWebhook screeningResultWebhook,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         ScreeningWebhookScreeningResultRequest request =
             ScreeningWebhookScreeningResultRequest
                 .builder()
@@ -176,9 +175,9 @@ public class Screening {
      * @param xAccountId The account identifier
      * @param screeningCreateOrderRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ScreeningCreateScreeningOrderResponse createScreeningOrder(String xAccountId, ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto) throws Exception {
+    public ScreeningCreateScreeningOrderResponse createScreeningOrder(String xAccountId, ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto) {
         return createScreeningOrder(xAccountId, screeningCreateOrderRequestDto, Optional.empty());
     }
 
@@ -189,11 +188,11 @@ public class Screening {
      * @param screeningCreateOrderRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public ScreeningCreateScreeningOrderResponse createScreeningOrder(
             String xAccountId, ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         ScreeningCreateScreeningOrderRequest request =
             ScreeningCreateScreeningOrderRequest
                 .builder()

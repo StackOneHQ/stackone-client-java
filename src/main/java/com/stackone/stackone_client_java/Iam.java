@@ -48,7 +48,6 @@ import com.stackone.stackone_client_java.operations.IamListUsers;
 import com.stackone.stackone_client_java.operations.IamUpdateUser;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -86,9 +85,9 @@ public class Iam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamListUsersResponse listUsers(IamListUsersRequest request) throws Exception {
+    public IamListUsersResponse listUsers(IamListUsersRequest request) {
         return listUsers(request, Optional.empty());
     }
 
@@ -98,9 +97,9 @@ public class Iam {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamListUsersResponse listUsers(IamListUsersRequest request, Optional<Options> options) throws Exception {
+    public IamListUsersResponse listUsers(IamListUsersRequest request, Optional<Options> options) {
         RequestOperation<IamListUsersRequest, IamListUsersResponse> operation
               = new IamListUsers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -120,9 +119,9 @@ public class Iam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamGetUserResponse getUser(IamGetUserRequest request) throws Exception {
+    public IamGetUserResponse getUser(IamGetUserRequest request) {
         return getUser(request, Optional.empty());
     }
 
@@ -132,9 +131,9 @@ public class Iam {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamGetUserResponse getUser(IamGetUserRequest request, Optional<Options> options) throws Exception {
+    public IamGetUserResponse getUser(IamGetUserRequest request, Optional<Options> options) {
         RequestOperation<IamGetUserRequest, IamGetUserResponse> operation
               = new IamGetUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -155,9 +154,9 @@ public class Iam {
      * @param xAccountId The account identifier
      * @param id 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamDeleteUserResponse deleteUser(String xAccountId, String id) throws Exception {
+    public IamDeleteUserResponse deleteUser(String xAccountId, String id) {
         return deleteUser(xAccountId, id, Optional.empty());
     }
 
@@ -168,11 +167,11 @@ public class Iam {
      * @param id 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public IamDeleteUserResponse deleteUser(
             String xAccountId, String id,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         IamDeleteUserRequest request =
             IamDeleteUserRequest
                 .builder()
@@ -200,11 +199,11 @@ public class Iam {
      * @param id 
      * @param iamUpdateUserRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public IamUpdateUserResponse updateUser(
             String xAccountId, String id,
-            IamUpdateUserRequestDto iamUpdateUserRequestDto) throws Exception {
+            IamUpdateUserRequestDto iamUpdateUserRequestDto) {
         return updateUser(xAccountId, id, iamUpdateUserRequestDto,
             Optional.empty());
     }
@@ -217,11 +216,11 @@ public class Iam {
      * @param iamUpdateUserRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public IamUpdateUserResponse updateUser(
             String xAccountId, String id,
-            IamUpdateUserRequestDto iamUpdateUserRequestDto, Optional<Options> options) throws Exception {
+            IamUpdateUserRequestDto iamUpdateUserRequestDto, Optional<Options> options) {
         IamUpdateUserRequest request =
             IamUpdateUserRequest
                 .builder()
@@ -248,9 +247,9 @@ public class Iam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamListRolesResponse listRoles(IamListRolesRequest request) throws Exception {
+    public IamListRolesResponse listRoles(IamListRolesRequest request) {
         return listRoles(request, Optional.empty());
     }
 
@@ -260,9 +259,9 @@ public class Iam {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamListRolesResponse listRoles(IamListRolesRequest request, Optional<Options> options) throws Exception {
+    public IamListRolesResponse listRoles(IamListRolesRequest request, Optional<Options> options) {
         RequestOperation<IamListRolesRequest, IamListRolesResponse> operation
               = new IamListRoles.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -282,9 +281,9 @@ public class Iam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamGetRoleResponse getRole(IamGetRoleRequest request) throws Exception {
+    public IamGetRoleResponse getRole(IamGetRoleRequest request) {
         return getRole(request, Optional.empty());
     }
 
@@ -294,9 +293,9 @@ public class Iam {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamGetRoleResponse getRole(IamGetRoleRequest request, Optional<Options> options) throws Exception {
+    public IamGetRoleResponse getRole(IamGetRoleRequest request, Optional<Options> options) {
         RequestOperation<IamGetRoleRequest, IamGetRoleResponse> operation
               = new IamGetRole.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -316,9 +315,9 @@ public class Iam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamListGroupsResponse listGroups(IamListGroupsRequest request) throws Exception {
+    public IamListGroupsResponse listGroups(IamListGroupsRequest request) {
         return listGroups(request, Optional.empty());
     }
 
@@ -328,9 +327,9 @@ public class Iam {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamListGroupsResponse listGroups(IamListGroupsRequest request, Optional<Options> options) throws Exception {
+    public IamListGroupsResponse listGroups(IamListGroupsRequest request, Optional<Options> options) {
         RequestOperation<IamListGroupsRequest, IamListGroupsResponse> operation
               = new IamListGroups.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -350,9 +349,9 @@ public class Iam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamGetGroupResponse getGroup(IamGetGroupRequest request) throws Exception {
+    public IamGetGroupResponse getGroup(IamGetGroupRequest request) {
         return getGroup(request, Optional.empty());
     }
 
@@ -362,9 +361,9 @@ public class Iam {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamGetGroupResponse getGroup(IamGetGroupRequest request, Optional<Options> options) throws Exception {
+    public IamGetGroupResponse getGroup(IamGetGroupRequest request, Optional<Options> options) {
         RequestOperation<IamGetGroupRequest, IamGetGroupResponse> operation
               = new IamGetGroup.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -384,9 +383,9 @@ public class Iam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamListPoliciesResponse listPolicies(IamListPoliciesRequest request) throws Exception {
+    public IamListPoliciesResponse listPolicies(IamListPoliciesRequest request) {
         return listPolicies(request, Optional.empty());
     }
 
@@ -396,9 +395,9 @@ public class Iam {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamListPoliciesResponse listPolicies(IamListPoliciesRequest request, Optional<Options> options) throws Exception {
+    public IamListPoliciesResponse listPolicies(IamListPoliciesRequest request, Optional<Options> options) {
         RequestOperation<IamListPoliciesRequest, IamListPoliciesResponse> operation
               = new IamListPolicies.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -418,9 +417,9 @@ public class Iam {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamGetPolicyResponse getPolicy(IamGetPolicyRequest request) throws Exception {
+    public IamGetPolicyResponse getPolicy(IamGetPolicyRequest request) {
         return getPolicy(request, Optional.empty());
     }
 
@@ -430,9 +429,9 @@ public class Iam {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public IamGetPolicyResponse getPolicy(IamGetPolicyRequest request, Optional<Options> options) throws Exception {
+    public IamGetPolicyResponse getPolicy(IamGetPolicyRequest request, Optional<Options> options) {
         RequestOperation<IamGetPolicyRequest, IamGetPolicyResponse> operation
               = new IamGetPolicy.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
