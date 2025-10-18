@@ -17,7 +17,6 @@ import com.stackone.stackone_client_java.utils.Utils;
 import com.stackone.stackone_client_java.utils.pagination.CursorTracker;
 import com.stackone.stackone_client_java.utils.pagination.Paginator;
 import java.io.InputStream;
-import java.lang.Exception;
 import java.lang.Iterable;
 import java.lang.String;
 import java.net.http.HttpResponse;
@@ -54,7 +53,7 @@ public class HrisListDepartmentGroupsRequestBuilder {
         return this;
     }
 
-    public HrisListDepartmentGroupsResponse call() throws Exception {
+    public HrisListDepartmentGroupsResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

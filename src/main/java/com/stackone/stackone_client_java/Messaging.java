@@ -53,7 +53,6 @@ import com.stackone.stackone_client_java.operations.MessagingListUsers;
 import com.stackone.stackone_client_java.operations.MessagingSendMessage;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -91,9 +90,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingListConversationsResponse listConversations(MessagingListConversationsRequest request) throws Exception {
+    public MessagingListConversationsResponse listConversations(MessagingListConversationsRequest request) {
         return listConversations(request, Optional.empty());
     }
 
@@ -103,9 +102,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingListConversationsResponse listConversations(MessagingListConversationsRequest request, Optional<Options> options) throws Exception {
+    public MessagingListConversationsResponse listConversations(MessagingListConversationsRequest request, Optional<Options> options) {
         RequestOperation<MessagingListConversationsRequest, MessagingListConversationsResponse> operation
               = new MessagingListConversations.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -126,9 +125,9 @@ public class Messaging {
      * @param xAccountId The account identifier
      * @param messagingCreateConversationRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingCreateConversationResponse createConversation(String xAccountId, MessagingCreateConversationRequestDto messagingCreateConversationRequestDto) throws Exception {
+    public MessagingCreateConversationResponse createConversation(String xAccountId, MessagingCreateConversationRequestDto messagingCreateConversationRequestDto) {
         return createConversation(xAccountId, messagingCreateConversationRequestDto, Optional.empty());
     }
 
@@ -139,11 +138,11 @@ public class Messaging {
      * @param messagingCreateConversationRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MessagingCreateConversationResponse createConversation(
             String xAccountId, MessagingCreateConversationRequestDto messagingCreateConversationRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         MessagingCreateConversationRequest request =
             MessagingCreateConversationRequest
                 .builder()
@@ -169,9 +168,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingGetConversationResponse getConversation(MessagingGetConversationRequest request) throws Exception {
+    public MessagingGetConversationResponse getConversation(MessagingGetConversationRequest request) {
         return getConversation(request, Optional.empty());
     }
 
@@ -181,9 +180,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingGetConversationResponse getConversation(MessagingGetConversationRequest request, Optional<Options> options) throws Exception {
+    public MessagingGetConversationResponse getConversation(MessagingGetConversationRequest request, Optional<Options> options) {
         RequestOperation<MessagingGetConversationRequest, MessagingGetConversationResponse> operation
               = new MessagingGetConversation.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -203,9 +202,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingDownloadMessagingAttachmentResponse downloadMessagingAttachment(MessagingDownloadMessagingAttachmentRequest request) throws Exception {
+    public MessagingDownloadMessagingAttachmentResponse downloadMessagingAttachment(MessagingDownloadMessagingAttachmentRequest request) {
         return downloadMessagingAttachment(request, Optional.empty());
     }
 
@@ -215,9 +214,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingDownloadMessagingAttachmentResponse downloadMessagingAttachment(MessagingDownloadMessagingAttachmentRequest request, Optional<Options> options) throws Exception {
+    public MessagingDownloadMessagingAttachmentResponse downloadMessagingAttachment(MessagingDownloadMessagingAttachmentRequest request, Optional<Options> options) {
         RequestOperation<MessagingDownloadMessagingAttachmentRequest, MessagingDownloadMessagingAttachmentResponse> operation
               = new MessagingDownloadMessagingAttachment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -237,9 +236,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingListAttachmentsResponse listAttachments(MessagingListAttachmentsRequest request) throws Exception {
+    public MessagingListAttachmentsResponse listAttachments(MessagingListAttachmentsRequest request) {
         return listAttachments(request, Optional.empty());
     }
 
@@ -249,9 +248,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingListAttachmentsResponse listAttachments(MessagingListAttachmentsRequest request, Optional<Options> options) throws Exception {
+    public MessagingListAttachmentsResponse listAttachments(MessagingListAttachmentsRequest request, Optional<Options> options) {
         RequestOperation<MessagingListAttachmentsRequest, MessagingListAttachmentsResponse> operation
               = new MessagingListAttachments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -271,9 +270,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingGetAttachmentResponse getAttachment(MessagingGetAttachmentRequest request) throws Exception {
+    public MessagingGetAttachmentResponse getAttachment(MessagingGetAttachmentRequest request) {
         return getAttachment(request, Optional.empty());
     }
 
@@ -283,9 +282,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingGetAttachmentResponse getAttachment(MessagingGetAttachmentRequest request, Optional<Options> options) throws Exception {
+    public MessagingGetAttachmentResponse getAttachment(MessagingGetAttachmentRequest request, Optional<Options> options) {
         RequestOperation<MessagingGetAttachmentRequest, MessagingGetAttachmentResponse> operation
               = new MessagingGetAttachment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -305,9 +304,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingListUsersResponse listUsers(MessagingListUsersRequest request) throws Exception {
+    public MessagingListUsersResponse listUsers(MessagingListUsersRequest request) {
         return listUsers(request, Optional.empty());
     }
 
@@ -317,9 +316,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingListUsersResponse listUsers(MessagingListUsersRequest request, Optional<Options> options) throws Exception {
+    public MessagingListUsersResponse listUsers(MessagingListUsersRequest request, Optional<Options> options) {
         RequestOperation<MessagingListUsersRequest, MessagingListUsersResponse> operation
               = new MessagingListUsers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -339,9 +338,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingGetUserResponse getUser(MessagingGetUserRequest request) throws Exception {
+    public MessagingGetUserResponse getUser(MessagingGetUserRequest request) {
         return getUser(request, Optional.empty());
     }
 
@@ -351,9 +350,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingGetUserResponse getUser(MessagingGetUserRequest request, Optional<Options> options) throws Exception {
+    public MessagingGetUserResponse getUser(MessagingGetUserRequest request, Optional<Options> options) {
         RequestOperation<MessagingGetUserRequest, MessagingGetUserResponse> operation
               = new MessagingGetUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -373,9 +372,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingListConversationMessagesResponse listConversationMessages(MessagingListConversationMessagesRequest request) throws Exception {
+    public MessagingListConversationMessagesResponse listConversationMessages(MessagingListConversationMessagesRequest request) {
         return listConversationMessages(request, Optional.empty());
     }
 
@@ -385,9 +384,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingListConversationMessagesResponse listConversationMessages(MessagingListConversationMessagesRequest request, Optional<Options> options) throws Exception {
+    public MessagingListConversationMessagesResponse listConversationMessages(MessagingListConversationMessagesRequest request, Optional<Options> options) {
         RequestOperation<MessagingListConversationMessagesRequest, MessagingListConversationMessagesResponse> operation
               = new MessagingListConversationMessages.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -407,9 +406,9 @@ public class Messaging {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingGetMessageResponse getMessage(MessagingGetMessageRequest request) throws Exception {
+    public MessagingGetMessageResponse getMessage(MessagingGetMessageRequest request) {
         return getMessage(request, Optional.empty());
     }
 
@@ -419,9 +418,9 @@ public class Messaging {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingGetMessageResponse getMessage(MessagingGetMessageRequest request, Optional<Options> options) throws Exception {
+    public MessagingGetMessageResponse getMessage(MessagingGetMessageRequest request, Optional<Options> options) {
         RequestOperation<MessagingGetMessageRequest, MessagingGetMessageResponse> operation
               = new MessagingGetMessage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -442,9 +441,9 @@ public class Messaging {
      * @param xAccountId The account identifier
      * @param messagingMessageSendRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MessagingSendMessageResponse sendMessage(String xAccountId, MessagingMessageSendRequestDto messagingMessageSendRequestDto) throws Exception {
+    public MessagingSendMessageResponse sendMessage(String xAccountId, MessagingMessageSendRequestDto messagingMessageSendRequestDto) {
         return sendMessage(xAccountId, messagingMessageSendRequestDto, Optional.empty());
     }
 
@@ -455,11 +454,11 @@ public class Messaging {
      * @param messagingMessageSendRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MessagingSendMessageResponse sendMessage(
             String xAccountId, MessagingMessageSendRequestDto messagingMessageSendRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         MessagingSendMessageRequest request =
             MessagingSendMessageRequest
                 .builder()

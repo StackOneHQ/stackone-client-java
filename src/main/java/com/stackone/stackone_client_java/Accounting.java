@@ -49,7 +49,6 @@ import com.stackone.stackone_client_java.operations.AccountingListCompanyJournal
 import com.stackone.stackone_client_java.operations.AccountingListCompanyTaxRates;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -87,9 +86,9 @@ public class Accounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingListCompaniesResponse listCompanies(AccountingListCompaniesRequest request) throws Exception {
+    public AccountingListCompaniesResponse listCompanies(AccountingListCompaniesRequest request) {
         return listCompanies(request, Optional.empty());
     }
 
@@ -99,9 +98,9 @@ public class Accounting {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingListCompaniesResponse listCompanies(AccountingListCompaniesRequest request, Optional<Options> options) throws Exception {
+    public AccountingListCompaniesResponse listCompanies(AccountingListCompaniesRequest request, Optional<Options> options) {
         RequestOperation<AccountingListCompaniesRequest, AccountingListCompaniesResponse> operation
               = new AccountingListCompanies.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -121,9 +120,9 @@ public class Accounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingGetCompanyResponse getCompany(AccountingGetCompanyRequest request) throws Exception {
+    public AccountingGetCompanyResponse getCompany(AccountingGetCompanyRequest request) {
         return getCompany(request, Optional.empty());
     }
 
@@ -133,9 +132,9 @@ public class Accounting {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingGetCompanyResponse getCompany(AccountingGetCompanyRequest request, Optional<Options> options) throws Exception {
+    public AccountingGetCompanyResponse getCompany(AccountingGetCompanyRequest request, Optional<Options> options) {
         RequestOperation<AccountingGetCompanyRequest, AccountingGetCompanyResponse> operation
               = new AccountingGetCompany.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -155,9 +154,9 @@ public class Accounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingListCompanyAccountsResponse listCompanyAccounts(AccountingListCompanyAccountsRequest request) throws Exception {
+    public AccountingListCompanyAccountsResponse listCompanyAccounts(AccountingListCompanyAccountsRequest request) {
         return listCompanyAccounts(request, Optional.empty());
     }
 
@@ -167,9 +166,9 @@ public class Accounting {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingListCompanyAccountsResponse listCompanyAccounts(AccountingListCompanyAccountsRequest request, Optional<Options> options) throws Exception {
+    public AccountingListCompanyAccountsResponse listCompanyAccounts(AccountingListCompanyAccountsRequest request, Optional<Options> options) {
         RequestOperation<AccountingListCompanyAccountsRequest, AccountingListCompanyAccountsResponse> operation
               = new AccountingListCompanyAccounts.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -189,9 +188,9 @@ public class Accounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingGetCompanyAccountResponse getCompanyAccount(AccountingGetCompanyAccountRequest request) throws Exception {
+    public AccountingGetCompanyAccountResponse getCompanyAccount(AccountingGetCompanyAccountRequest request) {
         return getCompanyAccount(request, Optional.empty());
     }
 
@@ -201,9 +200,9 @@ public class Accounting {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingGetCompanyAccountResponse getCompanyAccount(AccountingGetCompanyAccountRequest request, Optional<Options> options) throws Exception {
+    public AccountingGetCompanyAccountResponse getCompanyAccount(AccountingGetCompanyAccountRequest request, Optional<Options> options) {
         RequestOperation<AccountingGetCompanyAccountRequest, AccountingGetCompanyAccountResponse> operation
               = new AccountingGetCompanyAccount.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -223,9 +222,9 @@ public class Accounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingListCompanyTaxRatesResponse listCompanyTaxRates(AccountingListCompanyTaxRatesRequest request) throws Exception {
+    public AccountingListCompanyTaxRatesResponse listCompanyTaxRates(AccountingListCompanyTaxRatesRequest request) {
         return listCompanyTaxRates(request, Optional.empty());
     }
 
@@ -235,9 +234,9 @@ public class Accounting {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingListCompanyTaxRatesResponse listCompanyTaxRates(AccountingListCompanyTaxRatesRequest request, Optional<Options> options) throws Exception {
+    public AccountingListCompanyTaxRatesResponse listCompanyTaxRates(AccountingListCompanyTaxRatesRequest request, Optional<Options> options) {
         RequestOperation<AccountingListCompanyTaxRatesRequest, AccountingListCompanyTaxRatesResponse> operation
               = new AccountingListCompanyTaxRates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -257,9 +256,9 @@ public class Accounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingGetCompanyTaxRateResponse getCompanyTaxRate(AccountingGetCompanyTaxRateRequest request) throws Exception {
+    public AccountingGetCompanyTaxRateResponse getCompanyTaxRate(AccountingGetCompanyTaxRateRequest request) {
         return getCompanyTaxRate(request, Optional.empty());
     }
 
@@ -269,9 +268,9 @@ public class Accounting {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingGetCompanyTaxRateResponse getCompanyTaxRate(AccountingGetCompanyTaxRateRequest request, Optional<Options> options) throws Exception {
+    public AccountingGetCompanyTaxRateResponse getCompanyTaxRate(AccountingGetCompanyTaxRateRequest request, Optional<Options> options) {
         RequestOperation<AccountingGetCompanyTaxRateRequest, AccountingGetCompanyTaxRateResponse> operation
               = new AccountingGetCompanyTaxRate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -293,11 +292,11 @@ public class Accounting {
      * @param id 
      * @param accountingJournalBatchCreateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public AccountingBatchCreateCompanyJournalsResponse batchCreateCompanyJournals(
             String xAccountId, String id,
-            AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto) throws Exception {
+            AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto) {
         return batchCreateCompanyJournals(xAccountId, id, accountingJournalBatchCreateRequestDto,
             Optional.empty());
     }
@@ -310,11 +309,11 @@ public class Accounting {
      * @param accountingJournalBatchCreateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public AccountingBatchCreateCompanyJournalsResponse batchCreateCompanyJournals(
             String xAccountId, String id,
-            AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto, Optional<Options> options) throws Exception {
+            AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto, Optional<Options> options) {
         AccountingBatchCreateCompanyJournalsRequest request =
             AccountingBatchCreateCompanyJournalsRequest
                 .builder()
@@ -341,9 +340,9 @@ public class Accounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingListCompanyJournalsResponse listCompanyJournals(AccountingListCompanyJournalsRequest request) throws Exception {
+    public AccountingListCompanyJournalsResponse listCompanyJournals(AccountingListCompanyJournalsRequest request) {
         return listCompanyJournals(request, Optional.empty());
     }
 
@@ -353,9 +352,9 @@ public class Accounting {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingListCompanyJournalsResponse listCompanyJournals(AccountingListCompanyJournalsRequest request, Optional<Options> options) throws Exception {
+    public AccountingListCompanyJournalsResponse listCompanyJournals(AccountingListCompanyJournalsRequest request, Optional<Options> options) {
         RequestOperation<AccountingListCompanyJournalsRequest, AccountingListCompanyJournalsResponse> operation
               = new AccountingListCompanyJournals.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -377,11 +376,11 @@ public class Accounting {
      * @param id 
      * @param accountingJournalCreateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public AccountingCreateCompanyJournalResponse createCompanyJournal(
             String xAccountId, String id,
-            AccountingJournalCreateRequestDto accountingJournalCreateRequestDto) throws Exception {
+            AccountingJournalCreateRequestDto accountingJournalCreateRequestDto) {
         return createCompanyJournal(xAccountId, id, accountingJournalCreateRequestDto,
             Optional.empty());
     }
@@ -394,11 +393,11 @@ public class Accounting {
      * @param accountingJournalCreateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public AccountingCreateCompanyJournalResponse createCompanyJournal(
             String xAccountId, String id,
-            AccountingJournalCreateRequestDto accountingJournalCreateRequestDto, Optional<Options> options) throws Exception {
+            AccountingJournalCreateRequestDto accountingJournalCreateRequestDto, Optional<Options> options) {
         AccountingCreateCompanyJournalRequest request =
             AccountingCreateCompanyJournalRequest
                 .builder()
@@ -425,9 +424,9 @@ public class Accounting {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingGetCompanyJournalResponse getCompanyJournal(AccountingGetCompanyJournalRequest request) throws Exception {
+    public AccountingGetCompanyJournalResponse getCompanyJournal(AccountingGetCompanyJournalRequest request) {
         return getCompanyJournal(request, Optional.empty());
     }
 
@@ -437,9 +436,9 @@ public class Accounting {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public AccountingGetCompanyJournalResponse getCompanyJournal(AccountingGetCompanyJournalRequest request, Optional<Options> options) throws Exception {
+    public AccountingGetCompanyJournalResponse getCompanyJournal(AccountingGetCompanyJournalRequest request, Optional<Options> options) {
         RequestOperation<AccountingGetCompanyJournalRequest, AccountingGetCompanyJournalResponse> operation
               = new AccountingGetCompanyJournal.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

@@ -11,7 +11,6 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Exception;
 import java.util.Optional;
 
 public class StackoneListStepLogsRequestBuilder {
@@ -43,7 +42,7 @@ public class StackoneListStepLogsRequestBuilder {
         return this;
     }
 
-    public StackoneListStepLogsResponse call() throws Exception {
+    public StackoneListStepLogsResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

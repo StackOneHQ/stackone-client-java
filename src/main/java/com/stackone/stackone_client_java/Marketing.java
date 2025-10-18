@@ -118,7 +118,6 @@ import com.stackone.stackone_client_java.operations.MarketingUpdateSmsTemplate;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import java.lang.Deprecated;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -156,9 +155,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListEmailTemplatesResponse listEmailTemplates(MarketingListEmailTemplatesRequest request) throws Exception {
+    public MarketingListEmailTemplatesResponse listEmailTemplates(MarketingListEmailTemplatesRequest request) {
         return listEmailTemplates(request, Optional.empty());
     }
 
@@ -168,9 +167,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListEmailTemplatesResponse listEmailTemplates(MarketingListEmailTemplatesRequest request, Optional<Options> options) throws Exception {
+    public MarketingListEmailTemplatesResponse listEmailTemplates(MarketingListEmailTemplatesRequest request, Optional<Options> options) {
         RequestOperation<MarketingListEmailTemplatesRequest, MarketingListEmailTemplatesResponse> operation
               = new MarketingListEmailTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -191,9 +190,9 @@ public class Marketing {
      * @param xAccountId The account identifier
      * @param marketingCreateEmailTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingCreateEmailTemplateResponse createEmailTemplate(String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) throws Exception {
+    public MarketingCreateEmailTemplateResponse createEmailTemplate(String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) {
         return createEmailTemplate(xAccountId, marketingCreateEmailTemplateRequestDto, Optional.empty());
     }
 
@@ -204,11 +203,11 @@ public class Marketing {
      * @param marketingCreateEmailTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateEmailTemplateResponse createEmailTemplate(
             String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         MarketingCreateEmailTemplateRequest request =
             MarketingCreateEmailTemplateRequest
                 .builder()
@@ -234,9 +233,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetEmailTemplateResponse getEmailTemplate(MarketingGetEmailTemplateRequest request) throws Exception {
+    public MarketingGetEmailTemplateResponse getEmailTemplate(MarketingGetEmailTemplateRequest request) {
         return getEmailTemplate(request, Optional.empty());
     }
 
@@ -246,9 +245,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetEmailTemplateResponse getEmailTemplate(MarketingGetEmailTemplateRequest request, Optional<Options> options) throws Exception {
+    public MarketingGetEmailTemplateResponse getEmailTemplate(MarketingGetEmailTemplateRequest request, Optional<Options> options) {
         RequestOperation<MarketingGetEmailTemplateRequest, MarketingGetEmailTemplateResponse> operation
               = new MarketingGetEmailTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -270,11 +269,11 @@ public class Marketing {
      * @param id 
      * @param marketingCreateEmailTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdateEmailTemplateResponse updateEmailTemplate(
             String xAccountId, String id,
-            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) throws Exception {
+            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) {
         return updateEmailTemplate(xAccountId, id, marketingCreateEmailTemplateRequestDto,
             Optional.empty());
     }
@@ -287,11 +286,11 @@ public class Marketing {
      * @param marketingCreateEmailTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdateEmailTemplateResponse updateEmailTemplate(
             String xAccountId, String id,
-            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto, Optional<Options> options) throws Exception {
+            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto, Optional<Options> options) {
         MarketingUpdateEmailTemplateRequest request =
             MarketingUpdateEmailTemplateRequest
                 .builder()
@@ -318,9 +317,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListInAppTemplatesResponse listInAppTemplates(MarketingListInAppTemplatesRequest request) throws Exception {
+    public MarketingListInAppTemplatesResponse listInAppTemplates(MarketingListInAppTemplatesRequest request) {
         return listInAppTemplates(request, Optional.empty());
     }
 
@@ -330,9 +329,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListInAppTemplatesResponse listInAppTemplates(MarketingListInAppTemplatesRequest request, Optional<Options> options) throws Exception {
+    public MarketingListInAppTemplatesResponse listInAppTemplates(MarketingListInAppTemplatesRequest request, Optional<Options> options) {
         RequestOperation<MarketingListInAppTemplatesRequest, MarketingListInAppTemplatesResponse> operation
               = new MarketingListInAppTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -353,9 +352,9 @@ public class Marketing {
      * @param xAccountId The account identifier
      * @param marketingCreateInAppTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingCreateInAppTemplateResponse createInAppTemplate(String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) throws Exception {
+    public MarketingCreateInAppTemplateResponse createInAppTemplate(String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
         return createInAppTemplate(xAccountId, marketingCreateInAppTemplateRequestDto, Optional.empty());
     }
 
@@ -366,11 +365,11 @@ public class Marketing {
      * @param marketingCreateInAppTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateInAppTemplateResponse createInAppTemplate(
             String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         MarketingCreateInAppTemplateRequest request =
             MarketingCreateInAppTemplateRequest
                 .builder()
@@ -396,9 +395,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetInAppTemplateResponse getInAppTemplate(MarketingGetInAppTemplateRequest request) throws Exception {
+    public MarketingGetInAppTemplateResponse getInAppTemplate(MarketingGetInAppTemplateRequest request) {
         return getInAppTemplate(request, Optional.empty());
     }
 
@@ -408,9 +407,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetInAppTemplateResponse getInAppTemplate(MarketingGetInAppTemplateRequest request, Optional<Options> options) throws Exception {
+    public MarketingGetInAppTemplateResponse getInAppTemplate(MarketingGetInAppTemplateRequest request, Optional<Options> options) {
         RequestOperation<MarketingGetInAppTemplateRequest, MarketingGetInAppTemplateResponse> operation
               = new MarketingGetInAppTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -432,11 +431,11 @@ public class Marketing {
      * @param id 
      * @param marketingCreateInAppTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdateInAppTemplateResponse updateInAppTemplate(
             String xAccountId, String id,
-            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) throws Exception {
+            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
         return updateInAppTemplate(xAccountId, id, marketingCreateInAppTemplateRequestDto,
             Optional.empty());
     }
@@ -449,11 +448,11 @@ public class Marketing {
      * @param marketingCreateInAppTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdateInAppTemplateResponse updateInAppTemplate(
             String xAccountId, String id,
-            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto, Optional<Options> options) throws Exception {
+            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto, Optional<Options> options) {
         MarketingUpdateInAppTemplateRequest request =
             MarketingUpdateInAppTemplateRequest
                 .builder()
@@ -480,9 +479,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListSmsTemplatesResponse listSmsTemplates(MarketingListSmsTemplatesRequest request) throws Exception {
+    public MarketingListSmsTemplatesResponse listSmsTemplates(MarketingListSmsTemplatesRequest request) {
         return listSmsTemplates(request, Optional.empty());
     }
 
@@ -492,9 +491,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListSmsTemplatesResponse listSmsTemplates(MarketingListSmsTemplatesRequest request, Optional<Options> options) throws Exception {
+    public MarketingListSmsTemplatesResponse listSmsTemplates(MarketingListSmsTemplatesRequest request, Optional<Options> options) {
         RequestOperation<MarketingListSmsTemplatesRequest, MarketingListSmsTemplatesResponse> operation
               = new MarketingListSmsTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -515,9 +514,9 @@ public class Marketing {
      * @param xAccountId The account identifier
      * @param marketingCreateSmsTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingCreateSmsTemplateResponse createSmsTemplate(String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) throws Exception {
+    public MarketingCreateSmsTemplateResponse createSmsTemplate(String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
         return createSmsTemplate(xAccountId, marketingCreateSmsTemplateRequestDto, Optional.empty());
     }
 
@@ -528,11 +527,11 @@ public class Marketing {
      * @param marketingCreateSmsTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateSmsTemplateResponse createSmsTemplate(
             String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         MarketingCreateSmsTemplateRequest request =
             MarketingCreateSmsTemplateRequest
                 .builder()
@@ -558,9 +557,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetSmsTemplateResponse getSmsTemplate(MarketingGetSmsTemplateRequest request) throws Exception {
+    public MarketingGetSmsTemplateResponse getSmsTemplate(MarketingGetSmsTemplateRequest request) {
         return getSmsTemplate(request, Optional.empty());
     }
 
@@ -570,9 +569,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetSmsTemplateResponse getSmsTemplate(MarketingGetSmsTemplateRequest request, Optional<Options> options) throws Exception {
+    public MarketingGetSmsTemplateResponse getSmsTemplate(MarketingGetSmsTemplateRequest request, Optional<Options> options) {
         RequestOperation<MarketingGetSmsTemplateRequest, MarketingGetSmsTemplateResponse> operation
               = new MarketingGetSmsTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -594,11 +593,11 @@ public class Marketing {
      * @param id 
      * @param marketingCreateSmsTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdateSmsTemplateResponse updateSmsTemplate(
             String xAccountId, String id,
-            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) throws Exception {
+            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
         return updateSmsTemplate(xAccountId, id, marketingCreateSmsTemplateRequestDto,
             Optional.empty());
     }
@@ -611,11 +610,11 @@ public class Marketing {
      * @param marketingCreateSmsTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdateSmsTemplateResponse updateSmsTemplate(
             String xAccountId, String id,
-            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto, Optional<Options> options) throws Exception {
+            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto, Optional<Options> options) {
         MarketingUpdateSmsTemplateRequest request =
             MarketingUpdateSmsTemplateRequest
                 .builder()
@@ -644,11 +643,11 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public MarketingListOmniChannelTemplatesResponse listOmniChannelTemplates(MarketingListOmniChannelTemplatesRequest request) throws Exception {
+    public MarketingListOmniChannelTemplatesResponse listOmniChannelTemplates(MarketingListOmniChannelTemplatesRequest request) {
         return listOmniChannelTemplates(request, Optional.empty());
     }
 
@@ -658,11 +657,11 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public MarketingListOmniChannelTemplatesResponse listOmniChannelTemplates(MarketingListOmniChannelTemplatesRequest request, Optional<Options> options) throws Exception {
+    public MarketingListOmniChannelTemplatesResponse listOmniChannelTemplates(MarketingListOmniChannelTemplatesRequest request, Optional<Options> options) {
         RequestOperation<MarketingListOmniChannelTemplatesRequest, MarketingListOmniChannelTemplatesResponse> operation
               = new MarketingListOmniChannelTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -685,11 +684,11 @@ public class Marketing {
      * @param xAccountId The account identifier
      * @param marketingCreateTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(String xAccountId, MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) throws Exception {
+    public MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(String xAccountId, MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
         return createOmniChannelTemplate(xAccountId, marketingCreateTemplateRequestDto, Optional.empty());
     }
 
@@ -700,13 +699,13 @@ public class Marketing {
      * @param marketingCreateTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(
             String xAccountId, MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         MarketingCreateOmniChannelTemplateRequest request =
             MarketingCreateOmniChannelTemplateRequest
                 .builder()
@@ -734,11 +733,11 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public MarketingGetOmniChannelTemplateResponse getOmniChannelTemplate(MarketingGetOmniChannelTemplateRequest request) throws Exception {
+    public MarketingGetOmniChannelTemplateResponse getOmniChannelTemplate(MarketingGetOmniChannelTemplateRequest request) {
         return getOmniChannelTemplate(request, Optional.empty());
     }
 
@@ -748,11 +747,11 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public MarketingGetOmniChannelTemplateResponse getOmniChannelTemplate(MarketingGetOmniChannelTemplateRequest request, Optional<Options> options) throws Exception {
+    public MarketingGetOmniChannelTemplateResponse getOmniChannelTemplate(MarketingGetOmniChannelTemplateRequest request, Optional<Options> options) {
         RequestOperation<MarketingGetOmniChannelTemplateRequest, MarketingGetOmniChannelTemplateResponse> operation
               = new MarketingGetOmniChannelTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -776,13 +775,13 @@ public class Marketing {
      * @param id 
      * @param marketingCreateTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public MarketingUpdateOmniChannelTemplateResponse updateOmniChannelTemplate(
             String xAccountId, String id,
-            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) throws Exception {
+            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
         return updateOmniChannelTemplate(xAccountId, id, marketingCreateTemplateRequestDto,
             Optional.empty());
     }
@@ -795,13 +794,13 @@ public class Marketing {
      * @param marketingCreateTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
     public MarketingUpdateOmniChannelTemplateResponse updateOmniChannelTemplate(
             String xAccountId, String id,
-            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto, Optional<Options> options) throws Exception {
+            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto, Optional<Options> options) {
         MarketingUpdateOmniChannelTemplateRequest request =
             MarketingUpdateOmniChannelTemplateRequest
                 .builder()
@@ -828,9 +827,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListPushTemplatesResponse listPushTemplates(MarketingListPushTemplatesRequest request) throws Exception {
+    public MarketingListPushTemplatesResponse listPushTemplates(MarketingListPushTemplatesRequest request) {
         return listPushTemplates(request, Optional.empty());
     }
 
@@ -840,9 +839,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListPushTemplatesResponse listPushTemplates(MarketingListPushTemplatesRequest request, Optional<Options> options) throws Exception {
+    public MarketingListPushTemplatesResponse listPushTemplates(MarketingListPushTemplatesRequest request, Optional<Options> options) {
         RequestOperation<MarketingListPushTemplatesRequest, MarketingListPushTemplatesResponse> operation
               = new MarketingListPushTemplates.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -863,9 +862,9 @@ public class Marketing {
      * @param xAccountId The account identifier
      * @param marketingCreatePushTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingCreatePushTemplateResponse createPushTemplate(String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) throws Exception {
+    public MarketingCreatePushTemplateResponse createPushTemplate(String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
         return createPushTemplate(xAccountId, marketingCreatePushTemplateRequestDto, Optional.empty());
     }
 
@@ -876,11 +875,11 @@ public class Marketing {
      * @param marketingCreatePushTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreatePushTemplateResponse createPushTemplate(
             String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         MarketingCreatePushTemplateRequest request =
             MarketingCreatePushTemplateRequest
                 .builder()
@@ -906,9 +905,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetPushTemplateResponse getPushTemplate(MarketingGetPushTemplateRequest request) throws Exception {
+    public MarketingGetPushTemplateResponse getPushTemplate(MarketingGetPushTemplateRequest request) {
         return getPushTemplate(request, Optional.empty());
     }
 
@@ -918,9 +917,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetPushTemplateResponse getPushTemplate(MarketingGetPushTemplateRequest request, Optional<Options> options) throws Exception {
+    public MarketingGetPushTemplateResponse getPushTemplate(MarketingGetPushTemplateRequest request, Optional<Options> options) {
         RequestOperation<MarketingGetPushTemplateRequest, MarketingGetPushTemplateResponse> operation
               = new MarketingGetPushTemplate.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -942,11 +941,11 @@ public class Marketing {
      * @param id 
      * @param marketingCreatePushTemplateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdatePushTemplateResponse updatePushTemplate(
             String xAccountId, String id,
-            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) throws Exception {
+            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
         return updatePushTemplate(xAccountId, id, marketingCreatePushTemplateRequestDto,
             Optional.empty());
     }
@@ -959,11 +958,11 @@ public class Marketing {
      * @param marketingCreatePushTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdatePushTemplateResponse updatePushTemplate(
             String xAccountId, String id,
-            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto, Optional<Options> options) throws Exception {
+            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto, Optional<Options> options) {
         MarketingUpdatePushTemplateRequest request =
             MarketingUpdatePushTemplateRequest
                 .builder()
@@ -990,9 +989,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListCampaignsResponse listCampaigns(MarketingListCampaignsRequest request) throws Exception {
+    public MarketingListCampaignsResponse listCampaigns(MarketingListCampaignsRequest request) {
         return listCampaigns(request, Optional.empty());
     }
 
@@ -1002,9 +1001,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListCampaignsResponse listCampaigns(MarketingListCampaignsRequest request, Optional<Options> options) throws Exception {
+    public MarketingListCampaignsResponse listCampaigns(MarketingListCampaignsRequest request, Optional<Options> options) {
         RequestOperation<MarketingListCampaignsRequest, MarketingListCampaignsResponse> operation
               = new MarketingListCampaigns.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -1024,9 +1023,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetCampaignResponse getCampaign(MarketingGetCampaignRequest request) throws Exception {
+    public MarketingGetCampaignResponse getCampaign(MarketingGetCampaignRequest request) {
         return getCampaign(request, Optional.empty());
     }
 
@@ -1036,9 +1035,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetCampaignResponse getCampaign(MarketingGetCampaignRequest request, Optional<Options> options) throws Exception {
+    public MarketingGetCampaignResponse getCampaign(MarketingGetCampaignRequest request, Optional<Options> options) {
         RequestOperation<MarketingGetCampaignRequest, MarketingGetCampaignResponse> operation
               = new MarketingGetCampaign.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -1058,9 +1057,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListContentBlocksResponse listContentBlocks(MarketingListContentBlocksRequest request) throws Exception {
+    public MarketingListContentBlocksResponse listContentBlocks(MarketingListContentBlocksRequest request) {
         return listContentBlocks(request, Optional.empty());
     }
 
@@ -1070,9 +1069,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingListContentBlocksResponse listContentBlocks(MarketingListContentBlocksRequest request, Optional<Options> options) throws Exception {
+    public MarketingListContentBlocksResponse listContentBlocks(MarketingListContentBlocksRequest request, Optional<Options> options) {
         RequestOperation<MarketingListContentBlocksRequest, MarketingListContentBlocksResponse> operation
               = new MarketingListContentBlocks.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -1093,9 +1092,9 @@ public class Marketing {
      * @param xAccountId The account identifier
      * @param marketingCreateContentBlocksRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingCreateContentBlockResponse createContentBlock(String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) throws Exception {
+    public MarketingCreateContentBlockResponse createContentBlock(String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
         return createContentBlock(xAccountId, marketingCreateContentBlocksRequestDto, Optional.empty());
     }
 
@@ -1106,11 +1105,11 @@ public class Marketing {
      * @param marketingCreateContentBlocksRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateContentBlockResponse createContentBlock(
             String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         MarketingCreateContentBlockRequest request =
             MarketingCreateContentBlockRequest
                 .builder()
@@ -1136,9 +1135,9 @@ public class Marketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetContentBlockResponse getContentBlock(MarketingGetContentBlockRequest request) throws Exception {
+    public MarketingGetContentBlockResponse getContentBlock(MarketingGetContentBlockRequest request) {
         return getContentBlock(request, Optional.empty());
     }
 
@@ -1148,9 +1147,9 @@ public class Marketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public MarketingGetContentBlockResponse getContentBlock(MarketingGetContentBlockRequest request, Optional<Options> options) throws Exception {
+    public MarketingGetContentBlockResponse getContentBlock(MarketingGetContentBlockRequest request, Optional<Options> options) {
         RequestOperation<MarketingGetContentBlockRequest, MarketingGetContentBlockResponse> operation
               = new MarketingGetContentBlock.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -1172,11 +1171,11 @@ public class Marketing {
      * @param id 
      * @param marketingCreateContentBlocksRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdateContentBlockResponse updateContentBlock(
             String xAccountId, String id,
-            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) throws Exception {
+            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
         return updateContentBlock(xAccountId, id, marketingCreateContentBlocksRequestDto,
             Optional.empty());
     }
@@ -1189,11 +1188,11 @@ public class Marketing {
      * @param marketingCreateContentBlocksRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public MarketingUpdateContentBlockResponse updateContentBlock(
             String xAccountId, String id,
-            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto, Optional<Options> options) throws Exception {
+            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto, Optional<Options> options) {
         MarketingUpdateContentBlockRequest request =
             MarketingUpdateContentBlockRequest
                 .builder()

@@ -6,189 +6,292 @@ package com.stackone.stackone_client_java.models.errors;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.stackone.stackone_client_java.utils.Blob;
 import com.stackone.stackone_client_java.utils.Utils;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+import java.io.InputStream;
+import java.lang.Deprecated;
 import java.lang.Double;
+import java.lang.Exception;
 import java.lang.Override;
-import java.lang.RuntimeException;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.lang.Throwable;
+import java.net.http.HttpResponse;
 import java.time.OffsetDateTime;
-
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("serial")
-public class InternalServerErrorResponse extends RuntimeException {
-    /**
-     * HTTP status code
-     */
-    @JsonProperty("statusCode")
-    private double statusCode;
+public class InternalServerErrorResponse extends StackOneError {
 
-    /**
-     * Error message
-     */
-    @JsonProperty("message")
-    private String message;
+    @Nullable
+    private final Data data;
 
-    /**
-     * Timestamp when the error occurred
-     */
-    @JsonProperty("timestamp")
-    private OffsetDateTime timestamp;
+    @Nullable
+    private final Throwable deserializationException;
 
-    @JsonCreator
     public InternalServerErrorResponse(
-            @JsonProperty("statusCode") double statusCode,
-            @JsonProperty("message") String message,
-            @JsonProperty("timestamp") OffsetDateTime timestamp) {
-        super("API error occurred");
-        Utils.checkNotNull(statusCode, "statusCode");
-        Utils.checkNotNull(message, "message");
-        Utils.checkNotNull(timestamp, "timestamp");
-        this.statusCode = statusCode;
-        this.message = message;
-        this.timestamp = timestamp;
+                int code,
+                byte[] body,
+                HttpResponse<?> rawResponse,
+                @Nullable Data data,
+                @Nullable Throwable deserializationException) {
+        super("API error occurred", code, body, rawResponse, null);
+        this.data = data;
+        this.deserializationException = deserializationException;
+    }
+
+    /**
+    * Parse a response into an instance of InternalServerErrorResponse. If deserialization of the response body fails,
+    * the resulting InternalServerErrorResponse instance will have a null data() value and a non-null deserializationException().
+    */
+    public static InternalServerErrorResponse from(HttpResponse<InputStream> response) {
+        try {
+            byte[] bytes = Utils.extractByteArrayFromBody(response);
+            Data data = Utils.mapper().readValue(bytes, Data.class);
+            return new InternalServerErrorResponse(response.statusCode(), bytes, response, data, null);
+        } catch (Exception e) {
+            return new InternalServerErrorResponse(response.statusCode(), null, response, null, e);
+        }
+    }
+
+    /**
+    * Parse a response into an instance of InternalServerErrorResponse asynchronously. If deserialization of the response body fails,
+    * the resulting InternalServerErrorResponse instance will have a null data() value and a non-null deserializationException().
+    */
+    public static CompletableFuture<InternalServerErrorResponse> fromAsync(HttpResponse<Blob> response) {
+        return response.body()
+                .toByteArray()
+                .handle((bytes, err) -> {
+                    // if a body read error occurs, we want to transform the exception
+                    if (err != null) {
+                        throw new AsyncSDKError(
+                                "Error reading response body: " + err.getMessage(),
+                                response.statusCode(),
+                                null,
+                                response,
+                                err);
+                    }
+
+                    try {
+                        return new InternalServerErrorResponse(
+                                response.statusCode(),
+                                bytes,
+                                response,
+                                Utils.mapper().readValue(
+                                        bytes,
+                                        new TypeReference<Data>() {
+                                        }),
+                                null);
+                    } catch (Exception e) {
+                        return new InternalServerErrorResponse(
+                                response.statusCode(),
+                                bytes,
+                                response,
+                                null,
+                                e);
+                    }
+                });
     }
 
     /**
      * HTTP status code
      */
-    @JsonIgnore
-    public double statusCode() {
-        return statusCode;
-    }
-
-    /**
-     * Error message
-     */
-    @JsonIgnore
-    public String message() {
-        return message;
-    }
-
-    @JsonIgnore
-    @Override
-    public String getMessage() {
-        return Utils.valueOrNull(message);
+    @Deprecated
+    public Optional<Double> statusCode() {
+        return data().map(Data::statusCode);
     }
 
     /**
      * Timestamp when the error occurred
      */
-    @JsonIgnore
-    public OffsetDateTime timestamp() {
-        return timestamp;
+    @Deprecated
+    public Optional<OffsetDateTime> timestamp() {
+        return data().map(Data::timestamp);
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
-    /**
-     * HTTP status code
-     */
-    public InternalServerErrorResponse withStatusCode(double statusCode) {
-        Utils.checkNotNull(statusCode, "statusCode");
-        this.statusCode = statusCode;
-        return this;
+    public Optional<Data> data() {
+        return Optional.ofNullable(data);
     }
 
     /**
-     * Error message
+     * Returns the exception if an error occurs while deserializing the response body.
      */
-    public InternalServerErrorResponse withMessage(String message) {
-        Utils.checkNotNull(message, "message");
-        this.message = message;
-        return this;
+    public Optional<Throwable> deserializationException() {
+        return Optional.ofNullable(deserializationException);
     }
 
-    /**
-     * Timestamp when the error occurred
-     */
-    public InternalServerErrorResponse withTimestamp(OffsetDateTime timestamp) {
-        Utils.checkNotNull(timestamp, "timestamp");
-        this.timestamp = timestamp;
-        return this;
-    }
+    public static class Data {
+        /**
+         * HTTP status code
+         */
+        @JsonProperty("statusCode")
+        private double statusCode;
 
-    @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        InternalServerErrorResponse other = (InternalServerErrorResponse) o;
-        return 
-            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
-            Utils.enhancedDeepEquals(this.message, other.message) &&
-            Utils.enhancedDeepEquals(this.timestamp, other.timestamp);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Utils.enhancedHash(
-            statusCode, message, timestamp);
-    }
-    
-    @Override
-    public String toString() {
-        return Utils.toString(InternalServerErrorResponse.class,
-                "statusCode", statusCode,
-                "message", message,
-                "timestamp", timestamp);
-    }
-
-    @SuppressWarnings("UnusedReturnValue")
-    public final static class Builder {
-
-        private Double statusCode;
-
+        /**
+         * Error message
+         */
+        @JsonProperty("message")
         private String message;
 
+        /**
+         * Timestamp when the error occurred
+         */
+        @JsonProperty("timestamp")
         private OffsetDateTime timestamp;
 
-        private Builder() {
-          // force use of static builder() method
+        @JsonCreator
+        public Data(
+                @JsonProperty("statusCode") double statusCode,
+                @JsonProperty("message") String message,
+                @JsonProperty("timestamp") OffsetDateTime timestamp) {
+            Utils.checkNotNull(statusCode, "statusCode");
+            Utils.checkNotNull(message, "message");
+            Utils.checkNotNull(timestamp, "timestamp");
+            this.statusCode = statusCode;
+            this.message = message;
+            this.timestamp = timestamp;
+        }
+
+        /**
+         * HTTP status code
+         */
+        @JsonIgnore
+        public double statusCode() {
+            return statusCode;
+        }
+
+        /**
+         * Error message
+         */
+        @JsonIgnore
+        public String message() {
+            return message;
+        }
+
+        /**
+         * Timestamp when the error occurred
+         */
+        @JsonIgnore
+        public OffsetDateTime timestamp() {
+            return timestamp;
+        }
+
+        public static Builder builder() {
+            return new Builder();
         }
 
 
         /**
          * HTTP status code
          */
-        public Builder statusCode(double statusCode) {
+        public Data withStatusCode(double statusCode) {
             Utils.checkNotNull(statusCode, "statusCode");
             this.statusCode = statusCode;
             return this;
         }
 
-
         /**
          * Error message
          */
-        public Builder message(String message) {
+        public Data withMessage(String message) {
             Utils.checkNotNull(message, "message");
             this.message = message;
             return this;
         }
 
-
         /**
          * Timestamp when the error occurred
          */
-        public Builder timestamp(OffsetDateTime timestamp) {
+        public Data withTimestamp(OffsetDateTime timestamp) {
             Utils.checkNotNull(timestamp, "timestamp");
             this.timestamp = timestamp;
             return this;
         }
 
-        public InternalServerErrorResponse build() {
-
-            return new InternalServerErrorResponse(
+        @Override
+        public boolean equals(java.lang.Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Data other = (Data) o;
+            return 
+                Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+                Utils.enhancedDeepEquals(this.message, other.message) &&
+                Utils.enhancedDeepEquals(this.timestamp, other.timestamp);
+        }
+        
+        @Override
+        public int hashCode() {
+            return Utils.enhancedHash(
                 statusCode, message, timestamp);
         }
+        
+        @Override
+        public String toString() {
+            return Utils.toString(Data.class,
+                    "statusCode", statusCode,
+                    "message", message,
+                    "timestamp", timestamp);
+        }
 
+        @SuppressWarnings("UnusedReturnValue")
+        public final static class Builder {
+
+            private Double statusCode;
+
+            private String message;
+
+            private OffsetDateTime timestamp;
+
+            private Builder() {
+              // force use of static builder() method
+            }
+
+
+            /**
+             * HTTP status code
+             */
+            public Builder statusCode(double statusCode) {
+                Utils.checkNotNull(statusCode, "statusCode");
+                this.statusCode = statusCode;
+                return this;
+            }
+
+
+            /**
+             * Error message
+             */
+            public Builder message(String message) {
+                Utils.checkNotNull(message, "message");
+                this.message = message;
+                return this;
+            }
+
+
+            /**
+             * Timestamp when the error occurred
+             */
+            public Builder timestamp(OffsetDateTime timestamp) {
+                Utils.checkNotNull(timestamp, "timestamp");
+                this.timestamp = timestamp;
+                return this;
+            }
+
+            public Data build() {
+
+                return new Data(
+                    statusCode, message, timestamp);
+            }
+
+        }
     }
+
 }
 
