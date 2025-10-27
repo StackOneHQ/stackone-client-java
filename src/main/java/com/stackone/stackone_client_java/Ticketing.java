@@ -85,7 +85,6 @@ import com.stackone.stackone_client_java.operations.TicketingListUsers;
 import com.stackone.stackone_client_java.operations.TicketingUpdateTicket;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -127,9 +126,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListTicketsResponse listTickets(TicketingListTicketsRequest request) throws Exception {
+    public TicketingListTicketsResponse listTickets(TicketingListTicketsRequest request) {
         return listTickets(request, Optional.empty());
     }
 
@@ -141,9 +140,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListTicketsResponse listTickets(TicketingListTicketsRequest request, Optional<Options> options) throws Exception {
+    public TicketingListTicketsResponse listTickets(TicketingListTicketsRequest request, Optional<Options> options) {
         RequestOperation<TicketingListTicketsRequest, TicketingListTicketsResponse> operation
               = new TicketingListTickets.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -168,9 +167,9 @@ public class Ticketing {
      * @param xAccountId The account identifier
      * @param ticketingTicketCreateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingCreateTicketResponse createTicket(String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) throws Exception {
+    public TicketingCreateTicketResponse createTicket(String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto) {
         return createTicket(xAccountId, ticketingTicketCreateRequestDto, Optional.empty());
     }
 
@@ -183,11 +182,11 @@ public class Ticketing {
      * @param ticketingTicketCreateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public TicketingCreateTicketResponse createTicket(
             String xAccountId, TicketingTicketCreateRequestDto ticketingTicketCreateRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         TicketingCreateTicketRequest request =
             TicketingCreateTicketRequest
                 .builder()
@@ -217,9 +216,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetTicketResponse getTicket(TicketingGetTicketRequest request) throws Exception {
+    public TicketingGetTicketResponse getTicket(TicketingGetTicketRequest request) {
         return getTicket(request, Optional.empty());
     }
 
@@ -231,9 +230,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetTicketResponse getTicket(TicketingGetTicketRequest request, Optional<Options> options) throws Exception {
+    public TicketingGetTicketResponse getTicket(TicketingGetTicketRequest request, Optional<Options> options) {
         RequestOperation<TicketingGetTicketRequest, TicketingGetTicketResponse> operation
               = new TicketingGetTicket.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -259,11 +258,11 @@ public class Ticketing {
      * @param id 
      * @param ticketingTicketUpdateRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public TicketingUpdateTicketResponse updateTicket(
             String xAccountId, String id,
-            TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto) throws Exception {
+            TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto) {
         return updateTicket(xAccountId, id, ticketingTicketUpdateRequestDto,
             Optional.empty());
     }
@@ -278,11 +277,11 @@ public class Ticketing {
      * @param ticketingTicketUpdateRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public TicketingUpdateTicketResponse updateTicket(
             String xAccountId, String id,
-            TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto, Optional<Options> options) throws Exception {
+            TicketingTicketUpdateRequestDto ticketingTicketUpdateRequestDto, Optional<Options> options) {
         TicketingUpdateTicketRequest request =
             TicketingUpdateTicketRequest
                 .builder()
@@ -313,9 +312,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListUsersResponse listUsers(TicketingListUsersRequest request) throws Exception {
+    public TicketingListUsersResponse listUsers(TicketingListUsersRequest request) {
         return listUsers(request, Optional.empty());
     }
 
@@ -327,9 +326,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListUsersResponse listUsers(TicketingListUsersRequest request, Optional<Options> options) throws Exception {
+    public TicketingListUsersResponse listUsers(TicketingListUsersRequest request, Optional<Options> options) {
         RequestOperation<TicketingListUsersRequest, TicketingListUsersResponse> operation
               = new TicketingListUsers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -353,9 +352,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetUserResponse getUser(TicketingGetUserRequest request) throws Exception {
+    public TicketingGetUserResponse getUser(TicketingGetUserRequest request) {
         return getUser(request, Optional.empty());
     }
 
@@ -367,9 +366,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetUserResponse getUser(TicketingGetUserRequest request, Optional<Options> options) throws Exception {
+    public TicketingGetUserResponse getUser(TicketingGetUserRequest request, Optional<Options> options) {
         RequestOperation<TicketingGetUserRequest, TicketingGetUserResponse> operation
               = new TicketingGetUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -393,9 +392,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListCommentsResponse listComments(TicketingListCommentsRequest request) throws Exception {
+    public TicketingListCommentsResponse listComments(TicketingListCommentsRequest request) {
         return listComments(request, Optional.empty());
     }
 
@@ -407,9 +406,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListCommentsResponse listComments(TicketingListCommentsRequest request, Optional<Options> options) throws Exception {
+    public TicketingListCommentsResponse listComments(TicketingListCommentsRequest request, Optional<Options> options) {
         RequestOperation<TicketingListCommentsRequest, TicketingListCommentsResponse> operation
               = new TicketingListComments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -433,9 +432,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetCommentResponse getComment(TicketingGetCommentRequest request) throws Exception {
+    public TicketingGetCommentResponse getComment(TicketingGetCommentRequest request) {
         return getComment(request, Optional.empty());
     }
 
@@ -447,9 +446,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetCommentResponse getComment(TicketingGetCommentRequest request, Optional<Options> options) throws Exception {
+    public TicketingGetCommentResponse getComment(TicketingGetCommentRequest request, Optional<Options> options) {
         RequestOperation<TicketingGetCommentRequest, TicketingGetCommentResponse> operation
               = new TicketingGetComment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -473,9 +472,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingDownloadTicketingAttachmentResponse downloadTicketingAttachment(TicketingDownloadTicketingAttachmentRequest request) throws Exception {
+    public TicketingDownloadTicketingAttachmentResponse downloadTicketingAttachment(TicketingDownloadTicketingAttachmentRequest request) {
         return downloadTicketingAttachment(request, Optional.empty());
     }
 
@@ -487,9 +486,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingDownloadTicketingAttachmentResponse downloadTicketingAttachment(TicketingDownloadTicketingAttachmentRequest request, Optional<Options> options) throws Exception {
+    public TicketingDownloadTicketingAttachmentResponse downloadTicketingAttachment(TicketingDownloadTicketingAttachmentRequest request, Optional<Options> options) {
         RequestOperation<TicketingDownloadTicketingAttachmentRequest, TicketingDownloadTicketingAttachmentResponse> operation
               = new TicketingDownloadTicketingAttachment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -513,9 +512,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListAttachmentsResponse listAttachments(TicketingListAttachmentsRequest request) throws Exception {
+    public TicketingListAttachmentsResponse listAttachments(TicketingListAttachmentsRequest request) {
         return listAttachments(request, Optional.empty());
     }
 
@@ -527,9 +526,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListAttachmentsResponse listAttachments(TicketingListAttachmentsRequest request, Optional<Options> options) throws Exception {
+    public TicketingListAttachmentsResponse listAttachments(TicketingListAttachmentsRequest request, Optional<Options> options) {
         RequestOperation<TicketingListAttachmentsRequest, TicketingListAttachmentsResponse> operation
               = new TicketingListAttachments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -553,9 +552,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetAttachmentResponse getAttachment(TicketingGetAttachmentRequest request) throws Exception {
+    public TicketingGetAttachmentResponse getAttachment(TicketingGetAttachmentRequest request) {
         return getAttachment(request, Optional.empty());
     }
 
@@ -567,9 +566,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetAttachmentResponse getAttachment(TicketingGetAttachmentRequest request, Optional<Options> options) throws Exception {
+    public TicketingGetAttachmentResponse getAttachment(TicketingGetAttachmentRequest request, Optional<Options> options) {
         RequestOperation<TicketingGetAttachmentRequest, TicketingGetAttachmentResponse> operation
               = new TicketingGetAttachment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -593,9 +592,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListTicketTypesResponse listTicketTypes(TicketingListTicketTypesRequest request) throws Exception {
+    public TicketingListTicketTypesResponse listTicketTypes(TicketingListTicketTypesRequest request) {
         return listTicketTypes(request, Optional.empty());
     }
 
@@ -607,9 +606,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListTicketTypesResponse listTicketTypes(TicketingListTicketTypesRequest request, Optional<Options> options) throws Exception {
+    public TicketingListTicketTypesResponse listTicketTypes(TicketingListTicketTypesRequest request, Optional<Options> options) {
         RequestOperation<TicketingListTicketTypesRequest, TicketingListTicketTypesResponse> operation
               = new TicketingListTicketTypes.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -633,9 +632,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetTicketTypeResponse getTicketType(TicketingGetTicketTypeRequest request) throws Exception {
+    public TicketingGetTicketTypeResponse getTicketType(TicketingGetTicketTypeRequest request) {
         return getTicketType(request, Optional.empty());
     }
 
@@ -647,9 +646,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetTicketTypeResponse getTicketType(TicketingGetTicketTypeRequest request, Optional<Options> options) throws Exception {
+    public TicketingGetTicketTypeResponse getTicketType(TicketingGetTicketTypeRequest request, Optional<Options> options) {
         RequestOperation<TicketingGetTicketTypeRequest, TicketingGetTicketTypeResponse> operation
               = new TicketingGetTicketType.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -673,9 +672,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListProjectsResponse listProjects(TicketingListProjectsRequest request) throws Exception {
+    public TicketingListProjectsResponse listProjects(TicketingListProjectsRequest request) {
         return listProjects(request, Optional.empty());
     }
 
@@ -687,9 +686,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListProjectsResponse listProjects(TicketingListProjectsRequest request, Optional<Options> options) throws Exception {
+    public TicketingListProjectsResponse listProjects(TicketingListProjectsRequest request, Optional<Options> options) {
         RequestOperation<TicketingListProjectsRequest, TicketingListProjectsResponse> operation
               = new TicketingListProjects.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -713,9 +712,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetProjectResponse getProject(TicketingGetProjectRequest request) throws Exception {
+    public TicketingGetProjectResponse getProject(TicketingGetProjectRequest request) {
         return getProject(request, Optional.empty());
     }
 
@@ -727,9 +726,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetProjectResponse getProject(TicketingGetProjectRequest request, Optional<Options> options) throws Exception {
+    public TicketingGetProjectResponse getProject(TicketingGetProjectRequest request, Optional<Options> options) {
         RequestOperation<TicketingGetProjectRequest, TicketingGetProjectResponse> operation
               = new TicketingGetProject.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -753,9 +752,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListProjectComponentsResponse listProjectComponents(TicketingListProjectComponentsRequest request) throws Exception {
+    public TicketingListProjectComponentsResponse listProjectComponents(TicketingListProjectComponentsRequest request) {
         return listProjectComponents(request, Optional.empty());
     }
 
@@ -767,9 +766,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListProjectComponentsResponse listProjectComponents(TicketingListProjectComponentsRequest request, Optional<Options> options) throws Exception {
+    public TicketingListProjectComponentsResponse listProjectComponents(TicketingListProjectComponentsRequest request, Optional<Options> options) {
         RequestOperation<TicketingListProjectComponentsRequest, TicketingListProjectComponentsResponse> operation
               = new TicketingListProjectComponents.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -793,9 +792,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetProjectComponentResponse getProjectComponent(TicketingGetProjectComponentRequest request) throws Exception {
+    public TicketingGetProjectComponentResponse getProjectComponent(TicketingGetProjectComponentRequest request) {
         return getProjectComponent(request, Optional.empty());
     }
 
@@ -807,9 +806,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingGetProjectComponentResponse getProjectComponent(TicketingGetProjectComponentRequest request, Optional<Options> options) throws Exception {
+    public TicketingGetProjectComponentResponse getProjectComponent(TicketingGetProjectComponentRequest request, Optional<Options> options) {
         RequestOperation<TicketingGetProjectComponentRequest, TicketingGetProjectComponentResponse> operation
               = new TicketingGetProjectComponent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -833,9 +832,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListProjectTicketTypesResponse listProjectTicketTypes(TicketingListProjectTicketTypesRequest request) throws Exception {
+    public TicketingListProjectTicketTypesResponse listProjectTicketTypes(TicketingListProjectTicketTypesRequest request) {
         return listProjectTicketTypes(request, Optional.empty());
     }
 
@@ -847,9 +846,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListProjectTicketTypesResponse listProjectTicketTypes(TicketingListProjectTicketTypesRequest request, Optional<Options> options) throws Exception {
+    public TicketingListProjectTicketTypesResponse listProjectTicketTypes(TicketingListProjectTicketTypesRequest request, Optional<Options> options) {
         RequestOperation<TicketingListProjectTicketTypesRequest, TicketingListProjectTicketTypesResponse> operation
               = new TicketingListProjectTicketTypes.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -873,9 +872,9 @@ public class Ticketing {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListTicketStatusesResponse listTicketStatuses(TicketingListTicketStatusesRequest request) throws Exception {
+    public TicketingListTicketStatusesResponse listTicketStatuses(TicketingListTicketStatusesRequest request) {
         return listTicketStatuses(request, Optional.empty());
     }
 
@@ -887,9 +886,9 @@ public class Ticketing {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public TicketingListTicketStatusesResponse listTicketStatuses(TicketingListTicketStatusesRequest request, Optional<Options> options) throws Exception {
+    public TicketingListTicketStatusesResponse listTicketStatuses(TicketingListTicketStatusesRequest request, Optional<Options> options) {
         RequestOperation<TicketingListTicketStatusesRequest, TicketingListTicketStatusesResponse> operation
               = new TicketingListTicketStatuses.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

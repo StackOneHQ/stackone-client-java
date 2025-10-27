@@ -15,7 +15,6 @@ import com.stackone.stackone_client_java.operations.StackoneAuthenticateConnectS
 import com.stackone.stackone_client_java.operations.StackoneCreateConnectSession;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.util.Optional;
 
 /**
@@ -54,9 +53,9 @@ public class ConnectSessions {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneCreateConnectSessionResponse createConnectSession(ConnectSessionCreate request) throws Exception {
+    public StackoneCreateConnectSessionResponse createConnectSession(ConnectSessionCreate request) {
         return createConnectSession(request, Optional.empty());
     }
 
@@ -66,9 +65,9 @@ public class ConnectSessions {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneCreateConnectSessionResponse createConnectSession(ConnectSessionCreate request, Optional<Options> options) throws Exception {
+    public StackoneCreateConnectSessionResponse createConnectSession(ConnectSessionCreate request, Optional<Options> options) {
         RequestOperation<ConnectSessionCreate, StackoneCreateConnectSessionResponse> operation
               = new StackoneCreateConnectSession.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -88,9 +87,9 @@ public class ConnectSessions {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneAuthenticateConnectSessionResponse authenticateConnectSession(ConnectSessionAuthenticate request) throws Exception {
+    public StackoneAuthenticateConnectSessionResponse authenticateConnectSession(ConnectSessionAuthenticate request) {
         return authenticateConnectSession(request, Optional.empty());
     }
 
@@ -100,9 +99,9 @@ public class ConnectSessions {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneAuthenticateConnectSessionResponse authenticateConnectSession(ConnectSessionAuthenticate request, Optional<Options> options) throws Exception {
+    public StackoneAuthenticateConnectSessionResponse authenticateConnectSession(ConnectSessionAuthenticate request, Optional<Options> options) {
         RequestOperation<ConnectSessionAuthenticate, StackoneAuthenticateConnectSessionResponse> operation
               = new StackoneAuthenticateConnectSession.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

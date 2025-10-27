@@ -15,7 +15,6 @@ import com.stackone.stackone_client_java.operations.StackoneGetConnectorMeta;
 import com.stackone.stackone_client_java.operations.StackoneListConnectorsMeta;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -55,9 +54,9 @@ public class Connectors {
      * List Connector Meta Information
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListConnectorsMetaResponse listConnectorsMetaDirect() throws Exception {
+    public StackoneListConnectorsMetaResponse listConnectorsMetaDirect() {
         return listConnectorsMeta(JsonNullable.undefined(), Optional.empty());
     }
 
@@ -67,9 +66,9 @@ public class Connectors {
      * @param include The comma separated list of data that will be included in the response
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListConnectorsMetaResponse listConnectorsMeta(JsonNullable<String> include, Optional<Options> options) throws Exception {
+    public StackoneListConnectorsMetaResponse listConnectorsMeta(JsonNullable<String> include, Optional<Options> options) {
         StackoneListConnectorsMetaRequest request =
             StackoneListConnectorsMetaRequest
                 .builder()
@@ -94,9 +93,9 @@ public class Connectors {
      * 
      * @param provider 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneGetConnectorMetaResponse getConnectorMeta(String provider) throws Exception {
+    public StackoneGetConnectorMetaResponse getConnectorMeta(String provider) {
         return getConnectorMeta(provider, JsonNullable.undefined(), Optional.empty());
     }
 
@@ -107,11 +106,11 @@ public class Connectors {
      * @param include The comma separated list of data that will be included in the response
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneGetConnectorMetaResponse getConnectorMeta(
             String provider, JsonNullable<String> include,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         StackoneGetConnectorMetaRequest request =
             StackoneGetConnectorMetaRequest
                 .builder()

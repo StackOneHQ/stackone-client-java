@@ -289,10 +289,10 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .lmsCreateAssignmentRequestDto(LmsCreateAssignmentRequestDto.builder()
+                    .learningObjectExternalReference("learning-content-123")
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
-                    .learningObjectExternalReference("learning-content-123")
                     .progress(40d)
                     .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .dueDate(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
@@ -447,10 +447,10 @@ public class Application {
                 .lmsBatchUpsertContentRequestDto(LmsBatchUpsertContentRequestDto.builder()
                     .items(List.of(
                         LmsUpsertContentRequestDto.builder()
+                            .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
                             .unifiedCustomFields(Map.ofEntries(
                                 Map.entry("my_project_custom_field_1", "REF-1236"),
                                 Map.entry("my_project_custom_field_2", "some other value")))
-                            .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
                             .title("Software Engineer Lv 1")
                             .description("This video acts as learning content for software engineers.")
                             .languages(List.of(
@@ -647,10 +647,10 @@ public class Application {
         LmsUpsertContentResponse res = sdk.lms().upsertContent()
                 .xAccountId("<id>")
                 .lmsUpsertContentRequestDto(LmsUpsertContentRequestDto.builder()
+                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
                         Map.entry("my_project_custom_field_2", "some other value")))
-                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
                     .title("Software Engineer Lv 1")
                     .description("This video acts as learning content for software engineers.")
                     .languages(List.of(
@@ -850,10 +850,10 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .lmsCreateContentRequestDto(LmsCreateContentRequestDto.builder()
+                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
                         Map.entry("my_project_custom_field_2", "some other value")))
-                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
                     .title("Software Engineer Lv 1")
                     .description("This video acts as learning content for software engineers.")
                     .languages(List.of(
@@ -1050,11 +1050,11 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .lmsCreateCompletionRequestDto(LmsCreateCompletionRequestDto.builder()
+                    .learningObjectExternalReference("learning-content-123")
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .completedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
-                    .learningObjectExternalReference("learning-content-123")
                     .timeSpent("PT1H30M45S")
                     .build())
                 .call();

@@ -17,25 +17,25 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * AccountType
  * 
- * <p>Type of the account
+ * <p>The type of bank account
  */
 public class AccountType {
     /**
-     * Type of account
+     * The type of bank account
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
-    private JsonNullable<? extends JournalLineValue> value;
+    private JsonNullable<? extends HRISBankDetailsAccountTypeValue> value;
 
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
-    private JsonNullable<? extends JournalLineSourceValue> sourceValue;
+    private JsonNullable<? extends HRISBankDetailsAccountTypeSourceValue> sourceValue;
 
     @JsonCreator
     public AccountType(
-            @JsonProperty("value") JsonNullable<? extends JournalLineValue> value,
-            @JsonProperty("source_value") JsonNullable<? extends JournalLineSourceValue> sourceValue) {
+            @JsonProperty("value") JsonNullable<? extends HRISBankDetailsAccountTypeValue> value,
+            @JsonProperty("source_value") JsonNullable<? extends HRISBankDetailsAccountTypeSourceValue> sourceValue) {
         Utils.checkNotNull(value, "value");
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.value = value;
@@ -47,18 +47,18 @@ public class AccountType {
     }
 
     /**
-     * Type of account
+     * The type of bank account
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<JournalLineValue> value() {
-        return (JsonNullable<JournalLineValue>) value;
+    public JsonNullable<HRISBankDetailsAccountTypeValue> value() {
+        return (JsonNullable<HRISBankDetailsAccountTypeValue>) value;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<JournalLineSourceValue> sourceValue() {
-        return (JsonNullable<JournalLineSourceValue>) sourceValue;
+    public JsonNullable<HRISBankDetailsAccountTypeSourceValue> sourceValue() {
+        return (JsonNullable<HRISBankDetailsAccountTypeSourceValue>) sourceValue;
     }
 
     public static Builder builder() {
@@ -67,30 +67,30 @@ public class AccountType {
 
 
     /**
-     * Type of account
+     * The type of bank account
      */
-    public AccountType withValue(JournalLineValue value) {
+    public AccountType withValue(HRISBankDetailsAccountTypeValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
     /**
-     * Type of account
+     * The type of bank account
      */
-    public AccountType withValue(JsonNullable<? extends JournalLineValue> value) {
+    public AccountType withValue(JsonNullable<? extends HRISBankDetailsAccountTypeValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
-    public AccountType withSourceValue(JournalLineSourceValue sourceValue) {
+    public AccountType withSourceValue(HRISBankDetailsAccountTypeSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
-    public AccountType withSourceValue(JsonNullable<? extends JournalLineSourceValue> sourceValue) {
+    public AccountType withSourceValue(JsonNullable<? extends HRISBankDetailsAccountTypeSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
         return this;
@@ -126,9 +126,9 @@ public class AccountType {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends JournalLineValue> value = JsonNullable.undefined();
+        private JsonNullable<? extends HRISBankDetailsAccountTypeValue> value = JsonNullable.undefined();
 
-        private JsonNullable<? extends JournalLineSourceValue> sourceValue = JsonNullable.undefined();
+        private JsonNullable<? extends HRISBankDetailsAccountTypeSourceValue> sourceValue = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -136,31 +136,31 @@ public class AccountType {
 
 
         /**
-         * Type of account
+         * The type of bank account
          */
-        public Builder value(JournalLineValue value) {
+        public Builder value(HRISBankDetailsAccountTypeValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
         /**
-         * Type of account
+         * The type of bank account
          */
-        public Builder value(JsonNullable<? extends JournalLineValue> value) {
+        public Builder value(JsonNullable<? extends HRISBankDetailsAccountTypeValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
 
 
-        public Builder sourceValue(JournalLineSourceValue sourceValue) {
+        public Builder sourceValue(HRISBankDetailsAccountTypeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
-        public Builder sourceValue(JsonNullable<? extends JournalLineSourceValue> sourceValue) {
+        public Builder sourceValue(JsonNullable<? extends HRISBankDetailsAccountTypeSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;
             return this;

@@ -647,7 +647,7 @@ public class Application {
                 .accountingJournalCreateRequestDto(AccountingJournalCreateRequestDto.builder()
                     .reference("JRN-2024-001")
                     .memo("Monthly closing entries")
-                    .currencyCode(CurrencyCode.builder()
+                    .currencyCode(AccountingJournalCreateRequestDtoCurrencyCode.builder()
                         .value(AccountingJournalCreateRequestDtoValue.USD)
                         .sourceValue(AccountingJournalCreateRequestDtoSourceValue.of("USD"))
                         .build())

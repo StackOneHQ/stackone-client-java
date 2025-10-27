@@ -42,6 +42,14 @@ public class Completion {
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
     /**
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("learning_object_external_reference")
+    private JsonNullable<String> learningObjectExternalReference;
+
+    /**
      * The external reference associated with this completion
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -100,14 +108,6 @@ public class Completion {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("remote_learning_object_id")
     private JsonNullable<String> remoteLearningObjectId;
-
-    /**
-     * The external reference of the learning object associated with this completion, this is the main
-     * identifier for creating completions.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("learning_object_external_reference")
-    private JsonNullable<String> learningObjectExternalReference;
 
     /**
      * The user ID associated with this completion
@@ -212,6 +212,7 @@ public class Completion {
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
+            @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
             @JsonProperty("external_reference") JsonNullable<String> externalReference,
             @JsonProperty("result") JsonNullable<? extends CompletionResult1> result,
             @JsonProperty("completed_at") JsonNullable<OffsetDateTime> completedAt,
@@ -220,7 +221,6 @@ public class Completion {
             @JsonProperty("learning_object_type") JsonNullable<? extends CompletionLearningObjectType> learningObjectType,
             @JsonProperty("learning_object_id") JsonNullable<String> learningObjectId,
             @JsonProperty("remote_learning_object_id") JsonNullable<String> remoteLearningObjectId,
-            @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
             @JsonProperty("user_id") JsonNullable<String> userId,
             @JsonProperty("remote_user_id") JsonNullable<String> remoteUserId,
             @JsonProperty("time_spent") JsonNullable<String> timeSpent,
@@ -235,6 +235,7 @@ public class Completion {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
+        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
         Utils.checkNotNull(externalReference, "externalReference");
         Utils.checkNotNull(result, "result");
         Utils.checkNotNull(completedAt, "completedAt");
@@ -243,7 +244,6 @@ public class Completion {
         Utils.checkNotNull(learningObjectType, "learningObjectType");
         Utils.checkNotNull(learningObjectId, "learningObjectId");
         Utils.checkNotNull(remoteLearningObjectId, "remoteLearningObjectId");
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
         Utils.checkNotNull(userId, "userId");
         Utils.checkNotNull(remoteUserId, "remoteUserId");
         Utils.checkNotNull(timeSpent, "timeSpent");
@@ -258,6 +258,7 @@ public class Completion {
         this.id = id;
         this.remoteId = remoteId;
         this.unifiedCustomFields = unifiedCustomFields;
+        this.learningObjectExternalReference = learningObjectExternalReference;
         this.externalReference = externalReference;
         this.result = result;
         this.completedAt = completedAt;
@@ -266,7 +267,6 @@ public class Completion {
         this.learningObjectType = learningObjectType;
         this.learningObjectId = learningObjectId;
         this.remoteLearningObjectId = remoteLearningObjectId;
-        this.learningObjectExternalReference = learningObjectExternalReference;
         this.userId = userId;
         this.remoteUserId = remoteUserId;
         this.timeSpent = timeSpent;
@@ -314,6 +314,15 @@ public class Completion {
     @JsonIgnore
     public JsonNullable<Map<String, Object>> unifiedCustomFields() {
         return (JsonNullable<Map<String, Object>>) unifiedCustomFields;
+    }
+
+    /**
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
+     */
+    @JsonIgnore
+    public JsonNullable<String> learningObjectExternalReference() {
+        return learningObjectExternalReference;
     }
 
     /**
@@ -384,15 +393,6 @@ public class Completion {
     @JsonIgnore
     public JsonNullable<String> remoteLearningObjectId() {
         return remoteLearningObjectId;
-    }
-
-    /**
-     * The external reference of the learning object associated with this completion, this is the main
-     * identifier for creating completions.
-     */
-    @JsonIgnore
-    public JsonNullable<String> learningObjectExternalReference() {
-        return learningObjectExternalReference;
     }
 
     /**
@@ -564,6 +564,26 @@ public class Completion {
     }
 
     /**
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
+     */
+    public Completion withLearningObjectExternalReference(String learningObjectExternalReference) {
+        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+        this.learningObjectExternalReference = JsonNullable.of(learningObjectExternalReference);
+        return this;
+    }
+
+    /**
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
+     */
+    public Completion withLearningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
+        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+        this.learningObjectExternalReference = learningObjectExternalReference;
+        return this;
+    }
+
+    /**
      * The external reference associated with this completion
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -712,26 +732,6 @@ public class Completion {
     public Completion withRemoteLearningObjectId(JsonNullable<String> remoteLearningObjectId) {
         Utils.checkNotNull(remoteLearningObjectId, "remoteLearningObjectId");
         this.remoteLearningObjectId = remoteLearningObjectId;
-        return this;
-    }
-
-    /**
-     * The external reference of the learning object associated with this completion, this is the main
-     * identifier for creating completions.
-     */
-    public Completion withLearningObjectExternalReference(String learningObjectExternalReference) {
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-        this.learningObjectExternalReference = JsonNullable.of(learningObjectExternalReference);
-        return this;
-    }
-
-    /**
-     * The external reference of the learning object associated with this completion, this is the main
-     * identifier for creating completions.
-     */
-    public Completion withLearningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-        this.learningObjectExternalReference = learningObjectExternalReference;
         return this;
     }
 
@@ -988,6 +988,7 @@ public class Completion {
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
             Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
             Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
             Utils.enhancedDeepEquals(this.result, other.result) &&
             Utils.enhancedDeepEquals(this.completedAt, other.completedAt) &&
@@ -996,7 +997,6 @@ public class Completion {
             Utils.enhancedDeepEquals(this.learningObjectType, other.learningObjectType) &&
             Utils.enhancedDeepEquals(this.learningObjectId, other.learningObjectId) &&
             Utils.enhancedDeepEquals(this.remoteLearningObjectId, other.remoteLearningObjectId) &&
-            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
             Utils.enhancedDeepEquals(this.userId, other.userId) &&
             Utils.enhancedDeepEquals(this.remoteUserId, other.remoteUserId) &&
             Utils.enhancedDeepEquals(this.timeSpent, other.timeSpent) &&
@@ -1014,9 +1014,9 @@ public class Completion {
     public int hashCode() {
         return Utils.enhancedHash(
             id, remoteId, unifiedCustomFields,
-            externalReference, result, completedAt,
-            createdAt, updatedAt, learningObjectType,
-            learningObjectId, remoteLearningObjectId, learningObjectExternalReference,
+            learningObjectExternalReference, externalReference, result,
+            completedAt, createdAt, updatedAt,
+            learningObjectType, learningObjectId, remoteLearningObjectId,
             userId, remoteUserId, timeSpent,
             certificateUrl, externalId, contentExternalReference,
             remoteExternalId, contentId, remoteContentId,
@@ -1029,6 +1029,7 @@ public class Completion {
                 "id", id,
                 "remoteId", remoteId,
                 "unifiedCustomFields", unifiedCustomFields,
+                "learningObjectExternalReference", learningObjectExternalReference,
                 "externalReference", externalReference,
                 "result", result,
                 "completedAt", completedAt,
@@ -1037,7 +1038,6 @@ public class Completion {
                 "learningObjectType", learningObjectType,
                 "learningObjectId", learningObjectId,
                 "remoteLearningObjectId", remoteLearningObjectId,
-                "learningObjectExternalReference", learningObjectExternalReference,
                 "userId", userId,
                 "remoteUserId", remoteUserId,
                 "timeSpent", timeSpent,
@@ -1060,6 +1060,8 @@ public class Completion {
 
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
 
+        private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
+
         @Deprecated
         private JsonNullable<String> externalReference = JsonNullable.undefined();
 
@@ -1076,8 +1078,6 @@ public class Completion {
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
 
         private JsonNullable<String> remoteLearningObjectId = JsonNullable.undefined();
-
-        private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
 
         private JsonNullable<String> userId = JsonNullable.undefined();
 
@@ -1166,6 +1166,27 @@ public class Completion {
         public Builder unifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
             Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
             this.unifiedCustomFields = unifiedCustomFields;
+            return this;
+        }
+
+
+        /**
+         * The external reference of the learning object associated with this completion, this is the main
+         * identifier for creating completions.
+         */
+        public Builder learningObjectExternalReference(String learningObjectExternalReference) {
+            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+            this.learningObjectExternalReference = JsonNullable.of(learningObjectExternalReference);
+            return this;
+        }
+
+        /**
+         * The external reference of the learning object associated with this completion, this is the main
+         * identifier for creating completions.
+         */
+        public Builder learningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
+            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+            this.learningObjectExternalReference = learningObjectExternalReference;
             return this;
         }
 
@@ -1326,27 +1347,6 @@ public class Completion {
         public Builder remoteLearningObjectId(JsonNullable<String> remoteLearningObjectId) {
             Utils.checkNotNull(remoteLearningObjectId, "remoteLearningObjectId");
             this.remoteLearningObjectId = remoteLearningObjectId;
-            return this;
-        }
-
-
-        /**
-         * The external reference of the learning object associated with this completion, this is the main
-         * identifier for creating completions.
-         */
-        public Builder learningObjectExternalReference(String learningObjectExternalReference) {
-            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-            this.learningObjectExternalReference = JsonNullable.of(learningObjectExternalReference);
-            return this;
-        }
-
-        /**
-         * The external reference of the learning object associated with this completion, this is the main
-         * identifier for creating completions.
-         */
-        public Builder learningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
-            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-            this.learningObjectExternalReference = learningObjectExternalReference;
             return this;
         }
 
@@ -1605,9 +1605,9 @@ public class Completion {
 
             return new Completion(
                 id, remoteId, unifiedCustomFields,
-                externalReference, result, completedAt,
-                createdAt, updatedAt, learningObjectType,
-                learningObjectId, remoteLearningObjectId, learningObjectExternalReference,
+                learningObjectExternalReference, externalReference, result,
+                completedAt, createdAt, updatedAt,
+                learningObjectType, learningObjectId, remoteLearningObjectId,
                 userId, remoteUserId, timeSpent,
                 certificateUrl, externalId, contentExternalReference,
                 remoteExternalId, contentId, remoteContentId,

@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Exception;
 import java.util.Optional;
 
 public class StackoneRpcActionRequestBuilder {
@@ -44,7 +43,7 @@ public class StackoneRpcActionRequestBuilder {
         return this;
     }
 
-    public StackoneRpcActionResponse call() throws Exception {
+    public StackoneRpcActionResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

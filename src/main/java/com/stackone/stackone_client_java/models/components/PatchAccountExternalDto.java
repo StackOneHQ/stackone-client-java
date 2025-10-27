@@ -44,7 +44,7 @@ public class PatchAccountExternalDto {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("setup_information")
-    private JsonNullable<? extends PatchAccountExternalDtoSetupInformation> setupInformation;
+    private JsonNullable<? extends SetupInformation> setupInformation;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -85,7 +85,7 @@ public class PatchAccountExternalDto {
             @JsonProperty("origin_owner_name") JsonNullable<String> originOwnerName,
             @JsonProperty("origin_username") JsonNullable<String> originUsername,
             @JsonProperty("credentials") JsonNullable<? extends PatchAccountExternalDtoCredentials> credentials,
-            @JsonProperty("setup_information") JsonNullable<? extends PatchAccountExternalDtoSetupInformation> setupInformation,
+            @JsonProperty("setup_information") JsonNullable<? extends SetupInformation> setupInformation,
             @JsonProperty("secrets") JsonNullable<? extends Secrets> secrets,
             @JsonProperty("authentication_config_key") JsonNullable<String> authenticationConfigKey,
             @JsonProperty("environment") JsonNullable<String> environment,
@@ -153,8 +153,8 @@ public class PatchAccountExternalDto {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<PatchAccountExternalDtoSetupInformation> setupInformation() {
-        return (JsonNullable<PatchAccountExternalDtoSetupInformation>) setupInformation;
+    public JsonNullable<SetupInformation> setupInformation() {
+        return (JsonNullable<SetupInformation>) setupInformation;
     }
 
     @SuppressWarnings("unchecked")
@@ -259,13 +259,13 @@ public class PatchAccountExternalDto {
         return this;
     }
 
-    public PatchAccountExternalDto withSetupInformation(PatchAccountExternalDtoSetupInformation setupInformation) {
+    public PatchAccountExternalDto withSetupInformation(SetupInformation setupInformation) {
         Utils.checkNotNull(setupInformation, "setupInformation");
         this.setupInformation = JsonNullable.of(setupInformation);
         return this;
     }
 
-    public PatchAccountExternalDto withSetupInformation(JsonNullable<? extends PatchAccountExternalDtoSetupInformation> setupInformation) {
+    public PatchAccountExternalDto withSetupInformation(JsonNullable<? extends SetupInformation> setupInformation) {
         Utils.checkNotNull(setupInformation, "setupInformation");
         this.setupInformation = setupInformation;
         return this;
@@ -412,7 +412,7 @@ public class PatchAccountExternalDto {
 
         private JsonNullable<? extends PatchAccountExternalDtoCredentials> credentials = JsonNullable.undefined();
 
-        private JsonNullable<? extends PatchAccountExternalDtoSetupInformation> setupInformation = JsonNullable.undefined();
+        private JsonNullable<? extends SetupInformation> setupInformation = JsonNullable.undefined();
 
         private JsonNullable<? extends Secrets> secrets = JsonNullable.undefined();
 
@@ -496,13 +496,13 @@ public class PatchAccountExternalDto {
         }
 
 
-        public Builder setupInformation(PatchAccountExternalDtoSetupInformation setupInformation) {
+        public Builder setupInformation(SetupInformation setupInformation) {
             Utils.checkNotNull(setupInformation, "setupInformation");
             this.setupInformation = JsonNullable.of(setupInformation);
             return this;
         }
 
-        public Builder setupInformation(JsonNullable<? extends PatchAccountExternalDtoSetupInformation> setupInformation) {
+        public Builder setupInformation(JsonNullable<? extends SetupInformation> setupInformation) {
             Utils.checkNotNull(setupInformation, "setupInformation");
             this.setupInformation = setupInformation;
             return this;

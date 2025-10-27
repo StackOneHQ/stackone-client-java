@@ -11,7 +11,6 @@ import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Exception;
 import java.util.Optional;
 
 public class HrisGetEmployeesWorkEligibilityRequestBuilder {
@@ -43,7 +42,7 @@ public class HrisGetEmployeesWorkEligibilityRequestBuilder {
         return this;
     }
 
-    public HrisGetEmployeesWorkEligibilityResponse call() throws Exception {
+    public HrisGetEmployeesWorkEligibilityResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

@@ -1,0 +1,9 @@
+# ClearingCode
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `type`                                                                         | [JsonNullable\<ClearingCodeType>](../../models/components/ClearingCodeType.md) | :heavy_minus_sign:                                                             | The type of clearing code                                                      |                                                                                |
+| `value`                                                                        | *JsonNullable\<String>*                                                        | :heavy_minus_sign:                                                             | The clearing code value                                                        | 12-34-56                                                                       |

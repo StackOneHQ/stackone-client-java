@@ -15,7 +15,6 @@ import com.stackone.stackone_client_java.operations.StackoneListActionsMeta;
 import com.stackone.stackone_client_java.operations.StackoneRpcAction;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.util.Optional;
 
 /**
@@ -58,9 +57,9 @@ public class Actions {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListActionsMetaResponse listActionsMeta(StackoneListActionsMetaRequest request) throws Exception {
+    public StackoneListActionsMetaResponse listActionsMeta(StackoneListActionsMetaRequest request) {
         return listActionsMeta(request, Optional.empty());
     }
 
@@ -72,9 +71,9 @@ public class Actions {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListActionsMetaResponse listActionsMeta(StackoneListActionsMetaRequest request, Optional<Options> options) throws Exception {
+    public StackoneListActionsMetaResponse listActionsMeta(StackoneListActionsMetaRequest request, Optional<Options> options) {
         RequestOperation<StackoneListActionsMetaRequest, StackoneListActionsMetaResponse> operation
               = new StackoneListActionsMeta.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -98,9 +97,9 @@ public class Actions {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneRpcActionResponse rpcAction(ActionsRpcRequestDto request) throws Exception {
+    public StackoneRpcActionResponse rpcAction(ActionsRpcRequestDto request) {
         return rpcAction(request, Optional.empty());
     }
 
@@ -112,9 +111,9 @@ public class Actions {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneRpcActionResponse rpcAction(ActionsRpcRequestDto request, Optional<Options> options) throws Exception {
+    public StackoneRpcActionResponse rpcAction(ActionsRpcRequestDto request, Optional<Options> options) {
         RequestOperation<ActionsRpcRequestDto, StackoneRpcActionResponse> operation
               = new StackoneRpcAction.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

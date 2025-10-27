@@ -44,6 +44,13 @@ public class Employee {
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
     /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("title")
+    private JsonNullable<String> title;
+
+    /**
      * The employee first name
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -375,6 +382,13 @@ public class Employee {
     private JsonNullable<String> employeeNumber;
 
     /**
+     * Bank account details for the employee
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("bank_details")
+    private JsonNullable<? extends List<HRISBankDetails>> bankDetails;
+
+    /**
      * The national identity number
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -417,6 +431,7 @@ public class Employee {
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
+            @JsonProperty("title") JsonNullable<String> title,
             @JsonProperty("first_name") JsonNullable<String> firstName,
             @JsonProperty("last_name") JsonNullable<String> lastName,
             @JsonProperty("name") JsonNullable<String> name,
@@ -460,6 +475,7 @@ public class Employee {
             @JsonProperty("custom_fields") JsonNullable<? extends List<CustomFields>> customFields,
             @JsonProperty("benefits") JsonNullable<? extends List<HRISBenefit>> benefits,
             @JsonProperty("employee_number") JsonNullable<String> employeeNumber,
+            @JsonProperty("bank_details") JsonNullable<? extends List<HRISBankDetails>> bankDetails,
             @JsonProperty("national_identity_number") JsonNullable<? extends NationalIdentityNumber> nationalIdentityNumber,
             @JsonProperty("national_identity_numbers") JsonNullable<? extends List<NationalIdentityNumberApiModel>> nationalIdentityNumbers,
             @JsonProperty("skills") JsonNullable<? extends List<EntitySkills>> skills,
@@ -468,6 +484,7 @@ public class Employee {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
+        Utils.checkNotNull(title, "title");
         Utils.checkNotNull(firstName, "firstName");
         Utils.checkNotNull(lastName, "lastName");
         Utils.checkNotNull(name, "name");
@@ -511,6 +528,7 @@ public class Employee {
         Utils.checkNotNull(customFields, "customFields");
         Utils.checkNotNull(benefits, "benefits");
         Utils.checkNotNull(employeeNumber, "employeeNumber");
+        Utils.checkNotNull(bankDetails, "bankDetails");
         Utils.checkNotNull(nationalIdentityNumber, "nationalIdentityNumber");
         Utils.checkNotNull(nationalIdentityNumbers, "nationalIdentityNumbers");
         Utils.checkNotNull(skills, "skills");
@@ -519,6 +537,7 @@ public class Employee {
         this.id = id;
         this.remoteId = remoteId;
         this.unifiedCustomFields = unifiedCustomFields;
+        this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
         this.name = name;
@@ -562,6 +581,7 @@ public class Employee {
         this.customFields = customFields;
         this.benefits = benefits;
         this.employeeNumber = employeeNumber;
+        this.bankDetails = bankDetails;
         this.nationalIdentityNumber = nationalIdentityNumber;
         this.nationalIdentityNumbers = nationalIdentityNumbers;
         this.skills = skills;
@@ -586,7 +606,8 @@ public class Employee {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -612,6 +633,14 @@ public class Employee {
     @JsonIgnore
     public JsonNullable<Map<String, Object>> unifiedCustomFields() {
         return (JsonNullable<Map<String, Object>>) unifiedCustomFields;
+    }
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    @JsonIgnore
+    public JsonNullable<String> title() {
+        return title;
     }
 
     /**
@@ -1007,6 +1036,15 @@ public class Employee {
     }
 
     /**
+     * Bank account details for the employee
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<HRISBankDetails>> bankDetails() {
+        return (JsonNullable<List<HRISBankDetails>>) bankDetails;
+    }
+
+    /**
      * The national identity number
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -1108,6 +1146,24 @@ public class Employee {
     public Employee withUnifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         this.unifiedCustomFields = unifiedCustomFields;
+        return this;
+    }
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    public Employee withTitle(String title) {
+        Utils.checkNotNull(title, "title");
+        this.title = JsonNullable.of(title);
+        return this;
+    }
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    public Employee withTitle(JsonNullable<String> title) {
+        Utils.checkNotNull(title, "title");
+        this.title = title;
         return this;
     }
 
@@ -1946,6 +2002,24 @@ public class Employee {
     }
 
     /**
+     * Bank account details for the employee
+     */
+    public Employee withBankDetails(List<HRISBankDetails> bankDetails) {
+        Utils.checkNotNull(bankDetails, "bankDetails");
+        this.bankDetails = JsonNullable.of(bankDetails);
+        return this;
+    }
+
+    /**
+     * Bank account details for the employee
+     */
+    public Employee withBankDetails(JsonNullable<? extends List<HRISBankDetails>> bankDetails) {
+        Utils.checkNotNull(bankDetails, "bankDetails");
+        this.bankDetails = bankDetails;
+        return this;
+    }
+
+    /**
      * The national identity number
      * 
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -2054,6 +2128,7 @@ public class Employee {
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
             Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
             Utils.enhancedDeepEquals(this.firstName, other.firstName) &&
             Utils.enhancedDeepEquals(this.lastName, other.lastName) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
@@ -2097,6 +2172,7 @@ public class Employee {
             Utils.enhancedDeepEquals(this.customFields, other.customFields) &&
             Utils.enhancedDeepEquals(this.benefits, other.benefits) &&
             Utils.enhancedDeepEquals(this.employeeNumber, other.employeeNumber) &&
+            Utils.enhancedDeepEquals(this.bankDetails, other.bankDetails) &&
             Utils.enhancedDeepEquals(this.nationalIdentityNumber, other.nationalIdentityNumber) &&
             Utils.enhancedDeepEquals(this.nationalIdentityNumbers, other.nationalIdentityNumbers) &&
             Utils.enhancedDeepEquals(this.skills, other.skills) &&
@@ -2108,22 +2184,23 @@ public class Employee {
     public int hashCode() {
         return Utils.enhancedHash(
             id, remoteId, unifiedCustomFields,
-            firstName, lastName, name,
-            displayName, avatarUrl, personalEmail,
-            personalPhoneNumber, workEmail, workPhoneNumber,
-            jobId, jobTitle, jobDescription,
-            departmentId, department, groups,
-            costCenters, managerId, remoteManagerId,
-            gender, preferredLanguage, ethnicity,
-            dateOfBirth, birthday, maritalStatus,
-            avatar, hireDate, startDate,
-            tenure, workAnniversary, employmentType,
-            employmentContractType, employmentStatus, terminationDate,
-            companyName, companyId, citizenships,
-            homeLocation, workLocation, company,
-            employments, customFields, benefits,
-            employeeNumber, nationalIdentityNumber, nationalIdentityNumbers,
-            skills, createdAt, updatedAt);
+            title, firstName, lastName,
+            name, displayName, avatarUrl,
+            personalEmail, personalPhoneNumber, workEmail,
+            workPhoneNumber, jobId, jobTitle,
+            jobDescription, departmentId, department,
+            groups, costCenters, managerId,
+            remoteManagerId, gender, preferredLanguage,
+            ethnicity, dateOfBirth, birthday,
+            maritalStatus, avatar, hireDate,
+            startDate, tenure, workAnniversary,
+            employmentType, employmentContractType, employmentStatus,
+            terminationDate, companyName, companyId,
+            citizenships, homeLocation, workLocation,
+            company, employments, customFields,
+            benefits, employeeNumber, bankDetails,
+            nationalIdentityNumber, nationalIdentityNumbers, skills,
+            createdAt, updatedAt);
     }
     
     @Override
@@ -2132,6 +2209,7 @@ public class Employee {
                 "id", id,
                 "remoteId", remoteId,
                 "unifiedCustomFields", unifiedCustomFields,
+                "title", title,
                 "firstName", firstName,
                 "lastName", lastName,
                 "name", name,
@@ -2175,6 +2253,7 @@ public class Employee {
                 "customFields", customFields,
                 "benefits", benefits,
                 "employeeNumber", employeeNumber,
+                "bankDetails", bankDetails,
                 "nationalIdentityNumber", nationalIdentityNumber,
                 "nationalIdentityNumbers", nationalIdentityNumbers,
                 "skills", skills,
@@ -2190,6 +2269,8 @@ public class Employee {
         private JsonNullable<String> remoteId = JsonNullable.undefined();
 
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
+
+        private JsonNullable<String> title = JsonNullable.undefined();
 
         private JsonNullable<String> firstName = JsonNullable.undefined();
 
@@ -2287,6 +2368,8 @@ public class Employee {
 
         private JsonNullable<String> employeeNumber = JsonNullable.undefined();
 
+        private JsonNullable<? extends List<HRISBankDetails>> bankDetails = JsonNullable.undefined();
+
         @Deprecated
         private JsonNullable<? extends NationalIdentityNumber> nationalIdentityNumber = JsonNullable.undefined();
 
@@ -2356,6 +2439,25 @@ public class Employee {
         public Builder unifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
             Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
             this.unifiedCustomFields = unifiedCustomFields;
+            return this;
+        }
+
+
+        /**
+         * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+         */
+        public Builder title(String title) {
+            Utils.checkNotNull(title, "title");
+            this.title = JsonNullable.of(title);
+            return this;
+        }
+
+        /**
+         * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+         */
+        public Builder title(JsonNullable<String> title) {
+            Utils.checkNotNull(title, "title");
+            this.title = title;
             return this;
         }
 
@@ -3238,6 +3340,25 @@ public class Employee {
 
 
         /**
+         * Bank account details for the employee
+         */
+        public Builder bankDetails(List<HRISBankDetails> bankDetails) {
+            Utils.checkNotNull(bankDetails, "bankDetails");
+            this.bankDetails = JsonNullable.of(bankDetails);
+            return this;
+        }
+
+        /**
+         * Bank account details for the employee
+         */
+        public Builder bankDetails(JsonNullable<? extends List<HRISBankDetails>> bankDetails) {
+            Utils.checkNotNull(bankDetails, "bankDetails");
+            this.bankDetails = bankDetails;
+            return this;
+        }
+
+
+        /**
          * The national identity number
          * 
          * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -3341,22 +3462,23 @@ public class Employee {
 
             return new Employee(
                 id, remoteId, unifiedCustomFields,
-                firstName, lastName, name,
-                displayName, avatarUrl, personalEmail,
-                personalPhoneNumber, workEmail, workPhoneNumber,
-                jobId, jobTitle, jobDescription,
-                departmentId, department, groups,
-                costCenters, managerId, remoteManagerId,
-                gender, preferredLanguage, ethnicity,
-                dateOfBirth, birthday, maritalStatus,
-                avatar, hireDate, startDate,
-                tenure, workAnniversary, employmentType,
-                employmentContractType, employmentStatus, terminationDate,
-                companyName, companyId, citizenships,
-                homeLocation, workLocation, company,
-                employments, customFields, benefits,
-                employeeNumber, nationalIdentityNumber, nationalIdentityNumbers,
-                skills, createdAt, updatedAt);
+                title, firstName, lastName,
+                name, displayName, avatarUrl,
+                personalEmail, personalPhoneNumber, workEmail,
+                workPhoneNumber, jobId, jobTitle,
+                jobDescription, departmentId, department,
+                groups, costCenters, managerId,
+                remoteManagerId, gender, preferredLanguage,
+                ethnicity, dateOfBirth, birthday,
+                maritalStatus, avatar, hireDate,
+                startDate, tenure, workAnniversary,
+                employmentType, employmentContractType, employmentStatus,
+                terminationDate, companyName, companyId,
+                citizenships, homeLocation, workLocation,
+                company, employments, customFields,
+                benefits, employeeNumber, bankDetails,
+                nationalIdentityNumber, nationalIdentityNumbers, skills,
+                createdAt, updatedAt);
         }
 
     }

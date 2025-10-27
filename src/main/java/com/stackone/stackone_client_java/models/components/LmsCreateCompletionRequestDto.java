@@ -50,14 +50,6 @@ public class LmsCreateCompletionRequestDto {
     private JsonNullable<String> learningObjectId;
 
     /**
-     * The external reference of the learning object associated with this completion, this is the main
-     * identifier for creating completions.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("learning_object_external_reference")
-    private JsonNullable<String> learningObjectExternalReference;
-
-    /**
      * ISO 8601 duration format representing the time spent on completing the learning object
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -84,38 +76,46 @@ public class LmsCreateCompletionRequestDto {
     @Deprecated
     private JsonNullable<String> contentId;
 
+    /**
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
+     */
+    @JsonProperty("learning_object_external_reference")
+    private String learningObjectExternalReference;
+
     @JsonCreator
     public LmsCreateCompletionRequestDto(
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough,
             @JsonProperty("result") JsonNullable<? extends LmsCreateCompletionRequestDtoResult> result,
             @JsonProperty("completed_at") JsonNullable<OffsetDateTime> completedAt,
             @JsonProperty("learning_object_id") JsonNullable<String> learningObjectId,
-            @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
             @JsonProperty("time_spent") JsonNullable<String> timeSpent,
             @JsonProperty("content_external_reference") JsonNullable<String> contentExternalReference,
-            @JsonProperty("content_id") JsonNullable<String> contentId) {
+            @JsonProperty("content_id") JsonNullable<String> contentId,
+            @JsonProperty("learning_object_external_reference") String learningObjectExternalReference) {
         Utils.checkNotNull(passthrough, "passthrough");
         Utils.checkNotNull(result, "result");
         Utils.checkNotNull(completedAt, "completedAt");
         Utils.checkNotNull(learningObjectId, "learningObjectId");
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
         Utils.checkNotNull(timeSpent, "timeSpent");
         Utils.checkNotNull(contentExternalReference, "contentExternalReference");
         Utils.checkNotNull(contentId, "contentId");
+        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
         this.passthrough = passthrough;
         this.result = result;
         this.completedAt = completedAt;
         this.learningObjectId = learningObjectId;
-        this.learningObjectExternalReference = learningObjectExternalReference;
         this.timeSpent = timeSpent;
         this.contentExternalReference = contentExternalReference;
         this.contentId = contentId;
+        this.learningObjectExternalReference = learningObjectExternalReference;
     }
     
-    public LmsCreateCompletionRequestDto() {
+    public LmsCreateCompletionRequestDto(
+            String learningObjectExternalReference) {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), learningObjectExternalReference);
     }
 
     /**
@@ -154,15 +154,6 @@ public class LmsCreateCompletionRequestDto {
     }
 
     /**
-     * The external reference of the learning object associated with this completion, this is the main
-     * identifier for creating completions.
-     */
-    @JsonIgnore
-    public JsonNullable<String> learningObjectExternalReference() {
-        return learningObjectExternalReference;
-    }
-
-    /**
      * ISO 8601 duration format representing the time spent on completing the learning object
      */
     @JsonIgnore
@@ -190,6 +181,15 @@ public class LmsCreateCompletionRequestDto {
     @JsonIgnore
     public JsonNullable<String> contentId() {
         return contentId;
+    }
+
+    /**
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
+     */
+    @JsonIgnore
+    public String learningObjectExternalReference() {
+        return learningObjectExternalReference;
     }
 
     public static Builder builder() {
@@ -272,26 +272,6 @@ public class LmsCreateCompletionRequestDto {
     }
 
     /**
-     * The external reference of the learning object associated with this completion, this is the main
-     * identifier for creating completions.
-     */
-    public LmsCreateCompletionRequestDto withLearningObjectExternalReference(String learningObjectExternalReference) {
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-        this.learningObjectExternalReference = JsonNullable.of(learningObjectExternalReference);
-        return this;
-    }
-
-    /**
-     * The external reference of the learning object associated with this completion, this is the main
-     * identifier for creating completions.
-     */
-    public LmsCreateCompletionRequestDto withLearningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-        this.learningObjectExternalReference = learningObjectExternalReference;
-        return this;
-    }
-
-    /**
      * ISO 8601 duration format representing the time spent on completing the learning object
      */
     public LmsCreateCompletionRequestDto withTimeSpent(String timeSpent) {
@@ -357,6 +337,16 @@ public class LmsCreateCompletionRequestDto {
         return this;
     }
 
+    /**
+     * The external reference of the learning object associated with this completion, this is the main
+     * identifier for creating completions.
+     */
+    public LmsCreateCompletionRequestDto withLearningObjectExternalReference(String learningObjectExternalReference) {
+        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+        this.learningObjectExternalReference = learningObjectExternalReference;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -371,18 +361,18 @@ public class LmsCreateCompletionRequestDto {
             Utils.enhancedDeepEquals(this.result, other.result) &&
             Utils.enhancedDeepEquals(this.completedAt, other.completedAt) &&
             Utils.enhancedDeepEquals(this.learningObjectId, other.learningObjectId) &&
-            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
             Utils.enhancedDeepEquals(this.timeSpent, other.timeSpent) &&
             Utils.enhancedDeepEquals(this.contentExternalReference, other.contentExternalReference) &&
-            Utils.enhancedDeepEquals(this.contentId, other.contentId);
+            Utils.enhancedDeepEquals(this.contentId, other.contentId) &&
+            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             passthrough, result, completedAt,
-            learningObjectId, learningObjectExternalReference, timeSpent,
-            contentExternalReference, contentId);
+            learningObjectId, timeSpent, contentExternalReference,
+            contentId, learningObjectExternalReference);
     }
     
     @Override
@@ -392,10 +382,10 @@ public class LmsCreateCompletionRequestDto {
                 "result", result,
                 "completedAt", completedAt,
                 "learningObjectId", learningObjectId,
-                "learningObjectExternalReference", learningObjectExternalReference,
                 "timeSpent", timeSpent,
                 "contentExternalReference", contentExternalReference,
-                "contentId", contentId);
+                "contentId", contentId,
+                "learningObjectExternalReference", learningObjectExternalReference);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -409,8 +399,6 @@ public class LmsCreateCompletionRequestDto {
 
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
 
-        private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
-
         private JsonNullable<String> timeSpent = JsonNullable.undefined();
 
         @Deprecated
@@ -418,6 +406,8 @@ public class LmsCreateCompletionRequestDto {
 
         @Deprecated
         private JsonNullable<String> contentId = JsonNullable.undefined();
+
+        private String learningObjectExternalReference;
 
         private Builder() {
           // force use of static builder() method
@@ -503,27 +493,6 @@ public class LmsCreateCompletionRequestDto {
 
 
         /**
-         * The external reference of the learning object associated with this completion, this is the main
-         * identifier for creating completions.
-         */
-        public Builder learningObjectExternalReference(String learningObjectExternalReference) {
-            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-            this.learningObjectExternalReference = JsonNullable.of(learningObjectExternalReference);
-            return this;
-        }
-
-        /**
-         * The external reference of the learning object associated with this completion, this is the main
-         * identifier for creating completions.
-         */
-        public Builder learningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
-            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-            this.learningObjectExternalReference = learningObjectExternalReference;
-            return this;
-        }
-
-
-        /**
          * ISO 8601 duration format representing the time spent on completing the learning object
          */
         public Builder timeSpent(String timeSpent) {
@@ -591,12 +560,23 @@ public class LmsCreateCompletionRequestDto {
             return this;
         }
 
+
+        /**
+         * The external reference of the learning object associated with this completion, this is the main
+         * identifier for creating completions.
+         */
+        public Builder learningObjectExternalReference(String learningObjectExternalReference) {
+            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+            this.learningObjectExternalReference = learningObjectExternalReference;
+            return this;
+        }
+
         public LmsCreateCompletionRequestDto build() {
 
             return new LmsCreateCompletionRequestDto(
                 passthrough, result, completedAt,
-                learningObjectId, learningObjectExternalReference, timeSpent,
-                contentExternalReference, contentId);
+                learningObjectId, timeSpent, contentExternalReference,
+                contentId, learningObjectExternalReference);
         }
 
     }

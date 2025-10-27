@@ -8,282 +8,273 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.stackone.stackone_client_java.models.components.ProviderError;
+import com.stackone.stackone_client_java.utils.Blob;
 import com.stackone.stackone_client_java.utils.Utils;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+import java.io.InputStream;
+import java.lang.Deprecated;
 import java.lang.Double;
+import java.lang.Exception;
 import java.lang.Override;
-import java.lang.RuntimeException;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.lang.Throwable;
+import java.net.http.HttpResponse;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
 @SuppressWarnings("serial")
-public class BadRequestResponse extends RuntimeException {
-    /**
-     * HTTP status code
-     */
-    @JsonProperty("statusCode")
-    private double statusCode;
+public class BadRequestResponse extends StackOneError {
 
-    /**
-     * Error message
-     */
-    @JsonProperty("message")
-    private String message;
+    @Nullable
+    private final Data data;
 
-    /**
-     * Timestamp when the error occurred
-     */
-    @JsonProperty("timestamp")
-    private OffsetDateTime timestamp;
+    @Nullable
+    private final Throwable deserializationException;
 
-    /**
-     * Error details
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("data")
-    private JsonNullable<? extends Data> data;
-
-    /**
-     * List of provider-specific errors
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("provider_errors")
-    private JsonNullable<? extends List<ProviderError>> providerErrors;
-
-    @JsonCreator
     public BadRequestResponse(
-            @JsonProperty("statusCode") double statusCode,
-            @JsonProperty("message") String message,
-            @JsonProperty("timestamp") OffsetDateTime timestamp,
-            @JsonProperty("data") JsonNullable<? extends Data> data,
-            @JsonProperty("provider_errors") JsonNullable<? extends List<ProviderError>> providerErrors) {
-        super("API error occurred");
-        Utils.checkNotNull(statusCode, "statusCode");
-        Utils.checkNotNull(message, "message");
-        Utils.checkNotNull(timestamp, "timestamp");
-        Utils.checkNotNull(data, "data");
-        Utils.checkNotNull(providerErrors, "providerErrors");
-        this.statusCode = statusCode;
-        this.message = message;
-        this.timestamp = timestamp;
+                int code,
+                byte[] body,
+                HttpResponse<?> rawResponse,
+                @Nullable Data data,
+                @Nullable Throwable deserializationException) {
+        super("API error occurred", code, body, rawResponse, null);
         this.data = data;
-        this.providerErrors = providerErrors;
+        this.deserializationException = deserializationException;
     }
-    
-    public BadRequestResponse(
-            double statusCode,
-            String message,
-            OffsetDateTime timestamp) {
-        this(statusCode, message, timestamp,
-            JsonNullable.undefined(), JsonNullable.undefined());
+
+    /**
+    * Parse a response into an instance of BadRequestResponse. If deserialization of the response body fails,
+    * the resulting BadRequestResponse instance will have a null data() value and a non-null deserializationException().
+    */
+    public static BadRequestResponse from(HttpResponse<InputStream> response) {
+        try {
+            byte[] bytes = Utils.extractByteArrayFromBody(response);
+            Data data = Utils.mapper().readValue(bytes, Data.class);
+            return new BadRequestResponse(response.statusCode(), bytes, response, data, null);
+        } catch (Exception e) {
+            return new BadRequestResponse(response.statusCode(), null, response, null, e);
+        }
+    }
+
+    /**
+    * Parse a response into an instance of BadRequestResponse asynchronously. If deserialization of the response body fails,
+    * the resulting BadRequestResponse instance will have a null data() value and a non-null deserializationException().
+    */
+    public static CompletableFuture<BadRequestResponse> fromAsync(HttpResponse<Blob> response) {
+        return response.body()
+                .toByteArray()
+                .handle((bytes, err) -> {
+                    // if a body read error occurs, we want to transform the exception
+                    if (err != null) {
+                        throw new AsyncSDKError(
+                                "Error reading response body: " + err.getMessage(),
+                                response.statusCode(),
+                                null,
+                                response,
+                                err);
+                    }
+
+                    try {
+                        return new BadRequestResponse(
+                                response.statusCode(),
+                                bytes,
+                                response,
+                                Utils.mapper().readValue(
+                                        bytes,
+                                        new TypeReference<Data>() {
+                                        }),
+                                null);
+                    } catch (Exception e) {
+                        return new BadRequestResponse(
+                                response.statusCode(),
+                                bytes,
+                                response,
+                                null,
+                                e);
+                    }
+                });
     }
 
     /**
      * HTTP status code
      */
-    @JsonIgnore
-    public double statusCode() {
-        return statusCode;
-    }
-
-    /**
-     * Error message
-     */
-    @JsonIgnore
-    public String message() {
-        return message;
-    }
-
-    @JsonIgnore
-    @Override
-    public String getMessage() {
-        return Utils.valueOrNull(message);
+    @Deprecated
+    public Optional<Double> statusCode() {
+        return data().map(Data::statusCode);
     }
 
     /**
      * Timestamp when the error occurred
      */
-    @JsonIgnore
-    public OffsetDateTime timestamp() {
-        return timestamp;
-    }
-
-    /**
-     * Error details
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<Data> data() {
-        return (JsonNullable<Data>) data;
+    @Deprecated
+    public Optional<OffsetDateTime> timestamp() {
+        return data().map(Data::timestamp);
     }
 
     /**
      * List of provider-specific errors
      */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<List<ProviderError>> providerErrors() {
-        return (JsonNullable<List<ProviderError>>) providerErrors;
+    @Deprecated
+    public Optional<JsonNullable<List<ProviderError>>> providerErrors() {
+        return data().map(Data::providerErrors);
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
-    /**
-     * HTTP status code
-     */
-    public BadRequestResponse withStatusCode(double statusCode) {
-        Utils.checkNotNull(statusCode, "statusCode");
-        this.statusCode = statusCode;
-        return this;
+    public Optional<Data> data() {
+        return Optional.ofNullable(data);
     }
 
     /**
-     * Error message
+     * Returns the exception if an error occurs while deserializing the response body.
      */
-    public BadRequestResponse withMessage(String message) {
-        Utils.checkNotNull(message, "message");
-        this.message = message;
-        return this;
+    public Optional<Throwable> deserializationException() {
+        return Optional.ofNullable(deserializationException);
     }
 
-    /**
-     * Timestamp when the error occurred
-     */
-    public BadRequestResponse withTimestamp(OffsetDateTime timestamp) {
-        Utils.checkNotNull(timestamp, "timestamp");
-        this.timestamp = timestamp;
-        return this;
-    }
+    public static class Data {
+        /**
+         * HTTP status code
+         */
+        @JsonProperty("statusCode")
+        private double statusCode;
 
-    /**
-     * Error details
-     */
-    public BadRequestResponse withData(Data data) {
-        Utils.checkNotNull(data, "data");
-        this.data = JsonNullable.of(data);
-        return this;
-    }
-
-    /**
-     * Error details
-     */
-    public BadRequestResponse withData(JsonNullable<? extends Data> data) {
-        Utils.checkNotNull(data, "data");
-        this.data = data;
-        return this;
-    }
-
-    /**
-     * List of provider-specific errors
-     */
-    public BadRequestResponse withProviderErrors(List<ProviderError> providerErrors) {
-        Utils.checkNotNull(providerErrors, "providerErrors");
-        this.providerErrors = JsonNullable.of(providerErrors);
-        return this;
-    }
-
-    /**
-     * List of provider-specific errors
-     */
-    public BadRequestResponse withProviderErrors(JsonNullable<? extends List<ProviderError>> providerErrors) {
-        Utils.checkNotNull(providerErrors, "providerErrors");
-        this.providerErrors = providerErrors;
-        return this;
-    }
-
-    @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        BadRequestResponse other = (BadRequestResponse) o;
-        return 
-            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
-            Utils.enhancedDeepEquals(this.message, other.message) &&
-            Utils.enhancedDeepEquals(this.timestamp, other.timestamp) &&
-            Utils.enhancedDeepEquals(this.data, other.data) &&
-            Utils.enhancedDeepEquals(this.providerErrors, other.providerErrors);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Utils.enhancedHash(
-            statusCode, message, timestamp,
-            data, providerErrors);
-    }
-    
-    @Override
-    public String toString() {
-        return Utils.toString(BadRequestResponse.class,
-                "statusCode", statusCode,
-                "message", message,
-                "timestamp", timestamp,
-                "data", data,
-                "providerErrors", providerErrors);
-    }
-
-    @SuppressWarnings("UnusedReturnValue")
-    public final static class Builder {
-
-        private Double statusCode;
-
+        /**
+         * Error message
+         */
+        @JsonProperty("message")
         private String message;
 
+        /**
+         * Timestamp when the error occurred
+         */
+        @JsonProperty("timestamp")
         private OffsetDateTime timestamp;
 
-        private JsonNullable<? extends Data> data = JsonNullable.undefined();
+        /**
+         * Error details
+         */
+        @JsonInclude(Include.NON_ABSENT)
+        @JsonProperty("data")
+        private JsonNullable<? extends Data> data;
 
-        private JsonNullable<? extends List<ProviderError>> providerErrors = JsonNullable.undefined();
+        /**
+         * List of provider-specific errors
+         */
+        @JsonInclude(Include.NON_ABSENT)
+        @JsonProperty("provider_errors")
+        private JsonNullable<? extends List<ProviderError>> providerErrors;
 
-        private Builder() {
-          // force use of static builder() method
+        @JsonCreator
+        public Data(
+                @JsonProperty("statusCode") double statusCode,
+                @JsonProperty("message") String message,
+                @JsonProperty("timestamp") OffsetDateTime timestamp,
+                @JsonProperty("data") JsonNullable<? extends Data> data,
+                @JsonProperty("provider_errors") JsonNullable<? extends List<ProviderError>> providerErrors) {
+            Utils.checkNotNull(statusCode, "statusCode");
+            Utils.checkNotNull(message, "message");
+            Utils.checkNotNull(timestamp, "timestamp");
+            Utils.checkNotNull(data, "data");
+            Utils.checkNotNull(providerErrors, "providerErrors");
+            this.statusCode = statusCode;
+            this.message = message;
+            this.timestamp = timestamp;
+            this.data = data;
+            this.providerErrors = providerErrors;
+        }
+        
+        public Data(
+                double statusCode,
+                String message,
+                OffsetDateTime timestamp) {
+            this(statusCode, message, timestamp,
+                JsonNullable.undefined(), JsonNullable.undefined());
+        }
+
+        /**
+         * HTTP status code
+         */
+        @JsonIgnore
+        public double statusCode() {
+            return statusCode;
+        }
+
+        /**
+         * Error message
+         */
+        @JsonIgnore
+        public String message() {
+            return message;
+        }
+
+        /**
+         * Timestamp when the error occurred
+         */
+        @JsonIgnore
+        public OffsetDateTime timestamp() {
+            return timestamp;
+        }
+
+        /**
+         * Error details
+         */
+        @SuppressWarnings("unchecked")
+        @JsonIgnore
+        public JsonNullable<Data> data() {
+            return (JsonNullable<Data>) data;
+        }
+
+        /**
+         * List of provider-specific errors
+         */
+        @SuppressWarnings("unchecked")
+        @JsonIgnore
+        public JsonNullable<List<ProviderError>> providerErrors() {
+            return (JsonNullable<List<ProviderError>>) providerErrors;
+        }
+
+        public static Builder builder() {
+            return new Builder();
         }
 
 
         /**
          * HTTP status code
          */
-        public Builder statusCode(double statusCode) {
+        public Data withStatusCode(double statusCode) {
             Utils.checkNotNull(statusCode, "statusCode");
             this.statusCode = statusCode;
             return this;
         }
 
-
         /**
          * Error message
          */
-        public Builder message(String message) {
+        public Data withMessage(String message) {
             Utils.checkNotNull(message, "message");
             this.message = message;
             return this;
         }
 
-
         /**
          * Timestamp when the error occurred
          */
-        public Builder timestamp(OffsetDateTime timestamp) {
+        public Data withTimestamp(OffsetDateTime timestamp) {
             Utils.checkNotNull(timestamp, "timestamp");
             this.timestamp = timestamp;
             return this;
         }
 
-
         /**
          * Error details
          */
-        public Builder data(Data data) {
+        public Data withData(Data data) {
             Utils.checkNotNull(data, "data");
             this.data = JsonNullable.of(data);
             return this;
@@ -292,17 +283,16 @@ public class BadRequestResponse extends RuntimeException {
         /**
          * Error details
          */
-        public Builder data(JsonNullable<? extends Data> data) {
+        public Data withData(JsonNullable<? extends Data> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
 
-
         /**
          * List of provider-specific errors
          */
-        public Builder providerErrors(List<ProviderError> providerErrors) {
+        public Data withProviderErrors(List<ProviderError> providerErrors) {
             Utils.checkNotNull(providerErrors, "providerErrors");
             this.providerErrors = JsonNullable.of(providerErrors);
             return this;
@@ -311,19 +301,140 @@ public class BadRequestResponse extends RuntimeException {
         /**
          * List of provider-specific errors
          */
-        public Builder providerErrors(JsonNullable<? extends List<ProviderError>> providerErrors) {
+        public Data withProviderErrors(JsonNullable<? extends List<ProviderError>> providerErrors) {
             Utils.checkNotNull(providerErrors, "providerErrors");
             this.providerErrors = providerErrors;
             return this;
         }
 
-        public BadRequestResponse build() {
-
-            return new BadRequestResponse(
+        @Override
+        public boolean equals(java.lang.Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Data other = (Data) o;
+            return 
+                Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+                Utils.enhancedDeepEquals(this.message, other.message) &&
+                Utils.enhancedDeepEquals(this.timestamp, other.timestamp) &&
+                Utils.enhancedDeepEquals(this.data, other.data) &&
+                Utils.enhancedDeepEquals(this.providerErrors, other.providerErrors);
+        }
+        
+        @Override
+        public int hashCode() {
+            return Utils.enhancedHash(
                 statusCode, message, timestamp,
                 data, providerErrors);
         }
+        
+        @Override
+        public String toString() {
+            return Utils.toString(Data.class,
+                    "statusCode", statusCode,
+                    "message", message,
+                    "timestamp", timestamp,
+                    "data", data,
+                    "providerErrors", providerErrors);
+        }
 
+        @SuppressWarnings("UnusedReturnValue")
+        public final static class Builder {
+
+            private Double statusCode;
+
+            private String message;
+
+            private OffsetDateTime timestamp;
+
+            private JsonNullable<? extends Data> data = JsonNullable.undefined();
+
+            private JsonNullable<? extends List<ProviderError>> providerErrors = JsonNullable.undefined();
+
+            private Builder() {
+              // force use of static builder() method
+            }
+
+
+            /**
+             * HTTP status code
+             */
+            public Builder statusCode(double statusCode) {
+                Utils.checkNotNull(statusCode, "statusCode");
+                this.statusCode = statusCode;
+                return this;
+            }
+
+
+            /**
+             * Error message
+             */
+            public Builder message(String message) {
+                Utils.checkNotNull(message, "message");
+                this.message = message;
+                return this;
+            }
+
+
+            /**
+             * Timestamp when the error occurred
+             */
+            public Builder timestamp(OffsetDateTime timestamp) {
+                Utils.checkNotNull(timestamp, "timestamp");
+                this.timestamp = timestamp;
+                return this;
+            }
+
+
+            /**
+             * Error details
+             */
+            public Builder data(Data data) {
+                Utils.checkNotNull(data, "data");
+                this.data = JsonNullable.of(data);
+                return this;
+            }
+
+            /**
+             * Error details
+             */
+            public Builder data(JsonNullable<? extends Data> data) {
+                Utils.checkNotNull(data, "data");
+                this.data = data;
+                return this;
+            }
+
+
+            /**
+             * List of provider-specific errors
+             */
+            public Builder providerErrors(List<ProviderError> providerErrors) {
+                Utils.checkNotNull(providerErrors, "providerErrors");
+                this.providerErrors = JsonNullable.of(providerErrors);
+                return this;
+            }
+
+            /**
+             * List of provider-specific errors
+             */
+            public Builder providerErrors(JsonNullable<? extends List<ProviderError>> providerErrors) {
+                Utils.checkNotNull(providerErrors, "providerErrors");
+                this.providerErrors = providerErrors;
+                return this;
+            }
+
+            public Data build() {
+
+                return new Data(
+                    statusCode, message, timestamp,
+                    data, providerErrors);
+            }
+
+        }
     }
+
 }
 

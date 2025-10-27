@@ -16,7 +16,6 @@ import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
 import com.stackone.stackone_client_java.utils.pagination.AsyncPaginator;
 import com.stackone.stackone_client_java.utils.pagination.CursorTracker;
-import java.lang.Exception;
 import java.lang.String;
 import java.net.http.HttpResponse;
 import java.util.Optional;
@@ -54,7 +53,7 @@ public class AtsListJobCustomFieldDefinitionsRequestBuilder {
         return this;
     }
 
-    public CompletableFuture<AtsListJobCustomFieldDefinitionsResponse> call() throws Exception {
+    public CompletableFuture<AtsListJobCustomFieldDefinitionsResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());
