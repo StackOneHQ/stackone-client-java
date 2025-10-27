@@ -30,13 +30,6 @@ public class LmsCreateContentRequestDto {
     private JsonNullable<? extends Map<String, Object>> unifiedCustomFields;
 
     /**
-     * The external ID associated with this content
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("external_reference")
-    private JsonNullable<String> externalReference;
-
-    /**
      * The title of the content
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -162,6 +155,12 @@ public class LmsCreateContentRequestDto {
     private JsonNullable<OffsetDateTime> createdAt;
 
     /**
+     * The external ID associated with this content
+     */
+    @JsonProperty("external_reference")
+    private String externalReference;
+
+    /**
      * The categories associated with this content
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -178,7 +177,6 @@ public class LmsCreateContentRequestDto {
     @JsonCreator
     public LmsCreateContentRequestDto(
             @JsonProperty("unified_custom_fields") JsonNullable<? extends Map<String, Object>> unifiedCustomFields,
-            @JsonProperty("external_reference") JsonNullable<String> externalReference,
             @JsonProperty("title") JsonNullable<String> title,
             @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("languages") JsonNullable<? extends List<LanguageEnum>> languages,
@@ -196,10 +194,10 @@ public class LmsCreateContentRequestDto {
             @JsonProperty("authors") JsonNullable<? extends List<AuthorModel>> authors,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
+            @JsonProperty("external_reference") String externalReference,
             @JsonProperty("categories") JsonNullable<? extends List<CreateCategoriesApiModel>> categories,
             @JsonProperty("additional_data") JsonNullable<? extends List<AdditionalData>> additionalData) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
-        Utils.checkNotNull(externalReference, "externalReference");
         Utils.checkNotNull(title, "title");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(languages, "languages");
@@ -217,10 +215,10 @@ public class LmsCreateContentRequestDto {
         Utils.checkNotNull(authors, "authors");
         Utils.checkNotNull(updatedAt, "updatedAt");
         Utils.checkNotNull(createdAt, "createdAt");
+        Utils.checkNotNull(externalReference, "externalReference");
         Utils.checkNotNull(categories, "categories");
         Utils.checkNotNull(additionalData, "additionalData");
         this.unifiedCustomFields = unifiedCustomFields;
-        this.externalReference = externalReference;
         this.title = title;
         this.description = description;
         this.languages = languages;
@@ -238,18 +236,20 @@ public class LmsCreateContentRequestDto {
         this.authors = authors;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
+        this.externalReference = externalReference;
         this.categories = categories;
         this.additionalData = additionalData;
     }
     
-    public LmsCreateContentRequestDto() {
+    public LmsCreateContentRequestDto(
+            String externalReference) {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            externalReference, JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -259,14 +259,6 @@ public class LmsCreateContentRequestDto {
     @JsonIgnore
     public JsonNullable<Map<String, Object>> unifiedCustomFields() {
         return (JsonNullable<Map<String, Object>>) unifiedCustomFields;
-    }
-
-    /**
-     * The external ID associated with this content
-     */
-    @JsonIgnore
-    public JsonNullable<String> externalReference() {
-        return externalReference;
     }
 
     /**
@@ -419,6 +411,14 @@ public class LmsCreateContentRequestDto {
     }
 
     /**
+     * The external ID associated with this content
+     */
+    @JsonIgnore
+    public String externalReference() {
+        return externalReference;
+    }
+
+    /**
      * The categories associated with this content
      */
     @SuppressWarnings("unchecked")
@@ -456,24 +456,6 @@ public class LmsCreateContentRequestDto {
     public LmsCreateContentRequestDto withUnifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
         this.unifiedCustomFields = unifiedCustomFields;
-        return this;
-    }
-
-    /**
-     * The external ID associated with this content
-     */
-    public LmsCreateContentRequestDto withExternalReference(String externalReference) {
-        Utils.checkNotNull(externalReference, "externalReference");
-        this.externalReference = JsonNullable.of(externalReference);
-        return this;
-    }
-
-    /**
-     * The external ID associated with this content
-     */
-    public LmsCreateContentRequestDto withExternalReference(JsonNullable<String> externalReference) {
-        Utils.checkNotNull(externalReference, "externalReference");
-        this.externalReference = externalReference;
         return this;
     }
 
@@ -796,6 +778,15 @@ public class LmsCreateContentRequestDto {
     }
 
     /**
+     * The external ID associated with this content
+     */
+    public LmsCreateContentRequestDto withExternalReference(String externalReference) {
+        Utils.checkNotNull(externalReference, "externalReference");
+        this.externalReference = externalReference;
+        return this;
+    }
+
+    /**
      * The categories associated with this content
      */
     public LmsCreateContentRequestDto withCategories(List<CreateCategoriesApiModel> categories) {
@@ -842,7 +833,6 @@ public class LmsCreateContentRequestDto {
         LmsCreateContentRequestDto other = (LmsCreateContentRequestDto) o;
         return 
             Utils.enhancedDeepEquals(this.unifiedCustomFields, other.unifiedCustomFields) &&
-            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
             Utils.enhancedDeepEquals(this.title, other.title) &&
             Utils.enhancedDeepEquals(this.description, other.description) &&
             Utils.enhancedDeepEquals(this.languages, other.languages) &&
@@ -860,6 +850,7 @@ public class LmsCreateContentRequestDto {
             Utils.enhancedDeepEquals(this.authors, other.authors) &&
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
             Utils.enhancedDeepEquals(this.categories, other.categories) &&
             Utils.enhancedDeepEquals(this.additionalData, other.additionalData);
     }
@@ -867,20 +858,19 @@ public class LmsCreateContentRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            unifiedCustomFields, externalReference, title,
-            description, languages, contentUrl,
-            mobileLaunchContentUrl, contentType, coverUrl,
-            active, duration, skills,
-            order, shortDescription, localizations,
-            tags, authors, updatedAt,
-            createdAt, categories, additionalData);
+            unifiedCustomFields, title, description,
+            languages, contentUrl, mobileLaunchContentUrl,
+            contentType, coverUrl, active,
+            duration, skills, order,
+            shortDescription, localizations, tags,
+            authors, updatedAt, createdAt,
+            externalReference, categories, additionalData);
     }
     
     @Override
     public String toString() {
         return Utils.toString(LmsCreateContentRequestDto.class,
                 "unifiedCustomFields", unifiedCustomFields,
-                "externalReference", externalReference,
                 "title", title,
                 "description", description,
                 "languages", languages,
@@ -898,6 +888,7 @@ public class LmsCreateContentRequestDto {
                 "authors", authors,
                 "updatedAt", updatedAt,
                 "createdAt", createdAt,
+                "externalReference", externalReference,
                 "categories", categories,
                 "additionalData", additionalData);
     }
@@ -906,8 +897,6 @@ public class LmsCreateContentRequestDto {
     public final static class Builder {
 
         private JsonNullable<? extends Map<String, Object>> unifiedCustomFields = JsonNullable.undefined();
-
-        private JsonNullable<String> externalReference = JsonNullable.undefined();
 
         private JsonNullable<String> title = JsonNullable.undefined();
 
@@ -944,6 +933,8 @@ public class LmsCreateContentRequestDto {
 
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
 
+        private String externalReference;
+
         private JsonNullable<? extends List<CreateCategoriesApiModel>> categories = JsonNullable.undefined();
 
         private JsonNullable<? extends List<AdditionalData>> additionalData = JsonNullable.undefined();
@@ -968,25 +959,6 @@ public class LmsCreateContentRequestDto {
         public Builder unifiedCustomFields(JsonNullable<? extends Map<String, Object>> unifiedCustomFields) {
             Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
             this.unifiedCustomFields = unifiedCustomFields;
-            return this;
-        }
-
-
-        /**
-         * The external ID associated with this content
-         */
-        public Builder externalReference(String externalReference) {
-            Utils.checkNotNull(externalReference, "externalReference");
-            this.externalReference = JsonNullable.of(externalReference);
-            return this;
-        }
-
-        /**
-         * The external ID associated with this content
-         */
-        public Builder externalReference(JsonNullable<String> externalReference) {
-            Utils.checkNotNull(externalReference, "externalReference");
-            this.externalReference = externalReference;
             return this;
         }
 
@@ -1327,6 +1299,16 @@ public class LmsCreateContentRequestDto {
 
 
         /**
+         * The external ID associated with this content
+         */
+        public Builder externalReference(String externalReference) {
+            Utils.checkNotNull(externalReference, "externalReference");
+            this.externalReference = externalReference;
+            return this;
+        }
+
+
+        /**
          * The categories associated with this content
          */
         public Builder categories(List<CreateCategoriesApiModel> categories) {
@@ -1366,13 +1348,13 @@ public class LmsCreateContentRequestDto {
         public LmsCreateContentRequestDto build() {
 
             return new LmsCreateContentRequestDto(
-                unifiedCustomFields, externalReference, title,
-                description, languages, contentUrl,
-                mobileLaunchContentUrl, contentType, coverUrl,
-                active, duration, skills,
-                order, shortDescription, localizations,
-                tags, authors, updatedAt,
-                createdAt, categories, additionalData);
+                unifiedCustomFields, title, description,
+                languages, contentUrl, mobileLaunchContentUrl,
+                contentType, coverUrl, active,
+                duration, skills, order,
+                shortDescription, localizations, tags,
+                authors, updatedAt, createdAt,
+                externalReference, categories, additionalData);
         }
 
     }

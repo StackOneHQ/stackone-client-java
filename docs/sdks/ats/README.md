@@ -1793,7 +1793,7 @@ public class Application {
 
         AtsListCandidatesRequest req = AtsListCandidatesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at,unified_custom_fields")
+                .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields")
                 .filter(AtsListCandidatesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
@@ -1974,7 +1974,7 @@ public class Application {
         AtsGetCandidateRequest req = AtsGetCandidateRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at,unified_custom_fields")
+                .fields("id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,tags,created_at,updated_at,unified_custom_fields")
                 .include("custom_fields")
                 .build();
 

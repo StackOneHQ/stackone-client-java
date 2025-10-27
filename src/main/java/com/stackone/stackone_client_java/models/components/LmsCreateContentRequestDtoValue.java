@@ -44,7 +44,8 @@ import java.util.Optional;
 /**
  * LmsCreateContentRequestDtoValue
  * 
- * <p>The StackOne unified content type.
+ * <p>The content type for write operations. Provide one of the listed enum values. If omitted or set to
+ * "unmapped_value", the source_value will be sent to the provider instead.
  */
 @JsonDeserialize(using = LmsCreateContentRequestDtoValue._Deserializer.class)
 @JsonSerialize(using = LmsCreateContentRequestDtoValue._Serializer.class)
@@ -55,6 +56,11 @@ public class LmsCreateContentRequestDtoValue {
     public static final LmsCreateContentRequestDtoValue DOCUMENT = new LmsCreateContentRequestDtoValue("document");
     public static final LmsCreateContentRequestDtoValue AUDIO = new LmsCreateContentRequestDtoValue("audio");
     public static final LmsCreateContentRequestDtoValue ARTICLE = new LmsCreateContentRequestDtoValue("article");
+    public static final LmsCreateContentRequestDtoValue BOOK = new LmsCreateContentRequestDtoValue("book");
+    public static final LmsCreateContentRequestDtoValue EVENT = new LmsCreateContentRequestDtoValue("event");
+    public static final LmsCreateContentRequestDtoValue COURSE = new LmsCreateContentRequestDtoValue("course");
+    public static final LmsCreateContentRequestDtoValue COLLECTION = new LmsCreateContentRequestDtoValue("collection");
+    public static final LmsCreateContentRequestDtoValue INTERACTIVE = new LmsCreateContentRequestDtoValue("interactive");
     public static final LmsCreateContentRequestDtoValue UNMAPPED_VALUE = new LmsCreateContentRequestDtoValue("unmapped_value");
 
     // This map will grow whenever a Color gets created with a new
@@ -132,6 +138,11 @@ public class LmsCreateContentRequestDtoValue {
         map.put("document", DOCUMENT);
         map.put("audio", AUDIO);
         map.put("article", ARTICLE);
+        map.put("book", BOOK);
+        map.put("event", EVENT);
+        map.put("course", COURSE);
+        map.put("collection", COLLECTION);
+        map.put("interactive", INTERACTIVE);
         map.put("unmapped_value", UNMAPPED_VALUE);
         return map;
     }
@@ -143,6 +154,11 @@ public class LmsCreateContentRequestDtoValue {
         map.put("document", LmsCreateContentRequestDtoValueEnum.DOCUMENT);
         map.put("audio", LmsCreateContentRequestDtoValueEnum.AUDIO);
         map.put("article", LmsCreateContentRequestDtoValueEnum.ARTICLE);
+        map.put("book", LmsCreateContentRequestDtoValueEnum.BOOK);
+        map.put("event", LmsCreateContentRequestDtoValueEnum.EVENT);
+        map.put("course", LmsCreateContentRequestDtoValueEnum.COURSE);
+        map.put("collection", LmsCreateContentRequestDtoValueEnum.COLLECTION);
+        map.put("interactive", LmsCreateContentRequestDtoValueEnum.INTERACTIVE);
         map.put("unmapped_value", LmsCreateContentRequestDtoValueEnum.UNMAPPED_VALUE);
         return map;
     }
@@ -184,6 +200,11 @@ public class LmsCreateContentRequestDtoValue {
         DOCUMENT("document"),
         AUDIO("audio"),
         ARTICLE("article"),
+        BOOK("book"),
+        EVENT("event"),
+        COURSE("course"),
+        COLLECTION("collection"),
+        INTERACTIVE("interactive"),
         UNMAPPED_VALUE("unmapped_value"),;
 
         private final String value;

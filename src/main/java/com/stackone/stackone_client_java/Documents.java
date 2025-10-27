@@ -40,7 +40,6 @@ import com.stackone.stackone_client_java.operations.DocumentsListFolders;
 import com.stackone.stackone_client_java.operations.DocumentsUploadFile;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -78,9 +77,9 @@ public class Documents {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsDownloadFileResponse downloadFile(DocumentsDownloadFileRequest request) throws Exception {
+    public DocumentsDownloadFileResponse downloadFile(DocumentsDownloadFileRequest request) {
         return downloadFile(request, Optional.empty());
     }
 
@@ -90,9 +89,9 @@ public class Documents {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsDownloadFileResponse downloadFile(DocumentsDownloadFileRequest request, Optional<Options> options) throws Exception {
+    public DocumentsDownloadFileResponse downloadFile(DocumentsDownloadFileRequest request, Optional<Options> options) {
         RequestOperation<DocumentsDownloadFileRequest, DocumentsDownloadFileResponse> operation
               = new DocumentsDownloadFile.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -113,9 +112,9 @@ public class Documents {
      * @param xAccountId The account identifier
      * @param unifiedUploadRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsUploadFileResponse uploadFile(String xAccountId, UnifiedUploadRequestDto unifiedUploadRequestDto) throws Exception {
+    public DocumentsUploadFileResponse uploadFile(String xAccountId, UnifiedUploadRequestDto unifiedUploadRequestDto) {
         return uploadFile(xAccountId, Optional.empty(), unifiedUploadRequestDto,
             Optional.empty());
     }
@@ -128,11 +127,11 @@ public class Documents {
      * @param unifiedUploadRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public DocumentsUploadFileResponse uploadFile(
             String xAccountId, Optional<String> xStackoneApiSessionToken,
-            UnifiedUploadRequestDto unifiedUploadRequestDto, Optional<Options> options) throws Exception {
+            UnifiedUploadRequestDto unifiedUploadRequestDto, Optional<Options> options) {
         DocumentsUploadFileRequest request =
             DocumentsUploadFileRequest
                 .builder()
@@ -159,9 +158,9 @@ public class Documents {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsListFilesResponse listFiles(DocumentsListFilesRequest request) throws Exception {
+    public DocumentsListFilesResponse listFiles(DocumentsListFilesRequest request) {
         return listFiles(request, Optional.empty());
     }
 
@@ -171,9 +170,9 @@ public class Documents {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsListFilesResponse listFiles(DocumentsListFilesRequest request, Optional<Options> options) throws Exception {
+    public DocumentsListFilesResponse listFiles(DocumentsListFilesRequest request, Optional<Options> options) {
         RequestOperation<DocumentsListFilesRequest, DocumentsListFilesResponse> operation
               = new DocumentsListFiles.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -193,9 +192,9 @@ public class Documents {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsGetFileResponse getFile(DocumentsGetFileRequest request) throws Exception {
+    public DocumentsGetFileResponse getFile(DocumentsGetFileRequest request) {
         return getFile(request, Optional.empty());
     }
 
@@ -205,9 +204,9 @@ public class Documents {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsGetFileResponse getFile(DocumentsGetFileRequest request, Optional<Options> options) throws Exception {
+    public DocumentsGetFileResponse getFile(DocumentsGetFileRequest request, Optional<Options> options) {
         RequestOperation<DocumentsGetFileRequest, DocumentsGetFileResponse> operation
               = new DocumentsGetFile.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -227,9 +226,9 @@ public class Documents {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsListFoldersResponse listFolders(DocumentsListFoldersRequest request) throws Exception {
+    public DocumentsListFoldersResponse listFolders(DocumentsListFoldersRequest request) {
         return listFolders(request, Optional.empty());
     }
 
@@ -239,9 +238,9 @@ public class Documents {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsListFoldersResponse listFolders(DocumentsListFoldersRequest request, Optional<Options> options) throws Exception {
+    public DocumentsListFoldersResponse listFolders(DocumentsListFoldersRequest request, Optional<Options> options) {
         RequestOperation<DocumentsListFoldersRequest, DocumentsListFoldersResponse> operation
               = new DocumentsListFolders.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -261,9 +260,9 @@ public class Documents {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsGetFolderResponse getFolder(DocumentsGetFolderRequest request) throws Exception {
+    public DocumentsGetFolderResponse getFolder(DocumentsGetFolderRequest request) {
         return getFolder(request, Optional.empty());
     }
 
@@ -273,9 +272,9 @@ public class Documents {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsGetFolderResponse getFolder(DocumentsGetFolderRequest request, Optional<Options> options) throws Exception {
+    public DocumentsGetFolderResponse getFolder(DocumentsGetFolderRequest request, Optional<Options> options) {
         RequestOperation<DocumentsGetFolderRequest, DocumentsGetFolderResponse> operation
               = new DocumentsGetFolder.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -295,9 +294,9 @@ public class Documents {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsListDrivesResponse listDrives(DocumentsListDrivesRequest request) throws Exception {
+    public DocumentsListDrivesResponse listDrives(DocumentsListDrivesRequest request) {
         return listDrives(request, Optional.empty());
     }
 
@@ -307,9 +306,9 @@ public class Documents {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsListDrivesResponse listDrives(DocumentsListDrivesRequest request, Optional<Options> options) throws Exception {
+    public DocumentsListDrivesResponse listDrives(DocumentsListDrivesRequest request, Optional<Options> options) {
         RequestOperation<DocumentsListDrivesRequest, DocumentsListDrivesResponse> operation
               = new DocumentsListDrives.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -329,9 +328,9 @@ public class Documents {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsGetDriveResponse getDrive(DocumentsGetDriveRequest request) throws Exception {
+    public DocumentsGetDriveResponse getDrive(DocumentsGetDriveRequest request) {
         return getDrive(request, Optional.empty());
     }
 
@@ -341,9 +340,9 @@ public class Documents {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DocumentsGetDriveResponse getDrive(DocumentsGetDriveRequest request, Optional<Options> options) throws Exception {
+    public DocumentsGetDriveResponse getDrive(DocumentsGetDriveRequest request, Optional<Options> options) {
         RequestOperation<DocumentsGetDriveRequest, DocumentsGetDriveResponse> operation
               = new DocumentsGetDrive.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

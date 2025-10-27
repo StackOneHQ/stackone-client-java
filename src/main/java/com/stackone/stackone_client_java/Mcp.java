@@ -23,7 +23,6 @@ import com.stackone.stackone_client_java.operations.StackoneMcpGet;
 import com.stackone.stackone_client_java.operations.StackoneMcpPost;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -69,11 +68,11 @@ public class Mcp {
      * @param xAccountId Account secure id for the target provider account
      * @param mcpSessionId Session id
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpGetResponse mcpGet(
             StackoneMcpGetSecurity security, String xAccountId,
-            String mcpSessionId) throws Exception {
+            String mcpSessionId) {
         return mcpGet(security, xAccountId, mcpSessionId,
             Optional.empty());
     }
@@ -88,11 +87,11 @@ public class Mcp {
      * @param mcpSessionId Session id
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpGetResponse mcpGet(
             StackoneMcpGetSecurity security, String xAccountId,
-            String mcpSessionId, Optional<Options> options) throws Exception {
+            String mcpSessionId, Optional<Options> options) {
         StackoneMcpGetRequest request =
             StackoneMcpGetRequest
                 .builder()
@@ -126,11 +125,11 @@ public class Mcp {
      * @param xAccountId Account secure id for the target provider account
      * @param jsonRpcMessageDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpPostResponse mcpPost(
             StackoneMcpPostSecurity security, String xAccountId,
-            JsonRpcMessageDto jsonRpcMessageDto) throws Exception {
+            JsonRpcMessageDto jsonRpcMessageDto) {
         return mcpPost(security, xAccountId, Optional.empty(),
             jsonRpcMessageDto, Optional.empty());
     }
@@ -146,12 +145,12 @@ public class Mcp {
      * @param jsonRpcMessageDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpPostResponse mcpPost(
             StackoneMcpPostSecurity security, String xAccountId,
             Optional<String> mcpSessionId, JsonRpcMessageDto jsonRpcMessageDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         StackoneMcpPostRequest request =
             StackoneMcpPostRequest
                 .builder()
@@ -186,11 +185,11 @@ public class Mcp {
      * @param xAccountId Account secure id for the target provider account
      * @param mcpSessionId Session id
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpDeleteResponse mcpDelete(
             StackoneMcpDeleteSecurity security, String xAccountId,
-            String mcpSessionId) throws Exception {
+            String mcpSessionId) {
         return mcpDelete(security, xAccountId, mcpSessionId,
             Optional.empty());
     }
@@ -205,11 +204,11 @@ public class Mcp {
      * @param mcpSessionId Session id
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpDeleteResponse mcpDelete(
             StackoneMcpDeleteSecurity security, String xAccountId,
-            String mcpSessionId, Optional<Options> options) throws Exception {
+            String mcpSessionId, Optional<Options> options) {
         StackoneMcpDeleteRequest request =
             StackoneMcpDeleteRequest
                 .builder()

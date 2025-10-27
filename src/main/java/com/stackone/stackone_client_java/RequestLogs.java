@@ -24,7 +24,6 @@ import com.stackone.stackone_client_java.operations.StackoneListPlatformLogs;
 import com.stackone.stackone_client_java.operations.StackoneListStepLogs;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -65,9 +64,9 @@ public class RequestLogs {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListStepLogsResponse listStepLogs(StackoneListStepLogsRequest request) throws Exception {
+    public StackoneListStepLogsResponse listStepLogs(StackoneListStepLogsRequest request) {
         return listStepLogs(request, Optional.empty());
     }
 
@@ -77,9 +76,9 @@ public class RequestLogs {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListStepLogsResponse listStepLogs(StackoneListStepLogsRequest request, Optional<Options> options) throws Exception {
+    public StackoneListStepLogsResponse listStepLogs(StackoneListStepLogsRequest request, Optional<Options> options) {
         RequestOperation<StackoneListStepLogsRequest, StackoneListStepLogsResponse> operation
               = new StackoneListStepLogs.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -99,9 +98,9 @@ public class RequestLogs {
      * 
      * @param id 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneGetLogResponse getLog(String id) throws Exception {
+    public StackoneGetLogResponse getLog(String id) {
         return getLog(id, JsonNullable.undefined(), Optional.empty());
     }
 
@@ -112,11 +111,11 @@ public class RequestLogs {
      * @param include The include parameter allows you to include additional data in the response.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneGetLogResponse getLog(
             String id, JsonNullable<? extends Include> include,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         StackoneGetLogRequest request =
             StackoneGetLogRequest
                 .builder()
@@ -142,9 +141,9 @@ public class RequestLogs {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListLogsResponse listLogs(StackoneListLogsRequest request) throws Exception {
+    public StackoneListLogsResponse listLogs(StackoneListLogsRequest request) {
         return listLogs(request, Optional.empty());
     }
 
@@ -154,9 +153,9 @@ public class RequestLogs {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListLogsResponse listLogs(StackoneListLogsRequest request, Optional<Options> options) throws Exception {
+    public StackoneListLogsResponse listLogs(StackoneListLogsRequest request, Optional<Options> options) {
         RequestOperation<StackoneListLogsRequest, StackoneListLogsResponse> operation
               = new StackoneListLogs.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -176,9 +175,9 @@ public class RequestLogs {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListPlatformLogsResponse listPlatformLogs(StackoneListPlatformLogsRequest request) throws Exception {
+    public StackoneListPlatformLogsResponse listPlatformLogs(StackoneListPlatformLogsRequest request) {
         return listPlatformLogs(request, Optional.empty());
     }
 
@@ -188,9 +187,9 @@ public class RequestLogs {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListPlatformLogsResponse listPlatformLogs(StackoneListPlatformLogsRequest request, Optional<Options> options) throws Exception {
+    public StackoneListPlatformLogsResponse listPlatformLogs(StackoneListPlatformLogsRequest request, Optional<Options> options) {
         RequestOperation<StackoneListPlatformLogsRequest, StackoneListPlatformLogsResponse> operation
               = new StackoneListPlatformLogs.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

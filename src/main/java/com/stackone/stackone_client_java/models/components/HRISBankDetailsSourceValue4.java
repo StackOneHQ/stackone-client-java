@@ -9,9 +9,9 @@ import java.lang.Override;
 import java.lang.String;
 
 
-public class PatchAccountExternalDtoSetupInformation {
+public class HRISBankDetailsSourceValue4 {
     @JsonCreator
-    public PatchAccountExternalDtoSetupInformation() {
+    public HRISBankDetailsSourceValue4() {
     }
 
     public static Builder builder() {
@@ -38,7 +38,7 @@ public class PatchAccountExternalDtoSetupInformation {
     
     @Override
     public String toString() {
-        return Utils.toString(PatchAccountExternalDtoSetupInformation.class);
+        return Utils.toString(HRISBankDetailsSourceValue4.class);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -48,9 +48,9 @@ public class PatchAccountExternalDtoSetupInformation {
           // force use of static builder() method
         }
 
-        public PatchAccountExternalDtoSetupInformation build() {
+        public HRISBankDetailsSourceValue4 build() {
 
-            return new PatchAccountExternalDtoSetupInformation(
+            return new HRISBankDetailsSourceValue4(
                 );
         }
 

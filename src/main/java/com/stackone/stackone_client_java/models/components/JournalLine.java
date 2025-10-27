@@ -36,7 +36,7 @@ public class JournalLine {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account_type")
-    private JsonNullable<? extends AccountType> accountType;
+    private JsonNullable<? extends JournalLineAccountType> accountType;
 
     /**
      * Description of the journal line
@@ -85,7 +85,7 @@ public class JournalLine {
     public JournalLine(
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("account_id") JsonNullable<String> accountId,
-            @JsonProperty("account_type") JsonNullable<? extends AccountType> accountType,
+            @JsonProperty("account_type") JsonNullable<? extends JournalLineAccountType> accountType,
             @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("currency_code") JsonNullable<? extends JournalLineCurrencyCode> currencyCode,
             @JsonProperty("exchange_rate") JsonNullable<Double> exchangeRate,
@@ -139,8 +139,8 @@ public class JournalLine {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<AccountType> accountType() {
-        return (JsonNullable<AccountType>) accountType;
+    public JsonNullable<JournalLineAccountType> accountType() {
+        return (JsonNullable<JournalLineAccountType>) accountType;
     }
 
     /**
@@ -237,7 +237,7 @@ public class JournalLine {
     /**
      * Type of the account
      */
-    public JournalLine withAccountType(AccountType accountType) {
+    public JournalLine withAccountType(JournalLineAccountType accountType) {
         Utils.checkNotNull(accountType, "accountType");
         this.accountType = JsonNullable.of(accountType);
         return this;
@@ -246,7 +246,7 @@ public class JournalLine {
     /**
      * Type of the account
      */
-    public JournalLine withAccountType(JsonNullable<? extends AccountType> accountType) {
+    public JournalLine withAccountType(JsonNullable<? extends JournalLineAccountType> accountType) {
         Utils.checkNotNull(accountType, "accountType");
         this.accountType = accountType;
         return this;
@@ -412,7 +412,7 @@ public class JournalLine {
 
         private JsonNullable<String> accountId = JsonNullable.undefined();
 
-        private JsonNullable<? extends AccountType> accountType = JsonNullable.undefined();
+        private JsonNullable<? extends JournalLineAccountType> accountType = JsonNullable.undefined();
 
         private JsonNullable<String> description = JsonNullable.undefined();
 
@@ -472,7 +472,7 @@ public class JournalLine {
         /**
          * Type of the account
          */
-        public Builder accountType(AccountType accountType) {
+        public Builder accountType(JournalLineAccountType accountType) {
             Utils.checkNotNull(accountType, "accountType");
             this.accountType = JsonNullable.of(accountType);
             return this;
@@ -481,7 +481,7 @@ public class JournalLine {
         /**
          * Type of the account
          */
-        public Builder accountType(JsonNullable<? extends AccountType> accountType) {
+        public Builder accountType(JsonNullable<? extends JournalLineAccountType> accountType) {
             Utils.checkNotNull(accountType, "accountType");
             this.accountType = accountType;
             return this;

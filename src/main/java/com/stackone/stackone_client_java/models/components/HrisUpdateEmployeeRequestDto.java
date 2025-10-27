@@ -22,6 +22,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class HrisUpdateEmployeeRequestDto {
     /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("title")
+    private JsonNullable<String> title;
+
+    /**
      * The employee first name
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -319,6 +326,7 @@ public class HrisUpdateEmployeeRequestDto {
 
     @JsonCreator
     public HrisUpdateEmployeeRequestDto(
+            @JsonProperty("title") JsonNullable<String> title,
             @JsonProperty("first_name") JsonNullable<String> firstName,
             @JsonProperty("last_name") JsonNullable<String> lastName,
             @JsonProperty("name") JsonNullable<String> name,
@@ -359,6 +367,7 @@ public class HrisUpdateEmployeeRequestDto {
             @JsonProperty("home_location") JsonNullable<? extends HrisUpdateEmployeeRequestDtoHomeLocation> homeLocation,
             @JsonProperty("work_location") JsonNullable<? extends HrisUpdateEmployeeRequestDtoWorkLocation> workLocation,
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough) {
+        Utils.checkNotNull(title, "title");
         Utils.checkNotNull(firstName, "firstName");
         Utils.checkNotNull(lastName, "lastName");
         Utils.checkNotNull(name, "name");
@@ -399,6 +408,7 @@ public class HrisUpdateEmployeeRequestDto {
         Utils.checkNotNull(homeLocation, "homeLocation");
         Utils.checkNotNull(workLocation, "workLocation");
         Utils.checkNotNull(passthrough, "passthrough");
+        this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
         this.name = name;
@@ -455,7 +465,15 @@ public class HrisUpdateEmployeeRequestDto {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined());
+    }
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    @JsonIgnore
+    public JsonNullable<String> title() {
+        return title;
     }
 
     /**
@@ -815,6 +833,24 @@ public class HrisUpdateEmployeeRequestDto {
         return new Builder();
     }
 
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    public HrisUpdateEmployeeRequestDto withTitle(String title) {
+        Utils.checkNotNull(title, "title");
+        this.title = JsonNullable.of(title);
+        return this;
+    }
+
+    /**
+     * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+     */
+    public HrisUpdateEmployeeRequestDto withTitle(JsonNullable<String> title) {
+        Utils.checkNotNull(title, "title");
+        this.title = title;
+        return this;
+    }
 
     /**
      * The employee first name
@@ -1578,6 +1614,7 @@ public class HrisUpdateEmployeeRequestDto {
         }
         HrisUpdateEmployeeRequestDto other = (HrisUpdateEmployeeRequestDto) o;
         return 
+            Utils.enhancedDeepEquals(this.title, other.title) &&
             Utils.enhancedDeepEquals(this.firstName, other.firstName) &&
             Utils.enhancedDeepEquals(this.lastName, other.lastName) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
@@ -1623,25 +1660,26 @@ public class HrisUpdateEmployeeRequestDto {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            firstName, lastName, name,
-            displayName, avatarUrl, personalEmail,
-            personalPhoneNumber, workEmail, workPhoneNumber,
-            jobId, jobTitle, departmentId,
-            teamId, department, managerId,
-            gender, preferredLanguage, ethnicity,
-            dateOfBirth, birthday, maritalStatus,
-            avatar, hireDate, startDate,
-            employmentType, employmentContractType, employmentStatus,
-            terminationDate, companyName, companyId,
-            citizenships, employment, customFields,
-            benefits, employeeNumber, nationalIdentityNumber,
-            nationalIdentityNumbers, homeLocation, workLocation,
-            passthrough);
+            title, firstName, lastName,
+            name, displayName, avatarUrl,
+            personalEmail, personalPhoneNumber, workEmail,
+            workPhoneNumber, jobId, jobTitle,
+            departmentId, teamId, department,
+            managerId, gender, preferredLanguage,
+            ethnicity, dateOfBirth, birthday,
+            maritalStatus, avatar, hireDate,
+            startDate, employmentType, employmentContractType,
+            employmentStatus, terminationDate, companyName,
+            companyId, citizenships, employment,
+            customFields, benefits, employeeNumber,
+            nationalIdentityNumber, nationalIdentityNumbers, homeLocation,
+            workLocation, passthrough);
     }
     
     @Override
     public String toString() {
         return Utils.toString(HrisUpdateEmployeeRequestDto.class,
+                "title", title,
                 "firstName", firstName,
                 "lastName", lastName,
                 "name", name,
@@ -1686,6 +1724,8 @@ public class HrisUpdateEmployeeRequestDto {
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
+
+        private JsonNullable<String> title = JsonNullable.undefined();
 
         private JsonNullable<String> firstName = JsonNullable.undefined();
 
@@ -1774,6 +1814,25 @@ public class HrisUpdateEmployeeRequestDto {
 
         private Builder() {
           // force use of static builder() method
+        }
+
+
+        /**
+         * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+         */
+        public Builder title(String title) {
+            Utils.checkNotNull(title, "title");
+            this.title = JsonNullable.of(title);
+            return this;
+        }
+
+        /**
+         * The prefix of the employee's name (e.g., Mr, Ms, Dr)
+         */
+        public Builder title(JsonNullable<String> title) {
+            Utils.checkNotNull(title, "title");
+            this.title = title;
+            return this;
         }
 
 
@@ -2571,20 +2630,20 @@ public class HrisUpdateEmployeeRequestDto {
         public HrisUpdateEmployeeRequestDto build() {
 
             return new HrisUpdateEmployeeRequestDto(
-                firstName, lastName, name,
-                displayName, avatarUrl, personalEmail,
-                personalPhoneNumber, workEmail, workPhoneNumber,
-                jobId, jobTitle, departmentId,
-                teamId, department, managerId,
-                gender, preferredLanguage, ethnicity,
-                dateOfBirth, birthday, maritalStatus,
-                avatar, hireDate, startDate,
-                employmentType, employmentContractType, employmentStatus,
-                terminationDate, companyName, companyId,
-                citizenships, employment, customFields,
-                benefits, employeeNumber, nationalIdentityNumber,
-                nationalIdentityNumbers, homeLocation, workLocation,
-                passthrough);
+                title, firstName, lastName,
+                name, displayName, avatarUrl,
+                personalEmail, personalPhoneNumber, workEmail,
+                workPhoneNumber, jobId, jobTitle,
+                departmentId, teamId, department,
+                managerId, gender, preferredLanguage,
+                ethnicity, dateOfBirth, birthday,
+                maritalStatus, avatar, hireDate,
+                startDate, employmentType, employmentContractType,
+                employmentStatus, terminationDate, companyName,
+                companyId, citizenships, employment,
+                customFields, benefits, employeeNumber,
+                nationalIdentityNumber, nationalIdentityNumbers, homeLocation,
+                workLocation, passthrough);
         }
 
     }

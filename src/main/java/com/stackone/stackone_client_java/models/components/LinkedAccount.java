@@ -9,11 +9,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -61,7 +63,7 @@ public class LinkedAccount {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("setup_information")
-    private JsonNullable<? extends SetupInformation> setupInformation;
+    private JsonNullable<? extends Map<String, Object>> setupInformation;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -94,7 +96,7 @@ public class LinkedAccount {
             @JsonProperty("origin_owner_name") String originOwnerName,
             @JsonProperty("origin_username") JsonNullable<String> originUsername,
             @JsonProperty("credentials") JsonNullable<? extends Credentials> credentials,
-            @JsonProperty("setup_information") JsonNullable<? extends SetupInformation> setupInformation,
+            @JsonProperty("setup_information") JsonNullable<? extends Map<String, Object>> setupInformation,
             @JsonProperty("label") JsonNullable<String> label,
             @JsonProperty("created_at") OffsetDateTime createdAt,
             @JsonProperty("updated_at") OffsetDateTime updatedAt,
@@ -193,8 +195,8 @@ public class LinkedAccount {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<SetupInformation> setupInformation() {
-        return (JsonNullable<SetupInformation>) setupInformation;
+    public JsonNullable<Map<String, Object>> setupInformation() {
+        return (JsonNullable<Map<String, Object>>) setupInformation;
     }
 
     @JsonIgnore
@@ -304,13 +306,13 @@ public class LinkedAccount {
         return this;
     }
 
-    public LinkedAccount withSetupInformation(SetupInformation setupInformation) {
+    public LinkedAccount withSetupInformation(Map<String, Object> setupInformation) {
         Utils.checkNotNull(setupInformation, "setupInformation");
         this.setupInformation = JsonNullable.of(setupInformation);
         return this;
     }
 
-    public LinkedAccount withSetupInformation(JsonNullable<? extends SetupInformation> setupInformation) {
+    public LinkedAccount withSetupInformation(JsonNullable<? extends Map<String, Object>> setupInformation) {
         Utils.checkNotNull(setupInformation, "setupInformation");
         this.setupInformation = setupInformation;
         return this;
@@ -434,7 +436,7 @@ public class LinkedAccount {
 
         private JsonNullable<? extends Credentials> credentials = JsonNullable.undefined();
 
-        private JsonNullable<? extends SetupInformation> setupInformation = JsonNullable.undefined();
+        private JsonNullable<? extends Map<String, Object>> setupInformation = JsonNullable.undefined();
 
         private JsonNullable<String> label = JsonNullable.undefined();
 
@@ -536,13 +538,13 @@ public class LinkedAccount {
         }
 
 
-        public Builder setupInformation(SetupInformation setupInformation) {
+        public Builder setupInformation(Map<String, Object> setupInformation) {
             Utils.checkNotNull(setupInformation, "setupInformation");
             this.setupInformation = JsonNullable.of(setupInformation);
             return this;
         }
 
-        public Builder setupInformation(JsonNullable<? extends SetupInformation> setupInformation) {
+        public Builder setupInformation(JsonNullable<? extends Map<String, Object>> setupInformation) {
             Utils.checkNotNull(setupInformation, "setupInformation");
             this.setupInformation = setupInformation;
             return this;

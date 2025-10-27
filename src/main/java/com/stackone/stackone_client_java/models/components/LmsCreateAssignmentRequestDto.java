@@ -47,14 +47,6 @@ public class LmsCreateAssignmentRequestDto {
     private JsonNullable<String> learningObjectId;
 
     /**
-     * The external reference of the learning object associated with this assignment, this is the main
-     * identifier for creating assignments.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("learning_object_external_reference")
-    private JsonNullable<String> learningObjectExternalReference;
-
-    /**
      * The progress associated with this assigment
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -82,38 +74,46 @@ public class LmsCreateAssignmentRequestDto {
     @JsonProperty("status")
     private JsonNullable<? extends LmsCreateAssignmentRequestDtoStatus> status;
 
+    /**
+     * The external reference of the learning object associated with this assignment, this is the main
+     * identifier for creating assignments.
+     */
+    @JsonProperty("learning_object_external_reference")
+    private String learningObjectExternalReference;
+
     @JsonCreator
     public LmsCreateAssignmentRequestDto(
             @JsonProperty("passthrough") JsonNullable<? extends Map<String, Object>> passthrough,
             @JsonProperty("external_reference") JsonNullable<String> externalReference,
             @JsonProperty("learning_object_id") JsonNullable<String> learningObjectId,
-            @JsonProperty("learning_object_external_reference") JsonNullable<String> learningObjectExternalReference,
             @JsonProperty("progress") JsonNullable<Double> progress,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
             @JsonProperty("due_date") JsonNullable<OffsetDateTime> dueDate,
-            @JsonProperty("status") JsonNullable<? extends LmsCreateAssignmentRequestDtoStatus> status) {
+            @JsonProperty("status") JsonNullable<? extends LmsCreateAssignmentRequestDtoStatus> status,
+            @JsonProperty("learning_object_external_reference") String learningObjectExternalReference) {
         Utils.checkNotNull(passthrough, "passthrough");
         Utils.checkNotNull(externalReference, "externalReference");
         Utils.checkNotNull(learningObjectId, "learningObjectId");
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
         Utils.checkNotNull(progress, "progress");
         Utils.checkNotNull(createdAt, "createdAt");
         Utils.checkNotNull(dueDate, "dueDate");
         Utils.checkNotNull(status, "status");
+        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
         this.passthrough = passthrough;
         this.externalReference = externalReference;
         this.learningObjectId = learningObjectId;
-        this.learningObjectExternalReference = learningObjectExternalReference;
         this.progress = progress;
         this.createdAt = createdAt;
         this.dueDate = dueDate;
         this.status = status;
+        this.learningObjectExternalReference = learningObjectExternalReference;
     }
     
-    public LmsCreateAssignmentRequestDto() {
+    public LmsCreateAssignmentRequestDto(
+            String learningObjectExternalReference) {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), learningObjectExternalReference);
     }
 
     /**
@@ -143,15 +143,6 @@ public class LmsCreateAssignmentRequestDto {
     @JsonIgnore
     public JsonNullable<String> learningObjectId() {
         return learningObjectId;
-    }
-
-    /**
-     * The external reference of the learning object associated with this assignment, this is the main
-     * identifier for creating assignments.
-     */
-    @JsonIgnore
-    public JsonNullable<String> learningObjectExternalReference() {
-        return learningObjectExternalReference;
     }
 
     /**
@@ -185,6 +176,15 @@ public class LmsCreateAssignmentRequestDto {
     @JsonIgnore
     public JsonNullable<LmsCreateAssignmentRequestDtoStatus> status() {
         return (JsonNullable<LmsCreateAssignmentRequestDtoStatus>) status;
+    }
+
+    /**
+     * The external reference of the learning object associated with this assignment, this is the main
+     * identifier for creating assignments.
+     */
+    @JsonIgnore
+    public String learningObjectExternalReference() {
+        return learningObjectExternalReference;
     }
 
     public static Builder builder() {
@@ -251,26 +251,6 @@ public class LmsCreateAssignmentRequestDto {
     public LmsCreateAssignmentRequestDto withLearningObjectId(JsonNullable<String> learningObjectId) {
         Utils.checkNotNull(learningObjectId, "learningObjectId");
         this.learningObjectId = learningObjectId;
-        return this;
-    }
-
-    /**
-     * The external reference of the learning object associated with this assignment, this is the main
-     * identifier for creating assignments.
-     */
-    public LmsCreateAssignmentRequestDto withLearningObjectExternalReference(String learningObjectExternalReference) {
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-        this.learningObjectExternalReference = JsonNullable.of(learningObjectExternalReference);
-        return this;
-    }
-
-    /**
-     * The external reference of the learning object associated with this assignment, this is the main
-     * identifier for creating assignments.
-     */
-    public LmsCreateAssignmentRequestDto withLearningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
-        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-        this.learningObjectExternalReference = learningObjectExternalReference;
         return this;
     }
 
@@ -346,6 +326,16 @@ public class LmsCreateAssignmentRequestDto {
         return this;
     }
 
+    /**
+     * The external reference of the learning object associated with this assignment, this is the main
+     * identifier for creating assignments.
+     */
+    public LmsCreateAssignmentRequestDto withLearningObjectExternalReference(String learningObjectExternalReference) {
+        Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+        this.learningObjectExternalReference = learningObjectExternalReference;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -359,19 +349,19 @@ public class LmsCreateAssignmentRequestDto {
             Utils.enhancedDeepEquals(this.passthrough, other.passthrough) &&
             Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
             Utils.enhancedDeepEquals(this.learningObjectId, other.learningObjectId) &&
-            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference) &&
             Utils.enhancedDeepEquals(this.progress, other.progress) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
             Utils.enhancedDeepEquals(this.dueDate, other.dueDate) &&
-            Utils.enhancedDeepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             passthrough, externalReference, learningObjectId,
-            learningObjectExternalReference, progress, createdAt,
-            dueDate, status);
+            progress, createdAt, dueDate,
+            status, learningObjectExternalReference);
     }
     
     @Override
@@ -380,11 +370,11 @@ public class LmsCreateAssignmentRequestDto {
                 "passthrough", passthrough,
                 "externalReference", externalReference,
                 "learningObjectId", learningObjectId,
-                "learningObjectExternalReference", learningObjectExternalReference,
                 "progress", progress,
                 "createdAt", createdAt,
                 "dueDate", dueDate,
-                "status", status);
+                "status", status,
+                "learningObjectExternalReference", learningObjectExternalReference);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -397,8 +387,6 @@ public class LmsCreateAssignmentRequestDto {
 
         private JsonNullable<String> learningObjectId = JsonNullable.undefined();
 
-        private JsonNullable<String> learningObjectExternalReference = JsonNullable.undefined();
-
         private JsonNullable<Double> progress = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
@@ -406,6 +394,8 @@ public class LmsCreateAssignmentRequestDto {
         private JsonNullable<OffsetDateTime> dueDate = JsonNullable.undefined();
 
         private JsonNullable<? extends LmsCreateAssignmentRequestDtoStatus> status = JsonNullable.undefined();
+
+        private String learningObjectExternalReference;
 
         private Builder() {
           // force use of static builder() method
@@ -473,27 +463,6 @@ public class LmsCreateAssignmentRequestDto {
         public Builder learningObjectId(JsonNullable<String> learningObjectId) {
             Utils.checkNotNull(learningObjectId, "learningObjectId");
             this.learningObjectId = learningObjectId;
-            return this;
-        }
-
-
-        /**
-         * The external reference of the learning object associated with this assignment, this is the main
-         * identifier for creating assignments.
-         */
-        public Builder learningObjectExternalReference(String learningObjectExternalReference) {
-            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-            this.learningObjectExternalReference = JsonNullable.of(learningObjectExternalReference);
-            return this;
-        }
-
-        /**
-         * The external reference of the learning object associated with this assignment, this is the main
-         * identifier for creating assignments.
-         */
-        public Builder learningObjectExternalReference(JsonNullable<String> learningObjectExternalReference) {
-            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
-            this.learningObjectExternalReference = learningObjectExternalReference;
             return this;
         }
 
@@ -573,12 +542,23 @@ public class LmsCreateAssignmentRequestDto {
             return this;
         }
 
+
+        /**
+         * The external reference of the learning object associated with this assignment, this is the main
+         * identifier for creating assignments.
+         */
+        public Builder learningObjectExternalReference(String learningObjectExternalReference) {
+            Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
+            this.learningObjectExternalReference = learningObjectExternalReference;
+            return this;
+        }
+
         public LmsCreateAssignmentRequestDto build() {
 
             return new LmsCreateAssignmentRequestDto(
                 passthrough, externalReference, learningObjectId,
-                learningObjectExternalReference, progress, createdAt,
-                dueDate, status);
+                progress, createdAt, dueDate,
+                status, learningObjectExternalReference);
         }
 
     }

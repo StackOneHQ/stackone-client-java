@@ -27,6 +27,7 @@ Accounting: The documentation for the StackOne Unified API - ACCOUNTING
   * [Server Selection](#server-selection)
   * [Asynchronous Support](#asynchronous-support)
   * [Authentication](#authentication)
+  * [Custom HTTP Client](#custom-http-client)
   * [Debugging](#debugging)
 * [Development](#development)
   * [Maturity](#maturity)
@@ -45,7 +46,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.14.3'
+implementation 'com.stackone:stackone-client-java:0.15.0'
 ```
 
 Maven:
@@ -53,7 +54,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.14.3</version>
+    <version>0.15.0</version>
 </dependency>
 ```
 
@@ -100,12 +101,12 @@ public class Application {
 
         HrisListEmployeesRequest req = HrisListEmployeesRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,skills,unified_custom_fields")
+                .fields("id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields")
                 .filter(HrisListEmployeesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("company,employments,work_location,home_location,groups,skills")
-                .include("avatar_url,avatar,custom_fields,job_description,benefits")
+                .include("avatar_url,avatar,custom_fields,job_description,benefits,bank_details")
                 .build();
 
 
@@ -790,25 +791,19 @@ public class Application {
 
 Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
 
-By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `createConnectSession` method throws the following exceptions:
 
-| Error Type                                | Status Code | Content Type     |
-| ----------------------------------------- | ----------- | ---------------- |
-| models/errors/BadRequestResponse          | 400         | application/json |
-| models/errors/UnauthorizedResponse        | 401         | application/json |
-| models/errors/ForbiddenResponse           | 403         | application/json |
-| models/errors/NotFoundResponse            | 404         | application/json |
-| models/errors/RequestTimedOutResponse     | 408         | application/json |
-| models/errors/ConflictResponse            | 409         | application/json |
-| models/errors/UnprocessableEntityResponse | 422         | application/json |
-| models/errors/TooManyRequestsResponse     | 429         | application/json |
-| models/errors/InternalServerErrorResponse | 500         | application/json |
-| models/errors/NotImplementedResponse      | 501         | application/json |
-| models/errors/BadGatewayResponse          | 502         | application/json |
-| models/errors/SDKError                    | 4XX, 5XX    | \*/\*            |
+[`StackOneError`](./src/main/java/models/errors/StackOneError.java) is the base class for all HTTP error responses. It has the following properties:
+
+| Method           | Type                        | Description                                                              |
+| ---------------- | --------------------------- | ------------------------------------------------------------------------ |
+| `message()`      | `String`                    | Error message                                                            |
+| `code()`         | `int`                       | HTTP response status code eg `404`                                       |
+| `headers`        | `Map<String, List<String>>` | HTTP response headers                                                    |
+| `body()`         | `byte[]`                    | HTTP body as a byte array. Can be empty array if no body is returned.    |
+| `bodyAsString()` | `String`                    | HTTP body as a UTF-8 string. Can be empty string if no body is returned. |
+| `rawResponse()`  | `HttpResponse<?>`           | Raw HTTP response (body already read and not available for re-read)      |
 
 ### Example
-
 ```java
 package hello.world;
 
@@ -860,6 +855,38 @@ public class Application {
     }
 }
 ```
+
+### Error Classes
+**Primary errors:**
+* [`StackOneError`](./src/main/java/models/errors/StackOneError.java): The base class for HTTP error responses.
+  * [`com.stackone.stackone_client_java.models.errors.BadRequestResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.BadRequestResponse.java): Invalid request. Status code `400`.
+  * [`com.stackone.stackone_client_java.models.errors.UnauthorizedResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.UnauthorizedResponse.java): Unauthorized access. Status code `401`.
+  * [`com.stackone.stackone_client_java.models.errors.ForbiddenResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.ForbiddenResponse.java): Forbidden. Status code `403`.
+  * [`com.stackone.stackone_client_java.models.errors.NotFoundResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.NotFoundResponse.java): Resource not found. Status code `404`.
+  * [`com.stackone.stackone_client_java.models.errors.RequestTimedOutResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.RequestTimedOutResponse.java): The request has timed out. Status code `408`.
+  * [`com.stackone.stackone_client_java.models.errors.ConflictResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.ConflictResponse.java): Conflict with current state. Status code `409`.
+  * [`com.stackone.stackone_client_java.models.errors.UnprocessableEntityResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.UnprocessableEntityResponse.java): Validation error. Status code `422`.
+  * [`com.stackone.stackone_client_java.models.errors.TooManyRequestsResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.TooManyRequestsResponse.java): Too many requests. Status code `429`.
+  * [`com.stackone.stackone_client_java.models.errors.InternalServerErrorResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.InternalServerErrorResponse.java): Server error while executing the request. Status code `500`.
+  * [`com.stackone.stackone_client_java.models.errors.NotImplementedResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.NotImplementedResponse.java): This functionality is not implemented. Status code `501`.
+  * [`com.stackone.stackone_client_java.models.errors.BadGatewayResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.BadGatewayResponse.java): Bad gateway error. Status code `502`.
+  * [`com.stackone.stackone_client_java.models.errors.PreconditionFailedResponse`](./src/main/java/models/errors/com.stackone.stackone_client_java.models.errors.PreconditionFailedResponse.java): Precondition failed: linked account belongs to a disabled integration. Status code `412`. *
+
+<details><summary>Less common errors (6)</summary>
+
+<br />
+
+**Network errors:**
+* `java.io.IOException` (always wrapped by `java.io.UncheckedIOException`). Commonly encountered subclasses of
+`IOException` include `java.net.ConnectException`, `java.net.SocketTimeoutException`, `EOFException` (there are
+many more subclasses in the JDK platform).
+
+**Inherit from [`StackOneError`](./src/main/java/models/errors/StackOneError.java)**:
+
+
+</details>
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -1084,6 +1111,142 @@ public class Application {
 }
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The Java SDK makes API calls using an `HTTPClient` that wraps the native
+[HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html). This
+client provides the ability to attach hooks around the request lifecycle that can be used to modify the request or handle
+errors and response.
+
+The `HTTPClient` interface allows you to either use the default `SpeakeasyHTTPClient` that comes with the SDK,
+or provide your own custom implementation with customized configuration such as custom executors, SSL context,
+connection pools, and other HTTP client settings.
+
+The interface provides synchronous (`send`) methods and asynchronous (`sendAsync`) methods. The `sendAsync` method
+is used to power the async SDK methods and returns a `CompletableFuture<HttpResponse<Blob>>` for non-blocking operations.
+
+The following example shows how to add a custom header and handle errors:
+
+```java
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.utils.HTTPClient;
+import com.stackone.stackone_client_java.utils.SpeakeasyHTTPClient;
+import com.stackone.stackone_client_java.utils.Utils;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.io.InputStream;
+import java.time.Duration;
+
+public class Application {
+    public static void main(String[] args) {
+        // Create a custom HTTP client with hooks
+        HTTPClient httpClient = new HTTPClient() {
+            private final HTTPClient defaultClient = new SpeakeasyHTTPClient();
+            
+            @Override
+            public HttpResponse<InputStream> send(HttpRequest request) throws IOException, URISyntaxException, InterruptedException {
+                // Add custom header and timeout using Utils.copy()
+                HttpRequest modifiedRequest = Utils.copy(request)
+                    .header("x-custom-header", "custom value")
+                    .timeout(Duration.ofSeconds(30))
+                    .build();
+                    
+                try {
+                    HttpResponse<InputStream> response = defaultClient.send(modifiedRequest);
+                    // Log successful response
+                    System.out.println("Request successful: " + response.statusCode());
+                    return response;
+                } catch (Exception error) {
+                    // Log error
+                    System.err.println("Request failed: " + error.getMessage());
+                    throw error;
+                }
+            }
+        };
+
+        StackOne sdk = StackOne.builder()
+            .client(httpClient)
+            .build();
+    }
+}
+```
+
+<details>
+<summary>Custom HTTP Client Configuration</summary>
+
+You can also provide a completely custom HTTP client with your own configuration:
+
+```java
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.utils.HTTPClient;
+import com.stackone.stackone_client_java.utils.Blob;
+import com.stackone.stackone_client_java.utils.ResponseWithBody;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.io.InputStream;
+import java.time.Duration;
+import java.util.concurrent.Executors;
+import java.util.concurrent.CompletableFuture;
+
+public class Application {
+    public static void main(String[] args) {
+        // Custom HTTP client with custom configuration
+        HTTPClient customHttpClient = new HTTPClient() {
+            private final HttpClient client = HttpClient.newBuilder()
+                .executor(Executors.newFixedThreadPool(10))
+                .connectTimeout(Duration.ofSeconds(30))
+                // .sslContext(customSslContext) // Add custom SSL context if needed
+                .build();
+
+            @Override
+            public HttpResponse<InputStream> send(HttpRequest request) throws IOException, URISyntaxException, InterruptedException {
+                return client.send(request, HttpResponse.BodyHandlers.ofInputStream());
+            }
+
+            @Override
+            public CompletableFuture<HttpResponse<Blob>> sendAsync(HttpRequest request) {
+                // Convert response to HttpResponse<Blob> for async operations
+                return client.sendAsync(request, HttpResponse.BodyHandlers.ofPublisher())
+                    .thenApply(resp -> new ResponseWithBody<>(resp, Blob::from));
+            }
+        };
+
+        StackOne sdk = StackOne.builder()
+            .client(customHttpClient)
+            .build();
+    }
+}
+```
+
+</details>
+
+You can also enable debug logging on the default `SpeakeasyHTTPClient`:
+
+```java
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.utils.SpeakeasyHTTPClient;
+
+public class Application {
+    public static void main(String[] args) {
+        SpeakeasyHTTPClient httpClient = new SpeakeasyHTTPClient();
+        httpClient.enableDebugLogging(true);
+
+        StackOne sdk = StackOne.builder()
+            .client(httpClient)
+            .build();
+    }
+}
+```
+<!-- End Custom HTTP Client [http-client] -->
 
 <!-- Start Debugging [debug] -->
 ## Debugging

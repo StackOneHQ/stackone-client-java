@@ -151,6 +151,13 @@ public class Candidate {
     private JsonNullable<? extends List<CustomFields>> customFields;
 
     /**
+     * List of candidate tags indicating metadata associated with the candidate
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("tags")
+    private JsonNullable<? extends List<Tag>> tags;
+
+    /**
      * Candidate created date
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -184,6 +191,7 @@ public class Candidate {
             @JsonProperty("hired_at") JsonNullable<OffsetDateTime> hiredAt,
             @JsonProperty("country") JsonNullable<String> country,
             @JsonProperty("custom_fields") JsonNullable<? extends List<CustomFields>> customFields,
+            @JsonProperty("tags") JsonNullable<? extends List<Tag>> tags,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt) {
         Utils.checkNotNull(id, "id");
@@ -204,6 +212,7 @@ public class Candidate {
         Utils.checkNotNull(hiredAt, "hiredAt");
         Utils.checkNotNull(country, "country");
         Utils.checkNotNull(customFields, "customFields");
+        Utils.checkNotNull(tags, "tags");
         Utils.checkNotNull(createdAt, "createdAt");
         Utils.checkNotNull(updatedAt, "updatedAt");
         this.id = id;
@@ -224,6 +233,7 @@ public class Candidate {
         this.hiredAt = hiredAt;
         this.country = country;
         this.customFields = customFields;
+        this.tags = tags;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -235,7 +245,7 @@ public class Candidate {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -390,6 +400,15 @@ public class Candidate {
     @JsonIgnore
     public JsonNullable<List<CustomFields>> customFields() {
         return (JsonNullable<List<CustomFields>>) customFields;
+    }
+
+    /**
+     * List of candidate tags indicating metadata associated with the candidate
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<Tag>> tags() {
+        return (JsonNullable<List<Tag>>) tags;
     }
 
     /**
@@ -744,6 +763,24 @@ public class Candidate {
     }
 
     /**
+     * List of candidate tags indicating metadata associated with the candidate
+     */
+    public Candidate withTags(List<Tag> tags) {
+        Utils.checkNotNull(tags, "tags");
+        this.tags = JsonNullable.of(tags);
+        return this;
+    }
+
+    /**
+     * List of candidate tags indicating metadata associated with the candidate
+     */
+    public Candidate withTags(JsonNullable<? extends List<Tag>> tags) {
+        Utils.checkNotNull(tags, "tags");
+        this.tags = tags;
+        return this;
+    }
+
+    /**
      * Candidate created date
      */
     public Candidate withCreatedAt(OffsetDateTime createdAt) {
@@ -807,6 +844,7 @@ public class Candidate {
             Utils.enhancedDeepEquals(this.hiredAt, other.hiredAt) &&
             Utils.enhancedDeepEquals(this.country, other.country) &&
             Utils.enhancedDeepEquals(this.customFields, other.customFields) &&
+            Utils.enhancedDeepEquals(this.tags, other.tags) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt);
     }
@@ -820,7 +858,7 @@ public class Candidate {
             phone, phoneNumbers, company,
             title, applicationIds, remoteApplicationIds,
             hiredAt, country, customFields,
-            createdAt, updatedAt);
+            tags, createdAt, updatedAt);
     }
     
     @Override
@@ -844,6 +882,7 @@ public class Candidate {
                 "hiredAt", hiredAt,
                 "country", country,
                 "customFields", customFields,
+                "tags", tags,
                 "createdAt", createdAt,
                 "updatedAt", updatedAt);
     }
@@ -887,6 +926,8 @@ public class Candidate {
         private JsonNullable<String> country = JsonNullable.undefined();
 
         private JsonNullable<? extends List<CustomFields>> customFields = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<Tag>> tags = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
 
@@ -1246,6 +1287,25 @@ public class Candidate {
 
 
         /**
+         * List of candidate tags indicating metadata associated with the candidate
+         */
+        public Builder tags(List<Tag> tags) {
+            Utils.checkNotNull(tags, "tags");
+            this.tags = JsonNullable.of(tags);
+            return this;
+        }
+
+        /**
+         * List of candidate tags indicating metadata associated with the candidate
+         */
+        public Builder tags(JsonNullable<? extends List<Tag>> tags) {
+            Utils.checkNotNull(tags, "tags");
+            this.tags = tags;
+            return this;
+        }
+
+
+        /**
          * Candidate created date
          */
         public Builder createdAt(OffsetDateTime createdAt) {
@@ -1291,7 +1351,7 @@ public class Candidate {
                 phone, phoneNumbers, company,
                 title, applicationIds, remoteApplicationIds,
                 hiredAt, country, customFields,
-                createdAt, updatedAt);
+                tags, createdAt, updatedAt);
         }
 
     }

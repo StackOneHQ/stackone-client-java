@@ -12,7 +12,6 @@ import com.stackone.stackone_client_java.models.operations.StackoneProxyRequestR
 import com.stackone.stackone_client_java.operations.StackoneProxyRequest;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -53,9 +52,9 @@ public class Proxy {
      * @param xAccountId The account identifier
      * @param proxyRequestBody 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneProxyRequestResponse proxyRequest(String xAccountId, ProxyRequestBody proxyRequestBody) throws Exception {
+    public StackoneProxyRequestResponse proxyRequest(String xAccountId, ProxyRequestBody proxyRequestBody) {
         return proxyRequest(xAccountId, proxyRequestBody, Optional.empty());
     }
 
@@ -66,11 +65,11 @@ public class Proxy {
      * @param proxyRequestBody 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneProxyRequestResponse proxyRequest(
             String xAccountId, ProxyRequestBody proxyRequestBody,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         StackoneProxyRequestRequest request =
             StackoneProxyRequestRequest
                 .builder()

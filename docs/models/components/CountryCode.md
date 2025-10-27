@@ -1,0 +1,11 @@
+# CountryCode
+
+The country code where the bank is located
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `value`                                                                                            | [JsonNullable\<HRISBankDetailsValue>](../../models/components/HRISBankDetailsValue.md)             | :heavy_minus_sign:                                                                                 | The ISO3166-1 Alpha2 Code of the Country                                                           | US                                                                                                 |
+| `sourceValue`                                                                                      | [JsonNullable\<HRISBankDetailsSourceValue>](../../models/components/HRISBankDetailsSourceValue.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |

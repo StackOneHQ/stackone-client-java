@@ -38,7 +38,7 @@ public class AccountingJournalCreateRequestDto {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("currency_code")
-    private JsonNullable<? extends CurrencyCode> currencyCode;
+    private JsonNullable<? extends AccountingJournalCreateRequestDtoCurrencyCode> currencyCode;
 
     /**
      * Exchange rate to company base currency to apply to all lines
@@ -65,7 +65,7 @@ public class AccountingJournalCreateRequestDto {
     public AccountingJournalCreateRequestDto(
             @JsonProperty("reference") JsonNullable<String> reference,
             @JsonProperty("memo") JsonNullable<String> memo,
-            @JsonProperty("currency_code") JsonNullable<? extends CurrencyCode> currencyCode,
+            @JsonProperty("currency_code") JsonNullable<? extends AccountingJournalCreateRequestDtoCurrencyCode> currencyCode,
             @JsonProperty("exchange_rate") JsonNullable<Double> exchangeRate,
             @JsonProperty("transaction_date") JsonNullable<OffsetDateTime> transactionDate,
             @JsonProperty("lines") JsonNullable<? extends List<CreateJournalLine>> lines) {
@@ -109,8 +109,8 @@ public class AccountingJournalCreateRequestDto {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<CurrencyCode> currencyCode() {
-        return (JsonNullable<CurrencyCode>) currencyCode;
+    public JsonNullable<AccountingJournalCreateRequestDtoCurrencyCode> currencyCode() {
+        return (JsonNullable<AccountingJournalCreateRequestDtoCurrencyCode>) currencyCode;
     }
 
     /**
@@ -182,7 +182,7 @@ public class AccountingJournalCreateRequestDto {
     /**
      * Currency code for the journal and all lines
      */
-    public AccountingJournalCreateRequestDto withCurrencyCode(CurrencyCode currencyCode) {
+    public AccountingJournalCreateRequestDto withCurrencyCode(AccountingJournalCreateRequestDtoCurrencyCode currencyCode) {
         Utils.checkNotNull(currencyCode, "currencyCode");
         this.currencyCode = JsonNullable.of(currencyCode);
         return this;
@@ -191,7 +191,7 @@ public class AccountingJournalCreateRequestDto {
     /**
      * Currency code for the journal and all lines
      */
-    public AccountingJournalCreateRequestDto withCurrencyCode(JsonNullable<? extends CurrencyCode> currencyCode) {
+    public AccountingJournalCreateRequestDto withCurrencyCode(JsonNullable<? extends AccountingJournalCreateRequestDtoCurrencyCode> currencyCode) {
         Utils.checkNotNull(currencyCode, "currencyCode");
         this.currencyCode = currencyCode;
         return this;
@@ -294,7 +294,7 @@ public class AccountingJournalCreateRequestDto {
 
         private JsonNullable<String> memo = JsonNullable.undefined();
 
-        private JsonNullable<? extends CurrencyCode> currencyCode = JsonNullable.undefined();
+        private JsonNullable<? extends AccountingJournalCreateRequestDtoCurrencyCode> currencyCode = JsonNullable.undefined();
 
         private JsonNullable<Double> exchangeRate = JsonNullable.undefined();
 
@@ -348,7 +348,7 @@ public class AccountingJournalCreateRequestDto {
         /**
          * Currency code for the journal and all lines
          */
-        public Builder currencyCode(CurrencyCode currencyCode) {
+        public Builder currencyCode(AccountingJournalCreateRequestDtoCurrencyCode currencyCode) {
             Utils.checkNotNull(currencyCode, "currencyCode");
             this.currencyCode = JsonNullable.of(currencyCode);
             return this;
@@ -357,7 +357,7 @@ public class AccountingJournalCreateRequestDto {
         /**
          * Currency code for the journal and all lines
          */
-        public Builder currencyCode(JsonNullable<? extends CurrencyCode> currencyCode) {
+        public Builder currencyCode(JsonNullable<? extends AccountingJournalCreateRequestDtoCurrencyCode> currencyCode) {
             Utils.checkNotNull(currencyCode, "currencyCode");
             this.currencyCode = currencyCode;
             return this;

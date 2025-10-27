@@ -108,7 +108,6 @@ import com.stackone.stackone_client_java.operations.LmsUpdateContent;
 import com.stackone.stackone_client_java.operations.LmsUpsertContent;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -146,9 +145,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListCoursesResponse listCourses(LmsListCoursesRequest request) throws Exception {
+    public LmsListCoursesResponse listCourses(LmsListCoursesRequest request) {
         return listCourses(request, Optional.empty());
     }
 
@@ -158,9 +157,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListCoursesResponse listCourses(LmsListCoursesRequest request, Optional<Options> options) throws Exception {
+    public LmsListCoursesResponse listCourses(LmsListCoursesRequest request, Optional<Options> options) {
         RequestOperation<LmsListCoursesRequest, LmsListCoursesResponse> operation
               = new LmsListCourses.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -180,9 +179,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetCourseResponse getCourse(LmsGetCourseRequest request) throws Exception {
+    public LmsGetCourseResponse getCourse(LmsGetCourseRequest request) {
         return getCourse(request, Optional.empty());
     }
 
@@ -192,9 +191,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetCourseResponse getCourse(LmsGetCourseRequest request, Optional<Options> options) throws Exception {
+    public LmsGetCourseResponse getCourse(LmsGetCourseRequest request, Optional<Options> options) {
         RequestOperation<LmsGetCourseRequest, LmsGetCourseResponse> operation
               = new LmsGetCourse.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -214,9 +213,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListUserAssignmentsResponse listUserAssignments(LmsListUserAssignmentsRequest request) throws Exception {
+    public LmsListUserAssignmentsResponse listUserAssignments(LmsListUserAssignmentsRequest request) {
         return listUserAssignments(request, Optional.empty());
     }
 
@@ -226,9 +225,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListUserAssignmentsResponse listUserAssignments(LmsListUserAssignmentsRequest request, Optional<Options> options) throws Exception {
+    public LmsListUserAssignmentsResponse listUserAssignments(LmsListUserAssignmentsRequest request, Optional<Options> options) {
         RequestOperation<LmsListUserAssignmentsRequest, LmsListUserAssignmentsResponse> operation
               = new LmsListUserAssignments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -250,11 +249,11 @@ public class Lms {
      * @param id 
      * @param lmsCreateAssignmentRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsCreateUserAssignmentResponse createUserAssignment(
             String xAccountId, String id,
-            LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto) throws Exception {
+            LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto) {
         return createUserAssignment(xAccountId, id, lmsCreateAssignmentRequestDto,
             Optional.empty());
     }
@@ -267,11 +266,11 @@ public class Lms {
      * @param lmsCreateAssignmentRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsCreateUserAssignmentResponse createUserAssignment(
             String xAccountId, String id,
-            LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto, Optional<Options> options) throws Exception {
+            LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto, Optional<Options> options) {
         LmsCreateUserAssignmentRequest request =
             LmsCreateUserAssignmentRequest
                 .builder()
@@ -298,9 +297,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetUserAssignmentResponse getUserAssignment(LmsGetUserAssignmentRequest request) throws Exception {
+    public LmsGetUserAssignmentResponse getUserAssignment(LmsGetUserAssignmentRequest request) {
         return getUserAssignment(request, Optional.empty());
     }
 
@@ -310,9 +309,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetUserAssignmentResponse getUserAssignment(LmsGetUserAssignmentRequest request, Optional<Options> options) throws Exception {
+    public LmsGetUserAssignmentResponse getUserAssignment(LmsGetUserAssignmentRequest request, Optional<Options> options) {
         RequestOperation<LmsGetUserAssignmentRequest, LmsGetUserAssignmentResponse> operation
               = new LmsGetUserAssignment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -333,9 +332,9 @@ public class Lms {
      * @param xAccountId The account identifier
      * @param lmsBatchUpsertContentRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsBatchUpsertContentResponse batchUpsertContent(String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) throws Exception {
+    public LmsBatchUpsertContentResponse batchUpsertContent(String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) {
         return batchUpsertContent(xAccountId, lmsBatchUpsertContentRequestDto, Optional.empty());
     }
 
@@ -346,11 +345,11 @@ public class Lms {
      * @param lmsBatchUpsertContentRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsBatchUpsertContentResponse batchUpsertContent(
             String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         LmsBatchUpsertContentRequest request =
             LmsBatchUpsertContentRequest
                 .builder()
@@ -376,9 +375,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListContentResponse listContent(LmsListContentRequest request) throws Exception {
+    public LmsListContentResponse listContent(LmsListContentRequest request) {
         return listContent(request, Optional.empty());
     }
 
@@ -388,9 +387,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListContentResponse listContent(LmsListContentRequest request, Optional<Options> options) throws Exception {
+    public LmsListContentResponse listContent(LmsListContentRequest request, Optional<Options> options) {
         RequestOperation<LmsListContentRequest, LmsListContentResponse> operation
               = new LmsListContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -411,9 +410,9 @@ public class Lms {
      * @param xAccountId The account identifier
      * @param lmsUpsertContentRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsUpsertContentResponse upsertContent(String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto) throws Exception {
+    public LmsUpsertContentResponse upsertContent(String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
         return upsertContent(xAccountId, lmsUpsertContentRequestDto, Optional.empty());
     }
 
@@ -424,11 +423,11 @@ public class Lms {
      * @param lmsUpsertContentRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsUpsertContentResponse upsertContent(
             String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         LmsUpsertContentRequest request =
             LmsUpsertContentRequest
                 .builder()
@@ -454,9 +453,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetContentResponse getContent(LmsGetContentRequest request) throws Exception {
+    public LmsGetContentResponse getContent(LmsGetContentRequest request) {
         return getContent(request, Optional.empty());
     }
 
@@ -466,9 +465,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetContentResponse getContent(LmsGetContentRequest request, Optional<Options> options) throws Exception {
+    public LmsGetContentResponse getContent(LmsGetContentRequest request, Optional<Options> options) {
         RequestOperation<LmsGetContentRequest, LmsGetContentResponse> operation
               = new LmsGetContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -490,11 +489,11 @@ public class Lms {
      * @param id 
      * @param lmsCreateContentRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsUpdateContentResponse updateContent(
             String xAccountId, String id,
-            LmsCreateContentRequestDto lmsCreateContentRequestDto) throws Exception {
+            LmsCreateContentRequestDto lmsCreateContentRequestDto) {
         return updateContent(xAccountId, id, lmsCreateContentRequestDto,
             Optional.empty());
     }
@@ -507,11 +506,11 @@ public class Lms {
      * @param lmsCreateContentRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsUpdateContentResponse updateContent(
             String xAccountId, String id,
-            LmsCreateContentRequestDto lmsCreateContentRequestDto, Optional<Options> options) throws Exception {
+            LmsCreateContentRequestDto lmsCreateContentRequestDto, Optional<Options> options) {
         LmsUpdateContentRequest request =
             LmsUpdateContentRequest
                 .builder()
@@ -538,9 +537,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListUserCompletionsResponse listUserCompletions(LmsListUserCompletionsRequest request) throws Exception {
+    public LmsListUserCompletionsResponse listUserCompletions(LmsListUserCompletionsRequest request) {
         return listUserCompletions(request, Optional.empty());
     }
 
@@ -550,9 +549,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListUserCompletionsResponse listUserCompletions(LmsListUserCompletionsRequest request, Optional<Options> options) throws Exception {
+    public LmsListUserCompletionsResponse listUserCompletions(LmsListUserCompletionsRequest request, Optional<Options> options) {
         RequestOperation<LmsListUserCompletionsRequest, LmsListUserCompletionsResponse> operation
               = new LmsListUserCompletions.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -574,11 +573,11 @@ public class Lms {
      * @param id 
      * @param lmsCreateCompletionRequestDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsCreateUserCompletionResponse createUserCompletion(
             String xAccountId, String id,
-            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) throws Exception {
+            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) {
         return createUserCompletion(xAccountId, id, lmsCreateCompletionRequestDto,
             Optional.empty());
     }
@@ -591,11 +590,11 @@ public class Lms {
      * @param lmsCreateCompletionRequestDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsCreateUserCompletionResponse createUserCompletion(
             String xAccountId, String id,
-            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto, Optional<Options> options) throws Exception {
+            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto, Optional<Options> options) {
         LmsCreateUserCompletionRequest request =
             LmsCreateUserCompletionRequest
                 .builder()
@@ -622,9 +621,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetUserCompletionResponse getUserCompletion(LmsGetUserCompletionRequest request) throws Exception {
+    public LmsGetUserCompletionResponse getUserCompletion(LmsGetUserCompletionRequest request) {
         return getUserCompletion(request, Optional.empty());
     }
 
@@ -634,9 +633,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetUserCompletionResponse getUserCompletion(LmsGetUserCompletionRequest request, Optional<Options> options) throws Exception {
+    public LmsGetUserCompletionResponse getUserCompletion(LmsGetUserCompletionRequest request, Optional<Options> options) {
         RequestOperation<LmsGetUserCompletionRequest, LmsGetUserCompletionResponse> operation
               = new LmsGetUserCompletion.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -658,11 +657,11 @@ public class Lms {
      * @param id 
      * @param subResourceId 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsDeleteUserCompletionResponse deleteUserCompletion(
             String xAccountId, String id,
-            String subResourceId) throws Exception {
+            String subResourceId) {
         return deleteUserCompletion(xAccountId, id, subResourceId,
             Optional.empty());
     }
@@ -675,11 +674,11 @@ public class Lms {
      * @param subResourceId 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public LmsDeleteUserCompletionResponse deleteUserCompletion(
             String xAccountId, String id,
-            String subResourceId, Optional<Options> options) throws Exception {
+            String subResourceId, Optional<Options> options) {
         LmsDeleteUserCompletionRequest request =
             LmsDeleteUserCompletionRequest
                 .builder()
@@ -706,9 +705,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListCompletionsResponse listCompletions(LmsListCompletionsRequest request) throws Exception {
+    public LmsListCompletionsResponse listCompletions(LmsListCompletionsRequest request) {
         return listCompletions(request, Optional.empty());
     }
 
@@ -718,9 +717,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListCompletionsResponse listCompletions(LmsListCompletionsRequest request, Optional<Options> options) throws Exception {
+    public LmsListCompletionsResponse listCompletions(LmsListCompletionsRequest request, Optional<Options> options) {
         RequestOperation<LmsListCompletionsRequest, LmsListCompletionsResponse> operation
               = new LmsListCompletions.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -740,9 +739,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetCompletionResponse getCompletion(LmsGetCompletionRequest request) throws Exception {
+    public LmsGetCompletionResponse getCompletion(LmsGetCompletionRequest request) {
         return getCompletion(request, Optional.empty());
     }
 
@@ -752,9 +751,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetCompletionResponse getCompletion(LmsGetCompletionRequest request, Optional<Options> options) throws Exception {
+    public LmsGetCompletionResponse getCompletion(LmsGetCompletionRequest request, Optional<Options> options) {
         RequestOperation<LmsGetCompletionRequest, LmsGetCompletionResponse> operation
               = new LmsGetCompletion.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -774,9 +773,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetCategoryResponse getCategory(LmsGetCategoryRequest request) throws Exception {
+    public LmsGetCategoryResponse getCategory(LmsGetCategoryRequest request) {
         return getCategory(request, Optional.empty());
     }
 
@@ -786,9 +785,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetCategoryResponse getCategory(LmsGetCategoryRequest request, Optional<Options> options) throws Exception {
+    public LmsGetCategoryResponse getCategory(LmsGetCategoryRequest request, Optional<Options> options) {
         RequestOperation<LmsGetCategoryRequest, LmsGetCategoryResponse> operation
               = new LmsGetCategory.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -808,9 +807,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListCategoriesResponse listCategories(LmsListCategoriesRequest request) throws Exception {
+    public LmsListCategoriesResponse listCategories(LmsListCategoriesRequest request) {
         return listCategories(request, Optional.empty());
     }
 
@@ -820,9 +819,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListCategoriesResponse listCategories(LmsListCategoriesRequest request, Optional<Options> options) throws Exception {
+    public LmsListCategoriesResponse listCategories(LmsListCategoriesRequest request, Optional<Options> options) {
         RequestOperation<LmsListCategoriesRequest, LmsListCategoriesResponse> operation
               = new LmsListCategories.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -842,9 +841,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListUsersResponse listUsers(LmsListUsersRequest request) throws Exception {
+    public LmsListUsersResponse listUsers(LmsListUsersRequest request) {
         return listUsers(request, Optional.empty());
     }
 
@@ -854,9 +853,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListUsersResponse listUsers(LmsListUsersRequest request, Optional<Options> options) throws Exception {
+    public LmsListUsersResponse listUsers(LmsListUsersRequest request, Optional<Options> options) {
         RequestOperation<LmsListUsersRequest, LmsListUsersResponse> operation
               = new LmsListUsers.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -876,9 +875,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetUserResponse getUser(LmsGetUserRequest request) throws Exception {
+    public LmsGetUserResponse getUser(LmsGetUserRequest request) {
         return getUser(request, Optional.empty());
     }
 
@@ -888,9 +887,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetUserResponse getUser(LmsGetUserRequest request, Optional<Options> options) throws Exception {
+    public LmsGetUserResponse getUser(LmsGetUserRequest request, Optional<Options> options) {
         RequestOperation<LmsGetUserRequest, LmsGetUserResponse> operation
               = new LmsGetUser.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -910,9 +909,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetSkillResponse getSkill(LmsGetSkillRequest request) throws Exception {
+    public LmsGetSkillResponse getSkill(LmsGetSkillRequest request) {
         return getSkill(request, Optional.empty());
     }
 
@@ -922,9 +921,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetSkillResponse getSkill(LmsGetSkillRequest request, Optional<Options> options) throws Exception {
+    public LmsGetSkillResponse getSkill(LmsGetSkillRequest request, Optional<Options> options) {
         RequestOperation<LmsGetSkillRequest, LmsGetSkillResponse> operation
               = new LmsGetSkill.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -944,9 +943,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListSkillsResponse listSkills(LmsListSkillsRequest request) throws Exception {
+    public LmsListSkillsResponse listSkills(LmsListSkillsRequest request) {
         return listSkills(request, Optional.empty());
     }
 
@@ -956,9 +955,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListSkillsResponse listSkills(LmsListSkillsRequest request, Optional<Options> options) throws Exception {
+    public LmsListSkillsResponse listSkills(LmsListSkillsRequest request, Optional<Options> options) {
         RequestOperation<LmsListSkillsRequest, LmsListSkillsResponse> operation
               = new LmsListSkills.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -978,9 +977,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListAssignmentsResponse listAssignments(LmsListAssignmentsRequest request) throws Exception {
+    public LmsListAssignmentsResponse listAssignments(LmsListAssignmentsRequest request) {
         return listAssignments(request, Optional.empty());
     }
 
@@ -990,9 +989,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsListAssignmentsResponse listAssignments(LmsListAssignmentsRequest request, Optional<Options> options) throws Exception {
+    public LmsListAssignmentsResponse listAssignments(LmsListAssignmentsRequest request, Optional<Options> options) {
         RequestOperation<LmsListAssignmentsRequest, LmsListAssignmentsResponse> operation
               = new LmsListAssignments.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -1012,9 +1011,9 @@ public class Lms {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetAssignmentResponse getAssignment(LmsGetAssignmentRequest request) throws Exception {
+    public LmsGetAssignmentResponse getAssignment(LmsGetAssignmentRequest request) {
         return getAssignment(request, Optional.empty());
     }
 
@@ -1024,9 +1023,9 @@ public class Lms {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public LmsGetAssignmentResponse getAssignment(LmsGetAssignmentRequest request, Optional<Options> options) throws Exception {
+    public LmsGetAssignmentResponse getAssignment(LmsGetAssignmentRequest request, Optional<Options> options) {
         RequestOperation<LmsGetAssignmentRequest, LmsGetAssignmentResponse> operation
               = new LmsGetAssignment.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

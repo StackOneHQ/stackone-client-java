@@ -21,14 +21,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 public class LmsCreateContentRequestDtoContentType {
     /**
-     * The StackOne unified content type.
+     * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+     * "unmapped_value", the source_value will be sent to the provider instead.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
     private JsonNullable<? extends LmsCreateContentRequestDtoValue> value;
 
     /**
-     * The original value from the provider before normalization.
+     * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+     * responsible for ensuring this matches the provider's expected format.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
@@ -49,7 +51,8 @@ public class LmsCreateContentRequestDtoContentType {
     }
 
     /**
-     * The StackOne unified content type.
+     * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+     * "unmapped_value", the source_value will be sent to the provider instead.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -58,7 +61,8 @@ public class LmsCreateContentRequestDtoContentType {
     }
 
     /**
-     * The original value from the provider before normalization.
+     * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+     * responsible for ensuring this matches the provider's expected format.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -72,7 +76,8 @@ public class LmsCreateContentRequestDtoContentType {
 
 
     /**
-     * The StackOne unified content type.
+     * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+     * "unmapped_value", the source_value will be sent to the provider instead.
      */
     public LmsCreateContentRequestDtoContentType withValue(LmsCreateContentRequestDtoValue value) {
         Utils.checkNotNull(value, "value");
@@ -81,7 +86,8 @@ public class LmsCreateContentRequestDtoContentType {
     }
 
     /**
-     * The StackOne unified content type.
+     * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+     * "unmapped_value", the source_value will be sent to the provider instead.
      */
     public LmsCreateContentRequestDtoContentType withValue(JsonNullable<? extends LmsCreateContentRequestDtoValue> value) {
         Utils.checkNotNull(value, "value");
@@ -90,7 +96,8 @@ public class LmsCreateContentRequestDtoContentType {
     }
 
     /**
-     * The original value from the provider before normalization.
+     * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+     * responsible for ensuring this matches the provider's expected format.
      */
     public LmsCreateContentRequestDtoContentType withSourceValue(LmsCreateContentRequestDtoSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
@@ -99,7 +106,8 @@ public class LmsCreateContentRequestDtoContentType {
     }
 
     /**
-     * The original value from the provider before normalization.
+     * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+     * responsible for ensuring this matches the provider's expected format.
      */
     public LmsCreateContentRequestDtoContentType withSourceValue(JsonNullable<? extends LmsCreateContentRequestDtoSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
@@ -147,7 +155,8 @@ public class LmsCreateContentRequestDtoContentType {
 
 
         /**
-         * The StackOne unified content type.
+         * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+         * "unmapped_value", the source_value will be sent to the provider instead.
          */
         public Builder value(LmsCreateContentRequestDtoValue value) {
             Utils.checkNotNull(value, "value");
@@ -156,7 +165,8 @@ public class LmsCreateContentRequestDtoContentType {
         }
 
         /**
-         * The StackOne unified content type.
+         * The content type for write operations. Provide one of the listed enum values. If omitted or set to
+         * "unmapped_value", the source_value will be sent to the provider instead.
          */
         public Builder value(JsonNullable<? extends LmsCreateContentRequestDtoValue> value) {
             Utils.checkNotNull(value, "value");
@@ -166,7 +176,8 @@ public class LmsCreateContentRequestDtoContentType {
 
 
         /**
-         * The original value from the provider before normalization.
+         * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+         * responsible for ensuring this matches the provider's expected format.
          */
         public Builder sourceValue(LmsCreateContentRequestDtoSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
@@ -175,7 +186,8 @@ public class LmsCreateContentRequestDtoContentType {
         }
 
         /**
-         * The original value from the provider before normalization.
+         * The provider-specific value to use when value is omitted or set to "unmapped_value". You are
+         * responsible for ensuring this matches the provider's expected format.
          */
         public Builder sourceValue(JsonNullable<? extends LmsCreateContentRequestDtoSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");

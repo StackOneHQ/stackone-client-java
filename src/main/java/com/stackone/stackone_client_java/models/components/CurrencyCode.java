@@ -17,25 +17,25 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * CurrencyCode
  * 
- * <p>Currency code for the journal and all lines
+ * <p>The currency code for the account
  */
 public class CurrencyCode {
     /**
-     * Default currency for the company
+     * ISO 4217 currency code
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("value")
-    private JsonNullable<? extends AccountingJournalCreateRequestDtoValue> value;
+    private JsonNullable<? extends HRISBankDetailsCurrencyCodeValue> value;
 
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source_value")
-    private JsonNullable<? extends AccountingJournalCreateRequestDtoSourceValue> sourceValue;
+    private JsonNullable<? extends HRISBankDetailsCurrencyCodeSourceValue> sourceValue;
 
     @JsonCreator
     public CurrencyCode(
-            @JsonProperty("value") JsonNullable<? extends AccountingJournalCreateRequestDtoValue> value,
-            @JsonProperty("source_value") JsonNullable<? extends AccountingJournalCreateRequestDtoSourceValue> sourceValue) {
+            @JsonProperty("value") JsonNullable<? extends HRISBankDetailsCurrencyCodeValue> value,
+            @JsonProperty("source_value") JsonNullable<? extends HRISBankDetailsCurrencyCodeSourceValue> sourceValue) {
         Utils.checkNotNull(value, "value");
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.value = value;
@@ -47,18 +47,18 @@ public class CurrencyCode {
     }
 
     /**
-     * Default currency for the company
+     * ISO 4217 currency code
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<AccountingJournalCreateRequestDtoValue> value() {
-        return (JsonNullable<AccountingJournalCreateRequestDtoValue>) value;
+    public JsonNullable<HRISBankDetailsCurrencyCodeValue> value() {
+        return (JsonNullable<HRISBankDetailsCurrencyCodeValue>) value;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<AccountingJournalCreateRequestDtoSourceValue> sourceValue() {
-        return (JsonNullable<AccountingJournalCreateRequestDtoSourceValue>) sourceValue;
+    public JsonNullable<HRISBankDetailsCurrencyCodeSourceValue> sourceValue() {
+        return (JsonNullable<HRISBankDetailsCurrencyCodeSourceValue>) sourceValue;
     }
 
     public static Builder builder() {
@@ -67,30 +67,30 @@ public class CurrencyCode {
 
 
     /**
-     * Default currency for the company
+     * ISO 4217 currency code
      */
-    public CurrencyCode withValue(AccountingJournalCreateRequestDtoValue value) {
+    public CurrencyCode withValue(HRISBankDetailsCurrencyCodeValue value) {
         Utils.checkNotNull(value, "value");
         this.value = JsonNullable.of(value);
         return this;
     }
 
     /**
-     * Default currency for the company
+     * ISO 4217 currency code
      */
-    public CurrencyCode withValue(JsonNullable<? extends AccountingJournalCreateRequestDtoValue> value) {
+    public CurrencyCode withValue(JsonNullable<? extends HRISBankDetailsCurrencyCodeValue> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
-    public CurrencyCode withSourceValue(AccountingJournalCreateRequestDtoSourceValue sourceValue) {
+    public CurrencyCode withSourceValue(HRISBankDetailsCurrencyCodeSourceValue sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = JsonNullable.of(sourceValue);
         return this;
     }
 
-    public CurrencyCode withSourceValue(JsonNullable<? extends AccountingJournalCreateRequestDtoSourceValue> sourceValue) {
+    public CurrencyCode withSourceValue(JsonNullable<? extends HRISBankDetailsCurrencyCodeSourceValue> sourceValue) {
         Utils.checkNotNull(sourceValue, "sourceValue");
         this.sourceValue = sourceValue;
         return this;
@@ -126,9 +126,9 @@ public class CurrencyCode {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends AccountingJournalCreateRequestDtoValue> value = JsonNullable.undefined();
+        private JsonNullable<? extends HRISBankDetailsCurrencyCodeValue> value = JsonNullable.undefined();
 
-        private JsonNullable<? extends AccountingJournalCreateRequestDtoSourceValue> sourceValue = JsonNullable.undefined();
+        private JsonNullable<? extends HRISBankDetailsCurrencyCodeSourceValue> sourceValue = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -136,31 +136,31 @@ public class CurrencyCode {
 
 
         /**
-         * Default currency for the company
+         * ISO 4217 currency code
          */
-        public Builder value(AccountingJournalCreateRequestDtoValue value) {
+        public Builder value(HRISBankDetailsCurrencyCodeValue value) {
             Utils.checkNotNull(value, "value");
             this.value = JsonNullable.of(value);
             return this;
         }
 
         /**
-         * Default currency for the company
+         * ISO 4217 currency code
          */
-        public Builder value(JsonNullable<? extends AccountingJournalCreateRequestDtoValue> value) {
+        public Builder value(JsonNullable<? extends HRISBankDetailsCurrencyCodeValue> value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
 
 
-        public Builder sourceValue(AccountingJournalCreateRequestDtoSourceValue sourceValue) {
+        public Builder sourceValue(HRISBankDetailsCurrencyCodeSourceValue sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = JsonNullable.of(sourceValue);
             return this;
         }
 
-        public Builder sourceValue(JsonNullable<? extends AccountingJournalCreateRequestDtoSourceValue> sourceValue) {
+        public Builder sourceValue(JsonNullable<? extends HRISBankDetailsCurrencyCodeSourceValue> sourceValue) {
             Utils.checkNotNull(sourceValue, "sourceValue");
             this.sourceValue = sourceValue;
             return this;

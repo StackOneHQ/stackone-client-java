@@ -28,7 +28,6 @@ import com.stackone.stackone_client_java.operations.StackoneListLinkedAccounts;
 import com.stackone.stackone_client_java.operations.StackoneUpdateAccount;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -68,9 +67,9 @@ public class Accounts {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListLinkedAccountsResponse listLinkedAccounts(StackoneListLinkedAccountsRequest request) throws Exception {
+    public StackoneListLinkedAccountsResponse listLinkedAccounts(StackoneListLinkedAccountsRequest request) {
         return listLinkedAccounts(request, Optional.empty());
     }
 
@@ -80,9 +79,9 @@ public class Accounts {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneListLinkedAccountsResponse listLinkedAccounts(StackoneListLinkedAccountsRequest request, Optional<Options> options) throws Exception {
+    public StackoneListLinkedAccountsResponse listLinkedAccounts(StackoneListLinkedAccountsRequest request, Optional<Options> options) {
         RequestOperation<StackoneListLinkedAccountsRequest, StackoneListLinkedAccountsResponse> operation
               = new StackoneListLinkedAccounts.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -102,9 +101,9 @@ public class Accounts {
      * 
      * @param id 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneGetAccountResponse getAccount(String id) throws Exception {
+    public StackoneGetAccountResponse getAccount(String id) {
         return getAccount(id, Optional.empty());
     }
 
@@ -114,9 +113,9 @@ public class Accounts {
      * @param id 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneGetAccountResponse getAccount(String id, Optional<Options> options) throws Exception {
+    public StackoneGetAccountResponse getAccount(String id, Optional<Options> options) {
         StackoneGetAccountRequest request =
             StackoneGetAccountRequest
                 .builder()
@@ -141,9 +140,9 @@ public class Accounts {
      * 
      * @param id 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneDeleteAccountResponse deleteAccount(String id) throws Exception {
+    public StackoneDeleteAccountResponse deleteAccount(String id) {
         return deleteAccount(id, Optional.empty());
     }
 
@@ -153,9 +152,9 @@ public class Accounts {
      * @param id 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneDeleteAccountResponse deleteAccount(String id, Optional<Options> options) throws Exception {
+    public StackoneDeleteAccountResponse deleteAccount(String id, Optional<Options> options) {
         StackoneDeleteAccountRequest request =
             StackoneDeleteAccountRequest
                 .builder()
@@ -181,9 +180,9 @@ public class Accounts {
      * @param id 
      * @param patchAccountExternalDto 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneUpdateAccountResponse updateAccount(String id, PatchAccountExternalDto patchAccountExternalDto) throws Exception {
+    public StackoneUpdateAccountResponse updateAccount(String id, PatchAccountExternalDto patchAccountExternalDto) {
         return updateAccount(id, patchAccountExternalDto, Optional.empty());
     }
 
@@ -194,11 +193,11 @@ public class Accounts {
      * @param patchAccountExternalDto 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public StackoneUpdateAccountResponse updateAccount(
             String id, PatchAccountExternalDto patchAccountExternalDto,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         StackoneUpdateAccountRequest request =
             StackoneUpdateAccountRequest
                 .builder()
@@ -224,9 +223,9 @@ public class Accounts {
      * 
      * @param id 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneGetAccountMetaInfoResponse getAccountMetaInfo(String id) throws Exception {
+    public StackoneGetAccountMetaInfoResponse getAccountMetaInfo(String id) {
         return getAccountMetaInfo(id, Optional.empty());
     }
 
@@ -236,9 +235,9 @@ public class Accounts {
      * @param id 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneGetAccountMetaInfoResponse getAccountMetaInfo(String id, Optional<Options> options) throws Exception {
+    public StackoneGetAccountMetaInfoResponse getAccountMetaInfo(String id, Optional<Options> options) {
         StackoneGetAccountMetaInfoRequest request =
             StackoneGetAccountMetaInfoRequest
                 .builder()
