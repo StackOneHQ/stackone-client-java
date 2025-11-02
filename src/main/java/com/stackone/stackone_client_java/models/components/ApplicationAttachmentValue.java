@@ -51,6 +51,9 @@ import java.util.Optional;
 public class ApplicationAttachmentValue {
 
     public static final ApplicationAttachmentValue TEXT = new ApplicationAttachmentValue("text");
+    public static final ApplicationAttachmentValue PDF = new ApplicationAttachmentValue("pdf");
+    public static final ApplicationAttachmentValue VIDEO = new ApplicationAttachmentValue("video");
+    public static final ApplicationAttachmentValue OTHER = new ApplicationAttachmentValue("other");
     public static final ApplicationAttachmentValue UNMAPPED_VALUE = new ApplicationAttachmentValue("unmapped_value");
 
     // This map will grow whenever a Color gets created with a new
@@ -124,6 +127,9 @@ public class ApplicationAttachmentValue {
     private static final Map<String, ApplicationAttachmentValue> createValuesMap() {
         Map<String, ApplicationAttachmentValue> map = new LinkedHashMap<>();
         map.put("text", TEXT);
+        map.put("pdf", PDF);
+        map.put("video", VIDEO);
+        map.put("other", OTHER);
         map.put("unmapped_value", UNMAPPED_VALUE);
         return map;
     }
@@ -131,6 +137,9 @@ public class ApplicationAttachmentValue {
     private static final Map<String, ApplicationAttachmentValueEnum> createEnumsMap() {
         Map<String, ApplicationAttachmentValueEnum> map = new HashMap<>();
         map.put("text", ApplicationAttachmentValueEnum.TEXT);
+        map.put("pdf", ApplicationAttachmentValueEnum.PDF);
+        map.put("video", ApplicationAttachmentValueEnum.VIDEO);
+        map.put("other", ApplicationAttachmentValueEnum.OTHER);
         map.put("unmapped_value", ApplicationAttachmentValueEnum.UNMAPPED_VALUE);
         return map;
     }
@@ -168,6 +177,9 @@ public class ApplicationAttachmentValue {
     public enum ApplicationAttachmentValueEnum {
 
         TEXT("text"),
+        PDF("pdf"),
+        VIDEO("video"),
+        OTHER("other"),
         UNMAPPED_VALUE("unmapped_value"),;
 
         private final String value;
