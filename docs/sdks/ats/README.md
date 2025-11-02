@@ -488,7 +488,7 @@ public class Application {
         AtsListApplicationsOffersRequest req = AtsListApplicationsOffersRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
+                .fields("id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
                 .filter(AtsListApplicationsOffersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -717,7 +717,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
+                .fields("id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
                 .build();
 
         AtsGetApplicationOfferResponse res = sdk.ats().getApplicationOffer()
@@ -4704,7 +4704,7 @@ public class Application {
 
         AtsListOffersRequest req = AtsListOffersRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
+                .fields("id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
                 .filter(AtsListOffersQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -4865,7 +4865,7 @@ public class Application {
         AtsGetOfferRequest req = AtsGetOfferRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
+                .fields("id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields")
                 .build();
 
         AtsGetOfferResponse res = sdk.ats().getOffer()
