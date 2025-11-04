@@ -51,6 +51,9 @@ import java.util.Optional;
 public class AttachmentValue {
 
     public static final AttachmentValue TEXT = new AttachmentValue("text");
+    public static final AttachmentValue PDF = new AttachmentValue("pdf");
+    public static final AttachmentValue VIDEO = new AttachmentValue("video");
+    public static final AttachmentValue OTHER = new AttachmentValue("other");
     public static final AttachmentValue UNMAPPED_VALUE = new AttachmentValue("unmapped_value");
 
     // This map will grow whenever a Color gets created with a new
@@ -124,6 +127,9 @@ public class AttachmentValue {
     private static final Map<String, AttachmentValue> createValuesMap() {
         Map<String, AttachmentValue> map = new LinkedHashMap<>();
         map.put("text", TEXT);
+        map.put("pdf", PDF);
+        map.put("video", VIDEO);
+        map.put("other", OTHER);
         map.put("unmapped_value", UNMAPPED_VALUE);
         return map;
     }
@@ -131,6 +137,9 @@ public class AttachmentValue {
     private static final Map<String, AttachmentValueEnum> createEnumsMap() {
         Map<String, AttachmentValueEnum> map = new HashMap<>();
         map.put("text", AttachmentValueEnum.TEXT);
+        map.put("pdf", AttachmentValueEnum.PDF);
+        map.put("video", AttachmentValueEnum.VIDEO);
+        map.put("other", AttachmentValueEnum.OTHER);
         map.put("unmapped_value", AttachmentValueEnum.UNMAPPED_VALUE);
         return map;
     }
@@ -168,6 +177,9 @@ public class AttachmentValue {
     public enum AttachmentValueEnum {
 
         TEXT("text"),
+        PDF("pdf"),
+        VIDEO("video"),
+        OTHER("other"),
         UNMAPPED_VALUE("unmapped_value"),;
 
         private final String value;

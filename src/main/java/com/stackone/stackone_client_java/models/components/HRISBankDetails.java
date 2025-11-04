@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -44,7 +43,7 @@ public class HRISBankDetails {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_primary")
-    private JsonNullable<Boolean> isPrimary;
+    private JsonNullable<? extends IsPrimary> isPrimary;
 
     /**
      * The country code where the bank is located
@@ -107,7 +106,7 @@ public class HRISBankDetails {
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
             @JsonProperty("account_name") JsonNullable<String> accountName,
-            @JsonProperty("is_primary") JsonNullable<Boolean> isPrimary,
+            @JsonProperty("is_primary") JsonNullable<? extends IsPrimary> isPrimary,
             @JsonProperty("country_code") JsonNullable<? extends CountryCode> countryCode,
             @JsonProperty("currency_code") JsonNullable<? extends CurrencyCode> currencyCode,
             @JsonProperty("bank_name") JsonNullable<String> bankName,
@@ -176,9 +175,10 @@ public class HRISBankDetails {
     /**
      * Whether this is the primary bank account
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Boolean> isPrimary() {
-        return isPrimary;
+    public JsonNullable<IsPrimary> isPrimary() {
+        return (JsonNullable<IsPrimary>) isPrimary;
     }
 
     /**
@@ -311,7 +311,7 @@ public class HRISBankDetails {
     /**
      * Whether this is the primary bank account
      */
-    public HRISBankDetails withIsPrimary(boolean isPrimary) {
+    public HRISBankDetails withIsPrimary(IsPrimary isPrimary) {
         Utils.checkNotNull(isPrimary, "isPrimary");
         this.isPrimary = JsonNullable.of(isPrimary);
         return this;
@@ -320,7 +320,7 @@ public class HRISBankDetails {
     /**
      * Whether this is the primary bank account
      */
-    public HRISBankDetails withIsPrimary(JsonNullable<Boolean> isPrimary) {
+    public HRISBankDetails withIsPrimary(JsonNullable<? extends IsPrimary> isPrimary) {
         Utils.checkNotNull(isPrimary, "isPrimary");
         this.isPrimary = isPrimary;
         return this;
@@ -529,7 +529,7 @@ public class HRISBankDetails {
 
         private JsonNullable<String> accountName = JsonNullable.undefined();
 
-        private JsonNullable<Boolean> isPrimary = JsonNullable.undefined();
+        private JsonNullable<? extends IsPrimary> isPrimary = JsonNullable.undefined();
 
         private JsonNullable<? extends CountryCode> countryCode = JsonNullable.undefined();
 
@@ -612,7 +612,7 @@ public class HRISBankDetails {
         /**
          * Whether this is the primary bank account
          */
-        public Builder isPrimary(boolean isPrimary) {
+        public Builder isPrimary(IsPrimary isPrimary) {
             Utils.checkNotNull(isPrimary, "isPrimary");
             this.isPrimary = JsonNullable.of(isPrimary);
             return this;
@@ -621,7 +621,7 @@ public class HRISBankDetails {
         /**
          * Whether this is the primary bank account
          */
-        public Builder isPrimary(JsonNullable<Boolean> isPrimary) {
+        public Builder isPrimary(JsonNullable<? extends IsPrimary> isPrimary) {
             Utils.checkNotNull(isPrimary, "isPrimary");
             this.isPrimary = isPrimary;
             return this;

@@ -11,10 +11,12 @@ import com.stackone.stackone_client_java.utils.TypedObject;
 import com.stackone.stackone_client_java.utils.Utils.JsonShape;
 import com.stackone.stackone_client_java.utils.Utils.TypeReferenceWithShape;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Data
@@ -31,21 +33,21 @@ public class Data {
         this.value = value;
     }
 
-    public static Data of(One value) {
+    public static Data of(Map<String, Object> value) {
         Utils.checkNotNull(value, "value");
-        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<One>(){}));
+        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Map<String, Object>>(){}));
     }
 
-    public static Data of(List<Two> value) {
+    public static Data of(List<Map<String, Object>> value) {
         Utils.checkNotNull(value, "value");
-        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Two>>(){}));
+        return new Data(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Map<String, Object>>>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code com.stackone.stackone_client_java.models.components.One}</li>
-     * <li>{@code java.util.List<com.stackone.stackone_client_java.models.components.Two>}</li>
+     * <li>{@code java.util.Map<java.lang.String, java.lang.Object>}</li>
+     * <li>{@code java.util.List<java.util.Map<java.lang.String, java.lang.Object>>}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -85,8 +87,8 @@ public class Data {
 
         public _Deserializer() {
             super(Data.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<List<Two>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<One>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<List<Map<String, Object>>>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT));
         }
     }
     

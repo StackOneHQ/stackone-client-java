@@ -8,14 +8,14 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-public enum EntitySkillsActive2 {
+public enum IsPrimary2 {
     TRUE("true"),
     FALSE("false");
 
     @JsonValue
     private final String value;
 
-    EntitySkillsActive2(String value) {
+    IsPrimary2(String value) {
         this.value = value;
     }
     
@@ -23,8 +23,8 @@ public enum EntitySkillsActive2 {
         return value;
     }
     
-    public static Optional<EntitySkillsActive2> fromValue(String value) {
-        for (EntitySkillsActive2 o: EntitySkillsActive2.values()) {
+    public static Optional<IsPrimary2> fromValue(String value) {
+        for (IsPrimary2 o: IsPrimary2.values()) {
             if (Objects.deepEquals(o.value, value)) {
                 return Optional.of(o);
             }
