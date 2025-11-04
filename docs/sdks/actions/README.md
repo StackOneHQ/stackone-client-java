@@ -98,8 +98,7 @@ Makes a remote procedure call to the specified action
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.ActionsRpcRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneRpcActionResponse;
 import java.lang.Exception;
@@ -120,9 +119,9 @@ public class Application {
                 .action("create_employee")
                 .path(Map.ofEntries(
                     Map.entry("id", "123")))
-                .query(Map.ofEntries(
-                    Map.entry("param1", "value1"),
-                    Map.entry("param2", "value2")))
+                .query(Query.builder()
+                    .debug(false)
+                    .build())
                 .headers(Map.ofEntries(
                     Map.entry("Content-Type", "application/json")))
                 .body(Map.ofEntries(

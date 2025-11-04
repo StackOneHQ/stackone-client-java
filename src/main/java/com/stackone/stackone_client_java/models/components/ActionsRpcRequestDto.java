@@ -36,7 +36,7 @@ public class ActionsRpcRequestDto {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query")
-    private JsonNullable<? extends Map<String, Object>> query;
+    private JsonNullable<? extends Query> query;
 
     /**
      * Headers for the action
@@ -56,7 +56,7 @@ public class ActionsRpcRequestDto {
     public ActionsRpcRequestDto(
             @JsonProperty("action") String action,
             @JsonProperty("path") JsonNullable<? extends Map<String, Object>> path,
-            @JsonProperty("query") JsonNullable<? extends Map<String, Object>> query,
+            @JsonProperty("query") JsonNullable<? extends Query> query,
             @JsonProperty("headers") JsonNullable<? extends Map<String, Object>> headers,
             @JsonProperty("body") JsonNullable<? extends Map<String, Object>> body) {
         Utils.checkNotNull(action, "action");
@@ -99,8 +99,8 @@ public class ActionsRpcRequestDto {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Map<String, Object>> query() {
-        return (JsonNullable<Map<String, Object>>) query;
+    public JsonNullable<Query> query() {
+        return (JsonNullable<Query>) query;
     }
 
     /**
@@ -156,7 +156,7 @@ public class ActionsRpcRequestDto {
     /**
      * Query parameters for the action
      */
-    public ActionsRpcRequestDto withQuery(Map<String, Object> query) {
+    public ActionsRpcRequestDto withQuery(Query query) {
         Utils.checkNotNull(query, "query");
         this.query = JsonNullable.of(query);
         return this;
@@ -165,7 +165,7 @@ public class ActionsRpcRequestDto {
     /**
      * Query parameters for the action
      */
-    public ActionsRpcRequestDto withQuery(JsonNullable<? extends Map<String, Object>> query) {
+    public ActionsRpcRequestDto withQuery(JsonNullable<? extends Query> query) {
         Utils.checkNotNull(query, "query");
         this.query = query;
         return this;
@@ -248,7 +248,7 @@ public class ActionsRpcRequestDto {
 
         private JsonNullable<? extends Map<String, Object>> path = JsonNullable.undefined();
 
-        private JsonNullable<? extends Map<String, Object>> query = JsonNullable.undefined();
+        private JsonNullable<? extends Query> query = JsonNullable.undefined();
 
         private JsonNullable<? extends Map<String, Object>> headers = JsonNullable.undefined();
 
@@ -291,7 +291,7 @@ public class ActionsRpcRequestDto {
         /**
          * Query parameters for the action
          */
-        public Builder query(Map<String, Object> query) {
+        public Builder query(Query query) {
             Utils.checkNotNull(query, "query");
             this.query = JsonNullable.of(query);
             return this;
@@ -300,7 +300,7 @@ public class ActionsRpcRequestDto {
         /**
          * Query parameters for the action
          */
-        public Builder query(JsonNullable<? extends Map<String, Object>> query) {
+        public Builder query(JsonNullable<? extends Query> query) {
             Utils.checkNotNull(query, "query");
             this.query = query;
             return this;

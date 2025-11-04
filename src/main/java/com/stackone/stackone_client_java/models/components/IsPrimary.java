@@ -17,35 +17,35 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 
 /**
- * Active
+ * IsPrimary
  * 
- * <p>The employment active status
+ * <p>Whether this is the primary bank account
  */
-@JsonDeserialize(using = Active._Deserializer.class)
-public class Active {
+@JsonDeserialize(using = IsPrimary._Deserializer.class)
+public class IsPrimary {
 
     @JsonValue
     private TypedObject value;
     
-    private Active(TypedObject value) {
+    private IsPrimary(TypedObject value) {
         this.value = value;
     }
 
-    public static Active of(boolean value) {
+    public static IsPrimary of(boolean value) {
         Utils.checkNotNull(value, "value");
-        return new Active(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IsPrimary(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
     }
 
-    public static Active of(Two value) {
+    public static IsPrimary of(IsPrimary2 value) {
         Utils.checkNotNull(value, "value");
-        return new Active(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Two>(){}));
+        return new IsPrimary(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IsPrimary2>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code boolean}</li>
-     * <li>{@code com.stackone.stackone_client_java.models.components.Two}</li>
+     * <li>{@code com.stackone.stackone_client_java.models.components.IsPrimary2}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -71,7 +71,7 @@ public class Active {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Active other = (Active) o;
+        IsPrimary other = (IsPrimary) o;
         return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
@@ -81,18 +81,18 @@ public class Active {
     }
     
     @SuppressWarnings("serial")
-    public static final class _Deserializer extends OneOfDeserializer<Active> {
+    public static final class _Deserializer extends OneOfDeserializer<IsPrimary> {
 
         public _Deserializer() {
-            super(Active.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Two>() {}, JsonShape.DEFAULT),
+            super(IsPrimary.class, false,
+                  TypeReferenceWithShape.of(new TypeReference<IsPrimary2>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
         }
     }
     
     @Override
     public String toString() {
-        return Utils.toString(Active.class,
+        return Utils.toString(IsPrimary.class,
                 "value", value);
     }
  

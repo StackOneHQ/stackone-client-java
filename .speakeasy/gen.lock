@@ -1,26 +1,27 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 21c11f7c050af85acbab5f81ad6e7ce4
+  docChecksum: 43b75c4ea50f77d47aed029ccc0c9c5e
   docVersion: 1.0.0
-  speakeasyVersion: 1.639.3
-  generationVersion: 2.730.5
-  releaseVersion: 0.15.0
-  configChecksum: 6af45fbb08e11aeee0346f2a8eb6678f
+  speakeasyVersion: 1.648.0
+  generationVersion: 2.737.0
+  releaseVersion: 0.16.0
+  configChecksum: 286ea90ee80a23f59bae2b98547191e2
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
   java:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
+    additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.53.0
+    core: 3.53.1
     deprecations: 2.81.1
     examples: 2.81.6
     flattening: 2.81.1
     globalSecurity: 2.83.1
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.82.2
+    globalServerURLs: 2.83.0
     groups: 2.81.3
     methodSecurity: 2.82.2
     nameOverrides: 2.81.3
@@ -622,7 +623,6 @@ generatedFiles:
   - docs/models/components/EntitySkillResult.md
   - docs/models/components/EntitySkills.md
   - docs/models/components/EntitySkillsActive.md
-  - docs/models/components/EntitySkillsActive2.md
   - docs/models/components/EntitySkillsCreateRequestDto.md
   - docs/models/components/EntitySkillsCreateRequestDtoMaximumProficiency.md
   - docs/models/components/EntitySkillsCreateRequestDtoMinimumProficiency.md
@@ -1153,6 +1153,8 @@ generatedFiles:
   - docs/models/components/IsBotUser2.md
   - docs/models/components/IsPaid.md
   - docs/models/components/IsPaid2.md
+  - docs/models/components/IsPrimary.md
+  - docs/models/components/IsPrimary2.md
   - docs/models/components/IsRoot.md
   - docs/models/components/IsRoot2.md
   - docs/models/components/IsUnlimited.md
@@ -1350,7 +1352,6 @@ generatedFiles:
   - docs/models/components/OfferValue.md
   - docs/models/components/OffersPaginated.md
   - docs/models/components/OffersResult.md
-  - docs/models/components/One.md
   - docs/models/components/Organization.md
   - docs/models/components/OverallRecommendation.md
   - docs/models/components/Package.md
@@ -1394,6 +1395,7 @@ generatedFiles:
   - docs/models/components/PushTemplate.md
   - docs/models/components/PushTemplateResult.md
   - docs/models/components/PushTemplatesPaginated.md
+  - docs/models/components/Query.md
   - docs/models/components/Question.md
   - docs/models/components/QuestionMultipleChoiceAnswers.md
   - docs/models/components/QuestionParentQuestionSourceValue.md
@@ -3117,7 +3119,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/EntitySkillResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EntitySkills.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EntitySkillsActive.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/EntitySkillsActive2.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EntitySkillsCreateRequestDto.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EntitySkillsCreateRequestDtoMaximumProficiency.java
   - src/main/java/com/stackone/stackone_client_java/models/components/EntitySkillsCreateRequestDtoMinimumProficiency.java
@@ -3648,6 +3649,8 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/IsBotUser2.java
   - src/main/java/com/stackone/stackone_client_java/models/components/IsPaid.java
   - src/main/java/com/stackone/stackone_client_java/models/components/IsPaid2.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/IsPrimary.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/IsPrimary2.java
   - src/main/java/com/stackone/stackone_client_java/models/components/IsRoot.java
   - src/main/java/com/stackone/stackone_client_java/models/components/IsRoot2.java
   - src/main/java/com/stackone/stackone_client_java/models/components/IsUnlimited.java
@@ -3845,7 +3848,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/OfferValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/OffersPaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/OffersResult.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/One.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Organization.java
   - src/main/java/com/stackone/stackone_client_java/models/components/OverallRecommendation.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Package.java
@@ -3889,6 +3891,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/PushTemplate.java
   - src/main/java/com/stackone/stackone_client_java/models/components/PushTemplateResult.java
   - src/main/java/com/stackone/stackone_client_java/models/components/PushTemplatesPaginated.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/Query.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Question.java
   - src/main/java/com/stackone/stackone_client_java/models/components/QuestionMultipleChoiceAnswers.java
   - src/main/java/com/stackone/stackone_client_java/models/components/QuestionParentQuestionSourceValue.java
@@ -8984,7 +8987,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
+          fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
         header:
           x-account-id: "<id>"
@@ -9094,7 +9097,7 @@ examples:
           id: "<id>"
           subResourceId: "<id>"
         query:
-          fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
+          fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
         header:
           x-account-id: "<id>"
       responses:
@@ -10794,7 +10797,7 @@ examples:
     speakeasy-default-ats-list-offers:
       parameters:
         query:
-          fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
+          fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
         header:
           x-account-id: "<id>"
@@ -10867,7 +10870,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
+          fields: "id,remote_id,application_id,remote_application_id,start_date,offer_status,salary,currency,created_at,updated_at,offer_history,unified_custom_fields"
         header:
           x-account-id: "<id>"
       responses:
@@ -16749,7 +16752,7 @@ examples:
   stackone_rpc_action:
     speakeasy-default-stackone-rpc-action:
       requestBody:
-        application/json: {"action": "create_employee", "path": {"id": "123"}, "query": {"param1": "value1", "param2": "value2"}, "headers": {"Content-Type": "application/json"}, "body": {"data": "example"}}
+        application/json: {"action": "create_employee", "path": {"id": "123"}, "query": {"debug": false}, "headers": {"Content-Type": "application/json"}, "body": {"data": "example"}}
       responses:
         "200":
           application/json: {}
@@ -16919,4 +16922,4 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes Detected:\n* `stackone.lms.createUserAssignment()`: \n  *  `request.lmscreateassignmentrequestdto.learningObjectExternalReference` **Changed** **Breaking** :warning:\n* `stackone.accounts.getAccount()`:  `response.setup_information` **Changed** **Breaking** :warning:\n* `stackone.accounts.deleteAccount()`:  `response.setup_information` **Changed** **Breaking** :warning:\n* `stackone.accounts.updateAccount()`:  `response.setup_information` **Changed** **Breaking** :warning:\n* `stackone.lms.createUserCompletion()`: \n  *  `request.lmscreatecompletionrequestdto.learningObjectExternalReference` **Changed** **Breaking** :warning:\n* `stackone.lms.updateContent()`: \n  *  `request.lmscreatecontentrequestdto.externalReference` **Changed** **Breaking** :warning:\n* `stackone.accounts.listLinkedAccounts()`:  `response.[].setupInformation` **Changed** **Breaking** :warning:\n* `stackone.lms.upsertContent()`: \n  *  `request.lmsupsertcontentrequestdto.externalReference` **Changed** **Breaking** :warning:\n* `stackone.lms.batchUpsertContent()`: \n  *  `request.lmsbatchupsertcontentrequestdto.items.[].externalReference` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployee()`:  `response.data` **Changed**\n* `stackone.ats.getCandidate()`:  `response.data.tags` **Added**\n* `stackone.ats.listCandidates()`:  `response.data.[].tags` **Added**\n* `stackone.hris.updateEmployee()`: \n  *  `request.hrisupdateemployeerequestdto.title` **Added**\n* `stackone.hris.createEmployee()`: \n  *  `request.hriscreateemployeerequestdto.title` **Added**\n* `stackone.hris.listEmployees()`:  `response.data.[]` **Changed**\n"
+releaseNotes: "## Java SDK Changes Detected:\n* `stackone.actions.rpcAction()`: \n  *  `request.query` **Changed** **Breaking** :warning:\n  *  `response.data` **Changed**\n* `stackone.hris.listEmployees()`:  `response.data.[].bankDetails.[].isPrimary` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployee()`:  `response.data.bankDetails.[].isPrimary` **Changed** **Breaking** :warning:\n"

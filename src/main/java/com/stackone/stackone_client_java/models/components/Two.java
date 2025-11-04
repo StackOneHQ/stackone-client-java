@@ -3,56 +3,33 @@
  */
 package com.stackone.stackone_client_java.models.components;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Override;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
+public enum Two {
+    TRUE("true"),
+    FALSE("false");
 
-public class Two {
-    @JsonCreator
-    public Two() {
-    }
+    @JsonValue
+    private final String value;
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-
-    @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        return true;
+    Two(String value) {
+        this.value = value;
     }
     
-    @Override
-    public int hashCode() {
-        return Utils.enhancedHash(
-            );
+    public String value() {
+        return value;
     }
     
-    @Override
-    public String toString() {
-        return Utils.toString(Two.class);
-    }
-
-    @SuppressWarnings("UnusedReturnValue")
-    public final static class Builder {
-
-        private Builder() {
-          // force use of static builder() method
+    public static Optional<Two> fromValue(String value) {
+        for (Two o: Two.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
         }
-
-        public Two build() {
-
-            return new Two(
-                );
-        }
-
+        return Optional.empty();
     }
 }
+
