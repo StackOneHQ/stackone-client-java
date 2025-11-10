@@ -30,7 +30,7 @@ import java.util.List;
 public class CategorySourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CategorySourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class CategorySourceValue {
 
     public static CategorySourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategorySourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategorySourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategorySourceValue of(CategorySourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CategorySourceValue4>(){}));
+        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategorySourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CategorySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class CategorySourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

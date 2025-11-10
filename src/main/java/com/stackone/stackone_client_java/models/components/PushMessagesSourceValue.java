@@ -28,7 +28,7 @@ import java.util.List;
 public class PushMessagesSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private PushMessagesSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class PushMessagesSourceValue {
 
     public static PushMessagesSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static PushMessagesSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static PushMessagesSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static PushMessagesSourceValue of(PushMessagesSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PushMessagesSourceValue4>(){}));
+        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static PushMessagesSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new PushMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class PushMessagesSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

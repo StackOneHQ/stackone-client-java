@@ -22,7 +22,7 @@ import java.util.Map;
 public class RawResponseResponse {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private RawResponseResponse(TypedObject value) {
         this.value = value;
@@ -30,17 +30,17 @@ public class RawResponseResponse {
 
     public static RawResponseResponse of(Map<String, Object> value) {
         Utils.checkNotNull(value, "value");
-        return new RawResponseResponse(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Map<String, Object>>(){}));
+        return new RawResponseResponse(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static RawResponseResponse of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new RawResponseResponse(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new RawResponseResponse(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static RawResponseResponse of(String value) {
         Utils.checkNotNull(value, "value");
-        return new RawResponseResponse(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new RawResponseResponse(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -64,7 +64,7 @@ public class RawResponseResponse {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class EntitySkillsActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EntitySkillsActive(TypedObject value) {
         this.value = value;
     }
 
     public static EntitySkillsActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EntitySkillsActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EntitySkillsActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsActive of(Active2 value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Active2>(){}));
+        return new EntitySkillsActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class EntitySkillsActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

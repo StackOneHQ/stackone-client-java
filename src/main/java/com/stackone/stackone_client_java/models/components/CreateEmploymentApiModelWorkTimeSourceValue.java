@@ -23,7 +23,7 @@ import java.util.List;
 public class CreateEmploymentApiModelWorkTimeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateEmploymentApiModelWorkTimeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class CreateEmploymentApiModelWorkTimeSourceValue {
 
     public static CreateEmploymentApiModelWorkTimeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateEmploymentApiModelWorkTimeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateEmploymentApiModelWorkTimeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateEmploymentApiModelWorkTimeSourceValue of(CreateEmploymentApiModelSourceValueWorkTime4 value) {
         Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CreateEmploymentApiModelSourceValueWorkTime4>(){}));
+        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateEmploymentApiModelWorkTimeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CreateEmploymentApiModelWorkTimeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class CreateEmploymentApiModelWorkTimeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

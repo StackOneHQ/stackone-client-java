@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class Required {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Required(TypedObject value) {
         this.value = value;
     }
 
     public static Required of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new Required(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new Required(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Required of(Required2 value) {
         Utils.checkNotNull(value, "value");
-        return new Required(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Required2>(){}));
+        return new Required(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class Required {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

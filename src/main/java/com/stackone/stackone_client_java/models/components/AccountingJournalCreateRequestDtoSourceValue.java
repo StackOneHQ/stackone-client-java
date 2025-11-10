@@ -23,7 +23,7 @@ import java.util.List;
 public class AccountingJournalCreateRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AccountingJournalCreateRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class AccountingJournalCreateRequestDtoSourceValue {
 
     public static AccountingJournalCreateRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingJournalCreateRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingJournalCreateRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingJournalCreateRequestDtoSourceValue of(AccountingJournalCreateRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AccountingJournalCreateRequestDtoSourceValue4>(){}));
+        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingJournalCreateRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AccountingJournalCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class AccountingJournalCreateRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

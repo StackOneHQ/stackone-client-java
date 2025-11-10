@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisCreateEmployeeRequestDtoWorkLocationSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisCreateEmployeeRequestDtoWorkLocationSourceValue {
 
     public static HrisCreateEmployeeRequestDtoWorkLocationSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateEmployeeRequestDtoWorkLocationSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateEmployeeRequestDtoWorkLocationSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateEmployeeRequestDtoWorkLocationSourceValue of(HrisCreateEmployeeRequestDtoSourceValueWorkLocation4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisCreateEmployeeRequestDtoSourceValueWorkLocation4>(){}));
+        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateEmployeeRequestDtoWorkLocationSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisCreateEmployeeRequestDtoWorkLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisCreateEmployeeRequestDtoWorkLocationSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

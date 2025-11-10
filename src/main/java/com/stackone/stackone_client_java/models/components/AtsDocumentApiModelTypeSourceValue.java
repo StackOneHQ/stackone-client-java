@@ -23,7 +23,7 @@ import java.util.List;
 public class AtsDocumentApiModelTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsDocumentApiModelTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class AtsDocumentApiModelTypeSourceValue {
 
     public static AtsDocumentApiModelTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsDocumentApiModelTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsDocumentApiModelTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsDocumentApiModelTypeSourceValue of(AtsDocumentApiModelSourceValueType4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsDocumentApiModelSourceValueType4>(){}));
+        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsDocumentApiModelTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsDocumentApiModelTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class AtsDocumentApiModelTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

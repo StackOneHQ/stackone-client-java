@@ -23,7 +23,7 @@ import java.util.List;
 public class TimeEntriesSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TimeEntriesSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class TimeEntriesSourceValue {
 
     public static TimeEntriesSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeEntriesSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeEntriesSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeEntriesSourceValue of(TimeEntriesSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TimeEntriesSourceValue4>(){}));
+        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeEntriesSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TimeEntriesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class TimeEntriesSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

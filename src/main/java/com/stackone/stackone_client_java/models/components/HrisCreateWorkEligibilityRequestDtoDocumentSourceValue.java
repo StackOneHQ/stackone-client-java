@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisCreateWorkEligibilityRequestDtoDocumentSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisCreateWorkEligibilityRequestDtoDocumentSourceValue {
 
     public static HrisCreateWorkEligibilityRequestDtoDocumentSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateWorkEligibilityRequestDtoDocumentSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateWorkEligibilityRequestDtoDocumentSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateWorkEligibilityRequestDtoDocumentSourceValue of(HrisCreateWorkEligibilityRequestDtoSourceValueDocument4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisCreateWorkEligibilityRequestDtoSourceValueDocument4>(){}));
+        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateWorkEligibilityRequestDtoDocumentSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisCreateWorkEligibilityRequestDtoDocumentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisCreateWorkEligibilityRequestDtoDocumentSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

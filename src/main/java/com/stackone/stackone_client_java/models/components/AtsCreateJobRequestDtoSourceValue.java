@@ -28,7 +28,7 @@ import java.util.List;
 public class AtsCreateJobRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsCreateJobRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AtsCreateJobRequestDtoSourceValue {
 
     public static AtsCreateJobRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateJobRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateJobRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateJobRequestDtoSourceValue of(AtsCreateJobRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsCreateJobRequestDtoSourceValue4>(){}));
+        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateJobRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsCreateJobRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AtsCreateJobRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

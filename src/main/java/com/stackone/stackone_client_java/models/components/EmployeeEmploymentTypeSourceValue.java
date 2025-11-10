@@ -28,7 +28,7 @@ import java.util.List;
 public class EmployeeEmploymentTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EmployeeEmploymentTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class EmployeeEmploymentTypeSourceValue {
 
     public static EmployeeEmploymentTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeEmploymentTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeEmploymentTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeEmploymentTypeSourceValue of(EmployeeSourceValueEmploymentType4 value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmployeeSourceValueEmploymentType4>(){}));
+        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeEmploymentTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EmployeeEmploymentTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class EmployeeEmploymentTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

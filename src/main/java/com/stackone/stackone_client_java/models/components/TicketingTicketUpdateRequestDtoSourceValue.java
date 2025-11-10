@@ -28,7 +28,7 @@ import java.util.List;
 public class TicketingTicketUpdateRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TicketingTicketUpdateRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class TicketingTicketUpdateRequestDtoSourceValue {
 
     public static TicketingTicketUpdateRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingTicketUpdateRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingTicketUpdateRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingTicketUpdateRequestDtoSourceValue of(TicketingTicketUpdateRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TicketingTicketUpdateRequestDtoSourceValue4>(){}));
+        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingTicketUpdateRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TicketingTicketUpdateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class TicketingTicketUpdateRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

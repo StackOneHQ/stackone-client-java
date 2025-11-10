@@ -23,7 +23,7 @@ import java.util.List;
 public class IamUserAvatarFileFormatSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IamUserAvatarFileFormatSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class IamUserAvatarFileFormatSourceValue {
 
     public static IamUserAvatarFileFormatSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserAvatarFileFormatSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserAvatarFileFormatSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserAvatarFileFormatSourceValue of(IamUserSourceValueAvatarFileFormat4 value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IamUserSourceValueAvatarFileFormat4>(){}));
+        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserAvatarFileFormatSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new IamUserAvatarFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class IamUserAvatarFileFormatSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

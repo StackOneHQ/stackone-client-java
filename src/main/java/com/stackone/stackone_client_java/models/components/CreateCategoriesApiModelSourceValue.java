@@ -30,7 +30,7 @@ import java.util.List;
 public class CreateCategoriesApiModelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateCategoriesApiModelSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class CreateCategoriesApiModelSourceValue {
 
     public static CreateCategoriesApiModelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelSourceValue of(CreateCategoriesApiModelSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CreateCategoriesApiModelSourceValue4>(){}));
+        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CreateCategoriesApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class CreateCategoriesApiModelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

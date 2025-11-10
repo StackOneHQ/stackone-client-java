@@ -30,7 +30,7 @@ import java.util.List;
 public class SkillsLevelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SkillsLevelSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class SkillsLevelSourceValue {
 
     public static SkillsLevelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SkillsLevelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SkillsLevelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SkillsLevelSourceValue of(SkillsSourceValueLevel4 value) {
         Utils.checkNotNull(value, "value");
-        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SkillsSourceValueLevel4>(){}));
+        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SkillsLevelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new SkillsLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class SkillsLevelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

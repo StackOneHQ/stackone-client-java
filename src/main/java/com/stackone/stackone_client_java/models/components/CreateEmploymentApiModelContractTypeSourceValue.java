@@ -23,7 +23,7 @@ import java.util.List;
 public class CreateEmploymentApiModelContractTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateEmploymentApiModelContractTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class CreateEmploymentApiModelContractTypeSourceValue {
 
     public static CreateEmploymentApiModelContractTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateEmploymentApiModelContractTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateEmploymentApiModelContractTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateEmploymentApiModelContractTypeSourceValue of(CreateEmploymentApiModelSourceValueContractType4 value) {
         Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CreateEmploymentApiModelSourceValueContractType4>(){}));
+        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateEmploymentApiModelContractTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CreateEmploymentApiModelContractTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class CreateEmploymentApiModelContractTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

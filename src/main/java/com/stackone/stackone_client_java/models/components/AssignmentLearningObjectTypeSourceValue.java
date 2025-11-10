@@ -28,7 +28,7 @@ import java.util.List;
 public class AssignmentLearningObjectTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AssignmentLearningObjectTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AssignmentLearningObjectTypeSourceValue {
 
     public static AssignmentLearningObjectTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AssignmentLearningObjectTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AssignmentLearningObjectTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AssignmentLearningObjectTypeSourceValue of(AssignmentSourceValueLearningObjectType4 value) {
         Utils.checkNotNull(value, "value");
-        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AssignmentSourceValueLearningObjectType4>(){}));
+        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AssignmentLearningObjectTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AssignmentLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AssignmentLearningObjectTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

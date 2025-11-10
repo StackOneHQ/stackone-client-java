@@ -28,7 +28,7 @@ import java.util.List;
 public class EmployeeHomeLocationLocationTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EmployeeHomeLocationLocationTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class EmployeeHomeLocationLocationTypeSourceValue {
 
     public static EmployeeHomeLocationLocationTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeHomeLocationLocationTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeHomeLocationLocationTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeHomeLocationLocationTypeSourceValue of(EmployeeSourceValueHomeLocationLocationType4 value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmployeeSourceValueHomeLocationLocationType4>(){}));
+        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeHomeLocationLocationTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EmployeeHomeLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class EmployeeHomeLocationLocationTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -23,7 +23,7 @@ import java.util.List;
 public class CreateHRISBenefitSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateHRISBenefitSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class CreateHRISBenefitSourceValue {
 
     public static CreateHRISBenefitSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateHRISBenefitSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateHRISBenefitSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateHRISBenefitSourceValue of(CreateHRISBenefitSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CreateHRISBenefitSourceValue4>(){}));
+        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateHRISBenefitSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CreateHRISBenefitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class CreateHRISBenefitSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

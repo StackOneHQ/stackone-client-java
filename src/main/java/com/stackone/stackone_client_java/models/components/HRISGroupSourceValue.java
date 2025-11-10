@@ -23,7 +23,7 @@ import java.util.List;
 public class HRISGroupSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HRISGroupSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HRISGroupSourceValue {
 
     public static HRISGroupSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISGroupSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISGroupSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISGroupSourceValue of(HRISGroupSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HRISGroupSourceValue4>(){}));
+        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISGroupSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HRISGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HRISGroupSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

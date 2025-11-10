@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class SkillsActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SkillsActive(TypedObject value) {
         this.value = value;
     }
 
     public static SkillsActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new SkillsActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new SkillsActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SkillsActive of(SkillsActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new SkillsActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SkillsActive2>(){}));
+        return new SkillsActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SkillsActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

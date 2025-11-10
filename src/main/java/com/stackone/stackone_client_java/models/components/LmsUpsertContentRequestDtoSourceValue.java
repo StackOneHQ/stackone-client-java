@@ -29,7 +29,7 @@ import java.util.List;
 public class LmsUpsertContentRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private LmsUpsertContentRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -37,27 +37,25 @@ public class LmsUpsertContentRequestDtoSourceValue {
 
     public static LmsUpsertContentRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsUpsertContentRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsUpsertContentRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsUpsertContentRequestDtoSourceValue of(LmsUpsertContentRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LmsUpsertContentRequestDtoSourceValue4>(){}));
+        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsUpsertContentRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new LmsUpsertContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -83,7 +81,7 @@ public class LmsUpsertContentRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

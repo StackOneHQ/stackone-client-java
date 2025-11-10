@@ -23,7 +23,7 @@ import java.util.List;
 public class HRISLocationSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HRISLocationSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HRISLocationSourceValue {
 
     public static HRISLocationSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISLocationSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISLocationSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISLocationSourceValue of(HRISLocationSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HRISLocationSourceValue4>(){}));
+        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISLocationSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HRISLocationSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HRISLocationSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

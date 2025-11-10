@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class TicketingCommentResultInternal {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TicketingCommentResultInternal(TypedObject value) {
         this.value = value;
     }
 
     public static TicketingCommentResultInternal of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TicketingCommentResultInternal(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TicketingCommentResultInternal(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingCommentResultInternal of(TicketingCommentResultInternal2 value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingCommentResultInternal(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TicketingCommentResultInternal2>(){}));
+        return new TicketingCommentResultInternal(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class TicketingCommentResultInternal {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

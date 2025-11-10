@@ -28,7 +28,7 @@ import java.util.List;
 public class AtsCreateApplicationRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsCreateApplicationRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AtsCreateApplicationRequestDtoSourceValue {
 
     public static AtsCreateApplicationRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateApplicationRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateApplicationRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateApplicationRequestDtoSourceValue of(AtsCreateApplicationRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsCreateApplicationRequestDtoSourceValue4>(){}));
+        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateApplicationRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsCreateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AtsCreateApplicationRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -28,7 +28,7 @@ import java.util.List;
 public class InterviewSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private InterviewSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class InterviewSourceValue {
 
     public static InterviewSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static InterviewSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static InterviewSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static InterviewSourceValue of(InterviewSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<InterviewSourceValue4>(){}));
+        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static InterviewSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new InterviewSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class InterviewSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

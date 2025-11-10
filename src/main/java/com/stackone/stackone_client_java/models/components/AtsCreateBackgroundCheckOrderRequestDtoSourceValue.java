@@ -28,7 +28,7 @@ import java.util.List;
 public class AtsCreateBackgroundCheckOrderRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AtsCreateBackgroundCheckOrderRequestDtoSourceValue {
 
     public static AtsCreateBackgroundCheckOrderRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateBackgroundCheckOrderRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateBackgroundCheckOrderRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateBackgroundCheckOrderRequestDtoSourceValue of(AtsCreateBackgroundCheckOrderRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsCreateBackgroundCheckOrderRequestDtoSourceValue4>(){}));
+        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateBackgroundCheckOrderRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsCreateBackgroundCheckOrderRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

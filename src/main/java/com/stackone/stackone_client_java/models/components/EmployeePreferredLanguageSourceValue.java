@@ -23,7 +23,7 @@ import java.util.List;
 public class EmployeePreferredLanguageSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EmployeePreferredLanguageSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class EmployeePreferredLanguageSourceValue {
 
     public static EmployeePreferredLanguageSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeePreferredLanguageSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeePreferredLanguageSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeePreferredLanguageSourceValue of(EmployeeSourceValuePreferredLanguage4 value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmployeeSourceValuePreferredLanguage4>(){}));
+        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeePreferredLanguageSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EmployeePreferredLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class EmployeePreferredLanguageSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -19,7 +19,7 @@ import java.lang.SuppressWarnings;
 public class CreateMessageMessageContent {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateMessageMessageContent(TypedObject value) {
         this.value = value;
@@ -27,17 +27,17 @@ public class CreateMessageMessageContent {
 
     public static CreateMessageMessageContent of(SmsMessageContents value) {
         Utils.checkNotNull(value, "value");
-        return new CreateMessageMessageContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SmsMessageContents>(){}));
+        return new CreateMessageMessageContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateMessageMessageContent of(EmailMessageContents value) {
         Utils.checkNotNull(value, "value");
-        return new CreateMessageMessageContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmailMessageContents>(){}));
+        return new CreateMessageMessageContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateMessageMessageContent of(PushMessageContents value) {
         Utils.checkNotNull(value, "value");
-        return new CreateMessageMessageContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PushMessageContents>(){}));
+        return new CreateMessageMessageContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +61,7 @@ public class CreateMessageMessageContent {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class TicketingUserActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TicketingUserActive(TypedObject value) {
         this.value = value;
     }
 
     public static TicketingUserActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TicketingUserActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TicketingUserActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingUserActive of(TicketingUserActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingUserActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TicketingUserActive2>(){}));
+        return new TicketingUserActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class TicketingUserActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

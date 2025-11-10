@@ -23,7 +23,7 @@ import java.util.List;
 public class IamUserAvatarSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IamUserAvatarSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class IamUserAvatarSourceValue {
 
     public static IamUserAvatarSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserAvatarSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserAvatarSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserAvatarSourceValue of(IamUserSourceValueAvatar4 value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IamUserSourceValueAvatar4>(){}));
+        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserAvatarSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new IamUserAvatarSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class IamUserAvatarSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -23,7 +23,7 @@ import java.util.List;
 public class AccountingJournalResultSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AccountingJournalResultSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class AccountingJournalResultSourceValue {
 
     public static AccountingJournalResultSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingJournalResultSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingJournalResultSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingJournalResultSourceValue of(AccountingJournalResultSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AccountingJournalResultSourceValue4>(){}));
+        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingJournalResultSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AccountingJournalResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class AccountingJournalResultSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

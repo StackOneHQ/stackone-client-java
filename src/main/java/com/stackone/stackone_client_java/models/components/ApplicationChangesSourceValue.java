@@ -28,7 +28,7 @@ import java.util.List;
 public class ApplicationChangesSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private ApplicationChangesSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class ApplicationChangesSourceValue {
 
     public static ApplicationChangesSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ApplicationChangesSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ApplicationChangesSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ApplicationChangesSourceValue of(ApplicationChangesSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ApplicationChangesSourceValue4>(){}));
+        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ApplicationChangesSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new ApplicationChangesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class ApplicationChangesSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -28,7 +28,7 @@ import java.util.List;
 public class CreateAnswerSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateAnswerSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class CreateAnswerSourceValue {
 
     public static CreateAnswerSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateAnswerSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateAnswerSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateAnswerSourceValue of(CreateAnswerSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CreateAnswerSourceValue4>(){}));
+        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateAnswerSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CreateAnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class CreateAnswerSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

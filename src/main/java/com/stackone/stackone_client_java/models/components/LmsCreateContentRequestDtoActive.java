@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class LmsCreateContentRequestDtoActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private LmsCreateContentRequestDtoActive(TypedObject value) {
         this.value = value;
     }
 
     public static LmsCreateContentRequestDtoActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new LmsCreateContentRequestDtoActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new LmsCreateContentRequestDtoActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsCreateContentRequestDtoActive of(LmsCreateContentRequestDtoActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new LmsCreateContentRequestDtoActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LmsCreateContentRequestDtoActive2>(){}));
+        return new LmsCreateContentRequestDtoActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class LmsCreateContentRequestDtoActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

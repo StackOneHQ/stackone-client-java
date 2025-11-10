@@ -28,7 +28,7 @@ import java.util.List;
 public class AtsCreateOfferRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsCreateOfferRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AtsCreateOfferRequestDtoSourceValue {
 
     public static AtsCreateOfferRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateOfferRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateOfferRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateOfferRequestDtoSourceValue of(AtsCreateOfferRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsCreateOfferRequestDtoSourceValue4>(){}));
+        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsCreateOfferRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsCreateOfferRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AtsCreateOfferRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

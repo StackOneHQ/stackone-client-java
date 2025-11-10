@@ -28,7 +28,7 @@ import java.util.List;
 public class HrisUpdateEmploymentRequestDtoPayFrequencySourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class HrisUpdateEmploymentRequestDtoPayFrequencySourceValue {
 
     public static HrisUpdateEmploymentRequestDtoPayFrequencySourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisUpdateEmploymentRequestDtoPayFrequencySourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisUpdateEmploymentRequestDtoPayFrequencySourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisUpdateEmploymentRequestDtoPayFrequencySourceValue of(HrisUpdateEmploymentRequestDtoSourceValuePayFrequency4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisUpdateEmploymentRequestDtoSourceValuePayFrequency4>(){}));
+        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisUpdateEmploymentRequestDtoPayFrequencySourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisUpdateEmploymentRequestDtoPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class HrisUpdateEmploymentRequestDtoPayFrequencySourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

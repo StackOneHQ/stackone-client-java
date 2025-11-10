@@ -46,7 +46,7 @@ public class Application {
                     .actionKey("action1")
                     .build())
                 .include(List.of(
-                    StackoneListActionsMetaQueryParamInclude.OPERATION_DETAILS))
+                    StackoneListActionsMetaQueryParamInclude.ACTION_DETAILS))
                 .build();
 
 

@@ -23,7 +23,7 @@ import java.util.List;
 public class NationalIdentityNumberApiModelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private NationalIdentityNumberApiModelSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class NationalIdentityNumberApiModelSourceValue {
 
     public static NationalIdentityNumberApiModelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static NationalIdentityNumberApiModelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static NationalIdentityNumberApiModelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static NationalIdentityNumberApiModelSourceValue of(NationalIdentityNumberApiModelSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NationalIdentityNumberApiModelSourceValue4>(){}));
+        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static NationalIdentityNumberApiModelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new NationalIdentityNumberApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class NationalIdentityNumberApiModelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

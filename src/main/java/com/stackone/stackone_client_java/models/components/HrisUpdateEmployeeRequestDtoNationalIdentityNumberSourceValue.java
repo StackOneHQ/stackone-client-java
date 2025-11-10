@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue {
 
     public static HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue of(HrisUpdateEmployeeRequestDtoSourceValueNationalIdentityNumber4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisUpdateEmployeeRequestDtoSourceValueNationalIdentityNumber4>(){}));
+        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

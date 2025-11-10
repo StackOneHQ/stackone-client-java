@@ -28,7 +28,7 @@ import java.util.List;
 public class HrisCreateEmployeeRequestDtoEmploymentSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class HrisCreateEmployeeRequestDtoEmploymentSourceValue {
 
     public static HrisCreateEmployeeRequestDtoEmploymentSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateEmployeeRequestDtoEmploymentSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateEmployeeRequestDtoEmploymentSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateEmployeeRequestDtoEmploymentSourceValue of(HrisCreateEmployeeRequestDtoSourceValueEmployment4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisCreateEmployeeRequestDtoSourceValueEmployment4>(){}));
+        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateEmployeeRequestDtoEmploymentSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisCreateEmployeeRequestDtoEmploymentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

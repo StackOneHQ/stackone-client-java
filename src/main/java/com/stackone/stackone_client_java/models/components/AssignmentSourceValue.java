@@ -28,7 +28,7 @@ import java.util.List;
 public class AssignmentSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AssignmentSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AssignmentSourceValue {
 
     public static AssignmentSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AssignmentSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AssignmentSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AssignmentSourceValue of(AssignmentSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AssignmentSourceValue4>(){}));
+        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AssignmentSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AssignmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AssignmentSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

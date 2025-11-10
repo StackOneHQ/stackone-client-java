@@ -28,7 +28,7 @@ import java.util.List;
 public class AtsUpdateApplicationRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsUpdateApplicationRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AtsUpdateApplicationRequestDtoSourceValue {
 
     public static AtsUpdateApplicationRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateApplicationRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateApplicationRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateApplicationRequestDtoSourceValue of(AtsUpdateApplicationRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsUpdateApplicationRequestDtoSourceValue4>(){}));
+        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateApplicationRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsUpdateApplicationRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AtsUpdateApplicationRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

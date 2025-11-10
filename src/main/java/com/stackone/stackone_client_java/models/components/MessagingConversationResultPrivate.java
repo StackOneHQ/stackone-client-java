@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class MessagingConversationResultPrivate {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private MessagingConversationResultPrivate(TypedObject value) {
         this.value = value;
     }
 
     public static MessagingConversationResultPrivate of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new MessagingConversationResultPrivate(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new MessagingConversationResultPrivate(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MessagingConversationResultPrivate of(MessagingConversationResultPrivate2 value) {
         Utils.checkNotNull(value, "value");
-        return new MessagingConversationResultPrivate(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<MessagingConversationResultPrivate2>(){}));
+        return new MessagingConversationResultPrivate(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class MessagingConversationResultPrivate {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

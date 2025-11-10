@@ -28,7 +28,7 @@ import java.util.List;
 public class AnswerSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AnswerSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AnswerSourceValue {
 
     public static AnswerSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AnswerSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AnswerSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AnswerSourceValue of(AnswerSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AnswerSourceValue4>(){}));
+        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AnswerSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AnswerSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AnswerSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

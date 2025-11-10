@@ -23,7 +23,7 @@ import java.util.List;
 public class CustomFieldDefinitionSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CustomFieldDefinitionSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class CustomFieldDefinitionSourceValue {
 
     public static CustomFieldDefinitionSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldDefinitionSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldDefinitionSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldDefinitionSourceValue of(CustomFieldDefinitionSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CustomFieldDefinitionSourceValue4>(){}));
+        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldDefinitionSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CustomFieldDefinitionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class CustomFieldDefinitionSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

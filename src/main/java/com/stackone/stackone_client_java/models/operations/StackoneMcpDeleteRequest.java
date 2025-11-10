@@ -7,16 +7,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
+import java.util.Optional;
 
 
 public class StackoneMcpDeleteRequest {
     /**
-     * Account secure id for the target provider account
+     * Account secure id for the target provider account (optional if x-account-id query parameter is
+     * provided)
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
-    private String xAccountId;
+    private Optional<String> xAccountId;
+
+    /**
+     * Account secure id (alternative to x-account-id header)
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=x-account-id")
+    private Optional<? extends Object> xAccountIdQueryParameter;
 
     /**
      * Session id
@@ -26,20 +36,38 @@ public class StackoneMcpDeleteRequest {
 
     @JsonCreator
     public StackoneMcpDeleteRequest(
-            String xAccountId,
+            Optional<String> xAccountId,
+            Optional<? extends Object> xAccountIdQueryParameter,
             String mcpSessionId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
         Utils.checkNotNull(mcpSessionId, "mcpSessionId");
         this.xAccountId = xAccountId;
+        this.xAccountIdQueryParameter = xAccountIdQueryParameter;
         this.mcpSessionId = mcpSessionId;
+    }
+    
+    public StackoneMcpDeleteRequest(
+            String mcpSessionId) {
+        this(Optional.empty(), Optional.empty(), mcpSessionId);
     }
 
     /**
-     * Account secure id for the target provider account
+     * Account secure id for the target provider account (optional if x-account-id query parameter is
+     * provided)
      */
     @JsonIgnore
-    public String xAccountId() {
+    public Optional<String> xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Account secure id (alternative to x-account-id header)
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Object> xAccountIdQueryParameter() {
+        return (Optional<Object>) xAccountIdQueryParameter;
     }
 
     /**
@@ -56,11 +84,42 @@ public class StackoneMcpDeleteRequest {
 
 
     /**
-     * Account secure id for the target provider account
+     * Account secure id for the target provider account (optional if x-account-id query parameter is
+     * provided)
      */
     public StackoneMcpDeleteRequest withXAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        this.xAccountId = Optional.ofNullable(xAccountId);
+        return this;
+    }
+
+
+    /**
+     * Account secure id for the target provider account (optional if x-account-id query parameter is
+     * provided)
+     */
+    public StackoneMcpDeleteRequest withXAccountId(Optional<String> xAccountId) {
+        Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+
+    /**
+     * Account secure id (alternative to x-account-id header)
+     */
+    public StackoneMcpDeleteRequest withXAccountIdQueryParameter(Object xAccountIdQueryParameter) {
+        Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
+        this.xAccountIdQueryParameter = Optional.ofNullable(xAccountIdQueryParameter);
+        return this;
+    }
+
+
+    /**
+     * Account secure id (alternative to x-account-id header)
+     */
+    public StackoneMcpDeleteRequest withXAccountIdQueryParameter(Optional<? extends Object> xAccountIdQueryParameter) {
+        Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
+        this.xAccountIdQueryParameter = xAccountIdQueryParameter;
         return this;
     }
 
@@ -84,26 +143,30 @@ public class StackoneMcpDeleteRequest {
         StackoneMcpDeleteRequest other = (StackoneMcpDeleteRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.xAccountIdQueryParameter, other.xAccountIdQueryParameter) &&
             Utils.enhancedDeepEquals(this.mcpSessionId, other.mcpSessionId);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, mcpSessionId);
+            xAccountId, xAccountIdQueryParameter, mcpSessionId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(StackoneMcpDeleteRequest.class,
                 "xAccountId", xAccountId,
+                "xAccountIdQueryParameter", xAccountIdQueryParameter,
                 "mcpSessionId", mcpSessionId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private String xAccountId;
+        private Optional<String> xAccountId = Optional.empty();
+
+        private Optional<? extends Object> xAccountIdQueryParameter = Optional.empty();
 
         private String mcpSessionId;
 
@@ -113,11 +176,41 @@ public class StackoneMcpDeleteRequest {
 
 
         /**
-         * Account secure id for the target provider account
+         * Account secure id for the target provider account (optional if x-account-id query parameter is
+         * provided)
          */
         public Builder xAccountId(String xAccountId) {
             Utils.checkNotNull(xAccountId, "xAccountId");
+            this.xAccountId = Optional.ofNullable(xAccountId);
+            return this;
+        }
+
+        /**
+         * Account secure id for the target provider account (optional if x-account-id query parameter is
+         * provided)
+         */
+        public Builder xAccountId(Optional<String> xAccountId) {
+            Utils.checkNotNull(xAccountId, "xAccountId");
             this.xAccountId = xAccountId;
+            return this;
+        }
+
+
+        /**
+         * Account secure id (alternative to x-account-id header)
+         */
+        public Builder xAccountIdQueryParameter(Object xAccountIdQueryParameter) {
+            Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
+            this.xAccountIdQueryParameter = Optional.ofNullable(xAccountIdQueryParameter);
+            return this;
+        }
+
+        /**
+         * Account secure id (alternative to x-account-id header)
+         */
+        public Builder xAccountIdQueryParameter(Optional<? extends Object> xAccountIdQueryParameter) {
+            Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
+            this.xAccountIdQueryParameter = xAccountIdQueryParameter;
             return this;
         }
 
@@ -134,7 +227,7 @@ public class StackoneMcpDeleteRequest {
         public StackoneMcpDeleteRequest build() {
 
             return new StackoneMcpDeleteRequest(
-                xAccountId, mcpSessionId);
+                xAccountId, xAccountIdQueryParameter, mcpSessionId);
         }
 
     }

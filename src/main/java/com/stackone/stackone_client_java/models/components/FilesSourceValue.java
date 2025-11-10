@@ -23,7 +23,7 @@ import java.util.List;
 public class FilesSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private FilesSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class FilesSourceValue {
 
     public static FilesSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FilesSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FilesSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FilesSourceValue of(FilesSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<FilesSourceValue4>(){}));
+        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FilesSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new FilesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class FilesSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

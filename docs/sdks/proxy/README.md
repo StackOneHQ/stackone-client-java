@@ -48,7 +48,9 @@ public class Application {
                     .build())
                 .call();
 
-        // handle response
+        if (res.proxyResponseApiModel().isPresent()) {
+            // handle response
+        }
     }
 }
 ```

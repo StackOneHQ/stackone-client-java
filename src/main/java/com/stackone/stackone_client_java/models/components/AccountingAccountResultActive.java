@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class AccountingAccountResultActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AccountingAccountResultActive(TypedObject value) {
         this.value = value;
     }
 
     public static AccountingAccountResultActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountingAccountResultActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AccountingAccountResultActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingAccountResultActive of(AccountingAccountResultActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingAccountResultActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AccountingAccountResultActive2>(){}));
+        return new AccountingAccountResultActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class AccountingAccountResultActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -28,7 +28,7 @@ import java.util.List;
 public class MarketingCreateContentBlocksRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class MarketingCreateContentBlocksRequestDtoSourceValue {
 
     public static MarketingCreateContentBlocksRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MarketingCreateContentBlocksRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MarketingCreateContentBlocksRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MarketingCreateContentBlocksRequestDtoSourceValue of(MarketingCreateContentBlocksRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<MarketingCreateContentBlocksRequestDtoSourceValue4>(){}));
+        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MarketingCreateContentBlocksRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new MarketingCreateContentBlocksRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class MarketingCreateContentBlocksRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

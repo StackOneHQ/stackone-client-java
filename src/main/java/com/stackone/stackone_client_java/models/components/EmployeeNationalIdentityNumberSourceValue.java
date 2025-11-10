@@ -23,7 +23,7 @@ import java.util.List;
 public class EmployeeNationalIdentityNumberSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EmployeeNationalIdentityNumberSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class EmployeeNationalIdentityNumberSourceValue {
 
     public static EmployeeNationalIdentityNumberSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeNationalIdentityNumberSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeNationalIdentityNumberSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeNationalIdentityNumberSourceValue of(EmployeeSourceValueNationalIdentityNumber4 value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmployeeSourceValueNationalIdentityNumber4>(){}));
+        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmployeeNationalIdentityNumberSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EmployeeNationalIdentityNumberSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class EmployeeNationalIdentityNumberSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

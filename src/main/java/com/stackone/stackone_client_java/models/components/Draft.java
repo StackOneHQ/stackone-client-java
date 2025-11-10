@@ -20,20 +20,19 @@ import java.lang.SuppressWarnings;
 public class Draft {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Draft(TypedObject value) {
         this.value = value;
     }
 
     public static Draft of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new Draft(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new Draft(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Draft of(Draft2 value) {
         Utils.checkNotNull(value, "value");
-        return new Draft(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Draft2>(){}));
+        return new Draft(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class Draft {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

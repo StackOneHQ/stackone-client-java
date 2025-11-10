@@ -23,7 +23,7 @@ import java.util.List;
 public class HRISBankDetailsSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HRISBankDetailsSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HRISBankDetailsSourceValue {
 
     public static HRISBankDetailsSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISBankDetailsSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISBankDetailsSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISBankDetailsSourceValue of(HRISBankDetailsSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HRISBankDetailsSourceValue4>(){}));
+        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISBankDetailsSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HRISBankDetailsSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HRISBankDetailsSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

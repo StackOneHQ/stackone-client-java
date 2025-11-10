@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class CategoryActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CategoryActive(TypedObject value) {
         this.value = value;
     }
 
     public static CategoryActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CategoryActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CategoryActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryActive of(CategoryActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new CategoryActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CategoryActive2>(){}));
+        return new CategoryActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class CategoryActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

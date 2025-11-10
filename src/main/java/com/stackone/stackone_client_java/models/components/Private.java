@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class Private {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Private(TypedObject value) {
         this.value = value;
     }
 
     public static Private of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new Private(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new Private(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Private of(Private2 value) {
         Utils.checkNotNull(value, "value");
-        return new Private(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Private2>(){}));
+        return new Private(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class Private {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

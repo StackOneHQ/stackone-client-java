@@ -23,7 +23,7 @@ import java.util.List;
 public class AtsDocumentApiModelFileFormatSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsDocumentApiModelFileFormatSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class AtsDocumentApiModelFileFormatSourceValue {
 
     public static AtsDocumentApiModelFileFormatSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsDocumentApiModelFileFormatSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsDocumentApiModelFileFormatSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsDocumentApiModelFileFormatSourceValue of(AtsDocumentApiModelSourceValueFileFormat4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsDocumentApiModelSourceValueFileFormat4>(){}));
+        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsDocumentApiModelFileFormatSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class AtsDocumentApiModelFileFormatSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

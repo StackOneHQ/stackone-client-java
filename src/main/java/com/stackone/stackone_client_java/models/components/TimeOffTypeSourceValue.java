@@ -23,7 +23,7 @@ import java.util.List;
 public class TimeOffTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TimeOffTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class TimeOffTypeSourceValue {
 
     public static TimeOffTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffTypeSourceValue of(TimeOffSourceValueType4 value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TimeOffSourceValueType4>(){}));
+        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TimeOffTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class TimeOffTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

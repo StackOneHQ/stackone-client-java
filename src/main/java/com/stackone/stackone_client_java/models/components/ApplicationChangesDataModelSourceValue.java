@@ -28,7 +28,7 @@ import java.util.List;
 public class ApplicationChangesDataModelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private ApplicationChangesDataModelSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class ApplicationChangesDataModelSourceValue {
 
     public static ApplicationChangesDataModelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ApplicationChangesDataModelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ApplicationChangesDataModelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ApplicationChangesDataModelSourceValue of(ApplicationChangesDataModelSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ApplicationChangesDataModelSourceValue4>(){}));
+        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ApplicationChangesDataModelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new ApplicationChangesDataModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class ApplicationChangesDataModelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

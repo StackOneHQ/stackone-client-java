@@ -23,7 +23,7 @@ import java.util.List;
 public class EntitySkillsMaximumProficiencySourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EntitySkillsMaximumProficiencySourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class EntitySkillsMaximumProficiencySourceValue {
 
     public static EntitySkillsMaximumProficiencySourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsMaximumProficiencySourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsMaximumProficiencySourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsMaximumProficiencySourceValue of(EntitySkillsSourceValueMaximumProficiency4 value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EntitySkillsSourceValueMaximumProficiency4>(){}));
+        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsMaximumProficiencySourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EntitySkillsMaximumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class EntitySkillsMaximumProficiencySourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

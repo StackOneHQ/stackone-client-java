@@ -23,7 +23,7 @@ import java.util.List;
 public class JournalLineCurrencyCodeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private JournalLineCurrencyCodeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class JournalLineCurrencyCodeSourceValue {
 
     public static JournalLineCurrencyCodeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JournalLineCurrencyCodeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JournalLineCurrencyCodeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JournalLineCurrencyCodeSourceValue of(JournalLineSourceValueCurrencyCode4 value) {
         Utils.checkNotNull(value, "value");
-        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<JournalLineSourceValueCurrencyCode4>(){}));
+        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JournalLineCurrencyCodeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new JournalLineCurrencyCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class JournalLineCurrencyCodeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -28,7 +28,7 @@ import java.util.List;
 public class CompletionLearningObjectTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CompletionLearningObjectTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class CompletionLearningObjectTypeSourceValue {
 
     public static CompletionLearningObjectTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompletionLearningObjectTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompletionLearningObjectTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompletionLearningObjectTypeSourceValue of(CompletionSourceValueLearningObjectType4 value) {
         Utils.checkNotNull(value, "value");
-        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CompletionSourceValueLearningObjectType4>(){}));
+        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompletionLearningObjectTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CompletionLearningObjectTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class CompletionLearningObjectTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

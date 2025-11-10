@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class StartHalfDay {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private StartHalfDay(TypedObject value) {
         this.value = value;
     }
 
     public static StartHalfDay of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new StartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new StartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static StartHalfDay of(StartHalfDay2 value) {
         Utils.checkNotNull(value, "value");
-        return new StartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<StartHalfDay2>(){}));
+        return new StartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class StartHalfDay {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

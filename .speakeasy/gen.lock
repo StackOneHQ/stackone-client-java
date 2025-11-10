@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 43b75c4ea50f77d47aed029ccc0c9c5e
+  docChecksum: 4e61b7ebb6f7537f0f63788428d9f306
   docVersion: 1.0.0
-  speakeasyVersion: 1.648.0
-  generationVersion: 2.737.0
-  releaseVersion: 0.16.0
-  configChecksum: 286ea90ee80a23f59bae2b98547191e2
+  speakeasyVersion: 1.651.0
+  generationVersion: 2.745.2
+  releaseVersion: 0.17.0
+  configChecksum: 197bb2ca7d102396e26fda3199475447
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.53.1
+    core: 3.55.1
     deprecations: 2.81.1
     examples: 2.81.6
     flattening: 2.81.1
@@ -30,7 +30,7 @@ features:
     pagination: 1.0.0
     retries: 0.1.1
     sdkHooks: 1.1.0
-    unions: 0.0.6
+    unions: 0.1.0
 generatedFiles:
   - .gitattributes
   - USAGE.md
@@ -109,6 +109,7 @@ generatedFiles:
   - docs/models/components/ActionsMetaPaginated.md
   - docs/models/components/ActionsRpcRequestDto.md
   - docs/models/components/ActionsRpcResponse.md
+  - docs/models/components/ActionsRpcResponseData.md
   - docs/models/components/Active.md
   - docs/models/components/Active2.md
   - docs/models/components/Actor.md
@@ -1385,6 +1386,7 @@ generatedFiles:
   - docs/models/components/ProviderErrorApiModelHeaders.md
   - docs/models/components/ProviderErrorApiModelRaw.md
   - docs/models/components/ProxyRequestBody.md
+  - docs/models/components/ProxyResponseApiModel.md
   - docs/models/components/PushMessageContents.md
   - docs/models/components/PushMessages.md
   - docs/models/components/PushMessagesMessageContent.md
@@ -2605,6 +2607,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/ActionsMetaPaginated.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ActionsRpcRequestDto.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ActionsRpcResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/ActionsRpcResponseData.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Active.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Active2.java
   - src/main/java/com/stackone/stackone_client_java/models/components/Actor.java
@@ -3881,6 +3884,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/ProviderErrorApiModelHeaders.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ProviderErrorApiModelRaw.java
   - src/main/java/com/stackone/stackone_client_java/models/components/ProxyRequestBody.java
+  - src/main/java/com/stackone/stackone_client_java/models/components/ProxyResponseApiModel.java
   - src/main/java/com/stackone/stackone_client_java/models/components/PushMessageContents.java
   - src/main/java/com/stackone/stackone_client_java/models/components/PushMessages.java
   - src/main/java/com/stackone/stackone_client_java/models/components/PushMessagesMessageContent.java
@@ -6587,6 +6591,8 @@ examples:
           application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "200":
+          application/json: {"status": 200, "headers": {"content-type": "application/json", "x-request-id": "123e4567-e89b-12d3-a456-426614174000"}, "data": {"id": "123", "name": "John Doe", "email": "john.doe@example.com"}, "provider_errors": [{"status": 400, "url": "https://api.someprovider.com/v1/endpoint", "raw": {}, "headers": {}}]}
   hris_list_companies:
     speakeasy-default-hris-list-companies:
       parameters:
@@ -16723,7 +16729,7 @@ examples:
         query:
           group_by: "[\"connector\"]"
           filter: {"connectors": "connector1,connector2", "account_ids": "account1,account2", "action_key": "action1"}
-          include: ["operation_details"]
+          include: ["action_details"]
       responses:
         "200":
           application/json: {}
@@ -16922,4 +16928,4 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes Detected:\n* `stackone.actions.rpcAction()`: \n  *  `request.query` **Changed** **Breaking** :warning:\n  *  `response.data` **Changed**\n* `stackone.hris.listEmployees()`:  `response.data.[].bankDetails.[].isPrimary` **Changed** **Breaking** :warning:\n* `stackone.hris.getEmployee()`:  `response.data.bankDetails.[].isPrimary` **Changed** **Breaking** :warning:\n"
+releaseNotes: "## Java SDK Changes Detected:\n* `stackone.mcp.mcpGet()`:  `request` **Changed**\n* `stackone.mcp.mcpPost()`:  `request` **Changed**\n* `stackone.mcp.mcpDelete()`:  `request` **Changed**\n* `stackone.proxy.proxyRequest()`:  `response` **Changed**\n* `stackone.actions.listActionsMeta()`: \n  *  `request.include` **Changed**\n"

@@ -28,7 +28,7 @@ import java.util.List;
 public class HrisJobSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisJobSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class HrisJobSourceValue {
 
     public static HrisJobSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisJobSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisJobSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisJobSourceValue of(HrisJobSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisJobSourceValue4>(){}));
+        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisJobSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class HrisJobSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

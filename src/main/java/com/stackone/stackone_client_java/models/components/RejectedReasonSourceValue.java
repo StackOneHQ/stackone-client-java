@@ -28,7 +28,7 @@ import java.util.List;
 public class RejectedReasonSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private RejectedReasonSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class RejectedReasonSourceValue {
 
     public static RejectedReasonSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static RejectedReasonSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static RejectedReasonSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static RejectedReasonSourceValue of(RejectedReasonSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<RejectedReasonSourceValue4>(){}));
+        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static RejectedReasonSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new RejectedReasonSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class RejectedReasonSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

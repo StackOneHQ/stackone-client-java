@@ -30,7 +30,7 @@ import java.util.List;
 public class CategoryLevelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CategoryLevelSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class CategoryLevelSourceValue {
 
     public static CategoryLevelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryLevelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryLevelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryLevelSourceValue of(CategorySourceValueLevel4 value) {
         Utils.checkNotNull(value, "value");
-        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CategorySourceValueLevel4>(){}));
+        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryLevelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CategoryLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class CategoryLevelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

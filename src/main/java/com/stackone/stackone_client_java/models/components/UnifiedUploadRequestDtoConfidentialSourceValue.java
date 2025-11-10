@@ -23,7 +23,7 @@ import java.util.List;
 public class UnifiedUploadRequestDtoConfidentialSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class UnifiedUploadRequestDtoConfidentialSourceValue {
 
     public static UnifiedUploadRequestDtoConfidentialSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static UnifiedUploadRequestDtoConfidentialSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static UnifiedUploadRequestDtoConfidentialSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static UnifiedUploadRequestDtoConfidentialSourceValue of(UnifiedUploadRequestDtoSourceValueConfidential4 value) {
         Utils.checkNotNull(value, "value");
-        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<UnifiedUploadRequestDtoSourceValueConfidential4>(){}));
+        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static UnifiedUploadRequestDtoConfidentialSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new UnifiedUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class UnifiedUploadRequestDtoConfidentialSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -30,7 +30,7 @@ import java.util.List;
 public class LanguageEnumSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private LanguageEnumSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class LanguageEnumSourceValue {
 
     public static LanguageEnumSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LanguageEnumSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LanguageEnumSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LanguageEnumSourceValue of(LanguageEnumSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LanguageEnumSourceValue4>(){}));
+        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LanguageEnumSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new LanguageEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class LanguageEnumSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

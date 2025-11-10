@@ -23,7 +23,7 @@ import java.util.List;
 public class TaskResultSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TaskResultSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class TaskResultSourceValue {
 
     public static TaskResultSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TaskResultSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TaskResultSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TaskResultSourceValue of(TaskResultSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TaskResultSourceValue4>(){}));
+        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TaskResultSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TaskResultSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class TaskResultSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

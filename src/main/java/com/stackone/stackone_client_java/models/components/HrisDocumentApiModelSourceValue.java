@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisDocumentApiModelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisDocumentApiModelSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisDocumentApiModelSourceValue {
 
     public static HrisDocumentApiModelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentApiModelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentApiModelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentApiModelSourceValue of(HrisDocumentApiModelSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisDocumentApiModelSourceValue4>(){}));
+        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentApiModelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisDocumentApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisDocumentApiModelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

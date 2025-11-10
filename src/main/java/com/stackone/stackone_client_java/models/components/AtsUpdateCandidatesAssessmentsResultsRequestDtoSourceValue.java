@@ -28,7 +28,7 @@ import java.util.List;
 public class AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue {
 
     public static AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue of(AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue4>(){}));
+        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AtsUpdateCandidatesAssessmentsResultsRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

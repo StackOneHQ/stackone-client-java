@@ -23,7 +23,7 @@ import java.util.List;
 public class WorkEligibilityDocumentFileFormatSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private WorkEligibilityDocumentFileFormatSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class WorkEligibilityDocumentFileFormatSourceValue {
 
     public static WorkEligibilityDocumentFileFormatSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static WorkEligibilityDocumentFileFormatSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static WorkEligibilityDocumentFileFormatSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static WorkEligibilityDocumentFileFormatSourceValue of(WorkEligibilitySourceValueDocumentFileFormat4 value) {
         Utils.checkNotNull(value, "value");
-        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<WorkEligibilitySourceValueDocumentFileFormat4>(){}));
+        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static WorkEligibilityDocumentFileFormatSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new WorkEligibilityDocumentFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class WorkEligibilityDocumentFileFormatSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

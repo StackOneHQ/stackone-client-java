@@ -23,7 +23,7 @@ import java.util.List;
 public class EmploymentCostCenterSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EmploymentCostCenterSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class EmploymentCostCenterSourceValue {
 
     public static EmploymentCostCenterSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentCostCenterSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentCostCenterSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentCostCenterSourceValue of(EmploymentSourceValueCostCenter4 value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmploymentSourceValueCostCenter4>(){}));
+        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentCostCenterSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EmploymentCostCenterSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class EmploymentCostCenterSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
