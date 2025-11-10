@@ -23,7 +23,7 @@ import java.util.List;
 public class ClearingCodeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private ClearingCodeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class ClearingCodeSourceValue {
 
     public static ClearingCodeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ClearingCodeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ClearingCodeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ClearingCodeSourceValue of(ClearingCodeSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ClearingCodeSourceValue4>(){}));
+        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ClearingCodeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new ClearingCodeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class ClearingCodeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

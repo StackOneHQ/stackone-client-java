@@ -28,7 +28,7 @@ import java.util.List;
 public class CampaignSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CampaignSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class CampaignSourceValue {
 
     public static CampaignSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CampaignSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CampaignSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CampaignSourceValue of(CampaignSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CampaignSourceValue4>(){}));
+        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CampaignSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CampaignSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class CampaignSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class MessagingUserResultBot {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private MessagingUserResultBot(TypedObject value) {
         this.value = value;
     }
 
     public static MessagingUserResultBot of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new MessagingUserResultBot(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new MessagingUserResultBot(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MessagingUserResultBot of(MessagingUserResultBot2 value) {
         Utils.checkNotNull(value, "value");
-        return new MessagingUserResultBot(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<MessagingUserResultBot2>(){}));
+        return new MessagingUserResultBot(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class MessagingUserResultBot {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

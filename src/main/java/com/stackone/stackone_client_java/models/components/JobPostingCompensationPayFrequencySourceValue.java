@@ -28,7 +28,7 @@ import java.util.List;
 public class JobPostingCompensationPayFrequencySourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private JobPostingCompensationPayFrequencySourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class JobPostingCompensationPayFrequencySourceValue {
 
     public static JobPostingCompensationPayFrequencySourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingCompensationPayFrequencySourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingCompensationPayFrequencySourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingCompensationPayFrequencySourceValue of(JobPostingCompensationSourceValuePayFrequency4 value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<JobPostingCompensationSourceValuePayFrequency4>(){}));
+        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingCompensationPayFrequencySourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new JobPostingCompensationPayFrequencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class JobPostingCompensationPayFrequencySourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

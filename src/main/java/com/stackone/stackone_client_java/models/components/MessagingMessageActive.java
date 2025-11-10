@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class MessagingMessageActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private MessagingMessageActive(TypedObject value) {
         this.value = value;
     }
 
     public static MessagingMessageActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new MessagingMessageActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new MessagingMessageActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MessagingMessageActive of(MessagingMessageActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new MessagingMessageActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<MessagingMessageActive2>(){}));
+        return new MessagingMessageActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class MessagingMessageActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

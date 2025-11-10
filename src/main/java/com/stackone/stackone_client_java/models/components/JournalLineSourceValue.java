@@ -23,7 +23,7 @@ import java.util.List;
 public class JournalLineSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private JournalLineSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class JournalLineSourceValue {
 
     public static JournalLineSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JournalLineSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JournalLineSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JournalLineSourceValue of(JournalLineSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<JournalLineSourceValue4>(){}));
+        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JournalLineSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new JournalLineSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class JournalLineSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

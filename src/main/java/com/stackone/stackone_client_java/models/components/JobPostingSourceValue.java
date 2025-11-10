@@ -28,7 +28,7 @@ import java.util.List;
 public class JobPostingSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private JobPostingSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class JobPostingSourceValue {
 
     public static JobPostingSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingSourceValue of(JobPostingSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<JobPostingSourceValue4>(){}));
+        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new JobPostingSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class JobPostingSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

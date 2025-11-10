@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class IsPrimary {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IsPrimary(TypedObject value) {
         this.value = value;
     }
 
     public static IsPrimary of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IsPrimary(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IsPrimary(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IsPrimary of(IsPrimary2 value) {
         Utils.checkNotNull(value, "value");
-        return new IsPrimary(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IsPrimary2>(){}));
+        return new IsPrimary(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class IsPrimary {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

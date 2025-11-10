@@ -30,7 +30,7 @@ import java.util.List;
 public class CreateCategoriesApiModelLanguageSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateCategoriesApiModelLanguageSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class CreateCategoriesApiModelLanguageSourceValue {
 
     public static CreateCategoriesApiModelLanguageSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelLanguageSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelLanguageSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelLanguageSourceValue of(CreateCategoriesApiModelSourceValueLanguage4 value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CreateCategoriesApiModelSourceValueLanguage4>(){}));
+        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelLanguageSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CreateCategoriesApiModelLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class CreateCategoriesApiModelLanguageSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

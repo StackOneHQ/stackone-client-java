@@ -28,7 +28,7 @@ import java.util.List;
 public class CampaignStatusSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CampaignStatusSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class CampaignStatusSourceValue {
 
     public static CampaignStatusSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CampaignStatusSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CampaignStatusSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CampaignStatusSourceValue of(CampaignSourceValueStatus4 value) {
         Utils.checkNotNull(value, "value");
-        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CampaignSourceValueStatus4>(){}));
+        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CampaignStatusSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CampaignStatusSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class CampaignStatusSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

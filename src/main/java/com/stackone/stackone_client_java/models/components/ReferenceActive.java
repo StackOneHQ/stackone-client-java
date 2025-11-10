@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class ReferenceActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private ReferenceActive(TypedObject value) {
         this.value = value;
     }
 
     public static ReferenceActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new ReferenceActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new ReferenceActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ReferenceActive of(ReferenceActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new ReferenceActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ReferenceActive2>(){}));
+        return new ReferenceActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class ReferenceActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

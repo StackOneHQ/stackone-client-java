@@ -23,7 +23,7 @@ import java.util.List;
 public class HRISBankDetailsAccountTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HRISBankDetailsAccountTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HRISBankDetailsAccountTypeSourceValue {
 
     public static HRISBankDetailsAccountTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISBankDetailsAccountTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISBankDetailsAccountTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISBankDetailsAccountTypeSourceValue of(HRISBankDetailsSourceValueAccountType4 value) {
         Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HRISBankDetailsSourceValueAccountType4>(){}));
+        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISBankDetailsAccountTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HRISBankDetailsAccountTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HRISBankDetailsAccountTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

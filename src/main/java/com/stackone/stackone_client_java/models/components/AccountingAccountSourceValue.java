@@ -23,7 +23,7 @@ import java.util.List;
 public class AccountingAccountSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AccountingAccountSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class AccountingAccountSourceValue {
 
     public static AccountingAccountSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingAccountSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingAccountSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingAccountSourceValue of(AccountingAccountSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AccountingAccountSourceValue4>(){}));
+        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingAccountSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AccountingAccountSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class AccountingAccountSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

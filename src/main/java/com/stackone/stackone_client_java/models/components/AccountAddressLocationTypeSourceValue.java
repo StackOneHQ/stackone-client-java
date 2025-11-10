@@ -28,7 +28,7 @@ import java.util.List;
 public class AccountAddressLocationTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AccountAddressLocationTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AccountAddressLocationTypeSourceValue {
 
     public static AccountAddressLocationTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountAddressLocationTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountAddressLocationTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountAddressLocationTypeSourceValue of(AccountAddressSourceValueLocationType4 value) {
         Utils.checkNotNull(value, "value");
-        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AccountAddressSourceValueLocationType4>(){}));
+        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountAddressLocationTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AccountAddressLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AccountAddressLocationTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -28,7 +28,7 @@ import java.util.List;
 public class EmailMessagesSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EmailMessagesSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class EmailMessagesSourceValue {
 
     public static EmailMessagesSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmailMessagesSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmailMessagesSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmailMessagesSourceValue of(EmailMessagesSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmailMessagesSourceValue4>(){}));
+        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmailMessagesSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EmailMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class EmailMessagesSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

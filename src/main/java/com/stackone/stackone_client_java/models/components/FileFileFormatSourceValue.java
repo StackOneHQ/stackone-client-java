@@ -23,7 +23,7 @@ import java.util.List;
 public class FileFileFormatSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private FileFileFormatSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class FileFileFormatSourceValue {
 
     public static FileFileFormatSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FileFileFormatSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FileFileFormatSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FileFileFormatSourceValue of(FileSourceValueFileFormat4 value) {
         Utils.checkNotNull(value, "value");
-        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<FileSourceValueFileFormat4>(){}));
+        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FileFileFormatSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new FileFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class FileFileFormatSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

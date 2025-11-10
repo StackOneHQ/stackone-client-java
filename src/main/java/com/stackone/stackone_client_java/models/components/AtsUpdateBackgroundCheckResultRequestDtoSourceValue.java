@@ -28,7 +28,7 @@ import java.util.List;
 public class AtsUpdateBackgroundCheckResultRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AtsUpdateBackgroundCheckResultRequestDtoSourceValue {
 
     public static AtsUpdateBackgroundCheckResultRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateBackgroundCheckResultRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateBackgroundCheckResultRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateBackgroundCheckResultRequestDtoSourceValue of(AtsUpdateBackgroundCheckResultRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsUpdateBackgroundCheckResultRequestDtoSourceValue4>(){}));
+        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsUpdateBackgroundCheckResultRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsUpdateBackgroundCheckResultRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AtsUpdateBackgroundCheckResultRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

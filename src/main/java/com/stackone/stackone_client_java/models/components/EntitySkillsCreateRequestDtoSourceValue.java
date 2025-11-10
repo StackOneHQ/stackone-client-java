@@ -23,7 +23,7 @@ import java.util.List;
 public class EntitySkillsCreateRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EntitySkillsCreateRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class EntitySkillsCreateRequestDtoSourceValue {
 
     public static EntitySkillsCreateRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsCreateRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsCreateRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsCreateRequestDtoSourceValue of(EntitySkillsCreateRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EntitySkillsCreateRequestDtoSourceValue4>(){}));
+        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsCreateRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EntitySkillsCreateRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class EntitySkillsCreateRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

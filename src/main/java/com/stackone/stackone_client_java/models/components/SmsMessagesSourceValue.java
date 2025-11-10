@@ -28,7 +28,7 @@ import java.util.List;
 public class SmsMessagesSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SmsMessagesSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class SmsMessagesSourceValue {
 
     public static SmsMessagesSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SmsMessagesSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SmsMessagesSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SmsMessagesSourceValue of(SmsMessagesSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SmsMessagesSourceValue4>(){}));
+        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SmsMessagesSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new SmsMessagesSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class SmsMessagesSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

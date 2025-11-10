@@ -5,15 +5,18 @@ package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.stackone.stackone_client_java.models.components.ProxyResponseApiModel;
 import com.stackone.stackone_client_java.utils.Response;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.io.InputStream;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 public class StackoneProxyRequestResponse implements Response {
@@ -32,6 +35,11 @@ public class StackoneProxyRequestResponse implements Response {
      */
     private HttpResponse<InputStream> rawResponse;
 
+    /**
+     * The proxy request was successful.
+     */
+    private Optional<? extends ProxyResponseApiModel> proxyResponseApiModel;
+
 
     private Map<String, List<String>> headers;
 
@@ -40,16 +48,28 @@ public class StackoneProxyRequestResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
+            Optional<? extends ProxyResponseApiModel> proxyResponseApiModel,
             Map<String, List<String>> headers) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
+        Utils.checkNotNull(proxyResponseApiModel, "proxyResponseApiModel");
         headers = Utils.emptyMapIfNull(headers);
         Utils.checkNotNull(headers, "headers");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
+        this.proxyResponseApiModel = proxyResponseApiModel;
         this.headers = headers;
+    }
+    
+    public StackoneProxyRequestResponse(
+            String contentType,
+            int statusCode,
+            HttpResponse<InputStream> rawResponse,
+            Map<String, List<String>> headers) {
+        this(contentType, statusCode, rawResponse,
+            Optional.empty(), headers);
     }
 
     /**
@@ -74,6 +94,15 @@ public class StackoneProxyRequestResponse implements Response {
     @JsonIgnore
     public HttpResponse<InputStream> rawResponse() {
         return rawResponse;
+    }
+
+    /**
+     * The proxy request was successful.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ProxyResponseApiModel> proxyResponseApiModel() {
+        return (Optional<ProxyResponseApiModel>) proxyResponseApiModel;
     }
 
     @JsonIgnore
@@ -113,6 +142,25 @@ public class StackoneProxyRequestResponse implements Response {
         return this;
     }
 
+    /**
+     * The proxy request was successful.
+     */
+    public StackoneProxyRequestResponse withProxyResponseApiModel(ProxyResponseApiModel proxyResponseApiModel) {
+        Utils.checkNotNull(proxyResponseApiModel, "proxyResponseApiModel");
+        this.proxyResponseApiModel = Optional.ofNullable(proxyResponseApiModel);
+        return this;
+    }
+
+
+    /**
+     * The proxy request was successful.
+     */
+    public StackoneProxyRequestResponse withProxyResponseApiModel(Optional<? extends ProxyResponseApiModel> proxyResponseApiModel) {
+        Utils.checkNotNull(proxyResponseApiModel, "proxyResponseApiModel");
+        this.proxyResponseApiModel = proxyResponseApiModel;
+        return this;
+    }
+
     public StackoneProxyRequestResponse withHeaders(Map<String, List<String>> headers) {
         Utils.checkNotNull(headers, "headers");
         this.headers = headers;
@@ -132,6 +180,7 @@ public class StackoneProxyRequestResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
+            Utils.enhancedDeepEquals(this.proxyResponseApiModel, other.proxyResponseApiModel) &&
             Utils.enhancedDeepEquals(this.headers, other.headers);
     }
     
@@ -139,7 +188,7 @@ public class StackoneProxyRequestResponse implements Response {
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            headers);
+            proxyResponseApiModel, headers);
     }
     
     @Override
@@ -148,6 +197,7 @@ public class StackoneProxyRequestResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
+                "proxyResponseApiModel", proxyResponseApiModel,
                 "headers", headers);
     }
 
@@ -159,6 +209,8 @@ public class StackoneProxyRequestResponse implements Response {
         private Integer statusCode;
 
         private HttpResponse<InputStream> rawResponse;
+
+        private Optional<? extends ProxyResponseApiModel> proxyResponseApiModel = Optional.empty();
 
         private Map<String, List<String>> headers;
 
@@ -197,6 +249,25 @@ public class StackoneProxyRequestResponse implements Response {
         }
 
 
+        /**
+         * The proxy request was successful.
+         */
+        public Builder proxyResponseApiModel(ProxyResponseApiModel proxyResponseApiModel) {
+            Utils.checkNotNull(proxyResponseApiModel, "proxyResponseApiModel");
+            this.proxyResponseApiModel = Optional.ofNullable(proxyResponseApiModel);
+            return this;
+        }
+
+        /**
+         * The proxy request was successful.
+         */
+        public Builder proxyResponseApiModel(Optional<? extends ProxyResponseApiModel> proxyResponseApiModel) {
+            Utils.checkNotNull(proxyResponseApiModel, "proxyResponseApiModel");
+            this.proxyResponseApiModel = proxyResponseApiModel;
+            return this;
+        }
+
+
         public Builder headers(Map<String, List<String>> headers) {
             Utils.checkNotNull(headers, "headers");
             this.headers = headers;
@@ -207,7 +278,7 @@ public class StackoneProxyRequestResponse implements Response {
 
             return new StackoneProxyRequestResponse(
                 contentType, statusCode, rawResponse,
-                headers);
+                proxyResponseApiModel, headers);
         }
 
     }

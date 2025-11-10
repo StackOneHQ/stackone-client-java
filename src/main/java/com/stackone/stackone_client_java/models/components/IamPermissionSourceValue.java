@@ -23,7 +23,7 @@ import java.util.List;
 public class IamPermissionSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IamPermissionSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class IamPermissionSourceValue {
 
     public static IamPermissionSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamPermissionSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamPermissionSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamPermissionSourceValue of(IamPermissionSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IamPermissionSourceValue4>(){}));
+        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamPermissionSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new IamPermissionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class IamPermissionSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

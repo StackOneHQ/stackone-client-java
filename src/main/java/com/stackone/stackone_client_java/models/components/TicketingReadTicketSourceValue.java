@@ -28,7 +28,7 @@ import java.util.List;
 public class TicketingReadTicketSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TicketingReadTicketSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class TicketingReadTicketSourceValue {
 
     public static TicketingReadTicketSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingReadTicketSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingReadTicketSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingReadTicketSourceValue of(TicketingReadTicketSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TicketingReadTicketSourceValue4>(){}));
+        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingReadTicketSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TicketingReadTicketSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class TicketingReadTicketSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

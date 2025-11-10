@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class FoldersHasContent {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private FoldersHasContent(TypedObject value) {
         this.value = value;
     }
 
     public static FoldersHasContent of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new FoldersHasContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new FoldersHasContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FoldersHasContent of(FoldersHasContent2 value) {
         Utils.checkNotNull(value, "value");
-        return new FoldersHasContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<FoldersHasContent2>(){}));
+        return new FoldersHasContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class FoldersHasContent {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

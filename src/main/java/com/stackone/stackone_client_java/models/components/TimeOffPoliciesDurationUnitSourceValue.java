@@ -23,7 +23,7 @@ import java.util.List;
 public class TimeOffPoliciesDurationUnitSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TimeOffPoliciesDurationUnitSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class TimeOffPoliciesDurationUnitSourceValue {
 
     public static TimeOffPoliciesDurationUnitSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffPoliciesDurationUnitSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffPoliciesDurationUnitSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffPoliciesDurationUnitSourceValue of(TimeOffPoliciesSourceValueDurationUnit4 value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TimeOffPoliciesSourceValueDurationUnit4>(){}));
+        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffPoliciesDurationUnitSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TimeOffPoliciesDurationUnitSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class TimeOffPoliciesDurationUnitSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

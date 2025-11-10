@@ -28,7 +28,7 @@ import java.util.List;
 public class CompletionSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CompletionSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class CompletionSourceValue {
 
     public static CompletionSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompletionSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompletionSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompletionSourceValue of(CompletionSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CompletionSourceValue4>(){}));
+        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompletionSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CompletionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class CompletionSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

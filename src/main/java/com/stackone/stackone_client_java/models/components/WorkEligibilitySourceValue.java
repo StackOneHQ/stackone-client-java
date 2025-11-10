@@ -23,7 +23,7 @@ import java.util.List;
 public class WorkEligibilitySourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private WorkEligibilitySourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class WorkEligibilitySourceValue {
 
     public static WorkEligibilitySourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static WorkEligibilitySourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static WorkEligibilitySourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static WorkEligibilitySourceValue of(WorkEligibilitySourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<WorkEligibilitySourceValue4>(){}));
+        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static WorkEligibilitySourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new WorkEligibilitySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class WorkEligibilitySourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

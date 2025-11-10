@@ -23,7 +23,7 @@ import java.util.List;
 public class IamUpdateUserRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IamUpdateUserRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class IamUpdateUserRequestDtoSourceValue {
 
     public static IamUpdateUserRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUpdateUserRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUpdateUserRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUpdateUserRequestDtoSourceValue of(IamUpdateUserRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IamUpdateUserRequestDtoSourceValue4>(){}));
+        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUpdateUserRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new IamUpdateUserRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class IamUpdateUserRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -23,7 +23,7 @@ import java.util.List;
 public class IamGroupSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IamGroupSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class IamGroupSourceValue {
 
     public static IamGroupSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamGroupSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamGroupSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamGroupSourceValue of(IamGroupSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IamGroupSourceValue4>(){}));
+        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamGroupSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new IamGroupSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class IamGroupSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -125,7 +125,7 @@ public class StackoneMcpPost {
                     java.util.Optional.empty(),
                     securitySource());
         }
-        <T, U>HttpRequest buildRequest(T request, TypeReference<U> typeReference) throws Exception {
+        <T, U>HttpRequest buildRequest(T request, Class<T> klass, TypeReference<U> typeReference) throws Exception {
             String url = Utils.generateURL(
                     this.baseUrl,
                     "/mcp");
@@ -146,6 +146,11 @@ public class StackoneMcpPost {
             req.addHeader("Accept", "application/json")
                     .addHeader("user-agent", SDKConfiguration.USER_AGENT);
             _headers.forEach((k, list) -> list.forEach(v -> req.addHeader(k, v)));
+
+            req.addQueryParams(Utils.getQueryParams(
+                    klass,
+                    request,
+                    null));
             req.addHeaders(Utils.getHeadersFromMetadata(request, null));
             Utils.configureSecurity(req, security);
 
@@ -164,7 +169,7 @@ public class StackoneMcpPost {
         }
 
         private HttpRequest onBuildRequest(StackoneMcpPostRequest request) throws Exception {
-            HttpRequest req = buildRequest(request, new TypeReference<StackoneMcpPostRequest>() {});
+            HttpRequest req = buildRequest(request, StackoneMcpPostRequest.class, new TypeReference<StackoneMcpPostRequest>() {});
             return sdkConfiguration.hooks().beforeRequest(createBeforeRequestContext(), req);
         }
 
@@ -329,7 +334,7 @@ public class StackoneMcpPost {
         }
 
         private CompletableFuture<HttpRequest> onBuildRequest(StackoneMcpPostRequest request) throws Exception {
-            HttpRequest req = buildRequest(request, new TypeReference<StackoneMcpPostRequest>() {});
+            HttpRequest req = buildRequest(request, StackoneMcpPostRequest.class, new TypeReference<StackoneMcpPostRequest>() {});
             return this.sdkConfiguration.asyncHooks().beforeRequest(createBeforeRequestContext(), req);
         }
 

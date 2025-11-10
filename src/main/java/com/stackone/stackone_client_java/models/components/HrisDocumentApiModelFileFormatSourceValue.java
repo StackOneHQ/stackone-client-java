@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisDocumentApiModelFileFormatSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisDocumentApiModelFileFormatSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisDocumentApiModelFileFormatSourceValue {
 
     public static HrisDocumentApiModelFileFormatSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentApiModelFileFormatSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentApiModelFileFormatSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentApiModelFileFormatSourceValue of(HrisDocumentApiModelSourceValueFileFormat4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisDocumentApiModelSourceValueFileFormat4>(){}));
+        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentApiModelFileFormatSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisDocumentApiModelFileFormatSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisDocumentApiModelFileFormatSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

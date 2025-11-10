@@ -28,7 +28,7 @@ import java.util.List;
 public class ChannelsEnumSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private ChannelsEnumSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class ChannelsEnumSourceValue {
 
     public static ChannelsEnumSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ChannelsEnumSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ChannelsEnumSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ChannelsEnumSourceValue of(ChannelsEnumSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ChannelsEnumSourceValue4>(){}));
+        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ChannelsEnumSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new ChannelsEnumSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class ChannelsEnumSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

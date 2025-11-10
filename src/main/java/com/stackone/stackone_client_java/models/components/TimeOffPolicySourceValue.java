@@ -23,7 +23,7 @@ import java.util.List;
 public class TimeOffPolicySourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TimeOffPolicySourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class TimeOffPolicySourceValue {
 
     public static TimeOffPolicySourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffPolicySourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffPolicySourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffPolicySourceValue of(TimeOffSourceValuePolicy4 value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TimeOffSourceValuePolicy4>(){}));
+        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffPolicySourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TimeOffPolicySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class TimeOffPolicySourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

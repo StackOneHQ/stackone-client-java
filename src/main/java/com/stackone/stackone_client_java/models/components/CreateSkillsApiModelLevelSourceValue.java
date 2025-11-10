@@ -30,7 +30,7 @@ import java.util.List;
 public class CreateSkillsApiModelLevelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateSkillsApiModelLevelSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class CreateSkillsApiModelLevelSourceValue {
 
     public static CreateSkillsApiModelLevelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateSkillsApiModelLevelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateSkillsApiModelLevelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateSkillsApiModelLevelSourceValue of(CreateSkillsApiModelSourceValueLevel4 value) {
         Utils.checkNotNull(value, "value");
-        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CreateSkillsApiModelSourceValueLevel4>(){}));
+        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateSkillsApiModelLevelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CreateSkillsApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class CreateSkillsApiModelLevelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

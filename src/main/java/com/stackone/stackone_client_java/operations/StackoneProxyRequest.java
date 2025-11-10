@@ -10,6 +10,7 @@ import static com.stackone.stackone_client_java.operations.Operations.AsyncReque
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.stackone.stackone_client_java.SDKConfiguration;
 import com.stackone.stackone_client_java.SecuritySource;
+import com.stackone.stackone_client_java.models.components.ProxyResponseApiModel;
 import com.stackone.stackone_client_java.models.errors.BadGatewayResponse;
 import com.stackone.stackone_client_java.models.errors.BadRequestResponse;
 import com.stackone.stackone_client_java.models.errors.ConflictResponse;
@@ -219,8 +220,11 @@ public class StackoneProxyRequest {
             StackoneProxyRequestResponse res = resBuilder.build();
             
             if (Utils.statusCodeMatches(response.statusCode(), "200", "201", "202", "204")) {
-                // no content
-                return res;
+                if (Utils.contentTypeMatches(contentType, "application/json")) {
+                    return res.withProxyResponseApiModel(Utils.unmarshal(response, new TypeReference<ProxyResponseApiModel>() {}));
+                } else {
+                    throw SDKError.from("Unexpected content-type received: " + contentType, response);
+                }
             }
             if (Utils.statusCodeMatches(response.statusCode(), "400")) {
                 if (Utils.contentTypeMatches(contentType, "application/json")) {
@@ -382,8 +386,12 @@ public class StackoneProxyRequest {
             com.stackone.stackone_client_java.models.operations.async.StackoneProxyRequestResponse res = resBuilder.build();
             
             if (Utils.statusCodeMatches(response.statusCode(), "200", "201", "202", "204")) {
-                // no content
-                return CompletableFuture.completedFuture(res);
+                if (Utils.contentTypeMatches(contentType, "application/json")) {
+                    return Utils.unmarshalAsync(response, new TypeReference<ProxyResponseApiModel>() {})
+                            .thenApply(res::withProxyResponseApiModel);
+                } else {
+                    return Utils.createAsyncApiError(response, "Unexpected content-type received: " + contentType);
+                }
             }
             if (Utils.statusCodeMatches(response.statusCode(), "400")) {
                 if (Utils.contentTypeMatches(contentType, "application/json")) {

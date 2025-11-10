@@ -23,7 +23,7 @@ import java.util.List;
 public class HRISDepartmentSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HRISDepartmentSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HRISDepartmentSourceValue {
 
     public static HRISDepartmentSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISDepartmentSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISDepartmentSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISDepartmentSourceValue of(HRISDepartmentSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HRISDepartmentSourceValue4>(){}));
+        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISDepartmentSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HRISDepartmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HRISDepartmentSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

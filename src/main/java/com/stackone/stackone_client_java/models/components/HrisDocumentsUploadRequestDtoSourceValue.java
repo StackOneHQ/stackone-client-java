@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisDocumentsUploadRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisDocumentsUploadRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisDocumentsUploadRequestDtoSourceValue {
 
     public static HrisDocumentsUploadRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentsUploadRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentsUploadRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentsUploadRequestDtoSourceValue of(HrisDocumentsUploadRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisDocumentsUploadRequestDtoSourceValue4>(){}));
+        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentsUploadRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisDocumentsUploadRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisDocumentsUploadRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

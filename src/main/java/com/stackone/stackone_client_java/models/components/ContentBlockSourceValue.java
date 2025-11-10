@@ -28,7 +28,7 @@ import java.util.List;
 public class ContentBlockSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private ContentBlockSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class ContentBlockSourceValue {
 
     public static ContentBlockSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ContentBlockSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ContentBlockSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ContentBlockSourceValue of(ContentBlockSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ContentBlockSourceValue4>(){}));
+        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ContentBlockSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new ContentBlockSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class ContentBlockSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -29,7 +29,7 @@ import java.util.List;
 public class CustomFieldsValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CustomFieldsValue(TypedObject value) {
         this.value = value;
@@ -37,32 +37,30 @@ public class CustomFieldsValue {
 
     public static CustomFieldsValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldsValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldsValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldsValue of(Value4 value) {
         Utils.checkNotNull(value, "value");
-        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Value4>(){}));
+        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldsValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CustomFieldsValue of(OffsetDateTime value) {
         Utils.checkNotNull(value, "value");
-        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OffsetDateTime>(){}));
+        return new CustomFieldsValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -89,7 +87,7 @@ public class CustomFieldsValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

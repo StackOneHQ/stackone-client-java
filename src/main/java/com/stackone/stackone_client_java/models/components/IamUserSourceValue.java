@@ -23,7 +23,7 @@ import java.util.List;
 public class IamUserSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IamUserSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class IamUserSourceValue {
 
     public static IamUserSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserSourceValue of(IamUserSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IamUserSourceValue4>(){}));
+        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUserSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new IamUserSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class IamUserSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -23,6 +23,7 @@ import com.stackone.stackone_client_java.operations.StackoneMcpGet;
 import com.stackone.stackone_client_java.operations.StackoneMcpPost;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Optional;
 
@@ -65,16 +66,13 @@ public class Mcp {
      * <p>Open a dedicated Server-Sent Events stream for MCP notifications
      * 
      * @param security The security details to use for authentication.
-     * @param xAccountId Account secure id for the target provider account
      * @param mcpSessionId Session id
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneMcpGetResponse mcpGet(
-            StackoneMcpGetSecurity security, String xAccountId,
-            String mcpSessionId) {
-        return mcpGet(security, xAccountId, mcpSessionId,
-            Optional.empty());
+    public StackoneMcpGetResponse mcpGet(StackoneMcpGetSecurity security, String mcpSessionId) {
+        return mcpGet(security, Optional.empty(), Optional.empty(),
+            mcpSessionId, Optional.empty());
     }
 
     /**
@@ -83,19 +81,22 @@ public class Mcp {
      * <p>Open a dedicated Server-Sent Events stream for MCP notifications
      * 
      * @param security The security details to use for authentication.
-     * @param xAccountId Account secure id for the target provider account
+     * @param xAccountId Account secure id for the target provider account (optional if x-account-id query parameter is provided)
+     * @param xAccountIdQueryParameter Account secure id (alternative to x-account-id header)
      * @param mcpSessionId Session id
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpGetResponse mcpGet(
-            StackoneMcpGetSecurity security, String xAccountId,
-            String mcpSessionId, Optional<Options> options) {
+            StackoneMcpGetSecurity security, Optional<String> xAccountId,
+            Optional<? extends Object> xAccountIdQueryParameter, String mcpSessionId,
+            Optional<Options> options) {
         StackoneMcpGetRequest request =
             StackoneMcpGetRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .xAccountIdQueryParameter(xAccountIdQueryParameter)
                 .mcpSessionId(mcpSessionId)
                 .build();
         RequestOperation<StackoneMcpGetRequest, StackoneMcpGetResponse> operation
@@ -122,16 +123,13 @@ public class Mcp {
      * <p>Send JSON-RPC request to the MCP server over HTTP streaming transport
      * 
      * @param security The security details to use for authentication.
-     * @param xAccountId Account secure id for the target provider account
      * @param jsonRpcMessageDto 
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneMcpPostResponse mcpPost(
-            StackoneMcpPostSecurity security, String xAccountId,
-            JsonRpcMessageDto jsonRpcMessageDto) {
-        return mcpPost(security, xAccountId, Optional.empty(),
-            jsonRpcMessageDto, Optional.empty());
+    public StackoneMcpPostResponse mcpPost(StackoneMcpPostSecurity security, JsonRpcMessageDto jsonRpcMessageDto) {
+        return mcpPost(security, Optional.empty(), Optional.empty(),
+            Optional.empty(), jsonRpcMessageDto, Optional.empty());
     }
 
     /**
@@ -140,7 +138,8 @@ public class Mcp {
      * <p>Send JSON-RPC request to the MCP server over HTTP streaming transport
      * 
      * @param security The security details to use for authentication.
-     * @param xAccountId Account secure id for the target provider account
+     * @param xAccountId Account secure id for the target provider account (optional if x-account-id query parameter is provided)
+     * @param xAccountIdQueryParameter Account secure id (alternative to x-account-id header)
      * @param mcpSessionId Session id; omit for initialize, include for subsequent calls
      * @param jsonRpcMessageDto 
      * @param options additional options
@@ -148,13 +147,14 @@ public class Mcp {
      * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpPostResponse mcpPost(
-            StackoneMcpPostSecurity security, String xAccountId,
-            Optional<String> mcpSessionId, JsonRpcMessageDto jsonRpcMessageDto,
-            Optional<Options> options) {
+            StackoneMcpPostSecurity security, Optional<String> xAccountId,
+            Optional<? extends Object> xAccountIdQueryParameter, Optional<String> mcpSessionId,
+            JsonRpcMessageDto jsonRpcMessageDto, Optional<Options> options) {
         StackoneMcpPostRequest request =
             StackoneMcpPostRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .xAccountIdQueryParameter(xAccountIdQueryParameter)
                 .mcpSessionId(mcpSessionId)
                 .jsonRpcMessageDto(jsonRpcMessageDto)
                 .build();
@@ -182,16 +182,13 @@ public class Mcp {
      * <p>Close an existing MCP session for the provided session id
      * 
      * @param security The security details to use for authentication.
-     * @param xAccountId Account secure id for the target provider account
      * @param mcpSessionId Session id
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public StackoneMcpDeleteResponse mcpDelete(
-            StackoneMcpDeleteSecurity security, String xAccountId,
-            String mcpSessionId) {
-        return mcpDelete(security, xAccountId, mcpSessionId,
-            Optional.empty());
+    public StackoneMcpDeleteResponse mcpDelete(StackoneMcpDeleteSecurity security, String mcpSessionId) {
+        return mcpDelete(security, Optional.empty(), Optional.empty(),
+            mcpSessionId, Optional.empty());
     }
 
     /**
@@ -200,19 +197,22 @@ public class Mcp {
      * <p>Close an existing MCP session for the provided session id
      * 
      * @param security The security details to use for authentication.
-     * @param xAccountId Account secure id for the target provider account
+     * @param xAccountId Account secure id for the target provider account (optional if x-account-id query parameter is provided)
+     * @param xAccountIdQueryParameter Account secure id (alternative to x-account-id header)
      * @param mcpSessionId Session id
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public StackoneMcpDeleteResponse mcpDelete(
-            StackoneMcpDeleteSecurity security, String xAccountId,
-            String mcpSessionId, Optional<Options> options) {
+            StackoneMcpDeleteSecurity security, Optional<String> xAccountId,
+            Optional<? extends Object> xAccountIdQueryParameter, String mcpSessionId,
+            Optional<Options> options) {
         StackoneMcpDeleteRequest request =
             StackoneMcpDeleteRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .xAccountIdQueryParameter(xAccountIdQueryParameter)
                 .mcpSessionId(mcpSessionId)
                 .build();
         RequestOperation<StackoneMcpDeleteRequest, StackoneMcpDeleteResponse> operation

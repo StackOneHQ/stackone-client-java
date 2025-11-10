@@ -23,7 +23,7 @@ import java.util.Map;
 public class Body {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Body(TypedObject value) {
         this.value = value;
@@ -31,17 +31,17 @@ public class Body {
 
     public static Body of(String value) {
         Utils.checkNotNull(value, "value");
-        return new Body(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new Body(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Body of(Map<String, Object> value) {
         Utils.checkNotNull(value, "value");
-        return new Body(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Map<String, Object>>(){}));
+        return new Body(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Body of(List<Integer> value) {
         Utils.checkNotNull(value, "value");
-        return new Body(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Integer>>(){}));
+        return new Body(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -65,7 +65,7 @@ public class Body {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

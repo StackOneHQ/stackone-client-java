@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisShiftResultDataSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisShiftResultDataSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisShiftResultDataSourceValue {
 
     public static HrisShiftResultDataSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisShiftResultDataSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisShiftResultDataSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisShiftResultDataSourceValue of(HrisShiftResultSourceValueData4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisShiftResultSourceValueData4>(){}));
+        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisShiftResultDataSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisShiftResultDataSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisShiftResultDataSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

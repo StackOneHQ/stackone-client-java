@@ -23,7 +23,7 @@ import java.util.List;
 public class EntitySkillsMinimumProficiencySourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EntitySkillsMinimumProficiencySourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class EntitySkillsMinimumProficiencySourceValue {
 
     public static EntitySkillsMinimumProficiencySourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsMinimumProficiencySourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsMinimumProficiencySourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsMinimumProficiencySourceValue of(EntitySkillsSourceValueMinimumProficiency4 value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EntitySkillsSourceValueMinimumProficiency4>(){}));
+        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EntitySkillsMinimumProficiencySourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EntitySkillsMinimumProficiencySourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class EntitySkillsMinimumProficiencySourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -29,7 +29,7 @@ import java.util.List;
 public class LmsCreateContentRequestDtoSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private LmsCreateContentRequestDtoSourceValue(TypedObject value) {
         this.value = value;
@@ -37,27 +37,25 @@ public class LmsCreateContentRequestDtoSourceValue {
 
     public static LmsCreateContentRequestDtoSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsCreateContentRequestDtoSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsCreateContentRequestDtoSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsCreateContentRequestDtoSourceValue of(LmsCreateContentRequestDtoSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LmsCreateContentRequestDtoSourceValue4>(){}));
+        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LmsCreateContentRequestDtoSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new LmsCreateContentRequestDtoSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -83,7 +81,7 @@ public class LmsCreateContentRequestDtoSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

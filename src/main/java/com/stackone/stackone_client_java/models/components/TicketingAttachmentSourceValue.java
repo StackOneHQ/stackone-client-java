@@ -23,7 +23,7 @@ import java.util.List;
 public class TicketingAttachmentSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TicketingAttachmentSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class TicketingAttachmentSourceValue {
 
     public static TicketingAttachmentSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingAttachmentSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingAttachmentSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingAttachmentSourceValue of(TicketingAttachmentSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TicketingAttachmentSourceValue4>(){}));
+        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TicketingAttachmentSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TicketingAttachmentSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class TicketingAttachmentSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisDocumentsUploadRequestDtoConfidentialSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisDocumentsUploadRequestDtoConfidentialSourceValue {
 
     public static HrisDocumentsUploadRequestDtoConfidentialSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentsUploadRequestDtoConfidentialSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentsUploadRequestDtoConfidentialSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentsUploadRequestDtoConfidentialSourceValue of(HrisDocumentsUploadRequestDtoSourceValueConfidential4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisDocumentsUploadRequestDtoSourceValueConfidential4>(){}));
+        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisDocumentsUploadRequestDtoConfidentialSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisDocumentsUploadRequestDtoConfidentialSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisDocumentsUploadRequestDtoConfidentialSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

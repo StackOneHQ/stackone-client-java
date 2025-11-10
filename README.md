@@ -46,7 +46,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.16.0'
+implementation 'com.stackone:stackone-client-java:0.17.0'
 ```
 
 Maven:
@@ -54,7 +54,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.16.0</version>
+    <version>0.17.0</version>
 </dependency>
 ```
 
@@ -569,7 +569,7 @@ public class Application {
                     .actionKey("action1")
                     .build())
                 .include(List.of(
-                    StackoneListActionsMetaQueryParamInclude.OPERATION_DETAILS))
+                    StackoneListActionsMetaQueryParamInclude.ACTION_DETAILS))
                 .build();
 
 
@@ -627,7 +627,7 @@ public class Application {
                     .actionKey("action1")
                     .build())
                 .include(List.of(
-                    StackoneListActionsMetaQueryParamInclude.OPERATION_DETAILS))
+                    StackoneListActionsMetaQueryParamInclude.ACTION_DETAILS))
                 .build();
 
 
@@ -811,8 +811,11 @@ import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.StackoneCreateConnectSessionResponse;
+import java.io.UncheckedIOException;
 import java.lang.Exception;
+import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 
 public class Application {
 
@@ -824,35 +827,69 @@ public class Application {
                     .password("")
                     .build())
             .build();
+        try {
 
-        ConnectSessionCreate req = ConnectSessionCreate.builder()
-                .originOwnerId("<id>")
-                .originOwnerName("<value>")
-                .categories(List.of(
-                    Categories.ATS,
-                    Categories.HRIS,
-                    Categories.DOCUMENTS,
-                    Categories.CRM,
-                    Categories.IAM,
-                    Categories.MARKETING,
-                    Categories.LMS,
-                    Categories.IAM,
-                    Categories.DOCUMENTS,
-                    Categories.TICKETING,
-                    Categories.SCREENING,
-                    Categories.MESSAGING,
-                    Categories.ACCOUNTING))
-                .type(Type.TEST)
-                .build();
+            ConnectSessionCreate req = ConnectSessionCreate.builder()
+                    .originOwnerId("<id>")
+                    .originOwnerName("<value>")
+                    .categories(List.of(
+                        Categories.ATS,
+                        Categories.HRIS,
+                        Categories.DOCUMENTS,
+                        Categories.CRM,
+                        Categories.IAM,
+                        Categories.MARKETING,
+                        Categories.LMS,
+                        Categories.IAM,
+                        Categories.DOCUMENTS,
+                        Categories.TICKETING,
+                        Categories.SCREENING,
+                        Categories.MESSAGING,
+                        Categories.ACCOUNTING))
+                    .type(Type.TEST)
+                    .build();
 
-        StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
-                .request(req)
-                .call();
+            StackoneCreateConnectSessionResponse res = sdk.connectSessions().createConnectSession()
+                    .request(req)
+                    .call();
 
-        if (res.connectSessionTokenAuthLink().isPresent()) {
-            // handle response
-        }
-    }
+            if (res.connectSessionTokenAuthLink().isPresent()) {
+                // handle response
+            }
+        } catch (StackOneError ex) { // all SDK exceptions inherit from StackOneError
+
+            // ex.ToString() provides a detailed error message including
+            // HTTP status code, headers, and error payload (if any)
+            System.out.println(ex);
+
+            // Base exception fields
+            var rawResponse = ex.rawResponse();
+            var headers = ex.headers();
+            var contentType = headers.first("Content-Type");
+            int statusCode = ex.code();
+            Optional<byte[]> responseBody = ex.body();
+
+            // different error subclasses may be thrown 
+            // depending on the service call
+            if (ex instanceof BadRequestResponse) {
+                var e = (BadRequestResponse) ex;
+                // Check error data fields
+                e.data().ifPresent(payload -> {
+                      double statusCode = payload.statusCode();
+                      String message = payload.message();
+                      // ...
+                });
+            }
+
+            // An underlying cause may be provided. If the error payload 
+            // cannot be deserialized then the deserialization exception 
+            // will be set as the cause.
+            if (ex.getCause() != null) {
+                var cause = ex.getCause();
+            }
+        } catch (UncheckedIOException ex) {
+            // handle IO error (connection, timeout, etc)
+        }    }
 }
 ```
 

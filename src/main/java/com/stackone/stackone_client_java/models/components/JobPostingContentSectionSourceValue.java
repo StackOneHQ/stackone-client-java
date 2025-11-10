@@ -28,7 +28,7 @@ import java.util.List;
 public class JobPostingContentSectionSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private JobPostingContentSectionSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class JobPostingContentSectionSourceValue {
 
     public static JobPostingContentSectionSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingContentSectionSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingContentSectionSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingContentSectionSourceValue of(JobPostingContentSectionSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<JobPostingContentSectionSourceValue4>(){}));
+        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static JobPostingContentSectionSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new JobPostingContentSectionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class JobPostingContentSectionSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

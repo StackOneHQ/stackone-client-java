@@ -8,17 +8,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stackone.stackone_client_java.models.components.JsonRpcMessageDto;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.util.Optional;
 
 
 public class StackoneMcpPostRequest {
     /**
-     * Account secure id for the target provider account
+     * Account secure id for the target provider account (optional if x-account-id query parameter is
+     * provided)
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
-    private String xAccountId;
+    private Optional<String> xAccountId;
+
+    /**
+     * Account secure id (alternative to x-account-id header)
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=x-account-id")
+    private Optional<? extends Object> xAccountIdQueryParameter;
 
     /**
      * Session id; omit for initialize, include for subsequent calls
@@ -34,29 +43,42 @@ public class StackoneMcpPostRequest {
 
     @JsonCreator
     public StackoneMcpPostRequest(
-            String xAccountId,
+            Optional<String> xAccountId,
+            Optional<? extends Object> xAccountIdQueryParameter,
             Optional<String> mcpSessionId,
             JsonRpcMessageDto jsonRpcMessageDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
         Utils.checkNotNull(mcpSessionId, "mcpSessionId");
         Utils.checkNotNull(jsonRpcMessageDto, "jsonRpcMessageDto");
         this.xAccountId = xAccountId;
+        this.xAccountIdQueryParameter = xAccountIdQueryParameter;
         this.mcpSessionId = mcpSessionId;
         this.jsonRpcMessageDto = jsonRpcMessageDto;
     }
     
     public StackoneMcpPostRequest(
-            String xAccountId,
             JsonRpcMessageDto jsonRpcMessageDto) {
-        this(xAccountId, Optional.empty(), jsonRpcMessageDto);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            jsonRpcMessageDto);
     }
 
     /**
-     * Account secure id for the target provider account
+     * Account secure id for the target provider account (optional if x-account-id query parameter is
+     * provided)
      */
     @JsonIgnore
-    public String xAccountId() {
+    public Optional<String> xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Account secure id (alternative to x-account-id header)
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Object> xAccountIdQueryParameter() {
+        return (Optional<Object>) xAccountIdQueryParameter;
     }
 
     /**
@@ -81,11 +103,42 @@ public class StackoneMcpPostRequest {
 
 
     /**
-     * Account secure id for the target provider account
+     * Account secure id for the target provider account (optional if x-account-id query parameter is
+     * provided)
      */
     public StackoneMcpPostRequest withXAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        this.xAccountId = Optional.ofNullable(xAccountId);
+        return this;
+    }
+
+
+    /**
+     * Account secure id for the target provider account (optional if x-account-id query parameter is
+     * provided)
+     */
+    public StackoneMcpPostRequest withXAccountId(Optional<String> xAccountId) {
+        Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+
+    /**
+     * Account secure id (alternative to x-account-id header)
+     */
+    public StackoneMcpPostRequest withXAccountIdQueryParameter(Object xAccountIdQueryParameter) {
+        Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
+        this.xAccountIdQueryParameter = Optional.ofNullable(xAccountIdQueryParameter);
+        return this;
+    }
+
+
+    /**
+     * Account secure id (alternative to x-account-id header)
+     */
+    public StackoneMcpPostRequest withXAccountIdQueryParameter(Optional<? extends Object> xAccountIdQueryParameter) {
+        Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
+        this.xAccountIdQueryParameter = xAccountIdQueryParameter;
         return this;
     }
 
@@ -128,6 +181,7 @@ public class StackoneMcpPostRequest {
         StackoneMcpPostRequest other = (StackoneMcpPostRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.xAccountIdQueryParameter, other.xAccountIdQueryParameter) &&
             Utils.enhancedDeepEquals(this.mcpSessionId, other.mcpSessionId) &&
             Utils.enhancedDeepEquals(this.jsonRpcMessageDto, other.jsonRpcMessageDto);
     }
@@ -135,13 +189,15 @@ public class StackoneMcpPostRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, mcpSessionId, jsonRpcMessageDto);
+            xAccountId, xAccountIdQueryParameter, mcpSessionId,
+            jsonRpcMessageDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(StackoneMcpPostRequest.class,
                 "xAccountId", xAccountId,
+                "xAccountIdQueryParameter", xAccountIdQueryParameter,
                 "mcpSessionId", mcpSessionId,
                 "jsonRpcMessageDto", jsonRpcMessageDto);
     }
@@ -149,7 +205,9 @@ public class StackoneMcpPostRequest {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private String xAccountId;
+        private Optional<String> xAccountId = Optional.empty();
+
+        private Optional<? extends Object> xAccountIdQueryParameter = Optional.empty();
 
         private Optional<String> mcpSessionId = Optional.empty();
 
@@ -161,11 +219,41 @@ public class StackoneMcpPostRequest {
 
 
         /**
-         * Account secure id for the target provider account
+         * Account secure id for the target provider account (optional if x-account-id query parameter is
+         * provided)
          */
         public Builder xAccountId(String xAccountId) {
             Utils.checkNotNull(xAccountId, "xAccountId");
+            this.xAccountId = Optional.ofNullable(xAccountId);
+            return this;
+        }
+
+        /**
+         * Account secure id for the target provider account (optional if x-account-id query parameter is
+         * provided)
+         */
+        public Builder xAccountId(Optional<String> xAccountId) {
+            Utils.checkNotNull(xAccountId, "xAccountId");
             this.xAccountId = xAccountId;
+            return this;
+        }
+
+
+        /**
+         * Account secure id (alternative to x-account-id header)
+         */
+        public Builder xAccountIdQueryParameter(Object xAccountIdQueryParameter) {
+            Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
+            this.xAccountIdQueryParameter = Optional.ofNullable(xAccountIdQueryParameter);
+            return this;
+        }
+
+        /**
+         * Account secure id (alternative to x-account-id header)
+         */
+        public Builder xAccountIdQueryParameter(Optional<? extends Object> xAccountIdQueryParameter) {
+            Utils.checkNotNull(xAccountIdQueryParameter, "xAccountIdQueryParameter");
+            this.xAccountIdQueryParameter = xAccountIdQueryParameter;
             return this;
         }
 
@@ -201,7 +289,8 @@ public class StackoneMcpPostRequest {
         public StackoneMcpPostRequest build() {
 
             return new StackoneMcpPostRequest(
-                xAccountId, mcpSessionId, jsonRpcMessageDto);
+                xAccountId, xAccountIdQueryParameter, mcpSessionId,
+                jsonRpcMessageDto);
         }
 
     }

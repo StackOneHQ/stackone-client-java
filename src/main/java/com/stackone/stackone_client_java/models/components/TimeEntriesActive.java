@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class TimeEntriesActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TimeEntriesActive(TypedObject value) {
         this.value = value;
     }
 
     public static TimeEntriesActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeEntriesActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TimeEntriesActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeEntriesActive of(TimeEntriesActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new TimeEntriesActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TimeEntriesActive2>(){}));
+        return new TimeEntriesActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class TimeEntriesActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

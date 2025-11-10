@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class AccountingTaxRateActive {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AccountingTaxRateActive(TypedObject value) {
         this.value = value;
     }
 
     public static AccountingTaxRateActive of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AccountingTaxRateActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AccountingTaxRateActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AccountingTaxRateActive of(AccountingTaxRateActive2 value) {
         Utils.checkNotNull(value, "value");
-        return new AccountingTaxRateActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AccountingTaxRateActive2>(){}));
+        return new AccountingTaxRateActive(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class AccountingTaxRateActive {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

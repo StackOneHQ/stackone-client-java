@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class HasChildren {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HasChildren(TypedObject value) {
         this.value = value;
     }
 
     public static HasChildren of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HasChildren(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HasChildren(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HasChildren of(HasChildren2 value) {
         Utils.checkNotNull(value, "value");
-        return new HasChildren(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HasChildren2>(){}));
+        return new HasChildren(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class HasChildren {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

@@ -23,7 +23,7 @@ import java.util.List;
 public class TimeOffSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TimeOffSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class TimeOffSourceValue {
 
     public static TimeOffSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffSourceValue of(TimeOffSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TimeOffSourceValue4>(){}));
+        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TimeOffSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class TimeOffSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

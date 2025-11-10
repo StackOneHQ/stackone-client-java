@@ -28,7 +28,7 @@ import java.util.List;
 public class HRISLocationLocationTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HRISLocationLocationTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class HRISLocationLocationTypeSourceValue {
 
     public static HRISLocationLocationTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISLocationLocationTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISLocationLocationTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISLocationLocationTypeSourceValue of(HRISLocationSourceValueLocationType4 value) {
         Utils.checkNotNull(value, "value");
-        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HRISLocationSourceValueLocationType4>(){}));
+        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HRISLocationLocationTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HRISLocationLocationTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class HRISLocationLocationTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

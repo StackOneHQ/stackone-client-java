@@ -23,7 +23,7 @@ import java.util.List;
 public class EmploymentManagerApiModelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EmploymentManagerApiModelSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class EmploymentManagerApiModelSourceValue {
 
     public static EmploymentManagerApiModelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentManagerApiModelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentManagerApiModelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentManagerApiModelSourceValue of(EmploymentManagerApiModelSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmploymentManagerApiModelSourceValue4>(){}));
+        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentManagerApiModelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EmploymentManagerApiModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class EmploymentManagerApiModelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

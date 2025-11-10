@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class IamUpdateUserRequestDtoIsBotUser {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IamUpdateUserRequestDtoIsBotUser(TypedObject value) {
         this.value = value;
     }
 
     public static IamUpdateUserRequestDtoIsBotUser of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IamUpdateUserRequestDtoIsBotUser(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IamUpdateUserRequestDtoIsBotUser(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IamUpdateUserRequestDtoIsBotUser of(IamUpdateUserRequestDtoIsBotUser2 value) {
         Utils.checkNotNull(value, "value");
-        return new IamUpdateUserRequestDtoIsBotUser(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IamUpdateUserRequestDtoIsBotUser2>(){}));
+        return new IamUpdateUserRequestDtoIsBotUser(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class IamUpdateUserRequestDtoIsBotUser {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

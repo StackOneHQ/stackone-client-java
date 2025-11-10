@@ -30,7 +30,7 @@ import java.util.List;
 public class CreateCategoriesApiModelLevelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CreateCategoriesApiModelLevelSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class CreateCategoriesApiModelLevelSourceValue {
 
     public static CreateCategoriesApiModelLevelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelLevelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelLevelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelLevelSourceValue of(CreateCategoriesApiModelSourceValueLevel4 value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CreateCategoriesApiModelSourceValueLevel4>(){}));
+        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CreateCategoriesApiModelLevelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CreateCategoriesApiModelLevelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class CreateCategoriesApiModelLevelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

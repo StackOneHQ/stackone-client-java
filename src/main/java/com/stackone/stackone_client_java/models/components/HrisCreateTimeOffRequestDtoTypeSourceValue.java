@@ -23,7 +23,7 @@ import java.util.List;
 public class HrisCreateTimeOffRequestDtoTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class HrisCreateTimeOffRequestDtoTypeSourceValue {
 
     public static HrisCreateTimeOffRequestDtoTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateTimeOffRequestDtoTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateTimeOffRequestDtoTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateTimeOffRequestDtoTypeSourceValue of(HrisCreateTimeOffRequestDtoSourceValueType4 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisCreateTimeOffRequestDtoSourceValueType4>(){}));
+        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateTimeOffRequestDtoTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new HrisCreateTimeOffRequestDtoTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class HrisCreateTimeOffRequestDtoTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

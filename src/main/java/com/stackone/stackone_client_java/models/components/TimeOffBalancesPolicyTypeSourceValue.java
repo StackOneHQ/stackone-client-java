@@ -23,7 +23,7 @@ import java.util.List;
 public class TimeOffBalancesPolicyTypeSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TimeOffBalancesPolicyTypeSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class TimeOffBalancesPolicyTypeSourceValue {
 
     public static TimeOffBalancesPolicyTypeSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffBalancesPolicyTypeSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffBalancesPolicyTypeSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffBalancesPolicyTypeSourceValue of(TimeOffBalancesSourceValuePolicyType4 value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TimeOffBalancesSourceValuePolicyType4>(){}));
+        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TimeOffBalancesPolicyTypeSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new TimeOffBalancesPolicyTypeSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class TimeOffBalancesPolicyTypeSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

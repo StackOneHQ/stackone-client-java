@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class HrisCreateTimeOffRequestDtoStartHalfDay {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HrisCreateTimeOffRequestDtoStartHalfDay(TypedObject value) {
         this.value = value;
     }
 
     public static HrisCreateTimeOffRequestDtoStartHalfDay of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HrisCreateTimeOffRequestDtoStartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HrisCreateTimeOffRequestDtoStartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HrisCreateTimeOffRequestDtoStartHalfDay of(HrisCreateTimeOffRequestDtoStartHalfDay2 value) {
         Utils.checkNotNull(value, "value");
-        return new HrisCreateTimeOffRequestDtoStartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HrisCreateTimeOffRequestDtoStartHalfDay2>(){}));
+        return new HrisCreateTimeOffRequestDtoStartHalfDay(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class HrisCreateTimeOffRequestDtoStartHalfDay {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

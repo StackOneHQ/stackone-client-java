@@ -28,7 +28,7 @@ import java.util.List;
 public class QuestionParentQuestionSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private QuestionParentQuestionSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class QuestionParentQuestionSourceValue {
 
     public static QuestionParentQuestionSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static QuestionParentQuestionSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static QuestionParentQuestionSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static QuestionParentQuestionSourceValue of(QuestionSourceValueParentQuestion4 value) {
         Utils.checkNotNull(value, "value");
-        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<QuestionSourceValueParentQuestion4>(){}));
+        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static QuestionParentQuestionSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new QuestionParentQuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class QuestionParentQuestionSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

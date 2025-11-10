@@ -30,7 +30,7 @@ import java.util.List;
 public class CategoryLanguageSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CategoryLanguageSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class CategoryLanguageSourceValue {
 
     public static CategoryLanguageSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryLanguageSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryLanguageSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryLanguageSourceValue of(CategorySourceValueLanguage4 value) {
         Utils.checkNotNull(value, "value");
-        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CategorySourceValueLanguage4>(){}));
+        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CategoryLanguageSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new CategoryLanguageSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class CategoryLanguageSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

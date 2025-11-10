@@ -28,7 +28,7 @@ import java.util.List;
 public class QuestionSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private QuestionSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class QuestionSourceValue {
 
     public static QuestionSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static QuestionSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static QuestionSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static QuestionSourceValue of(QuestionSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<QuestionSourceValue4>(){}));
+        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static QuestionSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new QuestionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class QuestionSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

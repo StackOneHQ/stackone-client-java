@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class HasContent {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private HasContent(TypedObject value) {
         this.value = value;
     }
 
     public static HasContent of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new HasContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new HasContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static HasContent of(HasContent2 value) {
         Utils.checkNotNull(value, "value");
-        return new HasContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HasContent2>(){}));
+        return new HasContent(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class HasContent {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

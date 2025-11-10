@@ -28,7 +28,7 @@ import java.util.List;
 public class AtsJobSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AtsJobSourceValue(TypedObject value) {
         this.value = value;
@@ -36,27 +36,25 @@ public class AtsJobSourceValue {
 
     public static AtsJobSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsJobSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsJobSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsJobSourceValue of(AtsJobSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AtsJobSourceValue4>(){}));
+        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AtsJobSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new AtsJobSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -82,7 +80,7 @@ public class AtsJobSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

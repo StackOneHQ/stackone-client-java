@@ -25,20 +25,19 @@ import java.lang.SuppressWarnings;
 public class IsPaid {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private IsPaid(TypedObject value) {
         this.value = value;
     }
 
     public static IsPaid of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new IsPaid(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new IsPaid(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static IsPaid of(IsPaid2 value) {
         Utils.checkNotNull(value, "value");
-        return new IsPaid(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<IsPaid2>(){}));
+        return new IsPaid(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class IsPaid {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

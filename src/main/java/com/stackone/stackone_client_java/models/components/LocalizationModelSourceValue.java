@@ -30,7 +30,7 @@ import java.util.List;
 public class LocalizationModelSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private LocalizationModelSourceValue(TypedObject value) {
         this.value = value;
@@ -38,27 +38,25 @@ public class LocalizationModelSourceValue {
 
     public static LocalizationModelSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LocalizationModelSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LocalizationModelSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LocalizationModelSourceValue of(LocalizationModelSourceValue4 value) {
         Utils.checkNotNull(value, "value");
-        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LocalizationModelSourceValue4>(){}));
+        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LocalizationModelSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new LocalizationModelSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -84,7 +82,7 @@ public class LocalizationModelSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

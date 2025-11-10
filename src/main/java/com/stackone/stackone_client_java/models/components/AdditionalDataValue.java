@@ -25,7 +25,7 @@ import java.util.List;
 public class AdditionalDataValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AdditionalDataValue(TypedObject value) {
         this.value = value;
@@ -33,12 +33,12 @@ public class AdditionalDataValue {
 
     public static AdditionalDataValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new AdditionalDataValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new AdditionalDataValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AdditionalDataValue of(List<String> value) {
         Utils.checkNotNull(value, "value");
-        return new AdditionalDataValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<String>>(){}));
+        return new AdditionalDataValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +61,7 @@ public class AdditionalDataValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {

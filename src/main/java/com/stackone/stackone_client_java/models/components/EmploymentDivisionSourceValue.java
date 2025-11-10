@@ -23,7 +23,7 @@ import java.util.List;
 public class EmploymentDivisionSourceValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private EmploymentDivisionSourceValue(TypedObject value) {
         this.value = value;
@@ -31,27 +31,25 @@ public class EmploymentDivisionSourceValue {
 
     public static EmploymentDivisionSourceValue of(String value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentDivisionSourceValue of(double value) {
-        Utils.checkNotNull(value, "value");
-        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Double>(){}));
+        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentDivisionSourceValue of(boolean value) {
-        Utils.checkNotNull(value, "value");
-        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<java.lang.Boolean>(){}));
+        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentDivisionSourceValue of(EmploymentSourceValueDivision4 value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EmploymentSourceValueDivision4>(){}));
+        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static EmploymentDivisionSourceValue of(List<Object> value) {
         Utils.checkNotNull(value, "value");
-        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Object>>(){}));
+        return new EmploymentDivisionSourceValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -77,7 +75,7 @@ public class EmploymentDivisionSourceValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
