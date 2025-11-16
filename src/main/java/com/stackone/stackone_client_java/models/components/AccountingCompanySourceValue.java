@@ -86,7 +86,7 @@ public class AccountingCompanySourceValue {
             return false;
         }
         AccountingCompanySourceValue other = (AccountingCompanySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class AccountingCompanySourceValue {
         return Utils.toString(AccountingCompanySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

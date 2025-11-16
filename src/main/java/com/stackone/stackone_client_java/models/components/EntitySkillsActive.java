@@ -71,7 +71,7 @@ public class EntitySkillsActive {
             return false;
         }
         EntitySkillsActive other = (EntitySkillsActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class EntitySkillsActive {
         return Utils.toString(EntitySkillsActive.class,
                 "value", value);
     }
- 
+
 }
 

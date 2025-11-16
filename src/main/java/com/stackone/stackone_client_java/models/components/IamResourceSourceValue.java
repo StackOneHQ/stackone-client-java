@@ -86,7 +86,7 @@ public class IamResourceSourceValue {
             return false;
         }
         IamResourceSourceValue other = (IamResourceSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class IamResourceSourceValue {
         return Utils.toString(IamResourceSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

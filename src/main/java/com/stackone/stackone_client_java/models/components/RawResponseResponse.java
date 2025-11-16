@@ -75,7 +75,7 @@ public class RawResponseResponse {
             return false;
         }
         RawResponseResponse other = (RawResponseResponse) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -99,6 +99,6 @@ public class RawResponseResponse {
         return Utils.toString(RawResponseResponse.class,
                 "value", value);
     }
- 
+
 }
 

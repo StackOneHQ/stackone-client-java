@@ -71,7 +71,7 @@ public class AccountingTaxRateResultActive {
             return false;
         }
         AccountingTaxRateResultActive other = (AccountingTaxRateResultActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class AccountingTaxRateResultActive {
         return Utils.toString(AccountingTaxRateResultActive.class,
                 "value", value);
     }
- 
+
 }
 

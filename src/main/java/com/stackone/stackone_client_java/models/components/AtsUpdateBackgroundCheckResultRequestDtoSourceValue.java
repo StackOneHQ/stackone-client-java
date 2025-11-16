@@ -91,7 +91,7 @@ public class AtsUpdateBackgroundCheckResultRequestDtoSourceValue {
             return false;
         }
         AtsUpdateBackgroundCheckResultRequestDtoSourceValue other = (AtsUpdateBackgroundCheckResultRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AtsUpdateBackgroundCheckResultRequestDtoSourceValue {
         return Utils.toString(AtsUpdateBackgroundCheckResultRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

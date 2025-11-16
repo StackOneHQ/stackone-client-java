@@ -13,6 +13,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 
 public class JsonRpcMessageDto {
@@ -33,7 +34,7 @@ public class JsonRpcMessageDto {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("params")
-    private Optional<? extends Params> params;
+    private JsonNullable<? extends Params> params;
 
     /**
      * Request id (arbitrary JSON scalar)
@@ -46,7 +47,7 @@ public class JsonRpcMessageDto {
     public JsonRpcMessageDto(
             @JsonProperty("jsonrpc") String jsonrpc,
             @JsonProperty("method") String method,
-            @JsonProperty("params") Optional<? extends Params> params,
+            @JsonProperty("params") JsonNullable<? extends Params> params,
             @JsonProperty("id") Optional<? extends Id> id) {
         Utils.checkNotNull(jsonrpc, "jsonrpc");
         Utils.checkNotNull(method, "method");
@@ -61,7 +62,7 @@ public class JsonRpcMessageDto {
     public JsonRpcMessageDto(
             String jsonrpc,
             String method) {
-        this(jsonrpc, method, Optional.empty(),
+        this(jsonrpc, method, JsonNullable.undefined(),
             Optional.empty());
     }
 
@@ -86,8 +87,8 @@ public class JsonRpcMessageDto {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Params> params() {
-        return (Optional<Params>) params;
+    public JsonNullable<Params> params() {
+        return (JsonNullable<Params>) params;
     }
 
     /**
@@ -127,15 +128,14 @@ public class JsonRpcMessageDto {
      */
     public JsonRpcMessageDto withParams(Params params) {
         Utils.checkNotNull(params, "params");
-        this.params = Optional.ofNullable(params);
+        this.params = JsonNullable.of(params);
         return this;
     }
-
 
     /**
      * Method parameters (arbitrary JSON)
      */
-    public JsonRpcMessageDto withParams(Optional<? extends Params> params) {
+    public JsonRpcMessageDto withParams(JsonNullable<? extends Params> params) {
         Utils.checkNotNull(params, "params");
         this.params = params;
         return this;
@@ -199,7 +199,7 @@ public class JsonRpcMessageDto {
 
         private String method;
 
-        private Optional<? extends Params> params = Optional.empty();
+        private JsonNullable<? extends Params> params = JsonNullable.undefined();
 
         private Optional<? extends Id> id = Optional.empty();
 
@@ -233,14 +233,14 @@ public class JsonRpcMessageDto {
          */
         public Builder params(Params params) {
             Utils.checkNotNull(params, "params");
-            this.params = Optional.ofNullable(params);
+            this.params = JsonNullable.of(params);
             return this;
         }
 
         /**
          * Method parameters (arbitrary JSON)
          */
-        public Builder params(Optional<? extends Params> params) {
+        public Builder params(JsonNullable<? extends Params> params) {
             Utils.checkNotNull(params, "params");
             this.params = params;
             return this;

@@ -86,7 +86,7 @@ public class UpdateTaskRequestDtoSourceValue {
             return false;
         }
         UpdateTaskRequestDtoSourceValue other = (UpdateTaskRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class UpdateTaskRequestDtoSourceValue {
         return Utils.toString(UpdateTaskRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

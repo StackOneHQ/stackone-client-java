@@ -71,7 +71,7 @@ public class TimeEntriesActive {
             return false;
         }
         TimeEntriesActive other = (TimeEntriesActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class TimeEntriesActive {
         return Utils.toString(TimeEntriesActive.class,
                 "value", value);
     }
- 
+
 }
 

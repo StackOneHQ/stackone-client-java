@@ -86,7 +86,7 @@ public class TicketingAttachmentSourceValue {
             return false;
         }
         TicketingAttachmentSourceValue other = (TicketingAttachmentSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class TicketingAttachmentSourceValue {
         return Utils.toString(TicketingAttachmentSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

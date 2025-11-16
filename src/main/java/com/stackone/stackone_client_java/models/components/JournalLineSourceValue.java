@@ -86,7 +86,7 @@ public class JournalLineSourceValue {
             return false;
         }
         JournalLineSourceValue other = (JournalLineSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class JournalLineSourceValue {
         return Utils.toString(JournalLineSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

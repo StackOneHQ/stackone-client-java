@@ -86,7 +86,7 @@ public class EntitySkillsMaximumProficiencySourceValue {
             return false;
         }
         EntitySkillsMaximumProficiencySourceValue other = (EntitySkillsMaximumProficiencySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EntitySkillsMaximumProficiencySourceValue {
         return Utils.toString(EntitySkillsMaximumProficiencySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

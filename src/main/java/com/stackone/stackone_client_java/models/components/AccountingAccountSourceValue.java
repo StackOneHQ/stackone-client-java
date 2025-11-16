@@ -86,7 +86,7 @@ public class AccountingAccountSourceValue {
             return false;
         }
         AccountingAccountSourceValue other = (AccountingAccountSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class AccountingAccountSourceValue {
         return Utils.toString(AccountingAccountSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

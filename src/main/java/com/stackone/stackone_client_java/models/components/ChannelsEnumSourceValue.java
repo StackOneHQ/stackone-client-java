@@ -91,7 +91,7 @@ public class ChannelsEnumSourceValue {
             return false;
         }
         ChannelsEnumSourceValue other = (ChannelsEnumSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class ChannelsEnumSourceValue {
         return Utils.toString(ChannelsEnumSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

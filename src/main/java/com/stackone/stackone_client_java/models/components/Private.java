@@ -71,7 +71,7 @@ public class Private {
             return false;
         }
         Private other = (Private) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class Private {
         return Utils.toString(Private.class,
                 "value", value);
     }
- 
+
 }
 

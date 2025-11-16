@@ -25,7 +25,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.17.0
+  version: 0.18.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: stackone-client-java
@@ -38,6 +38,7 @@ java:
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableStreamingUploads: false
+  enhancedUnionMemberResolution: true
   flattenGlobalSecurity: true
   generateOptionalUnionAccessors: false
   generateSpringBootStarter: true
@@ -59,6 +60,7 @@ java:
     url: https://mit-license.org/
   maxMethodParams: 4
   nullFriendlyParameters: false
+  openUnions: true
   outputModelSuffix: output
   projectName: stackone-client-java
   templateVersion: v2

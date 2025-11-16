@@ -91,7 +91,7 @@ public class AtsCreateOfferRequestDtoSourceValue {
             return false;
         }
         AtsCreateOfferRequestDtoSourceValue other = (AtsCreateOfferRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AtsCreateOfferRequestDtoSourceValue {
         return Utils.toString(AtsCreateOfferRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

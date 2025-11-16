@@ -71,7 +71,7 @@ public class MessagingConversationResultPrivate {
             return false;
         }
         MessagingConversationResultPrivate other = (MessagingConversationResultPrivate) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class MessagingConversationResultPrivate {
         return Utils.toString(MessagingConversationResultPrivate.class,
                 "value", value);
     }
- 
+
 }
 

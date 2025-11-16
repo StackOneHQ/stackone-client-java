@@ -66,7 +66,7 @@ public class Draft {
             return false;
         }
         Draft other = (Draft) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -89,6 +89,6 @@ public class Draft {
         return Utils.toString(Draft.class,
                 "value", value);
     }
- 
+
 }
 

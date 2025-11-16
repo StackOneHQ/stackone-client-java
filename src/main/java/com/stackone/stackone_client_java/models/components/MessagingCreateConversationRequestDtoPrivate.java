@@ -71,7 +71,7 @@ public class MessagingCreateConversationRequestDtoPrivate {
             return false;
         }
         MessagingCreateConversationRequestDtoPrivate other = (MessagingCreateConversationRequestDtoPrivate) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class MessagingCreateConversationRequestDtoPrivate {
         return Utils.toString(MessagingCreateConversationRequestDtoPrivate.class,
                 "value", value);
     }
- 
+
 }
 

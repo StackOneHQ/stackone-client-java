@@ -86,7 +86,7 @@ public class TimeOffBalancesPolicySourceValue {
             return false;
         }
         TimeOffBalancesPolicySourceValue other = (TimeOffBalancesPolicySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class TimeOffBalancesPolicySourceValue {
         return Utils.toString(TimeOffBalancesPolicySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

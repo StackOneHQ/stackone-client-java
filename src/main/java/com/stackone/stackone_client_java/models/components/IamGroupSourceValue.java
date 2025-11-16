@@ -86,7 +86,7 @@ public class IamGroupSourceValue {
             return false;
         }
         IamGroupSourceValue other = (IamGroupSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class IamGroupSourceValue {
         return Utils.toString(IamGroupSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

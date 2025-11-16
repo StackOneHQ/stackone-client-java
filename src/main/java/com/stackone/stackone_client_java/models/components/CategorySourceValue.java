@@ -93,7 +93,7 @@ public class CategorySourceValue {
             return false;
         }
         CategorySourceValue other = (CategorySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -119,6 +119,6 @@ public class CategorySourceValue {
         return Utils.toString(CategorySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -91,7 +91,7 @@ public class ApplicationAttachmentSourceValue {
             return false;
         }
         ApplicationAttachmentSourceValue other = (ApplicationAttachmentSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class ApplicationAttachmentSourceValue {
         return Utils.toString(ApplicationAttachmentSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

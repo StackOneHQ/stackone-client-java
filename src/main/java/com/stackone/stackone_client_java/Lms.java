@@ -134,6 +134,11 @@ public class Lms {
     /**
      * List Courses
      * 
+     * <p>Retrieve a list of course type learning objects.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
+     * 
      * @return The call builder
      */
     public LmsListCoursesRequestBuilder listCourses() {
@@ -142,6 +147,11 @@ public class Lms {
 
     /**
      * List Courses
+     * 
+     * <p>Retrieve a list of course type learning objects.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -153,6 +163,11 @@ public class Lms {
 
     /**
      * List Courses
+     * 
+     * <p>Retrieve a list of course type learning objects.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -168,6 +183,11 @@ public class Lms {
     /**
      * Get Course
      * 
+     * <p>Retrieve a course type learning object by its identifier.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
+     * 
      * @return The call builder
      */
     public LmsGetCourseRequestBuilder getCourse() {
@@ -176,6 +196,11 @@ public class Lms {
 
     /**
      * Get Course
+     * 
+     * <p>Retrieve a course type learning object by its identifier.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -187,6 +212,11 @@ public class Lms {
 
     /**
      * Get Course
+     * 
+     * <p>Retrieve a course type learning object by its identifier.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -202,6 +232,12 @@ public class Lms {
     /**
      * List User Assignments
      * 
+     * <p>Retrieve a list of assignment type learning records for a user.
+     * 
+     * <p>These are the records linking a user to learning objects.
+     * 
+     * <p>They can be pending, in progress, or completed.
+     * 
      * @return The call builder
      */
     public LmsListUserAssignmentsRequestBuilder listUserAssignments() {
@@ -210,6 +246,12 @@ public class Lms {
 
     /**
      * List User Assignments
+     * 
+     * <p>Retrieve a list of assignment type learning records for a user.
+     * 
+     * <p>These are the records linking a user to learning objects.
+     * 
+     * <p>They can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -221,6 +263,12 @@ public class Lms {
 
     /**
      * List User Assignments
+     * 
+     * <p>Retrieve a list of assignment type learning records for a user.
+     * 
+     * <p>These are the records linking a user to learning objects.
+     * 
+     * <p>They can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -236,6 +284,12 @@ public class Lms {
     /**
      * Create User Assignment
      * 
+     * <p>Create an assignment type learning record for a user.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending or in progress.
+     * 
      * @return The call builder
      */
     public LmsCreateUserAssignmentRequestBuilder createUserAssignment() {
@@ -244,6 +298,12 @@ public class Lms {
 
     /**
      * Create User Assignment
+     * 
+     * <p>Create an assignment type learning record for a user.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending or in progress.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -260,6 +320,12 @@ public class Lms {
 
     /**
      * Create User Assignment
+     * 
+     * <p>Create an assignment type learning record for a user.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending or in progress.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -286,6 +352,12 @@ public class Lms {
     /**
      * Get User Assignment
      * 
+     * <p>Retrieve an assignment type learning record for a user by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
+     * 
      * @return The call builder
      */
     public LmsGetUserAssignmentRequestBuilder getUserAssignment() {
@@ -294,6 +366,12 @@ public class Lms {
 
     /**
      * Get User Assignment
+     * 
+     * <p>Retrieve an assignment type learning record for a user by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -305,6 +383,12 @@ public class Lms {
 
     /**
      * Get User Assignment
+     * 
+     * <p>Retrieve an assignment type learning record for a user by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -318,7 +402,13 @@ public class Lms {
     }
 
     /**
-     * Batch Upsert Content
+     * Batch Upsert External Linking Learning Objects
+     * 
+     * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
+     * for consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @return The call builder
      */
@@ -327,7 +417,13 @@ public class Lms {
     }
 
     /**
-     * Batch Upsert Content
+     * Batch Upsert External Linking Learning Objects
+     * 
+     * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
+     * for consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param lmsBatchUpsertContentRequestDto 
@@ -339,7 +435,13 @@ public class Lms {
     }
 
     /**
-     * Batch Upsert Content
+     * Batch Upsert External Linking Learning Objects
+     * 
+     * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
+     * for consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param lmsBatchUpsertContentRequestDto 
@@ -364,6 +466,12 @@ public class Lms {
     /**
      * List Content
      * 
+     * <p>Retrieve a list of content type learning objects.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
+     * 
      * @return The call builder
      */
     public LmsListContentRequestBuilder listContent() {
@@ -372,6 +480,12 @@ public class Lms {
 
     /**
      * List Content
+     * 
+     * <p>Retrieve a list of content type learning objects.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -383,6 +497,12 @@ public class Lms {
 
     /**
      * List Content
+     * 
+     * <p>Retrieve a list of content type learning objects.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -396,7 +516,13 @@ public class Lms {
     }
 
     /**
-     * Upsert Content
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @return The call builder
      */
@@ -405,7 +531,13 @@ public class Lms {
     }
 
     /**
-     * Upsert Content
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param lmsUpsertContentRequestDto 
@@ -417,7 +549,13 @@ public class Lms {
     }
 
     /**
-     * Upsert Content
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param lmsUpsertContentRequestDto 
@@ -442,6 +580,12 @@ public class Lms {
     /**
      * Get Content
      * 
+     * <p>Retrieve a content type learning object by its identifier.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
+     * 
      * @return The call builder
      */
     public LmsGetContentRequestBuilder getContent() {
@@ -450,6 +594,12 @@ public class Lms {
 
     /**
      * Get Content
+     * 
+     * <p>Retrieve a content type learning object by its identifier.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -461,6 +611,12 @@ public class Lms {
 
     /**
      * Get Content
+     * 
+     * <p>Retrieve a content type learning object by its identifier.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -474,7 +630,13 @@ public class Lms {
     }
 
     /**
-     * Update Content
+     * Update External Linking Learning Objects
+     * 
+     * <p>Update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @return The call builder
      */
@@ -483,7 +645,13 @@ public class Lms {
     }
 
     /**
-     * Update Content
+     * Update External Linking Learning Objects
+     * 
+     * <p>Update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -499,7 +667,13 @@ public class Lms {
     }
 
     /**
-     * Update Content
+     * Update External Linking Learning Objects
+     * 
+     * <p>Update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -526,6 +700,10 @@ public class Lms {
     /**
      * List User Completions
      * 
+     * <p>Retrieve a list of completed learning records for a user.
+     * 
+     * <p>These are the records of a user completing learning objects.
+     * 
      * @return The call builder
      */
     public LmsListUserCompletionsRequestBuilder listUserCompletions() {
@@ -534,6 +712,10 @@ public class Lms {
 
     /**
      * List User Completions
+     * 
+     * <p>Retrieve a list of completed learning records for a user.
+     * 
+     * <p>These are the records of a user completing learning objects.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -545,6 +727,10 @@ public class Lms {
 
     /**
      * List User Completions
+     * 
+     * <p>Retrieve a list of completed learning records for a user.
+     * 
+     * <p>These are the records of a user completing learning objects.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -560,6 +746,10 @@ public class Lms {
     /**
      * Create User Completion
      * 
+     * <p>Create a completed learning record for a user.
+     * 
+     * <p>This is the record of a user completing a learning object.
+     * 
      * @return The call builder
      */
     public LmsCreateUserCompletionRequestBuilder createUserCompletion() {
@@ -568,6 +758,10 @@ public class Lms {
 
     /**
      * Create User Completion
+     * 
+     * <p>Create a completed learning record for a user.
+     * 
+     * <p>This is the record of a user completing a learning object.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -584,6 +778,10 @@ public class Lms {
 
     /**
      * Create User Completion
+     * 
+     * <p>Create a completed learning record for a user.
+     * 
+     * <p>This is the record of a user completing a learning object.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -610,6 +808,10 @@ public class Lms {
     /**
      * Get User Completion
      * 
+     * <p>Retrieve a completed learning record for a user by its identifier.
+     * 
+     * <p>This is the record of a user completing a learning object.
+     * 
      * @return The call builder
      */
     public LmsGetUserCompletionRequestBuilder getUserCompletion() {
@@ -618,6 +820,10 @@ public class Lms {
 
     /**
      * Get User Completion
+     * 
+     * <p>Retrieve a completed learning record for a user by its identifier.
+     * 
+     * <p>This is the record of a user completing a learning object.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -629,6 +835,10 @@ public class Lms {
 
     /**
      * Get User Completion
+     * 
+     * <p>Retrieve a completed learning record for a user by its identifier.
+     * 
+     * <p>This is the record of a user completing a learning object.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -644,6 +854,10 @@ public class Lms {
     /**
      * Delete User Completion
      * 
+     * <p>Delete a completion type learning record for a user.
+     * 
+     * <p>This is a record of a user completing a learning object.
+     * 
      * @return The call builder
      */
     public LmsDeleteUserCompletionRequestBuilder deleteUserCompletion() {
@@ -652,6 +866,10 @@ public class Lms {
 
     /**
      * Delete User Completion
+     * 
+     * <p>Delete a completion type learning record for a user.
+     * 
+     * <p>This is a record of a user completing a learning object.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -668,6 +886,10 @@ public class Lms {
 
     /**
      * Delete User Completion
+     * 
+     * <p>Delete a completion type learning record for a user.
+     * 
+     * <p>This is a record of a user completing a learning object.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -694,6 +916,9 @@ public class Lms {
     /**
      * List Completions
      * 
+     * <p>Retrieve a list of completed learning records. These are the records of a user completing learning
+     * objects.
+     * 
      * @return The call builder
      */
     public LmsListCompletionsRequestBuilder listCompletions() {
@@ -702,6 +927,9 @@ public class Lms {
 
     /**
      * List Completions
+     * 
+     * <p>Retrieve a list of completed learning records. These are the records of a user completing learning
+     * objects.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -713,6 +941,9 @@ public class Lms {
 
     /**
      * List Completions
+     * 
+     * <p>Retrieve a list of completed learning records. These are the records of a user completing learning
+     * objects.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -728,6 +959,9 @@ public class Lms {
     /**
      * Get Completion
      * 
+     * <p>Retrieve a completed learning record by its identifier. This is the record of a user completing a
+     * learning object.
+     * 
      * @return The call builder
      */
     public LmsGetCompletionRequestBuilder getCompletion() {
@@ -736,6 +970,9 @@ public class Lms {
 
     /**
      * Get Completion
+     * 
+     * <p>Retrieve a completed learning record by its identifier. This is the record of a user completing a
+     * learning object.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -747,6 +984,9 @@ public class Lms {
 
     /**
      * Get Completion
+     * 
+     * <p>Retrieve a completed learning record by its identifier. This is the record of a user completing a
+     * learning object.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -966,6 +1206,12 @@ public class Lms {
     /**
      * List Assignments
      * 
+     * <p>Retrieve a list of assignment type learning records.
+     * 
+     * <p>These are the records linking a user to a learning object.
+     * 
+     * <p>They can be pending, in progress, or completed.
+     * 
      * @return The call builder
      */
     public LmsListAssignmentsRequestBuilder listAssignments() {
@@ -974,6 +1220,12 @@ public class Lms {
 
     /**
      * List Assignments
+     * 
+     * <p>Retrieve a list of assignment type learning records.
+     * 
+     * <p>These are the records linking a user to a learning object.
+     * 
+     * <p>They can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -985,6 +1237,12 @@ public class Lms {
 
     /**
      * List Assignments
+     * 
+     * <p>Retrieve a list of assignment type learning records.
+     * 
+     * <p>These are the records linking a user to a learning object.
+     * 
+     * <p>They can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -1000,6 +1258,12 @@ public class Lms {
     /**
      * Get Assignment
      * 
+     * <p>Retrieve an assignment type learning record by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
+     * 
      * @return The call builder
      */
     public LmsGetAssignmentRequestBuilder getAssignment() {
@@ -1008,6 +1272,12 @@ public class Lms {
 
     /**
      * Get Assignment
+     * 
+     * <p>Retrieve an assignment type learning record by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -1019,6 +1289,12 @@ public class Lms {
 
     /**
      * Get Assignment
+     * 
+     * <p>Retrieve an assignment type learning record by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options

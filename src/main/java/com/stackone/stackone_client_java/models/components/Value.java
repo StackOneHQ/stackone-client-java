@@ -91,7 +91,7 @@ public class Value {
             return false;
         }
         Value other = (Value) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class Value {
         return Utils.toString(Value.class,
                 "value", value);
     }
- 
+
 }
 

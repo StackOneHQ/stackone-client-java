@@ -35,21 +35,21 @@ public class CreateEmploymentApiModel {
     private JsonNullable<String> jobTitle;
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_rate")
     private JsonNullable<String> payRate;
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_period")
     private JsonNullable<? extends CreateEmploymentApiModelPayPeriod> payPeriod;
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_frequency")
@@ -215,7 +215,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     @JsonIgnore
     public JsonNullable<String> payRate() {
@@ -223,7 +223,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -232,7 +232,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -379,7 +379,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     public CreateEmploymentApiModel withPayRate(String payRate) {
         Utils.checkNotNull(payRate, "payRate");
@@ -388,7 +388,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     public CreateEmploymentApiModel withPayRate(JsonNullable<String> payRate) {
         Utils.checkNotNull(payRate, "payRate");
@@ -397,7 +397,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     public CreateEmploymentApiModel withPayPeriod(CreateEmploymentApiModelPayPeriod payPeriod) {
         Utils.checkNotNull(payPeriod, "payPeriod");
@@ -406,7 +406,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     public CreateEmploymentApiModel withPayPeriod(JsonNullable<? extends CreateEmploymentApiModelPayPeriod> payPeriod) {
         Utils.checkNotNull(payPeriod, "payPeriod");
@@ -415,7 +415,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     public CreateEmploymentApiModel withPayFrequency(CreateEmploymentApiModelPayFrequency payFrequency) {
         Utils.checkNotNull(payFrequency, "payFrequency");
@@ -424,7 +424,7 @@ public class CreateEmploymentApiModel {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     public CreateEmploymentApiModel withPayFrequency(JsonNullable<? extends CreateEmploymentApiModelPayFrequency> payFrequency) {
         Utils.checkNotNull(payFrequency, "payFrequency");
@@ -777,7 +777,7 @@ public class CreateEmploymentApiModel {
 
 
         /**
-         * The pay rate for the employee
+         * The amount of compensation for the employee
          */
         public Builder payRate(String payRate) {
             Utils.checkNotNull(payRate, "payRate");
@@ -786,7 +786,7 @@ public class CreateEmploymentApiModel {
         }
 
         /**
-         * The pay rate for the employee
+         * The amount of compensation for the employee
          */
         public Builder payRate(JsonNullable<String> payRate) {
             Utils.checkNotNull(payRate, "payRate");
@@ -796,7 +796,7 @@ public class CreateEmploymentApiModel {
 
 
         /**
-         * The pay period
+         * The time period over which the pay rate is calculated
          */
         public Builder payPeriod(CreateEmploymentApiModelPayPeriod payPeriod) {
             Utils.checkNotNull(payPeriod, "payPeriod");
@@ -805,7 +805,7 @@ public class CreateEmploymentApiModel {
         }
 
         /**
-         * The pay period
+         * The time period over which the pay rate is calculated
          */
         public Builder payPeriod(JsonNullable<? extends CreateEmploymentApiModelPayPeriod> payPeriod) {
             Utils.checkNotNull(payPeriod, "payPeriod");
@@ -815,7 +815,7 @@ public class CreateEmploymentApiModel {
 
 
         /**
-         * The pay frequency
+         * How often the employee is paid
          */
         public Builder payFrequency(CreateEmploymentApiModelPayFrequency payFrequency) {
             Utils.checkNotNull(payFrequency, "payFrequency");
@@ -824,7 +824,7 @@ public class CreateEmploymentApiModel {
         }
 
         /**
-         * The pay frequency
+         * How often the employee is paid
          */
         public Builder payFrequency(JsonNullable<? extends CreateEmploymentApiModelPayFrequency> payFrequency) {
             Utils.checkNotNull(payFrequency, "payFrequency");

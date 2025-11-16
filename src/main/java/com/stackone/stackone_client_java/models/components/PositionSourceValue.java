@@ -91,7 +91,7 @@ public class PositionSourceValue {
             return false;
         }
         PositionSourceValue other = (PositionSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class PositionSourceValue {
         return Utils.toString(PositionSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -71,7 +71,7 @@ public class IsUnlimited {
             return false;
         }
         IsUnlimited other = (IsUnlimited) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class IsUnlimited {
         return Utils.toString(IsUnlimited.class,
                 "value", value);
     }
- 
+
 }
 

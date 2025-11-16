@@ -86,7 +86,7 @@ public class CreateHRISBenefitSourceValue {
             return false;
         }
         CreateHRISBenefitSourceValue other = (CreateHRISBenefitSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class CreateHRISBenefitSourceValue {
         return Utils.toString(CreateHRISBenefitSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

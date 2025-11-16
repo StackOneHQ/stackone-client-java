@@ -91,7 +91,7 @@ public class CampaignStatusSourceValue {
             return false;
         }
         CampaignStatusSourceValue other = (CampaignStatusSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class CampaignStatusSourceValue {
         return Utils.toString(CampaignStatusSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

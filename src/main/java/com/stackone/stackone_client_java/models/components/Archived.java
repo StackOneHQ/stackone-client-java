@@ -66,7 +66,7 @@ public class Archived {
             return false;
         }
         Archived other = (Archived) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -89,6 +89,6 @@ public class Archived {
         return Utils.toString(Archived.class,
                 "value", value);
     }
- 
+
 }
 

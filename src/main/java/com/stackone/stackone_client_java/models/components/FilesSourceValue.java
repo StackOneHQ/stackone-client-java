@@ -86,7 +86,7 @@ public class FilesSourceValue {
             return false;
         }
         FilesSourceValue other = (FilesSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class FilesSourceValue {
         return Utils.toString(FilesSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

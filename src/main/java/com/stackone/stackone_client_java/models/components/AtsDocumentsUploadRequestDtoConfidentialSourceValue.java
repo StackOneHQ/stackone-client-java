@@ -86,7 +86,7 @@ public class AtsDocumentsUploadRequestDtoConfidentialSourceValue {
             return false;
         }
         AtsDocumentsUploadRequestDtoConfidentialSourceValue other = (AtsDocumentsUploadRequestDtoConfidentialSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class AtsDocumentsUploadRequestDtoConfidentialSourceValue {
         return Utils.toString(AtsDocumentsUploadRequestDtoConfidentialSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

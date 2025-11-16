@@ -71,7 +71,7 @@ public class Required {
             return false;
         }
         Required other = (Required) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class Required {
         return Utils.toString(Required.class,
                 "value", value);
     }
- 
+
 }
 

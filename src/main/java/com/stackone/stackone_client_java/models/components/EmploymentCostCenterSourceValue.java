@@ -86,7 +86,7 @@ public class EmploymentCostCenterSourceValue {
             return false;
         }
         EmploymentCostCenterSourceValue other = (EmploymentCostCenterSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmploymentCostCenterSourceValue {
         return Utils.toString(EmploymentCostCenterSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

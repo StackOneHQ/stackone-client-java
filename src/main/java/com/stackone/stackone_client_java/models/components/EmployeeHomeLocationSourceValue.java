@@ -86,7 +86,7 @@ public class EmployeeHomeLocationSourceValue {
             return false;
         }
         EmployeeHomeLocationSourceValue other = (EmployeeHomeLocationSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmployeeHomeLocationSourceValue {
         return Utils.toString(EmployeeHomeLocationSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

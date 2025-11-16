@@ -66,7 +66,7 @@ public class JobPostingQuestionnaireInternal {
             return false;
         }
         JobPostingQuestionnaireInternal other = (JobPostingQuestionnaireInternal) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -89,6 +89,6 @@ public class JobPostingQuestionnaireInternal {
         return Utils.toString(JobPostingQuestionnaireInternal.class,
                 "value", value);
     }
- 
+
 }
 

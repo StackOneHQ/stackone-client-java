@@ -86,7 +86,7 @@ public class HRISCostCenterSourceValue {
             return false;
         }
         HRISCostCenterSourceValue other = (HRISCostCenterSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HRISCostCenterSourceValue {
         return Utils.toString(HRISCostCenterSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

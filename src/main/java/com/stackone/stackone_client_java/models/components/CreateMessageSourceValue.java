@@ -91,7 +91,7 @@ public class CreateMessageSourceValue {
             return false;
         }
         CreateMessageSourceValue other = (CreateMessageSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class CreateMessageSourceValue {
         return Utils.toString(CreateMessageSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -86,7 +86,7 @@ public class WorkEligibilitySourceValue {
             return false;
         }
         WorkEligibilitySourceValue other = (WorkEligibilitySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class WorkEligibilitySourceValue {
         return Utils.toString(WorkEligibilitySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

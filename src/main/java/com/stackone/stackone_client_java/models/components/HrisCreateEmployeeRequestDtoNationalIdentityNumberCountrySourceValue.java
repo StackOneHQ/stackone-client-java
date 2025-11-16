@@ -86,7 +86,7 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumberCountrySourceValu
             return false;
         }
         HrisCreateEmployeeRequestDtoNationalIdentityNumberCountrySourceValue other = (HrisCreateEmployeeRequestDtoNationalIdentityNumberCountrySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisCreateEmployeeRequestDtoNationalIdentityNumberCountrySourceValu
         return Utils.toString(HrisCreateEmployeeRequestDtoNationalIdentityNumberCountrySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

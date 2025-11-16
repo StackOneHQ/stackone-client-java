@@ -91,7 +91,7 @@ public class PushMessagesSourceValue {
             return false;
         }
         PushMessagesSourceValue other = (PushMessagesSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class PushMessagesSourceValue {
         return Utils.toString(PushMessagesSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

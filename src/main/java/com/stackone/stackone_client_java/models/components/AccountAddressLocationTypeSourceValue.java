@@ -91,7 +91,7 @@ public class AccountAddressLocationTypeSourceValue {
             return false;
         }
         AccountAddressLocationTypeSourceValue other = (AccountAddressLocationTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AccountAddressLocationTypeSourceValue {
         return Utils.toString(AccountAddressLocationTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

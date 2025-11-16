@@ -86,7 +86,7 @@ public class IamUserAvatarFileFormatSourceValue {
             return false;
         }
         IamUserAvatarFileFormatSourceValue other = (IamUserAvatarFileFormatSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class IamUserAvatarFileFormatSourceValue {
         return Utils.toString(IamUserAvatarFileFormatSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

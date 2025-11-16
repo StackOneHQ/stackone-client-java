@@ -93,7 +93,7 @@ public class CreateSkillsApiModelLevelSourceValue {
             return false;
         }
         CreateSkillsApiModelLevelSourceValue other = (CreateSkillsApiModelLevelSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -119,6 +119,6 @@ public class CreateSkillsApiModelLevelSourceValue {
         return Utils.toString(CreateSkillsApiModelLevelSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

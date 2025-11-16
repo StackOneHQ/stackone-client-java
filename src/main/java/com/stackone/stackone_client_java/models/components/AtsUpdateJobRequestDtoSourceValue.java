@@ -91,7 +91,7 @@ public class AtsUpdateJobRequestDtoSourceValue {
             return false;
         }
         AtsUpdateJobRequestDtoSourceValue other = (AtsUpdateJobRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AtsUpdateJobRequestDtoSourceValue {
         return Utils.toString(AtsUpdateJobRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

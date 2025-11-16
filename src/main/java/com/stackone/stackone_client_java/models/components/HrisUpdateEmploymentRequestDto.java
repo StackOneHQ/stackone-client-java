@@ -35,21 +35,21 @@ public class HrisUpdateEmploymentRequestDto {
     private JsonNullable<String> jobTitle;
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_rate")
     private JsonNullable<String> payRate;
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_period")
     private JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayPeriod> payPeriod;
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_frequency")
@@ -215,7 +215,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     @JsonIgnore
     public JsonNullable<String> payRate() {
@@ -223,7 +223,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -232,7 +232,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -380,7 +380,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     public HrisUpdateEmploymentRequestDto withPayRate(String payRate) {
         Utils.checkNotNull(payRate, "payRate");
@@ -389,7 +389,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     public HrisUpdateEmploymentRequestDto withPayRate(JsonNullable<String> payRate) {
         Utils.checkNotNull(payRate, "payRate");
@@ -398,7 +398,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     public HrisUpdateEmploymentRequestDto withPayPeriod(HrisUpdateEmploymentRequestDtoPayPeriod payPeriod) {
         Utils.checkNotNull(payPeriod, "payPeriod");
@@ -407,7 +407,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     public HrisUpdateEmploymentRequestDto withPayPeriod(JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayPeriod> payPeriod) {
         Utils.checkNotNull(payPeriod, "payPeriod");
@@ -416,7 +416,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     public HrisUpdateEmploymentRequestDto withPayFrequency(HrisUpdateEmploymentRequestDtoPayFrequency payFrequency) {
         Utils.checkNotNull(payFrequency, "payFrequency");
@@ -425,7 +425,7 @@ public class HrisUpdateEmploymentRequestDto {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     public HrisUpdateEmploymentRequestDto withPayFrequency(JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayFrequency> payFrequency) {
         Utils.checkNotNull(payFrequency, "payFrequency");
@@ -778,7 +778,7 @@ public class HrisUpdateEmploymentRequestDto {
 
 
         /**
-         * The pay rate for the employee
+         * The amount of compensation for the employee
          */
         public Builder payRate(String payRate) {
             Utils.checkNotNull(payRate, "payRate");
@@ -787,7 +787,7 @@ public class HrisUpdateEmploymentRequestDto {
         }
 
         /**
-         * The pay rate for the employee
+         * The amount of compensation for the employee
          */
         public Builder payRate(JsonNullable<String> payRate) {
             Utils.checkNotNull(payRate, "payRate");
@@ -797,7 +797,7 @@ public class HrisUpdateEmploymentRequestDto {
 
 
         /**
-         * The pay period
+         * The time period over which the pay rate is calculated
          */
         public Builder payPeriod(HrisUpdateEmploymentRequestDtoPayPeriod payPeriod) {
             Utils.checkNotNull(payPeriod, "payPeriod");
@@ -806,7 +806,7 @@ public class HrisUpdateEmploymentRequestDto {
         }
 
         /**
-         * The pay period
+         * The time period over which the pay rate is calculated
          */
         public Builder payPeriod(JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayPeriod> payPeriod) {
             Utils.checkNotNull(payPeriod, "payPeriod");
@@ -816,7 +816,7 @@ public class HrisUpdateEmploymentRequestDto {
 
 
         /**
-         * The pay frequency
+         * How often the employee is paid
          */
         public Builder payFrequency(HrisUpdateEmploymentRequestDtoPayFrequency payFrequency) {
             Utils.checkNotNull(payFrequency, "payFrequency");
@@ -825,7 +825,7 @@ public class HrisUpdateEmploymentRequestDto {
         }
 
         /**
-         * The pay frequency
+         * How often the employee is paid
          */
         public Builder payFrequency(JsonNullable<? extends HrisUpdateEmploymentRequestDtoPayFrequency> payFrequency) {
             Utils.checkNotNull(payFrequency, "payFrequency");

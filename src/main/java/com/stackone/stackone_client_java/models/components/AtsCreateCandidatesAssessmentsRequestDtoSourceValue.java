@@ -91,7 +91,7 @@ public class AtsCreateCandidatesAssessmentsRequestDtoSourceValue {
             return false;
         }
         AtsCreateCandidatesAssessmentsRequestDtoSourceValue other = (AtsCreateCandidatesAssessmentsRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AtsCreateCandidatesAssessmentsRequestDtoSourceValue {
         return Utils.toString(AtsCreateCandidatesAssessmentsRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

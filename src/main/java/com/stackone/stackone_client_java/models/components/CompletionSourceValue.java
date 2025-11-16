@@ -91,7 +91,7 @@ public class CompletionSourceValue {
             return false;
         }
         CompletionSourceValue other = (CompletionSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class CompletionSourceValue {
         return Utils.toString(CompletionSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

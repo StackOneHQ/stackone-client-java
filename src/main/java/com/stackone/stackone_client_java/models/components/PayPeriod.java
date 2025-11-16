@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * PayPeriod
  * 
- * <p>The pay period
+ * <p>The time period over which the pay rate is calculated
  */
 public class PayPeriod {
     /**

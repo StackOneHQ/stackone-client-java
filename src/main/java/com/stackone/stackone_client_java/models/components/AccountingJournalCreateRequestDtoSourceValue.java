@@ -86,7 +86,7 @@ public class AccountingJournalCreateRequestDtoSourceValue {
             return false;
         }
         AccountingJournalCreateRequestDtoSourceValue other = (AccountingJournalCreateRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class AccountingJournalCreateRequestDtoSourceValue {
         return Utils.toString(AccountingJournalCreateRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

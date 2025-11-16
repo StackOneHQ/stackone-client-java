@@ -91,7 +91,7 @@ public class InterviewPartSourceValue {
             return false;
         }
         InterviewPartSourceValue other = (InterviewPartSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class InterviewPartSourceValue {
         return Utils.toString(InterviewPartSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

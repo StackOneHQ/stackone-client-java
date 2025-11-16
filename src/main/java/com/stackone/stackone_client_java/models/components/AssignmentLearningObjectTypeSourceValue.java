@@ -91,7 +91,7 @@ public class AssignmentLearningObjectTypeSourceValue {
             return false;
         }
         AssignmentLearningObjectTypeSourceValue other = (AssignmentLearningObjectTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AssignmentLearningObjectTypeSourceValue {
         return Utils.toString(AssignmentLearningObjectTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

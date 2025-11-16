@@ -91,7 +91,7 @@ public class ApplicationSourceValue {
             return false;
         }
         ApplicationSourceValue other = (ApplicationSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class ApplicationSourceValue {
         return Utils.toString(ApplicationSourceValue.class,
                 "value", value);
     }
- 
+
 }
 
