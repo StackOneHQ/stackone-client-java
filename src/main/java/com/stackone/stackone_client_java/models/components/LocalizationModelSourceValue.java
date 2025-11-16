@@ -93,7 +93,7 @@ public class LocalizationModelSourceValue {
             return false;
         }
         LocalizationModelSourceValue other = (LocalizationModelSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -119,6 +119,6 @@ public class LocalizationModelSourceValue {
         return Utils.toString(LocalizationModelSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -86,7 +86,7 @@ public class IamPermissionSourceValue {
             return false;
         }
         IamPermissionSourceValue other = (IamPermissionSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class IamPermissionSourceValue {
         return Utils.toString(IamPermissionSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

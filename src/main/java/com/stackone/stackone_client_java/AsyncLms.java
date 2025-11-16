@@ -136,6 +136,11 @@ public class AsyncLms {
     /**
      * List Courses
      * 
+     * <p>Retrieve a list of course type learning objects.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
+     * 
      * @return The async call builder
      */
     public LmsListCoursesRequestBuilder listCourses() {
@@ -144,6 +149,11 @@ public class AsyncLms {
 
     /**
      * List Courses
+     * 
+     * <p>Retrieve a list of course type learning objects.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsListCoursesResponse>} - The async response
@@ -154,6 +164,11 @@ public class AsyncLms {
 
     /**
      * List Courses
+     * 
+     * <p>Retrieve a list of course type learning objects.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -172,6 +187,11 @@ public class AsyncLms {
     /**
      * Get Course
      * 
+     * <p>Retrieve a course type learning object by its identifier.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
+     * 
      * @return The async call builder
      */
     public LmsGetCourseRequestBuilder getCourse() {
@@ -180,6 +200,11 @@ public class AsyncLms {
 
     /**
      * Get Course
+     * 
+     * <p>Retrieve a course type learning object by its identifier.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsGetCourseResponse>} - The async response
@@ -190,6 +215,11 @@ public class AsyncLms {
 
     /**
      * Get Course
+     * 
+     * <p>Retrieve a course type learning object by its identifier.
+     * 
+     * <p>These are collections of content type learning objects that are grouped together for a specific
+     * learning purpose.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -208,6 +238,12 @@ public class AsyncLms {
     /**
      * List User Assignments
      * 
+     * <p>Retrieve a list of assignment type learning records for a user.
+     * 
+     * <p>These are the records linking a user to learning objects.
+     * 
+     * <p>They can be pending, in progress, or completed.
+     * 
      * @return The async call builder
      */
     public LmsListUserAssignmentsRequestBuilder listUserAssignments() {
@@ -216,6 +252,12 @@ public class AsyncLms {
 
     /**
      * List User Assignments
+     * 
+     * <p>Retrieve a list of assignment type learning records for a user.
+     * 
+     * <p>These are the records linking a user to learning objects.
+     * 
+     * <p>They can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsListUserAssignmentsResponse>} - The async response
@@ -226,6 +268,12 @@ public class AsyncLms {
 
     /**
      * List User Assignments
+     * 
+     * <p>Retrieve a list of assignment type learning records for a user.
+     * 
+     * <p>These are the records linking a user to learning objects.
+     * 
+     * <p>They can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -244,6 +292,12 @@ public class AsyncLms {
     /**
      * Create User Assignment
      * 
+     * <p>Create an assignment type learning record for a user.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending or in progress.
+     * 
      * @return The async call builder
      */
     public LmsCreateUserAssignmentRequestBuilder createUserAssignment() {
@@ -252,6 +306,12 @@ public class AsyncLms {
 
     /**
      * Create User Assignment
+     * 
+     * <p>Create an assignment type learning record for a user.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending or in progress.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -268,6 +328,12 @@ public class AsyncLms {
 
     /**
      * Create User Assignment
+     * 
+     * <p>Create an assignment type learning record for a user.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending or in progress.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -297,6 +363,12 @@ public class AsyncLms {
     /**
      * Get User Assignment
      * 
+     * <p>Retrieve an assignment type learning record for a user by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
+     * 
      * @return The async call builder
      */
     public LmsGetUserAssignmentRequestBuilder getUserAssignment() {
@@ -305,6 +377,12 @@ public class AsyncLms {
 
     /**
      * Get User Assignment
+     * 
+     * <p>Retrieve an assignment type learning record for a user by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsGetUserAssignmentResponse>} - The async response
@@ -315,6 +393,12 @@ public class AsyncLms {
 
     /**
      * Get User Assignment
+     * 
+     * <p>Retrieve an assignment type learning record for a user by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -331,7 +415,13 @@ public class AsyncLms {
 
 
     /**
-     * Batch Upsert Content
+     * Batch Upsert External Linking Learning Objects
+     * 
+     * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
+     * for consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @return The async call builder
      */
@@ -340,7 +430,13 @@ public class AsyncLms {
     }
 
     /**
-     * Batch Upsert Content
+     * Batch Upsert External Linking Learning Objects
+     * 
+     * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
+     * for consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param lmsBatchUpsertContentRequestDto 
@@ -351,7 +447,13 @@ public class AsyncLms {
     }
 
     /**
-     * Batch Upsert Content
+     * Batch Upsert External Linking Learning Objects
+     * 
+     * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
+     * for consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param lmsBatchUpsertContentRequestDto 
@@ -379,6 +481,12 @@ public class AsyncLms {
     /**
      * List Content
      * 
+     * <p>Retrieve a list of content type learning objects.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
+     * 
      * @return The async call builder
      */
     public LmsListContentRequestBuilder listContent() {
@@ -387,6 +495,12 @@ public class AsyncLms {
 
     /**
      * List Content
+     * 
+     * <p>Retrieve a list of content type learning objects.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsListContentResponse>} - The async response
@@ -397,6 +511,12 @@ public class AsyncLms {
 
     /**
      * List Content
+     * 
+     * <p>Retrieve a list of content type learning objects.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -413,7 +533,13 @@ public class AsyncLms {
 
 
     /**
-     * Upsert Content
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @return The async call builder
      */
@@ -422,7 +548,13 @@ public class AsyncLms {
     }
 
     /**
-     * Upsert Content
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param lmsUpsertContentRequestDto 
@@ -433,7 +565,13 @@ public class AsyncLms {
     }
 
     /**
-     * Upsert Content
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param lmsUpsertContentRequestDto 
@@ -461,6 +599,12 @@ public class AsyncLms {
     /**
      * Get Content
      * 
+     * <p>Retrieve a content type learning object by its identifier.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
+     * 
      * @return The async call builder
      */
     public LmsGetContentRequestBuilder getContent() {
@@ -469,6 +613,12 @@ public class AsyncLms {
 
     /**
      * Get Content
+     * 
+     * <p>Retrieve a content type learning object by its identifier.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsGetContentResponse>} - The async response
@@ -479,6 +629,12 @@ public class AsyncLms {
 
     /**
      * Get Content
+     * 
+     * <p>Retrieve a content type learning object by its identifier.
+     * 
+     * <p>These are the most granular learning objects (e.g. video, document, podcast) on a platform.
+     * 
+     * <p>Only content objects for which the platform supports progress and completion tracking are returned.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -495,7 +651,13 @@ public class AsyncLms {
 
 
     /**
-     * Update Content
+     * Update External Linking Learning Objects
+     * 
+     * <p>Update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @return The async call builder
      */
@@ -504,7 +666,13 @@ public class AsyncLms {
     }
 
     /**
-     * Update Content
+     * Update External Linking Learning Objects
+     * 
+     * <p>Update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -520,7 +688,13 @@ public class AsyncLms {
     }
 
     /**
-     * Update Content
+     * Update External Linking Learning Objects
+     * 
+     * <p>Update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -550,6 +724,10 @@ public class AsyncLms {
     /**
      * List User Completions
      * 
+     * <p>Retrieve a list of completed learning records for a user.
+     * 
+     * <p>These are the records of a user completing learning objects.
+     * 
      * @return The async call builder
      */
     public LmsListUserCompletionsRequestBuilder listUserCompletions() {
@@ -558,6 +736,10 @@ public class AsyncLms {
 
     /**
      * List User Completions
+     * 
+     * <p>Retrieve a list of completed learning records for a user.
+     * 
+     * <p>These are the records of a user completing learning objects.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsListUserCompletionsResponse>} - The async response
@@ -568,6 +750,10 @@ public class AsyncLms {
 
     /**
      * List User Completions
+     * 
+     * <p>Retrieve a list of completed learning records for a user.
+     * 
+     * <p>These are the records of a user completing learning objects.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -586,6 +772,10 @@ public class AsyncLms {
     /**
      * Create User Completion
      * 
+     * <p>Create a completed learning record for a user.
+     * 
+     * <p>This is the record of a user completing a learning object.
+     * 
      * @return The async call builder
      */
     public LmsCreateUserCompletionRequestBuilder createUserCompletion() {
@@ -594,6 +784,10 @@ public class AsyncLms {
 
     /**
      * Create User Completion
+     * 
+     * <p>Create a completed learning record for a user.
+     * 
+     * <p>This is the record of a user completing a learning object.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -610,6 +804,10 @@ public class AsyncLms {
 
     /**
      * Create User Completion
+     * 
+     * <p>Create a completed learning record for a user.
+     * 
+     * <p>This is the record of a user completing a learning object.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -639,6 +837,10 @@ public class AsyncLms {
     /**
      * Get User Completion
      * 
+     * <p>Retrieve a completed learning record for a user by its identifier.
+     * 
+     * <p>This is the record of a user completing a learning object.
+     * 
      * @return The async call builder
      */
     public LmsGetUserCompletionRequestBuilder getUserCompletion() {
@@ -647,6 +849,10 @@ public class AsyncLms {
 
     /**
      * Get User Completion
+     * 
+     * <p>Retrieve a completed learning record for a user by its identifier.
+     * 
+     * <p>This is the record of a user completing a learning object.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsGetUserCompletionResponse>} - The async response
@@ -657,6 +863,10 @@ public class AsyncLms {
 
     /**
      * Get User Completion
+     * 
+     * <p>Retrieve a completed learning record for a user by its identifier.
+     * 
+     * <p>This is the record of a user completing a learning object.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -675,6 +885,10 @@ public class AsyncLms {
     /**
      * Delete User Completion
      * 
+     * <p>Delete a completion type learning record for a user.
+     * 
+     * <p>This is a record of a user completing a learning object.
+     * 
      * @return The async call builder
      */
     public LmsDeleteUserCompletionRequestBuilder deleteUserCompletion() {
@@ -683,6 +897,10 @@ public class AsyncLms {
 
     /**
      * Delete User Completion
+     * 
+     * <p>Delete a completion type learning record for a user.
+     * 
+     * <p>This is a record of a user completing a learning object.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -699,6 +917,10 @@ public class AsyncLms {
 
     /**
      * Delete User Completion
+     * 
+     * <p>Delete a completion type learning record for a user.
+     * 
+     * <p>This is a record of a user completing a learning object.
      * 
      * @param xAccountId The account identifier
      * @param id 
@@ -728,6 +950,9 @@ public class AsyncLms {
     /**
      * List Completions
      * 
+     * <p>Retrieve a list of completed learning records. These are the records of a user completing learning
+     * objects.
+     * 
      * @return The async call builder
      */
     public LmsListCompletionsRequestBuilder listCompletions() {
@@ -736,6 +961,9 @@ public class AsyncLms {
 
     /**
      * List Completions
+     * 
+     * <p>Retrieve a list of completed learning records. These are the records of a user completing learning
+     * objects.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsListCompletionsResponse>} - The async response
@@ -746,6 +974,9 @@ public class AsyncLms {
 
     /**
      * List Completions
+     * 
+     * <p>Retrieve a list of completed learning records. These are the records of a user completing learning
+     * objects.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -764,6 +995,9 @@ public class AsyncLms {
     /**
      * Get Completion
      * 
+     * <p>Retrieve a completed learning record by its identifier. This is the record of a user completing a
+     * learning object.
+     * 
      * @return The async call builder
      */
     public LmsGetCompletionRequestBuilder getCompletion() {
@@ -772,6 +1006,9 @@ public class AsyncLms {
 
     /**
      * Get Completion
+     * 
+     * <p>Retrieve a completed learning record by its identifier. This is the record of a user completing a
+     * learning object.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsGetCompletionResponse>} - The async response
@@ -782,6 +1019,9 @@ public class AsyncLms {
 
     /**
      * Get Completion
+     * 
+     * <p>Retrieve a completed learning record by its identifier. This is the record of a user completing a
+     * learning object.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -1016,6 +1256,12 @@ public class AsyncLms {
     /**
      * List Assignments
      * 
+     * <p>Retrieve a list of assignment type learning records.
+     * 
+     * <p>These are the records linking a user to a learning object.
+     * 
+     * <p>They can be pending, in progress, or completed.
+     * 
      * @return The async call builder
      */
     public LmsListAssignmentsRequestBuilder listAssignments() {
@@ -1024,6 +1270,12 @@ public class AsyncLms {
 
     /**
      * List Assignments
+     * 
+     * <p>Retrieve a list of assignment type learning records.
+     * 
+     * <p>These are the records linking a user to a learning object.
+     * 
+     * <p>They can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsListAssignmentsResponse>} - The async response
@@ -1034,6 +1286,12 @@ public class AsyncLms {
 
     /**
      * List Assignments
+     * 
+     * <p>Retrieve a list of assignment type learning records.
+     * 
+     * <p>These are the records linking a user to a learning object.
+     * 
+     * <p>They can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -1052,6 +1310,12 @@ public class AsyncLms {
     /**
      * Get Assignment
      * 
+     * <p>Retrieve an assignment type learning record by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
+     * 
      * @return The async call builder
      */
     public LmsGetAssignmentRequestBuilder getAssignment() {
@@ -1060,6 +1324,12 @@ public class AsyncLms {
 
     /**
      * Get Assignment
+     * 
+     * <p>Retrieve an assignment type learning record by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<LmsGetAssignmentResponse>} - The async response
@@ -1070,6 +1340,12 @@ public class AsyncLms {
 
     /**
      * Get Assignment
+     * 
+     * <p>Retrieve an assignment type learning record by its identifier.
+     * 
+     * <p>This is the record linking a user to a learning object.
+     * 
+     * <p>It can be pending, in progress, or completed.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options

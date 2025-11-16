@@ -86,7 +86,7 @@ public class HrisCreateEmployeeRequestDtoPreferredLanguageSourceValue {
             return false;
         }
         HrisCreateEmployeeRequestDtoPreferredLanguageSourceValue other = (HrisCreateEmployeeRequestDtoPreferredLanguageSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisCreateEmployeeRequestDtoPreferredLanguageSourceValue {
         return Utils.toString(HrisCreateEmployeeRequestDtoPreferredLanguageSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

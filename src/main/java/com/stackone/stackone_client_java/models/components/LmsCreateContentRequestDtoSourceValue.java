@@ -92,7 +92,7 @@ public class LmsCreateContentRequestDtoSourceValue {
             return false;
         }
         LmsCreateContentRequestDtoSourceValue other = (LmsCreateContentRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -118,6 +118,6 @@ public class LmsCreateContentRequestDtoSourceValue {
         return Utils.toString(LmsCreateContentRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

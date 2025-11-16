@@ -47,6 +47,9 @@ public class Status {
 
     public static final Status ACTIVE = new Status("active");
     public static final Status INACTIVE = new Status("inactive");
+    public static final Status SUSPENDED = new Status("suspended");
+    public static final Status ARCHIVED = new Status("archived");
+    public static final Status EXPIRED = new Status("expired");
     public static final Status ERROR = new Status("error");
 
     // This map will grow whenever a Color gets created with a new
@@ -121,6 +124,9 @@ public class Status {
         Map<String, Status> map = new LinkedHashMap<>();
         map.put("active", ACTIVE);
         map.put("inactive", INACTIVE);
+        map.put("suspended", SUSPENDED);
+        map.put("archived", ARCHIVED);
+        map.put("expired", EXPIRED);
         map.put("error", ERROR);
         return map;
     }
@@ -129,6 +135,9 @@ public class Status {
         Map<String, StatusEnum> map = new HashMap<>();
         map.put("active", StatusEnum.ACTIVE);
         map.put("inactive", StatusEnum.INACTIVE);
+        map.put("suspended", StatusEnum.SUSPENDED);
+        map.put("archived", StatusEnum.ARCHIVED);
+        map.put("expired", StatusEnum.EXPIRED);
         map.put("error", StatusEnum.ERROR);
         return map;
     }
@@ -167,6 +176,9 @@ public class Status {
 
         ACTIVE("active"),
         INACTIVE("inactive"),
+        SUSPENDED("suspended"),
+        ARCHIVED("archived"),
+        EXPIRED("expired"),
         ERROR("error"),;
 
         private final String value;

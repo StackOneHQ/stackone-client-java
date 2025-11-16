@@ -86,7 +86,7 @@ public class HRISBankDetailsAccountTypeSourceValue {
             return false;
         }
         HRISBankDetailsAccountTypeSourceValue other = (HRISBankDetailsAccountTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HRISBankDetailsAccountTypeSourceValue {
         return Utils.toString(HRISBankDetailsAccountTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

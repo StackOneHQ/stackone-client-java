@@ -86,7 +86,7 @@ public class EmploymentDivisionSourceValue {
             return false;
         }
         EmploymentDivisionSourceValue other = (EmploymentDivisionSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmploymentDivisionSourceValue {
         return Utils.toString(EmploymentDivisionSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

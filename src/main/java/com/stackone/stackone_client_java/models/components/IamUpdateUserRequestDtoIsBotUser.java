@@ -71,7 +71,7 @@ public class IamUpdateUserRequestDtoIsBotUser {
             return false;
         }
         IamUpdateUserRequestDtoIsBotUser other = (IamUpdateUserRequestDtoIsBotUser) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class IamUpdateUserRequestDtoIsBotUser {
         return Utils.toString(IamUpdateUserRequestDtoIsBotUser.class,
                 "value", value);
     }
- 
+
 }
 

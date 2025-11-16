@@ -86,7 +86,7 @@ public class TaskStatusSourceValue {
             return false;
         }
         TaskStatusSourceValue other = (TaskStatusSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class TaskStatusSourceValue {
         return Utils.toString(TaskStatusSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

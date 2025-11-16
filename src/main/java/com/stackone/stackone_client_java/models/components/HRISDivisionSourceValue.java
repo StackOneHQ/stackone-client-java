@@ -86,7 +86,7 @@ public class HRISDivisionSourceValue {
             return false;
         }
         HRISDivisionSourceValue other = (HRISDivisionSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HRISDivisionSourceValue {
         return Utils.toString(HRISDivisionSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

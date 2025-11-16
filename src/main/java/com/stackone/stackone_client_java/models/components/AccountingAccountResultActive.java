@@ -71,7 +71,7 @@ public class AccountingAccountResultActive {
             return false;
         }
         AccountingAccountResultActive other = (AccountingAccountResultActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class AccountingAccountResultActive {
         return Utils.toString(AccountingAccountResultActive.class,
                 "value", value);
     }
- 
+
 }
 

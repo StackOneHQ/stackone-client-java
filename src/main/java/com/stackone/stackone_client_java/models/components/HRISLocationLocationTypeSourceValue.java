@@ -91,7 +91,7 @@ public class HRISLocationLocationTypeSourceValue {
             return false;
         }
         HRISLocationLocationTypeSourceValue other = (HRISLocationLocationTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class HRISLocationLocationTypeSourceValue {
         return Utils.toString(HRISLocationLocationTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

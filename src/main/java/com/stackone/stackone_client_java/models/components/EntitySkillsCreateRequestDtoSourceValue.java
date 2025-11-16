@@ -86,7 +86,7 @@ public class EntitySkillsCreateRequestDtoSourceValue {
             return false;
         }
         EntitySkillsCreateRequestDtoSourceValue other = (EntitySkillsCreateRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EntitySkillsCreateRequestDtoSourceValue {
         return Utils.toString(EntitySkillsCreateRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

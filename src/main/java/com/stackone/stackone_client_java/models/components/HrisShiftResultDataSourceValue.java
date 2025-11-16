@@ -86,7 +86,7 @@ public class HrisShiftResultDataSourceValue {
             return false;
         }
         HrisShiftResultDataSourceValue other = (HrisShiftResultDataSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisShiftResultDataSourceValue {
         return Utils.toString(HrisShiftResultDataSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -86,7 +86,7 @@ public class HRISTeamSourceValue {
             return false;
         }
         HRISTeamSourceValue other = (HRISTeamSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HRISTeamSourceValue {
         return Utils.toString(HRISTeamSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

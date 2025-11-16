@@ -86,7 +86,7 @@ public class HRISBankDetailsSourceValue {
             return false;
         }
         HRISBankDetailsSourceValue other = (HRISBankDetailsSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HRISBankDetailsSourceValue {
         return Utils.toString(HRISBankDetailsSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -91,7 +91,7 @@ public class ListSourceValue {
             return false;
         }
         ListSourceValue other = (ListSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class ListSourceValue {
         return Utils.toString(ListSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

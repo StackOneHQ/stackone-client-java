@@ -86,7 +86,7 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue {
             return false;
         }
         HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue other = (HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue {
         return Utils.toString(HrisUpdateEmployeeRequestDtoMaritalStatusSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

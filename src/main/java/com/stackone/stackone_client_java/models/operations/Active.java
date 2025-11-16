@@ -71,7 +71,7 @@ public class Active {
             return false;
         }
         Active other = (Active) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class Active {
         return Utils.toString(Active.class,
                 "value", value);
     }
- 
+
 }
 

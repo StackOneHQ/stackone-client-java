@@ -91,7 +91,7 @@ public class LmsCreateAssignmentRequestDtoSourceValue {
             return false;
         }
         LmsCreateAssignmentRequestDtoSourceValue other = (LmsCreateAssignmentRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class LmsCreateAssignmentRequestDtoSourceValue {
         return Utils.toString(LmsCreateAssignmentRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

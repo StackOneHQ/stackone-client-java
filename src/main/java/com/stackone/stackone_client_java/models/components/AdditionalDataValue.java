@@ -72,7 +72,7 @@ public class AdditionalDataValue {
             return false;
         }
         AdditionalDataValue other = (AdditionalDataValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -95,6 +95,6 @@ public class AdditionalDataValue {
         return Utils.toString(AdditionalDataValue.class,
                 "value", value);
     }
- 
+
 }
 

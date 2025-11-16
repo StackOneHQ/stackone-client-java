@@ -86,7 +86,7 @@ public class EmployeeEthnicitySourceValue {
             return false;
         }
         EmployeeEthnicitySourceValue other = (EmployeeEthnicitySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmployeeEthnicitySourceValue {
         return Utils.toString(EmployeeEthnicitySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

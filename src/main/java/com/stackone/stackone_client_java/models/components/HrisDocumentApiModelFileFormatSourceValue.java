@@ -86,7 +86,7 @@ public class HrisDocumentApiModelFileFormatSourceValue {
             return false;
         }
         HrisDocumentApiModelFileFormatSourceValue other = (HrisDocumentApiModelFileFormatSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisDocumentApiModelFileFormatSourceValue {
         return Utils.toString(HrisDocumentApiModelFileFormatSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -86,7 +86,7 @@ public class IamRoleSourceValue {
             return false;
         }
         IamRoleSourceValue other = (IamRoleSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class IamRoleSourceValue {
         return Utils.toString(IamRoleSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

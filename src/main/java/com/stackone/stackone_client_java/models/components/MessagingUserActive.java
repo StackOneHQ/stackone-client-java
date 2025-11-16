@@ -71,7 +71,7 @@ public class MessagingUserActive {
             return false;
         }
         MessagingUserActive other = (MessagingUserActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class MessagingUserActive {
         return Utils.toString(MessagingUserActive.class,
                 "value", value);
     }
- 
+
 }
 

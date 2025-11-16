@@ -86,7 +86,7 @@ public class EntitySkillsCreateRequestDtoMinimumProficiencySourceValue {
             return false;
         }
         EntitySkillsCreateRequestDtoMinimumProficiencySourceValue other = (EntitySkillsCreateRequestDtoMinimumProficiencySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EntitySkillsCreateRequestDtoMinimumProficiencySourceValue {
         return Utils.toString(EntitySkillsCreateRequestDtoMinimumProficiencySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

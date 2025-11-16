@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * HrisUpdateEmploymentRequestDtoPayFrequency
  * 
- * <p>The pay frequency
+ * <p>How often the employee is paid
  */
 public class HrisUpdateEmploymentRequestDtoPayFrequency {
     /**

@@ -71,7 +71,7 @@ public class CourseActive {
             return false;
         }
         CourseActive other = (CourseActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class CourseActive {
         return Utils.toString(CourseActive.class,
                 "value", value);
     }
- 
+
 }
 

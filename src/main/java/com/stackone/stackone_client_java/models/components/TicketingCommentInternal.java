@@ -71,7 +71,7 @@ public class TicketingCommentInternal {
             return false;
         }
         TicketingCommentInternal other = (TicketingCommentInternal) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class TicketingCommentInternal {
         return Utils.toString(TicketingCommentInternal.class,
                 "value", value);
     }
- 
+
 }
 

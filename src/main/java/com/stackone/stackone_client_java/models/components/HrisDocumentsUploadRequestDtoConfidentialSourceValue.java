@@ -86,7 +86,7 @@ public class HrisDocumentsUploadRequestDtoConfidentialSourceValue {
             return false;
         }
         HrisDocumentsUploadRequestDtoConfidentialSourceValue other = (HrisDocumentsUploadRequestDtoConfidentialSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisDocumentsUploadRequestDtoConfidentialSourceValue {
         return Utils.toString(HrisDocumentsUploadRequestDtoConfidentialSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

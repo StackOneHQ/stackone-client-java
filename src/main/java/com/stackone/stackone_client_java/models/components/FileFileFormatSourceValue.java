@@ -86,7 +86,7 @@ public class FileFileFormatSourceValue {
             return false;
         }
         FileFileFormatSourceValue other = (FileFileFormatSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class FileFileFormatSourceValue {
         return Utils.toString(FileFileFormatSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

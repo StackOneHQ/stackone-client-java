@@ -71,7 +71,7 @@ public class FoldersHasContent {
             return false;
         }
         FoldersHasContent other = (FoldersHasContent) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class FoldersHasContent {
         return Utils.toString(FoldersHasContent.class,
                 "value", value);
     }
- 
+
 }
 

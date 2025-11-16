@@ -91,7 +91,7 @@ public class ApplicationChangesDataModelSourceValue {
             return false;
         }
         ApplicationChangesDataModelSourceValue other = (ApplicationChangesDataModelSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class ApplicationChangesDataModelSourceValue {
         return Utils.toString(ApplicationChangesDataModelSourceValue.class,
                 "value", value);
     }
- 
+
 }
 
