@@ -86,7 +86,7 @@ public class SourceValue {
             return false;
         }
         SourceValue other = (SourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class SourceValue {
         return Utils.toString(SourceValue.class,
                 "value", value);
     }
- 
+
 }
 

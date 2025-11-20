@@ -86,7 +86,7 @@ public class TaskResultSourceValue {
             return false;
         }
         TaskResultSourceValue other = (TaskResultSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class TaskResultSourceValue {
         return Utils.toString(TaskResultSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -71,7 +71,7 @@ public class LmsCreateContentRequestDtoActive {
             return false;
         }
         LmsCreateContentRequestDtoActive other = (LmsCreateContentRequestDtoActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class LmsCreateContentRequestDtoActive {
         return Utils.toString(LmsCreateContentRequestDtoActive.class,
                 "value", value);
     }
- 
+
 }
 

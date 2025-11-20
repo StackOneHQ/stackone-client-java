@@ -86,7 +86,7 @@ public class EmploymentManagerApiModelSourceValue {
             return false;
         }
         EmploymentManagerApiModelSourceValue other = (EmploymentManagerApiModelSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmploymentManagerApiModelSourceValue {
         return Utils.toString(EmploymentManagerApiModelSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

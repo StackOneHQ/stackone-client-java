@@ -86,7 +86,7 @@ public class NationalIdentityNumberApiModelCountrySourceValue {
             return false;
         }
         NationalIdentityNumberApiModelCountrySourceValue other = (NationalIdentityNumberApiModelCountrySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class NationalIdentityNumberApiModelCountrySourceValue {
         return Utils.toString(NationalIdentityNumberApiModelCountrySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

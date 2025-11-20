@@ -86,7 +86,7 @@ public class IamUserSourceValue {
             return false;
         }
         IamUserSourceValue other = (IamUserSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class IamUserSourceValue {
         return Utils.toString(IamUserSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

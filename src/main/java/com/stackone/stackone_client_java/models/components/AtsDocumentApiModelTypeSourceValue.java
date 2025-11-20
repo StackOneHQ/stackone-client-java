@@ -86,7 +86,7 @@ public class AtsDocumentApiModelTypeSourceValue {
             return false;
         }
         AtsDocumentApiModelTypeSourceValue other = (AtsDocumentApiModelTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class AtsDocumentApiModelTypeSourceValue {
         return Utils.toString(AtsDocumentApiModelTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

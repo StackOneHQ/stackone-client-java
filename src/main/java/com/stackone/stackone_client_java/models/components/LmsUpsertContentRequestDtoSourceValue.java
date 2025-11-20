@@ -92,7 +92,7 @@ public class LmsUpsertContentRequestDtoSourceValue {
             return false;
         }
         LmsUpsertContentRequestDtoSourceValue other = (LmsUpsertContentRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -118,6 +118,6 @@ public class LmsUpsertContentRequestDtoSourceValue {
         return Utils.toString(LmsUpsertContentRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

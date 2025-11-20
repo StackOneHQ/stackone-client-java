@@ -86,7 +86,7 @@ public class HrisShiftApprovalStatusSourceValue {
             return false;
         }
         HrisShiftApprovalStatusSourceValue other = (HrisShiftApprovalStatusSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisShiftApprovalStatusSourceValue {
         return Utils.toString(HrisShiftApprovalStatusSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

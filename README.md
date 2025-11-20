@@ -46,7 +46,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.17.0'
+implementation 'com.stackone:stackone-client-java:0.18.0'
 ```
 
 Maven:
@@ -54,7 +54,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.17.0</version>
+    <version>0.18.0</version>
 </dependency>
 ```
 
@@ -159,7 +159,8 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING,
-                    Categories.ACCOUNTING))
+                    Categories.ACCOUNTING,
+                    Categories.SCHEDULING))
                 .type(Type.TEST)
                 .build();
 
@@ -419,11 +420,11 @@ public class Application {
 * [listUserAssignments](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 * [createUserAssignment](docs/sdks/lms/README.md#createuserassignment) - Create User Assignment
 * [getUserAssignment](docs/sdks/lms/README.md#getuserassignment) - Get User Assignment
-* [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
+* [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert External Linking Learning Objects
 * [listContent](docs/sdks/lms/README.md#listcontent) - List Content
-* [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
+* [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
-* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
+* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update External Linking Learning Objects
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
 * [getUserCompletion](docs/sdks/lms/README.md#getusercompletion) - Get User Completion
@@ -694,7 +695,8 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING,
-                    Categories.ACCOUNTING))
+                    Categories.ACCOUNTING,
+                    Categories.SCHEDULING))
                 .type(Type.TEST)
                 .build();
 
@@ -770,7 +772,8 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING,
-                    Categories.ACCOUNTING))
+                    Categories.ACCOUNTING,
+                    Categories.SCHEDULING))
                 .type(Type.TEST)
                 .build();
 
@@ -845,7 +848,8 @@ public class Application {
                         Categories.TICKETING,
                         Categories.SCREENING,
                         Categories.MESSAGING,
-                        Categories.ACCOUNTING))
+                        Categories.ACCOUNTING,
+                        Categories.SCHEDULING))
                     .type(Type.TEST)
                     .build();
 
@@ -970,7 +974,8 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING,
-                    Categories.ACCOUNTING))
+                    Categories.ACCOUNTING,
+                    Categories.SCHEDULING))
                 .type(Type.TEST)
                 .build();
 
@@ -1101,7 +1106,8 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING,
-                    Categories.ACCOUNTING))
+                    Categories.ACCOUNTING,
+                    Categories.SCHEDULING))
                 .type(Type.TEST)
                 .build();
 

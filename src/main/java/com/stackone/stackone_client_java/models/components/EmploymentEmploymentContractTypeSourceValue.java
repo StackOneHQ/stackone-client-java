@@ -86,7 +86,7 @@ public class EmploymentEmploymentContractTypeSourceValue {
             return false;
         }
         EmploymentEmploymentContractTypeSourceValue other = (EmploymentEmploymentContractTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmploymentEmploymentContractTypeSourceValue {
         return Utils.toString(EmploymentEmploymentContractTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

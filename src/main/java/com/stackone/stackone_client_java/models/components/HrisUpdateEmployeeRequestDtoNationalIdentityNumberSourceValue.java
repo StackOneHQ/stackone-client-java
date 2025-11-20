@@ -86,7 +86,7 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue {
             return false;
         }
         HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue other = (HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue {
         return Utils.toString(HrisUpdateEmployeeRequestDtoNationalIdentityNumberSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

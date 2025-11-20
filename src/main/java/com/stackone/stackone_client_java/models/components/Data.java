@@ -92,7 +92,7 @@ public class Data {
             return false;
         }
         Data other = (Data) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -118,6 +118,6 @@ public class Data {
         return Utils.toString(Data.class,
                 "value", value);
     }
- 
+
 }
 

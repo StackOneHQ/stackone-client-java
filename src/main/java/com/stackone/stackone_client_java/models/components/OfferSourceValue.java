@@ -91,7 +91,7 @@ public class OfferSourceValue {
             return false;
         }
         OfferSourceValue other = (OfferSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class OfferSourceValue {
         return Utils.toString(OfferSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

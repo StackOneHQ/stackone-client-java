@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 4e61b7ebb6f7537f0f63788428d9f306
+  docChecksum: 2ed6bae89985b549dd94c03f8ff5d6f8
   docVersion: 1.0.0
-  speakeasyVersion: 1.651.0
-  generationVersion: 2.745.2
-  releaseVersion: 0.17.0
-  configChecksum: 197bb2ca7d102396e26fda3199475447
+  speakeasyVersion: 1.658.2
+  generationVersion: 2.755.9
+  releaseVersion: 0.18.0
+  configChecksum: ff1778a775d39ef7b538b98f57402de6
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.55.1
+    core: 3.55.2
     deprecations: 2.81.1
     examples: 2.81.6
     flattening: 2.81.1
@@ -30,7 +30,7 @@ features:
     pagination: 1.0.0
     retries: 0.1.1
     sdkHooks: 1.1.0
-    unions: 0.1.0
+    unions: 0.3.0
 generatedFiles:
   - .gitattributes
   - USAGE.md
@@ -6136,6 +6136,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/utils/EventStreamMessage.java
   - src/main/java/com/stackone/stackone_client_java/utils/Exceptions.java
   - src/main/java/com/stackone/stackone_client_java/utils/FormMetadata.java
+  - src/main/java/com/stackone/stackone_client_java/utils/GenericTypeIdResolver.java
   - src/main/java/com/stackone/stackone_client_java/utils/Globals.java
   - src/main/java/com/stackone/stackone_client_java/utils/HTTPClient.java
   - src/main/java/com/stackone/stackone_client_java/utils/HTTPRequest.java
@@ -6178,6 +6179,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/utils/StreamingParser.java
   - src/main/java/com/stackone/stackone_client_java/utils/TypedObject.java
   - src/main/java/com/stackone/stackone_client_java/utils/Types.java
+  - src/main/java/com/stackone/stackone_client_java/utils/UnknownType.java
   - src/main/java/com/stackone/stackone_client_java/utils/Utf8UrlEncoder.java
   - src/main/java/com/stackone/stackone_client_java/utils/Utils.java
   - src/main/java/com/stackone/stackone_client_java/utils/pagination/AsyncPaginator.java
@@ -6193,10 +6195,10 @@ examples:
   stackone_create_connect_session:
     speakeasy-default-stackone-create-connect-session:
       requestBody:
-        application/json: {"categories": ["ats", "hris", "documents", "crm", "iam", "marketing", "lms", "iam", "documents", "ticketing", "screening", "messaging", "accounting"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "expires_in": 1800, "multiple": false, "type": "test"}
+        application/json: {"categories": ["ats", "hris", "documents", "crm", "iam", "marketing", "lms", "iam", "documents", "ticketing", "screening", "messaging", "accounting", "scheduling"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "expires_in": 1800, "multiple": false, "type": "test"}
       responses:
         "201":
-          application/json: {"id": 480.39, "organization_id": 203.83, "project_id": "<id>", "categories": ["ats", "hris", "messaging", "crm", "iam", "marketing", "lms", "hris-legacy", "documents", "ticketing", "screening", "messaging", "accounting"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "created_at": "2023-11-10T21:31:46.697Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "type": "test", "token": "<value>", "auth_link_url": "https://medium-story.biz/"}
+          application/json: {"id": 480.39, "organization_id": 203.83, "project_id": "<id>", "categories": ["ats", "hris", "messaging", "crm", "iam", "marketing", "lms", "hris-legacy", "documents", "ticketing", "screening", "messaging", "accounting", "scheduling"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "created_at": "2023-11-10T21:31:46.697Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "type": "test", "token": "<value>", "auth_link_url": "https://medium-story.biz/"}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": null, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -6225,7 +6227,7 @@ examples:
         application/json: {"token": "<value>"}
       responses:
         "201":
-          application/json: {"id": 8422.01, "organization_id": 9188.03, "project_id": "<id>", "categories": ["ats", "hris", "messaging", "crm", "iam", "marketing", "lms", "lms", "documents", "ticketing", "screening", "messaging", "accounting"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "created_at": "2024-10-01T04:59:29.242Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "type": "unmapped_value"}
+          application/json: {"id": 8422.01, "organization_id": 9188.03, "project_id": "<id>", "categories": ["ats", "hris", "messaging", "crm", "iam", "marketing", "lms", "lms", "documents", "ticketing", "screening", "messaging", "accounting", "scheduling"], "origin_owner_id": "<id>", "origin_owner_name": "<value>", "created_at": "2024-10-01T04:59:29.242Z", "external_trigger_token": "f0bc3d88-2178-5423-8c81-b81d6c9da824", "type": "unmapped_value"}
         "400":
           application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
         "401":
@@ -16928,4 +16930,4 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes Detected:\n* `stackone.mcp.mcpGet()`:  `request` **Changed**\n* `stackone.mcp.mcpPost()`:  `request` **Changed**\n* `stackone.mcp.mcpDelete()`:  `request` **Changed**\n* `stackone.proxy.proxyRequest()`:  `response` **Changed**\n* `stackone.actions.listActionsMeta()`: \n  *  `request.include` **Changed**\n"
+releaseNotes: "## Java SDK Changes Detected:\n* `stackone.mcp.mcpPost()`: \n  *  `request.jsonrpcmessagedto.params` **Changed**\n"

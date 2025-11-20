@@ -91,7 +91,7 @@ public class AtsJobSourceValue {
             return false;
         }
         AtsJobSourceValue other = (AtsJobSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AtsJobSourceValue {
         return Utils.toString(AtsJobSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

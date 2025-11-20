@@ -91,7 +91,7 @@ public class SmsMessagesSourceValue {
             return false;
         }
         SmsMessagesSourceValue other = (SmsMessagesSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class SmsMessagesSourceValue {
         return Utils.toString(SmsMessagesSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

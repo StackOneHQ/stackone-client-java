@@ -91,7 +91,7 @@ public class EmploymentPayFrequencySourceValue {
             return false;
         }
         EmploymentPayFrequencySourceValue other = (EmploymentPayFrequencySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class EmploymentPayFrequencySourceValue {
         return Utils.toString(EmploymentPayFrequencySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

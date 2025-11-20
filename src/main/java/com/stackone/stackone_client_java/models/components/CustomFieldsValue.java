@@ -98,7 +98,7 @@ public class CustomFieldsValue {
             return false;
         }
         CustomFieldsValue other = (CustomFieldsValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -125,6 +125,6 @@ public class CustomFieldsValue {
         return Utils.toString(CustomFieldsValue.class,
                 "value", value);
     }
- 
+
 }
 

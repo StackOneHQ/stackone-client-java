@@ -93,7 +93,7 @@ public class CreateCategoriesApiModelLevelSourceValue {
             return false;
         }
         CreateCategoriesApiModelLevelSourceValue other = (CreateCategoriesApiModelLevelSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -119,6 +119,6 @@ public class CreateCategoriesApiModelLevelSourceValue {
         return Utils.toString(CreateCategoriesApiModelLevelSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

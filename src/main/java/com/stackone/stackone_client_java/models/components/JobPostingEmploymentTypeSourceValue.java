@@ -91,7 +91,7 @@ public class JobPostingEmploymentTypeSourceValue {
             return false;
         }
         JobPostingEmploymentTypeSourceValue other = (JobPostingEmploymentTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class JobPostingEmploymentTypeSourceValue {
         return Utils.toString(JobPostingEmploymentTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

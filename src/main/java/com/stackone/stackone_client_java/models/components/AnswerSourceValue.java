@@ -91,7 +91,7 @@ public class AnswerSourceValue {
             return false;
         }
         AnswerSourceValue other = (AnswerSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AnswerSourceValue {
         return Utils.toString(AnswerSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

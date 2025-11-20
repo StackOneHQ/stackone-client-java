@@ -91,7 +91,7 @@ public class HrisCreateEmploymentRequestDtoPayFrequencySourceValue {
             return false;
         }
         HrisCreateEmploymentRequestDtoPayFrequencySourceValue other = (HrisCreateEmploymentRequestDtoPayFrequencySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class HrisCreateEmploymentRequestDtoPayFrequencySourceValue {
         return Utils.toString(HrisCreateEmploymentRequestDtoPayFrequencySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

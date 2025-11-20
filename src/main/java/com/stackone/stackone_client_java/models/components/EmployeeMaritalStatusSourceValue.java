@@ -86,7 +86,7 @@ public class EmployeeMaritalStatusSourceValue {
             return false;
         }
         EmployeeMaritalStatusSourceValue other = (EmployeeMaritalStatusSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmployeeMaritalStatusSourceValue {
         return Utils.toString(EmployeeMaritalStatusSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

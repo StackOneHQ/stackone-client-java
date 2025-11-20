@@ -71,7 +71,7 @@ public class HrisCreateTimeOffRequestDtoEndHalfDay {
             return false;
         }
         HrisCreateTimeOffRequestDtoEndHalfDay other = (HrisCreateTimeOffRequestDtoEndHalfDay) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class HrisCreateTimeOffRequestDtoEndHalfDay {
         return Utils.toString(HrisCreateTimeOffRequestDtoEndHalfDay.class,
                 "value", value);
     }
- 
+
 }
 

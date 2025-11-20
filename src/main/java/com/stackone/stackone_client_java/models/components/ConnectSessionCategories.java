@@ -21,7 +21,8 @@ public enum ConnectSessionCategories {
     TICKETING("ticketing"),
     SCREENING("screening"),
     MESSAGING("messaging"),
-    ACCOUNTING("accounting");
+    ACCOUNTING("accounting"),
+    SCHEDULING("scheduling");
 
     @JsonValue
     private final String value;

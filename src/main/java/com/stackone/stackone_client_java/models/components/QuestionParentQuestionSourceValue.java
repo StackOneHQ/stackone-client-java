@@ -91,7 +91,7 @@ public class QuestionParentQuestionSourceValue {
             return false;
         }
         QuestionParentQuestionSourceValue other = (QuestionParentQuestionSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class QuestionParentQuestionSourceValue {
         return Utils.toString(QuestionParentQuestionSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

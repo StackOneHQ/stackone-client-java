@@ -91,7 +91,7 @@ public class NoteSourceValue {
             return false;
         }
         NoteSourceValue other = (NoteSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class NoteSourceValue {
         return Utils.toString(NoteSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

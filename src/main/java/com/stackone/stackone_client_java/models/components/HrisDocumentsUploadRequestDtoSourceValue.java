@@ -86,7 +86,7 @@ public class HrisDocumentsUploadRequestDtoSourceValue {
             return false;
         }
         HrisDocumentsUploadRequestDtoSourceValue other = (HrisDocumentsUploadRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisDocumentsUploadRequestDtoSourceValue {
         return Utils.toString(HrisDocumentsUploadRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

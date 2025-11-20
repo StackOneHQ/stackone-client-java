@@ -86,7 +86,7 @@ public class HrisDocumentApiModelSourceValue {
             return false;
         }
         HrisDocumentApiModelSourceValue other = (HrisDocumentApiModelSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisDocumentApiModelSourceValue {
         return Utils.toString(HrisDocumentApiModelSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

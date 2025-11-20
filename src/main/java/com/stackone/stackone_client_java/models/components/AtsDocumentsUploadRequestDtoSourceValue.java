@@ -86,7 +86,7 @@ public class AtsDocumentsUploadRequestDtoSourceValue {
             return false;
         }
         AtsDocumentsUploadRequestDtoSourceValue other = (AtsDocumentsUploadRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class AtsDocumentsUploadRequestDtoSourceValue {
         return Utils.toString(AtsDocumentsUploadRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

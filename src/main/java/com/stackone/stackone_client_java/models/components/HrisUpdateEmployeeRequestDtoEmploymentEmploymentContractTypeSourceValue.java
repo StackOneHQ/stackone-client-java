@@ -86,7 +86,7 @@ public class HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceV
             return false;
         }
         HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceValue other = (HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceV
         return Utils.toString(HrisUpdateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

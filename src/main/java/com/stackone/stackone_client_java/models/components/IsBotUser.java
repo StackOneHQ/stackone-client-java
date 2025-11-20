@@ -71,7 +71,7 @@ public class IsBotUser {
             return false;
         }
         IsBotUser other = (IsBotUser) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class IsBotUser {
         return Utils.toString(IsBotUser.class,
                 "value", value);
     }
- 
+
 }
 

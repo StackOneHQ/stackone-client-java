@@ -91,7 +91,7 @@ public class LmsCreateCompletionRequestDtoSourceValue {
             return false;
         }
         LmsCreateCompletionRequestDtoSourceValue other = (LmsCreateCompletionRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class LmsCreateCompletionRequestDtoSourceValue {
         return Utils.toString(LmsCreateCompletionRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

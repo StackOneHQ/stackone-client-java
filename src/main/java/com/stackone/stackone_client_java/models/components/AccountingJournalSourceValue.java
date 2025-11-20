@@ -86,7 +86,7 @@ public class AccountingJournalSourceValue {
             return false;
         }
         AccountingJournalSourceValue other = (AccountingJournalSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class AccountingJournalSourceValue {
         return Utils.toString(AccountingJournalSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

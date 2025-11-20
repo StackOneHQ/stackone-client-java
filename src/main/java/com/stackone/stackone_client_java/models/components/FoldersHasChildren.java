@@ -71,7 +71,7 @@ public class FoldersHasChildren {
             return false;
         }
         FoldersHasChildren other = (FoldersHasChildren) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class FoldersHasChildren {
         return Utils.toString(FoldersHasChildren.class,
                 "value", value);
     }
- 
+
 }
 

@@ -91,7 +91,7 @@ public class JobPostingCompensationPayFrequencySourceValue {
             return false;
         }
         JobPostingCompensationPayFrequencySourceValue other = (JobPostingCompensationPayFrequencySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class JobPostingCompensationPayFrequencySourceValue {
         return Utils.toString(JobPostingCompensationPayFrequencySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

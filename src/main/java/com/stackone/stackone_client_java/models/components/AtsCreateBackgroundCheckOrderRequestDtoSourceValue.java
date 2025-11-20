@@ -91,7 +91,7 @@ public class AtsCreateBackgroundCheckOrderRequestDtoSourceValue {
             return false;
         }
         AtsCreateBackgroundCheckOrderRequestDtoSourceValue other = (AtsCreateBackgroundCheckOrderRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class AtsCreateBackgroundCheckOrderRequestDtoSourceValue {
         return Utils.toString(AtsCreateBackgroundCheckOrderRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

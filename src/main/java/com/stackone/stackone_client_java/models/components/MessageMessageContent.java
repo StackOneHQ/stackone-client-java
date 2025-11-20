@@ -72,7 +72,7 @@ public class MessageMessageContent {
             return false;
         }
         MessageMessageContent other = (MessageMessageContent) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -96,6 +96,6 @@ public class MessageMessageContent {
         return Utils.toString(MessageMessageContent.class,
                 "value", value);
     }
- 
+
 }
 

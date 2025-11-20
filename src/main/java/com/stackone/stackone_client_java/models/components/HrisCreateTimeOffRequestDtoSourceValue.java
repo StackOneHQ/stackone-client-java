@@ -86,7 +86,7 @@ public class HrisCreateTimeOffRequestDtoSourceValue {
             return false;
         }
         HrisCreateTimeOffRequestDtoSourceValue other = (HrisCreateTimeOffRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisCreateTimeOffRequestDtoSourceValue {
         return Utils.toString(HrisCreateTimeOffRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 
