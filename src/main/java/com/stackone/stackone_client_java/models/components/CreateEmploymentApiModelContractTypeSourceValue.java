@@ -86,7 +86,7 @@ public class CreateEmploymentApiModelContractTypeSourceValue {
             return false;
         }
         CreateEmploymentApiModelContractTypeSourceValue other = (CreateEmploymentApiModelContractTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class CreateEmploymentApiModelContractTypeSourceValue {
         return Utils.toString(CreateEmploymentApiModelContractTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

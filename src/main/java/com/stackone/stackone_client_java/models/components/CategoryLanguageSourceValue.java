@@ -93,7 +93,7 @@ public class CategoryLanguageSourceValue {
             return false;
         }
         CategoryLanguageSourceValue other = (CategoryLanguageSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -119,6 +119,6 @@ public class CategoryLanguageSourceValue {
         return Utils.toString(CategoryLanguageSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

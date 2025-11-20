@@ -51,21 +51,21 @@ public class Employment {
     private JsonNullable<String> jobTitle;
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_rate")
     private JsonNullable<String> payRate;
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_period")
     private JsonNullable<? extends PayPeriod> payPeriod;
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pay_frequency")
@@ -383,7 +383,7 @@ public class Employment {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     @JsonIgnore
     public JsonNullable<String> payRate() {
@@ -391,7 +391,7 @@ public class Employment {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -400,7 +400,7 @@ public class Employment {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -692,7 +692,7 @@ public class Employment {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     public Employment withPayRate(String payRate) {
         Utils.checkNotNull(payRate, "payRate");
@@ -701,7 +701,7 @@ public class Employment {
     }
 
     /**
-     * The pay rate for the employee
+     * The amount of compensation for the employee
      */
     public Employment withPayRate(JsonNullable<String> payRate) {
         Utils.checkNotNull(payRate, "payRate");
@@ -710,7 +710,7 @@ public class Employment {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     public Employment withPayPeriod(PayPeriod payPeriod) {
         Utils.checkNotNull(payPeriod, "payPeriod");
@@ -719,7 +719,7 @@ public class Employment {
     }
 
     /**
-     * The pay period
+     * The time period over which the pay rate is calculated
      */
     public Employment withPayPeriod(JsonNullable<? extends PayPeriod> payPeriod) {
         Utils.checkNotNull(payPeriod, "payPeriod");
@@ -728,7 +728,7 @@ public class Employment {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     public Employment withPayFrequency(PayFrequency payFrequency) {
         Utils.checkNotNull(payFrequency, "payFrequency");
@@ -737,7 +737,7 @@ public class Employment {
     }
 
     /**
-     * The pay frequency
+     * How often the employee is paid
      */
     public Employment withPayFrequency(JsonNullable<? extends PayFrequency> payFrequency) {
         Utils.checkNotNull(payFrequency, "payFrequency");
@@ -1418,7 +1418,7 @@ public class Employment {
 
 
         /**
-         * The pay rate for the employee
+         * The amount of compensation for the employee
          */
         public Builder payRate(String payRate) {
             Utils.checkNotNull(payRate, "payRate");
@@ -1427,7 +1427,7 @@ public class Employment {
         }
 
         /**
-         * The pay rate for the employee
+         * The amount of compensation for the employee
          */
         public Builder payRate(JsonNullable<String> payRate) {
             Utils.checkNotNull(payRate, "payRate");
@@ -1437,7 +1437,7 @@ public class Employment {
 
 
         /**
-         * The pay period
+         * The time period over which the pay rate is calculated
          */
         public Builder payPeriod(PayPeriod payPeriod) {
             Utils.checkNotNull(payPeriod, "payPeriod");
@@ -1446,7 +1446,7 @@ public class Employment {
         }
 
         /**
-         * The pay period
+         * The time period over which the pay rate is calculated
          */
         public Builder payPeriod(JsonNullable<? extends PayPeriod> payPeriod) {
             Utils.checkNotNull(payPeriod, "payPeriod");
@@ -1456,7 +1456,7 @@ public class Employment {
 
 
         /**
-         * The pay frequency
+         * How often the employee is paid
          */
         public Builder payFrequency(PayFrequency payFrequency) {
             Utils.checkNotNull(payFrequency, "payFrequency");
@@ -1465,7 +1465,7 @@ public class Employment {
         }
 
         /**
-         * The pay frequency
+         * How often the employee is paid
          */
         public Builder payFrequency(JsonNullable<? extends PayFrequency> payFrequency) {
             Utils.checkNotNull(payFrequency, "payFrequency");

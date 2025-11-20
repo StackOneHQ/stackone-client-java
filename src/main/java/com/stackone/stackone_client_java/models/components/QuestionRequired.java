@@ -66,7 +66,7 @@ public class QuestionRequired {
             return false;
         }
         QuestionRequired other = (QuestionRequired) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -89,6 +89,6 @@ public class QuestionRequired {
         return Utils.toString(QuestionRequired.class,
                 "value", value);
     }
- 
+
 }
 

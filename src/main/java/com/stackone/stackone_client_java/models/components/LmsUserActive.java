@@ -71,7 +71,7 @@ public class LmsUserActive {
             return false;
         }
         LmsUserActive other = (LmsUserActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class LmsUserActive {
         return Utils.toString(LmsUserActive.class,
                 "value", value);
     }
- 
+
 }
 

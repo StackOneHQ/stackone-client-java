@@ -86,7 +86,7 @@ public class HRISGroupSourceValue {
             return false;
         }
         HRISGroupSourceValue other = (HRISGroupSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HRISGroupSourceValue {
         return Utils.toString(HRISGroupSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -74,7 +74,7 @@ public class ActionsRpcResponseData {
             return false;
         }
         ActionsRpcResponseData other = (ActionsRpcResponseData) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -97,6 +97,6 @@ public class ActionsRpcResponseData {
         return Utils.toString(ActionsRpcResponseData.class,
                 "value", value);
     }
- 
+
 }
 

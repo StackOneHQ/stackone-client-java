@@ -71,7 +71,7 @@ public class StartHalfDay {
             return false;
         }
         StartHalfDay other = (StartHalfDay) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class StartHalfDay {
         return Utils.toString(StartHalfDay.class,
                 "value", value);
     }
- 
+
 }
 

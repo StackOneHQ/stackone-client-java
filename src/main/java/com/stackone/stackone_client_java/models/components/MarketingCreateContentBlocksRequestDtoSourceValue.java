@@ -91,7 +91,7 @@ public class MarketingCreateContentBlocksRequestDtoSourceValue {
             return false;
         }
         MarketingCreateContentBlocksRequestDtoSourceValue other = (MarketingCreateContentBlocksRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class MarketingCreateContentBlocksRequestDtoSourceValue {
         return Utils.toString(MarketingCreateContentBlocksRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -86,7 +86,7 @@ public class IamMfaTypeEnumSourceValue {
             return false;
         }
         IamMfaTypeEnumSourceValue other = (IamMfaTypeEnumSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class IamMfaTypeEnumSourceValue {
         return Utils.toString(IamMfaTypeEnumSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

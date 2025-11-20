@@ -93,7 +93,7 @@ public class SkillsSourceValue {
             return false;
         }
         SkillsSourceValue other = (SkillsSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -119,6 +119,6 @@ public class SkillsSourceValue {
         return Utils.toString(SkillsSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

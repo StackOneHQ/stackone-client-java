@@ -91,7 +91,7 @@ public class ContentSourceValue {
             return false;
         }
         ContentSourceValue other = (ContentSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class ContentSourceValue {
         return Utils.toString(ContentSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

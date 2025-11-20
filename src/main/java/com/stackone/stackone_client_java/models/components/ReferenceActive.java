@@ -71,7 +71,7 @@ public class ReferenceActive {
             return false;
         }
         ReferenceActive other = (ReferenceActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class ReferenceActive {
         return Utils.toString(ReferenceActive.class,
                 "value", value);
     }
- 
+
 }
 

@@ -93,7 +93,7 @@ public class LanguageEnumSourceValue {
             return false;
         }
         LanguageEnumSourceValue other = (LanguageEnumSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -119,6 +119,6 @@ public class LanguageEnumSourceValue {
         return Utils.toString(LanguageEnumSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

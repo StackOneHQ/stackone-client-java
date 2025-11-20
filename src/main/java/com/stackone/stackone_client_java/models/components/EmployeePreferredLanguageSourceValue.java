@@ -86,7 +86,7 @@ public class EmployeePreferredLanguageSourceValue {
             return false;
         }
         EmployeePreferredLanguageSourceValue other = (EmployeePreferredLanguageSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmployeePreferredLanguageSourceValue {
         return Utils.toString(EmployeePreferredLanguageSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

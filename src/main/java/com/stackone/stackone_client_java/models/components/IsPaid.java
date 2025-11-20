@@ -71,7 +71,7 @@ public class IsPaid {
             return false;
         }
         IsPaid other = (IsPaid) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class IsPaid {
         return Utils.toString(IsPaid.class,
                 "value", value);
     }
- 
+
 }
 

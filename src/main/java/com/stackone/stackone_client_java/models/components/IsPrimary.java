@@ -71,7 +71,7 @@ public class IsPrimary {
             return false;
         }
         IsPrimary other = (IsPrimary) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class IsPrimary {
         return Utils.toString(IsPrimary.class,
                 "value", value);
     }
- 
+
 }
 

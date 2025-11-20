@@ -86,7 +86,7 @@ public class HrisCreateWorkEligibilityRequestDtoDocumentSourceValue {
             return false;
         }
         HrisCreateWorkEligibilityRequestDtoDocumentSourceValue other = (HrisCreateWorkEligibilityRequestDtoDocumentSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisCreateWorkEligibilityRequestDtoDocumentSourceValue {
         return Utils.toString(HrisCreateWorkEligibilityRequestDtoDocumentSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

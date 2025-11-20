@@ -86,7 +86,7 @@ public class HRISDepartmentSourceValue {
             return false;
         }
         HRISDepartmentSourceValue other = (HRISDepartmentSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HRISDepartmentSourceValue {
         return Utils.toString(HRISDepartmentSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

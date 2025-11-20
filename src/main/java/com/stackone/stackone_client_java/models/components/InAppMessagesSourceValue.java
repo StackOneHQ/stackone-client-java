@@ -91,7 +91,7 @@ public class InAppMessagesSourceValue {
             return false;
         }
         InAppMessagesSourceValue other = (InAppMessagesSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class InAppMessagesSourceValue {
         return Utils.toString(InAppMessagesSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

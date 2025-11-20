@@ -86,7 +86,7 @@ public class UnifiedUploadRequestDtoSourceValue {
             return false;
         }
         UnifiedUploadRequestDtoSourceValue other = (UnifiedUploadRequestDtoSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class UnifiedUploadRequestDtoSourceValue {
         return Utils.toString(UnifiedUploadRequestDtoSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -91,7 +91,7 @@ public class TicketingTicketResultSourceValue {
             return false;
         }
         TicketingTicketResultSourceValue other = (TicketingTicketResultSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class TicketingTicketResultSourceValue {
         return Utils.toString(TicketingTicketResultSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

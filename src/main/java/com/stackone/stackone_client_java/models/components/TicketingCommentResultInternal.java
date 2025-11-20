@@ -71,7 +71,7 @@ public class TicketingCommentResultInternal {
             return false;
         }
         TicketingCommentResultInternal other = (TicketingCommentResultInternal) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class TicketingCommentResultInternal {
         return Utils.toString(TicketingCommentResultInternal.class,
                 "value", value);
     }
- 
+
 }
 

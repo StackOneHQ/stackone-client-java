@@ -91,7 +91,7 @@ public class CompletionLearningObjectTypeSourceValue {
             return false;
         }
         CompletionLearningObjectTypeSourceValue other = (CompletionLearningObjectTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class CompletionLearningObjectTypeSourceValue {
         return Utils.toString(CompletionLearningObjectTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

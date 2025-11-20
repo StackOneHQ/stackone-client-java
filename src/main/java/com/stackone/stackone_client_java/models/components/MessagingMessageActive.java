@@ -71,7 +71,7 @@ public class MessagingMessageActive {
             return false;
         }
         MessagingMessageActive other = (MessagingMessageActive) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class MessagingMessageActive {
         return Utils.toString(MessagingMessageActive.class,
                 "value", value);
     }
- 
+
 }
 

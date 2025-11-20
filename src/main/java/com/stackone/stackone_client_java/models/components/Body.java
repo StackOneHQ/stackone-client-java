@@ -76,7 +76,7 @@ public class Body {
             return false;
         }
         Body other = (Body) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -100,6 +100,6 @@ public class Body {
         return Utils.toString(Body.class,
                 "value", value);
     }
- 
+
 }
 

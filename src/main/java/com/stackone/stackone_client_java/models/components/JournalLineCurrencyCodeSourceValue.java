@@ -86,7 +86,7 @@ public class JournalLineCurrencyCodeSourceValue {
             return false;
         }
         JournalLineCurrencyCodeSourceValue other = (JournalLineCurrencyCodeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class JournalLineCurrencyCodeSourceValue {
         return Utils.toString(JournalLineCurrencyCodeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

@@ -54,7 +54,8 @@ public class Application {
                     Categories.TICKETING,
                     Categories.SCREENING,
                     Categories.MESSAGING,
-                    Categories.ACCOUNTING))
+                    Categories.ACCOUNTING,
+                    Categories.SCHEDULING))
                 .type(Type.TEST)
                 .build();
 

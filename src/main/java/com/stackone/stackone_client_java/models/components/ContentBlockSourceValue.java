@@ -91,7 +91,7 @@ public class ContentBlockSourceValue {
             return false;
         }
         ContentBlockSourceValue other = (ContentBlockSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class ContentBlockSourceValue {
         return Utils.toString(ContentBlockSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

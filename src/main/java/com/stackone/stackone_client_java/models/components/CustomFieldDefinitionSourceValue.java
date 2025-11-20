@@ -86,7 +86,7 @@ public class CustomFieldDefinitionSourceValue {
             return false;
         }
         CustomFieldDefinitionSourceValue other = (CustomFieldDefinitionSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class CustomFieldDefinitionSourceValue {
         return Utils.toString(CustomFieldDefinitionSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

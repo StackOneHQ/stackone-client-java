@@ -63,6 +63,7 @@ public class ConnectorsMetaCategory {
     public static final ConnectorsMetaCategory SCREENING = new ConnectorsMetaCategory("screening");
     public static final ConnectorsMetaCategory MESSAGING = new ConnectorsMetaCategory("messaging");
     public static final ConnectorsMetaCategory ACCOUNTING = new ConnectorsMetaCategory("accounting");
+    public static final ConnectorsMetaCategory SCHEDULING = new ConnectorsMetaCategory("scheduling");
 
     // This map will grow whenever a Color gets created with a new
     // unrecognized value (a potential memory leak if the user is not
@@ -147,6 +148,7 @@ public class ConnectorsMetaCategory {
         map.put("screening", SCREENING);
         map.put("messaging", MESSAGING);
         map.put("accounting", ACCOUNTING);
+        map.put("scheduling", SCHEDULING);
         return map;
     }
 
@@ -165,6 +167,7 @@ public class ConnectorsMetaCategory {
         map.put("screening", ConnectorsMetaCategoryEnum.SCREENING);
         map.put("messaging", ConnectorsMetaCategoryEnum.MESSAGING);
         map.put("accounting", ConnectorsMetaCategoryEnum.ACCOUNTING);
+        map.put("scheduling", ConnectorsMetaCategoryEnum.SCHEDULING);
         return map;
     }
     
@@ -212,7 +215,8 @@ public class ConnectorsMetaCategory {
         TICKETING("ticketing"),
         SCREENING("screening"),
         MESSAGING("messaging"),
-        ACCOUNTING("accounting"),;
+        ACCOUNTING("accounting"),
+        SCHEDULING("scheduling"),;
 
         private final String value;
 

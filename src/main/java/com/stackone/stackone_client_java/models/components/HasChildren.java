@@ -71,7 +71,7 @@ public class HasChildren {
             return false;
         }
         HasChildren other = (HasChildren) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class HasChildren {
         return Utils.toString(HasChildren.class,
                 "value", value);
     }
- 
+
 }
 

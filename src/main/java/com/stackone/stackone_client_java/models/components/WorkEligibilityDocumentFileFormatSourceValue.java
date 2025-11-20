@@ -86,7 +86,7 @@ public class WorkEligibilityDocumentFileFormatSourceValue {
             return false;
         }
         WorkEligibilityDocumentFileFormatSourceValue other = (WorkEligibilityDocumentFileFormatSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class WorkEligibilityDocumentFileFormatSourceValue {
         return Utils.toString(WorkEligibilityDocumentFileFormatSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

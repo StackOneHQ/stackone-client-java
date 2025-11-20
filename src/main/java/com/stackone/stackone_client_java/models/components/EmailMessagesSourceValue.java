@@ -91,7 +91,7 @@ public class EmailMessagesSourceValue {
             return false;
         }
         EmailMessagesSourceValue other = (EmailMessagesSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class EmailMessagesSourceValue {
         return Utils.toString(EmailMessagesSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

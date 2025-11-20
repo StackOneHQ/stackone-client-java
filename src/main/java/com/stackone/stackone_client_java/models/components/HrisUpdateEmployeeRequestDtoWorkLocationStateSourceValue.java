@@ -86,7 +86,7 @@ public class HrisUpdateEmployeeRequestDtoWorkLocationStateSourceValue {
             return false;
         }
         HrisUpdateEmployeeRequestDtoWorkLocationStateSourceValue other = (HrisUpdateEmployeeRequestDtoWorkLocationStateSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisUpdateEmployeeRequestDtoWorkLocationStateSourceValue {
         return Utils.toString(HrisUpdateEmployeeRequestDtoWorkLocationStateSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

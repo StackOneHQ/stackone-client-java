@@ -93,7 +93,7 @@ public class CreateCategoriesApiModelLanguageSourceValue {
             return false;
         }
         CreateCategoriesApiModelLanguageSourceValue other = (CreateCategoriesApiModelLanguageSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -119,6 +119,6 @@ public class CreateCategoriesApiModelLanguageSourceValue {
         return Utils.toString(CreateCategoriesApiModelLanguageSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

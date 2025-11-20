@@ -71,7 +71,7 @@ public class IsRoot {
             return false;
         }
         IsRoot other = (IsRoot) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class IsRoot {
         return Utils.toString(IsRoot.class,
                 "value", value);
     }
- 
+
 }
 

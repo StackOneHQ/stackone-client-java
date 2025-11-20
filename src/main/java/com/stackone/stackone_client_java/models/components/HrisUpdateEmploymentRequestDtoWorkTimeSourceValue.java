@@ -86,7 +86,7 @@ public class HrisUpdateEmploymentRequestDtoWorkTimeSourceValue {
             return false;
         }
         HrisUpdateEmploymentRequestDtoWorkTimeSourceValue other = (HrisUpdateEmploymentRequestDtoWorkTimeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class HrisUpdateEmploymentRequestDtoWorkTimeSourceValue {
         return Utils.toString(HrisUpdateEmploymentRequestDtoWorkTimeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

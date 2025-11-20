@@ -71,7 +71,7 @@ public class HasContent {
             return false;
         }
         HasContent other = (HasContent) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class HasContent {
         return Utils.toString(HasContent.class,
                 "value", value);
     }
- 
+
 }
 

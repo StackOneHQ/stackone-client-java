@@ -71,7 +71,7 @@ public class EndHalfDay {
             return false;
         }
         EndHalfDay other = (EndHalfDay) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -94,6 +94,6 @@ public class EndHalfDay {
         return Utils.toString(EndHalfDay.class,
                 "value", value);
     }
- 
+
 }
 

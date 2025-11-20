@@ -91,7 +91,7 @@ public class JobPostingCompensationPayPeriodSourceValue {
             return false;
         }
         JobPostingCompensationPayPeriodSourceValue other = (JobPostingCompensationPayPeriodSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class JobPostingCompensationPayPeriodSourceValue {
         return Utils.toString(JobPostingCompensationPayPeriodSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

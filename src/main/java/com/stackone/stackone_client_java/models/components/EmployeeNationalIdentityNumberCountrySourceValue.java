@@ -86,7 +86,7 @@ public class EmployeeNationalIdentityNumberCountrySourceValue {
             return false;
         }
         EmployeeNationalIdentityNumberCountrySourceValue other = (EmployeeNationalIdentityNumberCountrySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -112,6 +112,6 @@ public class EmployeeNationalIdentityNumberCountrySourceValue {
         return Utils.toString(EmployeeNationalIdentityNumberCountrySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

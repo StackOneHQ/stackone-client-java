@@ -91,7 +91,7 @@ public class CreateEmploymentApiModelPayFrequencySourceValue {
             return false;
         }
         CreateEmploymentApiModelPayFrequencySourceValue other = (CreateEmploymentApiModelPayFrequencySourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class CreateEmploymentApiModelPayFrequencySourceValue {
         return Utils.toString(CreateEmploymentApiModelPayFrequencySourceValue.class,
                 "value", value);
     }
- 
+
 }
 

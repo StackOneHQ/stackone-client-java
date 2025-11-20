@@ -91,7 +91,7 @@ public class HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue {
             return false;
         }
         HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue other = (HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue {
         return Utils.toString(HrisCreateEmployeeRequestDtoEmploymentTypeSourceValue.class,
                 "value", value);
     }
- 
+
 }
 

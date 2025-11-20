@@ -91,7 +91,7 @@ public class HrisJobSourceValue {
             return false;
         }
         HrisJobSourceValue other = (HrisJobSourceValue) o;
-        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
@@ -117,6 +117,6 @@ public class HrisJobSourceValue {
         return Utils.toString(HrisJobSourceValue.class,
                 "value", value);
     }
- 
+
 }
 
