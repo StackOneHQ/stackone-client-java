@@ -6,9 +6,9 @@ package com.stackone.stackone_client_java.models.operations.async;
 import static com.stackone.stackone_client_java.operations.Operations.AsyncRequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.LmsCreateContentRequestDto;
-import com.stackone.stackone_client_java.models.operations.LmsUpdateContentRequest;
-import com.stackone.stackone_client_java.operations.LmsUpdateContent;
+import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteRequest;
+import com.stackone.stackone_client_java.operations.AtsUpdateInterviewNote;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
@@ -17,69 +17,77 @@ import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class LmsUpdateContentRequestBuilder {
+public class AtsUpdateInterviewNoteRequestBuilder {
 
     private String xAccountId;
     private String id;
-    private LmsCreateContentRequestDto lmsCreateContentRequestDto;
+    private String subResourceId;
+    private AtsUpdateNotesRequestDto atsUpdateNotesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
 
-    public LmsUpdateContentRequestBuilder(SDKConfiguration sdkConfiguration) {
+    public AtsUpdateInterviewNoteRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public LmsUpdateContentRequestBuilder xAccountId(String xAccountId) {
+    public AtsUpdateInterviewNoteRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
         return this;
     }
 
-    public LmsUpdateContentRequestBuilder id(String id) {
+    public AtsUpdateInterviewNoteRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
     }
 
-    public LmsUpdateContentRequestBuilder lmsCreateContentRequestDto(LmsCreateContentRequestDto lmsCreateContentRequestDto) {
-        Utils.checkNotNull(lmsCreateContentRequestDto, "lmsCreateContentRequestDto");
-        this.lmsCreateContentRequestDto = lmsCreateContentRequestDto;
+    public AtsUpdateInterviewNoteRequestBuilder subResourceId(String subResourceId) {
+        Utils.checkNotNull(subResourceId, "subResourceId");
+        this.subResourceId = subResourceId;
+        return this;
+    }
+
+    public AtsUpdateInterviewNoteRequestBuilder atsUpdateNotesRequestDto(AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
+        Utils.checkNotNull(atsUpdateNotesRequestDto, "atsUpdateNotesRequestDto");
+        this.atsUpdateNotesRequestDto = atsUpdateNotesRequestDto;
         return this;
     }
                 
-    public LmsUpdateContentRequestBuilder retryConfig(RetryConfig retryConfig) {
+    public AtsUpdateInterviewNoteRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
         return this;
     }
 
-    public LmsUpdateContentRequestBuilder retryConfig(Optional<RetryConfig> retryConfig) {
+    public AtsUpdateInterviewNoteRequestBuilder retryConfig(Optional<RetryConfig> retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = retryConfig;
         return this;
     }
 
 
-    private LmsUpdateContentRequest buildRequest() {
+    private AtsUpdateInterviewNoteRequest buildRequest() {
 
-        LmsUpdateContentRequest request = new LmsUpdateContentRequest(xAccountId,
+        AtsUpdateInterviewNoteRequest request = new AtsUpdateInterviewNoteRequest(xAccountId,
             id,
-            lmsCreateContentRequestDto);
+            subResourceId,
+            atsUpdateNotesRequestDto);
 
         return request;
     }
 
-    public CompletableFuture<LmsUpdateContentResponse> call() {
+    public CompletableFuture<AtsUpdateInterviewNoteResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());
 
-        AsyncRequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContent.Async(
+        AsyncRequestOperation<AtsUpdateInterviewNoteRequest, AtsUpdateInterviewNoteResponse> operation
+              = new AtsUpdateInterviewNote.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
-        LmsUpdateContentRequest request = buildRequest();
+        AtsUpdateInterviewNoteRequest request = buildRequest();
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

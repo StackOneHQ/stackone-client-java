@@ -14,6 +14,7 @@ import java.util.function.Function;
 
 import com.stackone.stackone_client_java.utils.ResponseWithBody;
 import com.stackone.stackone_client_java.utils.Blob;
+import com.stackone.stackone_client_java.utils.SpeakeasyLogger;
 
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
@@ -40,6 +41,8 @@ import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
  * @param <ProgressParamT> The type of the progression parameter (e.g., page number, offset, cursor)
  */
 public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<HttpResponse<Blob>> {
+
+    private static final SpeakeasyLogger logger = SpeakeasyLogger.getLogger(AsyncPaginator.class);
     
     /**
      * The initial request containing pagination parameters.
@@ -135,6 +138,12 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
             PaginationState currentState = state.get();
             ProgressParamT currentValue = progressTracker.getPosition();
 
+            if (currentState == PaginationState.INITIAL) {
+                logger.debug("Async fetching initial page");
+            } else {
+                logger.debug("Async fetching next page with position: {}", currentValue);
+            }
+
             ReqT request = currentState == PaginationState.INITIAL ?
                     initialRequest :
                     requestModifier.apply(initialRequest, currentValue);
@@ -155,6 +164,10 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
                             boolean hasMorePages = progressTracker.advance(respJson);
                             state.set(hasMorePages ? PaginationState.HAS_MORE_PAGES : PaginationState.EXHAUSTED);
 
+                            if (logger.isTraceEnabled()) {
+                                logger.trace("Async page fetched - status: {}, hasMorePages: {}", response.statusCode(), hasMorePages);
+                            }
+
                             // Create new Blob with the data for the subscriber
                             Blob newBody = Blob.from(data);
                             HttpResponse<Blob> newResponse = new ResponseWithBody<>(response, body -> newBody);
@@ -163,6 +176,7 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
                             subscriber.onNext(newResponse);
 
                             if (state.get() == PaginationState.EXHAUSTED) {
+                                logger.debug("Async pagination exhausted");
                                 subscriber.onComplete();
                             } else {
                                 fetchNextIfNeeded();
@@ -180,6 +194,7 @@ public class AsyncPaginator<ReqT, ProgressParamT> implements Flow.Publisher<Http
 
         private Void handleError(Throwable error) {
             if (!cancelled.get()) {
+                logger.debug("Async pagination error: {}", error.getMessage());
                 subscriber.onError(error);
             }
             return null;

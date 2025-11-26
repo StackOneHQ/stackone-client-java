@@ -31,6 +31,20 @@ public class EmploymentManagerApiModel {
     private JsonNullable<String> remoteId;
 
     /**
+     * The manager name
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("name")
+    private JsonNullable<String> name;
+
+    /**
+     * The manager email
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("email")
+    private JsonNullable<String> email;
+
+    /**
      * The role of manager
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -41,17 +55,24 @@ public class EmploymentManagerApiModel {
     public EmploymentManagerApiModel(
             @JsonProperty("id") JsonNullable<String> id,
             @JsonProperty("remote_id") JsonNullable<String> remoteId,
+            @JsonProperty("name") JsonNullable<String> name,
+            @JsonProperty("email") JsonNullable<String> email,
             @JsonProperty("role") JsonNullable<? extends Role> role) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
+        Utils.checkNotNull(name, "name");
+        Utils.checkNotNull(email, "email");
         Utils.checkNotNull(role, "role");
         this.id = id;
         this.remoteId = remoteId;
+        this.name = name;
+        this.email = email;
         this.role = role;
     }
     
     public EmploymentManagerApiModel() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -68,6 +89,22 @@ public class EmploymentManagerApiModel {
     @JsonIgnore
     public JsonNullable<String> remoteId() {
         return remoteId;
+    }
+
+    /**
+     * The manager name
+     */
+    @JsonIgnore
+    public JsonNullable<String> name() {
+        return name;
+    }
+
+    /**
+     * The manager email
+     */
+    @JsonIgnore
+    public JsonNullable<String> email() {
+        return email;
     }
 
     /**
@@ -121,6 +158,42 @@ public class EmploymentManagerApiModel {
     }
 
     /**
+     * The manager name
+     */
+    public EmploymentManagerApiModel withName(String name) {
+        Utils.checkNotNull(name, "name");
+        this.name = JsonNullable.of(name);
+        return this;
+    }
+
+    /**
+     * The manager name
+     */
+    public EmploymentManagerApiModel withName(JsonNullable<String> name) {
+        Utils.checkNotNull(name, "name");
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * The manager email
+     */
+    public EmploymentManagerApiModel withEmail(String email) {
+        Utils.checkNotNull(email, "email");
+        this.email = JsonNullable.of(email);
+        return this;
+    }
+
+    /**
+     * The manager email
+     */
+    public EmploymentManagerApiModel withEmail(JsonNullable<String> email) {
+        Utils.checkNotNull(email, "email");
+        this.email = email;
+        return this;
+    }
+
+    /**
      * The role of manager
      */
     public EmploymentManagerApiModel withRole(Role role) {
@@ -150,13 +223,16 @@ public class EmploymentManagerApiModel {
         return 
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.remoteId, other.remoteId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
             Utils.enhancedDeepEquals(this.role, other.role);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id, remoteId, role);
+            id, remoteId, name,
+            email, role);
     }
     
     @Override
@@ -164,6 +240,8 @@ public class EmploymentManagerApiModel {
         return Utils.toString(EmploymentManagerApiModel.class,
                 "id", id,
                 "remoteId", remoteId,
+                "name", name,
+                "email", email,
                 "role", role);
     }
 
@@ -173,6 +251,10 @@ public class EmploymentManagerApiModel {
         private JsonNullable<String> id = JsonNullable.undefined();
 
         private JsonNullable<String> remoteId = JsonNullable.undefined();
+
+        private JsonNullable<String> name = JsonNullable.undefined();
+
+        private JsonNullable<String> email = JsonNullable.undefined();
 
         private JsonNullable<? extends Role> role = JsonNullable.undefined();
 
@@ -220,6 +302,44 @@ public class EmploymentManagerApiModel {
 
 
         /**
+         * The manager name
+         */
+        public Builder name(String name) {
+            Utils.checkNotNull(name, "name");
+            this.name = JsonNullable.of(name);
+            return this;
+        }
+
+        /**
+         * The manager name
+         */
+        public Builder name(JsonNullable<String> name) {
+            Utils.checkNotNull(name, "name");
+            this.name = name;
+            return this;
+        }
+
+
+        /**
+         * The manager email
+         */
+        public Builder email(String email) {
+            Utils.checkNotNull(email, "email");
+            this.email = JsonNullable.of(email);
+            return this;
+        }
+
+        /**
+         * The manager email
+         */
+        public Builder email(JsonNullable<String> email) {
+            Utils.checkNotNull(email, "email");
+            this.email = email;
+            return this;
+        }
+
+
+        /**
          * The role of manager
          */
         public Builder role(Role role) {
@@ -240,7 +360,8 @@ public class EmploymentManagerApiModel {
         public EmploymentManagerApiModel build() {
 
             return new EmploymentManagerApiModel(
-                id, remoteId, role);
+                id, remoteId, name,
+                email, role);
         }
 
     }

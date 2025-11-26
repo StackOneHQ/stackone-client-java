@@ -47,6 +47,8 @@
 * [getApplicationStage](#getapplicationstage) - Get Application Stage
 * [listInterviews](#listinterviews) - List Interviews
 * [getInterview](#getinterview) - Get Interview
+* [createInterviewNote](#createinterviewnote) - Create Interview Note
+* [updateInterviewNote](#updateinterviewnote) - Update Interview Note
 * [listJobs](#listjobs) - List Jobs
 * [createJob](#createjob) - Create Job
 * [listJobApplicationStages](#listjobapplicationstages) - List Job Application Stages
@@ -3386,6 +3388,176 @@ public class Application {
 ### Response
 
 **[AtsGetInterviewResponse](../../models/operations/AtsGetInterviewResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## createInterviewNote
+
+Create Interview Note
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="ats_create_interview_note" method="post" path="/unified/ats/interviews/{id}/notes" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsCreateInterviewNoteResponse;
+import java.lang.Exception;
+import java.util.List;
+import java.util.Map;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        AtsCreateInterviewNoteResponse res = sdk.ats().createInterviewNote()
+                .xAccountId("<id>")
+                .id("<id>")
+                .atsCreateNotesRequestDto(AtsCreateNotesRequestDto.builder()
+                    .content(List.of(
+                        NoteContentApiModel.builder()
+                            .body("This candidate seems like a good fit for the role")
+                            .build()))
+                    .authorId("1234567890")
+                    .visibility(AtsCreateNotesRequestDtoVisibility.builder()
+                        .value(AtsCreateNotesRequestDtoValue.PUBLIC)
+                        .sourceValue(AtsCreateNotesRequestDtoSourceValue.of("Public"))
+                        .build())
+                    .passthrough(Map.ofEntries(
+                        Map.entry("other_known_names", "John Doe")))
+                    .build())
+                .call();
+
+        if (res.createResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `xAccountId`                                                                    | *String*                                                                        | :heavy_check_mark:                                                              | The account identifier                                                          |
+| `id`                                                                            | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `atsCreateNotesRequestDto`                                                      | [AtsCreateNotesRequestDto](../../models/components/AtsCreateNotesRequestDto.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+
+### Response
+
+**[AtsCreateInterviewNoteResponse](../../models/operations/AtsCreateInterviewNoteResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## updateInterviewNote
+
+Update Interview Note
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="ats_update_interview_note" method="patch" path="/unified/ats/interviews/{id}/notes/{subResourceId}" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteResponse;
+import java.lang.Exception;
+import java.util.List;
+import java.util.Map;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        AtsUpdateInterviewNoteResponse res = sdk.ats().updateInterviewNote()
+                .xAccountId("<id>")
+                .id("<id>")
+                .subResourceId("<id>")
+                .atsUpdateNotesRequestDto(AtsUpdateNotesRequestDto.builder()
+                    .content(List.of(
+                        NoteContentApiModel.builder()
+                            .body("This candidate seems like a good fit for the role")
+                            .build()))
+                    .authorId("1234567890")
+                    .visibility(AtsUpdateNotesRequestDtoVisibility.builder()
+                        .value(AtsUpdateNotesRequestDtoValue.PUBLIC)
+                        .sourceValue(AtsUpdateNotesRequestDtoSourceValue.of("Public"))
+                        .build())
+                    .passthrough(Map.ofEntries(
+                        Map.entry("other_known_names", "John Doe")))
+                    .build())
+                .call();
+
+        if (res.updateResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `xAccountId`                                                                    | *String*                                                                        | :heavy_check_mark:                                                              | The account identifier                                                          |
+| `id`                                                                            | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `subResourceId`                                                                 | *String*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `atsUpdateNotesRequestDto`                                                      | [AtsUpdateNotesRequestDto](../../models/components/AtsUpdateNotesRequestDto.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+
+### Response
+
+**[AtsUpdateInterviewNoteResponse](../../models/operations/AtsUpdateInterviewNoteResponse.md)**
 
 ### Errors
 

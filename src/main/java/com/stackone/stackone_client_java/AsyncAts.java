@@ -28,6 +28,7 @@ import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationR
 import com.stackone.stackone_client_java.models.operations.AtsCreateBackgroundCheckPackageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateRequest;
+import com.stackone.stackone_client_java.models.operations.AtsCreateInterviewNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateJobRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateOfferRequest;
 import com.stackone.stackone_client_java.models.operations.AtsDeleteBackgroundCheckPackageRequest;
@@ -95,6 +96,7 @@ import com.stackone.stackone_client_java.models.operations.AtsUpdateAssessmentsR
 import com.stackone.stackone_client_java.models.operations.AtsUpdateBackgroundCheckPackageRequest;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateBackgroundCheckResultRequest;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateCandidateRequest;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateJobRequest;
 import com.stackone.stackone_client_java.models.operations.AtsUploadApplicationDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.async.AtsCreateApplicationNoteRequestBuilder;
@@ -107,6 +109,8 @@ import com.stackone.stackone_client_java.models.operations.async.AtsCreateCandid
 import com.stackone.stackone_client_java.models.operations.async.AtsCreateCandidateNoteResponse;
 import com.stackone.stackone_client_java.models.operations.async.AtsCreateCandidateRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.AtsCreateCandidateResponse;
+import com.stackone.stackone_client_java.models.operations.async.AtsCreateInterviewNoteRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.async.AtsCreateInterviewNoteResponse;
 import com.stackone.stackone_client_java.models.operations.async.AtsCreateJobRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.AtsCreateJobResponse;
 import com.stackone.stackone_client_java.models.operations.async.AtsCreateOfferRequestBuilder;
@@ -241,6 +245,8 @@ import com.stackone.stackone_client_java.models.operations.async.AtsUpdateBackgr
 import com.stackone.stackone_client_java.models.operations.async.AtsUpdateBackgroundCheckResultResponse;
 import com.stackone.stackone_client_java.models.operations.async.AtsUpdateCandidateRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.AtsUpdateCandidateResponse;
+import com.stackone.stackone_client_java.models.operations.async.AtsUpdateInterviewNoteRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.async.AtsUpdateInterviewNoteResponse;
 import com.stackone.stackone_client_java.models.operations.async.AtsUpdateJobRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.async.AtsUpdateJobResponse;
 import com.stackone.stackone_client_java.models.operations.async.AtsUploadApplicationDocumentRequestBuilder;
@@ -250,6 +256,7 @@ import com.stackone.stackone_client_java.operations.AtsCreateApplicationNote;
 import com.stackone.stackone_client_java.operations.AtsCreateBackgroundCheckPackage;
 import com.stackone.stackone_client_java.operations.AtsCreateCandidate;
 import com.stackone.stackone_client_java.operations.AtsCreateCandidateNote;
+import com.stackone.stackone_client_java.operations.AtsCreateInterviewNote;
 import com.stackone.stackone_client_java.operations.AtsCreateJob;
 import com.stackone.stackone_client_java.operations.AtsCreateOffer;
 import com.stackone.stackone_client_java.operations.AtsDeleteBackgroundCheckPackage;
@@ -317,6 +324,7 @@ import com.stackone.stackone_client_java.operations.AtsUpdateAssessmentsResult;
 import com.stackone.stackone_client_java.operations.AtsUpdateBackgroundCheckPackage;
 import com.stackone.stackone_client_java.operations.AtsUpdateBackgroundCheckResult;
 import com.stackone.stackone_client_java.operations.AtsUpdateCandidate;
+import com.stackone.stackone_client_java.operations.AtsUpdateInterviewNote;
 import com.stackone.stackone_client_java.operations.AtsUpdateJob;
 import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
 import com.stackone.stackone_client_java.utils.Headers;
@@ -2024,6 +2032,116 @@ public class AsyncAts {
     public CompletableFuture<AtsGetInterviewResponse> getInterview(AtsGetInterviewRequest request, Optional<Options> options) {
         AsyncRequestOperation<AtsGetInterviewRequest, AtsGetInterviewResponse> operation
               = new AtsGetInterview.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
+     * Create Interview Note
+     * 
+     * @return The async call builder
+     */
+    public AtsCreateInterviewNoteRequestBuilder createInterviewNote() {
+        return new AtsCreateInterviewNoteRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Create Interview Note
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param atsCreateNotesRequestDto 
+     * @return {@code CompletableFuture<AtsCreateInterviewNoteResponse>} - The async response
+     */
+    public CompletableFuture<AtsCreateInterviewNoteResponse> createInterviewNote(
+            String xAccountId, String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
+        return createInterviewNote(
+                xAccountId, id, atsCreateNotesRequestDto,
+                Optional.empty());
+    }
+
+    /**
+     * Create Interview Note
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param atsCreateNotesRequestDto 
+     * @param options additional options
+     * @return {@code CompletableFuture<AtsCreateInterviewNoteResponse>} - The async response
+     */
+    public CompletableFuture<AtsCreateInterviewNoteResponse> createInterviewNote(
+            String xAccountId, String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) {
+        AtsCreateInterviewNoteRequest request =
+            AtsCreateInterviewNoteRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
+                .build();
+        AsyncRequestOperation<AtsCreateInterviewNoteRequest, AtsCreateInterviewNoteResponse> operation
+              = new AtsCreateInterviewNote.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
+     * Update Interview Note
+     * 
+     * @return The async call builder
+     */
+    public AtsUpdateInterviewNoteRequestBuilder updateInterviewNote() {
+        return new AtsUpdateInterviewNoteRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Update Interview Note
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param subResourceId 
+     * @param atsUpdateNotesRequestDto 
+     * @return {@code CompletableFuture<AtsUpdateInterviewNoteResponse>} - The async response
+     */
+    public CompletableFuture<AtsUpdateInterviewNoteResponse> updateInterviewNote(
+            String xAccountId, String id,
+            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
+        return updateInterviewNote(
+                xAccountId, id, subResourceId,
+                atsUpdateNotesRequestDto, Optional.empty());
+    }
+
+    /**
+     * Update Interview Note
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param subResourceId 
+     * @param atsUpdateNotesRequestDto 
+     * @param options additional options
+     * @return {@code CompletableFuture<AtsUpdateInterviewNoteResponse>} - The async response
+     */
+    public CompletableFuture<AtsUpdateInterviewNoteResponse> updateInterviewNote(
+            String xAccountId, String id,
+            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
+            Optional<Options> options) {
+        AtsUpdateInterviewNoteRequest request =
+            AtsUpdateInterviewNoteRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .subResourceId(subResourceId)
+                .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
+                .build();
+        AsyncRequestOperation<AtsUpdateInterviewNoteRequest, AtsUpdateInterviewNoteResponse> operation
+              = new AtsUpdateInterviewNote.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
         return operation.doRequest(request)

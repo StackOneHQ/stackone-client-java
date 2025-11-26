@@ -6,8 +6,8 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.LmsCreateContentRequestDto;
-import com.stackone.stackone_client_java.operations.LmsUpdateContent;
+import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDto;
+import com.stackone.stackone_client_java.operations.AtsCreateInterviewNote;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
@@ -15,67 +15,67 @@ import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.String;
 import java.util.Optional;
 
-public class LmsUpdateContentRequestBuilder {
+public class AtsCreateInterviewNoteRequestBuilder {
 
     private String xAccountId;
     private String id;
-    private LmsCreateContentRequestDto lmsCreateContentRequestDto;
+    private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
 
-    public LmsUpdateContentRequestBuilder(SDKConfiguration sdkConfiguration) {
+    public AtsCreateInterviewNoteRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public LmsUpdateContentRequestBuilder xAccountId(String xAccountId) {
+    public AtsCreateInterviewNoteRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
         return this;
     }
 
-    public LmsUpdateContentRequestBuilder id(String id) {
+    public AtsCreateInterviewNoteRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
     }
 
-    public LmsUpdateContentRequestBuilder lmsCreateContentRequestDto(LmsCreateContentRequestDto lmsCreateContentRequestDto) {
-        Utils.checkNotNull(lmsCreateContentRequestDto, "lmsCreateContentRequestDto");
-        this.lmsCreateContentRequestDto = lmsCreateContentRequestDto;
+    public AtsCreateInterviewNoteRequestBuilder atsCreateNotesRequestDto(AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
+        Utils.checkNotNull(atsCreateNotesRequestDto, "atsCreateNotesRequestDto");
+        this.atsCreateNotesRequestDto = atsCreateNotesRequestDto;
         return this;
     }
                 
-    public LmsUpdateContentRequestBuilder retryConfig(RetryConfig retryConfig) {
+    public AtsCreateInterviewNoteRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
         return this;
     }
 
-    public LmsUpdateContentRequestBuilder retryConfig(Optional<RetryConfig> retryConfig) {
+    public AtsCreateInterviewNoteRequestBuilder retryConfig(Optional<RetryConfig> retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = retryConfig;
         return this;
     }
 
 
-    private LmsUpdateContentRequest buildRequest() {
+    private AtsCreateInterviewNoteRequest buildRequest() {
 
-        LmsUpdateContentRequest request = new LmsUpdateContentRequest(xAccountId,
+        AtsCreateInterviewNoteRequest request = new AtsCreateInterviewNoteRequest(xAccountId,
             id,
-            lmsCreateContentRequestDto);
+            atsCreateNotesRequestDto);
 
         return request;
     }
 
-    public LmsUpdateContentResponse call() {
+    public AtsCreateInterviewNoteResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());
 
-        RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContent.Sync(sdkConfiguration, options, _headers);
-        LmsUpdateContentRequest request = buildRequest();
+        RequestOperation<AtsCreateInterviewNoteRequest, AtsCreateInterviewNoteResponse> operation
+              = new AtsCreateInterviewNote.Sync(sdkConfiguration, options, _headers);
+        AtsCreateInterviewNoteRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));
     }

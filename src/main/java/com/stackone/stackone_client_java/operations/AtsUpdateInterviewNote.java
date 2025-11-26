@@ -24,8 +24,8 @@ import com.stackone.stackone_client_java.models.errors.SDKError;
 import com.stackone.stackone_client_java.models.errors.TooManyRequestsResponse;
 import com.stackone.stackone_client_java.models.errors.UnauthorizedResponse;
 import com.stackone.stackone_client_java.models.errors.UnprocessableEntityResponse;
-import com.stackone.stackone_client_java.models.operations.LmsUpdateContentRequest;
-import com.stackone.stackone_client_java.models.operations.LmsUpdateContentResponse;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteRequest;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteResponse;
 import com.stackone.stackone_client_java.utils.AsyncRetries;
 import com.stackone.stackone_client_java.utils.BackoffStrategy;
 import com.stackone.stackone_client_java.utils.Blob;
@@ -58,7 +58,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 
-public class LmsUpdateContent {
+public class AtsUpdateInterviewNote {
 
     static abstract class Base {
         final SDKConfiguration sdkConfiguration;
@@ -101,7 +101,7 @@ public class LmsUpdateContent {
             return new BeforeRequestContextImpl(
                     this.sdkConfiguration,
                     this.baseUrl,
-                    "lms_update_content",
+                    "ats_update_interview_note",
                     java.util.Optional.empty(),
                     securitySource());
         }
@@ -110,7 +110,7 @@ public class LmsUpdateContent {
             return new AfterSuccessContextImpl(
                     this.sdkConfiguration,
                     this.baseUrl,
-                    "lms_update_content",
+                    "ats_update_interview_note",
                     java.util.Optional.empty(),
                     securitySource());
         }
@@ -119,7 +119,7 @@ public class LmsUpdateContent {
             return new AfterErrorContextImpl(
                     this.sdkConfiguration,
                     this.baseUrl,
-                    "lms_update_content",
+                    "ats_update_interview_note",
                     java.util.Optional.empty(),
                     securitySource());
         }
@@ -127,7 +127,7 @@ public class LmsUpdateContent {
             String url = Utils.generateURL(
                     klass,
                     this.baseUrl,
-                    "/unified/lms/content/{id}",
+                    "/unified/ats/interviews/{id}/notes/{subResourceId}",
                     request, null);
             HTTPRequest req = new HTTPRequest(url, "PATCH");
             Object convertedRequest = Utils.convertToShape(
@@ -136,7 +136,7 @@ public class LmsUpdateContent {
                     typeReference);
             SerializedBody serializedRequestBody = Utils.serializeRequestBody(
                     convertedRequest,
-                    "lmsCreateContentRequestDto",
+                    "atsUpdateNotesRequestDto",
                     "json",
                     false);
             if (serializedRequestBody == null) {
@@ -154,7 +154,7 @@ public class LmsUpdateContent {
     }
 
     public static class Sync extends Base
-            implements RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> {
+            implements RequestOperation<AtsUpdateInterviewNoteRequest, AtsUpdateInterviewNoteResponse> {
         public Sync(
                 SDKConfiguration sdkConfiguration, Optional<Options> options,
                 Headers _headers) {
@@ -163,8 +163,8 @@ public class LmsUpdateContent {
                   _headers);
         }
 
-        private HttpRequest onBuildRequest(LmsUpdateContentRequest request) throws Exception {
-            HttpRequest req = buildRequest(request, LmsUpdateContentRequest.class, new TypeReference<LmsUpdateContentRequest>() {});
+        private HttpRequest onBuildRequest(AtsUpdateInterviewNoteRequest request) throws Exception {
+            HttpRequest req = buildRequest(request, AtsUpdateInterviewNoteRequest.class, new TypeReference<AtsUpdateInterviewNoteRequest>() {});
             return sdkConfiguration.hooks().beforeRequest(createBeforeRequestContext(), req);
         }
 
@@ -180,7 +180,7 @@ public class LmsUpdateContent {
         }
 
         @Override
-        public HttpResponse<InputStream> doRequest(LmsUpdateContentRequest request) {
+        public HttpResponse<InputStream> doRequest(AtsUpdateInterviewNoteRequest request) {
             Retries retries = Retries.builder()
                     .action(() -> {
                         HttpRequest r;
@@ -207,21 +207,21 @@ public class LmsUpdateContent {
 
 
         @Override
-        public LmsUpdateContentResponse handleResponse(HttpResponse<InputStream> response) {
+        public AtsUpdateInterviewNoteResponse handleResponse(HttpResponse<InputStream> response) {
             String contentType = response
                     .headers()
                     .firstValue("Content-Type")
                     .orElse("application/octet-stream");
-            LmsUpdateContentResponse.Builder resBuilder =
-                    LmsUpdateContentResponse
+            AtsUpdateInterviewNoteResponse.Builder resBuilder =
+                    AtsUpdateInterviewNoteResponse
                             .builder()
                             .contentType(contentType)
                             .statusCode(response.statusCode())
                             .rawResponse(response);
 
-            LmsUpdateContentResponse res = resBuilder.build();
+            AtsUpdateInterviewNoteResponse res = resBuilder.build();
             
-            if (Utils.statusCodeMatches(response.statusCode(), "201")) {
+            if (Utils.statusCodeMatches(response.statusCode(), "200")) {
                 if (Utils.contentTypeMatches(contentType, "application/json")) {
                     return res.withUpdateResult(Utils.unmarshal(response, new TypeReference<UpdateResult>() {}));
                 } else {
@@ -325,7 +325,7 @@ public class LmsUpdateContent {
         }
     }
     public static class Async extends Base
-            implements AsyncRequestOperation<LmsUpdateContentRequest, com.stackone.stackone_client_java.models.operations.async.LmsUpdateContentResponse> {
+            implements AsyncRequestOperation<AtsUpdateInterviewNoteRequest, com.stackone.stackone_client_java.models.operations.async.AtsUpdateInterviewNoteResponse> {
         private final ScheduledExecutorService retryScheduler;
 
         public Async(
@@ -337,8 +337,8 @@ public class LmsUpdateContent {
             this.retryScheduler = retryScheduler;
         }
 
-        private CompletableFuture<HttpRequest> onBuildRequest(LmsUpdateContentRequest request) throws Exception {
-            HttpRequest req = buildRequest(request, LmsUpdateContentRequest.class, new TypeReference<LmsUpdateContentRequest>() {});
+        private CompletableFuture<HttpRequest> onBuildRequest(AtsUpdateInterviewNoteRequest request) throws Exception {
+            HttpRequest req = buildRequest(request, AtsUpdateInterviewNoteRequest.class, new TypeReference<AtsUpdateInterviewNoteRequest>() {});
             return this.sdkConfiguration.asyncHooks().beforeRequest(createBeforeRequestContext(), req);
         }
 
@@ -351,7 +351,7 @@ public class LmsUpdateContent {
         }
 
         @Override
-        public CompletableFuture<HttpResponse<Blob>> doRequest(LmsUpdateContentRequest request) {
+        public CompletableFuture<HttpResponse<Blob>> doRequest(AtsUpdateInterviewNoteRequest request) {
             AsyncRetries retries = AsyncRetries.builder()
                     .retryConfig(retryConfig)
                     .statusCodes(retryStatusCodes)
@@ -372,22 +372,22 @@ public class LmsUpdateContent {
         }
 
         @Override
-        public CompletableFuture<com.stackone.stackone_client_java.models.operations.async.LmsUpdateContentResponse> handleResponse(
+        public CompletableFuture<com.stackone.stackone_client_java.models.operations.async.AtsUpdateInterviewNoteResponse> handleResponse(
                 HttpResponse<Blob> response) {
             String contentType = response
                     .headers()
                     .firstValue("Content-Type")
                     .orElse("application/octet-stream");
-            com.stackone.stackone_client_java.models.operations.async.LmsUpdateContentResponse.Builder resBuilder =
-                    com.stackone.stackone_client_java.models.operations.async.LmsUpdateContentResponse
+            com.stackone.stackone_client_java.models.operations.async.AtsUpdateInterviewNoteResponse.Builder resBuilder =
+                    com.stackone.stackone_client_java.models.operations.async.AtsUpdateInterviewNoteResponse
                             .builder()
                             .contentType(contentType)
                             .statusCode(response.statusCode())
                             .rawResponse(response);
 
-            com.stackone.stackone_client_java.models.operations.async.LmsUpdateContentResponse res = resBuilder.build();
+            com.stackone.stackone_client_java.models.operations.async.AtsUpdateInterviewNoteResponse res = resBuilder.build();
             
-            if (Utils.statusCodeMatches(response.statusCode(), "201")) {
+            if (Utils.statusCodeMatches(response.statusCode(), "200")) {
                 if (Utils.contentTypeMatches(contentType, "application/json")) {
                     return Utils.unmarshalAsync(response, new TypeReference<UpdateResult>() {})
                             .thenApply(res::withUpdateResult);
