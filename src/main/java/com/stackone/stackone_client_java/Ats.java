@@ -38,6 +38,9 @@ import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateNot
 import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsCreateCandidateResponse;
+import com.stackone.stackone_client_java.models.operations.AtsCreateInterviewNoteRequest;
+import com.stackone.stackone_client_java.models.operations.AtsCreateInterviewNoteRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AtsCreateInterviewNoteResponse;
 import com.stackone.stackone_client_java.models.operations.AtsCreateJobRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateJobRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsCreateJobResponse;
@@ -239,6 +242,9 @@ import com.stackone.stackone_client_java.models.operations.AtsUpdateBackgroundCh
 import com.stackone.stackone_client_java.models.operations.AtsUpdateCandidateRequest;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateCandidateRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateCandidateResponse;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteRequest;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteRequestBuilder;
+import com.stackone.stackone_client_java.models.operations.AtsUpdateInterviewNoteResponse;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateJobRequest;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateJobRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsUpdateJobResponse;
@@ -250,6 +256,7 @@ import com.stackone.stackone_client_java.operations.AtsCreateApplicationNote;
 import com.stackone.stackone_client_java.operations.AtsCreateBackgroundCheckPackage;
 import com.stackone.stackone_client_java.operations.AtsCreateCandidate;
 import com.stackone.stackone_client_java.operations.AtsCreateCandidateNote;
+import com.stackone.stackone_client_java.operations.AtsCreateInterviewNote;
 import com.stackone.stackone_client_java.operations.AtsCreateJob;
 import com.stackone.stackone_client_java.operations.AtsCreateOffer;
 import com.stackone.stackone_client_java.operations.AtsDeleteBackgroundCheckPackage;
@@ -317,6 +324,7 @@ import com.stackone.stackone_client_java.operations.AtsUpdateAssessmentsResult;
 import com.stackone.stackone_client_java.operations.AtsUpdateBackgroundCheckPackage;
 import com.stackone.stackone_client_java.operations.AtsUpdateBackgroundCheckResult;
 import com.stackone.stackone_client_java.operations.AtsUpdateCandidate;
+import com.stackone.stackone_client_java.operations.AtsUpdateInterviewNote;
 import com.stackone.stackone_client_java.operations.AtsUpdateJob;
 import com.stackone.stackone_client_java.operations.AtsUploadApplicationDocument;
 import com.stackone.stackone_client_java.utils.Headers;
@@ -1934,6 +1942,110 @@ public class Ats {
     public AtsGetInterviewResponse getInterview(AtsGetInterviewRequest request, Optional<Options> options) {
         RequestOperation<AtsGetInterviewRequest, AtsGetInterviewResponse> operation
               = new AtsGetInterview.Sync(sdkConfiguration, options, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Create Interview Note
+     * 
+     * @return The call builder
+     */
+    public AtsCreateInterviewNoteRequestBuilder createInterviewNote() {
+        return new AtsCreateInterviewNoteRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Create Interview Note
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param atsCreateNotesRequestDto 
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public AtsCreateInterviewNoteResponse createInterviewNote(
+            String xAccountId, String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
+        return createInterviewNote(xAccountId, id, atsCreateNotesRequestDto,
+            Optional.empty());
+    }
+
+    /**
+     * Create Interview Note
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param atsCreateNotesRequestDto 
+     * @param options additional options
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public AtsCreateInterviewNoteResponse createInterviewNote(
+            String xAccountId, String id,
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) {
+        AtsCreateInterviewNoteRequest request =
+            AtsCreateInterviewNoteRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
+                .build();
+        RequestOperation<AtsCreateInterviewNoteRequest, AtsCreateInterviewNoteResponse> operation
+              = new AtsCreateInterviewNote.Sync(sdkConfiguration, options, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Update Interview Note
+     * 
+     * @return The call builder
+     */
+    public AtsUpdateInterviewNoteRequestBuilder updateInterviewNote() {
+        return new AtsUpdateInterviewNoteRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Update Interview Note
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param subResourceId 
+     * @param atsUpdateNotesRequestDto 
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public AtsUpdateInterviewNoteResponse updateInterviewNote(
+            String xAccountId, String id,
+            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
+        return updateInterviewNote(xAccountId, id, subResourceId,
+            atsUpdateNotesRequestDto, Optional.empty());
+    }
+
+    /**
+     * Update Interview Note
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param subResourceId 
+     * @param atsUpdateNotesRequestDto 
+     * @param options additional options
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public AtsUpdateInterviewNoteResponse updateInterviewNote(
+            String xAccountId, String id,
+            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
+            Optional<Options> options) {
+        AtsUpdateInterviewNoteRequest request =
+            AtsUpdateInterviewNoteRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .subResourceId(subResourceId)
+                .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
+                .build();
+        RequestOperation<AtsUpdateInterviewNoteRequest, AtsUpdateInterviewNoteResponse> operation
+              = new AtsUpdateInterviewNote.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

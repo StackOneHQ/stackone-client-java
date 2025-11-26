@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: 2ed6bae89985b549dd94c03f8ff5d6f8
+  docChecksum: 2653dd8c6e5b1e429d821bca378e4b27
   docVersion: 1.0.0
-  speakeasyVersion: 1.658.2
-  generationVersion: 2.755.9
-  releaseVersion: 0.18.0
-  configChecksum: ff1778a775d39ef7b538b98f57402de6
+  speakeasyVersion: 1.661.2
+  generationVersion: 2.763.3
+  releaseVersion: 0.18.1
+  configChecksum: fa7f3c992ecfa796ae0c6ff73220234a
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.55.2
+    core: 3.55.5
     deprecations: 2.81.1
     examples: 2.81.6
     flattening: 2.81.1
@@ -1243,13 +1243,6 @@ generatedFiles:
   - docs/models/components/LmsCreateCompletionRequestDtoSourceValue.md
   - docs/models/components/LmsCreateCompletionRequestDtoSourceValue4.md
   - docs/models/components/LmsCreateCompletionRequestDtoValue.md
-  - docs/models/components/LmsCreateContentRequestDto.md
-  - docs/models/components/LmsCreateContentRequestDtoActive.md
-  - docs/models/components/LmsCreateContentRequestDtoActive2.md
-  - docs/models/components/LmsCreateContentRequestDtoContentType.md
-  - docs/models/components/LmsCreateContentRequestDtoSourceValue.md
-  - docs/models/components/LmsCreateContentRequestDtoSourceValue4.md
-  - docs/models/components/LmsCreateContentRequestDtoValue.md
   - docs/models/components/LmsUpsertContentRequestDto.md
   - docs/models/components/LmsUpsertContentRequestDtoActive.md
   - docs/models/components/LmsUpsertContentRequestDtoActive2.md
@@ -1780,6 +1773,8 @@ generatedFiles:
   - docs/models/operations/AtsCreateCandidateNoteResponse.md
   - docs/models/operations/AtsCreateCandidateRequest.md
   - docs/models/operations/AtsCreateCandidateResponse.md
+  - docs/models/operations/AtsCreateInterviewNoteRequest.md
+  - docs/models/operations/AtsCreateInterviewNoteResponse.md
   - docs/models/operations/AtsCreateJobRequest.md
   - docs/models/operations/AtsCreateJobResponse.md
   - docs/models/operations/AtsCreateOfferRequest.md
@@ -1945,6 +1940,8 @@ generatedFiles:
   - docs/models/operations/AtsUpdateBackgroundCheckResultResponse.md
   - docs/models/operations/AtsUpdateCandidateRequest.md
   - docs/models/operations/AtsUpdateCandidateResponse.md
+  - docs/models/operations/AtsUpdateInterviewNoteRequest.md
+  - docs/models/operations/AtsUpdateInterviewNoteResponse.md
   - docs/models/operations/AtsUpdateJobRequest.md
   - docs/models/operations/AtsUpdateJobResponse.md
   - docs/models/operations/AtsUploadApplicationDocumentRequest.md
@@ -2256,8 +2253,6 @@ generatedFiles:
   - docs/models/operations/LmsListUsersQueryParamFilter.md
   - docs/models/operations/LmsListUsersRequest.md
   - docs/models/operations/LmsListUsersResponse.md
-  - docs/models/operations/LmsUpdateContentRequest.md
-  - docs/models/operations/LmsUpdateContentResponse.md
   - docs/models/operations/LmsUpsertContentRequest.md
   - docs/models/operations/LmsUpsertContentResponse.md
   - docs/models/operations/MarketingCreateContentBlockRequest.md
@@ -3741,13 +3736,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateCompletionRequestDtoSourceValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateCompletionRequestDtoSourceValue4.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateCompletionRequestDtoValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDto.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoActive.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoActive2.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoContentType.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoSourceValue.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoSourceValue4.java
-  - src/main/java/com/stackone/stackone_client_java/models/components/LmsCreateContentRequestDtoValue.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsUpsertContentRequestDto.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsUpsertContentRequestDtoActive.java
   - src/main/java/com/stackone/stackone_client_java/models/components/LmsUpsertContentRequestDtoActive2.java
@@ -4262,6 +4250,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsCreateBackgroundCheckPackageRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsCreateCandidateNoteRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsCreateCandidateRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsCreateInterviewNoteRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsCreateJobRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsCreateOfferRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsDeleteBackgroundCheckPackageRequestBuilder.java
@@ -4329,6 +4318,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsUpdateBackgroundCheckPackageRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsUpdateBackgroundCheckResultRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsUpdateCandidateRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsUpdateInterviewNoteRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsUpdateJobRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/AtsUploadApplicationDocumentRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/CrmCreateContactRequestBuilder.java
@@ -4455,7 +4445,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/LmsListUserAssignmentsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/LmsListUserCompletionsRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/LmsListUsersRequestBuilder.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations//async/LmsUpdateContentRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/LmsUpsertContentRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/MarketingCreateContentBlockRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations//async/MarketingCreateEmailTemplateRequestBuilder.java
@@ -4586,6 +4575,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateCandidateRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateCandidateRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateCandidateResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateInterviewNoteRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateInterviewNoteRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateInterviewNoteResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateJobRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateJobRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsCreateJobResponse.java
@@ -4818,6 +4810,9 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateCandidateRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateCandidateRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateCandidateResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateInterviewNoteRequest.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateInterviewNoteRequestBuilder.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateInterviewNoteResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateJobRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateJobRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/AtsUpdateJobResponse.java
@@ -5255,9 +5250,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsListUsersRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsListUsersRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsListUsersResponse.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateContentRequest.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateContentRequestBuilder.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpdateContentResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpsertContentRequest.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpsertContentRequestBuilder.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/LmsUpsertContentResponse.java
@@ -5555,6 +5547,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsCreateBackgroundCheckPackageResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsCreateCandidateNoteResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsCreateCandidateResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsCreateInterviewNoteResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsCreateJobResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsCreateOfferResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsDeleteBackgroundCheckPackageResponse.java
@@ -5622,6 +5615,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsUpdateBackgroundCheckPackageResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsUpdateBackgroundCheckResultResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsUpdateCandidateResponse.java
+  - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsUpdateInterviewNoteResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsUpdateJobResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/AtsUploadApplicationDocumentResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/CrmCreateContactResponse.java
@@ -5748,7 +5742,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/LmsListUserAssignmentsResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/LmsListUserCompletionsResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/LmsListUsersResponse.java
-  - src/main/java/com/stackone/stackone_client_java/models/operations/async/LmsUpdateContentResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/LmsUpsertContentResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/MarketingCreateContentBlockResponse.java
   - src/main/java/com/stackone/stackone_client_java/models/operations/async/MarketingCreateEmailTemplateResponse.java
@@ -5844,6 +5837,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/AtsCreateBackgroundCheckPackage.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsCreateCandidate.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsCreateCandidateNote.java
+  - src/main/java/com/stackone/stackone_client_java/operations/AtsCreateInterviewNote.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsCreateJob.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsCreateOffer.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsDeleteBackgroundCheckPackage.java
@@ -5911,6 +5905,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/AtsUpdateBackgroundCheckPackage.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsUpdateBackgroundCheckResult.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsUpdateCandidate.java
+  - src/main/java/com/stackone/stackone_client_java/operations/AtsUpdateInterviewNote.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsUpdateJob.java
   - src/main/java/com/stackone/stackone_client_java/operations/AtsUploadApplicationDocument.java
   - src/main/java/com/stackone/stackone_client_java/operations/CrmCreateContact.java
@@ -6037,7 +6032,6 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/operations/LmsListUserAssignments.java
   - src/main/java/com/stackone/stackone_client_java/operations/LmsListUserCompletions.java
   - src/main/java/com/stackone/stackone_client_java/operations/LmsListUsers.java
-  - src/main/java/com/stackone/stackone_client_java/operations/LmsUpdateContent.java
   - src/main/java/com/stackone/stackone_client_java/operations/LmsUpsertContent.java
   - src/main/java/com/stackone/stackone_client_java/operations/MarketingCreateContentBlock.java
   - src/main/java/com/stackone/stackone_client_java/operations/MarketingCreateEmailTemplate.java
@@ -6175,6 +6169,7 @@ generatedFiles:
   - src/main/java/com/stackone/stackone_client_java/utils/SerializedBody.java
   - src/main/java/com/stackone/stackone_client_java/utils/SessionManager.java
   - src/main/java/com/stackone/stackone_client_java/utils/SpeakeasyHTTPClient.java
+  - src/main/java/com/stackone/stackone_client_java/utils/SpeakeasyLogger.java
   - src/main/java/com/stackone/stackone_client_java/utils/SpeakeasyMetadata.java
   - src/main/java/com/stackone/stackone_client_java/utils/StreamingParser.java
   - src/main/java/com/stackone/stackone_client_java/utils/TypedObject.java
@@ -16928,6 +16923,79 @@ examples:
           application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
         "502":
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_create_interview_note:
+    speakeasy-default-ats-create-interview-note:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"content": [{"body": "This candidate seems like a good fit for the role"}], "author_id": "1234567890", "visibility": {"value": "public", "source_value": "Public"}, "passthrough": {"other_known_names": "John Doe"}}
+      responses:
+        "201":
+          application/json: {"statusCode": 201, "message": "Record created successfully.", "timestamp": "2021-01-01T01:01:01.000Z", "data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": null, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
+  ats_update_interview_note:
+    speakeasy-default-ats-update-interview-note:
+      parameters:
+        path:
+          id: "<id>"
+          subResourceId: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"content": [{"body": "This candidate seems like a good fit for the role"}], "author_id": "1234567890", "visibility": {"value": "public", "source_value": "Public"}, "passthrough": {"other_known_names": "John Doe"}}
+      responses:
+        "200":
+          application/json: {"statusCode": 200, "message": "Record updated successfully.", "timestamp": "2021-01-01T01:01:01.000Z"}
+        "400":
+          application/json: {"statusCode": 400, "message": "Bad Request", "timestamp": "2023-05-30T00:00:00.000Z", "data": {"statusCode": 400, "message": "Bad Request", "headers": {}}, "provider_errors": [{"status": 400, "url": "https://api.provider.com/v1/resource", "raw": {}, "headers": {}}]}
+        "401":
+          application/json: {"statusCode": 401, "message": "Unauthorized", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "403":
+          application/json: {"statusCode": 403, "message": "Forbidden resource", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "404":
+          application/json: {"statusCode": 404, "message": "Not Found", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "408":
+          application/json: {"statusCode": 408, "message": "Request timed out", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "409":
+          application/json: {"statusCode": 409, "message": "Conflict", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "412":
+          application/json: {"statusCode": 412, "message": "Precondition failed", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "422":
+          application/json: {"statusCode": 422, "message": "Unprocessable Entity", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "429":
+          application/json: {"statusCode": 429, "message": "Too many requests", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "500":
+          application/json: {"statusCode": 500, "message": "Internal server error", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "501":
+          application/json: {"statusCode": 501, "message": "Not Implemented", "timestamp": "2023-05-30T00:00:00.000Z"}
+        "502":
+          application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes Detected:\n* `stackone.mcp.mcpPost()`: \n  *  `request.jsonrpcmessagedto.params` **Changed**\n"
+releaseNotes: "## Java SDK Changes Detected:\n* `stackone.ats.createInterviewNote()`: **Added**\n* `stackone.ats.updateInterviewNote()`: **Added**\n* `stackone.lms.updateContent()`: **Deleted** **Breaking** :warning:\n* `stackone.accounts.updateAccount()`: \n  *  `request.patchaccountexternaldto.integrationId` **Added**\n* `stackone.hris.listEmployees()`:  `response.data.[].employments.[].manager.[]` **Changed**\n* `stackone.hris.getEmployee()`:  `response.data.employments.[].manager.[]` **Changed**\n* `stackone.hris.listEmployments()`:  `response.data.[].manager.[]` **Changed**\n* `stackone.hris.getEmployment()`:  `response.data.manager.[]` **Changed**\n* `stackone.hris.listEmployeeEmployments()`:  `response.data.[].manager.[]` **Changed**\n* `stackone.hris.getEmployeeEmployment()`:  `response.data.manager.[]` **Changed**\n"

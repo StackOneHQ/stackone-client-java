@@ -11,6 +11,7 @@ import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 import com.stackone.stackone_client_java.utils.CopiableInputStream;
 import com.stackone.stackone_client_java.utils.ResponseWithBody;
+import com.stackone.stackone_client_java.utils.SpeakeasyLogger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,6 +39,9 @@ import java.util.function.Function;
  * @param <ProgressParamT> The type of the progression parameter (e.g., page number, offset, cursor)
  */
 public class Paginator<ReqT, ProgressParamT> implements Iterator<HttpResponse<InputStream>> {
+
+    private static final SpeakeasyLogger logger = SpeakeasyLogger.getLogger(Paginator.class);
+
     /**
      * The initial request containing pagination parameters.
      */
@@ -126,6 +130,13 @@ public class Paginator<ReqT, ProgressParamT> implements Iterator<HttpResponse<In
         ReqT request = state == PaginationState.INITIAL ?
                 initialRequest :
                 requestModifier.apply(initialRequest, currentValue);
+        
+        if (state == PaginationState.INITIAL) {
+            logger.debug("Fetching initial page");
+        } else {
+            logger.debug("Fetching next page with position: {}", currentValue);
+        }
+        
         HttpResponse<InputStream> response = dataFetcher.apply(request);
         try (InputStream body = response.body()) {
             CopiableInputStream copiableInputStream = new CopiableInputStream(body);
@@ -133,7 +144,12 @@ public class Paginator<ReqT, ProgressParamT> implements Iterator<HttpResponse<In
             currentResponse = new ResponseWithBody<>(response, given -> copiableInputStream.copy());
             boolean hasMorePages = progressTracker.advance(respJson);
             state = hasMorePages ? PaginationState.HAS_MORE_PAGES : PaginationState.EXHAUSTED;
+            
+            if (logger.isTraceEnabled()) {
+                logger.trace("Page fetched - status: {}, hasMorePages: {}", response.statusCode(), hasMorePages);
+            }
         } catch (IOException e) {
+            logger.debug("Error fetching page: {}", e.getMessage());
             throw new RuntimeException(e);
         }
     }

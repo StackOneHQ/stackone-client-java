@@ -5,14 +5,14 @@ package com.stackone.stackone_client_java.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.stackone.stackone_client_java.models.components.LmsCreateContentRequestDto;
+import com.stackone.stackone_client_java.models.components.AtsCreateNotesRequestDto;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 
 
-public class LmsUpdateContentRequest {
+public class AtsCreateInterviewNoteRequest {
     /**
      * The account identifier
      */
@@ -25,19 +25,19 @@ public class LmsUpdateContentRequest {
 
 
     @SpeakeasyMetadata("request:mediaType=application/json")
-    private LmsCreateContentRequestDto lmsCreateContentRequestDto;
+    private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
 
     @JsonCreator
-    public LmsUpdateContentRequest(
+    public AtsCreateInterviewNoteRequest(
             String xAccountId,
             String id,
-            LmsCreateContentRequestDto lmsCreateContentRequestDto) {
+            AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
-        Utils.checkNotNull(lmsCreateContentRequestDto, "lmsCreateContentRequestDto");
+        Utils.checkNotNull(atsCreateNotesRequestDto, "atsCreateNotesRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
-        this.lmsCreateContentRequestDto = lmsCreateContentRequestDto;
+        this.atsCreateNotesRequestDto = atsCreateNotesRequestDto;
     }
 
     /**
@@ -54,8 +54,8 @@ public class LmsUpdateContentRequest {
     }
 
     @JsonIgnore
-    public LmsCreateContentRequestDto lmsCreateContentRequestDto() {
-        return lmsCreateContentRequestDto;
+    public AtsCreateNotesRequestDto atsCreateNotesRequestDto() {
+        return atsCreateNotesRequestDto;
     }
 
     public static Builder builder() {
@@ -66,21 +66,21 @@ public class LmsUpdateContentRequest {
     /**
      * The account identifier
      */
-    public LmsUpdateContentRequest withXAccountId(String xAccountId) {
+    public AtsCreateInterviewNoteRequest withXAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
         return this;
     }
 
-    public LmsUpdateContentRequest withId(String id) {
+    public AtsCreateInterviewNoteRequest withId(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
     }
 
-    public LmsUpdateContentRequest withLmsCreateContentRequestDto(LmsCreateContentRequestDto lmsCreateContentRequestDto) {
-        Utils.checkNotNull(lmsCreateContentRequestDto, "lmsCreateContentRequestDto");
-        this.lmsCreateContentRequestDto = lmsCreateContentRequestDto;
+    public AtsCreateInterviewNoteRequest withAtsCreateNotesRequestDto(AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
+        Utils.checkNotNull(atsCreateNotesRequestDto, "atsCreateNotesRequestDto");
+        this.atsCreateNotesRequestDto = atsCreateNotesRequestDto;
         return this;
     }
 
@@ -92,25 +92,25 @@ public class LmsUpdateContentRequest {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        LmsUpdateContentRequest other = (LmsUpdateContentRequest) o;
+        AtsCreateInterviewNoteRequest other = (AtsCreateInterviewNoteRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
-            Utils.enhancedDeepEquals(this.lmsCreateContentRequestDto, other.lmsCreateContentRequestDto);
+            Utils.enhancedDeepEquals(this.atsCreateNotesRequestDto, other.atsCreateNotesRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, lmsCreateContentRequestDto);
+            xAccountId, id, atsCreateNotesRequestDto);
     }
     
     @Override
     public String toString() {
-        return Utils.toString(LmsUpdateContentRequest.class,
+        return Utils.toString(AtsCreateInterviewNoteRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
-                "lmsCreateContentRequestDto", lmsCreateContentRequestDto);
+                "atsCreateNotesRequestDto", atsCreateNotesRequestDto);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -120,7 +120,7 @@ public class LmsUpdateContentRequest {
 
         private String id;
 
-        private LmsCreateContentRequestDto lmsCreateContentRequestDto;
+        private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
 
         private Builder() {
           // force use of static builder() method
@@ -144,16 +144,16 @@ public class LmsUpdateContentRequest {
         }
 
 
-        public Builder lmsCreateContentRequestDto(LmsCreateContentRequestDto lmsCreateContentRequestDto) {
-            Utils.checkNotNull(lmsCreateContentRequestDto, "lmsCreateContentRequestDto");
-            this.lmsCreateContentRequestDto = lmsCreateContentRequestDto;
+        public Builder atsCreateNotesRequestDto(AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
+            Utils.checkNotNull(atsCreateNotesRequestDto, "atsCreateNotesRequestDto");
+            this.atsCreateNotesRequestDto = atsCreateNotesRequestDto;
             return this;
         }
 
-        public LmsUpdateContentRequest build() {
+        public AtsCreateInterviewNoteRequest build() {
 
-            return new LmsUpdateContentRequest(
-                xAccountId, id, lmsCreateContentRequestDto);
+            return new AtsCreateInterviewNoteRequest(
+                xAccountId, id, atsCreateNotesRequestDto);
         }
 
     }

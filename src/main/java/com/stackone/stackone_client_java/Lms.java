@@ -8,7 +8,6 @@ import static com.stackone.stackone_client_java.operations.Operations.RequestOpe
 import com.stackone.stackone_client_java.models.components.LmsBatchUpsertContentRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsCreateAssignmentRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsCreateCompletionRequestDto;
-import com.stackone.stackone_client_java.models.components.LmsCreateContentRequestDto;
 import com.stackone.stackone_client_java.models.components.LmsUpsertContentRequestDto;
 import com.stackone.stackone_client_java.models.operations.LmsBatchUpsertContentRequest;
 import com.stackone.stackone_client_java.models.operations.LmsBatchUpsertContentRequestBuilder;
@@ -76,9 +75,6 @@ import com.stackone.stackone_client_java.models.operations.LmsListUserCompletion
 import com.stackone.stackone_client_java.models.operations.LmsListUsersRequest;
 import com.stackone.stackone_client_java.models.operations.LmsListUsersRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.LmsListUsersResponse;
-import com.stackone.stackone_client_java.models.operations.LmsUpdateContentRequest;
-import com.stackone.stackone_client_java.models.operations.LmsUpdateContentRequestBuilder;
-import com.stackone.stackone_client_java.models.operations.LmsUpdateContentResponse;
 import com.stackone.stackone_client_java.models.operations.LmsUpsertContentRequest;
 import com.stackone.stackone_client_java.models.operations.LmsUpsertContentRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.LmsUpsertContentResponse;
@@ -104,7 +100,6 @@ import com.stackone.stackone_client_java.operations.LmsListSkills;
 import com.stackone.stackone_client_java.operations.LmsListUserAssignments;
 import com.stackone.stackone_client_java.operations.LmsListUserCompletions;
 import com.stackone.stackone_client_java.operations.LmsListUsers;
-import com.stackone.stackone_client_java.operations.LmsUpdateContent;
 import com.stackone.stackone_client_java.operations.LmsUpsertContent;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
@@ -407,6 +402,9 @@ public class Lms {
      * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
      * for consumption and progress tracking.
      * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
+     * 
      * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
      * for more information about external linking learning objects.
      * 
@@ -421,6 +419,9 @@ public class Lms {
      * 
      * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
      * for consumption and progress tracking.
+     * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
      * 
      * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
      * for more information about external linking learning objects.
@@ -439,6 +440,9 @@ public class Lms {
      * 
      * <p>Batch upsert multiple external linking learning objects that redirect users to a provider platform
      * for consumption and progress tracking.
+     * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
      * 
      * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
      * for more information about external linking learning objects.
@@ -521,6 +525,9 @@ public class Lms {
      * <p>Create or update an external linking learning object that redirects users to a provider platform for
      * consumption and progress tracking.
      * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
+     * 
      * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
      * for more information about external linking learning objects.
      * 
@@ -535,6 +542,9 @@ public class Lms {
      * 
      * <p>Create or update an external linking learning object that redirects users to a provider platform for
      * consumption and progress tracking.
+     * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
      * 
      * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
      * for more information about external linking learning objects.
@@ -553,6 +563,9 @@ public class Lms {
      * 
      * <p>Create or update an external linking learning object that redirects users to a provider platform for
      * consumption and progress tracking.
+     * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
      * 
      * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
      * for more information about external linking learning objects.
@@ -626,74 +639,6 @@ public class Lms {
     public LmsGetContentResponse getContent(LmsGetContentRequest request, Optional<Options> options) {
         RequestOperation<LmsGetContentRequest, LmsGetContentResponse> operation
               = new LmsGetContent.Sync(sdkConfiguration, options, _headers);
-        return operation.handleResponse(operation.doRequest(request));
-    }
-
-    /**
-     * Update External Linking Learning Objects
-     * 
-     * <p>Update an external linking learning object that redirects users to a provider platform for
-     * consumption and progress tracking.
-     * 
-     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
-     * for more information about external linking learning objects.
-     * 
-     * @return The call builder
-     */
-    public LmsUpdateContentRequestBuilder updateContent() {
-        return new LmsUpdateContentRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Update External Linking Learning Objects
-     * 
-     * <p>Update an external linking learning object that redirects users to a provider platform for
-     * consumption and progress tracking.
-     * 
-     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
-     * for more information about external linking learning objects.
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param lmsCreateContentRequestDto 
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public LmsUpdateContentResponse updateContent(
-            String xAccountId, String id,
-            LmsCreateContentRequestDto lmsCreateContentRequestDto) {
-        return updateContent(xAccountId, id, lmsCreateContentRequestDto,
-            Optional.empty());
-    }
-
-    /**
-     * Update External Linking Learning Objects
-     * 
-     * <p>Update an external linking learning object that redirects users to a provider platform for
-     * consumption and progress tracking.
-     * 
-     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
-     * for more information about external linking learning objects.
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param lmsCreateContentRequestDto 
-     * @param options additional options
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public LmsUpdateContentResponse updateContent(
-            String xAccountId, String id,
-            LmsCreateContentRequestDto lmsCreateContentRequestDto, Optional<Options> options) {
-        LmsUpdateContentRequest request =
-            LmsUpdateContentRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .lmsCreateContentRequestDto(lmsCreateContentRequestDto)
-                .build();
-        RequestOperation<LmsUpdateContentRequest, LmsUpdateContentResponse> operation
-              = new LmsUpdateContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

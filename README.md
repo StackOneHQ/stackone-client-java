@@ -46,7 +46,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.stackone:stackone-client-java:0.18.0'
+implementation 'com.stackone:stackone-client-java:0.18.1'
 ```
 
 Maven:
@@ -54,7 +54,7 @@ Maven:
 <dependency>
     <groupId>com.stackone</groupId>
     <artifactId>stackone-client-java</artifactId>
-    <version>0.18.0</version>
+    <version>0.18.1</version>
 </dependency>
 ```
 
@@ -256,6 +256,8 @@ public class Application {
 * [getApplicationStage](docs/sdks/ats/README.md#getapplicationstage) - Get Application Stage
 * [listInterviews](docs/sdks/ats/README.md#listinterviews) - List Interviews
 * [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
+* [createInterviewNote](docs/sdks/ats/README.md#createinterviewnote) - Create Interview Note
+* [updateInterviewNote](docs/sdks/ats/README.md#updateinterviewnote) - Update Interview Note
 * [listJobs](docs/sdks/ats/README.md#listjobs) - List Jobs
 * [createJob](docs/sdks/ats/README.md#createjob) - Create Job
 * [listJobApplicationStages](docs/sdks/ats/README.md#listjobapplicationstages) - List Job Application Stages
@@ -424,7 +426,6 @@ public class Application {
 * [listContent](docs/sdks/lms/README.md#listcontent) - List Content
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert External Linking Learning Objects
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
-* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update External Linking Learning Objects
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
 * [getUserCompletion](docs/sdks/lms/README.md#getusercompletion) - Get User Completion
@@ -1295,9 +1296,11 @@ public class Application {
 ## Debugging
 
 ### Debug
+
 You can setup your SDK to emit debug logs for SDK requests and responses.
 
 For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
+
 ```java
 SDK.builder()
     .enableHTTPDebugLogging(true)
@@ -1315,9 +1318,10 @@ Response body:
   "token": "global"
 }
 ```
-__WARNING__: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+__WARNING__: This logging should only be used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
 
 __NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
+
 
 Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End Debugging [debug] -->
