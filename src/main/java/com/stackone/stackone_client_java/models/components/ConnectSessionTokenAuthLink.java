@@ -90,6 +90,13 @@ public class ConnectSessionTokenAuthLink {
     @JsonProperty("type")
     private JsonNullable<? extends ConnectSessionTokenAuthLinkType> type;
 
+    /**
+     * The integration ID (UUID) associated with this connect session
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("integration_id")
+    private JsonNullable<String> integrationId;
+
 
     @JsonProperty("token")
     private String token;
@@ -114,6 +121,7 @@ public class ConnectSessionTokenAuthLink {
             @JsonProperty("metadata") JsonNullable<? extends ConnectSessionTokenAuthLinkMetadata> metadata,
             @JsonProperty("external_trigger_token") JsonNullable<String> externalTriggerToken,
             @JsonProperty("type") JsonNullable<? extends ConnectSessionTokenAuthLinkType> type,
+            @JsonProperty("integration_id") JsonNullable<String> integrationId,
             @JsonProperty("token") String token,
             @JsonProperty("auth_link_url") String authLinkUrl) {
         Utils.checkNotNull(id, "id");
@@ -130,6 +138,7 @@ public class ConnectSessionTokenAuthLink {
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(externalTriggerToken, "externalTriggerToken");
         Utils.checkNotNull(type, "type");
+        Utils.checkNotNull(integrationId, "integrationId");
         Utils.checkNotNull(token, "token");
         Utils.checkNotNull(authLinkUrl, "authLinkUrl");
         this.id = id;
@@ -146,6 +155,7 @@ public class ConnectSessionTokenAuthLink {
         this.metadata = metadata;
         this.externalTriggerToken = externalTriggerToken;
         this.type = type;
+        this.integrationId = integrationId;
         this.token = token;
         this.authLinkUrl = authLinkUrl;
     }
@@ -163,8 +173,8 @@ public class ConnectSessionTokenAuthLink {
             JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId,
             originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), createdAt, JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), token,
-            authLinkUrl);
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            token, authLinkUrl);
     }
 
     @JsonIgnore
@@ -248,6 +258,14 @@ public class ConnectSessionTokenAuthLink {
     @JsonIgnore
     public JsonNullable<ConnectSessionTokenAuthLinkType> type() {
         return (JsonNullable<ConnectSessionTokenAuthLinkType>) type;
+    }
+
+    /**
+     * The integration ID (UUID) associated with this connect session
+     */
+    @JsonIgnore
+    public JsonNullable<String> integrationId() {
+        return integrationId;
     }
 
     @JsonIgnore
@@ -417,6 +435,24 @@ public class ConnectSessionTokenAuthLink {
         return this;
     }
 
+    /**
+     * The integration ID (UUID) associated with this connect session
+     */
+    public ConnectSessionTokenAuthLink withIntegrationId(String integrationId) {
+        Utils.checkNotNull(integrationId, "integrationId");
+        this.integrationId = JsonNullable.of(integrationId);
+        return this;
+    }
+
+    /**
+     * The integration ID (UUID) associated with this connect session
+     */
+    public ConnectSessionTokenAuthLink withIntegrationId(JsonNullable<String> integrationId) {
+        Utils.checkNotNull(integrationId, "integrationId");
+        this.integrationId = integrationId;
+        return this;
+    }
+
     public ConnectSessionTokenAuthLink withToken(String token) {
         Utils.checkNotNull(token, "token");
         this.token = token;
@@ -453,6 +489,7 @@ public class ConnectSessionTokenAuthLink {
             Utils.enhancedDeepEquals(this.metadata, other.metadata) &&
             Utils.enhancedDeepEquals(this.externalTriggerToken, other.externalTriggerToken) &&
             Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.integrationId, other.integrationId) &&
             Utils.enhancedDeepEquals(this.token, other.token) &&
             Utils.enhancedDeepEquals(this.authLinkUrl, other.authLinkUrl);
     }
@@ -464,8 +501,8 @@ public class ConnectSessionTokenAuthLink {
             categories, provider, originOwnerId,
             originOwnerName, originUsername, accountId,
             label, createdAt, metadata,
-            externalTriggerToken, type, token,
-            authLinkUrl);
+            externalTriggerToken, type, integrationId,
+            token, authLinkUrl);
     }
     
     @Override
@@ -485,6 +522,7 @@ public class ConnectSessionTokenAuthLink {
                 "metadata", metadata,
                 "externalTriggerToken", externalTriggerToken,
                 "type", type,
+                "integrationId", integrationId,
                 "token", token,
                 "authLinkUrl", authLinkUrl);
     }
@@ -519,6 +557,8 @@ public class ConnectSessionTokenAuthLink {
         private JsonNullable<String> externalTriggerToken = JsonNullable.undefined();
 
         private JsonNullable<? extends ConnectSessionTokenAuthLinkType> type = JsonNullable.undefined();
+
+        private JsonNullable<String> integrationId = JsonNullable.undefined();
 
         private String token;
 
@@ -695,6 +735,25 @@ public class ConnectSessionTokenAuthLink {
         }
 
 
+        /**
+         * The integration ID (UUID) associated with this connect session
+         */
+        public Builder integrationId(String integrationId) {
+            Utils.checkNotNull(integrationId, "integrationId");
+            this.integrationId = JsonNullable.of(integrationId);
+            return this;
+        }
+
+        /**
+         * The integration ID (UUID) associated with this connect session
+         */
+        public Builder integrationId(JsonNullable<String> integrationId) {
+            Utils.checkNotNull(integrationId, "integrationId");
+            this.integrationId = integrationId;
+            return this;
+        }
+
+
         public Builder token(String token) {
             Utils.checkNotNull(token, "token");
             this.token = token;
@@ -715,8 +774,8 @@ public class ConnectSessionTokenAuthLink {
                 categories, provider, originOwnerId,
                 originOwnerName, originUsername, accountId,
                 label, createdAt, metadata,
-                externalTriggerToken, type, token,
-                authLinkUrl);
+                externalTriggerToken, type, integrationId,
+                token, authLinkUrl);
         }
 
     }

@@ -24,15 +24,24 @@ public class HrisListTasksQueryParamFilter {
     @SpeakeasyMetadata("queryParam:name=updated_after")
     private JsonNullable<OffsetDateTime> updatedAfter;
 
+    /**
+     * Use a string with a date to only select results created after that given date
+     */
+    @SpeakeasyMetadata("queryParam:name=created_after")
+    private JsonNullable<OffsetDateTime> createdAfter;
+
     @JsonCreator
     public HrisListTasksQueryParamFilter(
-            JsonNullable<OffsetDateTime> updatedAfter) {
+            JsonNullable<OffsetDateTime> updatedAfter,
+            JsonNullable<OffsetDateTime> createdAfter) {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
+        Utils.checkNotNull(createdAfter, "createdAfter");
         this.updatedAfter = updatedAfter;
+        this.createdAfter = createdAfter;
     }
     
     public HrisListTasksQueryParamFilter() {
-        this(JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -41,6 +50,14 @@ public class HrisListTasksQueryParamFilter {
     @JsonIgnore
     public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
+    }
+
+    /**
+     * Use a string with a date to only select results created after that given date
+     */
+    @JsonIgnore
+    public JsonNullable<OffsetDateTime> createdAfter() {
+        return createdAfter;
     }
 
     public static Builder builder() {
@@ -66,6 +83,24 @@ public class HrisListTasksQueryParamFilter {
         return this;
     }
 
+    /**
+     * Use a string with a date to only select results created after that given date
+     */
+    public HrisListTasksQueryParamFilter withCreatedAfter(OffsetDateTime createdAfter) {
+        Utils.checkNotNull(createdAfter, "createdAfter");
+        this.createdAfter = JsonNullable.of(createdAfter);
+        return this;
+    }
+
+    /**
+     * Use a string with a date to only select results created after that given date
+     */
+    public HrisListTasksQueryParamFilter withCreatedAfter(JsonNullable<OffsetDateTime> createdAfter) {
+        Utils.checkNotNull(createdAfter, "createdAfter");
+        this.createdAfter = createdAfter;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -76,25 +111,29 @@ public class HrisListTasksQueryParamFilter {
         }
         HrisListTasksQueryParamFilter other = (HrisListTasksQueryParamFilter) o;
         return 
-            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.createdAfter, other.createdAfter);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            updatedAfter);
+            updatedAfter, createdAfter);
     }
     
     @Override
     public String toString() {
         return Utils.toString(HrisListTasksQueryParamFilter.class,
-                "updatedAfter", updatedAfter);
+                "updatedAfter", updatedAfter,
+                "createdAfter", createdAfter);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
+
+        private JsonNullable<OffsetDateTime> createdAfter = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -119,10 +158,29 @@ public class HrisListTasksQueryParamFilter {
             return this;
         }
 
+
+        /**
+         * Use a string with a date to only select results created after that given date
+         */
+        public Builder createdAfter(OffsetDateTime createdAfter) {
+            Utils.checkNotNull(createdAfter, "createdAfter");
+            this.createdAfter = JsonNullable.of(createdAfter);
+            return this;
+        }
+
+        /**
+         * Use a string with a date to only select results created after that given date
+         */
+        public Builder createdAfter(JsonNullable<OffsetDateTime> createdAfter) {
+            Utils.checkNotNull(createdAfter, "createdAfter");
+            this.createdAfter = createdAfter;
+            return this;
+        }
+
         public HrisListTasksQueryParamFilter build() {
 
             return new HrisListTasksQueryParamFilter(
-                updatedAfter);
+                updatedAfter, createdAfter);
         }
 
     }

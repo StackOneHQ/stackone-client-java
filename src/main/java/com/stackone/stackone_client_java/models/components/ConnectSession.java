@@ -90,6 +90,13 @@ public class ConnectSession {
     @JsonProperty("type")
     private JsonNullable<? extends ConnectSessionType> type;
 
+    /**
+     * The integration ID (UUID) associated with this connect session
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("integration_id")
+    private JsonNullable<String> integrationId;
+
     @JsonCreator
     public ConnectSession(
             @JsonProperty("id") double id,
@@ -105,7 +112,8 @@ public class ConnectSession {
             @JsonProperty("created_at") OffsetDateTime createdAt,
             @JsonProperty("metadata") JsonNullable<? extends ConnectSessionMetadata> metadata,
             @JsonProperty("external_trigger_token") JsonNullable<String> externalTriggerToken,
-            @JsonProperty("type") JsonNullable<? extends ConnectSessionType> type) {
+            @JsonProperty("type") JsonNullable<? extends ConnectSessionType> type,
+            @JsonProperty("integration_id") JsonNullable<String> integrationId) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(organizationId, "organizationId");
         Utils.checkNotNull(projectId, "projectId");
@@ -120,6 +128,7 @@ public class ConnectSession {
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(externalTriggerToken, "externalTriggerToken");
         Utils.checkNotNull(type, "type");
+        Utils.checkNotNull(integrationId, "integrationId");
         this.id = id;
         this.organizationId = organizationId;
         this.projectId = projectId;
@@ -134,6 +143,7 @@ public class ConnectSession {
         this.metadata = metadata;
         this.externalTriggerToken = externalTriggerToken;
         this.type = type;
+        this.integrationId = integrationId;
     }
     
     public ConnectSession(
@@ -147,7 +157,7 @@ public class ConnectSession {
             JsonNullable.undefined(), JsonNullable.undefined(), originOwnerId,
             originOwnerName, JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), createdAt, JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -231,6 +241,14 @@ public class ConnectSession {
     @JsonIgnore
     public JsonNullable<ConnectSessionType> type() {
         return (JsonNullable<ConnectSessionType>) type;
+    }
+
+    /**
+     * The integration ID (UUID) associated with this connect session
+     */
+    @JsonIgnore
+    public JsonNullable<String> integrationId() {
+        return integrationId;
     }
 
     public static Builder builder() {
@@ -390,6 +408,24 @@ public class ConnectSession {
         return this;
     }
 
+    /**
+     * The integration ID (UUID) associated with this connect session
+     */
+    public ConnectSession withIntegrationId(String integrationId) {
+        Utils.checkNotNull(integrationId, "integrationId");
+        this.integrationId = JsonNullable.of(integrationId);
+        return this;
+    }
+
+    /**
+     * The integration ID (UUID) associated with this connect session
+     */
+    public ConnectSession withIntegrationId(JsonNullable<String> integrationId) {
+        Utils.checkNotNull(integrationId, "integrationId");
+        this.integrationId = integrationId;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -413,7 +449,8 @@ public class ConnectSession {
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
             Utils.enhancedDeepEquals(this.metadata, other.metadata) &&
             Utils.enhancedDeepEquals(this.externalTriggerToken, other.externalTriggerToken) &&
-            Utils.enhancedDeepEquals(this.type, other.type);
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.integrationId, other.integrationId);
     }
     
     @Override
@@ -423,7 +460,7 @@ public class ConnectSession {
             categories, provider, originOwnerId,
             originOwnerName, originUsername, accountId,
             label, createdAt, metadata,
-            externalTriggerToken, type);
+            externalTriggerToken, type, integrationId);
     }
     
     @Override
@@ -442,7 +479,8 @@ public class ConnectSession {
                 "createdAt", createdAt,
                 "metadata", metadata,
                 "externalTriggerToken", externalTriggerToken,
-                "type", type);
+                "type", type,
+                "integrationId", integrationId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -475,6 +513,8 @@ public class ConnectSession {
         private JsonNullable<String> externalTriggerToken = JsonNullable.undefined();
 
         private JsonNullable<? extends ConnectSessionType> type = JsonNullable.undefined();
+
+        private JsonNullable<String> integrationId = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -646,6 +686,25 @@ public class ConnectSession {
             return this;
         }
 
+
+        /**
+         * The integration ID (UUID) associated with this connect session
+         */
+        public Builder integrationId(String integrationId) {
+            Utils.checkNotNull(integrationId, "integrationId");
+            this.integrationId = JsonNullable.of(integrationId);
+            return this;
+        }
+
+        /**
+         * The integration ID (UUID) associated with this connect session
+         */
+        public Builder integrationId(JsonNullable<String> integrationId) {
+            Utils.checkNotNull(integrationId, "integrationId");
+            this.integrationId = integrationId;
+            return this;
+        }
+
         public ConnectSession build() {
 
             return new ConnectSession(
@@ -653,7 +712,7 @@ public class ConnectSession {
                 categories, provider, originOwnerId,
                 originOwnerName, originUsername, accountId,
                 label, createdAt, metadata,
-                externalTriggerToken, type);
+                externalTriggerToken, type, integrationId);
         }
 
     }

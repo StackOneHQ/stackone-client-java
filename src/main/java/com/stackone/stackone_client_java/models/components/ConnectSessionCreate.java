@@ -105,6 +105,13 @@ public class ConnectSessionCreate {
     @JsonProperty("type")
     private JsonNullable<? extends Type> type;
 
+    /**
+     * The integration ID associated with this connect session
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("integration_id")
+    private JsonNullable<String> integrationId;
+
     @JsonCreator
     public ConnectSessionCreate(
             @JsonProperty("categories") JsonNullable<? extends List<Categories>> categories,
@@ -118,7 +125,8 @@ public class ConnectSessionCreate {
             @JsonProperty("metadata") JsonNullable<? extends Metadata> metadata,
             @JsonProperty("multiple") JsonNullable<Boolean> multiple,
             @JsonProperty("label") JsonNullable<String> label,
-            @JsonProperty("type") JsonNullable<? extends Type> type) {
+            @JsonProperty("type") JsonNullable<? extends Type> type,
+            @JsonProperty("integration_id") JsonNullable<String> integrationId) {
         Utils.checkNotNull(categories, "categories");
         Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(providerVersion, "providerVersion");
@@ -131,6 +139,7 @@ public class ConnectSessionCreate {
         Utils.checkNotNull(multiple, "multiple");
         Utils.checkNotNull(label, "label");
         Utils.checkNotNull(type, "type");
+        Utils.checkNotNull(integrationId, "integrationId");
         this.categories = categories;
         this.provider = provider;
         this.providerVersion = providerVersion;
@@ -143,6 +152,7 @@ public class ConnectSessionCreate {
         this.multiple = multiple;
         this.label = label;
         this.type = type;
+        this.integrationId = integrationId;
     }
     
     public ConnectSessionCreate(
@@ -151,7 +161,8 @@ public class ConnectSessionCreate {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             originOwnerId, originOwnerName, JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -253,6 +264,14 @@ public class ConnectSessionCreate {
     @JsonIgnore
     public JsonNullable<Type> type() {
         return (JsonNullable<Type>) type;
+    }
+
+    /**
+     * The integration ID associated with this connect session
+     */
+    @JsonIgnore
+    public JsonNullable<String> integrationId() {
+        return integrationId;
     }
 
     public static Builder builder() {
@@ -462,6 +481,24 @@ public class ConnectSessionCreate {
         return this;
     }
 
+    /**
+     * The integration ID associated with this connect session
+     */
+    public ConnectSessionCreate withIntegrationId(String integrationId) {
+        Utils.checkNotNull(integrationId, "integrationId");
+        this.integrationId = JsonNullable.of(integrationId);
+        return this;
+    }
+
+    /**
+     * The integration ID associated with this connect session
+     */
+    public ConnectSessionCreate withIntegrationId(JsonNullable<String> integrationId) {
+        Utils.checkNotNull(integrationId, "integrationId");
+        this.integrationId = integrationId;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -483,7 +520,8 @@ public class ConnectSessionCreate {
             Utils.enhancedDeepEquals(this.metadata, other.metadata) &&
             Utils.enhancedDeepEquals(this.multiple, other.multiple) &&
             Utils.enhancedDeepEquals(this.label, other.label) &&
-            Utils.enhancedDeepEquals(this.type, other.type);
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.integrationId, other.integrationId);
     }
     
     @Override
@@ -492,7 +530,8 @@ public class ConnectSessionCreate {
             categories, provider, providerVersion,
             originOwnerId, originOwnerName, originUsername,
             accountId, expiresIn, metadata,
-            multiple, label, type);
+            multiple, label, type,
+            integrationId);
     }
     
     @Override
@@ -509,7 +548,8 @@ public class ConnectSessionCreate {
                 "metadata", metadata,
                 "multiple", multiple,
                 "label", label,
-                "type", type);
+                "type", type,
+                "integrationId", integrationId);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -538,6 +578,8 @@ public class ConnectSessionCreate {
         private JsonNullable<String> label = JsonNullable.undefined();
 
         private JsonNullable<? extends Type> type;
+
+        private JsonNullable<String> integrationId = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -757,6 +799,25 @@ public class ConnectSessionCreate {
             return this;
         }
 
+
+        /**
+         * The integration ID associated with this connect session
+         */
+        public Builder integrationId(String integrationId) {
+            Utils.checkNotNull(integrationId, "integrationId");
+            this.integrationId = JsonNullable.of(integrationId);
+            return this;
+        }
+
+        /**
+         * The integration ID associated with this connect session
+         */
+        public Builder integrationId(JsonNullable<String> integrationId) {
+            Utils.checkNotNull(integrationId, "integrationId");
+            this.integrationId = integrationId;
+            return this;
+        }
+
         public ConnectSessionCreate build() {
             if (expiresIn == null) {
                 expiresIn = _SINGLETON_VALUE_ExpiresIn.value();
@@ -772,7 +833,8 @@ public class ConnectSessionCreate {
                 categories, provider, providerVersion,
                 originOwnerId, originOwnerName, originUsername,
                 accountId, expiresIn, metadata,
-                multiple, label, type);
+                multiple, label, type,
+                integrationId);
         }
 
 

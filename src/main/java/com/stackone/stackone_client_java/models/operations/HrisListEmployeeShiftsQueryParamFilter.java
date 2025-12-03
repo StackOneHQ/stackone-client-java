@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * HrisListEmployeeShiftsQueryParamFilter
  * 
- * <p>HRIS Shifts filters
+ * <p>HRIS Employee Shifts filters
  */
 public class HrisListEmployeeShiftsQueryParamFilter {
     /**

@@ -67,11 +67,11 @@ public class JobPosting {
     private JsonNullable<String> jobId;
 
     /**
-     * Provider's unique identifier of the job posting
+     * Provider's unique identifier of the job
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("remote_job_posting_id")
-    private JsonNullable<String> remoteJobPostingId;
+    @JsonProperty("remote_job_id")
+    private JsonNullable<String> remoteJobId;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -139,7 +139,7 @@ public class JobPosting {
             @JsonProperty("internal") JsonNullable<? extends Internal> internal,
             @JsonProperty("status") JsonNullable<? extends JobPostingStatus> status,
             @JsonProperty("job_id") JsonNullable<String> jobId,
-            @JsonProperty("remote_job_posting_id") JsonNullable<String> remoteJobPostingId,
+            @JsonProperty("remote_job_id") JsonNullable<String> remoteJobId,
             @JsonProperty("content") JsonNullable<? extends JobPostingContent> content,
             @JsonProperty("compensation") JsonNullable<? extends List<JobPostingCompensation>> compensation,
             @JsonProperty("employment_type") JsonNullable<? extends JobPostingEmploymentType> employmentType,
@@ -158,7 +158,7 @@ public class JobPosting {
         Utils.checkNotNull(internal, "internal");
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(jobId, "jobId");
-        Utils.checkNotNull(remoteJobPostingId, "remoteJobPostingId");
+        Utils.checkNotNull(remoteJobId, "remoteJobId");
         Utils.checkNotNull(content, "content");
         Utils.checkNotNull(compensation, "compensation");
         Utils.checkNotNull(employmentType, "employmentType");
@@ -177,7 +177,7 @@ public class JobPosting {
         this.internal = internal;
         this.status = status;
         this.jobId = jobId;
-        this.remoteJobPostingId = remoteJobPostingId;
+        this.remoteJobId = remoteJobId;
         this.content = content;
         this.compensation = compensation;
         this.employmentType = employmentType;
@@ -254,11 +254,11 @@ public class JobPosting {
     }
 
     /**
-     * Provider's unique identifier of the job posting
+     * Provider's unique identifier of the job
      */
     @JsonIgnore
-    public JsonNullable<String> remoteJobPostingId() {
-        return remoteJobPostingId;
+    public JsonNullable<String> remoteJobId() {
+        return remoteJobId;
     }
 
     @SuppressWarnings("unchecked")
@@ -445,20 +445,20 @@ public class JobPosting {
     }
 
     /**
-     * Provider's unique identifier of the job posting
+     * Provider's unique identifier of the job
      */
-    public JobPosting withRemoteJobPostingId(String remoteJobPostingId) {
-        Utils.checkNotNull(remoteJobPostingId, "remoteJobPostingId");
-        this.remoteJobPostingId = JsonNullable.of(remoteJobPostingId);
+    public JobPosting withRemoteJobId(String remoteJobId) {
+        Utils.checkNotNull(remoteJobId, "remoteJobId");
+        this.remoteJobId = JsonNullable.of(remoteJobId);
         return this;
     }
 
     /**
-     * Provider's unique identifier of the job posting
+     * Provider's unique identifier of the job
      */
-    public JobPosting withRemoteJobPostingId(JsonNullable<String> remoteJobPostingId) {
-        Utils.checkNotNull(remoteJobPostingId, "remoteJobPostingId");
-        this.remoteJobPostingId = remoteJobPostingId;
+    public JobPosting withRemoteJobId(JsonNullable<String> remoteJobId) {
+        Utils.checkNotNull(remoteJobId, "remoteJobId");
+        this.remoteJobId = remoteJobId;
         return this;
     }
 
@@ -618,7 +618,7 @@ public class JobPosting {
             Utils.enhancedDeepEquals(this.internal, other.internal) &&
             Utils.enhancedDeepEquals(this.status, other.status) &&
             Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
-            Utils.enhancedDeepEquals(this.remoteJobPostingId, other.remoteJobPostingId) &&
+            Utils.enhancedDeepEquals(this.remoteJobId, other.remoteJobId) &&
             Utils.enhancedDeepEquals(this.content, other.content) &&
             Utils.enhancedDeepEquals(this.compensation, other.compensation) &&
             Utils.enhancedDeepEquals(this.employmentType, other.employmentType) &&
@@ -636,7 +636,7 @@ public class JobPosting {
         return Utils.enhancedHash(
             id, remoteId, unifiedCustomFields,
             title, locations, internal,
-            status, jobId, remoteJobPostingId,
+            status, jobId, remoteJobId,
             content, compensation, employmentType,
             employmentContractType, externalUrl, externalApplyUrl,
             questionnaires, startDate, createdAt,
@@ -654,7 +654,7 @@ public class JobPosting {
                 "internal", internal,
                 "status", status,
                 "jobId", jobId,
-                "remoteJobPostingId", remoteJobPostingId,
+                "remoteJobId", remoteJobId,
                 "content", content,
                 "compensation", compensation,
                 "employmentType", employmentType,
@@ -686,7 +686,7 @@ public class JobPosting {
 
         private JsonNullable<String> jobId = JsonNullable.undefined();
 
-        private JsonNullable<String> remoteJobPostingId = JsonNullable.undefined();
+        private JsonNullable<String> remoteJobId = JsonNullable.undefined();
 
         private JsonNullable<? extends JobPostingContent> content = JsonNullable.undefined();
 
@@ -836,20 +836,20 @@ public class JobPosting {
 
 
         /**
-         * Provider's unique identifier of the job posting
+         * Provider's unique identifier of the job
          */
-        public Builder remoteJobPostingId(String remoteJobPostingId) {
-            Utils.checkNotNull(remoteJobPostingId, "remoteJobPostingId");
-            this.remoteJobPostingId = JsonNullable.of(remoteJobPostingId);
+        public Builder remoteJobId(String remoteJobId) {
+            Utils.checkNotNull(remoteJobId, "remoteJobId");
+            this.remoteJobId = JsonNullable.of(remoteJobId);
             return this;
         }
 
         /**
-         * Provider's unique identifier of the job posting
+         * Provider's unique identifier of the job
          */
-        public Builder remoteJobPostingId(JsonNullable<String> remoteJobPostingId) {
-            Utils.checkNotNull(remoteJobPostingId, "remoteJobPostingId");
-            this.remoteJobPostingId = remoteJobPostingId;
+        public Builder remoteJobId(JsonNullable<String> remoteJobId) {
+            Utils.checkNotNull(remoteJobId, "remoteJobId");
+            this.remoteJobId = remoteJobId;
             return this;
         }
 
@@ -1006,7 +1006,7 @@ public class JobPosting {
             return new JobPosting(
                 id, remoteId, unifiedCustomFields,
                 title, locations, internal,
-                status, jobId, remoteJobPostingId,
+                status, jobId, remoteJobId,
                 content, compensation, employmentType,
                 employmentContractType, externalUrl, externalApplyUrl,
                 questionnaires, startDate, createdAt,

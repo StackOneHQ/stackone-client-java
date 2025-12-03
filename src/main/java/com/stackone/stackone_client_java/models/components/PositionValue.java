@@ -51,6 +51,7 @@ import java.util.Optional;
 public class PositionValue {
 
     public static final PositionValue OPEN = new PositionValue("open");
+    public static final PositionValue DRAFT = new PositionValue("draft");
     public static final PositionValue CLOSED = new PositionValue("closed");
     public static final PositionValue PAUSED = new PositionValue("paused");
     public static final PositionValue UNMAPPED_VALUE = new PositionValue("unmapped_value");
@@ -126,6 +127,7 @@ public class PositionValue {
     private static final Map<String, PositionValue> createValuesMap() {
         Map<String, PositionValue> map = new LinkedHashMap<>();
         map.put("open", OPEN);
+        map.put("draft", DRAFT);
         map.put("closed", CLOSED);
         map.put("paused", PAUSED);
         map.put("unmapped_value", UNMAPPED_VALUE);
@@ -135,6 +137,7 @@ public class PositionValue {
     private static final Map<String, PositionValueEnum> createEnumsMap() {
         Map<String, PositionValueEnum> map = new HashMap<>();
         map.put("open", PositionValueEnum.OPEN);
+        map.put("draft", PositionValueEnum.DRAFT);
         map.put("closed", PositionValueEnum.CLOSED);
         map.put("paused", PositionValueEnum.PAUSED);
         map.put("unmapped_value", PositionValueEnum.UNMAPPED_VALUE);
@@ -174,6 +177,7 @@ public class PositionValue {
     public enum PositionValueEnum {
 
         OPEN("open"),
+        DRAFT("draft"),
         CLOSED("closed"),
         PAUSED("paused"),
         UNMAPPED_VALUE("unmapped_value"),;

@@ -50,7 +50,7 @@ public class HrisListEmployeeShiftsRequest {
     private JsonNullable<String> fields;
 
     /**
-     * HRIS Shifts filters
+     * HRIS Employee Shifts filters
      */
     @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")
     private JsonNullable<? extends HrisListEmployeeShiftsQueryParamFilter> filter;
@@ -169,7 +169,7 @@ public class HrisListEmployeeShiftsRequest {
     }
 
     /**
-     * HRIS Shifts filters
+     * HRIS Employee Shifts filters
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -294,7 +294,7 @@ public class HrisListEmployeeShiftsRequest {
     }
 
     /**
-     * HRIS Shifts filters
+     * HRIS Employee Shifts filters
      */
     public HrisListEmployeeShiftsRequest withFilter(HrisListEmployeeShiftsQueryParamFilter filter) {
         Utils.checkNotNull(filter, "filter");
@@ -303,7 +303,7 @@ public class HrisListEmployeeShiftsRequest {
     }
 
     /**
-     * HRIS Shifts filters
+     * HRIS Employee Shifts filters
      */
     public HrisListEmployeeShiftsRequest withFilter(JsonNullable<? extends HrisListEmployeeShiftsQueryParamFilter> filter) {
         Utils.checkNotNull(filter, "filter");
@@ -550,7 +550,7 @@ public class HrisListEmployeeShiftsRequest {
 
 
         /**
-         * HRIS Shifts filters
+         * HRIS Employee Shifts filters
          */
         public Builder filter(HrisListEmployeeShiftsQueryParamFilter filter) {
             Utils.checkNotNull(filter, "filter");
@@ -559,7 +559,7 @@ public class HrisListEmployeeShiftsRequest {
         }
 
         /**
-         * HRIS Shifts filters
+         * HRIS Employee Shifts filters
          */
         public Builder filter(JsonNullable<? extends HrisListEmployeeShiftsQueryParamFilter> filter) {
             Utils.checkNotNull(filter, "filter");

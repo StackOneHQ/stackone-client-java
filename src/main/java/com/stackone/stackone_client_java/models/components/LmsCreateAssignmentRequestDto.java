@@ -54,11 +54,11 @@ public class LmsCreateAssignmentRequestDto {
     private JsonNullable<Double> progress;
 
     /**
-     * The date the assignment was created
+     * The date the assignment was assigned
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("created_at")
-    private JsonNullable<OffsetDateTime> createdAt;
+    @JsonProperty("assigned_at")
+    private JsonNullable<OffsetDateTime> assignedAt;
 
     /**
      * The date the assignment is due to be completed
@@ -87,7 +87,7 @@ public class LmsCreateAssignmentRequestDto {
             @JsonProperty("external_reference") JsonNullable<String> externalReference,
             @JsonProperty("learning_object_id") JsonNullable<String> learningObjectId,
             @JsonProperty("progress") JsonNullable<Double> progress,
-            @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
+            @JsonProperty("assigned_at") JsonNullable<OffsetDateTime> assignedAt,
             @JsonProperty("due_date") JsonNullable<OffsetDateTime> dueDate,
             @JsonProperty("status") JsonNullable<? extends LmsCreateAssignmentRequestDtoStatus> status,
             @JsonProperty("learning_object_external_reference") String learningObjectExternalReference) {
@@ -95,7 +95,7 @@ public class LmsCreateAssignmentRequestDto {
         Utils.checkNotNull(externalReference, "externalReference");
         Utils.checkNotNull(learningObjectId, "learningObjectId");
         Utils.checkNotNull(progress, "progress");
-        Utils.checkNotNull(createdAt, "createdAt");
+        Utils.checkNotNull(assignedAt, "assignedAt");
         Utils.checkNotNull(dueDate, "dueDate");
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
@@ -103,7 +103,7 @@ public class LmsCreateAssignmentRequestDto {
         this.externalReference = externalReference;
         this.learningObjectId = learningObjectId;
         this.progress = progress;
-        this.createdAt = createdAt;
+        this.assignedAt = assignedAt;
         this.dueDate = dueDate;
         this.status = status;
         this.learningObjectExternalReference = learningObjectExternalReference;
@@ -154,11 +154,11 @@ public class LmsCreateAssignmentRequestDto {
     }
 
     /**
-     * The date the assignment was created
+     * The date the assignment was assigned
      */
     @JsonIgnore
-    public JsonNullable<OffsetDateTime> createdAt() {
-        return createdAt;
+    public JsonNullable<OffsetDateTime> assignedAt() {
+        return assignedAt;
     }
 
     /**
@@ -273,20 +273,20 @@ public class LmsCreateAssignmentRequestDto {
     }
 
     /**
-     * The date the assignment was created
+     * The date the assignment was assigned
      */
-    public LmsCreateAssignmentRequestDto withCreatedAt(OffsetDateTime createdAt) {
-        Utils.checkNotNull(createdAt, "createdAt");
-        this.createdAt = JsonNullable.of(createdAt);
+    public LmsCreateAssignmentRequestDto withAssignedAt(OffsetDateTime assignedAt) {
+        Utils.checkNotNull(assignedAt, "assignedAt");
+        this.assignedAt = JsonNullable.of(assignedAt);
         return this;
     }
 
     /**
-     * The date the assignment was created
+     * The date the assignment was assigned
      */
-    public LmsCreateAssignmentRequestDto withCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
-        Utils.checkNotNull(createdAt, "createdAt");
-        this.createdAt = createdAt;
+    public LmsCreateAssignmentRequestDto withAssignedAt(JsonNullable<OffsetDateTime> assignedAt) {
+        Utils.checkNotNull(assignedAt, "assignedAt");
+        this.assignedAt = assignedAt;
         return this;
     }
 
@@ -350,7 +350,7 @@ public class LmsCreateAssignmentRequestDto {
             Utils.enhancedDeepEquals(this.externalReference, other.externalReference) &&
             Utils.enhancedDeepEquals(this.learningObjectId, other.learningObjectId) &&
             Utils.enhancedDeepEquals(this.progress, other.progress) &&
-            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.assignedAt, other.assignedAt) &&
             Utils.enhancedDeepEquals(this.dueDate, other.dueDate) &&
             Utils.enhancedDeepEquals(this.status, other.status) &&
             Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference);
@@ -360,7 +360,7 @@ public class LmsCreateAssignmentRequestDto {
     public int hashCode() {
         return Utils.enhancedHash(
             passthrough, externalReference, learningObjectId,
-            progress, createdAt, dueDate,
+            progress, assignedAt, dueDate,
             status, learningObjectExternalReference);
     }
     
@@ -371,7 +371,7 @@ public class LmsCreateAssignmentRequestDto {
                 "externalReference", externalReference,
                 "learningObjectId", learningObjectId,
                 "progress", progress,
-                "createdAt", createdAt,
+                "assignedAt", assignedAt,
                 "dueDate", dueDate,
                 "status", status,
                 "learningObjectExternalReference", learningObjectExternalReference);
@@ -389,7 +389,7 @@ public class LmsCreateAssignmentRequestDto {
 
         private JsonNullable<Double> progress = JsonNullable.undefined();
 
-        private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
+        private JsonNullable<OffsetDateTime> assignedAt = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> dueDate = JsonNullable.undefined();
 
@@ -487,20 +487,20 @@ public class LmsCreateAssignmentRequestDto {
 
 
         /**
-         * The date the assignment was created
+         * The date the assignment was assigned
          */
-        public Builder createdAt(OffsetDateTime createdAt) {
-            Utils.checkNotNull(createdAt, "createdAt");
-            this.createdAt = JsonNullable.of(createdAt);
+        public Builder assignedAt(OffsetDateTime assignedAt) {
+            Utils.checkNotNull(assignedAt, "assignedAt");
+            this.assignedAt = JsonNullable.of(assignedAt);
             return this;
         }
 
         /**
-         * The date the assignment was created
+         * The date the assignment was assigned
          */
-        public Builder createdAt(JsonNullable<OffsetDateTime> createdAt) {
-            Utils.checkNotNull(createdAt, "createdAt");
-            this.createdAt = createdAt;
+        public Builder assignedAt(JsonNullable<OffsetDateTime> assignedAt) {
+            Utils.checkNotNull(assignedAt, "assignedAt");
+            this.assignedAt = assignedAt;
             return this;
         }
 
@@ -557,7 +557,7 @@ public class LmsCreateAssignmentRequestDto {
 
             return new LmsCreateAssignmentRequestDto(
                 passthrough, externalReference, learningObjectId,
-                progress, createdAt, dueDate,
+                progress, assignedAt, dueDate,
                 status, learningObjectExternalReference);
         }
 

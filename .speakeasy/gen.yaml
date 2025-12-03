@@ -25,7 +25,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.18.1
+  version: 0.19.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: stackone-client-java
@@ -60,6 +60,7 @@ java:
     shortName: MIT
     url: https://mit-license.org/
   maxMethodParams: 4
+  multipartArrayFormat: legacy
   nullFriendlyParameters: false
   openUnions: true
   operationScopedParams: true

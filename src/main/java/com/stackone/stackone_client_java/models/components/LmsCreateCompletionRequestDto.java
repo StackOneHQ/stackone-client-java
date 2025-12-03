@@ -77,6 +77,13 @@ public class LmsCreateCompletionRequestDto {
     private JsonNullable<String> contentId;
 
     /**
+     * The score associated with this completion
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("score")
+    private JsonNullable<? extends LmsCreateCompletionRequestDtoScore> score;
+
+    /**
      * The external reference of the learning object associated with this completion, this is the main
      * identifier for creating completions.
      */
@@ -92,6 +99,7 @@ public class LmsCreateCompletionRequestDto {
             @JsonProperty("time_spent") JsonNullable<String> timeSpent,
             @JsonProperty("content_external_reference") JsonNullable<String> contentExternalReference,
             @JsonProperty("content_id") JsonNullable<String> contentId,
+            @JsonProperty("score") JsonNullable<? extends LmsCreateCompletionRequestDtoScore> score,
             @JsonProperty("learning_object_external_reference") String learningObjectExternalReference) {
         Utils.checkNotNull(passthrough, "passthrough");
         Utils.checkNotNull(result, "result");
@@ -100,6 +108,7 @@ public class LmsCreateCompletionRequestDto {
         Utils.checkNotNull(timeSpent, "timeSpent");
         Utils.checkNotNull(contentExternalReference, "contentExternalReference");
         Utils.checkNotNull(contentId, "contentId");
+        Utils.checkNotNull(score, "score");
         Utils.checkNotNull(learningObjectExternalReference, "learningObjectExternalReference");
         this.passthrough = passthrough;
         this.result = result;
@@ -108,6 +117,7 @@ public class LmsCreateCompletionRequestDto {
         this.timeSpent = timeSpent;
         this.contentExternalReference = contentExternalReference;
         this.contentId = contentId;
+        this.score = score;
         this.learningObjectExternalReference = learningObjectExternalReference;
     }
     
@@ -115,7 +125,7 @@ public class LmsCreateCompletionRequestDto {
             String learningObjectExternalReference) {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), learningObjectExternalReference);
+            JsonNullable.undefined(), JsonNullable.undefined(), learningObjectExternalReference);
     }
 
     /**
@@ -181,6 +191,15 @@ public class LmsCreateCompletionRequestDto {
     @JsonIgnore
     public JsonNullable<String> contentId() {
         return contentId;
+    }
+
+    /**
+     * The score associated with this completion
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<LmsCreateCompletionRequestDtoScore> score() {
+        return (JsonNullable<LmsCreateCompletionRequestDtoScore>) score;
     }
 
     /**
@@ -338,6 +357,24 @@ public class LmsCreateCompletionRequestDto {
     }
 
     /**
+     * The score associated with this completion
+     */
+    public LmsCreateCompletionRequestDto withScore(LmsCreateCompletionRequestDtoScore score) {
+        Utils.checkNotNull(score, "score");
+        this.score = JsonNullable.of(score);
+        return this;
+    }
+
+    /**
+     * The score associated with this completion
+     */
+    public LmsCreateCompletionRequestDto withScore(JsonNullable<? extends LmsCreateCompletionRequestDtoScore> score) {
+        Utils.checkNotNull(score, "score");
+        this.score = score;
+        return this;
+    }
+
+    /**
      * The external reference of the learning object associated with this completion, this is the main
      * identifier for creating completions.
      */
@@ -364,6 +401,7 @@ public class LmsCreateCompletionRequestDto {
             Utils.enhancedDeepEquals(this.timeSpent, other.timeSpent) &&
             Utils.enhancedDeepEquals(this.contentExternalReference, other.contentExternalReference) &&
             Utils.enhancedDeepEquals(this.contentId, other.contentId) &&
+            Utils.enhancedDeepEquals(this.score, other.score) &&
             Utils.enhancedDeepEquals(this.learningObjectExternalReference, other.learningObjectExternalReference);
     }
     
@@ -372,7 +410,7 @@ public class LmsCreateCompletionRequestDto {
         return Utils.enhancedHash(
             passthrough, result, completedAt,
             learningObjectId, timeSpent, contentExternalReference,
-            contentId, learningObjectExternalReference);
+            contentId, score, learningObjectExternalReference);
     }
     
     @Override
@@ -385,6 +423,7 @@ public class LmsCreateCompletionRequestDto {
                 "timeSpent", timeSpent,
                 "contentExternalReference", contentExternalReference,
                 "contentId", contentId,
+                "score", score,
                 "learningObjectExternalReference", learningObjectExternalReference);
     }
 
@@ -406,6 +445,8 @@ public class LmsCreateCompletionRequestDto {
 
         @Deprecated
         private JsonNullable<String> contentId = JsonNullable.undefined();
+
+        private JsonNullable<? extends LmsCreateCompletionRequestDtoScore> score = JsonNullable.undefined();
 
         private String learningObjectExternalReference;
 
@@ -562,6 +603,25 @@ public class LmsCreateCompletionRequestDto {
 
 
         /**
+         * The score associated with this completion
+         */
+        public Builder score(LmsCreateCompletionRequestDtoScore score) {
+            Utils.checkNotNull(score, "score");
+            this.score = JsonNullable.of(score);
+            return this;
+        }
+
+        /**
+         * The score associated with this completion
+         */
+        public Builder score(JsonNullable<? extends LmsCreateCompletionRequestDtoScore> score) {
+            Utils.checkNotNull(score, "score");
+            this.score = score;
+            return this;
+        }
+
+
+        /**
          * The external reference of the learning object associated with this completion, this is the main
          * identifier for creating completions.
          */
@@ -576,7 +636,7 @@ public class LmsCreateCompletionRequestDto {
             return new LmsCreateCompletionRequestDto(
                 passthrough, result, completedAt,
                 learningObjectId, timeSpent, contentExternalReference,
-                contentId, learningObjectExternalReference);
+                contentId, score, learningObjectExternalReference);
         }
 
     }
