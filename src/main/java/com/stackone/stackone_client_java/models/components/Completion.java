@@ -207,6 +207,13 @@ public class Completion {
     @Deprecated
     private JsonNullable<String> remoteCourseId;
 
+    /**
+     * The score associated with this completion
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("score")
+    private JsonNullable<? extends CompletionScore> score;
+
     @JsonCreator
     public Completion(
             @JsonProperty("id") JsonNullable<String> id,
@@ -231,7 +238,8 @@ public class Completion {
             @JsonProperty("content_id") JsonNullable<String> contentId,
             @JsonProperty("remote_content_id") JsonNullable<String> remoteContentId,
             @JsonProperty("course_id") JsonNullable<String> courseId,
-            @JsonProperty("remote_course_id") JsonNullable<String> remoteCourseId) {
+            @JsonProperty("remote_course_id") JsonNullable<String> remoteCourseId,
+            @JsonProperty("score") JsonNullable<? extends CompletionScore> score) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(remoteId, "remoteId");
         Utils.checkNotNull(unifiedCustomFields, "unifiedCustomFields");
@@ -255,6 +263,7 @@ public class Completion {
         Utils.checkNotNull(remoteContentId, "remoteContentId");
         Utils.checkNotNull(courseId, "courseId");
         Utils.checkNotNull(remoteCourseId, "remoteCourseId");
+        Utils.checkNotNull(score, "score");
         this.id = id;
         this.remoteId = remoteId;
         this.unifiedCustomFields = unifiedCustomFields;
@@ -278,6 +287,7 @@ public class Completion {
         this.remoteContentId = remoteContentId;
         this.courseId = courseId;
         this.remoteCourseId = remoteCourseId;
+        this.score = score;
     }
     
     public Completion() {
@@ -288,7 +298,7 @@ public class Completion {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -502,6 +512,15 @@ public class Completion {
     @JsonIgnore
     public JsonNullable<String> remoteCourseId() {
         return remoteCourseId;
+    }
+
+    /**
+     * The score associated with this completion
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<CompletionScore> score() {
+        return (JsonNullable<CompletionScore>) score;
     }
 
     public static Builder builder() {
@@ -975,6 +994,24 @@ public class Completion {
         return this;
     }
 
+    /**
+     * The score associated with this completion
+     */
+    public Completion withScore(CompletionScore score) {
+        Utils.checkNotNull(score, "score");
+        this.score = JsonNullable.of(score);
+        return this;
+    }
+
+    /**
+     * The score associated with this completion
+     */
+    public Completion withScore(JsonNullable<? extends CompletionScore> score) {
+        Utils.checkNotNull(score, "score");
+        this.score = score;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -1007,7 +1044,8 @@ public class Completion {
             Utils.enhancedDeepEquals(this.contentId, other.contentId) &&
             Utils.enhancedDeepEquals(this.remoteContentId, other.remoteContentId) &&
             Utils.enhancedDeepEquals(this.courseId, other.courseId) &&
-            Utils.enhancedDeepEquals(this.remoteCourseId, other.remoteCourseId);
+            Utils.enhancedDeepEquals(this.remoteCourseId, other.remoteCourseId) &&
+            Utils.enhancedDeepEquals(this.score, other.score);
     }
     
     @Override
@@ -1020,7 +1058,7 @@ public class Completion {
             userId, remoteUserId, timeSpent,
             certificateUrl, externalId, contentExternalReference,
             remoteExternalId, contentId, remoteContentId,
-            courseId, remoteCourseId);
+            courseId, remoteCourseId, score);
     }
     
     @Override
@@ -1048,7 +1086,8 @@ public class Completion {
                 "contentId", contentId,
                 "remoteContentId", remoteContentId,
                 "courseId", courseId,
-                "remoteCourseId", remoteCourseId);
+                "remoteCourseId", remoteCourseId,
+                "score", score);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -1107,6 +1146,8 @@ public class Completion {
 
         @Deprecated
         private JsonNullable<String> remoteCourseId = JsonNullable.undefined();
+
+        private JsonNullable<? extends CompletionScore> score = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -1601,6 +1642,25 @@ public class Completion {
             return this;
         }
 
+
+        /**
+         * The score associated with this completion
+         */
+        public Builder score(CompletionScore score) {
+            Utils.checkNotNull(score, "score");
+            this.score = JsonNullable.of(score);
+            return this;
+        }
+
+        /**
+         * The score associated with this completion
+         */
+        public Builder score(JsonNullable<? extends CompletionScore> score) {
+            Utils.checkNotNull(score, "score");
+            this.score = score;
+            return this;
+        }
+
         public Completion build() {
 
             return new Completion(
@@ -1611,7 +1671,7 @@ public class Completion {
                 userId, remoteUserId, timeSpent,
                 certificateUrl, externalId, contentExternalReference,
                 remoteExternalId, contentId, remoteContentId,
-                courseId, remoteCourseId);
+                courseId, remoteCourseId, score);
         }
 
     }

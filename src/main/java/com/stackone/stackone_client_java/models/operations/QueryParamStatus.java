@@ -15,6 +15,7 @@ import java.util.Optional;
  */
 public enum QueryParamStatus {
     OPEN("open"),
+    DRAFT("draft"),
     CLOSED("closed"),
     PAUSED("paused"),
     UNMAPPED_VALUE("unmapped_value");

@@ -216,7 +216,7 @@ public class Application {
         LmsListUserAssignmentsRequest req = LmsListUserAssignmentsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields")
+                .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,assigned_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields")
                 .filter(LmsListUserAssignmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -305,7 +305,7 @@ public class Application {
                         Map.entry("other_known_names", "John Doe")))
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .progress(40d)
-                    .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
+                    .assignedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .dueDate(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .status(LmsCreateAssignmentRequestDtoStatus.builder()
                         .value(LmsCreateAssignmentRequestDtoValue.IN_PROGRESS)
@@ -880,7 +880,7 @@ public class Application {
         LmsListUserCompletionsRequest req = LmsListUserCompletionsRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
-                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,unified_custom_fields")
+                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,score,unified_custom_fields")
                 .filter(LmsListUserCompletionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -938,8 +938,7 @@ This is the record of a user completing a learning object.
 package hello.world;
 
 import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.LmsCreateCompletionRequestDto;
-import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
 import com.stackone.stackone_client_java.models.operations.LmsCreateUserCompletionResponse;
 import java.lang.Exception;
@@ -967,6 +966,10 @@ public class Application {
                     .completedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
                     .learningObjectId("e3gd34-23tr21-er234-345er56")
                     .timeSpent("PT1H30M45S")
+                    .score(LmsCreateCompletionRequestDtoScore.builder()
+                        .percentage(87d)
+                        .rawValue("87 / 100")
+                        .build())
                     .build())
                 .call();
 
@@ -1184,7 +1187,7 @@ public class Application {
 
         LmsListCompletionsRequest req = LmsListCompletionsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,unified_custom_fields")
+                .fields("id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,time_spent,certificate_url,score,unified_custom_fields")
                 .filter(LmsListCompletionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
@@ -1778,7 +1781,7 @@ public class Application {
 
         LmsListAssignmentsRequest req = LmsListAssignmentsRequest.builder()
                 .xAccountId("<id>")
-                .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields")
+                .fields("id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,assigned_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference,certificate_url,result,completed_at,unified_custom_fields")
                 .filter(LmsListAssignmentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())

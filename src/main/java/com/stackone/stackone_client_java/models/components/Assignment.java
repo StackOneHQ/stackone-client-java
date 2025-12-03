@@ -97,6 +97,13 @@ public class Assignment {
     private JsonNullable<OffsetDateTime> createdAt;
 
     /**
+     * The date the assignment was assigned
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("assigned_at")
+    private JsonNullable<OffsetDateTime> assignedAt;
+
+    /**
      * The date the assignment is due to be completed
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -184,6 +191,7 @@ public class Assignment {
             @JsonProperty("progress") JsonNullable<Double> progress,
             @JsonProperty("updated_at") JsonNullable<OffsetDateTime> updatedAt,
             @JsonProperty("created_at") JsonNullable<OffsetDateTime> createdAt,
+            @JsonProperty("assigned_at") JsonNullable<OffsetDateTime> assignedAt,
             @JsonProperty("due_date") JsonNullable<OffsetDateTime> dueDate,
             @JsonProperty("status") JsonNullable<? extends AssignmentStatus> status,
             @JsonProperty("learning_object_type") JsonNullable<? extends LearningObjectType> learningObjectType,
@@ -204,6 +212,7 @@ public class Assignment {
         Utils.checkNotNull(progress, "progress");
         Utils.checkNotNull(updatedAt, "updatedAt");
         Utils.checkNotNull(createdAt, "createdAt");
+        Utils.checkNotNull(assignedAt, "assignedAt");
         Utils.checkNotNull(dueDate, "dueDate");
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(learningObjectType, "learningObjectType");
@@ -224,6 +233,7 @@ public class Assignment {
         this.progress = progress;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
+        this.assignedAt = assignedAt;
         this.dueDate = dueDate;
         this.status = status;
         this.learningObjectType = learningObjectType;
@@ -243,7 +253,7 @@ public class Assignment {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -330,6 +340,14 @@ public class Assignment {
     @JsonIgnore
     public JsonNullable<OffsetDateTime> createdAt() {
         return createdAt;
+    }
+
+    /**
+     * The date the assignment was assigned
+     */
+    @JsonIgnore
+    public JsonNullable<OffsetDateTime> assignedAt() {
+        return assignedAt;
     }
 
     /**
@@ -617,6 +635,24 @@ public class Assignment {
     }
 
     /**
+     * The date the assignment was assigned
+     */
+    public Assignment withAssignedAt(OffsetDateTime assignedAt) {
+        Utils.checkNotNull(assignedAt, "assignedAt");
+        this.assignedAt = JsonNullable.of(assignedAt);
+        return this;
+    }
+
+    /**
+     * The date the assignment was assigned
+     */
+    public Assignment withAssignedAt(JsonNullable<OffsetDateTime> assignedAt) {
+        Utils.checkNotNull(assignedAt, "assignedAt");
+        this.assignedAt = assignedAt;
+        return this;
+    }
+
+    /**
      * The date the assignment is due to be completed
      */
     public Assignment withDueDate(OffsetDateTime dueDate) {
@@ -828,6 +864,7 @@ public class Assignment {
             Utils.enhancedDeepEquals(this.progress, other.progress) &&
             Utils.enhancedDeepEquals(this.updatedAt, other.updatedAt) &&
             Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.assignedAt, other.assignedAt) &&
             Utils.enhancedDeepEquals(this.dueDate, other.dueDate) &&
             Utils.enhancedDeepEquals(this.status, other.status) &&
             Utils.enhancedDeepEquals(this.learningObjectType, other.learningObjectType) &&
@@ -846,10 +883,10 @@ public class Assignment {
             id, remoteId, unifiedCustomFields,
             externalReference, learningObjectId, remoteLearningObjectId,
             learningObjectExternalReference, progress, updatedAt,
-            createdAt, dueDate, status,
-            learningObjectType, userId, remoteUserId,
-            certificateUrl, result, completedAt,
-            courseId, remoteCourseId);
+            createdAt, assignedAt, dueDate,
+            status, learningObjectType, userId,
+            remoteUserId, certificateUrl, result,
+            completedAt, courseId, remoteCourseId);
     }
     
     @Override
@@ -865,6 +902,7 @@ public class Assignment {
                 "progress", progress,
                 "updatedAt", updatedAt,
                 "createdAt", createdAt,
+                "assignedAt", assignedAt,
                 "dueDate", dueDate,
                 "status", status,
                 "learningObjectType", learningObjectType,
@@ -900,6 +938,8 @@ public class Assignment {
         private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> createdAt = JsonNullable.undefined();
+
+        private JsonNullable<OffsetDateTime> assignedAt = JsonNullable.undefined();
 
         private JsonNullable<OffsetDateTime> dueDate = JsonNullable.undefined();
 
@@ -1129,6 +1169,25 @@ public class Assignment {
 
 
         /**
+         * The date the assignment was assigned
+         */
+        public Builder assignedAt(OffsetDateTime assignedAt) {
+            Utils.checkNotNull(assignedAt, "assignedAt");
+            this.assignedAt = JsonNullable.of(assignedAt);
+            return this;
+        }
+
+        /**
+         * The date the assignment was assigned
+         */
+        public Builder assignedAt(JsonNullable<OffsetDateTime> assignedAt) {
+            Utils.checkNotNull(assignedAt, "assignedAt");
+            this.assignedAt = assignedAt;
+            return this;
+        }
+
+
+        /**
          * The date the assignment is due to be completed
          */
         public Builder dueDate(OffsetDateTime dueDate) {
@@ -1335,10 +1394,10 @@ public class Assignment {
                 id, remoteId, unifiedCustomFields,
                 externalReference, learningObjectId, remoteLearningObjectId,
                 learningObjectExternalReference, progress, updatedAt,
-                createdAt, dueDate, status,
-                learningObjectType, userId, remoteUserId,
-                certificateUrl, result, completedAt,
-                courseId, remoteCourseId);
+                createdAt, assignedAt, dueDate,
+                status, learningObjectType, userId,
+                remoteUserId, certificateUrl, result,
+                completedAt, courseId, remoteCourseId);
         }
 
     }
