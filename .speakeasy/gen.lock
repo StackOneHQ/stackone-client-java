@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 90080b12-9e47-459d-875f-5a0a3b2545d2
 management:
-  docChecksum: e2ca7e21dcff33c0fcb81712022b2cc8
+  docChecksum: 5270cdd9fa8d63687cf59a5d7376e374
   docVersion: 1.0.0
-  speakeasyVersion: 1.666.2
-  generationVersion: 2.768.1
-  releaseVersion: 0.19.0
-  configChecksum: 313996934c5436f5a1380f2def0fce39
+  speakeasyVersion: 1.668.0
+  generationVersion: 2.770.0
+  releaseVersion: 0.19.1
+  configChecksum: 5712fc118e042dab46c707b232b864d2
   repoURL: https://github.com/StackOneHQ/stackone-client-java.git
   published: true
 features:
@@ -17002,4 +17002,4 @@ examples:
           application/json: {"statusCode": 502, "message": "Bad Gateway", "timestamp": "2023-05-30T00:00:00.000Z"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Java SDK Changes:\n* `stackone.ats.listJobPostings()`:  `response.data.[]` **Changed** **Breaking** :warning:\n* `stackone.lms.createUserAssignment()`:  `request.lmscreateassignmentrequestdto` **Changed** **Breaking** :warning:\n* `stackone.ats.getJobPosting()`:  `response.data` **Changed** **Breaking** :warning:\n* `stackone.hris.listTasks()`: \n  *  `request.filter` **Changed**\n* `stackone.lms.listUserCompletions()`:  `response.data.[].score` **Added**\n* `stackone.hris.listEmployeeTasks()`: \n  *  `request.filter` **Changed**\n* `stackone.hris.listPositions()`: \n  *  `request.status` **Changed**\n* `stackone.lms.listUserAssignments()`:  `response.data.[].assignedAt` **Added**\n* `stackone.connectSessions.authenticateConnectSession()`:  `response.integration_id` **Added**\n* `stackone.lms.getUserAssignment()`:  `response.data.assignedAt` **Added**\n* `stackone.connectSessions.createConnectSession()`: \n  *  `request.integrationId` **Added**\n  *  `response.integration_id` **Added**\n* `stackone.lms.createUserCompletion()`: \n  *  `request.lmscreatecompletionrequestdto.score` **Added**\n* `stackone.lms.getUserCompletion()`:  `response.data.score` **Added**\n* `stackone.lms.listCompletions()`:  `response.data.[].score` **Added**\n* `stackone.lms.getCompletion()`:  `response.data.score` **Added**\n* `stackone.lms.listAssignments()`:  `response.data.[].assignedAt` **Added**\n* `stackone.lms.getAssignment()`:  `response.data.assignedAt` **Added**\n"
+releaseNotes: "## Java SDK Changes:\n* `stackone.actions.listActionsMeta()`: \n  *  `request.page` **Removed** **Breaking** :warning:\n"
