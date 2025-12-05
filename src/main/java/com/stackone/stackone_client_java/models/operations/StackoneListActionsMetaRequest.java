@@ -9,7 +9,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.stackone.stackone_client_java.utils.LazySingletonValue;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Deprecated;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -18,15 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 public class StackoneListActionsMetaRequest {
-    /**
-     * The page number of the results to fetch
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")
-    @Deprecated
-    private JsonNullable<String> page;
-
     /**
      * The number of results per page (default value is 25)
      */
@@ -59,19 +49,16 @@ public class StackoneListActionsMetaRequest {
 
     @JsonCreator
     public StackoneListActionsMetaRequest(
-            JsonNullable<String> page,
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
             JsonNullable<String> groupBy,
             JsonNullable<? extends StackoneListActionsMetaQueryParamFilter> filter,
             JsonNullable<? extends List<StackoneListActionsMetaQueryParamInclude>> include) {
-        Utils.checkNotNull(page, "page");
         Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(groupBy, "groupBy");
         Utils.checkNotNull(filter, "filter");
         Utils.checkNotNull(include, "include");
-        this.page = page;
         this.pageSize = pageSize;
         this.next = next;
         this.groupBy = groupBy;
@@ -81,18 +68,7 @@ public class StackoneListActionsMetaRequest {
     
     public StackoneListActionsMetaRequest() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
-    }
-
-    /**
-     * The page number of the results to fetch
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    @Deprecated
-    @JsonIgnore
-    public JsonNullable<String> page() {
-        return page;
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -141,30 +117,6 @@ public class StackoneListActionsMetaRequest {
         return new Builder();
     }
 
-
-    /**
-     * The page number of the results to fetch
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    @Deprecated
-    public StackoneListActionsMetaRequest withPage(String page) {
-        Utils.checkNotNull(page, "page");
-        this.page = JsonNullable.of(page);
-        return this;
-    }
-
-    /**
-     * The page number of the results to fetch
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    @Deprecated
-    public StackoneListActionsMetaRequest withPage(JsonNullable<String> page) {
-        Utils.checkNotNull(page, "page");
-        this.page = page;
-        return this;
-    }
 
     /**
      * The number of results per page (default value is 25)
@@ -266,7 +218,6 @@ public class StackoneListActionsMetaRequest {
         }
         StackoneListActionsMetaRequest other = (StackoneListActionsMetaRequest) o;
         return 
-            Utils.enhancedDeepEquals(this.page, other.page) &&
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
             Utils.enhancedDeepEquals(this.groupBy, other.groupBy) &&
@@ -277,14 +228,13 @@ public class StackoneListActionsMetaRequest {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            page, pageSize, next,
-            groupBy, filter, include);
+            pageSize, next, groupBy,
+            filter, include);
     }
     
     @Override
     public String toString() {
         return Utils.toString(StackoneListActionsMetaRequest.class,
-                "page", page,
                 "pageSize", pageSize,
                 "next", next,
                 "groupBy", groupBy,
@@ -294,9 +244,6 @@ public class StackoneListActionsMetaRequest {
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-
-        @Deprecated
-        private JsonNullable<String> page = JsonNullable.undefined();
 
         private JsonNullable<String> pageSize = JsonNullable.undefined();
 
@@ -310,31 +257,6 @@ public class StackoneListActionsMetaRequest {
 
         private Builder() {
           // force use of static builder() method
-        }
-
-
-        /**
-         * The page number of the results to fetch
-         * 
-         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-         */
-        @Deprecated
-        public Builder page(String page) {
-            Utils.checkNotNull(page, "page");
-            this.page = JsonNullable.of(page);
-            return this;
-        }
-
-        /**
-         * The page number of the results to fetch
-         * 
-         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-         */
-        @Deprecated
-        public Builder page(JsonNullable<String> page) {
-            Utils.checkNotNull(page, "page");
-            this.page = page;
-            return this;
         }
 
 
@@ -438,8 +360,8 @@ public class StackoneListActionsMetaRequest {
             }
 
             return new StackoneListActionsMetaRequest(
-                page, pageSize, next,
-                groupBy, filter, include);
+                pageSize, next, groupBy,
+                filter, include);
         }
 
 
