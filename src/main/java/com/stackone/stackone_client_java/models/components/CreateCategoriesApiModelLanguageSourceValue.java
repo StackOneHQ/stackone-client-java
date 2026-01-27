@@ -106,11 +106,11 @@ public class CreateCategoriesApiModelLanguageSourceValue {
 
         public _Deserializer() {
             super(CreateCategoriesApiModelLanguageSourceValue.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<List<Object>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<CreateCategoriesApiModelSourceValueLanguage4>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<CreateCategoriesApiModelSourceValueLanguage4>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<List<Object>>() {}, JsonShape.DEFAULT));
         }
     }
     

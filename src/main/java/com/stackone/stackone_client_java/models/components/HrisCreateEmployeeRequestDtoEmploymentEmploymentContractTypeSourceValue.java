@@ -99,11 +99,11 @@ public class HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceV
 
         public _Deserializer() {
             super(HrisCreateEmployeeRequestDtoEmploymentEmploymentContractTypeSourceValue.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<List<Object>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<HrisCreateEmployeeRequestDtoSourceValueEmploymentEmploymentContractType4>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Double>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<HrisCreateEmployeeRequestDtoSourceValueEmploymentEmploymentContractType4>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<List<Object>>() {}, JsonShape.DEFAULT));
         }
     }
     

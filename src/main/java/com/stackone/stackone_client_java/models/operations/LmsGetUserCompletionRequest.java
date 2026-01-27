@@ -13,6 +13,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -51,6 +52,13 @@ public class LmsGetUserCompletionRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")
     private JsonNullable<String> fields;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public LmsGetUserCompletionRequest(
             String xAccountId,
@@ -58,19 +66,22 @@ public class LmsGetUserCompletionRequest {
             String subResourceId,
             JsonNullable<Boolean> raw,
             JsonNullable<? extends Map<String, Object>> proxy,
-            JsonNullable<String> fields) {
+            JsonNullable<String> fields,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(subResourceId, "subResourceId");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
         Utils.checkNotNull(fields, "fields");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.subResourceId = subResourceId;
         this.raw = raw;
         this.proxy = proxy;
         this.fields = fields;
+        this.prefer = prefer;
     }
     
     public LmsGetUserCompletionRequest(
@@ -78,7 +89,8 @@ public class LmsGetUserCompletionRequest {
             String id,
             String subResourceId) {
         this(xAccountId, id, subResourceId,
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty());
     }
 
     /**
@@ -124,6 +136,15 @@ public class LmsGetUserCompletionRequest {
     @JsonIgnore
     public JsonNullable<String> fields() {
         return fields;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -210,6 +231,27 @@ public class LmsGetUserCompletionRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsGetUserCompletionRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsGetUserCompletionRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -225,14 +267,16 @@ public class LmsGetUserCompletionRequest {
             Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId) &&
             Utils.enhancedDeepEquals(this.raw, other.raw) &&
             Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
-            Utils.enhancedDeepEquals(this.fields, other.fields);
+            Utils.enhancedDeepEquals(this.fields, other.fields) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             xAccountId, id, subResourceId,
-            raw, proxy, fields);
+            raw, proxy, fields,
+            prefer);
     }
     
     @Override
@@ -243,7 +287,8 @@ public class LmsGetUserCompletionRequest {
                 "subResourceId", subResourceId,
                 "raw", raw,
                 "proxy", proxy,
-                "fields", fields);
+                "fields", fields,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -260,6 +305,8 @@ public class LmsGetUserCompletionRequest {
         private JsonNullable<? extends Map<String, Object>> proxy = JsonNullable.undefined();
 
         private JsonNullable<String> fields = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -350,11 +397,33 @@ public class LmsGetUserCompletionRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public LmsGetUserCompletionRequest build() {
 
             return new LmsGetUserCompletionRequest(
                 xAccountId, id, subResourceId,
-                raw, proxy, fields);
+                raw, proxy, fields,
+                prefer);
         }
 
     }

@@ -18,6 +18,7 @@ import java.util.Optional;
 public class HrisCreateEmployeeRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class HrisCreateEmployeeRequestBuilder {
     public HrisCreateEmployeeRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public HrisCreateEmployeeRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public HrisCreateEmployeeRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class HrisCreateEmployeeRequestBuilder {
     private HrisCreateEmployeeRequest buildRequest() {
 
         HrisCreateEmployeeRequest request = new HrisCreateEmployeeRequest(xAccountId,
+            prefer,
             hrisCreateEmployeeRequestDto);
 
         return request;

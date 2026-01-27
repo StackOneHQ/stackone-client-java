@@ -131,24 +131,28 @@ public class AsyncMessaging {
      * @return {@code CompletableFuture<MessagingCreateConversationResponse>} - The async response
      */
     public CompletableFuture<MessagingCreateConversationResponse> createConversation(String xAccountId, MessagingCreateConversationRequestDto messagingCreateConversationRequestDto) {
-        return createConversation(xAccountId, messagingCreateConversationRequestDto, Optional.empty());
+        return createConversation(
+                xAccountId, Optional.empty(), messagingCreateConversationRequestDto,
+                Optional.empty());
     }
 
     /**
      * Create Conversation
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param messagingCreateConversationRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<MessagingCreateConversationResponse>} - The async response
      */
     public CompletableFuture<MessagingCreateConversationResponse> createConversation(
-            String xAccountId, MessagingCreateConversationRequestDto messagingCreateConversationRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            MessagingCreateConversationRequestDto messagingCreateConversationRequestDto, Optional<Options> options) {
         MessagingCreateConversationRequest request =
             MessagingCreateConversationRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .messagingCreateConversationRequestDto(messagingCreateConversationRequestDto)
                 .build();
         AsyncRequestOperation<MessagingCreateConversationRequest, MessagingCreateConversationResponse> operation
@@ -465,24 +469,28 @@ public class AsyncMessaging {
      * @return {@code CompletableFuture<MessagingSendMessageResponse>} - The async response
      */
     public CompletableFuture<MessagingSendMessageResponse> sendMessage(String xAccountId, MessagingMessageSendRequestDto messagingMessageSendRequestDto) {
-        return sendMessage(xAccountId, messagingMessageSendRequestDto, Optional.empty());
+        return sendMessage(
+                xAccountId, Optional.empty(), messagingMessageSendRequestDto,
+                Optional.empty());
     }
 
     /**
      * Send Message
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param messagingMessageSendRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<MessagingSendMessageResponse>} - The async response
      */
     public CompletableFuture<MessagingSendMessageResponse> sendMessage(
-            String xAccountId, MessagingMessageSendRequestDto messagingMessageSendRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            MessagingMessageSendRequestDto messagingMessageSendRequestDto, Optional<Options> options) {
         MessagingSendMessageRequest request =
             MessagingSendMessageRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .messagingMessageSendRequestDto(messagingMessageSendRequestDto)
                 .build();
         AsyncRequestOperation<MessagingSendMessageRequest, MessagingSendMessageResponse> operation

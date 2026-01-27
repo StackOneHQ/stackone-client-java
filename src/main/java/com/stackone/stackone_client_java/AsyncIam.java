@@ -146,52 +146,6 @@ public class AsyncIam {
 
 
     /**
-     * Delete User
-     * 
-     * @return The async call builder
-     */
-    public IamDeleteUserRequestBuilder deleteUser() {
-        return new IamDeleteUserRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Delete User
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @return {@code CompletableFuture<IamDeleteUserResponse>} - The async response
-     */
-    public CompletableFuture<IamDeleteUserResponse> deleteUser(String xAccountId, String id) {
-        return deleteUser(xAccountId, id, Optional.empty());
-    }
-
-    /**
-     * Delete User
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param options additional options
-     * @return {@code CompletableFuture<IamDeleteUserResponse>} - The async response
-     */
-    public CompletableFuture<IamDeleteUserResponse> deleteUser(
-            String xAccountId, String id,
-            Optional<Options> options) {
-        IamDeleteUserRequest request =
-            IamDeleteUserRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .build();
-        AsyncRequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
-              = new IamDeleteUser.Async(
-                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
-                                    _headers);
-        return operation.doRequest(request)
-            .thenCompose(operation::handleResponse);
-    }
-
-
-    /**
      * Update User
      * 
      * @return The async call builder
@@ -212,8 +166,8 @@ public class AsyncIam {
             String xAccountId, String id,
             IamUpdateUserRequestDto iamUpdateUserRequestDto) {
         return updateUser(
-                xAccountId, id, iamUpdateUserRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                iamUpdateUserRequestDto, Optional.empty());
     }
 
     /**
@@ -221,22 +175,75 @@ public class AsyncIam {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param iamUpdateUserRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<IamUpdateUserResponse>} - The async response
      */
     public CompletableFuture<IamUpdateUserResponse> updateUser(
             String xAccountId, String id,
-            IamUpdateUserRequestDto iamUpdateUserRequestDto, Optional<Options> options) {
+            Optional<String> prefer, IamUpdateUserRequestDto iamUpdateUserRequestDto,
+            Optional<Options> options) {
         IamUpdateUserRequest request =
             IamUpdateUserRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .iamUpdateUserRequestDto(iamUpdateUserRequestDto)
                 .build();
         AsyncRequestOperation<IamUpdateUserRequest, IamUpdateUserResponse> operation
               = new IamUpdateUser.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
+     * Delete User
+     * 
+     * @return The async call builder
+     */
+    public IamDeleteUserRequestBuilder deleteUser() {
+        return new IamDeleteUserRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Delete User
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @return {@code CompletableFuture<IamDeleteUserResponse>} - The async response
+     */
+    public CompletableFuture<IamDeleteUserResponse> deleteUser(String xAccountId, String id) {
+        return deleteUser(
+                xAccountId, id, Optional.empty(),
+                Optional.empty());
+    }
+
+    /**
+     * Delete User
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     * @param options additional options
+     * @return {@code CompletableFuture<IamDeleteUserResponse>} - The async response
+     */
+    public CompletableFuture<IamDeleteUserResponse> deleteUser(
+            String xAccountId, String id,
+            Optional<String> prefer, Optional<Options> options) {
+        IamDeleteUserRequest request =
+            IamDeleteUserRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .prefer(prefer)
+                .build();
+        AsyncRequestOperation<IamDeleteUserRequest, IamDeleteUserResponse> operation
+              = new IamDeleteUser.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
         return operation.doRequest(request)

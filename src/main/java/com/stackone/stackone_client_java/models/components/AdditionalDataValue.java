@@ -85,8 +85,8 @@ public class AdditionalDataValue {
 
         public _Deserializer() {
             super(AdditionalDataValue.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<List<String>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<List<String>>() {}, JsonShape.DEFAULT));
         }
     }
     

@@ -18,6 +18,20 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ActionsMeta {
     /**
+     * The account ID this metadata applies to (only present when filtering by account_ids)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("account_id")
+    private JsonNullable<String> accountId;
+
+    /**
+     * The integration ID this metadata applies to (only present when filtering by account_ids)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("integration_id")
+    private JsonNullable<String> integrationId;
+
+    /**
      * The version of the actions metadata
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -53,11 +67,27 @@ public class ActionsMeta {
     private JsonNullable<String> description;
 
     /**
+     * The release stage of the connector (e.g., ga, beta, preview). By default, StackOne organizations
+     * only have access to connectors in the 'ga' stage. To get access to 'beta' or 'preview' stage
+     * connectors, please contact support.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("release_stage")
+    private JsonNullable<String> releaseStage;
+
+    /**
      * The authentication methods supported by the provider
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authentication")
     private JsonNullable<? extends List<AuthenticationMetaItem>> authentication;
+
+    /**
+     * The list of scope definitions available for this provider
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("scope_definitions")
+    private JsonNullable<? extends List<ScopeDefinitionMetaItem>> scopeDefinitions;
 
     /**
      * The list of actions available for this provider
@@ -68,33 +98,62 @@ public class ActionsMeta {
 
     @JsonCreator
     public ActionsMeta(
+            @JsonProperty("account_id") JsonNullable<String> accountId,
+            @JsonProperty("integration_id") JsonNullable<String> integrationId,
             @JsonProperty("version") JsonNullable<String> version,
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("key") JsonNullable<String> key,
             @JsonProperty("icon") JsonNullable<String> icon,
             @JsonProperty("description") JsonNullable<String> description,
+            @JsonProperty("release_stage") JsonNullable<String> releaseStage,
             @JsonProperty("authentication") JsonNullable<? extends List<AuthenticationMetaItem>> authentication,
+            @JsonProperty("scope_definitions") JsonNullable<? extends List<ScopeDefinitionMetaItem>> scopeDefinitions,
             @JsonProperty("actions") JsonNullable<? extends List<ActionMetaItem>> actions) {
+        Utils.checkNotNull(accountId, "accountId");
+        Utils.checkNotNull(integrationId, "integrationId");
         Utils.checkNotNull(version, "version");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(key, "key");
         Utils.checkNotNull(icon, "icon");
         Utils.checkNotNull(description, "description");
+        Utils.checkNotNull(releaseStage, "releaseStage");
         Utils.checkNotNull(authentication, "authentication");
+        Utils.checkNotNull(scopeDefinitions, "scopeDefinitions");
         Utils.checkNotNull(actions, "actions");
+        this.accountId = accountId;
+        this.integrationId = integrationId;
         this.version = version;
         this.name = name;
         this.key = key;
         this.icon = icon;
         this.description = description;
+        this.releaseStage = releaseStage;
         this.authentication = authentication;
+        this.scopeDefinitions = scopeDefinitions;
         this.actions = actions;
     }
     
     public ActionsMeta() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
+    }
+
+    /**
+     * The account ID this metadata applies to (only present when filtering by account_ids)
+     */
+    @JsonIgnore
+    public JsonNullable<String> accountId() {
+        return accountId;
+    }
+
+    /**
+     * The integration ID this metadata applies to (only present when filtering by account_ids)
+     */
+    @JsonIgnore
+    public JsonNullable<String> integrationId() {
+        return integrationId;
     }
 
     /**
@@ -138,12 +197,31 @@ public class ActionsMeta {
     }
 
     /**
+     * The release stage of the connector (e.g., ga, beta, preview). By default, StackOne organizations
+     * only have access to connectors in the 'ga' stage. To get access to 'beta' or 'preview' stage
+     * connectors, please contact support.
+     */
+    @JsonIgnore
+    public JsonNullable<String> releaseStage() {
+        return releaseStage;
+    }
+
+    /**
      * The authentication methods supported by the provider
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public JsonNullable<List<AuthenticationMetaItem>> authentication() {
         return (JsonNullable<List<AuthenticationMetaItem>>) authentication;
+    }
+
+    /**
+     * The list of scope definitions available for this provider
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<ScopeDefinitionMetaItem>> scopeDefinitions() {
+        return (JsonNullable<List<ScopeDefinitionMetaItem>>) scopeDefinitions;
     }
 
     /**
@@ -159,6 +237,42 @@ public class ActionsMeta {
         return new Builder();
     }
 
+
+    /**
+     * The account ID this metadata applies to (only present when filtering by account_ids)
+     */
+    public ActionsMeta withAccountId(String accountId) {
+        Utils.checkNotNull(accountId, "accountId");
+        this.accountId = JsonNullable.of(accountId);
+        return this;
+    }
+
+    /**
+     * The account ID this metadata applies to (only present when filtering by account_ids)
+     */
+    public ActionsMeta withAccountId(JsonNullable<String> accountId) {
+        Utils.checkNotNull(accountId, "accountId");
+        this.accountId = accountId;
+        return this;
+    }
+
+    /**
+     * The integration ID this metadata applies to (only present when filtering by account_ids)
+     */
+    public ActionsMeta withIntegrationId(String integrationId) {
+        Utils.checkNotNull(integrationId, "integrationId");
+        this.integrationId = JsonNullable.of(integrationId);
+        return this;
+    }
+
+    /**
+     * The integration ID this metadata applies to (only present when filtering by account_ids)
+     */
+    public ActionsMeta withIntegrationId(JsonNullable<String> integrationId) {
+        Utils.checkNotNull(integrationId, "integrationId");
+        this.integrationId = integrationId;
+        return this;
+    }
 
     /**
      * The version of the actions metadata
@@ -251,6 +365,28 @@ public class ActionsMeta {
     }
 
     /**
+     * The release stage of the connector (e.g., ga, beta, preview). By default, StackOne organizations
+     * only have access to connectors in the 'ga' stage. To get access to 'beta' or 'preview' stage
+     * connectors, please contact support.
+     */
+    public ActionsMeta withReleaseStage(String releaseStage) {
+        Utils.checkNotNull(releaseStage, "releaseStage");
+        this.releaseStage = JsonNullable.of(releaseStage);
+        return this;
+    }
+
+    /**
+     * The release stage of the connector (e.g., ga, beta, preview). By default, StackOne organizations
+     * only have access to connectors in the 'ga' stage. To get access to 'beta' or 'preview' stage
+     * connectors, please contact support.
+     */
+    public ActionsMeta withReleaseStage(JsonNullable<String> releaseStage) {
+        Utils.checkNotNull(releaseStage, "releaseStage");
+        this.releaseStage = releaseStage;
+        return this;
+    }
+
+    /**
      * The authentication methods supported by the provider
      */
     public ActionsMeta withAuthentication(List<AuthenticationMetaItem> authentication) {
@@ -265,6 +401,24 @@ public class ActionsMeta {
     public ActionsMeta withAuthentication(JsonNullable<? extends List<AuthenticationMetaItem>> authentication) {
         Utils.checkNotNull(authentication, "authentication");
         this.authentication = authentication;
+        return this;
+    }
+
+    /**
+     * The list of scope definitions available for this provider
+     */
+    public ActionsMeta withScopeDefinitions(List<ScopeDefinitionMetaItem> scopeDefinitions) {
+        Utils.checkNotNull(scopeDefinitions, "scopeDefinitions");
+        this.scopeDefinitions = JsonNullable.of(scopeDefinitions);
+        return this;
+    }
+
+    /**
+     * The list of scope definitions available for this provider
+     */
+    public ActionsMeta withScopeDefinitions(JsonNullable<? extends List<ScopeDefinitionMetaItem>> scopeDefinitions) {
+        Utils.checkNotNull(scopeDefinitions, "scopeDefinitions");
+        this.scopeDefinitions = scopeDefinitions;
         return this;
     }
 
@@ -296,37 +450,50 @@ public class ActionsMeta {
         }
         ActionsMeta other = (ActionsMeta) o;
         return 
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.integrationId, other.integrationId) &&
             Utils.enhancedDeepEquals(this.version, other.version) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
             Utils.enhancedDeepEquals(this.key, other.key) &&
             Utils.enhancedDeepEquals(this.icon, other.icon) &&
             Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.releaseStage, other.releaseStage) &&
             Utils.enhancedDeepEquals(this.authentication, other.authentication) &&
+            Utils.enhancedDeepEquals(this.scopeDefinitions, other.scopeDefinitions) &&
             Utils.enhancedDeepEquals(this.actions, other.actions);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            version, name, key,
-            icon, description, authentication,
-            actions);
+            accountId, integrationId, version,
+            name, key, icon,
+            description, releaseStage, authentication,
+            scopeDefinitions, actions);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ActionsMeta.class,
+                "accountId", accountId,
+                "integrationId", integrationId,
                 "version", version,
                 "name", name,
                 "key", key,
                 "icon", icon,
                 "description", description,
+                "releaseStage", releaseStage,
                 "authentication", authentication,
+                "scopeDefinitions", scopeDefinitions,
                 "actions", actions);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
+
+        private JsonNullable<String> accountId = JsonNullable.undefined();
+
+        private JsonNullable<String> integrationId = JsonNullable.undefined();
 
         private JsonNullable<String> version = JsonNullable.undefined();
 
@@ -338,12 +505,54 @@ public class ActionsMeta {
 
         private JsonNullable<String> description = JsonNullable.undefined();
 
+        private JsonNullable<String> releaseStage = JsonNullable.undefined();
+
         private JsonNullable<? extends List<AuthenticationMetaItem>> authentication = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<ScopeDefinitionMetaItem>> scopeDefinitions = JsonNullable.undefined();
 
         private JsonNullable<? extends List<ActionMetaItem>> actions = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
+        }
+
+
+        /**
+         * The account ID this metadata applies to (only present when filtering by account_ids)
+         */
+        public Builder accountId(String accountId) {
+            Utils.checkNotNull(accountId, "accountId");
+            this.accountId = JsonNullable.of(accountId);
+            return this;
+        }
+
+        /**
+         * The account ID this metadata applies to (only present when filtering by account_ids)
+         */
+        public Builder accountId(JsonNullable<String> accountId) {
+            Utils.checkNotNull(accountId, "accountId");
+            this.accountId = accountId;
+            return this;
+        }
+
+
+        /**
+         * The integration ID this metadata applies to (only present when filtering by account_ids)
+         */
+        public Builder integrationId(String integrationId) {
+            Utils.checkNotNull(integrationId, "integrationId");
+            this.integrationId = JsonNullable.of(integrationId);
+            return this;
+        }
+
+        /**
+         * The integration ID this metadata applies to (only present when filtering by account_ids)
+         */
+        public Builder integrationId(JsonNullable<String> integrationId) {
+            Utils.checkNotNull(integrationId, "integrationId");
+            this.integrationId = integrationId;
+            return this;
         }
 
 
@@ -443,6 +652,29 @@ public class ActionsMeta {
 
 
         /**
+         * The release stage of the connector (e.g., ga, beta, preview). By default, StackOne organizations
+         * only have access to connectors in the 'ga' stage. To get access to 'beta' or 'preview' stage
+         * connectors, please contact support.
+         */
+        public Builder releaseStage(String releaseStage) {
+            Utils.checkNotNull(releaseStage, "releaseStage");
+            this.releaseStage = JsonNullable.of(releaseStage);
+            return this;
+        }
+
+        /**
+         * The release stage of the connector (e.g., ga, beta, preview). By default, StackOne organizations
+         * only have access to connectors in the 'ga' stage. To get access to 'beta' or 'preview' stage
+         * connectors, please contact support.
+         */
+        public Builder releaseStage(JsonNullable<String> releaseStage) {
+            Utils.checkNotNull(releaseStage, "releaseStage");
+            this.releaseStage = releaseStage;
+            return this;
+        }
+
+
+        /**
          * The authentication methods supported by the provider
          */
         public Builder authentication(List<AuthenticationMetaItem> authentication) {
@@ -457,6 +689,25 @@ public class ActionsMeta {
         public Builder authentication(JsonNullable<? extends List<AuthenticationMetaItem>> authentication) {
             Utils.checkNotNull(authentication, "authentication");
             this.authentication = authentication;
+            return this;
+        }
+
+
+        /**
+         * The list of scope definitions available for this provider
+         */
+        public Builder scopeDefinitions(List<ScopeDefinitionMetaItem> scopeDefinitions) {
+            Utils.checkNotNull(scopeDefinitions, "scopeDefinitions");
+            this.scopeDefinitions = JsonNullable.of(scopeDefinitions);
+            return this;
+        }
+
+        /**
+         * The list of scope definitions available for this provider
+         */
+        public Builder scopeDefinitions(JsonNullable<? extends List<ScopeDefinitionMetaItem>> scopeDefinitions) {
+            Utils.checkNotNull(scopeDefinitions, "scopeDefinitions");
+            this.scopeDefinitions = scopeDefinitions;
             return this;
         }
 
@@ -482,9 +733,10 @@ public class ActionsMeta {
         public ActionsMeta build() {
 
             return new ActionsMeta(
-                version, name, key,
-                icon, description, authentication,
-                actions);
+                accountId, integrationId, version,
+                name, key, icon,
+                description, releaseStage, authentication,
+                scopeDefinitions, actions);
         }
 
     }

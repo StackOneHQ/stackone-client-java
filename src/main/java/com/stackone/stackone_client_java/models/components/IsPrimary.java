@@ -84,8 +84,8 @@ public class IsPrimary {
 
         public _Deserializer() {
             super(IsPrimary.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<IsPrimary2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<IsPrimary2>() {}, JsonShape.DEFAULT));
         }
     }
     

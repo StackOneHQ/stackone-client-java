@@ -18,6 +18,7 @@ import java.util.Optional;
 public class MarketingCreateInAppTemplateRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class MarketingCreateInAppTemplateRequestBuilder {
     public MarketingCreateInAppTemplateRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public MarketingCreateInAppTemplateRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingCreateInAppTemplateRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class MarketingCreateInAppTemplateRequestBuilder {
     private MarketingCreateInAppTemplateRequest buildRequest() {
 
         MarketingCreateInAppTemplateRequest request = new MarketingCreateInAppTemplateRequest(xAccountId,
+            prefer,
             marketingCreateInAppTemplateRequestDto);
 
         return request;

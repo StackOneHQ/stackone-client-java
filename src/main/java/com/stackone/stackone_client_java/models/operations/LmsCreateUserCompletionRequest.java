@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class LmsCreateUserCompletionRequest {
@@ -23,6 +24,13 @@ public class LmsCreateUserCompletionRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto;
@@ -31,13 +39,24 @@ public class LmsCreateUserCompletionRequest {
     public LmsCreateUserCompletionRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(lmsCreateCompletionRequestDto, "lmsCreateCompletionRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.lmsCreateCompletionRequestDto = lmsCreateCompletionRequestDto;
+    }
+    
+    public LmsCreateUserCompletionRequest(
+            String xAccountId,
+            String id,
+            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            lmsCreateCompletionRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class LmsCreateUserCompletionRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class LmsCreateUserCompletionRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsCreateUserCompletionRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsCreateUserCompletionRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public LmsCreateUserCompletionRequest withLmsCreateCompletionRequestDto(LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) {
         Utils.checkNotNull(lmsCreateCompletionRequestDto, "lmsCreateCompletionRequestDto");
         this.lmsCreateCompletionRequestDto = lmsCreateCompletionRequestDto;
@@ -96,13 +145,15 @@ public class LmsCreateUserCompletionRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.lmsCreateCompletionRequestDto, other.lmsCreateCompletionRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, lmsCreateCompletionRequestDto);
+            xAccountId, id, prefer,
+            lmsCreateCompletionRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class LmsCreateUserCompletionRequest {
         return Utils.toString(LmsCreateUserCompletionRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "lmsCreateCompletionRequestDto", lmsCreateCompletionRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class LmsCreateUserCompletionRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto;
 
@@ -144,6 +198,27 @@ public class LmsCreateUserCompletionRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder lmsCreateCompletionRequestDto(LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) {
             Utils.checkNotNull(lmsCreateCompletionRequestDto, "lmsCreateCompletionRequestDto");
             this.lmsCreateCompletionRequestDto = lmsCreateCompletionRequestDto;
@@ -153,7 +228,8 @@ public class LmsCreateUserCompletionRequest {
         public LmsCreateUserCompletionRequest build() {
 
             return new LmsCreateUserCompletionRequest(
-                xAccountId, id, lmsCreateCompletionRequestDto);
+                xAccountId, id, prefer,
+                lmsCreateCompletionRequestDto);
         }
 
     }

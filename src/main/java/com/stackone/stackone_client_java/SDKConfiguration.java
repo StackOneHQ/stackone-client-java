@@ -3,6 +3,7 @@
  */
 package com.stackone.stackone_client_java;
 
+import com.stackone.stackone_client_java.hooks.SDKHooks;
 import com.stackone.stackone_client_java.utils.AsyncHooks;
 import com.stackone.stackone_client_java.utils.HTTPClient;
 import com.stackone.stackone_client_java.utils.Hooks;
@@ -18,8 +19,8 @@ public class SDKConfiguration {
 
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "1.0.0";
-    public static final String SDK_VERSION = "0.19.0";
-    public static final String GEN_VERSION = "2.768.1";
+    public static final String SDK_VERSION = "0.19.1";
+    public static final String GEN_VERSION = "2.801.0";
     private static final String BASE_PACKAGE = "com.stackone.stackone_client_java";
     public static final String USER_AGENT = 
             String.format("speakeasy-sdk/%s %s %s %s %s",
@@ -102,6 +103,8 @@ public class SDKConfiguration {
      * Initializes state (for example hooks).
      **/
     public void initialize() {
+        SDKHooks.initialize(_hooks);
+        SDKHooks.initialize(_asyncHooks);
     }
 
     

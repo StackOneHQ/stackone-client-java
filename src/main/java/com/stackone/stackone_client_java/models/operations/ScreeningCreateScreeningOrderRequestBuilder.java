@@ -18,6 +18,7 @@ import java.util.Optional;
 public class ScreeningCreateScreeningOrderRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class ScreeningCreateScreeningOrderRequestBuilder {
     public ScreeningCreateScreeningOrderRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public ScreeningCreateScreeningOrderRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public ScreeningCreateScreeningOrderRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class ScreeningCreateScreeningOrderRequestBuilder {
     private ScreeningCreateScreeningOrderRequest buildRequest() {
 
         ScreeningCreateScreeningOrderRequest request = new ScreeningCreateScreeningOrderRequest(xAccountId,
+            prefer,
             screeningCreateOrderRequestDto);
 
         return request;

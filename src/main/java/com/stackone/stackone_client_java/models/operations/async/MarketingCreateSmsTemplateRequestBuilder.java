@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class MarketingCreateSmsTemplateRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -32,6 +33,18 @@ public class MarketingCreateSmsTemplateRequestBuilder {
     public MarketingCreateSmsTemplateRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public MarketingCreateSmsTemplateRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingCreateSmsTemplateRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -57,6 +70,7 @@ public class MarketingCreateSmsTemplateRequestBuilder {
     private MarketingCreateSmsTemplateRequest buildRequest() {
 
         MarketingCreateSmsTemplateRequest request = new MarketingCreateSmsTemplateRequest(xAccountId,
+            prefer,
             marketingCreateSmsTemplateRequestDto);
 
         return request;

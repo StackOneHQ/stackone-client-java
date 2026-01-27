@@ -1,0 +1,12 @@
+# ActionSearchResponseDto
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `results`                                                                        | List\<[ActionSearchResultDto](../../models/components/ActionSearchResultDto.md)> | :heavy_check_mark:                                                               | N/A                                                                              |
+| `totalCount`                                                                     | *double*                                                                         | :heavy_check_mark:                                                               | Total number of results returned                                                 |
+| `query`                                                                          | *String*                                                                         | :heavy_check_mark:                                                               | Original search query                                                            |
+| `connectorFilter`                                                                | *Optional\<String>*                                                              | :heavy_minus_sign:                                                               | Connector filter applied                                                         |
+| `projectFilter`                                                                  | *Optional\<String>*                                                              | :heavy_minus_sign:                                                               | Project filter applied                                                           |

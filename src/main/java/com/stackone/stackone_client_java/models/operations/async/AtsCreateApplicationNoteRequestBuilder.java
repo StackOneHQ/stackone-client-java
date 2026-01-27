@@ -21,6 +21,7 @@ public class AtsCreateApplicationNoteRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AtsCreateNotesRequestDto atsCreateNotesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class AtsCreateApplicationNoteRequestBuilder {
     public AtsCreateApplicationNoteRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AtsCreateApplicationNoteRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsCreateApplicationNoteRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class AtsCreateApplicationNoteRequestBuilder {
 
         AtsCreateApplicationNoteRequest request = new AtsCreateApplicationNoteRequest(xAccountId,
             id,
+            prefer,
             atsCreateNotesRequestDto);
 
         return request;

@@ -15,6 +15,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -98,6 +99,13 @@ public class LmsListUserAssignmentsRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=remote_user_id")
     private JsonNullable<String> remoteUserId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public LmsListUserAssignmentsRequest(
             String xAccountId,
@@ -111,7 +119,8 @@ public class LmsListUserAssignmentsRequest {
             JsonNullable<String> next,
             JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<String> userId,
-            JsonNullable<String> remoteUserId) {
+            JsonNullable<String> remoteUserId,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
@@ -124,6 +133,7 @@ public class LmsListUserAssignmentsRequest {
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(userId, "userId");
         Utils.checkNotNull(remoteUserId, "remoteUserId");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.raw = raw;
@@ -136,6 +146,7 @@ public class LmsListUserAssignmentsRequest {
         this.updatedAfter = updatedAfter;
         this.userId = userId;
         this.remoteUserId = remoteUserId;
+        this.prefer = prefer;
     }
     
     public LmsListUserAssignmentsRequest(
@@ -144,7 +155,8 @@ public class LmsListUserAssignmentsRequest {
         this(xAccountId, id, JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty());
     }
 
     /**
@@ -249,6 +261,15 @@ public class LmsListUserAssignmentsRequest {
     @JsonIgnore
     public JsonNullable<String> remoteUserId() {
         return remoteUserId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -469,6 +490,27 @@ public class LmsListUserAssignmentsRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsListUserAssignmentsRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsListUserAssignmentsRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -490,7 +532,8 @@ public class LmsListUserAssignmentsRequest {
             Utils.enhancedDeepEquals(this.next, other.next) &&
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
             Utils.enhancedDeepEquals(this.userId, other.userId) &&
-            Utils.enhancedDeepEquals(this.remoteUserId, other.remoteUserId);
+            Utils.enhancedDeepEquals(this.remoteUserId, other.remoteUserId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -499,7 +542,8 @@ public class LmsListUserAssignmentsRequest {
             xAccountId, id, raw,
             proxy, fields, filter,
             page, pageSize, next,
-            updatedAfter, userId, remoteUserId);
+            updatedAfter, userId, remoteUserId,
+            prefer);
     }
     
     @Override
@@ -516,7 +560,8 @@ public class LmsListUserAssignmentsRequest {
                 "next", next,
                 "updatedAfter", updatedAfter,
                 "userId", userId,
-                "remoteUserId", remoteUserId);
+                "remoteUserId", remoteUserId,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -547,6 +592,8 @@ public class LmsListUserAssignmentsRequest {
         private JsonNullable<String> userId = JsonNullable.undefined();
 
         private JsonNullable<String> remoteUserId = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -777,13 +824,35 @@ public class LmsListUserAssignmentsRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public LmsListUserAssignmentsRequest build() {
 
             return new LmsListUserAssignmentsRequest(
                 xAccountId, id, raw,
                 proxy, fields, filter,
                 page, pageSize, next,
-                updatedAfter, userId, remoteUserId);
+                updatedAfter, userId, remoteUserId,
+                prefer);
         }
 
     }

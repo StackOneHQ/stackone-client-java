@@ -19,6 +19,7 @@ public class HrisCreateEmployeeTimeOffRequestRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class HrisCreateEmployeeTimeOffRequestRequestBuilder {
     public HrisCreateEmployeeTimeOffRequestRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public HrisCreateEmployeeTimeOffRequestRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public HrisCreateEmployeeTimeOffRequestRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class HrisCreateEmployeeTimeOffRequestRequestBuilder {
 
         HrisCreateEmployeeTimeOffRequestRequest request = new HrisCreateEmployeeTimeOffRequestRequest(xAccountId,
             id,
+            prefer,
             hrisCreateTimeOffRequestDto);
 
         return request;

@@ -6,12 +6,14 @@ package com.stackone.stackone_client_java;
 
 import com.stackone.stackone_client_java.utils.HTTPClient;
 import com.stackone.stackone_client_java.utils.Headers;
+import com.stackone.stackone_client_java.utils.Hook.SdkInitData;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.SpeakeasyHTTPClient;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * Accounting: The documentation for the StackOne Unified API - ACCOUNTING
@@ -310,6 +312,17 @@ public class StackOne {
             return this;
         }
 
+        // Visible for testing, may be accessed via reflection in tests
+        Builder _hooks(com.stackone.stackone_client_java.utils.Hooks hooks) {
+            sdkConfiguration.setHooks(hooks);  
+            return this;  
+        }
+        
+        // Visible for testing, may be accessed via reflection in tests
+        Builder _hooks(Consumer<? super com.stackone.stackone_client_java.utils.Hooks> consumer) {
+            consumer.accept(sdkConfiguration.hooks());
+            return this;    
+        }
 
         /**
          * Builds a new instance of the SDK.
@@ -355,6 +368,12 @@ public class StackOne {
         this.screening = new Screening(sdkConfiguration);
         this.messaging = new Messaging(sdkConfiguration);
         this.accounting = new Accounting(sdkConfiguration);
+        SdkInitData data = sdkConfiguration.hooks().sdkInit(
+                new SdkInitData(
+                        sdkConfiguration.resolvedServerUrl(), 
+                        sdkConfiguration.client()));
+        sdkConfiguration.setServerUrl(data.baseUrl());
+        sdkConfiguration.setClient(data.client());
         this.asyncSDK = new AsyncStackOne(this, sdkConfiguration);
     }
 

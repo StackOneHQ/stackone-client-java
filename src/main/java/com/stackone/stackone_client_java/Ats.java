@@ -22,7 +22,6 @@ import com.stackone.stackone_client_java.models.components.AtsUpdateBackgroundCh
 import com.stackone.stackone_client_java.models.components.AtsUpdateCandidateRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsUpdateCandidatesAssessmentsResultsRequestDto;
 import com.stackone.stackone_client_java.models.components.AtsUpdateJobRequestDto;
-import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationNoteRequest;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationNoteRequestBuilder;
 import com.stackone.stackone_client_java.models.operations.AtsCreateApplicationNoteResponse;
@@ -405,25 +404,28 @@ public class Ats {
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateApplicationResponse createApplication(String xAccountId, AtsCreateApplicationRequestDto atsCreateApplicationRequestDto) {
-        return createApplication(xAccountId, atsCreateApplicationRequestDto, Optional.empty());
+        return createApplication(xAccountId, Optional.empty(), atsCreateApplicationRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Application
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateApplicationRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateApplicationResponse createApplication(
-            String xAccountId, AtsCreateApplicationRequestDto atsCreateApplicationRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateApplicationRequestDto atsCreateApplicationRequestDto, Optional<Options> options) {
         AtsCreateApplicationRequest request =
             AtsCreateApplicationRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateApplicationRequestDto(atsCreateApplicationRequestDto)
                 .build();
         RequestOperation<AtsCreateApplicationRequest, AtsCreateApplicationResponse> operation
@@ -486,8 +488,8 @@ public class Ats {
     public AtsUpdateApplicationResponse updateApplication(
             String xAccountId, String id,
             AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto) {
-        return updateApplication(xAccountId, id, atsUpdateApplicationRequestDto,
-            Optional.empty());
+        return updateApplication(xAccountId, id, Optional.empty(),
+            atsUpdateApplicationRequestDto, Optional.empty());
     }
 
     /**
@@ -495,6 +497,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateApplicationRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -502,12 +505,14 @@ public class Ats {
      */
     public AtsUpdateApplicationResponse updateApplication(
             String xAccountId, String id,
-            AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto,
+            Optional<Options> options) {
         AtsUpdateApplicationRequest request =
             AtsUpdateApplicationRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateApplicationRequestDto(atsUpdateApplicationRequestDto)
                 .build();
         RequestOperation<AtsUpdateApplicationRequest, AtsUpdateApplicationResponse> operation
@@ -570,8 +575,8 @@ public class Ats {
     public AtsMoveApplicationResponse moveApplication(
             String xAccountId, String id,
             AtsMoveApplicationRequestDto atsMoveApplicationRequestDto) {
-        return moveApplication(xAccountId, id, atsMoveApplicationRequestDto,
-            Optional.empty());
+        return moveApplication(xAccountId, id, Optional.empty(),
+            atsMoveApplicationRequestDto, Optional.empty());
     }
 
     /**
@@ -579,6 +584,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsMoveApplicationRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -586,12 +592,14 @@ public class Ats {
      */
     public AtsMoveApplicationResponse moveApplication(
             String xAccountId, String id,
-            AtsMoveApplicationRequestDto atsMoveApplicationRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsMoveApplicationRequestDto atsMoveApplicationRequestDto,
+            Optional<Options> options) {
         AtsMoveApplicationRequest request =
             AtsMoveApplicationRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsMoveApplicationRequestDto(atsMoveApplicationRequestDto)
                 .build();
         RequestOperation<AtsMoveApplicationRequest, AtsMoveApplicationResponse> operation
@@ -620,8 +628,8 @@ public class Ats {
     public AtsRejectApplicationResponse rejectApplication(
             String xAccountId, String id,
             AtsRejectApplicationRequestDto atsRejectApplicationRequestDto) {
-        return rejectApplication(xAccountId, id, atsRejectApplicationRequestDto,
-            Optional.empty());
+        return rejectApplication(xAccountId, id, Optional.empty(),
+            atsRejectApplicationRequestDto, Optional.empty());
     }
 
     /**
@@ -629,6 +637,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsRejectApplicationRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -636,12 +645,14 @@ public class Ats {
      */
     public AtsRejectApplicationResponse rejectApplication(
             String xAccountId, String id,
-            AtsRejectApplicationRequestDto atsRejectApplicationRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsRejectApplicationRequestDto atsRejectApplicationRequestDto,
+            Optional<Options> options) {
         AtsRejectApplicationRequest request =
             AtsRejectApplicationRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsRejectApplicationRequestDto(atsRejectApplicationRequestDto)
                 .build();
         RequestOperation<AtsRejectApplicationRequest, AtsRejectApplicationResponse> operation
@@ -840,8 +851,8 @@ public class Ats {
     public AtsCreateApplicationNoteResponse createApplicationNote(
             String xAccountId, String id,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
-        return createApplicationNote(xAccountId, id, atsCreateNotesRequestDto,
-            Optional.empty());
+        return createApplicationNote(xAccountId, id, Optional.empty(),
+            atsCreateNotesRequestDto, Optional.empty());
     }
 
     /**
@@ -849,6 +860,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateNotesRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -856,12 +868,14 @@ public class Ats {
      */
     public AtsCreateApplicationNoteResponse createApplicationNote(
             String xAccountId, String id,
-            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsCreateNotesRequestDto atsCreateNotesRequestDto,
+            Optional<Options> options) {
         AtsCreateApplicationNoteRequest request =
             AtsCreateApplicationNoteRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         RequestOperation<AtsCreateApplicationNoteRequest, AtsCreateApplicationNoteResponse> operation
@@ -915,43 +929,23 @@ public class Ats {
     /**
      * Update Application Note
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param atsUpdateNotesRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public AtsUpdateApplicationNoteResponse updateApplicationNote(
-            String xAccountId, String id,
-            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
-        return updateApplicationNote(xAccountId, id, subResourceId,
-            atsUpdateNotesRequestDto, Optional.empty());
+    public AtsUpdateApplicationNoteResponse updateApplicationNote(AtsUpdateApplicationNoteRequest request) {
+        return updateApplicationNote(request, Optional.empty());
     }
 
     /**
      * Update Application Note
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param atsUpdateNotesRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public AtsUpdateApplicationNoteResponse updateApplicationNote(
-            String xAccountId, String id,
-            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
-            Optional<Options> options) {
-        AtsUpdateApplicationNoteRequest request =
-            AtsUpdateApplicationNoteRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
-                .build();
+    public AtsUpdateApplicationNoteResponse updateApplicationNote(AtsUpdateApplicationNoteRequest request, Optional<Options> options) {
         RequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
               = new AtsUpdateApplicationNote.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -1046,8 +1040,8 @@ public class Ats {
     public AtsUploadApplicationDocumentResponse uploadApplicationDocument(
             String xAccountId, String id,
             AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) {
-        return uploadApplicationDocument(xAccountId, id, atsDocumentsUploadRequestDto,
-            Optional.empty());
+        return uploadApplicationDocument(xAccountId, id, Optional.empty(),
+            atsDocumentsUploadRequestDto, Optional.empty());
     }
 
     /**
@@ -1055,6 +1049,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsDocumentsUploadRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1062,12 +1057,14 @@ public class Ats {
      */
     public AtsUploadApplicationDocumentResponse uploadApplicationDocument(
             String xAccountId, String id,
-            AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto,
+            Optional<Options> options) {
         AtsUploadApplicationDocumentRequest request =
             AtsUploadApplicationDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsDocumentsUploadRequestDto(atsDocumentsUploadRequestDto)
                 .build();
         RequestOperation<AtsUploadApplicationDocumentRequest, AtsUploadApplicationDocumentResponse> operation
@@ -1229,25 +1226,28 @@ public class Ats {
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateCandidateResponse createCandidate(String xAccountId, AtsCreateCandidateRequestDto atsCreateCandidateRequestDto) {
-        return createCandidate(xAccountId, atsCreateCandidateRequestDto, Optional.empty());
+        return createCandidate(xAccountId, Optional.empty(), atsCreateCandidateRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Candidate
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateCandidateRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateCandidateResponse createCandidate(
-            String xAccountId, AtsCreateCandidateRequestDto atsCreateCandidateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateCandidateRequestDto atsCreateCandidateRequestDto, Optional<Options> options) {
         AtsCreateCandidateRequest request =
             AtsCreateCandidateRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateCandidateRequestDto(atsCreateCandidateRequestDto)
                 .build();
         RequestOperation<AtsCreateCandidateRequest, AtsCreateCandidateResponse> operation
@@ -1310,8 +1310,8 @@ public class Ats {
     public AtsUpdateCandidateResponse updateCandidate(
             String xAccountId, String id,
             AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto) {
-        return updateCandidate(xAccountId, id, atsUpdateCandidateRequestDto,
-            Optional.empty());
+        return updateCandidate(xAccountId, id, Optional.empty(),
+            atsUpdateCandidateRequestDto, Optional.empty());
     }
 
     /**
@@ -1319,6 +1319,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateCandidateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1326,12 +1327,14 @@ public class Ats {
      */
     public AtsUpdateCandidateResponse updateCandidate(
             String xAccountId, String id,
-            AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateCandidateRequestDto atsUpdateCandidateRequestDto,
+            Optional<Options> options) {
         AtsUpdateCandidateRequest request =
             AtsUpdateCandidateRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateCandidateRequestDto(atsUpdateCandidateRequestDto)
                 .build();
         RequestOperation<AtsUpdateCandidateRequest, AtsUpdateCandidateResponse> operation
@@ -1394,8 +1397,8 @@ public class Ats {
     public AtsCreateCandidateNoteResponse createCandidateNote(
             String xAccountId, String id,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
-        return createCandidateNote(xAccountId, id, atsCreateNotesRequestDto,
-            Optional.empty());
+        return createCandidateNote(xAccountId, id, Optional.empty(),
+            atsCreateNotesRequestDto, Optional.empty());
     }
 
     /**
@@ -1403,6 +1406,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateNotesRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1410,12 +1414,14 @@ public class Ats {
      */
     public AtsCreateCandidateNoteResponse createCandidateNote(
             String xAccountId, String id,
-            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsCreateNotesRequestDto atsCreateNotesRequestDto,
+            Optional<Options> options) {
         AtsCreateCandidateNoteRequest request =
             AtsCreateCandidateNoteRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         RequestOperation<AtsCreateCandidateNoteRequest, AtsCreateCandidateNoteResponse> operation
@@ -1966,8 +1972,8 @@ public class Ats {
     public AtsCreateInterviewNoteResponse createInterviewNote(
             String xAccountId, String id,
             AtsCreateNotesRequestDto atsCreateNotesRequestDto) {
-        return createInterviewNote(xAccountId, id, atsCreateNotesRequestDto,
-            Optional.empty());
+        return createInterviewNote(xAccountId, id, Optional.empty(),
+            atsCreateNotesRequestDto, Optional.empty());
     }
 
     /**
@@ -1975,6 +1981,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateNotesRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1982,12 +1989,14 @@ public class Ats {
      */
     public AtsCreateInterviewNoteResponse createInterviewNote(
             String xAccountId, String id,
-            AtsCreateNotesRequestDto atsCreateNotesRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsCreateNotesRequestDto atsCreateNotesRequestDto,
+            Optional<Options> options) {
         AtsCreateInterviewNoteRequest request =
             AtsCreateInterviewNoteRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsCreateNotesRequestDto(atsCreateNotesRequestDto)
                 .build();
         RequestOperation<AtsCreateInterviewNoteRequest, AtsCreateInterviewNoteResponse> operation
@@ -2007,43 +2016,23 @@ public class Ats {
     /**
      * Update Interview Note
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param atsUpdateNotesRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public AtsUpdateInterviewNoteResponse updateInterviewNote(
-            String xAccountId, String id,
-            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
-        return updateInterviewNote(xAccountId, id, subResourceId,
-            atsUpdateNotesRequestDto, Optional.empty());
+    public AtsUpdateInterviewNoteResponse updateInterviewNote(AtsUpdateInterviewNoteRequest request) {
+        return updateInterviewNote(request, Optional.empty());
     }
 
     /**
      * Update Interview Note
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param atsUpdateNotesRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
-    public AtsUpdateInterviewNoteResponse updateInterviewNote(
-            String xAccountId, String id,
-            String subResourceId, AtsUpdateNotesRequestDto atsUpdateNotesRequestDto,
-            Optional<Options> options) {
-        AtsUpdateInterviewNoteRequest request =
-            AtsUpdateInterviewNoteRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .atsUpdateNotesRequestDto(atsUpdateNotesRequestDto)
-                .build();
+    public AtsUpdateInterviewNoteResponse updateInterviewNote(AtsUpdateInterviewNoteRequest request, Optional<Options> options) {
         RequestOperation<AtsUpdateInterviewNoteRequest, AtsUpdateInterviewNoteResponse> operation
               = new AtsUpdateInterviewNote.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -2101,25 +2090,28 @@ public class Ats {
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateJobResponse createJob(String xAccountId, AtsCreateJobRequestDto atsCreateJobRequestDto) {
-        return createJob(xAccountId, atsCreateJobRequestDto, Optional.empty());
+        return createJob(xAccountId, Optional.empty(), atsCreateJobRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Job
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateJobRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateJobResponse createJob(
-            String xAccountId, AtsCreateJobRequestDto atsCreateJobRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateJobRequestDto atsCreateJobRequestDto, Optional<Options> options) {
         AtsCreateJobRequest request =
             AtsCreateJobRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateJobRequestDto(atsCreateJobRequestDto)
                 .build();
         RequestOperation<AtsCreateJobRequest, AtsCreateJobResponse> operation
@@ -2216,8 +2208,8 @@ public class Ats {
     public AtsUpdateJobResponse updateJob(
             String xAccountId, String id,
             AtsUpdateJobRequestDto atsUpdateJobRequestDto) {
-        return updateJob(xAccountId, id, atsUpdateJobRequestDto,
-            Optional.empty());
+        return updateJob(xAccountId, id, Optional.empty(),
+            atsUpdateJobRequestDto, Optional.empty());
     }
 
     /**
@@ -2225,6 +2217,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateJobRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -2232,12 +2225,14 @@ public class Ats {
      */
     public AtsUpdateJobResponse updateJob(
             String xAccountId, String id,
-            AtsUpdateJobRequestDto atsUpdateJobRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateJobRequestDto atsUpdateJobRequestDto,
+            Optional<Options> options) {
         AtsUpdateJobRequest request =
             AtsUpdateJobRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateJobRequestDto(atsUpdateJobRequestDto)
                 .build();
         RequestOperation<AtsUpdateJobRequest, AtsUpdateJobResponse> operation
@@ -2671,25 +2666,28 @@ public class Ats {
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateOfferResponse createOffer(String xAccountId, AtsCreateOfferRequestDto atsCreateOfferRequestDto) {
-        return createOffer(xAccountId, atsCreateOfferRequestDto, Optional.empty());
+        return createOffer(xAccountId, Optional.empty(), atsCreateOfferRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Offer
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateOfferRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateOfferResponse createOffer(
-            String xAccountId, AtsCreateOfferRequestDto atsCreateOfferRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateOfferRequestDto atsCreateOfferRequestDto, Optional<Options> options) {
         AtsCreateOfferRequest request =
             AtsCreateOfferRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateOfferRequestDto(atsCreateOfferRequestDto)
                 .build();
         RequestOperation<AtsCreateOfferRequest, AtsCreateOfferResponse> operation
@@ -2817,25 +2815,28 @@ public class Ats {
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsOrderAssessmentsRequestResponse orderAssessmentsRequest(String xAccountId, AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto) {
-        return orderAssessmentsRequest(xAccountId, atsCreateCandidatesAssessmentsRequestDto, Optional.empty());
+        return orderAssessmentsRequest(xAccountId, Optional.empty(), atsCreateCandidatesAssessmentsRequestDto,
+            Optional.empty());
     }
 
     /**
      * Order Assessments Request
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateCandidatesAssessmentsRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsOrderAssessmentsRequestResponse orderAssessmentsRequest(
-            String xAccountId, AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateCandidatesAssessmentsRequestDto atsCreateCandidatesAssessmentsRequestDto, Optional<Options> options) {
         AtsOrderAssessmentsRequestRequest request =
             AtsOrderAssessmentsRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateCandidatesAssessmentsRequestDto(atsCreateCandidatesAssessmentsRequestDto)
                 .build();
         RequestOperation<AtsOrderAssessmentsRequestRequest, AtsOrderAssessmentsRequestResponse> operation
@@ -2864,8 +2865,8 @@ public class Ats {
     public AtsUpdateAssessmentsResultResponse updateAssessmentsResult(
             String xAccountId, String id,
             AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto) {
-        return updateAssessmentsResult(xAccountId, id, atsUpdateCandidatesAssessmentsResultsRequestDto,
-            Optional.empty());
+        return updateAssessmentsResult(xAccountId, id, Optional.empty(),
+            atsUpdateCandidatesAssessmentsResultsRequestDto, Optional.empty());
     }
 
     /**
@@ -2873,6 +2874,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateCandidatesAssessmentsResultsRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -2880,12 +2882,14 @@ public class Ats {
      */
     public AtsUpdateAssessmentsResultResponse updateAssessmentsResult(
             String xAccountId, String id,
-            AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateCandidatesAssessmentsResultsRequestDto atsUpdateCandidatesAssessmentsResultsRequestDto,
+            Optional<Options> options) {
         AtsUpdateAssessmentsResultRequest request =
             AtsUpdateAssessmentsResultRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateCandidatesAssessmentsResultsRequestDto(atsUpdateCandidatesAssessmentsResultsRequestDto)
                 .build();
         RequestOperation<AtsUpdateAssessmentsResultRequest, AtsUpdateAssessmentsResultResponse> operation
@@ -2945,25 +2949,28 @@ public class Ats {
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateBackgroundCheckPackageResponse createBackgroundCheckPackage(String xAccountId, AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) {
-        return createBackgroundCheckPackage(xAccountId, atsCreateBackgroundCheckPackagesRequestDto, Optional.empty());
+        return createBackgroundCheckPackage(xAccountId, Optional.empty(), atsCreateBackgroundCheckPackagesRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Background Check Package
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateBackgroundCheckPackagesRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsCreateBackgroundCheckPackageResponse createBackgroundCheckPackage(
-            String xAccountId, AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto, Optional<Options> options) {
         AtsCreateBackgroundCheckPackageRequest request =
             AtsCreateBackgroundCheckPackageRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateBackgroundCheckPackagesRequestDto(atsCreateBackgroundCheckPackagesRequestDto)
                 .build();
         RequestOperation<AtsCreateBackgroundCheckPackageRequest, AtsCreateBackgroundCheckPackageResponse> operation
@@ -3006,50 +3013,6 @@ public class Ats {
     }
 
     /**
-     * Delete Background Check Package
-     * 
-     * @return The call builder
-     */
-    public AtsDeleteBackgroundCheckPackageRequestBuilder deleteBackgroundCheckPackage() {
-        return new AtsDeleteBackgroundCheckPackageRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Delete Background Check Package
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public AtsDeleteBackgroundCheckPackageResponse deleteBackgroundCheckPackage(String xAccountId, String id) {
-        return deleteBackgroundCheckPackage(xAccountId, id, Optional.empty());
-    }
-
-    /**
-     * Delete Background Check Package
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param options additional options
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public AtsDeleteBackgroundCheckPackageResponse deleteBackgroundCheckPackage(
-            String xAccountId, String id,
-            Optional<Options> options) {
-        AtsDeleteBackgroundCheckPackageRequest request =
-            AtsDeleteBackgroundCheckPackageRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .build();
-        RequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
-              = new AtsDeleteBackgroundCheckPackage.Sync(sdkConfiguration, options, _headers);
-        return operation.handleResponse(operation.doRequest(request));
-    }
-
-    /**
      * Update Background Check Package
      * 
      * @return The call builder
@@ -3070,8 +3033,8 @@ public class Ats {
     public AtsUpdateBackgroundCheckPackageResponse updateBackgroundCheckPackage(
             String xAccountId, String id,
             AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto) {
-        return updateBackgroundCheckPackage(xAccountId, id, atsUpdateBackgroundCheckPackagesRequestDto,
-            Optional.empty());
+        return updateBackgroundCheckPackage(xAccountId, id, Optional.empty(),
+            atsUpdateBackgroundCheckPackagesRequestDto, Optional.empty());
     }
 
     /**
@@ -3079,6 +3042,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateBackgroundCheckPackagesRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -3086,16 +3050,65 @@ public class Ats {
      */
     public AtsUpdateBackgroundCheckPackageResponse updateBackgroundCheckPackage(
             String xAccountId, String id,
-            AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto,
+            Optional<Options> options) {
         AtsUpdateBackgroundCheckPackageRequest request =
             AtsUpdateBackgroundCheckPackageRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateBackgroundCheckPackagesRequestDto(atsUpdateBackgroundCheckPackagesRequestDto)
                 .build();
         RequestOperation<AtsUpdateBackgroundCheckPackageRequest, AtsUpdateBackgroundCheckPackageResponse> operation
               = new AtsUpdateBackgroundCheckPackage.Sync(sdkConfiguration, options, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Delete Background Check Package
+     * 
+     * @return The call builder
+     */
+    public AtsDeleteBackgroundCheckPackageRequestBuilder deleteBackgroundCheckPackage() {
+        return new AtsDeleteBackgroundCheckPackageRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Delete Background Check Package
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public AtsDeleteBackgroundCheckPackageResponse deleteBackgroundCheckPackage(String xAccountId, String id) {
+        return deleteBackgroundCheckPackage(xAccountId, id, Optional.empty(),
+            Optional.empty());
+    }
+
+    /**
+     * Delete Background Check Package
+     * 
+     * @param xAccountId The account identifier
+     * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     * @param options additional options
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public AtsDeleteBackgroundCheckPackageResponse deleteBackgroundCheckPackage(
+            String xAccountId, String id,
+            Optional<String> prefer, Optional<Options> options) {
+        AtsDeleteBackgroundCheckPackageRequest request =
+            AtsDeleteBackgroundCheckPackageRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .id(id)
+                .prefer(prefer)
+                .build();
+        RequestOperation<AtsDeleteBackgroundCheckPackageRequest, AtsDeleteBackgroundCheckPackageResponse> operation
+              = new AtsDeleteBackgroundCheckPackage.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -3117,25 +3130,28 @@ public class Ats {
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsOrderBackgroundCheckRequestResponse orderBackgroundCheckRequest(String xAccountId, AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) {
-        return orderBackgroundCheckRequest(xAccountId, atsCreateBackgroundCheckOrderRequestDto, Optional.empty());
+        return orderBackgroundCheckRequest(xAccountId, Optional.empty(), atsCreateBackgroundCheckOrderRequestDto,
+            Optional.empty());
     }
 
     /**
      * Order Background Check Request
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsCreateBackgroundCheckOrderRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public AtsOrderBackgroundCheckRequestResponse orderBackgroundCheckRequest(
-            String xAccountId, AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto, Optional<Options> options) {
         AtsOrderBackgroundCheckRequestRequest request =
             AtsOrderBackgroundCheckRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .atsCreateBackgroundCheckOrderRequestDto(atsCreateBackgroundCheckOrderRequestDto)
                 .build();
         RequestOperation<AtsOrderBackgroundCheckRequestRequest, AtsOrderBackgroundCheckRequestResponse> operation
@@ -3164,8 +3180,8 @@ public class Ats {
     public AtsUpdateBackgroundCheckResultResponse updateBackgroundCheckResult(
             String xAccountId, String id,
             AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto) {
-        return updateBackgroundCheckResult(xAccountId, id, atsUpdateBackgroundCheckResultRequestDto,
-            Optional.empty());
+        return updateBackgroundCheckResult(xAccountId, id, Optional.empty(),
+            atsUpdateBackgroundCheckResultRequestDto, Optional.empty());
     }
 
     /**
@@ -3173,6 +3189,7 @@ public class Ats {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param atsUpdateBackgroundCheckResultRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -3180,12 +3197,14 @@ public class Ats {
      */
     public AtsUpdateBackgroundCheckResultResponse updateBackgroundCheckResult(
             String xAccountId, String id,
-            AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto,
+            Optional<Options> options) {
         AtsUpdateBackgroundCheckResultRequest request =
             AtsUpdateBackgroundCheckResultRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .atsUpdateBackgroundCheckResultRequestDto(atsUpdateBackgroundCheckResultRequestDto)
                 .build();
         RequestOperation<AtsUpdateBackgroundCheckResultRequest, AtsUpdateBackgroundCheckResultResponse> operation

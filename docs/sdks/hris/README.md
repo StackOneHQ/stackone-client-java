@@ -1,5 +1,4 @@
 # Hris
-(*hris()*)
 
 ## Overview
 
@@ -19,8 +18,8 @@
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
-* [cancelEmployeeTimeOffRequest](#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
 * [updateEmployeeTimeOffRequest](#updateemployeetimeoffrequest) - Update Employee Time Off Request
+* [cancelEmployeeTimeOffRequest](#cancelemployeetimeoffrequest) - Cancel Employee Time Off Request
 * [batchUploadEmployeeDocument](#batchuploademployeedocument) - Batch Upload Employee Document
 * [uploadEmployeeDocument](#uploademployeedocument) - Upload Employee Document
 * [downloadEmployeeDocument](#downloademployeedocument) - Download Employee Document
@@ -114,6 +113,7 @@ public class Application {
                 .filter(HrisListCompaniesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -187,6 +187,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetCompanyResponse res = sdk.hris().getCompany()
@@ -262,6 +263,7 @@ public class Application {
                 .filter(HrisListEmployeeCustomFieldDefinitionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -338,6 +340,7 @@ public class Application {
                 .filter(HrisGetEmployeeCustomFieldDefinitionQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeCustomFieldDefinitionResponse res = sdk.hris().getEmployeeCustomFieldDefinition()
@@ -415,6 +418,7 @@ public class Application {
                     .build())
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits,bank_details")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -489,6 +493,7 @@ public class Application {
 
         HrisCreateEmployeeResponse res = sdk.hris().createEmployee()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .hrisCreateEmployeeRequestDto(HrisCreateEmployeeRequestDto.builder()
                     .title("Mr")
                     .firstName("Isaac")
@@ -595,10 +600,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
-| `hrisCreateEmployeeRequestDto`                                                          | [HrisCreateEmployeeRequestDto](../../models/components/HrisCreateEmployeeRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `hrisCreateEmployeeRequestDto`                                                                                                                                           | [HrisCreateEmployeeRequestDto](../../models/components/HrisCreateEmployeeRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -656,6 +662,7 @@ public class Application {
                 .fields("id,remote_id,title,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,company_id,remote_company_id,preferred_language,citizenships,home_location,work_location,employments,custom_fields,created_at,updated_at,benefits,employee_number,national_identity_number,national_identity_numbers,bank_details,skills,unified_custom_fields")
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits,bank_details")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeResponse res = sdk.hris().getEmployee()
@@ -731,6 +738,7 @@ public class Application {
         HrisUpdateEmployeeResponse res = sdk.hris().updateEmployee()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .hrisUpdateEmployeeRequestDto(HrisUpdateEmployeeRequestDto.builder()
                     .title("Mr")
                     .firstName("Isaac")
@@ -838,11 +846,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
-| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `hrisUpdateEmployeeRequestDto`                                                          | [HrisUpdateEmployeeRequestDto](../../models/components/HrisUpdateEmployeeRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `hrisUpdateEmployeeRequestDto`                                                                                                                                           | [HrisUpdateEmployeeRequestDto](../../models/components/HrisUpdateEmployeeRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -898,6 +907,7 @@ public class Application {
         HrisInviteEmployeeResponse res = sdk.hris().inviteEmployee()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .hrisInviteEmployeeRequestDto(HrisInviteEmployeeRequestDto.builder()
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
@@ -913,11 +923,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
-| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `hrisInviteEmployeeRequestDto`                                                          | [HrisInviteEmployeeRequestDto](../../models/components/HrisInviteEmployeeRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `hrisInviteEmployeeRequestDto`                                                                                                                                           | [HrisInviteEmployeeRequestDto](../../models/components/HrisInviteEmployeeRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -977,6 +988,7 @@ public class Application {
                     .startsAfter("2024-01-15T09:00")
                     .endsBefore("2024-01-15T17:00")
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1050,6 +1062,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeShiftResponse res = sdk.hris().getEmployeeShift()
@@ -1129,6 +1142,7 @@ public class Application {
                     .endDate(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("policy")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1201,6 +1215,7 @@ public class Application {
         HrisCreateEmployeeTimeOffRequestResponse res = sdk.hris().createEmployeeTimeOffRequest()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto.builder()
                     .approverId("1687-4")
                     .startDate("2021-01-01T01:01:01.000")
@@ -1227,11 +1242,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                          | *String*                                                                              | :heavy_check_mark:                                                                    | The account identifier                                                                |
-| `id`                                                                                  | *String*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `hrisCreateTimeOffRequestDto`                                                         | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `hrisCreateTimeOffRequestDto`                                                                                                                                            | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md)                                                                                    | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -1289,6 +1305,7 @@ public class Application {
                 .subResourceId("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields")
                 .expand("policy")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeesTimeOffRequestResponse res = sdk.hris().getEmployeesTimeOffRequest()
@@ -1311,6 +1328,96 @@ public class Application {
 ### Response
 
 **[HrisGetEmployeesTimeOffRequestResponse](../../models/operations/HrisGetEmployeesTimeOffRequestResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## updateEmployeeTimeOffRequest
+
+Update Employee Time Off Request
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="hris_update_employee_time_off_request" method="patch" path="/unified/hris/employees/{id}/time_off/{subResourceId}" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestRequest;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestResponse;
+import java.lang.Exception;
+import java.util.Map;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        HrisUpdateEmployeeTimeOffRequestRequest req = HrisUpdateEmployeeTimeOffRequestRequest.builder()
+                .xAccountId("<id>")
+                .id("<id>")
+                .subResourceId("<id>")
+                .hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto.builder()
+                    .approverId("1687-4")
+                    .startDate("2021-01-01T01:01:01.000")
+                    .endDate("2021-01-01T01:01:01.000")
+                    .startHalfDay(HrisCreateTimeOffRequestDtoStartHalfDay.of(true))
+                    .endHalfDay(HrisCreateTimeOffRequestDtoEndHalfDay.of(true))
+                    .timeOffPolicyId("cx280928933")
+                    .reason(HrisCreateTimeOffRequestDtoReason.builder()
+                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                        .build())
+                    .comment("Taking a day off for personal reasons")
+                    .passthrough(Map.ofEntries(
+                        Map.entry("other_known_names", "John Doe")))
+                    .build())
+                .prefer("heartbeat")
+                .build();
+
+        HrisUpdateEmployeeTimeOffRequestResponse res = sdk.hris().updateEmployeeTimeOffRequest()
+                .request(req)
+                .call();
+
+        if (res.createResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                     | [HrisUpdateEmployeeTimeOffRequestRequest](../../models/operations/HrisUpdateEmployeeTimeOffRequestRequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
+
+### Response
+
+**[HrisUpdateEmployeeTimeOffRequestResponse](../../models/operations/HrisUpdateEmployeeTimeOffRequestResponse.md)**
 
 ### Errors
 
@@ -1361,6 +1468,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .prefer("heartbeat")
                 .call();
 
         if (res.deleteResult().isPresent()) {
@@ -1372,102 +1480,16 @@ public class Application {
 
 ### Parameters
 
-| Parameter              | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `xAccountId`           | *String*               | :heavy_check_mark:     | The account identifier |
-| `id`                   | *String*               | :heavy_check_mark:     | N/A                    |
-| `subResourceId`        | *String*               | :heavy_check_mark:     | N/A                    |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `subResourceId`                                                                                                                                                          | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
 
 ### Response
 
 **[HrisCancelEmployeeTimeOffRequestResponse](../../models/operations/HrisCancelEmployeeTimeOffRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## updateEmployeeTimeOffRequest
-
-Update Employee Time Off Request
-
-### Example Usage
-
-<!-- UsageSnippet language="java" operationID="hris_update_employee_time_off_request" method="patch" path="/unified/hris/employees/{id}/time_off/{subResourceId}" -->
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.*;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestResponse;
-import java.lang.Exception;
-import java.util.Map;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        HrisUpdateEmployeeTimeOffRequestResponse res = sdk.hris().updateEmployeeTimeOffRequest()
-                .xAccountId("<id>")
-                .id("<id>")
-                .subResourceId("<id>")
-                .hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto.builder()
-                    .approverId("1687-4")
-                    .startDate("2021-01-01T01:01:01.000")
-                    .endDate("2021-01-01T01:01:01.000")
-                    .startHalfDay(HrisCreateTimeOffRequestDtoStartHalfDay.of(true))
-                    .endHalfDay(HrisCreateTimeOffRequestDtoEndHalfDay.of(true))
-                    .timeOffPolicyId("cx280928933")
-                    .reason(HrisCreateTimeOffRequestDtoReason.builder()
-                        .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                        .build())
-                    .comment("Taking a day off for personal reasons")
-                    .passthrough(Map.ofEntries(
-                        Map.entry("other_known_names", "John Doe")))
-                    .build())
-                .call();
-
-        if (res.createResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                          | *String*                                                                              | :heavy_check_mark:                                                                    | The account identifier                                                                |
-| `id`                                                                                  | *String*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `subResourceId`                                                                       | *String*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `hrisCreateTimeOffRequestDto`                                                         | [HrisCreateTimeOffRequestDto](../../models/components/HrisCreateTimeOffRequestDto.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
-
-### Response
-
-**[HrisUpdateEmployeeTimeOffRequestResponse](../../models/operations/HrisUpdateEmployeeTimeOffRequestResponse.md)**
 
 ### Errors
 
@@ -1518,6 +1540,7 @@ public class Application {
         HrisBatchUploadEmployeeDocumentResponse res = sdk.hris().batchUploadEmployeeDocument()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .hrisBatchDocumentUploadRequestDto(HrisBatchDocumentUploadRequestDto.builder()
                     .items(List.of(
                         HrisDocumentsUploadRequestDto.builder()
@@ -1548,11 +1571,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                      | *String*                                                                                          | :heavy_check_mark:                                                                                | The account identifier                                                                            |
-| `id`                                                                                              | *String*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               |
-| `hrisBatchDocumentUploadRequestDto`                                                               | [HrisBatchDocumentUploadRequestDto](../../models/components/HrisBatchDocumentUploadRequestDto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `hrisBatchDocumentUploadRequestDto`                                                                                                                                      | [HrisBatchDocumentUploadRequestDto](../../models/components/HrisBatchDocumentUploadRequestDto.md)                                                                        | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -1606,6 +1630,7 @@ public class Application {
         HrisUploadEmployeeDocumentResponse res = sdk.hris().uploadEmployeeDocument()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .hrisDocumentsUploadRequestDto(HrisDocumentsUploadRequestDto.builder()
                     .name("weather-forecast")
                     .fileFormat(FileFormat.builder()
@@ -1633,11 +1658,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                              | *String*                                                                                  | :heavy_check_mark:                                                                        | The account identifier                                                                    |
-| `id`                                                                                      | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `hrisDocumentsUploadRequestDto`                                                           | [HrisDocumentsUploadRequestDto](../../models/components/HrisDocumentsUploadRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `hrisDocumentsUploadRequestDto`                                                                                                                                          | [HrisDocumentsUploadRequestDto](../../models/components/HrisDocumentsUploadRequestDto.md)                                                                                | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -1695,6 +1721,7 @@ public class Application {
                 .subResourceId("<id>")
                 .format("base64")
                 .exportFormat("text/plain")
+                .prefer("heartbeat")
                 .build();
 
         HrisDownloadEmployeeDocumentResponse res = sdk.hris().downloadEmployeeDocument()
@@ -1771,6 +1798,7 @@ public class Application {
                 .filter(HrisListEmployeeDocumentsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1845,6 +1873,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,name,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeDocumentResponse res = sdk.hris().getEmployeeDocument()
@@ -1920,6 +1949,7 @@ public class Application {
                 .filter(HrisListEmployeeCategoriesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1993,6 +2023,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,active,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeDocumentCategoryResponse res = sdk.hris().getEmployeeDocumentCategory()
@@ -2069,6 +2100,7 @@ public class Application {
                 .filter(HrisListEmployeeWorkEligibilityQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2143,6 +2175,7 @@ public class Application {
         HrisCreateEmployeeWorkEligibilityRequestResponse res = sdk.hris().createEmployeeWorkEligibilityRequest()
                 .id("<id>")
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .hrisCreateWorkEligibilityRequestDto(HrisCreateWorkEligibilityRequestDto.builder()
                     .document(HrisCreateWorkEligibilityRequestDtoDocument.builder()
                         .id("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
@@ -2179,11 +2212,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                  | *String*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
-| `xAccountId`                                                                                          | *String*                                                                                              | :heavy_check_mark:                                                                                    | The account identifier                                                                                |
-| `hrisCreateWorkEligibilityRequestDto`                                                                 | [HrisCreateWorkEligibilityRequestDto](../../models/components/HrisCreateWorkEligibilityRequestDto.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `hrisCreateWorkEligibilityRequestDto`                                                                                                                                    | [HrisCreateWorkEligibilityRequestDto](../../models/components/HrisCreateWorkEligibilityRequestDto.md)                                                                    | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -2240,6 +2274,7 @@ public class Application {
                 .subResourceId("<id>")
                 .xAccountId("<id>")
                 .fields("id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeesWorkEligibilityResponse res = sdk.hris().getEmployeesWorkEligibility()
@@ -2294,6 +2329,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeWorkEligibilityRequestRequest;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeWorkEligibilityRequestResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -2310,7 +2346,7 @@ public class Application {
                     .build())
             .build();
 
-        HrisUpdateEmployeeWorkEligibilityRequestResponse res = sdk.hris().updateEmployeeWorkEligibilityRequest()
+        HrisUpdateEmployeeWorkEligibilityRequestRequest req = HrisUpdateEmployeeWorkEligibilityRequestRequest.builder()
                 .id("<id>")
                 .subResourceId("<id>")
                 .xAccountId("<id>")
@@ -2342,6 +2378,11 @@ public class Application {
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
+                .prefer("heartbeat")
+                .build();
+
+        HrisUpdateEmployeeWorkEligibilityRequestResponse res = sdk.hris().updateEmployeeWorkEligibilityRequest()
+                .request(req)
                 .call();
 
         // handle response
@@ -2351,12 +2392,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                  | *String*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
-| `subResourceId`                                                                                       | *String*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
-| `xAccountId`                                                                                          | *String*                                                                                              | :heavy_check_mark:                                                                                    | The account identifier                                                                                |
-| `hrisCreateWorkEligibilityRequestDto`                                                                 | [HrisCreateWorkEligibilityRequestDto](../../models/components/HrisCreateWorkEligibilityRequestDto.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                     | [HrisUpdateEmployeeWorkEligibilityRequestRequest](../../models/operations/HrisUpdateEmployeeWorkEligibilityRequestRequest.md) | :heavy_check_mark:                                                                                                            | The request object to use for the request.                                                                                    |
 
 ### Response
 
@@ -2416,6 +2454,7 @@ public class Application {
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("policy")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2491,6 +2530,7 @@ public class Application {
                 .subResourceId("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,policy_id,remote_policy_id,policy,current_balance,initial_balance,balance_unit,balance_start_date,balance_expiry_date,is_unlimited,updated_at,unified_custom_fields")
                 .expand("policy")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeTimeOffBalanceResponse res = sdk.hris().getEmployeeTimeOffBalance()
@@ -2567,6 +2607,7 @@ public class Application {
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("groups")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2641,6 +2682,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields")
                 .expand("groups")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmploymentResponse res = sdk.hris().getEmployment()
@@ -2718,6 +2760,7 @@ public class Application {
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("groups")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -2791,6 +2834,7 @@ public class Application {
         HrisCreateEmployeeEmploymentResponse res = sdk.hris().createEmployeeEmployment()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .hrisCreateEmploymentRequestDto(HrisCreateEmploymentRequestDto.builder()
                     .unifiedCustomFields(Map.ofEntries(
                         Map.entry("my_project_custom_field_1", "REF-1236"),
@@ -2850,11 +2894,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
-| `id`                                                                                        | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `hrisCreateEmploymentRequestDto`                                                            | [HrisCreateEmploymentRequestDto](../../models/components/HrisCreateEmploymentRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `hrisCreateEmploymentRequestDto`                                                                                                                                         | [HrisCreateEmploymentRequestDto](../../models/components/HrisCreateEmploymentRequestDto.md)                                                                              | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -2912,6 +2957,7 @@ public class Application {
                 .subResourceId("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,end_date,employment_type,employment_contract_type,type,contract_type,change_reason,grade,work_time,payroll_code,fte,created_at,updated_at,start_date,active,department,team,cost_center,cost_centers,division,job,manager,groups,unified_custom_fields")
                 .expand("groups")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeEmploymentResponse res = sdk.hris().getEmployeeEmployment()
@@ -2966,6 +3012,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeEmploymentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeEmploymentResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
@@ -2982,7 +3029,7 @@ public class Application {
                     .build())
             .build();
 
-        HrisUpdateEmployeeEmploymentResponse res = sdk.hris().updateEmployeeEmployment()
+        HrisUpdateEmployeeEmploymentRequest req = HrisUpdateEmployeeEmploymentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
@@ -3033,6 +3080,11 @@ public class Application {
                     .passthrough(Map.ofEntries(
                         Map.entry("other_known_names", "John Doe")))
                     .build())
+                .prefer("heartbeat")
+                .build();
+
+        HrisUpdateEmployeeEmploymentResponse res = sdk.hris().updateEmployeeEmployment()
+                .request(req)
                 .call();
 
         if (res.updateResult().isPresent()) {
@@ -3044,12 +3096,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                | *String*                                                                                    | :heavy_check_mark:                                                                          | The account identifier                                                                      |
-| `id`                                                                                        | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `subResourceId`                                                                             | *String*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `hrisUpdateEmploymentRequestDto`                                                            | [HrisUpdateEmploymentRequestDto](../../models/components/HrisUpdateEmploymentRequestDto.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `request`                                                                                             | [HrisUpdateEmployeeEmploymentRequest](../../models/operations/HrisUpdateEmployeeEmploymentRequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
 
 ### Response
 
@@ -3107,6 +3156,7 @@ public class Application {
                 .filter(HrisListGroupsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3182,6 +3232,7 @@ public class Application {
                 .filter(HrisListDepartmentGroupsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3257,6 +3308,7 @@ public class Application {
                 .filter(HrisListCostCenterGroupsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3332,6 +3384,7 @@ public class Application {
                 .filter(HrisListTeamGroupsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3407,6 +3460,7 @@ public class Application {
                 .filter(HrisListDivisionGroupsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3482,6 +3536,7 @@ public class Application {
                 .filter(HrisListCompaniesGroupsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -3555,6 +3610,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetGroupResponse res = sdk.hris().getGroup()
@@ -3628,6 +3684,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetDepartmentGroupResponse res = sdk.hris().getDepartmentGroup()
@@ -3701,6 +3758,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,type,distribution_percentage,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetCostCenterGroupResponse res = sdk.hris().getCostCenterGroup()
@@ -3774,6 +3832,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetTeamGroupResponse res = sdk.hris().getTeamGroup()
@@ -3847,6 +3906,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids,company_id,remote_company_id,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetDivisionGroupResponse res = sdk.hris().getDivisionGroup()
@@ -3920,6 +3980,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,full_name,display_name,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetCompanyGroupResponse res = sdk.hris().getCompanyGroup()
@@ -3995,6 +4056,7 @@ public class Application {
                 .filter(HrisListJobsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4068,6 +4130,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,code,title,description,status,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetJobResponse res = sdk.hris().getJob()
@@ -4143,6 +4206,7 @@ public class Application {
                 .filter(HrisListLocationsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4216,6 +4280,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetLocationResponse res = sdk.hris().getLocation()
@@ -4291,6 +4356,7 @@ public class Application {
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .status(QueryParamStatus.OPEN)
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4363,6 +4429,7 @@ public class Application {
         HrisGetPositionRequest req = HrisGetPositionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetPositionResponse res = sdk.hris().getPosition()
@@ -4440,6 +4507,7 @@ public class Application {
                     .startTime("2020-01-01T00:00:00.000Z")
                     .endTime("2020-01-01T00:00:00.000Z")
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4513,6 +4581,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,start_time,end_time,hours_worked,break_duration,labor_type,location,status,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetTimeEntriesResponse res = sdk.hris().getTimeEntries()
@@ -4588,6 +4657,7 @@ public class Application {
                 .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .expand("policy")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4662,6 +4732,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,time_off_policy_id,remote_time_off_policy_id,reason,comment,duration,created_at,updated_at,policy,unified_custom_fields")
                 .expand("policy")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetTimeOffRequestResponse res = sdk.hris().getTimeOffRequest()
@@ -4738,6 +4809,7 @@ public class Application {
                     .startsAfter("2024-01-15T09:00")
                     .endsBefore("2024-01-15T17:00")
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4810,6 +4882,7 @@ public class Application {
         HrisGetShiftRequest req = HrisGetShiftRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetShiftResponse res = sdk.hris().getShift()
@@ -4887,6 +4960,7 @@ public class Application {
                 .filter(HrisListTimeOffTypesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -4962,6 +5036,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,active,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetTimeOffTypeResponse res = sdk.hris().getTimeOffType()
@@ -5037,6 +5112,7 @@ public class Application {
                 .filter(HrisListTimeOffPoliciesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -5110,6 +5186,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,description,type,duration_unit,reasons,updated_at,created_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetTimeOffPolicyResponse res = sdk.hris().getTimeOffPolicy()
@@ -5186,6 +5263,7 @@ public class Application {
                 .filter(HrisListEmployeeTimeOffPoliciesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -5261,6 +5339,7 @@ public class Application {
                 .filter(HrisListBenefitsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -5334,6 +5413,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,benefit_type,provider,description,created_at,updated_at,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetBenefitResponse res = sdk.hris().getBenefit()
@@ -5410,6 +5490,7 @@ public class Application {
                 .filter(HrisListEmployeeSkillsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -5482,6 +5563,7 @@ public class Application {
         HrisCreateEmployeeSkillResponse res = sdk.hris().createEmployeeSkill()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .entitySkillsCreateRequestDto(EntitySkillsCreateRequestDto.builder()
                     .id("16873-IT345")
                     .name("Information-Technology")
@@ -5503,11 +5585,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                            | *String*                                                                                | :heavy_check_mark:                                                                      | The account identifier                                                                  |
-| `id`                                                                                    | *String*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `entitySkillsCreateRequestDto`                                                          | [EntitySkillsCreateRequestDto](../../models/components/EntitySkillsCreateRequestDto.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `entitySkillsCreateRequestDto`                                                                                                                                           | [EntitySkillsCreateRequestDto](../../models/components/EntitySkillsCreateRequestDto.md)                                                                                  | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -5564,6 +5647,7 @@ public class Application {
                 .id("<id>")
                 .subResourceId("<id>")
                 .fields("id,remote_id,name,active,language,maximum_proficiency,minimum_proficiency,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeSkillResponse res = sdk.hris().getEmployeeSkill()
@@ -5642,6 +5726,7 @@ public class Application {
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("attachments")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -5717,6 +5802,7 @@ public class Application {
                 .subResourceId("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields")
                 .expand("attachments")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetEmployeeTaskResponse res = sdk.hris().getEmployeeTask()
@@ -5771,6 +5857,7 @@ package hello.world;
 import com.stackone.stackone_client_java.StackOne;
 import com.stackone.stackone_client_java.models.components.*;
 import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTaskRequest;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTaskResponse;
 import java.lang.Exception;
 
@@ -5785,7 +5872,7 @@ public class Application {
                     .build())
             .build();
 
-        HrisUpdateEmployeeTaskResponse res = sdk.hris().updateEmployeeTask()
+        HrisUpdateEmployeeTaskRequest req = HrisUpdateEmployeeTaskRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
@@ -5795,6 +5882,11 @@ public class Application {
                         .value(UpdateTaskRequestDtoValue.OPEN)
                         .build())
                     .build())
+                .prefer("heartbeat")
+                .build();
+
+        HrisUpdateEmployeeTaskResponse res = sdk.hris().updateEmployeeTask()
+                .request(req)
                 .call();
 
         if (res.updateResult().isPresent()) {
@@ -5806,12 +5898,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `xAccountId`                                                            | *String*                                                                | :heavy_check_mark:                                                      | The account identifier                                                  |
-| `id`                                                                    | *String*                                                                | :heavy_check_mark:                                                      | N/A                                                                     |
-| `subResourceId`                                                         | *String*                                                                | :heavy_check_mark:                                                      | N/A                                                                     |
-| `updateTaskRequestDto`                                                  | [UpdateTaskRequestDto](../../models/components/UpdateTaskRequestDto.md) | :heavy_check_mark:                                                      | N/A                                                                     |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [HrisUpdateEmployeeTaskRequest](../../models/operations/HrisUpdateEmployeeTaskRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 ### Response
 
@@ -5871,6 +5960,7 @@ public class Application {
                     .createdAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("attachments")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -5945,6 +6035,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,employee_id,remote_employee_id,name,description,type,status,due_date,completion_date,assigned_by_employee_id,remote_assigned_by_employee_id,assigned_by_employee_name,link_to_task,extracted_links,next_task_id,remote_next_task_id,parent_process_name,comments,attachments,created_at,updated_at,unified_custom_fields")
                 .expand("attachments")
+                .prefer("heartbeat")
                 .build();
 
         HrisGetTaskResponse res = sdk.hris().getTask()

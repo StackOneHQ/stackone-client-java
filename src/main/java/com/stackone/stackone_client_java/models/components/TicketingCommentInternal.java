@@ -84,8 +84,8 @@ public class TicketingCommentInternal {
 
         public _Deserializer() {
             super(TicketingCommentInternal.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<TicketingCommentInternal2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<TicketingCommentInternal2>() {}, JsonShape.DEFAULT));
         }
     }
     

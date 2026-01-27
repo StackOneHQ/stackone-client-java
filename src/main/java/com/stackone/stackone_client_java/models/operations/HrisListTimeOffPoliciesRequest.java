@@ -15,6 +15,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -82,6 +83,13 @@ public class HrisListTimeOffPoliciesRequest {
     @Deprecated
     private JsonNullable<OffsetDateTime> updatedAfter;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public HrisListTimeOffPoliciesRequest(
             String xAccountId,
@@ -92,7 +100,8 @@ public class HrisListTimeOffPoliciesRequest {
             JsonNullable<String> page,
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
-            JsonNullable<OffsetDateTime> updatedAfter) {
+            JsonNullable<OffsetDateTime> updatedAfter,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
@@ -102,6 +111,7 @@ public class HrisListTimeOffPoliciesRequest {
         Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(updatedAfter, "updatedAfter");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.raw = raw;
         this.proxy = proxy;
@@ -111,13 +121,15 @@ public class HrisListTimeOffPoliciesRequest {
         this.pageSize = pageSize;
         this.next = next;
         this.updatedAfter = updatedAfter;
+        this.prefer = prefer;
     }
     
     public HrisListTimeOffPoliciesRequest(
             String xAccountId) {
         this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty());
     }
 
     /**
@@ -201,6 +213,15 @@ public class HrisListTimeOffPoliciesRequest {
     @JsonIgnore
     public JsonNullable<OffsetDateTime> updatedAfter() {
         return updatedAfter;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -379,6 +400,27 @@ public class HrisListTimeOffPoliciesRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisListTimeOffPoliciesRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisListTimeOffPoliciesRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -397,7 +439,8 @@ public class HrisListTimeOffPoliciesRequest {
             Utils.enhancedDeepEquals(this.page, other.page) &&
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
-            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter);
+            Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -405,7 +448,8 @@ public class HrisListTimeOffPoliciesRequest {
         return Utils.enhancedHash(
             xAccountId, raw, proxy,
             fields, filter, page,
-            pageSize, next, updatedAfter);
+            pageSize, next, updatedAfter,
+            prefer);
     }
     
     @Override
@@ -419,7 +463,8 @@ public class HrisListTimeOffPoliciesRequest {
                 "page", page,
                 "pageSize", pageSize,
                 "next", next,
-                "updatedAfter", updatedAfter);
+                "updatedAfter", updatedAfter,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -444,6 +489,8 @@ public class HrisListTimeOffPoliciesRequest {
 
         @Deprecated
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -629,12 +676,34 @@ public class HrisListTimeOffPoliciesRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public HrisListTimeOffPoliciesRequest build() {
 
             return new HrisListTimeOffPoliciesRequest(
                 xAccountId, raw, proxy,
                 fields, filter, page,
-                pageSize, next, updatedAfter);
+                pageSize, next, updatedAfter,
+                prefer);
         }
 
     }

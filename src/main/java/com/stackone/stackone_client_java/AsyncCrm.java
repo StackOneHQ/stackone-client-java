@@ -126,24 +126,28 @@ public class AsyncCrm {
      * @return {@code CompletableFuture<CrmCreateContactResponse>} - The async response
      */
     public CompletableFuture<CrmCreateContactResponse> createContact(String xAccountId, CrmCreateContactRequestDto crmCreateContactRequestDto) {
-        return createContact(xAccountId, crmCreateContactRequestDto, Optional.empty());
+        return createContact(
+                xAccountId, Optional.empty(), crmCreateContactRequestDto,
+                Optional.empty());
     }
 
     /**
      * Create Contact
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param crmCreateContactRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<CrmCreateContactResponse>} - The async response
      */
     public CompletableFuture<CrmCreateContactResponse> createContact(
-            String xAccountId, CrmCreateContactRequestDto crmCreateContactRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            CrmCreateContactRequestDto crmCreateContactRequestDto, Optional<Options> options) {
         CrmCreateContactRequest request =
             CrmCreateContactRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         AsyncRequestOperation<CrmCreateContactRequest, CrmCreateContactResponse> operation
@@ -212,8 +216,8 @@ public class AsyncCrm {
             String xAccountId, String id,
             CrmCreateContactRequestDto crmCreateContactRequestDto) {
         return updateContact(
-                xAccountId, id, crmCreateContactRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                crmCreateContactRequestDto, Optional.empty());
     }
 
     /**
@@ -221,18 +225,21 @@ public class AsyncCrm {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param crmCreateContactRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<CrmUpdateContactResponse>} - The async response
      */
     public CompletableFuture<CrmUpdateContactResponse> updateContact(
             String xAccountId, String id,
-            CrmCreateContactRequestDto crmCreateContactRequestDto, Optional<Options> options) {
+            Optional<String> prefer, CrmCreateContactRequestDto crmCreateContactRequestDto,
+            Optional<Options> options) {
         CrmUpdateContactRequest request =
             CrmUpdateContactRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         AsyncRequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation

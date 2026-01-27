@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsOrderBackgroundCheckRequestRequest {
@@ -19,6 +20,13 @@ public class AtsOrderBackgroundCheckRequestRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto;
@@ -26,11 +34,20 @@ public class AtsOrderBackgroundCheckRequestRequest {
     @JsonCreator
     public AtsOrderBackgroundCheckRequestRequest(
             String xAccountId,
+            Optional<String> prefer,
             AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsCreateBackgroundCheckOrderRequestDto, "atsCreateBackgroundCheckOrderRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.atsCreateBackgroundCheckOrderRequestDto = atsCreateBackgroundCheckOrderRequestDto;
+    }
+    
+    public AtsOrderBackgroundCheckRequestRequest(
+            String xAccountId,
+            AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) {
+        this(xAccountId, Optional.empty(), atsCreateBackgroundCheckOrderRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class AtsOrderBackgroundCheckRequestRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class AtsOrderBackgroundCheckRequestRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsOrderBackgroundCheckRequestRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsOrderBackgroundCheckRequestRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsOrderBackgroundCheckRequestRequest withAtsCreateBackgroundCheckOrderRequestDto(AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) {
         Utils.checkNotNull(atsCreateBackgroundCheckOrderRequestDto, "atsCreateBackgroundCheckOrderRequestDto");
         this.atsCreateBackgroundCheckOrderRequestDto = atsCreateBackgroundCheckOrderRequestDto;
@@ -77,19 +124,21 @@ public class AtsOrderBackgroundCheckRequestRequest {
         AtsOrderBackgroundCheckRequestRequest other = (AtsOrderBackgroundCheckRequestRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsCreateBackgroundCheckOrderRequestDto, other.atsCreateBackgroundCheckOrderRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, atsCreateBackgroundCheckOrderRequestDto);
+            xAccountId, prefer, atsCreateBackgroundCheckOrderRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AtsOrderBackgroundCheckRequestRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "atsCreateBackgroundCheckOrderRequestDto", atsCreateBackgroundCheckOrderRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class AtsOrderBackgroundCheckRequestRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto;
 
@@ -115,6 +166,27 @@ public class AtsOrderBackgroundCheckRequestRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsCreateBackgroundCheckOrderRequestDto(AtsCreateBackgroundCheckOrderRequestDto atsCreateBackgroundCheckOrderRequestDto) {
             Utils.checkNotNull(atsCreateBackgroundCheckOrderRequestDto, "atsCreateBackgroundCheckOrderRequestDto");
             this.atsCreateBackgroundCheckOrderRequestDto = atsCreateBackgroundCheckOrderRequestDto;
@@ -124,7 +196,7 @@ public class AtsOrderBackgroundCheckRequestRequest {
         public AtsOrderBackgroundCheckRequestRequest build() {
 
             return new AtsOrderBackgroundCheckRequestRequest(
-                xAccountId, atsCreateBackgroundCheckOrderRequestDto);
+                xAccountId, prefer, atsCreateBackgroundCheckOrderRequestDto);
         }
 
     }

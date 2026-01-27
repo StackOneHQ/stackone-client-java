@@ -6,23 +6,18 @@ package com.stackone.stackone_client_java.models.operations.async;
 import static com.stackone.stackone_client_java.operations.Operations.AsyncRequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.HrisCreateTimeOffRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeTimeOffRequestRequest;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeTimeOffRequest;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class HrisUpdateEmployeeTimeOffRequestRequestBuilder {
 
-    private String xAccountId;
-    private String id;
-    private String subResourceId;
-    private HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto;
+    private HrisUpdateEmployeeTimeOffRequestRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -31,27 +26,9 @@ public class HrisUpdateEmployeeTimeOffRequestRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public HrisUpdateEmployeeTimeOffRequestRequestBuilder xAccountId(String xAccountId) {
-        Utils.checkNotNull(xAccountId, "xAccountId");
-        this.xAccountId = xAccountId;
-        return this;
-    }
-
-    public HrisUpdateEmployeeTimeOffRequestRequestBuilder id(String id) {
-        Utils.checkNotNull(id, "id");
-        this.id = id;
-        return this;
-    }
-
-    public HrisUpdateEmployeeTimeOffRequestRequestBuilder subResourceId(String subResourceId) {
-        Utils.checkNotNull(subResourceId, "subResourceId");
-        this.subResourceId = subResourceId;
-        return this;
-    }
-
-    public HrisUpdateEmployeeTimeOffRequestRequestBuilder hrisCreateTimeOffRequestDto(HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
-        Utils.checkNotNull(hrisCreateTimeOffRequestDto, "hrisCreateTimeOffRequestDto");
-        this.hrisCreateTimeOffRequestDto = hrisCreateTimeOffRequestDto;
+    public HrisUpdateEmployeeTimeOffRequestRequestBuilder request(HrisUpdateEmployeeTimeOffRequestRequest request) {
+        Utils.checkNotNull(request, "request");
+        this.request = request;
         return this;
     }
                 
@@ -67,17 +44,6 @@ public class HrisUpdateEmployeeTimeOffRequestRequestBuilder {
         return this;
     }
 
-
-    private HrisUpdateEmployeeTimeOffRequestRequest buildRequest() {
-
-        HrisUpdateEmployeeTimeOffRequestRequest request = new HrisUpdateEmployeeTimeOffRequestRequest(xAccountId,
-            id,
-            subResourceId,
-            hrisCreateTimeOffRequestDto);
-
-        return request;
-    }
-
     public CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
@@ -87,7 +53,6 @@ public class HrisUpdateEmployeeTimeOffRequestRequestBuilder {
               = new HrisUpdateEmployeeTimeOffRequest.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
-        HrisUpdateEmployeeTimeOffRequestRequest request = buildRequest();
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsUpdateInterviewNoteRequest {
@@ -27,6 +28,13 @@ public class AtsUpdateInterviewNoteRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsUpdateNotesRequestDto atsUpdateNotesRequestDto;
@@ -36,15 +44,27 @@ public class AtsUpdateInterviewNoteRequest {
             String xAccountId,
             String id,
             String subResourceId,
+            Optional<String> prefer,
             AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(subResourceId, "subResourceId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsUpdateNotesRequestDto, "atsUpdateNotesRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
         this.subResourceId = subResourceId;
+        this.prefer = prefer;
         this.atsUpdateNotesRequestDto = atsUpdateNotesRequestDto;
+    }
+    
+    public AtsUpdateInterviewNoteRequest(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
+        this(xAccountId, id, subResourceId,
+            Optional.empty(), atsUpdateNotesRequestDto);
     }
 
     /**
@@ -63,6 +83,15 @@ public class AtsUpdateInterviewNoteRequest {
     @JsonIgnore
     public String subResourceId() {
         return subResourceId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -96,6 +125,27 @@ public class AtsUpdateInterviewNoteRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateInterviewNoteRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateInterviewNoteRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsUpdateInterviewNoteRequest withAtsUpdateNotesRequestDto(AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
         Utils.checkNotNull(atsUpdateNotesRequestDto, "atsUpdateNotesRequestDto");
         this.atsUpdateNotesRequestDto = atsUpdateNotesRequestDto;
@@ -115,6 +165,7 @@ public class AtsUpdateInterviewNoteRequest {
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsUpdateNotesRequestDto, other.atsUpdateNotesRequestDto);
     }
     
@@ -122,7 +173,7 @@ public class AtsUpdateInterviewNoteRequest {
     public int hashCode() {
         return Utils.enhancedHash(
             xAccountId, id, subResourceId,
-            atsUpdateNotesRequestDto);
+            prefer, atsUpdateNotesRequestDto);
     }
     
     @Override
@@ -131,6 +182,7 @@ public class AtsUpdateInterviewNoteRequest {
                 "xAccountId", xAccountId,
                 "id", id,
                 "subResourceId", subResourceId,
+                "prefer", prefer,
                 "atsUpdateNotesRequestDto", atsUpdateNotesRequestDto);
     }
 
@@ -142,6 +194,8 @@ public class AtsUpdateInterviewNoteRequest {
         private String id;
 
         private String subResourceId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsUpdateNotesRequestDto atsUpdateNotesRequestDto;
 
@@ -174,6 +228,27 @@ public class AtsUpdateInterviewNoteRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsUpdateNotesRequestDto(AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
             Utils.checkNotNull(atsUpdateNotesRequestDto, "atsUpdateNotesRequestDto");
             this.atsUpdateNotesRequestDto = atsUpdateNotesRequestDto;
@@ -184,7 +259,7 @@ public class AtsUpdateInterviewNoteRequest {
 
             return new AtsUpdateInterviewNoteRequest(
                 xAccountId, id, subResourceId,
-                atsUpdateNotesRequestDto);
+                prefer, atsUpdateNotesRequestDto);
         }
 
     }

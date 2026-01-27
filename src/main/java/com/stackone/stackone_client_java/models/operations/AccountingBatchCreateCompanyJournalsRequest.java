@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AccountingBatchCreateCompanyJournalsRequest {
@@ -23,6 +24,13 @@ public class AccountingBatchCreateCompanyJournalsRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto;
@@ -31,13 +39,24 @@ public class AccountingBatchCreateCompanyJournalsRequest {
     public AccountingBatchCreateCompanyJournalsRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(accountingJournalBatchCreateRequestDto, "accountingJournalBatchCreateRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.accountingJournalBatchCreateRequestDto = accountingJournalBatchCreateRequestDto;
+    }
+    
+    public AccountingBatchCreateCompanyJournalsRequest(
+            String xAccountId,
+            String id,
+            AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            accountingJournalBatchCreateRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AccountingBatchCreateCompanyJournalsRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AccountingBatchCreateCompanyJournalsRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AccountingBatchCreateCompanyJournalsRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AccountingBatchCreateCompanyJournalsRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AccountingBatchCreateCompanyJournalsRequest withAccountingJournalBatchCreateRequestDto(AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto) {
         Utils.checkNotNull(accountingJournalBatchCreateRequestDto, "accountingJournalBatchCreateRequestDto");
         this.accountingJournalBatchCreateRequestDto = accountingJournalBatchCreateRequestDto;
@@ -96,13 +145,15 @@ public class AccountingBatchCreateCompanyJournalsRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.accountingJournalBatchCreateRequestDto, other.accountingJournalBatchCreateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, accountingJournalBatchCreateRequestDto);
+            xAccountId, id, prefer,
+            accountingJournalBatchCreateRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AccountingBatchCreateCompanyJournalsRequest {
         return Utils.toString(AccountingBatchCreateCompanyJournalsRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "accountingJournalBatchCreateRequestDto", accountingJournalBatchCreateRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AccountingBatchCreateCompanyJournalsRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto;
 
@@ -144,6 +198,27 @@ public class AccountingBatchCreateCompanyJournalsRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder accountingJournalBatchCreateRequestDto(AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto) {
             Utils.checkNotNull(accountingJournalBatchCreateRequestDto, "accountingJournalBatchCreateRequestDto");
             this.accountingJournalBatchCreateRequestDto = accountingJournalBatchCreateRequestDto;
@@ -153,7 +228,8 @@ public class AccountingBatchCreateCompanyJournalsRequest {
         public AccountingBatchCreateCompanyJournalsRequest build() {
 
             return new AccountingBatchCreateCompanyJournalsRequest(
-                xAccountId, id, accountingJournalBatchCreateRequestDto);
+                xAccountId, id, prefer,
+                accountingJournalBatchCreateRequestDto);
         }
 
     }

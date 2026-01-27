@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class MarketingCreateInAppTemplateRequest {
@@ -19,6 +20,13 @@ public class MarketingCreateInAppTemplateRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto;
@@ -26,11 +34,20 @@ public class MarketingCreateInAppTemplateRequest {
     @JsonCreator
     public MarketingCreateInAppTemplateRequest(
             String xAccountId,
+            Optional<String> prefer,
             MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(marketingCreateInAppTemplateRequestDto, "marketingCreateInAppTemplateRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.marketingCreateInAppTemplateRequestDto = marketingCreateInAppTemplateRequestDto;
+    }
+    
+    public MarketingCreateInAppTemplateRequest(
+            String xAccountId,
+            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
+        this(xAccountId, Optional.empty(), marketingCreateInAppTemplateRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class MarketingCreateInAppTemplateRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class MarketingCreateInAppTemplateRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingCreateInAppTemplateRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingCreateInAppTemplateRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public MarketingCreateInAppTemplateRequest withMarketingCreateInAppTemplateRequestDto(MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
         Utils.checkNotNull(marketingCreateInAppTemplateRequestDto, "marketingCreateInAppTemplateRequestDto");
         this.marketingCreateInAppTemplateRequestDto = marketingCreateInAppTemplateRequestDto;
@@ -77,19 +124,21 @@ public class MarketingCreateInAppTemplateRequest {
         MarketingCreateInAppTemplateRequest other = (MarketingCreateInAppTemplateRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.marketingCreateInAppTemplateRequestDto, other.marketingCreateInAppTemplateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, marketingCreateInAppTemplateRequestDto);
+            xAccountId, prefer, marketingCreateInAppTemplateRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(MarketingCreateInAppTemplateRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "marketingCreateInAppTemplateRequestDto", marketingCreateInAppTemplateRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class MarketingCreateInAppTemplateRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto;
 
@@ -115,6 +166,27 @@ public class MarketingCreateInAppTemplateRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder marketingCreateInAppTemplateRequestDto(MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
             Utils.checkNotNull(marketingCreateInAppTemplateRequestDto, "marketingCreateInAppTemplateRequestDto");
             this.marketingCreateInAppTemplateRequestDto = marketingCreateInAppTemplateRequestDto;
@@ -124,7 +196,7 @@ public class MarketingCreateInAppTemplateRequest {
         public MarketingCreateInAppTemplateRequest build() {
 
             return new MarketingCreateInAppTemplateRequest(
-                xAccountId, marketingCreateInAppTemplateRequestDto);
+                xAccountId, prefer, marketingCreateInAppTemplateRequestDto);
         }
 
     }

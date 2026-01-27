@@ -84,8 +84,8 @@ public class IsBotUser {
 
         public _Deserializer() {
             super(IsBotUser.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<IsBotUser2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<IsBotUser2>() {}, JsonShape.DEFAULT));
         }
     }
     

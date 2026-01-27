@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class MarketingUpdateContentBlockRequest {
@@ -23,6 +24,13 @@ public class MarketingUpdateContentBlockRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto;
@@ -31,13 +39,24 @@ public class MarketingUpdateContentBlockRequest {
     public MarketingUpdateContentBlockRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(marketingCreateContentBlocksRequestDto, "marketingCreateContentBlocksRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.marketingCreateContentBlocksRequestDto = marketingCreateContentBlocksRequestDto;
+    }
+    
+    public MarketingUpdateContentBlockRequest(
+            String xAccountId,
+            String id,
+            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            marketingCreateContentBlocksRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class MarketingUpdateContentBlockRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class MarketingUpdateContentBlockRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingUpdateContentBlockRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingUpdateContentBlockRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public MarketingUpdateContentBlockRequest withMarketingCreateContentBlocksRequestDto(MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
         Utils.checkNotNull(marketingCreateContentBlocksRequestDto, "marketingCreateContentBlocksRequestDto");
         this.marketingCreateContentBlocksRequestDto = marketingCreateContentBlocksRequestDto;
@@ -96,13 +145,15 @@ public class MarketingUpdateContentBlockRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.marketingCreateContentBlocksRequestDto, other.marketingCreateContentBlocksRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, marketingCreateContentBlocksRequestDto);
+            xAccountId, id, prefer,
+            marketingCreateContentBlocksRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class MarketingUpdateContentBlockRequest {
         return Utils.toString(MarketingUpdateContentBlockRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "marketingCreateContentBlocksRequestDto", marketingCreateContentBlocksRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class MarketingUpdateContentBlockRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto;
 
@@ -144,6 +198,27 @@ public class MarketingUpdateContentBlockRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder marketingCreateContentBlocksRequestDto(MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
             Utils.checkNotNull(marketingCreateContentBlocksRequestDto, "marketingCreateContentBlocksRequestDto");
             this.marketingCreateContentBlocksRequestDto = marketingCreateContentBlocksRequestDto;
@@ -153,7 +228,8 @@ public class MarketingUpdateContentBlockRequest {
         public MarketingUpdateContentBlockRequest build() {
 
             return new MarketingUpdateContentBlockRequest(
-                xAccountId, id, marketingCreateContentBlocksRequestDto);
+                xAccountId, id, prefer,
+                marketingCreateContentBlocksRequestDto);
         }
 
     }

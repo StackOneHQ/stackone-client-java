@@ -309,8 +309,8 @@ public class Lms {
     public LmsCreateUserAssignmentResponse createUserAssignment(
             String xAccountId, String id,
             LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto) {
-        return createUserAssignment(xAccountId, id, lmsCreateAssignmentRequestDto,
-            Optional.empty());
+        return createUserAssignment(xAccountId, id, Optional.empty(),
+            lmsCreateAssignmentRequestDto, Optional.empty());
     }
 
     /**
@@ -324,6 +324,7 @@ public class Lms {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param lmsCreateAssignmentRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -331,12 +332,14 @@ public class Lms {
      */
     public LmsCreateUserAssignmentResponse createUserAssignment(
             String xAccountId, String id,
-            LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto, Optional<Options> options) {
+            Optional<String> prefer, LmsCreateAssignmentRequestDto lmsCreateAssignmentRequestDto,
+            Optional<Options> options) {
         LmsCreateUserAssignmentRequest request =
             LmsCreateUserAssignmentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .lmsCreateAssignmentRequestDto(lmsCreateAssignmentRequestDto)
                 .build();
         RequestOperation<LmsCreateUserAssignmentRequest, LmsCreateUserAssignmentResponse> operation
@@ -432,7 +435,8 @@ public class Lms {
      * @throws RuntimeException subclass if the API call fails
      */
     public LmsBatchUpsertContentResponse batchUpsertContent(String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto) {
-        return batchUpsertContent(xAccountId, lmsBatchUpsertContentRequestDto, Optional.empty());
+        return batchUpsertContent(xAccountId, Optional.empty(), lmsBatchUpsertContentRequestDto,
+            Optional.empty());
     }
 
     /**
@@ -448,22 +452,98 @@ public class Lms {
      * for more information about external linking learning objects.
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param lmsBatchUpsertContentRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public LmsBatchUpsertContentResponse batchUpsertContent(
-            String xAccountId, LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            LmsBatchUpsertContentRequestDto lmsBatchUpsertContentRequestDto, Optional<Options> options) {
         LmsBatchUpsertContentRequest request =
             LmsBatchUpsertContentRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .lmsBatchUpsertContentRequestDto(lmsBatchUpsertContentRequestDto)
                 .build();
         RequestOperation<LmsBatchUpsertContentRequest, LmsBatchUpsertContentResponse> operation
               = new LmsBatchUpsertContent.Sync(sdkConfiguration, options, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+    /**
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
+     * 
+     * @return The call builder
+     */
+    public LmsUpsertContentRequestBuilder upsertContent() {
+        return new LmsUpsertContentRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
+     * 
+     * @param xAccountId The account identifier
+     * @param lmsUpsertContentRequestDto 
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public LmsUpsertContentResponse upsertContent(String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
+        return upsertContent(xAccountId, Optional.empty(), lmsUpsertContentRequestDto,
+            Optional.empty());
+    }
+
+    /**
+     * Upsert External Linking Learning Objects
+     * 
+     * <p>Create or update an external linking learning object that redirects users to a provider platform for
+     * consumption and progress tracking.
+     * 
+     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
+     * fields that are required when creating content.
+     * 
+     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
+     * for more information about external linking learning objects.
+     * 
+     * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     * @param lmsUpsertContentRequestDto 
+     * @param options additional options
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public LmsUpsertContentResponse upsertContent(
+            String xAccountId, Optional<String> prefer,
+            LmsUpsertContentRequestDto lmsUpsertContentRequestDto, Optional<Options> options) {
+        LmsUpsertContentRequest request =
+            LmsUpsertContentRequest
+                .builder()
+                .xAccountId(xAccountId)
+                .prefer(prefer)
+                .lmsUpsertContentRequestDto(lmsUpsertContentRequestDto)
+                .build();
+        RequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
+              = new LmsUpsertContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -516,77 +596,6 @@ public class Lms {
     public LmsListContentResponse listContent(LmsListContentRequest request, Optional<Options> options) {
         RequestOperation<LmsListContentRequest, LmsListContentResponse> operation
               = new LmsListContent.Sync(sdkConfiguration, options, _headers);
-        return operation.handleResponse(operation.doRequest(request));
-    }
-
-    /**
-     * Upsert External Linking Learning Objects
-     * 
-     * <p>Create or update an external linking learning object that redirects users to a provider platform for
-     * consumption and progress tracking.
-     * 
-     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
-     * fields that are required when creating content.
-     * 
-     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
-     * for more information about external linking learning objects.
-     * 
-     * @return The call builder
-     */
-    public LmsUpsertContentRequestBuilder upsertContent() {
-        return new LmsUpsertContentRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Upsert External Linking Learning Objects
-     * 
-     * <p>Create or update an external linking learning object that redirects users to a provider platform for
-     * consumption and progress tracking.
-     * 
-     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
-     * fields that are required when creating content.
-     * 
-     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
-     * for more information about external linking learning objects.
-     * 
-     * @param xAccountId The account identifier
-     * @param lmsUpsertContentRequestDto 
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public LmsUpsertContentResponse upsertContent(String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
-        return upsertContent(xAccountId, lmsUpsertContentRequestDto, Optional.empty());
-    }
-
-    /**
-     * Upsert External Linking Learning Objects
-     * 
-     * <p>Create or update an external linking learning object that redirects users to a provider platform for
-     * consumption and progress tracking.
-     * 
-     * <p>**Note:** Partial updates are not supported. When updating content, you must provide all the same
-     * fields that are required when creating content.
-     * 
-     * <p>See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction)
-     * for more information about external linking learning objects.
-     * 
-     * @param xAccountId The account identifier
-     * @param lmsUpsertContentRequestDto 
-     * @param options additional options
-     * @return The response from the API call
-     * @throws RuntimeException subclass if the API call fails
-     */
-    public LmsUpsertContentResponse upsertContent(
-            String xAccountId, LmsUpsertContentRequestDto lmsUpsertContentRequestDto,
-            Optional<Options> options) {
-        LmsUpsertContentRequest request =
-            LmsUpsertContentRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .lmsUpsertContentRequestDto(lmsUpsertContentRequestDto)
-                .build();
-        RequestOperation<LmsUpsertContentRequest, LmsUpsertContentResponse> operation
-              = new LmsUpsertContent.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -717,8 +726,8 @@ public class Lms {
     public LmsCreateUserCompletionResponse createUserCompletion(
             String xAccountId, String id,
             LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto) {
-        return createUserCompletion(xAccountId, id, lmsCreateCompletionRequestDto,
-            Optional.empty());
+        return createUserCompletion(xAccountId, id, Optional.empty(),
+            lmsCreateCompletionRequestDto, Optional.empty());
     }
 
     /**
@@ -730,6 +739,7 @@ public class Lms {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param lmsCreateCompletionRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -737,12 +747,14 @@ public class Lms {
      */
     public LmsCreateUserCompletionResponse createUserCompletion(
             String xAccountId, String id,
-            LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto, Optional<Options> options) {
+            Optional<String> prefer, LmsCreateCompletionRequestDto lmsCreateCompletionRequestDto,
+            Optional<Options> options) {
         LmsCreateUserCompletionRequest request =
             LmsCreateUserCompletionRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .lmsCreateCompletionRequestDto(lmsCreateCompletionRequestDto)
                 .build();
         RequestOperation<LmsCreateUserCompletionRequest, LmsCreateUserCompletionResponse> operation
@@ -826,7 +838,7 @@ public class Lms {
             String xAccountId, String id,
             String subResourceId) {
         return deleteUserCompletion(xAccountId, id, subResourceId,
-            Optional.empty());
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -839,19 +851,22 @@ public class Lms {
      * @param xAccountId The account identifier
      * @param id 
      * @param subResourceId 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public LmsDeleteUserCompletionResponse deleteUserCompletion(
             String xAccountId, String id,
-            String subResourceId, Optional<Options> options) {
+            String subResourceId, Optional<String> prefer,
+            Optional<Options> options) {
         LmsDeleteUserCompletionRequest request =
             LmsDeleteUserCompletionRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
                 .subResourceId(subResourceId)
+                .prefer(prefer)
                 .build();
         RequestOperation<LmsDeleteUserCompletionRequest, LmsDeleteUserCompletionResponse> operation
               = new LmsDeleteUserCompletion.Sync(sdkConfiguration, options, _headers);

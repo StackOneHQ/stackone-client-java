@@ -79,8 +79,8 @@ public class Archived {
 
         public _Deserializer() {
             super(Archived.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Archived2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Archived2>() {}, JsonShape.DEFAULT));
         }
     }
     

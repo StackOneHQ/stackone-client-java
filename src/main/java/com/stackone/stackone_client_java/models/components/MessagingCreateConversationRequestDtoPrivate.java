@@ -84,8 +84,8 @@ public class MessagingCreateConversationRequestDtoPrivate {
 
         public _Deserializer() {
             super(MessagingCreateConversationRequestDtoPrivate.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<MessagingCreateConversationRequestDtoPrivate2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<MessagingCreateConversationRequestDtoPrivate2>() {}, JsonShape.DEFAULT));
         }
     }
     

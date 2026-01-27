@@ -20,6 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class MarketingCreatePushTemplateRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -32,6 +33,18 @@ public class MarketingCreatePushTemplateRequestBuilder {
     public MarketingCreatePushTemplateRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public MarketingCreatePushTemplateRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingCreatePushTemplateRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -57,6 +70,7 @@ public class MarketingCreatePushTemplateRequestBuilder {
     private MarketingCreatePushTemplateRequest buildRequest() {
 
         MarketingCreatePushTemplateRequest request = new MarketingCreatePushTemplateRequest(xAccountId,
+            prefer,
             marketingCreatePushTemplateRequestDto);
 
         return request;

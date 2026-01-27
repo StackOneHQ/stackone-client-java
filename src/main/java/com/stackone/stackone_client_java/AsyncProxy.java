@@ -56,24 +56,28 @@ public class AsyncProxy {
      * @return {@code CompletableFuture<StackoneProxyRequestResponse>} - The async response
      */
     public CompletableFuture<StackoneProxyRequestResponse> proxyRequest(String xAccountId, ProxyRequestBody proxyRequestBody) {
-        return proxyRequest(xAccountId, proxyRequestBody, Optional.empty());
+        return proxyRequest(
+                xAccountId, Optional.empty(), proxyRequestBody,
+                Optional.empty());
     }
 
     /**
      * Proxy Request
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param proxyRequestBody 
      * @param options additional options
      * @return {@code CompletableFuture<StackoneProxyRequestResponse>} - The async response
      */
     public CompletableFuture<StackoneProxyRequestResponse> proxyRequest(
-            String xAccountId, ProxyRequestBody proxyRequestBody,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            ProxyRequestBody proxyRequestBody, Optional<Options> options) {
         StackoneProxyRequestRequest request =
             StackoneProxyRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .proxyRequestBody(proxyRequestBody)
                 .build();
         AsyncRequestOperation<StackoneProxyRequestRequest, StackoneProxyRequestResponse> operation

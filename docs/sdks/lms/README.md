@@ -1,5 +1,4 @@
 # Lms
-(*lms()*)
 
 ## Overview
 
@@ -11,8 +10,8 @@
 * [createUserAssignment](#createuserassignment) - Create User Assignment
 * [getUserAssignment](#getuserassignment) - Get User Assignment
 * [batchUpsertContent](#batchupsertcontent) - Batch Upsert External Linking Learning Objects
-* [listContent](#listcontent) - List Content
 * [upsertContent](#upsertcontent) - Upsert External Linking Learning Objects
+* [listContent](#listcontent) - List Content
 * [getContent](#getcontent) - Get Content
 * [listUserCompletions](#listusercompletions) - List User Completions
 * [createUserCompletion](#createusercompletion) - Create User Completion
@@ -65,6 +64,7 @@ public class Application {
                 .filter(LmsListCoursesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -140,6 +140,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content,provider,localizations,authors,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetCourseResponse res = sdk.lms().getCourse()
@@ -222,6 +223,7 @@ public class Application {
                     .build())
                 .userId("c28xyrc55866bvuv")
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -299,6 +301,7 @@ public class Application {
         LmsCreateUserAssignmentResponse res = sdk.lms().createUserAssignment()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .lmsCreateAssignmentRequestDto(LmsCreateAssignmentRequestDto.builder()
                     .learningObjectExternalReference("learning-content-123")
                     .passthrough(Map.ofEntries(
@@ -322,11 +325,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                              | *String*                                                                                  | :heavy_check_mark:                                                                        | The account identifier                                                                    |
-| `id`                                                                                      | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `lmsCreateAssignmentRequestDto`                                                           | [LmsCreateAssignmentRequestDto](../../models/components/LmsCreateAssignmentRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `lmsCreateAssignmentRequestDto`                                                                                                                                          | [LmsCreateAssignmentRequestDto](../../models/components/LmsCreateAssignmentRequestDto.md)                                                                                | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -386,6 +390,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetUserAssignmentResponse res = sdk.lms().getUserAssignment()
@@ -463,6 +468,7 @@ public class Application {
 
         LmsBatchUpsertContentResponse res = sdk.lms().batchUpsertContent()
                 .xAccountId("<id>")
+                .prefer("heartbeat")
                 .lmsBatchUpsertContentRequestDto(LmsBatchUpsertContentRequestDto.builder()
                     .items(List.of(
                         LmsUpsertContentRequestDto.builder()
@@ -531,14 +537,152 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                                  | *String*                                                                                      | :heavy_check_mark:                                                                            | The account identifier                                                                        |
-| `lmsBatchUpsertContentRequestDto`                                                             | [LmsBatchUpsertContentRequestDto](../../models/components/LmsBatchUpsertContentRequestDto.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `lmsBatchUpsertContentRequestDto`                                                                                                                                        | [LmsBatchUpsertContentRequestDto](../../models/components/LmsBatchUpsertContentRequestDto.md)                                                                            | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
 **[LmsBatchUpsertContentResponse](../../models/operations/LmsBatchUpsertContentResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## upsertContent
+
+Create or update an external linking learning object that redirects users to a provider platform for consumption and progress tracking. 
+
+**Note:** Partial updates are not supported. When updating content, you must provide all the same fields that are required when creating content. 
+
+See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="lms_upsert_content" method="put" path="/unified/lms/content" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.*;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.LmsUpsertContentResponse;
+import java.lang.Exception;
+import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        LmsUpsertContentResponse res = sdk.lms().upsertContent()
+                .xAccountId("<id>")
+                .prefer("heartbeat")
+                .lmsUpsertContentRequestDto(LmsUpsertContentRequestDto.builder()
+                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
+                    .unifiedCustomFields(Map.ofEntries(
+                        Map.entry("my_project_custom_field_1", "REF-1236"),
+                        Map.entry("my_project_custom_field_2", "some other value")))
+                    .title("Software Engineer Lv 1")
+                    .description("This video acts as learning content for software engineers.")
+                    .languages(List.of(
+                        LanguageEnum.builder()
+                            .value(LanguageEnumValue.EN_GB)
+                            .build()))
+                    .contentUrl("https://www.youtube.com/watch?v=16873")
+                    .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
+                    .coverUrl("https://www.googledrive.com/?v=16873")
+                    .active(LmsUpsertContentRequestDtoActive.of(true))
+                    .duration("P3Y6M4DT12H30M5S")
+                    .skills(List.of(
+                        CreateSkillsApiModel.builder()
+                            .id("12345")
+                            .name("Sales Techniques")
+                            .build()))
+                    .order(1d)
+                    .localizations(List.of(
+                        LocalizationModel.builder()
+                            .title("Software Engineer Lv 1")
+                            .description("This course acts as learning resource for software engineers.")
+                            .build(),
+                        LocalizationModel.builder()
+                            .title("Software Engineer: A comprehensive guide")
+                            .description("This course acts as learning resource for software engineers.")
+                            .build()))
+                    .tags(List.of(
+                        "Sales Techniques",
+                        "Customer Service"))
+                    .authors(List.of(
+                        AuthorModel.builder()
+                            .id("123")
+                            .name("John Doe")
+                            .build()))
+                    .updatedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
+                    .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
+                    .passthrough(Map.ofEntries(
+                        Map.entry("other_known_names", "John Doe")))
+                    .categories(List.of(
+                        CreateCategoriesApiModel.builder()
+                            .id("16873-IT345")
+                            .unifiedCustomFields(Map.ofEntries(
+                                Map.entry("my_project_custom_field_1", "REF-1236"),
+                                Map.entry("my_project_custom_field_2", "some other value")))
+                            .name("Information-Technology")
+                            .language(CreateCategoriesApiModelLanguage.builder()
+                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
+                                .build())
+                            .build()))
+                    .additionalData(List.of(
+                        AdditionalData.builder()
+                            .id("learning_outcomes")
+                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
+                            .value(AdditionalDataValue.of("This is additional data"))
+                            .build()))
+                    .build())
+                .call();
+
+        if (res.upsertResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `lmsUpsertContentRequestDto`                                                                                                                                             | [LmsUpsertContentRequestDto](../../models/components/LmsUpsertContentRequestDto.md)                                                                                      | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+
+### Response
+
+**[LmsUpsertContentResponse](../../models/operations/LmsUpsertContentResponse.md)**
 
 ### Errors
 
@@ -596,6 +740,7 @@ public class Application {
                 .filter(LmsListContentQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -618,139 +763,6 @@ public class Application {
 ### Response
 
 **[LmsListContentResponse](../../models/operations/LmsListContentResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## upsertContent
-
-Create or update an external linking learning object that redirects users to a provider platform for consumption and progress tracking. 
-
-**Note:** Partial updates are not supported. When updating content, you must provide all the same fields that are required when creating content. 
-
-See [here](https://docs.stackone.com/integration-guides/lms/external-content-providers/introduction) for more information about external linking learning objects.
-
-### Example Usage
-
-<!-- UsageSnippet language="java" operationID="lms_upsert_content" method="put" path="/unified/lms/content" -->
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.*;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.LmsUpsertContentResponse;
-import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.List;
-import java.util.Map;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        LmsUpsertContentResponse res = sdk.lms().upsertContent()
-                .xAccountId("<id>")
-                .lmsUpsertContentRequestDto(LmsUpsertContentRequestDto.builder()
-                    .externalReference("SOFTWARE-ENG-LV1-TRAINING-VIDEO-1")
-                    .unifiedCustomFields(Map.ofEntries(
-                        Map.entry("my_project_custom_field_1", "REF-1236"),
-                        Map.entry("my_project_custom_field_2", "some other value")))
-                    .title("Software Engineer Lv 1")
-                    .description("This video acts as learning content for software engineers.")
-                    .languages(List.of(
-                        LanguageEnum.builder()
-                            .value(LanguageEnumValue.EN_GB)
-                            .build()))
-                    .contentUrl("https://www.youtube.com/watch?v=16873")
-                    .mobileLaunchContentUrl("https://www.mobile.youtube.com/watch?v=16873")
-                    .coverUrl("https://www.googledrive.com/?v=16873")
-                    .active(LmsUpsertContentRequestDtoActive.of(true))
-                    .duration("P3Y6M4DT12H30M5S")
-                    .skills(List.of(
-                        CreateSkillsApiModel.builder()
-                            .id("12345")
-                            .name("Sales Techniques")
-                            .build()))
-                    .order(1d)
-                    .localizations(List.of(
-                        LocalizationModel.builder()
-                            .title("Software Engineer Lv 1")
-                            .description("This course acts as learning resource for software engineers.")
-                            .build(),
-                        LocalizationModel.builder()
-                            .title("Software Engineer: A comprehensive guide")
-                            .description("This course acts as learning resource for software engineers.")
-                            .build()))
-                    .tags(List.of(
-                        "Sales Techniques",
-                        "Customer Service"))
-                    .authors(List.of(
-                        AuthorModel.builder()
-                            .id("123")
-                            .name("John Doe")
-                            .build()))
-                    .updatedAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
-                    .createdAt(OffsetDateTime.parse("2021-07-21T14:00:00.000Z"))
-                    .categories(List.of(
-                        CreateCategoriesApiModel.builder()
-                            .id("16873-IT345")
-                            .unifiedCustomFields(Map.ofEntries(
-                                Map.entry("my_project_custom_field_1", "REF-1236"),
-                                Map.entry("my_project_custom_field_2", "some other value")))
-                            .name("Information-Technology")
-                            .language(CreateCategoriesApiModelLanguage.builder()
-                                .value(CreateCategoriesApiModelLanguageValue.EN_GB)
-                                .build())
-                            .build()))
-                    .additionalData(List.of(
-                        AdditionalData.builder()
-                            .id("learning_outcomes")
-                            .remoteId("8187e5da-dc77-475e-9949-af0f1fa4e4e3")
-                            .value(AdditionalDataValue.of("This is additional data"))
-                            .build()))
-                    .build())
-                .call();
-
-        if (res.upsertResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `xAccountId`                                                                        | *String*                                                                            | :heavy_check_mark:                                                                  | The account identifier                                                              |
-| `lmsUpsertContentRequestDto`                                                        | [LmsUpsertContentRequestDto](../../models/components/LmsUpsertContentRequestDto.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
-
-### Response
-
-**[LmsUpsertContentResponse](../../models/operations/LmsUpsertContentResponse.md)**
 
 ### Errors
 
@@ -806,6 +818,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,external_reference,course_ids,remote_course_ids,title,description,additional_data,languages,content_url,mobile_launch_content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at,provider,localizations,tags,authors,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetContentResponse res = sdk.lms().getContent()
@@ -884,6 +897,7 @@ public class Application {
                 .filter(LmsListUserCompletionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -959,6 +973,7 @@ public class Application {
         LmsCreateUserCompletionResponse res = sdk.lms().createUserCompletion()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .lmsCreateCompletionRequestDto(LmsCreateCompletionRequestDto.builder()
                     .learningObjectExternalReference("learning-content-123")
                     .passthrough(Map.ofEntries(
@@ -982,11 +997,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `xAccountId`                                                                              | *String*                                                                                  | :heavy_check_mark:                                                                        | The account identifier                                                                    |
-| `id`                                                                                      | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `lmsCreateCompletionRequestDto`                                                           | [LmsCreateCompletionRequestDto](../../models/components/LmsCreateCompletionRequestDto.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `lmsCreateCompletionRequestDto`                                                                                                                                          | [LmsCreateCompletionRequestDto](../../models/components/LmsCreateCompletionRequestDto.md)                                                                                | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
@@ -1044,6 +1060,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetUserCompletionResponse res = sdk.lms().getUserCompletion()
@@ -1118,6 +1135,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .subResourceId("<id>")
+                .prefer("heartbeat")
                 .call();
 
         if (res.deleteResult().isPresent()) {
@@ -1129,11 +1147,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter              | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `xAccountId`           | *String*               | :heavy_check_mark:     | The account identifier |
-| `id`                   | *String*               | :heavy_check_mark:     | N/A                    |
-| `subResourceId`        | *String*               | :heavy_check_mark:     | N/A                    |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `subResourceId`                                                                                                                                                          | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
 
 ### Response
 
@@ -1191,6 +1210,7 @@ public class Application {
                 .filter(LmsListCompletionsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1263,6 +1283,7 @@ public class Application {
         LmsGetCompletionRequest req = LmsGetCompletionRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetCompletionResponse res = sdk.lms().getCompletion()
@@ -1336,6 +1357,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,active,hierarchy,level,language,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetCategoryResponse res = sdk.lms().getCategory()
@@ -1411,6 +1433,7 @@ public class Application {
                 .filter(LmsListCategoriesQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1485,6 +1508,7 @@ public class Application {
                 .xAccountId("<id>")
                 .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name,unified_custom_fields")
                 .filter(JsonNullable.of(null))
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1558,6 +1582,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetUserResponse res = sdk.lms().getUser()
@@ -1631,6 +1656,7 @@ public class Application {
                 .xAccountId("<id>")
                 .id("<id>")
                 .fields("id,remote_id,name,active,hierarchy,language,unified_custom_fields")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetSkillResponse res = sdk.lms().getSkill()
@@ -1706,6 +1732,7 @@ public class Application {
                 .filter(LmsListSkillsQueryParamFilter.builder()
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1787,6 +1814,7 @@ public class Application {
                     .build())
                 .userId("c28xyrc55866bvuv")
                 .remoteUserId("e3cb75bf-aa84-466e-a6c1-b8322b257a48")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -1863,6 +1891,7 @@ public class Application {
         LmsGetAssignmentRequest req = LmsGetAssignmentRequest.builder()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .build();
 
         LmsGetAssignmentResponse res = sdk.lms().getAssignment()

@@ -18,6 +18,7 @@ import java.util.Optional;
 public class LmsUpsertContentRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private LmsUpsertContentRequestDto lmsUpsertContentRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class LmsUpsertContentRequestBuilder {
     public LmsUpsertContentRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public LmsUpsertContentRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public LmsUpsertContentRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class LmsUpsertContentRequestBuilder {
     private LmsUpsertContentRequest buildRequest() {
 
         LmsUpsertContentRequest request = new LmsUpsertContentRequest(xAccountId,
+            prefer,
             lmsUpsertContentRequestDto);
 
         return request;

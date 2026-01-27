@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class MarketingCreateSmsTemplateRequest {
@@ -19,6 +20,13 @@ public class MarketingCreateSmsTemplateRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto;
@@ -26,11 +34,20 @@ public class MarketingCreateSmsTemplateRequest {
     @JsonCreator
     public MarketingCreateSmsTemplateRequest(
             String xAccountId,
+            Optional<String> prefer,
             MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(marketingCreateSmsTemplateRequestDto, "marketingCreateSmsTemplateRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.marketingCreateSmsTemplateRequestDto = marketingCreateSmsTemplateRequestDto;
+    }
+    
+    public MarketingCreateSmsTemplateRequest(
+            String xAccountId,
+            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
+        this(xAccountId, Optional.empty(), marketingCreateSmsTemplateRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class MarketingCreateSmsTemplateRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class MarketingCreateSmsTemplateRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingCreateSmsTemplateRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MarketingCreateSmsTemplateRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public MarketingCreateSmsTemplateRequest withMarketingCreateSmsTemplateRequestDto(MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
         Utils.checkNotNull(marketingCreateSmsTemplateRequestDto, "marketingCreateSmsTemplateRequestDto");
         this.marketingCreateSmsTemplateRequestDto = marketingCreateSmsTemplateRequestDto;
@@ -77,19 +124,21 @@ public class MarketingCreateSmsTemplateRequest {
         MarketingCreateSmsTemplateRequest other = (MarketingCreateSmsTemplateRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.marketingCreateSmsTemplateRequestDto, other.marketingCreateSmsTemplateRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, marketingCreateSmsTemplateRequestDto);
+            xAccountId, prefer, marketingCreateSmsTemplateRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(MarketingCreateSmsTemplateRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "marketingCreateSmsTemplateRequestDto", marketingCreateSmsTemplateRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class MarketingCreateSmsTemplateRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto;
 
@@ -115,6 +166,27 @@ public class MarketingCreateSmsTemplateRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder marketingCreateSmsTemplateRequestDto(MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
             Utils.checkNotNull(marketingCreateSmsTemplateRequestDto, "marketingCreateSmsTemplateRequestDto");
             this.marketingCreateSmsTemplateRequestDto = marketingCreateSmsTemplateRequestDto;
@@ -124,7 +196,7 @@ public class MarketingCreateSmsTemplateRequest {
         public MarketingCreateSmsTemplateRequest build() {
 
             return new MarketingCreateSmsTemplateRequest(
-                xAccountId, marketingCreateSmsTemplateRequestDto);
+                xAccountId, prefer, marketingCreateSmsTemplateRequestDto);
         }
 
     }

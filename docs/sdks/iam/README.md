@@ -1,5 +1,4 @@
 # Iam
-(*iam()*)
 
 ## Overview
 
@@ -7,8 +6,8 @@
 
 * [listUsers](#listusers) - List Users
 * [getUser](#getuser) - Get User
-* [deleteUser](#deleteuser) - Delete User
 * [updateUser](#updateuser) - Update User
+* [deleteUser](#deleteuser) - Delete User
 * [listRoles](#listroles) - List Roles
 * [getRole](#getrole) - Get Role
 * [listGroups](#listgroups) - List Groups
@@ -51,6 +50,7 @@ public class Application {
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("roles,groups")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -125,6 +125,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled,unified_custom_fields")
                 .expand("roles,groups")
+                .prefer("heartbeat")
                 .build();
 
         IamGetUserResponse res = sdk.iam().getUser()
@@ -147,74 +148,6 @@ public class Application {
 ### Response
 
 **[IamGetUserResponse](../../models/operations/IamGetUserResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| models/errors/BadRequestResponse          | 400                                       | application/json                          |
-| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
-| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
-| models/errors/NotFoundResponse            | 404                                       | application/json                          |
-| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
-| models/errors/ConflictResponse            | 409                                       | application/json                          |
-| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
-| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
-| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
-| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
-| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
-| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
-| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
-
-## deleteUser
-
-Delete User
-
-### Example Usage
-
-<!-- UsageSnippet language="java" operationID="iam_delete_user" method="delete" path="/unified/iam/users/{id}" -->
-```java
-package hello.world;
-
-import com.stackone.stackone_client_java.StackOne;
-import com.stackone.stackone_client_java.models.components.Security;
-import com.stackone.stackone_client_java.models.errors.*;
-import com.stackone.stackone_client_java.models.operations.IamDeleteUserResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        StackOne sdk = StackOne.builder()
-                .security(Security.builder()
-                    .username("")
-                    .password("")
-                    .build())
-            .build();
-
-        IamDeleteUserResponse res = sdk.iam().deleteUser()
-                .xAccountId("<id>")
-                .id("<id>")
-                .call();
-
-        if (res.deleteResult().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter              | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `xAccountId`           | *String*               | :heavy_check_mark:     | The account identifier |
-| `id`                   | *String*               | :heavy_check_mark:     | N/A                    |
-
-### Response
-
-**[IamDeleteUserResponse](../../models/operations/IamDeleteUserResponse.md)**
 
 ### Errors
 
@@ -265,6 +198,7 @@ public class Application {
         IamUpdateUserResponse res = sdk.iam().updateUser()
                 .xAccountId("<id>")
                 .id("<id>")
+                .prefer("heartbeat")
                 .iamUpdateUserRequestDto(IamUpdateUserRequestDto.builder()
                     .primaryEmailAddress("han@stackone.com")
                     .firstName("Han")
@@ -289,15 +223,86 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `xAccountId`                                                                  | *String*                                                                      | :heavy_check_mark:                                                            | The account identifier                                                        |
-| `id`                                                                          | *String*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
-| `iamUpdateUserRequestDto`                                                     | [IamUpdateUserRequestDto](../../models/components/IamUpdateUserRequestDto.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+| `iamUpdateUserRequestDto`                                                                                                                                                | [IamUpdateUserRequestDto](../../models/components/IamUpdateUserRequestDto.md)                                                                                            | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
 
 ### Response
 
 **[IamUpdateUserResponse](../../models/operations/IamUpdateUserResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| models/errors/BadRequestResponse          | 400                                       | application/json                          |
+| models/errors/UnauthorizedResponse        | 401                                       | application/json                          |
+| models/errors/ForbiddenResponse           | 403                                       | application/json                          |
+| models/errors/NotFoundResponse            | 404                                       | application/json                          |
+| models/errors/RequestTimedOutResponse     | 408                                       | application/json                          |
+| models/errors/ConflictResponse            | 409                                       | application/json                          |
+| models/errors/PreconditionFailedResponse  | 412                                       | application/json                          |
+| models/errors/UnprocessableEntityResponse | 422                                       | application/json                          |
+| models/errors/TooManyRequestsResponse     | 429                                       | application/json                          |
+| models/errors/InternalServerErrorResponse | 500                                       | application/json                          |
+| models/errors/NotImplementedResponse      | 501                                       | application/json                          |
+| models/errors/BadGatewayResponse          | 502                                       | application/json                          |
+| models/errors/SDKError                    | 4XX, 5XX                                  | \*/\*                                     |
+
+## deleteUser
+
+Delete User
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="iam_delete_user" method="delete" path="/unified/iam/users/{id}" -->
+```java
+package hello.world;
+
+import com.stackone.stackone_client_java.StackOne;
+import com.stackone.stackone_client_java.models.components.Security;
+import com.stackone.stackone_client_java.models.errors.*;
+import com.stackone.stackone_client_java.models.operations.IamDeleteUserResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        StackOne sdk = StackOne.builder()
+                .security(Security.builder()
+                    .username("")
+                    .password("")
+                    .build())
+            .build();
+
+        IamDeleteUserResponse res = sdk.iam().deleteUser()
+                .xAccountId("<id>")
+                .id("<id>")
+                .prefer("heartbeat")
+                .call();
+
+        if (res.deleteResult().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `xAccountId`                                                                                                                                                             | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The account identifier                                                                                                                                                   |                                                                                                                                                                          |
+| `id`                                                                                                                                                                     | *String*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | N/A                                                                                                                                                                      |                                                                                                                                                                          |
+| `prefer`                                                                                                                                                                 | *Optional\<String>*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                       | Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240) | heartbeat                                                                                                                                                                |
+
+### Response
+
+**[IamDeleteUserResponse](../../models/operations/IamDeleteUserResponse.md)**
 
 ### Errors
 
@@ -352,6 +357,7 @@ public class Application {
                     .updatedAfter(OffsetDateTime.parse("2020-01-01T00:00:00.000Z"))
                     .build())
                 .expand("policies")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -426,6 +432,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,type,policies,description,created_at,updated_at,unified_custom_fields")
                 .expand("policies")
+                .prefer("heartbeat")
                 .build();
 
         IamGetRoleResponse res = sdk.iam().getRole()
@@ -501,6 +508,7 @@ public class Application {
                 .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .expand("roles")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -575,6 +583,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at,unified_custom_fields")
                 .expand("roles")
+                .prefer("heartbeat")
                 .build();
 
         IamGetGroupResponse res = sdk.iam().getGroup()
@@ -650,6 +659,7 @@ public class Application {
                 .fields("id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields")
                 .filter(JsonNullable.of(null))
                 .expand("permissions")
+                .prefer("heartbeat")
                 .build();
 
 
@@ -724,6 +734,7 @@ public class Application {
                 .id("<id>")
                 .fields("id,remote_id,name,permissions,description,created_at,updated_at,unified_custom_fields")
                 .expand("permissions")
+                .prefer("heartbeat")
                 .build();
 
         IamGetPolicyResponse res = sdk.iam().getPolicy()

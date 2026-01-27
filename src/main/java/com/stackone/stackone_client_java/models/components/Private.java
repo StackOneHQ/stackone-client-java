@@ -84,8 +84,8 @@ public class Private {
 
         public _Deserializer() {
             super(Private.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Private2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Private2>() {}, JsonShape.DEFAULT));
         }
     }
     

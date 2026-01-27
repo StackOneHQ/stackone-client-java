@@ -6,21 +6,16 @@ package com.stackone.stackone_client_java.models.operations;
 import static com.stackone.stackone_client_java.operations.Operations.RequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.AtsUpdateNotesRequestDto;
 import com.stackone.stackone_client_java.operations.AtsUpdateApplicationNote;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.String;
 import java.util.Optional;
 
 public class AtsUpdateApplicationNoteRequestBuilder {
 
-    private String xAccountId;
-    private String id;
-    private String subResourceId;
-    private AtsUpdateNotesRequestDto atsUpdateNotesRequestDto;
+    private AtsUpdateApplicationNoteRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -29,27 +24,9 @@ public class AtsUpdateApplicationNoteRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public AtsUpdateApplicationNoteRequestBuilder xAccountId(String xAccountId) {
-        Utils.checkNotNull(xAccountId, "xAccountId");
-        this.xAccountId = xAccountId;
-        return this;
-    }
-
-    public AtsUpdateApplicationNoteRequestBuilder id(String id) {
-        Utils.checkNotNull(id, "id");
-        this.id = id;
-        return this;
-    }
-
-    public AtsUpdateApplicationNoteRequestBuilder subResourceId(String subResourceId) {
-        Utils.checkNotNull(subResourceId, "subResourceId");
-        this.subResourceId = subResourceId;
-        return this;
-    }
-
-    public AtsUpdateApplicationNoteRequestBuilder atsUpdateNotesRequestDto(AtsUpdateNotesRequestDto atsUpdateNotesRequestDto) {
-        Utils.checkNotNull(atsUpdateNotesRequestDto, "atsUpdateNotesRequestDto");
-        this.atsUpdateNotesRequestDto = atsUpdateNotesRequestDto;
+    public AtsUpdateApplicationNoteRequestBuilder request(AtsUpdateApplicationNoteRequest request) {
+        Utils.checkNotNull(request, "request");
+        this.request = request;
         return this;
     }
                 
@@ -65,17 +42,6 @@ public class AtsUpdateApplicationNoteRequestBuilder {
         return this;
     }
 
-
-    private AtsUpdateApplicationNoteRequest buildRequest() {
-
-        AtsUpdateApplicationNoteRequest request = new AtsUpdateApplicationNoteRequest(xAccountId,
-            id,
-            subResourceId,
-            atsUpdateNotesRequestDto);
-
-        return request;
-    }
-
     public AtsUpdateApplicationNoteResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
@@ -83,7 +49,6 @@ public class AtsUpdateApplicationNoteRequestBuilder {
 
         RequestOperation<AtsUpdateApplicationNoteRequest, AtsUpdateApplicationNoteResponse> operation
               = new AtsUpdateApplicationNote.Sync(sdkConfiguration, options, _headers);
-        AtsUpdateApplicationNoteRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));
     }

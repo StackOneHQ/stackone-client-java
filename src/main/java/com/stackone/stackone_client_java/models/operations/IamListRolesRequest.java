@@ -15,6 +15,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -88,6 +89,13 @@ public class IamListRolesRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=expand")
     private JsonNullable<String> expand;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public IamListRolesRequest(
             String xAccountId,
@@ -99,7 +107,8 @@ public class IamListRolesRequest {
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
             JsonNullable<OffsetDateTime> updatedAfter,
-            JsonNullable<String> expand) {
+            JsonNullable<String> expand,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
@@ -110,6 +119,7 @@ public class IamListRolesRequest {
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(updatedAfter, "updatedAfter");
         Utils.checkNotNull(expand, "expand");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.raw = raw;
         this.proxy = proxy;
@@ -120,6 +130,7 @@ public class IamListRolesRequest {
         this.next = next;
         this.updatedAfter = updatedAfter;
         this.expand = expand;
+        this.prefer = prefer;
     }
     
     public IamListRolesRequest(
@@ -127,7 +138,7 @@ public class IamListRolesRequest {
         this(xAccountId, JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -219,6 +230,15 @@ public class IamListRolesRequest {
     @JsonIgnore
     public JsonNullable<String> expand() {
         return expand;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -415,6 +435,27 @@ public class IamListRolesRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public IamListRolesRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public IamListRolesRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -434,7 +475,8 @@ public class IamListRolesRequest {
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
-            Utils.enhancedDeepEquals(this.expand, other.expand);
+            Utils.enhancedDeepEquals(this.expand, other.expand) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -443,7 +485,7 @@ public class IamListRolesRequest {
             xAccountId, raw, proxy,
             fields, filter, page,
             pageSize, next, updatedAfter,
-            expand);
+            expand, prefer);
     }
     
     @Override
@@ -458,7 +500,8 @@ public class IamListRolesRequest {
                 "pageSize", pageSize,
                 "next", next,
                 "updatedAfter", updatedAfter,
-                "expand", expand);
+                "expand", expand,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -485,6 +528,8 @@ public class IamListRolesRequest {
         private JsonNullable<OffsetDateTime> updatedAfter = JsonNullable.undefined();
 
         private JsonNullable<String> expand = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -689,13 +734,34 @@ public class IamListRolesRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public IamListRolesRequest build() {
 
             return new IamListRolesRequest(
                 xAccountId, raw, proxy,
                 fields, filter, page,
                 pageSize, next, updatedAfter,
-                expand);
+                expand, prefer);
         }
 
     }

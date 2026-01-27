@@ -123,25 +123,28 @@ public class Crm {
      * @throws RuntimeException subclass if the API call fails
      */
     public CrmCreateContactResponse createContact(String xAccountId, CrmCreateContactRequestDto crmCreateContactRequestDto) {
-        return createContact(xAccountId, crmCreateContactRequestDto, Optional.empty());
+        return createContact(xAccountId, Optional.empty(), crmCreateContactRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Contact
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param crmCreateContactRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public CrmCreateContactResponse createContact(
-            String xAccountId, CrmCreateContactRequestDto crmCreateContactRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            CrmCreateContactRequestDto crmCreateContactRequestDto, Optional<Options> options) {
         CrmCreateContactRequest request =
             CrmCreateContactRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         RequestOperation<CrmCreateContactRequest, CrmCreateContactResponse> operation
@@ -204,8 +207,8 @@ public class Crm {
     public CrmUpdateContactResponse updateContact(
             String xAccountId, String id,
             CrmCreateContactRequestDto crmCreateContactRequestDto) {
-        return updateContact(xAccountId, id, crmCreateContactRequestDto,
-            Optional.empty());
+        return updateContact(xAccountId, id, Optional.empty(),
+            crmCreateContactRequestDto, Optional.empty());
     }
 
     /**
@@ -213,6 +216,7 @@ public class Crm {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param crmCreateContactRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -220,12 +224,14 @@ public class Crm {
      */
     public CrmUpdateContactResponse updateContact(
             String xAccountId, String id,
-            CrmCreateContactRequestDto crmCreateContactRequestDto, Optional<Options> options) {
+            Optional<String> prefer, CrmCreateContactRequestDto crmCreateContactRequestDto,
+            Optional<Options> options) {
         CrmUpdateContactRequest request =
             CrmUpdateContactRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .crmCreateContactRequestDto(crmCreateContactRequestDto)
                 .build();
         RequestOperation<CrmUpdateContactRequest, CrmUpdateContactResponse> operation

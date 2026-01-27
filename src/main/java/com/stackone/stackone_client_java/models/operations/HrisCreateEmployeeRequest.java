@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class HrisCreateEmployeeRequest {
@@ -19,6 +20,13 @@ public class HrisCreateEmployeeRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto;
@@ -26,11 +34,20 @@ public class HrisCreateEmployeeRequest {
     @JsonCreator
     public HrisCreateEmployeeRequest(
             String xAccountId,
+            Optional<String> prefer,
             HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(hrisCreateEmployeeRequestDto, "hrisCreateEmployeeRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.hrisCreateEmployeeRequestDto = hrisCreateEmployeeRequestDto;
+    }
+    
+    public HrisCreateEmployeeRequest(
+            String xAccountId,
+            HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
+        this(xAccountId, Optional.empty(), hrisCreateEmployeeRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class HrisCreateEmployeeRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class HrisCreateEmployeeRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisCreateEmployeeRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisCreateEmployeeRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public HrisCreateEmployeeRequest withHrisCreateEmployeeRequestDto(HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
         Utils.checkNotNull(hrisCreateEmployeeRequestDto, "hrisCreateEmployeeRequestDto");
         this.hrisCreateEmployeeRequestDto = hrisCreateEmployeeRequestDto;
@@ -77,19 +124,21 @@ public class HrisCreateEmployeeRequest {
         HrisCreateEmployeeRequest other = (HrisCreateEmployeeRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.hrisCreateEmployeeRequestDto, other.hrisCreateEmployeeRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, hrisCreateEmployeeRequestDto);
+            xAccountId, prefer, hrisCreateEmployeeRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(HrisCreateEmployeeRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "hrisCreateEmployeeRequestDto", hrisCreateEmployeeRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class HrisCreateEmployeeRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto;
 
@@ -115,6 +166,27 @@ public class HrisCreateEmployeeRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder hrisCreateEmployeeRequestDto(HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
             Utils.checkNotNull(hrisCreateEmployeeRequestDto, "hrisCreateEmployeeRequestDto");
             this.hrisCreateEmployeeRequestDto = hrisCreateEmployeeRequestDto;
@@ -124,7 +196,7 @@ public class HrisCreateEmployeeRequest {
         public HrisCreateEmployeeRequest build() {
 
             return new HrisCreateEmployeeRequest(
-                xAccountId, hrisCreateEmployeeRequestDto);
+                xAccountId, prefer, hrisCreateEmployeeRequestDto);
         }
 
     }

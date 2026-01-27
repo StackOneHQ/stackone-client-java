@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsRejectApplicationRequest {
@@ -23,6 +24,13 @@ public class AtsRejectApplicationRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsRejectApplicationRequestDto atsRejectApplicationRequestDto;
@@ -31,13 +39,24 @@ public class AtsRejectApplicationRequest {
     public AtsRejectApplicationRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AtsRejectApplicationRequestDto atsRejectApplicationRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsRejectApplicationRequestDto, "atsRejectApplicationRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.atsRejectApplicationRequestDto = atsRejectApplicationRequestDto;
+    }
+    
+    public AtsRejectApplicationRequest(
+            String xAccountId,
+            String id,
+            AtsRejectApplicationRequestDto atsRejectApplicationRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            atsRejectApplicationRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AtsRejectApplicationRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AtsRejectApplicationRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsRejectApplicationRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsRejectApplicationRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsRejectApplicationRequest withAtsRejectApplicationRequestDto(AtsRejectApplicationRequestDto atsRejectApplicationRequestDto) {
         Utils.checkNotNull(atsRejectApplicationRequestDto, "atsRejectApplicationRequestDto");
         this.atsRejectApplicationRequestDto = atsRejectApplicationRequestDto;
@@ -96,13 +145,15 @@ public class AtsRejectApplicationRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsRejectApplicationRequestDto, other.atsRejectApplicationRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, atsRejectApplicationRequestDto);
+            xAccountId, id, prefer,
+            atsRejectApplicationRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AtsRejectApplicationRequest {
         return Utils.toString(AtsRejectApplicationRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "atsRejectApplicationRequestDto", atsRejectApplicationRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AtsRejectApplicationRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsRejectApplicationRequestDto atsRejectApplicationRequestDto;
 
@@ -144,6 +198,27 @@ public class AtsRejectApplicationRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsRejectApplicationRequestDto(AtsRejectApplicationRequestDto atsRejectApplicationRequestDto) {
             Utils.checkNotNull(atsRejectApplicationRequestDto, "atsRejectApplicationRequestDto");
             this.atsRejectApplicationRequestDto = atsRejectApplicationRequestDto;
@@ -153,7 +228,8 @@ public class AtsRejectApplicationRequest {
         public AtsRejectApplicationRequest build() {
 
             return new AtsRejectApplicationRequest(
-                xAccountId, id, atsRejectApplicationRequestDto);
+                xAccountId, id, prefer,
+                atsRejectApplicationRequestDto);
         }
 
     }

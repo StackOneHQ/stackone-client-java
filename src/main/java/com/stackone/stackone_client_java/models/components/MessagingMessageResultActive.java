@@ -84,8 +84,8 @@ public class MessagingMessageResultActive {
 
         public _Deserializer() {
             super(MessagingMessageResultActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<MessagingMessageResultActive2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<MessagingMessageResultActive2>() {}, JsonShape.DEFAULT));
         }
     }
     

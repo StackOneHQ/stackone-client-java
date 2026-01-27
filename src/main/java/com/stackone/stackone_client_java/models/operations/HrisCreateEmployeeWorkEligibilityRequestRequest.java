@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class HrisCreateEmployeeWorkEligibilityRequestRequest {
@@ -23,6 +24,13 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
@@ -31,13 +39,24 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
     public HrisCreateEmployeeWorkEligibilityRequestRequest(
             String id,
             String xAccountId,
+            Optional<String> prefer,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(hrisCreateWorkEligibilityRequestDto, "hrisCreateWorkEligibilityRequestDto");
         this.id = id;
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.hrisCreateWorkEligibilityRequestDto = hrisCreateWorkEligibilityRequestDto;
+    }
+    
+    public HrisCreateEmployeeWorkEligibilityRequestRequest(
+            String id,
+            String xAccountId,
+            HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
+        this(id, xAccountId, Optional.empty(),
+            hrisCreateWorkEligibilityRequestDto);
     }
 
     @JsonIgnore
@@ -51,6 +70,15 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisCreateEmployeeWorkEligibilityRequestRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisCreateEmployeeWorkEligibilityRequestRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public HrisCreateEmployeeWorkEligibilityRequestRequest withHrisCreateWorkEligibilityRequestDto(HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
         Utils.checkNotNull(hrisCreateWorkEligibilityRequestDto, "hrisCreateWorkEligibilityRequestDto");
         this.hrisCreateWorkEligibilityRequestDto = hrisCreateWorkEligibilityRequestDto;
@@ -96,13 +145,15 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
         return 
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.hrisCreateWorkEligibilityRequestDto, other.hrisCreateWorkEligibilityRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id, xAccountId, hrisCreateWorkEligibilityRequestDto);
+            id, xAccountId, prefer,
+            hrisCreateWorkEligibilityRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
         return Utils.toString(HrisCreateEmployeeWorkEligibilityRequestRequest.class,
                 "id", id,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "hrisCreateWorkEligibilityRequestDto", hrisCreateWorkEligibilityRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
         private String id;
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
 
@@ -144,6 +198,27 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder hrisCreateWorkEligibilityRequestDto(HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
             Utils.checkNotNull(hrisCreateWorkEligibilityRequestDto, "hrisCreateWorkEligibilityRequestDto");
             this.hrisCreateWorkEligibilityRequestDto = hrisCreateWorkEligibilityRequestDto;
@@ -153,7 +228,8 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequest {
         public HrisCreateEmployeeWorkEligibilityRequestRequest build() {
 
             return new HrisCreateEmployeeWorkEligibilityRequestRequest(
-                id, xAccountId, hrisCreateWorkEligibilityRequestDto);
+                id, xAccountId, prefer,
+                hrisCreateWorkEligibilityRequestDto);
         }
 
     }

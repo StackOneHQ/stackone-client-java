@@ -84,8 +84,8 @@ public class SkillsActive {
 
         public _Deserializer() {
             super(SkillsActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SkillsActive2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SkillsActive2>() {}, JsonShape.DEFAULT));
         }
     }
     

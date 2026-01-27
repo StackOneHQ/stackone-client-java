@@ -21,6 +21,7 @@ public class AtsUpdateBackgroundCheckPackageRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AtsUpdateBackgroundCheckPackagesRequestDto atsUpdateBackgroundCheckPackagesRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class AtsUpdateBackgroundCheckPackageRequestBuilder {
     public AtsUpdateBackgroundCheckPackageRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AtsUpdateBackgroundCheckPackageRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsUpdateBackgroundCheckPackageRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class AtsUpdateBackgroundCheckPackageRequestBuilder {
 
         AtsUpdateBackgroundCheckPackageRequest request = new AtsUpdateBackgroundCheckPackageRequest(xAccountId,
             id,
+            prefer,
             atsUpdateBackgroundCheckPackagesRequestDto);
 
         return request;

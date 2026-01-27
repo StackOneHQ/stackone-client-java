@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class IamUpdateUserRequest {
@@ -23,6 +24,13 @@ public class IamUpdateUserRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private IamUpdateUserRequestDto iamUpdateUserRequestDto;
@@ -31,13 +39,24 @@ public class IamUpdateUserRequest {
     public IamUpdateUserRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             IamUpdateUserRequestDto iamUpdateUserRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(iamUpdateUserRequestDto, "iamUpdateUserRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.iamUpdateUserRequestDto = iamUpdateUserRequestDto;
+    }
+    
+    public IamUpdateUserRequest(
+            String xAccountId,
+            String id,
+            IamUpdateUserRequestDto iamUpdateUserRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            iamUpdateUserRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class IamUpdateUserRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class IamUpdateUserRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public IamUpdateUserRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public IamUpdateUserRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public IamUpdateUserRequest withIamUpdateUserRequestDto(IamUpdateUserRequestDto iamUpdateUserRequestDto) {
         Utils.checkNotNull(iamUpdateUserRequestDto, "iamUpdateUserRequestDto");
         this.iamUpdateUserRequestDto = iamUpdateUserRequestDto;
@@ -96,13 +145,15 @@ public class IamUpdateUserRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.iamUpdateUserRequestDto, other.iamUpdateUserRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, iamUpdateUserRequestDto);
+            xAccountId, id, prefer,
+            iamUpdateUserRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class IamUpdateUserRequest {
         return Utils.toString(IamUpdateUserRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "iamUpdateUserRequestDto", iamUpdateUserRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class IamUpdateUserRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private IamUpdateUserRequestDto iamUpdateUserRequestDto;
 
@@ -144,6 +198,27 @@ public class IamUpdateUserRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder iamUpdateUserRequestDto(IamUpdateUserRequestDto iamUpdateUserRequestDto) {
             Utils.checkNotNull(iamUpdateUserRequestDto, "iamUpdateUserRequestDto");
             this.iamUpdateUserRequestDto = iamUpdateUserRequestDto;
@@ -153,7 +228,8 @@ public class IamUpdateUserRequest {
         public IamUpdateUserRequest build() {
 
             return new IamUpdateUserRequest(
-                xAccountId, id, iamUpdateUserRequestDto);
+                xAccountId, id, prefer,
+                iamUpdateUserRequestDto);
         }
 
     }

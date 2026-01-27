@@ -14,8 +14,6 @@ import com.stackone.stackone_client_java.models.components.HrisCreateWorkEligibi
 import com.stackone.stackone_client_java.models.components.HrisDocumentsUploadRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisInviteEmployeeRequestDto;
 import com.stackone.stackone_client_java.models.components.HrisUpdateEmployeeRequestDto;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmploymentRequestDto;
-import com.stackone.stackone_client_java.models.components.UpdateTaskRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisBatchUploadEmployeeDocumentRequest;
 import com.stackone.stackone_client_java.models.operations.HrisCancelEmployeeTimeOffRequestRequest;
 import com.stackone.stackone_client_java.models.operations.HrisCreateEmployeeEmploymentRequest;
@@ -537,24 +535,28 @@ public class AsyncHris {
      * @return {@code CompletableFuture<HrisCreateEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeResponse> createEmployee(String xAccountId, HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto) {
-        return createEmployee(xAccountId, hrisCreateEmployeeRequestDto, Optional.empty());
+        return createEmployee(
+                xAccountId, Optional.empty(), hrisCreateEmployeeRequestDto,
+                Optional.empty());
     }
 
     /**
      * Create Employee
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisCreateEmployeeRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisCreateEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeResponse> createEmployee(
-            String xAccountId, HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            HrisCreateEmployeeRequestDto hrisCreateEmployeeRequestDto, Optional<Options> options) {
         HrisCreateEmployeeRequest request =
             HrisCreateEmployeeRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .hrisCreateEmployeeRequestDto(hrisCreateEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeRequest, HrisCreateEmployeeResponse> operation
@@ -623,8 +625,8 @@ public class AsyncHris {
             String xAccountId, String id,
             HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto) {
         return updateEmployee(
-                xAccountId, id, hrisUpdateEmployeeRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                hrisUpdateEmployeeRequestDto, Optional.empty());
     }
 
     /**
@@ -632,18 +634,21 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisUpdateEmployeeRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisUpdateEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisUpdateEmployeeResponse> updateEmployee(
             String xAccountId, String id,
-            HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisUpdateEmployeeRequestDto hrisUpdateEmployeeRequestDto,
+            Optional<Options> options) {
         HrisUpdateEmployeeRequest request =
             HrisUpdateEmployeeRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisUpdateEmployeeRequestDto(hrisUpdateEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisUpdateEmployeeRequest, HrisUpdateEmployeeResponse> operation
@@ -676,8 +681,8 @@ public class AsyncHris {
             String xAccountId, String id,
             HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto) {
         return inviteEmployee(
-                xAccountId, id, hrisInviteEmployeeRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                hrisInviteEmployeeRequestDto, Optional.empty());
     }
 
     /**
@@ -685,18 +690,21 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisInviteEmployeeRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisInviteEmployeeResponse>} - The async response
      */
     public CompletableFuture<HrisInviteEmployeeResponse> inviteEmployee(
             String xAccountId, String id,
-            HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisInviteEmployeeRequestDto hrisInviteEmployeeRequestDto,
+            Optional<Options> options) {
         HrisInviteEmployeeRequest request =
             HrisInviteEmployeeRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisInviteEmployeeRequestDto(hrisInviteEmployeeRequestDto)
                 .build();
         AsyncRequestOperation<HrisInviteEmployeeRequest, HrisInviteEmployeeResponse> operation
@@ -837,8 +845,8 @@ public class AsyncHris {
             String xAccountId, String id,
             HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
         return createEmployeeTimeOffRequest(
-                xAccountId, id, hrisCreateTimeOffRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                hrisCreateTimeOffRequestDto, Optional.empty());
     }
 
     /**
@@ -846,18 +854,21 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisCreateTimeOffRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisCreateEmployeeTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeTimeOffRequestResponse> createEmployeeTimeOffRequest(
             String xAccountId, String id,
-            HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
+            Optional<Options> options) {
         HrisCreateEmployeeTimeOffRequestRequest request =
             HrisCreateEmployeeTimeOffRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeTimeOffRequestRequest, HrisCreateEmployeeTimeOffRequestResponse> operation
@@ -906,6 +917,42 @@ public class AsyncHris {
 
 
     /**
+     * Update Employee Time Off Request
+     * 
+     * @return The async call builder
+     */
+    public HrisUpdateEmployeeTimeOffRequestRequestBuilder updateEmployeeTimeOffRequest() {
+        return new HrisUpdateEmployeeTimeOffRequestRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Update Employee Time Off Request
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse>} - The async response
+     */
+    public CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse> updateEmployeeTimeOffRequest(HrisUpdateEmployeeTimeOffRequestRequest request) {
+        return updateEmployeeTimeOffRequest(request, Optional.empty());
+    }
+
+    /**
+     * Update Employee Time Off Request
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return {@code CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse>} - The async response
+     */
+    public CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse> updateEmployeeTimeOffRequest(HrisUpdateEmployeeTimeOffRequestRequest request, Optional<Options> options) {
+        AsyncRequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
+              = new HrisUpdateEmployeeTimeOffRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
+        return operation.doRequest(request)
+            .thenCompose(operation::handleResponse);
+    }
+
+
+    /**
      * Cancel Employee Time Off Request
      * 
      * @return The async call builder
@@ -927,7 +974,7 @@ public class AsyncHris {
             String subResourceId) {
         return cancelEmployeeTimeOffRequest(
                 xAccountId, id, subResourceId,
-                Optional.empty());
+                Optional.empty(), Optional.empty());
     }
 
     /**
@@ -936,78 +983,24 @@ public class AsyncHris {
      * @param xAccountId The account identifier
      * @param id 
      * @param subResourceId 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param options additional options
      * @return {@code CompletableFuture<HrisCancelEmployeeTimeOffRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCancelEmployeeTimeOffRequestResponse> cancelEmployeeTimeOffRequest(
             String xAccountId, String id,
-            String subResourceId, Optional<Options> options) {
+            String subResourceId, Optional<String> prefer,
+            Optional<Options> options) {
         HrisCancelEmployeeTimeOffRequestRequest request =
             HrisCancelEmployeeTimeOffRequestRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
                 .subResourceId(subResourceId)
+                .prefer(prefer)
                 .build();
         AsyncRequestOperation<HrisCancelEmployeeTimeOffRequestRequest, HrisCancelEmployeeTimeOffRequestResponse> operation
               = new HrisCancelEmployeeTimeOffRequest.Async(
-                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
-                                    _headers);
-        return operation.doRequest(request)
-            .thenCompose(operation::handleResponse);
-    }
-
-
-    /**
-     * Update Employee Time Off Request
-     * 
-     * @return The async call builder
-     */
-    public HrisUpdateEmployeeTimeOffRequestRequestBuilder updateEmployeeTimeOffRequest() {
-        return new HrisUpdateEmployeeTimeOffRequestRequestBuilder(sdkConfiguration);
-    }
-
-    /**
-     * Update Employee Time Off Request
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param hrisCreateTimeOffRequestDto 
-     * @return {@code CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse>} - The async response
-     */
-    public CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse> updateEmployeeTimeOffRequest(
-            String xAccountId, String id,
-            String subResourceId, HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto) {
-        return updateEmployeeTimeOffRequest(
-                xAccountId, id, subResourceId,
-                hrisCreateTimeOffRequestDto, Optional.empty());
-    }
-
-    /**
-     * Update Employee Time Off Request
-     * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param hrisCreateTimeOffRequestDto 
-     * @param options additional options
-     * @return {@code CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse>} - The async response
-     */
-    public CompletableFuture<HrisUpdateEmployeeTimeOffRequestResponse> updateEmployeeTimeOffRequest(
-            String xAccountId, String id,
-            String subResourceId, HrisCreateTimeOffRequestDto hrisCreateTimeOffRequestDto,
-            Optional<Options> options) {
-        HrisUpdateEmployeeTimeOffRequestRequest request =
-            HrisUpdateEmployeeTimeOffRequestRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .hrisCreateTimeOffRequestDto(hrisCreateTimeOffRequestDto)
-                .build();
-        AsyncRequestOperation<HrisUpdateEmployeeTimeOffRequestRequest, HrisUpdateEmployeeTimeOffRequestResponse> operation
-              = new HrisUpdateEmployeeTimeOffRequest.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
         return operation.doRequest(request)
@@ -1036,8 +1029,8 @@ public class AsyncHris {
             String xAccountId, String id,
             HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto) {
         return batchUploadEmployeeDocument(
-                xAccountId, id, hrisBatchDocumentUploadRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                hrisBatchDocumentUploadRequestDto, Optional.empty());
     }
 
     /**
@@ -1045,18 +1038,21 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisBatchDocumentUploadRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisBatchUploadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisBatchUploadEmployeeDocumentResponse> batchUploadEmployeeDocument(
             String xAccountId, String id,
-            HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisBatchDocumentUploadRequestDto hrisBatchDocumentUploadRequestDto,
+            Optional<Options> options) {
         HrisBatchUploadEmployeeDocumentRequest request =
             HrisBatchUploadEmployeeDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisBatchDocumentUploadRequestDto(hrisBatchDocumentUploadRequestDto)
                 .build();
         AsyncRequestOperation<HrisBatchUploadEmployeeDocumentRequest, HrisBatchUploadEmployeeDocumentResponse> operation
@@ -1089,8 +1085,8 @@ public class AsyncHris {
             String xAccountId, String id,
             HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto) {
         return uploadEmployeeDocument(
-                xAccountId, id, hrisDocumentsUploadRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                hrisDocumentsUploadRequestDto, Optional.empty());
     }
 
     /**
@@ -1098,18 +1094,21 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisDocumentsUploadRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisUploadEmployeeDocumentResponse>} - The async response
      */
     public CompletableFuture<HrisUploadEmployeeDocumentResponse> uploadEmployeeDocument(
             String xAccountId, String id,
-            HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisDocumentsUploadRequestDto hrisDocumentsUploadRequestDto,
+            Optional<Options> options) {
         HrisUploadEmployeeDocumentRequest request =
             HrisUploadEmployeeDocumentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisDocumentsUploadRequestDto(hrisDocumentsUploadRequestDto)
                 .build();
         AsyncRequestOperation<HrisUploadEmployeeDocumentRequest, HrisUploadEmployeeDocumentResponse> operation
@@ -1358,8 +1357,8 @@ public class AsyncHris {
             String id, String xAccountId,
             HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
         return createEmployeeWorkEligibilityRequest(
-                id, xAccountId, hrisCreateWorkEligibilityRequestDto,
-                Optional.empty());
+                id, xAccountId, Optional.empty(),
+                hrisCreateWorkEligibilityRequestDto, Optional.empty());
     }
 
     /**
@@ -1367,18 +1366,21 @@ public class AsyncHris {
      * 
      * @param id 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisCreateWorkEligibilityRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisCreateEmployeeWorkEligibilityRequestResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeWorkEligibilityRequestResponse> createEmployeeWorkEligibilityRequest(
             String id, String xAccountId,
-            HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
+            Optional<Options> options) {
         HrisCreateEmployeeWorkEligibilityRequestRequest request =
             HrisCreateEmployeeWorkEligibilityRequestRequest
                 .builder()
                 .id(id)
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeWorkEligibilityRequestRequest, HrisCreateEmployeeWorkEligibilityRequestResponse> operation
@@ -1438,42 +1440,21 @@ public class AsyncHris {
     /**
      * Update Employee Work Eligibility Request
      * 
-     * @param id 
-     * @param subResourceId 
-     * @param xAccountId The account identifier
-     * @param hrisCreateWorkEligibilityRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse>} - The async response
      */
-    public CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse> updateEmployeeWorkEligibilityRequest(
-            String id, String subResourceId,
-            String xAccountId, HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto) {
-        return updateEmployeeWorkEligibilityRequest(
-                id, subResourceId, xAccountId,
-                hrisCreateWorkEligibilityRequestDto, Optional.empty());
+    public CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse> updateEmployeeWorkEligibilityRequest(HrisUpdateEmployeeWorkEligibilityRequestRequest request) {
+        return updateEmployeeWorkEligibilityRequest(request, Optional.empty());
     }
 
     /**
      * Update Employee Work Eligibility Request
      * 
-     * @param id 
-     * @param subResourceId 
-     * @param xAccountId The account identifier
-     * @param hrisCreateWorkEligibilityRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse>} - The async response
      */
-    public CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse> updateEmployeeWorkEligibilityRequest(
-            String id, String subResourceId,
-            String xAccountId, HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto,
-            Optional<Options> options) {
-        HrisUpdateEmployeeWorkEligibilityRequestRequest request =
-            HrisUpdateEmployeeWorkEligibilityRequestRequest
-                .builder()
-                .id(id)
-                .subResourceId(subResourceId)
-                .xAccountId(xAccountId)
-                .hrisCreateWorkEligibilityRequestDto(hrisCreateWorkEligibilityRequestDto)
-                .build();
+    public CompletableFuture<HrisUpdateEmployeeWorkEligibilityRequestResponse> updateEmployeeWorkEligibilityRequest(HrisUpdateEmployeeWorkEligibilityRequestRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisUpdateEmployeeWorkEligibilityRequestRequest, HrisUpdateEmployeeWorkEligibilityRequestResponse> operation
               = new HrisUpdateEmployeeWorkEligibilityRequest.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
@@ -1684,8 +1665,8 @@ public class AsyncHris {
             String xAccountId, String id,
             HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto) {
         return createEmployeeEmployment(
-                xAccountId, id, hrisCreateEmploymentRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                hrisCreateEmploymentRequestDto, Optional.empty());
     }
 
     /**
@@ -1693,18 +1674,21 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param hrisCreateEmploymentRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisCreateEmployeeEmploymentResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeEmploymentResponse> createEmployeeEmployment(
             String xAccountId, String id,
-            HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto, Optional<Options> options) {
+            Optional<String> prefer, HrisCreateEmploymentRequestDto hrisCreateEmploymentRequestDto,
+            Optional<Options> options) {
         HrisCreateEmployeeEmploymentRequest request =
             HrisCreateEmployeeEmploymentRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .hrisCreateEmploymentRequestDto(hrisCreateEmploymentRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeEmploymentRequest, HrisCreateEmployeeEmploymentResponse> operation
@@ -1764,42 +1748,21 @@ public class AsyncHris {
     /**
      * Update Employee Employment
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param hrisUpdateEmploymentRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<HrisUpdateEmployeeEmploymentResponse>} - The async response
      */
-    public CompletableFuture<HrisUpdateEmployeeEmploymentResponse> updateEmployeeEmployment(
-            String xAccountId, String id,
-            String subResourceId, HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) {
-        return updateEmployeeEmployment(
-                xAccountId, id, subResourceId,
-                hrisUpdateEmploymentRequestDto, Optional.empty());
+    public CompletableFuture<HrisUpdateEmployeeEmploymentResponse> updateEmployeeEmployment(HrisUpdateEmployeeEmploymentRequest request) {
+        return updateEmployeeEmployment(request, Optional.empty());
     }
 
     /**
      * Update Employee Employment
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param hrisUpdateEmploymentRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<HrisUpdateEmployeeEmploymentResponse>} - The async response
      */
-    public CompletableFuture<HrisUpdateEmployeeEmploymentResponse> updateEmployeeEmployment(
-            String xAccountId, String id,
-            String subResourceId, HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto,
-            Optional<Options> options) {
-        HrisUpdateEmployeeEmploymentRequest request =
-            HrisUpdateEmployeeEmploymentRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .hrisUpdateEmploymentRequestDto(hrisUpdateEmploymentRequestDto)
-                .build();
+    public CompletableFuture<HrisUpdateEmployeeEmploymentResponse> updateEmployeeEmployment(HrisUpdateEmployeeEmploymentRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisUpdateEmployeeEmploymentRequest, HrisUpdateEmployeeEmploymentResponse> operation
               = new HrisUpdateEmployeeEmployment.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
@@ -2994,8 +2957,8 @@ public class AsyncHris {
             String xAccountId, String id,
             EntitySkillsCreateRequestDto entitySkillsCreateRequestDto) {
         return createEmployeeSkill(
-                xAccountId, id, entitySkillsCreateRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                entitySkillsCreateRequestDto, Optional.empty());
     }
 
     /**
@@ -3003,18 +2966,21 @@ public class AsyncHris {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param entitySkillsCreateRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<HrisCreateEmployeeSkillResponse>} - The async response
      */
     public CompletableFuture<HrisCreateEmployeeSkillResponse> createEmployeeSkill(
             String xAccountId, String id,
-            EntitySkillsCreateRequestDto entitySkillsCreateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, EntitySkillsCreateRequestDto entitySkillsCreateRequestDto,
+            Optional<Options> options) {
         HrisCreateEmployeeSkillRequest request =
             HrisCreateEmployeeSkillRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .entitySkillsCreateRequestDto(entitySkillsCreateRequestDto)
                 .build();
         AsyncRequestOperation<HrisCreateEmployeeSkillRequest, HrisCreateEmployeeSkillResponse> operation
@@ -3146,42 +3112,21 @@ public class AsyncHris {
     /**
      * Update Employee Task
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param updateTaskRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @return {@code CompletableFuture<HrisUpdateEmployeeTaskResponse>} - The async response
      */
-    public CompletableFuture<HrisUpdateEmployeeTaskResponse> updateEmployeeTask(
-            String xAccountId, String id,
-            String subResourceId, UpdateTaskRequestDto updateTaskRequestDto) {
-        return updateEmployeeTask(
-                xAccountId, id, subResourceId,
-                updateTaskRequestDto, Optional.empty());
+    public CompletableFuture<HrisUpdateEmployeeTaskResponse> updateEmployeeTask(HrisUpdateEmployeeTaskRequest request) {
+        return updateEmployeeTask(request, Optional.empty());
     }
 
     /**
      * Update Employee Task
      * 
-     * @param xAccountId The account identifier
-     * @param id 
-     * @param subResourceId 
-     * @param updateTaskRequestDto 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<HrisUpdateEmployeeTaskResponse>} - The async response
      */
-    public CompletableFuture<HrisUpdateEmployeeTaskResponse> updateEmployeeTask(
-            String xAccountId, String id,
-            String subResourceId, UpdateTaskRequestDto updateTaskRequestDto,
-            Optional<Options> options) {
-        HrisUpdateEmployeeTaskRequest request =
-            HrisUpdateEmployeeTaskRequest
-                .builder()
-                .xAccountId(xAccountId)
-                .id(id)
-                .subResourceId(subResourceId)
-                .updateTaskRequestDto(updateTaskRequestDto)
-                .build();
+    public CompletableFuture<HrisUpdateEmployeeTaskResponse> updateEmployeeTask(HrisUpdateEmployeeTaskRequest request, Optional<Options> options) {
         AsyncRequestOperation<HrisUpdateEmployeeTaskRequest, HrisUpdateEmployeeTaskResponse> operation
               = new HrisUpdateEmployeeTask.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),

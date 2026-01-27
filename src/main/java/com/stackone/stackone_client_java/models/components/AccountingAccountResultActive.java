@@ -84,8 +84,8 @@ public class AccountingAccountResultActive {
 
         public _Deserializer() {
             super(AccountingAccountResultActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<AccountingAccountResultActive2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<AccountingAccountResultActive2>() {}, JsonShape.DEFAULT));
         }
     }
     

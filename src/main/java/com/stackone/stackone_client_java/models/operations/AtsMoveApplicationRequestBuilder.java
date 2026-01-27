@@ -19,6 +19,7 @@ public class AtsMoveApplicationRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AtsMoveApplicationRequestDto atsMoveApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class AtsMoveApplicationRequestBuilder {
     public AtsMoveApplicationRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AtsMoveApplicationRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsMoveApplicationRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class AtsMoveApplicationRequestBuilder {
 
         AtsMoveApplicationRequest request = new AtsMoveApplicationRequest(xAccountId,
             id,
+            prefer,
             atsMoveApplicationRequestDto);
 
         return request;

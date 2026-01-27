@@ -20,6 +20,7 @@ public class IamDeleteUserRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -40,6 +41,18 @@ public class IamDeleteUserRequestBuilder {
         return this;
     }
                 
+    public IamDeleteUserRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public IamDeleteUserRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+                
     public IamDeleteUserRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -56,7 +69,8 @@ public class IamDeleteUserRequestBuilder {
     private IamDeleteUserRequest buildRequest() {
 
         IamDeleteUserRequest request = new IamDeleteUserRequest(xAccountId,
-            id);
+            id,
+            prefer);
 
         return request;
     }

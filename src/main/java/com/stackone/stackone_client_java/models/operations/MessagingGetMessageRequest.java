@@ -53,6 +53,13 @@ public class MessagingGetMessageRequest {
     @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")
     private Optional<? extends MessagingGetMessageQueryParamFilter> filter;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public MessagingGetMessageRequest(
             String xAccountId,
@@ -60,26 +67,30 @@ public class MessagingGetMessageRequest {
             JsonNullable<Boolean> raw,
             JsonNullable<? extends Map<String, Object>> proxy,
             JsonNullable<String> fields,
-            Optional<? extends MessagingGetMessageQueryParamFilter> filter) {
+            Optional<? extends MessagingGetMessageQueryParamFilter> filter,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
         Utils.checkNotNull(proxy, "proxy");
         Utils.checkNotNull(fields, "fields");
         Utils.checkNotNull(filter, "filter");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.raw = raw;
         this.proxy = proxy;
         this.fields = fields;
         this.filter = filter;
+        this.prefer = prefer;
     }
     
     public MessagingGetMessageRequest(
             String xAccountId,
             String id) {
         this(xAccountId, id, JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -127,6 +138,15 @@ public class MessagingGetMessageRequest {
     @JsonIgnore
     public Optional<MessagingGetMessageQueryParamFilter> filter() {
         return (Optional<MessagingGetMessageQueryParamFilter>) filter;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -222,6 +242,27 @@ public class MessagingGetMessageRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MessagingGetMessageRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public MessagingGetMessageRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -237,14 +278,16 @@ public class MessagingGetMessageRequest {
             Utils.enhancedDeepEquals(this.raw, other.raw) &&
             Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
             Utils.enhancedDeepEquals(this.fields, other.fields) &&
-            Utils.enhancedDeepEquals(this.filter, other.filter);
+            Utils.enhancedDeepEquals(this.filter, other.filter) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             xAccountId, id, raw,
-            proxy, fields, filter);
+            proxy, fields, filter,
+            prefer);
     }
     
     @Override
@@ -255,7 +298,8 @@ public class MessagingGetMessageRequest {
                 "raw", raw,
                 "proxy", proxy,
                 "fields", fields,
-                "filter", filter);
+                "filter", filter,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -272,6 +316,8 @@ public class MessagingGetMessageRequest {
         private JsonNullable<String> fields = JsonNullable.undefined();
 
         private Optional<? extends MessagingGetMessageQueryParamFilter> filter = Optional.empty();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -370,11 +416,33 @@ public class MessagingGetMessageRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public MessagingGetMessageRequest build() {
 
             return new MessagingGetMessageRequest(
                 xAccountId, id, raw,
-                proxy, fields, filter);
+                proxy, fields, filter,
+                prefer);
         }
 
     }

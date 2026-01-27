@@ -62,11 +62,18 @@ public class ActionMetaItem {
     private JsonNullable<? extends List<AuthenticationMetaItem>> authentication;
 
     /**
-     * The operation details for the action
+     * The action details for the action
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("operation_details")
-    private JsonNullable<? extends Map<String, Object>> operationDetails;
+    @JsonProperty("action_details")
+    private JsonNullable<? extends Map<String, Object>> actionDetails;
+
+    /**
+     * The required scopes for the action
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("required_scopes")
+    private JsonNullable<? extends List<String>> requiredScopes;
 
     @JsonCreator
     public ActionMetaItem(
@@ -76,27 +83,30 @@ public class ActionMetaItem {
             @JsonProperty("schema_type") JsonNullable<String> schemaType,
             @JsonProperty("tags") JsonNullable<? extends List<String>> tags,
             @JsonProperty("authentication") JsonNullable<? extends List<AuthenticationMetaItem>> authentication,
-            @JsonProperty("operation_details") JsonNullable<? extends Map<String, Object>> operationDetails) {
+            @JsonProperty("action_details") JsonNullable<? extends Map<String, Object>> actionDetails,
+            @JsonProperty("required_scopes") JsonNullable<? extends List<String>> requiredScopes) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(label, "label");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(schemaType, "schemaType");
         Utils.checkNotNull(tags, "tags");
         Utils.checkNotNull(authentication, "authentication");
-        Utils.checkNotNull(operationDetails, "operationDetails");
+        Utils.checkNotNull(actionDetails, "actionDetails");
+        Utils.checkNotNull(requiredScopes, "requiredScopes");
         this.id = id;
         this.label = label;
         this.description = description;
         this.schemaType = schemaType;
         this.tags = tags;
         this.authentication = authentication;
-        this.operationDetails = operationDetails;
+        this.actionDetails = actionDetails;
+        this.requiredScopes = requiredScopes;
     }
     
     public ActionMetaItem() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -150,12 +160,21 @@ public class ActionMetaItem {
     }
 
     /**
-     * The operation details for the action
+     * The action details for the action
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Map<String, Object>> operationDetails() {
-        return (JsonNullable<Map<String, Object>>) operationDetails;
+    public JsonNullable<Map<String, Object>> actionDetails() {
+        return (JsonNullable<Map<String, Object>>) actionDetails;
+    }
+
+    /**
+     * The required scopes for the action
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<String>> requiredScopes() {
+        return (JsonNullable<List<String>>) requiredScopes;
     }
 
     public static Builder builder() {
@@ -272,20 +291,38 @@ public class ActionMetaItem {
     }
 
     /**
-     * The operation details for the action
+     * The action details for the action
      */
-    public ActionMetaItem withOperationDetails(Map<String, Object> operationDetails) {
-        Utils.checkNotNull(operationDetails, "operationDetails");
-        this.operationDetails = JsonNullable.of(operationDetails);
+    public ActionMetaItem withActionDetails(Map<String, Object> actionDetails) {
+        Utils.checkNotNull(actionDetails, "actionDetails");
+        this.actionDetails = JsonNullable.of(actionDetails);
         return this;
     }
 
     /**
-     * The operation details for the action
+     * The action details for the action
      */
-    public ActionMetaItem withOperationDetails(JsonNullable<? extends Map<String, Object>> operationDetails) {
-        Utils.checkNotNull(operationDetails, "operationDetails");
-        this.operationDetails = operationDetails;
+    public ActionMetaItem withActionDetails(JsonNullable<? extends Map<String, Object>> actionDetails) {
+        Utils.checkNotNull(actionDetails, "actionDetails");
+        this.actionDetails = actionDetails;
+        return this;
+    }
+
+    /**
+     * The required scopes for the action
+     */
+    public ActionMetaItem withRequiredScopes(List<String> requiredScopes) {
+        Utils.checkNotNull(requiredScopes, "requiredScopes");
+        this.requiredScopes = JsonNullable.of(requiredScopes);
+        return this;
+    }
+
+    /**
+     * The required scopes for the action
+     */
+    public ActionMetaItem withRequiredScopes(JsonNullable<? extends List<String>> requiredScopes) {
+        Utils.checkNotNull(requiredScopes, "requiredScopes");
+        this.requiredScopes = requiredScopes;
         return this;
     }
 
@@ -305,7 +342,8 @@ public class ActionMetaItem {
             Utils.enhancedDeepEquals(this.schemaType, other.schemaType) &&
             Utils.enhancedDeepEquals(this.tags, other.tags) &&
             Utils.enhancedDeepEquals(this.authentication, other.authentication) &&
-            Utils.enhancedDeepEquals(this.operationDetails, other.operationDetails);
+            Utils.enhancedDeepEquals(this.actionDetails, other.actionDetails) &&
+            Utils.enhancedDeepEquals(this.requiredScopes, other.requiredScopes);
     }
     
     @Override
@@ -313,7 +351,7 @@ public class ActionMetaItem {
         return Utils.enhancedHash(
             id, label, description,
             schemaType, tags, authentication,
-            operationDetails);
+            actionDetails, requiredScopes);
     }
     
     @Override
@@ -325,7 +363,8 @@ public class ActionMetaItem {
                 "schemaType", schemaType,
                 "tags", tags,
                 "authentication", authentication,
-                "operationDetails", operationDetails);
+                "actionDetails", actionDetails,
+                "requiredScopes", requiredScopes);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -343,7 +382,9 @@ public class ActionMetaItem {
 
         private JsonNullable<? extends List<AuthenticationMetaItem>> authentication = JsonNullable.undefined();
 
-        private JsonNullable<? extends Map<String, Object>> operationDetails = JsonNullable.undefined();
+        private JsonNullable<? extends Map<String, Object>> actionDetails = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<String>> requiredScopes = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -465,20 +506,39 @@ public class ActionMetaItem {
 
 
         /**
-         * The operation details for the action
+         * The action details for the action
          */
-        public Builder operationDetails(Map<String, Object> operationDetails) {
-            Utils.checkNotNull(operationDetails, "operationDetails");
-            this.operationDetails = JsonNullable.of(operationDetails);
+        public Builder actionDetails(Map<String, Object> actionDetails) {
+            Utils.checkNotNull(actionDetails, "actionDetails");
+            this.actionDetails = JsonNullable.of(actionDetails);
             return this;
         }
 
         /**
-         * The operation details for the action
+         * The action details for the action
          */
-        public Builder operationDetails(JsonNullable<? extends Map<String, Object>> operationDetails) {
-            Utils.checkNotNull(operationDetails, "operationDetails");
-            this.operationDetails = operationDetails;
+        public Builder actionDetails(JsonNullable<? extends Map<String, Object>> actionDetails) {
+            Utils.checkNotNull(actionDetails, "actionDetails");
+            this.actionDetails = actionDetails;
+            return this;
+        }
+
+
+        /**
+         * The required scopes for the action
+         */
+        public Builder requiredScopes(List<String> requiredScopes) {
+            Utils.checkNotNull(requiredScopes, "requiredScopes");
+            this.requiredScopes = JsonNullable.of(requiredScopes);
+            return this;
+        }
+
+        /**
+         * The required scopes for the action
+         */
+        public Builder requiredScopes(JsonNullable<? extends List<String>> requiredScopes) {
+            Utils.checkNotNull(requiredScopes, "requiredScopes");
+            this.requiredScopes = requiredScopes;
             return this;
         }
 
@@ -487,7 +547,7 @@ public class ActionMetaItem {
             return new ActionMetaItem(
                 id, label, description,
                 schemaType, tags, authentication,
-                operationDetails);
+                actionDetails, requiredScopes);
         }
 
     }

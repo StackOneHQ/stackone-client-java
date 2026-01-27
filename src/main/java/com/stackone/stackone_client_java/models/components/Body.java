@@ -89,9 +89,9 @@ public class Body {
 
         public _Deserializer() {
             super(Body.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<List<Integer>>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<List<Integer>>() {}, JsonShape.DEFAULT));
         }
     }
     

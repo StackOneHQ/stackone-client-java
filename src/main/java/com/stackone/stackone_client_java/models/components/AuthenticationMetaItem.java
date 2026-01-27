@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -36,21 +38,32 @@ public class AuthenticationMetaItem {
     @JsonProperty("key")
     private JsonNullable<String> key;
 
+    /**
+     * The required scopes for this authentication method
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("required_scopes")
+    private JsonNullable<? extends List<String>> requiredScopes;
+
     @JsonCreator
     public AuthenticationMetaItem(
             @JsonProperty("type") JsonNullable<String> type,
             @JsonProperty("label") JsonNullable<String> label,
-            @JsonProperty("key") JsonNullable<String> key) {
+            @JsonProperty("key") JsonNullable<String> key,
+            @JsonProperty("required_scopes") JsonNullable<? extends List<String>> requiredScopes) {
         Utils.checkNotNull(type, "type");
         Utils.checkNotNull(label, "label");
         Utils.checkNotNull(key, "key");
+        Utils.checkNotNull(requiredScopes, "requiredScopes");
         this.type = type;
         this.label = label;
         this.key = key;
+        this.requiredScopes = requiredScopes;
     }
     
     public AuthenticationMetaItem() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -75,6 +88,15 @@ public class AuthenticationMetaItem {
     @JsonIgnore
     public JsonNullable<String> key() {
         return key;
+    }
+
+    /**
+     * The required scopes for this authentication method
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<String>> requiredScopes() {
+        return (JsonNullable<List<String>>) requiredScopes;
     }
 
     public static Builder builder() {
@@ -136,6 +158,24 @@ public class AuthenticationMetaItem {
         return this;
     }
 
+    /**
+     * The required scopes for this authentication method
+     */
+    public AuthenticationMetaItem withRequiredScopes(List<String> requiredScopes) {
+        Utils.checkNotNull(requiredScopes, "requiredScopes");
+        this.requiredScopes = JsonNullable.of(requiredScopes);
+        return this;
+    }
+
+    /**
+     * The required scopes for this authentication method
+     */
+    public AuthenticationMetaItem withRequiredScopes(JsonNullable<? extends List<String>> requiredScopes) {
+        Utils.checkNotNull(requiredScopes, "requiredScopes");
+        this.requiredScopes = requiredScopes;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -148,13 +188,15 @@ public class AuthenticationMetaItem {
         return 
             Utils.enhancedDeepEquals(this.type, other.type) &&
             Utils.enhancedDeepEquals(this.label, other.label) &&
-            Utils.enhancedDeepEquals(this.key, other.key);
+            Utils.enhancedDeepEquals(this.key, other.key) &&
+            Utils.enhancedDeepEquals(this.requiredScopes, other.requiredScopes);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            type, label, key);
+            type, label, key,
+            requiredScopes);
     }
     
     @Override
@@ -162,7 +204,8 @@ public class AuthenticationMetaItem {
         return Utils.toString(AuthenticationMetaItem.class,
                 "type", type,
                 "label", label,
-                "key", key);
+                "key", key,
+                "requiredScopes", requiredScopes);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -173,6 +216,8 @@ public class AuthenticationMetaItem {
         private JsonNullable<String> label = JsonNullable.undefined();
 
         private JsonNullable<String> key = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<String>> requiredScopes = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -235,10 +280,30 @@ public class AuthenticationMetaItem {
             return this;
         }
 
+
+        /**
+         * The required scopes for this authentication method
+         */
+        public Builder requiredScopes(List<String> requiredScopes) {
+            Utils.checkNotNull(requiredScopes, "requiredScopes");
+            this.requiredScopes = JsonNullable.of(requiredScopes);
+            return this;
+        }
+
+        /**
+         * The required scopes for this authentication method
+         */
+        public Builder requiredScopes(JsonNullable<? extends List<String>> requiredScopes) {
+            Utils.checkNotNull(requiredScopes, "requiredScopes");
+            this.requiredScopes = requiredScopes;
+            return this;
+        }
+
         public AuthenticationMetaItem build() {
 
             return new AuthenticationMetaItem(
-                type, label, key);
+                type, label, key,
+                requiredScopes);
         }
 
     }

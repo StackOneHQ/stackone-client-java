@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsUpdateJobRequest {
@@ -23,6 +24,13 @@ public class AtsUpdateJobRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsUpdateJobRequestDto atsUpdateJobRequestDto;
@@ -31,13 +39,24 @@ public class AtsUpdateJobRequest {
     public AtsUpdateJobRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AtsUpdateJobRequestDto atsUpdateJobRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsUpdateJobRequestDto, "atsUpdateJobRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.atsUpdateJobRequestDto = atsUpdateJobRequestDto;
+    }
+    
+    public AtsUpdateJobRequest(
+            String xAccountId,
+            String id,
+            AtsUpdateJobRequestDto atsUpdateJobRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            atsUpdateJobRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AtsUpdateJobRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AtsUpdateJobRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateJobRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUpdateJobRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsUpdateJobRequest withAtsUpdateJobRequestDto(AtsUpdateJobRequestDto atsUpdateJobRequestDto) {
         Utils.checkNotNull(atsUpdateJobRequestDto, "atsUpdateJobRequestDto");
         this.atsUpdateJobRequestDto = atsUpdateJobRequestDto;
@@ -96,13 +145,15 @@ public class AtsUpdateJobRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsUpdateJobRequestDto, other.atsUpdateJobRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, atsUpdateJobRequestDto);
+            xAccountId, id, prefer,
+            atsUpdateJobRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AtsUpdateJobRequest {
         return Utils.toString(AtsUpdateJobRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "atsUpdateJobRequestDto", atsUpdateJobRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AtsUpdateJobRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsUpdateJobRequestDto atsUpdateJobRequestDto;
 
@@ -144,6 +198,27 @@ public class AtsUpdateJobRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsUpdateJobRequestDto(AtsUpdateJobRequestDto atsUpdateJobRequestDto) {
             Utils.checkNotNull(atsUpdateJobRequestDto, "atsUpdateJobRequestDto");
             this.atsUpdateJobRequestDto = atsUpdateJobRequestDto;
@@ -153,7 +228,8 @@ public class AtsUpdateJobRequest {
         public AtsUpdateJobRequest build() {
 
             return new AtsUpdateJobRequest(
-                xAccountId, id, atsUpdateJobRequestDto);
+                xAccountId, id, prefer,
+                atsUpdateJobRequestDto);
         }
 
     }

@@ -18,6 +18,7 @@ import java.util.Optional;
 public class AtsCreateApplicationRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private AtsCreateApplicationRequestDto atsCreateApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class AtsCreateApplicationRequestBuilder {
     public AtsCreateApplicationRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public AtsCreateApplicationRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsCreateApplicationRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class AtsCreateApplicationRequestBuilder {
     private AtsCreateApplicationRequest buildRequest() {
 
         AtsCreateApplicationRequest request = new AtsCreateApplicationRequest(xAccountId,
+            prefer,
             atsCreateApplicationRequestDto);
 
         return request;

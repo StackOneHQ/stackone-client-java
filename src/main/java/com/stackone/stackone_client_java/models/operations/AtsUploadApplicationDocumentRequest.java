@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsUploadApplicationDocumentRequest {
@@ -23,6 +24,13 @@ public class AtsUploadApplicationDocumentRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")
     private String id;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto;
@@ -31,13 +39,24 @@ public class AtsUploadApplicationDocumentRequest {
     public AtsUploadApplicationDocumentRequest(
             String xAccountId,
             String id,
+            Optional<String> prefer,
             AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsDocumentsUploadRequestDto, "atsDocumentsUploadRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
+        this.prefer = prefer;
         this.atsDocumentsUploadRequestDto = atsDocumentsUploadRequestDto;
+    }
+    
+    public AtsUploadApplicationDocumentRequest(
+            String xAccountId,
+            String id,
+            AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) {
+        this(xAccountId, id, Optional.empty(),
+            atsDocumentsUploadRequestDto);
     }
 
     /**
@@ -51,6 +70,15 @@ public class AtsUploadApplicationDocumentRequest {
     @JsonIgnore
     public String id() {
         return id;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -78,6 +106,27 @@ public class AtsUploadApplicationDocumentRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUploadApplicationDocumentRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsUploadApplicationDocumentRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsUploadApplicationDocumentRequest withAtsDocumentsUploadRequestDto(AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) {
         Utils.checkNotNull(atsDocumentsUploadRequestDto, "atsDocumentsUploadRequestDto");
         this.atsDocumentsUploadRequestDto = atsDocumentsUploadRequestDto;
@@ -96,13 +145,15 @@ public class AtsUploadApplicationDocumentRequest {
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsDocumentsUploadRequestDto, other.atsDocumentsUploadRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, id, atsDocumentsUploadRequestDto);
+            xAccountId, id, prefer,
+            atsDocumentsUploadRequestDto);
     }
     
     @Override
@@ -110,6 +161,7 @@ public class AtsUploadApplicationDocumentRequest {
         return Utils.toString(AtsUploadApplicationDocumentRequest.class,
                 "xAccountId", xAccountId,
                 "id", id,
+                "prefer", prefer,
                 "atsDocumentsUploadRequestDto", atsDocumentsUploadRequestDto);
     }
 
@@ -119,6 +171,8 @@ public class AtsUploadApplicationDocumentRequest {
         private String xAccountId;
 
         private String id;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto;
 
@@ -144,6 +198,27 @@ public class AtsUploadApplicationDocumentRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsDocumentsUploadRequestDto(AtsDocumentsUploadRequestDto atsDocumentsUploadRequestDto) {
             Utils.checkNotNull(atsDocumentsUploadRequestDto, "atsDocumentsUploadRequestDto");
             this.atsDocumentsUploadRequestDto = atsDocumentsUploadRequestDto;
@@ -153,7 +228,8 @@ public class AtsUploadApplicationDocumentRequest {
         public AtsUploadApplicationDocumentRequest build() {
 
             return new AtsUploadApplicationDocumentRequest(
-                xAccountId, id, atsDocumentsUploadRequestDto);
+                xAccountId, id, prefer,
+                atsDocumentsUploadRequestDto);
         }
 
     }

@@ -18,6 +18,7 @@ import java.util.Optional;
 public class MarketingCreateEmailTemplateRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class MarketingCreateEmailTemplateRequestBuilder {
     public MarketingCreateEmailTemplateRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public MarketingCreateEmailTemplateRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingCreateEmailTemplateRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class MarketingCreateEmailTemplateRequestBuilder {
     private MarketingCreateEmailTemplateRequest buildRequest() {
 
         MarketingCreateEmailTemplateRequest request = new MarketingCreateEmailTemplateRequest(xAccountId,
+            prefer,
             marketingCreateEmailTemplateRequestDto);
 
         return request;

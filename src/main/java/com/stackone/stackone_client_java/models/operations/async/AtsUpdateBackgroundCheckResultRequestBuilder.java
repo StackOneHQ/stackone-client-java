@@ -21,6 +21,7 @@ public class AtsUpdateBackgroundCheckResultRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AtsUpdateBackgroundCheckResultRequestDto atsUpdateBackgroundCheckResultRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class AtsUpdateBackgroundCheckResultRequestBuilder {
     public AtsUpdateBackgroundCheckResultRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AtsUpdateBackgroundCheckResultRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsUpdateBackgroundCheckResultRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class AtsUpdateBackgroundCheckResultRequestBuilder {
 
         AtsUpdateBackgroundCheckResultRequest request = new AtsUpdateBackgroundCheckResultRequest(xAccountId,
             id,
+            prefer,
             atsUpdateBackgroundCheckResultRequestDto);
 
         return request;

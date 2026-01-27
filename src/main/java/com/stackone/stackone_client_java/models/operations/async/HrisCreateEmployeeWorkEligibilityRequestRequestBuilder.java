@@ -21,6 +21,7 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
 
     private String id;
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private HrisCreateWorkEligibilityRequestDto hrisCreateWorkEligibilityRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
     public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public HrisCreateEmployeeWorkEligibilityRequestRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class HrisCreateEmployeeWorkEligibilityRequestRequestBuilder {
 
         HrisCreateEmployeeWorkEligibilityRequestRequest request = new HrisCreateEmployeeWorkEligibilityRequestRequest(id,
             xAccountId,
+            prefer,
             hrisCreateWorkEligibilityRequestDto);
 
         return request;

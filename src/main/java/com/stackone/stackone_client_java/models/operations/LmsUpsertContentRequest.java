@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class LmsUpsertContentRequest {
@@ -19,6 +20,13 @@ public class LmsUpsertContentRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private LmsUpsertContentRequestDto lmsUpsertContentRequestDto;
@@ -26,11 +34,20 @@ public class LmsUpsertContentRequest {
     @JsonCreator
     public LmsUpsertContentRequest(
             String xAccountId,
+            Optional<String> prefer,
             LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(lmsUpsertContentRequestDto, "lmsUpsertContentRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.lmsUpsertContentRequestDto = lmsUpsertContentRequestDto;
+    }
+    
+    public LmsUpsertContentRequest(
+            String xAccountId,
+            LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
+        this(xAccountId, Optional.empty(), lmsUpsertContentRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class LmsUpsertContentRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class LmsUpsertContentRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsUpsertContentRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public LmsUpsertContentRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public LmsUpsertContentRequest withLmsUpsertContentRequestDto(LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
         Utils.checkNotNull(lmsUpsertContentRequestDto, "lmsUpsertContentRequestDto");
         this.lmsUpsertContentRequestDto = lmsUpsertContentRequestDto;
@@ -77,19 +124,21 @@ public class LmsUpsertContentRequest {
         LmsUpsertContentRequest other = (LmsUpsertContentRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.lmsUpsertContentRequestDto, other.lmsUpsertContentRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, lmsUpsertContentRequestDto);
+            xAccountId, prefer, lmsUpsertContentRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(LmsUpsertContentRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "lmsUpsertContentRequestDto", lmsUpsertContentRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class LmsUpsertContentRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private LmsUpsertContentRequestDto lmsUpsertContentRequestDto;
 
@@ -115,6 +166,27 @@ public class LmsUpsertContentRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder lmsUpsertContentRequestDto(LmsUpsertContentRequestDto lmsUpsertContentRequestDto) {
             Utils.checkNotNull(lmsUpsertContentRequestDto, "lmsUpsertContentRequestDto");
             this.lmsUpsertContentRequestDto = lmsUpsertContentRequestDto;
@@ -124,7 +196,7 @@ public class LmsUpsertContentRequest {
         public LmsUpsertContentRequest build() {
 
             return new LmsUpsertContentRequest(
-                xAccountId, lmsUpsertContentRequestDto);
+                xAccountId, prefer, lmsUpsertContentRequestDto);
         }
 
     }

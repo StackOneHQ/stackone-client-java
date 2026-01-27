@@ -19,6 +19,7 @@ public class MarketingUpdatePushTemplateRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class MarketingUpdatePushTemplateRequestBuilder {
     public MarketingUpdatePushTemplateRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public MarketingUpdatePushTemplateRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingUpdatePushTemplateRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class MarketingUpdatePushTemplateRequestBuilder {
 
         MarketingUpdatePushTemplateRequest request = new MarketingUpdatePushTemplateRequest(xAccountId,
             id,
+            prefer,
             marketingCreatePushTemplateRequestDto);
 
         return request;

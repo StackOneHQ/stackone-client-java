@@ -18,6 +18,7 @@ import java.util.Optional;
 public class MarketingCreateOmniChannelTemplateRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class MarketingCreateOmniChannelTemplateRequestBuilder {
     public MarketingCreateOmniChannelTemplateRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public MarketingCreateOmniChannelTemplateRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingCreateOmniChannelTemplateRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class MarketingCreateOmniChannelTemplateRequestBuilder {
     private MarketingCreateOmniChannelTemplateRequest buildRequest() {
 
         MarketingCreateOmniChannelTemplateRequest request = new MarketingCreateOmniChannelTemplateRequest(xAccountId,
+            prefer,
             marketingCreateTemplateRequestDto);
 
         return request;

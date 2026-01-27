@@ -84,8 +84,8 @@ public class FoldersHasChildren {
 
         public _Deserializer() {
             super(FoldersHasChildren.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<FoldersHasChildren2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<FoldersHasChildren2>() {}, JsonShape.DEFAULT));
         }
     }
     

@@ -19,6 +19,7 @@ public class CrmUpdateContactRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private CrmCreateContactRequestDto crmCreateContactRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class CrmUpdateContactRequestBuilder {
     public CrmUpdateContactRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public CrmUpdateContactRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public CrmUpdateContactRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class CrmUpdateContactRequestBuilder {
 
         CrmUpdateContactRequest request = new CrmUpdateContactRequest(xAccountId,
             id,
+            prefer,
             crmCreateContactRequestDto);
 
         return request;

@@ -193,25 +193,28 @@ public class Marketing {
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateEmailTemplateResponse createEmailTemplate(String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) {
-        return createEmailTemplate(xAccountId, marketingCreateEmailTemplateRequestDto, Optional.empty());
+        return createEmailTemplate(xAccountId, Optional.empty(), marketingCreateEmailTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Email Templates
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateEmailTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateEmailTemplateResponse createEmailTemplate(
-            String xAccountId, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto, Optional<Options> options) {
         MarketingCreateEmailTemplateRequest request =
             MarketingCreateEmailTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateEmailTemplateRequest, MarketingCreateEmailTemplateResponse> operation
@@ -274,8 +277,8 @@ public class Marketing {
     public MarketingUpdateEmailTemplateResponse updateEmailTemplate(
             String xAccountId, String id,
             MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto) {
-        return updateEmailTemplate(xAccountId, id, marketingCreateEmailTemplateRequestDto,
-            Optional.empty());
+        return updateEmailTemplate(xAccountId, id, Optional.empty(),
+            marketingCreateEmailTemplateRequestDto, Optional.empty());
     }
 
     /**
@@ -283,6 +286,7 @@ public class Marketing {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateEmailTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -290,12 +294,14 @@ public class Marketing {
      */
     public MarketingUpdateEmailTemplateResponse updateEmailTemplate(
             String xAccountId, String id,
-            MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, MarketingCreateEmailTemplateRequestDto marketingCreateEmailTemplateRequestDto,
+            Optional<Options> options) {
         MarketingUpdateEmailTemplateRequest request =
             MarketingUpdateEmailTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .marketingCreateEmailTemplateRequestDto(marketingCreateEmailTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateEmailTemplateRequest, MarketingUpdateEmailTemplateResponse> operation
@@ -355,25 +361,28 @@ public class Marketing {
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateInAppTemplateResponse createInAppTemplate(String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
-        return createInAppTemplate(xAccountId, marketingCreateInAppTemplateRequestDto, Optional.empty());
+        return createInAppTemplate(xAccountId, Optional.empty(), marketingCreateInAppTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create In-App Template
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateInAppTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateInAppTemplateResponse createInAppTemplate(
-            String xAccountId, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto, Optional<Options> options) {
         MarketingCreateInAppTemplateRequest request =
             MarketingCreateInAppTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateInAppTemplateRequest, MarketingCreateInAppTemplateResponse> operation
@@ -436,8 +445,8 @@ public class Marketing {
     public MarketingUpdateInAppTemplateResponse updateInAppTemplate(
             String xAccountId, String id,
             MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto) {
-        return updateInAppTemplate(xAccountId, id, marketingCreateInAppTemplateRequestDto,
-            Optional.empty());
+        return updateInAppTemplate(xAccountId, id, Optional.empty(),
+            marketingCreateInAppTemplateRequestDto, Optional.empty());
     }
 
     /**
@@ -445,6 +454,7 @@ public class Marketing {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateInAppTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -452,12 +462,14 @@ public class Marketing {
      */
     public MarketingUpdateInAppTemplateResponse updateInAppTemplate(
             String xAccountId, String id,
-            MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, MarketingCreateInAppTemplateRequestDto marketingCreateInAppTemplateRequestDto,
+            Optional<Options> options) {
         MarketingUpdateInAppTemplateRequest request =
             MarketingUpdateInAppTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .marketingCreateInAppTemplateRequestDto(marketingCreateInAppTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateInAppTemplateRequest, MarketingUpdateInAppTemplateResponse> operation
@@ -517,25 +529,28 @@ public class Marketing {
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateSmsTemplateResponse createSmsTemplate(String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
-        return createSmsTemplate(xAccountId, marketingCreateSmsTemplateRequestDto, Optional.empty());
+        return createSmsTemplate(xAccountId, Optional.empty(), marketingCreateSmsTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create SMS Template
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateSmsTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateSmsTemplateResponse createSmsTemplate(
-            String xAccountId, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto, Optional<Options> options) {
         MarketingCreateSmsTemplateRequest request =
             MarketingCreateSmsTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateSmsTemplateRequest, MarketingCreateSmsTemplateResponse> operation
@@ -598,8 +613,8 @@ public class Marketing {
     public MarketingUpdateSmsTemplateResponse updateSmsTemplate(
             String xAccountId, String id,
             MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto) {
-        return updateSmsTemplate(xAccountId, id, marketingCreateSmsTemplateRequestDto,
-            Optional.empty());
+        return updateSmsTemplate(xAccountId, id, Optional.empty(),
+            marketingCreateSmsTemplateRequestDto, Optional.empty());
     }
 
     /**
@@ -607,6 +622,7 @@ public class Marketing {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateSmsTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -614,12 +630,14 @@ public class Marketing {
      */
     public MarketingUpdateSmsTemplateResponse updateSmsTemplate(
             String xAccountId, String id,
-            MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, MarketingCreateSmsTemplateRequestDto marketingCreateSmsTemplateRequestDto,
+            Optional<Options> options) {
         MarketingUpdateSmsTemplateRequest request =
             MarketingUpdateSmsTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .marketingCreateSmsTemplateRequestDto(marketingCreateSmsTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateSmsTemplateRequest, MarketingUpdateSmsTemplateResponse> operation
@@ -689,13 +707,15 @@ public class Marketing {
      */
     @Deprecated
     public MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(String xAccountId, MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
-        return createOmniChannelTemplate(xAccountId, marketingCreateTemplateRequestDto, Optional.empty());
+        return createOmniChannelTemplate(xAccountId, Optional.empty(), marketingCreateTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Omni-Channel Template
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -704,12 +724,13 @@ public class Marketing {
      */
     @Deprecated
     public MarketingCreateOmniChannelTemplateResponse createOmniChannelTemplate(
-            String xAccountId, MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto, Optional<Options> options) {
         MarketingCreateOmniChannelTemplateRequest request =
             MarketingCreateOmniChannelTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreateOmniChannelTemplateRequest, MarketingCreateOmniChannelTemplateResponse> operation
@@ -782,8 +803,8 @@ public class Marketing {
     public MarketingUpdateOmniChannelTemplateResponse updateOmniChannelTemplate(
             String xAccountId, String id,
             MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto) {
-        return updateOmniChannelTemplate(xAccountId, id, marketingCreateTemplateRequestDto,
-            Optional.empty());
+        return updateOmniChannelTemplate(xAccountId, id, Optional.empty(),
+            marketingCreateTemplateRequestDto, Optional.empty());
     }
 
     /**
@@ -791,6 +812,7 @@ public class Marketing {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -800,12 +822,14 @@ public class Marketing {
     @Deprecated
     public MarketingUpdateOmniChannelTemplateResponse updateOmniChannelTemplate(
             String xAccountId, String id,
-            MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, MarketingCreateTemplateRequestDto marketingCreateTemplateRequestDto,
+            Optional<Options> options) {
         MarketingUpdateOmniChannelTemplateRequest request =
             MarketingUpdateOmniChannelTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .marketingCreateTemplateRequestDto(marketingCreateTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdateOmniChannelTemplateRequest, MarketingUpdateOmniChannelTemplateResponse> operation
@@ -865,25 +889,28 @@ public class Marketing {
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreatePushTemplateResponse createPushTemplate(String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
-        return createPushTemplate(xAccountId, marketingCreatePushTemplateRequestDto, Optional.empty());
+        return createPushTemplate(xAccountId, Optional.empty(), marketingCreatePushTemplateRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Push Template
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreatePushTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreatePushTemplateResponse createPushTemplate(
-            String xAccountId, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto, Optional<Options> options) {
         MarketingCreatePushTemplateRequest request =
             MarketingCreatePushTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         RequestOperation<MarketingCreatePushTemplateRequest, MarketingCreatePushTemplateResponse> operation
@@ -946,8 +973,8 @@ public class Marketing {
     public MarketingUpdatePushTemplateResponse updatePushTemplate(
             String xAccountId, String id,
             MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto) {
-        return updatePushTemplate(xAccountId, id, marketingCreatePushTemplateRequestDto,
-            Optional.empty());
+        return updatePushTemplate(xAccountId, id, Optional.empty(),
+            marketingCreatePushTemplateRequestDto, Optional.empty());
     }
 
     /**
@@ -955,6 +982,7 @@ public class Marketing {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreatePushTemplateRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -962,12 +990,14 @@ public class Marketing {
      */
     public MarketingUpdatePushTemplateResponse updatePushTemplate(
             String xAccountId, String id,
-            MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, MarketingCreatePushTemplateRequestDto marketingCreatePushTemplateRequestDto,
+            Optional<Options> options) {
         MarketingUpdatePushTemplateRequest request =
             MarketingUpdatePushTemplateRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .marketingCreatePushTemplateRequestDto(marketingCreatePushTemplateRequestDto)
                 .build();
         RequestOperation<MarketingUpdatePushTemplateRequest, MarketingUpdatePushTemplateResponse> operation
@@ -1095,25 +1125,28 @@ public class Marketing {
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateContentBlockResponse createContentBlock(String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
-        return createContentBlock(xAccountId, marketingCreateContentBlocksRequestDto, Optional.empty());
+        return createContentBlock(xAccountId, Optional.empty(), marketingCreateContentBlocksRequestDto,
+            Optional.empty());
     }
 
     /**
      * Create Content Block
      * 
      * @param xAccountId The account identifier
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateContentBlocksRequestDto 
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
      */
     public MarketingCreateContentBlockResponse createContentBlock(
-            String xAccountId, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
-            Optional<Options> options) {
+            String xAccountId, Optional<String> prefer,
+            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto, Optional<Options> options) {
         MarketingCreateContentBlockRequest request =
             MarketingCreateContentBlockRequest
                 .builder()
                 .xAccountId(xAccountId)
+                .prefer(prefer)
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         RequestOperation<MarketingCreateContentBlockRequest, MarketingCreateContentBlockResponse> operation
@@ -1176,8 +1209,8 @@ public class Marketing {
     public MarketingUpdateContentBlockResponse updateContentBlock(
             String xAccountId, String id,
             MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto) {
-        return updateContentBlock(xAccountId, id, marketingCreateContentBlocksRequestDto,
-            Optional.empty());
+        return updateContentBlock(xAccountId, id, Optional.empty(),
+            marketingCreateContentBlocksRequestDto, Optional.empty());
     }
 
     /**
@@ -1185,6 +1218,7 @@ public class Marketing {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param marketingCreateContentBlocksRequestDto 
      * @param options additional options
      * @return The response from the API call
@@ -1192,12 +1226,14 @@ public class Marketing {
      */
     public MarketingUpdateContentBlockResponse updateContentBlock(
             String xAccountId, String id,
-            MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto, Optional<Options> options) {
+            Optional<String> prefer, MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto,
+            Optional<Options> options) {
         MarketingUpdateContentBlockRequest request =
             MarketingUpdateContentBlockRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .marketingCreateContentBlocksRequestDto(marketingCreateContentBlocksRequestDto)
                 .build();
         RequestOperation<MarketingUpdateContentBlockRequest, MarketingUpdateContentBlockResponse> operation

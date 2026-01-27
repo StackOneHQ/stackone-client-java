@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class AtsCreateBackgroundCheckPackageRequest {
@@ -19,6 +20,13 @@ public class AtsCreateBackgroundCheckPackageRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto;
@@ -26,11 +34,20 @@ public class AtsCreateBackgroundCheckPackageRequest {
     @JsonCreator
     public AtsCreateBackgroundCheckPackageRequest(
             String xAccountId,
+            Optional<String> prefer,
             AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(atsCreateBackgroundCheckPackagesRequestDto, "atsCreateBackgroundCheckPackagesRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.atsCreateBackgroundCheckPackagesRequestDto = atsCreateBackgroundCheckPackagesRequestDto;
+    }
+    
+    public AtsCreateBackgroundCheckPackageRequest(
+            String xAccountId,
+            AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) {
+        this(xAccountId, Optional.empty(), atsCreateBackgroundCheckPackagesRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class AtsCreateBackgroundCheckPackageRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class AtsCreateBackgroundCheckPackageRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsCreateBackgroundCheckPackageRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public AtsCreateBackgroundCheckPackageRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public AtsCreateBackgroundCheckPackageRequest withAtsCreateBackgroundCheckPackagesRequestDto(AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) {
         Utils.checkNotNull(atsCreateBackgroundCheckPackagesRequestDto, "atsCreateBackgroundCheckPackagesRequestDto");
         this.atsCreateBackgroundCheckPackagesRequestDto = atsCreateBackgroundCheckPackagesRequestDto;
@@ -77,19 +124,21 @@ public class AtsCreateBackgroundCheckPackageRequest {
         AtsCreateBackgroundCheckPackageRequest other = (AtsCreateBackgroundCheckPackageRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.atsCreateBackgroundCheckPackagesRequestDto, other.atsCreateBackgroundCheckPackagesRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, atsCreateBackgroundCheckPackagesRequestDto);
+            xAccountId, prefer, atsCreateBackgroundCheckPackagesRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AtsCreateBackgroundCheckPackageRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "atsCreateBackgroundCheckPackagesRequestDto", atsCreateBackgroundCheckPackagesRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class AtsCreateBackgroundCheckPackageRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto;
 
@@ -115,6 +166,27 @@ public class AtsCreateBackgroundCheckPackageRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder atsCreateBackgroundCheckPackagesRequestDto(AtsCreateBackgroundCheckPackagesRequestDto atsCreateBackgroundCheckPackagesRequestDto) {
             Utils.checkNotNull(atsCreateBackgroundCheckPackagesRequestDto, "atsCreateBackgroundCheckPackagesRequestDto");
             this.atsCreateBackgroundCheckPackagesRequestDto = atsCreateBackgroundCheckPackagesRequestDto;
@@ -124,7 +196,7 @@ public class AtsCreateBackgroundCheckPackageRequest {
         public AtsCreateBackgroundCheckPackageRequest build() {
 
             return new AtsCreateBackgroundCheckPackageRequest(
-                xAccountId, atsCreateBackgroundCheckPackagesRequestDto);
+                xAccountId, prefer, atsCreateBackgroundCheckPackagesRequestDto);
         }
 
     }

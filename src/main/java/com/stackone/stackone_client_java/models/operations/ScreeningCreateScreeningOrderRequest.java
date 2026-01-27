@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class ScreeningCreateScreeningOrderRequest {
@@ -19,6 +20,13 @@ public class ScreeningCreateScreeningOrderRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=x-account-id")
     private String xAccountId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto;
@@ -26,11 +34,20 @@ public class ScreeningCreateScreeningOrderRequest {
     @JsonCreator
     public ScreeningCreateScreeningOrderRequest(
             String xAccountId,
+            Optional<String> prefer,
             ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(screeningCreateOrderRequestDto, "screeningCreateOrderRequestDto");
         this.xAccountId = xAccountId;
+        this.prefer = prefer;
         this.screeningCreateOrderRequestDto = screeningCreateOrderRequestDto;
+    }
+    
+    public ScreeningCreateScreeningOrderRequest(
+            String xAccountId,
+            ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto) {
+        this(xAccountId, Optional.empty(), screeningCreateOrderRequestDto);
     }
 
     /**
@@ -39,6 +56,15 @@ public class ScreeningCreateScreeningOrderRequest {
     @JsonIgnore
     public String xAccountId() {
         return xAccountId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -60,6 +86,27 @@ public class ScreeningCreateScreeningOrderRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public ScreeningCreateScreeningOrderRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public ScreeningCreateScreeningOrderRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public ScreeningCreateScreeningOrderRequest withScreeningCreateOrderRequestDto(ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto) {
         Utils.checkNotNull(screeningCreateOrderRequestDto, "screeningCreateOrderRequestDto");
         this.screeningCreateOrderRequestDto = screeningCreateOrderRequestDto;
@@ -77,19 +124,21 @@ public class ScreeningCreateScreeningOrderRequest {
         ScreeningCreateScreeningOrderRequest other = (ScreeningCreateScreeningOrderRequest) o;
         return 
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.screeningCreateOrderRequestDto, other.screeningCreateOrderRequestDto);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            xAccountId, screeningCreateOrderRequestDto);
+            xAccountId, prefer, screeningCreateOrderRequestDto);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ScreeningCreateScreeningOrderRequest.class,
                 "xAccountId", xAccountId,
+                "prefer", prefer,
                 "screeningCreateOrderRequestDto", screeningCreateOrderRequestDto);
     }
 
@@ -97,6 +146,8 @@ public class ScreeningCreateScreeningOrderRequest {
     public final static class Builder {
 
         private String xAccountId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto;
 
@@ -115,6 +166,27 @@ public class ScreeningCreateScreeningOrderRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder screeningCreateOrderRequestDto(ScreeningCreateOrderRequestDto screeningCreateOrderRequestDto) {
             Utils.checkNotNull(screeningCreateOrderRequestDto, "screeningCreateOrderRequestDto");
             this.screeningCreateOrderRequestDto = screeningCreateOrderRequestDto;
@@ -124,7 +196,7 @@ public class ScreeningCreateScreeningOrderRequest {
         public ScreeningCreateScreeningOrderRequest build() {
 
             return new ScreeningCreateScreeningOrderRequest(
-                xAccountId, screeningCreateOrderRequestDto);
+                xAccountId, prefer, screeningCreateOrderRequestDto);
         }
 
     }

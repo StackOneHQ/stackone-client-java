@@ -110,6 +110,13 @@ public class DocumentsListFilesRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=include")
     private JsonNullable<String> include;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public DocumentsListFilesRequest(
             String xAccountId,
@@ -124,7 +131,8 @@ public class DocumentsListFilesRequest {
             JsonNullable<OffsetDateTime> updatedAfter,
             JsonNullable<String> folderId,
             JsonNullable<String> nestedItems,
-            JsonNullable<String> include) {
+            JsonNullable<String> include,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(xStackoneApiSessionToken, "xStackoneApiSessionToken");
         Utils.checkNotNull(raw, "raw");
@@ -138,6 +146,7 @@ public class DocumentsListFilesRequest {
         Utils.checkNotNull(folderId, "folderId");
         Utils.checkNotNull(nestedItems, "nestedItems");
         Utils.checkNotNull(include, "include");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.xStackoneApiSessionToken = xStackoneApiSessionToken;
         this.raw = raw;
@@ -151,6 +160,7 @@ public class DocumentsListFilesRequest {
         this.folderId = folderId;
         this.nestedItems = nestedItems;
         this.include = include;
+        this.prefer = prefer;
     }
     
     public DocumentsListFilesRequest(
@@ -159,7 +169,7 @@ public class DocumentsListFilesRequest {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -276,6 +286,15 @@ public class DocumentsListFilesRequest {
     @JsonIgnore
     public JsonNullable<String> include() {
         return include;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -529,6 +548,27 @@ public class DocumentsListFilesRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public DocumentsListFilesRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public DocumentsListFilesRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -551,7 +591,8 @@ public class DocumentsListFilesRequest {
             Utils.enhancedDeepEquals(this.updatedAfter, other.updatedAfter) &&
             Utils.enhancedDeepEquals(this.folderId, other.folderId) &&
             Utils.enhancedDeepEquals(this.nestedItems, other.nestedItems) &&
-            Utils.enhancedDeepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.include, other.include) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -561,7 +602,7 @@ public class DocumentsListFilesRequest {
             proxy, fields, filter,
             page, pageSize, next,
             updatedAfter, folderId, nestedItems,
-            include);
+            include, prefer);
     }
     
     @Override
@@ -579,7 +620,8 @@ public class DocumentsListFilesRequest {
                 "updatedAfter", updatedAfter,
                 "folderId", folderId,
                 "nestedItems", nestedItems,
-                "include", include);
+                "include", include,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -612,6 +654,8 @@ public class DocumentsListFilesRequest {
         private JsonNullable<String> nestedItems;
 
         private JsonNullable<String> include = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -875,6 +919,27 @@ public class DocumentsListFilesRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public DocumentsListFilesRequest build() {
             if (nestedItems == null) {
                 nestedItems = _SINGLETON_VALUE_NestedItems.value();
@@ -885,7 +950,7 @@ public class DocumentsListFilesRequest {
                 proxy, fields, filter,
                 page, pageSize, next,
                 updatedAfter, folderId, nestedItems,
-                include);
+                include, prefer);
         }
 
 

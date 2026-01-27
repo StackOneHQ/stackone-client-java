@@ -25,7 +25,7 @@ public class ConnectSession {
 
 
     @JsonProperty("organization_id")
-    private double organizationId;
+    private ConnectSessionOrganizationId organizationId;
 
 
     @JsonProperty("project_id")
@@ -100,7 +100,7 @@ public class ConnectSession {
     @JsonCreator
     public ConnectSession(
             @JsonProperty("id") double id,
-            @JsonProperty("organization_id") double organizationId,
+            @JsonProperty("organization_id") ConnectSessionOrganizationId organizationId,
             @JsonProperty("project_id") String projectId,
             @JsonProperty("categories") JsonNullable<? extends List<ConnectSessionCategories>> categories,
             @JsonProperty("provider") JsonNullable<String> provider,
@@ -148,7 +148,7 @@ public class ConnectSession {
     
     public ConnectSession(
             double id,
-            double organizationId,
+            ConnectSessionOrganizationId organizationId,
             String projectId,
             String originOwnerId,
             String originOwnerName,
@@ -166,7 +166,7 @@ public class ConnectSession {
     }
 
     @JsonIgnore
-    public double organizationId() {
+    public ConnectSessionOrganizationId organizationId() {
         return organizationId;
     }
 
@@ -262,7 +262,7 @@ public class ConnectSession {
         return this;
     }
 
-    public ConnectSession withOrganizationId(double organizationId) {
+    public ConnectSession withOrganizationId(ConnectSessionOrganizationId organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
         this.organizationId = organizationId;
         return this;
@@ -488,7 +488,7 @@ public class ConnectSession {
 
         private Double id;
 
-        private Double organizationId;
+        private ConnectSessionOrganizationId organizationId;
 
         private String projectId;
 
@@ -528,7 +528,7 @@ public class ConnectSession {
         }
 
 
-        public Builder organizationId(double organizationId) {
+        public Builder organizationId(ConnectSessionOrganizationId organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;

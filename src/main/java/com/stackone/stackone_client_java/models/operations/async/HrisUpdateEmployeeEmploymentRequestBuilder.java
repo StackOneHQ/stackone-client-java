@@ -6,23 +6,18 @@ package com.stackone.stackone_client_java.models.operations.async;
 import static com.stackone.stackone_client_java.operations.Operations.AsyncRequestOperation;
 
 import com.stackone.stackone_client_java.SDKConfiguration;
-import com.stackone.stackone_client_java.models.components.HrisUpdateEmploymentRequestDto;
 import com.stackone.stackone_client_java.models.operations.HrisUpdateEmployeeEmploymentRequest;
 import com.stackone.stackone_client_java.operations.HrisUpdateEmployeeEmployment;
 import com.stackone.stackone_client_java.utils.Headers;
 import com.stackone.stackone_client_java.utils.Options;
 import com.stackone.stackone_client_java.utils.RetryConfig;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class HrisUpdateEmployeeEmploymentRequestBuilder {
 
-    private String xAccountId;
-    private String id;
-    private String subResourceId;
-    private HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto;
+    private HrisUpdateEmployeeEmploymentRequest request;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -31,27 +26,9 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
 
-    public HrisUpdateEmployeeEmploymentRequestBuilder xAccountId(String xAccountId) {
-        Utils.checkNotNull(xAccountId, "xAccountId");
-        this.xAccountId = xAccountId;
-        return this;
-    }
-
-    public HrisUpdateEmployeeEmploymentRequestBuilder id(String id) {
-        Utils.checkNotNull(id, "id");
-        this.id = id;
-        return this;
-    }
-
-    public HrisUpdateEmployeeEmploymentRequestBuilder subResourceId(String subResourceId) {
-        Utils.checkNotNull(subResourceId, "subResourceId");
-        this.subResourceId = subResourceId;
-        return this;
-    }
-
-    public HrisUpdateEmployeeEmploymentRequestBuilder hrisUpdateEmploymentRequestDto(HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) {
-        Utils.checkNotNull(hrisUpdateEmploymentRequestDto, "hrisUpdateEmploymentRequestDto");
-        this.hrisUpdateEmploymentRequestDto = hrisUpdateEmploymentRequestDto;
+    public HrisUpdateEmployeeEmploymentRequestBuilder request(HrisUpdateEmployeeEmploymentRequest request) {
+        Utils.checkNotNull(request, "request");
+        this.request = request;
         return this;
     }
                 
@@ -67,17 +44,6 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
         return this;
     }
 
-
-    private HrisUpdateEmployeeEmploymentRequest buildRequest() {
-
-        HrisUpdateEmployeeEmploymentRequest request = new HrisUpdateEmployeeEmploymentRequest(xAccountId,
-            id,
-            subResourceId,
-            hrisUpdateEmploymentRequestDto);
-
-        return request;
-    }
-
     public CompletableFuture<HrisUpdateEmployeeEmploymentResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
@@ -87,7 +53,6 @@ public class HrisUpdateEmployeeEmploymentRequestBuilder {
               = new HrisUpdateEmployeeEmployment.Async(
                                     sdkConfiguration, options, sdkConfiguration.retryScheduler(),
                                     _headers);
-        HrisUpdateEmployeeEmploymentRequest request = buildRequest();
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

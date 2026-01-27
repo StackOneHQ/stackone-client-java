@@ -88,9 +88,9 @@ public class RawResponseResponse {
 
         public _Deserializer() {
             super(RawResponseResponse.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<List<Object>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT));
         }
     }
     

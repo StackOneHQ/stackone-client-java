@@ -30,6 +30,7 @@ public class Application {
                     .build())
                 .expand("company,employments,work_location,home_location,groups,skills")
                 .include("avatar_url,avatar,custom_fields,job_description,benefits,bank_details")
+                .prefer("heartbeat")
                 .build();
 
 

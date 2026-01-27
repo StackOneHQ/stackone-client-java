@@ -61,6 +61,13 @@ public class DocumentsGetFileRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=include")
     private JsonNullable<String> include;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public DocumentsGetFileRequest(
             String xAccountId,
@@ -69,7 +76,8 @@ public class DocumentsGetFileRequest {
             JsonNullable<Boolean> raw,
             JsonNullable<? extends Map<String, Object>> proxy,
             JsonNullable<String> fields,
-            JsonNullable<String> include) {
+            JsonNullable<String> include,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(xStackoneApiSessionToken, "xStackoneApiSessionToken");
         Utils.checkNotNull(id, "id");
@@ -77,6 +85,7 @@ public class DocumentsGetFileRequest {
         Utils.checkNotNull(proxy, "proxy");
         Utils.checkNotNull(fields, "fields");
         Utils.checkNotNull(include, "include");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.xStackoneApiSessionToken = xStackoneApiSessionToken;
         this.id = id;
@@ -84,6 +93,7 @@ public class DocumentsGetFileRequest {
         this.proxy = proxy;
         this.fields = fields;
         this.include = include;
+        this.prefer = prefer;
     }
     
     public DocumentsGetFileRequest(
@@ -91,7 +101,7 @@ public class DocumentsGetFileRequest {
             String id) {
         this(xAccountId, Optional.empty(), id,
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -149,6 +159,15 @@ public class DocumentsGetFileRequest {
     @JsonIgnore
     public JsonNullable<String> include() {
         return include;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -268,6 +287,27 @@ public class DocumentsGetFileRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public DocumentsGetFileRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public DocumentsGetFileRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -284,7 +324,8 @@ public class DocumentsGetFileRequest {
             Utils.enhancedDeepEquals(this.raw, other.raw) &&
             Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
             Utils.enhancedDeepEquals(this.fields, other.fields) &&
-            Utils.enhancedDeepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.include, other.include) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -292,7 +333,7 @@ public class DocumentsGetFileRequest {
         return Utils.enhancedHash(
             xAccountId, xStackoneApiSessionToken, id,
             raw, proxy, fields,
-            include);
+            include, prefer);
     }
     
     @Override
@@ -304,7 +345,8 @@ public class DocumentsGetFileRequest {
                 "raw", raw,
                 "proxy", proxy,
                 "fields", fields,
-                "include", include);
+                "include", include,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -323,6 +365,8 @@ public class DocumentsGetFileRequest {
         private JsonNullable<String> fields = JsonNullable.undefined();
 
         private JsonNullable<String> include = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -446,12 +490,33 @@ public class DocumentsGetFileRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public DocumentsGetFileRequest build() {
 
             return new DocumentsGetFileRequest(
                 xAccountId, xStackoneApiSessionToken, id,
                 raw, proxy, fields,
-                include);
+                include, prefer);
         }
 
     }

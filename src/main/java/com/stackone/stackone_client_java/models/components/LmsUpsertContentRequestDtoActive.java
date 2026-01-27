@@ -84,8 +84,8 @@ public class LmsUpsertContentRequestDtoActive {
 
         public _Deserializer() {
             super(LmsUpsertContentRequestDtoActive.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<LmsUpsertContentRequestDtoActive2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<LmsUpsertContentRequestDtoActive2>() {}, JsonShape.DEFAULT));
         }
     }
     

@@ -84,8 +84,8 @@ public class MessagingConversationResultPrivate {
 
         public _Deserializer() {
             super(MessagingConversationResultPrivate.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<MessagingConversationResultPrivate2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<MessagingConversationResultPrivate2>() {}, JsonShape.DEFAULT));
         }
     }
     

@@ -311,8 +311,8 @@ public class AsyncAccounting {
             String xAccountId, String id,
             AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto) {
         return batchCreateCompanyJournals(
-                xAccountId, id, accountingJournalBatchCreateRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                accountingJournalBatchCreateRequestDto, Optional.empty());
     }
 
     /**
@@ -320,18 +320,21 @@ public class AsyncAccounting {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param accountingJournalBatchCreateRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AccountingBatchCreateCompanyJournalsResponse>} - The async response
      */
     public CompletableFuture<AccountingBatchCreateCompanyJournalsResponse> batchCreateCompanyJournals(
             String xAccountId, String id,
-            AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto,
+            Optional<Options> options) {
         AccountingBatchCreateCompanyJournalsRequest request =
             AccountingBatchCreateCompanyJournalsRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .accountingJournalBatchCreateRequestDto(accountingJournalBatchCreateRequestDto)
                 .build();
         AsyncRequestOperation<AccountingBatchCreateCompanyJournalsRequest, AccountingBatchCreateCompanyJournalsResponse> operation
@@ -400,8 +403,8 @@ public class AsyncAccounting {
             String xAccountId, String id,
             AccountingJournalCreateRequestDto accountingJournalCreateRequestDto) {
         return createCompanyJournal(
-                xAccountId, id, accountingJournalCreateRequestDto,
-                Optional.empty());
+                xAccountId, id, Optional.empty(),
+                accountingJournalCreateRequestDto, Optional.empty());
     }
 
     /**
@@ -409,18 +412,21 @@ public class AsyncAccounting {
      * 
      * @param xAccountId The account identifier
      * @param id 
+     * @param prefer Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response includes Preference-Applied: heartbeat header when honored. (RFC 7240)
      * @param accountingJournalCreateRequestDto 
      * @param options additional options
      * @return {@code CompletableFuture<AccountingCreateCompanyJournalResponse>} - The async response
      */
     public CompletableFuture<AccountingCreateCompanyJournalResponse> createCompanyJournal(
             String xAccountId, String id,
-            AccountingJournalCreateRequestDto accountingJournalCreateRequestDto, Optional<Options> options) {
+            Optional<String> prefer, AccountingJournalCreateRequestDto accountingJournalCreateRequestDto,
+            Optional<Options> options) {
         AccountingCreateCompanyJournalRequest request =
             AccountingCreateCompanyJournalRequest
                 .builder()
                 .xAccountId(xAccountId)
                 .id(id)
+                .prefer(prefer)
                 .accountingJournalCreateRequestDto(accountingJournalCreateRequestDto)
                 .build();
         AsyncRequestOperation<AccountingCreateCompanyJournalRequest, AccountingCreateCompanyJournalResponse> operation

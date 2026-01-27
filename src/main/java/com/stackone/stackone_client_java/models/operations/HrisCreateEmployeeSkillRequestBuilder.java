@@ -19,6 +19,7 @@ public class HrisCreateEmployeeSkillRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private EntitySkillsCreateRequestDto entitySkillsCreateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class HrisCreateEmployeeSkillRequestBuilder {
     public HrisCreateEmployeeSkillRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public HrisCreateEmployeeSkillRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public HrisCreateEmployeeSkillRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class HrisCreateEmployeeSkillRequestBuilder {
 
         HrisCreateEmployeeSkillRequest request = new HrisCreateEmployeeSkillRequest(xAccountId,
             id,
+            prefer,
             entitySkillsCreateRequestDto);
 
         return request;

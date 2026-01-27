@@ -84,8 +84,8 @@ public class IsPaid {
 
         public _Deserializer() {
             super(IsPaid.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<IsPaid2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<IsPaid2>() {}, JsonShape.DEFAULT));
         }
     }
     

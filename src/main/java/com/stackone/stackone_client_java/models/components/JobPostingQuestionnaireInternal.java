@@ -79,8 +79,8 @@ public class JobPostingQuestionnaireInternal {
 
         public _Deserializer() {
             super(JobPostingQuestionnaireInternal.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Internal2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Internal2>() {}, JsonShape.DEFAULT));
         }
     }
     

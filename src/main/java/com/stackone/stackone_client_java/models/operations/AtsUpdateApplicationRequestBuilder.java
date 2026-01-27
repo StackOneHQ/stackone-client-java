@@ -19,6 +19,7 @@ public class AtsUpdateApplicationRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AtsUpdateApplicationRequestDto atsUpdateApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class AtsUpdateApplicationRequestBuilder {
     public AtsUpdateApplicationRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AtsUpdateApplicationRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsUpdateApplicationRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class AtsUpdateApplicationRequestBuilder {
 
         AtsUpdateApplicationRequest request = new AtsUpdateApplicationRequest(xAccountId,
             id,
+            prefer,
             atsUpdateApplicationRequestDto);
 
         return request;

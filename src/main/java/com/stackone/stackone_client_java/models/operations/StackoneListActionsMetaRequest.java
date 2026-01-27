@@ -9,7 +9,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.stackone.stackone_client_java.utils.LazySingletonValue;
 import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
-import java.lang.Deprecated;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -18,15 +17,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 public class StackoneListActionsMetaRequest {
-    /**
-     * The page number of the results to fetch
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")
-    @Deprecated
-    private JsonNullable<String> page;
-
     /**
      * The number of results per page (default value is 25)
      */
@@ -57,42 +47,47 @@ public class StackoneListActionsMetaRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=include")
     private JsonNullable<? extends List<StackoneListActionsMetaQueryParamInclude>> include;
 
+    /**
+     * Text search across provider names, action labels, and action descriptions
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=search")
+    private JsonNullable<String> search;
+
+    /**
+     * Data to exclude from the response
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=exclude")
+    private JsonNullable<? extends List<Exclude>> exclude;
+
     @JsonCreator
     public StackoneListActionsMetaRequest(
-            JsonNullable<String> page,
             JsonNullable<String> pageSize,
             JsonNullable<String> next,
             JsonNullable<String> groupBy,
             JsonNullable<? extends StackoneListActionsMetaQueryParamFilter> filter,
-            JsonNullable<? extends List<StackoneListActionsMetaQueryParamInclude>> include) {
-        Utils.checkNotNull(page, "page");
+            JsonNullable<? extends List<StackoneListActionsMetaQueryParamInclude>> include,
+            JsonNullable<String> search,
+            JsonNullable<? extends List<Exclude>> exclude) {
         Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(next, "next");
         Utils.checkNotNull(groupBy, "groupBy");
         Utils.checkNotNull(filter, "filter");
         Utils.checkNotNull(include, "include");
-        this.page = page;
+        Utils.checkNotNull(search, "search");
+        Utils.checkNotNull(exclude, "exclude");
         this.pageSize = pageSize;
         this.next = next;
         this.groupBy = groupBy;
         this.filter = filter;
         this.include = include;
+        this.search = search;
+        this.exclude = exclude;
     }
     
     public StackoneListActionsMetaRequest() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
-    }
-
-    /**
-     * The page number of the results to fetch
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    @Deprecated
-    @JsonIgnore
-    public JsonNullable<String> page() {
-        return page;
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     /**
@@ -137,34 +132,27 @@ public class StackoneListActionsMetaRequest {
         return (JsonNullable<List<StackoneListActionsMetaQueryParamInclude>>) include;
     }
 
+    /**
+     * Text search across provider names, action labels, and action descriptions
+     */
+    @JsonIgnore
+    public JsonNullable<String> search() {
+        return search;
+    }
+
+    /**
+     * Data to exclude from the response
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<Exclude>> exclude() {
+        return (JsonNullable<List<Exclude>>) exclude;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
 
-
-    /**
-     * The page number of the results to fetch
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    @Deprecated
-    public StackoneListActionsMetaRequest withPage(String page) {
-        Utils.checkNotNull(page, "page");
-        this.page = JsonNullable.of(page);
-        return this;
-    }
-
-    /**
-     * The page number of the results to fetch
-     * 
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    @Deprecated
-    public StackoneListActionsMetaRequest withPage(JsonNullable<String> page) {
-        Utils.checkNotNull(page, "page");
-        this.page = page;
-        return this;
-    }
 
     /**
      * The number of results per page (default value is 25)
@@ -256,6 +244,42 @@ public class StackoneListActionsMetaRequest {
         return this;
     }
 
+    /**
+     * Text search across provider names, action labels, and action descriptions
+     */
+    public StackoneListActionsMetaRequest withSearch(String search) {
+        Utils.checkNotNull(search, "search");
+        this.search = JsonNullable.of(search);
+        return this;
+    }
+
+    /**
+     * Text search across provider names, action labels, and action descriptions
+     */
+    public StackoneListActionsMetaRequest withSearch(JsonNullable<String> search) {
+        Utils.checkNotNull(search, "search");
+        this.search = search;
+        return this;
+    }
+
+    /**
+     * Data to exclude from the response
+     */
+    public StackoneListActionsMetaRequest withExclude(List<Exclude> exclude) {
+        Utils.checkNotNull(exclude, "exclude");
+        this.exclude = JsonNullable.of(exclude);
+        return this;
+    }
+
+    /**
+     * Data to exclude from the response
+     */
+    public StackoneListActionsMetaRequest withExclude(JsonNullable<? extends List<Exclude>> exclude) {
+        Utils.checkNotNull(exclude, "exclude");
+        this.exclude = exclude;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -266,37 +290,37 @@ public class StackoneListActionsMetaRequest {
         }
         StackoneListActionsMetaRequest other = (StackoneListActionsMetaRequest) o;
         return 
-            Utils.enhancedDeepEquals(this.page, other.page) &&
             Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
             Utils.enhancedDeepEquals(this.next, other.next) &&
             Utils.enhancedDeepEquals(this.groupBy, other.groupBy) &&
             Utils.enhancedDeepEquals(this.filter, other.filter) &&
-            Utils.enhancedDeepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.include, other.include) &&
+            Utils.enhancedDeepEquals(this.search, other.search) &&
+            Utils.enhancedDeepEquals(this.exclude, other.exclude);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            page, pageSize, next,
-            groupBy, filter, include);
+            pageSize, next, groupBy,
+            filter, include, search,
+            exclude);
     }
     
     @Override
     public String toString() {
         return Utils.toString(StackoneListActionsMetaRequest.class,
-                "page", page,
                 "pageSize", pageSize,
                 "next", next,
                 "groupBy", groupBy,
                 "filter", filter,
-                "include", include);
+                "include", include,
+                "search", search,
+                "exclude", exclude);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-
-        @Deprecated
-        private JsonNullable<String> page = JsonNullable.undefined();
 
         private JsonNullable<String> pageSize = JsonNullable.undefined();
 
@@ -308,33 +332,12 @@ public class StackoneListActionsMetaRequest {
 
         private JsonNullable<? extends List<StackoneListActionsMetaQueryParamInclude>> include = JsonNullable.undefined();
 
+        private JsonNullable<String> search = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<Exclude>> exclude = JsonNullable.undefined();
+
         private Builder() {
           // force use of static builder() method
-        }
-
-
-        /**
-         * The page number of the results to fetch
-         * 
-         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-         */
-        @Deprecated
-        public Builder page(String page) {
-            Utils.checkNotNull(page, "page");
-            this.page = JsonNullable.of(page);
-            return this;
-        }
-
-        /**
-         * The page number of the results to fetch
-         * 
-         * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-         */
-        @Deprecated
-        public Builder page(JsonNullable<String> page) {
-            Utils.checkNotNull(page, "page");
-            this.page = page;
-            return this;
         }
 
 
@@ -432,14 +435,53 @@ public class StackoneListActionsMetaRequest {
             return this;
         }
 
+
+        /**
+         * Text search across provider names, action labels, and action descriptions
+         */
+        public Builder search(String search) {
+            Utils.checkNotNull(search, "search");
+            this.search = JsonNullable.of(search);
+            return this;
+        }
+
+        /**
+         * Text search across provider names, action labels, and action descriptions
+         */
+        public Builder search(JsonNullable<String> search) {
+            Utils.checkNotNull(search, "search");
+            this.search = search;
+            return this;
+        }
+
+
+        /**
+         * Data to exclude from the response
+         */
+        public Builder exclude(List<Exclude> exclude) {
+            Utils.checkNotNull(exclude, "exclude");
+            this.exclude = JsonNullable.of(exclude);
+            return this;
+        }
+
+        /**
+         * Data to exclude from the response
+         */
+        public Builder exclude(JsonNullable<? extends List<Exclude>> exclude) {
+            Utils.checkNotNull(exclude, "exclude");
+            this.exclude = exclude;
+            return this;
+        }
+
         public StackoneListActionsMetaRequest build() {
             if (groupBy == null) {
                 groupBy = _SINGLETON_VALUE_GroupBy.value();
             }
 
             return new StackoneListActionsMetaRequest(
-                page, pageSize, next,
-                groupBy, filter, include);
+                pageSize, next, groupBy,
+                filter, include, search,
+                exclude);
         }
 
 

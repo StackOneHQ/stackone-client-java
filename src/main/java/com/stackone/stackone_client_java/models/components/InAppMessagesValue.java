@@ -3,21 +3,10 @@
  */
 package com.stackone.stackone_client_java.models.components;
 
-import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.Override;
 import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -25,29 +14,15 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * <p>Wrapper class for an "open" enum. "Open" enums are those that are expected
- * to evolve (particularly with the addition of enum members over time). If an
- * open enum is used then the appearance of unexpected enum values (say in a 
- * response from an updated an API) will not bring about a runtime error thus 
- * ensuring that non-updated client versions can continue to work without error.
- *
- * <p>Note that instances are immutable and are singletons (an internal thread-safe
- * cache is maintained to ensure that). As a consequence instances created with the 
- * same value will satisfy reference equality (via {@code ==}).
- * 
- * <p>This class is intended to emulate an enum (in terms of common usage and with 
- * reference equality) but with the ability to carry unknown values. Unfortunately
- * Java does not permit the use of an instance in a switch expression but you can 
- * use the {@code asEnum()} method (after dealing with the `Optional` appropriately).
- *
+ * Wrapper for an "open" enum that can handle unknown values from API responses
+ * without runtime errors. Instances are immutable singletons with reference equality.
+ * Use {@code asEnum()} for switch expressions.
  */
 /**
  * InAppMessagesValue
  * 
  * <p>The unified message type.
  */
-@JsonDeserialize(using = InAppMessagesValue._Deserializer.class)
-@JsonSerialize(using = InAppMessagesValue._Serializer.class)
 public class InAppMessagesValue {
 
     public static final InAppMessagesValue EMAIL = new InAppMessagesValue("email");
@@ -84,12 +59,14 @@ public class InAppMessagesValue {
      * 
      * @param value value to be wrapped as InAppMessagesValue
      */ 
+    @JsonCreator
     public static InAppMessagesValue of(String value) {
         synchronized (InAppMessagesValue.class) {
             return values.computeIfAbsent(value, v -> new InAppMessagesValue(v));
         }
     }
 
+    @JsonValue
     public String value() {
         return value;
     }
@@ -165,35 +142,6 @@ public class InAppMessagesValue {
         return map;
     }
     
-    @SuppressWarnings("serial")
-    public static final class _Serializer extends StdSerializer<InAppMessagesValue> {
-
-        protected _Serializer() {
-            super(InAppMessagesValue.class);
-        }
-
-        @Override
-        public void serialize(InAppMessagesValue value, JsonGenerator g, SerializerProvider provider)
-                throws IOException, JsonProcessingException {
-            g.writeObject(value.value);
-        }
-    }
-
-    @SuppressWarnings("serial")
-    public static final class _Deserializer extends StdDeserializer<InAppMessagesValue> {
-
-        protected _Deserializer() {
-            super(InAppMessagesValue.class);
-        }
-
-        @Override
-        public InAppMessagesValue deserialize(JsonParser p, DeserializationContext ctxt)
-                throws IOException, JacksonException {
-            String v = p.readValueAs(new TypeReference<String>() {});
-            // use the factory method to ensure we get singletons
-            return InAppMessagesValue.of(v);
-        }
-    }
     
     public enum InAppMessagesValueEnum {
 

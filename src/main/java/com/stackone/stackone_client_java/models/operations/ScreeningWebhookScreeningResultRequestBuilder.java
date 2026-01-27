@@ -18,6 +18,7 @@ import java.util.Optional;
 public class ScreeningWebhookScreeningResultRequestBuilder {
 
     private String xAccountId;
+    private Optional<String> prefer = Optional.empty();
     private ScreeningResultWebhook screeningResultWebhook;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -30,6 +31,18 @@ public class ScreeningWebhookScreeningResultRequestBuilder {
     public ScreeningWebhookScreeningResultRequestBuilder xAccountId(String xAccountId) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         this.xAccountId = xAccountId;
+        return this;
+    }
+                
+    public ScreeningWebhookScreeningResultRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public ScreeningWebhookScreeningResultRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -55,6 +68,7 @@ public class ScreeningWebhookScreeningResultRequestBuilder {
     private ScreeningWebhookScreeningResultRequest buildRequest() {
 
         ScreeningWebhookScreeningResultRequest request = new ScreeningWebhookScreeningResultRequest(xAccountId,
+            prefer,
             screeningResultWebhook);
 
         return request;

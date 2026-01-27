@@ -21,6 +21,7 @@ public class IamUpdateUserRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private IamUpdateUserRequestDto iamUpdateUserRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class IamUpdateUserRequestBuilder {
     public IamUpdateUserRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public IamUpdateUserRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public IamUpdateUserRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class IamUpdateUserRequestBuilder {
 
         IamUpdateUserRequest request = new IamUpdateUserRequest(xAccountId,
             id,
+            prefer,
             iamUpdateUserRequestDto);
 
         return request;

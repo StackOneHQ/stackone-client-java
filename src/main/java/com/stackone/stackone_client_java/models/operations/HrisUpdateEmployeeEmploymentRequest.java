@@ -10,6 +10,7 @@ import com.stackone.stackone_client_java.utils.SpeakeasyMetadata;
 import com.stackone.stackone_client_java.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.util.Optional;
 
 
 public class HrisUpdateEmployeeEmploymentRequest {
@@ -27,6 +28,13 @@ public class HrisUpdateEmployeeEmploymentRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subResourceId")
     private String subResourceId;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto;
@@ -36,15 +44,27 @@ public class HrisUpdateEmployeeEmploymentRequest {
             String xAccountId,
             String id,
             String subResourceId,
+            Optional<String> prefer,
             HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(subResourceId, "subResourceId");
+        Utils.checkNotNull(prefer, "prefer");
         Utils.checkNotNull(hrisUpdateEmploymentRequestDto, "hrisUpdateEmploymentRequestDto");
         this.xAccountId = xAccountId;
         this.id = id;
         this.subResourceId = subResourceId;
+        this.prefer = prefer;
         this.hrisUpdateEmploymentRequestDto = hrisUpdateEmploymentRequestDto;
+    }
+    
+    public HrisUpdateEmployeeEmploymentRequest(
+            String xAccountId,
+            String id,
+            String subResourceId,
+            HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) {
+        this(xAccountId, id, subResourceId,
+            Optional.empty(), hrisUpdateEmploymentRequestDto);
     }
 
     /**
@@ -63,6 +83,15 @@ public class HrisUpdateEmployeeEmploymentRequest {
     @JsonIgnore
     public String subResourceId() {
         return subResourceId;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     @JsonIgnore
@@ -96,6 +125,27 @@ public class HrisUpdateEmployeeEmploymentRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisUpdateEmployeeEmploymentRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisUpdateEmployeeEmploymentRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     public HrisUpdateEmployeeEmploymentRequest withHrisUpdateEmploymentRequestDto(HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) {
         Utils.checkNotNull(hrisUpdateEmploymentRequestDto, "hrisUpdateEmploymentRequestDto");
         this.hrisUpdateEmploymentRequestDto = hrisUpdateEmploymentRequestDto;
@@ -115,6 +165,7 @@ public class HrisUpdateEmployeeEmploymentRequest {
             Utils.enhancedDeepEquals(this.xAccountId, other.xAccountId) &&
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.subResourceId, other.subResourceId) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer) &&
             Utils.enhancedDeepEquals(this.hrisUpdateEmploymentRequestDto, other.hrisUpdateEmploymentRequestDto);
     }
     
@@ -122,7 +173,7 @@ public class HrisUpdateEmployeeEmploymentRequest {
     public int hashCode() {
         return Utils.enhancedHash(
             xAccountId, id, subResourceId,
-            hrisUpdateEmploymentRequestDto);
+            prefer, hrisUpdateEmploymentRequestDto);
     }
     
     @Override
@@ -131,6 +182,7 @@ public class HrisUpdateEmployeeEmploymentRequest {
                 "xAccountId", xAccountId,
                 "id", id,
                 "subResourceId", subResourceId,
+                "prefer", prefer,
                 "hrisUpdateEmploymentRequestDto", hrisUpdateEmploymentRequestDto);
     }
 
@@ -142,6 +194,8 @@ public class HrisUpdateEmployeeEmploymentRequest {
         private String id;
 
         private String subResourceId;
+
+        private Optional<String> prefer = Optional.empty();
 
         private HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto;
 
@@ -174,6 +228,27 @@ public class HrisUpdateEmployeeEmploymentRequest {
         }
 
 
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
+
         public Builder hrisUpdateEmploymentRequestDto(HrisUpdateEmploymentRequestDto hrisUpdateEmploymentRequestDto) {
             Utils.checkNotNull(hrisUpdateEmploymentRequestDto, "hrisUpdateEmploymentRequestDto");
             this.hrisUpdateEmploymentRequestDto = hrisUpdateEmploymentRequestDto;
@@ -184,7 +259,7 @@ public class HrisUpdateEmployeeEmploymentRequest {
 
             return new HrisUpdateEmployeeEmploymentRequest(
                 xAccountId, id, subResourceId,
-                hrisUpdateEmploymentRequestDto);
+                prefer, hrisUpdateEmploymentRequestDto);
         }
 
     }

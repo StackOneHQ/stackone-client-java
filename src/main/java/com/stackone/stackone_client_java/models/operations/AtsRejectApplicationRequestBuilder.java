@@ -19,6 +19,7 @@ public class AtsRejectApplicationRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AtsRejectApplicationRequestDto atsRejectApplicationRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -37,6 +38,18 @@ public class AtsRejectApplicationRequestBuilder {
     public AtsRejectApplicationRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AtsRejectApplicationRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AtsRejectApplicationRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -63,6 +76,7 @@ public class AtsRejectApplicationRequestBuilder {
 
         AtsRejectApplicationRequest request = new AtsRejectApplicationRequest(xAccountId,
             id,
+            prefer,
             atsRejectApplicationRequestDto);
 
         return request;

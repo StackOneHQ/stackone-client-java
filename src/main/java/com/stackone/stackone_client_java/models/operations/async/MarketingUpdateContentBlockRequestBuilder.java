@@ -21,6 +21,7 @@ public class MarketingUpdateContentBlockRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private MarketingCreateContentBlocksRequestDto marketingCreateContentBlocksRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class MarketingUpdateContentBlockRequestBuilder {
     public MarketingUpdateContentBlockRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public MarketingUpdateContentBlockRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public MarketingUpdateContentBlockRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class MarketingUpdateContentBlockRequestBuilder {
 
         MarketingUpdateContentBlockRequest request = new MarketingUpdateContentBlockRequest(xAccountId,
             id,
+            prefer,
             marketingCreateContentBlocksRequestDto);
 
         return request;

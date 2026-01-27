@@ -84,8 +84,8 @@ public class MessagingUserResultBot {
 
         public _Deserializer() {
             super(MessagingUserResultBot.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<MessagingUserResultBot2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Boolean>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<MessagingUserResultBot2>() {}, JsonShape.DEFAULT));
         }
     }
     

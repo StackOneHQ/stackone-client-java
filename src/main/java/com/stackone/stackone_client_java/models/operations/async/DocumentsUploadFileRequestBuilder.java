@@ -21,6 +21,7 @@ public class DocumentsUploadFileRequestBuilder {
 
     private String xAccountId;
     private Optional<String> xStackoneApiSessionToken = Optional.empty();
+    private Optional<String> prefer = Optional.empty();
     private UnifiedUploadRequestDto unifiedUploadRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -47,6 +48,18 @@ public class DocumentsUploadFileRequestBuilder {
         this.xStackoneApiSessionToken = xStackoneApiSessionToken;
         return this;
     }
+                
+    public DocumentsUploadFileRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public DocumentsUploadFileRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
 
     public DocumentsUploadFileRequestBuilder unifiedUploadRequestDto(UnifiedUploadRequestDto unifiedUploadRequestDto) {
         Utils.checkNotNull(unifiedUploadRequestDto, "unifiedUploadRequestDto");
@@ -71,6 +84,7 @@ public class DocumentsUploadFileRequestBuilder {
 
         DocumentsUploadFileRequest request = new DocumentsUploadFileRequest(xAccountId,
             xStackoneApiSessionToken,
+            prefer,
             unifiedUploadRequestDto);
 
         return request;

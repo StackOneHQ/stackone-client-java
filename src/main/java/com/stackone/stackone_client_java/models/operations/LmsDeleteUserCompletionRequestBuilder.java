@@ -19,6 +19,7 @@ public class LmsDeleteUserCompletionRequestBuilder {
     private String xAccountId;
     private String id;
     private String subResourceId;
+    private Optional<String> prefer = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
@@ -45,6 +46,18 @@ public class LmsDeleteUserCompletionRequestBuilder {
         return this;
     }
                 
+    public LmsDeleteUserCompletionRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public LmsDeleteUserCompletionRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+                
     public LmsDeleteUserCompletionRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
@@ -62,7 +75,8 @@ public class LmsDeleteUserCompletionRequestBuilder {
 
         LmsDeleteUserCompletionRequest request = new LmsDeleteUserCompletionRequest(xAccountId,
             id,
-            subResourceId);
+            subResourceId,
+            prefer);
 
         return request;
     }

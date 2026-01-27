@@ -21,6 +21,7 @@ public class AccountingBatchCreateCompanyJournalsRequestBuilder {
 
     private String xAccountId;
     private String id;
+    private Optional<String> prefer = Optional.empty();
     private AccountingJournalBatchCreateRequestDto accountingJournalBatchCreateRequestDto;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
@@ -39,6 +40,18 @@ public class AccountingBatchCreateCompanyJournalsRequestBuilder {
     public AccountingBatchCreateCompanyJournalsRequestBuilder id(String id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
+        return this;
+    }
+                
+    public AccountingBatchCreateCompanyJournalsRequestBuilder prefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.of(prefer);
+        return this;
+    }
+
+    public AccountingBatchCreateCompanyJournalsRequestBuilder prefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
         return this;
     }
 
@@ -65,6 +78,7 @@ public class AccountingBatchCreateCompanyJournalsRequestBuilder {
 
         AccountingBatchCreateCompanyJournalsRequest request = new AccountingBatchCreateCompanyJournalsRequest(xAccountId,
             id,
+            prefer,
             accountingJournalBatchCreateRequestDto);
 
         return request;

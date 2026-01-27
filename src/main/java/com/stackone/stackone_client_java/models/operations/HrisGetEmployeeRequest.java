@@ -13,6 +13,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -60,6 +61,13 @@ public class HrisGetEmployeeRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=include")
     private JsonNullable<String> include;
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Prefer")
+    private Optional<String> prefer;
+
     @JsonCreator
     public HrisGetEmployeeRequest(
             String xAccountId,
@@ -68,7 +76,8 @@ public class HrisGetEmployeeRequest {
             JsonNullable<? extends Map<String, Object>> proxy,
             JsonNullable<String> fields,
             JsonNullable<String> expand,
-            JsonNullable<String> include) {
+            JsonNullable<String> include,
+            Optional<String> prefer) {
         Utils.checkNotNull(xAccountId, "xAccountId");
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(raw, "raw");
@@ -76,6 +85,7 @@ public class HrisGetEmployeeRequest {
         Utils.checkNotNull(fields, "fields");
         Utils.checkNotNull(expand, "expand");
         Utils.checkNotNull(include, "include");
+        Utils.checkNotNull(prefer, "prefer");
         this.xAccountId = xAccountId;
         this.id = id;
         this.raw = raw;
@@ -83,6 +93,7 @@ public class HrisGetEmployeeRequest {
         this.fields = fields;
         this.expand = expand;
         this.include = include;
+        this.prefer = prefer;
     }
     
     public HrisGetEmployeeRequest(
@@ -90,7 +101,7 @@ public class HrisGetEmployeeRequest {
             String id) {
         this(xAccountId, id, JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -148,6 +159,15 @@ public class HrisGetEmployeeRequest {
     @JsonIgnore
     public JsonNullable<String> include() {
         return include;
+    }
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    @JsonIgnore
+    public Optional<String> prefer() {
+        return prefer;
     }
 
     public static Builder builder() {
@@ -266,6 +286,27 @@ public class HrisGetEmployeeRequest {
         return this;
     }
 
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisGetEmployeeRequest withPrefer(String prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = Optional.ofNullable(prefer);
+        return this;
+    }
+
+
+    /**
+     * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+     * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+     */
+    public HrisGetEmployeeRequest withPrefer(Optional<String> prefer) {
+        Utils.checkNotNull(prefer, "prefer");
+        this.prefer = prefer;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -282,7 +323,8 @@ public class HrisGetEmployeeRequest {
             Utils.enhancedDeepEquals(this.proxy, other.proxy) &&
             Utils.enhancedDeepEquals(this.fields, other.fields) &&
             Utils.enhancedDeepEquals(this.expand, other.expand) &&
-            Utils.enhancedDeepEquals(this.include, other.include);
+            Utils.enhancedDeepEquals(this.include, other.include) &&
+            Utils.enhancedDeepEquals(this.prefer, other.prefer);
     }
     
     @Override
@@ -290,7 +332,7 @@ public class HrisGetEmployeeRequest {
         return Utils.enhancedHash(
             xAccountId, id, raw,
             proxy, fields, expand,
-            include);
+            include, prefer);
     }
     
     @Override
@@ -302,7 +344,8 @@ public class HrisGetEmployeeRequest {
                 "proxy", proxy,
                 "fields", fields,
                 "expand", expand,
-                "include", include);
+                "include", include,
+                "prefer", prefer);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -321,6 +364,8 @@ public class HrisGetEmployeeRequest {
         private JsonNullable<String> expand = JsonNullable.undefined();
 
         private JsonNullable<String> include = JsonNullable.undefined();
+
+        private Optional<String> prefer = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -444,12 +489,33 @@ public class HrisGetEmployeeRequest {
             return this;
         }
 
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(String prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = Optional.ofNullable(prefer);
+            return this;
+        }
+
+        /**
+         * Set to "heartbeat" to enable keep-alive newline heartbeats during long-running requests. Response
+         * includes Preference-Applied: heartbeat header when honored. (RFC 7240)
+         */
+        public Builder prefer(Optional<String> prefer) {
+            Utils.checkNotNull(prefer, "prefer");
+            this.prefer = prefer;
+            return this;
+        }
+
         public HrisGetEmployeeRequest build() {
 
             return new HrisGetEmployeeRequest(
                 xAccountId, id, raw,
                 proxy, fields, expand,
-                include);
+                include, prefer);
         }
 
     }
